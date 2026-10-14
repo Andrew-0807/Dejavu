@@ -90,6 +90,7 @@ import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.NoContainerIcon
 import org.mozilla.fenix.dejavu.containers.TemporaryContainerIcon
 import org.mozilla.fenix.dejavu.containers.color
+import org.mozilla.fenix.dejavu.containers.splitTemporary
 import org.mozilla.fenix.dejavu.sync.workspaceIconText
 import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
 import org.mozilla.fenix.dejavu.ui.DejavuMenuDivider
@@ -733,18 +734,13 @@ private fun NewTabRow(
                 onNewTabInContainer(choice)
             }
             // A device on the account would not keep containers, so its workspace only offers a private tab.
-            val (temporary, permanent) = containers.filter { showContainers }.partition { it.temporary }
+            val (permanent, temporary) = containers.filter { showContainers }.splitTemporary()
             if (showContainers) {
                 DejavuMenuLabel(stringResource(R.string.dejavu_new_tab_in_container))
                 DejavuMenuItem(
                     text = stringResource(R.string.dejavu_new_tab_no_container),
                     leadingIcon = { NoContainerIcon() },
                     onClick = { pick(ContainerPick.NoContainer) },
-                )
-                DejavuMenuItem(
-                    text = stringResource(R.string.dejavu_new_tab_temporary_container),
-                    leadingIcon = { TemporaryContainerIcon() },
-                    onClick = { pick(ContainerPick.Temporary) },
                 )
             }
             DejavuMenuItem(
@@ -761,7 +757,8 @@ private fun NewTabRow(
                     onNewPrivateTab()
                 },
             )
-            if (permanent.isNotEmpty()) DejavuMenuDivider()
+            if (!showContainers) return@DejavuDropdownMenu
+            DejavuMenuDivider()
             permanent.forEach { container ->
                 DejavuMenuItem(
                     text = container.name,
@@ -769,32 +766,32 @@ private fun NewTabRow(
                     onClick = { pick(ContainerPick.Container(container.contextId)) },
                 )
             }
-            if (temporary.isNotEmpty()) {
-                DejavuMenuDivider()
-                DejavuMenuLabel(stringResource(R.string.dejavu_open_temporary_containers))
-                temporary.sortedWith(compareBy({ it.name.length }, { it.name })).forEach { container ->
-                    DejavuMenuItem(
-                        text = container.name,
-                        leadingIcon = { ContainerIcon(container) },
-                        onClick = { pick(ContainerPick.Container(container.contextId)) },
+            DejavuMenuItem(
+                text = stringResource(R.string.dejavu_container_add),
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(iconsR.drawable.mozac_ic_plus_24),
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp),
                     )
-                }
-            }
-            if (showContainers) {
-                DejavuMenuDivider()
+                },
+                onClick = {
+                    menuOpen = false
+                    onManageContainers()
+                },
+            )
+            DejavuMenuDivider()
+            DejavuMenuItem(
+                text = stringResource(R.string.dejavu_new_tab_temporary_container),
+                leadingIcon = { TemporaryContainerIcon() },
+                onClick = { pick(ContainerPick.Temporary) },
+            )
+            if (temporary.isNotEmpty()) DejavuMenuLabel(stringResource(R.string.dejavu_open_temporary_containers))
+            temporary.forEach { container ->
                 DejavuMenuItem(
-                    text = stringResource(R.string.dejavu_container_add),
-                    leadingIcon = {
-                        Icon(
-                            painter = painterResource(iconsR.drawable.mozac_ic_plus_24),
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp),
-                        )
-                    },
-                    onClick = {
-                        menuOpen = false
-                        onManageContainers()
-                    },
+                    text = container.name,
+                    leadingIcon = { ContainerIcon(container) },
+                    onClick = { pick(ContainerPick.Container(container.contextId)) },
                 )
             }
         }
