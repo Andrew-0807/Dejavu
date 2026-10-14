@@ -682,23 +682,23 @@ class DejavuExternalLinksFragment : DejavuComposeFragment(R.string.dejavu_settin
                     modifier = Modifier.settingsCard(1, containerRows),
                     onClick = { settings.setExternalLinkContainer(ContainerPick.NoContainer) },
                 )
-                ChoiceRow(
-                    label = stringResource(R.string.dejavu_new_temporary_container),
-                    selected = container == ContainerPick.Temporary,
-                    leading = { TemporaryContainerIcon() },
-                    modifier = Modifier.settingsCard(2, containerRows),
-                    onClick = { settings.setExternalLinkContainer(ContainerPick.Temporary) },
-                )
                 permanent.forEachIndexed { index, record ->
                     val pick = ContainerPick.Container(record.contextId)
                     ChoiceRow(
                         label = record.name,
                         selected = container == pick,
                         leading = { ContainerIcon(record) },
-                        modifier = Modifier.settingsCard(index + 3, containerRows),
+                        modifier = Modifier.settingsCard(index + 2, containerRows),
                         onClick = { settings.setExternalLinkContainer(pick) },
                     )
                 }
+                ChoiceRow(
+                    label = stringResource(R.string.dejavu_new_temporary_container),
+                    selected = container == ContainerPick.Temporary,
+                    leading = { TemporaryContainerIcon() },
+                    modifier = Modifier.settingsCard(containerRows - 1, containerRows),
+                    onClick = { settings.setExternalLinkContainer(ContainerPick.Temporary) },
+                )
             }
             Spacer(Modifier.height(24.dp))
         }

@@ -35,10 +35,12 @@ import org.mozilla.fenix.components.menu.MenuAccessPoint
 import org.mozilla.fenix.components.toolbar.PageOriginInteractions
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
+import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.containers.TemporaryContainers
 import org.mozilla.fenix.dejavu.containers.drawable
 import org.mozilla.fenix.dejavu.containers.reopenInContainer
+import org.mozilla.fenix.dejavu.containers.splitTemporary
 import org.mozilla.fenix.dejavu.home.displayTitle
 import org.mozilla.fenix.dejavu.home.titleOf
 import org.mozilla.fenix.dejavu.menu.DejavuMenu
@@ -143,10 +145,14 @@ object DejavuToolbar {
 
     private fun containerMenu(context: Context, current: String): List<BrowserToolbarMenuItem> {
         val others = DejavuContainerStorage.get(context).records.value.orEmpty().filter { it.contextId != current }
-        val (temporary, permanent) = others.partition { it.temporary }
-        val containers = permanent + temporary.sortedWith(compareBy({ it.name.length }, { it.name }))
+        val (permanent, temporary) = others.splitTemporary()
         fun button(icon: Icon, text: String, pick: ContainerPick) =
             BrowserToolbarMenuButton(icon, StringText(text), StringContentDescription(text), ContainerPicked(pick.key))
+        fun containerButtons(records: List<ContainerRecord>) = records.mapNotNull { record ->
+            val drawable = tintedIcon(context, record.icon, record.color) ?: return@mapNotNull null
+            val pick = ContainerPick.Container(record.contextId)
+            button(Icon.DrawableIcon(drawable, shouldTint = false), record.name, pick)
+        }
         return buildList {
             add(
                 button(
@@ -155,6 +161,9 @@ object DejavuToolbar {
                     ContainerPick.NoContainer,
                 ),
             )
+            if (permanent.isNotEmpty()) add(BrowserToolbarMenuDivider)
+            addAll(containerButtons(permanent))
+            add(BrowserToolbarMenuDivider)
             add(
                 button(
                     Icon.DrawableResIcon(R.drawable.dejavu_ic_temporary_container_24),
@@ -162,11 +171,7 @@ object DejavuToolbar {
                     ContainerPick.Temporary,
                 ),
             )
-            if (containers.isNotEmpty()) add(BrowserToolbarMenuDivider)
-            containers.forEach { record ->
-                val drawable = tintedIcon(context, record.icon, record.color) ?: return@forEach
-                add(button(Icon.DrawableIcon(drawable, shouldTint = false), record.name, ContainerPick.Container(record.contextId)))
-            }
+            addAll(containerButtons(temporary))
         }
     }
 

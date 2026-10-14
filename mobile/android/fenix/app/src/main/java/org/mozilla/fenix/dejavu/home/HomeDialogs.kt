@@ -61,6 +61,7 @@ import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.NoContainerIcon
 import org.mozilla.fenix.dejavu.containers.TemporaryContainerIcon
 import org.mozilla.fenix.dejavu.containers.color
+import org.mozilla.fenix.dejavu.containers.splitTemporary
 import org.mozilla.fenix.dejavu.settings.ContainerEditorDialog
 import org.mozilla.fenix.dejavu.sync.workspaceIconText
 import org.mozilla.fenix.dejavu.ui.DejavuButtonStyle
@@ -233,10 +234,20 @@ internal fun ItemDialogs(
         is HomeDialog.ChangeContainer -> {
             val current = dialog.targets.containerIds.singleOrNull()
             val allInNoContainer = dialog.targets.containerIds == setOf(null)
-            val (temporary, permanent) = containers.values.partition { it.temporary }
+            val (permanent, temporary) = containers.values.splitTemporary()
             fun pick(choice: ContainerPick) {
                 editor.onChangeContainer(dialog.targets, choice)
                 onDismiss()
+            }
+
+            @Composable
+            fun ContainerRows(records: List<ContainerRecord>) = records.forEach { container ->
+                PickerRow(
+                    label = container.name,
+                    selected = current == container.contextId,
+                    leading = { ContainerIcon(container) },
+                    onClick = { pick(ContainerPick.Container(container.contextId)) },
+                )
             }
             PickerDialog(title = R.string.dejavu_action_change_container, onDismiss = onDismiss) {
                 PickerRow(
@@ -245,21 +256,8 @@ internal fun ItemDialogs(
                     leading = { NoContainerIcon() },
                     onClick = { pick(ContainerPick.NoContainer) },
                 )
-                PickerRow(
-                    label = stringResource(R.string.dejavu_new_temporary_container),
-                    leading = { TemporaryContainerIcon() },
-                    onClick = { pick(ContainerPick.Temporary) },
-                )
-                if (containers.isNotEmpty()) DialogDivider()
-                (permanent + temporary.sortedWith(compareBy({ it.name.length }, { it.name }))).forEach { container ->
-                    PickerRow(
-                        label = container.name,
-                        selected = current == container.contextId,
-                        leading = { ContainerIcon(container) },
-                        onClick = { pick(ContainerPick.Container(container.contextId)) },
-                    )
-                }
-                DialogDivider()
+                if (permanent.isNotEmpty()) DialogDivider()
+                ContainerRows(permanent)
                 PickerRow(
                     label = stringResource(R.string.dejavu_container_add),
                     leading = { PickerIcon(iconsR.drawable.mozac_ic_plus_24) },
@@ -268,6 +266,13 @@ internal fun ItemDialogs(
                         editor.onManageContainers()
                     },
                 )
+                DialogDivider()
+                PickerRow(
+                    label = stringResource(R.string.dejavu_new_temporary_container),
+                    leading = { TemporaryContainerIcon() },
+                    onClick = { pick(ContainerPick.Temporary) },
+                )
+                ContainerRows(temporary)
             }
         }
 

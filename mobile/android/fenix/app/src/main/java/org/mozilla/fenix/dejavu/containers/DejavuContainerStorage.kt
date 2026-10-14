@@ -84,6 +84,15 @@ data class ContainerRecord(
 }
 
 /**
+ * These containers as the lists offering them show them: the permanent ones in their order, then the temporary ones at
+ * the bottom, tmp2 before tmp10.
+ */
+fun Collection<ContainerRecord>.splitTemporary(): Pair<List<ContainerRecord>, List<ContainerRecord>> {
+    val (temporary, permanent) = partition { it.temporary }
+    return permanent to temporary.sortedWith(compareBy({ it.name.length }, { it.name }))
+}
+
+/**
  * Backs android-components' [ContainerMiddleware] with Dejavu's own storage so containers can also be edited and keep
  * the desktop color names. Every change is emitted through [getContainers], which the middleware forwards to the
  * browser store. All disk access happens on [Dispatchers.IO].
