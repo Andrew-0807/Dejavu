@@ -275,7 +275,6 @@
         <item quantity="other">%1$d schede sarà</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Verxi el łinco da i scarabòci</string>
-    <string name="dejavu_clipboard_no_link">Nesun łinco ne i scarabòci</string>
     <string name="dejavu_reopen_closed_tab">Verxi da novo ła scheda sarà</string>
     <string name="dejavu_shift_previous">Sposta tel spasio de laoro presedente</string>
     <string name="dejavu_shift_next">Sposta tel spasio de laoro seguente</string>

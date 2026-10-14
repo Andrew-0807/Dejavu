@@ -282,7 +282,6 @@
         <item quantity="other">%1$d rajtarkow je začinjenych</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Wotkaz z mjezyskłada wočinić</string>
-    <string name="dejavu_clipboard_no_link">Žadyn wotkaz w mjezyskładźe</string>
     <string name="dejavu_reopen_closed_tab">Začinjeny rajtark zaso wočinić</string>
     <string name="dejavu_shift_previous">Do předchadneho dźěłoweho ruma přesunyć</string>
     <string name="dejavu_shift_next">Do přichodneho dźěłoweho ruma přesunyć</string>

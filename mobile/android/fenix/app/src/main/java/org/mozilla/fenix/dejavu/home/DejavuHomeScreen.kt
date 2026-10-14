@@ -137,6 +137,7 @@ fun ComposeView.setDejavuHomeContent(
             val isPrivateLocked by fenix.appStore.observeAsComposableState { it.isPrivateScreenLocked }
             val selectedTabId by fenix.core.store.observeAsComposableState { it.selectedTabId }
             val hasClosedTab by fenix.core.store.observeAsComposableState { it.hasClosedTab }
+            val hasClipboardLink = rememberClipboardHasLink()
             val restoreComplete by fenix.core.store.observeAsComposableState { it.restoreComplete }
             val isSearchActive by fenix.appStore.observeAsComposableState { it.searchState.isSearchActive }
 
@@ -169,6 +170,7 @@ fun ComposeView.setDejavuHomeContent(
                     privateTabs = if (isPrivateLocked) emptyList() else allPrivateTabs,
                     selectedTabId = selectedTabId,
                     hasClosedTab = hasClosedTab,
+                    hasClipboardLink = hasClipboardLink,
                     containers = containers,
                     pinnedRowActions = resolveRowActions(pinnedKeys, ActionPlace.PINNED_ROWS, customActions),
                     unpinnedRowActions = resolveRowActions(unpinnedKeys, ActionPlace.UNPINNED_ROWS, customActions),
@@ -340,11 +342,8 @@ private class DefaultDejavuHomeInteractor(
     override fun onReopenClosedTab(): String? = reopener.reopen()
 
     override fun onOpenClipboardLink(workspaceId: String) {
-        val url = components.clipboardHandler.extractURL()?.takeIf { it.isUrl() }?.toNormalizedUrl()
-        if (url == null) {
-            scope.launch { snackbar.showSnackbar(context.getString(R.string.dejavu_clipboard_no_link)) }
-            return
-        }
+        // The button is off while the clipboard holds no link.
+        val url = components.clipboardHandler.extractURL()?.takeIf { it.isUrl() }?.toNormalizedUrl() ?: return
         // Like the tabs opened by hand, it opens in the workspace's container, except in the workspace of a device on the
         // account, which only holds tabs without one.
         val toDevice = repository.state.value.isDeviceWorkspace(workspaceId)

@@ -268,7 +268,6 @@
         <item quantity="other">%1$d välilehteä suljettu</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Avaa linkki leikepöydältä</string>
-    <string name="dejavu_clipboard_no_link">Leikepöydällä ei ole linkkiä</string>
     <string name="dejavu_reopen_closed_tab">Avaa suljettu välilehti uudelleen</string>
     <string name="dejavu_shift_previous">Siirrä edelliseen työtilaan</string>
     <string name="dejavu_shift_next">Siirrä seuraavaan työtilaan</string>

@@ -268,7 +268,6 @@
         <item quantity="other">%1$d llingüetes zarraes</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Abrir l\'enllaz del cartafueyu</string>
-    <string name="dejavu_clipboard_no_link">Nun hai nengún enllaz nel cartafueyu</string>
     <string name="dejavu_reopen_closed_tab">Volver abrir la llingüeta zarrada</string>
     <string name="dejavu_shift_previous">Mover al espaciu de trabayu anterior</string>
     <string name="dejavu_shift_next">Mover al espaciu de trabayu siguiente</string>

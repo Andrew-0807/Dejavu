@@ -282,7 +282,6 @@
         <item quantity="other">%1$d kortelių užverta</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Atverti nuorodą iš iškarpinės</string>
-    <string name="dejavu_clipboard_no_link">Iškarpinėje nėra nuorodos</string>
     <string name="dejavu_reopen_closed_tab">Vėl atverti užvertą kortelę</string>
     <string name="dejavu_shift_previous">Perkelti į ankstesnę darbo erdvę</string>
     <string name="dejavu_shift_next">Perkelti į kitą darbo erdvę</string>

@@ -268,7 +268,6 @@
         <item quantity="other">%1$d ჩანართი დაიხურა</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">ბმულის გახსნა ბუფერიდან</string>
-    <string name="dejavu_clipboard_no_link">ბუფერში ბმული არ არის</string>
     <string name="dejavu_reopen_closed_tab">დახურული ჩანართის ხელახლა გახსნა</string>
     <string name="dejavu_shift_previous">წინა სივრცეში გადატანა</string>
     <string name="dejavu_shift_next">შემდეგ სივრცეში გადატანა</string>

@@ -268,7 +268,6 @@
         <item quantity="other">%1$d ka tab ang nasira</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Buksi ang link halin sa clipboard</string>
-    <string name="dejavu_clipboard_no_link">Wala sing link sa clipboard</string>
     <string name="dejavu_reopen_closed_tab">Buksi liwat ang nasira nga tab</string>
     <string name="dejavu_shift_previous">Saylo sa nauna nga workspace</string>
     <string name="dejavu_shift_next">Saylo sa masunod nga workspace</string>

@@ -282,7 +282,6 @@
         <item quantity="other">Chaidh %1$d tabaichean a dhùnadh</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Fosgail an ceangal on stòr-bhòrd</string>
-    <string name="dejavu_clipboard_no_link">Chan eil ceangal air an stòr-bhòrd</string>
     <string name="dejavu_reopen_closed_tab">Fosgail an taba a dhùin thu a-rithist</string>
     <string name="dejavu_shift_previous">Gluais dhan àite-obrach roimhe</string>
     <string name="dejavu_shift_next">Gluais dhan ath àite-obrach</string>

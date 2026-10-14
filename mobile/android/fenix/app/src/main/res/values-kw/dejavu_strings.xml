@@ -296,7 +296,6 @@
         <item quantity="other">%1$d tabow yns degeys</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Ygeri kevren a\'n klypbord</string>
-    <string name="dejavu_clipboard_no_link">Nyns eus kevren y\'n klypbord</string>
     <string name="dejavu_reopen_closed_tab">Dasygeri tab degeys</string>
     <string name="dejavu_shift_previous">Movya dhe\'n tyller-ober kyns</string>
     <string name="dejavu_shift_next">Movya dhe\'n tyller-ober nessa</string>

@@ -282,7 +282,6 @@
         <item quantity="other">%1$d kariet zatvorených</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Otvoriť odkaz zo schránky</string>
-    <string name="dejavu_clipboard_no_link">V schránke nie je žiadny odkaz</string>
     <string name="dejavu_reopen_closed_tab">Znovu otvoriť zatvorenú kartu</string>
     <string name="dejavu_shift_previous">Presunúť do predchádzajúceho pracovného priestoru</string>
     <string name="dejavu_shift_next">Presunúť do ďalšieho pracovného priestoru</string>

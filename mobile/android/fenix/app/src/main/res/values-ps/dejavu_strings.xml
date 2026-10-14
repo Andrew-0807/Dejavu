@@ -268,7 +268,6 @@
         <item quantity="other">%1$d ټبونه بند شول</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">له کلیپ بورډ څخه لینک خلاصول</string>
-    <string name="dejavu_clipboard_no_link">په کلیپ بورډ کې لینک نشته</string>
     <string name="dejavu_reopen_closed_tab">بند شوی ټب بیا خلاصول</string>
     <string name="dejavu_shift_previous">پخوانۍ ساحې ته لېږدول</string>
     <string name="dejavu_shift_next">راتلونکې ساحې ته لېږدول</string>

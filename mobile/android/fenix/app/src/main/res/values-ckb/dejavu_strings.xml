@@ -268,7 +268,6 @@
         <item quantity="other">%1$d بازدەر داخرا</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">کردنەوەی بەستەر لە کلیپبۆردەوە</string>
-    <string name="dejavu_clipboard_no_link">هیچ بەستەرێک لە کلیپبۆرددا نییە</string>
     <string name="dejavu_reopen_closed_tab">دووبارە کردنەوەی بازدەری داخراو</string>
     <string name="dejavu_shift_previous">گواستنەوە بۆ فەزای پێشوو</string>
     <string name="dejavu_shift_next">گواستنەوە بۆ فەزای دواتر</string>

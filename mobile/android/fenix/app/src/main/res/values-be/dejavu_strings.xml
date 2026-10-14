@@ -282,7 +282,6 @@
         <item quantity="other">%1$d картак закрыты</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Адкрыць спасылку з буфера абмену</string>
-    <string name="dejavu_clipboard_no_link">У буферы абмену няма спасылкі</string>
     <string name="dejavu_reopen_closed_tab">Аднавіць закрытую картку</string>
     <string name="dejavu_shift_previous">Перамясціць у папярэднюю прастору</string>
     <string name="dejavu_shift_next">Перамясціць у наступную прастору</string>

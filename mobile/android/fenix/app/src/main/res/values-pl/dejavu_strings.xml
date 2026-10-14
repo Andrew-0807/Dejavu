@@ -282,7 +282,6 @@
         <item quantity="other">Zamknięto %1$d karty</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Otwórz odnośnik ze schowka</string>
-    <string name="dejavu_clipboard_no_link">Brak odnośnika w schowku</string>
     <string name="dejavu_reopen_closed_tab">Przywróć zamkniętą kartę</string>
     <string name="dejavu_shift_previous">Przenieś do poprzedniego obszaru roboczego</string>
     <string name="dejavu_shift_next">Przenieś do następnego obszaru roboczego</string>

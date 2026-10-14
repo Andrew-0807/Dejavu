@@ -296,7 +296,6 @@
         <item quantity="other">%1$d تبويب مغلق</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">فتح الرابط من الحافظة</string>
-    <string name="dejavu_clipboard_no_link">لا يوجد رابط في الحافظة</string>
     <string name="dejavu_reopen_closed_tab">إعادة فتح التبويب المغلق</string>
     <string name="dejavu_shift_previous">نقل إلى مساحة العمل السابقة</string>
     <string name="dejavu_shift_next">نقل إلى مساحة العمل التالية</string>

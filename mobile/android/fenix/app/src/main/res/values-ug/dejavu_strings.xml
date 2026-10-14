@@ -268,7 +268,6 @@
         <item quantity="other">%1$d بەتكۈچ تاقالدى</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">چاپلاش تاختىسىدىكى ئۇلانمىنى ئاچ</string>
-    <string name="dejavu_clipboard_no_link">چاپلاش تاختىسىدا ئۇلانما يوق</string>
     <string name="dejavu_reopen_closed_tab">تاقالغان بەتكۈچنى قايتا ئاچ</string>
     <string name="dejavu_shift_previous">ئالدىنقى خىزمەت دائىرىسىگە يۆتكە</string>
     <string name="dejavu_shift_next">كېيىنكى خىزمەت دائىرىسىگە يۆتكە</string>

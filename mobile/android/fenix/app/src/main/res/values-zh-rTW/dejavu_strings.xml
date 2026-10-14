@@ -261,7 +261,6 @@
         <item quantity="other">已關閉 %1$d 個分頁</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">開啟剪貼簿中的連結</string>
-    <string name="dejavu_clipboard_no_link">剪貼簿中沒有連結</string>
     <string name="dejavu_reopen_closed_tab">重新開啟關閉的分頁</string>
     <string name="dejavu_shift_previous">移動到上一個工作區</string>
     <string name="dejavu_shift_next">移動到下一個工作區</string>

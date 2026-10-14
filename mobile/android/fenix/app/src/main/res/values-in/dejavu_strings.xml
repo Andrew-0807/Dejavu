@@ -261,7 +261,6 @@
         <item quantity="other">%1$d tab ditutup</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Buka tautan dari papan klip</string>
-    <string name="dejavu_clipboard_no_link">Tidak ada tautan di papan klip</string>
     <string name="dejavu_reopen_closed_tab">Buka kembali tab yang ditutup</string>
     <string name="dejavu_shift_previous">Pindahkan ke ruang kerja sebelumnya</string>
     <string name="dejavu_shift_next">Pindahkan ke ruang kerja berikutnya</string>

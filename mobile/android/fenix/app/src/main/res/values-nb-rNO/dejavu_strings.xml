@@ -268,7 +268,6 @@
         <item quantity="other">%1$d faner lukket</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Åpne lenke fra utklippstavlen</string>
-    <string name="dejavu_clipboard_no_link">Ingen lenke på utklippstavlen</string>
     <string name="dejavu_reopen_closed_tab">Gjenåpne lukket fane</string>
     <string name="dejavu_shift_previous">Flytt til forrige arbeidsområde</string>
     <string name="dejavu_shift_next">Flytt til neste arbeidsområde</string>

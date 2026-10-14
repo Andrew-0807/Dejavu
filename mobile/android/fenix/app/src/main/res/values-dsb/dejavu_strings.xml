@@ -282,7 +282,6 @@
         <item quantity="other">%1$d rejtarikow jo zacynjonych</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Wótkaz z mjazyskłada wócyniś</string>
-    <string name="dejavu_clipboard_no_link">Žeden wótkaz w mjazyskłaźe</string>
     <string name="dejavu_reopen_closed_tab">Zacynjony rejtarik zasej wócyniś</string>
     <string name="dejavu_shift_previous">Do pjerwjejšnego źěłowego ruma pśesunuś</string>
     <string name="dejavu_shift_next">Do pśiducego źěłowego ruma pśesunuś</string>

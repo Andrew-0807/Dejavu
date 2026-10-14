@@ -268,7 +268,6 @@
         <item quantity="other">%1$d ٹیب بند ہتین</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">کلپ بورڈ نا لنک کھول</string>
-    <string name="dejavu_clipboard_no_link">کلپ بورڈ ٹی لنک اف</string>
     <string name="dejavu_reopen_closed_tab">بند ٹیب دوبارہ کھول</string>
     <string name="dejavu_shift_previous">پچھلا ورک سپیس ٹی چل</string>
     <string name="dejavu_shift_next">اگلا ورک سپیس ٹی چل</string>

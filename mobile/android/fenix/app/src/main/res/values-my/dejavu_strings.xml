@@ -261,7 +261,6 @@
         <item quantity="other">တက်ဗ် %1$d ခု ပိတ်ထားသည်</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">ကလစ်ဘုတ်မှ လင့်ခ်ကို ဖွင့်ရန်</string>
-    <string name="dejavu_clipboard_no_link">ကလစ်ဘုတ်တွင် လင့်ခ် မရှိပါ</string>
     <string name="dejavu_reopen_closed_tab">ပိတ်ခဲ့သော တက်ဗ်ကို ပြန်ဖွင့်ရန်</string>
     <string name="dejavu_shift_previous">ယခင် လုပ်ငန်းခွင်သို့ ရွှေ့ရန်</string>
     <string name="dejavu_shift_next">နောက် လုပ်ငန်းခွင်သို့ ရွှေ့ရန်</string>

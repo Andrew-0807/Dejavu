@@ -268,7 +268,6 @@
         <item quantity="other">%1$d schedas claudite</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Aperir ligamine ab le area de transferentia</string>
-    <string name="dejavu_clipboard_no_link">Nulle ligamine in le area de transferentia</string>
     <string name="dejavu_reopen_closed_tab">Reaperir le scheda claudite</string>
     <string name="dejavu_shift_previous">Mover al spatio de labor previe</string>
     <string name="dejavu_shift_next">Mover al spatio de labor sequente</string>

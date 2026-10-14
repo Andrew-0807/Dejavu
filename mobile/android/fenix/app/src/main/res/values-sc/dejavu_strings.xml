@@ -268,7 +268,6 @@
         <item quantity="other">%1$d ischedas serradas</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Aberi su ligàmene dae sa punta de billete</string>
-    <string name="dejavu_clipboard_no_link">Perunu ligàmene in sa punta de billete</string>
     <string name="dejavu_reopen_closed_tab">Torra a abèrrere s\'ischeda serrada</string>
     <string name="dejavu_shift_previous">Move a s\'ispàtziu de traballu pretzedente</string>
     <string name="dejavu_shift_next">Move a s\'ispàtziu de traballu sighente</string>

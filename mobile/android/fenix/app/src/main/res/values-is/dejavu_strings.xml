@@ -268,7 +268,6 @@
         <item quantity="other">%1$d flipar lokaðir</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Opna tengil af klippispjaldi</string>
-    <string name="dejavu_clipboard_no_link">Enginn tengill á klippispjaldi</string>
     <string name="dejavu_reopen_closed_tab">Opna aftur lokaðan flipa</string>
     <string name="dejavu_shift_previous">Færa á fyrra vinnusvæði</string>
     <string name="dejavu_shift_next">Færa á næsta vinnusvæði</string>

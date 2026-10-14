@@ -268,7 +268,6 @@
         <item quantity="other">%1$d टॅब बंद केले</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">क्लिपबोर्डमधील लिंक उघडा</string>
-    <string name="dejavu_clipboard_no_link">क्लिपबोर्डमध्ये कोणतीही लिंक नाही</string>
     <string name="dejavu_reopen_closed_tab">बंद केलेला टॅब पुन्हा उघडा</string>
     <string name="dejavu_shift_previous">मागील कार्यक्षेत्रात हलवा</string>
     <string name="dejavu_shift_next">पुढील कार्यक्षेत्रात हलवा</string>

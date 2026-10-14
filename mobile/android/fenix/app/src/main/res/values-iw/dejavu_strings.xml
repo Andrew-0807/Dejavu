@@ -275,7 +275,6 @@
         <item quantity="other">%1$d לשוניות נסגרו</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">פתיחת קישור מהלוח</string>
-    <string name="dejavu_clipboard_no_link">אין קישור בלוח</string>
     <string name="dejavu_reopen_closed_tab">פתיחה מחדש של לשונית שנסגרה</string>
     <string name="dejavu_shift_previous">העברה למרחב העבודה הקודם</string>
     <string name="dejavu_shift_next">העברה למרחב העבודה הבא</string>

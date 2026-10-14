@@ -242,6 +242,7 @@ internal fun WorkspacePage(
     canMoveLeft: Boolean,
     canMoveRight: Boolean,
     hasClosedTab: Boolean = false,
+    hasClipboardLink: Boolean = false,
     revealTabId: String? = null,
 ) {
     val tabsById = tabs.associateBy { it.id }
@@ -365,6 +366,7 @@ internal fun WorkspacePage(
                     canMoveRight = canMoveRight,
                     tabButtonsEnabled = selection == null,
                     canReopenClosedTab = hasClosedTab,
+                    canOpenClipboard = hasClipboardLink,
                     onOpenClipboard = callbacks.onOpenClipboard,
                     onReopenClosedTab = callbacks.onReopenClosedTab,
                     onNewFolder = callbacks.onNewFolder,
@@ -847,8 +849,8 @@ private fun NewTabRow(
 
 /**
  * Workspace name with its default container and icon on the left; tapping the name edits the workspace. On the right,
- * opening the link in the clipboard and reopening the tab closed last, which [tabButtonsEnabled] allows outside
- * selection mode, then a new folder and the workspace menu.
+ * opening the link in the clipboard while [canOpenClipboard] and reopening the tab closed last while
+ * [canReopenClosedTab], which [tabButtonsEnabled] allows outside selection mode, then a new folder and the workspace menu.
  */
 @Suppress("LongParameterList", "LongMethod")
 @Composable
@@ -861,6 +863,7 @@ private fun WorkspaceHeader(
     canMoveRight: Boolean,
     tabButtonsEnabled: Boolean,
     canReopenClosedTab: Boolean,
+    canOpenClipboard: Boolean,
     onOpenClipboard: () -> Unit,
     onReopenClosedTab: () -> Unit,
     onNewFolder: () -> Unit,
@@ -903,7 +906,7 @@ private fun WorkspaceHeader(
         SmallIconButton(
             icon = iconsR.drawable.mozac_ic_clipboard_24,
             description = R.string.dejavu_open_clipboard_link,
-            enabled = tabButtonsEnabled,
+            enabled = tabButtonsEnabled && canOpenClipboard,
             onClick = onOpenClipboard,
         )
         SmallIconButton(

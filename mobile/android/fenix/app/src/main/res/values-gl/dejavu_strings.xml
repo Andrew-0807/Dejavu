@@ -268,7 +268,6 @@
         <item quantity="other">%1$d lapelas pechadas</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Abrir a ligazón do portapapeis</string>
-    <string name="dejavu_clipboard_no_link">Non hai ningunha ligazón no portapapeis</string>
     <string name="dejavu_reopen_closed_tab">Reabrir a lapela pechada</string>
     <string name="dejavu_shift_previous">Mover ao espazo de traballo anterior</string>
     <string name="dejavu_shift_next">Mover ao espazo de traballo seguinte</string>

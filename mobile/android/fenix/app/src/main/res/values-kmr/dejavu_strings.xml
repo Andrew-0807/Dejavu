@@ -268,7 +268,6 @@
         <item quantity="other">%1$d hilpekîn hate girtin</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Girêdanê ji panoyê veke</string>
-    <string name="dejavu_clipboard_no_link">Di panoyê de girêdan tune ye</string>
     <string name="dejavu_reopen_closed_tab">Hilpekîna girtî dîsa veke</string>
     <string name="dejavu_shift_previous">Ber bi qada berê ve bibe</string>
     <string name="dejavu_shift_next">Ber bi qada din ve bibe</string>
