@@ -21,14 +21,13 @@ import androidx.compose.ui.graphics.lerp
 import kotlin.random.Random
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
 
-/** Gradients offered when editing a workspace, each a list of ARGB colors. */
+/** Gradients offered when editing a workspace, each a list of ARGB colors. Private browsing's purple is left out. */
 internal val themePresets: List<List<Int>> = listOf(WorkspaceTheme.Gold.colors) + listOf(
     listOf(0xFFFF7E5F, 0xFFFEB47B),
     listOf(0xFFF857A6, 0xFFFF5858),
     listOf(0xFFF12711, 0xFFF5AF19),
     listOf(0xFFFFB88C, 0xFFDE6262),
     listOf(0xFFA18CD1, 0xFFFBC2EB),
-    listOf(0xFF8E2DE2, 0xFF4A00E0),
     listOf(0xFF2193B0, 0xFF6DD5ED),
     listOf(0xFF89F7FE, 0xFF66A6FF),
     listOf(0xFF11998E, 0xFF38EF7D),
