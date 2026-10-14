@@ -260,6 +260,13 @@
     <plurals name="dejavu_tabs_closed">
         <item quantity="other">poki %1$d li pini</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">o open e nasin lipu tan poki nimi</string>
+    <string name="dejavu_clipboard_no_link">poki nimi li jo ala e nasin lipu</string>
+    <string name="dejavu_reopen_closed_tab">o open sin e poki pini</string>
+    <string name="dejavu_shift_previous">o tawa kulupu poki pini</string>
+    <string name="dejavu_shift_next">o tawa kulupu poki kama</string>
+    <string name="dejavu_shift_blocked">poki awen en tomo poki li ken ala tawa %1$s</string>
+    <string name="dejavu_shift_held">sina pini e wile la ona li tawa %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">lon poki awen en tomo poki la, \"o pini\" li lape e poki open, tan ni: poki awen li awen. poki awen li lape la, \"o pini\" li weka e awen ona.</string>
     <string name="dejavu_features_title">o sona e Dejavu</string>
     <string name="dejavu_features_page">%1$d lon %2$d</string>

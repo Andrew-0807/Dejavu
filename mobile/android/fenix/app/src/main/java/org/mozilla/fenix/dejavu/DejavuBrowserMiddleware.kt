@@ -26,6 +26,8 @@ import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.containers.TemporaryContainerMiddleware
 import org.mozilla.fenix.dejavu.containers.TemporaryContainers
+import org.mozilla.fenix.dejavu.history.ClosedTabOrigins
+import org.mozilla.fenix.dejavu.history.ClosedTabOriginsMiddleware
 import org.mozilla.fenix.dejavu.history.VisitOrigins
 import org.mozilla.fenix.dejavu.history.VisitOriginsMiddleware
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
@@ -43,6 +45,7 @@ fun dejavuBrowserMiddleware(context: Context): List<Middleware<BrowserState, Bro
         DejavuSettings.get(context)
         DejavuContainerStorage.get(context).load()
         VisitOrigins.get(context).load()
+        ClosedTabOrigins.get(context).load()
         DejavuSync.install(context)
     }
     return listOf(
@@ -50,6 +53,11 @@ fun dejavuBrowserMiddleware(context: Context): List<Middleware<BrowserState, Bro
         WorkspaceContainerMiddleware(context),
         TemporaryContainerMiddleware(context),
         SilentlyClosedTabsMiddleware(),
+        ClosedTabOriginsMiddleware(
+            origins = ClosedTabOrigins.get(context),
+            isTemporary = { DejavuContainerStorage.get(context).isTemporary(it) },
+            newTemporary = { store -> TemporaryContainers.create(store, DejavuContainerStorage.get(context)) },
+        ),
         ClosingPinnedTabsMiddleware(),
         SplitViewMiddleware(),
         VisitOriginsMiddleware(VisitOrigins.get(context)),

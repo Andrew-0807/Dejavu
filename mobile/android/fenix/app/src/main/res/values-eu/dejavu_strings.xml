@@ -267,6 +267,13 @@
         <item quantity="one">%1$d fitxa itxi da</item>
         <item quantity="other">%1$d fitxa itxi dira</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Ireki arbeleko esteka</string>
+    <string name="dejavu_clipboard_no_link">Ez dago estekarik arbelean</string>
+    <string name="dejavu_reopen_closed_tab">Berrireki itxitako fitxa</string>
+    <string name="dejavu_shift_previous">Eraman aurreko laneremura</string>
+    <string name="dejavu_shift_next">Eraman hurrengo laneremura</string>
+    <string name="dejavu_shift_blocked">Finkatutako fitxak eta karpetak ezin dira hona eraman: %1$s</string>
+    <string name="dejavu_shift_held">Irten hautapenetik hona bidaltzeko: %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Finkatutako fitxetan eta karpetetan, «Itxi» botoiak fitxa irekiak esekitzen ditu, finkatuta jarraitzen dutelako. Finkatutako fitxa bat esekita dagoenean, «Itxi» botoiak desfinkatu egiten du.</string>
     <string name="dejavu_features_title">Ezagutu Dejavu</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

@@ -260,6 +260,13 @@
     <plurals name="dejavu_tabs_closed">
         <item quantity="other">Đã đóng %1$d thẻ</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Mở liên kết từ khay nhớ tạm</string>
+    <string name="dejavu_clipboard_no_link">Không có liên kết trong khay nhớ tạm</string>
+    <string name="dejavu_reopen_closed_tab">Mở lại thẻ đã đóng</string>
+    <string name="dejavu_shift_previous">Chuyển sang không gian làm việc trước</string>
+    <string name="dejavu_shift_next">Chuyển sang không gian làm việc tiếp theo</string>
+    <string name="dejavu_shift_blocked">Không thể chuyển thẻ đã ghim và thư mục sang %1$s</string>
+    <string name="dejavu_shift_held">Thoát chế độ chọn để gửi chúng đến %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Trên thẻ đã ghim và thư mục, nút Đóng sẽ cho các thẻ đang mở tạm ngủ, vì các thẻ đã ghim vẫn được giữ lại. Khi một thẻ đã ghim đang tạm ngủ, nút Đóng sẽ bỏ ghim thẻ đó.</string>
     <string name="dejavu_features_title">Khám phá Dejavu</string>
     <string name="dejavu_features_page">%1$d/%2$d</string>

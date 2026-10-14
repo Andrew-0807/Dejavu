@@ -281,6 +281,13 @@
         <item quantity="many">%1$d panelu zavřeno</item>
         <item quantity="other">%1$d panelů zavřeno</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Otevřít odkaz ze schránky</string>
+    <string name="dejavu_clipboard_no_link">Ve schránce není žádný odkaz</string>
+    <string name="dejavu_reopen_closed_tab">Obnovit zavřený panel</string>
+    <string name="dejavu_shift_previous">Přesunout do předchozího pracovního prostoru</string>
+    <string name="dejavu_shift_next">Přesunout do dalšího pracovního prostoru</string>
+    <string name="dejavu_shift_blocked">Připnuté panely a složky nelze přesunout na zařízení %1$s</string>
+    <string name="dejavu_shift_held">Ukončením výběru je odešlete na zařízení %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">U připnutých panelů a složek tlačítko „Zavřít“ uspí otevřené panely, protože připnutí zůstává. Když už připnutý panel spí, „Zavřít“ ho odepne.</string>
     <string name="dejavu_features_title">Objevte Dejavu</string>
     <string name="dejavu_features_page">%1$d z %2$d</string>

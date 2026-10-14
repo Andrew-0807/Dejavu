@@ -267,6 +267,13 @@
         <item quantity="one">%1$d unghjetta chjosa</item>
         <item quantity="other">%1$d unghjette chjose</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Apre u liame da u preme\'papei</string>
+    <string name="dejavu_clipboard_no_link">Nisunu liame in u preme\'papei</string>
+    <string name="dejavu_reopen_closed_tab">Riapre l\'unghjetta chjosa</string>
+    <string name="dejavu_shift_previous">Dispiazzà ver di u spaziu di travagliu precedente</string>
+    <string name="dejavu_shift_next">Dispiazzà ver di u spaziu di travagliu seguente</string>
+    <string name="dejavu_shift_blocked">L\'unghjette fissate è i cartulari ùn ponu micca andà à %1$s</string>
+    <string name="dejavu_shift_held">Escite da a selezzione per mandà le à %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Nant\'à l\'unghjette fissate è i cartulari, «Chjode» addurmenta l\'unghjette aperte, chì e fissazioni fermanu. Quandu un\'unghjetta fissata dorme digià, «Chjode» a disfissa.</string>
     <string name="dejavu_features_title">Scopre Dejavu</string>
     <string name="dejavu_features_page">%1$d nant\'à %2$d</string>

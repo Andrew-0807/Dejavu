@@ -260,6 +260,13 @@
     <plurals name="dejavu_tabs_closed">
         <item quantity="other">%1$d件のタブを閉じました</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">クリップボードのリンクを開く</string>
+    <string name="dejavu_clipboard_no_link">クリップボードにリンクがありません</string>
+    <string name="dejavu_reopen_closed_tab">閉じたタブを開きなおす</string>
+    <string name="dejavu_shift_previous">前のワークスペースに移動</string>
+    <string name="dejavu_shift_next">次のワークスペースに移動</string>
+    <string name="dejavu_shift_blocked">ピン留めタブとフォルダーは %1$s に移動できません</string>
+    <string name="dejavu_shift_held">選択を終了すると %1$s に送信されます</string>
     <string name="dejavu_settings_close_pinned_hint">ピン留めタブとフォルダーでは、ピン留めは残るため、「閉じる」で開いているタブをスリープします。ピン留めタブがすでにスリープしている場合は、「閉じる」でピン留めを解除します。</string>
     <string name="dejavu_features_title">Dejavuの機能紹介</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

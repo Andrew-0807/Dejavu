@@ -267,6 +267,13 @@
         <item quantity="one">%1$d hilpekîn hate girtin</item>
         <item quantity="other">%1$d hilpekîn hate girtin</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Girêdanê ji panoyê veke</string>
+    <string name="dejavu_clipboard_no_link">Di panoyê de girêdan tune ye</string>
+    <string name="dejavu_reopen_closed_tab">Hilpekîna girtî dîsa veke</string>
+    <string name="dejavu_shift_previous">Ber bi qada berê ve bibe</string>
+    <string name="dejavu_shift_next">Ber bi qada din ve bibe</string>
+    <string name="dejavu_shift_blocked">Hilpekînên sabît û peldank nikarin biçin %1$s</string>
+    <string name="dejavu_shift_held">Ji hilbijartinê derkeve da ku ew biçin %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Li ser hilpekînên sabît û peldankan, «Bigire» hilpekînên vekirî dixewîne, ji ber ku ew sabît dimînin. Dema hilpekîneke sabît razayî be, «Bigire» wê jê dikişîne.</string>
     <string name="dejavu_features_title">Dejavu keşf bike</string>
     <string name="dejavu_features_page">%1$d ji %2$d</string>

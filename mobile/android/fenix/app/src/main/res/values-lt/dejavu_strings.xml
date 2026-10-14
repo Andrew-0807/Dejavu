@@ -281,6 +281,13 @@
         <item quantity="many">%1$d kortelės užvertos</item>
         <item quantity="other">%1$d kortelių užverta</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Atverti nuorodą iš iškarpinės</string>
+    <string name="dejavu_clipboard_no_link">Iškarpinėje nėra nuorodos</string>
+    <string name="dejavu_reopen_closed_tab">Vėl atverti užvertą kortelę</string>
+    <string name="dejavu_shift_previous">Perkelti į ankstesnę darbo erdvę</string>
+    <string name="dejavu_shift_next">Perkelti į kitą darbo erdvę</string>
+    <string name="dejavu_shift_blocked">Prisegtų kortelių ir aplankų negalima perkelti į %1$s</string>
+    <string name="dejavu_shift_held">Baikite žymėjimą, kad jos būtų išsiųstos į %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Prisegtose kortelėse ir aplankuose „Užverti“ užmigdo atvertas korteles, nes prisegtos kortelės lieka. Kai prisegta kortelė užmigdyta, „Užverti“ ją atsega.</string>
     <string name="dejavu_features_title">Atraskite Dejavu</string>
     <string name="dejavu_features_page">%1$d iš %2$d</string>

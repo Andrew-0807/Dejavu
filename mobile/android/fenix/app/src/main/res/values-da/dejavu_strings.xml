@@ -267,6 +267,13 @@
         <item quantity="one">%1$d faneblad lukket</item>
         <item quantity="other">%1$d faneblade lukket</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Åbn link fra udklipsholder</string>
+    <string name="dejavu_clipboard_no_link">Intet link i udklipsholderen</string>
+    <string name="dejavu_reopen_closed_tab">Genåbn lukket faneblad</string>
+    <string name="dejavu_shift_previous">Flyt til forrige arbejdsområde</string>
+    <string name="dejavu_shift_next">Flyt til næste arbejdsområde</string>
+    <string name="dejavu_shift_blocked">Fastgjorte faneblade og mapper kan ikke flyttes til %1$s</string>
+    <string name="dejavu_shift_held">Afslut markering for at sende dem til %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">På fastgjorte faneblade og mapper sætter Luk de åbne faneblade i dvale, da de fastgjorte bliver. Når et fastgjort faneblad allerede er i dvale, frigør Luk det.</string>
     <string name="dejavu_features_title">Opdag Dejavu</string>
     <string name="dejavu_features_page">%1$d af %2$d</string>

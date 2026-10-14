@@ -267,6 +267,13 @@
         <item quantity="one">%1$d ka tab ang nasira</item>
         <item quantity="other">%1$d ka tab ang nasira</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Ablihi ang link gikan sa clipboard</string>
+    <string name="dejavu_clipboard_no_link">Walay link sa clipboard</string>
+    <string name="dejavu_reopen_closed_tab">Ablihi pag-usab ang gisirado nga tab</string>
+    <string name="dejavu_shift_previous">Balhina sa nauna nga workspace</string>
+    <string name="dejavu_shift_next">Balhina sa sunod nga workspace</string>
+    <string name="dejavu_shift_blocked">Dili mabalhin sa %1$s ang mga naka-pin nga tab ug folder</string>
+    <string name="dejavu_shift_held">Gawas sa pagpili aron ipadala kini sa %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Sa mga naka-pin nga tab ug folder, ang Isira mo-sleep sa mga abli nga tab, kay magpabilin ang mga pin. Kung natulog na ang naka-pin nga tab, ang Isira mo-unpin niini.</string>
     <string name="dejavu_features_title">Susiha ang Dejavu</string>
     <string name="dejavu_features_page">%1$d sa %2$d</string>

@@ -267,6 +267,13 @@
         <item quantity="one">%1$d scheda chiusa</item>
         <item quantity="other">%1$d schede chiuse</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Apri link dagli appunti</string>
+    <string name="dejavu_clipboard_no_link">Nessun link negli appunti</string>
+    <string name="dejavu_reopen_closed_tab">Riapri scheda chiusa</string>
+    <string name="dejavu_shift_previous">Sposta nello spazio precedente</string>
+    <string name="dejavu_shift_next">Sposta nello spazio successivo</string>
+    <string name="dejavu_shift_blocked">Le schede bloccate e le cartelle non possono andare su %1$s</string>
+    <string name="dejavu_shift_held">Esci dalla selezione per inviarle a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Sulle schede bloccate e sulle cartelle, «Chiudi» sospende le schede aperte, perché restano bloccate. Quando una scheda bloccata è già sospesa, «Chiudi» la sblocca.</string>
     <string name="dejavu_features_title">Scopri Dejavu</string>
     <string name="dejavu_features_page">%1$d di %2$d</string>

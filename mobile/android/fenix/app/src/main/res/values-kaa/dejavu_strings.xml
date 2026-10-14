@@ -267,6 +267,13 @@
         <item quantity="one">%1$d bet jabıldı</item>
         <item quantity="other">%1$d bet jabıldı</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Almasıw buferinen siltemeni ashıw</string>
+    <string name="dejavu_clipboard_no_link">Almasıw buferinde silteme joq</string>
+    <string name="dejavu_reopen_closed_tab">Jabılǵan betti qayta ashıw</string>
+    <string name="dejavu_shift_previous">Aldıńǵı jumıs maydanına kóshiriw</string>
+    <string name="dejavu_shift_next">Keyingi jumıs maydanına kóshiriw</string>
+    <string name="dejavu_shift_blocked">%1$s bekitilgen betler hám papkalardı qabıl ete almaydı</string>
+    <string name="dejavu_shift_held">Olardı %1$s qabıl etiwi ushın tańlawdan shıǵıń</string>
     <string name="dejavu_settings_close_pinned_hint">Bekitilgen betlerde hám papkalarda «Jabıw» ashıq betlerdi uyqıǵa jiberedi, sebebi olar bekitilgen bolıp qaladı. Bekitilgen bet uyqıda bolǵanda, «Jabıw» onı bekitiwden shıǵaradı.</string>
     <string name="dejavu_features_title">Dejavu menen tanısıń</string>
     <string name="dejavu_features_page">%2$d-niń %1$d-i</string>

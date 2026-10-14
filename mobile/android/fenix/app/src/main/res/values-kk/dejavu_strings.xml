@@ -267,6 +267,13 @@
         <item quantity="one">%1$d бет жабылды</item>
         <item quantity="other">%1$d бет жабылды</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Алмасу буферінен сілтемені ашу</string>
+    <string name="dejavu_clipboard_no_link">Алмасу буферінде сілтеме жоқ</string>
+    <string name="dejavu_reopen_closed_tab">Жабылған бетті қайта ашу</string>
+    <string name="dejavu_shift_previous">Алдыңғы жұмыс кеңістігіне жылжыту</string>
+    <string name="dejavu_shift_next">Келесі жұмыс кеңістігіне жылжыту</string>
+    <string name="dejavu_shift_blocked">Бекітілген беттер мен қалталарды %1$s құрылғысына жылжыту мүмкін емес</string>
+    <string name="dejavu_shift_held">Оларды %1$s құрылғысына жіберу үшін таңдаудан шығыңыз</string>
     <string name="dejavu_settings_close_pinned_hint">Бекітілген беттер мен қалталарда «Жабу» ашық беттерді ұйықтатады, өйткені бекітулер сақталады. Бекітілген бет ұйықтап тұрса, «Жабу» оны бекітуден шығарады.</string>
     <string name="dejavu_features_title">Dejavu-мен танысу</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

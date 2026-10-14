@@ -267,6 +267,13 @@
         <item quantity="one">%1$d sekme kapatıldı</item>
         <item quantity="other">%1$d sekme kapatıldı</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Panodaki bağlantıyı aç</string>
+    <string name="dejavu_clipboard_no_link">Panoda bağlantı yok</string>
+    <string name="dejavu_reopen_closed_tab">Kapatılan sekmeyi yeniden aç</string>
+    <string name="dejavu_shift_previous">Önceki çalışma alanına taşı</string>
+    <string name="dejavu_shift_next">Sonraki çalışma alanına taşı</string>
+    <string name="dejavu_shift_blocked">Sabitlenmiş sekmeler ve klasörler %1$s cihazına gönderilemez</string>
+    <string name="dejavu_shift_held">Bunları %1$s cihazına göndermek için seçimden çıkın</string>
     <string name="dejavu_settings_close_pinned_hint">Sabitlenmiş sekmelerde ve klasörlerde Kapat düğmesi açık sekmeleri uyutur, çünkü sabitlenmiş sekmeler yerinde kalır. Sabitlenmiş bir sekme zaten uyuyorsa Kapat sabitlemesini kaldırır.</string>
     <string name="dejavu_features_title">Dejavu\'yu keşfedin</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

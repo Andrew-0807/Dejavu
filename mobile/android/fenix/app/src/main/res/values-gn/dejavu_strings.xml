@@ -267,6 +267,13 @@
         <item quantity="one">%1$d tendayke oñembotypa</item>
         <item quantity="other">%1$d tendayke oñembotypa</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Embojuruja enlace kuatiajokoha guive</string>
+    <string name="dejavu_clipboard_no_link">Ndaipóri enlace kuatiajokohápe</string>
+    <string name="dejavu_reopen_closed_tab">Embojurujajey tendayke oñembotyva\'ekue</string>
+    <string name="dejavu_shift_previous">Emongu\'e tembiapo renda mboyveguávape</string>
+    <string name="dejavu_shift_next">Emongu\'e tembiapo renda upeiguávape</string>
+    <string name="dejavu_shift_blocked">Tendayke mboguapypyre ha karpetakuéra ndaikatúi oho %1$s-pe</string>
+    <string name="dejavu_shift_held">Esẽ poravorãgui emondo hag̃ua chupekuéra %1$s-pe</string>
     <string name="dejavu_settings_close_pinned_hint">Tendayke mboguapypyre ha karpetakuérape, “Mboty” omboke umi tendayke ijurúva, opytágui mboguapypyre. Peteĩ tendayke mboguapypyre oke jave, “Mboty” ojora pe tendayke.</string>
     <string name="dejavu_features_title">Eikuaa Dejavu</string>
     <string name="dejavu_features_page">%1$d/%2$d</string>

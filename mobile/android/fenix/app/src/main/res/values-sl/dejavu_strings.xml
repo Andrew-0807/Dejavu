@@ -281,6 +281,13 @@
         <item quantity="few">%1$d zavihki zaprti</item>
         <item quantity="other">%1$d zavihkov zaprtih</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Odpri povezavo iz odložišča</string>
+    <string name="dejavu_clipboard_no_link">V odložišču ni povezave</string>
+    <string name="dejavu_reopen_closed_tab">Ponovno odpri zaprti zavihek</string>
+    <string name="dejavu_shift_previous">Premakni v prejšnji delovni prostor</string>
+    <string name="dejavu_shift_next">Premakni v naslednji delovni prostor</string>
+    <string name="dejavu_shift_blocked">Pripetih zavihkov in map ni mogoče poslati na %1$s</string>
+    <string name="dejavu_shift_held">Zaprite izbiranje, da jih pošljete na %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Na pripetih zavihkih in mapah gumb Zapri uspava odprte zavihke, saj pripeti zavihki ostanejo. Ko pripeti zavihek že spi, ga gumb Zapri odpne.</string>
     <string name="dejavu_features_title">Odkrijte Dejavu</string>
     <string name="dejavu_features_page">%1$d od %2$d</string>

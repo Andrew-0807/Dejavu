@@ -267,6 +267,13 @@
         <item quantity="one">%1$d scheda chiusa</item>
         <item quantity="other">%1$d schedi chiusi</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Grapi u lijami dû pitazzu</string>
+    <string name="dejavu_clipboard_no_link">Nuddu lijami nnô pitazzu</string>
+    <string name="dejavu_reopen_closed_tab">Grapi arrè a scheda chiusa</string>
+    <string name="dejavu_shift_previous">Movi ô spazziu di travagghiu di prima</string>
+    <string name="dejavu_shift_next">Movi ô pròssimu spazziu di travagghiu</string>
+    <string name="dejavu_shift_blocked">I schedi ficcati e i carteddi nun ponnu jiri a %1$s</string>
+    <string name="dejavu_shift_held">Nesci dâ silezioni pi mannàrili a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Supra i schedi ficcati e i carteddi, u buttuni Chiuji fa addummisciri i schedi aperti, pirchì i ficcati restanu. Quannu na scheda ficcata è addummisciuta, Chiuji a sficca.</string>
     <string name="dejavu_features_title">Scopri Dejavu</string>
     <string name="dejavu_features_page">%1$d di %2$d</string>

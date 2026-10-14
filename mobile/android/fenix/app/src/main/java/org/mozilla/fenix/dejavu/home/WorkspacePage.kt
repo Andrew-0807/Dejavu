@@ -10,6 +10,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.indication
@@ -122,6 +123,9 @@ private const val PAIR_PREFIX = "pair:"
 private const val PIN_PAIR_PREFIX = "pin_pair:"
 private const val PAIR_SEPARATOR = "|"
 
+// Rows before the first unpinned tab, besides the pinned ones: the header, the divider and New Tab.
+private const val FIRST_TAB_OFFSET = 3
+
 /** Callbacks of [WorkspacePage]. */
 data class WorkspacePageCallbacks(
     val onTabClick: (TabSessionState) -> Unit,
@@ -145,6 +149,10 @@ data class WorkspacePageCallbacks(
     val onNewPrivateTab: () -> Unit,
     val onManageContainers: () -> Unit,
     val onClearUnpinned: () -> Unit,
+    val onReopenClosedTab: () -> Unit,
+    val onOpenClipboard: () -> Unit,
+    /** The row of the tab to reveal is in view. */
+    val onRevealed: () -> Unit,
 )
 
 /**
@@ -233,6 +241,8 @@ internal fun WorkspacePage(
     canDeleteWorkspace: Boolean,
     canMoveLeft: Boolean,
     canMoveRight: Boolean,
+    hasClosedTab: Boolean = false,
+    revealTabId: String? = null,
 ) {
     val tabsById = tabs.associateBy { it.id }
     val awakeTabIds = tabs.filter { it.isAwake }.map { it.id }.toSet()
@@ -275,6 +285,20 @@ internal fun WorkspacePage(
             }
             delay(AUTO_SCROLL_FRAME_MS)
         }
+    }
+
+    // Scrolls to a reopened tab once it is back in this workspace, unless its row is already in view.
+    LaunchedEffect(revealTabId, pinLines, lines) {
+        val tabId = revealTabId ?: return@LaunchedEffect
+        val pinIndex = pinLines.indexOfFirst { line -> line.entries.any { it.item.tabId == tabId } }
+        val tabIndex = lines.indexOfFirst { line -> line.tabs.any { it.id == tabId } }
+        val index = when {
+            pinIndex >= 0 -> 1 + pinIndex
+            tabIndex >= 0 -> pinLines.size + FIRST_TAB_OFFSET + tabIndex
+            else -> return@LaunchedEffect
+        }
+        listState.reveal(index)
+        latestCallbacks.onRevealed()
     }
 
     val dropLines = drag?.takeIf { it.moved }?.target?.let { dropLinesFor(it, lineKeys) }
@@ -339,6 +363,10 @@ internal fun WorkspacePage(
                     canDelete = canDeleteWorkspace && !isDevice,
                     canMoveLeft = canMoveLeft,
                     canMoveRight = canMoveRight,
+                    tabButtonsEnabled = selection == null,
+                    canReopenClosedTab = hasClosedTab,
+                    onOpenClipboard = callbacks.onOpenClipboard,
+                    onReopenClosedTab = callbacks.onReopenClosedTab,
                     onNewFolder = callbacks.onNewFolder,
                     onNewWorkspace = callbacks.onNewWorkspace,
                     onEdit = callbacks.onEditWorkspace,
@@ -528,6 +556,25 @@ private fun startDrag(
 
 private fun dragLabel(title: String, selection: Selection): String =
     if (selection.size > 1) "$title  +${selection.size - 1}" else title
+
+/**
+ * Scrolls as little as it takes to show the row at [index] whole. A row below the ones in view comes in at the bottom,
+ * so the rows above it, the header with its buttons first, stay in view as far as they can.
+ */
+private suspend fun LazyListState.reveal(index: Int) {
+    val layout = layoutInfo
+    val visible = layout.visibleItemsInfo
+    val first = visible.firstOrNull() ?: return
+    val last = visible.last()
+    val row = visible.firstOrNull { it.index == index }
+    val end = layout.viewportEndOffset
+    when {
+        row != null && row.offset < layout.viewportStartOffset -> animateScrollToItem(index)
+        row != null -> if (row.offset + row.size > end) animateScrollBy((row.offset + row.size - end).toFloat())
+        index < first.index -> animateScrollToItem(index)
+        else -> animateScrollBy((last.offset + last.size - end + (index - last.index) * last.size).toFloat())
+    }
+}
 
 /** Key of the list item under [y], relative to the list. */
 private fun itemKeyAt(listState: LazyListState, y: Float): String? =
@@ -798,7 +845,11 @@ private fun NewTabRow(
     }
 }
 
-/** Workspace name with its default container and icon on the left; tapping the name edits the workspace. */
+/**
+ * Workspace name with its default container and icon on the left; tapping the name edits the workspace. On the right,
+ * opening the link in the clipboard and reopening the tab closed last, which [tabButtonsEnabled] allows outside
+ * selection mode, then a new folder and the workspace menu.
+ */
 @Suppress("LongParameterList", "LongMethod")
 @Composable
 private fun WorkspaceHeader(
@@ -808,6 +859,10 @@ private fun WorkspaceHeader(
     canDelete: Boolean,
     canMoveLeft: Boolean,
     canMoveRight: Boolean,
+    tabButtonsEnabled: Boolean,
+    canReopenClosedTab: Boolean,
+    onOpenClipboard: () -> Unit,
+    onReopenClosedTab: () -> Unit,
     onNewFolder: () -> Unit,
     onNewWorkspace: () -> Unit,
     onEdit: () -> Unit,
@@ -845,9 +900,21 @@ private fun WorkspaceHeader(
                 overflow = TextOverflow.Ellipsis,
             )
         }
+        SmallIconButton(
+            icon = iconsR.drawable.mozac_ic_clipboard_24,
+            description = R.string.dejavu_open_clipboard_link,
+            enabled = tabButtonsEnabled,
+            onClick = onOpenClipboard,
+        )
+        SmallIconButton(
+            icon = iconsR.drawable.mozac_ic_arrow_counter_clockwise_24,
+            description = R.string.dejavu_reopen_closed_tab,
+            enabled = tabButtonsEnabled && canReopenClosedTab,
+            onClick = onReopenClosedTab,
+        )
         // The workspace of a device on the account cannot have folders of its own, nor be deleted: sync handles it.
         if (!isDevice) {
-            SmallIconButton(iconsR.drawable.mozac_ic_folder_add_24, R.string.dejavu_action_new_folder, onNewFolder)
+            SmallIconButton(iconsR.drawable.mozac_ic_folder_add_24, R.string.dejavu_action_new_folder, onClick = onNewFolder)
         }
         Box {
             SmallIconButton(iconsR.drawable.mozac_ic_ellipsis_vertical_24, R.string.dejavu_workspace_menu) {
@@ -1291,13 +1358,15 @@ private fun SelectionMark(selected: Boolean) {
 }
 
 @Composable
-private fun SmallIconButton(icon: Int, @StringRes description: Int, onClick: () -> Unit) {
-    IconButton(onClick = onClick) {
+private fun SmallIconButton(icon: Int, @StringRes description: Int, enabled: Boolean = true, onClick: () -> Unit) {
+    IconButton(onClick = onClick, enabled = enabled) {
         Icon(
             painter = painterResource(icon),
             contentDescription = stringResource(description),
-            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = if (enabled) 1f else DISABLED_ALPHA),
             modifier = Modifier.size(20.dp),
         )
     }
 }
+
+private const val DISABLED_ALPHA = 0.38f

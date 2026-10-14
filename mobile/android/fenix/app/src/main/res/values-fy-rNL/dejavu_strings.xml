@@ -267,6 +267,13 @@
         <item quantity="one">%1$d ljepblêd sluten</item>
         <item quantity="other">%1$d ljepblêden sluten</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Keppeling fan klamboerd iepenje</string>
+    <string name="dejavu_clipboard_no_link">Gjin keppeling op it klamboerd</string>
+    <string name="dejavu_reopen_closed_tab">Sluten ljepblêd opnij iepenje</string>
+    <string name="dejavu_shift_previous">Nei de foarige wurkromte ferpleatse</string>
+    <string name="dejavu_shift_next">Nei de folgjende wurkromte ferpleatse</string>
+    <string name="dejavu_shift_blocked">Fêstsette ljepblêden en mappen kinne net nei %1$s stjoerd wurde</string>
+    <string name="dejavu_shift_held">Ferlit de seleksje om se nei %1$s te stjoeren</string>
     <string name="dejavu_settings_close_pinned_hint">Op fêstsette ljepblêden en mappen set ‘Slute’ de iepen ljepblêden yn sliepstân, omdat se fêstset bliuwe. As in fêstset ljepblêd al sliept, makket ‘Slute’ it los.</string>
     <string name="dejavu_features_title">Untdek Dejavu</string>
     <string name="dejavu_features_page">%1$d fan %2$d</string>

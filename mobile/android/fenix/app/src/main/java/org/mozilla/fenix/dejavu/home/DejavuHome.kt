@@ -75,6 +75,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.floor
 import kotlin.math.roundToInt
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mozilla.components.browser.state.state.ContainerState
 import mozilla.components.browser.state.state.TabSessionState
@@ -123,6 +124,18 @@ interface DejavuHomeInteractor : TabEditor {
     /** Moves dragged tabs, pinned items and folders to [target] in [workspaceId]. */
     fun onDrop(workspaceId: String, selection: Selection, target: DropTarget)
 
+    /**
+     * Moves [targets] to [workspaceId], not the workspace of a device on the account, with the arrows of selection mode:
+     * pinned tabs and folders to the end of its pinned section, other tabs to the start of its other tabs.
+     */
+    fun onShiftToWorkspace(targets: ActionTargets, workspaceId: String)
+
+    /** Reopens the tab closed last in its workspace and shows it; returns the tab's id, or `null` when none is left. */
+    fun onReopenClosedTab(): String?
+
+    /** Opens the link in the clipboard in a new tab of [workspaceId], or tells there is none. */
+    fun onOpenClipboardLink(workspaceId: String)
+
     /** Moves essential [pinId] to position [index] among the essentials shown with it. */
     fun onMoveEssential(pinId: String, index: Int)
 
@@ -151,15 +164,17 @@ interface DejavuHomeInteractor : TabEditor {
 /**
  * Workspace based home screen. The essentials sit on top of every workspace. Each workspace is a page with its pinned
  * tabs and folders, then its other tabs; swiping horizontally switches workspace. Long-pressing a tab or folder starts
- * selection mode; keeping the finger down and moving drags the selection.
+ * selection mode; keeping the finger down and moving drags the selection, and the arrows on the sides move it to the
+ * next workspace. [hasClosedTab] tells whether a closed tab is left to reopen.
  */
-@Suppress("LongMethod", "LongParameterList", "CognitiveComplexMethod")
+@Suppress("LongMethod", "LongParameterList", "CognitiveComplexMethod", "CyclomaticComplexMethod")
 @Composable
 fun DejavuHome(
     state: WorkspaceState,
     tabs: List<TabSessionState>,
     privateTabs: List<TabSessionState>,
     selectedTabId: String?,
+    hasClosedTab: Boolean,
     containers: Map<String, ContainerRecord>,
     pinnedRowActions: List<RowAction>,
     unpinnedRowActions: List<RowAction>,
@@ -178,6 +193,9 @@ fun DejavuHome(
     var selection by remember { mutableStateOf<Selection?>(null) }
     var dialog by remember { mutableStateOf<HomeDialog?>(null) }
     var essentialsDrop by remember { mutableStateOf(EssentialsDrop.NONE) }
+    // The page the arrows of selection mode last took the selection to, while they are in use.
+    var shiftIndex by remember { mutableStateOf<Int?>(null) }
+    var revealTabId by remember { mutableStateOf<String?>(null) }
     val onPrivatePage = privateIndex != null && pagerState.currentPage == privateIndex
     val currentWorkspace = state.workspaces.getOrNull(pagerState.currentPage) ?: state.workspaces.last()
     val tabsById = remember(tabs) { tabs.associateBy { it.id } }
@@ -229,7 +247,52 @@ fun DejavuHome(
         selection = cleaned.takeIf { it.size > 0 }
     }
 
-    BackHandler(enabled = selection != null) { selection = null }
+    LaunchedEffect(selection == null) {
+        if (selection == null) shiftIndex = null
+    }
+
+    LaunchedEffect(revealTabId) {
+        if (revealTabId != null) {
+            delay(REVEAL_TIMEOUT_MS)
+            revealTabId = null
+        }
+    }
+
+    // The workspace of a device on the account the selection is held above: the arrows passed it there, but it only
+    // moves there when selection mode ends.
+    val heldOver = shiftIndex?.let { state.workspaces.getOrNull(it) }?.takeIf { it.device != null && selection != null }
+
+    fun endSelection() {
+        val current = selection
+        val device = heldOver
+        selection = null
+        shiftIndex = null
+        if (current == null || device == null) return
+        val targets = ActionTargets.of(state, tabs, current)
+        if (device.canTake(targets)) {
+            interactor.onMoveToWorkspace(targets, device.id)
+        } else {
+            // The move is called off: show the selection back where it stayed.
+            val home = state.workspaces.indexOfFirst { it.id == targets.workspaceIn(state) }
+            if (home >= 0) scope.launch { pagerState.animateScrollToPage(home) }
+        }
+    }
+
+    // Moves the selection to the next workspace on the side [delta] points to. Above the workspace of a device it is
+    // only held, see [heldOver].
+    fun shiftSelection(delta: Int) {
+        val current = selection ?: return
+        val index = (shiftIndex ?: pagerState.currentPage) + delta
+        val workspace = state.workspaces.getOrNull(index) ?: return
+        shiftIndex = index
+        val targets = ActionTargets.of(state, tabs, current)
+        if (workspace.device == null && targets.workspaceIn(state) != workspace.id) {
+            interactor.onShiftToWorkspace(targets, workspace.id)
+        }
+        scope.launch { pagerState.animateScrollToPage(index) }
+    }
+
+    BackHandler(enabled = selection != null) { endSelection() }
 
     fun runAction(action: RowAction, targets: ActionTargets, workspaceId: String) {
         when (action) {
@@ -291,14 +354,19 @@ fun DejavuHome(
             } else {
                 SelectionTopBar(
                     count = activeSelection.size,
-                    onClose = { selection = null },
-                    onSelectAll = {
-                        selection = Selection(
-                            tabIds = tabs.filter { state.workspaceOf(it.id) == currentWorkspace.id && state.pinOf(it.id) == null }
-                                .map { it.id }.toSet(),
-                            pinIds = state.pins.filter { it.workspaceId == currentWorkspace.id && !it.isFolder }
-                                .map { it.id }.toSet(),
-                        )
+                    onClose = ::endSelection,
+                    onSelectAll = if (heldOver != null) {
+                        null
+                    } else {
+                        {
+                            selection = Selection(
+                                tabIds = tabs
+                                    .filter { state.workspaceOf(it.id) == currentWorkspace.id && state.pinOf(it.id) == null }
+                                    .map { it.id }.toSet(),
+                                pinIds = state.pins.filter { it.workspaceId == currentWorkspace.id && !it.isFolder }
+                                    .map { it.id }.toSet(),
+                            )
+                        }
                     },
                 )
             }
@@ -321,74 +389,111 @@ fun DejavuHome(
                 )
             }
 
-            HorizontalPager(
-                state = pagerState,
-                userScrollEnabled = activeSelection == null,
-                modifier = Modifier.weight(1f).fillMaxWidth(),
-                key = { state.workspaces.getOrNull(it)?.id ?: PRIVATE_PAGE_KEY },
-            ) { page ->
-                if (page == privateIndex) {
-                    PrivateWorkspacePage(
-                        tabs = privateTabs,
+            val selectionTargets = activeSelection?.let { ActionTargets.of(state, tabs, it) }
+            Box(modifier = Modifier.weight(1f).fillMaxWidth()) {
+                HorizontalPager(
+                    state = pagerState,
+                    userScrollEnabled = activeSelection == null,
+                    modifier = Modifier.fillMaxSize(),
+                    key = { state.workspaces.getOrNull(it)?.id ?: PRIVATE_PAGE_KEY },
+                ) { page ->
+                    if (page == privateIndex) {
+                        PrivateWorkspacePage(
+                            tabs = privateTabs,
+                            selectedTabId = selectedTabId,
+                            onTabClick = { interactor.onTabClick(it.id) },
+                            onCloseTab = { interactor.onCloseTab(it.id) },
+                            onNewTab = interactor::onNewPrivateTab,
+                            onCloseAll = interactor::onClosePrivateTabs,
+                        )
+                        return@HorizontalPager
+                    }
+                    val workspace = state.workspaces[page]
+                    WorkspacePage(
+                        state = state,
+                        workspace = workspace,
+                        tabs = tabs.filter { state.workspaceOf(it.id) == workspace.id },
                         selectedTabId = selectedTabId,
-                        onTabClick = { interactor.onTabClick(it.id) },
-                        onCloseTab = { interactor.onCloseTab(it.id) },
-                        onNewTab = interactor::onNewPrivateTab,
-                        onCloseAll = interactor::onClosePrivateTabs,
+                        containers = containers,
+                        pinnedRowActions = pinnedRowActions,
+                        unpinnedRowActions = unpinnedRowActions,
+                        folderRowActions = folderRowActions,
+                        selection = activeSelection,
+                        callbacks = WorkspacePageCallbacks(
+                            onTabClick = { tab ->
+                                val current = selection
+                                if (current != null) selection = current.toggleTab(tab.id).takeIf { it.size > 0 } else interactor.onTabClick(tab.id)
+                            },
+                            onPinClick = ::onPinClick,
+                            onStartDrag = { picked ->
+                                val started = (selection ?: Selection()) + picked
+                                selection = started
+                                started
+                            },
+                            onDrop = { dragged, target ->
+                                interactor.onDrop(workspace.id, dragged, target)
+                                selection = null
+                            },
+                            onEssentialsDrop = { essentialsDrop = it },
+                            onRowAction = { action, targets -> runAction(action, targets, workspace.id) },
+                            onFolderClick = { folder ->
+                                val current = selection
+                                if (current != null) {
+                                    selection = current.toggleFolder(folder.id).takeIf { it.size > 0 }
+                                } else {
+                                    interactor.onToggleFolder(folder.id)
+                                }
+                            },
+                            onNewFolder = { dialog = HomeDialog.NewFolder(workspace.id, parentId = null) },
+                            onNewWorkspace = { dialog = HomeDialog.EditWorkspace(null) },
+                            onEditWorkspace = { dialog = HomeDialog.EditWorkspace(workspace.id) },
+                            onDeleteWorkspace = { dialog = HomeDialog.DeleteWorkspace(workspace.id) },
+                            onMoveWorkspace = { delta -> interactor.onMoveWorkspace(workspace.id, page + delta) },
+                            onNewTabClick = interactor::onSearchClick,
+                            onNewTabInContainer = interactor::onNewTabInContainer,
+                            onNewPrivateTab = newPrivateTab,
+                            onManageContainers = interactor::onManageContainers,
+                            onClearUnpinned = { interactor.onClearUnpinned(workspace.id) },
+                            onReopenClosedTab = { revealTabId = interactor.onReopenClosedTab() },
+                            onOpenClipboard = { interactor.onOpenClipboardLink(workspace.id) },
+                            onRevealed = { revealTabId = null },
+                        ),
+                        canDeleteWorkspace = state.workspaces.size > 1,
+                        canMoveLeft = page > 0,
+                        canMoveRight = page < state.workspaces.size - 1,
+                        hasClosedTab = hasClosedTab,
+                        revealTabId = revealTabId,
                     )
-                    return@HorizontalPager
                 }
-                val workspace = state.workspaces[page]
-                WorkspacePage(
-                    state = state,
-                    workspace = workspace,
-                    tabs = tabs.filter { state.workspaceOf(it.id) == workspace.id },
-                    selectedTabId = selectedTabId,
-                    containers = containers,
-                    pinnedRowActions = pinnedRowActions,
-                    unpinnedRowActions = unpinnedRowActions,
-                    folderRowActions = folderRowActions,
-                    selection = activeSelection,
-                    callbacks = WorkspacePageCallbacks(
-                        onTabClick = { tab ->
-                            val current = selection
-                            if (current != null) selection = current.toggleTab(tab.id).takeIf { it.size > 0 } else interactor.onTabClick(tab.id)
-                        },
-                        onPinClick = ::onPinClick,
-                        onStartDrag = { picked ->
-                            val started = (selection ?: Selection()) + picked
-                            selection = started
-                            started
-                        },
-                        onDrop = { dragged, target ->
-                            interactor.onDrop(workspace.id, dragged, target)
-                            selection = null
-                        },
-                        onEssentialsDrop = { essentialsDrop = it },
-                        onRowAction = { action, targets -> runAction(action, targets, workspace.id) },
-                        onFolderClick = { folder ->
-                            val current = selection
-                            if (current != null) {
-                                selection = current.toggleFolder(folder.id).takeIf { it.size > 0 }
-                            } else {
-                                interactor.onToggleFolder(folder.id)
-                            }
-                        },
-                        onNewFolder = { dialog = HomeDialog.NewFolder(workspace.id, parentId = null) },
-                        onNewWorkspace = { dialog = HomeDialog.EditWorkspace(null) },
-                        onEditWorkspace = { dialog = HomeDialog.EditWorkspace(workspace.id) },
-                        onDeleteWorkspace = { dialog = HomeDialog.DeleteWorkspace(workspace.id) },
-                        onMoveWorkspace = { delta -> interactor.onMoveWorkspace(workspace.id, page + delta) },
-                        onNewTabClick = interactor::onSearchClick,
-                        onNewTabInContainer = interactor::onNewTabInContainer,
-                        onNewPrivateTab = newPrivateTab,
-                        onManageContainers = interactor::onManageContainers,
-                        onClearUnpinned = { interactor.onClearUnpinned(workspace.id) },
-                    ),
-                    canDeleteWorkspace = state.workspaces.size > 1,
-                    canMoveLeft = page > 0,
-                    canMoveRight = page < state.workspaces.size - 1,
-                )
+
+                if (heldOver != null && selectionTargets != null) {
+                    HeldSelection(
+                        items = heldItems(state, selectionTargets),
+                        workspace = heldOver,
+                        blocked = !heldOver.canTake(selectionTargets),
+                    )
+                }
+                // Selected tabs of a device's workspace follow the device, so they stay where they are.
+                val shiftFrom = shiftIndex ?: pagerState.currentPage
+                val canShift = selectionTargets != null && !selectionTargets.restricted && !onPrivatePage &&
+                    essentialsDrop == EssentialsDrop.NONE
+                if (canShift && shiftFrom > 0) {
+                    ShiftArrow(
+                        icon = iconsR.drawable.mozac_ic_chevron_right_24,
+                        description = R.string.dejavu_shift_previous,
+                        onClick = { shiftSelection(-1) },
+                        modifier = Modifier.align(Alignment.CenterStart),
+                        mirrored = true,
+                    )
+                }
+                if (canShift && shiftFrom < state.workspaces.size - 1) {
+                    ShiftArrow(
+                        icon = iconsR.drawable.mozac_ic_chevron_right_24,
+                        description = R.string.dejavu_shift_next,
+                        onClick = { shiftSelection(1) },
+                        modifier = Modifier.align(Alignment.CenterEnd),
+                    )
+                }
             }
 
             if (activeSelection == null) {
@@ -408,11 +513,10 @@ fun DejavuHome(
                     onBookmarksClick = interactor::onBookmarksClick,
                     onHistoryClick = interactor::onHistoryClick,
                 )
-            } else {
-                val targets = ActionTargets.of(state, tabs, activeSelection)
+            } else if (heldOver == null && selectionTargets != null) {
                 SelectionBar(
-                    actions = selectionActions.filter { it.appliesTo(targets) },
-                    onAction = { runAction(it, targets, currentWorkspace.id) },
+                    actions = selectionActions.filter { it.appliesTo(selectionTargets) },
+                    onAction = { runAction(it, selectionTargets, currentWorkspace.id) },
                 )
             }
         }
@@ -507,11 +611,12 @@ private fun EssentialsDropBar(active: Boolean) {
     }
 }
 
+/** The top bar of selection mode: exit, the number of selected items, and select all unless [onSelectAll] is `null`. */
 @Composable
 private fun SelectionTopBar(
     count: Int,
     onClose: () -> Unit,
-    onSelectAll: () -> Unit,
+    onSelectAll: (() -> Unit)?,
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -528,11 +633,13 @@ private fun SelectionTopBar(
             color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.weight(1f).padding(start = 8.dp),
         )
-        BarIconButton(
-            icon = iconsR.drawable.mozac_ic_select_all_24,
-            contentDescription = stringResource(R.string.dejavu_selection_select_all),
-            onClick = onSelectAll,
-        )
+        if (onSelectAll != null) {
+            BarIconButton(
+                icon = iconsR.drawable.mozac_ic_select_all_24,
+                contentDescription = stringResource(R.string.dejavu_selection_select_all),
+                onClick = onSelectAll,
+            )
+        }
     }
 }
 
@@ -592,6 +699,9 @@ private fun SelectionAction(
 }
 
 private const val SELECTION_ACTIONS_PER_ROW = 6
+
+// How long a reopened tab may take to come back before the home stops waiting to scroll to it.
+private const val REVEAL_TIMEOUT_MS = 3000L
 
 @Composable
 internal fun BarIconButton(

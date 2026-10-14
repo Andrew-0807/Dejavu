@@ -274,6 +274,13 @@
         <item quantity="many">%1$d pestanyes tancades</item>
         <item quantity="other">%1$d pestanyes tancades</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Obre l\'enllaç del porta-retalls</string>
+    <string name="dejavu_clipboard_no_link">No hi ha cap enllaç al porta-retalls</string>
+    <string name="dejavu_reopen_closed_tab">Torna a obrir la pestanya tancada</string>
+    <string name="dejavu_shift_previous">Mou a l\'espai de treball anterior</string>
+    <string name="dejavu_shift_next">Mou a l\'espai de treball següent</string>
+    <string name="dejavu_shift_blocked">Les pestanyes fixades i les carpetes no es poden enviar a %1$s</string>
+    <string name="dejavu_shift_held">Sortiu de la selecció per enviar-les a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">En les pestanyes fixades i les carpetes, «Tanca» adorm les pestanyes obertes, ja que les fixacions es mantenen. Quan una pestanya fixada ja dorm, «Tanca» la desfixa.</string>
     <string name="dejavu_features_title">Descobriu el Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

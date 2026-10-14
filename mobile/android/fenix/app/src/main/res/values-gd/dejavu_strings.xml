@@ -281,6 +281,13 @@
         <item quantity="few">Chaidh %1$d tabaichean a dhùnadh</item>
         <item quantity="other">Chaidh %1$d tabaichean a dhùnadh</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Fosgail an ceangal on stòr-bhòrd</string>
+    <string name="dejavu_clipboard_no_link">Chan eil ceangal air an stòr-bhòrd</string>
+    <string name="dejavu_reopen_closed_tab">Fosgail an taba a dhùin thu a-rithist</string>
+    <string name="dejavu_shift_previous">Gluais dhan àite-obrach roimhe</string>
+    <string name="dejavu_shift_next">Gluais dhan ath àite-obrach</string>
+    <string name="dejavu_shift_blocked">Chan urrainn do thabaichean prìnichte agus pasganan a dhol gu %1$s</string>
+    <string name="dejavu_shift_held">Fàg an taghadh gus an cur gu %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Air tabaichean prìnichte agus pasganan, cuiridh am putan Dùin na tabaichean fosgailte nan cadal, oir fanaidh iad prìnichte. Nuair a bhios taba prìnichte na chadal mu thràth, dì-phrìnichidh am putan Dùin e.</string>
     <string name="dejavu_features_title">Rùraich Dejavu</string>
     <string name="dejavu_features_page">%1$d à %2$d</string>

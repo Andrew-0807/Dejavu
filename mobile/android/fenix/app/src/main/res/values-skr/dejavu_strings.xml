@@ -148,6 +148,13 @@
         <item quantity="one">%1$d ٹیب بند تھی ڳئی</item>
         <item quantity="other">%1$d ٹیباں بند تھی ڳیاں</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">کلپ بورڈ توں لنک کھولو</string>
+    <string name="dejavu_clipboard_no_link">کلپ بورڈ وچ کوئی لنک کائنی</string>
+    <string name="dejavu_reopen_closed_tab">بند ٹیب دوبارہ کھولو</string>
+    <string name="dejavu_shift_previous">پچھلی ورک سپیس وچ ٹورو</string>
+    <string name="dejavu_shift_next">اگلی ورک سپیس وچ ٹورو</string>
+    <string name="dejavu_shift_blocked">پن تھیاں ٹیباں تے فولڈر %1$s وچ نئیں ونڄ سڳدے</string>
+    <string name="dejavu_shift_held">انہاں کوں %1$s وچ بھیڄݨ کیتے چُݨاؤ وچوں نکلو</string>
     <string name="dejavu_container_delete_close_tabs">ایندیاں ٹیباں بند کرو، پن تھیاں ٹیباں سمیت</string>
     <string name="dejavu_container_delete_move_tabs">یا ایندیاں ٹیباں ٻئے کنٹینر وچ ٹورو</string>
     <string name="dejavu_custom_action">من پسند عمل</string>

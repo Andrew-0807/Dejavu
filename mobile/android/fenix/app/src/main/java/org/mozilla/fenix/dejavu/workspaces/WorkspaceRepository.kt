@@ -470,24 +470,29 @@ class WorkspaceRepository private constructor(context: Context) {
         )
     }
 
-    /** Moves unpinned tabs and pinned items (with everything inside folders) to another workspace. */
-    fun moveToWorkspace(tabIds: Set<String>, itemIds: Set<String>, workspaceId: String) = mutate { state ->
-        if (state.workspaces.none { it.id == workspaceId }) return@mutate state
-        val nested = itemIds.flatMap { state.descendantIds(it) }.toSet()
-        val movedPins = itemIds + nested
-        val movedTabs = tabIds + state.pins.filter { it.id in movedPins }.mapNotNull { it.tabId }
-        val now = now()
-        state.copy(
-            pins = state.pins.map { pin ->
+    /**
+     * Moves unpinned tabs and pinned items (with everything inside folders) to another workspace, the pinned items to
+     * the top level of its pinned section: where they come in the list of pinned items, or with [atEnd] last.
+     */
+    fun moveToWorkspace(tabIds: Set<String>, itemIds: Set<String>, workspaceId: String, atEnd: Boolean = false) =
+        mutate { state ->
+            if (state.workspaces.none { it.id == workspaceId }) return@mutate state
+            val nested = itemIds.flatMap { state.descendantIds(it) }.toSet()
+            val movedPins = itemIds + nested
+            val movedTabs = tabIds + state.pins.filter { it.id in movedPins }.mapNotNull { it.tabId }
+            val now = now()
+            val pins = state.pins.map { pin ->
                 when (pin.id) {
                     in itemIds -> pin.copy(workspaceId = workspaceId, parentId = null, essential = false, updatedAt = now)
                     in nested -> pin.copy(workspaceId = workspaceId, updatedAt = now)
                     else -> pin
                 }
-            },
-            assignments = state.assignments + movedTabs.associateWith { workspaceId },
-        )
-    }
+            }
+            state.copy(
+                pins = if (atEnd) pins.filterNot { it.id in itemIds } + pins.filter { it.id in itemIds } else pins,
+                assignments = state.assignments + movedTabs.associateWith { workspaceId },
+            )
+        }
 
     /**
      * Assigns tabs that have no workspace yet to the active workspace, and forgets tabs that no longer exist once

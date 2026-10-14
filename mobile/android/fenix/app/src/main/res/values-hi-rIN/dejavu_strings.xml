@@ -165,6 +165,13 @@
         <item quantity="one">%1$d टैब बंद किया</item>
         <item quantity="other">%1$d टैब बंद किए</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">क्लिपबोर्ड से लिंक खोलें</string>
+    <string name="dejavu_clipboard_no_link">क्लिपबोर्ड में कोई लिंक नहीं है</string>
+    <string name="dejavu_reopen_closed_tab">बंद किया गया टैब फिर से खोलें</string>
+    <string name="dejavu_shift_previous">पिछले वर्कस्पेस में ले जाएं</string>
+    <string name="dejavu_shift_next">अगले वर्कस्पेस में ले जाएं</string>
+    <string name="dejavu_shift_blocked">पिन किए गए टैब और फ़ोल्डर %1$s पर नहीं जा सकते</string>
+    <string name="dejavu_shift_held">इन्हें %1$s पर भेजने के लिए चुनना बंद करें</string>
 
     <!-- Containers: delete options -->
     <string name="dejavu_container_delete_close_tabs">इसके टैब बंद करें, पिन किए गए टैब भी</string>

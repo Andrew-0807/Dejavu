@@ -214,6 +214,10 @@ internal val DeviceTabActions = setOf(
 fun Workspace.canTake(targets: ActionTargets): Boolean =
     device == null || (targets.allPins.isEmpty() && targets.folders.isEmpty())
 
+/** The workspace [this] are in, or `null` when they are only essentials, which every workspace shows. */
+fun ActionTargets.workspaceIn(state: WorkspaceState): String? =
+    tabs.firstOrNull()?.let { state.workspaceOf(it.id) } ?: (pins + folders).firstNotNullOfOrNull { it.workspaceId }
+
 /** Whether [this] action can do anything for [targets]. Actions on folders reach every tab inside them. */
 fun TabAction.appliesTo(targets: ActionTargets): Boolean =
     (!targets.restricted || this in DeviceTabActions) && appliesToTargets(targets)

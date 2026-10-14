@@ -260,6 +260,13 @@
     <plurals name="dejavu_tabs_closed">
         <item quantity="other">%1$d ផ្ទាំងបានបិទ</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">បើកតំណពីក្ដារតម្បៀតខ្ទាស់</string>
+    <string name="dejavu_clipboard_no_link">គ្មានតំណនៅក្នុងក្ដារតម្បៀតខ្ទាស់ទេ</string>
+    <string name="dejavu_reopen_closed_tab">បើកផ្ទាំងដែលបានបិទឡើងវិញ</string>
+    <string name="dejavu_shift_previous">ផ្លាស់ទីទៅចន្លោះការងារមុន</string>
+    <string name="dejavu_shift_next">ផ្លាស់ទីទៅចន្លោះការងារបន្ទាប់</string>
+    <string name="dejavu_shift_blocked">ផ្ទាំងបានខ្ទាស់ និងថត មិនអាចទៅ %1$s បានទេ</string>
+    <string name="dejavu_shift_held">ចាកចេញពីការជ្រើសរើស ដើម្បីផ្ញើវាទៅ %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">នៅលើផ្ទាំងបានខ្ទាស់ និងថត “បិទ” ធ្វើឲ្យផ្ទាំងដែលកំពុងបើកដេក ព្រោះការខ្ទាស់នៅដដែល។ នៅពេលផ្ទាំងបានខ្ទាស់មួយកំពុងដេក “បិទ” នឹងដកខ្ទាស់វា។</string>
     <string name="dejavu_features_title">ស្វែងយល់ពី Dejavu</string>
     <string name="dejavu_features_page">%1$d នៃ %2$d</string>

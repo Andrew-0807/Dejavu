@@ -267,6 +267,13 @@
         <item quantity="one">%1$d rakïj ñanj cerrada</item>
         <item quantity="other">%1$d rakïj ñanj cerradas</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Abrir enlace del portapapeles</string>
+    <string name="dejavu_clipboard_no_link">No hay enlace en el portapapeles</string>
+    <string name="dejavu_reopen_closed_tab">Reabrir rakïj ñanj cerrada</string>
+    <string name="dejavu_shift_previous">Mover a espacio de trabajo anterior</string>
+    <string name="dejavu_shift_next">Mover a espacio de trabajo siguiente</string>
+    <string name="dejavu_shift_blocked">Rakïj ñanj fijadas y carpetas no pueden ir a %1$s</string>
+    <string name="dejavu_shift_held">Salir de selección para enviarlas a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">En las pestañas fijadas y las carpetas, “Nārán” duerme las pestañas abiertas, porque las fijadas se quedan. Cuando una pestaña fijada ya está dormida, “Nārán” le quita el fijado.</string>
     <string name="dejavu_features_title">Descubre Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

@@ -274,6 +274,13 @@
         <item quantity="many">%1$d schede sarà</item>
         <item quantity="other">%1$d schede sarà</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Verxi el łinco da i scarabòci</string>
+    <string name="dejavu_clipboard_no_link">Nesun łinco ne i scarabòci</string>
+    <string name="dejavu_reopen_closed_tab">Verxi da novo ła scheda sarà</string>
+    <string name="dejavu_shift_previous">Sposta tel spasio de laoro presedente</string>
+    <string name="dejavu_shift_next">Sposta tel spasio de laoro seguente</string>
+    <string name="dejavu_shift_blocked">Łe schede fisà e łe cartełe no łe pol ndar a %1$s</string>
+    <string name="dejavu_shift_held">Sorti da ƚa seƚesion par mandarle a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">So łe schede fisà e łe cartełe, el boton Sara el mete in pausa łe schede verte, parché łe fisà łe resta. Quando che na scheda fisà ła xe xa in pausa, Sara ła defisa.</string>
     <string name="dejavu_features_title">Scovri Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

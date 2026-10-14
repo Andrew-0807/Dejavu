@@ -267,6 +267,13 @@
         <item quantity="one">%1$d tabbere fermée</item>
         <item quantity="other">%1$d tabbe fermées</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Uddit jokkol gonngol e ɗakkitorde</string>
+    <string name="dejavu_clipboard_no_link">Alaa jokkol e ɗakkitorde</string>
+    <string name="dejavu_reopen_closed_tab">Uddit kadi tabbere uddaande</string>
+    <string name="dejavu_shift_previous">Dirtin to espace de travail ɓennunde</string>
+    <string name="dejavu_shift_next">Dirtin to espace de travail garoyde</string>
+    <string name="dejavu_shift_blocked">Tabbe épinglées e dossiers waawaa yahde to %1$s</string>
+    <string name="dejavu_shift_held">Yaltu e suɓngo ngam neldude ɗe to %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Sur les tabbe épinglées et les dossiers, « Uddu » met en veille les tabbe ouvertes, car elles restent épinglées. Une fois qu\'une tabbere épinglée est en veille, « Uddu » la désépingle.</string>
     <string name="dejavu_features_title">Découvrir Dejavu</string>
     <string name="dejavu_features_page">%1$d sur %2$d</string>

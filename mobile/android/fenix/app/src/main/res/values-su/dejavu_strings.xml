@@ -260,6 +260,13 @@
     <plurals name="dejavu_tabs_closed">
         <item quantity="other">%1$d tab katutup</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Buka link tina papan klip</string>
+    <string name="dejavu_clipboard_no_link">Euweuh link dina papan klip</string>
+    <string name="dejavu_reopen_closed_tab">Buka deui tab nu ditutup</string>
+    <string name="dejavu_shift_previous">Pindahkeun ka rohangan saméméhna</string>
+    <string name="dejavu_shift_next">Pindahkeun ka rohangan saterusna</string>
+    <string name="dejavu_shift_blocked">Tab nu disemat jeung map teu bisa dipindahkeun ka %1$s</string>
+    <string name="dejavu_shift_held">Kaluar tina milihan pikeun ngirim éta ka %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Dina tab nu disemat jeung map, Tutup ngajadikeun tab nu kabuka saré, sabab tab nu disemat tetep aya. Lamun tab nu disemat geus saré, Tutup bakal ngalésotkeunana.</string>
     <string name="dejavu_features_title">Singraykeun Dejavu</string>
     <string name="dejavu_features_page">%1$d tina %2$d</string>
