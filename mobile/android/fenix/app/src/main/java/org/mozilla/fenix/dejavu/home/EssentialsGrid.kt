@@ -43,6 +43,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import kotlin.math.abs
 import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.dejavu.containers.ContainerRecord
@@ -76,8 +77,8 @@ private data class EssentialDrag(
 )
 
 /**
- * The essentials every workspace shares, as a grid of icons like in Zen. Long-pressing one selects it; keeping the
- * finger down and moving reorders it.
+ * The essentials every workspace shares, as a grid of icons like in Zen. A row that is not full spreads its essentials
+ * evenly over the line, at the same size. Long-pressing one selects it; keeping the finger down and moving reorders it.
  *
  * @param isDropTarget Whether tabs dragged on the workspace page would be dropped here.
  */
@@ -114,13 +115,40 @@ internal fun EssentialsGrid(
     ) {
         val columns = ((maxWidth + TileGap) / (MinTileWidth + TileGap)).toInt().coerceAtLeast(MIN_COLUMNS)
         val tileWidth = (maxWidth - TileGap * (columns - 1)) / columns
+        val gridWidth = with(density) { maxWidth.toPx() }
+        val tilePx = with(density) { tileWidth.toPx() }
         val cellWidth = with(density) { (tileWidth + TileGap).toPx() }
         val cellHeight = with(density) { (TileHeight + TileGap).toPx() }
 
+        // Where the tiles of a row of [count] essentials start: on the grid for a full row, spread evenly over the
+        // whole width for a row that is not full.
+        fun tileLefts(count: Int): List<Float> = if (count >= columns) {
+            List(count) { it * cellWidth }
+        } else {
+            val gap = (gridWidth - count * tilePx) / (count + 1)
+            List(count) { gap + it * (tilePx + gap) }
+        }
+
+        // The first essential of the row at [position] and the left edges of the row's tiles.
+        fun rowAt(position: Offset): Pair<Int, List<Float>>? {
+            val start = (position.y / cellHeight).toInt().coerceAtLeast(0) * columns
+            val count = minOf(columns, latestEssentials.size - start)
+            return if (count > 0) start to tileLefts(count) else null
+        }
+
+        // The essential under [position], or `null` between the tiles.
+        fun tileAt(position: Offset): Int? {
+            val (start, lefts) = rowAt(position) ?: return null
+            val column = lefts.indexOfFirst { position.x >= it && position.x < it + tilePx }
+            return if (column < 0) null else start + column
+        }
+
+        // The place an essential dropped at [position] takes: the one of the nearest tile.
         fun indexAt(position: Offset): Int {
-            val column = (position.x / cellWidth).toInt().coerceIn(0, columns - 1)
-            val row = (position.y / cellHeight).toInt().coerceAtLeast(0)
-            return (row * columns + column).coerceIn(0, (latestEssentials.size - 1).coerceAtLeast(0))
+            val last = (latestEssentials.size - 1).coerceAtLeast(0)
+            val (start, lefts) = rowAt(position) ?: return last
+            val column = lefts.indices.minByOrNull { abs(lefts[it] + tilePx / 2 - position.x) } ?: 0
+            return (start + column).coerceIn(0, last)
         }
 
         val current = drag
@@ -139,12 +167,11 @@ internal fun EssentialsGrid(
             verticalArrangement = Arrangement.spacedBy(TileGap),
             modifier = Modifier
                 .fillMaxWidth()
-                .pointerInput(columns, cellWidth, cellHeight) {
+                .pointerInput(columns, cellWidth, cellHeight, gridWidth) {
                     detectDragGesturesAfterLongPress(
                         onDragStart = { offset ->
-                            val column = (offset.x / cellWidth).toInt()
-                            val index = (offset.y / cellHeight).toInt() * columns + column
-                            val item = latestEssentials.getOrNull(index)?.takeIf { column < columns }
+                            val index = tileAt(offset) ?: -1
+                            val item = latestEssentials.getOrNull(index)
                             if (item != null) {
                                 drag = EssentialDrag(item.id, offset, offset, moved = false, index = index)
                                 latestOnStartDrag(item)
@@ -172,7 +199,10 @@ internal fun EssentialsGrid(
                 },
         ) {
             ordered.chunked(columns).forEach { row ->
-                Row(horizontalArrangement = Arrangement.spacedBy(TileGap)) {
+                Row(
+                    horizontalArrangement = if (row.size < columns) Arrangement.SpaceEvenly else Arrangement.spacedBy(TileGap),
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
                     row.forEach { item ->
                         val tab = item.tabId?.let { tabsById[it] }
                         EssentialTile(
