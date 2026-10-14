@@ -42,7 +42,9 @@ Builds:
       - toolchain-utils@dd1ee45a84cb07337f9d5d0a6769d9b865c6e620
     prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
     build: ./build.sh
-    ndk: 30.0.16248370
+    ndk:
+      - 30.0.16248370
+      - 29.0.14206865
 
 MaintainerNotes: |-
   Built like Fennec F-Droid: the Repo is dejavubuild, a fork of relan's fennecbuild, and Firefox comes in as the
@@ -66,8 +68,9 @@ MaintainerNotes: |-
   GleanAS version:
   grep '^glean =' build/srclib/MozAppServices/gradle/libs.versions.toml
 
-  NDK version:
+  NDK versions: the first is Firefox's (ANDROID_NDK), the second the one Glean and Application Services ask for:
   grep 'NDK_VERSION =' build/srclib/MozFennec/python/mozboot/mozboot/android.py
+  grep ndkVersion build/srclib/MozGlean/build.gradle build/srclib/MozAppServices/settings.gradle
 
 AutoUpdateMode: None
 UpdateCheckMode: None
