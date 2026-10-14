@@ -30,7 +30,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -67,7 +66,7 @@ import kotlin.math.roundToInt
 import kotlinx.coroutines.delay
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
-import org.mozilla.fenix.compose.list.SwitchListItem
+import org.mozilla.fenix.dejavu.menu.ActionsBarLayout
 import org.mozilla.fenix.dejavu.menu.MoreMenuEntry
 import org.mozilla.fenix.dejavu.menu.MoreMenuLayout
 import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
@@ -80,90 +79,115 @@ internal sealed interface MenuDragSource {
     /** A new button, from the list of every button. */
     data class New(override val key: String) : MenuDragSource
 
-    /** The button at [index] of row [row]. */
-    data class Placed(override val key: String, val row: Int, val index: Int) : MenuDragSource
+    /** The button at [index] of line [line]. */
+    data class Placed(override val key: String, val line: Int, val index: Int) : MenuDragSource
 }
 
 /**
- * Changes to the rows of the "More" menu while they are edited. A row holds up to [MoreMenuLayout.MAX_PER_ROW] buttons
- * from its start, or a full row button alone, like [MoreMenuLayout] lays them out, except that it can be empty until a
- * button is put into it. A button can be in the menu more than once.
+ * Changes to the lines of the editor of the "More" menu: the actions bar first, at [BAR], then the rows of the menu.
+ * The bar holds up to [ActionsBarLayout.MAX_BUTTONS] buttons, Home and Search among them, which only the bar can hold.
+ * A row holds up to [MoreMenuLayout.MAX_PER_ROW] buttons from its start, or a full row button alone, like
+ * [MoreMenuLayout] lays them out, except that it can be empty until a button is put into it. A button can be on the
+ * lines more than once.
  */
-internal object MenuRowsEditing {
+internal object MenuLinesEditing {
+    const val BAR = 0
+
+    /** How many blocks line [line] has. */
+    fun capacityOf(line: Int): Int = if (line == BAR) ActionsBarLayout.MAX_BUTTONS else MoreMenuLayout.MAX_PER_ROW
+
     /**
-     * The rows once the button of [source] is dropped on block [slot] of row [row], or `null` when it cannot go
+     * The lines once the button of [source] is dropped on block [slot] of line [line], or `null` when it cannot go
      * there: a full row button only goes into an empty row, and nothing goes next to it. Dropped on a button, a button
-     * goes before it. On a full row it takes that button's place: a new button replaces it, a moved one swaps with it.
+     * goes before it. On a full line it takes that button's place: a new button replaces it, a moved one swaps with it.
      */
-    fun drop(rows: List<List<String>>, source: MenuDragSource, row: Int, slot: Int): List<List<String>>? {
-        val target = rows.getOrNull(row) ?: return null
+    fun drop(lines: List<List<String>>, source: MenuDragSource, line: Int, slot: Int): List<List<String>>? {
+        val target = lines.getOrNull(line) ?: return null
         val placed = source as? MenuDragSource.Placed
+        if (!fits(line, source.key)) return null
         return when {
-            MoreMenuLayout.isFullRow(source.key) -> when {
-                placed?.row == row -> rows
-                target.isEmpty() -> rows.without(placed).withRow(row, listOf(source.key))
+            isFullRow(line, source.key) -> when {
+                placed?.line == line -> lines
+                target.isEmpty() -> lines.without(placed).withLine(line, listOf(source.key))
                 else -> null
             }
-            target.any(MoreMenuLayout::isFullRow) -> null
-            placed?.row == row -> {
+            target.any { isFullRow(line, it) } -> null
+            placed?.line == line -> {
                 val keys = target.toMutableList()
                 val moved = keys.removeAt(placed.index)
                 keys.add(minOf(slot, keys.size), moved)
-                rows.withRow(row, keys)
+                lines.withLine(line, keys)
             }
-            target.size < MoreMenuLayout.MAX_PER_ROW ->
-                rows.without(placed).withRow(row, target.toMutableList().apply { add(minOf(slot, size), source.key) })
+            target.size < capacityOf(line) -> {
+                val keys = target.toMutableList().apply { add(minOf(slot, size), source.key) }
+                lines.without(placed).withLine(line, keys)
+            }
             else -> {
                 val replaced = slot.coerceIn(target.indices)
-                val updated = rows.withRow(row, target.withKey(replaced, source.key))
-                if (placed == null) {
-                    updated
-                } else {
-                    updated.withRow(placed.row, rows[placed.row].withKey(placed.index, target[replaced]))
+                val swapped = target[replaced]
+                val updated = lines.withLine(line, target.withKey(replaced, source.key))
+                when {
+                    placed == null -> updated
+                    fits(placed.line, swapped) && !isFullRow(placed.line, swapped) ->
+                        updated.withLine(placed.line, lines[placed.line].withKey(placed.index, swapped))
+                    else -> null
                 }
             }
         }
     }
 
-    /** The blocks of row [row] that the button of [source] takes when it is dropped on block [slot]. */
-    fun landing(rows: List<List<String>>, source: MenuDragSource, row: Int, slot: Int): IntRange {
-        val target = rows.getOrNull(row).orEmpty()
+    /** The blocks of line [line] that the button of [source] takes when it is dropped on block [slot]. */
+    fun landing(lines: List<List<String>>, source: MenuDragSource, line: Int, slot: Int): IntRange {
+        val target = lines.getOrNull(line).orEmpty()
         val index = when {
-            MoreMenuLayout.isFullRow(source.key) -> return 0 until MoreMenuLayout.MAX_PER_ROW
-            (source as? MenuDragSource.Placed)?.row == row -> minOf(slot, target.size - 1)
-            target.size < MoreMenuLayout.MAX_PER_ROW -> minOf(slot, target.size)
+            isFullRow(line, source.key) -> return 0 until capacityOf(line)
+            (source as? MenuDragSource.Placed)?.line == line -> minOf(slot, target.size - 1)
+            target.size < capacityOf(line) -> minOf(slot, target.size)
             else -> slot
         }
         return index..index
     }
 
-    /** The rows without the button at [index] of row [row], which stays even when it is left empty. */
-    fun remove(rows: List<List<String>>, row: Int, index: Int): List<List<String>> =
-        rows.withRow(row, rows[row].filterIndexed { i, _ -> i != index })
+    /** The lines without the button at [index] of line [line], which stays even when it is left empty. */
+    fun remove(lines: List<List<String>>, line: Int, index: Int): List<List<String>> =
+        lines.withLine(line, lines[line].filterIndexed { i, _ -> i != index })
 
-    /** The rows with [key] after the last button, in a new row when the last row has no room for it. */
-    fun append(rows: List<List<String>>, key: String): List<List<String>> {
-        val last = rows.lastOrNull()
-        val fits = last != null && if (MoreMenuLayout.isFullRow(key)) {
-            last.isEmpty()
-        } else {
-            last.size < MoreMenuLayout.MAX_PER_ROW && last.none(MoreMenuLayout::isFullRow)
+    /**
+     * The lines with [key] after the last button: on the bar for Home and Search while it has room, and else on the
+     * last row, or on a new row when the last one has no room for it.
+     */
+    fun append(lines: List<List<String>>, key: String): List<List<String>> {
+        if (ActionsBarLayout.isBarOnly(key)) {
+            val bar = lines[BAR]
+            return if (bar.size < capacityOf(BAR)) lines.withLine(BAR, bar + key) else lines
         }
-        return if (fits) rows.withRow(rows.lastIndex, rows.last() + key) else rows + listOf(listOf(key))
+        val last = lines.lastIndex
+        val row = lines[last]
+        val fits = last != BAR && if (MoreMenuLayout.isFullRow(key)) {
+            row.isEmpty()
+        } else {
+            row.size < MoreMenuLayout.MAX_PER_ROW && row.none(MoreMenuLayout::isFullRow)
+        }
+        return if (fits) lines.withLine(last, row + key) else lines + listOf(listOf(key))
     }
 
-    private fun List<List<String>>.withRow(index: Int, row: List<String>) =
-        mapIndexed { i, old -> if (i == index) row else old }
+    private fun fits(line: Int, key: String) = line == BAR || !ActionsBarLayout.isBarOnly(key)
+
+    private fun isFullRow(line: Int, key: String) = line != BAR && MoreMenuLayout.isFullRow(key)
+
+    private fun List<List<String>>.withLine(index: Int, line: List<String>) =
+        mapIndexed { i, old -> if (i == index) line else old }
 
     private fun List<String>.withKey(index: Int, key: String) = mapIndexed { i, old -> if (i == index) key else old }
 
     private fun List<List<String>>.without(placed: MenuDragSource.Placed?) =
-        if (placed == null) this else remove(this, placed.row, placed.index)
+        if (placed == null) this else remove(this, placed.line, placed.index)
 }
 
 private val BlockHeight = 64.dp
 private val BlockShape = RoundedCornerShape(14.dp)
 private val BlockGap = 6.dp
+private val LineEndWidth = 48.dp
 private val FloatingWidth = 76.dp
 private val AutoScrollEdge = 40.dp
 private const val AUTO_SCROLL_STEP = 12f
@@ -176,10 +200,10 @@ private data class MenuDrag(val source: MenuDragSource, val pointer: Offset, val
 
 /** Where a dragged button would land. */
 private sealed interface MenuDropTarget {
-    /** Block [slot] of row [row]. */
-    data class Block(val row: Int, val slot: Int) : MenuDropTarget
+    /** Block [slot] of line [line]. */
+    data class Block(val line: Int, val slot: Int) : MenuDropTarget
 
-    /** Back among every button, which takes it out of the menu. */
+    /** Back among every button, which takes it off the lines. */
     data object Remove : MenuDropTarget
 }
 
@@ -189,28 +213,30 @@ private class Anchor {
 }
 
 /**
- * Edits the rows of the "More" menu on a screen split in two: the rows on top, each with the same blocks, and every
- * button below. A button is held and dragged into a block of a row, from below or from another block, and dragged back
- * down it leaves the menu. Tapping a button below adds it after the last one; tapping one in a row offers to remove it.
+ * Edits the actions bar and the rows of the "More" menu on a screen split in two: the lines on top, the actions bar
+ * first with blocks for five buttons and then the rows with four, and every button below. A button is held and dragged
+ * into a block of a line, from below or from another block, and dragged back down it leaves the line. Tapping a button
+ * below adds it after the last one; tapping one in a line offers to remove it. The actions bar cannot be deleted.
  */
 @Suppress("LongMethod", "CognitiveComplexMethod", "CyclomaticComplexMethod")
 @Composable
-internal fun MoreMenuRowsEditor(settings: DejavuSettings, modifier: Modifier = Modifier) {
+internal fun MoreMenuLinesEditor(settings: DejavuSettings, modifier: Modifier = Modifier) {
     val customActions by settings.customActions.collectAsState()
-    val editHidden by settings.moreMenuEditHidden.collectAsState()
-    var rows by remember {
-        mutableStateOf(
-            settings.moreMenuRows.value.map { row -> row.filter { MoreMenuLayout.entryOf(it, customActions) != null } },
-        )
+    var lines by remember {
+        val bar = settings.actionsBarKeys.value.filter { ActionsBarLayout.entryOf(it, customActions) != null }
+        val rows = settings.moreMenuRows.value.map { row ->
+            row.filter { MoreMenuLayout.entryOf(it, customActions) != null }
+        }
+        mutableStateOf(listOf(bar) + rows)
     }
-    val palette = remember(customActions) { MoreMenuLayout.available(customActions) }
+    val palette = remember(customActions) { ActionsBarLayout.available(customActions) }
     var drag by remember { mutableStateOf<MenuDrag?>(null) }
     var menuFor by remember { mutableStateOf<Pair<Int, Int>?>(null) }
     val blocks = remember { mutableStateMapOf<Pair<Int, Int>, Rect>() }
-    var rowsArea by remember { mutableStateOf(Rect.Zero) }
+    var linesArea by remember { mutableStateOf(Rect.Zero) }
     var paletteArea by remember { mutableStateOf(Rect.Zero) }
     var origin by remember { mutableStateOf(Offset.Zero) }
-    val rowsScroll = rememberScrollState()
+    val linesScroll = rememberScrollState()
     val haptics = LocalHapticFeedback.current
     val edge = with(LocalDensity.current) { AutoScrollEdge.toPx() }
     val current = drag
@@ -219,15 +245,18 @@ internal fun MoreMenuRowsEditor(settings: DejavuSettings, modifier: Modifier = M
     val dragging = current != null
 
     fun update(updated: List<List<String>>) {
-        if (updated == rows) return
-        rows = updated
-        settings.setMoreMenuRows(updated)
+        if (updated == lines) return
+        if (updated[MenuLinesEditing.BAR] != lines[MenuLinesEditing.BAR]) {
+            settings.setActionsBar(updated[MenuLinesEditing.BAR])
+        }
+        if (updated.drop(1) != lines.drop(1)) settings.setMoreMenuRows(updated.drop(1))
+        lines = updated
     }
 
     fun targetAt(source: MenuDragSource, pointer: Offset): MenuDropTarget? {
         if (paletteArea.contains(pointer)) return MenuDropTarget.Remove.takeIf { source is MenuDragSource.Placed }
-        val (row, slot) = blocks.entries.firstOrNull { it.value.contains(pointer) }?.key ?: return null
-        return MenuDropTarget.Block(row, slot).takeIf { MenuRowsEditing.drop(rows, source, row, slot) != null }
+        val (line, slot) = blocks.entries.firstOrNull { it.value.contains(pointer) }?.key ?: return null
+        return MenuDropTarget.Block(line, slot).takeIf { MenuLinesEditing.drop(lines, source, line, slot) != null }
     }
 
     fun startDrag(source: MenuDragSource, pointer: Offset) {
@@ -245,29 +274,103 @@ internal fun MoreMenuRowsEditor(settings: DejavuSettings, modifier: Modifier = M
         val ended = drag ?: return
         drag = null
         when (val landed = ended.target) {
-            is MenuDropTarget.Block -> MenuRowsEditing.drop(rows, ended.source, landed.row, landed.slot)?.let(::update)
+            is MenuDropTarget.Block ->
+                MenuLinesEditing.drop(lines, ended.source, landed.line, landed.slot)?.let(::update)
             MenuDropTarget.Remove -> (ended.source as? MenuDragSource.Placed)?.let {
-                update(MenuRowsEditing.remove(rows, it.row, it.index))
+                update(MenuLinesEditing.remove(lines, it.line, it.index))
             }
             null -> Unit
         }
     }
 
-    // Rows out of sight scroll into it while a button is held near the top or the bottom of the rows.
+    // Lines out of sight scroll into it while a button is held near the top or the bottom of the lines.
     LaunchedEffect(dragging) {
         while (dragging) {
             val pointer = drag?.pointer ?: break
             val step = when {
-                pointer.x !in rowsArea.left..rowsArea.right || pointer.y !in rowsArea.top..rowsArea.bottom -> 0f
-                pointer.y < rowsArea.top + edge -> -AUTO_SCROLL_STEP
-                pointer.y > rowsArea.bottom - edge -> AUTO_SCROLL_STEP
+                pointer.x !in linesArea.left..linesArea.right || pointer.y !in linesArea.top..linesArea.bottom -> 0f
+                pointer.y < linesArea.top + edge -> -AUTO_SCROLL_STEP
+                pointer.y > linesArea.bottom - edge -> AUTO_SCROLL_STEP
                 else -> 0f
             }
-            if (step != 0f) rowsScroll.scrollBy(step)
+            if (step != 0f) linesScroll.scrollBy(step)
             val latest = drag ?: break
             val updated = targetAt(latest.source, latest.pointer)
             if (updated != latest.target) drag = latest.copy(target = updated)
             delay(AUTO_SCROLL_FRAME_MS)
+        }
+    }
+
+    @Composable
+    fun Line(line: Int, keys: List<String>) {
+        val landing = if (current != null && target != null && target.line == line) {
+            MenuLinesEditing.landing(lines, current.source, line, target.slot)
+        } else {
+            null
+        }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(horizontalArrangement = Arrangement.spacedBy(BlockGap), modifier = Modifier.weight(1f)) {
+                val wide = keys.singleOrNull()?.takeIf { line != MenuLinesEditing.BAR && MoreMenuLayout.isFullRow(it) }
+                val slots = if (wide != null) listOf(0) else (0 until MenuLinesEditing.capacityOf(line)).toList()
+                slots.forEach { slot ->
+                    val key = keys.getOrNull(slot)
+                    val entry = key?.let { ActionsBarLayout.entryOf(it, customActions) }
+                    DisposableEffect(line, slot) { onDispose { blocks.remove(line to slot) } }
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .onGloballyPositioned { blocks[line to slot] = it.boundsInRoot() },
+                    ) {
+                        val highlighted = landing != null && (wide != null || slot in landing)
+                        if (key != null && entry != null) {
+                            DraggableBlock(
+                                onDragStart = { startDrag(MenuDragSource.Placed(key, line, slot), it) },
+                                onDrag = ::moveDrag,
+                                onDragEnd = ::endDrag,
+                                onDragCancel = { drag = null },
+                                onClick = { if (drag == null) menuFor = line to slot },
+                            ) {
+                                BlockContent(
+                                    entry = entry,
+                                    highlighted = highlighted,
+                                    dimmed = dragged?.line == line && dragged.index == slot,
+                                    wide = wide != null,
+                                )
+                            }
+                            DejavuDropdownMenu(
+                                expanded = menuFor == line to slot,
+                                onDismissRequest = { menuFor = null },
+                            ) {
+                                DejavuMenuItem(
+                                    text = stringResource(R.string.dejavu_more_menu_remove),
+                                    onClick = {
+                                        menuFor = null
+                                        update(MenuLinesEditing.remove(lines, line, slot))
+                                    },
+                                )
+                            }
+                        } else {
+                            BlockContent(entry = null, highlighted = highlighted)
+                        }
+                    }
+                }
+            }
+            if (line == MenuLinesEditing.BAR) {
+                Spacer(Modifier.width(LineEndWidth))
+            } else {
+                IconButton(
+                    onClick = { update(lines.filterIndexed { index, _ -> index != line }) },
+                    enabled = !dragging,
+                    modifier = Modifier.size(LineEndWidth),
+                ) {
+                    Icon(
+                        painter = painterResource(iconsR.drawable.mozac_ic_cross_24),
+                        contentDescription = stringResource(R.string.dejavu_more_menu_delete_row),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(20.dp),
+                    )
+                }
+            }
         }
     }
 
@@ -278,104 +381,22 @@ internal fun MoreMenuRowsEditor(settings: DejavuSettings, modifier: Modifier = M
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
-                    .onGloballyPositioned { rowsArea = it.boundsInRoot() }
-                    .verticalScroll(rowsScroll, enabled = !dragging)
-                    .padding(start = 12.dp, top = 12.dp, bottom = 12.dp),
+                    .onGloballyPositioned { linesArea = it.boundsInRoot() }
+                    .verticalScroll(linesScroll, enabled = !dragging)
+                    .padding(start = 12.dp, top = 8.dp, bottom = 12.dp),
             ) {
-                rows.forEachIndexed { row, keys ->
-                    val landing = if (current != null && target != null && target.row == row) {
-                        MenuRowsEditing.landing(rows, current.source, row, target.slot)
-                    } else {
-                        null
-                    }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Row(horizontalArrangement = Arrangement.spacedBy(BlockGap), modifier = Modifier.weight(1f)) {
-                            val wide = keys.singleOrNull()?.takeIf(MoreMenuLayout::isFullRow)
-                            val slots = if (wide != null) listOf(0) else (0 until MoreMenuLayout.MAX_PER_ROW).toList()
-                            slots.forEach { slot ->
-                                val key = keys.getOrNull(slot)
-                                val entry = key?.let { MoreMenuLayout.entryOf(it, customActions) }
-                                DisposableEffect(row, slot) { onDispose { blocks.remove(row to slot) } }
-                                Box(
-                                    modifier = Modifier
-                                        .weight(1f)
-                                        .onGloballyPositioned { blocks[row to slot] = it.boundsInRoot() },
-                                ) {
-                                    val highlighted = landing != null && (wide != null || slot in landing)
-                                    if (key != null && entry != null) {
-                                        DraggableBlock(
-                                            onDragStart = { startDrag(MenuDragSource.Placed(key, row, slot), it) },
-                                            onDrag = ::moveDrag,
-                                            onDragEnd = ::endDrag,
-                                            onDragCancel = { drag = null },
-                                            onClick = { if (drag == null) menuFor = row to slot },
-                                        ) {
-                                            BlockContent(
-                                                entry = entry,
-                                                highlighted = highlighted,
-                                                dimmed = dragged?.row == row && dragged.index == slot,
-                                                wide = wide != null,
-                                            )
-                                        }
-                                        DejavuDropdownMenu(
-                                            expanded = menuFor == row to slot,
-                                            onDismissRequest = { menuFor = null },
-                                        ) {
-                                            DejavuMenuItem(
-                                                text = stringResource(R.string.dejavu_more_menu_remove),
-                                                onClick = {
-                                                    menuFor = null
-                                                    update(MenuRowsEditing.remove(rows, row, slot))
-                                                },
-                                            )
-                                        }
-                                    } else {
-                                        BlockContent(entry = null, highlighted = highlighted)
-                                    }
-                                }
-                            }
-                        }
-                        IconButton(
-                            onClick = { update(rows.filterIndexed { index, _ -> index != row }) },
-                            enabled = !dragging,
-                        ) {
-                            Icon(
-                                painter = painterResource(iconsR.drawable.mozac_ic_cross_24),
-                                contentDescription = stringResource(R.string.dejavu_more_menu_delete_row),
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                modifier = Modifier.size(20.dp),
-                            )
-                        }
-                    }
-                }
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    modifier = Modifier.padding(top = 6.dp, end = 12.dp),
-                ) {
-                    OutlinedButton(onClick = { update(rows + listOf(emptyList())) }) {
-                        Text(stringResource(R.string.dejavu_more_menu_add_row))
-                    }
-                    TextButton(
-                        onClick = {
-                            settings.resetMoreMenu()
-                            rows = MoreMenuLayout.DEFAULT
-                        },
-                    ) {
-                        Text(stringResource(R.string.dejavu_more_menu_reset))
-                    }
-                }
-                SwitchListItem(
-                    label = stringResource(R.string.dejavu_more_menu_hide_edit),
-                    description = stringResource(R.string.dejavu_more_menu_hide_edit_summary),
-                    maxDescriptionLines = 2,
-                    checked = editHidden,
-                    showSwitchAfter = true,
+                LineCaption(stringResource(R.string.dejavu_settings_actions_bar))
+                Line(MenuLinesEditing.BAR, lines[MenuLinesEditing.BAR])
+                LineCaption(stringResource(R.string.dejavu_settings_more_menu))
+                lines.forEachIndexed { line, keys -> if (line != MenuLinesEditing.BAR) Line(line, keys) }
+                OutlinedButton(
+                    onClick = { update(lines + listOf(emptyList())) },
                     modifier = Modifier
-                        .padding(top = 6.dp, end = 12.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(MaterialTheme.colorScheme.surfaceContainerHigh),
-                    onClick = settings::setMoreMenuEditHidden,
-                )
+                        .fillMaxWidth()
+                        .padding(top = 6.dp, end = 12.dp),
+                ) {
+                    Text(stringResource(R.string.dejavu_more_menu_add_row))
+                }
             }
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
             Box(
@@ -404,7 +425,7 @@ internal fun MoreMenuRowsEditor(settings: DejavuSettings, modifier: Modifier = M
                                     onDrag = ::moveDrag,
                                     onDragEnd = ::endDrag,
                                     onDragCancel = { drag = null },
-                                    onClick = { if (drag == null) update(MenuRowsEditing.append(rows, entry.key)) },
+                                    onClick = { if (drag == null) update(MenuLinesEditing.append(lines, entry.key)) },
                                     modifier = Modifier.weight(1f),
                                 ) {
                                     BlockContent(entry = entry)
@@ -418,11 +439,22 @@ internal fun MoreMenuRowsEditor(settings: DejavuSettings, modifier: Modifier = M
             }
         }
         if (current != null) {
-            MoreMenuLayout.entryOf(current.source.key, customActions)?.let { entry ->
+            ActionsBarLayout.entryOf(current.source.key, customActions)?.let { entry ->
                 FloatingBlock(entry = entry, position = current.pointer - origin)
             }
         }
     }
+}
+
+/** The name of the lines below it: the actions bar, or the rows of the "More" menu. */
+@Composable
+private fun LineCaption(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(start = 4.dp, top = 4.dp),
+    )
 }
 
 /** A button that a long press starts dragging, with finger positions in root coordinates. A tap runs [onClick]. */
@@ -463,8 +495,8 @@ private fun DraggableBlock(
 }
 
 /**
- * A block of a row, or of the list of every button: [entry]'s icon and name, or an empty outlined block without one. A
- * [wide] block holds a full row button, with its name next to its icon.
+ * A block of a line, or of the list of every button: [entry]'s icon and name, or an empty outlined block without one.
+ * A [wide] block holds a full row button, with its name next to its icon.
  */
 @Composable
 private fun BlockContent(
@@ -527,7 +559,7 @@ private fun BlockLabel(entry: MoreMenuEntry) {
     )
 }
 
-/** Covers the list of every button while a button of a row is dragged, where dropping it takes it out of the menu. */
+/** Covers the list of every button while a button of a line is dragged, where dropping it takes it off the line. */
 @Composable
 private fun RemoveArea(active: Boolean) {
     Box(

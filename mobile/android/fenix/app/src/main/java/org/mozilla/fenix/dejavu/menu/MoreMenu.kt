@@ -170,10 +170,10 @@ object MoreMenuLayout {
 
 /**
  * The buttons of the actions bar below pages, as keys of [MoreMenuEntry]s. Home and Search are buttons like the others,
- * so they can be moved or removed too.
+ * so they can be moved or removed too. A button can be in the bar more than once.
  */
 object ActionsBarLayout {
-    const val MAX_BUTTONS = 7
+    const val MAX_BUTTONS = 5
 
     /** The bar a new install starts with: five buttons, Home in the middle and no Back, since the system Back does that. */
     val DEFAULT: List<String> = listOf(
@@ -202,11 +202,14 @@ object ActionsBarLayout {
         else -> MoreMenuLayout.entryOf(key, customActions)
     }
 
+    /** Whether the entry with [key] can only be in the bar, not in the menu: Home and Search. */
+    fun isBarOnly(key: String): Boolean = key == MoreMenuEntry.Home.key || key == MoreMenuEntry.Search.key
+
     /** Every entry that can be put in the bar. */
     fun available(customActions: List<CustomAction>): List<MoreMenuEntry> =
         listOf(MoreMenuEntry.Home, MoreMenuEntry.Search) + MoreMenuLayout.available(customActions)
 
     /** The entries of [keys], leaving out the ones that no longer exist. */
     fun resolve(keys: List<String>, customActions: List<CustomAction>): List<MoreMenuEntry> =
-        keys.distinct().mapNotNull { entryOf(it, customActions) }.take(MAX_BUTTONS)
+        keys.mapNotNull { entryOf(it, customActions) }.take(MAX_BUTTONS)
 }
