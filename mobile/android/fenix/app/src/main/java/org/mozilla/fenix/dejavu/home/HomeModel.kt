@@ -288,6 +288,9 @@ sealed interface DropTarget {
     /** Next to an unpinned tab. */
     data class NextToTab(val tabId: String, val after: Boolean) : DropTarget
 
+    /** Onto an unpinned tab, which the one dragged tab joins in a split view, on the same row. */
+    data class SplitWith(val tabId: String) : DropTarget
+
     /** At the start of the unpinned tabs, right below New Tab. */
     data object UnpinnedStart : DropTarget
 
