@@ -105,7 +105,7 @@ enum class TabAction(
     RESET_PIN(
         "reset_pin",
         R.string.dejavu_action_reset_pin,
-        iconsR.drawable.mozac_ic_arrow_counter_clockwise_24,
+        R.drawable.dejavu_ic_reset_pin_24,
         Everywhere - ActionPlace.UNPINNED_ROWS,
     ),
     ADD_TO_ESSENTIALS(
