@@ -37,9 +37,12 @@ internal val themePresets: List<List<Int>> = listOf(WorkspaceTheme.Gold.colors) 
     listOf(0xFF141E30, 0xFF243B55),
 ).map { colors -> colors.map { it.toInt() } }
 
-/** Emojis offered as workspace icons, written as code points; any other one can be typed. */
+/**
+ * Emojis offered as workspace icons, written as code points; any other one can be typed. Computers and phones are left
+ * out: they mark the workspaces of the devices on the account.
+ */
 internal val iconSuggestions: List<String> = listOf(
-    intArrayOf(0x1F3E0), intArrayOf(0x1F4BC), intArrayOf(0x1F393), intArrayOf(0x1F4BB), intArrayOf(0x1F3AE),
+    intArrayOf(0x1F3E0), intArrayOf(0x1F4BC), intArrayOf(0x1F393), intArrayOf(0x1F3AE),
     intArrayOf(0x1F3B5), intArrayOf(0x1F3AC), intArrayOf(0x1F4DA), intArrayOf(0x1F6D2), intArrayOf(0x2708, 0xFE0F),
     intArrayOf(0x1F354), intArrayOf(0x2615), intArrayOf(0x2764, 0xFE0F), intArrayOf(0x2B50), intArrayOf(0x1F525),
     intArrayOf(0x1F331), intArrayOf(0x1F319), intArrayOf(0x2600, 0xFE0F), intArrayOf(0x1F3A8), intArrayOf(0x1F4F7),
