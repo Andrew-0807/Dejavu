@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Ehechauka yvate</string>
     <string name="dejavu_split_close">Emboty mokõi ojuehe</string>
     <string name="dejavu_action_reset_pin">Mbojevy tendayke mboguapypyre</string>
+    <string name="dejavu_action_replace_pin">Myengovia URL mboguapypyre ko\'ãgaguáre</string>
     <string name="dejavu_action_add_to_essentials">Mbojuaju umi iporãvévape</string>
     <string name="dejavu_action_remove_from_essentials">Mboguete umi iporãvévagui</string>
     <string name="dejavu_action_delete">Mboguete</string>

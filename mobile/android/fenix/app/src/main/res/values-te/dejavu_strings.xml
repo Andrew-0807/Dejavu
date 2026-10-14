@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">పైన చూపించు</string>
     <string name="dejavu_split_close">విభజన వీక్షణను మూసివేయి</string>
     <string name="dejavu_action_reset_pin">పిన్ చేసిన ట్యాబును రీసెట్ చేయి</string>
+    <string name="dejavu_action_replace_pin">పిన్ చేసిన URLను ప్రస్తుతదానితో భర్తీ చేయి</string>
     <string name="dejavu_action_add_to_essentials">ముఖ్యమైనవాటిలో చేర్చు</string>
     <string name="dejavu_action_remove_from_essentials">ముఖ్యమైనవాటి నుండి తీసివేయి</string>
     <string name="dejavu_action_delete">తొలగించు</string>

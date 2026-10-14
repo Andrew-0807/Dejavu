@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">لە سەرەوە پیشانبدە</string>
     <string name="dejavu_split_close">داخستنی دیمەنی دووبەشکراو</string>
     <string name="dejavu_action_reset_pin">ڕێکخستنەوەی بازدەری چەسپاو</string>
+    <string name="dejavu_action_replace_pin">گۆڕینی URL ی چەسپاو بە URL ی ئێستا</string>
     <string name="dejavu_action_add_to_essentials">زیادکردن بۆ ماڵپەڕە گرنگەکان</string>
     <string name="dejavu_action_remove_from_essentials">لابردن لە ماڵپەڕە گرنگەکان</string>
     <string name="dejavu_action_delete">سڕینەوە</string>

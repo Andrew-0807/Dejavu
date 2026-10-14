@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Afficher en haut</string>
     <string name="dejavu_split_close">Fermer la vue partagée</string>
     <string name="dejavu_action_reset_pin">Réinitialiser l’onglet épinglé</string>
+    <string name="dejavu_action_replace_pin">Remplacer l’URL épinglée par l’actuelle</string>
     <string name="dejavu_action_add_to_essentials">Ajouter aux favoris</string>
     <string name="dejavu_action_remove_from_essentials">Retirer des favoris</string>
     <string name="dejavu_action_delete">Supprimer</string>

@@ -87,6 +87,7 @@
     <string name="dejavu_split_show_on_top">အပေါ်တွင် ပြရန်</string>
     <string name="dejavu_split_close">မျက်နှာပြင်ခွဲကို ပိတ်ရန်</string>
     <string name="dejavu_action_reset_pin">ပင်ထိုးထားသော တက်ဗ်ကို မူလအတိုင်း ပြန်သတ်မှတ်ရန်</string>
+    <string name="dejavu_action_replace_pin">ပင်ထိုးထားသော URL ကို လက်ရှိ URL ဖြင့် အစားထိုးရန်</string>
     <string name="dejavu_action_add_to_essentials">မရှိမဖြစ်များထဲ ထည့်ရန်</string>
     <string name="dejavu_action_remove_from_essentials">မရှိမဖြစ်များမှ ဖယ်ရှားရန်</string>
     <string name="dejavu_action_delete">ဖျက်ရန်</string>

@@ -125,6 +125,8 @@
     <string name="dejavu_split_show_on_top">Show on top</string>
     <string name="dejavu_split_close">Close split view</string>
     <string name="dejavu_action_reset_pin">Reset pinned tab</string>
+    <!-- Makes the page a pinned tab is on the address it goes back to when it is reset. -->
+    <string name="dejavu_action_replace_pin">Replace pinned URL with current</string>
     <string name="dejavu_action_add_to_essentials">Add to essentials</string>
     <string name="dejavu_action_remove_from_essentials">Remove from essentials</string>
     <string name="dejavu_action_delete">Delete</string>

@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Shfaqe sipër</string>
     <string name="dejavu_split_close">Mbylle pamjen e ndarë</string>
     <string name="dejavu_action_reset_pin">Rivendose skedën e fiksuar</string>
+    <string name="dejavu_action_replace_pin">Zëvendësoje URL-në e fiksuar me të tanishmen</string>
     <string name="dejavu_action_add_to_essentials">Shtoje te thelbësoret</string>
     <string name="dejavu_action_remove_from_essentials">Hiqe nga thelbësoret</string>
     <string name="dejavu_action_delete">Fshije</string>

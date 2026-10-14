@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Kuva üleval</string>
     <string name="dejavu_split_close">Sulge jagatud vaade</string>
     <string name="dejavu_action_reset_pin">Lähtesta kinnitatud kaart</string>
+    <string name="dejavu_action_replace_pin">Asenda kinnitatud URL praegusega</string>
     <string name="dejavu_action_add_to_essentials">Lisa olulistesse</string>
     <string name="dejavu_action_remove_from_essentials">Eemalda olulistest</string>
     <string name="dejavu_action_delete">Kustuta</string>

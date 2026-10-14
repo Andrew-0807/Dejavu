@@ -87,6 +87,7 @@
     <string name="dejavu_split_show_on_top">o lon sewi</string>
     <string name="dejavu_split_close">o pini e lukin tu</string>
     <string name="dejavu_action_reset_pin">o open sin e poki awen</string>
+    <string name="dejavu_action_replace_pin">o ante e URL awen tawa URL pi tenpo ni</string>
     <string name="dejavu_action_add_to_essentials">o pana e ni tawa lipu suli</string>
     <string name="dejavu_action_remove_from_essentials">o weka e ni tan lipu suli</string>
     <string name="dejavu_action_delete">o weka</string>

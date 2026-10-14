@@ -87,6 +87,7 @@
     <string name="dejavu_split_show_on_top">Hiện ở trên</string>
     <string name="dejavu_split_close">Đóng chế độ chia đôi màn hình</string>
     <string name="dejavu_action_reset_pin">Đặt lại thẻ đã ghim</string>
+    <string name="dejavu_action_replace_pin">Thay URL đã ghim bằng URL hiện tại</string>
     <string name="dejavu_action_add_to_essentials">Thêm vào trang thiết yếu</string>
     <string name="dejavu_action_remove_from_essentials">Xóa khỏi trang thiết yếu</string>
     <string name="dejavu_action_delete">Xóa</string>

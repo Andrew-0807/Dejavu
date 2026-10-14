@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">ඉහළින් පෙන්වන්න</string>
     <string name="dejavu_split_close">බෙදුම් දසුන වසන්න</string>
     <string name="dejavu_action_reset_pin">අමුණන ලද පටිත්ත යළි සකසන්න</string>
+    <string name="dejavu_action_replace_pin">අමුණන ලද URL එක වත්මන් එකෙන් ප්‍රතිස්ථාපනය කරන්න</string>
     <string name="dejavu_action_add_to_essentials">අත්‍යවශ්‍යයට එක් කරන්න</string>
     <string name="dejavu_action_remove_from_essentials">අත්‍යවශ්‍යයෙන් ඉවත් කරන්න</string>
     <string name="dejavu_action_delete">මකන්න</string>

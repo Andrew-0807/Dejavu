@@ -89,6 +89,7 @@
     <string name="dejavu_split_show_on_top">Mostra a la part superior</string>
     <string name="dejavu_split_close">Tanca la vista dividida</string>
     <string name="dejavu_action_reset_pin">Restableix la pestanya fixada</string>
+    <string name="dejavu_action_replace_pin">Substitueix l\'URL fixat per l\'actual</string>
     <string name="dejavu_action_add_to_essentials">Afegeix als essencials</string>
     <string name="dejavu_action_remove_from_essentials">Treu dels essencials</string>
     <string name="dejavu_action_delete">Suprimeix</string>

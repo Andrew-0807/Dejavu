@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Өстә күрсәтү</string>
     <string name="dejavu_split_close">Бүленгән күренешне ябу</string>
     <string name="dejavu_action_reset_pin">Беркетелгән табны яңадан көйләү</string>
+    <string name="dejavu_action_replace_pin">Беркетелгән URL-ны хәзергесе белән алыштыру</string>
     <string name="dejavu_action_add_to_essentials">Төп сайтларга өстәү</string>
     <string name="dejavu_action_remove_from_essentials">Төп сайтлардан чыгару</string>
     <string name="dejavu_action_delete">Бетерү</string>

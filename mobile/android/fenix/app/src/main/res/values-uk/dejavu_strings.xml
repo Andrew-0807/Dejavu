@@ -90,6 +90,7 @@
     <string name="dejavu_split_show_on_top">Показувати згори</string>
     <string name="dejavu_split_close">Закрити розділення екрана</string>
     <string name="dejavu_action_reset_pin">Скинути закріплену вкладку</string>
+    <string name="dejavu_action_replace_pin">Замінити закріплену URL-адресу поточною</string>
     <string name="dejavu_action_add_to_essentials">Додати до обраного</string>
     <string name="dejavu_action_remove_from_essentials">Прибрати з обраного</string>
     <string name="dejavu_action_delete">Видалити</string>

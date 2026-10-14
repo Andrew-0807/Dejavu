@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Joqarıda kórsetiw</string>
     <string name="dejavu_split_close">Bólingen kórinisti jabıw</string>
     <string name="dejavu_action_reset_pin">Bekitilgen betti qayta ornatıw</string>
+    <string name="dejavu_action_replace_pin">Bekitilgen URL-di házirgisi menen almastırıw</string>
     <string name="dejavu_action_add_to_essentials">Tiykarǵılarǵa qosıw</string>
     <string name="dejavu_action_remove_from_essentials">Tiykarǵılardan shıǵarıw</string>
     <string name="dejavu_action_delete">Óshiriw</string>

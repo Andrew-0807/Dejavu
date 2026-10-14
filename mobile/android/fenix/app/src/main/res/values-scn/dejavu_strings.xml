@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Mustra susu</string>
     <string name="dejavu_split_close">Chiuji a vista spartuta</string>
     <string name="dejavu_action_reset_pin">Ripristina a scheda ficcata</string>
+    <string name="dejavu_action_replace_pin">Sustituisci a URL ficcata cu chidda attuali</string>
     <string name="dejavu_action_add_to_essentials">Junci ê essenziali</string>
     <string name="dejavu_action_remove_from_essentials">Leva dî essenziali</string>
     <string name="dejavu_action_delete">Scancella</string>

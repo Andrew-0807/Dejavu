@@ -97,6 +97,7 @@ val TabAction.menuItem: MoreMenuItem?
         TabAction.PIN, TabAction.UNPIN -> MoreMenuItem.PIN_TAB
         TabAction.ADD_TO_ESSENTIALS, TabAction.REMOVE_FROM_ESSENTIALS -> MoreMenuItem.ESSENTIAL_TAB
         TabAction.RESET_PIN -> MoreMenuItem.RESET_PINNED_URL
+        TabAction.REPLACE_PIN -> MoreMenuItem.REPLACE_PINNED_URL
         TabAction.SPLIT_VIEW, TabAction.UNSPLIT -> MoreMenuItem.SPLIT_VIEW
         else -> null
     }

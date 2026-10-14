@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Näytä ylimpänä</string>
     <string name="dejavu_split_close">Sulje jaettu näkymä</string>
     <string name="dejavu_action_reset_pin">Palauta kiinnitetty välilehti</string>
+    <string name="dejavu_action_replace_pin">Korvaa kiinnitetty URL-osoite nykyisellä</string>
     <string name="dejavu_action_add_to_essentials">Lisää suosikkeihin</string>
     <string name="dejavu_action_remove_from_essentials">Poista suosikeista</string>
     <string name="dejavu_action_delete">Poista</string>

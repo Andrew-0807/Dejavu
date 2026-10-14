@@ -87,6 +87,7 @@
     <string name="dejavu_split_show_on_top">ສະແດງຢູ່ເທິງສຸດ</string>
     <string name="dejavu_split_close">ປິດມູມມອງແບບແຍກ</string>
     <string name="dejavu_action_reset_pin">ຕັ້ງຄ່າແທັບທີ່ປັກໄວ້ຄືນໃຫມ່</string>
+    <string name="dejavu_action_replace_pin">ແທນທີ່ URL ທີ່ປັກໄວ້ດ້ວຍ URL ປັດຈຸບັນ</string>
     <string name="dejavu_action_add_to_essentials">ເພີ່ມເຂົ້າສິ່ງສຳຄັນ</string>
     <string name="dejavu_action_remove_from_essentials">ເອົາອອກຈາກສິ່ງສຳຄັນ</string>
     <string name="dejavu_action_delete">ລຶບ</string>

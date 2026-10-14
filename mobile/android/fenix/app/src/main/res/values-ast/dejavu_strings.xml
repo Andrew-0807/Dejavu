@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Amosar enriba</string>
     <string name="dejavu_split_close">Zarrar la vista estremada</string>
     <string name="dejavu_action_reset_pin">Restaurar la llingüeta fixada</string>
+    <string name="dejavu_action_replace_pin">Trocar la URL fixada pola actual</string>
     <string name="dejavu_action_add_to_essentials">Amestar a los esenciales</string>
     <string name="dejavu_action_remove_from_essentials">Quitar de los esenciales</string>
     <string name="dejavu_action_delete">Desaniciar</string>

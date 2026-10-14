@@ -117,6 +117,7 @@
     <string name="dejavu_split_show_on_top">ऊपर दिखाएं</string>
     <string name="dejavu_split_close">स्प्लिट व्यू बंद करें</string>
     <string name="dejavu_action_reset_pin">पिन किए गए टैब को रीसेट करें</string>
+    <string name="dejavu_action_replace_pin">पिन किए गए URL को वर्तमान से बदलें</string>
     <string name="dejavu_action_add_to_essentials">एसेंशियल्स में जोड़ें</string>
     <string name="dejavu_action_remove_from_essentials">एसेंशियल्स से हटाएं</string>
     <string name="dejavu_action_delete">डिलीट करें</string>

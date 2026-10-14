@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">نمایش در بالا</string>
     <string name="dejavu_split_close">بستن نمای تقسیم‌شده</string>
     <string name="dejavu_action_reset_pin">بازنشانی زبانهٔ سنجاق‌شده</string>
+    <string name="dejavu_action_replace_pin">جایگزینی نشانی سنجاق‌شده با نشانی فعلی</string>
     <string name="dejavu_action_add_to_essentials">افزودن به ضروریات</string>
     <string name="dejavu_action_remove_from_essentials">حذف از ضروریات</string>
     <string name="dejavu_action_delete">حذف</string>

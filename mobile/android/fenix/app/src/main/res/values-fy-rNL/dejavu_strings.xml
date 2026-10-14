@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Boppe toane</string>
     <string name="dejavu_split_close">Dûbele werjefte slute</string>
     <string name="dejavu_action_reset_pin">Fêstsette ljepblêd weromsette</string>
+    <string name="dejavu_action_replace_pin">Fêstsette URL ferfange troch de aktuele</string>
     <string name="dejavu_action_add_to_essentials">Taheakje oan essinsjes</string>
     <string name="dejavu_action_remove_from_essentials">Fuortsmite út essinsjes</string>
     <string name="dejavu_action_delete">Fuortsmite</string>

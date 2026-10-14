@@ -89,6 +89,7 @@
     <string name="dejavu_split_show_on_top">Afișează deasupra</string>
     <string name="dejavu_split_close">Închide ecranul împărțit</string>
     <string name="dejavu_action_reset_pin">Resetează fila fixată</string>
+    <string name="dejavu_action_replace_pin">Înlocuiește adresa URL fixată cu cea actuală</string>
     <string name="dejavu_action_add_to_essentials">Adaugă la favorite</string>
     <string name="dejavu_action_remove_from_essentials">Elimină din favorite</string>
     <string name="dejavu_action_delete">Șterge</string>

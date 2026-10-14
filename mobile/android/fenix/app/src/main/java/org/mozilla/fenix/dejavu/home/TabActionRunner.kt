@@ -86,6 +86,9 @@ internal class TabActionRunner(
                 }
                 repository.forgetOpenPages(targets.closedChangedPins.map { it.id }.toSet())
             }
+            TabAction.REPLACE_PIN -> targets.changedPins.forEach { (pin, tab) ->
+                repository.replacePinUrl(pin.id, tab.content.url, tab.content.title)
+            }
             TabAction.ADD_TO_ESSENTIALS -> addToEssentials(targets)
             TabAction.REMOVE_FROM_ESSENTIALS -> removeFromEssentials(targets.pins.filter { it.essential }, workspaceId)
             TabAction.UNPACK_FOLDER -> targets.folders.forEach { repository.unpackFolder(it.id) }

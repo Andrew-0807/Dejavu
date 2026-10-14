@@ -104,6 +104,7 @@
     <string name="dejavu_split_show_on_top">اُتے ݙکھاؤ</string>
     <string name="dejavu_split_close">ونڈیا نظارہ بند کرو</string>
     <string name="dejavu_action_reset_pin">پن تھئی ٹیب ری سیٹ کرو</string>
+    <string name="dejavu_action_replace_pin">پن تھئے URL کوں موجودہ نال بدلو</string>
     <string name="dejavu_action_add_to_essentials">ضروری ٹیباں وچ شامل کرو</string>
     <string name="dejavu_action_remove_from_essentials">ضروری ٹیباں کنوں ہٹاؤ</string>
     <string name="dejavu_action_delete">مٹاؤ</string>

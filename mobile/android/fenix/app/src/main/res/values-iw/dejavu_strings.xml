@@ -89,6 +89,7 @@
     <string name="dejavu_split_show_on_top">הצגה למעלה</string>
     <string name="dejavu_split_close">סגירת התצוגה המפוצלת</string>
     <string name="dejavu_action_reset_pin">איפוס הלשונית המוצמדת</string>
+    <string name="dejavu_action_replace_pin">החלפת הכתובת המוצמדת בנוכחית</string>
     <string name="dejavu_action_add_to_essentials">הוספה למועדפים</string>
     <string name="dejavu_action_remove_from_essentials">הסרה מהמועדפים</string>
     <string name="dejavu_action_delete">מחיקה</string>

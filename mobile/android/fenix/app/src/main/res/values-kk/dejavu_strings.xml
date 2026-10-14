@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Үстінде көрсету</string>
     <string name="dejavu_split_close">Бөлінген көріністі жабу</string>
     <string name="dejavu_action_reset_pin">Бекітілген бетті қалпына келтіру</string>
+    <string name="dejavu_action_replace_pin">Бекітілген URL-ді ағымдағысымен ауыстыру</string>
     <string name="dejavu_action_add_to_essentials">Негізгілерге қосу</string>
     <string name="dejavu_action_remove_from_essentials">Негізгілерден шығару</string>
     <string name="dejavu_action_delete">Өшіру</string>

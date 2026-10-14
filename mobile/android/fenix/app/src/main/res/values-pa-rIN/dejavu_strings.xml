@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">ਉੱਪਰ ਦਿਖਾਓ</string>
     <string name="dejavu_split_close">ਵੰਡਿਆ ਦ੍ਰਿਸ਼ ਬੰਦ ਕਰੋ</string>
     <string name="dejavu_action_reset_pin">ਪਿੰਨ ਕੀਤੀ ਟੈਬ ਮੁੜ-ਸੈੱਟ ਕਰੋ</string>
+    <string name="dejavu_action_replace_pin">ਪਿੰਨ ਕੀਤੇ URL ਨੂੰ ਮੌਜੂਦਾ ਨਾਲ ਬਦਲੋ</string>
     <string name="dejavu_action_add_to_essentials">ਜ਼ਰੂਰੀ ਵਿੱਚ ਜੋੜੋ</string>
     <string name="dejavu_action_remove_from_essentials">ਜ਼ਰੂਰੀ ਵਿੱਚੋਂ ਹਟਾਓ</string>
     <string name="dejavu_action_delete">ਹਟਾਓ</string>

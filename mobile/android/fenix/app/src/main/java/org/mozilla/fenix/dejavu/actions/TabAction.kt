@@ -108,6 +108,12 @@ enum class TabAction(
         R.drawable.dejavu_ic_reset_pin_24,
         Everywhere - ActionPlace.UNPINNED_ROWS,
     ),
+    REPLACE_PIN(
+        "replace_pin",
+        R.string.dejavu_action_replace_pin,
+        iconsR.drawable.mozac_ic_pin_fill_24,
+        Everywhere - ActionPlace.UNPINNED_ROWS,
+    ),
     ADD_TO_ESSENTIALS(
         "add_to_essentials",
         R.string.dejavu_action_add_to_essentials,
@@ -158,7 +164,7 @@ enum class TabAction(
          * stay the last buttons wherever they are shown.
          */
         val ordered: List<TabAction> = listOf(
-            UNPIN, PIN, RESET_PIN, ADD_TO_ESSENTIALS, REMOVE_FROM_ESSENTIALS, RENAME_TAB, SLEEP, BOOKMARK, SHARE,
+            UNPIN, PIN, RESET_PIN, REPLACE_PIN, ADD_TO_ESSENTIALS, REMOVE_FROM_ESSENTIALS, RENAME_TAB, SLEEP, BOOKMARK, SHARE,
             COPY_LINK, DUPLICATE, SPLIT_VIEW, UNSPLIT, NEW_FOLDER, NEW_SUBFOLDER, RENAME_FOLDER, MOVE_TO_FOLDER,
             MOVE_TO_WORKSPACE, CHANGE_CONTAINER, UNPACK_FOLDER, DELETE, CLOSE,
         )
