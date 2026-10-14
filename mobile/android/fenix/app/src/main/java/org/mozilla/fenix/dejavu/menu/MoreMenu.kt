@@ -45,11 +45,7 @@ enum class MoreMenuItem(
     SAVE_AS_PDF("save_as_pdf", R.string.dejavu_menu_save_as_pdf, iconsR.drawable.mozac_ic_save_file_24),
     PRINT("print", R.string.dejavu_menu_print, iconsR.drawable.mozac_ic_print_24),
     OPEN_IN_APP("open_in_app", R.string.dejavu_menu_open_in_app, iconsR.drawable.mozac_ic_external_link_24),
-    RESET_PINNED_URL(
-        "reset_pinned_url",
-        R.string.dejavu_menu_reset_pinned_url,
-        iconsR.drawable.mozac_ic_arrow_counter_clockwise_24,
-    ),
+    RESET_PINNED_URL("reset_pinned_url", R.string.dejavu_menu_reset_pinned_url, R.drawable.dejavu_ic_reset_pin_24),
     REPLACE_PINNED_URL("replace_pinned_url", R.string.dejavu_menu_replace_pinned_url, iconsR.drawable.mozac_ic_pin_fill_24),
     SPLIT_VIEW("split_view", R.string.dejavu_menu_split_view, R.drawable.dejavu_ic_split_24),
     SETTINGS("settings", R.string.dejavu_menu_settings, iconsR.drawable.mozac_ic_settings_24),
