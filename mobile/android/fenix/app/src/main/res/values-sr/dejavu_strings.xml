@@ -89,6 +89,7 @@
     <string name="dejavu_split_show_on_top">Прикажи на врху</string>
     <string name="dejavu_split_close">Затвори подељени приказ</string>
     <string name="dejavu_action_reset_pin">Ресетуј закачени језичак</string>
+    <string name="dejavu_action_replace_pin">Замени закачени URL тренутним</string>
     <string name="dejavu_action_add_to_essentials">Додај у Фаворите</string>
     <string name="dejavu_action_remove_from_essentials">Уклони из Фаворита</string>
     <string name="dejavu_action_delete">Обриши</string>

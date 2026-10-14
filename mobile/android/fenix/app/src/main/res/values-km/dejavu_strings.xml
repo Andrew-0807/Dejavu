@@ -87,6 +87,7 @@
     <string name="dejavu_split_show_on_top">បង្ហាញនៅខាងលើ</string>
     <string name="dejavu_split_close">បិទទិដ្ឋភាពបំបែក</string>
     <string name="dejavu_action_reset_pin">កំណត់ផ្ទាំងបានខ្ទាស់ឡើងវិញ</string>
+    <string name="dejavu_action_replace_pin">ជំនួស URL ដែលបានខ្ទាស់ដោយ URL បច្ចុប្បន្ន</string>
     <string name="dejavu_action_add_to_essentials">បន្ថែមទៅសំខាន់ៗ</string>
     <string name="dejavu_action_remove_from_essentials">ដកចេញពីសំខាន់ៗ</string>
     <string name="dejavu_action_delete">លុប</string>

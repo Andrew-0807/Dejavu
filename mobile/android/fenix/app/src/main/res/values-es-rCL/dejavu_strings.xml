@@ -89,6 +89,7 @@
     <string name="dejavu_split_show_on_top">Mostrar arriba</string>
     <string name="dejavu_split_close">Cerrar vista dividida</string>
     <string name="dejavu_action_reset_pin">Restablecer pestaña fijada</string>
+    <string name="dejavu_action_replace_pin">Reemplazar la URL fijada por la actual</string>
     <string name="dejavu_action_add_to_essentials">Añadir a esenciales</string>
     <string name="dejavu_action_remove_from_essentials">Quitar de esenciales</string>
     <string name="dejavu_action_delete">Borrar</string>

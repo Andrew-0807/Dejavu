@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">மேலே காட்டு</string>
     <string name="dejavu_split_close">பிரிந்த காட்சியை மூடு</string>
     <string name="dejavu_action_reset_pin">பொருத்தப்பட்ட கீற்றை மீட்டமை</string>
+    <string name="dejavu_action_replace_pin">பொருத்தப்பட்ட URL-ஐத் தற்போதையதைக் கொண்டு மாற்று</string>
     <string name="dejavu_action_add_to_essentials">முக்கியவையில் சேர்</string>
     <string name="dejavu_action_remove_from_essentials">முக்கியவையிலிருந்து அகற்று</string>
     <string name="dejavu_action_delete">நீக்கு</string>

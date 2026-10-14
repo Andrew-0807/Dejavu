@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">اوستده گؤستر</string>
     <string name="dejavu_split_close">بؤلونموش گؤرونوشو باغلا</string>
     <string name="dejavu_action_reset_pin">برکیدیلمیش تاغی سیفیرلا</string>
+    <string name="dejavu_action_replace_pin">برکیدیلمیش URL-i ایندیکی ایله عوض ائت</string>
     <string name="dejavu_action_add_to_essentials">اساس‌لارا اَلاوه ات</string>
     <string name="dejavu_action_remove_from_essentials">اساس‌لاردان چیخار</string>
     <string name="dejavu_action_delete">سیل</string>

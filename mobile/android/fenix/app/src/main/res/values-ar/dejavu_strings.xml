@@ -92,6 +92,7 @@
     <string name="dejavu_split_show_on_top">إظهار في الأعلى</string>
     <string name="dejavu_split_close">إغلاق العرض المقسم</string>
     <string name="dejavu_action_reset_pin">إعادة ضبط التبويب المثبت</string>
+    <string name="dejavu_action_replace_pin">استبدال العنوان المثبت بالحالي</string>
     <string name="dejavu_action_add_to_essentials">إضافة إلى الأساسيات</string>
     <string name="dejavu_action_remove_from_essentials">إزالة من الأساسيات</string>
     <string name="dejavu_action_delete">حذف</string>

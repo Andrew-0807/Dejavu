@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">پورته ښودل</string>
     <string name="dejavu_split_close">وېشل شوی لید بندول</string>
     <string name="dejavu_action_reset_pin">پین شوی ټب بیا اصلي حالت ته راوستل</string>
+    <string name="dejavu_action_replace_pin">پین شوی URL په اوسني بدلول</string>
     <string name="dejavu_action_add_to_essentials">مهمو ویب پاڼو ته زیاتول</string>
     <string name="dejavu_action_remove_from_essentials">له مهمو ویب پاڼو څخه لرې کول</string>
     <string name="dejavu_action_delete">ړنګول</string>

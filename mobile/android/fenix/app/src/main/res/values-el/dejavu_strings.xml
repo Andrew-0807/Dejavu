@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Εμφάνιση επάνω</string>
     <string name="dejavu_split_close">Κλείσιμο διαχωρισμένης προβολής</string>
     <string name="dejavu_action_reset_pin">Επαναφορά καρφιτσωμένης καρτέλας</string>
+    <string name="dejavu_action_replace_pin">Αντικατάσταση καρφιτσωμένης διεύθυνσης URL με την τρέχουσα</string>
     <string name="dejavu_action_add_to_essentials">Προσθήκη στα αγαπημένα</string>
     <string name="dejavu_action_remove_from_essentials">Αφαίρεση από τα αγαπημένα</string>
     <string name="dejavu_action_delete">Διαγραφή</string>

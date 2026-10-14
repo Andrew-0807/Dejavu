@@ -87,6 +87,7 @@
     <string name="dejavu_split_show_on_top">上に表示</string>
     <string name="dejavu_split_close">分割ビューを閉じる</string>
     <string name="dejavu_action_reset_pin">ピン留めタブをリセット</string>
+    <string name="dejavu_action_replace_pin">ピン留めしたURLを現在のURLに置き換え</string>
     <string name="dejavu_action_add_to_essentials">よく使うサイトに追加</string>
     <string name="dejavu_action_remove_from_essentials">よく使うサイトから削除</string>
     <string name="dejavu_action_delete">削除</string>

@@ -104,6 +104,7 @@
     <string name="dejavu_split_show_on_top">ከላይ አሳይ</string>
     <string name="dejavu_split_close">የተከፈለ እይታን ዝጋ</string>
     <string name="dejavu_action_reset_pin">የተሰካውን ትር ዳግም አስጀምር</string>
+    <string name="dejavu_action_replace_pin">የተሰካውን URL በአሁኑ ተካ</string>
     <string name="dejavu_action_add_to_essentials">ወደ አስፈላጊዎች አክል</string>
     <string name="dejavu_action_remove_from_essentials">ከአስፈላጊዎች አስወግድ</string>
     <string name="dejavu_action_delete">ሰርዝ</string>

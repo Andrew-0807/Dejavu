@@ -90,6 +90,7 @@
     <string name="dejavu_split_show_on_top">Górjejce pokazaś</string>
     <string name="dejavu_split_close">Źělony naglěd zacyniś</string>
     <string name="dejavu_action_reset_pin">Pśipěty rejtarik slědk stajiś</string>
+    <string name="dejavu_action_replace_pin">Pśipěty URL pśez aktualny wuměniś</string>
     <string name="dejavu_action_add_to_essentials">K nejwažnjejšym pśidaś</string>
     <string name="dejavu_action_remove_from_essentials">Wót nejwažnjejšych wótwónoźeś</string>
     <string name="dejavu_action_delete">Lašowaś</string>

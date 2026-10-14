@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Mussar sura</string>
     <string name="dejavu_split_close">Serrar la vista divisa</string>
     <string name="dejavu_action_reset_pin">Reinizialisar il tab fixà</string>
+    <string name="dejavu_action_replace_pin">Remplazzar l’URL fixà cun l’actual</string>
     <string name="dejavu_action_add_to_essentials">Agiuntar als essenzials</string>
     <string name="dejavu_action_remove_from_essentials">Allontanar dals essenzials</string>
     <string name="dejavu_action_delete">Stizzar</string>

@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Mostra sopra</string>
     <string name="dejavu_split_close">Chiudi vista divisa</string>
     <string name="dejavu_action_reset_pin">Ripristina scheda bloccata</string>
+    <string name="dejavu_action_replace_pin">Sostituisci l’URL bloccato con quello attuale</string>
     <string name="dejavu_action_add_to_essentials">Aggiungi ai preferiti</string>
     <string name="dejavu_action_remove_from_essentials">Rimuovi dai preferiti</string>
     <string name="dejavu_action_delete">Elimina</string>

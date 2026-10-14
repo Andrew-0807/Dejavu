@@ -90,6 +90,7 @@
     <string name="dejavu_split_show_on_top">Prikaži na vrhu</string>
     <string name="dejavu_split_close">Zapri razdeljeni pogled</string>
     <string name="dejavu_action_reset_pin">Ponastavi pripeti zavihek</string>
+    <string name="dejavu_action_replace_pin">Zamenjaj pripeti URL s trenutnim</string>
     <string name="dejavu_action_add_to_essentials">Dodaj v Izbrano</string>
     <string name="dejavu_action_remove_from_essentials">Odstrani iz Izbranega</string>
     <string name="dejavu_action_delete">Izbriši</string>

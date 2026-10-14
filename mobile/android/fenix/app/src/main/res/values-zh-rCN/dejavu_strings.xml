@@ -87,6 +87,7 @@
     <string name="dejavu_split_show_on_top">显示在上方</string>
     <string name="dejavu_split_close">关闭分屏视图</string>
     <string name="dejavu_action_reset_pin">重置固定标签页</string>
+    <string name="dejavu_action_replace_pin">将固定网址替换为当前网址</string>
     <string name="dejavu_action_add_to_essentials">添加到常用网站</string>
     <string name="dejavu_action_remove_from_essentials">从常用网站中移除</string>
     <string name="dejavu_action_delete">删除</string>

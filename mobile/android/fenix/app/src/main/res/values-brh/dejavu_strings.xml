@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">اُتی دکھاؤ</string>
     <string name="dejavu_split_close">اسپلٹ ویو بند کبو</string>
     <string name="dejavu_action_reset_pin">پن ٹیب ری سیٹ کبو</string>
+    <string name="dejavu_action_replace_pin">پن URL ئے داسا نا URL تو بدل کبو</string>
     <string name="dejavu_action_add_to_essentials">ضروری چیزاک اٹ شامل کبو</string>
     <string name="dejavu_action_remove_from_essentials">ضروری چیزاک ٹی ہٹاؤ</string>
     <string name="dejavu_action_delete">مٹاؤ</string>

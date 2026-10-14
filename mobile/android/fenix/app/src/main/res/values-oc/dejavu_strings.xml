@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Afichar amont</string>
     <string name="dejavu_split_close">Tampar la vista dividida</string>
     <string name="dejavu_action_reset_pin">Reïnicializar l’onglet fixat</string>
+    <string name="dejavu_action_replace_pin">Remplaçar l’URL fixada per l’actuala</string>
     <string name="dejavu_action_add_to_essentials">Apondre als essencials</string>
     <string name="dejavu_action_remove_from_essentials">Levar dels essencials</string>
     <string name="dejavu_action_delete">Suprimir</string>

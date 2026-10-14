@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Mostre parsore</string>
     <string name="dejavu_split_close">Siere la viodude dividude</string>
     <string name="dejavu_action_reset_pin">Ripristine la schede fissade</string>
+    <string name="dejavu_action_replace_pin">Sostituìs la URL fissade cun chê atuâl</string>
     <string name="dejavu_action_add_to_essentials">Zonte tai essenziâi</string>
     <string name="dejavu_action_remove_from_essentials">Gjave dai essenziâi</string>
     <string name="dejavu_action_delete">Elimine</string>

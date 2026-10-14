@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Montri supre</string>
     <string name="dejavu_split_close">Fermi duoblan vidon</string>
     <string name="dejavu_action_reset_pin">Restarigi pinglitan langeton</string>
+    <string name="dejavu_action_replace_pin">Anstataŭigi pinglitan URL per la nuna</string>
     <string name="dejavu_action_add_to_essentials">Aldoni al esencaĵoj</string>
     <string name="dejavu_action_remove_from_essentials">Forigi el esencaĵoj</string>
     <string name="dejavu_action_delete">Forigi</string>

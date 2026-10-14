@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">ଉପରେ ଦେଖାନ୍ତୁ</string>
     <string name="dejavu_split_close">ବିଭାଜିତ ଦୃଶ୍ୟ ବନ୍ଦ କରନ୍ତୁ</string>
     <string name="dejavu_action_reset_pin">ପିନ୍ କରାଯାଇଥିବା ଟ୍ୟାବ୍ ରିସେଟ୍ କରନ୍ତୁ</string>
+    <string name="dejavu_action_replace_pin">ପିନ୍ କରାଯାଇଥିବା URL କୁ ବର୍ତ୍ତମାନର URL ସହ ବଦଳାନ୍ତୁ</string>
     <string name="dejavu_action_add_to_essentials">ଆବଶ୍ୟକୀୟରେ ଯୋଡନ୍ତୁ</string>
     <string name="dejavu_action_remove_from_essentials">ଆବଶ୍ୟକୀୟରୁ ହଟାନ୍ତୁ</string>
     <string name="dejavu_action_delete">ଡିଲିଟ୍ କରନ୍ତୁ</string>

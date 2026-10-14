@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Affissà in cima</string>
     <string name="dejavu_split_close">Chjode a vista spartuta</string>
     <string name="dejavu_action_reset_pin">Ripristinà l\'unghjetta fissata</string>
+    <string name="dejavu_action_replace_pin">Rimpiazzà l\'URL fissata cù quella attuale</string>
     <string name="dejavu_action_add_to_essentials">Aghjunghje à l\'essenziali</string>
     <string name="dejavu_action_remove_from_essentials">Caccià da l\'essenziali</string>
     <string name="dejavu_action_delete">Squassà</string>

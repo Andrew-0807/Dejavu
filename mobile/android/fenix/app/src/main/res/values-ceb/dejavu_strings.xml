@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Ipakita sa taas</string>
     <string name="dejavu_split_close">Isira ang split view</string>
     <string name="dejavu_action_reset_pin">i-Reset ang naka-pin nga tab</string>
+    <string name="dejavu_action_replace_pin">Ilisan ang naka-pin nga URL sa kasamtangan</string>
     <string name="dejavu_action_add_to_essentials">Idugang sa Mahinungdanon</string>
     <string name="dejavu_action_remove_from_essentials">Kuhaa sa Mahinungdanon</string>
     <string name="dejavu_action_delete">Tangtangon</string>

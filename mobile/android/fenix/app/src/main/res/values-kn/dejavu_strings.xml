@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">ಮೇಲೆ ತೋರಿಸು</string>
     <string name="dejavu_split_close">ವಿಭಜಿತ ನೋಟವನ್ನು ಮುಚ್ಚು</string>
     <string name="dejavu_action_reset_pin">ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್ ಅನ್ನು ಮರುಹೊಂದಿಸು</string>
+    <string name="dejavu_action_replace_pin">ಪಿನ್ ಮಾಡಿದ URL ಅನ್ನು ಪ್ರಸ್ತುತದೊಂದಿಗೆ ಬದಲಾಯಿಸು</string>
     <string name="dejavu_action_add_to_essentials">ಅಗತ್ಯವಾದವುಗಳಿಗೆ ಸೇರಿಸು</string>
     <string name="dejavu_action_remove_from_essentials">ಅಗತ್ಯವಾದವುಗಳಿಂದ ತೆಗೆದುಹಾಕು</string>
     <string name="dejavu_action_delete">ಅಳಿಸು</string>

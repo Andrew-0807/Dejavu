@@ -88,6 +88,7 @@
     <string name="dejavu_split_show_on_top">Üstdə göstər</string>
     <string name="dejavu_split_close">Bölünmüş görünüşü bağla</string>
     <string name="dejavu_action_reset_pin">Bərkidilmiş vərəqi sıfırla</string>
+    <string name="dejavu_action_replace_pin">Bərkidilmiş URL-i cari ilə əvəz et</string>
     <string name="dejavu_action_add_to_essentials">Əsaslara əlavə et</string>
     <string name="dejavu_action_remove_from_essentials">Əsaslardan çıxar</string>
     <string name="dejavu_action_delete">Sil</string>

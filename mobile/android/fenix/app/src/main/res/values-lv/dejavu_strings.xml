@@ -89,6 +89,7 @@
     <string name="dejavu_split_show_on_top">Rādīt augšpusē</string>
     <string name="dejavu_split_close">Aizvērt sadalīto skatu</string>
     <string name="dejavu_action_reset_pin">Atiestatīt piespraustu cilni</string>
+    <string name="dejavu_action_replace_pin">Aizstāt piesprausto URL ar pašreizējo</string>
     <string name="dejavu_action_add_to_essentials">Pievienot Izlasei</string>
     <string name="dejavu_action_remove_from_essentials">Noņemt no Izlases</string>
     <string name="dejavu_action_delete">Dzēst</string>

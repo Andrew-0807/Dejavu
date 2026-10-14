@@ -226,6 +226,7 @@ private fun TabAction.appliesToTargets(targets: ActionTargets): Boolean = when (
     TabAction.BOOKMARK, TabAction.SHARE, TabAction.COPY_LINK -> targets.links.any { it.first.isNotBlank() }
     TabAction.DUPLICATE -> targets.tabs.isNotEmpty() || targets.allPins.isNotEmpty()
     TabAction.RESET_PIN -> targets.changedPins.isNotEmpty() || targets.closedChangedPins.isNotEmpty()
+    TabAction.REPLACE_PIN -> targets.changedPins.isNotEmpty()
     TabAction.ADD_TO_ESSENTIALS -> targets.tabs.isNotEmpty() || targets.allPins.any { !it.essential }
     TabAction.REMOVE_FROM_ESSENTIALS -> targets.pins.any { it.essential }
     TabAction.NEW_FOLDER -> !targets.isEmpty() && !targets.isSingleFolder

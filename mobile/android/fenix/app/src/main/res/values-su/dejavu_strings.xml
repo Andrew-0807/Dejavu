@@ -87,6 +87,7 @@
     <string name="dejavu_split_show_on_top">Témbongkeun di luhur</string>
     <string name="dejavu_split_close">Tutup split view</string>
     <string name="dejavu_action_reset_pin">Reset tab nu disemat</string>
+    <string name="dejavu_action_replace_pin">Ganti URL nu disemat ku nu ayeuna</string>
     <string name="dejavu_action_add_to_essentials">Tambahkeun kana Penting</string>
     <string name="dejavu_action_remove_from_essentials">Piceun tina Penting</string>
     <string name="dejavu_action_delete">Hapus</string>
