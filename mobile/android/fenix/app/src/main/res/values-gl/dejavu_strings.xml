@@ -267,6 +267,13 @@
         <item quantity="one">%1$d lapela pechada</item>
         <item quantity="other">%1$d lapelas pechadas</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Abrir a ligazón do portapapeis</string>
+    <string name="dejavu_clipboard_no_link">Non hai ningunha ligazón no portapapeis</string>
+    <string name="dejavu_reopen_closed_tab">Reabrir a lapela pechada</string>
+    <string name="dejavu_shift_previous">Mover ao espazo de traballo anterior</string>
+    <string name="dejavu_shift_next">Mover ao espazo de traballo seguinte</string>
+    <string name="dejavu_shift_blocked">As lapelas fixadas e os cartafoles non poden ir a %1$s</string>
+    <string name="dejavu_shift_held">Sae da selección para envialas a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Nas lapelas fixadas e nos cartafoles, «Pechar» pon a durmir as lapelas abertas, xa que seguen fixadas. Cando unha lapela fixada xa está durmida, «Pechar» desfíxaa.</string>
     <string name="dejavu_features_title">Descobre Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

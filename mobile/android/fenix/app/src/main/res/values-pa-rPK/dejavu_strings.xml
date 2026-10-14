@@ -267,6 +267,13 @@
         <item quantity="one">%1$d ٹیباں بند ہوئیاں</item>
         <item quantity="other">%1$d ٹیباں بند ہوئیاں</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">کلپ‌بورڈ توں لنک کھولھو</string>
+    <string name="dejavu_clipboard_no_link">کلپ‌بورڈ وچ کوئی لنک نہیں</string>
+    <string name="dejavu_reopen_closed_tab">بند کیتی ٹیب مڑ کھولھو</string>
+    <string name="dejavu_shift_previous">پچھلی ورک سپیس تے منتقل کرو</string>
+    <string name="dejavu_shift_next">اگلی ورک سپیس تے منتقل کرو</string>
+    <string name="dejavu_shift_blocked">پن کیتیاں ٹیباں تے فولڈر %1$s ول نہیں جا سکدے</string>
+    <string name="dejavu_shift_held">اوہناں نوں %1$s ول بھیجن لئی چوݨ توں نکلو</string>
     <string name="dejavu_settings_close_pinned_hint">پن کیتیاں ٹیباں تے فولڈراں وچ پن قائم رہندے نيں، ایس لئی “بند کرو” کھلیاں ٹیباں نوں سلا دیندا اے۔ جدوں پن کیتی ٹیب سوں جاندی اے، تاں “بند کرو” اوہدا پن ہٹا دیندا اے۔</string>
     <string name="dejavu_features_title">Dejavu بارے جانو</string>
     <string name="dejavu_features_page">%2$d چوں %1$d</string>

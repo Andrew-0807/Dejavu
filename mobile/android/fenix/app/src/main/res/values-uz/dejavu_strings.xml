@@ -267,6 +267,13 @@
         <item quantity="one">%1$d varaq yopildi</item>
         <item quantity="other">%1$d varaq yopildi</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Vaqtinchalik xotiradan havolani ochish</string>
+    <string name="dejavu_clipboard_no_link">Vaqtinchalik xotirada havola yo\'q</string>
+    <string name="dejavu_reopen_closed_tab">Yopilgan varaqni qayta ochish</string>
+    <string name="dejavu_shift_previous">Oldingi ish maydoniga ko\'chirish</string>
+    <string name="dejavu_shift_next">Keyingi ish maydoniga ko\'chirish</string>
+    <string name="dejavu_shift_blocked">%1$s mahkamlangan varaqlar va jildlarni qabul qila olmaydi</string>
+    <string name="dejavu_shift_held">Ularni %1$s qabul qilishi uchun tanlashdan chiqing</string>
     <string name="dejavu_settings_close_pinned_hint">Mahkamlangan varaqlar va jildlarda «Yopish» ochiq varaqlarni uxlatadi, chunki mahkamlangan varaqlar o\'z joyida qoladi. Mahkamlangan varaq uxlab qolgach, «Yopish» uning mahkamlashini bekor qiladi.</string>
     <string name="dejavu_features_title">Dejavu bilan tanishing</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

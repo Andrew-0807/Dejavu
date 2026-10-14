@@ -267,6 +267,13 @@
         <item quantity="one">%1$d tab serrà</item>
         <item quantity="other">%1$d tabs serrads</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Avrir la colliaziun da l’archiv provisoric</string>
+    <string name="dejavu_clipboard_no_link">Nagina colliaziun en l’archiv provisoric</string>
+    <string name="dejavu_reopen_closed_tab">Reavrir il tab serrà</string>
+    <string name="dejavu_shift_previous">Spustar al spazi da lavur precedent</string>
+    <string name="dejavu_shift_next">Spustar al spazi da lavur proxim</string>
+    <string name="dejavu_shift_blocked">Tabs fixads e dossiers na pon betg ir a %1$s</string>
+    <string name="dejavu_shift_held">Banduna la selecziun per als trametter a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Per tabs fixads e dossiers metta «Serrar» ils tabs averts en pausa, perquai ch\'els restan fixads. Sch\'in tab fixà è gia en pausa, al defixescha «Serrar».</string>
     <string name="dejavu_features_title">Scuvrir Dejavu</string>
     <string name="dejavu_features_page">%1$d da %2$d</string>

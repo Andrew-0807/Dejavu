@@ -148,6 +148,13 @@
         <item quantity="one">%1$d ትር ተዘግቷል</item>
         <item quantity="other">%1$d ትሮች ተዘግተዋል</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">ከቅንጥብ ሰሌዳ አገናኝ ክፈት</string>
+    <string name="dejavu_clipboard_no_link">በቅንጥብ ሰሌዳው ላይ ምንም አገናኝ የለም</string>
+    <string name="dejavu_reopen_closed_tab">የተዘጋ ትር እንደገና ክፈት</string>
+    <string name="dejavu_shift_previous">ወደ ቀዳሚው የስራ ቦታ አንቀሳቅስ</string>
+    <string name="dejavu_shift_next">ወደ ቀጣዩ የስራ ቦታ አንቀሳቅስ</string>
+    <string name="dejavu_shift_blocked">የተሰኩ ትሮች እና አቃፊዎች ወደ %1$s መሄድ አይችሉም</string>
+    <string name="dejavu_shift_held">እነሱን ወደ %1$s ለመላክ ከምርጫ ውጣ</string>
     <string name="dejavu_container_delete_close_tabs">የተሰኩትን ጨምሮ ትሮቹን ዝጋ</string>
     <string name="dejavu_container_delete_move_tabs">ወይም ትሮቹን ወደሚከተለው አንቀሳቅስ</string>
     <string name="dejavu_custom_action">ብጁ እርምጃ</string>

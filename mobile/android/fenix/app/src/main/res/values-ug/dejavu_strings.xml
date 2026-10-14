@@ -267,6 +267,13 @@
         <item quantity="one">%1$d بەتكۈچ تاقالدى</item>
         <item quantity="other">%1$d بەتكۈچ تاقالدى</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">چاپلاش تاختىسىدىكى ئۇلانمىنى ئاچ</string>
+    <string name="dejavu_clipboard_no_link">چاپلاش تاختىسىدا ئۇلانما يوق</string>
+    <string name="dejavu_reopen_closed_tab">تاقالغان بەتكۈچنى قايتا ئاچ</string>
+    <string name="dejavu_shift_previous">ئالدىنقى خىزمەت دائىرىسىگە يۆتكە</string>
+    <string name="dejavu_shift_next">كېيىنكى خىزمەت دائىرىسىگە يۆتكە</string>
+    <string name="dejavu_shift_blocked">مىخلانغان بەتكۈچ ۋە قىسقۇچلارنى %1$s غا ئەۋەتكىلى بولمايدۇ</string>
+    <string name="dejavu_shift_held">ئۇلارنى %1$s غا ئەۋەتىش ئۈچۈن تاللاشتىن چېكىنىڭ</string>
     <string name="dejavu_settings_close_pinned_hint">مىخلانغان بەتكۈچ ۋە قىسقۇچلاردا «ياپ» ئوچۇق بەتكۈچلەرنى ئۇخلىتىدۇ، چۈنكى مىخلانغان بەتكۈچلەر ساقلىنىپ قالىدۇ. مىخلانغان بەتكۈچ ئۇخلىغاندىن كېيىن، «ياپ» ئۇنى مىخلاشتىن چىقىرىدۇ.</string>
     <string name="dejavu_features_title">Dejavu نى بايقاڭ</string>
     <string name="dejavu_features_page">%1$d/%2$d</string>

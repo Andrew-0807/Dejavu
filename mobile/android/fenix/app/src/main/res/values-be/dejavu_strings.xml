@@ -281,6 +281,13 @@
         <item quantity="many">%1$d картак закрыты</item>
         <item quantity="other">%1$d картак закрыты</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Адкрыць спасылку з буфера абмену</string>
+    <string name="dejavu_clipboard_no_link">У буферы абмену няма спасылкі</string>
+    <string name="dejavu_reopen_closed_tab">Аднавіць закрытую картку</string>
+    <string name="dejavu_shift_previous">Перамясціць у папярэднюю прастору</string>
+    <string name="dejavu_shift_next">Перамясціць у наступную прастору</string>
+    <string name="dejavu_shift_blocked">Замацаваныя карткі і папкі нельга перамясціць у %1$s</string>
+    <string name="dejavu_shift_held">Выйдзіце з выбару, каб адправіць іх у %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">На замацаваных картках і ў папках «Закрыць» прысыпляе адкрытыя карткі, бо замацаванні застаюцца. Калі замацаваная картка ўжо спіць, «Закрыць» адмацоўвае яе.</string>
     <string name="dejavu_features_title">Пазнаёмцеся з Dejavu</string>
     <string name="dejavu_features_page">%1$d з %2$d</string>

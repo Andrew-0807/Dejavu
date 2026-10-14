@@ -267,6 +267,13 @@
         <item quantity="one">%1$d scheda claudite</item>
         <item quantity="other">%1$d schedas claudite</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Aperir ligamine ab le area de transferentia</string>
+    <string name="dejavu_clipboard_no_link">Nulle ligamine in le area de transferentia</string>
+    <string name="dejavu_reopen_closed_tab">Reaperir le scheda claudite</string>
+    <string name="dejavu_shift_previous">Mover al spatio de labor previe</string>
+    <string name="dejavu_shift_next">Mover al spatio de labor sequente</string>
+    <string name="dejavu_shift_blocked">Le schedas fixate e le dossiers non pote esser inviate a %1$s</string>
+    <string name="dejavu_shift_held">Quita le selection pro inviar los a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Sur schedas fixate e dossiers, ‘Clauder’ addormi le schedas aperte, perque illos resta fixate. Quando un scheda fixate ja dormi, ‘Clauder’ lo defixa.</string>
     <string name="dejavu_features_title">Discoperi Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

@@ -44,6 +44,8 @@ import mozilla.components.browser.state.state.ContainerState
 import mozilla.components.browser.state.state.SessionState
 import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.lib.state.ext.observeAsComposableState
+import mozilla.components.support.ktx.kotlin.isUrl
+import mozilla.components.support.ktx.kotlin.toNormalizedUrl
 import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
@@ -134,6 +136,7 @@ fun ComposeView.setDejavuHomeContent(
             val allPrivateTabs by fenix.core.store.observeAsComposableState { it.privateTabs }
             val isPrivateLocked by fenix.appStore.observeAsComposableState { it.isPrivateScreenLocked }
             val selectedTabId by fenix.core.store.observeAsComposableState { it.selectedTabId }
+            val hasClosedTab by fenix.core.store.observeAsComposableState { it.hasClosedTab }
             val restoreComplete by fenix.core.store.observeAsComposableState { it.restoreComplete }
             val isSearchActive by fenix.appStore.observeAsComposableState { it.searchState.isSearchActive }
 
@@ -165,6 +168,7 @@ fun ComposeView.setDejavuHomeContent(
                     tabs = tabs,
                     privateTabs = if (isPrivateLocked) emptyList() else allPrivateTabs,
                     selectedTabId = selectedTabId,
+                    hasClosedTab = hasClosedTab,
                     containers = containers,
                     pinnedRowActions = resolveRowActions(pinnedKeys, ActionPlace.PINNED_ROWS, customActions),
                     unpinnedRowActions = resolveRowActions(unpinnedKeys, ActionPlace.UNPINNED_ROWS, customActions),
@@ -258,6 +262,7 @@ private class DefaultDejavuHomeInteractor(
         notify = { message -> scope.launch { snackbar.showSnackbar(message) } },
         openTab = openTab,
     ),
+    private val reopener: ClosedTabReopener = ClosedTabReopener(context, components, repository, scope),
 ) : DejavuHomeInteractor {
     private val tabsUseCases = components.useCases.tabsUseCases
     private val store = components.core.store
@@ -328,6 +333,28 @@ private class DefaultDejavuHomeInteractor(
 
     override fun onMoveToWorkspace(targets: ActionTargets, workspaceId: String) =
         runner.onMoveToWorkspace(targets, workspaceId)
+
+    override fun onShiftToWorkspace(targets: ActionTargets, workspaceId: String) =
+        runner.shiftToWorkspace(targets, workspaceId)
+
+    override fun onReopenClosedTab(): String? = reopener.reopen()
+
+    override fun onOpenClipboardLink(workspaceId: String) {
+        val url = components.clipboardHandler.extractURL()?.takeIf { it.isUrl() }?.toNormalizedUrl()
+        if (url == null) {
+            scope.launch { snackbar.showSnackbar(context.getString(R.string.dejavu_clipboard_no_link)) }
+            return
+        }
+        // Like the tabs opened by hand, it opens in the workspace's container, except in the workspace of a device on the
+        // account, which only holds tabs without one.
+        val toDevice = repository.state.value.isDeviceWorkspace(workspaceId)
+        val tabId = tabsUseCases.addTab(
+            url = url,
+            source = if (toDevice) SessionState.Source.Internal.None else SessionState.Source.Internal.UserEntered,
+        )
+        repository.assignTab(tabId, workspaceId)
+        openTab(tabId)
+    }
 
     override fun onChangeContainer(targets: ActionTargets, pick: ContainerPick) = runner.onChangeContainer(targets, pick)
 

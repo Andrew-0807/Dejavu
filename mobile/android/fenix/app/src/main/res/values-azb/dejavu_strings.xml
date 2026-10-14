@@ -267,6 +267,13 @@
         <item quantity="one">%1$d تاغ باغلاندی</item>
         <item quantity="other">%1$d تاغ باغلاندی</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">کلیپ‌بوْرددان لینکی آچ</string>
+    <string name="dejavu_clipboard_no_link">کلیپ‌بوْرددا لینک یوْخدور</string>
+    <string name="dejavu_reopen_closed_tab">باغلانان تاغی یئنیدن آچ</string>
+    <string name="dejavu_shift_previous">قاباقکی ایش ساحه‌سینه کؤچور</string>
+    <string name="dejavu_shift_next">سوْنراکی ایش ساحه‌سینه کؤچور</string>
+    <string name="dejavu_shift_blocked">%1$s برکیدیلمیش تاغلاری و پوشه‌لری آلا بیلمز</string>
+    <string name="dejavu_shift_held">سئچیمدن چیخ کی %1$s اوْنلاری آلسین</string>
     <string name="dejavu_settings_close_pinned_hint">برکیدیلمیش تاغلاردا و پوشه‌لرده «باغلا» آچیق تاغلاری یوخویا قویور، چونکی برکیتمه‌لر قالیر. برکیدیلمیش تاغ یوخودا اولاندا «باغلا» اونو برکیتمه‌دن چیخاریر.</string>
     <string name="dejavu_features_title">Dejavu ایله تانیش اولون</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

@@ -267,6 +267,13 @@
         <item quantity="one">%1$d kaart suletud</item>
         <item quantity="other">%1$d kaarti suletud</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Ava link vahemälust</string>
+    <string name="dejavu_clipboard_no_link">Vahemälus pole linki</string>
+    <string name="dejavu_reopen_closed_tab">Ava suletud kaart uuesti</string>
+    <string name="dejavu_shift_previous">Liiguta eelmisesse tööruumi</string>
+    <string name="dejavu_shift_next">Liiguta järgmisesse tööruumi</string>
+    <string name="dejavu_shift_blocked">Kinnitatud kaarte ja kaustu ei saa seadmesse %1$s liigutada</string>
+    <string name="dejavu_shift_held">Nende saatmiseks seadmesse %1$s välju valikurežiimist</string>
     <string name="dejavu_settings_close_pinned_hint">Kinnitatud kaartidel ja kaustadel uinutab „Sulge” avatud kaardid, sest need jäävad kinnitatuks. Kui kinnitatud kaart on juba uinunud, eemaldab „Sulge” selle kinnituse.</string>
     <string name="dejavu_features_title">Avasta Dejavu</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

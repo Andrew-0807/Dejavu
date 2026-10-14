@@ -267,6 +267,13 @@
         <item quantity="one">%1$d ټبونه بند شول</item>
         <item quantity="other">%1$d ټبونه بند شول</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">له کلیپ بورډ څخه لینک خلاصول</string>
+    <string name="dejavu_clipboard_no_link">په کلیپ بورډ کې لینک نشته</string>
+    <string name="dejavu_reopen_closed_tab">بند شوی ټب بیا خلاصول</string>
+    <string name="dejavu_shift_previous">پخوانۍ ساحې ته لېږدول</string>
+    <string name="dejavu_shift_next">راتلونکې ساحې ته لېږدول</string>
+    <string name="dejavu_shift_blocked">پین شوي ټبونه او پوښې %1$s ته نشي لېږل کېدای</string>
+    <string name="dejavu_shift_held">له ټاکنې ووځئ ترڅو یې %1$s ته ولېږئ</string>
     <string name="dejavu_settings_close_pinned_hint">په پین شویو ټبونو او پوښو کې، «بندول» خلاص ټبونه ویده کوي، ځکه چې پین شوي ټبونه پاتې کېږي. کله چې یو پین شوی ټب ویده شي، «بندول» یې پین باسي.</string>
     <string name="dejavu_features_title">Dejavu وپېژنئ</string>
     <string name="dejavu_features_page">%1$d له %2$d</string>

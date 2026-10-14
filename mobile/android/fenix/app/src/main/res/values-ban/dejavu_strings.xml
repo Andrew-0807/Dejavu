@@ -260,6 +260,13 @@
     <plurals name="dejavu_tabs_closed">
         <item quantity="other">%1$d tab katutup</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Bukak link uli papan klip</string>
+    <string name="dejavu_clipboard_no_link">Tusing ada link di papan klip</string>
+    <string name="dejavu_reopen_closed_tab">Bukak buin tab ane katutup</string>
+    <string name="dejavu_shift_previous">Pindahang ka genah sadurungnyane</string>
+    <string name="dejavu_shift_next">Pindahang ka genah selanturnyane</string>
+    <string name="dejavu_shift_blocked">Tab kasemat lan map tusing nyidang kakirim ka %1$s</string>
+    <string name="dejavu_shift_held">Pesu uli pamilihan apang kakirim ka %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Ring tab kasemat miwah map, Tutup ngaenang tab sane mabukak pules, santukan semat-semat nenten ical. Yening tab kasemat sampun pules, Tutup ngelepasang ipun.</string>
     <string name="dejavu_features_title">Kenalin Dejavu</string>
     <string name="dejavu_features_page">%1$d saking %2$d</string>

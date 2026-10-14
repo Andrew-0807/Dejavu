@@ -281,6 +281,13 @@
         <item quantity="many">%1$d вкладок закрыто</item>
         <item quantity="other">%1$d вкладки закрыто</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Открыть ссылку из буфера обмена</string>
+    <string name="dejavu_clipboard_no_link">В буфере обмена нет ссылки</string>
+    <string name="dejavu_reopen_closed_tab">Восстановить закрытую вкладку</string>
+    <string name="dejavu_shift_previous">Переместить в предыдущее рабочее пространство</string>
+    <string name="dejavu_shift_next">Переместить в следующее рабочее пространство</string>
+    <string name="dejavu_shift_blocked">Закреплённые вкладки и папки нельзя переместить в %1$s</string>
+    <string name="dejavu_shift_held">Выйдите из режима выбора, чтобы отправить их в %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">На закреплённых вкладках и в папках «Закрыть» усыпляет открытые вкладки, ведь закрепления остаются. Если закреплённая вкладка уже спит, «Закрыть» открепляет её.</string>
     <string name="dejavu_features_title">Знакомство с Dejavu</string>
     <string name="dejavu_features_page">%1$d из %2$d</string>

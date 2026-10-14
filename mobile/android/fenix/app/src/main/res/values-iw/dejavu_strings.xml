@@ -274,6 +274,13 @@
         <item quantity="two">%1$d לשוניות נסגרו</item>
         <item quantity="other">%1$d לשוניות נסגרו</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">פתיחת קישור מהלוח</string>
+    <string name="dejavu_clipboard_no_link">אין קישור בלוח</string>
+    <string name="dejavu_reopen_closed_tab">פתיחה מחדש של לשונית שנסגרה</string>
+    <string name="dejavu_shift_previous">העברה למרחב העבודה הקודם</string>
+    <string name="dejavu_shift_next">העברה למרחב העבודה הבא</string>
+    <string name="dejavu_shift_blocked">לא ניתן לשלוח לשוניות מוצמדות ותיקיות אל %1$s</string>
+    <string name="dejavu_shift_held">צאו מהבחירה כדי לשלוח אותן אל %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">על לשוניות מוצמדות ועל תיקיות, “סגירה” מרדימה את הלשוניות הפתוחות, כי הן נשארות מוצמדות. כשלשונית מוצמדת כבר רדומה, “סגירה” מבטלת את ההצמדה שלה.</string>
     <string name="dejavu_features_title">גלו את Dejavu</string>
     <string name="dejavu_features_page">%1$d מתוך %2$d</string>

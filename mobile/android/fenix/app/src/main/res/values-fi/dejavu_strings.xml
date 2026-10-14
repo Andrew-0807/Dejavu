@@ -267,6 +267,13 @@
         <item quantity="one">%1$d välilehti suljettu</item>
         <item quantity="other">%1$d välilehteä suljettu</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Avaa linkki leikepöydältä</string>
+    <string name="dejavu_clipboard_no_link">Leikepöydällä ei ole linkkiä</string>
+    <string name="dejavu_reopen_closed_tab">Avaa suljettu välilehti uudelleen</string>
+    <string name="dejavu_shift_previous">Siirrä edelliseen työtilaan</string>
+    <string name="dejavu_shift_next">Siirrä seuraavaan työtilaan</string>
+    <string name="dejavu_shift_blocked">Kiinnitettyjä välilehtiä ja kansioita ei voi siirtää laitteeseen %1$s</string>
+    <string name="dejavu_shift_held">Poistu valinnasta lähettääksesi ne laitteeseen %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Kiinnitetyissä välilehdissä ja kansioissa Sulje-painike siirtää avoimet välilehdet lepotilaan, koska ne pysyvät kiinnitettyinä. Kun kiinnitetty välilehti on jo lepotilassa, Sulje-painike irrottaa sen kiinnityksen.</string>
     <string name="dejavu_features_title">Tutustu Dejavuun</string>
     <string name="dejavu_features_page">%1$d/%2$d</string>

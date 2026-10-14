@@ -267,6 +267,13 @@
         <item quantity="one">%1$d flik stängd</item>
         <item quantity="other">%1$d flikar stängda</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Öppna länk från urklipp</string>
+    <string name="dejavu_clipboard_no_link">Ingen länk i urklipp</string>
+    <string name="dejavu_reopen_closed_tab">Återöppna stängd flik</string>
+    <string name="dejavu_shift_previous">Flytta till föregående arbetsyta</string>
+    <string name="dejavu_shift_next">Flytta till nästa arbetsyta</string>
+    <string name="dejavu_shift_blocked">Fästa flikar och mappar kan inte skickas till %1$s</string>
+    <string name="dejavu_shift_held">Avsluta markeringen för att skicka dem till %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">På fästa flikar och mappar försätter Stäng de öppna flikarna i vila, eftersom de fästa flikarna finns kvar. När en fäst flik redan vilar lossar Stäng den.</string>
     <string name="dejavu_features_title">Upptäck Dejavu</string>
     <string name="dejavu_features_page">%1$d av %2$d</string>

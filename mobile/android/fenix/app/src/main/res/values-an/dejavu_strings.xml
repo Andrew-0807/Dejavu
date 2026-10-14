@@ -267,6 +267,13 @@
         <item quantity="one">%1$d pestanya zarrada</item>
         <item quantity="other">%1$d pestanyas zarradas</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Ubrir o vinclo d\'o portapapers</string>
+    <string name="dejavu_clipboard_no_link">Garra vinclo en o portapapers</string>
+    <string name="dejavu_reopen_closed_tab">Tornar a ubrir a pestanya zarrada</string>
+    <string name="dejavu_shift_previous">Mover a l\'espacio de treballo anterior</string>
+    <string name="dejavu_shift_next">Mover a l\'espacio de treballo siguient</string>
+    <string name="dejavu_shift_blocked">As pestanyas fixadas y as carpetas no pueden ir a %1$s</string>
+    <string name="dejavu_shift_held">Sal d\'a selección ta ninviar-las a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">En as pestanyas fixadas y as carpetas, «Zarrar» fa dormir as pestanyas ubiertas, porque as fixadas se quedan. Quan una pestanya fixada ya dorme, «Zarrar» la desfixa.</string>
     <string name="dejavu_features_title">Descubre Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

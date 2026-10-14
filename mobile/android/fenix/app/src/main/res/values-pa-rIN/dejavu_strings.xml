@@ -267,6 +267,13 @@
         <item quantity="one">%1$d ਟੈਬ ਬੰਦ ਕੀਤੀ ਗਈ</item>
         <item quantity="other">%1$d ਟੈਬਾਂ ਬੰਦ ਕੀਤੀਆਂ ਗਈਆਂ</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">ਕਲਿੱਪਬੋਰਡ ਤੋਂ ਲਿੰਕ ਖੋਲ੍ਹੋ</string>
+    <string name="dejavu_clipboard_no_link">ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕੋਈ ਲਿੰਕ ਨਹੀਂ ਹੈ</string>
+    <string name="dejavu_reopen_closed_tab">ਬੰਦ ਕੀਤੀ ਟੈਬ ਮੁੜ ਖੋਲ੍ਹੋ</string>
+    <string name="dejavu_shift_previous">ਪਿਛਲੀ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ</string>
+    <string name="dejavu_shift_next">ਅਗਲੀ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ</string>
+    <string name="dejavu_shift_blocked">ਪਿੰਨ ਕੀਤੀਆਂ ਟੈਬਾਂ ਅਤੇ ਫੋਲਡਰ %1$s ਉੱਤੇ ਨਹੀਂ ਜਾ ਸਕਦੇ</string>
+    <string name="dejavu_shift_held">ਉਹਨਾਂ ਨੂੰ %1$s ਉੱਤੇ ਭੇਜਣ ਲਈ ਚੋਣ ਤੋਂ ਬਾਹਰ ਜਾਓ</string>
     <string name="dejavu_settings_close_pinned_hint">ਪਿੰਨ ਕੀਤੀਆਂ ਟੈਬਾਂ ਅਤੇ ਫੋਲਡਰਾਂ ‘ਤੇ, ਪਿੰਨ ਬਣੇ ਰਹਿਣ ਕਰਕੇ “ਬੰਦ ਕਰੋ” ਖੁੱਲ੍ਹੀਆਂ ਟੈਬਾਂ ਨੂੰ ਸਲੀਪ ਮੋਡ ਵਿੱਚ ਭੇਜਦਾ ਹੈ। ਪਿੰਨ ਕੀਤੀ ਟੈਬ ਦੇ ਸਲੀਪ ਮੋਡ ਵਿੱਚ ਜਾਣ ਤੋਂ ਬਾਅਦ, “ਬੰਦ ਕਰੋ” ਉਸ ਦਾ ਪਿੰਨ ਹਟਾ ਦਿੰਦਾ ਹੈ।</string>
     <string name="dejavu_features_title">Dejavu ਬਾਰੇ ਜਾਣੋ</string>
     <string name="dejavu_features_page">%2$d ਵਿੱਚੋਂ %1$d</string>

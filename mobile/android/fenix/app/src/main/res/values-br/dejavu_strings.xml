@@ -288,6 +288,13 @@
         <item quantity="many">%1$d ivinell serret</item>
         <item quantity="other">%1$d ivinell serret</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Digeriñ al liamm eus ar golver</string>
+    <string name="dejavu_clipboard_no_link">N’eus liamm ebet er golver</string>
+    <string name="dejavu_reopen_closed_tab">Digeriñ en-dro an ivinell serret</string>
+    <string name="dejavu_shift_previous">Dilec’hiañ war an egor labour kent</string>
+    <string name="dejavu_shift_next">Dilec’hiañ war an egor labour war-lerc’h</string>
+    <string name="dejavu_shift_blocked">An ivinelloù spilhennet hag an teuliadoù n’hallont ket mont da %1$s</string>
+    <string name="dejavu_shift_held">Kuitait an diuzad evit o c’has da %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">War an ivinelloù spilhennet hag an teuliadoù, e laka «Serriñ» an ivinelloù digor da gousket, rak ar spilhennoù a chom. Pa vez kousket un ivinell spilhennet dija, e tispilhenn «Serriñ» anezhi.</string>
     <string name="dejavu_features_title">Dizoleiñ Dejavu</string>
     <string name="dejavu_features_page">%1$d diwar %2$d</string>

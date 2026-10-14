@@ -267,6 +267,13 @@
         <item quantity="one">%1$d ट्याब बन्द भयो</item>
         <item quantity="other">%1$d ट्याबहरु बन्द भयो</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">क्लिपबोर्डबाट लिङ्क खोल्नुहोस्</string>
+    <string name="dejavu_clipboard_no_link">क्लिपबोर्डमा कुनै लिङ्क छैन</string>
+    <string name="dejavu_reopen_closed_tab">बन्द गरिएको ट्याब फेरि खोल्नुहोस्</string>
+    <string name="dejavu_shift_previous">पहिलाको कार्यक्षेत्रमा सार्नुहोस्</string>
+    <string name="dejavu_shift_next">अर्को कार्यक्षेत्रमा सार्नुहोस्</string>
+    <string name="dejavu_shift_blocked">पिन गरिएका ट्याबहरु र फोल्डरहरु %1$s मा पठाउन सकिँदैन</string>
+    <string name="dejavu_shift_held">तिनलाई %1$s मा पठाउन चयनबाट बाहिरिनुहोस्</string>
     <string name="dejavu_settings_close_pinned_hint">पिन गरिएका ट्याबहरु र फोल्डरहरुमा, पिनहरु रहिरहने भएकाले “बन्द गर्नुहोस्” ले खुला ट्याबहरुलाई स्लीपमा राख्छ। पिन गरिएको ट्याब स्लीपमा गएपछि, “बन्द गर्नुहोस्” ले यसको पिन हटाउँछ।</string>
     <string name="dejavu_features_title">Dejavu बारे जान्नुहोस्</string>
     <string name="dejavu_features_page">%2$d मध्ये %1$d</string>

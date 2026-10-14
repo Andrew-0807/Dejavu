@@ -267,6 +267,13 @@
         <item quantity="one">%1$d ٹیب بند ہتین</item>
         <item quantity="other">%1$d ٹیب بند ہتین</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">کلپ بورڈ نا لنک کھول</string>
+    <string name="dejavu_clipboard_no_link">کلپ بورڈ ٹی لنک اف</string>
+    <string name="dejavu_reopen_closed_tab">بند ٹیب دوبارہ کھول</string>
+    <string name="dejavu_shift_previous">پچھلا ورک سپیس ٹی چل</string>
+    <string name="dejavu_shift_next">اگلا ورک سپیس ٹی چل</string>
+    <string name="dejavu_shift_blocked">%1$s ٹی پن ٹیباک او فولڈراک نا جاگہ اف</string>
+    <string name="dejavu_shift_held">چُنائی نا نکل، ٹیباک %1$s ٹی چل ہن</string>
     <string name="dejavu_settings_close_pinned_hint">پن ٹیباک و فولڈراک ٹی «بند کبو» کھلوکا ٹیباتے سلیپ کیک، اینکہ پن سلامت سلّیرہ. ہراغا پن ٹیب سلیپ ٹی مریک، «بند کبو» اوڑان پن ہٹیک.</string>
     <string name="dejavu_features_title">Dejavu ئے پٹ</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

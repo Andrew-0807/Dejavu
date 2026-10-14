@@ -260,6 +260,13 @@
     <plurals name="dejavu_tabs_closed">
         <item quantity="other">已關閉 %1$d 個分頁</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">開啟剪貼簿中的連結</string>
+    <string name="dejavu_clipboard_no_link">剪貼簿中沒有連結</string>
+    <string name="dejavu_reopen_closed_tab">重新開啟關閉的分頁</string>
+    <string name="dejavu_shift_previous">移動到上一個工作區</string>
+    <string name="dejavu_shift_next">移動到下一個工作區</string>
+    <string name="dejavu_shift_blocked">已釘選分頁與資料夾無法移動到 %1$s</string>
+    <string name="dejavu_shift_held">結束選取即可將它們傳送到 %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">在已釘選分頁與資料夾上，「關閉」會讓已開啟的分頁休眠，因為已釘選分頁會保留。已釘選分頁休眠後，「關閉」會將其取消釘選。</string>
     <string name="dejavu_features_title">探索 Dejavu</string>
     <string name="dejavu_features_page">%1$d/%2$d</string>

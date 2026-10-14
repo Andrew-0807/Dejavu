@@ -267,6 +267,13 @@
         <item quantity="one">%1$d ჩანართი დაიხურა</item>
         <item quantity="other">%1$d ჩანართი დაიხურა</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">ბმულის გახსნა ბუფერიდან</string>
+    <string name="dejavu_clipboard_no_link">ბუფერში ბმული არ არის</string>
+    <string name="dejavu_reopen_closed_tab">დახურული ჩანართის ხელახლა გახსნა</string>
+    <string name="dejavu_shift_previous">წინა სივრცეში გადატანა</string>
+    <string name="dejavu_shift_next">შემდეგ სივრცეში გადატანა</string>
+    <string name="dejavu_shift_blocked">მიმაგრებული ჩანართები და საქაღალდეები ვერ გადავა მოწყობილობაზე %1$s</string>
+    <string name="dejavu_shift_held">დაასრულეთ მონიშვნა, რომ გაიგზავნოს მოწყობილობაზე %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">მიმაგრებულ ჩანართებსა და საქაღალდეებზე „დახურვა“ გახსნილ ჩანართებს აძინებს, რადგან ისინი მიმაგრებული რჩება. როცა მიმაგრებულ ჩანართს უკვე სძინავს, „დახურვა“ მის მიმაგრებას მოხსნის.</string>
     <string name="dejavu_features_title">გაიცანით Dejavu</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

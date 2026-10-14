@@ -281,6 +281,13 @@
         <item quantity="many">Zawarto %1$d kart</item>
         <item quantity="other">Zawarto %1$d karty</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Ôtwōrz link ze skrytki</string>
+    <string name="dejavu_clipboard_no_link">We skrytce niy ma linku</string>
+    <string name="dejavu_reopen_closed_tab">Ôtwōrz zaś zawarto karta</string>
+    <string name="dejavu_shift_previous">Przenieś na piyrwyjszy plac</string>
+    <string name="dejavu_shift_next">Przenieś na nastympny plac</string>
+    <string name="dejavu_shift_blocked">Przipiynte karty i foldry niy mogōm iś do %1$s</string>
+    <string name="dejavu_shift_held">Zakōńcz ôbiyranie, coby posłać je do %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Na przipiyntych kartach i foldrach knefel Zawrzij usypio ôdewrzite karty, bo przipiynte karty ôstajōm. Jak przipiynto karta już śpi, Zawrzij jōm ôdepnie.</string>
     <string name="dejavu_features_title">Ôdkryj Dejavu</string>
     <string name="dejavu_features_page">%1$d z %2$d</string>

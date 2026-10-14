@@ -267,6 +267,13 @@
         <item quantity="one">%1$d раздел затворен</item>
         <item quantity="other">%1$d раздела затворени</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">Отваряне на връзка от буфера за обмен</string>
+    <string name="dejavu_clipboard_no_link">В буфера за обмен няма връзка</string>
+    <string name="dejavu_reopen_closed_tab">Повторно отваряне на затворен раздел</string>
+    <string name="dejavu_shift_previous">Преместване в предишното работно пространство</string>
+    <string name="dejavu_shift_next">Преместване в следващото работно пространство</string>
+    <string name="dejavu_shift_blocked">Закачените раздели и папките не могат да бъдат преместени в %1$s</string>
+    <string name="dejavu_shift_held">Излезте от избора, за да ги изпратите до %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">При закачените раздели и папките „Затваряне“ приспива отворените раздели, тъй като закачването остава. Щом закачен раздел вече спи, „Затваряне“ го откача.</string>
     <string name="dejavu_features_title">Открийте Dejavu</string>
     <string name="dejavu_features_page">%1$d от %2$d</string>

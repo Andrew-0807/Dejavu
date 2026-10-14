@@ -295,6 +295,13 @@
         <item quantity="many">%1$d تبويبًا مغلقًا</item>
         <item quantity="other">%1$d تبويب مغلق</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">فتح الرابط من الحافظة</string>
+    <string name="dejavu_clipboard_no_link">لا يوجد رابط في الحافظة</string>
+    <string name="dejavu_reopen_closed_tab">إعادة فتح التبويب المغلق</string>
+    <string name="dejavu_shift_previous">نقل إلى مساحة العمل السابقة</string>
+    <string name="dejavu_shift_next">نقل إلى مساحة العمل التالية</string>
+    <string name="dejavu_shift_blocked">لا يمكن نقل التبويبات المثبتة والمجلدات إلى %1$s</string>
+    <string name="dejavu_shift_held">اخرج من التحديد لإرسالها إلى %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">في التبويبات المثبتة والمجلدات، يُسبت «إغلاق» التبويبات المفتوحة لأن التثبيت يبقى. وعندما يكون التبويب المثبت في حالة إسبات، يلغي «إغلاق» تثبيته.</string>
     <string name="dejavu_features_title">اكتشف Dejavu</string>
     <string name="dejavu_features_page">%1$d من %2$d</string>

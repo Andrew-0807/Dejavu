@@ -267,6 +267,13 @@
         <item quantity="one">පටිති %1$d ක් වසන ලදී</item>
         <item quantity="other">පටිති %1$d ක් වසන ලදී</item>
     </plurals>
+    <string name="dejavu_open_clipboard_link">පසුරු පුවරුවෙන් සබැඳිය විවෘත කරන්න</string>
+    <string name="dejavu_clipboard_no_link">පසුරු පුවරුවේ සබැඳියක් නැත</string>
+    <string name="dejavu_reopen_closed_tab">වසා දැමූ පටිත්ත නැවත විවෘත කරන්න</string>
+    <string name="dejavu_shift_previous">පෙර අවකාශයට ගෙනයන්න</string>
+    <string name="dejavu_shift_next">ඊළඟ අවකාශයට ගෙනයන්න</string>
+    <string name="dejavu_shift_blocked">අමුණන ලද පටිති සහ ෆෝල්ඩර %1$s වෙත ගෙනයා නොහැක</string>
+    <string name="dejavu_shift_held">ඒවා %1$s වෙත යැවීමට තේරීමෙන් ඉවත් වන්න</string>
     <string name="dejavu_settings_close_pinned_hint">අමුණන ලද පටිති රැඳී පවතින බැවින්, අමුණන ලද පටිති සහ ෆෝල්ඩර මත ඇති වසන්න බොත්තම විවෘත පටිති නිදි කරයි. අමුණන ලද පටිත්තක් නිදා ගත් පසු, වසන්න බොත්තම එය ගළවයි.</string>
     <string name="dejavu_features_title">Dejavu සොයාගන්න</string>
     <string name="dejavu_features_page">%2$d න් %1$d</string>
