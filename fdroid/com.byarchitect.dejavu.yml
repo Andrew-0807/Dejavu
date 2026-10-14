@@ -19,7 +19,7 @@ Repo: https://gitlab.com/by-architect/dejavubuild.git
 Builds:
   - versionName: 2.0.1
     versionCode: 2016210001
-    commit: v2.0.1
+    commit: 2863c2080d8dd799012873f3b08861c0ebc85049
     timeout: 36000
     sudo:
       - echo "deb https://deb.debian.org/debian bookworm main" > /etc/apt/sources.list.d/bookworm.list
@@ -42,9 +42,7 @@ Builds:
       - toolchain-utils@dd1ee45a84cb07337f9d5d0a6769d9b865c6e620
     prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
     build: ./build.sh
-    ndk:
-      - 30.0.16248370
-      - 29.0.14206865
+    ndk: 30.0.16248370
 
 MaintainerNotes: |-
   Built like Fennec F-Droid: the Repo is dejavubuild, a fork of relan's fennecbuild, and Firefox comes in as the
@@ -68,7 +66,7 @@ MaintainerNotes: |-
   GleanAS version:
   grep '^glean =' build/srclib/MozAppServices/gradle/libs.versions.toml
 
-  NDK versions: the first is Firefox's (ANDROID_NDK), the second the one Glean and Application Services ask for:
+  NDK versions: ndk is Firefox's; build.sh installs the one Glean and Application Services ask for with sdkmanager:
   grep 'NDK_VERSION =' build/srclib/MozFennec/python/mozboot/mozboot/android.py
   grep ndkVersion build/srclib/MozGlean/build.gradle build/srclib/MozAppServices/settings.gradle
 
