@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.dejavu.sync
 
+import android.content.Context
 import android.text.format.DateUtils
 import android.view.ViewGroup
 import androidx.annotation.StringRes
@@ -82,7 +83,7 @@ class DejavuAccountSync(private val fragment: PreferenceFragmentCompat) {
             },
         )
         enabled.isChecked = status.enabled
-        source.summary = context.getString(sourceName(status.source)) + "\n" + statusText(status)
+        source.summary = syncSummary(context, status)
         source.isEnabled = status.enabled
         normalTabs.isChecked = status.normalTabs
         normalTabs.isEnabled = status.enabled
@@ -101,25 +102,6 @@ class DejavuAccountSync(private val fragment: PreferenceFragmentCompat) {
             hint.summary = context.getString(
                 if (it == DejavuSyncSource.FIREFOX) R.string.dejavu_sync_firefox_hint else R.string.dejavu_sync_zen_hint,
             )
-        }
-    }
-
-    private fun statusText(status: DejavuSyncStatus): String {
-        val problem = status.problem
-        return when {
-            !status.enabled -> context.getString(R.string.dejavu_sync_off)
-            status.syncing -> context.getString(R.string.dejavu_sync_syncing)
-            problem != null -> context.getString(problemText(problem))
-            status.source == null -> context.getString(R.string.dejavu_sync_problem_choose)
-            status.lastSynced > 0 -> context.getString(
-                R.string.dejavu_sync_last_synced,
-                DateUtils.getRelativeTimeSpanString(
-                    status.lastSynced,
-                    System.currentTimeMillis(),
-                    DateUtils.MINUTE_IN_MILLIS,
-                ).toString(),
-            )
-            else -> context.getString(R.string.dejavu_sync_never_synced)
         }
     }
 
@@ -149,26 +131,71 @@ class DejavuAccountSync(private val fragment: PreferenceFragmentCompat) {
             }
         }
     }
+}
 
-    private companion object {
-        @StringRes
-        fun sourceName(source: DejavuSyncSource?): Int = when (source) {
-            DejavuSyncSource.ZEN -> R.string.dejavu_sync_source_zen
-            DejavuSyncSource.FIREFOX -> R.string.dejavu_sync_source_firefox
-            null -> R.string.dejavu_sync_source_none
-        }
+/**
+ * The row of the main settings that leads to workspace sync, shown before signing in too: until then it says what
+ * syncing does and opens signing in, then it shows the browser workspaces sync with and how syncing goes.
+ */
+class DejavuSyncEntry(private val fragment: PreferenceFragmentCompat) {
+    private val entry = fragment.requirePreference<Preference>(R.string.pref_key_dejavu_sync_entry)
 
-        @StringRes
-        fun problemText(problem: DejavuSyncProblem): Int = when (problem) {
-            DejavuSyncProblem.NOT_SET_UP -> R.string.dejavu_sync_problem_not_set_up
-            DejavuSyncProblem.NOT_TURNED_ON -> R.string.dejavu_sync_problem_not_turned_on
-            DejavuSyncProblem.NEEDS_UPDATE -> R.string.dejavu_sync_problem_needs_update
-            DejavuSyncProblem.SIGN_IN_AGAIN -> R.string.dejavu_sync_problem_sign_in
-            DejavuSyncProblem.OFFLINE -> R.string.dejavu_sync_problem_offline
-            DejavuSyncProblem.SERVER -> R.string.dejavu_sync_problem_server
-            DejavuSyncProblem.CHOOSE_SOURCE -> R.string.dejavu_sync_problem_choose
-            DejavuSyncProblem.TABS_OFF -> R.string.dejavu_sync_problem_tabs_off
-            DejavuSyncProblem.NO_FIREFOX -> R.string.dejavu_sync_problem_no_firefox
+    fun bind() {
+        val owner = fragment.viewLifecycleOwner
+        owner.lifecycleScope.launch {
+            owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                DejavuSync.status.collect { status ->
+                    val context = fragment.context ?: return@collect
+                    entry.summary = if (status.signedIn) {
+                        syncSummary(context, status)
+                    } else {
+                        context.getString(R.string.dejavu_sync_choose_about)
+                    }
+                }
+            }
         }
     }
+}
+
+/** The browser workspaces sync with, and how syncing goes, on two lines. */
+private fun syncSummary(context: Context, status: DejavuSyncStatus): String =
+    context.getString(sourceName(status.source)) + "\n" + statusText(context, status)
+
+private fun statusText(context: Context, status: DejavuSyncStatus): String {
+    val problem = status.problem
+    return when {
+        !status.enabled -> context.getString(R.string.dejavu_sync_off)
+        status.syncing -> context.getString(R.string.dejavu_sync_syncing)
+        problem != null -> context.getString(problemText(problem))
+        status.source == null -> context.getString(R.string.dejavu_sync_problem_choose)
+        status.lastSynced > 0 -> context.getString(
+            R.string.dejavu_sync_last_synced,
+            DateUtils.getRelativeTimeSpanString(
+                status.lastSynced,
+                System.currentTimeMillis(),
+                DateUtils.MINUTE_IN_MILLIS,
+            ).toString(),
+        )
+        else -> context.getString(R.string.dejavu_sync_never_synced)
+    }
+}
+
+@StringRes
+private fun sourceName(source: DejavuSyncSource?): Int = when (source) {
+    DejavuSyncSource.ZEN -> R.string.dejavu_sync_source_zen
+    DejavuSyncSource.FIREFOX -> R.string.dejavu_sync_source_firefox
+    null -> R.string.dejavu_sync_source_none
+}
+
+@StringRes
+private fun problemText(problem: DejavuSyncProblem): Int = when (problem) {
+    DejavuSyncProblem.NOT_SET_UP -> R.string.dejavu_sync_problem_not_set_up
+    DejavuSyncProblem.NOT_TURNED_ON -> R.string.dejavu_sync_problem_not_turned_on
+    DejavuSyncProblem.NEEDS_UPDATE -> R.string.dejavu_sync_problem_needs_update
+    DejavuSyncProblem.SIGN_IN_AGAIN -> R.string.dejavu_sync_problem_sign_in
+    DejavuSyncProblem.OFFLINE -> R.string.dejavu_sync_problem_offline
+    DejavuSyncProblem.SERVER -> R.string.dejavu_sync_problem_server
+    DejavuSyncProblem.CHOOSE_SOURCE -> R.string.dejavu_sync_problem_choose
+    DejavuSyncProblem.TABS_OFF -> R.string.dejavu_sync_problem_tabs_off
+    DejavuSyncProblem.NO_FIREFOX -> R.string.dejavu_sync_problem_no_firefox
 }

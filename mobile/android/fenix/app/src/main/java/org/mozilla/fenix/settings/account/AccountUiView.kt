@@ -69,7 +69,8 @@ class AccountUiView(
             preferenceSignIn.isVisible = true
             preferenceFirefoxAccount.isVisible = false
             preferenceFirefoxAccountAuthError.isVisible = false
-            accountPreferenceCategory.isVisible = false
+            // Dejavu: the section stays, with the sign in button and workspace sync in it.
+            accountPreferenceCategory.isVisible = true
         }
     }
 

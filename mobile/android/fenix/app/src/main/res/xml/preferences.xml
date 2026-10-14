@@ -33,18 +33,18 @@
             app:widgetLayout="@layout/preference_widget_external_link" />
     </androidx.preference.PreferenceCategory>
 
-    <androidx.preference.Preference
-        android:key="@string/pref_key_sign_in"
-        android:layout="@layout/sign_in_preference"
-        android:summary="@string/preferences_sign_in_description"
-        android:title="@string/preferences_sign_in"
-        app:allowDividerBelow="false" />
-
+    <!-- Dejavu: the account section is shown before signing in too, with the sign in button and workspace sync. -->
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_account_category"
         android:title="@string/preferences_category_account"
-        app:isPreferenceVisible="false"
         android:layout="@layout/preference_category_no_icon_style">
+
+        <androidx.preference.Preference
+            android:key="@string/pref_key_sign_in"
+            android:layout="@layout/sign_in_preference"
+            android:summary="@string/preferences_sign_in_description"
+            android:title="@string/preferences_sign_in"
+            app:allowDividerBelow="false" />
 
         <org.mozilla.fenix.settings.account.AccountPreference
             android:icon="@drawable/mozac_ic_avatar_circle_24"
@@ -54,6 +54,13 @@
         <org.mozilla.fenix.settings.account.AccountAuthErrorPreference
             android:icon="@drawable/ic_account_warning"
             android:key="@string/pref_key_account_auth_error" />
+
+        <androidx.preference.Preference
+            android:icon="@drawable/mozac_ic_sync_tabs_24"
+            android:key="@string/pref_key_dejavu_sync_entry"
+            android:title="@string/dejavu_settings_sync"
+            android:summary="@string/dejavu_sync_choose_about"
+            app:widgetLayout="@layout/dejavu_preference_badge" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.Preference
