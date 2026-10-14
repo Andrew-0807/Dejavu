@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Malfermi ligilon el la tondujo</string>
     <string name="dejavu_reopen_closed_tab">Remalfermi fermitan langeton</string>
+    <string name="dejavu_search_chip_temporary">Provizora</string>
     <string name="dejavu_shift_previous">Movi al la antaŭa laborspaco</string>
     <string name="dejavu_shift_next">Movi al la sekva laborspaco</string>
     <string name="dejavu_shift_blocked">Pinglitaj langetoj kaj dosierujoj ne povas iri al %1$s</string>

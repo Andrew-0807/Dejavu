@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Opne lenke frå utklippstavla</string>
     <string name="dejavu_reopen_closed_tab">Opne attlaten fane på nytt</string>
+    <string name="dejavu_search_chip_temporary">Mellombels</string>
     <string name="dejavu_shift_previous">Flytt til førre arbeidsområde</string>
     <string name="dejavu_shift_next">Flytt til neste arbeidsområde</string>
     <string name="dejavu_shift_blocked">Festa faner og mapper kan ikkje flyttast til %1$s</string>

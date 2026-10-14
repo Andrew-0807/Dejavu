@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Кушодани пайванд аз ҳофизаи муваққатӣ</string>
     <string name="dejavu_reopen_closed_tab">Аз нав кушодани варақаи пӯшидашуда</string>
+    <string name="dejavu_search_chip_temporary">Муваққатӣ</string>
     <string name="dejavu_shift_previous">Ба фазои қаблӣ гузарондан</string>
     <string name="dejavu_shift_next">Ба фазои навбатӣ гузарондан</string>
     <string name="dejavu_shift_blocked">Варақаҳои часпонидашуда ва ҷузвдонҳоро ба %1$s фиристодан мумкин нест</string>

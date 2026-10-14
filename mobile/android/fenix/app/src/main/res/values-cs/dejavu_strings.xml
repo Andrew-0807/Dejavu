@@ -283,6 +283,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Otevřít odkaz ze schránky</string>
     <string name="dejavu_reopen_closed_tab">Obnovit zavřený panel</string>
+    <string name="dejavu_search_chip_temporary">Dočasný</string>
     <string name="dejavu_shift_previous">Přesunout do předchozího pracovního prostoru</string>
     <string name="dejavu_shift_next">Přesunout do dalšího pracovního prostoru</string>
     <string name="dejavu_shift_blocked">Připnuté panely a složky nelze přesunout na zařízení %1$s</string>

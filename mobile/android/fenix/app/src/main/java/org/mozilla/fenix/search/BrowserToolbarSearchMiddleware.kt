@@ -99,6 +99,7 @@ import org.mozilla.fenix.components.metrics.MetricsUtils
 import org.mozilla.fenix.components.search.BOOKMARKS_SEARCH_ENGINE_ID
 import org.mozilla.fenix.components.search.HISTORY_SEARCH_ENGINE_ID
 import org.mozilla.fenix.components.search.TABS_SEARCH_ENGINE_ID
+import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.ext.isGoogleSearchEngine
 import org.mozilla.fenix.ext.toolbarHintRes
 import org.mozilla.fenix.search.EditPageEndActionsInteractions.ClearSearchClicked
@@ -411,7 +412,8 @@ class BrowserToolbarSearchMiddleware(
             )
         store.dispatch(
             SearchActionsStartUpdated(
-                when (searchSelector == null) {
+                // Dejavu picks the search engine with the chips above the address bar instead.
+                when (searchSelector == null || DejavuToolbar.enabled) {
                     true -> emptyList()
                     else -> listOf(searchSelector)
                 }

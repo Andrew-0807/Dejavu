@@ -262,6 +262,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">開啟剪貼簿中的連結</string>
     <string name="dejavu_reopen_closed_tab">重新開啟關閉的分頁</string>
+    <string name="dejavu_search_chip_temporary">臨時</string>
     <string name="dejavu_shift_previous">移動到上一個工作區</string>
     <string name="dejavu_shift_next">移動到下一個工作區</string>
     <string name="dejavu_shift_blocked">已釘選分頁與資料夾無法移動到 %1$s</string>

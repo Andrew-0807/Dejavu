@@ -283,6 +283,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Открыть ссылку из буфера обмена</string>
     <string name="dejavu_reopen_closed_tab">Восстановить закрытую вкладку</string>
+    <string name="dejavu_search_chip_temporary">Временный</string>
     <string name="dejavu_shift_previous">Переместить в предыдущее рабочее пространство</string>
     <string name="dejavu_shift_next">Переместить в следующее рабочее пространство</string>
     <string name="dejavu_shift_blocked">Закреплённые вкладки и папки нельзя переместить в %1$s</string>

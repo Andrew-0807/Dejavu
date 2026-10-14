@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Hivatkozás megnyitása a vágólapról</string>
     <string name="dejavu_reopen_closed_tab">Bezárt lap újranyitása</string>
+    <string name="dejavu_search_chip_temporary">Ideiglenes</string>
     <string name="dejavu_shift_previous">Áthelyezés az előző munkaterületre</string>
     <string name="dejavu_shift_next">Áthelyezés a következő munkaterületre</string>
     <string name="dejavu_shift_blocked">A kitűzött lapok és mappák nem kerülhetnek ide: %1$s</string>

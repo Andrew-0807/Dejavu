@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Apre u liame da u preme\'papei</string>
     <string name="dejavu_reopen_closed_tab">Riapre l\'unghjetta chjosa</string>
+    <string name="dejavu_search_chip_temporary">Timpurariu</string>
     <string name="dejavu_shift_previous">Dispiazzà ver di u spaziu di travagliu precedente</string>
     <string name="dejavu_shift_next">Dispiazzà ver di u spaziu di travagliu seguente</string>
     <string name="dejavu_shift_blocked">L\'unghjette fissate è i cartulari ùn ponu micca andà à %1$s</string>

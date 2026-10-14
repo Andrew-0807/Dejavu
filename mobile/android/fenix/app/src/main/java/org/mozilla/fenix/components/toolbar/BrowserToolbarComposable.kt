@@ -55,6 +55,7 @@ import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchEnded
 import org.mozilla.fenix.components.toolbar.ToolbarPosition.BOTTOM
 import org.mozilla.fenix.components.toolbar.ToolbarPosition.TOP
 import org.mozilla.fenix.dejavu.browser.DejavuSearchAboveKeyboard
+import org.mozilla.fenix.dejavu.browser.DejavuSearchChips
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.DejavuTopBar
 import org.mozilla.fenix.theme.FirefoxTheme
@@ -170,12 +171,15 @@ class BrowserToolbarComposable(
                                         if (!isSearching) {
                                             DejavuTopBar(toolbarStore)
                                         } else {
-                                            BrowserToolbar(
-                                                store = toolbarStore,
-                                                cfr = toolbarCFR,
-                                                useMinimalBottomToolbarWhenEnteringText =
-                                                    settings.shouldUseMinimalBottomToolbarWhenEnteringText,
-                                            )
+                                            Column {
+                                                DejavuSearchChips(newTab = false)
+                                                BrowserToolbar(
+                                                    store = toolbarStore,
+                                                    cfr = toolbarCFR,
+                                                    useMinimalBottomToolbarWhenEnteringText =
+                                                        settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                                )
+                                            }
                                         }
                                     },
                                     suggestions = searchSuggestionsContent,

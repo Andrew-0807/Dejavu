@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Բացել հղումը սեղմատախտակից</string>
     <string name="dejavu_reopen_closed_tab">Վերաբացել փակված ներդիրը</string>
+    <string name="dejavu_search_chip_temporary">Ժամանակավոր</string>
     <string name="dejavu_shift_previous">Տեղափոխել նախորդ տարածք</string>
     <string name="dejavu_shift_next">Տեղափոխել հաջորդ տարածք</string>
     <string name="dejavu_shift_blocked">Ամրացված ներդիրներն ու թղթապանակները չեն կարող տեղափոխվել դեպի %1$s</string>

@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Hape lidhjen nga e papastra</string>
     <string name="dejavu_reopen_closed_tab">Rihap skedën e mbyllur</string>
+    <string name="dejavu_search_chip_temporary">I përkohshëm</string>
     <string name="dejavu_shift_previous">Lëvizi te hapësira e mëparshme e punës</string>
     <string name="dejavu_shift_next">Lëvizi te hapësira pasuese e punës</string>
     <string name="dejavu_shift_blocked">Skedat e fiksuara dhe dosjet s\'mund të shkojnë te %1$s</string>

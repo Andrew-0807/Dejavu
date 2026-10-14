@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Ouvrir le lien du presse-papiers</string>
     <string name="dejavu_reopen_closed_tab">Rouvrir l’onglet fermé</string>
+    <string name="dejavu_search_chip_temporary">Temporaire</string>
     <string name="dejavu_shift_previous">Déplacer vers l’espace précédent</string>
     <string name="dejavu_shift_next">Déplacer vers l’espace suivant</string>
     <string name="dejavu_shift_blocked">Les onglets épinglés et les dossiers ne peuvent pas être déplacés vers %1$s</string>

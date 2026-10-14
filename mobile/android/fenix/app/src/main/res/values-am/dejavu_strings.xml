@@ -150,6 +150,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">ከቅንጥብ ሰሌዳ አገናኝ ክፈት</string>
     <string name="dejavu_reopen_closed_tab">የተዘጋ ትር እንደገና ክፈት</string>
+    <string name="dejavu_search_chip_temporary">ጊዜያዊ</string>
     <string name="dejavu_shift_previous">ወደ ቀዳሚው የስራ ቦታ አንቀሳቅስ</string>
     <string name="dejavu_shift_next">ወደ ቀጣዩ የስራ ቦታ አንቀሳቅስ</string>
     <string name="dejavu_shift_blocked">የተሰኩ ትሮች እና አቃፊዎች ወደ %1$s መሄድ አይችሉም</string>

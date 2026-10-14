@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Almasıw buferinen siltemeni ashıw</string>
     <string name="dejavu_reopen_closed_tab">Jabılǵan betti qayta ashıw</string>
+    <string name="dejavu_search_chip_temporary">Waqtınsha</string>
     <string name="dejavu_shift_previous">Aldıńǵı jumıs maydanına kóshiriw</string>
     <string name="dejavu_shift_next">Keyingi jumıs maydanına kóshiriw</string>
     <string name="dejavu_shift_blocked">%1$s bekitilgen betler hám papkalardı qabıl ete almaydı</string>

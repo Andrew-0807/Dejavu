@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Link aus Zwischenablage öffnen</string>
     <string name="dejavu_reopen_closed_tab">Geschlossenen Tab wieder öffnen</string>
+    <string name="dejavu_search_chip_temporary">Temporär</string>
     <string name="dejavu_shift_previous">In vorherigen Arbeitsbereich verschieben</string>
     <string name="dejavu_shift_next">In nächsten Arbeitsbereich verschieben</string>
     <string name="dejavu_shift_blocked">Angeheftete Tabs und Ordner können nicht an %1$s gesendet werden</string>

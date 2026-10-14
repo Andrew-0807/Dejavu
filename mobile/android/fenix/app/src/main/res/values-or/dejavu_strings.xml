@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">କ୍ଲିପବୋର୍ଡରୁ ଲିଙ୍କ୍ ଖୋଲନ୍ତୁ</string>
     <string name="dejavu_reopen_closed_tab">ବନ୍ଦ ହୋଇଥିବା ଟ୍ୟାବ୍ ପୁଣି ଖୋଲନ୍ତୁ</string>
+    <string name="dejavu_search_chip_temporary">ଅସ୍ଥାୟୀ</string>
     <string name="dejavu_shift_previous">ପୂର୍ବବର୍ତ୍ତୀ କାର୍ଯ୍ୟକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ</string>
     <string name="dejavu_shift_next">ପରବର୍ତ୍ତୀ କାର୍ଯ୍ୟକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ</string>
     <string name="dejavu_shift_blocked">ପିନ୍ କରାଯାଇଥିବା ଟ୍ୟାବ୍ ଏବଂ ଫୋଲଡର %1$s କୁ ପଠାଯାଇପାରିବ ନାହିଁ</string>

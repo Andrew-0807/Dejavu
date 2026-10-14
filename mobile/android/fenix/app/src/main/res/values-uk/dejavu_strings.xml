@@ -283,6 +283,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Відкрити посилання з буфера обміну</string>
     <string name="dejavu_reopen_closed_tab">Відновити закриту вкладку</string>
+    <string name="dejavu_search_chip_temporary">Тимчасовий</string>
     <string name="dejavu_shift_previous">Перемістити до попереднього робочого простору</string>
     <string name="dejavu_shift_next">Перемістити до наступного робочого простору</string>
     <string name="dejavu_shift_blocked">Закріплені вкладки і теки не можна перемістити до %1$s</string>

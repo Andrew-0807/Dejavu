@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">کردنەوەی بەستەر لە کلیپبۆردەوە</string>
     <string name="dejavu_reopen_closed_tab">دووبارە کردنەوەی بازدەری داخراو</string>
+    <string name="dejavu_search_chip_temporary">کاتی</string>
     <string name="dejavu_shift_previous">گواستنەوە بۆ فەزای پێشوو</string>
     <string name="dejavu_shift_next">گواستنەوە بۆ فەزای دواتر</string>
     <string name="dejavu_shift_blocked">بازدەرە چەسپاوەکان و پۆشەکان ناتوانن بچنە %1$s</string>

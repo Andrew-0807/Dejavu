@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Dobrir lo ligam del quichapapièrs</string>
     <string name="dejavu_reopen_closed_tab">Tornar dobrir l’onglet tampat</string>
+    <string name="dejavu_search_chip_temporary">Temporari</string>
     <string name="dejavu_shift_previous">Desplaçar cap a l’espaci de trabalh precedent</string>
     <string name="dejavu_shift_next">Desplaçar cap a l’espaci de trabalh seguent</string>
     <string name="dejavu_shift_blocked">Los onglets fixats e los dossièrs pòdon pas anar cap a %1$s</string>

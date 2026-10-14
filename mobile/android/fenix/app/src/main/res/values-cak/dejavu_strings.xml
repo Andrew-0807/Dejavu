@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Tijaq ri k\'amab\'äl k\'o pa molwuj</string>
     <string name="dejavu_reopen_closed_tab">Tijaq chik ri ruwi\' xtz\'apïx</string>
+    <string name="dejavu_search_chip_temporary">Temporal</string>
     <string name="dejavu_shift_previous">Tijech\'ëx pa ri jun kan samajib\'äl</string>
     <string name="dejavu_shift_next">Tijech\'ëx pa ri jun chik samajib\'äl</string>
     <string name="dejavu_shift_blocked">Ri ximon taq ruwi\' chuqa\' ri taq karpeta man yetikïr ta yeb\'e pa %1$s</string>

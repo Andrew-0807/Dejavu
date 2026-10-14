@@ -290,6 +290,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Oscail nasc ón ngearrthaisce</string>
     <string name="dejavu_reopen_closed_tab">Athoscail cluaisín dúnta</string>
+    <string name="dejavu_search_chip_temporary">Sealadach</string>
     <string name="dejavu_shift_previous">Bog go dtí an spás oibre roimhe seo</string>
     <string name="dejavu_shift_next">Bog go dtí an chéad spás oibre eile</string>
     <string name="dejavu_shift_blocked">Ní féidir cluaisíní greamaithe ná fillteáin a sheoladh chuig %1$s</string>

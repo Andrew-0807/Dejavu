@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Öppna länk från urklipp</string>
     <string name="dejavu_reopen_closed_tab">Återöppna stängd flik</string>
+    <string name="dejavu_search_chip_temporary">Tillfällig</string>
     <string name="dejavu_shift_previous">Flytta till föregående arbetsyta</string>
     <string name="dejavu_shift_next">Flytta till nästa arbetsyta</string>
     <string name="dejavu_shift_blocked">Fästa flikar och mappar kan inte skickas till %1$s</string>

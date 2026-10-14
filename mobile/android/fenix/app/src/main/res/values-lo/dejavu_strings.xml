@@ -262,6 +262,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">ເປີດລິ້ງຈາກຄລິບບອດ</string>
     <string name="dejavu_reopen_closed_tab">ເປີດແທັບທີ່ປິດແລ້ວຄືນໃຫມ່</string>
+    <string name="dejavu_search_chip_temporary">ຊົ່ວຄາວ</string>
     <string name="dejavu_shift_previous">ຍ້າຍໄປພື້ນທີ່ເຮັດວຽກກ່ອນໜ້າ</string>
     <string name="dejavu_shift_next">ຍ້າຍໄປພື້ນທີ່ເຮັດວຽກຕໍ່ໄປ</string>
     <string name="dejavu_shift_blocked">ແທັບທີ່ປັກໄວ້ ແລະ ໂຟນເດີ ບໍ່ສາມາດສົ່ງໄປທີ່ %1$s ໄດ້</string>

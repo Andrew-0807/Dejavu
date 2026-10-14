@@ -283,6 +283,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Fosgail an ceangal on stòr-bhòrd</string>
     <string name="dejavu_reopen_closed_tab">Fosgail an taba a dhùin thu a-rithist</string>
+    <string name="dejavu_search_chip_temporary">Sealach</string>
     <string name="dejavu_shift_previous">Gluais dhan àite-obrach roimhe</string>
     <string name="dejavu_shift_next">Gluais dhan ath àite-obrach</string>
     <string name="dejavu_shift_blocked">Chan urrainn do thabaichean prìnichte agus pasganan a dhol gu %1$s</string>

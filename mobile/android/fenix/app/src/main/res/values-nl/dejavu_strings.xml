@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Link van klembord openen</string>
     <string name="dejavu_reopen_closed_tab">Gesloten tabblad opnieuw openen</string>
+    <string name="dejavu_search_chip_temporary">Tijdelijk</string>
     <string name="dejavu_shift_previous">Verplaatsen naar vorige werkruimte</string>
     <string name="dejavu_shift_next">Verplaatsen naar volgende werkruimte</string>
     <string name="dejavu_shift_blocked">Vastgemaakte tabbladen en mappen kunnen niet naar %1$s</string>

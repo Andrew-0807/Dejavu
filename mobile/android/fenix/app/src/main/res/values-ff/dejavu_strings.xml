@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Uddit jokkol gonngol e ɗakkitorde</string>
     <string name="dejavu_reopen_closed_tab">Uddit kadi tabbere uddaande</string>
+    <string name="dejavu_search_chip_temporary">Temporaire</string>
     <string name="dejavu_shift_previous">Dirtin to espace de travail ɓennunde</string>
     <string name="dejavu_shift_next">Dirtin to espace de travail garoyde</string>
     <string name="dejavu_shift_blocked">Tabbe épinglées e dossiers waawaa yahde to %1$s</string>

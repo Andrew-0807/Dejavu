@@ -297,6 +297,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Ygeri kevren a\'n klypbord</string>
     <string name="dejavu_reopen_closed_tab">Dasygeri tab degeys</string>
+    <string name="dejavu_search_chip_temporary">Dres prys</string>
     <string name="dejavu_shift_previous">Movya dhe\'n tyller-ober kyns</string>
     <string name="dejavu_shift_next">Movya dhe\'n tyller-ober nessa</string>
     <string name="dejavu_shift_blocked">Ny yll tabow fastyes ha plegellow mos dhe %1$s</string>

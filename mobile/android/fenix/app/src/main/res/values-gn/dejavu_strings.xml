@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Embojuruja enlace kuatiajokoha guive</string>
     <string name="dejavu_reopen_closed_tab">Embojurujajey tendayke oñembotyva\'ekue</string>
+    <string name="dejavu_search_chip_temporary">Temporal</string>
     <string name="dejavu_shift_previous">Emongu\'e tembiapo renda mboyveguávape</string>
     <string name="dejavu_shift_next">Emongu\'e tembiapo renda upeiguávape</string>
     <string name="dejavu_shift_blocked">Tendayke mboguapypyre ha karpetakuéra ndaikatúi oho %1$s-pe</string>

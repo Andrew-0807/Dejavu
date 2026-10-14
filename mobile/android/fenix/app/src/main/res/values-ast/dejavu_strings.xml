@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Abrir l\'enllaz del cartafueyu</string>
     <string name="dejavu_reopen_closed_tab">Volver abrir la llingüeta zarrada</string>
+    <string name="dejavu_search_chip_temporary">Temporal</string>
     <string name="dejavu_shift_previous">Mover al espaciu de trabayu anterior</string>
     <string name="dejavu_shift_next">Mover al espaciu de trabayu siguiente</string>
     <string name="dejavu_shift_blocked">Les llingüetes fixaes y les carpetes nun puen dir a %1$s</string>

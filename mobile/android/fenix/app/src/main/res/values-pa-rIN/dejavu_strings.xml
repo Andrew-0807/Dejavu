@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">ਕਲਿੱਪਬੋਰਡ ਤੋਂ ਲਿੰਕ ਖੋਲ੍ਹੋ</string>
     <string name="dejavu_reopen_closed_tab">ਬੰਦ ਕੀਤੀ ਟੈਬ ਮੁੜ ਖੋਲ੍ਹੋ</string>
+    <string name="dejavu_search_chip_temporary">ਆਰਜ਼ੀ</string>
     <string name="dejavu_shift_previous">ਪਿਛਲੀ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ</string>
     <string name="dejavu_shift_next">ਅਗਲੀ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ</string>
     <string name="dejavu_shift_blocked">ਪਿੰਨ ਕੀਤੀਆਂ ਟੈਬਾਂ ਅਤੇ ਫੋਲਡਰ %1$s ਉੱਤੇ ਨਹੀਂ ਜਾ ਸਕਦੇ</string>

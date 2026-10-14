@@ -262,6 +262,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Ṣí líǹkì láti kílípíbọọ̀dù</string>
     <string name="dejavu_reopen_closed_tab">Tún ṣí táàbù tí o tì</string>
+    <string name="dejavu_search_chip_temporary">Fún ìgbà díẹ̀</string>
     <string name="dejavu_shift_previous">Gbé lọ sí ibi-iṣẹ́ tí ó ṣáájú</string>
     <string name="dejavu_shift_next">Gbé lọ sí ibi-iṣẹ́ tí ó kàn</string>
     <string name="dejavu_shift_blocked">Àwọn táàbù tí a fi Pin sí àti fódà kò lè lọ sí %1$s</string>

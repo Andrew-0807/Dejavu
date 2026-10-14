@@ -283,6 +283,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Otvoriť odkaz zo schránky</string>
     <string name="dejavu_reopen_closed_tab">Znovu otvoriť zatvorenú kartu</string>
+    <string name="dejavu_search_chip_temporary">Dočasný</string>
     <string name="dejavu_shift_previous">Presunúť do predchádzajúceho pracovného priestoru</string>
     <string name="dejavu_shift_next">Presunúť do ďalšieho pracovného priestoru</string>
     <string name="dejavu_shift_blocked">Pripnuté karty a priečinky nie je možné presunúť do zariadenia %1$s</string>

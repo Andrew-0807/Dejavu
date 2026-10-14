@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">පසුරු පුවරුවෙන් සබැඳිය විවෘත කරන්න</string>
     <string name="dejavu_reopen_closed_tab">වසා දැමූ පටිත්ත නැවත විවෘත කරන්න</string>
+    <string name="dejavu_search_chip_temporary">තාවකාලික</string>
     <string name="dejavu_shift_previous">පෙර අවකාශයට ගෙනයන්න</string>
     <string name="dejavu_shift_next">ඊළඟ අවකාශයට ගෙනයන්න</string>
     <string name="dejavu_shift_blocked">අමුණන ලද පටිති සහ ෆෝල්ඩර %1$s වෙත ගෙනයා නොහැක</string>

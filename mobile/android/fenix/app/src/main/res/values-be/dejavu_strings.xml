@@ -283,6 +283,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Адкрыць спасылку з буфера абмену</string>
     <string name="dejavu_reopen_closed_tab">Аднавіць закрытую картку</string>
+    <string name="dejavu_search_chip_temporary">Часовы</string>
     <string name="dejavu_shift_previous">Перамясціць у папярэднюю прастору</string>
     <string name="dejavu_shift_next">Перамясціць у наступную прастору</string>
     <string name="dejavu_shift_blocked">Замацаваныя карткі і папкі нельга перамясціць у %1$s</string>

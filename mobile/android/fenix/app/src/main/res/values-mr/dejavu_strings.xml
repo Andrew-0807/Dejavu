@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">क्लिपबोर्डमधील लिंक उघडा</string>
     <string name="dejavu_reopen_closed_tab">बंद केलेला टॅब पुन्हा उघडा</string>
+    <string name="dejavu_search_chip_temporary">तात्पुरता</string>
     <string name="dejavu_shift_previous">मागील कार्यक्षेत्रात हलवा</string>
     <string name="dejavu_shift_next">पुढील कार्यक्षेत्रात हलवा</string>
     <string name="dejavu_shift_blocked">पिन केलेले टॅब आणि फोल्डर %1$s वर जाऊ शकत नाहीत</string>

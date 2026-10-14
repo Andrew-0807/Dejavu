@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Keppeling fan klamboerd iepenje</string>
     <string name="dejavu_reopen_closed_tab">Sluten ljepblêd opnij iepenje</string>
+    <string name="dejavu_search_chip_temporary">Tydlik</string>
     <string name="dejavu_shift_previous">Nei de foarige wurkromte ferpleatse</string>
     <string name="dejavu_shift_next">Nei de folgjende wurkromte ferpleatse</string>
     <string name="dejavu_shift_blocked">Fêstsette ljepblêden en mappen kinne net nei %1$s stjoerd wurde</string>

@@ -276,6 +276,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Verxi el łinco da i scarabòci</string>
     <string name="dejavu_reopen_closed_tab">Verxi da novo ła scheda sarà</string>
+    <string name="dejavu_search_chip_temporary">Temporaneo</string>
     <string name="dejavu_shift_previous">Sposta tel spasio de laoro presedente</string>
     <string name="dejavu_shift_next">Sposta tel spasio de laoro seguente</string>
     <string name="dejavu_shift_blocked">Łe schede fisà e łe cartełe no łe pol ndar a %1$s</string>

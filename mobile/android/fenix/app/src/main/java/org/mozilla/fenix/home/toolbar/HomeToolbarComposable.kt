@@ -50,6 +50,7 @@ import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchEnded
 import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchStarted
 import org.mozilla.fenix.components.appstate.VoiceSearchAction.VoiceInputRequested
 import org.mozilla.fenix.components.metrics.MetricsUtils
+import org.mozilla.fenix.dejavu.browser.DejavuSearchChips
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
@@ -167,6 +168,11 @@ internal class HomeToolbarComposable(
         ) {
             if (shouldUseBottomToolbar) {
                 searchSuggestionsContent(Modifier.weight(1f))
+            }
+
+            // Dejavu: where the new tab opens and which search engine it searches with, above the address bar.
+            if (DejavuToolbar.enabled) {
+                DejavuSearchChips(newTab = appStore.state.searchState.sourceTabId == null)
             }
 
             if (shouldShowTabStrip) {

@@ -262,6 +262,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">o open e nasin lipu tan poki nimi</string>
     <string name="dejavu_reopen_closed_tab">o open sin e poki pini</string>
+    <string name="dejavu_search_chip_temporary">tenpo lili</string>
     <string name="dejavu_shift_previous">o tawa kulupu poki pini</string>
     <string name="dejavu_shift_next">o tawa kulupu poki kama</string>
     <string name="dejavu_shift_blocked">poki awen en tomo poki li ken ala tawa %1$s</string>

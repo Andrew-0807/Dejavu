@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Сылтаманы алмашу буферыннан ачу</string>
     <string name="dejavu_reopen_closed_tab">Ябылган табны яңадан ачу</string>
+    <string name="dejavu_search_chip_temporary">Вакытлы</string>
     <string name="dejavu_shift_previous">Алдагы эш өлкәсенә күчерү</string>
     <string name="dejavu_shift_next">Киләсе эш өлкәсенә күчерү</string>
     <string name="dejavu_shift_blocked">Беркетелгән таблар һәм папкалар %1$s җайланмасына күчә алмый</string>

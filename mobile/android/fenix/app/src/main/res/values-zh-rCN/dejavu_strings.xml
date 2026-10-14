@@ -262,6 +262,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">打开剪贴板中的链接</string>
     <string name="dejavu_reopen_closed_tab">重新打开关闭的标签页</string>
+    <string name="dejavu_search_chip_temporary">临时</string>
     <string name="dejavu_shift_previous">移动到上一个工作区</string>
     <string name="dejavu_shift_next">移动到下一个工作区</string>
     <string name="dejavu_shift_blocked">固定标签页和文件夹无法移至 %1$s</string>

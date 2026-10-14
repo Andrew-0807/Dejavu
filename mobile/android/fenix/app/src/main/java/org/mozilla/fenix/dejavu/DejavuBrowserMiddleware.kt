@@ -130,8 +130,9 @@ internal class SilentlyClosedTabsMiddleware : Middleware<BrowserState, BrowserAc
 }
 
 /**
- * The container the next new tab started by the user opens in, chosen by long-pressing "New Tab" on the home screen.
- * It overrides the workspace's container once, and is dropped when it expires or the search is abandoned.
+ * The container the next new tab started by the user opens in, chosen by long-pressing "New Tab" on the home screen or
+ * with the chips above the address bar. It overrides the workspace's container once, and is dropped when it expires or
+ * the search is abandoned.
  */
 object NewTabContainerChoice {
     private const val LIFETIME_MS = 10 * 60 * 1000L
@@ -154,6 +155,9 @@ object NewTabContainerChoice {
     fun clear() {
         choice = null
     }
+
+    /** The pending choice, if it has not expired, without forgetting it. */
+    internal fun peek(): Choice? = choice?.takeIf { SystemClock.elapsedRealtime() < it.expiresAt }
 
     /** Returns and forgets the pending choice, if it has not expired. */
     internal fun consume(): Choice? {

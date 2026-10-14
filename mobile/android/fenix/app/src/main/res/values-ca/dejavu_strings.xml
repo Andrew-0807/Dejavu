@@ -276,6 +276,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Obre l\'enllaç del porta-retalls</string>
     <string name="dejavu_reopen_closed_tab">Torna a obrir la pestanya tancada</string>
+    <string name="dejavu_search_chip_temporary">Temporal</string>
     <string name="dejavu_shift_previous">Mou a l\'espai de treball anterior</string>
     <string name="dejavu_shift_next">Mou a l\'espai de treball següent</string>
     <string name="dejavu_shift_blocked">Les pestanyes fixades i les carpetes no es poden enviar a %1$s</string>

@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Отваряне на връзка от буфера за обмен</string>
     <string name="dejavu_reopen_closed_tab">Повторно отваряне на затворен раздел</string>
+    <string name="dejavu_search_chip_temporary">Временен</string>
     <string name="dejavu_shift_previous">Преместване в предишното работно пространство</string>
     <string name="dejavu_shift_next">Преместване в следващото работно пространство</string>
     <string name="dejavu_shift_blocked">Закачените раздели и папките не могат да бъдат преместени в %1$s</string>

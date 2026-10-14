@@ -262,6 +262,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">클립보드의 링크 열기</string>
     <string name="dejavu_reopen_closed_tab">닫은 탭 다시 열기</string>
+    <string name="dejavu_search_chip_temporary">임시</string>
     <string name="dejavu_shift_previous">이전 작업 공간으로 이동</string>
     <string name="dejavu_shift_next">다음 작업 공간으로 이동</string>
     <string name="dejavu_shift_blocked">고정된 탭과 폴더는 %1$s에 보낼 수 없음</string>
