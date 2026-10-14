@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Søg</string>
     <string name="dejavu_actions_bar_home">Hjem</string>
     <string name="dejavu_settings_more_menu_summary">Handlingslinjen under sider og den menu, den åbner</string>
-    <string name="dejavu_more_menu_hint">Stryg handlingslinjen op eller adresselinjen ned for at åbne hele menuen. Tryk på en knap for at flytte eller fjerne den. Udvidelser fylder altid en hel række.</string>
+    <string name="dejavu_more_menu_drag_hint">Hold en knap nede, og træk den op i en række. Træk en knap tilbage herned for at fjerne den.</string>
     <string name="dejavu_actions_bar_hint">Knapperne under sider. De virker på den side, du er på.</string>
     <string name="dejavu_actions_bar_all_added">Alle knapper er allerede i linjen.</string>
-    <string name="dejavu_more_menu_row">Række %1$d</string>
     <string name="dejavu_more_menu_add_item">Tilføj en knap</string>
     <string name="dejavu_more_menu_add_row">Tilføj en række</string>
     <string name="dejavu_more_menu_row_full">Denne række er fuld.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Nulstil til standard</string>
     <string name="dejavu_more_menu_hide_edit">Skjul redigeringsknap</string>
     <string name="dejavu_more_menu_hide_edit_summary">Knappen under menuen, der åbner denne skærm</string>
-    <string name="dejavu_more_menu_all_added">Alle knapper er allerede i menuen.</string>
-    <string name="dejavu_more_menu_preview">Forhåndsvisning</string>
     <string name="dejavu_settings_sync">Synkroniser med Firefox eller Zen</string>
     <string name="dejavu_sync_hint">Holder dine arbejdsområder med deres farver og ikoner, beholdere, fastgjorte faneblade, favoritter og mapper synkroniseret med Zen Browser på din computer og Dejavu på dine andre enheder. Det bruger den Mozilla-konto, du synkroniserer Firefox-data med.</string>
     <string name="dejavu_sync_zen_hint">Åbn Indstillinger i Zen, derefter Synkronisering, og slå synkronisering af sidepanelet til. Faneblade, der ikke er fastgjort, synkroniseres ikke.</string>

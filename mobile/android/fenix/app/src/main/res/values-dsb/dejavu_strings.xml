@@ -204,10 +204,9 @@
     <string name="dejavu_actions_bar_search">Pytaś</string>
     <string name="dejavu_actions_bar_home">Doma</string>
     <string name="dejavu_settings_more_menu_summary">Akcijowa lajsta pód bokami a meni, kótaryž se wócynja</string>
-    <string name="dejavu_more_menu_hint">Trěj akcijowu lajstu górjej abo adresowe pólo dołoj, aby ceły meni wócynił. Tłoc na tłocašk, aby jen pśesunuł abo wótwónoźeł. Rozšyrjenja pśecej ceły rěd zaběraju.</string>
+    <string name="dejavu_more_menu_drag_hint">Źarź tłocašk tłocony a śěgni jen do rěda górjejce. Śěgni tłocašk slědk sem dołoj, aby jen wótwónoźeł.</string>
     <string name="dejavu_actions_bar_hint">Tłocaški pód bokami. Wuskutkuju se na bok, na kótaremž sy.</string>
     <string name="dejavu_actions_bar_all_added">Kuždy tłocašk jo južo w lajsće.</string>
-    <string name="dejavu_more_menu_row">Rěd %1$d</string>
     <string name="dejavu_more_menu_add_item">Tłocašk pśidaś</string>
     <string name="dejavu_more_menu_add_row">Rěd pśidaś</string>
     <string name="dejavu_more_menu_row_full">Toś ten rěd jo połny.</string>
@@ -220,8 +219,6 @@
     <string name="dejavu_more_menu_reset">Na standard slědk stajiś</string>
     <string name="dejavu_more_menu_hide_edit">Tłocašk wobźěłowanja schowaś</string>
     <string name="dejavu_more_menu_hide_edit_summary">Tłocašk pód menijom, kótaryž toś tu wobrazowku wócynja</string>
-    <string name="dejavu_more_menu_all_added">Kuždy tłocašk jo južo w meniju.</string>
-    <string name="dejavu_more_menu_preview">Pśedgled</string>
     <string name="dejavu_settings_sync">Z Firefox abo Zen synchronizěrowaś</string>
     <string name="dejavu_sync_hint">Źaržy twóje źěłowe rumy z jich barwami a symbolami, kontejnery, pśipěte rejtariki, nejwažnjejše a zarědniki jadnake ako w Zen Browser na twójom licadle a w Dejavu na twójich drugich rědach. Wužywa Mozilla-konto, z kótarymž swóje Firefox-daty synchronizěrujoš.</string>
     <string name="dejavu_sync_zen_hint">W Zen wócyni Nastajenja, pón Synchronizacija, a zapopń synchronizaciju bócnicy. Rejtariki, kótarež njejsu pśipěte, se njesynchronizěruju.</string>

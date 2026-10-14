@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">शोधा</string>
     <string name="dejavu_actions_bar_home">मुख्यपृष्ठ</string>
     <string name="dejavu_settings_more_menu_summary">पृष्ठांखालील क्रिया पट्टी आणि ती उघडणारा मेनू</string>
-    <string name="dejavu_more_menu_hint">संपूर्ण मेनू उघडण्यासाठी क्रिया पट्टी वर, किंवा पत्ता पट्टी खाली स्वाइप करा. बटण हलवण्यासाठी किंवा काढण्यासाठी त्यावर टॅप करा. एक्सटेन्शन नेहमी संपूर्ण रांग घेतात.</string>
+    <string name="dejavu_more_menu_drag_hint">बटण दाबून धरा आणि ते वरच्या रांगेत ओढा. बटण काढण्यासाठी ते पुन्हा इथे खाली ओढा.</string>
     <string name="dejavu_actions_bar_hint">पृष्ठांखालील बटणे. तुम्ही ज्या पृष्ठावर आहात त्यावर ती काम करतात.</string>
     <string name="dejavu_actions_bar_all_added">प्रत्येक बटण आधीच पट्टीत आहे.</string>
-    <string name="dejavu_more_menu_row">रांग %1$d</string>
     <string name="dejavu_more_menu_add_item">बटण जोडा</string>
     <string name="dejavu_more_menu_add_row">रांग जोडा</string>
     <string name="dejavu_more_menu_row_full">ही रांग पूर्ण भरली आहे.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">डीफॉल्टवर रीसेट करा</string>
     <string name="dejavu_more_menu_hide_edit">संपादन बटण लपवा</string>
     <string name="dejavu_more_menu_hide_edit_summary">हा स्क्रीन उघडणाऱ्या मेनूखालील बटण</string>
-    <string name="dejavu_more_menu_all_added">प्रत्येक बटण आधीच मेनूमध्ये आहे.</string>
-    <string name="dejavu_more_menu_preview">पूर्वावलोकन</string>
     <string name="dejavu_settings_sync">Firefox किंवा Zen सह सिंक करा</string>
     <string name="dejavu_sync_hint">तुमची कार्यक्षेत्रे त्यांच्या रंग आणि चिन्हांसह, कंटेनर, पिन केलेले टॅब, आवश्यक आणि फोल्डर तुमच्या संगणकावरील Zen ब्राउझर आणि तुमच्या इतर डिव्हाइसवरील Dejavu प्रमाणेच ठेवते. हे तुम्ही Firefox डेटा सिंक करण्यासाठी वापरत असलेले Mozilla खाते वापरते.</string>
     <string name="dejavu_sync_zen_hint">Zen मध्ये, सेटिंग उघडा, नंतर सिंक, आणि साइडबार सिंक सुरू करा. पिन न केलेले टॅब सिंक होत नाहीत.</string>

@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Sök</string>
     <string name="dejavu_actions_bar_home">Hem</string>
     <string name="dejavu_settings_more_menu_summary">Åtgärdsfältet under sidor och menyn det öppnar</string>
-    <string name="dejavu_more_menu_hint">Svep åtgärdsfältet uppåt, eller adressfältet nedåt, för att öppna hela menyn. Tryck på en knapp för att flytta eller ta bort den. Tillägg tar alltid upp en hel rad.</string>
+    <string name="dejavu_more_menu_drag_hint">Håll ned en knapp och dra den till en rad ovanför. Dra tillbaka en knapp hit ned för att ta bort den.</string>
     <string name="dejavu_actions_bar_hint">Knapparna under sidor. De verkar på sidan du är på.</string>
     <string name="dejavu_actions_bar_all_added">Alla knappar finns redan i fältet.</string>
-    <string name="dejavu_more_menu_row">Rad %1$d</string>
     <string name="dejavu_more_menu_add_item">Lägg till en knapp</string>
     <string name="dejavu_more_menu_add_row">Lägg till en rad</string>
     <string name="dejavu_more_menu_row_full">Den här raden är full.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Återställ till standard</string>
     <string name="dejavu_more_menu_hide_edit">Dölj redigeringsknapp</string>
     <string name="dejavu_more_menu_hide_edit_summary">Knappen under menyn som öppnar den här skärmen</string>
-    <string name="dejavu_more_menu_all_added">Alla knappar finns redan i menyn.</string>
-    <string name="dejavu_more_menu_preview">Förhandsgranskning</string>
     <string name="dejavu_settings_sync">Synkronisera med Firefox eller Zen</string>
     <string name="dejavu_sync_hint">Håller dina arbetsytor med sina färger och ikoner, behållare, fästa flikar, favoriter och mappar likadana som i Zen Browser på datorn och i Dejavu på dina andra enheter. Det används med samma Mozilla-konto som du synkroniserar Firefox-data med.</string>
     <string name="dejavu_sync_zen_hint">I Zen öppnar du Inställningar, sedan Synkronisering, och slår på synkronisering av sidofältet. Flikar som inte är fästa synkroniseras inte.</string>

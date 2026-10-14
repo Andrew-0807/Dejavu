@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Nadi</string>
     <string name="dejavu_actions_bar_home">Axxam</string>
     <string name="dejavu_settings_more_menu_summary">Afeggag n tigawin ddaw isebtar akked umuɣ i yeldi</string>
-    <string name="dejavu_more_menu_hint">Zuɣer afeggag n tigawin ɣer sennig, neɣ afeggag n tansiwin ɣer wadda, akken ad teldiḍ umuɣ meṛṛa. Sit ɣef ubuṭun akken a t-tsenkzeḍ neɣ a t-tekkseḍ. Isiɣzaf ṭṭfen yal tikkelt azirig meṛṛa.</string>
+    <string name="dejavu_more_menu_drag_hint">Ṭṭef deg ubuṭun syin zuɣer-it ɣer yiwen uzirig nnig. Zuɣer abuṭun ɣer da ddaw akken a t-tekkseḍ.</string>
     <string name="dejavu_actions_bar_hint">Ibuṭunen ddaw isebtar. Xeddmen ɣef usebter i deg telliḍ.</string>
     <string name="dejavu_actions_bar_all_added">Ibuṭunen meṛṛa llan yakan deg ufeggag.</string>
-    <string name="dejavu_more_menu_row">Azirig %1$d</string>
     <string name="dejavu_more_menu_add_item">Rnu abuṭun</string>
     <string name="dejavu_more_menu_add_row">Rnu azirig</string>
     <string name="dejavu_more_menu_row_full">Azirig-agi yeččur.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Err ɣer wamek yella</string>
     <string name="dejavu_more_menu_hide_edit">Ffer abuṭun n uẓreg</string>
     <string name="dejavu_more_menu_hide_edit_summary">Abuṭun ddaw umuɣ i yeldin ugdil-agi</string>
-    <string name="dejavu_more_menu_all_added">Ibuṭunen meṛṛa llan yakan deg umuɣ.</string>
-    <string name="dejavu_more_menu_preview">Askan</string>
     <string name="dejavu_settings_sync">Asdukel akked Firefox neɣ Zen</string>
     <string name="dejavu_sync_hint">Yeṭṭaf imukan n umahil-ik s yiniten d tugniwin-nsen, isenduqen, iccaren yessersen, ayen ilaqen d ikuramen am wamek llan deg Zen Browser ɣef uselkim-ik akked Dejavu ɣef ibenkan-ik nniḍen. Yesseqdac amiḍan Mozilla i deg tesdukkuleḍ isefka-k n Firefox.</string>
     <string name="dejavu_sync_zen_hint">Deg Zen, ldi Iɣewwaṛen, sakin Asdukel, rnu sermed asdukel n ugalis adisan. Iccaren ur nesrusi ara ur ttwasdukklen ara.</string>

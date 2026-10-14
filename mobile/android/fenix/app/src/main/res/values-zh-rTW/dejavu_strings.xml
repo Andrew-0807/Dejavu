@@ -201,10 +201,9 @@
     <string name="dejavu_actions_bar_search">搜尋</string>
     <string name="dejavu_actions_bar_home">首頁</string>
     <string name="dejavu_settings_more_menu_summary">網頁下方的操作列及其開啟的選單</string>
-    <string name="dejavu_more_menu_hint">向上滑動操作列或向下滑動網址列，即可開啟完整選單。輕觸按鈕即可移動或移除。擴充套件一律佔用一整列。</string>
+    <string name="dejavu_more_menu_drag_hint">長按按鈕，將其拖曳到上方的某一列。將按鈕拖曳回下方此處即可移除。</string>
     <string name="dejavu_actions_bar_hint">網頁下方的按鈕。它們會套用到您目前所在的網頁。</string>
     <string name="dejavu_actions_bar_all_added">所有按鈕都已在操作列中。</string>
-    <string name="dejavu_more_menu_row">第 %1$d 列</string>
     <string name="dejavu_more_menu_add_item">新增按鈕</string>
     <string name="dejavu_more_menu_add_row">新增列</string>
     <string name="dejavu_more_menu_row_full">此列已滿。</string>
@@ -217,8 +216,6 @@
     <string name="dejavu_more_menu_reset">還原為預設值</string>
     <string name="dejavu_more_menu_hide_edit">隱藏編輯按鈕</string>
     <string name="dejavu_more_menu_hide_edit_summary">開啟此畫面的選單下方按鈕</string>
-    <string name="dejavu_more_menu_all_added">所有按鈕都已在選單中。</string>
-    <string name="dejavu_more_menu_preview">預覽</string>
     <string name="dejavu_settings_sync">與 Firefox 或 Zen 同步</string>
     <string name="dejavu_sync_hint">讓您的工作區(含顏色與圖示)、容器、已釘選分頁、常用網站與資料夾，與電腦上的 Zen Browser 及其他裝置上的 Dejavu 保持一致。使用的是您同步 Firefox 資料所用的 Mozilla 帳號。</string>
     <string name="dejavu_sync_zen_hint">在 Zen 中開啟「設定」，再進入「同步」，開啟側邊欄同步。未釘選的分頁不會同步。</string>

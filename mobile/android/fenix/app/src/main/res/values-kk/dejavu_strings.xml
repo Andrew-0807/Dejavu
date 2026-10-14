@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Іздеу</string>
     <string name="dejavu_actions_bar_home">Басты бет</string>
     <string name="dejavu_settings_more_menu_summary">Беттердің астындағы әрекеттер тақтасы және ол ашатын мәзір</string>
-    <string name="dejavu_more_menu_hint">Толық мәзірді ашу үшін әрекеттер тақтасын жоғары немесе адрестік жолақты төмен сырғытыңыз. Түймені жылжыту немесе шығару үшін оны түртіңіз. Кеңейтулер әрқашан бүкіл қатарды алады.</string>
+    <string name="dejavu_more_menu_drag_hint">Түймені басып тұрып, оны жоғарыдағы қатарға сүйреңіз. Түймені шығару үшін оны осы жерге, төмен қайта сүйреңіз.</string>
     <string name="dejavu_actions_bar_hint">Беттердің астындағы түймелер. Олар сіз қарап отырған бетке қолданылады.</string>
     <string name="dejavu_actions_bar_all_added">Барлық түймелер тақтада бар.</string>
-    <string name="dejavu_more_menu_row">%1$d-қатар</string>
     <string name="dejavu_more_menu_add_item">Түйме қосу</string>
     <string name="dejavu_more_menu_add_row">Қатар қосу</string>
     <string name="dejavu_more_menu_row_full">Бұл қатар толы.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Әдепкіге қалпына келтіру</string>
     <string name="dejavu_more_menu_hide_edit">Түзету түймесін жасыру</string>
     <string name="dejavu_more_menu_hide_edit_summary">Бұл экранды ашатын, мәзірдің астындағы түйме</string>
-    <string name="dejavu_more_menu_all_added">Барлық түймелер мәзірде бар.</string>
-    <string name="dejavu_more_menu_preview">Алдын ала қарау</string>
     <string name="dejavu_settings_sync">Firefox немесе Zen-мен синхрондау</string>
     <string name="dejavu_sync_hint">Түстері мен белгішелерімен бірге жұмыс кеңістіктеріңізді, контейнерлеріңізді, бекітілген беттеріңізді, негізгілеріңізді және қалталарыңызды компьютеріңіздегі Zen Browser және басқа құрылғыларыңыздағы Dejavu-мен бірдей етіп сақтайды. Ол үшін Firefox деректеріңізді синхрондайтын Mozilla есептік жазбасы қолданылады.</string>
     <string name="dejavu_sync_zen_hint">Zen-де Баптауларды, содан кейін Синхрондауды ашыңыз және бүйірлік тақта синхрондауын қосыңыз. Бекітілмеген беттер синхрондалмайды.</string>

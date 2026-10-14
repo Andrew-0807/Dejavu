@@ -203,10 +203,9 @@
     <string name="dejavu_actions_bar_search">Cerca</string>
     <string name="dejavu_actions_bar_home">Inici</string>
     <string name="dejavu_settings_more_menu_summary">La barra d\'accions de sota les pàgines i el menú que obre</string>
-    <string name="dejavu_more_menu_hint">Feu lliscar la barra d\'accions cap amunt, o la barra d\'adreces cap avall, per obrir el menú complet. Toqueu un botó per moure\'l o treure\'l. Les extensions sempre ocupen una fila sencera.</string>
+    <string name="dejavu_more_menu_drag_hint">Manteniu premut un botó i arrossegueu-lo a una fila de dalt. Arrossegueu un botó de nou aquí baix per treure\'l.</string>
     <string name="dejavu_actions_bar_hint">Els botons de sota les pàgines. Actuen sobre la pàgina on sou.</string>
     <string name="dejavu_actions_bar_all_added">Tots els botons ja són a la barra.</string>
-    <string name="dejavu_more_menu_row">Fila %1$d</string>
     <string name="dejavu_more_menu_add_item">Afegeix un botó</string>
     <string name="dejavu_more_menu_add_row">Afegeix una fila</string>
     <string name="dejavu_more_menu_row_full">Aquesta fila és plena.</string>
@@ -219,8 +218,6 @@
     <string name="dejavu_more_menu_reset">Restableix als valors per defecte</string>
     <string name="dejavu_more_menu_hide_edit">Amaga el botó d\'edició</string>
     <string name="dejavu_more_menu_hide_edit_summary">El botó de sota el menú que obre aquesta pantalla</string>
-    <string name="dejavu_more_menu_all_added">Tots els botons ja són al menú.</string>
-    <string name="dejavu_more_menu_preview">Previsualització</string>
     <string name="dejavu_settings_sync">Sincronitza amb el Firefox o el Zen</string>
     <string name="dejavu_sync_hint">Manté els vostres espais de treball amb els seus colors i icones, contenidors, pestanyes fixades, essencials i carpetes iguals que al Zen Browser de l\'ordinador i al Dejavu dels altres dispositius. Utilitza el compte de Mozilla amb què sincronitzeu les dades del Firefox.</string>
     <string name="dejavu_sync_zen_hint">Al Zen, obriu Configuració, després Sincronització, i activeu la sincronització de la barra lateral. Les pestanyes no fixades no se sincronitzen.</string>

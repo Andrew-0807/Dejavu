@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Izlew</string>
     <string name="dejavu_actions_bar_home">Bas bet</string>
     <string name="dejavu_settings_more_menu_summary">Betlerdiń astındaǵı áreketler paneli hám ol ashatuǵın menyu</string>
-    <string name="dejavu_more_menu_hint">Tolıq menyunı ashıw ushın áreketler panelin joqarıǵa yamasa mánzil qatarın tómenge sırǵıtıń. Knopkanı jıljıtıw yamasa shıǵarıw ushın oǵan tiyiń. Keńeytiwler hámme waqıt pútkil qatardı iyeleydi.</string>
+    <string name="dejavu_more_menu_drag_hint">Knopkanı basıp turıń hám onı joqarıdaǵı qatarǵa súyreń. Knopkanı shıǵarıw ushın onı bul jerge, tómenge qaytarıp súyreń.</string>
     <string name="dejavu_actions_bar_hint">Betlerdiń astındaǵı knopkalar. Olar siz kórip turǵan betke qollanıladı.</string>
     <string name="dejavu_actions_bar_all_added">Barlıq knopkalar panelde bar.</string>
-    <string name="dejavu_more_menu_row">%1$d-qatar</string>
     <string name="dejavu_more_menu_add_item">Knopka qosıw</string>
     <string name="dejavu_more_menu_add_row">Qatar qosıw</string>
     <string name="dejavu_more_menu_row_full">Bul qatar tolı.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Ádepkige qayta ornatıw</string>
     <string name="dejavu_more_menu_hide_edit">Óńlew knopkasın jasırıw</string>
     <string name="dejavu_more_menu_hide_edit_summary">Bul ekrandı ashatuǵın, menyudıń astındaǵı knopka</string>
-    <string name="dejavu_more_menu_all_added">Barlıq knopkalar tolıq menyuda bar.</string>
-    <string name="dejavu_more_menu_preview">Aldın kóriw</string>
     <string name="dejavu_settings_sync">Firefox yamasa Zen penen sinxronlastırıw</string>
     <string name="dejavu_sync_hint">Reńleri hám belgisheleri menen jumıs maydanlarıńızdı, konteynerlerińizdi, bekitilgen betlerińizdi, tiykarǵılarıńızdı hám papkalarıńızdı kompyuterińizdegi Zen Browser hám basqa qurılmalarıńızdaǵı Dejavu menen bir qılıp turadı. Bunıń ushın Firefox maǵlıwmatlarıńızdı sinxronlastıratuǵın Mozilla akkauntı qollanıladı.</string>
     <string name="dejavu_sync_zen_hint">Zen-de Sazlawlardı, soń Sinxronlastırıwdı ashıń hám yan panel sinxronlastırıwın qosıń. Bekitilmegen betler sinxronlastırılmaydı.</string>

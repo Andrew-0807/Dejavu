@@ -147,17 +147,14 @@ object MoreMenuLayout {
         normalized(rows).map { row -> row.mapNotNull { entryOf(it, customActions) } }.filter { it.isNotEmpty() }
 
     /**
-     * [rows] without duplicates or empty rows, with full row entries on rows of their own and at most [MAX_PER_ROW]
-     * entries per row.
+     * [rows] without empty rows, with full row entries on rows of their own and at most [MAX_PER_ROW] entries per row.
+     * An entry can be in the menu more than once.
      */
-    fun normalized(rows: List<List<String>>): List<List<String>> {
-        val seen = mutableSetOf<String>()
-        return rows.flatMap { row ->
-            val keys = row.filter { seen.add(it) }
-            val (full, others) = keys.partition(::isFullRow)
+    fun normalized(rows: List<List<String>>): List<List<String>> =
+        rows.flatMap { row ->
+            val (full, others) = row.partition(::isFullRow)
             full.map { listOf(it) } + others.chunked(MAX_PER_ROW)
         }.filter { it.isNotEmpty() }
-    }
 
     fun toJson(rows: List<List<String>>): String =
         JSONArray().apply { rows.forEach { row -> put(JSONArray(row)) } }.toString()

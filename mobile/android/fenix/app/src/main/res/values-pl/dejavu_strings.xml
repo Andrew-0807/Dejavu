@@ -204,10 +204,9 @@
     <string name="dejavu_actions_bar_search">Szukaj</string>
     <string name="dejavu_actions_bar_home">Start</string>
     <string name="dejavu_settings_more_menu_summary">Pasek akcji pod stronami i menu, które otwiera</string>
-    <string name="dejavu_more_menu_hint">Przeciągnij pasek akcji w górę lub pasek adresu w dół, aby otworzyć całe menu. Dotknij przycisku, aby go przenieść lub usunąć. Rozszerzenia zawsze zajmują cały rząd.</string>
+    <string name="dejavu_more_menu_drag_hint">Przytrzymaj przycisk i przeciągnij go do rzędu powyżej. Aby usunąć przycisk, przeciągnij go z powrotem tutaj na dół.</string>
     <string name="dejavu_actions_bar_hint">Przyciski pod stronami. Działają na stronie, na której jesteś.</string>
     <string name="dejavu_actions_bar_all_added">Wszystkie przyciski są już na pasku.</string>
-    <string name="dejavu_more_menu_row">Rząd %1$d</string>
     <string name="dejavu_more_menu_add_item">Dodaj przycisk</string>
     <string name="dejavu_more_menu_add_row">Dodaj rząd</string>
     <string name="dejavu_more_menu_row_full">Ten rząd jest pełny.</string>
@@ -220,8 +219,6 @@
     <string name="dejavu_more_menu_reset">Przywróć domyślne</string>
     <string name="dejavu_more_menu_hide_edit">Ukryj przycisk edycji</string>
     <string name="dejavu_more_menu_hide_edit_summary">Przycisk pod menu, który otwiera ten ekran</string>
-    <string name="dejavu_more_menu_all_added">Wszystkie przyciski są już w menu.</string>
-    <string name="dejavu_more_menu_preview">Podgląd</string>
     <string name="dejavu_settings_sync">Synchronizuj z Firefoksem lub Zen</string>
     <string name="dejavu_sync_hint">Zachowuje twoje obszary robocze z ich kolorami i ikonami, kontenery, przypięte karty, ulubione i foldery takie same jak w Zen Browser na komputerze i w Dejavu na innych urządzeniach. Wykorzystuje do tego konto Mozilli, za pomocą którego synchronizujesz dane Firefoksa.</string>
     <string name="dejavu_sync_zen_hint">W Zen otwórz Ustawienia, potem Synchronizację, i włącz synchronizację paska bocznego. Nieprzypięte karty nie są synchronizowane.</string>

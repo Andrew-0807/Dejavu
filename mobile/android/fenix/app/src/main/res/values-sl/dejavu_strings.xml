@@ -204,10 +204,9 @@
     <string name="dejavu_actions_bar_search">Iskanje</string>
     <string name="dejavu_actions_bar_home">Domov</string>
     <string name="dejavu_settings_more_menu_summary">Vrstica dejanj pod stranmi in meni, ki ga odpre</string>
-    <string name="dejavu_more_menu_hint">Za odprtje celotnega menija povlecite vrstico dejanj navzgor ali naslovno vrstico navzdol. Dotaknite se gumba, da ga premaknete ali odstranite. Razširitve vedno zasedejo celo vrstico.</string>
+    <string name="dejavu_more_menu_drag_hint">Pridržite gumb in ga povlecite v vrstico zgoraj. Gumb odstranite tako, da ga povlečete nazaj sem dol.</string>
     <string name="dejavu_actions_bar_hint">Gumbi pod stranmi. Delujejo na strani, ki jo imate odprto.</string>
     <string name="dejavu_actions_bar_all_added">Vsi gumbi so že v vrstici.</string>
-    <string name="dejavu_more_menu_row">Vrstica %1$d</string>
     <string name="dejavu_more_menu_add_item">Dodaj gumb</string>
     <string name="dejavu_more_menu_add_row">Dodaj vrstico</string>
     <string name="dejavu_more_menu_row_full">Ta vrstica je polna.</string>
@@ -220,8 +219,6 @@
     <string name="dejavu_more_menu_reset">Ponastavi na privzeto</string>
     <string name="dejavu_more_menu_hide_edit">Skrij gumb za urejanje</string>
     <string name="dejavu_more_menu_hide_edit_summary">Gumb pod menijem, ki odpre ta zaslon</string>
-    <string name="dejavu_more_menu_all_added">Vsi gumbi so že v meniju.</string>
-    <string name="dejavu_more_menu_preview">Predogled</string>
     <string name="dejavu_settings_sync">Sinhronizacija s Firefoxom ali Zenom</string>
     <string name="dejavu_sync_hint">Vaši delovni prostori z barvami in ikonami, vsebniki, pripeti zavihki, Izbrano in mape ostanejo enaki kot v Zen Browserju na vašem računalniku in v Dejavuju na vaših drugih napravah. Uporablja se račun Mozilla, s katerim sinhronizirate podatke Firefoxa.</string>
     <string name="dejavu_sync_zen_hint">V Zenu odprite Nastavitve, nato Sinhronizacija, in vklopite sinhronizacijo stranske vrstice. Zavihki, ki niso pripeti, se ne sinhronizirajo.</string>

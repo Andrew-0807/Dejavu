@@ -203,10 +203,9 @@
     <string name="dejavu_actions_bar_search">Pesquisar</string>
     <string name="dejavu_actions_bar_home">Início</string>
     <string name="dejavu_settings_more_menu_summary">A barra de ações abaixo das páginas e o menu que ela abre</string>
-    <string name="dejavu_more_menu_hint">Desliza a barra de ações para cima, ou a barra de endereço para baixo, para abrir o menu completo. Toca num botão para o mover ou remover. As extensões ocupam sempre uma linha inteira.</string>
+    <string name="dejavu_more_menu_drag_hint">Mantém premido um botão e arrasta-o para uma linha acima. Arrasta um botão de volta para aqui em baixo para o remover.</string>
     <string name="dejavu_actions_bar_hint">Os botões abaixo das páginas. Atuam na página em que estás.</string>
     <string name="dejavu_actions_bar_all_added">Todos os botões já estão na barra.</string>
-    <string name="dejavu_more_menu_row">Linha %1$d</string>
     <string name="dejavu_more_menu_add_item">Adicionar um botão</string>
     <string name="dejavu_more_menu_add_row">Adicionar uma linha</string>
     <string name="dejavu_more_menu_row_full">Esta linha está cheia.</string>
@@ -219,8 +218,6 @@
     <string name="dejavu_more_menu_reset">Repor predefinições</string>
     <string name="dejavu_more_menu_hide_edit">Ocultar botão de edição</string>
     <string name="dejavu_more_menu_hide_edit_summary">O botão abaixo do menu que abre este ecrã</string>
-    <string name="dejavu_more_menu_all_added">Todos os botões já estão no menu.</string>
-    <string name="dejavu_more_menu_preview">Pré-visualização</string>
     <string name="dejavu_settings_sync">Sincronizar com Firefox ou Zen</string>
     <string name="dejavu_sync_hint">Mantém os teus espaços de trabalho com as cores e ícones, contentores, separadores fixados, essenciais e pastas iguais aos do Zen Browser no teu computador e do Dejavu nos teus outros dispositivos. Usa a mesma conta Mozilla com a qual sincronizas os dados do Firefox.</string>
     <string name="dejavu_sync_zen_hint">No Zen, abre Definições e depois Sincronização, e ativa a sincronização da barra lateral. Separadores que não estão fixados não são sincronizados.</string>

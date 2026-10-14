@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">پٹبو</string>
     <string name="dejavu_actions_bar_home">گھر</string>
     <string name="dejavu_settings_more_menu_summary">صفحاک نا تلی ایکشن بار او اے ملتین مینو</string>
-    <string name="dejavu_more_menu_hint">کل مینو ملننا نا واسطے ایکشن بار اے اُتی، یا ڈس بار اے تلی سوائپ کبو۔ بٹن اس چلننا یا ہٹاننا نا واسطے اے پار ٹیپ کبو۔ ایکسٹینشناک ہمیشہ ایک پوری قطار اٹ ہن۔</string>
+    <string name="dejavu_more_menu_drag_hint">بٹن اے دبا ہلبو و اُتی ہُراکا قطار اٹ کشبو۔ بٹن اس ہٹاننا کن اے پدا ادے تلی کشبو۔</string>
     <string name="dejavu_actions_bar_hint">صفحاک نا تلی بٹناک۔ اے نی نا ملوکا صفحہ پار چل ہن۔</string>
     <string name="dejavu_actions_bar_all_added">ہر بٹن پہلوں تی بار اٹ ہس۔</string>
-    <string name="dejavu_more_menu_row">قطار %1$d</string>
     <string name="dejavu_more_menu_add_item">بٹن شامل کبو</string>
     <string name="dejavu_more_menu_add_row">قطار شامل کبو</string>
     <string name="dejavu_more_menu_row_full">اے قطار پر ہس۔</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">ڈیفالٹ ٹی ری سیٹ کبو</string>
     <string name="dejavu_more_menu_hide_edit">ایڈٹ بٹن لکاؤ</string>
     <string name="dejavu_more_menu_hide_edit_summary">اے اسکرین ملتین مینو نا تلی بٹن</string>
-    <string name="dejavu_more_menu_all_added">ہر بٹن پہلوں تی مینو اٹ ہس۔</string>
-    <string name="dejavu_more_menu_preview">پیش نظارہ</string>
     <string name="dejavu_settings_sync">Firefox یا Zen گدا سنک کبو</string>
     <string name="dejavu_sync_hint">نی نا ورک سپیساک اے نا رنگاک او آئیکناک، کنٹینراک، پن ٹیباک، ضروری چیزاک او فولڈراک گدا، نی نا کمپیوٹر پار Zen Browser اٹ او نی نا ہور ڈیوائساک پار Dejavu اٹ جہو راکھ ہن۔ اے او Mozilla اکاؤنٹ استعمال ہس جیدا گدا نی Firefox ڈیٹا سنک کن۔</string>
     <string name="dejavu_sync_zen_hint">Zen اٹ، سیٹنگاک مل، پہ Sync، او سائیڈبار سنک آن کبو۔ جہ ٹیباک پن نی ہن اے سنک نی ہن۔</string>

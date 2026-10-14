@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Eheka</string>
     <string name="dejavu_actions_bar_home">Óga</string>
     <string name="dejavu_settings_more_menu_summary">Pe tembiapo barra kuatiarogue guýpe ha pe menu ombojurujáva</string>
-    <string name="dejavu_more_menu_hint">Erova tembiapo barra yvate gotyo, térã kundaharape renda yvy gotyo, embojuruja hag̃ua menu tuichakue. Eikutu peteĩ votã emongu\'e térã emboguete hag̃ua. Jepysokue oipyhy tapiaite peteĩ tysỹi tuichakue.</string>
+    <string name="dejavu_more_menu_drag_hint">Ejopy peteĩ votã ha emosyryry tysỹi yvategua peve. Emosyryry jey peteĩ votã ko\'ápe yvy gotyo emboguete hag̃ua.</string>
     <string name="dejavu_actions_bar_hint">Umi votã kuatiarogue guýpe. Omba\'apo pe kuatiarogue reimehápe.</string>
     <string name="dejavu_actions_bar_all_added">Opaite votã oĩma pe barrape.</string>
-    <string name="dejavu_more_menu_row">Tysỹi %1$d</string>
     <string name="dejavu_more_menu_add_item">Embojuaju peteĩ votã</string>
     <string name="dejavu_more_menu_add_row">Embojuaju peteĩ tysỹi</string>
     <string name="dejavu_more_menu_row_full">Ko tysỹi henyhẽma.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Mbojevy ijypyguápe</string>
     <string name="dejavu_more_menu_hide_edit">Emokañy votã mbosako\'ihápe</string>
     <string name="dejavu_more_menu_hide_edit_summary">Pe votã pe menu ombojurujáva ko mba\'ekuaarã guýpe</string>
-    <string name="dejavu_more_menu_all_added">Opaite votã oĩma pe menúpe.</string>
-    <string name="dejavu_more_menu_preview">Jehechaukami</string>
     <string name="dejavu_settings_sync">Sincronizar Firefox térã Zen ndive</string>
     <string name="dejavu_sync_hint">Ombojoja nde tembiapo renda isa\'y ha ita\'ãnga reheve, ryru, tendayke mboguapypyre, iporãvéva ha karpeta, Zen Browser nde mba\'e\'okápe ha Dejavu ambue mba\'e\'okakuérape g̃uarã. Oiporu pe kuenta Mozilla-gua reiporúva resincronizar hağua nde mba\'ekuaarã Firefox-pegua.</string>
     <string name="dejavu_sync_zen_hint">Zen-pe, embojuruja Ñemboheko, upéi Sincronizar, ha emyendy pe sidebar sincronización. Umi tendayke mboguapypyre\'ỹva nosincronizahái.</string>

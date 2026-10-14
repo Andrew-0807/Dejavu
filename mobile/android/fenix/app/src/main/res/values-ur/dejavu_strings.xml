@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">تلاش کریں</string>
     <string name="dejavu_actions_bar_home">ہوم</string>
     <string name="dejavu_settings_more_menu_summary">صفحات کے نیچے ایکشن بار اور وہ مینو جو یہ کھولتا ہے</string>
-    <string name="dejavu_more_menu_hint">پورا مینو کھولنے کے لیے ایکشن بار کو اوپر، یا ایڈریس بار کو نیچے سوائپ کریں۔ کسی بٹن کو منتقل کرنے یا ہٹانے کے لیے اس پر ٹیپ کریں۔ ایکسٹینشنز ہمیشہ پوری صف لیتی ہیں۔</string>
+    <string name="dejavu_more_menu_drag_hint">کسی بٹن کو دبا کر رکھیں اور اسے اوپر کسی صف میں گھسیٹیں۔ بٹن ہٹانے کے لیے اسے واپس یہاں نیچے گھسیٹیں۔</string>
     <string name="dejavu_actions_bar_hint">صفحات کے نیچے والے بٹنز۔ یہ اس صفحے پر کام کرتے ہیں جس پر آپ ہیں۔</string>
     <string name="dejavu_actions_bar_all_added">ہر بٹن پہلے ہی بار میں موجود ہے۔</string>
-    <string name="dejavu_more_menu_row">صف %1$d</string>
     <string name="dejavu_more_menu_add_item">بٹن شامل کریں</string>
     <string name="dejavu_more_menu_add_row">صف شامل کریں</string>
     <string name="dejavu_more_menu_row_full">یہ صف بھر چکی ہے۔</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">ڈیفالٹ پر ری سیٹ کریں</string>
     <string name="dejavu_more_menu_hide_edit">ترمیم کا بٹن چھپائیں</string>
     <string name="dejavu_more_menu_hide_edit_summary">وہ بٹن جو مینو کے نیچے ہے اور یہ اسکرین کھولتا ہے</string>
-    <string name="dejavu_more_menu_all_added">ہر بٹن پہلے ہی مینو میں موجود ہے۔</string>
-    <string name="dejavu_more_menu_preview">پیش منظر</string>
     <string name="dejavu_settings_sync">Firefox یا Zen کے ساتھ ہم وقت سازی</string>
     <string name="dejavu_sync_hint">آپ کی ورک اسپیسز کو ان کے رنگوں اور آئیکنز، کنٹینرز، پن کردہ ٹیبز، اہم اور فولڈرز سمیت آپ کے کمپیوٹر پر Zen Browser اور آپ کی دیگر ڈیوائسز پر Dejavu جیسا ہی رکھتا ہے۔ یہ اسی Mozilla اکاؤنٹ کا استعمال کرتا ہے جس سے آپ Firefox کا ڈیٹا ہم وقت کرتے ہیں۔</string>
     <string name="dejavu_sync_zen_hint">Zen میں، سیٹنگز کھولیں، پھر سنک، اور سائیڈ بار ہم وقت سازی کو آن کریں۔ وہ ٹیبز جو پن نہیں کیے گئے ہم وقت نہیں ہوتے۔</string>

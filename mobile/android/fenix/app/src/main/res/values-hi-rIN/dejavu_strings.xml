@@ -253,10 +253,9 @@
     <string name="dejavu_actions_bar_search">सर्च करें</string>
     <string name="dejavu_actions_bar_home">होम</string>
     <string name="dejavu_settings_more_menu_summary">पेज के नीचे का ऐक्शन बार और उससे खुलने वाला मेन्यू</string>
-    <string name="dejavu_more_menu_hint">पूरा मेन्यू खोलने के लिए ऐक्शन बार को ऊपर, या एड्रेस बार को नीचे स्वाइप करें। किसी बटन को दूसरी जगह ले जाने या हटाने के लिए उस पर टैप करें। एक्सटेंशन हमेशा पूरी पंक्ति लेते हैं।</string>
+    <string name="dejavu_more_menu_drag_hint">किसी बटन को दबाकर रखें और उसे ऊपर की किसी पंक्ति में खींचें। बटन हटाने के लिए उसे वापस यहाँ नीचे खींचें।</string>
     <string name="dejavu_actions_bar_hint">पेज के नीचे वाले बटन। ये उस पेज पर काम करते हैं जिस पर आप हैं।</string>
     <string name="dejavu_actions_bar_all_added">सभी बटन पहले से बार में हैं।</string>
-    <string name="dejavu_more_menu_row">पंक्ति %1$d</string>
     <string name="dejavu_more_menu_add_item">बटन जोड़ें</string>
     <string name="dejavu_more_menu_add_row">पंक्ति जोड़ें</string>
     <string name="dejavu_more_menu_row_full">यह पंक्ति भर गई है।</string>
@@ -269,8 +268,6 @@
     <string name="dejavu_more_menu_reset">डिफ़ॉल्ट पर रीसेट करें</string>
     <string name="dejavu_more_menu_hide_edit">एडिट बटन छिपाएं</string>
     <string name="dejavu_more_menu_hide_edit_summary">मेन्यू के नीचे का बटन, जो यह स्क्रीन खोलता है</string>
-    <string name="dejavu_more_menu_all_added">सभी बटन पहले से मेन्यू में हैं।</string>
-    <string name="dejavu_more_menu_preview">प्रीव्यू</string>
 
     <!-- Settings: syncing workspaces with Firefox or Zen -->
     <string name="dejavu_settings_sync">Firefox या Zen के साथ सिंक करें</string>

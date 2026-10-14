@@ -268,10 +268,9 @@
     <string name="dejavu_actions_bar_search">Search</string>
     <string name="dejavu_actions_bar_home">Home</string>
     <string name="dejavu_settings_more_menu_summary">The actions bar below pages and the menu it opens</string>
-    <string name="dejavu_more_menu_hint">Swipe the actions bar up, or the address bar down, to open the whole menu. Tap a button to move or remove it. Extensions always take a whole row.</string>
+    <string name="dejavu_more_menu_drag_hint">Hold a button and drag it into a row above. Drag a button back down here to remove it.</string>
     <string name="dejavu_actions_bar_hint">The buttons below pages. They act on the page you are on.</string>
     <string name="dejavu_actions_bar_all_added">Every button is already in the bar.</string>
-    <string name="dejavu_more_menu_row">Row %1$d</string>
     <string name="dejavu_more_menu_add_item">Add a button</string>
     <string name="dejavu_more_menu_add_row">Add a row</string>
     <string name="dejavu_more_menu_row_full">This row is full.</string>
@@ -284,8 +283,6 @@
     <string name="dejavu_more_menu_reset">Reset to default</string>
     <string name="dejavu_more_menu_hide_edit">Hide edit button</string>
     <string name="dejavu_more_menu_hide_edit_summary">The button below the menu that opens this screen</string>
-    <string name="dejavu_more_menu_all_added">Every button is already in the menu.</string>
-    <string name="dejavu_more_menu_preview">Preview</string>
 
     <!-- Account page: syncing workspaces with Firefox or Zen, shown in its own section -->
     <string name="pref_key_dejavu_sync_category" translatable="false">pref_key_dejavu_sync_category</string>

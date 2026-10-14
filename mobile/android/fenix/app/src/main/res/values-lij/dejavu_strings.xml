@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Treuva</string>
     <string name="dejavu_actions_bar_home">Casa</string>
     <string name="dejavu_settings_more_menu_summary">A barra de-e açioin sotto a-e pagine e o menû ch\'a arve</string>
-    <string name="dejavu_more_menu_hint">Fa scorrî a barra de-e açioin in sciù, ò a barra di indirizzi in zu, pe arvî tutto o menû. Tocca \'n buttón pe spostâlo ò cacciâlo. E estensioin piggian de longo \'na riga intrega.</string>
+    <string name="dejavu_more_menu_drag_hint">Tegni sciaccou \'n buttón e strascinilo inte \'na riga de d\'ato. Strascina \'n buttón torna chi de sotta pe cacciâlo.</string>
     <string name="dejavu_actions_bar_hint">I buttoin sotto a-e pagine. Fonçionan in sce a pagina donde t\'ê.</string>
     <string name="dejavu_actions_bar_all_added">Ògni buttón o l\'è za inte a barra.</string>
-    <string name="dejavu_more_menu_row">Riga %1$d</string>
     <string name="dejavu_more_menu_add_item">Azzonzi \'n buttón</string>
     <string name="dejavu_more_menu_add_row">Azzonzi \'na riga</string>
     <string name="dejavu_more_menu_row_full">Sta riga a l\'è ciña.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Ripristina i valoî predefiniti</string>
     <string name="dejavu_more_menu_hide_edit">Ascondi o buttón de modifica</string>
     <string name="dejavu_more_menu_hide_edit_summary">O buttón sotto a-o menû ch\'o arve sto schermo</string>
-    <string name="dejavu_more_menu_all_added">Ògni buttón o l\'è za inte o menû.</string>
-    <string name="dejavu_more_menu_preview">Anteprima</string>
     <string name="dejavu_settings_sync">Sincronizza con Firefox ò Zen</string>
     <string name="dejavu_sync_hint">O mantegne i tò spaçi de travaggio co-i sò coloî e icone, contenitoi, feuggi fissæ, essençiali e cartelle compagn-e comme inte Zen Browser in sciô tò computer e inte Dejavu inti tò âtri dispoxitivi. O doeä o conto Mozilla co-o quæ ti sincronizzi i dæti de Firefox.</string>
     <string name="dejavu_sync_zen_hint">Inte Zen, arvi Inpostaçioin, poi Sincronizzaçion, e attivi a sincronizzaçion de a barra laterale. I feuggi che no son fissæ no vegnan sincronizæ.</string>

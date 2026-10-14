@@ -203,10 +203,9 @@
     <string name="dejavu_actions_bar_search">Traži</string>
     <string name="dejavu_actions_bar_home">Početna</string>
     <string name="dejavu_settings_more_menu_summary">Traka radnji ispod stranica i izbornik koji se njome otvara</string>
-    <string name="dejavu_more_menu_hint">Povucite traku radnji prema gore ili adresnu traku prema dolje za otvaranje cijelog izbornika. Dodirnite gumb da biste ga premjestili ili uklonili. Dodaci uvijek zauzimaju cijeli redak.</string>
+    <string name="dejavu_more_menu_drag_hint">Zadržite gumb i povucite ga u redak iznad. Povucite gumb natrag ovdje dolje da biste ga uklonili.</string>
     <string name="dejavu_actions_bar_hint">Gumbi ispod stranica. Djeluju na stranicu na kojoj se nalazite.</string>
     <string name="dejavu_actions_bar_all_added">Svi gumbi su već na traci.</string>
-    <string name="dejavu_more_menu_row">Redak %1$d</string>
     <string name="dejavu_more_menu_add_item">Dodaj gumb</string>
     <string name="dejavu_more_menu_add_row">Dodaj redak</string>
     <string name="dejavu_more_menu_row_full">Ovaj redak je pun.</string>
@@ -219,8 +218,6 @@
     <string name="dejavu_more_menu_reset">Vrati na zadano</string>
     <string name="dejavu_more_menu_hide_edit">Sakrij gumb za uređivanje</string>
     <string name="dejavu_more_menu_hide_edit_summary">Gumb ispod izbornika koji otvara ovaj zaslon</string>
-    <string name="dejavu_more_menu_all_added">Svi gumbi su već u izborniku.</string>
-    <string name="dejavu_more_menu_preview">Pregled</string>
     <string name="dejavu_settings_sync">Sinkronizacija s Firefoxom ili Zenom</string>
     <string name="dejavu_sync_hint">Vaši radni prostori s bojama i ikonama, spremnici, prikvačene kartice, Favoriti i mape ostaju isti kao u Zen Browseru na vašem računalu i u Dejavuu na vašim ostalim uređajima. Koristi se Mozilla račun kojim sinkronizirate Firefox podatke.</string>
     <string name="dejavu_sync_zen_hint">U Zenu otvorite Postavke, zatim Sinkronizacija, i uključite sinkronizaciju bočne trake. Kartice koje nisu prikvačene se ne sinkroniziraju.</string>

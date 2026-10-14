@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Kërko</string>
     <string name="dejavu_actions_bar_home">Kreu</string>
     <string name="dejavu_settings_more_menu_summary">Shiriti i veprimeve nën faqet dhe menuja që hap</string>
-    <string name="dejavu_more_menu_hint">Fërkojeni shiritin e veprimeve për sipër, ose shtyllën e adresave për poshtë, që të hapet krejt menuja. Prekni një buton që ta lëvizni ose ta hiqni. Zgjerimet zënë përherë një rresht të tërë.</string>
+    <string name="dejavu_more_menu_drag_hint">Mbani shtypur një buton dhe tërhiqeni te një rresht sipër. Tërhiqeni një buton prapë këtu poshtë që ta hiqni.</string>
     <string name="dejavu_actions_bar_hint">Butonat nën faqet. Veprojnë mbi faqen ku gjendeni.</string>
     <string name="dejavu_actions_bar_all_added">Çdo buton gjendet tashmë te shiriti.</string>
-    <string name="dejavu_more_menu_row">Rreshti %1$d</string>
     <string name="dejavu_more_menu_add_item">Shto buton</string>
     <string name="dejavu_more_menu_add_row">Shto rresht</string>
     <string name="dejavu_more_menu_row_full">Ky rresht është plot.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Riktheje te parazgjedhja</string>
     <string name="dejavu_more_menu_hide_edit">Fshihe butonin e përpunimit</string>
     <string name="dejavu_more_menu_hide_edit_summary">Butoni nën menu që hap këtë skermë</string>
-    <string name="dejavu_more_menu_all_added">Çdo buton gjendet tashmë në menu.</string>
-    <string name="dejavu_more_menu_preview">Paraparje</string>
     <string name="dejavu_settings_sync">Njëkohësoje me Firefox-in ose Zen-in</string>
     <string name="dejavu_sync_hint">I mban hapësirat tuaja të punës, me ngjyrat dhe ikonat e tyre, kontejnerët, skedat e fiksuara, thelbësoret dhe dosjet, njësoj si në Zen Browser në kompjuterin tuaj dhe në Dejavu në pajisjet tuaja të tjera. Përdor llogarinë Mozilla me të cilën njëkohësoni të dhënat e Firefox-it.</string>
     <string name="dejavu_sync_zen_hint">Në Zen, hapni Rregullime, mandej Njëkohësim, dhe aktivizoni njëkohësimin e panelit anësor. Skedat që nuk janë të fiksuara nuk njëkohësohen.</string>

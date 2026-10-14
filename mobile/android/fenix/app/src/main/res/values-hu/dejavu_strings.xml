@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Keresés</string>
     <string name="dejavu_actions_bar_home">Kezdőlap</string>
     <string name="dejavu_settings_more_menu_summary">Az oldalak alatti műveletsáv és az általa megnyitott menü</string>
-    <string name="dejavu_more_menu_hint">Az egész menü megnyitásához húzza felfelé a műveletsávot, vagy lefelé a címsávot. Egy gomb áthelyezéséhez vagy eltávolításához koppintson rá. A kiegészítők mindig egy teljes sort foglalnak el.</string>
+    <string name="dejavu_more_menu_drag_hint">Tartson lenyomva egy gombot, és húzza egy fenti sorba. Egy gomb eltávolításához húzza vissza ide lefelé.</string>
     <string name="dejavu_actions_bar_hint">Az oldalak alatti gombok. Arra az oldalra hatnak, amelyen éppen van.</string>
     <string name="dejavu_actions_bar_all_added">Minden gomb már a sávban van.</string>
-    <string name="dejavu_more_menu_row">%1$d. sor</string>
     <string name="dejavu_more_menu_add_item">Gomb hozzáadása</string>
     <string name="dejavu_more_menu_add_row">Sor hozzáadása</string>
     <string name="dejavu_more_menu_row_full">Ez a sor megtelt.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Alapértelmezés visszaállítása</string>
     <string name="dejavu_more_menu_hide_edit">Szerkesztés gomb elrejtése</string>
     <string name="dejavu_more_menu_hide_edit_summary">A menü alatti gomb, amely megnyitja ezt a képernyőt</string>
-    <string name="dejavu_more_menu_all_added">Minden gomb már a menüben van.</string>
-    <string name="dejavu_more_menu_preview">Előnézet</string>
     <string name="dejavu_settings_sync">Szinkronizálás a Firefoxszal vagy a Zennel</string>
     <string name="dejavu_sync_hint">Megőrzi a munkaterületeit a színeikkel és ikonjaikkal, a konténereket, a kitűzött lapokat, a kedvenceket és a mappákat ugyanolyannak, mint a Zen Browserben a számítógépén, és a Dejavuban a többi eszközén. Ugyanazt a Mozilla-fiókot használja, amellyel a Firefox-adatait szinkronizálja.</string>
     <string name="dejavu_sync_zen_hint">A Zenben nyissa meg a Beállításokat, majd a Szinkronizálást, és kapcsolja be az oldalsó sáv szinkronizálását. A nem kitűzött lapok nem szinkronizálódnak.</string>

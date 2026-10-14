@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Rechercher</string>
     <string name="dejavu_actions_bar_home">Accueil</string>
     <string name="dejavu_settings_more_menu_summary">La barre d’actions sous les pages et le menu qu’elle ouvre</string>
-    <string name="dejavu_more_menu_hint">Fais glisser la barre d’actions vers le haut, ou la barre d’adresse vers le bas, pour ouvrir le menu complet. Touche un bouton pour le déplacer ou le retirer. Les extensions occupent toujours une ligne entière.</string>
+    <string name="dejavu_more_menu_drag_hint">Maintiens un bouton appuyé et fais-le glisser dans une ligne au-dessus. Fais glisser un bouton ici en bas pour le retirer.</string>
     <string name="dejavu_actions_bar_hint">Les boutons sous les pages. Ils agissent sur la page où tu te trouves.</string>
     <string name="dejavu_actions_bar_all_added">Tous les boutons sont déjà dans la barre.</string>
-    <string name="dejavu_more_menu_row">Ligne %1$d</string>
     <string name="dejavu_more_menu_add_item">Ajouter un bouton</string>
     <string name="dejavu_more_menu_add_row">Ajouter une ligne</string>
     <string name="dejavu_more_menu_row_full">Cette ligne est pleine.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Rétablir les valeurs par défaut</string>
     <string name="dejavu_more_menu_hide_edit">Masquer le bouton de modification</string>
     <string name="dejavu_more_menu_hide_edit_summary">Le bouton sous le menu qui ouvre cet écran</string>
-    <string name="dejavu_more_menu_all_added">Tous les boutons sont déjà dans le menu.</string>
-    <string name="dejavu_more_menu_preview">Aperçu</string>
     <string name="dejavu_settings_sync">Synchroniser avec Firefox ou Zen</string>
     <string name="dejavu_sync_hint">Garde tes espaces avec leurs couleurs et icônes, conteneurs, onglets épinglés, favoris et dossiers identiques à ceux de Zen Browser sur ton ordinateur et de Dejavu sur tes autres appareils. Cette fonction utilise le compte Mozilla avec lequel tu synchronises tes données Firefox.</string>
     <string name="dejavu_sync_zen_hint">Dans Zen, ouvre les paramètres, puis Synchronisation, et active la synchronisation de la barre latérale. Les onglets non épinglés ne sont pas synchronisés.</string>

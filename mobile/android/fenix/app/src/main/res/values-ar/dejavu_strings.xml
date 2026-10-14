@@ -206,10 +206,9 @@
     <string name="dejavu_actions_bar_search">ابحث</string>
     <string name="dejavu_actions_bar_home">الرئيسية</string>
     <string name="dejavu_settings_more_menu_summary">شريط الإجراءات أسفل الصفحات والقائمة التي يفتحها</string>
-    <string name="dejavu_more_menu_hint">اسحب شريط الإجراءات لأعلى، أو شريط العنوان لأسفل، لفتح القائمة كاملة. اضغط على زر لنقله أو إزالته. تشغل الامتدادات دائمًا صفًا كاملًا.</string>
+    <string name="dejavu_more_menu_drag_hint">اضغط مطولًا على زر واسحبه إلى صف في الأعلى. اسحب الزر إلى هنا في الأسفل لإزالته.</string>
     <string name="dejavu_actions_bar_hint">الأزرار أسفل الصفحات. تعمل على الصفحة التي أنت فيها.</string>
     <string name="dejavu_actions_bar_all_added">كل الأزرار موجودة بالفعل في الشريط.</string>
-    <string name="dejavu_more_menu_row">الصف %1$d</string>
     <string name="dejavu_more_menu_add_item">إضافة زر</string>
     <string name="dejavu_more_menu_add_row">إضافة صف</string>
     <string name="dejavu_more_menu_row_full">هذا الصف ممتلئ.</string>
@@ -222,8 +221,6 @@
     <string name="dejavu_more_menu_reset">إعادة الضبط إلى الافتراضي</string>
     <string name="dejavu_more_menu_hide_edit">إخفاء زر التعديل</string>
     <string name="dejavu_more_menu_hide_edit_summary">الزر الموجود أسفل القائمة الذي يفتح هذه الشاشة</string>
-    <string name="dejavu_more_menu_all_added">كل الأزرار موجودة بالفعل في القائمة.</string>
-    <string name="dejavu_more_menu_preview">معاينة</string>
     <string name="dejavu_settings_sync">المزامنة مع Firefox أو Zen</string>
     <string name="dejavu_sync_hint">يُبقي مساحات عملك بألوانها وأيقوناتها، وحاوياتك، وتبويباتك المثبتة، وأساسياتك، ومجلداتك متطابقة مع Zen Browser على حاسوبك ومع Dejavu على أجهزتك الأخرى. يستخدم لذلك حساب Mozilla الذي تُزامن به بيانات Firefox.</string>
     <string name="dejavu_sync_zen_hint">في Zen، افتح الإعدادات ثم المزامنة، وفعّل مزامنة الشريط الجانبي. التبويبات غير المثبتة لا تُزامَن.</string>

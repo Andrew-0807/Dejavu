@@ -205,10 +205,9 @@
     <string name="dejavu_actions_bar_search">Klask</string>
     <string name="dejavu_actions_bar_home">Degemer</string>
     <string name="dejavu_settings_more_menu_summary">Ar varrenn oberioù dindan ar bajennoù hag ar meuziad a zigor</string>
-    <string name="dejavu_more_menu_hint">Riklit ar varrenn oberioù war-c’hrec’h, pe ar varrenn chomlec’h war-draoñ, evit digeriñ ar meuziad a-bezh. Pouezit war un afell evit e zilec’hiañ pe e lemel. An askouezhioù a gemer atav ur renkad a-bezh.</string>
+    <string name="dejavu_more_menu_drag_hint">Derc’hit war un afell ha riklit anezhañ en ur renkad a-us. Riklit un afell en-dro amañ dindan evit e lemel.</string>
     <string name="dejavu_actions_bar_hint">An afelloù dindan ar pajennoù. Labourat a reont war ar bajenn emaoc’h warni.</string>
     <string name="dejavu_actions_bar_all_added">Emañ an holl afelloù er varrenn dija.</string>
-    <string name="dejavu_more_menu_row">Renkad %1$d</string>
     <string name="dejavu_more_menu_add_item">Ouzhpennañ un afell</string>
     <string name="dejavu_more_menu_add_row">Ouzhpennañ ur renkad</string>
     <string name="dejavu_more_menu_row_full">Leun eo ar renkad-mañ.</string>
@@ -221,8 +220,6 @@
     <string name="dejavu_more_menu_reset">Adderaouekaat dre ziouer</string>
     <string name="dejavu_more_menu_hide_edit">Kuzhat an afell gemmañ</string>
     <string name="dejavu_more_menu_hide_edit_summary">An afell dindan ar meuziad a zigor ar skramm-mañ</string>
-    <string name="dejavu_more_menu_all_added">Ouzhpennet eo an holl afelloù dija d’ar meuziad.</string>
-    <string name="dejavu_more_menu_preview">Rakwel</string>
     <string name="dejavu_settings_sync">Goubredañ gant Firefox pe Zen</string>
     <string name="dejavu_sync_hint">Mirout a ra hoc’h egorioù labour gant o livioù hag arlunioù, kontenerioù, ivinelloù spilhennet, traoù pouezus ha teuliadoù heñvel doc’h Zen Browser war hoc’h urzhiataer ha doc’h Dejavu war ho trevnadoù all. Implijout a ra ar gont Mozilla ma c’houbredit ho roadennoù Firefox gantañ.</string>
     <string name="dejavu_sync_zen_hint">E Zen, digorit Arventennoù, ha goude Goubredañ, ha weredekait goubredañ ar varrenn gostez. An ivinelloù dispilhennet ne vezont ket goubredet.</string>

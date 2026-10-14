@@ -204,10 +204,9 @@
     <string name="dejavu_actions_bar_search">Szukej</string>
     <string name="dejavu_actions_bar_home">Dōm</string>
     <string name="dejavu_settings_more_menu_summary">Posek akcyji pod strōnami i meni, kere ôn ôdwiyro</string>
-    <string name="dejavu_more_menu_hint">Przeciōng posek akcyji w gōra abo posek z adresōm w dōł, coby ôdewrzić cołke meni. Stuknij knefel, coby go przeniyś abo wyciepnyć. Rozszyrzynia zawdy zajmujōm cołko linijo.</string>
+    <string name="dejavu_more_menu_drag_hint">Przitrzim knefel i przeciōng go do linije wyżyj. Coby wyciepnyć knefel, przeciōng go nazod sam na dōł.</string>
     <string name="dejavu_actions_bar_hint">Knefle pod strōnami. Działajōm na tyj strōnie, kaj żeś je.</string>
     <string name="dejavu_actions_bar_all_added">Kożdy knefel je już na posku.</string>
-    <string name="dejavu_more_menu_row">Linijo %1$d</string>
     <string name="dejavu_more_menu_add_item">Dodej knefel</string>
     <string name="dejavu_more_menu_add_row">Dodej linijo</string>
     <string name="dejavu_more_menu_row_full">Ta linijo je pełno.</string>
@@ -220,8 +219,6 @@
     <string name="dejavu_more_menu_reset">Zresetuj do wychodnych</string>
     <string name="dejavu_more_menu_hide_edit">Skryj knefel edycyje</string>
     <string name="dejavu_more_menu_hide_edit_summary">Knefel pod meni, kery ôdwiyro tyn ekran</string>
-    <string name="dejavu_more_menu_all_added">Kożdy knefel je już w meni.</string>
-    <string name="dejavu_more_menu_preview">Podglōnd</string>
     <string name="dejavu_settings_sync">Synchronizuj z Firefox abo Zen</string>
     <string name="dejavu_sync_hint">Trzimo twoje place z jejich farbami i ikōnami, kōntynery, przipiynte karty, nojważniejsze i foldry take same jak w Zen Browser na twojim kōmputrze i w Dejavu na twojich inkszych geratach. Używo kōnta Mozilla, kerym synchronizujesz dane Firefox.</string>
     <string name="dejavu_sync_zen_hint">W Zen ôdewrzij Sztalōnki, potym Synchronizacyjo, i włōncz synchronizacyjo bocznego posku. Karty, kere niy sōm przipiynte, niy sōm synchronizowane.</string>

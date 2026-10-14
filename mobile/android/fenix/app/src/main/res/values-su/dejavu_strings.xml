@@ -201,10 +201,9 @@
     <string name="dejavu_actions_bar_search">Panggihan</string>
     <string name="dejavu_actions_bar_home">Home</string>
     <string name="dejavu_settings_more_menu_summary">Bar aksi di handap kaca jeung menu nu dibukana</string>
-    <string name="dejavu_more_menu_hint">Usapkeun bar aksi ka luhur, atawa palang alamat ka handap, pikeun muka menu sagemblengna. Toél tombol pikeun mindahkeun atawa miceunana. Éksténsi salawasna makéan hiji baris pinuh.</string>
+    <string name="dejavu_more_menu_drag_hint">Tahan tombol terus sered ka baris di luhur. Sered tombol deui ka handap dieu pikeun miceunana.</string>
     <string name="dejavu_actions_bar_hint">Tombol di handap kaca. Tombolna jalan kana kaca nu keur dibuka.</string>
     <string name="dejavu_actions_bar_all_added">Sakabéh tombol geus aya dina bar.</string>
-    <string name="dejavu_more_menu_row">Baris %1$d</string>
     <string name="dejavu_more_menu_add_item">Tambah tombol</string>
     <string name="dejavu_more_menu_add_row">Tambah baris</string>
     <string name="dejavu_more_menu_row_full">Baris ieu geus pinuh.</string>
@@ -217,8 +216,6 @@
     <string name="dejavu_more_menu_reset">Reset kana baku</string>
     <string name="dejavu_more_menu_hide_edit">Sumputkeun tombol édit</string>
     <string name="dejavu_more_menu_hide_edit_summary">Tombol di handap menu nu muka layar ieu</string>
-    <string name="dejavu_more_menu_all_added">Sakabéh tombol geus aya dina menu.</string>
-    <string name="dejavu_more_menu_preview">Preview</string>
     <string name="dejavu_settings_sync">Singkronkeun jeung Firefox atawa Zen</string>
     <string name="dejavu_sync_hint">Ngajaga rohangan anjeun sina sarua, kaasup warna jeung ikonna, wadah, tab nu disemat, Penting, jeung map, sakumaha dina Zen Browser di komputer anjeun jeung dina Dejavu di parabot anjeun nu séjén. Ieu maké akun Mozilla nu dipaké pikeun nyingkronkeun data Firefox.</string>
     <string name="dejavu_sync_zen_hint">Dina Zen, buka Settings, tuluy Sync, jeung hurungkeun sidebar sync. Tab nu teu disemat moal disingkronkeun.</string>

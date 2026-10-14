@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">ძიება</string>
     <string name="dejavu_actions_bar_home">მთავარი</string>
     <string name="dejavu_settings_more_menu_summary">მოქმედებების ზოლი გვერდების ქვემოთ და მენიუ, რომელსაც ის ხსნის</string>
-    <string name="dejavu_more_menu_hint">მთლიანი მენიუს გასახსნელად გადაფურცლეთ მოქმედებების ზოლი ზემოთ ან მისამართების ველი ქვემოთ. შეეხეთ ღილაკს მის გადასატანად ან ამოსაშლელად. გაფართოებები ყოველთვის მთელ მწკრივს იკავებს.</string>
+    <string name="dejavu_more_menu_drag_hint">ხანგრძლივად შეეხეთ ღილაკს და გადაიტანეთ ზემოთ მდებარე მწკრივში. ღილაკის ამოსაშლელად გადმოიტანეთ იგი აქ, ქვემოთ.</string>
     <string name="dejavu_actions_bar_hint">ღილაკები გვერდების ქვემოთ. ისინი მოქმედებს იმ გვერდზე, რომელზეც იმყოფებით.</string>
     <string name="dejavu_actions_bar_all_added">ყველა ღილაკი უკვე ზოლშია.</string>
-    <string name="dejavu_more_menu_row">მწკრივი %1$d</string>
     <string name="dejavu_more_menu_add_item">ღილაკის დამატება</string>
     <string name="dejavu_more_menu_add_row">მწკრივის დამატება</string>
     <string name="dejavu_more_menu_row_full">ეს მწკრივი სავსეა.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">ნაგულისხმევზე დაბრუნება</string>
     <string name="dejavu_more_menu_hide_edit">ჩასწორების ღილაკის დამალვა</string>
     <string name="dejavu_more_menu_hide_edit_summary">ღილაკი მენიუს ქვემოთ, რომელიც ხსნის ამ გვერდს</string>
-    <string name="dejavu_more_menu_all_added">ყველა ღილაკი უკვე მენიუშია.</string>
-    <string name="dejavu_more_menu_preview">გადახედვა</string>
     <string name="dejavu_settings_sync">სინქრონიზაცია Firefox-თან ან Zen-თან</string>
     <string name="dejavu_sync_hint">თქვენს სივრცეებს — ფერებითა და ხატულებით, კონტეინერებს, მიმაგრებულ ჩანართებს, საჭირო საიტებსა და საქაღალდეებს — იმავეს ინახავს, რაც Zen Browser-შია თქვენს კომპიუტერზე და Dejavu-ში თქვენს სხვა მოწყობილობებზე. გამოიყენება Mozilla-ანგარიში, რომლითაც Firefox-ის მონაცემებს ასინქრონებთ.</string>
     <string name="dejavu_sync_zen_hint">Zen-ში გახსენით „პარამეტრები“, შემდეგ „სინქრონიზაცია“ და ჩართეთ გვერდითი პანელის სინქრონიზაცია. მიუმაგრებელი ჩანართები არ სინქრონდება.</string>

@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Pangita</string>
     <string name="dejavu_actions_bar_home">Home</string>
     <string name="dejavu_settings_more_menu_summary">Ang bar sang mga aksyon sa idalom sang mga page kag ang menu nga ginaabli sini</string>
-    <string name="dejavu_more_menu_hint">i-Swipe pataas ang bar sang mga aksyon, ukon pa-idalom ang address bar, para maabrihan ang bug-os nga menu. i-Tap ang isa ka button para isaylo ukon kuhaon ini. Ang mga extension pirmi nagakuha sang bug-os nga laray.</string>
+    <string name="dejavu_more_menu_drag_hint">Pindota sing madugay ang isa ka button kag i-drag ini sa isa ka laray sa ibabaw. I-drag pabalik diri sa idalom ang button para kuhaon ini.</string>
     <string name="dejavu_actions_bar_hint">Ang mga button sa idalom sang mga page. Nagahulag ini sa page nga yara ka subong.</string>
     <string name="dejavu_actions_bar_all_added">Ang kada button ara na sa bar.</string>
-    <string name="dejavu_more_menu_row">Laray %1$d</string>
     <string name="dejavu_more_menu_add_item">Magdugang sang button</string>
     <string name="dejavu_more_menu_add_row">Magdugang sang laray</string>
     <string name="dejavu_more_menu_row_full">Puno na ining laray.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">i-Reset sa default</string>
     <string name="dejavu_more_menu_hide_edit">Tagua ang edit button</string>
     <string name="dejavu_more_menu_hide_edit_summary">Ang button sa idalom sang menu nga nagaabli sini nga screen</string>
-    <string name="dejavu_more_menu_all_added">Ang kada button ara na sa menu.</string>
-    <string name="dejavu_more_menu_preview">Preview</string>
     <string name="dejavu_settings_sync">i-Sync upod ang Firefox ukon Zen</string>
     <string name="dejavu_sync_hint">Ginabantayan nga pareho ang imo mga workspace upod ang ila mga kolor kag icon, container, naka-pin nga tab, Importante, kag folder, pareho sang ara sa Zen Browser sa imo kompyuter kag sa Dejavu sa imo iban nga device. Ginagamit sini ang Mozilla account nga imo ginagamit sa pag-sync sang data sang Firefox.</string>
     <string name="dejavu_sync_zen_hint">Sa Zen, abrihan ang Settings, dayon Sync, kag i-on ang sidebar sync. Ang mga tab nga indi naka-pin indi ma-sync.</string>

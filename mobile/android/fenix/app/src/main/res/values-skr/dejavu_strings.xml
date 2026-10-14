@@ -222,10 +222,9 @@
     <string name="dejavu_actions_bar_search">ڳولو</string>
     <string name="dejavu_actions_bar_home">مکھ پناں</string>
     <string name="dejavu_settings_more_menu_summary">ورقیاں دے تلے عمل پٹی، تے اوہ مینیو جہڑا ایہ کھولیندی ہے</string>
-    <string name="dejavu_more_menu_hint">پورا مینیو کھولݨ کیتے عمل پٹی کوں اُتے، یا پتہ پٹی کوں تلے سوائپ کرو۔ کہیں بٹݨ کوں ہلاوݨ یا ہٹاوݨ کیتے اوں تے دباؤ۔ ایکسٹینشنز ہمیشہ پوری قطار گھندیاں ہن۔</string>
+    <string name="dejavu_more_menu_drag_hint">کہیں بٹݨ کوں دبا تے رکھو تے اوکوں اُتے کہیں قطار وچ چھکو۔ بٹݨ ہٹاوݨ کیتے اوکوں ولا اتھاں تلے چھکو۔</string>
     <string name="dejavu_actions_bar_hint">ورقیاں دے تلے آلے بٹݨ۔ ایہ اوں ورقے تے کم کریندے ہن جیندے تے تساں ہو۔</string>
     <string name="dejavu_actions_bar_all_added">سارے بٹݨ پہلے ای پٹی وچ ہن۔</string>
-    <string name="dejavu_more_menu_row">قطار %1$d</string>
     <string name="dejavu_more_menu_add_item">بٹݨ شامل کرو</string>
     <string name="dejavu_more_menu_add_row">قطار شامل کرو</string>
     <string name="dejavu_more_menu_row_full">ایہ قطار بھری ہوئی ہے۔</string>
@@ -238,8 +237,6 @@
     <string name="dejavu_more_menu_reset">ڈیفالٹ تے ری سیٹ کرو</string>
     <string name="dejavu_more_menu_hide_edit">تبدیلی آلا بٹݨ لُکاؤ</string>
     <string name="dejavu_more_menu_hide_edit_summary">مینیو دے تلے آلا بٹݨ جہڑا ایہ سکرین کھولیندا ہے</string>
-    <string name="dejavu_more_menu_all_added">سارے بٹݨ پہلے ای مینیو وچ ہن۔</string>
-    <string name="dejavu_more_menu_preview">پیش منظر</string>
     <string name="dejavu_settings_sync">Firefox یا Zen نال ہم وقت کرو</string>
     <string name="dejavu_sync_hint">ایہ تہاݙیاں ورک سپیساں (انہاں دے رنگاں تے آئیکاناں سمیت)، کنٹینر، پن تھیاں ٹیباں، ضروری ٹیباں تے فولڈر اوہو جہے رکھدا ہے جہڑے تہاݙے کمپیوٹر تے Zen Browser وچ تے تہاݙیاں ٻیاں ڈیوائساں تے Dejavu وچ ہن۔ ایہ اوہو Mozilla کھاتہ ورتیندا ہے جیندے نال تساں Firefox ڈیٹا ہم وقت کریندے ہو۔</string>
     <string name="dejavu_sync_zen_hint">Zen وچ ترتیباں کھولو، ول ہم وقت کرݨ، تے سائیڈ بار ہم وقت کرݨ چالو کرو۔ جہڑیاں ٹیباں پن کائنی، اوہ ہم وقت کائنی تھیندیاں۔</string>

@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Serĉi</string>
     <string name="dejavu_actions_bar_home">Hejmo</string>
     <string name="dejavu_settings_more_menu_summary">La agostrio sub paĝoj kaj la menuo, kiun ĝi malfermas</string>
-    <string name="dejavu_more_menu_hint">Ŝovu la agostrion supren, aŭ la adresan strion malsupren, por malfermi la tutan menuon. Tuŝu butonon por movi aŭ forigi ĝin. Etendaĵoj ĉiam okupas tutan vicon.</string>
+    <string name="dejavu_more_menu_drag_hint">Tenu butonon kaj trenu ĝin al vico supre. Trenu butonon reen ĉi tien malsupre por forigi ĝin.</string>
     <string name="dejavu_actions_bar_hint">La butonoj sub paĝoj. Ili efikas sur la paĝon, en kiu vi estas.</string>
     <string name="dejavu_actions_bar_all_added">Ĉiu butono jam estas en la strio.</string>
-    <string name="dejavu_more_menu_row">Vico %1$d</string>
     <string name="dejavu_more_menu_add_item">Aldoni butonon</string>
     <string name="dejavu_more_menu_add_row">Aldoni vicon</string>
     <string name="dejavu_more_menu_row_full">Ĉi tiu vico estas plena.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Restarigi al defaŭlto</string>
     <string name="dejavu_more_menu_hide_edit">Kaŝi la redaktobutonon</string>
     <string name="dejavu_more_menu_hide_edit_summary">La butono sub la menuo, kiu malfermas ĉi tiun ekranon</string>
-    <string name="dejavu_more_menu_all_added">Ĉiu butono jam estas en la menuo.</string>
-    <string name="dejavu_more_menu_preview">Antaŭrigardo</string>
     <string name="dejavu_settings_sync">Sinkronigi kun Firefox aŭ Zen</string>
     <string name="dejavu_sync_hint">Tenas viajn laborspacojn kun iliaj koloroj kaj piktogramoj, ujojn, pinglitajn langetojn, esencaĵojn kaj dosierujojn samaj kiel en Zen Browser sur via komputilo kaj en Dejavu sur viaj aliaj aparatoj. Ĝi uzas la Mozilla-konton, per kiu vi sinkronigas Firefox-datumojn.</string>
     <string name="dejavu_sync_zen_hint">En Zen, malfermu Agordojn, poste Sinkronigon, kaj ŝaltu sinkronigon de la flanka breto. Langetoj, kiuj ne estas pinglitaj, ne estas sinkronigataj.</string>

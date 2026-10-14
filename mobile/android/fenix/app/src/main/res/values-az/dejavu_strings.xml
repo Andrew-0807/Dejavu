@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Axtar</string>
     <string name="dejavu_actions_bar_home">Ana səhifə</string>
     <string name="dejavu_settings_more_menu_summary">Səhifələrin altındakı əməliyyatlar paneli və onun açdığı menyu</string>
-    <string name="dejavu_more_menu_hint">Bütün menyunu açmaq üçün əməliyyatlar panelini yuxarı və ya ünvan sətrini aşağı sürüşdürün. Düyməni daşımaq və ya silmək üçün ona toxunun. Əlavələr həmişə bütöv bir sıranı tutur.</string>
+    <string name="dejavu_more_menu_drag_hint">Düyməni basıb saxlayın və yuxarıdakı sıraya sürükləyin. Düyməni silmək üçün onu yenidən aşağı, buraya sürükləyin.</string>
     <string name="dejavu_actions_bar_hint">Səhifələrin altındakı düymələr. Onlar baxdığınız səhifəyə tətbiq olunur.</string>
     <string name="dejavu_actions_bar_all_added">Bütün düymələr artıq paneldədir.</string>
-    <string name="dejavu_more_menu_row">%1$d-ci sıra</string>
     <string name="dejavu_more_menu_add_item">Düymə əlavə et</string>
     <string name="dejavu_more_menu_add_row">Sıra əlavə et</string>
     <string name="dejavu_more_menu_row_full">Bu sıra doludur.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Standarta sıfırla</string>
     <string name="dejavu_more_menu_hide_edit">Redaktə düyməsini gizlət</string>
     <string name="dejavu_more_menu_hide_edit_summary">Bu ekranı açan, menyunun altındakı düymə</string>
-    <string name="dejavu_more_menu_all_added">Bütün düymələr artıq menyudadır.</string>
-    <string name="dejavu_more_menu_preview">Önbaxış</string>
     <string name="dejavu_settings_sync">Firefox və ya Zen ilə sinxronlaşdır</string>
     <string name="dejavu_sync_hint">Rəng və ikonları ilə birlikdə iş sahələrinizi, konteynerlərinizi, bərkidilmiş vərəqlərinizi, əsaslarınızı və qovluqlarınızı kompüterinizdəki Zen Browser və digər cihazlarınızdakı Dejavu ilə eyni saxlayır. Bunun üçün Firefox məlumatlarınızı sinxronlaşdırdığınız Mozilla hesabından istifadə olunur.</string>
     <string name="dejavu_sync_zen_hint">Zen-də Tənzimləmələri, sonra Sinxronlaşdırmanı açın və yan panel sinxronlaşdırmasını aktivləşdirin. Bərkidilməmiş vərəqlər sinxronlaşdırılmır.</string>

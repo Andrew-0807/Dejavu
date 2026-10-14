@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Otsi</string>
     <string name="dejavu_actions_bar_home">Avaleht</string>
     <string name="dejavu_settings_more_menu_summary">Lehtede all olev tegevusriba ja menüü, mille see avab</string>
-    <string name="dejavu_more_menu_hint">Kogu menüü avamiseks libista tegevusriba üles või aadressiriba alla. Nupu liigutamiseks või eemaldamiseks puuduta seda. Lisad võtavad alati terve rea.</string>
+    <string name="dejavu_more_menu_drag_hint">Hoia nuppu all ja lohista see ülemisse ritta. Nupu eemaldamiseks lohista see tagasi siia alla.</string>
     <string name="dejavu_actions_bar_hint">Nupud lehtede all. Need toimivad lehel, millel oled.</string>
     <string name="dejavu_actions_bar_all_added">Kõik nupud on juba ribal.</string>
-    <string name="dejavu_more_menu_row">Rida %1$d</string>
     <string name="dejavu_more_menu_add_item">Lisa nupp</string>
     <string name="dejavu_more_menu_add_row">Lisa rida</string>
     <string name="dejavu_more_menu_row_full">See rida on täis.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Lähtesta vaikeseadetele</string>
     <string name="dejavu_more_menu_hide_edit">Peida muutmisnupp</string>
     <string name="dejavu_more_menu_hide_edit_summary">Selle ekraani avav nupp menüü all</string>
-    <string name="dejavu_more_menu_all_added">Kõik nupud on juba menüüs.</string>
-    <string name="dejavu_more_menu_preview">Eelvaade</string>
     <string name="dejavu_settings_sync">Sünkrooni Firefoxi või Zeniga</string>
     <string name="dejavu_sync_hint">Hoiab su tööruumid koos värvide ja ikoonidega, konteinerid, kinnitatud kaardid, olulised ja kaustad samasugused nagu arvutis olevas Zen Browseris ja teistes seadmetes olevas Dejavus. Selleks kasutatakse Mozilla kontot, millega sünkroonid Firefoxi andmeid.</string>
     <string name="dejavu_sync_zen_hint">Ava Zenis Sätted, siis Sünkroonimine, ja lülita sisse külgriba sünkroonimine. Kinnitamata kaarte ei sünkroonita.</string>

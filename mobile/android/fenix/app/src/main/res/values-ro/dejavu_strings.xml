@@ -203,10 +203,9 @@
     <string name="dejavu_actions_bar_search">Căutare</string>
     <string name="dejavu_actions_bar_home">Acasă</string>
     <string name="dejavu_settings_more_menu_summary">Bara de acțiuni de sub pagini și meniul pe care îl deschide</string>
-    <string name="dejavu_more_menu_hint">Glisează bara de acțiuni în sus sau bara de adrese în jos pentru a deschide meniul complet. Atinge un buton pentru a-l muta sau elimina. Extensiile ocupă întotdeauna un rând întreg.</string>
+    <string name="dejavu_more_menu_drag_hint">Ține apăsat un buton și trage-l într-un rând de mai sus. Trage un buton înapoi aici jos pentru a-l elimina.</string>
     <string name="dejavu_actions_bar_hint">Butoanele de sub pagini. Acționează asupra paginii pe care te afli.</string>
     <string name="dejavu_actions_bar_all_added">Toate butoanele sunt deja în bară.</string>
-    <string name="dejavu_more_menu_row">Rândul %1$d</string>
     <string name="dejavu_more_menu_add_item">Adaugă un buton</string>
     <string name="dejavu_more_menu_add_row">Adaugă un rând</string>
     <string name="dejavu_more_menu_row_full">Acest rând este plin.</string>
@@ -219,8 +218,6 @@
     <string name="dejavu_more_menu_reset">Resetează la implicit</string>
     <string name="dejavu_more_menu_hide_edit">Ascunde butonul de editare</string>
     <string name="dejavu_more_menu_hide_edit_summary">Butonul de sub meniu care deschide acest ecran</string>
-    <string name="dejavu_more_menu_all_added">Toate butoanele sunt deja în meniu.</string>
-    <string name="dejavu_more_menu_preview">Previzualizare</string>
     <string name="dejavu_settings_sync">Sincronizează cu Firefox sau Zen</string>
     <string name="dejavu_sync_hint">Îți păstrează spațiile de lucru, cu culorile și pictogramele lor, containerele, filele fixate, favorite și folderele identice cu cele din Zen Browser de pe computer și din Dejavu de pe celelalte dispozitive. Folosește contul Mozilla cu care sincronizezi datele Firefox.</string>
     <string name="dejavu_sync_zen_hint">În Zen, deschide Setări, apoi Sincronizare, și activează sincronizarea barei laterale. Filele care nu sunt fixate nu sunt sincronizate.</string>
