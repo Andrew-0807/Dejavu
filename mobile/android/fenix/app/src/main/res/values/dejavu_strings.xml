@@ -302,6 +302,7 @@
     <string name="pref_key_dejavu_sync_normal_tabs" translatable="false">pref_key_dejavu_sync_normal_tabs</string>
     <string name="pref_key_dejavu_sync_turn_on" translatable="false">pref_key_dejavu_sync_turn_on</string>
     <string name="pref_key_dejavu_sync_hint" translatable="false">pref_key_dejavu_sync_hint</string>
+    <string name="pref_key_dejavu_sync_entry" translatable="false">pref_key_dejavu_sync_entry</string>
     <string name="dejavu_settings_sync">Sync with Firefox or Zen</string>
     <string name="dejavu_sync_hint">Keeps your workspaces with their colors and icons, containers, pinned tabs, essentials and folders the same as in Zen Browser on your computer and in Dejavu on your other devices. It uses the Mozilla account you sync Firefox data with.</string>
     <string name="dejavu_sync_zen_hint">In Zen, open Settings, then Sync, and turn on sidebar sync. Tabs that are not pinned are not synced.</string>

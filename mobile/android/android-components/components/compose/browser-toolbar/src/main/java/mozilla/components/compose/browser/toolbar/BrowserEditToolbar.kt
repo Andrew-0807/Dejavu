@@ -8,9 +8,11 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -103,6 +105,11 @@ fun BrowserEditToolbar(
                     actions = editActionsStart,
                     onInteraction = onInteraction,
                 )
+
+                // Dejavu: without a button before it, the text keeps clear of the rounded edge.
+                if (editActionsStart.isEmpty()) {
+                    Spacer(modifier = Modifier.width(16.dp))
+                }
 
                 InlineAutocompleteTextField(
                     query = query,

@@ -13,15 +13,18 @@ import androidx.compose.animation.core.Easing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.semantics.testTagsAsResourceId
@@ -166,7 +169,19 @@ internal class HomeToolbarComposable(
                     testTag = context.resources.getResourceName(R.id.composable_toolbar)
                 }
         ) {
-            if (shouldUseBottomToolbar) {
+            if (shouldUseBottomToolbar && DejavuToolbar.enabled) {
+                // Dejavu: the space stays taken while there is nothing to suggest, like before typing a search of
+                // the tabs, bookmarks or history, so the address bar stays right above the keyboard. A tap there
+                // ends the search, as a tap beside the suggestions does, instead of reaching the workspace below.
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .pointerInput(Unit) { detectTapGestures(onTap = { appStore.dispatch(SearchEnded) }) },
+                ) {
+                    searchSuggestionsContent(Modifier.weight(1f))
+                }
+            } else if (shouldUseBottomToolbar) {
                 searchSuggestionsContent(Modifier.weight(1f))
             }
 
