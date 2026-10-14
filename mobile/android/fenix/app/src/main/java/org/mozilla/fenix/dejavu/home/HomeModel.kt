@@ -236,7 +236,8 @@ private fun TabAction.appliesToTargets(targets: ActionTargets): Boolean = when (
     TabAction.MOVE_TO_FOLDER, TabAction.MOVE_TO_WORKSPACE -> !targets.isEmpty()
     TabAction.CHANGE_CONTAINER -> targets.tabs.isNotEmpty() || targets.allPins.isNotEmpty()
     TabAction.RENAME_TAB -> targets.folders.isEmpty() && targets.tabs.size + targets.pins.size == 1
-    TabAction.SPLIT_VIEW -> targets.openTabs.size == 2
+    // Only two tabs picked themselves, not the tabs inside a folder.
+    TabAction.SPLIT_VIEW -> targets.folders.isEmpty() && targets.tabs.size + targets.pins.size == 2 && targets.openTabs.size == 2
     TabAction.UNSPLIT -> targets.splitTabIds.isNotEmpty()
 }
 
