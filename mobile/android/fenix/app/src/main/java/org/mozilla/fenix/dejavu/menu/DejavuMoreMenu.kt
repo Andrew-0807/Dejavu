@@ -129,10 +129,11 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
             default.copy(enabled = state.isWebPage)
         }
         MoreMenuItem.DESKTOP_SITE -> default.copy(active = state.isDesktopMode)
+        // A pinned tab of a device can still be unpinned here, which leaves it pinned on the device.
         MoreMenuItem.PIN_TAB -> if (state.isPinned) {
             EntryLook(stringResource(R.string.dejavu_menu_unpin_tab), iconsR.drawable.mozac_ic_pin_slash_24, active = true)
         } else {
-            default.copy(enabled = !state.isPrivate && state.isWebPage)
+            default.copy(enabled = !state.isPrivate && state.isWebPage && !state.isDeviceTab)
         }
         MoreMenuItem.ESSENTIAL_TAB -> if (state.isEssential) {
             EntryLook(stringResource(R.string.dejavu_menu_remove_essential), iconsR.drawable.mozac_ic_tab_ungroup_24, active = true)
@@ -158,7 +159,6 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
 
 /** The entries of the "More" menu that do nothing for a tab of a device on the account. */
 private val DeviceLockedItems = setOf(
-    MoreMenuItem.PIN_TAB,
     MoreMenuItem.ESSENTIAL_TAB,
     MoreMenuItem.RESET_PINNED_URL,
     MoreMenuItem.REPLACE_PINNED_URL,

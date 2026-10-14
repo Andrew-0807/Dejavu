@@ -48,7 +48,8 @@ data class Selection(
  * @property splitTabIds Open tabs among the targets that are part of a split view.
  * @property restricted Whether the targets are in the workspace of a device on the account, which follows that device:
  *   their tabs can be opened and closed, and closing one, pinned or not, closes it on the device too, but nothing the
- *   device would not take, like pinning, folders, names, essentials or containers.
+ *   device would not take, like pinning, folders, names, essentials or containers. Unpinning only changes how Dejavu
+ *   shows a tab, which stays pinned on the device.
  */
 data class ActionTargets(
     val tabs: List<TabSessionState> = emptyList(),
@@ -197,6 +198,7 @@ val PinnedItem.pageUrl: String
 internal val DeviceTabActions = setOf(
     TabAction.CLOSE,
     TabAction.SLEEP,
+    TabAction.UNPIN,
     TabAction.BOOKMARK,
     TabAction.SHARE,
     TabAction.COPY_LINK,
@@ -251,8 +253,7 @@ fun RowAction.appliesTo(targets: ActionTargets): Boolean = when (this) {
 /**
  * The buttons of one row: the user's choice, without the actions that do nothing for it. Closing cannot take away a
  * pinned tab or a folder, so on their rows Close puts their tabs to sleep, and once a pinned tab sleeps or is closed,
- * Close unpins it. In the workspace of a device, Close closes a pinned tab, like on the device. [isPinned] is for the
- * rows of pinned tabs and folders.
+ * Close unpins it, in the workspace of a device too. [isPinned] is for the rows of pinned tabs and folders.
  */
 fun rowActions(configured: List<RowAction>, targets: ActionTargets, isPinned: Boolean): List<RowAction> =
     configured
@@ -264,7 +265,6 @@ private val CloseAction = RowAction.BuiltIn(TabAction.CLOSE)
 
 /** What Close does on the row of a pinned tab or a folder: sleep while a tab is awake, then unpin a pinned tab. */
 private fun pinnedClose(targets: ActionTargets): RowAction? = when {
-    targets.restricted && targets.folders.isEmpty() -> CloseAction
     targets.awakeTabs.isNotEmpty() -> RowAction.BuiltIn(TabAction.SLEEP)
     targets.folders.isEmpty() -> RowAction.BuiltIn(TabAction.UNPIN)
     else -> null

@@ -81,7 +81,7 @@ class RowActionsTest {
     }
 
     @Test
-    fun `in the workspace of a device, tabs can only be opened and closed, pinned ones too`() {
+    fun `in the workspace of a device, tabs can only be opened and closed, and Close sleeps then unpins pinned ones`() {
         val everything = TabAction.entries.map { RowAction.BuiltIn(it) }
         val tab = ActionTargets(tabs = listOf(asleep), restricted = true)
         val pinned = ActionTargets.ofPin(pin("a", awake.id), awake, restricted = true)
@@ -90,8 +90,9 @@ class RowActionsTest {
             listOf("close", "bookmark", "share", "copy_link", "duplicate"),
             keys(rowActions(everything, tab, isPinned = false)).filterNot { it == "sleep" },
         )
-        assertEquals(listOf("close"), keys(rowActions(close, pinned, isPinned = true)))
-        assertEquals(listOf("close"), keys(rowActions(close, ActionTargets.ofPin(pin("c", null), null, true), isPinned = true)))
+        assertEquals(listOf("sleep"), keys(rowActions(close, pinned, isPinned = true)))
+        assertEquals(listOf("unpin"), keys(rowActions(close, ActionTargets.ofPin(pin("b", asleep.id), asleep, true), isPinned = true)))
+        assertEquals(listOf("unpin"), keys(rowActions(close, ActionTargets.ofPin(pin("c", null), null, true), isPinned = true)))
         val folder = ActionTargets(
             folders = listOf(pin("folder", tabId = null, kind = PinKind.FOLDER)),
             folderPins = listOf(pin("b", awake.id)),
