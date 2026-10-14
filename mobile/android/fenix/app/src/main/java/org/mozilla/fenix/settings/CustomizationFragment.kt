@@ -32,6 +32,7 @@ import org.mozilla.fenix.GleanMetrics.ToolbarSettings
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.toolbar.ToolbarPosition
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.settings.dejavuSettings
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.isTallWindow
@@ -122,6 +123,7 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
         setupTabStripLocationCategory()
         setupToolbarLayout()
         updateToolbarShortcut()
+        setupMoreMenuEditButton()
 
         // if tab strip is enabled, swipe toolbar to switch tabs should not be enabled so the
         // preference is not shown
@@ -278,6 +280,18 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             engine.settings.preferredColorScheme = getPreferredColorScheme()
         }
         requireComponents.useCases.sessionUseCases.reload.invoke()
+    }
+
+    /** Hides the Edit button at the bottom of Dejavu's "More" menu, which Dejavu's own settings keep. */
+    private fun setupMoreMenuEditButton() {
+        val dejavuSettings = dejavuSettings()
+        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_more_menu_hide_edit).apply {
+            isChecked = dejavuSettings.moreMenuEditHidden.value
+            onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
+                dejavuSettings.setMoreMenuEditHidden(newValue == true)
+                true
+            }
+        }
     }
 
     private fun setupToolbarCategory() {

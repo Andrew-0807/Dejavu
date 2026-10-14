@@ -263,26 +263,20 @@
 
     <!-- Settings: "More" menu editor -->
     <string name="pref_key_dejavu_more_menu" translatable="false">pref_key_dejavu_more_menu</string>
+    <string name="pref_key_dejavu_more_menu_hide_edit" translatable="false">pref_key_dejavu_more_menu_hide_edit</string>
     <string name="dejavu_settings_more_menu">More menu</string>
     <string name="dejavu_settings_actions_bar">Actions bar</string>
     <string name="dejavu_actions_bar_search">Search</string>
     <string name="dejavu_actions_bar_home">Home</string>
     <string name="dejavu_settings_more_menu_summary">The actions bar below pages and the menu it opens</string>
     <string name="dejavu_more_menu_drag_hint">Hold a button and drag it into a row above. Drag a button back down here to remove it.</string>
-    <string name="dejavu_actions_bar_hint">The buttons below pages. They act on the page you are on.</string>
-    <string name="dejavu_actions_bar_all_added">Every button is already in the bar.</string>
-    <string name="dejavu_more_menu_add_item">Add a button</string>
     <string name="dejavu_more_menu_add_row">Add a row</string>
     <string name="dejavu_more_menu_row_full">This row is full.</string>
-    <string name="dejavu_more_menu_move_left">Move left</string>
-    <string name="dejavu_more_menu_move_right">Move right</string>
-    <string name="dejavu_more_menu_move_up">Move up</string>
-    <string name="dejavu_more_menu_move_down">Move down</string>
     <string name="dejavu_more_menu_remove">Remove</string>
     <string name="dejavu_more_menu_delete_row">Delete row</string>
     <string name="dejavu_more_menu_reset">Reset to default</string>
     <string name="dejavu_more_menu_hide_edit">Hide edit button</string>
-    <string name="dejavu_more_menu_hide_edit_summary">The button below the menu that opens this screen</string>
+    <string name="dejavu_more_menu_hide_edit_summary">The Edit button at the bottom of the More menu</string>
 
     <!-- Account page: syncing workspaces with Firefox or Zen, shown in its own section -->
     <string name="pref_key_dejavu_sync_category" translatable="false">pref_key_dejavu_sync_category</string>

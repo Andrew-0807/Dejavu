@@ -186,8 +186,9 @@ class DejavuSettings private constructor(context: Context) {
     fun removeFromMoreMenu(key: String) =
         setMoreMenuRows(_moreMenuRows.value.map { row -> row.filterNot { it == key } })
 
+    /** Sets the buttons of the actions bar, up to [ActionsBarLayout.MAX_BUTTONS], a button maybe more than once. */
     fun setActionsBar(keys: List<String>) {
-        _actionsBarKeys.value = keys.distinct().take(ActionsBarLayout.MAX_BUTTONS)
+        _actionsBarKeys.value = keys.take(ActionsBarLayout.MAX_BUTTONS)
         prefs.edit { putString(KEY_ACTIONS_BAR, _actionsBarKeys.value.joinToString(",")) }
     }
 
@@ -197,7 +198,8 @@ class DejavuSettings private constructor(context: Context) {
         if (key !in keys && keys.size < ActionsBarLayout.MAX_BUTTONS) setActionsBar(keys + key)
     }
 
-    fun removeFromActionsBar(key: String) = setActionsBar(_actionsBarKeys.value - key)
+    /** Takes the entry with [key] out of the actions bar, every time it is there. */
+    fun removeFromActionsBar(key: String) = setActionsBar(_actionsBarKeys.value.filterNot { it == key })
 
     fun resetActionsBar() = setActionsBar(ActionsBarLayout.DEFAULT)
 

@@ -254,20 +254,13 @@
     <string name="dejavu_actions_bar_home">হোম</string>
     <string name="dejavu_settings_more_menu_summary">পাতার নিচের অ্যাকশন বার এবং এটি যে মেনু খোলে</string>
     <string name="dejavu_more_menu_drag_hint">একটি বোতাম ধরে রেখে উপরের কোনো সারিতে টেনে আনুন। কোনো বোতাম সরিয়ে দিতে সেটিকে আবার এখানে নিচে টেনে আনুন।</string>
-    <string name="dejavu_actions_bar_hint">পাতার নিচের বোতামগুলো। আপনি যে পাতায় আছেন, এগুলো সেই পাতায় কাজ করে।</string>
-    <string name="dejavu_actions_bar_all_added">সব বোতাম আগে থেকেই বারে আছে।</string>
-    <string name="dejavu_more_menu_add_item">একটি বোতাম যোগ করুন</string>
     <string name="dejavu_more_menu_add_row">একটি সারি যোগ করুন</string>
     <string name="dejavu_more_menu_row_full">এই সারিটি পূর্ণ।</string>
-    <string name="dejavu_more_menu_move_left">বাঁয়ে সরান</string>
-    <string name="dejavu_more_menu_move_right">ডানে সরান</string>
-    <string name="dejavu_more_menu_move_up">উপরে সরান</string>
-    <string name="dejavu_more_menu_move_down">নিচে সরান</string>
     <string name="dejavu_more_menu_remove">সরিয়ে দিন</string>
     <string name="dejavu_more_menu_delete_row">সারি মুছে ফেলুন</string>
     <string name="dejavu_more_menu_reset">ডিফল্টে রিসেট করুন</string>
     <string name="dejavu_more_menu_hide_edit">সম্পাদনা বোতাম লুকান</string>
-    <string name="dejavu_more_menu_hide_edit_summary">মেনুর নিচের যে বোতামটি এই স্ক্রিন খোলে</string>
+    <string name="dejavu_more_menu_hide_edit_summary">আরও অপশন মেনুর নিচে থাকা সম্পাদনা বোতাম</string>
 
     <!-- Settings: syncing workspaces with Firefox or Zen -->
     <string name="dejavu_settings_sync">Firefox বা Zen-এর সাথে Sync করুন</string>
