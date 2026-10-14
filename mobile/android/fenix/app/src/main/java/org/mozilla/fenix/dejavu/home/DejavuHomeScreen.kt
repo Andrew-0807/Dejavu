@@ -346,6 +346,13 @@ private class DefaultDejavuHomeInteractor(
                 runner.addToEssentials(targets)
                 return
             }
+            is DropTarget.SplitWith -> {
+                val dragged = targets.tabs.singleOrNull()?.takeIf { it.id != target.tabId } ?: return
+                if (store.state.findTab(target.tabId) == null) return
+                repository.createSplit(target.tabId, dragged.id)
+                store.dispatch(TabListAction.MoveTabsAction(listOf(dragged.id), target.tabId, placeAfter = true))
+                return
+            }
             is DropTarget.NextToTab, DropTarget.UnpinnedStart -> null
         }
         if (placement != null) {
@@ -356,6 +363,9 @@ private class DefaultDejavuHomeInteractor(
 
         // Unpinning: open pinned tabs become normal tabs, closed ones are reopened without loading.
         val moving = targets.tabs.map { it.id } + targets.pinnedTabs.map { it.id } + runner.reopenClosed(targets.pins)
+        // Like in Zen, a tab dragged away from the tab it is split with leaves the split view.
+        val leaving = moving.filter { id -> state.splitOf(id)?.tabIds?.any { it !in moving } == true }
+        if (leaving.isNotEmpty()) repository.unsplit(leaving.toSet())
         repository.unpin(targets.pins.map { it.id }.toSet())
         repository.moveToWorkspace(tabIds = moving.toSet(), itemIds = emptySet(), workspaceId = workspaceId)
         val others = store.state.normalTabs.filter {

@@ -17,6 +17,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -107,12 +108,15 @@ private val IconSquareSize = 36.dp
 private val MinTouchSize = 48.dp
 private const val DRAGGED_ALPHA = 0.35f
 private val INSIDE_FOLDER_RANGE = 0.25f..0.75f
+private val SPLIT_RANGE = 0.3f..0.7f
 
 private const val KEY_HEADER = "header"
 private const val KEY_DIVIDER = "divider"
 private const val KEY_NEW_TAB = "new_tab"
 private const val PIN_PREFIX = "pin:"
 private const val TAB_PREFIX = "tab:"
+private const val PAIR_PREFIX = "pair:"
+private const val PAIR_SEPARATOR = "|"
 
 /** Callbacks of [WorkspacePage]. */
 data class WorkspacePageCallbacks(
@@ -172,6 +176,23 @@ private data class PageContent(
     val otherTabs: List<TabSessionState>,
 )
 
+/** A row of tabs that are not pinned: one tab, or the two tabs of a split view side by side, like in Zen. */
+private data class TabLine(val tabs: List<TabSessionState>) {
+    val key: String
+        get() = tabs.singleOrNull()?.let { TAB_PREFIX + it.id } ?: PAIR_PREFIX + tabs.joinToString(PAIR_SEPARATOR) { it.id }
+}
+
+/** [tabs] as rows, the two tabs of a split view that are both among them in one row, where the first one is. */
+private fun tabLines(tabs: List<TabSessionState>, state: WorkspaceState): List<TabLine> {
+    val byId = tabs.associateBy { it.id }
+    val placed = mutableSetOf<String>()
+    return tabs.mapNotNull { tab ->
+        if (!placed.add(tab.id)) return@mapNotNull null
+        val partner = state.splitOf(tab.id)?.tabIds?.firstOrNull { it != tab.id }?.let(byId::get)
+        TabLine(listOfNotNull(tab, partner?.takeIf { placed.add(it.id) }))
+    }
+}
+
 @Suppress("LongParameterList", "LongMethod", "CognitiveComplexMethod")
 @Composable
 internal fun WorkspacePage(
@@ -197,6 +218,8 @@ internal fun WorkspacePage(
     val pinnedTabIds = state.pins.mapNotNull { it.tabId }.toSet()
     val otherTabs = tabs.filterNot { it.id in pinnedTabIds }
     val splitTabIds = state.splits.flatMap { it.tabIds }.toSet()
+    val lines = tabLines(otherTabs, state)
+    val lineKeys = lines.flatMap { line -> line.tabs.map { it.id to line.key } }.toMap()
 
     val listState = rememberLazyListState()
     var drag by remember { mutableStateOf<DragState?>(null) }
@@ -227,10 +250,10 @@ internal fun WorkspacePage(
         }
     }
 
-    val dropLines = drag?.takeIf { it.moved }?.target?.let { dropLinesFor(it) }
+    val dropLines = drag?.takeIf { it.moved }?.target?.let { dropLinesFor(it, lineKeys) }
     val draggedKeys = drag?.let { current ->
         val folderIds = current.selection.folderIds
-        current.selection.tabIds.map { TAB_PREFIX + it } +
+        current.selection.tabIds.map { lineKeys[it] ?: (TAB_PREFIX + it) } +
             (current.selection.pinIds + folderIds + folderIds.flatMap { state.descendantIds(it) }).map { PIN_PREFIX + it }
     }.orEmpty().toSet()
     val essentialsDrop = drag.let { current ->
@@ -255,7 +278,7 @@ internal fun WorkspacePage(
                     detectDragGesturesAfterLongPress(
                         onDragStart = { offset ->
                             val key = itemKeyAt(listState, offset.y)
-                            drag = key?.let { startDrag(it, offset.y, content, latestCallbacks) }
+                            drag = key?.let { startDrag(it, offset, size.width, content, latestCallbacks) }
                             if (drag != null) haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                         },
                         onDrag = { change, amount ->
@@ -360,8 +383,23 @@ internal fun WorkspacePage(
                 )
             }
 
-            items(otherTabs, key = { TAB_PREFIX + it.id }) { tab ->
-                val key = TAB_PREFIX + tab.id
+            items(lines, key = { it.key }) { line ->
+                val key = line.key
+                val tab = line.tabs.first()
+                if (line.tabs.size > 1) {
+                    TabPairRow(
+                        tabs = line.tabs,
+                        titleOf = state::titleOf,
+                        containers = containers,
+                        selectedTabId = selectedTabId,
+                        selection = selection,
+                        onClick = { if (drag == null) callbacks.onTabClick(it) },
+                        modifier = Modifier
+                            .dropLine(dropLines?.of(key), lineColor, insideColor)
+                            .alpha(if (key in draggedKeys) DRAGGED_ALPHA else 1f),
+                    )
+                    return@items
+                }
                 val targets = ActionTargets(
                     tabs = listOf(tab),
                     splitTabIds = setOf(tab.id).intersect(splitTabIds),
@@ -392,8 +430,18 @@ internal fun WorkspacePage(
     }
 }
 
-/** Selects the row with [key] and starts dragging it together with the rest of the selection. */
-private fun startDrag(key: String, y: Float, content: PageContent, callbacks: WorkspacePageCallbacks): DragState? {
+/**
+ * Selects the row with [key] and starts dragging it together with the rest of the selection. The long press is at
+ * [offset] in a list [width] wide; on the row of a split view it picks the tab on that side.
+ */
+private fun startDrag(
+    key: String,
+    offset: Offset,
+    width: Int,
+    content: PageContent,
+    callbacks: WorkspacePageCallbacks,
+): DragState? {
+    val y = offset.y
     val picked: Selection
     val title: String
     val isFolder: Boolean
@@ -404,8 +452,10 @@ private fun startDrag(key: String, y: Float, content: PageContent, callbacks: Wo
             title = pin.title
             isFolder = pin.isFolder
         }
-        key.startsWith(TAB_PREFIX) -> {
-            val tab = content.otherTabs.firstOrNull { it.id == key.removePrefix(TAB_PREFIX) } ?: return null
+        key.startsWith(TAB_PREFIX) || key.startsWith(PAIR_PREFIX) -> {
+            val ids = key.removePrefix(TAB_PREFIX).removePrefix(PAIR_PREFIX).split(PAIR_SEPARATOR)
+            val id = if (ids.size > 1 && offset.x >= width / 2f) ids[1] else ids[0]
+            val tab = content.otherTabs.firstOrNull { it.id == id } ?: return null
             picked = Selection(tabIds = setOf(tab.id))
             title = tab.displayTitle
             isFolder = false
@@ -456,7 +506,14 @@ private fun targetAt(listState: LazyListState, y: Float, drag: DragState, state:
         key.startsWith(TAB_PREFIX) -> {
             val id = key.removePrefix(TAB_PREFIX)
             if (id in drag.selection.tabIds) return null
-            DropTarget.NextToTab(id, after = fraction >= 0.5f)
+            // A single tab dropped on the middle of another one joins it in a split view.
+            val single = drag.selection.tabIds.size == 1 && drag.selection.pinIds.isEmpty() && movingFolders.isEmpty()
+            if (single && fraction in SPLIT_RANGE) DropTarget.SplitWith(id) else DropTarget.NextToTab(id, after = fraction >= 0.5f)
+        }
+        key.startsWith(PAIR_PREFIX) -> {
+            val (first, second) = key.removePrefix(PAIR_PREFIX).split(PAIR_SEPARATOR)
+            if (first in drag.selection.tabIds || second in drag.selection.tabIds) return null
+            if (fraction >= 0.5f) DropTarget.NextToTab(second, after = true) else DropTarget.NextToTab(first, after = false)
         }
         else -> null
     }
@@ -465,12 +522,15 @@ private fun targetAt(listState: LazyListState, y: Float, drag: DragState, state:
     return target?.takeUnless { unpinsFolder }
 }
 
-private fun dropLinesFor(target: DropTarget): DropLines? = when (target) {
+/** How [target] shows, on the row of each tab in [lineKeys]. */
+private fun dropLinesFor(target: DropTarget, lineKeys: Map<String, String>): DropLines? = when (target) {
     is DropTarget.IntoFolder -> DropLines(PIN_PREFIX + target.folderId, DropLine.INSIDE)
     is DropTarget.NextToPin -> DropLines(PIN_PREFIX + target.pinId, if (target.after) DropLine.BOTTOM else DropLine.TOP)
     is DropTarget.PinnedEdge ->
         if (target.atEnd) DropLines(KEY_DIVIDER, DropLine.TOP) else DropLines(KEY_HEADER, DropLine.BOTTOM)
-    is DropTarget.NextToTab -> DropLines(TAB_PREFIX + target.tabId, if (target.after) DropLine.BOTTOM else DropLine.TOP)
+    is DropTarget.NextToTab ->
+        DropLines(lineKeys[target.tabId] ?: (TAB_PREFIX + target.tabId), if (target.after) DropLine.BOTTOM else DropLine.TOP)
+    is DropTarget.SplitWith -> DropLines(TAB_PREFIX + target.tabId, DropLine.INSIDE)
     DropTarget.UnpinnedStart -> DropLines(KEY_NEW_TAB, DropLine.BOTTOM)
     DropTarget.Essentials -> null
 }
@@ -1007,6 +1067,103 @@ internal fun TabRow(
             }
         } else {
             SelectionMark(selected = selection)
+        }
+    }
+}
+
+/**
+ * The two [tabs] of a split view side by side in one row, like Zen shows them. Tapping either opens the split view, or
+ * picks that tab in selection mode; Unsplit among the selection actions puts them back on rows of their own.
+ */
+@Suppress("LongParameterList", "LongMethod")
+@Composable
+private fun TabPairRow(
+    tabs: List<TabSessionState>,
+    titleOf: (TabSessionState) -> String,
+    containers: Map<String, ContainerRecord>,
+    selectedTabId: String?,
+    selection: Selection?,
+    onClick: (TabSessionState) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val isCurrent = tabs.any { it.id == selectedTabId }
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+            .fillMaxWidth()
+            .height(52.dp)
+            .padding(vertical = 2.dp)
+            .clip(RowShape)
+            .background(
+                if (isCurrent && selection == null) MaterialTheme.colorScheme.surfaceContainerHighest else Color.Transparent,
+            ),
+    ) {
+        tabs.forEachIndexed { index, tab ->
+            if (index > 0) {
+                Box(
+                    modifier = Modifier
+                        .width(1.dp)
+                        .height(26.dp)
+                        .background(MaterialTheme.colorScheme.outlineVariant),
+                )
+            }
+            val picked = selection?.let { tab.id in it.tabIds }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .clip(RowShape)
+                    .background(if (picked == true) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent)
+                    .clickable { onClick(tab) },
+            ) {
+                Box(
+                    modifier = Modifier
+                        .padding(start = 2.dp)
+                        .width(4.dp)
+                        .height(26.dp)
+                        .clip(RoundedCornerShape(2.dp))
+                        .background(tab.contextId?.let { containers[it] }?.color?.color ?: Color.Transparent),
+                )
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.padding(start = 4.dp).size(IconSquareSize).alpha(if (tab.isAwake) 1f else DIMMED_ALPHA),
+                ) {
+                    SiteIcon(url = tab.content.url, size = 20.dp)
+                }
+                Text(
+                    text = titleOf(tab),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = if (tab.isAwake) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f).padding(start = 4.dp, end = 8.dp),
+                )
+                if (picked != null) {
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .padding(end = 8.dp)
+                            .size(18.dp)
+                            .clip(CircleShape)
+                            .background(if (picked) MaterialTheme.colorScheme.primary else Color.Transparent)
+                            .border(
+                                1.5.dp,
+                                if (picked) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
+                                CircleShape,
+                            ),
+                    ) {
+                        if (picked) {
+                            Icon(
+                                painter = painterResource(iconsR.drawable.mozac_ic_checkmark_16),
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.onPrimary,
+                                modifier = Modifier.size(12.dp),
+                            )
+                        }
+                    }
+                }
+            }
         }
     }
 }
