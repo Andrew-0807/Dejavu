@@ -14,12 +14,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceGroupAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.R as materialR
 import com.google.android.material.color.MaterialColors
+import org.mozilla.fenix.R
 
 /**
  * Shows the preferences of every settings screen as rounded cards, one card per category, like the Android settings
@@ -80,15 +82,18 @@ private class CardDecoration(context: Context) : RecyclerView.ItemDecoration() {
         }
     }
 
-    /** Where the preference at [position] sits in its card, or `null` for category titles. */
+    /** Where the preference at [position] sits in its card, or `null` for category titles and spacers. */
     private fun rowAt(parent: RecyclerView, position: Int): Row? {
         val adapter = parent.adapter as? PreferenceGroupAdapter ?: return null
         if (position == RecyclerView.NO_POSITION || position >= adapter.itemCount) return null
-        if (adapter.getItem(position) is PreferenceCategory) return null
-        val first = position == 0 || adapter.getItem(position - 1) is PreferenceCategory
-        val last = position == adapter.itemCount - 1 || adapter.getItem(position + 1) is PreferenceCategory
+        if (adapter.getItem(position).isBreak()) return null
+        val first = position == 0 || adapter.getItem(position - 1).isBreak()
+        val last = position == adapter.itemCount - 1 || adapter.getItem(position + 1).isBreak()
         return Row(first, last)
     }
+
+    // Firefox's empty spacer rows stand between groups, which the cards already keep apart.
+    private fun Preference?.isBreak(): Boolean = this is PreferenceCategory || this?.layoutResource == R.layout.preference_spacer
 
     private data class Row(val first: Boolean, val last: Boolean)
 
