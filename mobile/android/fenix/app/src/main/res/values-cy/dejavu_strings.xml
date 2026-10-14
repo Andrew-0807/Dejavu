@@ -296,7 +296,6 @@
         <item quantity="other">Caewyd %1$d tab</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Agor dolen o’r clipfwrdd</string>
-    <string name="dejavu_clipboard_no_link">Dim dolen ar y clipfwrdd</string>
     <string name="dejavu_reopen_closed_tab">Ailagor tab wedi’i gau</string>
     <string name="dejavu_shift_previous">Symud i’r gweithle blaenorol</string>
     <string name="dejavu_shift_next">Symud i’r gweithle nesaf</string>

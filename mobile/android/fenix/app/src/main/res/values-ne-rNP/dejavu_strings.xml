@@ -268,7 +268,6 @@
         <item quantity="other">%1$d ट्याबहरु बन्द भयो</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">क्लिपबोर्डबाट लिङ्क खोल्नुहोस्</string>
-    <string name="dejavu_clipboard_no_link">क्लिपबोर्डमा कुनै लिङ्क छैन</string>
     <string name="dejavu_reopen_closed_tab">बन्द गरिएको ट्याब फेरि खोल्नुहोस्</string>
     <string name="dejavu_shift_previous">पहिलाको कार्यक्षेत्रमा सार्नुहोस्</string>
     <string name="dejavu_shift_next">अर्को कार्यक्षेत्रमा सार्नुहोस्</string>

@@ -268,7 +268,6 @@
         <item quantity="other">%1$d kaarti suletud</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Ava link vahemälust</string>
-    <string name="dejavu_clipboard_no_link">Vahemälus pole linki</string>
     <string name="dejavu_reopen_closed_tab">Ava suletud kaart uuesti</string>
     <string name="dejavu_shift_previous">Liiguta eelmisesse tööruumi</string>
     <string name="dejavu_shift_next">Liiguta järgmisesse tööruumi</string>

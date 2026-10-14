@@ -268,7 +268,6 @@
         <item quantity="other">%1$d n iseksal mdelen</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Rẓem aseɣwen yettwanɣlen</string>
-    <string name="dejavu_clipboard_no_link">Ur illi useɣwen yettwanɣlen</string>
     <string name="dejavu_reopen_closed_tab">Rẓem daɣ aseksel yemdlen</string>
     <string name="dejavu_shift_previous">Senkez ɣer umkan n umahil yezrin</string>
     <string name="dejavu_shift_next">Senkez ɣer umkan n umahil d-iteddun</string>

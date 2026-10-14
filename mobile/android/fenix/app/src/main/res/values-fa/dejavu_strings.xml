@@ -268,7 +268,6 @@
         <item quantity="other">%1$d زبانه بسته شد</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">باز کردن پیوند از کلیپ‌بورد</string>
-    <string name="dejavu_clipboard_no_link">پیوندی در کلیپ‌بورد نیست</string>
     <string name="dejavu_reopen_closed_tab">باز کردن دوبارهٔ زبانهٔ بسته‌شده</string>
     <string name="dejavu_shift_previous">انتقال به فضای کاری قبلی</string>
     <string name="dejavu_shift_next">انتقال به فضای کاری بعدی</string>

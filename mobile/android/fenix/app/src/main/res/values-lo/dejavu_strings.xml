@@ -261,7 +261,6 @@
         <item quantity="other">ປິດແລ້ວ %1$d ແທັບ</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">ເປີດລິ້ງຈາກຄລິບບອດ</string>
-    <string name="dejavu_clipboard_no_link">ບໍ່ມີລິ້ງໃນຄລິບບອດ</string>
     <string name="dejavu_reopen_closed_tab">ເປີດແທັບທີ່ປິດແລ້ວຄືນໃຫມ່</string>
     <string name="dejavu_shift_previous">ຍ້າຍໄປພື້ນທີ່ເຮັດວຽກກ່ອນໜ້າ</string>
     <string name="dejavu_shift_next">ຍ້າຍໄປພື້ນທີ່ເຮັດວຽກຕໍ່ໄປ</string>

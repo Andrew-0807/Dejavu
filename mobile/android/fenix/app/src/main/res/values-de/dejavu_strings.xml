@@ -268,7 +268,6 @@
         <item quantity="other">%1$d Tabs geschlossen</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Link aus Zwischenablage öffnen</string>
-    <string name="dejavu_clipboard_no_link">Kein Link in der Zwischenablage</string>
     <string name="dejavu_reopen_closed_tab">Geschlossenen Tab wieder öffnen</string>
     <string name="dejavu_shift_previous">In vorherigen Arbeitsbereich verschieben</string>
     <string name="dejavu_shift_next">In nächsten Arbeitsbereich verschieben</string>

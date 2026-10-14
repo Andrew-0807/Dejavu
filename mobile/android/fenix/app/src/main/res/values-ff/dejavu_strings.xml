@@ -268,7 +268,6 @@
         <item quantity="other">%1$d tabbe fermées</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Uddit jokkol gonngol e ɗakkitorde</string>
-    <string name="dejavu_clipboard_no_link">Alaa jokkol e ɗakkitorde</string>
     <string name="dejavu_reopen_closed_tab">Uddit kadi tabbere uddaande</string>
     <string name="dejavu_shift_previous">Dirtin to espace de travail ɓennunde</string>
     <string name="dejavu_shift_next">Dirtin to espace de travail garoyde</string>

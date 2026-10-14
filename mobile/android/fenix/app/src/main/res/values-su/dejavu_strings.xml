@@ -261,7 +261,6 @@
         <item quantity="other">%1$d tab katutup</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Buka link tina papan klip</string>
-    <string name="dejavu_clipboard_no_link">Euweuh link dina papan klip</string>
     <string name="dejavu_reopen_closed_tab">Buka deui tab nu ditutup</string>
     <string name="dejavu_shift_previous">Pindahkeun ka rohangan saméméhna</string>
     <string name="dejavu_shift_next">Pindahkeun ka rohangan saterusna</string>

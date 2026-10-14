@@ -275,7 +275,6 @@
         <item quantity="other">%1$d de file închise</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Deschide linkul din clipboard</string>
-    <string name="dejavu_clipboard_no_link">Niciun link în clipboard</string>
     <string name="dejavu_reopen_closed_tab">Redeschide fila închisă</string>
     <string name="dejavu_shift_previous">Mută în spațiul de lucru anterior</string>
     <string name="dejavu_shift_next">Mută în spațiul de lucru următor</string>

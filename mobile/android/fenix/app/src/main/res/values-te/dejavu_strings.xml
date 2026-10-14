@@ -268,7 +268,6 @@
         <item quantity="other">%1$d ట్యాబులు మూసివేయబడ్డాయి</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">క్లిప్‌బోర్డు నుండి లింక్‌ను తెరువు</string>
-    <string name="dejavu_clipboard_no_link">క్లిప్‌బోర్డులో లింక్ లేదు</string>
     <string name="dejavu_reopen_closed_tab">మూసిన ట్యాబును మళ్ళీ తెరువు</string>
     <string name="dejavu_shift_previous">మునుపటి కార్యస్థలానికి తరలించు</string>
     <string name="dejavu_shift_next">తదుపరి కార్యస్థలానికి తరలించు</string>

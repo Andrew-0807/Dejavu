@@ -268,7 +268,6 @@
         <item quantity="other">%1$d taq ruwi\' xetz\'apïx</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Tijaq ri k\'amab\'äl k\'o pa molwuj</string>
-    <string name="dejavu_clipboard_no_link">Majun k\'amab\'äl k\'o pa molwuj</string>
     <string name="dejavu_reopen_closed_tab">Tijaq chik ri ruwi\' xtz\'apïx</string>
     <string name="dejavu_shift_previous">Tijech\'ëx pa ri jun kan samajib\'äl</string>
     <string name="dejavu_shift_next">Tijech\'ëx pa ri jun chik samajib\'äl</string>

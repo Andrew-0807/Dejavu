@@ -268,7 +268,6 @@
         <item quantity="other">%1$d καρτέλες έκλεισαν</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Άνοιγμα συνδέσμου από το πρόχειρο</string>
-    <string name="dejavu_clipboard_no_link">Δεν υπάρχει σύνδεσμος στο πρόχειρο</string>
     <string name="dejavu_reopen_closed_tab">Επαναφορά κλεισμένης καρτέλας</string>
     <string name="dejavu_shift_previous">Μετακίνηση στον προηγούμενο χώρο εργασίας</string>
     <string name="dejavu_shift_next">Μετακίνηση στον επόμενο χώρο εργασίας</string>

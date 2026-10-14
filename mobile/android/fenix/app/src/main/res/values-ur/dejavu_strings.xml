@@ -268,7 +268,6 @@
         <item quantity="other">%1$d ٹیبز بند ہوئے</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">کلپ بورڈ سے لنک کھولیں</string>
-    <string name="dejavu_clipboard_no_link">کلپ بورڈ میں کوئی لنک نہیں ہے</string>
     <string name="dejavu_reopen_closed_tab">بند کیا گیا ٹیب دوبارہ کھولیں</string>
     <string name="dejavu_shift_previous">پچھلے ورک اسپیس میں منتقل کریں</string>
     <string name="dejavu_shift_next">اگلے ورک اسپیس میں منتقل کریں</string>

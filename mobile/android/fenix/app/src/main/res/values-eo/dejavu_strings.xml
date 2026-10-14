@@ -268,7 +268,6 @@
         <item quantity="other">%1$d langetoj fermitaj</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Malfermi ligilon el la tondujo</string>
-    <string name="dejavu_clipboard_no_link">Neniu ligilo en la tondujo</string>
     <string name="dejavu_reopen_closed_tab">Remalfermi fermitan langeton</string>
     <string name="dejavu_shift_previous">Movi al la antaŭa laborspaco</string>
     <string name="dejavu_shift_next">Movi al la sekva laborspaco</string>

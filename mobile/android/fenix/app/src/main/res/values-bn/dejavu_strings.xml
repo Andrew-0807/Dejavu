@@ -166,7 +166,6 @@
         <item quantity="other">%1$d ট্যাব বন্ধ করা হয়েছে</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">ক্লিপবোর্ড থেকে লিঙ্ক খুলুন</string>
-    <string name="dejavu_clipboard_no_link">ক্লিপবোর্ডে কোনো লিঙ্ক নেই</string>
     <string name="dejavu_reopen_closed_tab">বন্ধ করা ট্যাব আবার খুলুন</string>
     <string name="dejavu_shift_previous">আগের ওয়ার্কস্পেসে সরান</string>
     <string name="dejavu_shift_next">পরের ওয়ার্কস্পেসে সরান</string>

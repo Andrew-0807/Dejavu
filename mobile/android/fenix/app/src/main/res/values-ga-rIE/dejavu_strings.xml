@@ -289,7 +289,6 @@
         <item quantity="other">Dúnadh %1$d cluaisín</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Oscail nasc ón ngearrthaisce</string>
-    <string name="dejavu_clipboard_no_link">Níl aon nasc sa ghearrthaisce</string>
     <string name="dejavu_reopen_closed_tab">Athoscail cluaisín dúnta</string>
     <string name="dejavu_shift_previous">Bog go dtí an spás oibre roimhe seo</string>
     <string name="dejavu_shift_next">Bog go dtí an chéad spás oibre eile</string>

@@ -275,7 +275,6 @@
         <item quantity="other">%1$d tabova zatvoreno</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Otvori link iz međuspremnika</string>
-    <string name="dejavu_clipboard_no_link">U međuspremniku nema linka</string>
     <string name="dejavu_reopen_closed_tab">Ponovo otvori zatvoreni tab</string>
     <string name="dejavu_shift_previous">Premjesti u prethodni radni prostor</string>
     <string name="dejavu_shift_next">Premjesti u sljedeći radni prostor</string>

@@ -268,7 +268,6 @@
         <item quantity="other">%1$d ಟ್ಯಾಬ್‌ಗಳು ಮುಚ್ಚಲಾಗಿವೆ</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ನಿಂದ ಲಿಂಕ್ ತೆರೆ</string>
-    <string name="dejavu_clipboard_no_link">ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ಲಿಂಕ್ ಇಲ್ಲ</string>
     <string name="dejavu_reopen_closed_tab">ಮುಚ್ಚಿದ ಟ್ಯಾಬ್ ಅನ್ನು ಮತ್ತೆ ತೆರೆ</string>
     <string name="dejavu_shift_previous">ಹಿಂದಿನ ಕಾರ್ಯಕ್ಷೇತ್ರಕ್ಕೆ ಸ್ಥಳಾಂತರಿಸು</string>
     <string name="dejavu_shift_next">ಮುಂದಿನ ಕಾರ್ಯಕ್ಷೇತ್ರಕ್ಕೆ ಸ್ಥಳಾಂತರಿಸು</string>

@@ -275,7 +275,6 @@
         <item quantity="other">%1$d abas fechadas</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Abrir link da área de transferência</string>
-    <string name="dejavu_clipboard_no_link">Nenhum link na área de transferência</string>
     <string name="dejavu_reopen_closed_tab">Reabrir aba fechada</string>
     <string name="dejavu_shift_previous">Mover para o espaço de trabalho anterior</string>
     <string name="dejavu_shift_next">Mover para o próximo espaço de trabalho</string>

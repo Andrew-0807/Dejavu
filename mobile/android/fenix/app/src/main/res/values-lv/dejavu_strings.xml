@@ -275,7 +275,6 @@
         <item quantity="other">%1$d cilnes aizvērtas</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Atvērt saiti no starpliktuves</string>
-    <string name="dejavu_clipboard_no_link">Starpliktuvē nav saites</string>
     <string name="dejavu_reopen_closed_tab">Atjaunot aizvērto cilni</string>
     <string name="dejavu_shift_previous">Pārvietot uz iepriekšējo darbvietu</string>
     <string name="dejavu_shift_next">Pārvietot uz nākamo darbvietu</string>

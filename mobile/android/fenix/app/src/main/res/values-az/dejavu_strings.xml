@@ -268,7 +268,6 @@
         <item quantity="other">%1$d vərəq bağlandı</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Mübadilə buferindəki linki aç</string>
-    <string name="dejavu_clipboard_no_link">Mübadilə buferində link yoxdur</string>
     <string name="dejavu_reopen_closed_tab">Bağlanmış vərəqi yenidən aç</string>
     <string name="dejavu_shift_previous">Əvvəlki iş sahəsinə köçür</string>
     <string name="dejavu_shift_next">Növbəti iş sahəsinə köçür</string>

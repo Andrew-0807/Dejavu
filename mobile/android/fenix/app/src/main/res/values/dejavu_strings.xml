@@ -182,8 +182,6 @@
     <!-- Home: the buttons next to a workspace's name -->
     <!-- Opens the link that was copied last in a new tab. -->
     <string name="dejavu_open_clipboard_link">Open link from clipboard</string>
-    <!-- Shown when the clipboard holds no link to open. -->
-    <string name="dejavu_clipboard_no_link">No link in the clipboard</string>
     <!-- Reopens the tab closed last, in the workspace it was closed in. Pressed again, it reopens the one before. -->
     <string name="dejavu_reopen_closed_tab">Reopen closed tab</string>
 

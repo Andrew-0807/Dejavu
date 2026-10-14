@@ -261,7 +261,6 @@
         <item quantity="other">ปิด %1$d แท็บแล้ว</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">เปิดลิงก์จากคลิปบอร์ด</string>
-    <string name="dejavu_clipboard_no_link">ไม่มีลิงก์ในคลิปบอร์ด</string>
     <string name="dejavu_reopen_closed_tab">เปิดแท็บที่ปิดไปอีกครั้ง</string>
     <string name="dejavu_shift_previous">ย้ายไปยังพื้นที่ทำงานก่อนหน้า</string>
     <string name="dejavu_shift_next">ย้ายไปยังพื้นที่ทำงานถัดไป</string>

@@ -282,7 +282,6 @@
         <item quantity="other">%1$d zavihkov zaprtih</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Odpri povezavo iz odložišča</string>
-    <string name="dejavu_clipboard_no_link">V odložišču ni povezave</string>
     <string name="dejavu_reopen_closed_tab">Ponovno odpri zaprti zavihek</string>
     <string name="dejavu_shift_previous">Premakni v prejšnji delovni prostor</string>
     <string name="dejavu_shift_next">Premakni v naslednji delovni prostor</string>

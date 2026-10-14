@@ -289,7 +289,6 @@
         <item quantity="other">%1$d ivinell serret</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Digeriñ al liamm eus ar golver</string>
-    <string name="dejavu_clipboard_no_link">N’eus liamm ebet er golver</string>
     <string name="dejavu_reopen_closed_tab">Digeriñ en-dro an ivinell serret</string>
     <string name="dejavu_shift_previous">Dilec’hiañ war an egor labour kent</string>
     <string name="dejavu_shift_next">Dilec’hiañ war an egor labour war-lerc’h</string>

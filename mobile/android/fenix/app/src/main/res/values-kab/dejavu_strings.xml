@@ -268,7 +268,6 @@
         <item quantity="other">%1$d n yiccaren mdelen</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Ldi aseɣwen seg tecfawt</string>
-    <string name="dejavu_clipboard_no_link">Ulac aseɣwen deg tecfawt</string>
     <string name="dejavu_reopen_closed_tab">Ales alday n yiccer yettwamedlen</string>
     <string name="dejavu_shift_previous">Senkez ɣer umkan n umahil yezrin</string>
     <string name="dejavu_shift_next">Senkez ɣer umkan n umahil d-iteddun</string>

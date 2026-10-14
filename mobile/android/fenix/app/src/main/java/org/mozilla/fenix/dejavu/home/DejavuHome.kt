@@ -133,7 +133,7 @@ interface DejavuHomeInteractor : TabEditor {
     /** Reopens the tab closed last in its workspace and shows it; returns the tab's id, or `null` when none is left. */
     fun onReopenClosedTab(): String?
 
-    /** Opens the link in the clipboard in a new tab of [workspaceId], or tells there is none. */
+    /** Opens the link in the clipboard in a new tab of [workspaceId]. */
     fun onOpenClipboardLink(workspaceId: String)
 
     /** Moves essential [pinId] to position [index] among the essentials shown with it. */
@@ -165,7 +165,8 @@ interface DejavuHomeInteractor : TabEditor {
  * Workspace based home screen. The essentials sit on top of every workspace. Each workspace is a page with its pinned
  * tabs and folders, then its other tabs; swiping horizontally switches workspace. Long-pressing a tab or folder starts
  * selection mode; keeping the finger down and moving drags the selection, and the arrows on the sides move it to the
- * next workspace. [hasClosedTab] tells whether a closed tab is left to reopen.
+ * next workspace. [hasClosedTab] tells whether a closed tab is left to reopen, and [hasClipboardLink] whether the clipboard
+ * holds a link to open.
  */
 @Suppress("LongMethod", "LongParameterList", "CognitiveComplexMethod", "CyclomaticComplexMethod")
 @Composable
@@ -175,6 +176,7 @@ fun DejavuHome(
     privateTabs: List<TabSessionState>,
     selectedTabId: String?,
     hasClosedTab: Boolean,
+    hasClipboardLink: Boolean,
     containers: Map<String, ContainerRecord>,
     pinnedRowActions: List<RowAction>,
     unpinnedRowActions: List<RowAction>,
@@ -462,6 +464,7 @@ fun DejavuHome(
                         canMoveLeft = page > 0,
                         canMoveRight = page < state.workspaces.size - 1,
                         hasClosedTab = hasClosedTab,
+                        hasClipboardLink = hasClipboardLink,
                         revealTabId = revealTabId,
                     )
                 }

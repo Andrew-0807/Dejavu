@@ -261,7 +261,6 @@
         <item quantity="other">A pa táàbù %1$d dé</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Ṣí líǹkì láti kílípíbọọ̀dù</string>
-    <string name="dejavu_clipboard_no_link">Kò sí líǹkì nínú kílípíbọọ̀dù</string>
     <string name="dejavu_reopen_closed_tab">Tún ṣí táàbù tí o tì</string>
     <string name="dejavu_shift_previous">Gbé lọ sí ibi-iṣẹ́ tí ó ṣáájú</string>
     <string name="dejavu_shift_next">Gbé lọ sí ibi-iṣẹ́ tí ó kàn</string>

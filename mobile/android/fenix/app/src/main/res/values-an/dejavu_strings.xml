@@ -268,7 +268,6 @@
         <item quantity="other">%1$d pestanyas zarradas</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Ubrir o vinclo d\'o portapapers</string>
-    <string name="dejavu_clipboard_no_link">Garra vinclo en o portapapers</string>
     <string name="dejavu_reopen_closed_tab">Tornar a ubrir a pestanya zarrada</string>
     <string name="dejavu_shift_previous">Mover a l\'espacio de treballo anterior</string>
     <string name="dejavu_shift_next">Mover a l\'espacio de treballo siguient</string>

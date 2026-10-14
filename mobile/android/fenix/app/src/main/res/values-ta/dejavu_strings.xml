@@ -268,7 +268,6 @@
         <item quantity="other">%1$d கீற்றுகள் மூடப்பட்டன</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">இடைநிலைப் பலகையிலிருந்து இணைப்பைத் திற</string>
-    <string name="dejavu_clipboard_no_link">இடைநிலைப் பலகையில் இணைப்பு இல்லை</string>
     <string name="dejavu_reopen_closed_tab">மூடிய கீற்றை மீண்டும் திற</string>
     <string name="dejavu_shift_previous">முந்தைய பணியிடத்திற்கு நகர்த்து</string>
     <string name="dejavu_shift_next">அடுத்த பணியிடத்திற்கு நகர்த்து</string>

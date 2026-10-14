@@ -268,7 +268,6 @@
         <item quantity="other">%1$d ടാബുകൾ അടഞ്ഞു</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">പകർത്തൽപെട്ടിയിൽ നിന്ന് ലിങ്ക് തുറക്കുക</string>
-    <string name="dejavu_clipboard_no_link">പകർത്തൽപെട്ടിയിൽ ലിങ്ക് ഇല്ല</string>
     <string name="dejavu_reopen_closed_tab">അടച്ച ടാബ് വീണ്ടും തുറക്കുക</string>
     <string name="dejavu_shift_previous">മുമ്പത്തെ പണിയിടത്തിലേക്ക് നീക്കുക</string>
     <string name="dejavu_shift_next">അടുത്ത പണിയിടത്തിലേക്ക് നീക്കുക</string>

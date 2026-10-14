@@ -282,7 +282,6 @@
         <item quantity="other">%1$d вкладки закрыто</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Открыть ссылку из буфера обмена</string>
-    <string name="dejavu_clipboard_no_link">В буфере обмена нет ссылки</string>
     <string name="dejavu_reopen_closed_tab">Восстановить закрытую вкладку</string>
     <string name="dejavu_shift_previous">Переместить в предыдущее рабочее пространство</string>
     <string name="dejavu_shift_next">Переместить в следующее рабочее пространство</string>

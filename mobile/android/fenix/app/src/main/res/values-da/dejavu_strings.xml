@@ -268,7 +268,6 @@
         <item quantity="other">%1$d faneblade lukket</item>
     </plurals>
     <string name="dejavu_open_clipboard_link">Åbn link fra udklipsholder</string>
-    <string name="dejavu_clipboard_no_link">Intet link i udklipsholderen</string>
     <string name="dejavu_reopen_closed_tab">Genåbn lukket faneblad</string>
     <string name="dejavu_shift_previous">Flyt til forrige arbejdsområde</string>
     <string name="dejavu_shift_next">Flyt til næste arbejdsområde</string>
