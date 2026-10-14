@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Aberi su ligàmene dae sa punta de billete</string>
     <string name="dejavu_reopen_closed_tab">Torra a abèrrere s\'ischeda serrada</string>
+    <string name="dejavu_search_chip_temporary">Temporàneu</string>
     <string name="dejavu_shift_previous">Move a s\'ispàtziu de traballu pretzedente</string>
     <string name="dejavu_shift_next">Move a s\'ispàtziu de traballu sighente</string>
     <string name="dejavu_shift_blocked">Is ischedas fissadas e is cartellas non podent andare a %1$s</string>

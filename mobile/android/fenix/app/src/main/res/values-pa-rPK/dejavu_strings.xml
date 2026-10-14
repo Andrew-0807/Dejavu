@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">کلپ‌بورڈ توں لنک کھولھو</string>
     <string name="dejavu_reopen_closed_tab">بند کیتی ٹیب مڑ کھولھو</string>
+    <string name="dejavu_search_chip_temporary">عارضی</string>
     <string name="dejavu_shift_previous">پچھلی ورک سپیس تے منتقل کرو</string>
     <string name="dejavu_shift_next">اگلی ورک سپیس تے منتقل کرو</string>
     <string name="dejavu_shift_blocked">پن کیتیاں ٹیباں تے فولڈر %1$s ول نہیں جا سکدے</string>

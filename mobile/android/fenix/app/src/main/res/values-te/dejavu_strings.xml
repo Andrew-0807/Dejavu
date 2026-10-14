@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">క్లిప్‌బోర్డు నుండి లింక్‌ను తెరువు</string>
     <string name="dejavu_reopen_closed_tab">మూసిన ట్యాబును మళ్ళీ తెరువు</string>
+    <string name="dejavu_search_chip_temporary">తాత్కాలిక</string>
     <string name="dejavu_shift_previous">మునుపటి కార్యస్థలానికి తరలించు</string>
     <string name="dejavu_shift_next">తదుపరి కార్యస్థలానికి తరలించు</string>
     <string name="dejavu_shift_blocked">పిన్ చేసిన ట్యాబులు, ఫోల్డర్లు %1$sకు వెళ్ళలేవు</string>

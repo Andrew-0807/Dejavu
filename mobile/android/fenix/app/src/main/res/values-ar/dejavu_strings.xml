@@ -297,6 +297,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">فتح الرابط من الحافظة</string>
     <string name="dejavu_reopen_closed_tab">إعادة فتح التبويب المغلق</string>
+    <string name="dejavu_search_chip_temporary">مؤقتة</string>
     <string name="dejavu_shift_previous">نقل إلى مساحة العمل السابقة</string>
     <string name="dejavu_shift_next">نقل إلى مساحة العمل التالية</string>
     <string name="dejavu_shift_blocked">لا يمكن نقل التبويبات المثبتة والمجلدات إلى %1$s</string>

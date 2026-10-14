@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">کلپ بورڈ نا لنک کھول</string>
     <string name="dejavu_reopen_closed_tab">بند ٹیب دوبارہ کھول</string>
+    <string name="dejavu_search_chip_temporary">عارضی</string>
     <string name="dejavu_shift_previous">پچھلا ورک سپیس ٹی چل</string>
     <string name="dejavu_shift_next">اگلا ورک سپیس ٹی چل</string>
     <string name="dejavu_shift_blocked">%1$s ٹی پن ٹیباک او فولڈراک نا جاگہ اف</string>

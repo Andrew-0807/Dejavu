@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">இடைநிலைப் பலகையிலிருந்து இணைப்பைத் திற</string>
     <string name="dejavu_reopen_closed_tab">மூடிய கீற்றை மீண்டும் திற</string>
+    <string name="dejavu_search_chip_temporary">தற்காலிகம்</string>
     <string name="dejavu_shift_previous">முந்தைய பணியிடத்திற்கு நகர்த்து</string>
     <string name="dejavu_shift_next">அடுத்த பணியிடத்திற்கு நகர்த்து</string>
     <string name="dejavu_shift_blocked">பொருத்தப்பட்ட கீற்றுகளும் கோப்புறைகளும் %1$s சாதனத்திற்குச் செல்ல முடியாது</string>

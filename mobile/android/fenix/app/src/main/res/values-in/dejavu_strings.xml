@@ -262,6 +262,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Buka tautan dari papan klip</string>
     <string name="dejavu_reopen_closed_tab">Buka kembali tab yang ditutup</string>
+    <string name="dejavu_search_chip_temporary">Sementara</string>
     <string name="dejavu_shift_previous">Pindahkan ke ruang kerja sebelumnya</string>
     <string name="dejavu_shift_next">Pindahkan ke ruang kerja berikutnya</string>
     <string name="dejavu_shift_blocked">Tab yang disemat dan folder tidak dapat dipindahkan ke %1$s</string>

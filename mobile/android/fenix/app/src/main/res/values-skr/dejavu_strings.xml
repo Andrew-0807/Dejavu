@@ -150,6 +150,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">کلپ بورڈ توں لنک کھولو</string>
     <string name="dejavu_reopen_closed_tab">بند ٹیب دوبارہ کھولو</string>
+    <string name="dejavu_search_chip_temporary">عارضی</string>
     <string name="dejavu_shift_previous">پچھلی ورک سپیس وچ ٹورو</string>
     <string name="dejavu_shift_next">اگلی ورک سپیس وچ ٹورو</string>
     <string name="dejavu_shift_blocked">پن تھیاں ٹیباں تے فولڈر %1$s وچ نئیں ونڄ سڳدے</string>

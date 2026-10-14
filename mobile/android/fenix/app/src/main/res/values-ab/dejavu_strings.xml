@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Аҭаӡҩыраҿынтә алинк аартра</string>
     <string name="dejavu_reopen_closed_tab">Иаркыз абларҭа еиҭах аартра</string>
+    <string name="dejavu_search_chip_temporary">Аамҭатәи</string>
     <string name="dejavu_shift_previous">Аԥхьатәи аҭыԥ ахь аиҭаҵра</string>
     <string name="dejavu_shift_next">Анаҩстәи аҭыԥ ахь аиҭаҵра</string>
     <string name="dejavu_shift_blocked">Афиксациатә абларҭақәеи апапкақәеи %1$s ахь ицом</string>

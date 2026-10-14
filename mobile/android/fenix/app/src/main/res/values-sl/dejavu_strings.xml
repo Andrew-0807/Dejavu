@@ -283,6 +283,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Odpri povezavo iz odložišča</string>
     <string name="dejavu_reopen_closed_tab">Ponovno odpri zaprti zavihek</string>
+    <string name="dejavu_search_chip_temporary">Začasni</string>
     <string name="dejavu_shift_previous">Premakni v prejšnji delovni prostor</string>
     <string name="dejavu_shift_next">Premakni v naslednji delovni prostor</string>
     <string name="dejavu_shift_blocked">Pripetih zavihkov in map ni mogoče poslati na %1$s</string>

@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Apri link dagli appunti</string>
     <string name="dejavu_reopen_closed_tab">Riapri scheda chiusa</string>
+    <string name="dejavu_search_chip_temporary">Temporaneo</string>
     <string name="dejavu_shift_previous">Sposta nello spazio precedente</string>
     <string name="dejavu_shift_next">Sposta nello spazio successivo</string>
     <string name="dejavu_shift_blocked">Le schede bloccate e le cartelle non possono andare su %1$s</string>

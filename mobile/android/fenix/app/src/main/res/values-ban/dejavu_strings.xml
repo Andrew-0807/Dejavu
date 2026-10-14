@@ -262,6 +262,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Bukak link uli papan klip</string>
     <string name="dejavu_reopen_closed_tab">Bukak buin tab ane katutup</string>
+    <string name="dejavu_search_chip_temporary">Sementara</string>
     <string name="dejavu_shift_previous">Pindahang ka genah sadurungnyane</string>
     <string name="dejavu_shift_next">Pindahang ka genah selanturnyane</string>
     <string name="dejavu_shift_blocked">Tab kasemat lan map tusing nyidang kakirim ka %1$s</string>

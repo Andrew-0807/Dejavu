@@ -290,6 +290,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Digeriñ al liamm eus ar golver</string>
     <string name="dejavu_reopen_closed_tab">Digeriñ en-dro an ivinell serret</string>
+    <string name="dejavu_search_chip_temporary">A-berr dermen</string>
     <string name="dejavu_shift_previous">Dilec’hiañ war an egor labour kent</string>
     <string name="dejavu_shift_next">Dilec’hiañ war an egor labour war-lerc’h</string>
     <string name="dejavu_shift_blocked">An ivinelloù spilhennet hag an teuliadoù n’hallont ket mont da %1$s</string>

@@ -276,6 +276,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Abrir link da área de transferência</string>
     <string name="dejavu_reopen_closed_tab">Reabrir aba fechada</string>
+    <string name="dejavu_search_chip_temporary">Temporário</string>
     <string name="dejavu_shift_previous">Mover para o espaço de trabalho anterior</string>
     <string name="dejavu_shift_next">Mover para o próximo espaço de trabalho</string>
     <string name="dejavu_shift_blocked">Abas fixadas e pastas não podem ir para %1$s</string>

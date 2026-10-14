@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Vaqtinchalik xotiradan havolani ochish</string>
     <string name="dejavu_reopen_closed_tab">Yopilgan varaqni qayta ochish</string>
+    <string name="dejavu_search_chip_temporary">Vaqtinchalik</string>
     <string name="dejavu_shift_previous">Oldingi ish maydoniga ko\'chirish</string>
     <string name="dejavu_shift_next">Keyingi ish maydoniga ko\'chirish</string>
     <string name="dejavu_shift_blocked">%1$s mahkamlangan varaqlar va jildlarni qabul qila olmaydi</string>

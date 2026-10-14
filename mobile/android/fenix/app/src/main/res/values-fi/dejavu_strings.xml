@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Avaa linkki leikepöydältä</string>
     <string name="dejavu_reopen_closed_tab">Avaa suljettu välilehti uudelleen</string>
+    <string name="dejavu_search_chip_temporary">Väliaikainen</string>
     <string name="dejavu_shift_previous">Siirrä edelliseen työtilaan</string>
     <string name="dejavu_shift_next">Siirrä seuraavaan työtilaan</string>
     <string name="dejavu_shift_blocked">Kiinnitettyjä välilehtiä ja kansioita ei voi siirtää laitteeseen %1$s</string>

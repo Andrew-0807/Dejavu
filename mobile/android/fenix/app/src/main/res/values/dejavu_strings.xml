@@ -185,6 +185,9 @@
     <!-- Reopens the tab closed last, in the workspace it was closed in. Pressed again, it reopens the one before. -->
     <string name="dejavu_reopen_closed_tab">Reopen closed tab</string>
 
+    <!-- Chip above the address bar while searching for a new tab: the tab opens in a new temporary container. -->
+    <string name="dejavu_search_chip_temporary">Temporary</string>
+
     <!-- Home: the arrows on the sides of the page in selection mode, which move the selected tabs and folders -->
     <string name="dejavu_shift_previous">Move to the previous workspace</string>
     <string name="dejavu_shift_next">Move to the next workspace</string>

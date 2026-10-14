@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ನಿಂದ ಲಿಂಕ್ ತೆರೆ</string>
     <string name="dejavu_reopen_closed_tab">ಮುಚ್ಚಿದ ಟ್ಯಾಬ್ ಅನ್ನು ಮತ್ತೆ ತೆರೆ</string>
+    <string name="dejavu_search_chip_temporary">ತಾತ್ಕಾಲಿಕ</string>
     <string name="dejavu_shift_previous">ಹಿಂದಿನ ಕಾರ್ಯಕ್ಷೇತ್ರಕ್ಕೆ ಸ್ಥಳಾಂತರಿಸು</string>
     <string name="dejavu_shift_next">ಮುಂದಿನ ಕಾರ್ಯಕ್ಷೇತ್ರಕ್ಕೆ ಸ್ಥಳಾಂತರಿಸು</string>
     <string name="dejavu_shift_blocked">ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್‌ಗಳು ಮತ್ತು ಫೋಲ್ಡರ್‌ಗಳನ್ನು %1$s ಗೆ ಕಳುಹಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ</string>

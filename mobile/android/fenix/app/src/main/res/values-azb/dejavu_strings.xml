@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">کلیپ‌بوْرددان لینکی آچ</string>
     <string name="dejavu_reopen_closed_tab">باغلانان تاغی یئنیدن آچ</string>
+    <string name="dejavu_search_chip_temporary">موقتی</string>
     <string name="dejavu_shift_previous">قاباقکی ایش ساحه‌سینه کؤچور</string>
     <string name="dejavu_shift_next">سوْنراکی ایش ساحه‌سینه کؤچور</string>
     <string name="dejavu_shift_blocked">%1$s برکیدیلمیش تاغلاری و پوشه‌لری آلا بیلمز</string>

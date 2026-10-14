@@ -262,6 +262,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Mở liên kết từ khay nhớ tạm</string>
     <string name="dejavu_reopen_closed_tab">Mở lại thẻ đã đóng</string>
+    <string name="dejavu_search_chip_temporary">Tạm thời</string>
     <string name="dejavu_shift_previous">Chuyển sang không gian làm việc trước</string>
     <string name="dejavu_shift_next">Chuyển sang không gian làm việc tiếp theo</string>
     <string name="dejavu_shift_blocked">Không thể chuyển thẻ đã ghim và thư mục sang %1$s</string>

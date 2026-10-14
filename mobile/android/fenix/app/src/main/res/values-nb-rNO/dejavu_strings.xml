@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Åpne lenke fra utklippstavlen</string>
     <string name="dejavu_reopen_closed_tab">Gjenåpne lukket fane</string>
+    <string name="dejavu_search_chip_temporary">Midlertidig</string>
     <string name="dejavu_shift_previous">Flytt til forrige arbeidsområde</string>
     <string name="dejavu_shift_next">Flytt til neste arbeidsområde</string>
     <string name="dejavu_shift_blocked">Festede faner og mapper kan ikke flyttes til %1$s</string>

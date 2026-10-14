@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Ava link vahemälust</string>
     <string name="dejavu_reopen_closed_tab">Ava suletud kaart uuesti</string>
+    <string name="dejavu_search_chip_temporary">Ajutine</string>
     <string name="dejavu_shift_previous">Liiguta eelmisesse tööruumi</string>
     <string name="dejavu_shift_next">Liiguta järgmisesse tööruumi</string>
     <string name="dejavu_shift_blocked">Kinnitatud kaarte ja kaustu ei saa seadmesse %1$s liigutada</string>

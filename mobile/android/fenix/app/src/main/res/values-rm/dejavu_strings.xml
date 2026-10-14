@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Avrir la colliaziun da l’archiv provisoric</string>
     <string name="dejavu_reopen_closed_tab">Reavrir il tab serrà</string>
+    <string name="dejavu_search_chip_temporary">Temporar</string>
     <string name="dejavu_shift_previous">Spustar al spazi da lavur precedent</string>
     <string name="dejavu_shift_next">Spustar al spazi da lavur proxim</string>
     <string name="dejavu_shift_blocked">Tabs fixads e dossiers na pon betg ir a %1$s</string>

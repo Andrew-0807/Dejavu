@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Алмасу буферінен сілтемені ашу</string>
     <string name="dejavu_reopen_closed_tab">Жабылған бетті қайта ашу</string>
+    <string name="dejavu_search_chip_temporary">Уақытша</string>
     <string name="dejavu_shift_previous">Алдыңғы жұмыс кеңістігіне жылжыту</string>
     <string name="dejavu_shift_next">Келесі жұмыс кеңістігіне жылжыту</string>
     <string name="dejavu_shift_blocked">Бекітілген беттер мен қалталарды %1$s құрылғысына жылжыту мүмкін емес</string>

@@ -283,6 +283,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Wótkaz z mjazyskłada wócyniś</string>
     <string name="dejavu_reopen_closed_tab">Zacynjony rejtarik zasej wócyniś</string>
+    <string name="dejavu_search_chip_temporary">Nachwilny</string>
     <string name="dejavu_shift_previous">Do pjerwjejšnego źěłowego ruma pśesunuś</string>
     <string name="dejavu_shift_next">Do pśiducego źěłowego ruma pśesunuś</string>
     <string name="dejavu_shift_blocked">Pśipěte rejtariki a zarědniki njedaju se na rěd %1$s pósłaś</string>

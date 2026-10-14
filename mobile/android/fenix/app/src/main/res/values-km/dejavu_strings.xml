@@ -262,6 +262,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">បើកតំណពីក្ដារតម្បៀតខ្ទាស់</string>
     <string name="dejavu_reopen_closed_tab">បើកផ្ទាំងដែលបានបិទឡើងវិញ</string>
+    <string name="dejavu_search_chip_temporary">បណ្ដោះអាសន្ន</string>
     <string name="dejavu_shift_previous">ផ្លាស់ទីទៅចន្លោះការងារមុន</string>
     <string name="dejavu_shift_next">ផ្លាស់ទីទៅចន្លោះការងារបន្ទាប់</string>
     <string name="dejavu_shift_blocked">ផ្ទាំងបានខ្ទាស់ និងថត មិនអាចទៅ %1$s បានទេ</string>

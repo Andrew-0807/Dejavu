@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Abrir enlace del portapapeles</string>
     <string name="dejavu_reopen_closed_tab">Reabrir rakïj ñanj cerrada</string>
+    <string name="dejavu_search_chip_temporary">Temporal</string>
     <string name="dejavu_shift_previous">Mover a espacio de trabajo anterior</string>
     <string name="dejavu_shift_next">Mover a espacio de trabajo siguiente</string>
     <string name="dejavu_shift_blocked">Rakïj ñanj fijadas y carpetas no pueden ir a %1$s</string>

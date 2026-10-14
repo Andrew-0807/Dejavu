@@ -276,6 +276,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">ᱨᱮᱴᱚᱯ ᱵᱳᱨᱰ ᱠᱷᱚᱱ ᱞᱤᱸᱠ ᱡᱷᱤᱡᱽ ᱢᱮ</string>
     <string name="dejavu_reopen_closed_tab">ᱵᱚᱸᱫ ᱟᱠᱟᱱ ᱴᱮᱵᱽ ᱫᱚᱦᱲᱟ ᱡᱷᱤᱡᱽ ᱢᱮ</string>
+    <string name="dejavu_search_chip_temporary">ᱴᱮᱢᱯᱚᱨᱟᱨᱤ</string>
     <string name="dejavu_shift_previous">ᱞᱟᱦᱟᱛᱮᱱ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱛᱮ ᱩᱪᱟᱹᱲ</string>
     <string name="dejavu_shift_next">ᱤᱱᱟᱹ ᱛᱟᱭᱚᱢ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱛᱮ ᱩᱪᱟᱹᱲ</string>
     <string name="dejavu_shift_blocked">ᱯᱤᱱ ᱴᱮᱵᱽ ᱠᱚ ᱟᱨ ᱯᱷᱚᱞᱰᱚᱨ ᱠᱚ %1$s ᱛᱮ ᱵᱟᱝ ᱪᱟᱞᱟᱜ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ</string>

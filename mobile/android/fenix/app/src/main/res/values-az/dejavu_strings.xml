@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Mübadilə buferindəki linki aç</string>
     <string name="dejavu_reopen_closed_tab">Bağlanmış vərəqi yenidən aç</string>
+    <string name="dejavu_search_chip_temporary">Müvəqqəti</string>
     <string name="dejavu_shift_previous">Əvvəlki iş sahəsinə köçür</string>
     <string name="dejavu_shift_next">Növbəti iş sahəsinə köçür</string>
     <string name="dejavu_shift_blocked">Bərkidilmiş vərəqlər və qovluqlar %1$s cihazına köçürülə bilməz</string>

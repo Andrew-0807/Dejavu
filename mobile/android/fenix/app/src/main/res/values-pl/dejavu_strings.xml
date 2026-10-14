@@ -283,6 +283,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Otwórz odnośnik ze schowka</string>
     <string name="dejavu_reopen_closed_tab">Przywróć zamkniętą kartę</string>
+    <string name="dejavu_search_chip_temporary">Tymczasowy</string>
     <string name="dejavu_shift_previous">Przenieś do poprzedniego obszaru roboczego</string>
     <string name="dejavu_shift_next">Przenieś do następnego obszaru roboczego</string>
     <string name="dejavu_shift_blocked">Przypiętych kart i folderów nie można przenieść do: %1$s</string>

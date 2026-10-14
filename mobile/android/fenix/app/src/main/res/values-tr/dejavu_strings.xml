@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Panodaki bağlantıyı aç</string>
     <string name="dejavu_reopen_closed_tab">Kapatılan sekmeyi yeniden aç</string>
+    <string name="dejavu_search_chip_temporary">Geçici</string>
     <string name="dejavu_shift_previous">Önceki çalışma alanına taşı</string>
     <string name="dejavu_shift_next">Sonraki çalışma alanına taşı</string>
     <string name="dejavu_shift_blocked">Sabitlenmiş sekmeler ve klasörler %1$s cihazına gönderilemez</string>

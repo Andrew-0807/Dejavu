@@ -283,6 +283,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Atverti nuorodą iš iškarpinės</string>
     <string name="dejavu_reopen_closed_tab">Vėl atverti užvertą kortelę</string>
+    <string name="dejavu_search_chip_temporary">Laikinasis</string>
     <string name="dejavu_shift_previous">Perkelti į ankstesnę darbo erdvę</string>
     <string name="dejavu_shift_next">Perkelti į kitą darbo erdvę</string>
     <string name="dejavu_shift_blocked">Prisegtų kortelių ir aplankų negalima perkelti į %1$s</string>

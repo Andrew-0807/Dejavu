@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Ablihi ang link gikan sa clipboard</string>
     <string name="dejavu_reopen_closed_tab">Ablihi pag-usab ang gisirado nga tab</string>
+    <string name="dejavu_search_chip_temporary">Temporaryo</string>
     <string name="dejavu_shift_previous">Balhina sa nauna nga workspace</string>
     <string name="dejavu_shift_next">Balhina sa sunod nga workspace</string>
     <string name="dejavu_shift_blocked">Dili mabalhin sa %1$s ang mga naka-pin nga tab ug folder</string>

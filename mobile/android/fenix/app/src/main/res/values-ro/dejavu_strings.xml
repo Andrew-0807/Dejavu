@@ -276,6 +276,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Deschide linkul din clipboard</string>
     <string name="dejavu_reopen_closed_tab">Redeschide fila închisă</string>
+    <string name="dejavu_search_chip_temporary">Temporar</string>
     <string name="dejavu_shift_previous">Mută în spațiul de lucru anterior</string>
     <string name="dejavu_shift_next">Mută în spațiul de lucru următor</string>
     <string name="dejavu_shift_blocked">Filele fixate și folderele nu pot fi trimise către %1$s</string>

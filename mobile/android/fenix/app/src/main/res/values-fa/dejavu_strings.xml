@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">باز کردن پیوند از کلیپ‌بورد</string>
     <string name="dejavu_reopen_closed_tab">باز کردن دوبارهٔ زبانهٔ بسته‌شده</string>
+    <string name="dejavu_search_chip_temporary">موقت</string>
     <string name="dejavu_shift_previous">انتقال به فضای کاری قبلی</string>
     <string name="dejavu_shift_next">انتقال به فضای کاری بعدی</string>
     <string name="dejavu_shift_blocked">زبانه‌های سنجاق‌شده و پوشه‌ها نمی‌توانند به %1$s بروند</string>

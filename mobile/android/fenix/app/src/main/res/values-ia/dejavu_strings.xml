@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Aperir ligamine ab le area de transferentia</string>
     <string name="dejavu_reopen_closed_tab">Reaperir le scheda claudite</string>
+    <string name="dejavu_search_chip_temporary">Temporari</string>
     <string name="dejavu_shift_previous">Mover al spatio de labor previe</string>
     <string name="dejavu_shift_next">Mover al spatio de labor sequente</string>
     <string name="dejavu_shift_blocked">Le schedas fixate e le dossiers non pote esser inviate a %1$s</string>

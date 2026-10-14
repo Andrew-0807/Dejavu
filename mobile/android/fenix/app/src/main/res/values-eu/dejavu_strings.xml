@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Ireki arbeleko esteka</string>
     <string name="dejavu_reopen_closed_tab">Berrireki itxitako fitxa</string>
+    <string name="dejavu_search_chip_temporary">Aldi baterakoa</string>
     <string name="dejavu_shift_previous">Eraman aurreko laneremura</string>
     <string name="dejavu_shift_next">Eraman hurrengo laneremura</string>
     <string name="dejavu_shift_blocked">Finkatutako fitxak eta karpetak ezin dira hona eraman: %1$s</string>

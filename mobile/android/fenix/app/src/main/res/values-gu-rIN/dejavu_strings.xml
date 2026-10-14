@@ -167,6 +167,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">ક્લિપબોર્ડમાંથી લિંક ખોલો</string>
     <string name="dejavu_reopen_closed_tab">બંધ કરેલી ટૅબ ફરીથી ખોલો</string>
+    <string name="dejavu_search_chip_temporary">અસ્થાયી</string>
     <string name="dejavu_shift_previous">પાછલા વર્કસ્પેસમાં ખસેડો</string>
     <string name="dejavu_shift_next">પછીના વર્કસ્પેસમાં ખસેડો</string>
     <string name="dejavu_shift_blocked">પિન કરેલી ટૅબ્સ અને ફોલ્ડર્સ %1$s પર જઈ શકતા નથી</string>

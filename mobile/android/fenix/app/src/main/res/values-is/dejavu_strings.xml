@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Opna tengil af klippispjaldi</string>
     <string name="dejavu_reopen_closed_tab">Opna aftur lokaðan flipa</string>
+    <string name="dejavu_search_chip_temporary">Tímabundið</string>
     <string name="dejavu_shift_previous">Færa á fyrra vinnusvæði</string>
     <string name="dejavu_shift_next">Færa á næsta vinnusvæði</string>
     <string name="dejavu_shift_blocked">Ekki er hægt að færa festa flipa og möppur á %1$s</string>

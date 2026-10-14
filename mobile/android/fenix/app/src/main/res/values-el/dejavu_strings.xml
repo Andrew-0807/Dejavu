@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Άνοιγμα συνδέσμου από το πρόχειρο</string>
     <string name="dejavu_reopen_closed_tab">Επαναφορά κλεισμένης καρτέλας</string>
+    <string name="dejavu_search_chip_temporary">Προσωρινός</string>
     <string name="dejavu_shift_previous">Μετακίνηση στον προηγούμενο χώρο εργασίας</string>
     <string name="dejavu_shift_next">Μετακίνηση στον επόμενο χώρο εργασίας</string>
     <string name="dejavu_shift_blocked">Οι καρφιτσωμένες καρτέλες και οι φάκελοι δεν μπορούν να μεταφερθούν στη συσκευή %1$s</string>

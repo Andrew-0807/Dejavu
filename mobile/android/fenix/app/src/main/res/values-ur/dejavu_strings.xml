@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">کلپ بورڈ سے لنک کھولیں</string>
     <string name="dejavu_reopen_closed_tab">بند کیا گیا ٹیب دوبارہ کھولیں</string>
+    <string name="dejavu_search_chip_temporary">عارضی</string>
     <string name="dejavu_shift_previous">پچھلے ورک اسپیس میں منتقل کریں</string>
     <string name="dejavu_shift_next">اگلے ورک اسپیس میں منتقل کریں</string>
     <string name="dejavu_shift_blocked">پن کردہ ٹیبز اور فولڈرز %1$s پر نہیں جا سکتے</string>

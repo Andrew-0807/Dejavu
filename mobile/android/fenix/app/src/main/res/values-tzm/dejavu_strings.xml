@@ -269,6 +269,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Rẓem aseɣwen yettwanɣlen</string>
     <string name="dejavu_reopen_closed_tab">Rẓem daɣ aseksel yemdlen</string>
+    <string name="dejavu_search_chip_temporary">Askudan</string>
     <string name="dejavu_shift_previous">Senkez ɣer umkan n umahil yezrin</string>
     <string name="dejavu_shift_next">Senkez ɣer umkan n umahil d-iteddun</string>
     <string name="dejavu_shift_blocked">Iseksal yessersen akked ikuramen ur zmiren ad ddun ɣer %1$s</string>

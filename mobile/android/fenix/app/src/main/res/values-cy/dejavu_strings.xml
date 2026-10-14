@@ -297,6 +297,7 @@
     </plurals>
     <string name="dejavu_open_clipboard_link">Agor dolen o’r clipfwrdd</string>
     <string name="dejavu_reopen_closed_tab">Ailagor tab wedi’i gau</string>
+    <string name="dejavu_search_chip_temporary">Dros dro</string>
     <string name="dejavu_shift_previous">Symud i’r gweithle blaenorol</string>
     <string name="dejavu_shift_next">Symud i’r gweithle nesaf</string>
     <string name="dejavu_shift_blocked">Ni all tabiau wedi’u pinio a ffolderi fynd i %1$s</string>
