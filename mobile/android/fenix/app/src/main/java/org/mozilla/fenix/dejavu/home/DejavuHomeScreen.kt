@@ -356,6 +356,7 @@ private class DefaultDejavuHomeInteractor(
             is DropTarget.NextToTab, DropTarget.UnpinnedStart -> null
         }
         if (placement != null) {
+            unsplitLeaving(state, (targets.tabs + targets.pinnedTabs).map { it.id }, targets.openTabs.map { it.id })
             repository.placePins(workspaceId, targets.itemIds, targets.tabs.map { it.toPinSource() }, placement)
             return
         }
@@ -363,9 +364,7 @@ private class DefaultDejavuHomeInteractor(
 
         // Unpinning: open pinned tabs become normal tabs, closed ones are reopened without loading.
         val moving = targets.tabs.map { it.id } + targets.pinnedTabs.map { it.id } + runner.reopenClosed(targets.pins)
-        // Like in Zen, a tab dragged away from the tab it is split with leaves the split view.
-        val leaving = moving.filter { id -> state.splitOf(id)?.tabIds?.any { it !in moving } == true }
-        if (leaving.isNotEmpty()) repository.unsplit(leaving.toSet())
+        unsplitLeaving(state, moving, moving)
         repository.unpin(targets.pins.map { it.id }.toSet())
         repository.moveToWorkspace(tabIds = moving.toSet(), itemIds = emptySet(), workspaceId = workspaceId)
         val others = store.state.normalTabs.filter {
@@ -378,6 +377,15 @@ private class DefaultDejavuHomeInteractor(
         if (anchor != null && moving.isNotEmpty()) {
             store.dispatch(TabListAction.MoveTabsAction(moving, anchor, after))
         }
+    }
+
+    /**
+     * Like in Zen, a tab dragged away from the tab it is split with leaves the split view: those of [dragged] whose
+     * partner is not among [moving], which also holds the tabs inside dragged folders.
+     */
+    private fun unsplitLeaving(state: WorkspaceState, dragged: List<String>, moving: List<String>) {
+        val leaving = dragged.filter { id -> state.splitOf(id)?.tabIds?.any { it != id && it !in moving } == true }
+        if (leaving.isNotEmpty()) repository.unsplit(leaving.toSet())
     }
 
     override fun onMoveEssential(pinId: String, index: Int) =
