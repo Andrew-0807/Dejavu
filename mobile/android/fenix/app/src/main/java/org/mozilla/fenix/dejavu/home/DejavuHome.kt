@@ -694,6 +694,7 @@ private fun WorkspaceBar(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .weight(1f)
+                .padding(horizontal = 8.dp)
                 .fadingEdges(scrollState)
                 .horizontalScroll(scrollState)
                 .pointerInput(cellWidth) {
