@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Эзләү</string>
     <string name="dejavu_actions_bar_home">Баш бит</string>
     <string name="dejavu_settings_more_menu_summary">Битләр астындагы гамәлләр панеле һәм ул ачкан меню</string>
-    <string name="dejavu_more_menu_hint">Бөтен менюны ачу өчен гамәлләр панелен өскә яки адрес юлын аска шудырыгыз. Төймәне күчерү яки чыгару өчен аңа басыгыз. Киңәйтүләр һәрвакыт бөтен рәтне били.</string>
+    <string name="dejavu_more_menu_drag_hint">Төймәгә басып торыгыз да аны өстәге рәткә сөйрәгез. Төймәне чыгару өчен аны кире монда, аска сөйрәгез.</string>
     <string name="dejavu_actions_bar_hint">Битләр астындагы төймәләр. Алар сез ачкан биткә кагыла.</string>
     <string name="dejavu_actions_bar_all_added">Барлык төймәләр дә инде панельдә.</string>
-    <string name="dejavu_more_menu_row">%1$d нче рәт</string>
     <string name="dejavu_more_menu_add_item">Төймә өстәү</string>
     <string name="dejavu_more_menu_add_row">Рәт өстәү</string>
     <string name="dejavu_more_menu_row_full">Бу рәт тулы.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Гадәттәгегә кире кайтару</string>
     <string name="dejavu_more_menu_hide_edit">Төзәтү төймәсен яшерү</string>
     <string name="dejavu_more_menu_hide_edit_summary">Бу экранны ачкан, меню астындагы төймә</string>
-    <string name="dejavu_more_menu_all_added">Барлык төймәләр дә инде менюда.</string>
-    <string name="dejavu_more_menu_preview">Алдан карау</string>
     <string name="dejavu_settings_sync">Firefox яки Zen белән синхронлаштыру</string>
     <string name="dejavu_sync_hint">Төсләре һәм билгечекләре белән бергә эш өлкәләрегезне, контейнерләрегезне, беркетелгән табларыгызны, төп сайтларыгызны һәм папкаларыгызны компьютерегездәге Zen Browser һәм башка җиһазларыгыздагы Dejavu белән бер төсле итеп тота. Моның өчен Firefox мәгълүматларыгызны синхронлаштырган Mozilla хисап язмасы кулланыла.</string>
     <string name="dejavu_sync_zen_hint">Zen-дә Көйләүләрне, аннары Синхронлаштыруны ачыгыз һәм як панель синхронлаштыруын кабызыгыз. Беркетелмәгән таблар синхронлаштырылмый.</string>

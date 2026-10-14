@@ -203,10 +203,9 @@
     <string name="dejavu_actions_bar_search">Meklēšana</string>
     <string name="dejavu_actions_bar_home">Sākums</string>
     <string name="dejavu_settings_more_menu_summary">Darbību josla zem lapām un izvēlne, ko tā atver</string>
-    <string name="dejavu_more_menu_hint">Velciet darbību joslu uz augšu vai adreses joslu uz leju, lai atvērtu visu izvēlni. Pieskarieties pogai, lai to pārvietotu vai noņemtu. Paplašinājumi vienmēr aizņem visu rindu.</string>
+    <string name="dejavu_more_menu_drag_hint">Turiet pogu un velciet to uz rindu augšā. Lai noņemtu pogu, velciet to atpakaļ šeit lejā.</string>
     <string name="dejavu_actions_bar_hint">Pogas zem lapām. Tās attiecas uz lapu, kurā atrodaties.</string>
     <string name="dejavu_actions_bar_all_added">Visas pogas jau ir joslā.</string>
-    <string name="dejavu_more_menu_row">%1$d. rinda</string>
     <string name="dejavu_more_menu_add_item">Pievienot pogu</string>
     <string name="dejavu_more_menu_add_row">Pievienot rindu</string>
     <string name="dejavu_more_menu_row_full">Šī rinda ir pilna.</string>
@@ -219,8 +218,6 @@
     <string name="dejavu_more_menu_reset">Atiestatīt uz noklusējumu</string>
     <string name="dejavu_more_menu_hide_edit">Slēpt rediģēšanas pogu</string>
     <string name="dejavu_more_menu_hide_edit_summary">Poga zem izvēlnes, kas atver šo ekrānu</string>
-    <string name="dejavu_more_menu_all_added">Visas pogas jau ir izvēlnē.</string>
-    <string name="dejavu_more_menu_preview">Priekšskatījums</string>
     <string name="dejavu_settings_sync">Sinhronizācija ar Firefox vai Zen</string>
     <string name="dejavu_sync_hint">Notur jūsu darbvietas ar to krāsām un ikonām, konteinerus, piespraustās cilnes, Izlasi un mapes tādas pašas kā Zen Browser jūsu datorā un Dejavu jūsu citās ierīcēs. Tiek izmantots Mozilla konts, ar kuru sinhronizējat Firefox datus.</string>
     <string name="dejavu_sync_zen_hint">Zen atveriet Iestatījumi, tad Sinhronizācija, un ieslēdziet sānjoslas sinhronizāciju. Cilnes, kas nav piespraustas, netiek sinhronizētas.</string>

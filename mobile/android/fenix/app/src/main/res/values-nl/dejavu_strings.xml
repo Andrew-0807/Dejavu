@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Zoeken</string>
     <string name="dejavu_actions_bar_home">Start</string>
     <string name="dejavu_settings_more_menu_summary">De actiebalk onder pagina’s en het menu dat deze opent</string>
-    <string name="dejavu_more_menu_hint">Veeg de actiebalk omhoog of de adresbalk omlaag om het hele menu te openen. Tik op een knop om deze te verplaatsen of te verwijderen. Extensies nemen altijd een hele rij in.</string>
+    <string name="dejavu_more_menu_drag_hint">Houd een knop ingedrukt en sleep deze naar een rij hierboven. Sleep een knop terug naar hier beneden om deze te verwijderen.</string>
     <string name="dejavu_actions_bar_hint">De knoppen onder pagina’s. Ze werken op de pagina waarop je bent.</string>
     <string name="dejavu_actions_bar_all_added">Alle knoppen staan al in de balk.</string>
-    <string name="dejavu_more_menu_row">Rij %1$d</string>
     <string name="dejavu_more_menu_add_item">Knop toevoegen</string>
     <string name="dejavu_more_menu_add_row">Rij toevoegen</string>
     <string name="dejavu_more_menu_row_full">Deze rij is vol.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Terugzetten naar standaard</string>
     <string name="dejavu_more_menu_hide_edit">Bewerkknop verbergen</string>
     <string name="dejavu_more_menu_hide_edit_summary">De knop onder het menu die dit scherm opent</string>
-    <string name="dejavu_more_menu_all_added">Alle knoppen staan al in het menu.</string>
-    <string name="dejavu_more_menu_preview">Voorbeeld</string>
     <string name="dejavu_settings_sync">Synchroniseren met Firefox of Zen</string>
     <string name="dejavu_sync_hint">Houdt je werkruimtes met hun kleuren en pictogrammen, containers, vastgemaakte tabbladen, favorieten en mappen gelijk aan die in Zen Browser op je computer en in Dejavu op je andere apparaten. Hiervoor wordt het Mozilla-account gebruikt waarmee je Firefox-gegevens synchroniseert.</string>
     <string name="dejavu_sync_zen_hint">Open in Zen Instellingen, dan Synchronisatie, en zet synchronisatie van de zijbalk aan. Tabbladen die niet zijn vastgemaakt, worden niet gesynchroniseerd.</string>

@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">ئىزدە</string>
     <string name="dejavu_actions_bar_home">باش بەت</string>
     <string name="dejavu_settings_more_menu_summary">بەتلەرنىڭ ئاستىدىكى مەشغۇلات بالدىقى ۋە ئۇ ئاچىدىغان تىزىملىك</string>
-    <string name="dejavu_more_menu_hint">پۈتۈن تىزىملىكنى ئېچىش ئۈچۈن مەشغۇلات بالدىقىنى ئۈستىگە ياكى ئادرېس بالدىقىنى ئاستىغا سۈرۈڭ. توپچىنى يۆتكەش ياكى چىقىرىۋېتىش ئۈچۈن ئۇنى چېكىڭ. كېڭەيتمىلەر ھەمىشە پۈتۈن بىر قاتارنى ئىگىلەيدۇ.</string>
+    <string name="dejavu_more_menu_drag_hint">توپچىنى بېسىپ تۇرۇپ ئۈستىدىكى بىر قاتارغا سۆرەڭ. توپچىنى چىقىرىۋېتىش ئۈچۈن ئۇنى بۇ يەرگە، ئاستىغا قايتۇرۇپ سۆرەڭ.</string>
     <string name="dejavu_actions_bar_hint">بەتلەرنىڭ ئاستىدىكى توپچىلار. ئۇلار سىز تۇرغان بەتكە تەسىر قىلىدۇ.</string>
     <string name="dejavu_actions_bar_all_added">ھەممە توپچا ئاللىقاچان بالداقتا.</string>
-    <string name="dejavu_more_menu_row">%1$d-قاتار</string>
     <string name="dejavu_more_menu_add_item">توپچا قوش</string>
     <string name="dejavu_more_menu_add_row">قاتار قوش</string>
     <string name="dejavu_more_menu_row_full">بۇ قاتار توشقان.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">كۆڭۈلدىكىگە قايتۇر</string>
     <string name="dejavu_more_menu_hide_edit">تەھرىرلەش توپچىسىنى يوشۇر</string>
     <string name="dejavu_more_menu_hide_edit_summary">بۇ ئېكراننى ئاچىدىغان، تىزىملىكنىڭ ئاستىدىكى توپچا</string>
-    <string name="dejavu_more_menu_all_added">ھەممە توپچا ئاللىقاچان تىزىملىكتە.</string>
-    <string name="dejavu_more_menu_preview">ئالدىن كۆرۈش</string>
     <string name="dejavu_settings_sync">Firefox ياكى Zen بىلەن قەدەمداشلا</string>
     <string name="dejavu_sync_hint">رەڭلىرى ۋە سىنبەلگىلىرى بىلەن خىزمەت دائىرىلىرىڭىزنى، قاچىلىرىڭىزنى، مىخلانغان بەتكۈچلىرىڭىزنى، مۇھىملىرىڭىزنى ۋە قىسقۇچلىرىڭىزنى كومپيۇتېرىڭىزدىكى Zen Browser ۋە باشقا ئۈسكۈنىلىرىڭىزدىكى Dejavu بىلەن ئوخشاش تۇتىدۇ. بۇنىڭ ئۈچۈن Firefox سانلىق مەلۇماتلىرىڭىزنى قەدەمداشلايدىغان Mozilla ھېساباتى ئىشلىتىلىدۇ.</string>
     <string name="dejavu_sync_zen_hint">Zen دا تەڭشەكنى، ئاندىن قەدەمداشلاشنى ئېچىڭ ۋە يان پانېل قەدەمداشلىشىنى ئېچىڭ. مىخلانمىغان بەتكۈچلەر قەدەمداشلانمايدۇ.</string>

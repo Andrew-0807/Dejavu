@@ -201,10 +201,9 @@
     <string name="dejavu_actions_bar_search">o alasa</string>
     <string name="dejavu_actions_bar_home">tomo</string>
     <string name="dejavu_settings_more_menu_summary">linja ilo lon anpa lipu, en ilo mute pi open ona</string>
-    <string name="dejavu_more_menu_hint">o tawa sewi e linja ilo, anu o tawa anpa e linja pi nasin lipu, tawa open e ilo mute ale. o luka e ilo lili tawa tawa e ona anu tawa weka e ona. ilo namako li kepeken linja ale lon tenpo ale.</string>
+    <string name="dejavu_more_menu_drag_hint">o awen e luka lon ilo lili, o tawa e ona tawa linja sewi. o tawa e ilo lili tawa anpa ni la ona li weka.</string>
     <string name="dejavu_actions_bar_hint">ilo lili lon anpa lipu. ona li pali lon lipu sina.</string>
     <string name="dejavu_actions_bar_all_added">ilo lili ale li lon linja.</string>
-    <string name="dejavu_more_menu_row">linja %1$d</string>
     <string name="dejavu_more_menu_add_item">o pana e ilo lili</string>
     <string name="dejavu_more_menu_add_row">o pana e linja</string>
     <string name="dejavu_more_menu_row_full">linja ni li ken ala jo e ilo sin.</string>
@@ -217,8 +216,6 @@
     <string name="dejavu_more_menu_reset">o open sin e nasin nanpa wan</string>
     <string name="dejavu_more_menu_hide_edit">o len e ilo lili pi ante</string>
     <string name="dejavu_more_menu_hide_edit_summary">ilo lili lon anpa ilo mute, ona li open e lukin ni</string>
-    <string name="dejavu_more_menu_all_added">ilo lili ale li lon ilo mute.</string>
-    <string name="dejavu_more_menu_preview">lukin open</string>
     <string name="dejavu_settings_sync">o sama kepeken Firefox anu Zen</string>
     <string name="dejavu_sync_hint">ona li awen e kulupu poki sina (kepeken kule en sitelen lili ona), leko, poki awen, lipu suli, en tomo poki, li sama ilo Zen lon ilo sona sina en Dejavu lon ilo ante sina. ona li kepeken nimi Mozilla pi sina kepeken tan sama e sona Firefox.</string>
     <string name="dejavu_sync_zen_hint">lon Zen, o open e nasin ilo, la o open e sama, la o ken e sama pi poki poka. poki awen ala li sama ala.</string>

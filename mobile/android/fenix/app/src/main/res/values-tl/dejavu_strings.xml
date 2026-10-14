@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Maghanap</string>
     <string name="dejavu_actions_bar_home">Home</string>
     <string name="dejavu_settings_more_menu_summary">Ang bar ng mga aksyon sa ibaba ng mga page at ang menu na binubuksan nito</string>
-    <string name="dejavu_more_menu_hint">I-swipe pataas ang bar ng mga aksyon, o pababa ang address bar, para buksan ang buong menu. I-tap ang isang button para ilipat o alisin ito. Laging sumasakop ng buong hilera ang mga extension.</string>
+    <string name="dejavu_more_menu_drag_hint">Pindutin nang matagal ang isang button at i-drag ito sa isang hilera sa itaas. I-drag pabalik dito sa ibaba ang isang button para alisin ito.</string>
     <string name="dejavu_actions_bar_hint">Ang mga button sa ibaba ng mga page. Gumagana ang mga ito sa page na kinaroroonan mo.</string>
     <string name="dejavu_actions_bar_all_added">Nasa bar na ang bawat button.</string>
-    <string name="dejavu_more_menu_row">Hilera %1$d</string>
     <string name="dejavu_more_menu_add_item">Magdagdag ng button</string>
     <string name="dejavu_more_menu_add_row">Magdagdag ng hilera</string>
     <string name="dejavu_more_menu_row_full">Puno na ang hilerang ito.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">I-reset sa default</string>
     <string name="dejavu_more_menu_hide_edit">Itago ang edit button</string>
     <string name="dejavu_more_menu_hide_edit_summary">Ang button sa ibaba ng menu na nagbubukas sa screen na ito</string>
-    <string name="dejavu_more_menu_all_added">Nasa menu na ang bawat button.</string>
-    <string name="dejavu_more_menu_preview">Preview</string>
     <string name="dejavu_settings_sync">I-sync kasama ang Firefox o Zen</string>
     <string name="dejavu_sync_hint">Pinapanatiling magkatulad ang iyong mga workspace kasama ang mga kulay at icon nito, container, naka-pin na tab, Mahahalaga, at folder, tulad ng nasa Zen Browser sa iyong kompyuter at sa Dejavu sa iyong ibang device. Ginagamit nito ang Mozilla account na ginagamit mo sa pag-sync ng data ng Firefox.</string>
     <string name="dejavu_sync_zen_hint">Sa Zen, buksan ang Settings, pagkatapos ay Sync, at i-on ang sidebar sync. Hindi sini-sync ang mga tab na hindi naka-pin.</string>

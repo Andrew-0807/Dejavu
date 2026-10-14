@@ -201,10 +201,9 @@
     <string name="dejavu_actions_bar_search">Tìm kiếm</string>
     <string name="dejavu_actions_bar_home">Trang chủ</string>
     <string name="dejavu_settings_more_menu_summary">Thanh thao tác bên dưới trang và trình đơn mà nó mở ra</string>
-    <string name="dejavu_more_menu_hint">Vuốt thanh thao tác lên, hoặc vuốt thanh địa chỉ xuống, để mở toàn bộ trình đơn. Nhấn vào một nút để di chuyển hoặc xóa nút đó. Tiện ích luôn chiếm trọn một hàng.</string>
+    <string name="dejavu_more_menu_drag_hint">Nhấn giữ một nút và kéo nút đó vào một hàng ở trên. Kéo một nút trở lại xuống đây để xóa nút đó.</string>
     <string name="dejavu_actions_bar_hint">Các nút bên dưới trang. Các nút này áp dụng cho trang bạn đang xem.</string>
     <string name="dejavu_actions_bar_all_added">Mọi nút đều đã có trên thanh.</string>
-    <string name="dejavu_more_menu_row">Hàng %1$d</string>
     <string name="dejavu_more_menu_add_item">Thêm một nút</string>
     <string name="dejavu_more_menu_add_row">Thêm một hàng</string>
     <string name="dejavu_more_menu_row_full">Hàng này đã đầy.</string>
@@ -217,8 +216,6 @@
     <string name="dejavu_more_menu_reset">Đặt lại về mặc định</string>
     <string name="dejavu_more_menu_hide_edit">Ẩn nút chỉnh sửa</string>
     <string name="dejavu_more_menu_hide_edit_summary">Nút bên dưới trình đơn mở màn hình này</string>
-    <string name="dejavu_more_menu_all_added">Mọi nút đều đã có trong trình đơn.</string>
-    <string name="dejavu_more_menu_preview">Xem trước</string>
     <string name="dejavu_settings_sync">Đồng bộ hóa với Firefox hoặc Zen</string>
     <string name="dejavu_sync_hint">Giữ cho không gian làm việc (cùng màu sắc và biểu tượng), vùng chứa, thẻ đã ghim, trang thiết yếu và thư mục của bạn giống như trong Zen Browser trên máy tính và trong Dejavu trên các thiết bị khác của bạn. Tính năng này dùng tài khoản Mozilla mà bạn dùng để đồng bộ hóa dữ liệu Firefox.</string>
     <string name="dejavu_sync_zen_hint">Trong Zen, mở Cài đặt, rồi vào Đồng bộ hóa, và bật đồng bộ hóa thanh bên. Các thẻ chưa ghim sẽ không được đồng bộ hóa.</string>

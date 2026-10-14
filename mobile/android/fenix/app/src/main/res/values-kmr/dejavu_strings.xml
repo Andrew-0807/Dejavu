@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Lêgerîn</string>
     <string name="dejavu_actions_bar_home">Mal</string>
     <string name="dejavu_settings_more_menu_summary">Darika çalakiyan a binê rûpelan û menuya ku ew vedike</string>
-    <string name="dejavu_more_menu_hint">Ji bo vekirina tevahiya menuyê, darika çalakiyan ber bi jor ve, an darika navnîşanan ber bi jêr ve bikişîne. Ji bo veguhastin an rakirina bişkokekê, li ser wê bitikîne. Pêvek her tim rêzeke tevahî digirin.</string>
+    <string name="dejavu_more_menu_drag_hint">Bişkokekê bigire û wê bikişîne rêzeke li jor. Ji bo rakirina bişkokekê, wê dîsa bikişîne vir li jêr.</string>
     <string name="dejavu_actions_bar_hint">Bişkokên binê rûpelan. Ew li ser rûpela ku tu lê yî dixebitin.</string>
     <string name="dejavu_actions_bar_all_added">Hemû bişkok jixwe di darikê de ne.</string>
-    <string name="dejavu_more_menu_row">Rêza %1$d</string>
     <string name="dejavu_more_menu_add_item">Bişkokekê zêde bike</string>
     <string name="dejavu_more_menu_add_row">Rêzekê zêde bike</string>
     <string name="dejavu_more_menu_row_full">Ev rêz tijî ye.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Vegere rewşa bingehîn</string>
     <string name="dejavu_more_menu_hide_edit">Bişkoka serrastkirinê veşêre</string>
     <string name="dejavu_more_menu_hide_edit_summary">Bişkoka binê menuyê ya ku vê dîmenê vedike</string>
-    <string name="dejavu_more_menu_all_added">Hemû bişkok jixwe di menuyê de ne.</string>
-    <string name="dejavu_more_menu_preview">Pêşdîtin</string>
     <string name="dejavu_settings_sync">Bi Firefox an Zen re hevdemkirin</string>
     <string name="dejavu_sync_hint">Qadên te bi reng û îkonên wan, konteyneran, hilpekînên sabît, malperên girîng û peldankan wekî di Zen Browser de li ser kompîturê te û di Dejavu de li ser amûrên te yên din didomîne. Ew hesabê Mozilla yê ku tu daneyên Firefox pê re hevdem dikî, bi kar tîne.</string>
     <string name="dejavu_sync_zen_hint">Di Zen de, «Sazkarî» veke, paşê «Hevdemkirin», û hevdemkirina darika kêlekê vekirî bike. Hilpekînên ku ne sabît in nayên hevdemkirin.</string>

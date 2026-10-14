@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">آختار</string>
     <string name="dejavu_actions_bar_home">آنا صفحه</string>
     <string name="dejavu_settings_more_menu_summary">صفحه‌لرین آلتینداکی عملیات‌لار پانئلی و اونون آچدیغی منو</string>
-    <string name="dejavu_more_menu_hint">بوتون منونو آچماق اوچون عملیات‌لار پانئلینی یوخاری، یا دا آدرس چوبوغونو آشاغی سوروشدورون. بیر دوگمه‌نی داشیماق یا سیلمک اوچون اونا توخونون. اوزانتی‌لار همیشه بوتؤو بیر سیرانی توتور.</string>
+    <string name="dejavu_more_menu_drag_hint">بیر دوگمه‌نی باسیب ساخلایین و یوخاریداکی بیر سیرایا سوروکله‌یین. بیر دوگمه‌نی سیلمک اوچون اونو گئنه بورایا، آشاغی سوروکله‌یین.</string>
     <string name="dejavu_actions_bar_hint">صفحه‌لرین آلتینداکی دوگمه‌لر. اونلار اولدوغونوز صفحه اوزرینده ایشله‌ییر.</string>
     <string name="dejavu_actions_bar_all_added">بوتون دوگمه‌لر آرتیق پانئلده‌دیر.</string>
-    <string name="dejavu_more_menu_row">%1$d-جی سیرا</string>
     <string name="dejavu_more_menu_add_item">دوگمه اَلاوه ات</string>
     <string name="dejavu_more_menu_add_row">سیرا اَلاوه ات</string>
     <string name="dejavu_more_menu_row_full">بو سیرا دولودور.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">ستاندارتا سیفیرلا</string>
     <string name="dejavu_more_menu_hide_edit">ویرایش دوگمه‌سینی گیزلت</string>
     <string name="dejavu_more_menu_hide_edit_summary">بو اکرانی آچان، منونون آلتینداکی دوگمه</string>
-    <string name="dejavu_more_menu_all_added">بوتون دوگمه‌لر آرتیق منودادیر.</string>
-    <string name="dejavu_more_menu_preview">اؤن‌باخیش</string>
     <string name="dejavu_settings_sync">Firefox یا Zen ایله همگام‌سازی ات</string>
     <string name="dejavu_sync_hint">رنگ و آیکونلاری ایله بیرلیکده ایش ساحه‌لرینیزی، کانتینرلرینیزی، برکیدیلمیش تاغلارینیزی، اساس‌لارینیزی و پوشه‌لرینیزی کومپیوترینیزده‌کی Zen Browser و باشقا جیهازلارینیزداکی Dejavu ایله عئینی ساخلاییر. بونون اوچون Firefox معلومات‌لارینیزی همگام‌سازی اتدیگینیز Mozilla حسابیندان ایستیفاده اولونور.</string>
     <string name="dejavu_sync_zen_hint">Zen-ده تنظیم‌لری، سونرا همگام‌سازینی آچین و یان پانل همگام‌سازی‌سینی فعاللاشدیرین. برکیدیلمه‌میش تاغلار همگام‌سازی اولونمور.</string>

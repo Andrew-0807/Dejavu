@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Søk</string>
     <string name="dejavu_actions_bar_home">Heim</string>
     <string name="dejavu_settings_more_menu_summary">Handlingslinja under sider og menyen ho opnar</string>
-    <string name="dejavu_more_menu_hint">Sveip handlingslinja opp eller adresselinja ned for å opne heile menyen. Trykk på ein knapp for å flytte eller fjerne han. Utvidingar tek alltid ei heil rad.</string>
+    <string name="dejavu_more_menu_drag_hint">Hald inne ein knapp og dra han til ei rad ovanfor. Dra ein knapp tilbake hit ned for å fjerne han.</string>
     <string name="dejavu_actions_bar_hint">Knappane under sider. Dei verkar på sida du er på.</string>
     <string name="dejavu_actions_bar_all_added">Alle knappane er allereie i linja.</string>
-    <string name="dejavu_more_menu_row">Rad %1$d</string>
     <string name="dejavu_more_menu_add_item">Legg til ein knapp</string>
     <string name="dejavu_more_menu_add_row">Legg til ei rad</string>
     <string name="dejavu_more_menu_row_full">Denne rada er full.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Tilbakestill til standard</string>
     <string name="dejavu_more_menu_hide_edit">Gøym rediger-knappen</string>
     <string name="dejavu_more_menu_hide_edit_summary">Knappen under menyen som opnar denne skjermen</string>
-    <string name="dejavu_more_menu_all_added">Alle knappane er allereie i menyen.</string>
-    <string name="dejavu_more_menu_preview">Førehandsvising</string>
     <string name="dejavu_settings_sync">Synkroniser med Firefox eller Zen</string>
     <string name="dejavu_sync_hint">Held arbeidsområda dine, med fargar og ikon, behaldarar, festa faner, favorittar og mapper like som i Zen Browser på datamaskina di og i Dejavu på dei andre einingane dine. Dette bruker Mozilla-kontoen du synkroniserer Firefox-data med.</string>
     <string name="dejavu_sync_zen_hint">Opne Innstillingar i Zen, deretter Synkronisering, og slå på synkronisering av sidestolpen. Faner som ikkje er festa, vert ikkje synkroniserte.</string>

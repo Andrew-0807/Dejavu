@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Hae</string>
     <string name="dejavu_actions_bar_home">Koti</string>
     <string name="dejavu_settings_more_menu_summary">Sivujen alla oleva toimintopalkki ja sen avaama valikko</string>
-    <string name="dejavu_more_menu_hint">Avaa koko valikko pyyhkäisemällä toimintopalkkia ylös tai osoitepalkkia alas. Siirrä tai poista painike napauttamalla sitä. Laajennukset vievät aina kokonaisen rivin.</string>
+    <string name="dejavu_more_menu_drag_hint">Pidä painiketta painettuna ja vedä se ylempänä olevalle riville. Poista painike vetämällä se takaisin tänne alas.</string>
     <string name="dejavu_actions_bar_hint">Sivujen alla olevat painikkeet. Ne koskevat sivua, jolla olet.</string>
     <string name="dejavu_actions_bar_all_added">Kaikki painikkeet ovat jo palkissa.</string>
-    <string name="dejavu_more_menu_row">Rivi %1$d</string>
     <string name="dejavu_more_menu_add_item">Lisää painike</string>
     <string name="dejavu_more_menu_add_row">Lisää rivi</string>
     <string name="dejavu_more_menu_row_full">Tämä rivi on täynnä.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Palauta oletukset</string>
     <string name="dejavu_more_menu_hide_edit">Piilota muokkauspainike</string>
     <string name="dejavu_more_menu_hide_edit_summary">Painike valikon alla, joka avaa tämän näytön</string>
-    <string name="dejavu_more_menu_all_added">Kaikki painikkeet ovat jo valikossa.</string>
-    <string name="dejavu_more_menu_preview">Esikatselu</string>
     <string name="dejavu_settings_sync">Synkronoi Firefoxin tai Zenin kanssa</string>
     <string name="dejavu_sync_hint">Pitää työtilasi väreineen ja kuvakkeineen, säiliöt, kiinnitetyt välilehdet, suosikit ja kansiot samanlaisina kuin Zen Browserissa tietokoneellasi ja Dejavussa muissa laitteissasi. Tämä käyttää samaa Mozilla-tiliä, jolla synkronoit Firefox-tietosi.</string>
     <string name="dejavu_sync_zen_hint">Avaa Zenissä Asetukset, sitten Synkronointi, ja ota sivupalkin synkronointi käyttöön. Välilehdet, joita ei ole kiinnitetty, eivät synkronoidu.</string>

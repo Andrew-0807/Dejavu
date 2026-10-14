@@ -182,7 +182,9 @@ class DejavuSettings private constructor(context: Context) {
         setMoreMenuRows(if (fits) rows.dropLast(1) + listOf(last.orEmpty() + key) else rows + listOf(listOf(key)))
     }
 
-    fun removeFromMoreMenu(key: String) = setMoreMenuRows(_moreMenuRows.value.map { row -> row - key })
+    /** Takes the entry with [key] out of the menu, every time it is there. */
+    fun removeFromMoreMenu(key: String) =
+        setMoreMenuRows(_moreMenuRows.value.map { row -> row.filterNot { it == key } })
 
     fun setActionsBar(keys: List<String>) {
         _actionsBarKeys.value = keys.distinct().take(ActionsBarLayout.MAX_BUTTONS)

@@ -201,10 +201,9 @@
     <string name="dejavu_actions_bar_search">ស្វែងរក</string>
     <string name="dejavu_actions_bar_home">ទំព័រដើម</string>
     <string name="dejavu_settings_more_menu_summary">របារសកម្មភាពនៅក្រោមទំព័រ និងម៉ឺនុយដែលវាបើក</string>
-    <string name="dejavu_more_menu_hint">អូសរបារសកម្មភាពឡើងលើ ឬរបារអាសយដ្ឋានចុះក្រោម ដើម្បីបើកម៉ឺនុយទាំងមូល។ ចុចលើប៊ូតុងមួយដើម្បីផ្លាស់ទី ឬដកវាចេញ។ ផ្នែកបន្ថែមតែងតែប្រើជួរមួយពេញ។</string>
+    <string name="dejavu_more_menu_drag_hint">ចុចប៊ូតុងឱ្យជាប់ ហើយអូសវាទៅជួរមួយខាងលើ។ អូសប៊ូតុងត្រឡប់មកទីនេះខាងក្រោម ដើម្បីដកវាចេញ។</string>
     <string name="dejavu_actions_bar_hint">ប៊ូតុងនៅក្រោមទំព័រ។ ប៊ូតុងទាំងនេះដំណើរការលើទំព័រដែលអ្នកកំពុងមើល។</string>
     <string name="dejavu_actions_bar_all_added">ប៊ូតុងទាំងអស់មាននៅក្នុងរបាររួចហើយ។</string>
-    <string name="dejavu_more_menu_row">ជួរទី %1$d</string>
     <string name="dejavu_more_menu_add_item">បន្ថែមប៊ូតុងមួយ</string>
     <string name="dejavu_more_menu_add_row">បន្ថែមជួរមួយ</string>
     <string name="dejavu_more_menu_row_full">ជួរនេះពេញហើយ។</string>
@@ -217,8 +216,6 @@
     <string name="dejavu_more_menu_reset">កំណត់ត្រឡប់ទៅលំនាំដើម</string>
     <string name="dejavu_more_menu_hide_edit">លាក់ប៊ូតុងកែសម្រួល</string>
     <string name="dejavu_more_menu_hide_edit_summary">ប៊ូតុងនៅក្រោមម៉ឺនុយដែលបើកអេក្រង់នេះ</string>
-    <string name="dejavu_more_menu_all_added">ប៊ូតុងទាំងអស់មាននៅក្នុងម៉ឺនុយរួចហើយ។</string>
-    <string name="dejavu_more_menu_preview">មើលជាមុន</string>
     <string name="dejavu_settings_sync">ធ្វើសមកាលកម្មជាមួយ Firefox ឬ Zen</string>
     <string name="dejavu_sync_hint">រក្សាចន្លោះការងាររបស់អ្នកជាមួយពណ៌ និងរូបតំណាងរបស់វា កុងតឺន័រ ផ្ទាំងបានខ្ទាស់ សំខាន់ៗ និងថត ឲ្យដូចគ្នានឹងនៅក្នុង Zen Browser លើកុំព្យូទ័ររបស់អ្នក និងនៅក្នុង Dejavu លើឧបករណ៍ផ្សេងទៀតរបស់អ្នក។ វាប្រើគណនី Mozilla ដែលអ្នកប្រើសម្រាប់ធ្វើសមកាលកម្មទិន្នន័យ Firefox។</string>
     <string name="dejavu_sync_zen_hint">នៅក្នុង Zen បើកការកំណត់ បន្ទាប់មកសមកាលកម្ម ហើយបើកសមកាលកម្មរបារចំហៀង។ ផ្ទាំងដែលមិនបានខ្ទាស់មិនត្រូវបានធ្វើសមកាលកម្មទេ។</string>

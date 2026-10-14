@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Sykje</string>
     <string name="dejavu_actions_bar_home">Thús</string>
     <string name="dejavu_settings_more_menu_summary">De aksjebalke ûnder sides en it menu dat dy iepenet</string>
-    <string name="dejavu_more_menu_hint">Fei de aksjebalke omheech of de adresbalke omleech om it hiele menu te iepenjen. Tik op in knop om dy te ferpleatsen of fuort te smiten. Utwreidingen nimme altyd in hiele rige yn.</string>
+    <string name="dejavu_more_menu_drag_hint">Hâld in knop yndrukt en sleep him nei in rige boppe. Sleep in knop werom hjir nei ûnderen om him fuort te smiten.</string>
     <string name="dejavu_actions_bar_hint">De knoppen ûnder siden. Se wurkje op de side dêr\'t jo op binne.</string>
     <string name="dejavu_actions_bar_all_added">Elke knop stiet al yn de balke.</string>
-    <string name="dejavu_more_menu_row">Rige %1$d</string>
     <string name="dejavu_more_menu_add_item">Knop taheakje</string>
     <string name="dejavu_more_menu_add_row">Rige taheakje</string>
     <string name="dejavu_more_menu_row_full">Dizze rige is fol.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Weromsette nei standert</string>
     <string name="dejavu_more_menu_hide_edit">Bewurkje-knop ferstopje</string>
     <string name="dejavu_more_menu_hide_edit_summary">De knop ûnder it menu dat dit skerm iepenet</string>
-    <string name="dejavu_more_menu_all_added">Elke knop stiet al yn it menu.</string>
-    <string name="dejavu_more_menu_preview">Foarbyld</string>
     <string name="dejavu_settings_sync">Syngronisearje mei Firefox of Zen</string>
     <string name="dejavu_sync_hint">Hâldt jo wurkromten mei harren kleuren en byldkaikes, konteners, fêstsette ljepblêden, essinsjes en mappen gelyk oan dy yn Zen Browser op jo kompjûter en yn Dejavu op jo oare apparaten. It brûkt it Mozilla-akkount wêrmei\'t jo Firefox-gegevens syngronisearje.</string>
     <string name="dejavu_sync_zen_hint">Iepenje yn Zen de Ynstellingen, dan Syngronisaasje, en set de syngronisaasje fan de sidebalke oan. Ljepblêden dy\'t net fêstsetten binne, wurde net syngronisearre.</string>

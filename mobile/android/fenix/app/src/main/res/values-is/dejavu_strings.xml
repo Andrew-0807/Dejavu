@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Leita</string>
     <string name="dejavu_actions_bar_home">Heim</string>
     <string name="dejavu_settings_more_menu_summary">Aðgerðastikan neðst á síðum og valmyndin sem hún opnar</string>
-    <string name="dejavu_more_menu_hint">Strjúktu aðgerðastikuna upp, eða veffangastikuna niður, til að opna alla valmyndina. Ýttu á hnapp til að færa hann eða fjarlægja. Forritsaukar taka alltaf heila röð.</string>
+    <string name="dejavu_more_menu_drag_hint">Haltu hnappi niðri og dragðu hann í röð fyrir ofan. Dragðu hnapp aftur hingað niður til að fjarlægja hann.</string>
     <string name="dejavu_actions_bar_hint">Hnapparnir neðst á síðum. Þeir virka á síðuna sem þú ert á.</string>
     <string name="dejavu_actions_bar_all_added">Allir hnappar eru þegar á stikunni.</string>
-    <string name="dejavu_more_menu_row">Röð %1$d</string>
     <string name="dejavu_more_menu_add_item">Bæta við hnappi</string>
     <string name="dejavu_more_menu_add_row">Bæta við röð</string>
     <string name="dejavu_more_menu_row_full">Þessi röð er full.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Endurstilla á sjálfgefið</string>
     <string name="dejavu_more_menu_hide_edit">Fela breytingahnapp</string>
     <string name="dejavu_more_menu_hide_edit_summary">Hnappurinn undir valmyndinni sem opnar þennan skjá</string>
-    <string name="dejavu_more_menu_all_added">Allir hnappar eru þegar í valmyndinni.</string>
-    <string name="dejavu_more_menu_preview">Forskoðun</string>
     <string name="dejavu_settings_sync">Samstilla við Firefox eða Zen</string>
     <string name="dejavu_sync_hint">Heldur vinnusvæðunum þínum, með litum og táknmyndum þeirra, hólfum, festum flipum, eftirlæti og möppum, eins og í Zen Browser á tölvunni þinni og í Dejavu á öðrum tækjum þínum. Notaður er Mozilla reikningurinn sem þú samstillir Firefox gögn með.</string>
     <string name="dejavu_sync_zen_hint">Í Zen skaltu opna Stillingar, svo Samstillingu, og kveikja á samstillingu hliðarstikunnar. Flipar sem eru ekki festir eru ekki samstilltir.</string>

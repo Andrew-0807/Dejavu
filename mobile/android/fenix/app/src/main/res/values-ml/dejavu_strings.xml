@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">തിരയുക</string>
     <string name="dejavu_actions_bar_home">ഹോം</string>
     <string name="dejavu_settings_more_menu_summary">താളുകൾക്ക് താഴെയുള്ള പ്രവർത്തന ബാറും അത് തുറക്കുന്ന മെനുവും</string>
-    <string name="dejavu_more_menu_hint">മുഴുവൻ മെനുവും തുറക്കാൻ പ്രവർത്തന ബാർ മുകളിലേക്കോ വിലാസപ്പട്ട താഴേക്കോ സ്വൈപ്പ് ചെയ്യുക. ഒരു ബട്ടണിന്റെ സ്ഥാനം മാറ്റാനോ അത് നീക്കം ചെയ്യാനോ അതിൽ ടാപ്പ് ചെയ്യുക. വിപുലീകരണങ്ങൾ എപ്പോഴും ഒരു വരി മുഴുവനായി എടുക്കും.</string>
+    <string name="dejavu_more_menu_drag_hint">ഒരു ബട്ടൺ അമർത്തിപ്പിടിച്ച് മുകളിലുള്ള ഒരു വരിയിലേക്ക് വലിച്ചിടുക. ഒരു ബട്ടൺ നീക്കം ചെയ്യാൻ അത് തിരികെ ഇവിടെ താഴേക്ക് വലിച്ചിടുക.</string>
     <string name="dejavu_actions_bar_hint">താളുകൾക്ക് താഴെയുള്ള ബട്ടണുകൾ. നിങ്ങൾ ഇപ്പോഴുള്ള താളിൽ അവ പ്രവർത്തിക്കും.</string>
     <string name="dejavu_actions_bar_all_added">എല്ലാ ബട്ടണും ഇതിനകം ബാറിൽ ഉണ്ട്.</string>
-    <string name="dejavu_more_menu_row">വരി %1$d</string>
     <string name="dejavu_more_menu_add_item">ഒരു ബട്ടൺ ചേർക്കുക</string>
     <string name="dejavu_more_menu_add_row">ഒരു വരി ചേർക്കുക</string>
     <string name="dejavu_more_menu_row_full">ഈ വരി നിറഞ്ഞു.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">സ്ഥിരമായതിലേക്ക് പുനഃസജ്ജമാക്കുക</string>
     <string name="dejavu_more_menu_hide_edit">തിരുത്തൽ ബട്ടൺ മറയ്ക്കുക</string>
     <string name="dejavu_more_menu_hide_edit_summary">ഈ സ്ക്രീൻ തുറക്കുന്ന മെനുവിന് താഴെയുള്ള ബട്ടൺ</string>
-    <string name="dejavu_more_menu_all_added">എല്ലാ ബട്ടണും ഇതിനകം മെനുവിൽ ഉണ്ട്.</string>
-    <string name="dejavu_more_menu_preview">പ്രിവ്യൂ</string>
     <string name="dejavu_settings_sync">Firefox അല്ലെങ്കിൽ Zen യുമായി സിങ്ക് ചെയ്യുക</string>
     <string name="dejavu_sync_hint">നിങ്ങളുടെ പണിയിടങ്ങളെ അവയുടെ നിറങ്ങളും ചിഹ്നങ്ങളും സഹിതം, കണ്ടെയ്നറുകൾ, പിൻ ചെയ്ത ടാബുകൾ, പ്രധാനപ്പെട്ടവ, ഫോൾഡറുകൾ എന്നിവയെ നിങ്ങളുടെ കമ്പ്യൂട്ടറിലെ Zen ബ്രൗസറിലും നിങ്ങളുടെ മറ്റ് ഉപകരണങ്ങളിലെ Dejavu-യിലും ഉള്ളതുപോലെതന്നെ സൂക്ഷിക്കുന്നു. ഇത് നിങ്ങൾ Firefox ഡാറ്റ സിങ്ക് ചെയ്യാൻ ഉപയോഗിക്കുന്ന Mozilla അക്കൗണ്ട് ഉപയോഗിക്കുന്നു.</string>
     <string name="dejavu_sync_zen_hint">Zen-ൽ, ക്രമീകരണങ്ങൾ തുറന്ന്, പിന്നെ സിങ്ക് തുറന്ന്, സൈഡ്‌ബാർ സിങ്ക് ഓൺ ചെയ്യുക. പിൻ ചെയ്യാത്ത ടാബുകൾ സിങ്ക് ആകില്ല.</string>

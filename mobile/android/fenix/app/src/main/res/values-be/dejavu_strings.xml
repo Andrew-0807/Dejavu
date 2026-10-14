@@ -204,10 +204,9 @@
     <string name="dejavu_actions_bar_search">Пошук</string>
     <string name="dejavu_actions_bar_home">Галоўная</string>
     <string name="dejavu_settings_more_menu_summary">Панэль дзеянняў пад старонкамі і меню, якое яна адкрывае</string>
-    <string name="dejavu_more_menu_hint">Правядзіце па панэлі дзеянняў уверх або па адрасным радку ўніз, каб адкрыць усё меню. Націсніце на кнопку, каб перамясціць або прыбраць яе. Пашырэнні заўсёды займаюць цэлы радок.</string>
+    <string name="dejavu_more_menu_drag_hint">Утрымлівайце кнопку і перацягніце яе ў радок вышэй. Каб прыбраць кнопку, перацягніце яе назад сюды ўніз.</string>
     <string name="dejavu_actions_bar_hint">Кнопкі пад старонкамі. Яны дзейнічаюць на старонку, якую вы праглядаеце.</string>
     <string name="dejavu_actions_bar_all_added">Усе кнопкі ўжо на панэлі.</string>
-    <string name="dejavu_more_menu_row">Радок %1$d</string>
     <string name="dejavu_more_menu_add_item">Дадаць кнопку</string>
     <string name="dejavu_more_menu_add_row">Дадаць радок</string>
     <string name="dejavu_more_menu_row_full">Гэты радок запоўнены.</string>
@@ -220,8 +219,6 @@
     <string name="dejavu_more_menu_reset">Скінуць да прадвызначаных</string>
     <string name="dejavu_more_menu_hide_edit">Схаваць кнопку рэдагавання</string>
     <string name="dejavu_more_menu_hide_edit_summary">Кнопка пад меню, якая адкрывае гэты экран</string>
-    <string name="dejavu_more_menu_all_added">Усе кнопкі ўжо ў меню.</string>
-    <string name="dejavu_more_menu_preview">Папярэдні прагляд</string>
     <string name="dejavu_settings_sync">Сінхранізаваць з Firefox або Zen</string>
     <string name="dejavu_sync_hint">Захоўвае вашы прасторы з іх колерамі і значкамі, кантэйнеры, замацаваныя карткі, важнае і папкі такімі ж, як у Zen Browser на вашым камп\'ютары і ў Dejavu на іншых вашых прыладах. Для гэтага выкарыстоўваецца ўліковы запіс Mozilla, з якім вы сінхранізуеце даныя Firefox.</string>
     <string name="dejavu_sync_zen_hint">У Zen адкрыйце Налады, затым Сінхранізацыю, і ўключыце сінхранізацыю бакавой панэлі. Незамацаваныя карткі не сінхранізуюцца.</string>

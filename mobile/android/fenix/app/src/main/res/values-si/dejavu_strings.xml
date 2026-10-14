@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">සොයන්න</string>
     <string name="dejavu_actions_bar_home">මුල් පිටුව</string>
     <string name="dejavu_settings_more_menu_summary">පිටු පහළින් ඇති ක්‍රියා තීරුව සහ එය විවෘත කරන මෙනුව</string>
-    <string name="dejavu_more_menu_hint">සම්පූර්ණ මෙනුව විවෘත කිරීමට ක්‍රියා තීරුව ඉහළට, හෝ ලිපින තීරුව පහළට අදින්න. බොත්තමක් ගෙනයාමට හෝ ඉවත් කිරීමට එය තට්ටු කරන්න. දිගු සැමවිටම සම්පූර්ණ පේළියක් ගනී.</string>
+    <string name="dejavu_more_menu_drag_hint">බොත්තමක් තද කර අල්ලාගෙන එය ඉහළ පේළියකට අදින්න. බොත්තමක් ඉවත් කිරීමට එය නැවත මෙතැනට පහළට අදින්න.</string>
     <string name="dejavu_actions_bar_hint">පිටු පහළින් ඇති බොත්තම්. ඒවා ඔබ සිටින පිටුව මත ක්‍රියා කරයි.</string>
     <string name="dejavu_actions_bar_all_added">සෑම බොත්තමක්ම දැනටමත් තීරුවේ ඇත.</string>
-    <string name="dejavu_more_menu_row">%1$d වන පේළිය</string>
     <string name="dejavu_more_menu_add_item">බොත්තමක් එකතු කරන්න</string>
     <string name="dejavu_more_menu_add_row">පේළියක් එකතු කරන්න</string>
     <string name="dejavu_more_menu_row_full">මෙම පේළිය පිරී ඇත.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">පෙරනිමියට යළි සකසන්න</string>
     <string name="dejavu_more_menu_hide_edit">සංස්කරණ බොත්තම සඟවන්න</string>
     <string name="dejavu_more_menu_hide_edit_summary">මෙම තිරය විවෘත කරන මෙනුවට පහළින් ඇති බොත්තම</string>
-    <string name="dejavu_more_menu_all_added">සෑම බොත්තමක්ම දැනටමත් මෙනුවේ ඇත.</string>
-    <string name="dejavu_more_menu_preview">පෙරදසුන</string>
     <string name="dejavu_settings_sync">Firefox හෝ Zen සමඟ සමමුහුර්ත කරන්න</string>
     <string name="dejavu_sync_hint">ඔබේ පරිගණකයේ ඇති Zen Browser හි සහ ඔබේ අනෙකුත් උපාංගවල ඇති Dejavu හි මෙන්ම, ඔබේ අවකාශ ඒවායේ වර්ණ සහ අයිකන සමඟද, බහාලුම්, අමුණන ලද පටිති, අත්‍යවශ්‍යයන් සහ ෆෝල්ඩර එලෙසම තබා ගනී. එය ඔබ Firefox දත්ත සමමුහුර්ත කරන Mozilla ගිණුම භාවිත කරයි.</string>
     <string name="dejavu_sync_zen_hint">Zen හි, සැකසුම් විවෘත කර, පසුව Sync තෝරා, පැති තීරු සමමුහුර්තකරණය ක්‍රියාත්මක කරන්න. අමුණා නැති පටිති සමමුහුර්ත නොවේ.</string>

@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">جست‌وجو</string>
     <string name="dejavu_actions_bar_home">خانه</string>
     <string name="dejavu_settings_more_menu_summary">نوار کنش‌ها زیر صفحات و منویی که باز می‌کند</string>
-    <string name="dejavu_more_menu_hint">برای باز کردن کل منو، نوار کنش‌ها را به بالا یا نوار نشانی را به پایین بکشید. برای جابه‌جا کردن یا حذف یک دکمه، روی آن ضربه بزنید. افزونه‌ها همیشه یک ردیف کامل را می‌گیرند.</string>
+    <string name="dejavu_more_menu_drag_hint">یک دکمه را نگه دارید و آن را به ردیفی در بالا بکشید. برای حذف یک دکمه، آن را دوباره به اینجا در پایین بکشید.</string>
     <string name="dejavu_actions_bar_hint">دکمه‌های زیر صفحات. روی صفحه‌ای که در آن هستید اثر می‌گذارند.</string>
     <string name="dejavu_actions_bar_all_added">همهٔ دکمه‌ها از قبل در نوار هستند.</string>
-    <string name="dejavu_more_menu_row">ردیف %1$d</string>
     <string name="dejavu_more_menu_add_item">افزودن یک دکمه</string>
     <string name="dejavu_more_menu_add_row">افزودن یک ردیف</string>
     <string name="dejavu_more_menu_row_full">این ردیف پر است.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">بازنشانی به پیش‌فرض</string>
     <string name="dejavu_more_menu_hide_edit">پنهان کردن دکمهٔ ویرایش</string>
     <string name="dejavu_more_menu_hide_edit_summary">دکمهٔ زیر منو که این صفحه را باز می‌کند</string>
-    <string name="dejavu_more_menu_all_added">همهٔ دکمه‌ها از قبل در منو هستند.</string>
-    <string name="dejavu_more_menu_preview">پیش‌نمایش</string>
     <string name="dejavu_settings_sync">همگام‌سازی با Firefox یا Zen</string>
     <string name="dejavu_sync_hint">فضاهای کاری شما را با رنگ‌ها و نمادهایشان، محفظه‌ها، زبانه‌های سنجاق‌شده، ضروریات و پوشه‌ها، همانند Zen Browser روی رایانه‌تان و Dejavu روی دیگر دستگاه‌هایتان نگه می‌دارد. این کار با همان حساب Mozilla انجام می‌شود که داده‌های Firefox را با آن همگام می‌کنید.</string>
     <string name="dejavu_sync_zen_hint">در Zen، تنظیمات و سپس همگام‌سازی را باز کنید و همگام‌سازی نوارکناری را روشن کنید. زبانه‌های سنجاق‌نشده همگام‌سازی نمی‌شوند.</string>

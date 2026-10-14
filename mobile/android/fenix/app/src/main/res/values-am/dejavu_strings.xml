@@ -222,10 +222,9 @@
     <string name="dejavu_actions_bar_search">ፈልግ</string>
     <string name="dejavu_actions_bar_home">መነሻ</string>
     <string name="dejavu_settings_more_menu_summary">ከገጾች በታች ያለው የእርምጃዎች አሞሌ እና የሚከፍተው ምናሌ</string>
-    <string name="dejavu_more_menu_hint">ሙሉውን ምናሌ ለመክፈት የእርምጃዎች አሞሌውን ወደ ላይ፣ ወይም የአድራሻ አሞሌውን ወደ ታች ያንሸራትቱ። አንድን አዝራር ለማንቀሳቀስ ወይም ለማስወገድ ይንኩት። ቅጥያዎች ሁልጊዜ አንድ ሙሉ ረድፍ ይይዛሉ።</string>
+    <string name="dejavu_more_menu_drag_hint">አንድ አዝራር ተጭነው ይያዙና ከላይ ወዳለው ረድፍ ይጎትቱት። አንድን አዝራር ለማስወገድ ወደዚህ ወደ ታች መልሰው ይጎትቱት።</string>
     <string name="dejavu_actions_bar_hint">ከገጾች በታች ያሉት አዝራሮች። ባሉበት ገጽ ላይ ይሰራሉ።</string>
     <string name="dejavu_actions_bar_all_added">ሁሉም አዝራሮች ቀድሞውኑ በአሞሌው ውስጥ አሉ።</string>
-    <string name="dejavu_more_menu_row">ረድፍ %1$d</string>
     <string name="dejavu_more_menu_add_item">አዝራር አክል</string>
     <string name="dejavu_more_menu_add_row">ረድፍ አክል</string>
     <string name="dejavu_more_menu_row_full">ይህ ረድፍ ሞልቷል።</string>
@@ -238,8 +237,6 @@
     <string name="dejavu_more_menu_reset">ወደ ነባሪ መልስ</string>
     <string name="dejavu_more_menu_hide_edit">የአርትዕ አዝራርን ደብቅ</string>
     <string name="dejavu_more_menu_hide_edit_summary">ከምናሌው በታች ያለው፣ ይህን ማያ ገጽ የሚከፍተው አዝራር</string>
-    <string name="dejavu_more_menu_all_added">ሁሉም አዝራሮች ቀድሞውኑ በምናሌው ውስጥ አሉ።</string>
-    <string name="dejavu_more_menu_preview">ቅድመ እይታ</string>
     <string name="dejavu_settings_sync">ከFirefox ወይም ከZen ጋር አመሳስል</string>
     <string name="dejavu_sync_hint">የስራ ቦታዎችዎን ከቀለሞቻቸው እና ከአዶዎቻቸው ጋር፣ መያዣዎችን፣ የተሰኩ ትሮችን፣ አስፈላጊዎችን እና አቃፊዎችን በኮምፒውተርዎ ላይ ካለው የZen አሳሽ እና በሌሎች መሣሪያዎችዎ ላይ ካለው Dejavu ጋር አንድ አይነት ያደርጋል። የFirefox ውሂብን የሚያመሳስሉበትን የMozilla መለያ ይጠቀማል።</string>
     <string name="dejavu_sync_zen_hint">በZen ውስጥ ቅንብሮችን፣ ከዚያም Syncን ይክፈቱ፣ እና የጎን አሞሌ ማመሳሰልን ያብሩ። ያልተሰኩ ትሮች አይመሳሰሉም።</string>

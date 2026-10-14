@@ -201,10 +201,9 @@
     <string name="dejavu_actions_bar_search">ຄົ້ນຫາ</string>
     <string name="dejavu_actions_bar_home">ໜ້າຫຼັກ</string>
     <string name="dejavu_settings_more_menu_summary">ແຖບຄຳສັ່ງຢູ່ລຸ່ມຫນ້າເວັບ ແລະ ເມນູທີ່ມັນເປີດ</string>
-    <string name="dejavu_more_menu_hint">ປັດແຖບຄຳສັ່ງຂຶ້ນ ຫຼື ປັດແຖບທີ່ຢູ່ລົງ ເພື່ອເປີດເມນູທັງຫມົດ. ແຕະປຸ່ມເພື່ອຍ້າຍ ຫຼື ເອົາມັນອອກ. ສ່ວນຂະຫຍາຍຈະໃຊ້ພື້ນທີ່ເຕັມແຖວສະເໝີ.</string>
+    <string name="dejavu_more_menu_drag_hint">ກົດປຸ່ມຄ້າງໄວ້ ແລ້ວລາກໄປໃສ່ແຖວທາງເທິງ. ລາກປຸ່ມກັບລົງມາບ່ອນນີ້ ເພື່ອເອົາມັນອອກ.</string>
     <string name="dejavu_actions_bar_hint">ປຸ່ມຢູ່ລຸ່ມຫນ້າເວັບ. ປຸ່ມເຫຼົ່ານີ້ເຮັດວຽກກັບຫນ້າທີ່ທ່ານກຳລັງເບິ່ງຢູ່.</string>
     <string name="dejavu_actions_bar_all_added">ທຸກປຸ່ມຢູ່ໃນແຖບນີ້ແລ້ວ.</string>
-    <string name="dejavu_more_menu_row">ແຖວ %1$d</string>
     <string name="dejavu_more_menu_add_item">ເພີ່ມປຸ່ມ</string>
     <string name="dejavu_more_menu_add_row">ເພີ່ມແຖວ</string>
     <string name="dejavu_more_menu_row_full">ແຖວນີ້ເຕັມແລ້ວ.</string>
@@ -217,8 +216,6 @@
     <string name="dejavu_more_menu_reset">ຕັ້ງຄືນເປັນຄ່າເລີ່ມຕົ້ນ</string>
     <string name="dejavu_more_menu_hide_edit">ເຊື່ອງປຸ່ມແກ້ໄຂ</string>
     <string name="dejavu_more_menu_hide_edit_summary">ປຸ່ມຢູ່ລຸ່ມເມນູທີ່ເປີດຫນ້າຈໍນີ້</string>
-    <string name="dejavu_more_menu_all_added">ທຸກປຸ່ມຢູ່ໃນເມນູນີ້ແລ້ວ.</string>
-    <string name="dejavu_more_menu_preview">ເບິ່ງຕົວຢ່າງ</string>
     <string name="dejavu_settings_sync">ຊິງຄ໌ກັບ Firefox ຫຼື Zen</string>
     <string name="dejavu_sync_hint">ຮັກສາພື້ນທີ່ເຮັດວຽກຂອງທ່ານພ້ອມສີ ແລະ ໄອຄອນ, ຄອນເທນເນີ, ແທັບທີ່ປັກໄວ້, ສິ່ງສຳຄັນ ແລະ ໂຟນເດີ ໃຫ້ຄືກັນກັບໃນ Zen Browser ຢູ່ຄອມພິວເຕີຂອງທ່ານ ແລະ ໃນ Dejavu ຢູ່ອຸປະກອນອື່ນຂອງທ່ານ. ມັນໃຊ້ບັນຊີ Mozilla ທີ່ທ່ານໃຊ້ຊິງຄ໌ຂໍ້ມູນ Firefox ນຳ.</string>
     <string name="dejavu_sync_zen_hint">ໃນ Zen, ເປີດການຕັ້ງຄ່າ, ແລ້ວໄປທີ່ Sync, ແລະ ເປີດການຊິງຄ໌ແຖບຂ້າງ. ແທັບທີ່ບໍ່ໄດ້ປັກໄວ້ຈະບໍ່ຖືກຊິງຄ໌.</string>

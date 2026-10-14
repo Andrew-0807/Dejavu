@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Suche</string>
     <string name="dejavu_actions_bar_home">Startseite</string>
     <string name="dejavu_settings_more_menu_summary">Die Aktionsleiste unter Seiten und das Menü, das sie öffnet</string>
-    <string name="dejavu_more_menu_hint">Wische die Aktionsleiste nach oben oder die Adressleiste nach unten, um das ganze Menü zu öffnen. Tippe auf eine Schaltfläche, um sie zu verschieben oder zu entfernen. Erweiterungen belegen immer eine ganze Zeile.</string>
+    <string name="dejavu_more_menu_drag_hint">Halte eine Schaltfläche gedrückt und ziehe sie in eine Zeile oben. Ziehe eine Schaltfläche wieder hierher nach unten, um sie zu entfernen.</string>
     <string name="dejavu_actions_bar_hint">Die Schaltflächen unter Seiten. Sie wirken auf die Seite, auf der du gerade bist.</string>
     <string name="dejavu_actions_bar_all_added">Alle Schaltflächen sind bereits in der Leiste.</string>
-    <string name="dejavu_more_menu_row">Zeile %1$d</string>
     <string name="dejavu_more_menu_add_item">Schaltfläche hinzufügen</string>
     <string name="dejavu_more_menu_add_row">Zeile hinzufügen</string>
     <string name="dejavu_more_menu_row_full">Diese Zeile ist voll.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Auf Standard zurücksetzen</string>
     <string name="dejavu_more_menu_hide_edit">Bearbeiten-Schaltfläche ausblenden</string>
     <string name="dejavu_more_menu_hide_edit_summary">Die Schaltfläche unter dem Menü, die diesen Bildschirm öffnet</string>
-    <string name="dejavu_more_menu_all_added">Alle Schaltflächen sind bereits im Menü.</string>
-    <string name="dejavu_more_menu_preview">Vorschau</string>
     <string name="dejavu_settings_sync">Mit Firefox oder Zen synchronisieren</string>
     <string name="dejavu_sync_hint">Hält deine Arbeitsbereiche mit ihren Farben und Symbolen, Container, angeheftete Tabs, Favoriten und Ordner mit Zen Browser auf deinem Computer und mit Dejavu auf deinen anderen Geräten synchron. Dazu wird das Mozilla-Konto verwendet, mit dem du auch Firefox-Daten synchronisierst.</string>
     <string name="dejavu_sync_zen_hint">Öffne in Zen die Einstellungen, dann Sync, und aktiviere die Synchronisierung der Seitenleiste. Nicht angeheftete Tabs werden nicht synchronisiert.</string>

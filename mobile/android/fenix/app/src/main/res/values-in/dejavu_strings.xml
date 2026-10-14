@@ -201,10 +201,9 @@
     <string name="dejavu_actions_bar_search">Cari</string>
     <string name="dejavu_actions_bar_home">Beranda</string>
     <string name="dejavu_settings_more_menu_summary">Bilah tindakan di bawah laman dan menu yang dibukanya</string>
-    <string name="dejavu_more_menu_hint">Geser bilah tindakan ke atas, atau bilah alamat ke bawah, untuk membuka menu lengkap. Ketuk tombol untuk memindahkan atau menghapusnya. Ekstensi selalu menempati satu baris penuh.</string>
+    <string name="dejavu_more_menu_drag_hint">Tahan tombol lalu seret ke baris di atas. Seret tombol kembali ke bawah sini untuk menghapusnya.</string>
     <string name="dejavu_actions_bar_hint">Tombol di bawah laman. Tombol ini bekerja pada laman yang sedang Anda buka.</string>
     <string name="dejavu_actions_bar_all_added">Semua tombol sudah ada di bilah.</string>
-    <string name="dejavu_more_menu_row">Baris %1$d</string>
     <string name="dejavu_more_menu_add_item">Tambah tombol</string>
     <string name="dejavu_more_menu_add_row">Tambah baris</string>
     <string name="dejavu_more_menu_row_full">Baris ini sudah penuh.</string>
@@ -217,8 +216,6 @@
     <string name="dejavu_more_menu_reset">Atur ulang ke default</string>
     <string name="dejavu_more_menu_hide_edit">Sembunyikan tombol sunting</string>
     <string name="dejavu_more_menu_hide_edit_summary">Tombol di bawah menu yang membuka layar ini</string>
-    <string name="dejavu_more_menu_all_added">Semua tombol sudah ada di menu.</string>
-    <string name="dejavu_more_menu_preview">Pratinjau</string>
     <string name="dejavu_settings_sync">Sinkronkan dengan Firefox atau Zen</string>
     <string name="dejavu_sync_hint">Menjaga ruang kerja (beserta warna dan ikonnya), wadah, tab yang disemat, situs penting, dan folder Anda tetap sama seperti di Zen Browser pada komputer Anda dan di Dejavu pada perangkat lain Anda. Fitur ini memakai akun Mozilla yang Anda gunakan untuk menyinkronkan data Firefox.</string>
     <string name="dejavu_sync_zen_hint">Di Zen, buka Pengaturan, lalu Sinkronisasi, dan aktifkan sinkronisasi sidebar. Tab yang tidak disemat tidak akan disinkronkan.</string>

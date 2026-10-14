@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Търсене</string>
     <string name="dejavu_actions_bar_home">Начало</string>
     <string name="dejavu_settings_more_menu_summary">Лентата с действия под страниците и менюто, което тя отваря</string>
-    <string name="dejavu_more_menu_hint">Плъзнете лентата с действия нагоре или адресната лента надолу, за да отворите цялото меню. Докоснете бутон, за да го преместите или премахнете. Разширенията винаги заемат цял ред.</string>
+    <string name="dejavu_more_menu_drag_hint">Задръжте бутон и го плъзнете в ред отгоре. Плъзнете бутон обратно тук долу, за да го премахнете.</string>
     <string name="dejavu_actions_bar_hint">Бутоните под страниците. Те действат върху страницата, която разглеждате.</string>
     <string name="dejavu_actions_bar_all_added">Всички бутони вече са в лентата.</string>
-    <string name="dejavu_more_menu_row">Ред %1$d</string>
     <string name="dejavu_more_menu_add_item">Добавяне на бутон</string>
     <string name="dejavu_more_menu_add_row">Добавяне на ред</string>
     <string name="dejavu_more_menu_row_full">Този ред е пълен.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Връщане по подразбиране</string>
     <string name="dejavu_more_menu_hide_edit">Скриване на бутона за редактиране</string>
     <string name="dejavu_more_menu_hide_edit_summary">Бутонът под менюто, който отваря този екран</string>
-    <string name="dejavu_more_menu_all_added">Всички бутони вече са в менюто.</string>
-    <string name="dejavu_more_menu_preview">Преглед</string>
     <string name="dejavu_settings_sync">Синхронизиране с Firefox или Zen</string>
     <string name="dejavu_sync_hint">Поддържа вашите работни пространства с техните цветове и икони, контейнери, закачени раздели, Любими и папки еднакви като в Zen Browser на компютъра ви и в Dejavu на другите ви устройства. Използва се профилът в Mozilla, с който синхронизирате данните на Firefox.</string>
     <string name="dejavu_sync_zen_hint">В Zen отворете Настройки, после Синхронизиране, и включете синхронизирането на страничния панел. Разделите, които не са закачени, не се синхронизират.</string>

@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Ҷустуҷӯ</string>
     <string name="dejavu_actions_bar_home">Асосӣ</string>
     <string name="dejavu_settings_more_menu_summary">Навори амалҳо дар зери саҳифаҳо ва менюе, ки он мекушояд</string>
-    <string name="dejavu_more_menu_hint">Барои кушодани тамоми меню навори амалҳоро ба боло ё навори нишониро ба поён кашед. Барои гузарондан ё хориҷ кардани тугма ба он зер кунед. Васеъшавиҳо ҳамеша як сатри пурраро ишғол мекунанд.</string>
+    <string name="dejavu_more_menu_drag_hint">Тугмаро пахш карда нигоҳ доред ва онро ба сатри боло кашед. Барои хориҷ кардани тугма онро боз ба ин ҷо, ба поён кашед.</string>
     <string name="dejavu_actions_bar_hint">Тугмаҳо дар зери саҳифаҳо. Онҳо ба саҳифае, ки шумо дар он ҳастед, татбиқ мешаванд.</string>
     <string name="dejavu_actions_bar_all_added">Ҳамаи тугмаҳо аллакай дар навор ҳастанд.</string>
-    <string name="dejavu_more_menu_row">Сатри %1$d</string>
     <string name="dejavu_more_menu_add_item">Илова кардани тугма</string>
     <string name="dejavu_more_menu_add_row">Илова кардани сатр</string>
     <string name="dejavu_more_menu_row_full">Ин сатр пур аст.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Баргардонидан ба ҳолати пешфарз</string>
     <string name="dejavu_more_menu_hide_edit">Пинҳон кардани тугмаи таҳрир</string>
     <string name="dejavu_more_menu_hide_edit_summary">Тугма дар зери меню, ки ин экранро мекушояд</string>
-    <string name="dejavu_more_menu_all_added">Ҳамаи тугмаҳо аллакай дар меню ҳастанд.</string>
-    <string name="dejavu_more_menu_preview">Пешнамоиш</string>
     <string name="dejavu_settings_sync">Ҳамоҳангсозӣ бо Firefox ё Zen</string>
     <string name="dejavu_sync_hint">Фазоҳои шуморо бо рангу нишонаҳояшон, контейнерҳо, варақаҳои часпонидашуда, сомонаҳои муҳим ва ҷузвдонҳоро айнан монанди Zen Browser дар компютери шумо ва Dejavu дар дигар дастгоҳҳои шумо нигоҳ медорад. Ин ҳисоби Mozilla-ро истифода мебарад, ки шумо бо он маълумоти Firefox-ро ҳамоҳанг мекунед.</string>
     <string name="dejavu_sync_zen_hint">Дар Zen «Танзимот»-ро кушоед, сипас «Ҳамоҳангсозӣ»-ро ва ҳамоҳангсозии сутуни паҳлӯро фаъол кунед. Варақаҳое, ки часпонида нашудаанд, ҳамоҳанг намешаванд.</string>

@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Որոնում</string>
     <string name="dejavu_actions_bar_home">Գլխավոր</string>
     <string name="dejavu_settings_more_menu_summary">Էջերի տակի գործողությունների գոտին և ցանկը, որ այն բացում է</string>
-    <string name="dejavu_more_menu_hint">Ամբողջ ցանկը բացելու համար սահեցրեք գործողությունների գոտին վերև կամ հասցեագոտին ներքև։ Հպեք կոճակին՝ այն տեղափոխելու կամ հեռացնելու համար։ Ընդլայնումները միշտ զբաղեցնում են մի ամբողջ տող։</string>
+    <string name="dejavu_more_menu_drag_hint">Պահեք կոճակը և քաշեք այն վերևի տողերից մեկի մեջ։ Կոճակը հեռացնելու համար քաշեք այն հետ՝ այստեղ ներքև։</string>
     <string name="dejavu_actions_bar_hint">Էջերի տակի կոճակները։ Դրանք գործում են այն էջի վրա, որում գտնվում եք։</string>
     <string name="dejavu_actions_bar_all_added">Բոլոր կոճակներն արդեն գոտում են։</string>
-    <string name="dejavu_more_menu_row">Տող %1$d</string>
     <string name="dejavu_more_menu_add_item">Ավելացնել կոճակ</string>
     <string name="dejavu_more_menu_add_row">Ավելացնել տող</string>
     <string name="dejavu_more_menu_row_full">Այս տողն արդեն լիքն է.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Վերականգնել կանխադրվածը</string>
     <string name="dejavu_more_menu_hide_edit">Թաքցնել խմբագրման կոճակը</string>
     <string name="dejavu_more_menu_hide_edit_summary">Կոճակը ցանկի տակ, որը բացում է այս էկրանը</string>
-    <string name="dejavu_more_menu_all_added">Բոլոր կոճակներն արդեն ցանկում են.</string>
-    <string name="dejavu_more_menu_preview">Նախադիտում</string>
     <string name="dejavu_settings_sync">Համաժամացնել Firefox֊ի կամ Zen֊ի հետ</string>
     <string name="dejavu_sync_hint">Ձեր տարածքները՝ իրենց գույներով ու պատկերակներով, կոնտեյներները, ամրացված ներդիրները, կարևոր կայքերն ու թղթապանակները պահպանում է նույնը, ինչ Zen Browser֊ում՝ ձեր համակարգչում, և Dejavu֊ում՝ ձեր մյուս սարքերում. Օգտագործվում է Mozilla հաշիվը, որով համաժամացնում եք Firefox֊ի տվյալները.</string>
     <string name="dejavu_sync_zen_hint">Zen֊ում բացեք «Կարգավորումներ», ապա «Համաժամացում» և միացրեք կողային վահանակի համաժամացումը. Չամրացված ներդիրները չեն համաժամացվում.</string>

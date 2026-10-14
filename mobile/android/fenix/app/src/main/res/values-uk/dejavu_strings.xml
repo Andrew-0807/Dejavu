@@ -204,10 +204,9 @@
     <string name="dejavu_actions_bar_search">Пошук</string>
     <string name="dejavu_actions_bar_home">Головна</string>
     <string name="dejavu_settings_more_menu_summary">Панель дій під сторінками і меню, яке вона відкриває</string>
-    <string name="dejavu_more_menu_hint">Проведіть по панелі дій угору або по панелі адреси вниз, щоб відкрити все меню. Торкніться кнопки, щоб перемістити або прибрати її. Розширення завжди займають цілий ряд.</string>
+    <string name="dejavu_more_menu_drag_hint">Утримуйте кнопку й перетягніть її в ряд вище. Щоб прибрати кнопку, перетягніть її назад сюди вниз.</string>
     <string name="dejavu_actions_bar_hint">Кнопки під сторінками. Вони діють на відкриту сторінку.</string>
     <string name="dejavu_actions_bar_all_added">Усі кнопки вже додані на панель.</string>
-    <string name="dejavu_more_menu_row">Ряд %1$d</string>
     <string name="dejavu_more_menu_add_item">Додати кнопку</string>
     <string name="dejavu_more_menu_add_row">Додати ряд</string>
     <string name="dejavu_more_menu_row_full">Цей ряд заповнений.</string>
@@ -220,8 +219,6 @@
     <string name="dejavu_more_menu_reset">Скинути до типових</string>
     <string name="dejavu_more_menu_hide_edit">Приховати кнопку редагування</string>
     <string name="dejavu_more_menu_hide_edit_summary">Кнопка під меню, яка відкриває цей екран</string>
-    <string name="dejavu_more_menu_all_added">Усі кнопки вже додані в меню.</string>
-    <string name="dejavu_more_menu_preview">Попередній перегляд</string>
     <string name="dejavu_settings_sync">Синхронізація з Firefox або Zen</string>
     <string name="dejavu_sync_hint">Зберігає ваші робочі простори з їхніми кольорами й значками, контейнери, закріплені вкладки, обране і теки однаковими в Zen Browser на комп’ютері та в Dejavu на інших ваших пристроях. Використовується той самий обліковий запис Mozilla, яким ви синхронізуєте дані Firefox.</string>
     <string name="dejavu_sync_zen_hint">У Zen відкрийте «Налаштування», потім «Синхронізацію», і увімкніть синхронізацію бічної панелі. Незакріплені вкладки не синхронізуються.</string>

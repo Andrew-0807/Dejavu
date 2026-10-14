@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">தேடு</string>
     <string name="dejavu_actions_bar_home">முகப்பு</string>
     <string name="dejavu_settings_more_menu_summary">பக்கங்களுக்குக் கீழே உள்ள செயல் பட்டையும் அது திறக்கும் பட்டியும்</string>
-    <string name="dejavu_more_menu_hint">முழுப் பட்டியைத் திறக்க, செயல் பட்டையை மேலே அல்லது முகவரிப் பட்டையைக் கீழே ஸ்வைப் செய்யவும். ஒரு பொத்தானை நகர்த்த அல்லது அகற்ற அதைத் தட்டவும். நீட்சிகள் எப்போதும் ஒரு முழு வரிசையை எடுத்துக்கொள்ளும்.</string>
+    <string name="dejavu_more_menu_drag_hint">ஒரு பொத்தானை அழுத்திப் பிடித்து மேலே உள்ள ஒரு வரிசைக்கு இழுக்கவும். ஒரு பொத்தானை அகற்ற அதை மீண்டும் இங்கே கீழே இழுக்கவும்.</string>
     <string name="dejavu_actions_bar_hint">பக்கங்களுக்குக் கீழே உள்ள பொத்தான்கள். நீங்கள் இருக்கும் பக்கத்தின் மீது அவை இயங்கும்.</string>
     <string name="dejavu_actions_bar_all_added">ஒவ்வொரு பொத்தானும் ஏற்கெனவே பட்டையில் உள்ளது.</string>
-    <string name="dejavu_more_menu_row">வரிசை %1$d</string>
     <string name="dejavu_more_menu_add_item">ஒரு பொத்தானைச் சேர்</string>
     <string name="dejavu_more_menu_add_row">ஒரு வரிசையைச் சேர்</string>
     <string name="dejavu_more_menu_row_full">இந்த வரிசை நிரம்பிவிட்டது.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">முன்னிருப்புக்கு மீட்டமை</string>
     <string name="dejavu_more_menu_hide_edit">திருத்தும் பொத்தானை மறை</string>
     <string name="dejavu_more_menu_hide_edit_summary">இந்தத் திரையைத் திறக்கும் பட்டிக்குக் கீழே உள்ள பொத்தான்</string>
-    <string name="dejavu_more_menu_all_added">ஒவ்வொரு பொத்தானும் ஏற்கெனவே பட்டியில் உள்ளது.</string>
-    <string name="dejavu_more_menu_preview">முன்னோட்டம்</string>
     <string name="dejavu_settings_sync">Firefox அல்லது Zen உடன் ஒத்திசை</string>
     <string name="dejavu_sync_hint">உங்கள் பணியிடங்களை அவற்றின் நிறங்கள் மற்றும் சின்னங்களுடன், கொள்கலன்கள், பொருத்தப்பட்ட கீற்றுகள், முக்கியவை மற்றும் கோப்புறைகளை உங்கள் கணினியில் உள்ள Zen உலாவியிலும் உங்கள் மற்ற சாதனங்களில் உள்ள Dejavu-விலும் இருப்பதைப் போலவே வைத்திருக்கும். இது நீங்கள் Firefox தரவை ஒத்திசைக்கப் பயன்படுத்தும் Mozilla கணக்கைப் பயன்படுத்தும்.</string>
     <string name="dejavu_sync_zen_hint">Zen-இல், அமைவுகளைத் திறந்து, பிறகு ஒத்திசைவைத் திறந்து, பக்கப்பட்டி ஒத்திசைவை இயக்கவும். பொருத்தப்படாத கீற்றுகள் ஒத்திசைக்கப்படாது.</string>

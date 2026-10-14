@@ -20,20 +20,22 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.PrimaryTabRow
+import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,306 +46,84 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
-import org.mozilla.fenix.compose.list.SwitchListItem
-import org.mozilla.fenix.compose.settings.SettingsSectionHeader
 import org.mozilla.fenix.dejavu.menu.ActionsBarLayout
-import org.mozilla.fenix.dejavu.menu.MoreMenu
 import org.mozilla.fenix.dejavu.menu.MoreMenuEntry
-import org.mozilla.fenix.dejavu.menu.MoreMenuLayout
-import org.mozilla.fenix.dejavu.menu.MoreMenuState
 import org.mozilla.fenix.dejavu.ui.DejavuDialog
 import org.mozilla.fenix.dejavu.ui.DejavuDialogButton
 import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
 import org.mozilla.fenix.dejavu.ui.DejavuMenuItem
 
 /**
- * Arranges the buttons of the actions bar below pages, and the buttons of the browser's "More" menu in rows. Both pick
- * from the menu's own items, every tab action and the custom actions.
+ * Arranges the buttons of the browser's "More" menu in rows, and the buttons of the actions bar below pages, each on a
+ * tab of its own. Both pick from the menu's own items, every tab action and the custom actions.
  */
 class DejavuMoreMenuFragment : DejavuComposeFragment(R.string.dejavu_settings_more_menu) {
-    @Suppress("LongMethod")
     @Composable
     override fun DejavuScreen() {
         val settings = remember { dejavuSettings() }
-        val savedRows by settings.moreMenuRows.collectAsState()
-        val barKeys by settings.actionsBarKeys.collectAsState()
-        val customActions by settings.customActions.collectAsState()
-        val editHidden by settings.moreMenuEditHidden.collectAsState()
-        val rows = remember(savedRows, customActions) {
-            savedRows.map { row -> row.filter { MoreMenuLayout.entryOf(it, customActions) != null } }.filter { it.isNotEmpty() }
-        }
-        val bar = remember(barKeys, customActions) { ActionsBarLayout.resolve(barKeys, customActions) }
-        var adding by remember { mutableStateOf<AddTarget?>(null) }
-        val editor = RowsEditor(rows, settings::setMoreMenuRows)
-
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            item {
-                SettingsSectionHeader(
-                    text = stringResource(R.string.dejavu_settings_actions_bar),
-                    modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
+        var page by rememberSaveable { mutableIntStateOf(MENU_PAGE) }
+        Column(modifier = Modifier.fillMaxSize()) {
+            PrimaryTabRow(selectedTabIndex = page) {
+                Tab(
+                    selected = page == MENU_PAGE,
+                    onClick = { page = MENU_PAGE },
+                    text = { Text(stringResource(R.string.dejavu_settings_more_menu)) },
                 )
-                Text(
-                    text = stringResource(R.string.dejavu_actions_bar_hint),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                )
-                ActionsBarPreview(bar)
-                ActionsBarEditor(
-                    entries = bar,
-                    onChange = { keys -> settings.setActionsBar(keys) },
-                    onAdd = { adding = AddTarget.IntoBar },
-                    onReset = settings::resetActionsBar,
+                Tab(
+                    selected = page == BAR_PAGE,
+                    onClick = { page = BAR_PAGE },
+                    text = { Text(stringResource(R.string.dejavu_settings_actions_bar)) },
                 )
             }
-            item {
-                SettingsSectionHeader(
-                    text = stringResource(R.string.dejavu_settings_more_menu),
-                    modifier = Modifier.padding(start = 16.dp, top = 24.dp, end = 16.dp),
-                )
-                Text(
-                    text = stringResource(R.string.dejavu_more_menu_hint),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(16.dp),
-                )
-            }
-            item {
-                SwitchListItem(
-                    label = stringResource(R.string.dejavu_more_menu_hide_edit),
-                    description = stringResource(R.string.dejavu_more_menu_hide_edit_summary),
-                    maxDescriptionLines = 2,
-                    checked = editHidden,
-                    showSwitchAfter = true,
-                    modifier = Modifier.settingsCard(index = 0, count = 1),
-                    onClick = settings::setMoreMenuEditHidden,
-                )
-            }
-            item {
-                SettingsSectionHeader(
-                    text = stringResource(R.string.dejavu_more_menu_preview),
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                )
-                Box(
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .clip(RoundedCornerShape(24.dp))
-                        .background(MaterialTheme.colorScheme.surfaceContainerLow)
-                        .padding(8.dp),
-                ) {
-                    MoreMenu(
-                        rows = MoreMenuLayout.resolve(rows, customActions),
-                        state = PREVIEW_STATE,
-                        extensions = emptyList(),
-                        extensionsExpanded = false,
-                        onToggleExtensions = {},
-                        onEntryClick = {},
-                        onManageExtensions = {},
-                        onEdit = {}.takeUnless { editHidden },
-                    )
-                }
-            }
-            items(rows.indices.toList(), key = { index -> rows[index].joinToString() + index }) { index ->
-                MenuRowEditor(
-                    index = index,
-                    entries = rows[index].mapNotNull { MoreMenuLayout.entryOf(it, customActions) },
-                    editor = editor,
-                    onAdd = { adding = AddTarget.IntoRow(index) },
-                )
-            }
-            item {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    modifier = Modifier.padding(16.dp),
-                ) {
-                    OutlinedButton(onClick = { adding = AddTarget.NewRow }) {
-                        Text(stringResource(R.string.dejavu_more_menu_add_row))
-                    }
-                    TextButton(onClick = settings::resetMoreMenu) {
-                        Text(stringResource(R.string.dejavu_more_menu_reset))
-                    }
-                }
-                Spacer(Modifier.height(24.dp))
+            if (page == MENU_PAGE) {
+                MoreMenuRowsEditor(settings = settings, modifier = Modifier.weight(1f))
+            } else {
+                ActionsBarSettings(settings = settings, modifier = Modifier.weight(1f))
             }
         }
-
-        adding?.let { target ->
-            val intoBar = target == AddTarget.IntoBar
-            val used = if (intoBar) barKeys.toSet() else rows.flatten().toSet()
-            val available = if (intoBar) ActionsBarLayout.available(customActions) else MoreMenuLayout.available(customActions)
-            EntryPicker(
-                entries = available.filter { it.key !in used },
-                allAdded = if (intoBar) R.string.dejavu_actions_bar_all_added else R.string.dejavu_more_menu_all_added,
-                onPick = { entry ->
-                    when (target) {
-                        is AddTarget.IntoRow -> editor.add(target.row, entry.key)
-                        AddTarget.NewRow -> editor.addRow(entry.key)
-                        AddTarget.IntoBar -> settings.addToActionsBar(entry.key)
-                    }
-                    adding = null
-                },
-                onDismiss = { adding = null },
-            )
-        }
-    }
-
-    private sealed interface AddTarget {
-        data class IntoRow(val row: Int) : AddTarget
-        data object NewRow : AddTarget
-        data object IntoBar : AddTarget
     }
 
     private companion object {
-        val PREVIEW_STATE = MoreMenuState(
-            canGoBack = true,
-            canGoForward = true,
-            hasExternalApp = true,
-            canTranslate = true,
-            isWebPage = true,
-        )
+        const val MENU_PAGE = 0
+        const val BAR_PAGE = 1
     }
 }
 
-/** Changes to the rows of the "More" menu, saved with [save]. */
-private class RowsEditor(private val rows: List<List<String>>, private val save: (List<List<String>>) -> Unit) {
-    fun hasRoom(row: Int): Boolean {
-        val keys = rows.getOrNull(row) ?: return false
-        return keys.size < MoreMenuLayout.MAX_PER_ROW && keys.none(MoreMenuLayout::isFullRow)
-    }
-
-    fun add(row: Int, key: String) {
-        val updated = rows.toMutableList()
-        if (MoreMenuLayout.isFullRow(key) || !hasRoom(row)) {
-            updated.add(row + 1, listOf(key))
-        } else {
-            updated[row] = rows[row] + key
-        }
-        save(updated)
-    }
-
-    fun addRow(key: String) = save(rows + listOf(listOf(key)))
-
-    fun remove(row: Int, item: Int) = save(rows.mapIndexed { index, keys -> if (index == row) keys - keys[item] else keys })
-
-    fun moveItem(row: Int, item: Int, delta: Int) {
-        val keys = rows[row].toMutableList()
-        val target = item + delta
-        if (target !in keys.indices) return
-        keys.add(target, keys.removeAt(item))
-        save(rows.mapIndexed { index, old -> if (index == row) keys else old })
-    }
-
-    /** Moves an item to the end of the row [delta] rows away, if that row has room for it. */
-    fun moveToRow(row: Int, item: Int, delta: Int) {
-        val target = row + delta
-        if (!hasRoom(target) || MoreMenuLayout.isFullRow(rows[row][item])) return
-        val key = rows[row][item]
-        save(
-            rows.mapIndexed { index, keys ->
-                when (index) {
-                    row -> keys - key
-                    target -> keys + key
-                    else -> keys
-                }
-            },
-        )
-    }
-
-    fun moveRow(row: Int, delta: Int) {
-        val target = row + delta
-        if (target !in rows.indices) return
-        val updated = rows.toMutableList()
-        updated.add(target, updated.removeAt(row))
-        save(updated)
-    }
-
-    fun deleteRow(row: Int) = save(rows.filterIndexed { index, _ -> index != row })
-
-    val size: Int get() = rows.size
-}
-
+/** The buttons of the actions bar: a preview, and the buttons to move, remove, add to or reset. */
 @Composable
-private fun MenuRowEditor(
-    index: Int,
-    entries: List<MoreMenuEntry>,
-    editor: RowsEditor,
-    onAdd: () -> Unit,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 6.dp)
-            .clip(RoundedCornerShape(20.dp))
-            .background(MaterialTheme.colorScheme.surfaceContainerLow)
-            .padding(start = 16.dp, end = 4.dp, top = 4.dp, bottom = 12.dp),
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                text = stringResource(R.string.dejavu_more_menu_row, index + 1),
-                style = MaterialTheme.typography.titleSmall,
-                color = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.weight(1f),
-            )
-            IconButton(onClick = { editor.moveRow(index, -1) }, enabled = index > 0) {
-                Icon(
-                    painter = painterResource(iconsR.drawable.mozac_ic_chevron_up_24),
-                    contentDescription = stringResource(R.string.dejavu_more_menu_move_up),
-                )
-            }
-            IconButton(onClick = { editor.moveRow(index, 1) }, enabled = index < editor.size - 1) {
-                Icon(
-                    painter = painterResource(iconsR.drawable.mozac_ic_chevron_down_24),
-                    contentDescription = stringResource(R.string.dejavu_more_menu_move_down),
-                )
-            }
-            IconButton(onClick = { editor.deleteRow(index) }) {
-                Icon(
-                    painter = painterResource(iconsR.drawable.mozac_ic_delete_24),
-                    contentDescription = stringResource(R.string.dejavu_more_menu_delete_row),
-                )
-            }
-        }
-        FlowRow(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.padding(end = 12.dp),
-        ) {
-            entries.forEachIndexed { item, entry ->
-                EntryChip(
-                    entry = entry,
-                    canMoveLeft = item > 0,
-                    canMoveRight = item < entries.size - 1,
-                    canMoveUp = editor.hasRoom(index - 1) && !MoreMenuLayout.isFullRow(entry.key),
-                    canMoveDown = editor.hasRoom(index + 1) && !MoreMenuLayout.isFullRow(entry.key),
-                    onMove = { delta -> editor.moveItem(index, item, delta) },
-                    onMoveToRow = { delta -> editor.moveToRow(index, item, delta) },
-                    onRemove = { editor.remove(index, item) },
-                )
-            }
-            if (editor.hasRoom(index)) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .heightIn(min = 40.dp)
-                        .clip(RoundedCornerShape(12.dp))
-                        .clickable(onClick = onAdd)
-                        .padding(horizontal = 10.dp, vertical = 8.dp),
-                ) {
-                    Icon(
-                        painter = painterResource(iconsR.drawable.mozac_ic_plus_24),
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(18.dp),
-                    )
-                    Spacer(Modifier.width(6.dp))
-                    Text(
-                        text = stringResource(R.string.dejavu_more_menu_add_item),
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.primary,
-                    )
-                }
-            }
-        }
+private fun ActionsBarSettings(settings: DejavuSettings, modifier: Modifier = Modifier) {
+    val barKeys by settings.actionsBarKeys.collectAsState()
+    val customActions by settings.customActions.collectAsState()
+    val bar = remember(barKeys, customActions) { ActionsBarLayout.resolve(barKeys, customActions) }
+    var adding by remember { mutableStateOf(false) }
+
+    Column(modifier = modifier.fillMaxWidth().verticalScroll(rememberScrollState())) {
+        Text(
+            text = stringResource(R.string.dejavu_actions_bar_hint),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 8.dp),
+        )
+        ActionsBarPreview(bar)
+        ActionsBarEditor(
+            entries = bar,
+            onChange = { keys -> settings.setActionsBar(keys) },
+            onAdd = { adding = true },
+            onReset = settings::resetActionsBar,
+        )
+        Spacer(Modifier.height(24.dp))
+    }
+
+    if (adding) {
+        EntryPicker(
+            entries = ActionsBarLayout.available(customActions).filter { it.key !in barKeys },
+            allAdded = R.string.dejavu_actions_bar_all_added,
+            onPick = { entry ->
+                settings.addToActionsBar(entry.key)
+                adding = false
+            },
+            onDismiss = { adding = false },
+        )
     }
 }
 
@@ -449,7 +229,7 @@ private fun EntryPicker(
     }
 }
 
-private val MoreMenuEntry.icon: Int
+internal val MoreMenuEntry.icon: Int
     get() = when (this) {
         is MoreMenuEntry.BuiltIn -> item.icon
         is MoreMenuEntry.Tab -> action.icon
@@ -458,7 +238,7 @@ private val MoreMenuEntry.icon: Int
         MoreMenuEntry.Search -> iconsR.drawable.mozac_ic_search_24
     }
 
-private val MoreMenuEntry.label: String
+internal val MoreMenuEntry.label: String
     @Composable get() = when (this) {
         is MoreMenuEntry.BuiltIn -> stringResource(item.label)
         is MoreMenuEntry.Tab -> stringResource(action.label)

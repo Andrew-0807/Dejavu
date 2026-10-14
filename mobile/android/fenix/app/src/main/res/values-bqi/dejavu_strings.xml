@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">پیتینیڌن</string>
     <string name="dejavu_actions_bar_home">خونه</string>
     <string name="dejavu_settings_more_menu_summary">نوار کار یل زیر بلگه یل و منویی که وا می‌کنه</string>
-    <string name="dejavu_more_menu_hint">بره وا کردن پوی منو، نوار کار یل ره بکش بالا، یا نوار نشۊوی ره بکش پایین. رو یه دکمه بزن تا جا گوروش کنی یا درش بیاری. وردنی یل همیشه یه ردیف کامل می‌گیرن.</string>
+    <string name="dejavu_more_menu_drag_hint">یه دکمه ره نگه دار و بکشش تو یه ردیف بالا. بره درآوردن یه دکمه، بکشش پایین همی‌جا.</string>
     <string name="dejavu_actions_bar_hint">دکمه یل زیر صفحه یل. رو صفحه‌ای که توشی کار می‌کنن.</string>
     <string name="dejavu_actions_bar_all_added">پوی دکمه یل ٱلان من نوار هسن.</string>
-    <string name="dejavu_more_menu_row">ردیف %1$d</string>
     <string name="dejavu_more_menu_add_item">ٱووردن دکمه</string>
     <string name="dejavu_more_menu_add_row">ٱووردن ردیف</string>
     <string name="dejavu_more_menu_row_full">ای ردیف پره.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">برگردنه بره حالت ٱصلی</string>
     <string name="dejavu_more_menu_hide_edit">قایم کردن دکمه آلشت</string>
     <string name="dejavu_more_menu_hide_edit_summary">دکمه‌ای که زیر منویی که ای صفحه ره وا می‌کنه</string>
-    <string name="dejavu_more_menu_all_added">پوی دکمه یل ٱلان من منو هسن.</string>
-    <string name="dejavu_more_menu_preview">پیش‌نمایش</string>
     <string name="dejavu_settings_sync">همگام کردن با Firefox یا Zen</string>
     <string name="dejavu_sync_hint">فضا یلته با رنگ و آیکون یلشون، کانتینر یل، بلگه یل سنجاق‌وابیده، سایت یل مهم و پوشه یل، عین اونی که من Zen Browser رو کامپیوترت و من Dejavu رو دستگاه یل دیه‌ته هسه، جا می‌ده. ای حساب Mozilla ره کار می‌بره که تو باهاش دیتای Firefox همگام می‌کنی.</string>
     <string name="dejavu_sync_zen_hint">من Zen، «سامووا» ره وا کو، بعد «همگام کردن»، و همگام کردن نوار پهلو ره روشن کو. بلگه یلی که سنجاق نوابیدن همگام نمی‌بن.</string>

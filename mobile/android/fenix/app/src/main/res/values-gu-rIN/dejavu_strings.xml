@@ -253,10 +253,9 @@
     <string name="dejavu_actions_bar_search">શોધો</string>
     <string name="dejavu_actions_bar_home">મુખ્ય પૃષ્ઠ</string>
     <string name="dejavu_settings_more_menu_summary">પૃષ્ઠોની નીચેનો ક્રિયા બાર અને તે જે મેનૂ ખોલે છે</string>
-    <string name="dejavu_more_menu_hint">આખું મેનૂ ખોલવા માટે ક્રિયા બારને ઉપર, અથવા એડ્રેસ બારને નીચે સ્વાઇપ કરો. કોઈ બટનને ખસેડવા અથવા દૂર કરવા માટે તેના પર ટૅપ કરો. એક્સટેન્શન હંમેશાં આખી પંક્તિ લે છે.</string>
+    <string name="dejavu_more_menu_drag_hint">બટનને દબાવી રાખો અને તેને ઉપરની કોઈ પંક્તિમાં ખેંચો. બટનને દૂર કરવા માટે તેને ફરી અહીં નીચે ખેંચો.</string>
     <string name="dejavu_actions_bar_hint">પૃષ્ઠોની નીચેનાં બટનો. તમે જે પૃષ્ઠ પર છો તેના પર તે કામ કરે છે.</string>
     <string name="dejavu_actions_bar_all_added">દરેક બટન પહેલેથી જ બારમાં છે.</string>
-    <string name="dejavu_more_menu_row">પંક્તિ %1$d</string>
     <string name="dejavu_more_menu_add_item">બટન ઉમેરો</string>
     <string name="dejavu_more_menu_add_row">પંક્તિ ઉમેરો</string>
     <string name="dejavu_more_menu_row_full">આ પંક્તિ ભરાઈ ગઈ છે.</string>
@@ -269,8 +268,6 @@
     <string name="dejavu_more_menu_reset">મૂળભૂત પર રીસેટ કરો</string>
     <string name="dejavu_more_menu_hide_edit">ફેરફાર બટન છુપાવો</string>
     <string name="dejavu_more_menu_hide_edit_summary">મેનૂની નીચેનું બટન, જે આ સ્ક્રીન ખોલે છે</string>
-    <string name="dejavu_more_menu_all_added">દરેક બટન પહેલેથી જ મેનૂમાં છે.</string>
-    <string name="dejavu_more_menu_preview">પૂર્વાવલોકન</string>
 
     <!-- Settings: syncing workspaces with Firefox or Zen -->
     <string name="dejavu_settings_sync">Firefox અથવા Zen સાથે સમન્વયિત કરો</string>

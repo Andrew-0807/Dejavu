@@ -204,10 +204,9 @@
     <string name="dejavu_actions_bar_search">Lorg</string>
     <string name="dejavu_actions_bar_home">Dachaigh</string>
     <string name="dejavu_settings_more_menu_summary">Am bàr ghnìomhan fon duilleag agus an clàr-taice a dh\'fhosglas e</string>
-    <string name="dejavu_more_menu_hint">Grad-shlaighd am bàr ghnìomhan suas, no bàr an t-seòlaidh sìos, gus an clàr-taice gu lèir fhosgladh. Brùth air putan gus a ghluasad no a thoirt air falbh. Gabhaidh leudachain sreath shlàn an-còmhnaidh.</string>
+    <string name="dejavu_more_menu_drag_hint">Cùm putan sìos is slaod e gu sreath gu h-àrd. Slaod putan air ais an seo gu h-ìosal gus a thoirt air falbh.</string>
     <string name="dejavu_actions_bar_hint">Na putanan fo dhuilleagan. Obraichidh iad air an duilleag air a bheil thu.</string>
     <string name="dejavu_actions_bar_all_added">Tha a h-uile putan sa bhàr mu thràth.</string>
-    <string name="dejavu_more_menu_row">Sreath %1$d</string>
     <string name="dejavu_more_menu_add_item">Cuir putan ris</string>
     <string name="dejavu_more_menu_add_row">Cuir sreath ris</string>
     <string name="dejavu_more_menu_row_full">Tha an sreath seo làn.</string>
@@ -220,8 +219,6 @@
     <string name="dejavu_more_menu_reset">Ath-shuidhich dhan bhun-roghainn</string>
     <string name="dejavu_more_menu_hide_edit">Falaich am putan deasachaidh</string>
     <string name="dejavu_more_menu_hide_edit_summary">Am putan fon chlàr-taice a dh\'fhosglas an sgrìn seo</string>
-    <string name="dejavu_more_menu_all_added">Tha a h-uile putan sa chlàr-taice mu thràth.</string>
-    <string name="dejavu_more_menu_preview">Ro-shealladh</string>
     <string name="dejavu_settings_sync">Sioncronaich le Firefox no Zen</string>
     <string name="dejavu_sync_hint">Cumaidh e na h-àiteachan-obrach agad, leis na dathan \'s na h-ìomhaigheagan aca, soithichean, tabaichean prìnichte, feumalachdan agus pasganan an aon rud ri Zen Browser air a\' choimpiutair agad agus ri Dejavu air na h-uidheaman eile agad. Cleachdaidh e an cunntas Mozilla air a bheil thu a\' sioncronachadh dàta Firefox agad.</string>
     <string name="dejavu_sync_zen_hint">Ann an Zen, fosgail Roghainnean, an uairsin Sioncronachadh, agus cuir air sioncronachadh a\' bhàr-thaoibh. Cha tèid tabaichean neo-phrìnichte a shioncronachadh.</string>

@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Søk</string>
     <string name="dejavu_actions_bar_home">Hjem</string>
     <string name="dejavu_settings_more_menu_summary">Handlingslinjen under sider og menyen den åpner</string>
-    <string name="dejavu_more_menu_hint">Sveip handlingslinjen opp eller adresselinjen ned for å åpne hele menyen. Trykk på en knapp for å flytte eller fjerne den. Utvidelser tar alltid en hel rad.</string>
+    <string name="dejavu_more_menu_drag_hint">Hold inne en knapp og dra den til en rad ovenfor. Dra en knapp tilbake hit ned for å fjerne den.</string>
     <string name="dejavu_actions_bar_hint">Knappene under sider. De virker på siden du er på.</string>
     <string name="dejavu_actions_bar_all_added">Alle knappene er allerede i linjen.</string>
-    <string name="dejavu_more_menu_row">Rad %1$d</string>
     <string name="dejavu_more_menu_add_item">Legg til en knapp</string>
     <string name="dejavu_more_menu_add_row">Legg til en rad</string>
     <string name="dejavu_more_menu_row_full">Denne raden er full.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Tilbakestill til standard</string>
     <string name="dejavu_more_menu_hide_edit">Skjul rediger-knappen</string>
     <string name="dejavu_more_menu_hide_edit_summary">Knappen under menyen som åpner denne skjermen</string>
-    <string name="dejavu_more_menu_all_added">Alle knappene er allerede i menyen.</string>
-    <string name="dejavu_more_menu_preview">Forhåndsvisning</string>
     <string name="dejavu_settings_sync">Synkroniser med Firefox eller Zen</string>
     <string name="dejavu_sync_hint">Holder arbeidsområdene dine, med farger og ikoner, beholdere, festede faner, favoritter og mapper like som i Zen Browser på datamaskinen din og i Dejavu på dine andre enheter. Dette bruker Mozilla-kontoen du synkroniserer Firefox-data med.</string>
     <string name="dejavu_sync_zen_hint">Åpne Innstillinger i Zen, deretter Synkronisering, og slå på synkronisering av sidepanelet. Faner som ikke er festet, synkroniseres ikke.</string>

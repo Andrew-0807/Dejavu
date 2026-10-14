@@ -202,10 +202,9 @@
     <string name="dejavu_actions_bar_search">Аԥшаара</string>
     <string name="dejavu_actions_bar_home">Аҩны</string>
     <string name="dejavu_settings_more_menu_summary">Адаҟьақәа рҵыхәтәантәи аҟны иҟоу аҟaҵарақәа рпанель, насгьы иаартуа аменю</string>
-    <string name="dejavu_more_menu_hint">Аменю зегьы аартразы, аҟаҵарақәа рпанель аҩада, ма адресқәа рпанель алада инаскьатәуп. Акнопка аиҭаҵразы ма аныхразы, иақәышәӷәӷәа. Аиҵыхрақәа еснагь аряд зегьы ааныркылоит.</string>
+    <string name="dejavu_more_menu_drag_hint">Акнопка ааныкыл, хыхь иҟоу аряд ахь инаган. Акнопка аныхразы, алада абраҟа иааган.</string>
     <string name="dejavu_actions_bar_hint">Адаҟьақәа рҵаҟа иҟоу акнопкақәа. Урҭ иаарту адаҟьа аҟны аус руеит.</string>
     <string name="dejavu_actions_bar_all_added">Акнопкақәа зегьы иахьазы апанель аҟны иҟоуп.</string>
-    <string name="dejavu_more_menu_row">Аряд %1$d</string>
     <string name="dejavu_more_menu_add_item">Акнопка адалаӡара</string>
     <string name="dejavu_more_menu_add_row">Аряд адалаӡара</string>
     <string name="dejavu_more_menu_row_full">Ари аряд ду ду еиҳауп.</string>
@@ -218,8 +217,6 @@
     <string name="dejavu_more_menu_reset">Актәи иҭыԥ ахь аиҭагара</string>
     <string name="dejavu_more_menu_hide_edit">Аредакциа акнопка аҵаҵыхра</string>
     <string name="dejavu_more_menu_hide_edit_summary">Ари адаҟьа иаартуа аменю аҵыхәтәантәи акнопка</string>
-    <string name="dejavu_more_menu_all_added">Акнопкақәа зегьы иахьазы аменю аҟны иҟоуп.</string>
-    <string name="dejavu_more_menu_preview">Актәи аԥшра</string>
     <string name="dejavu_settings_sync">Firefox ма Zen ала асинхронизация</string>
     <string name="dejavu_sync_hint">Ишәара аҭыԥқәа, рцвет ма риконка рыдазкны, аконтейнерқәа, ификсациатә абларҭақәа, иҵакыу сайтқәа ма ипапкақәа, Zen Browser шәкомпьютер аҟны ишыҟаз еиԥш, насгьы Dejavu шәара шәыдгыла машьынақәак рҟны иаанхоит. Firefox адыррақәа расинхронизациа azy ишәхы Mozilla аккаунт ахархәоит.</string>
     <string name="dejavu_sync_zen_hint">Zen аҟны, «Архиарақәа» аартын, унтi «Асинхронизация», насгьы аҭаны панель расинхронизациа алагаз. Ификсациам абларҭақәа расинхронизациа мап.</string>

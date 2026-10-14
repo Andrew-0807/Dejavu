@@ -205,10 +205,9 @@
     <string name="dejavu_actions_bar_search">Cuardaigh</string>
     <string name="dejavu_actions_bar_home">Baile</string>
     <string name="dejavu_settings_more_menu_summary">An barra gníomhartha faoi leathanaigh agus an roghchlár a osclaíonn sé</string>
-    <string name="dejavu_more_menu_hint">Svaidhpeáil an barra gníomhartha suas, nó an barra suímh síos, chun an roghchlár iomlán a oscailt. Brúigh cnaipe chun é a bhogadh nó a bhaint. Tógann eisínteachtaí sraith iomlán i gcónaí.</string>
+    <string name="dejavu_more_menu_drag_hint">Coinnigh cnaipe brúite agus tarraing go sraith thuas é. Tarraing cnaipe ar ais anseo síos chun é a bhaint.</string>
     <string name="dejavu_actions_bar_hint">Na cnaipí faoi leathanaigh. Oibríonn siad ar an leathanach ina bhfuil tú.</string>
     <string name="dejavu_actions_bar_all_added">Tá gach cnaipe sa bharra cheana féin.</string>
-    <string name="dejavu_more_menu_row">Sraith %1$d</string>
     <string name="dejavu_more_menu_add_item">Cuir cnaipe leis</string>
     <string name="dejavu_more_menu_add_row">Cuir sraith leis</string>
     <string name="dejavu_more_menu_row_full">Tá an tsraith seo lán.</string>
@@ -221,8 +220,6 @@
     <string name="dejavu_more_menu_reset">Athshocraigh go réamhshocrú</string>
     <string name="dejavu_more_menu_hide_edit">Folaigh an cnaipe eagair</string>
     <string name="dejavu_more_menu_hide_edit_summary">An cnaipe faoin roghchlár a osclaíonn an scáileán seo</string>
-    <string name="dejavu_more_menu_all_added">Tá gach cnaipe sa roghchlár cheana féin.</string>
-    <string name="dejavu_more_menu_preview">Réamhamharc</string>
     <string name="dejavu_settings_sync">Sioncronaigh le Firefox nó Zen</string>
     <string name="dejavu_sync_hint">Coinníonn sé do spásanna oibre lena ndathanna agus lena ndeilbhíní, coimeádáin, cluaisíní greamaithe, riachtanais agus fillteáin mar an gcéanna le Zen Browser ar do ríomhaire agus le Dejavu ar do ghléasanna eile. Úsáideann sé an cuntas Mozilla a sioncronaíonn tú sonraí Firefox leis.</string>
     <string name="dejavu_sync_zen_hint">I Zen, oscail Socruithe, ansin Sioncrónú, agus cuir sioncrónú an bharra taoibh ar siúl. Ní shioncronaítear cluaisíní nach bhfuil greamaithe.</string>
