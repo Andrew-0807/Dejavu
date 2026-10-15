@@ -19,7 +19,7 @@ Repo: https://gitlab.com/by-architect/dejavubuild.git
 Builds:
   - versionName: 2.0.1
     versionCode: 2016210001
-    commit: 2863c2080d8dd799012873f3b08861c0ebc85049
+    commit: b205a55f127904458d9e2d239ce83fe98ca3b9d6
     timeout: 36000
     sudo:
       - echo "deb https://deb.debian.org/debian bookworm main" > /etc/apt/sources.list.d/bookworm.list
@@ -37,9 +37,9 @@ Builds:
       - MozGlean@v70.2.1
       - MozGleanAS@v70.0.0
       - wasi-sdk@wasi-sdk-20
-      - llvm@3b5e7c83a6e226d5bd7ed2e9b67449b64812074c
-      - llvm_android@e727bfb014bd436f581a66a450c939a6983a1fc3
-      - toolchain-utils@dd1ee45a84cb07337f9d5d0a6769d9b865c6e620
+      - llvm@2d287f51eff2a5fbf84458a33f7fb2493cf67965
+      - llvm_android@9e20ac0b949feedcfe3da791189310f6ebcbc7a8
+      - toolchain-utils@d71e320ab860721f764fe7403588641c8a7bc65d
     prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
     build: ./build.sh
     ndk: 30.0.16248370
@@ -65,6 +65,11 @@ MaintainerNotes: |-
 
   GleanAS version:
   grep '^glean =' build/srclib/MozAppServices/gradle/libs.versions.toml
+
+  llvm, llvm_android, toolchain-utils: the libclang bindgen uses must match the NDK's clang (NDK r30 is clang-r574158c,
+  LLVM 21; LLVM_SVN in prebuild.sh). From the NDK:
+  grep 'Base revision:' {NDK}/toolchains/llvm/prebuilt/linux-x86_64/clang_source_info.md
+  llvm_android is the commit its patch links point to; toolchain-utils is its latest commit.
 
   NDK versions: ndk is Firefox's; build.sh installs the one Glean and Application Services ask for with sdkmanager:
   grep 'NDK_VERSION =' build/srclib/MozFennec/python/mozboot/mozboot/android.py
