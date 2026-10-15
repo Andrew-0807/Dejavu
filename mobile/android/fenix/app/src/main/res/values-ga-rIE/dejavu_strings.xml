@@ -291,10 +291,6 @@
     <string name="dejavu_open_clipboard_link">Oscail nasc ón ngearrthaisce</string>
     <string name="dejavu_reopen_closed_tab">Athoscail cluaisín dúnta</string>
     <string name="dejavu_search_chip_temporary">Sealadach</string>
-    <string name="dejavu_shift_previous">Bog go dtí an spás oibre roimhe seo</string>
-    <string name="dejavu_shift_next">Bog go dtí an chéad spás oibre eile</string>
-    <string name="dejavu_shift_blocked">Ní féidir cluaisíní greamaithe ná fillteáin a sheoladh chuig %1$s</string>
-    <string name="dejavu_shift_held">Scoir den roghnú chun iad a sheoladh chuig %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Ar chluaisíní greamaithe agus ar fhillteáin, cuireann ‘Dún’ na cluaisíní oscailte a chodladh, toisc go bhfanann siad greamaithe. Nuair atá cluaisín greamaithe ina chodladh cheana féin, díghreamaíonn ‘Dún’ é.</string>
     <string name="dejavu_features_title">Cuir aithne ar Dejavu</string>
     <string name="dejavu_features_page">%1$d as %2$d</string>

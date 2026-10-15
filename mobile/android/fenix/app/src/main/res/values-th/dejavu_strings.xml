@@ -263,10 +263,6 @@
     <string name="dejavu_open_clipboard_link">เปิดลิงก์จากคลิปบอร์ด</string>
     <string name="dejavu_reopen_closed_tab">เปิดแท็บที่ปิดไปอีกครั้ง</string>
     <string name="dejavu_search_chip_temporary">ชั่วคราว</string>
-    <string name="dejavu_shift_previous">ย้ายไปยังพื้นที่ทำงานก่อนหน้า</string>
-    <string name="dejavu_shift_next">ย้ายไปยังพื้นที่ทำงานถัดไป</string>
-    <string name="dejavu_shift_blocked">แท็บที่ปักหมุดและโฟลเดอร์ไม่สามารถไปยัง %1$s ได้</string>
-    <string name="dejavu_shift_held">ออกจากโหมดเลือกเพื่อส่งไปยัง %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">บนแท็บที่ปักหมุดและโฟลเดอร์ ปุ่ม “ปิด” จะพักแท็บที่เปิดอยู่ เนื่องจากแท็บที่ปักหมุดยังคงอยู่ เมื่อแท็บที่ปักหมุดพักอยู่แล้ว ปุ่ม “ปิด” จะเลิกปักหมุดแท็บนั้น</string>
     <string name="dejavu_features_title">ค้นพบ Dejavu</string>
     <string name="dejavu_features_page">%1$d จาก %2$d</string>

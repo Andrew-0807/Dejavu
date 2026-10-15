@@ -162,25 +162,6 @@ internal class TabActionRunner(
     }
 
     /**
-     * Moves [targets] to [workspaceId], which is not the workspace of a device on the account, the way the arrows of
-     * selection mode do: pinned tabs and folders to the end of its pinned section, other tabs to the start of its other
-     * tabs, right below New Tab.
-     */
-    fun shiftToWorkspace(targets: ActionTargets, workspaceId: String) {
-        val workspace = repository.state.value.workspaces.firstOrNull { it.id == workspaceId } ?: return
-        if (workspace.device != null || targets.restricted) return
-        val moving = targets.tabs.map { it.id }
-        repository.moveToWorkspace(tabIds = moving.toSet(), itemIds = targets.itemIds, workspaceId = workspaceId, atEnd = true)
-        val state = repository.state.value
-        val first = store.state.normalTabs.firstOrNull {
-            it.id !in moving && state.workspaceOf(it.id) == workspaceId && state.pinOf(it.id) == null
-        }
-        if (first != null && moving.isNotEmpty()) {
-            store.dispatch(TabListAction.MoveTabsAction(moving, first.id, placeAfter = false))
-        }
-    }
-
-    /**
      * Moves [tabs] into [workspaceId], the workspace of a device on the account, which only holds tabs that are not in a
      * container. They open there again without one, which sends them to the device, and the tabs they come from close
      * without going to the recently closed tabs: they moved.

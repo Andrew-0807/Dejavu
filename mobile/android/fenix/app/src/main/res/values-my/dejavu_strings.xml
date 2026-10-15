@@ -263,10 +263,6 @@
     <string name="dejavu_open_clipboard_link">ကလစ်ဘုတ်မှ လင့်ခ်ကို ဖွင့်ရန်</string>
     <string name="dejavu_reopen_closed_tab">ပိတ်ခဲ့သော တက်ဗ်ကို ပြန်ဖွင့်ရန်</string>
     <string name="dejavu_search_chip_temporary">ယာယီ</string>
-    <string name="dejavu_shift_previous">ယခင် လုပ်ငန်းခွင်သို့ ရွှေ့ရန်</string>
-    <string name="dejavu_shift_next">နောက် လုပ်ငန်းခွင်သို့ ရွှေ့ရန်</string>
-    <string name="dejavu_shift_blocked">ပင်ထိုးထားသော တက်ဗ်များနှင့် ဖိုင်တွဲများကို %1$s သို့ ရွှေ့၍ မရပါ</string>
-    <string name="dejavu_shift_held">၎င်းတို့ကို %1$s သို့ ပို့ရန် ရွေးချယ်မှုမှ ထွက်ပါ</string>
     <string name="dejavu_settings_close_pinned_hint">ပင်ထိုးထားသော တက်ဗ်များနှင့် ဖိုင်တွဲများတွင် ပင်များ ဆက်ရှိနေသောကြောင့် “ပိတ်ရန်” သည် ပွင့်နေသော တက်ဗ်များကို အိပ်စေသည်။ ပင်ထိုးထားသော တက်ဗ်တစ်ခု အိပ်နေပြီဆိုလျှင် “ပိတ်ရန်” သည် ၎င်းကို ပင်ထုတ်သည်။</string>
     <string name="dejavu_features_title">Dejavu ကို စူးစမ်းပါ</string>
     <string name="dejavu_features_page">%2$d ထဲမှ %1$d</string>

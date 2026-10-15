@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Mübadilə buferindəki linki aç</string>
     <string name="dejavu_reopen_closed_tab">Bağlanmış vərəqi yenidən aç</string>
     <string name="dejavu_search_chip_temporary">Müvəqqəti</string>
-    <string name="dejavu_shift_previous">Əvvəlki iş sahəsinə köçür</string>
-    <string name="dejavu_shift_next">Növbəti iş sahəsinə köçür</string>
-    <string name="dejavu_shift_blocked">Bərkidilmiş vərəqlər və qovluqlar %1$s cihazına köçürülə bilməz</string>
-    <string name="dejavu_shift_held">Onları %1$s cihazına göndərmək üçün seçimdən çıx</string>
     <string name="dejavu_settings_close_pinned_hint">Bərkidilmiş vərəqlərdə və qovluqlarda «Bağla» açıq vərəqləri yuxuya qoyur, çünki bərkidilmələr qalır. Bərkidilmiş vərəq artıq yuxudadırsa, «Bağla» onu bərkitmədən çıxarır.</string>
     <string name="dejavu_features_title">Dejavu ilə tanış olun</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

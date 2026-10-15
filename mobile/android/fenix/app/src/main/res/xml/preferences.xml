@@ -33,7 +33,8 @@
             app:widgetLayout="@layout/preference_widget_external_link" />
     </androidx.preference.PreferenceCategory>
 
-    <!-- Dejavu: the account section is shown before signing in too, with the sign in button and workspace sync. -->
+    <!-- Dejavu: the account section is shown before signing in too, its sign in button telling what workspace sync
+         does. -->
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_account_category"
         android:title="@string/preferences_category_account"
@@ -42,7 +43,7 @@
         <androidx.preference.Preference
             android:key="@string/pref_key_sign_in"
             android:layout="@layout/sign_in_preference"
-            android:summary="@string/preferences_sign_in_description"
+            android:summary="@string/dejavu_sync_choose_about"
             android:title="@string/preferences_sign_in"
             app:allowDividerBelow="false" />
 
@@ -54,13 +55,6 @@
         <org.mozilla.fenix.settings.account.AccountAuthErrorPreference
             android:icon="@drawable/ic_account_warning"
             android:key="@string/pref_key_account_auth_error" />
-
-        <androidx.preference.Preference
-            android:icon="@drawable/mozac_ic_sync_tabs_24"
-            android:key="@string/pref_key_dejavu_sync_entry"
-            android:title="@string/dejavu_settings_sync"
-            android:summary="@string/dejavu_sync_choose_about"
-            app:widgetLayout="@layout/dejavu_preference_badge" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.Preference
@@ -79,6 +73,7 @@
 
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
+            app:widgetLayout="@layout/dejavu_preference_badge"
             android:key="@string/pref_key_tabs"
             android:title="@string/preferences_tabs" />
 
@@ -109,6 +104,7 @@
             android:title="@string/preferences_home_2" />
 
         <androidx.preference.Preference
+            app:widgetLayout="@layout/dejavu_preference_badge"
             android:key="@string/pref_key_customize"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_customize" />
@@ -316,6 +312,7 @@
             android:title="@string/preferences_rate" />
 
         <androidx.preference.Preference
+            app:widgetLayout="@layout/dejavu_preference_badge"
             android:key="@string/pref_key_about"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_about" />

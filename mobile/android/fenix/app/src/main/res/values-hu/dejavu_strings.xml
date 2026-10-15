@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Hivatkozás megnyitása a vágólapról</string>
     <string name="dejavu_reopen_closed_tab">Bezárt lap újranyitása</string>
     <string name="dejavu_search_chip_temporary">Ideiglenes</string>
-    <string name="dejavu_shift_previous">Áthelyezés az előző munkaterületre</string>
-    <string name="dejavu_shift_next">Áthelyezés a következő munkaterületre</string>
-    <string name="dejavu_shift_blocked">A kitűzött lapok és mappák nem kerülhetnek ide: %1$s</string>
-    <string name="dejavu_shift_held">Lépjen ki a kijelölésből, hogy elküldje őket ide: %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">A kitűzött lapokon és mappákon a Bezárás elaltatja a nyitott lapokat, mivel azok kitűzve maradnak. Ha egy kitűzött lap már alszik, a Bezárás megszünteti a kitűzését.</string>
     <string name="dejavu_features_title">Fedezze fel a Dejavut</string>
     <string name="dejavu_features_page">%1$d/%2$d</string>

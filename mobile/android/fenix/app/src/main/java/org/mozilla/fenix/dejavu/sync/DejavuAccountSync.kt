@@ -133,30 +133,6 @@ class DejavuAccountSync(private val fragment: PreferenceFragmentCompat) {
     }
 }
 
-/**
- * The row of the main settings that leads to workspace sync, shown before signing in too: until then it says what
- * syncing does and opens signing in, then it shows the browser workspaces sync with and how syncing goes.
- */
-class DejavuSyncEntry(private val fragment: PreferenceFragmentCompat) {
-    private val entry = fragment.requirePreference<Preference>(R.string.pref_key_dejavu_sync_entry)
-
-    fun bind() {
-        val owner = fragment.viewLifecycleOwner
-        owner.lifecycleScope.launch {
-            owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                DejavuSync.status.collect { status ->
-                    val context = fragment.context ?: return@collect
-                    entry.summary = if (status.signedIn) {
-                        syncSummary(context, status)
-                    } else {
-                        context.getString(R.string.dejavu_sync_choose_about)
-                    }
-                }
-            }
-        }
-    }
-}
-
 /** The browser workspaces sync with, and how syncing goes, on two lines. */
 private fun syncSummary(context: Context, status: DejavuSyncStatus): String =
     context.getString(sourceName(status.source)) + "\n" + statusText(context, status)

@@ -277,10 +277,6 @@
     <string name="dejavu_open_clipboard_link">Atvērt saiti no starpliktuves</string>
     <string name="dejavu_reopen_closed_tab">Atjaunot aizvērto cilni</string>
     <string name="dejavu_search_chip_temporary">Pagaidu</string>
-    <string name="dejavu_shift_previous">Pārvietot uz iepriekšējo darbvietu</string>
-    <string name="dejavu_shift_next">Pārvietot uz nākamo darbvietu</string>
-    <string name="dejavu_shift_blocked">Piespraustās cilnes un mapes nevar pārvietot uz %1$s</string>
-    <string name="dejavu_shift_held">Izejiet no atlases, lai nosūtītu tās uz %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Piespraustu cilņu un mapju rindās „Aizvērt” iemidzina atvērtās cilnes, jo piespraustās cilnes paliek. Kad piesprausta cilne ir iemidzināta, „Aizvērt” to atsprauž.</string>
     <string name="dejavu_features_title">Iepazīstiet Dejavu</string>
     <string name="dejavu_features_page">%1$d no %2$d</string>

@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Opne lenke frå utklippstavla</string>
     <string name="dejavu_reopen_closed_tab">Opne attlaten fane på nytt</string>
     <string name="dejavu_search_chip_temporary">Mellombels</string>
-    <string name="dejavu_shift_previous">Flytt til førre arbeidsområde</string>
-    <string name="dejavu_shift_next">Flytt til neste arbeidsområde</string>
-    <string name="dejavu_shift_blocked">Festa faner og mapper kan ikkje flyttast til %1$s</string>
-    <string name="dejavu_shift_held">Avslutt utvalet for å sende dei til %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">På festa faner og mapper set «Lat att» dei opne fanene i dvale, sidan dei framleis er festa. Når ei festa fane er i dvale, løyser «Lat att» henne.</string>
     <string name="dejavu_features_title">Oppdag Dejavu</string>
     <string name="dejavu_features_page">%1$d av %2$d</string>

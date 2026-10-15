@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Dobrir lo ligam del quichapapièrs</string>
     <string name="dejavu_reopen_closed_tab">Tornar dobrir l’onglet tampat</string>
     <string name="dejavu_search_chip_temporary">Temporari</string>
-    <string name="dejavu_shift_previous">Desplaçar cap a l’espaci de trabalh precedent</string>
-    <string name="dejavu_shift_next">Desplaçar cap a l’espaci de trabalh seguent</string>
-    <string name="dejavu_shift_blocked">Los onglets fixats e los dossièrs pòdon pas anar cap a %1$s</string>
-    <string name="dejavu_shift_held">Sortir de la seleccion per los mandar cap a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Suls onglets fixats e los dossièrs, «Tampar» met en velha los onglets dobèrts, perque demòran fixats. Quand un onglet fixat es en velha, «Tampar» lo desfixa.</string>
     <string name="dejavu_features_title">Descobrir Dejavu</string>
     <string name="dejavu_features_page">%1$d sus %2$d</string>

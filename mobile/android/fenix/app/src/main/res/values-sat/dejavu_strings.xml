@@ -277,10 +277,6 @@
     <string name="dejavu_open_clipboard_link">ᱨᱮᱴᱚᱯ ᱵᱳᱨᱰ ᱠᱷᱚᱱ ᱞᱤᱸᱠ ᱡᱷᱤᱡᱽ ᱢᱮ</string>
     <string name="dejavu_reopen_closed_tab">ᱵᱚᱸᱫ ᱟᱠᱟᱱ ᱴᱮᱵᱽ ᱫᱚᱦᱲᱟ ᱡᱷᱤᱡᱽ ᱢᱮ</string>
     <string name="dejavu_search_chip_temporary">ᱴᱮᱢᱯᱚᱨᱟᱨᱤ</string>
-    <string name="dejavu_shift_previous">ᱞᱟᱦᱟᱛᱮᱱ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱛᱮ ᱩᱪᱟᱹᱲ</string>
-    <string name="dejavu_shift_next">ᱤᱱᱟᱹ ᱛᱟᱭᱚᱢ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱛᱮ ᱩᱪᱟᱹᱲ</string>
-    <string name="dejavu_shift_blocked">ᱯᱤᱱ ᱴᱮᱵᱽ ᱠᱚ ᱟᱨ ᱯᱷᱚᱞᱰᱚᱨ ᱠᱚ %1$s ᱛᱮ ᱵᱟᱝ ᱪᱟᱞᱟᱜ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ</string>
-    <string name="dejavu_shift_held">%1$s ᱛᱮ ᱠᱩᱞ ᱞᱟᱹᱜᱤᱫ ᱵᱟᱪᱷᱟᱣ ᱠᱷᱚᱱ ᱚᱰᱚᱠ ᱢᱮ</string>
     <string name="dejavu_settings_close_pinned_hint">ᱯᱤᱱ ᱴᱮᱵᱽ ᱠᱚ ᱟᱨ ᱯᱷᱚᱞᱰᱚᱨ ᱠᱚ ᱨᱮ «ᱵᱚᱸᱫᱚᱭ ᱢᱮ» ᱡᱷᱤᱡᱽ ᱴᱮᱵᱽ ᱠᱚ ᱥᱞᱤᱯ ᱮ ᱫᱟᱣᱟᱭ, ᱪᱮᱫᱟᱜ ᱥᱮ ᱯᱤᱱ ᱠᱚ ᱛᱟᱦᱮᱸᱱᱟ᱾ ᱡᱚᱦᱚᱜ ᱯᱤᱱ ᱴᱮᱵᱽ ᱥᱞᱤᱯ ᱨᱮ ᱛᱟᱦᱮᱸ, «ᱵᱚᱸᱫᱚᱭ ᱢᱮ» ᱯᱤᱱ ᱮ ᱚᱰᱚᱠᱟ᱾</string>
     <string name="dejavu_features_title">Dejavu ᱧᱮᱞ ᱢᱮ</string>
     <string name="dejavu_features_page">%1$d ᱠᱷᱚᱱ %2$d</string>

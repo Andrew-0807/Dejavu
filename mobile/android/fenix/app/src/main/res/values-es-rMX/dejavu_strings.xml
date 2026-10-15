@@ -277,10 +277,6 @@
     <string name="dejavu_open_clipboard_link">Abrir enlace del portapapeles</string>
     <string name="dejavu_reopen_closed_tab">Reabrir pestaña cerrada</string>
     <string name="dejavu_search_chip_temporary">Temporal</string>
-    <string name="dejavu_shift_previous">Mover al espacio de trabajo anterior</string>
-    <string name="dejavu_shift_next">Mover al espacio de trabajo siguiente</string>
-    <string name="dejavu_shift_blocked">Las pestañas fijadas y las carpetas no se pueden enviar a %1$s</string>
-    <string name="dejavu_shift_held">Sal de la selección para enviarlas a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">En las pestañas fijadas y las carpetas, Cerrar suspende las pestañas abiertas, ya que siguen fijadas. Cuando una pestaña fijada ya está suspendida, Cerrar deja de fijarla.</string>
     <string name="dejavu_features_title">Descubre Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

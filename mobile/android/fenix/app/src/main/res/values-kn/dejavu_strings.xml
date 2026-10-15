@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ನಿಂದ ಲಿಂಕ್ ತೆರೆ</string>
     <string name="dejavu_reopen_closed_tab">ಮುಚ್ಚಿದ ಟ್ಯಾಬ್ ಅನ್ನು ಮತ್ತೆ ತೆರೆ</string>
     <string name="dejavu_search_chip_temporary">ತಾತ್ಕಾಲಿಕ</string>
-    <string name="dejavu_shift_previous">ಹಿಂದಿನ ಕಾರ್ಯಕ್ಷೇತ್ರಕ್ಕೆ ಸ್ಥಳಾಂತರಿಸು</string>
-    <string name="dejavu_shift_next">ಮುಂದಿನ ಕಾರ್ಯಕ್ಷೇತ್ರಕ್ಕೆ ಸ್ಥಳಾಂತರಿಸು</string>
-    <string name="dejavu_shift_blocked">ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್‌ಗಳು ಮತ್ತು ಫೋಲ್ಡರ್‌ಗಳನ್ನು %1$s ಗೆ ಕಳುಹಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
-    <string name="dejavu_shift_held">ಅವುಗಳನ್ನು %1$s ಗೆ ಕಳುಹಿಸಲು ಆಯ್ಕೆಯಿಂದ ನಿರ್ಗಮಿಸಿ</string>
     <string name="dejavu_settings_close_pinned_hint">ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್‌ಗಳು ಮತ್ತು ಫೋಲ್ಡರ್‌ಗಳಲ್ಲಿ, ಪಿನ್‌ಗಳು ಉಳಿಯುವುದರಿಂದ “ಮುಚ್ಚು” ತೆರೆದಿರುವ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಸ್ಲೀಪ್ ಮಾಡುತ್ತದೆ. ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್ ಸ್ಲೀಪ್ ಆದ ನಂತರ, “ಮುಚ್ಚು” ಅದರ ಪಿನ್ ತೆಗೆಯುತ್ತದೆ.</string>
     <string name="dejavu_features_title">Dejavu ಅನ್ನು ಅನ್ವೇಷಿಸಿ</string>
     <string name="dejavu_features_page">%2$d ರಲ್ಲಿ %1$d</string>

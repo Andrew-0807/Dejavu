@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Ouvrir le lien du presse-papiers</string>
     <string name="dejavu_reopen_closed_tab">Rouvrir l’onglet fermé</string>
     <string name="dejavu_search_chip_temporary">Temporaire</string>
-    <string name="dejavu_shift_previous">Déplacer vers l’espace précédent</string>
-    <string name="dejavu_shift_next">Déplacer vers l’espace suivant</string>
-    <string name="dejavu_shift_blocked">Les onglets épinglés et les dossiers ne peuvent pas être déplacés vers %1$s</string>
-    <string name="dejavu_shift_held">Quittez la sélection pour les envoyer vers %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Sur les onglets épinglés et les dossiers, « Fermer » met en veille les onglets ouverts, car ils restent épinglés. Une fois qu’un onglet épinglé est en veille, « Fermer » retire son épingle.</string>
     <string name="dejavu_features_title">Découvrir Dejavu</string>
     <string name="dejavu_features_page">%1$d sur %2$d</string>

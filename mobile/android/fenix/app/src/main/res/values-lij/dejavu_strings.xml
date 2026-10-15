@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Arvi o ligamme da-i aponti</string>
     <string name="dejavu_reopen_closed_tab">Torna a arvî o feuggio særou</string>
     <string name="dejavu_search_chip_temporary">Tenporaneo</string>
-    <string name="dejavu_shift_previous">Spòsta into spaçio de travaggio precedente</string>
-    <string name="dejavu_shift_next">Spòsta into spaçio de travaggio seguente</string>
-    <string name="dejavu_shift_blocked">I feuggi fissæ e cartelle no peuan anâ a %1$s</string>
-    <string name="dejavu_shift_held">Sciorti da-a seleçion pe mandâli a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">In sci feuggi fissæ e in sce cartelle, «Særa» o fa dormî i feuggi averti, perché i feuggi fissæ restan. Quande un feuggio fissou o l\'é addormio, con «Særa» o vegne sfissou.</string>
     <string name="dejavu_features_title">Descreuvi Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

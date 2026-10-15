@@ -336,9 +336,6 @@ private class DefaultDejavuHomeInteractor(
     override fun onMoveToWorkspace(targets: ActionTargets, workspaceId: String) =
         runner.onMoveToWorkspace(targets, workspaceId)
 
-    override fun onShiftToWorkspace(targets: ActionTargets, workspaceId: String) =
-        runner.shiftToWorkspace(targets, workspaceId)
-
     override fun onReopenClosedTab(): String? = reopener.reopen()
 
     override fun onOpenClipboardLink(workspaceId: String) {
@@ -364,6 +361,15 @@ private class DefaultDejavuHomeInteractor(
         // The workspace of a device on the account follows the device, which takes nothing dragged here.
         if (state.isDeviceWorkspace(workspaceId)) return
         val targets = ActionTargets.of(state, store.state.normalTabs, selection)
+        // Dragged here from another workspace: the items come over first, then land where they were dropped.
+        val from = targets.workspaceIn(state)
+        if (target != DropTarget.Essentials && from != null && from != workspaceId) {
+            repository.moveToWorkspace(
+                tabIds = targets.tabs.map { it.id }.toSet(),
+                itemIds = targets.itemIds,
+                workspaceId = workspaceId,
+            )
+        }
         val placement = when (target) {
             is DropTarget.IntoFolder -> PinPlacement.Into(target.folderId)
             is DropTarget.NextToPin -> PinPlacement.Next(target.pinId, target.after)

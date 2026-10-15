@@ -284,10 +284,6 @@
     <string name="dejavu_open_clipboard_link">Otwórz odnośnik ze schowka</string>
     <string name="dejavu_reopen_closed_tab">Przywróć zamkniętą kartę</string>
     <string name="dejavu_search_chip_temporary">Tymczasowy</string>
-    <string name="dejavu_shift_previous">Przenieś do poprzedniego obszaru roboczego</string>
-    <string name="dejavu_shift_next">Przenieś do następnego obszaru roboczego</string>
-    <string name="dejavu_shift_blocked">Przypiętych kart i folderów nie można przenieść do: %1$s</string>
-    <string name="dejavu_shift_held">Zakończ zaznaczanie, aby wysłać je do: %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Na przypiętych kartach i folderach „Zamknij” usypia otwarte karty, ponieważ przypięcia pozostają. Gdy przypięta karta jest już uśpiona, „Zamknij” ją odpina.</string>
     <string name="dejavu_features_title">Odkryj Dejavu</string>
     <string name="dejavu_features_page">%1$d z %2$d</string>

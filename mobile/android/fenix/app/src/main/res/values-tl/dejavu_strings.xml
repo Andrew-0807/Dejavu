@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Buksan ang link mula sa clipboard</string>
     <string name="dejavu_reopen_closed_tab">Buksang muli ang isinarang tab</string>
     <string name="dejavu_search_chip_temporary">Pansamantala</string>
-    <string name="dejavu_shift_previous">Ilipat sa nakaraang workspace</string>
-    <string name="dejavu_shift_next">Ilipat sa susunod na workspace</string>
-    <string name="dejavu_shift_blocked">Hindi maililipat sa %1$s ang mga naka-pin na tab at folder</string>
-    <string name="dejavu_shift_held">Lumabas sa pagpili para maipadala ang mga ito sa %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Sa mga naka-pin na tab at folder, pinapatulog ng Isara ang mga bukas na tab, dahil nananatili ang mga naka-pin na tab. Kapag natutulog na ang isang naka-pin na tab, ia-unpin ito ng Isara.</string>
     <string name="dejavu_features_title">Tuklasin ang Dejavu</string>
     <string name="dejavu_features_page">%1$d sa %2$d</string>

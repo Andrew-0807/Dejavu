@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Сылтаманы алмашу буферыннан ачу</string>
     <string name="dejavu_reopen_closed_tab">Ябылган табны яңадан ачу</string>
     <string name="dejavu_search_chip_temporary">Вакытлы</string>
-    <string name="dejavu_shift_previous">Алдагы эш өлкәсенә күчерү</string>
-    <string name="dejavu_shift_next">Киләсе эш өлкәсенә күчерү</string>
-    <string name="dejavu_shift_blocked">Беркетелгән таблар һәм папкалар %1$s җайланмасына күчә алмый</string>
-    <string name="dejavu_shift_held">Аларны %1$s җайланмасына җибәрү өчен сайлаудан чыгыгыз</string>
     <string name="dejavu_settings_close_pinned_hint">Беркетелгән табларда һәм папкаларда «Ябу» ачык табларны йокыга җибәрә, чөнки беркетелгән таблар кала. Беркетелгән таб йоклагач, «Ябу» аны беркетүдән чыгара.</string>
     <string name="dejavu_features_title">Dejavu белән танышыгыз</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

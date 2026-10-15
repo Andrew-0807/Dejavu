@@ -284,10 +284,6 @@
     <string name="dejavu_open_clipboard_link">Wotkaz z mjezyskłada wočinić</string>
     <string name="dejavu_reopen_closed_tab">Začinjeny rajtark zaso wočinić</string>
     <string name="dejavu_search_chip_temporary">Nachwilny</string>
-    <string name="dejavu_shift_previous">Do předchadneho dźěłoweho ruma přesunyć</string>
-    <string name="dejavu_shift_next">Do přichodneho dźěłoweho ruma přesunyć</string>
-    <string name="dejavu_shift_blocked">Připjate rajtarki a zarjadniki njedadźa so na grat %1$s pósłać</string>
-    <string name="dejavu_shift_held">Wuběranje wopušćić, zo bychu so na grat %1$s pósłali</string>
     <string name="dejavu_settings_close_pinned_hint">Na připjatych rajtarkach a zarjadnikach skutkuje „Začinić“ na wočinjene rajtarki kaž „Spać“, dokelž wostanu připjate. Hdyž připjaty rajtark hižo spi, skutkuje „Začinić“ kaž „Wotpjeć“.</string>
     <string name="dejavu_features_title">Dejavu wotkryć</string>
     <string name="dejavu_features_page">%1$d z %2$d</string>

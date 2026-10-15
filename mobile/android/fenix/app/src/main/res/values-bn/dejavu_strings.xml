@@ -168,10 +168,6 @@
     <string name="dejavu_open_clipboard_link">ক্লিপবোর্ড থেকে লিঙ্ক খুলুন</string>
     <string name="dejavu_reopen_closed_tab">বন্ধ করা ট্যাব আবার খুলুন</string>
     <string name="dejavu_search_chip_temporary">অস্থায়ী</string>
-    <string name="dejavu_shift_previous">আগের ওয়ার্কস্পেসে সরান</string>
-    <string name="dejavu_shift_next">পরের ওয়ার্কস্পেসে সরান</string>
-    <string name="dejavu_shift_blocked">পিন করা ট্যাব ও ফোল্ডার %1$s-এ যেতে পারে না</string>
-    <string name="dejavu_shift_held">এগুলো %1$s-এ পাঠাতে নির্বাচন থেকে প্রস্থান করুন</string>
 
     <!-- Containers: delete options -->
     <string name="dejavu_container_delete_close_tabs">এর ট্যাবগুলো বন্ধ করুন, পিন করা ট্যাবসহ</string>

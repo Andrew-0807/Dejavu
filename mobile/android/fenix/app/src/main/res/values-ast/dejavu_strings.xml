@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Abrir l\'enllaz del cartafueyu</string>
     <string name="dejavu_reopen_closed_tab">Volver abrir la llingüeta zarrada</string>
     <string name="dejavu_search_chip_temporary">Temporal</string>
-    <string name="dejavu_shift_previous">Mover al espaciu de trabayu anterior</string>
-    <string name="dejavu_shift_next">Mover al espaciu de trabayu siguiente</string>
-    <string name="dejavu_shift_blocked">Les llingüetes fixaes y les carpetes nun puen dir a %1$s</string>
-    <string name="dejavu_shift_held">Sal de la seleición pa unviales a %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Nes llingüetes fixaes y nes carpetes, «Zarrar» pon a dormir les llingüetes abiertes porque les fixaes queden. Cuando una llingüeta fixada yá duerme, «Zarrar» desfíxala.</string>
     <string name="dejavu_features_title">Descubri Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

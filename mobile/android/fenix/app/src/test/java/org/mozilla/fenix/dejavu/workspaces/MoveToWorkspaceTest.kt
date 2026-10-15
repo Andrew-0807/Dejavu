@@ -36,17 +36,35 @@ class MoveToWorkspaceTest {
     private fun folderOf(repository: WorkspaceRepository) = repository.state.value.pins.first { it.isFolder }.id
 
     @Test
-    fun `items moved to the end of a workspace come after its own pinned items, with everything inside them`() {
+    fun `a folder dragged from another workspace comes over with everything inside it, then lands where it was dropped`() {
         val repository = repositoryWithFolder()
         val work = repository.state.value.activeWorkspaceId
         val folder = folderOf(repository)
+        val workPin = pinOf(repository, WORK_PIN)
 
-        repository.moveToWorkspace(tabIds = setOf(LOOSE), itemIds = setOf(folder), workspaceId = work, atEnd = true)
+        repository.moveToWorkspace(tabIds = emptySet(), itemIds = setOf(folder), workspaceId = work)
+        repository.placePins(work, setOf(folder), emptyList(), PinPlacement.Next(workPin, after = true))
 
         val state = repository.state.value
-        assertEquals(listOf(pinOf(repository, WORK_PIN), folder), state.children(work, parentId = null).map { it.id })
+        assertEquals(listOf(workPin, folder), state.children(work, parentId = null).map { it.id })
         assertEquals(listOf(pinOf(repository, INSIDE)), state.children(work, parentId = folder).map { it.id })
         assertEquals(work, state.assignments[INSIDE])
+    }
+
+    @Test
+    fun `a tab dragged from another workspace into its pinned tabs is pinned there`() {
+        val repository = repositoryWithFolder()
+        val work = repository.state.value.activeWorkspaceId
+
+        repository.moveToWorkspace(tabIds = setOf(LOOSE), itemIds = emptySet(), workspaceId = work)
+        repository.placePins(work, emptySet(), listOf(source(LOOSE)), PinPlacement.Edge(atEnd = true))
+
+        val state = repository.state.value
+        assertEquals(work, state.pinOf(LOOSE)?.workspaceId)
+        assertEquals(
+            listOf(pinOf(repository, WORK_PIN), pinOf(repository, LOOSE)),
+            state.children(work, parentId = null).map { it.id },
+        )
         assertEquals(work, state.assignments[LOOSE])
     }
 

@@ -277,10 +277,6 @@
     <string name="dejavu_open_clipboard_link">Abrir link da área de transferência</string>
     <string name="dejavu_reopen_closed_tab">Reabrir aba fechada</string>
     <string name="dejavu_search_chip_temporary">Temporário</string>
-    <string name="dejavu_shift_previous">Mover para o espaço de trabalho anterior</string>
-    <string name="dejavu_shift_next">Mover para o próximo espaço de trabalho</string>
-    <string name="dejavu_shift_blocked">Abas fixadas e pastas não podem ir para %1$s</string>
-    <string name="dejavu_shift_held">Saia da seleção para enviá-las para %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Em abas fixadas e pastas, Fechar hiberna as abas abertas, já que elas continuam fixadas. Quando uma aba fixada já está hibernando, Fechar a desafixa.</string>
     <string name="dejavu_features_title">Conheça o Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

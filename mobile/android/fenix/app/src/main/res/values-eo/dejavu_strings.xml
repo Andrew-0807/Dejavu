@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Malfermi ligilon el la tondujo</string>
     <string name="dejavu_reopen_closed_tab">Remalfermi fermitan langeton</string>
     <string name="dejavu_search_chip_temporary">Provizora</string>
-    <string name="dejavu_shift_previous">Movi al la antaŭa laborspaco</string>
-    <string name="dejavu_shift_next">Movi al la sekva laborspaco</string>
-    <string name="dejavu_shift_blocked">Pinglitaj langetoj kaj dosierujoj ne povas iri al %1$s</string>
-    <string name="dejavu_shift_held">Finu la elekton por sendi ilin al %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Ĉe pinglitaj langetoj kaj dosierujoj, «Fermi» dormigas la malfermitajn langetojn, ĉar la pingloj restas. Kiam pinglita langeto jam dormas, «Fermi» depinglas ĝin.</string>
     <string name="dejavu_features_title">Malkovru Dejavu</string>
     <string name="dejavu_features_page">%1$d el %2$d</string>

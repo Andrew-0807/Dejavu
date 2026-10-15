@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Аҭаӡҩыраҿынтә алинк аартра</string>
     <string name="dejavu_reopen_closed_tab">Иаркыз абларҭа еиҭах аартра</string>
     <string name="dejavu_search_chip_temporary">Аамҭатәи</string>
-    <string name="dejavu_shift_previous">Аԥхьатәи аҭыԥ ахь аиҭаҵра</string>
-    <string name="dejavu_shift_next">Анаҩстәи аҭыԥ ахь аиҭаҵра</string>
-    <string name="dejavu_shift_blocked">Афиксациатә абларҭақәеи апапкақәеи %1$s ахь ицом</string>
-    <string name="dejavu_shift_held">Авыбор ада – %1$s ахь ицоит</string>
     <string name="dejavu_settings_close_pinned_hint">Ификсациатә абларҭақәеи апапкақәеи рҟны «Аркра» иаарту абларҭақәа ааныжьуеит, афиксациақәа ааныжьхоит азы. Ификсациатә абларҭа ааныжьхар, «Аркра» афиксациа анахуеит.</string>
     <string name="dejavu_features_title">Dejavu аҭҵаара</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>
