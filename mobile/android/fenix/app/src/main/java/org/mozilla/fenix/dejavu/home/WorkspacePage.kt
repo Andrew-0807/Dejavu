@@ -11,7 +11,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.animateScrollBy
-import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -23,7 +22,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
@@ -43,6 +41,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -54,17 +53,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -72,12 +64,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import kotlin.math.abs
-import kotlin.math.roundToInt
-import kotlinx.coroutines.delay
 import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
@@ -103,9 +90,6 @@ import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 
 private val RowShape = RoundedCornerShape(16.dp)
 private val IndentPerLevel = 18.dp
-private val AutoScrollEdge = 64.dp
-private const val AUTO_SCROLL_STEP = 14f
-private const val AUTO_SCROLL_FRAME_MS = 16L
 private const val DIMMED_ALPHA = 0.55f
 private const val RESET_SQUARE_ALPHA = 0.14f
 private val IconSquareSize = 36.dp
@@ -132,10 +116,6 @@ data class WorkspacePageCallbacks(
     val onPinClick: (PinnedItem) -> Unit,
     /** A long press on a row adds [picked] to the selection; returns the whole selection a drag starting now moves. */
     val onStartDrag: (picked: Selection) -> Selection,
-    /** Drops the dragged [Selection] on a [DropTarget]. */
-    val onDrop: (selection: Selection, target: DropTarget) -> Unit,
-    /** Tells whether the drag in progress can be dropped into the essentials, above the page. */
-    val onEssentialsDrop: (EssentialsDrop) -> Unit,
     val onRowAction: (RowAction, ActionTargets) -> Unit,
     val onFolderClick: (PinnedItem) -> Unit,
     val onNewFolder: () -> Unit,
@@ -155,27 +135,6 @@ data class WorkspacePageCallbacks(
     val onRevealed: () -> Unit,
 )
 
-/**
- * What is being dragged and where it would land.
- *
- * @property selection Tabs, pinned tabs and folders being dragged.
- * @property label Text of the floating row that follows the finger.
- * @property isFolder Whether the long-pressed row is a folder.
- * @property pointerY Finger position, relative to the list.
- * @property startY Where the long press happened.
- * @property moved Whether the finger moved enough to be a drag rather than a long press.
- * @property target Where the items would be dropped, or `null` when that position is not allowed.
- */
-private data class DragState(
-    val selection: Selection,
-    val label: String,
-    val isFolder: Boolean,
-    val pointerY: Float,
-    val startY: Float,
-    val moved: Boolean = false,
-    val target: DropTarget? = null,
-)
-
 private enum class DropLine { TOP, BOTTOM, INSIDE }
 
 /** Which row shows the drop position, and how. */
@@ -186,6 +145,7 @@ private data class DropLines(val key: String, val line: DropLine) {
 private data class PageContent(
     val state: WorkspaceState,
     val otherTabs: List<TabSessionState>,
+    val workspace: Workspace,
 )
 
 /** A row of tabs that are not pinned: one tab, or the two tabs of a split view side by side, like in Zen. */
@@ -237,6 +197,8 @@ internal fun WorkspacePage(
     unpinnedRowActions: List<RowAction>,
     folderRowActions: List<RowAction>,
     selection: Selection?,
+    drag: SelectionDrag?,
+    dragAreas: MutableMap<String, PageDragArea>,
     callbacks: WorkspacePageCallbacks,
     canDeleteWorkspace: Boolean,
     canMoveLeft: Boolean,
@@ -257,35 +219,31 @@ internal fun WorkspacePage(
     // The key of the row each pinned item and tab shows on, for the ones sharing a row with a split view partner.
     val lineKeys = pinLines.flatMap { line -> line.entries.map { PIN_PREFIX + it.item.id to line.key } }.toMap() +
         lines.flatMap { line -> line.tabs.map { TAB_PREFIX + it.id to line.key } }
-    val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
 
     val listState = rememberLazyListState()
-    var drag by remember { mutableStateOf<DragState?>(null) }
-    val content by rememberUpdatedState(PageContent(state, otherTabs))
+    val content by rememberUpdatedState(PageContent(state, otherTabs, workspace))
     val latestCallbacks by rememberUpdatedState(callbacks)
-    val haptics = LocalHapticFeedback.current
-    val touchSlop = LocalViewConfiguration.current.touchSlop
-    val autoScrollEdge = with(LocalDensity.current) { AutoScrollEdge.toPx() }
     val isDragging = drag != null
     // A row also sees the finger lifting after a long press as a tap; while a long press or drag is in progress
     // (drag != null) row taps are ignored so the long press only selects.
 
-    LaunchedEffect(isDragging) {
-        while (isDragging) {
-            val current = drag ?: break
-            val height = listState.layoutInfo.viewportSize.height
-            val step = when {
-                current.pointerY < 0f -> 0f
-                current.pointerY < autoScrollEdge -> -AUTO_SCROLL_STEP
-                current.pointerY > height - autoScrollEdge -> AUTO_SCROLL_STEP
-                else -> 0f
-            }
-            if (step != 0f && current.moved && listState.scrollBy(step) != 0f) {
-                val target = if (isDevice) null else targetAt(listState, current.pointerY, current, content.state)
-                drag = current.copy(target = target)
-            }
-            delay(AUTO_SCROLL_FRAME_MS)
+    // The home screen follows the finger and asks the page under it where dragged items would land.
+    val dragArea = remember(listState) {
+        object : PageDragArea {
+            override fun start(offset: Offset, atEnd: Boolean): SelectionDrag? =
+                itemKeyAt(listState, offset.y)?.let { startDrag(it, offset, atEnd, content, latestCallbacks) }
+
+            override fun drop(y: Float, drag: SelectionDrag): PageDrop = pageDrop(listState, y, drag, content)
+
+            override suspend fun scrollBy(step: Float): Float = listState.scrollBy(step)
+
+            override val height: Int
+                get() = listState.layoutInfo.viewportSize.height
         }
+    }
+    DisposableEffect(workspace.id, dragArea) {
+        dragAreas[workspace.id] = dragArea
+        onDispose { if (dragAreas[workspace.id] === dragArea) dragAreas.remove(workspace.id) }
     }
 
     // Scrolls to a reopened tab once it is back in this workspace, unless its row is already in view.
@@ -302,20 +260,12 @@ internal fun WorkspacePage(
         latestCallbacks.onRevealed()
     }
 
-    val dropLines = drag?.takeIf { it.moved }?.target?.let { dropLinesFor(it, lineKeys) }
-    val draggedKeys = drag?.let { current ->
+    val dropLines = drag?.takeIf { it.moved && it.over == workspace.id }?.target?.let { dropLinesFor(it, lineKeys) }
+    val draggedKeys = drag?.takeIf { it.from == workspace.id }?.let { current ->
         val folderIds = current.selection.folderIds
         current.selection.tabIds.map { TAB_PREFIX + it } +
             (current.selection.pinIds + folderIds + folderIds.flatMap { state.descendantIds(it) }).map { PIN_PREFIX + it }
     }.orEmpty().map { lineKeys[it] ?: it }.toSet()
-    val essentialsDrop = drag.let { current ->
-        when {
-            current == null || !current.moved || current.selection.folderIds.isNotEmpty() || isDevice -> EssentialsDrop.NONE
-            current.target == DropTarget.Essentials -> EssentialsDrop.ACTIVE
-            else -> EssentialsDrop.AVAILABLE
-        }
-    }
-    LaunchedEffect(essentialsDrop) { latestCallbacks.onEssentialsDrop(essentialsDrop) }
     val lineColor = MaterialTheme.colorScheme.primary
     val insideColor = MaterialTheme.colorScheme.primaryContainer
 
@@ -325,36 +275,7 @@ internal fun WorkspacePage(
             userScrollEnabled = !isDragging,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 8.dp)
-                .pointerInput(workspace.id, isDevice, isRtl) {
-                    detectDragGesturesAfterLongPress(
-                        onDragStart = { offset ->
-                            val key = itemKeyAt(listState, offset.y)
-                            val atEnd = if (isRtl) offset.x < size.width / 2f else offset.x >= size.width / 2f
-                            drag = key?.let { startDrag(it, offset.y, atEnd, content, latestCallbacks) }
-                            if (drag != null) haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                        },
-                        onDrag = { change, amount ->
-                            val current = drag ?: return@detectDragGesturesAfterLongPress
-                            change.consume()
-                            val y = current.pointerY + amount.y
-                            val moved = current.moved || abs(y - current.startY) > touchSlop
-                            val updated = current.copy(pointerY = y, moved = moved)
-                            drag = updated.copy(
-                                target = if (moved && !isDevice) targetAt(listState, y, updated, content.state) else null,
-                            )
-                        },
-                        onDragEnd = {
-                            val current = drag
-                            drag = null
-                            val target = current?.target
-                            if (current != null && current.moved && target != null) {
-                                latestCallbacks.onDrop(current.selection, target)
-                            }
-                        },
-                        onDragCancel = { drag = null },
-                    )
-                },
+                .padding(horizontal = 8.dp),
         ) {
             item(key = KEY_HEADER) {
                 WorkspaceHeader(
@@ -513,24 +434,21 @@ internal fun WorkspacePage(
                 )
             }
         }
-
-        drag?.takeIf { it.moved }?.let { current ->
-            DragGhost(label = current.label, isFolder = current.isFolder, pointerY = current.pointerY)
-        }
     }
 }
 
 /**
  * Selects the row with [key] and starts dragging it together with the rest of the selection, from a long press at
- * [y]. On the row of a split view it picks the tab on the end side when [atEnd] is set, else the one on the start side.
+ * [offset]. On the row of a split view it picks the tab on the end side when [atEnd] is set, else the one on the start
+ * side.
  */
 private fun startDrag(
     key: String,
-    y: Float,
+    offset: Offset,
     atEnd: Boolean,
     content: PageContent,
     callbacks: WorkspacePageCallbacks,
-): DragState? {
+): SelectionDrag? {
     fun pick(ids: String) = ids.split(PAIR_SEPARATOR).let { if (it.size > 1 && atEnd) it[1] else it[0] }
     val picked: Selection
     val title: String
@@ -553,7 +471,16 @@ private fun startDrag(
         else -> return null
     }
     val dragged = callbacks.onStartDrag(picked)
-    return DragState(dragged, dragLabel(title, dragged), isFolder, y, y)
+    return SelectionDrag(
+        selection = dragged,
+        label = dragLabel(title, dragged),
+        isFolder = isFolder,
+        from = content.workspace.id,
+        // The tabs of a device's workspace follow the device, so they stay in it.
+        canLeave = content.workspace.device == null,
+        pointer = offset,
+        start = offset,
+    )
 }
 
 private fun dragLabel(title: String, selection: Selection): String =
@@ -583,12 +510,27 @@ private fun itemKeyAt(listState: LazyListState, y: Float): String? =
     listState.layoutInfo.visibleItemsInfo.firstOrNull { y >= it.offset && y < it.offset + it.size }?.key as? String
 
 /**
- * Where the dragged items would land at [y], or `null` when they cannot go there. Above the list lie the essentials,
- * which take tabs but no folders.
+ * Where [drag] would land at [y] on the page of [content]. The workspace of a device on the account only takes tabs
+ * that are not pinned, from other workspaces, among its own unpinned tabs; it refuses them on its pinned tabs, and
+ * anything pinned or a folder anywhere.
+ */
+private fun pageDrop(listState: LazyListState, y: Float, drag: SelectionDrag, content: PageContent): PageDrop {
+    if (content.workspace.device == null) return PageDrop(targetAt(listState, y, drag.selection, content.state))
+    if (drag.from == content.workspace.id || y < 0f) return PageDrop(null)
+    val key = itemKeyAt(listState, y) ?: listState.layoutInfo.visibleItemsInfo.lastOrNull()?.key as? String
+    val onPinned = key == null || key == KEY_HEADER || key == KEY_DIVIDER ||
+        key.startsWith(PIN_PREFIX) || key.startsWith(PIN_PAIR_PREFIX)
+    val onlyTabs = drag.selection.pinIds.isEmpty() && drag.selection.folderIds.isEmpty()
+    return if (onPinned || !onlyTabs) PageDrop(null, blocked = true) else PageDrop(DropTarget.UnpinnedStart)
+}
+
+/**
+ * Where [selection] would land at [y], or `null` when it cannot go there. Above the list lie the essentials, which
+ * take tabs but no folders.
  */
 @Suppress("CyclomaticComplexMethod", "ReturnCount")
-private fun targetAt(listState: LazyListState, y: Float, drag: DragState, state: WorkspaceState): DropTarget? {
-    val movingFolders = drag.selection.folderIds
+private fun targetAt(listState: LazyListState, y: Float, selection: Selection, state: WorkspaceState): DropTarget? {
+    val movingFolders = selection.folderIds
     if (y < 0f) return DropTarget.Essentials.takeIf { movingFolders.isEmpty() }
     val items = listState.layoutInfo.visibleItemsInfo
     if (items.isEmpty()) return null
@@ -596,7 +538,7 @@ private fun targetAt(listState: LazyListState, y: Float, drag: DragState, state:
         ?: if (y < items.first().offset) items.first() else items.last()
     val fraction = ((y - info.offset) / info.size.toFloat()).coerceIn(0f, 1f)
     val key = info.key as? String ?: return null
-    val blockedPins = drag.selection.pinIds + movingFolders + movingFolders.flatMap { state.descendantIds(it) }
+    val blockedPins = selection.pinIds + movingFolders + movingFolders.flatMap { state.descendantIds(it) }
 
     val target = when {
         key == KEY_HEADER -> DropTarget.PinnedEdge(atEnd = false)
@@ -614,15 +556,15 @@ private fun targetAt(listState: LazyListState, y: Float, drag: DragState, state:
         }
         key.startsWith(TAB_PREFIX) -> {
             val id = key.removePrefix(TAB_PREFIX)
-            if (id in drag.selection.tabIds) return null
+            if (id in selection.tabIds) return null
             // A single tab dropped on the middle of another one joins it in a split view.
-            val single = drag.selection.tabIds.size == 1 && drag.selection.pinIds.isEmpty() && movingFolders.isEmpty()
+            val single = selection.tabIds.size == 1 && selection.pinIds.isEmpty() && movingFolders.isEmpty()
             if (single && fraction in SPLIT_RANGE) DropTarget.SplitWith(id) else DropTarget.NextToTab(id, after = fraction >= 0.5f)
         }
         // A split view's row shows where its first tab is, so before or after the row is before or after that tab.
         key.startsWith(PAIR_PREFIX) -> {
             val ids = key.removePrefix(PAIR_PREFIX).split(PAIR_SEPARATOR)
-            if (ids.any { it in drag.selection.tabIds }) return null
+            if (ids.any { it in selection.tabIds }) return null
             DropTarget.NextToTab(ids.first(), after = fraction >= 0.5f)
         }
         key.startsWith(PIN_PAIR_PREFIX) -> {
@@ -676,36 +618,6 @@ private fun Modifier.dropLine(line: DropLine?, lineColor: Color, insideColor: Co
             }
         }
     }
-
-@Composable
-private fun DragGhost(label: String, isFolder: Boolean, pointerY: Float) {
-    val shape = RoundedCornerShape(14.dp)
-    val halfHeight = with(LocalDensity.current) { 22.dp.toPx() }
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .offset { IntOffset(x = 32.dp.roundToPx(), y = (pointerY - halfHeight).roundToInt()) }
-            .widthIn(max = 280.dp)
-            .shadow(8.dp, shape)
-            .background(MaterialTheme.colorScheme.surfaceContainerHighest, shape)
-            .padding(horizontal = 14.dp, vertical = 10.dp),
-    ) {
-        Icon(
-            painter = painterResource(if (isFolder) iconsR.drawable.mozac_ic_folder_24 else iconsR.drawable.mozac_ic_tab_24),
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.size(18.dp),
-        )
-        Spacer(Modifier.width(10.dp))
-        Text(
-            text = label,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-        )
-    }
-}
 
 /** The line between pinned and unpinned tabs, with Zen's "Clear" button for the unpinned ones. */
 @Composable

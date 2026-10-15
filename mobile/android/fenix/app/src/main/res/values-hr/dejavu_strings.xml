@@ -277,10 +277,6 @@
     <string name="dejavu_open_clipboard_link">Otvori poveznicu iz međuspremnika</string>
     <string name="dejavu_reopen_closed_tab">Ponovo otvori zatvorenu karticu</string>
     <string name="dejavu_search_chip_temporary">Privremeni</string>
-    <string name="dejavu_shift_previous">Premjesti u prethodni radni prostor</string>
-    <string name="dejavu_shift_next">Premjesti u sljedeći radni prostor</string>
-    <string name="dejavu_shift_blocked">Prikvačene kartice i mape ne mogu se poslati na %1$s</string>
-    <string name="dejavu_shift_held">Izađite iz odabira da biste ih poslali na %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Na prikvačenim karticama i mapama „Zatvori“ uspavljuje otvorene kartice jer ostaju prikvačene. Kada je prikvačena kartica već uspavana, „Zatvori“ je otkvačuje.</string>
     <string name="dejavu_features_title">Otkrijte Dejavu</string>
     <string name="dejavu_features_page">%1$d od %2$d</string>

@@ -75,7 +75,6 @@ import org.mozilla.fenix.components.accounts.FenixFxAEntryPoint
 import org.mozilla.fenix.databinding.AmoCollectionOverrideDialogBinding
 import org.mozilla.fenix.dejavu.DejavuLinks
 import org.mozilla.fenix.dejavu.features.DejavuFeatureTourFragment
-import org.mozilla.fenix.dejavu.sync.DejavuSyncEntry
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.application
 import org.mozilla.fenix.ext.components
@@ -249,9 +248,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
             }
         }
 
-        // Dejavu: the row of workspace sync in the account section says how syncing goes.
-        DejavuSyncEntry(this).bind()
-
         snackbarBinding.set(
             feature =
                 SnackbarBinding(
@@ -424,22 +420,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                     SettingsFragmentDirections.actionSettingsFragmentToAccountProblemFragment(
                         entrypoint = FenixFxAEntryPoint.SettingsMenu
                     )
-                }
-
-                // Dejavu: workspace sync is set on the account page, so signed out this signs in first.
-                resources.getString(R.string.pref_key_dejavu_sync_entry) -> {
-                    val accountManager = requireComponents.backgroundServices.accountManager
-                    when {
-                        accountManager.authenticatedAccount() == null ->
-                            SettingsFragmentDirections.actionSettingsFragmentToTurnOnSyncFragment(
-                                entrypoint = FenixFxAEntryPoint.SettingsMenu
-                            )
-                        accountManager.accountNeedsReauth() ->
-                            SettingsFragmentDirections.actionSettingsFragmentToAccountProblemFragment(
-                                entrypoint = FenixFxAEntryPoint.SettingsMenu
-                            )
-                        else -> SettingsFragmentDirections.actionSettingsFragmentToAccountSettingsFragment()
-                    }
                 }
 
                 // General preferences

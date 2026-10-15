@@ -277,10 +277,6 @@
     <string name="dejavu_open_clipboard_link">Otvori link iz međuspremnika</string>
     <string name="dejavu_reopen_closed_tab">Ponovo otvori zatvoreni tab</string>
     <string name="dejavu_search_chip_temporary">Privremeni</string>
-    <string name="dejavu_shift_previous">Premjesti u prethodni radni prostor</string>
-    <string name="dejavu_shift_next">Premjesti u sljedeći radni prostor</string>
-    <string name="dejavu_shift_blocked">Prikvačeni tabovi i folderi ne mogu ići na uređaj %1$s</string>
-    <string name="dejavu_shift_held">Izađi iz odabira da ih pošalješ na uređaj %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Na prikvačenim tabovima i folderima „Zatvori“ uspavljuje otvorene tabove, jer prikvačeni ostaju. Kad prikvačeni tab već spava, „Zatvori“ ga otkvači.</string>
     <string name="dejavu_features_title">Otkrijte Dejavu</string>
     <string name="dejavu_features_page">%1$d od %2$d</string>

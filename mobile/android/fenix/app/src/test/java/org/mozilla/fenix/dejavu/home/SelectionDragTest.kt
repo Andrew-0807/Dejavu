@@ -16,7 +16,7 @@ import org.mozilla.fenix.dejavu.workspaces.SyncedDevice
 import org.mozilla.fenix.dejavu.workspaces.Workspace
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 
-class SelectionShiftTest {
+class SelectionDragTest {
     private val home = Workspace(id = "home", name = "Home", createdAt = 1L, updatedAt = 1L)
     private val work = Workspace(id = "work", name = "Work", createdAt = 1L, updatedAt = 1L)
     private val laptop = Workspace(id = "laptop", name = "Laptop", createdAt = 1L, updatedAt = 1L, device = SyncedDevice.DESKTOP)
@@ -63,10 +63,15 @@ class SelectionShiftTest {
     }
 
     @Test
-    fun `the held selection shows its folders, then its pinned tabs, then its tabs`() {
-        val items = heldItems(state, targets(Selection(tabIds = setOf(tab.id), pinIds = setOf("essential"), folderIds = setOf("folder"))))
+    fun `the strip at the end of the page leads to the next workspace, the one at the start to the previous one`() {
+        assertEquals(1, sideAt(x = 990f, width = 1000f, strip = 40f, isRtl = false))
+        assertEquals(-1, sideAt(x = 10f, width = 1000f, strip = 40f, isRtl = false))
+        assertEquals(0, sideAt(x = 500f, width = 1000f, strip = 40f, isRtl = false))
+    }
 
-        assertEquals(listOf("folder", "essential", "Tab"), items.map { it.title })
-        assertEquals(listOf(true, false, false), items.map { it.isFolder })
+    @Test
+    fun `in right-to-left languages the next workspace is on the left`() {
+        assertEquals(1, sideAt(x = 10f, width = 1000f, strip = 40f, isRtl = true))
+        assertEquals(-1, sideAt(x = 990f, width = 1000f, strip = 40f, isRtl = true))
     }
 }

@@ -60,9 +60,12 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onPlaced
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -71,6 +74,7 @@ import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.floor
@@ -121,14 +125,8 @@ interface DejavuHomeInteractor : TabEditor {
     /** Sends the requests of a custom action for [targets]. */
     fun onCustomAction(action: CustomAction, targets: ActionTargets)
 
-    /** Moves dragged tabs, pinned items and folders to [target] in [workspaceId]. */
+    /** Moves dragged tabs, pinned items and folders to [target] in [workspaceId], from that workspace or another one. */
     fun onDrop(workspaceId: String, selection: Selection, target: DropTarget)
-
-    /**
-     * Moves [targets] to [workspaceId], not the workspace of a device on the account, with the arrows of selection mode:
-     * pinned tabs and folders to the end of its pinned section, other tabs to the start of its other tabs.
-     */
-    fun onShiftToWorkspace(targets: ActionTargets, workspaceId: String)
 
     /** Reopens the tab closed last in its workspace and shows it; returns the tab's id, or `null` when none is left. */
     fun onReopenClosedTab(): String?
@@ -164,9 +162,10 @@ interface DejavuHomeInteractor : TabEditor {
 /**
  * Workspace based home screen. The essentials sit on top of every workspace. Each workspace is a page with its pinned
  * tabs and folders, then its other tabs; swiping horizontally switches workspace. Long-pressing a tab or folder starts
- * selection mode; keeping the finger down and moving drags the selection, and the arrows on the sides move it to the
- * next workspace. [hasClosedTab] tells whether a closed tab is left to reopen, and [hasClipboardLink] whether the clipboard
- * holds a link to open.
+ * selection mode; keeping the finger down and moving drags the selection, also to other workspaces: resting the finger
+ * on the strip that shows at a side of the page turns to the workspace on that side, see [SelectionDrag].
+ * [hasClosedTab] tells whether a closed tab is left to reopen, and [hasClipboardLink] whether the clipboard holds a
+ * link to open.
  */
 @Suppress("LongMethod", "LongParameterList", "CognitiveComplexMethod", "CyclomaticComplexMethod")
 @Composable
@@ -194,9 +193,10 @@ fun DejavuHome(
     val scope = rememberCoroutineScope()
     var selection by remember { mutableStateOf<Selection?>(null) }
     var dialog by remember { mutableStateOf<HomeDialog?>(null) }
-    var essentialsDrop by remember { mutableStateOf(EssentialsDrop.NONE) }
-    // The page the arrows of selection mode last took the selection to, while they are in use.
-    var shiftIndex by remember { mutableStateOf<Int?>(null) }
+    var drag by remember { mutableStateOf<SelectionDrag?>(null) }
+    // The pages composed now, which tell where dragged items would land on them.
+    val dragAreas = remember { mutableMapOf<String, PageDragArea>() }
+    var pagesWidth by remember { mutableIntStateOf(0) }
     var revealTabId by remember { mutableStateOf<String?>(null) }
     val onPrivatePage = privateIndex != null && pagerState.currentPage == privateIndex
     val currentWorkspace = state.workspaces.getOrNull(pagerState.currentPage) ?: state.workspaces.last()
@@ -249,10 +249,6 @@ fun DejavuHome(
         selection = cleaned.takeIf { it.size > 0 }
     }
 
-    LaunchedEffect(selection == null) {
-        if (selection == null) shiftIndex = null
-    }
-
     LaunchedEffect(revealTabId) {
         if (revealTabId != null) {
             delay(REVEAL_TIMEOUT_MS)
@@ -260,41 +256,101 @@ fun DejavuHome(
         }
     }
 
-    // The workspace of a device on the account the selection is held above: the arrows passed it there, but it only
-    // moves there when selection mode ends.
-    val heldOver = shiftIndex?.let { state.workspaces.getOrNull(it) }?.takeIf { it.device != null && selection != null }
+    val latestState by rememberUpdatedState(state)
+    val latestTabs by rememberUpdatedState(tabs)
+    val latestInteractor by rememberUpdatedState(interactor)
+    val haptics = LocalHapticFeedback.current
+    val touchSlop = LocalViewConfiguration.current.touchSlop
+    val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
+    val stripWidth = with(LocalDensity.current) { SideStripWidth.toPx() }
+    val autoScrollEdge = with(LocalDensity.current) { AutoScrollEdge.toPx() }
 
-    fun endSelection() {
-        val current = selection
-        val device = heldOver
-        selection = null
-        shiftIndex = null
-        if (current == null || device == null) return
-        val targets = ActionTargets.of(state, tabs, current)
-        if (device.canTake(targets)) {
-            interactor.onMoveToWorkspace(targets, device.id)
-        } else {
-            // The move is called off: show the selection back where it stayed.
-            val home = state.workspaces.indexOfFirst { it.id == targets.workspaceIn(state) }
-            if (home >= 0) scope.launch { pagerState.animateScrollToPage(home) }
+    // Follows the finger to [pointer]: the side strip it rests on, the page under it and where the items would land.
+    fun aim(current: SelectionDrag, pointer: Offset): SelectionDrag {
+        val workspaces = latestState.workspaces
+        val moved = current.moved || (pointer - current.start).getDistance() > touchSlop
+        val page = pagerState.currentPage
+        val side = sideAt(pointer.x, pagesWidth.toFloat(), stripWidth, isRtl)
+            .takeIf { moved && current.canLeave && page + it in workspaces.indices } ?: 0
+        val over = workspaces.getOrNull(page)?.id?.takeIf { side == 0 && !pagerState.isScrollInProgress }
+        val drop = over?.takeIf { moved }?.let { dragAreas[it] }?.drop(pointer.y, current) ?: PageDrop(null)
+        return current.copy(
+            pointer = pointer,
+            moved = moved,
+            side = side,
+            over = over,
+            target = drop.target,
+            blocked = drop.blocked,
+        )
+    }
+
+    // Lets go of the dragged items. They land where the finger points; otherwise nothing moves, and the pages turn back
+    // to the workspace they are in.
+    fun endDrag(drop: Boolean) {
+        val current = drag ?: return
+        drag = null
+        val over = current.over
+        val target = current.target
+        if (drop && current.moved && over != null && target != null && !current.blocked) {
+            if (over != current.from && latestState.isDeviceWorkspace(over)) {
+                latestInteractor.onMoveToWorkspace(ActionTargets.of(latestState, latestTabs, current.selection), over)
+            } else {
+                latestInteractor.onDrop(over, current.selection, target)
+            }
+            selection = null
+            return
+        }
+        val home = latestState.workspaces.indexOfFirst { it.id == current.from }
+        if (home >= 0 && home != pagerState.currentPage) scope.launch { pagerState.animateScrollToPage(home) }
+    }
+
+    // Resting the finger on a side strip turns to the workspace on that side, and on to the next ones while it stays.
+    val dragSide = drag?.side ?: 0
+    LaunchedEffect(dragSide) {
+        if (dragSide == 0) return@LaunchedEffect
+        while (true) {
+            delay(SIDE_DWELL_MS)
+            val next = pagerState.currentPage + dragSide
+            if (next !in latestState.workspaces.indices) break
+            haptics.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+            // Not cancelled when the finger leaves the strip, so the pages never stop between two workspaces.
+            scope.launch { pagerState.animateScrollToPage(next) }.join()
         }
     }
 
-    // Moves the selection to the next workspace on the side [delta] points to. Above the workspace of a device it is
-    // only held, see [heldOver].
-    fun shiftSelection(delta: Int) {
-        val current = selection ?: return
-        val index = (shiftIndex ?: pagerState.currentPage) + delta
-        val workspace = state.workspaces.getOrNull(index) ?: return
-        shiftIndex = index
-        val targets = ActionTargets.of(state, tabs, current)
-        if (workspace.device == null && targets.workspaceIn(state) != workspace.id) {
-            interactor.onShiftToWorkspace(targets, workspace.id)
-        }
-        scope.launch { pagerState.animateScrollToPage(index) }
+    // Once the pages stop turning, the page now under the finger tells where the items would land.
+    LaunchedEffect(pagerState.isScrollInProgress) {
+        if (!pagerState.isScrollInProgress) drag?.let { drag = aim(it, it.pointer) }
     }
 
-    BackHandler(enabled = selection != null) { endSelection() }
+    // Near the top or the bottom of the page, the page scrolls under the dragged items.
+    val isDragging = drag != null
+    LaunchedEffect(isDragging) {
+        while (isDragging) {
+            val current = drag ?: break
+            val area = current.over?.takeIf { current.moved }?.let { dragAreas[it] }
+            val y = current.pointer.y
+            val step = when {
+                area == null || y < 0f -> 0f
+                y < autoScrollEdge -> -AUTO_SCROLL_STEP
+                y > area.height - autoScrollEdge -> AUTO_SCROLL_STEP
+                else -> 0f
+            }
+            if (area != null && step != 0f && area.scrollBy(step) != 0f) drag = drag?.let { aim(it, it.pointer) }
+            delay(AUTO_SCROLL_FRAME_MS)
+        }
+    }
+
+    val essentialsDrop = drag.let { current ->
+        when {
+            current == null || !current.moved || current.selection.folderIds.isNotEmpty() || !current.canLeave ||
+                onPrivatePage || currentWorkspace.device != null -> EssentialsDrop.NONE
+            current.target == DropTarget.Essentials -> EssentialsDrop.ACTIVE
+            else -> EssentialsDrop.AVAILABLE
+        }
+    }
+
+    BackHandler(enabled = selection != null) { selection = null }
 
     fun runAction(action: RowAction, targets: ActionTargets, workspaceId: String) {
         when (action) {
@@ -356,19 +412,17 @@ fun DejavuHome(
             } else {
                 SelectionTopBar(
                     count = activeSelection.size,
-                    onClose = ::endSelection,
-                    onSelectAll = if (heldOver != null) {
-                        null
-                    } else {
-                        {
-                            selection = Selection(
-                                tabIds = tabs
-                                    .filter { state.workspaceOf(it.id) == currentWorkspace.id && state.pinOf(it.id) == null }
-                                    .map { it.id }.toSet(),
-                                pinIds = state.pins.filter { it.workspaceId == currentWorkspace.id && !it.isFolder }
-                                    .map { it.id }.toSet(),
-                            )
-                        }
+                    onClose = { selection = null },
+                    onSelectAll = {
+                        selection = Selection(
+                            tabIds = tabs
+                                .filter {
+                                    state.workspaceOf(it.id) == currentWorkspace.id && state.pinOf(it.id) == null
+                                }
+                                .map { it.id }.toSet(),
+                            pinIds = state.pins.filter { it.workspaceId == currentWorkspace.id && !it.isFolder }
+                                .map { it.id }.toSet(),
+                        )
                     },
                 )
             }
@@ -392,7 +446,30 @@ fun DejavuHome(
             }
 
             val selectionTargets = activeSelection?.let { ActionTargets.of(state, tabs, it) }
-            Box(modifier = Modifier.weight(1f).fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .onSizeChanged { pagesWidth = it.width }
+                    // The drag lives above the pages, so it goes on while they turn to another workspace.
+                    .pointerInput(isRtl, stripWidth, touchSlop) {
+                        detectDragGesturesAfterLongPress(
+                            onDragStart = { offset ->
+                                val workspace = latestState.workspaces.getOrNull(pagerState.currentPage)
+                                val atEnd = if (isRtl) offset.x < size.width / 2f else offset.x >= size.width / 2f
+                                drag = workspace?.let { dragAreas[it.id] }?.start(offset, atEnd)
+                                if (drag != null) haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                            },
+                            onDrag = { change, amount ->
+                                val current = drag ?: return@detectDragGesturesAfterLongPress
+                                change.consume()
+                                drag = aim(current, current.pointer + amount)
+                            },
+                            onDragEnd = { endDrag(drop = true) },
+                            onDragCancel = { endDrag(drop = false) },
+                        )
+                    },
+            ) {
                 HorizontalPager(
                     state = pagerState,
                     userScrollEnabled = activeSelection == null,
@@ -421,6 +498,8 @@ fun DejavuHome(
                         unpinnedRowActions = unpinnedRowActions,
                         folderRowActions = folderRowActions,
                         selection = activeSelection,
+                        drag = drag,
+                        dragAreas = dragAreas,
                         callbacks = WorkspacePageCallbacks(
                             onTabClick = { tab ->
                                 val current = selection
@@ -432,11 +511,6 @@ fun DejavuHome(
                                 selection = started
                                 started
                             },
-                            onDrop = { dragged, target ->
-                                interactor.onDrop(workspace.id, dragged, target)
-                                selection = null
-                            },
-                            onEssentialsDrop = { essentialsDrop = it },
                             onRowAction = { action, targets -> runAction(action, targets, workspace.id) },
                             onFolderClick = { folder ->
                                 val current = selection
@@ -469,32 +543,34 @@ fun DejavuHome(
                     )
                 }
 
-                if (heldOver != null && selectionTargets != null) {
-                    HeldSelection(
-                        items = heldItems(state, selectionTargets),
-                        workspace = heldOver,
-                        blocked = !heldOver.canTake(selectionTargets),
-                    )
+                val dragging = drag?.takeIf { it.moved }
+                if (dragging != null && dragging.canLeave && !onPrivatePage) {
+                    val page = pagerState.currentPage
+                    state.workspaces.getOrNull(page - 1)?.let { previous ->
+                        SideStrip(
+                            workspace = previous,
+                            container = previous.containerId?.let { containers[it] },
+                            active = dragging.side == -1,
+                            atEnd = false,
+                            modifier = Modifier.align(Alignment.CenterStart),
+                        )
+                    }
+                    state.workspaces.getOrNull(page + 1)?.let { next ->
+                        SideStrip(
+                            workspace = next,
+                            container = next.containerId?.let { containers[it] },
+                            active = dragging.side == 1,
+                            atEnd = true,
+                            modifier = Modifier.align(Alignment.CenterEnd),
+                        )
+                    }
                 }
-                // Selected tabs of a device's workspace follow the device, so they stay where they are.
-                val shiftFrom = shiftIndex ?: pagerState.currentPage
-                val canShift = selectionTargets != null && !selectionTargets.restricted && !onPrivatePage &&
-                    essentialsDrop == EssentialsDrop.NONE
-                if (canShift && shiftFrom > 0) {
-                    ShiftArrow(
-                        icon = iconsR.drawable.mozac_ic_chevron_right_24,
-                        description = R.string.dejavu_shift_previous,
-                        onClick = { shiftSelection(-1) },
-                        modifier = Modifier.align(Alignment.CenterStart),
-                        mirrored = true,
-                    )
-                }
-                if (canShift && shiftFrom < state.workspaces.size - 1) {
-                    ShiftArrow(
-                        icon = iconsR.drawable.mozac_ic_chevron_right_24,
-                        description = R.string.dejavu_shift_next,
-                        onClick = { shiftSelection(1) },
-                        modifier = Modifier.align(Alignment.CenterEnd),
+                if (dragging != null) {
+                    DragGhost(
+                        label = dragging.label,
+                        isFolder = dragging.isFolder,
+                        pointer = dragging.pointer,
+                        blocked = dragging.blocked,
                     )
                 }
             }
@@ -516,7 +592,7 @@ fun DejavuHome(
                     onBookmarksClick = interactor::onBookmarksClick,
                     onHistoryClick = interactor::onHistoryClick,
                 )
-            } else if (heldOver == null && selectionTargets != null) {
+            } else if (selectionTargets != null) {
                 SelectionBar(
                     actions = selectionActions.filter { it.appliesTo(selectionTargets) },
                     onAction = { runAction(it, selectionTargets, currentWorkspace.id) },
@@ -702,6 +778,12 @@ private fun SelectionAction(
 }
 
 private const val SELECTION_ACTIONS_PER_ROW = 6
+
+// How long the finger rests on a side strip before the pages turn to the next workspace.
+private const val SIDE_DWELL_MS = 600L
+private val AutoScrollEdge = 64.dp
+private const val AUTO_SCROLL_STEP = 14f
+private const val AUTO_SCROLL_FRAME_MS = 16L
 
 // How long a reopened tab may take to come back before the home stops waiting to scroll to it.
 private const val REVEAL_TIMEOUT_MS = 3000L

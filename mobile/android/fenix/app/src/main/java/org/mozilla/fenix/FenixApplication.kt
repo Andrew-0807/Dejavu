@@ -374,6 +374,9 @@ open class FenixApplication : Application(), Provider, ThemeProvider {
         // Note: This is a historical artifact and should be revisited.
         val store = components.core.store
 
+        // Dejavu: the search engines shown above the address bar, picked once they have loaded.
+        DejavuDefaults.applySearchShortcutsOnce(applicationContext, store, applicationScope)
+
         // StartupMetrics accesses shared preferences so do this off thread.
         applicationScope.launch(ioDispatcher) {
             setStartupMetrics(store, components.settings)

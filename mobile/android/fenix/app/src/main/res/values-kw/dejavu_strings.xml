@@ -298,10 +298,6 @@
     <string name="dejavu_open_clipboard_link">Ygeri kevren a\'n klypbord</string>
     <string name="dejavu_reopen_closed_tab">Dasygeri tab degeys</string>
     <string name="dejavu_search_chip_temporary">Dres prys</string>
-    <string name="dejavu_shift_previous">Movya dhe\'n tyller-ober kyns</string>
-    <string name="dejavu_shift_next">Movya dhe\'n tyller-ober nessa</string>
-    <string name="dejavu_shift_blocked">Ny yll tabow fastyes ha plegellow mos dhe %1$s</string>
-    <string name="dejavu_shift_held">Gas dewis rag aga danvon dhe %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">War dabow fastyes ha plegellow, \'Degea\' a worr an tabow igor dhe goska, rag an tabow fastyes a drig. Pan vo tab fastyes ow koska, \'Degea\' a\'n difastya.</string>
     <string name="dejavu_features_title">Diskudha Dejavu</string>
     <string name="dejavu_features_page">%1$d a %2$d</string>

@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">क्लिपबोर्डमधील लिंक उघडा</string>
     <string name="dejavu_reopen_closed_tab">बंद केलेला टॅब पुन्हा उघडा</string>
     <string name="dejavu_search_chip_temporary">तात्पुरता</string>
-    <string name="dejavu_shift_previous">मागील कार्यक्षेत्रात हलवा</string>
-    <string name="dejavu_shift_next">पुढील कार्यक्षेत्रात हलवा</string>
-    <string name="dejavu_shift_blocked">पिन केलेले टॅब आणि फोल्डर %1$s वर जाऊ शकत नाहीत</string>
-    <string name="dejavu_shift_held">त्यांना %1$s वर पाठवण्यासाठी निवडीतून बाहेर पडा</string>
     <string name="dejavu_settings_close_pinned_hint">पिन केलेल्या टॅब आणि फोल्डरवर, पिन कायम राहत असल्याने “बंद करा” उघडे टॅब स्लीप मोडमध्ये ठेवते. पिन केलेला टॅब स्लीप मोडमध्ये गेल्यावर, “बंद करा” तो अनपिन करते.</string>
     <string name="dejavu_features_title">Dejavu जाणून घ्या</string>
     <string name="dejavu_features_page">%2$d पैकी %1$d</string>

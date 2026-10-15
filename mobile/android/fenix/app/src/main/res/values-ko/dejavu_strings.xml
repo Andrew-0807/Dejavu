@@ -263,10 +263,6 @@
     <string name="dejavu_open_clipboard_link">클립보드의 링크 열기</string>
     <string name="dejavu_reopen_closed_tab">닫은 탭 다시 열기</string>
     <string name="dejavu_search_chip_temporary">임시</string>
-    <string name="dejavu_shift_previous">이전 작업 공간으로 이동</string>
-    <string name="dejavu_shift_next">다음 작업 공간으로 이동</string>
-    <string name="dejavu_shift_blocked">고정된 탭과 폴더는 %1$s에 보낼 수 없음</string>
-    <string name="dejavu_shift_held">%1$s에 보내려면 선택을 종료하세요</string>
     <string name="dejavu_settings_close_pinned_hint">고정된 탭과 폴더에서는 고정이 유지되므로 \'닫기\'를 누르면 열린 탭이 절전됩니다. 고정된 탭이 절전된 후에 \'닫기\'를 누르면 고정이 해제됩니다.</string>
     <string name="dejavu_features_title">Dejavu 둘러보기</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>

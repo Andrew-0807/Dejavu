@@ -277,10 +277,6 @@
     <string name="dejavu_open_clipboard_link">Deschide linkul din clipboard</string>
     <string name="dejavu_reopen_closed_tab">Redeschide fila închisă</string>
     <string name="dejavu_search_chip_temporary">Temporar</string>
-    <string name="dejavu_shift_previous">Mută în spațiul de lucru anterior</string>
-    <string name="dejavu_shift_next">Mută în spațiul de lucru următor</string>
-    <string name="dejavu_shift_blocked">Filele fixate și folderele nu pot fi trimise către %1$s</string>
-    <string name="dejavu_shift_held">Ieși din selecție pentru a le trimite către %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">La filele fixate și la foldere, „Închide” hibernează filele deschise, deoarece fixările rămân. Când o filă fixată este deja în hibernare, „Închide” îi anulează fixarea.</string>
     <string name="dejavu_features_title">Descoperă Dejavu</string>
     <string name="dejavu_features_page">%1$d din %2$d</string>

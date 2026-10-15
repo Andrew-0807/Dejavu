@@ -263,10 +263,6 @@
     <string name="dejavu_open_clipboard_link">ເປີດລິ້ງຈາກຄລິບບອດ</string>
     <string name="dejavu_reopen_closed_tab">ເປີດແທັບທີ່ປິດແລ້ວຄືນໃຫມ່</string>
     <string name="dejavu_search_chip_temporary">ຊົ່ວຄາວ</string>
-    <string name="dejavu_shift_previous">ຍ້າຍໄປພື້ນທີ່ເຮັດວຽກກ່ອນໜ້າ</string>
-    <string name="dejavu_shift_next">ຍ້າຍໄປພື້ນທີ່ເຮັດວຽກຕໍ່ໄປ</string>
-    <string name="dejavu_shift_blocked">ແທັບທີ່ປັກໄວ້ ແລະ ໂຟນເດີ ບໍ່ສາມາດສົ່ງໄປທີ່ %1$s ໄດ້</string>
-    <string name="dejavu_shift_held">ອອກຈາກການເລືອກເພື່ອສົ່ງພວກມັນໄປທີ່ %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">ໃນແທັບທີ່ປັກໄວ້ ແລະ ໂຟນເດີ, “ປິດ” ຈະໃຫ້ແທັບທີ່ເປີດຢູ່ພັກ ເພາະການປັກຍັງຄົງຢູ່. ເມື່ອແທັບທີ່ປັກໄວ້ພັກແລ້ວ, “ປິດ” ຈະເອົາປັກອອກ.</string>
     <string name="dejavu_features_title">ຄົ້ນພົບ Dejavu</string>
     <string name="dejavu_features_page">%1$d ຈາກ %2$d</string>

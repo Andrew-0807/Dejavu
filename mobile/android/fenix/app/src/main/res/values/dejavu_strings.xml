@@ -188,14 +188,6 @@
     <!-- Chip above the address bar while searching for a new tab: the tab opens in a new temporary container. -->
     <string name="dejavu_search_chip_temporary">Temporary</string>
 
-    <!-- Home: the arrows on the sides of the page in selection mode, which move the selected tabs and folders -->
-    <string name="dejavu_shift_previous">Move to the previous workspace</string>
-    <string name="dejavu_shift_next">Move to the next workspace</string>
-    <!-- The selection is held above the workspace of a Firefox computer or phone, which cannot take pinned tabs or folders. %1$s is the device's name. -->
-    <string name="dejavu_shift_blocked">Pinned tabs and folders can’t go to %1$s</string>
-    <!-- The selected tabs are held above the workspace of a Firefox computer or phone. Exiting selection mode sends them there. %1$s is the device's name. -->
-    <string name="dejavu_shift_held">Exit selection to send them to %1$s</string>
-
     <!-- Containers: delete options -->
     <string name="dejavu_container_delete_close_tabs">Close its tabs, pinned tabs included</string>
     <string name="dejavu_container_delete_move_tabs">Or move its tabs to</string>
@@ -302,7 +294,6 @@
     <string name="pref_key_dejavu_sync_normal_tabs" translatable="false">pref_key_dejavu_sync_normal_tabs</string>
     <string name="pref_key_dejavu_sync_turn_on" translatable="false">pref_key_dejavu_sync_turn_on</string>
     <string name="pref_key_dejavu_sync_hint" translatable="false">pref_key_dejavu_sync_hint</string>
-    <string name="pref_key_dejavu_sync_entry" translatable="false">pref_key_dejavu_sync_entry</string>
     <string name="dejavu_settings_sync">Sync with Firefox or Zen</string>
     <string name="dejavu_sync_hint">Keeps your workspaces with their colors and icons, containers, pinned tabs, essentials and folders the same as in Zen Browser on your computer and in Dejavu on your other devices. It uses the Mozilla account you sync Firefox data with.</string>
     <string name="dejavu_sync_zen_hint">In Zen, open Settings, then Sync, and turn on sidebar sync. Tabs that are not pinned are not synced.</string>

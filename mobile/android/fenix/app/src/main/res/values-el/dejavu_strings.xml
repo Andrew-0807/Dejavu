@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Άνοιγμα συνδέσμου από το πρόχειρο</string>
     <string name="dejavu_reopen_closed_tab">Επαναφορά κλεισμένης καρτέλας</string>
     <string name="dejavu_search_chip_temporary">Προσωρινός</string>
-    <string name="dejavu_shift_previous">Μετακίνηση στον προηγούμενο χώρο εργασίας</string>
-    <string name="dejavu_shift_next">Μετακίνηση στον επόμενο χώρο εργασίας</string>
-    <string name="dejavu_shift_blocked">Οι καρφιτσωμένες καρτέλες και οι φάκελοι δεν μπορούν να μεταφερθούν στη συσκευή %1$s</string>
-    <string name="dejavu_shift_held">Βγείτε από την επιλογή για να τις στείλετε στη συσκευή %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Στις καρφιτσωμένες καρτέλες και στους φακέλους, το «Κλείσιμο» αδρανοποιεί τις ανοιχτές καρτέλες, αφού οι καρφιτσώσεις παραμένουν. Όταν μια καρφιτσωμένη καρτέλα είναι ήδη σε αδράνεια, το «Κλείσιμο» την ξεκαρφιτσώνει.</string>
     <string name="dejavu_features_title">Ανακαλύψτε το Dejavu</string>
     <string name="dejavu_features_page">%1$d από %2$d</string>

@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">പകർത്തൽപെട്ടിയിൽ നിന്ന് ലിങ്ക് തുറക്കുക</string>
     <string name="dejavu_reopen_closed_tab">അടച്ച ടാബ് വീണ്ടും തുറക്കുക</string>
     <string name="dejavu_search_chip_temporary">താൽക്കാലികം</string>
-    <string name="dejavu_shift_previous">മുമ്പത്തെ പണിയിടത്തിലേക്ക് നീക്കുക</string>
-    <string name="dejavu_shift_next">അടുത്ത പണിയിടത്തിലേക്ക് നീക്കുക</string>
-    <string name="dejavu_shift_blocked">പിൻ ചെയ്ത ടാബുകളും ഫോൾഡറുകളും %1$s-ലേക്ക് അയയ്ക്കാനാവില്ല</string>
-    <string name="dejavu_shift_held">അവ %1$s-ലേക്ക് അയയ്ക്കാൻ തിരഞ്ഞെടുപ്പിൽ നിന്ന് പുറത്തുകടക്കുക</string>
     <string name="dejavu_settings_close_pinned_hint">പിൻ ചെയ്ത ടാബുകളിലും ഫോൾഡറുകളിലും, പിന്നുകൾ നിലനിൽക്കുന്നതിനാൽ “അടയ്ക്കുക” തുറന്ന ടാബുകളെ സ്ലീപ്പിലാക്കും. പിൻ ചെയ്ത ഒരു ടാബ് സ്ലീപ്പിലായാൽ, “അടയ്ക്കുക” അതിന്റെ പിൻ നീക്കും.</string>
     <string name="dejavu_features_title">Dejavu പരിചയപ്പെടുക</string>
     <string name="dejavu_features_page">%2$d ൽ %1$d</string>

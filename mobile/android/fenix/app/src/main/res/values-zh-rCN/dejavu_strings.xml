@@ -263,10 +263,6 @@
     <string name="dejavu_open_clipboard_link">打开剪贴板中的链接</string>
     <string name="dejavu_reopen_closed_tab">重新打开关闭的标签页</string>
     <string name="dejavu_search_chip_temporary">临时</string>
-    <string name="dejavu_shift_previous">移动到上一个工作区</string>
-    <string name="dejavu_shift_next">移动到下一个工作区</string>
-    <string name="dejavu_shift_blocked">固定标签页和文件夹无法移至 %1$s</string>
-    <string name="dejavu_shift_held">退出选择即可将其发送到 %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">在固定标签页和文件夹上，“关闭”会让已打开的标签页休眠，因为固定标签页会保留。固定标签页休眠后，“关闭”会将其取消固定。</string>
     <string name="dejavu_features_title">探索 Dejavu</string>
     <string name="dejavu_features_page">%1$d/%2$d</string>

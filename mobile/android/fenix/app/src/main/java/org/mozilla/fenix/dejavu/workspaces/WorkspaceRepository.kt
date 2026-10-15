@@ -472,9 +472,9 @@ class WorkspaceRepository private constructor(context: Context) {
 
     /**
      * Moves unpinned tabs and pinned items (with everything inside folders) to another workspace, the pinned items to
-     * the top level of its pinned section: where they come in the list of pinned items, or with [atEnd] last.
+     * the top level of its pinned section, where they come in the list of pinned items.
      */
-    fun moveToWorkspace(tabIds: Set<String>, itemIds: Set<String>, workspaceId: String, atEnd: Boolean = false) =
+    fun moveToWorkspace(tabIds: Set<String>, itemIds: Set<String>, workspaceId: String) =
         mutate { state ->
             if (state.workspaces.none { it.id == workspaceId }) return@mutate state
             val nested = itemIds.flatMap { state.descendantIds(it) }.toSet()
@@ -489,7 +489,7 @@ class WorkspaceRepository private constructor(context: Context) {
                 }
             }
             state.copy(
-                pins = if (atEnd) pins.filterNot { it.id in itemIds } + pins.filter { it.id in itemIds } else pins,
+                pins = pins,
                 assignments = state.assignments + movedTabs.associateWith { workspaceId },
             )
         }

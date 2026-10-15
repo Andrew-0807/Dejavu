@@ -284,10 +284,6 @@
     <string name="dejavu_open_clipboard_link">Відкрити посилання з буфера обміну</string>
     <string name="dejavu_reopen_closed_tab">Відновити закриту вкладку</string>
     <string name="dejavu_search_chip_temporary">Тимчасовий</string>
-    <string name="dejavu_shift_previous">Перемістити до попереднього робочого простору</string>
-    <string name="dejavu_shift_next">Перемістити до наступного робочого простору</string>
-    <string name="dejavu_shift_blocked">Закріплені вкладки і теки не можна перемістити до %1$s</string>
-    <string name="dejavu_shift_held">Вийдіть з режиму вибору, щоб надіслати їх до %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">На закріплених вкладках і теках кнопка «Закрити» присипляє відкриті вкладки, адже закріплені вкладки залишаються. Коли закріплена вкладка вже спить, «Закрити» відкріплює її.</string>
     <string name="dejavu_features_title">Знайомство з Dejavu</string>
     <string name="dejavu_features_page">%1$d з %2$d</string>

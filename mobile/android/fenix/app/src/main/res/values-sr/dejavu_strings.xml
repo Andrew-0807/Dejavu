@@ -277,10 +277,6 @@
     <string name="dejavu_open_clipboard_link">Отвори везу из привремене меморије</string>
     <string name="dejavu_reopen_closed_tab">Поново отвори затворени језичак</string>
     <string name="dejavu_search_chip_temporary">Привремени</string>
-    <string name="dejavu_shift_previous">Премести у претходни радни простор</string>
-    <string name="dejavu_shift_next">Премести у следећи радни простор</string>
-    <string name="dejavu_shift_blocked">Закачени језичци и фасцикле не могу да се преместе на %1$s</string>
-    <string name="dejavu_shift_held">Изађи из избора да их пошаљеш на %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">На закаченим језичцима и фасциклама дугме Затвори успављује отворене језичке, јер закачени језичци остају. Ако закачени језичак већ спава, дугме Затвори ће га откачити.</string>
     <string name="dejavu_features_title">Откријте Dejavu</string>
     <string name="dejavu_features_page">%1$d од %2$d</string>

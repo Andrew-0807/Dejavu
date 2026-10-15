@@ -270,10 +270,6 @@
     <string name="dejavu_open_clipboard_link">Je\'ik enlace ti\' portapapeles</string>
     <string name="dejavu_reopen_closed_tab">Je\'ik tu ka\'atéen pestaña cerrada</string>
     <string name="dejavu_search_chip_temporary">Temporal</string>
-    <string name="dejavu_shift_previous">Mover al espacio de trabajo anterior</string>
-    <string name="dejavu_shift_next">Mover al espacio de trabajo siguiente</string>
-    <string name="dejavu_shift_blocked">Pestañas fijadas yéetel carpetas ma\' tu páajtal u bin ti\' %1$s</string>
-    <string name="dejavu_shift_held">Jóok\'ol ti\' selección utia\'al u bin ti\' %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">En las pestañas fijadas y las carpetas, “Cerrar” duerme las pestañas abiertas, porque las fijadas se quedan. Cuando una pestaña fijada ya está dormida, “Cerrar” le quita el fijado.</string>
     <string name="dejavu_features_title">Descubre Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>

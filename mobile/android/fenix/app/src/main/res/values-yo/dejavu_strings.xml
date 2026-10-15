@@ -263,10 +263,6 @@
     <string name="dejavu_open_clipboard_link">Ṣí líǹkì láti kílípíbọọ̀dù</string>
     <string name="dejavu_reopen_closed_tab">Tún ṣí táàbù tí o tì</string>
     <string name="dejavu_search_chip_temporary">Fún ìgbà díẹ̀</string>
-    <string name="dejavu_shift_previous">Gbé lọ sí ibi-iṣẹ́ tí ó ṣáájú</string>
-    <string name="dejavu_shift_next">Gbé lọ sí ibi-iṣẹ́ tí ó kàn</string>
-    <string name="dejavu_shift_blocked">Àwọn táàbù tí a fi Pin sí àti fódà kò lè lọ sí %1$s</string>
-    <string name="dejavu_shift_held">Jáde nínú yíyan láti fi wọ́n ránṣẹ́ sí %1$s</string>
     <string name="dejavu_settings_close_pinned_hint">Lórí àwọn táàbù tí a fi Pin sí àti fódà, bọ́tìnnì Pa á dé máa ń mú àwọn táàbù tí ó ṣí sùn, nítorí pé àwọn táàbù tí a fi Pin sí kì í lọ. Nígbà tí táàbù tí a fi Pin sí bá ti ń sùn, Pa á dé yóò yọ Pin rẹ̀ kúrò.</string>
     <string name="dejavu_features_title">Ṣàwárí Dejavu</string>
     <string name="dejavu_features_page">%1$d nínú %2$d</string>

@@ -9,7 +9,19 @@ import android.os.Handler
 import android.os.Looper
 import androidx.core.content.edit
 import androidx.work.WorkManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import mozilla.components.browser.icons.IconRequest
+import mozilla.components.browser.icons.generator.DefaultIconGenerator
+import mozilla.components.browser.state.action.SearchAction
+import mozilla.components.browser.state.state.availableSearchEngines
+import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
+import mozilla.components.browser.state.store.BrowserStore
+import mozilla.components.feature.search.ext.createSearchEngine
 import org.mozilla.fenix.R
+import org.mozilla.fenix.components.ADDITIONAL_BUNDLED_SEARCH_ENGINE_IDS
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getPreferenceKey
 import org.mozilla.fenix.onboarding.FenixOnboarding
@@ -25,6 +37,17 @@ internal object DejavuDefaults {
     private const val VERSION = 7
     private const val POCKET_STORIES_WORK_TAG = "mozilla.components.service.pocket.recommendations.refresh.work.tag"
     private const val POCKET_SPONSORED_WORK_TAG = "mozilla.components.service.pocket.sponsored.content.refresh.work.tag"
+    private const val KEY_SEARCH_VERSION = "search_defaults_version"
+    private const val SEARCH_VERSION = 1
+
+    // The search engines shown above the address bar from the start; the others are turned on in the search settings.
+    private val SHORTCUT_ENGINE_IDS = setOf("google", "ddg", "youtube")
+
+    // Site searches Dejavu adds to the search engines, as a name, a search URL and the site whose letter is their icon.
+    private val ADDED_ENGINES = listOf(
+        Triple("GitHub", "https://github.com/search?q={searchTerms}", "https://github.com"),
+        Triple("Stack Overflow", "https://stackoverflow.com/search?q={searchTerms}", "https://stackoverflow.com"),
+    )
 
     /**
      * Applies the defaults the first time this Dejavu version runs. Runs before telemetry and experiments start, so
@@ -114,6 +137,41 @@ internal object DejavuDefaults {
                     cancelAllWorkByTag(POCKET_SPONSORED_WORK_TAG)
                 }
             }
+        }
+    }
+
+    /**
+     * Picks the search engines shown above the address bar once they have loaded: Google, DuckDuckGo, YouTube and the
+     * default one are on, the others off. GitHub and Stack Overflow join the search engines, off. Someone who already
+     * picked their shortcuts keeps them and only gets the added ones. Their icon is the site's letter, so nothing is
+     * downloaded for them.
+     */
+    fun applySearchShortcutsOnce(context: Context, store: BrowserStore, scope: CoroutineScope) {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        if (prefs.getInt(KEY_SEARCH_VERSION, 0) >= SEARCH_VERSION) return
+        scope.launch(Dispatchers.Main) {
+            val search = store.stateFlow.first { it.search.complete }.search
+            val disabled = search.disabledSearchEngineIds.toSet()
+            if (disabled == ADDITIONAL_BUNDLED_SEARCH_ENGINE_IDS.toSet()) {
+                val shown = SHORTCUT_ENGINE_IDS + setOfNotNull(search.selectedOrDefaultSearchEngine?.id)
+                val engines = search.regionSearchEngines + search.additionalSearchEngines +
+                    search.availableSearchEngines + search.customSearchEngines
+                engines.map { it.id }.distinct().forEach { id ->
+                    val enabled = id in shown
+                    val wasOff = id in disabled
+                    if (enabled == wasOff) {
+                        store.dispatch(SearchAction.UpdateDisabledSearchEngineIdsAction(id, isEnabled = enabled))
+                    }
+                }
+            }
+            val existing = search.customSearchEngines.flatMap { it.resultUrls }.toSet()
+            ADDED_ENGINES.filter { (_, url, _) -> url !in existing }.forEach { (name, url, site) ->
+                val icon = DefaultIconGenerator().generate(context, IconRequest(site)).bitmap
+                val engine = createSearchEngine(name, url, icon)
+                context.components.useCases.searchUseCases.addSearchEngine(engine)
+                store.dispatch(SearchAction.UpdateDisabledSearchEngineIdsAction(engine.id, isEnabled = false))
+            }
+            prefs.edit { putInt(KEY_SEARCH_VERSION, SEARCH_VERSION) }
         }
     }
 }
