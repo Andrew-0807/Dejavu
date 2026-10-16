@@ -5,6 +5,7 @@
 package org.mozilla.fenix.dejavu.sync
 
 import mozilla.components.browser.state.state.ContainerState
+import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -14,8 +15,15 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerRecord
+import org.mozilla.fenix.dejavu.sync.ZenRecords.FOLDER
 import org.mozilla.fenix.dejavu.sync.ZenRecords.SPACE_PERSONAL
+import org.mozilla.fenix.dejavu.sync.ZenRecords.SPACE_WORK
+import org.mozilla.fenix.dejavu.sync.ZenRecords.SPLIT
+import org.mozilla.fenix.dejavu.sync.ZenRecords.SUBFOLDER
+import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_IN_FOLDER
+import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_IN_SUBFOLDER
 import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_NORMAL
+import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_PINNED
 import org.mozilla.fenix.dejavu.workspaces.PinKind
 import org.mozilla.fenix.dejavu.workspaces.PinnedItem
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
@@ -197,5 +205,61 @@ class SpacesNormalTabsTest {
         assertEquals("pin-1", result.state.syncIdOf("tab-9"))
         assertEquals(SPACE_PERSONAL, result.state.assignments["tab-9"])
         assertTrue(result.tabOps.isEmpty())
+    }
+
+    /** Zen's desktop with its unpinned tab kept in the folder, between the folder's pinned tab and its subfolder. */
+    private fun desktopWithUnpinnedTabInFolder(): List<SpacesRecord> = ZenRecords.desktop().map { record ->
+        when (record.id) {
+            SPACE_PERSONAL -> SpacesRecord.of(
+                record.id,
+                RecordKind.SPACE,
+                SyncJson.copy(record.data!!).put("children", JSONArray(listOf(TAB_PINNED, FOLDER, SPLIT))),
+            )
+            FOLDER -> ZenRecords.folder(FOLDER, "Reading", SPACE_PERSONAL, listOf(TAB_IN_FOLDER, TAB_NORMAL, SUBFOLDER))
+            TAB_NORMAL -> ZenRecords.tab(TAB_NORMAL, news, SPACE_PERSONAL, folder = FOLDER, pinned = false)
+            else -> record
+        }
+    }
+
+    @Test
+    fun `an unpinned tab Zen keeps in a folder goes back in that folder, so syncing sends nothing back`() {
+        val records = desktopWithUnpinnedTabInFolder()
+        val result = apply(ZenRecords.freshDejavu(), records, tabs = emptyList())
+
+        val changes = changes(result.state, listOf(tab(TAB_NORMAL)), server = records.associateBy { it.id })
+
+        assertEquals(SPACE_PERSONAL, result.state.assignments[TAB_NORMAL])
+        assertFalse(TAB_NORMAL in changes)
+        assertFalse(FOLDER in changes)
+        assertFalse(SPACE_PERSONAL in changes)
+    }
+
+    @Test
+    fun `an unpinned tab moved here to another workspace leaves its folder`() {
+        val records = desktopWithUnpinnedTabInFolder()
+        val synced = apply(ZenRecords.freshDejavu(), records, tabs = emptyList()).state
+        val moved = synced.copy(assignments = synced.assignments + (TAB_NORMAL to SPACE_WORK))
+
+        val changes = changes(moved, listOf(tab(TAB_NORMAL)), server = records.associateBy { it.id })
+
+        val record = changes.getValue(TAB_NORMAL).data!!
+        assertEquals(SPACE_WORK, record.string("workspaceUuid"))
+        assertEquals(JSONObject.NULL, record.opt("folderId"))
+        assertEquals(listOf(TAB_IN_FOLDER, SUBFOLDER), changes.getValue(FOLDER).data!!.strings("children"))
+        assertEquals(TAB_NORMAL, changes.getValue(SPACE_WORK).data!!.strings("children")!!.last())
+    }
+
+    @Test
+    fun `an unpinned tab whose folder is deleted here leaves the folder`() {
+        val records = desktopWithUnpinnedTabInFolder()
+        val synced = apply(ZenRecords.freshDejavu(), records, tabs = emptyList()).state
+        val inFolder = setOf(FOLDER, TAB_IN_FOLDER, SUBFOLDER, TAB_IN_SUBFOLDER)
+        val deleted = synced.copy(pins = synced.pins.filterNot { it.id in inFolder })
+
+        val changes = changes(deleted, listOf(tab(TAB_NORMAL)), server = records.associateBy { it.id })
+
+        assertTrue(changes.getValue(FOLDER).deleted)
+        assertEquals(JSONObject.NULL, changes.getValue(TAB_NORMAL).data!!.opt("folderId"))
+        assertEquals(TAB_NORMAL, changes.getValue(SPACE_PERSONAL).data!!.strings("children")!!.last())
     }
 }
