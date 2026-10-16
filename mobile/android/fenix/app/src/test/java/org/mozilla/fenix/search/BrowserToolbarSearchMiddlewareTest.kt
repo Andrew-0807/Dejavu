@@ -60,6 +60,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -113,6 +114,9 @@ import org.mozilla.fenix.telemetry.SURFACE_HOME
 import org.mozilla.fenix.utils.Settings
 import org.robolectric.RobolectricTestRunner
 
+private const val DEJAVU_NO_SEARCH_SELECTOR =
+    "Dejavu picks the search engine with the chips above the address bar, so the address bar has no search selector"
+
 @RunWith(RobolectricTestRunner::class)
 class BrowserToolbarSearchMiddlewareTest {
     @get:Rule val gleanTestRule = GleanTestRule(testContext)
@@ -138,15 +142,12 @@ class BrowserToolbarSearchMiddlewareTest {
     }
 
     @Test
-    fun `WHEN the toolbar enters in edit mode THEN a new search selector button is added`() {
+    fun `WHEN the toolbar enters in edit mode THEN no search selector button is added, since Dejavu picks the search engine above the address bar`() {
         val (_, store) = buildMiddlewareAndAddToStore()
 
         store.dispatch(EnterEditMode(false))
 
-        assertSearchSelectorEquals(
-            expectedSearchSelector(),
-            store.state.editState.editActionsStart[0] as SearchSelectorAction,
-        )
+        assertTrue(store.state.editState.editActionsStart.isEmpty())
     }
 
     @Test
@@ -300,6 +301,7 @@ class BrowserToolbarSearchMiddlewareTest {
     }
 
     @Test
+    @Ignore(DEJAVU_NO_SEARCH_SELECTOR)
     fun `GIVEN the search selector menu is open WHEN a menu item is clicked THEN update the selected search engine and rebuild the menu`() {
         val (_, store) = buildMiddlewareAndAddToStore()
         val newEngineSelection = fakeSearchState().searchEngineShortcuts.last()
@@ -784,6 +786,7 @@ class BrowserToolbarSearchMiddlewareTest {
     }
 
     @Test
+    @Ignore(DEJAVU_NO_SEARCH_SELECTOR)
     fun `WHEN the search engines are updated in BrowserStore THEN update the search selector and search providers`() {
         val browserStore = BrowserStore()
         val (_, store) = buildMiddlewareAndAddToStore(browserStore = browserStore)
@@ -800,7 +803,7 @@ class BrowserToolbarSearchMiddlewareTest {
     }
 
     @Test
-    fun `GIVEN a user typed search query WHEN the search engines are updated in BrowserStore THEN update the search selector, search providers and autocompletions`() {
+    fun `GIVEN a user typed search query WHEN the search engines are updated in BrowserStore THEN update the search providers and autocompletions`() {
         every { settings.shouldAutocompleteInAwesomebar } returns true
         every { settings.shouldShowHistorySuggestions } returns true
         every { settings.shouldShowBookmarkSuggestions } returns true
@@ -821,10 +824,6 @@ class BrowserToolbarSearchMiddlewareTest {
         browserStore.dispatch(ApplicationSearchEnginesLoaded(newSearchEngines))
         testDispatcher.scheduler.advanceUntilIdle() // wait for observing and processing the search engines update
 
-        assertSearchSelectorEquals(
-            expectedSearchSelector(newSearchEngines[0], newSearchEngines),
-            store.state.editState.editActionsStart[0] as SearchSelectorAction,
-        )
         coVerify {
             middleware.fetchAutocomplete(
                 autocompleteProviders = capture(autocompleteProvidersSlots),
@@ -845,6 +844,7 @@ class BrowserToolbarSearchMiddlewareTest {
     }
 
     @Test
+    @Ignore(DEJAVU_NO_SEARCH_SELECTOR)
     fun `GIVEN a search engine is already selected WHEN the search engines are updated in BrowserStore THEN don't change the selected search engine`() {
         val selectedSearchEngine = fakeSearchState().applicationSearchEngines.first().copy(id = "test")
         val appStore =
