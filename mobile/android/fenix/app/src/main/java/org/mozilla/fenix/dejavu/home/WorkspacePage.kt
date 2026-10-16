@@ -457,7 +457,7 @@ private fun startDrag(
         key.startsWith(PIN_PREFIX) || key.startsWith(PIN_PAIR_PREFIX) -> {
             val id = pick(key.removePrefix(PIN_PREFIX).removePrefix(PIN_PAIR_PREFIX))
             val pin = content.state.pins.firstOrNull { it.id == id } ?: return null
-            picked = if (pin.isFolder) Selection(folderIds = setOf(pin.id)) else Selection(pinIds = setOf(pin.id))
+            picked = if (pin.isFolder) Selection.ofFolder(pin.id, content.state) else Selection(pinIds = setOf(pin.id))
             title = pin.title
             isFolder = pin.isFolder
         }
@@ -473,7 +473,7 @@ private fun startDrag(
     val dragged = callbacks.onStartDrag(picked)
     return SelectionDrag(
         selection = dragged,
-        label = dragLabel(title, dragged),
+        label = dragLabel(title, dragged.topLevelCount(content.state)),
         isFolder = isFolder,
         from = content.workspace.id,
         // The tabs of a device's workspace follow the device, so they stay in it.
@@ -483,8 +483,7 @@ private fun startDrag(
     )
 }
 
-private fun dragLabel(title: String, selection: Selection): String =
-    if (selection.size > 1) "$title  +${selection.size - 1}" else title
+private fun dragLabel(title: String, count: Int): String = if (count > 1) "$title  +${count - 1}" else title
 
 /**
  * Scrolls as little as it takes to show the row at [index] whole. A row below the ones in view comes in at the bottom,
