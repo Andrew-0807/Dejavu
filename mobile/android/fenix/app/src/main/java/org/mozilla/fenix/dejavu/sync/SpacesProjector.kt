@@ -93,6 +93,7 @@ internal class SpacesProjector(
     private val splitMembers = LinkedHashMap<String, List<String>>()
     private val projectedPins = HashSet<String>()
     private val normalTabsBySpace = LinkedHashMap<String, MutableList<String>>()
+    private val normalTabsByFolder = LinkedHashMap<String, MutableList<String>>()
     private val closedTabs = HashSet<String>()
 
     /** Tabs of Zen's split views that are not pinned; Dejavu keeps those splits as they are, in place of their tabs. */
@@ -168,8 +169,10 @@ internal class SpacesProjector(
      * Open tabs that are not pinned, like Zen's "Include unpinned tabs": each is a tab record that is not pinned, in its
      * workspace's children after the pinned items. A tab's address and title go out only when they changed here since
      * the last sync, so a page loaded on two devices is not sent back and forth. Zen has no temporary containers, so a
-     * tab in one goes out without a container and keeps it here. Without them, and before the browser restored its
-     * tabs, the server's unpinned tabs are held. Those that never were open here are held too; the engine opens them.
+     * tab in one goes out without a container and keeps it here. Zen keeps unpinned tabs in folders too, which Dejavu
+     * shows among the unpinned tabs: such a tab goes out in its folder while it stays in that workspace and the folder
+     * stays. Without them, and before the browser restored its tabs, the server's unpinned tabs are held. Those that
+     * never were open here are held too; the engine opens them.
      */
     private fun projectNormalTabs() {
         val tabs = local.tabs?.takeIf { local.normalTabs }
@@ -192,19 +195,42 @@ internal class SpacesProjector(
                 data.put("url", tab.url).put("title", tab.title)
             }
             if (previous == null) data.put("icon", "").put("hasStaticIcon", false).put("defaultContainer", false)
+            val folderId = folderOfNormalTab(previous, workspaceId)
             data.putNullable("containerGuid", guidOf(tab.contextId))
                 .put("essential", false)
                 .put("pinned", false)
                 .put("workspaceUuid", workspaceId)
-                .put("folderId", JSONObject.NULL)
+                .putNullable("folderId", folderId)
                 .putNullable("staticLabel", state.tabTitles[tab.id])
             records[syncId] = SpacesRecord.of(syncId, RecordKind.TAB, data)
-            normalTabsBySpace.getOrPut(workspaceId) { mutableListOf() } += syncId
+            if (folderId != null) {
+                normalTabsByFolder.getOrPut(folderId) { mutableListOf() } += syncId
+            } else {
+                normalTabsBySpace.getOrPut(workspaceId) { mutableListOf() } += syncId
+            }
         }
         for (record in server.values) {
             if (!record.isNormalTab || record.id in records || record.id in held) continue
             if (record.id in seen) closedTabs += record.id else held += record.id
         }
+    }
+
+    /**
+     * The folder Zen keeps the unpinned tab [previous] in, while the tab stays in [workspaceId] and the folder does too:
+     * a folder here in that workspace, or one Dejavu does not have and is not deleting.
+     */
+    private fun folderOfNormalTab(previous: JSONObject?, workspaceId: String): String? {
+        if (previous == null || previous.opt("pinned") != false || previous.string("workspaceUuid") != workspaceId) {
+            return null
+        }
+        val folderId = previous.string("folderId") ?: return null
+        val folder = pinsById[folderId]
+        val stays = if (folder != null) {
+            folder.isFolder && folder.workspaceId == workspaceId
+        } else {
+            folderId in held || !isGone(folderId)
+        }
+        return folderId.takeIf { stays }
     }
 
     /**
@@ -319,7 +345,10 @@ internal class SpacesProjector(
             val split = server[id]?.takeIf { it.kind == RecordKind.SPLIT && it.isSynced && id !in records && id !in held }
             split?.data?.strings("tabs") ?: listOf(id)
         }
-        return mergeOrder(siblings, expanded, ::isOpaque)
+        // Unpinned tabs Zen keeps in this folder stay where Zen has them; one missing from its order goes last.
+        val unpinned = parentId?.let { normalTabsByFolder[it] }.orEmpty().filterNot { it in normalSplitMembers }.toSet()
+        val order = mergeOrder(siblings, expanded) { it in unpinned || isOpaque(it) }
+        return order + unpinned.filterNot { it in order }
     }
 
     /**
