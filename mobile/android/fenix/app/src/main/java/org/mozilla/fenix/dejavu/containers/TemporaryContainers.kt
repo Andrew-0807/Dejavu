@@ -46,6 +46,26 @@ object TemporaryContainers {
         )
         return contextId
     }
+
+    /**
+     * The container to open a tab of container [contextId] in: that one while it exists, or while the containers are
+     * not read from disk yet. One that was removed gives way to a new temporary container when [temporaryByDefault], so
+     * new tabs open in one, or else to none.
+     */
+    fun orReplacement(
+        contextId: String?,
+        store: Store<BrowserState, BrowserAction>,
+        storage: DejavuContainerStorage,
+        temporaryByDefault: Boolean,
+    ): String? {
+        val containers = storage.records.value
+        return when {
+            contextId == null || containers == null -> contextId
+            storage.isTemporary(contextId) || containers.any { it.contextId == contextId } -> contextId
+            temporaryByDefault -> create(store, storage)
+            else -> null
+        }
+    }
 }
 
 /**

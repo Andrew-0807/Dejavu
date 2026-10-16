@@ -329,6 +329,8 @@ internal class SpacesSyncEngine(
         }
         addBuiltinContainers(others)
         val containerIds = local.read().containers.filterNot { it.temporary }.map { it.contextId }.toSet()
+        val removedContainers = data.server.values.filter { it.deleted }.map { it.id }.toSet() +
+            containerRecords.filter { it.deleted }.map { it.id }
 
         val applier = SpacesApplier(
             server = data.server.toMap(),
@@ -338,6 +340,7 @@ internal class SpacesSyncEngine(
             now = clock.millis(),
             normalTabs = before.normalTabs,
             tabs = before.tabs?.associateBy { it.id },
+            removedContainers = removedContainers,
         )
         val result = local.update { state -> applier.apply(state, others).let { it.state to it } }
         applied += result.applied

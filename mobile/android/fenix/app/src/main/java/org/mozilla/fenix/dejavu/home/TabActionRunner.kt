@@ -228,7 +228,7 @@ internal class TabActionRunner(
                     selectTab = false,
                     startLoading = false,
                     title = pin.openTitle ?: pin.title,
-                    contextId = pin.containerId,
+                    contextId = pinContainer(pin),
                     source = SessionState.Source.Internal.None,
                 ).also { repository.attachPinned(pin.id, it) }
             }
@@ -287,11 +287,19 @@ internal class TabActionRunner(
                 url = url,
                 selectTab = false,
                 title = pin.openTitle ?: pin.title,
-                contextId = pin.containerId,
+                contextId = pinContainer(pin),
                 source = SessionState.Source.Internal.None,
             )
         }
     }
+
+    /** The container [pin] opens in: its own, or a new temporary one or none when it was removed. */
+    private fun pinContainer(pin: PinnedItem): String? = TemporaryContainers.orReplacement(
+        pin.containerId,
+        store,
+        containerStorage,
+        settings.temporaryContainersByDefault.value,
+    )
 
     /** The values of the custom action variables for every target. */
     private fun actionContexts(targets: ActionTargets): List<ActionContext> {

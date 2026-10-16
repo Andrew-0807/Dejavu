@@ -225,15 +225,16 @@ internal class WorkspaceContainerMiddleware(private val context: Context) : Midd
         } else {
             chosen
         }
+        val storage = DejavuContainerStorage.get(context)
+        val temporaryByDefault = settings?.temporaryContainersByDefault?.value == true
         return when (pick) {
             ContainerPick.NoContainer -> null
-            ContainerPick.Temporary -> TemporaryContainers.create(store, DejavuContainerStorage.get(context))
+            ContainerPick.Temporary -> TemporaryContainers.create(store, storage)
             is ContainerPick.Container -> pick.contextId
-            null -> workspace?.containerId ?: if (settings?.temporaryContainersByDefault?.value == true) {
-                TemporaryContainers.create(store, DejavuContainerStorage.get(context))
-            } else {
-                null
-            }
+            // A workspace whose container was removed opens its new tabs like one without a container.
+            null -> workspace?.containerId
+                ?.let { TemporaryContainers.orReplacement(it, store, storage, temporaryByDefault) }
+                ?: if (temporaryByDefault) TemporaryContainers.create(store, storage) else null
         }
     }
 
