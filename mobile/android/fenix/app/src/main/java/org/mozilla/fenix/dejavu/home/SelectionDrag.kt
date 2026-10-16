@@ -5,17 +5,14 @@
 package org.mozilla.fenix.dejavu.home
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -25,18 +22,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlin.math.roundToInt
 import mozilla.components.ui.icons.R as iconsR
-import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.color
 import org.mozilla.fenix.dejavu.sync.workspaceIconText
@@ -47,8 +39,6 @@ import org.mozilla.fenix.dejavu.workspaces.Workspace
  * strip at a side of the page turns to the workspace on that side, and the items land wherever they are let go.
  *
  * @property selection What is dragged.
- * @property label Text of the floating row that follows the finger.
- * @property isFolder Whether the long-pressed row is a folder.
  * @property from The workspace the drag started in.
  * @property canLeave Whether the items can go to other workspaces: those of a device's workspace follow the device.
  * @property pointer The finger, relative to the pages.
@@ -61,8 +51,6 @@ import org.mozilla.fenix.dejavu.workspaces.Workspace
  */
 internal data class SelectionDrag(
     val selection: Selection,
-    val label: String,
-    val isFolder: Boolean,
     val from: String,
     val canLeave: Boolean,
     val pointer: Offset,
@@ -90,6 +78,18 @@ internal interface PageDragArea {
 
     /** Height of the page. */
     val height: Int
+
+    /** Lifts the rows of [drag] that are in view into [stack], the one long-pressed at [press] on top. */
+    fun lift(stack: DragStackState, drag: SelectionDrag, press: Offset)
+
+    /** Where the rows [cards] came from are on the page, while they are in view, by the key of each card's row. */
+    fun rowRects(cards: List<StackCard>): Map<String, Rect>
+
+    /** Where the rows the items of [cards] moved to are on the page after a drop, by the key of each card's row. */
+    fun landings(cards: List<StackCard>): Map<String, Rect>
+
+    /** Where cards dropped on [target] head when their rows are not in view on the page. */
+    fun dropFallback(target: DropTarget): Offset?
 }
 
 /**
@@ -104,54 +104,6 @@ internal fun sideAt(x: Float, width: Float, strip: Float, isRtl: Boolean): Int {
         onRight -> if (isRtl) -1 else 1
         onLeft -> if (isRtl) 1 else -1
         else -> 0
-    }
-}
-
-/**
- * The row that follows the finger while items are dragged, centered on it. It shows a stop sign when the place under
- * the finger refuses them ([blocked]).
- */
-@Composable
-internal fun DragGhost(label: String, isFolder: Boolean, pointer: Offset, blocked: Boolean) {
-    val shape = RoundedCornerShape(14.dp)
-    val error = MaterialTheme.colorScheme.error
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .layout { measurable, constraints ->
-                val ghost = measurable.measure(constraints.copy(minWidth = 0, minHeight = 0))
-                layout(constraints.maxWidth, constraints.maxHeight) {
-                    val x = (pointer.x - ghost.width / 2f).roundToInt()
-                        .coerceIn(0, (constraints.maxWidth - ghost.width).coerceAtLeast(0))
-                    ghost.place(x, (pointer.y - ghost.height / 2f).roundToInt())
-                }
-            }
-            .widthIn(max = 280.dp)
-            .shadow(8.dp, shape)
-            .background(MaterialTheme.colorScheme.surfaceContainerHighest, shape)
-            .border(1.5.dp, if (blocked) error else Color.Transparent, shape)
-            .padding(horizontal = 14.dp, vertical = 10.dp),
-    ) {
-        Icon(
-            painter = painterResource(
-                when {
-                    blocked -> R.drawable.dejavu_ic_no_container_24
-                    isFolder -> iconsR.drawable.mozac_ic_folder_24
-                    else -> iconsR.drawable.mozac_ic_tab_24
-                },
-            ),
-            contentDescription = null,
-            tint = if (blocked) error else MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.size(18.dp),
-        )
-        Spacer(Modifier.width(10.dp))
-        Text(
-            text = label,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-        )
     }
 }
 

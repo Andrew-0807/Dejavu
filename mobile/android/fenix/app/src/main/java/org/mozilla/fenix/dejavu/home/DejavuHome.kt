@@ -44,6 +44,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -80,7 +82,9 @@ import androidx.compose.ui.unit.sp
 import kotlin.math.floor
 import kotlin.math.roundToInt
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
 import mozilla.components.browser.state.state.ContainerState
 import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.ui.icons.R as iconsR
@@ -196,6 +200,8 @@ fun DejavuHome(
     var drag by remember { mutableStateOf<SelectionDrag?>(null) }
     // The pages composed now, which tell where dragged items would land on them.
     val dragAreas = remember { mutableMapOf<String, PageDragArea>() }
+    // The dragged rows, lifted off their page into a stack of cards under the finger.
+    val dragStack = remember { DragStackState(scope) }
     var pagesWidth by remember { mutableIntStateOf(0) }
     var revealTabId by remember { mutableStateOf<String?>(null) }
     val onPrivatePage = privateIndex != null && pagerState.currentPage == privateIndex
@@ -284,22 +290,31 @@ fun DejavuHome(
         )
     }
 
-    // Lets go of the dragged items. They land where the finger points; otherwise nothing moves, and the pages turn back
-    // to the workspace they are in.
+    // Lets go of the dragged items. They land where the finger points, and their cards spread out onto the rows they
+    // moved to; otherwise nothing moves, the cards fly back to their rows and the pages turn back to the workspace they
+    // are in.
     fun endDrag(drop: Boolean) {
         val current = drag ?: return
         drag = null
         val over = current.over
         val target = current.target
         if (drop && current.moved && over != null && target != null && !current.blocked) {
+            val before = latestState
+            val fallback = dragAreas[over]?.dropFallback(target)
             if (over != current.from && latestState.isDeviceWorkspace(over)) {
                 latestInteractor.onMoveToWorkspace(ActionTargets.of(latestState, latestTabs, current.selection), over)
             } else {
                 latestInteractor.onDrop(over, current.selection, target)
             }
             selection = null
+            dragStack.release(drop = true, fallback = fallback) { cards ->
+                withTimeoutOrNull(LANDING_WAIT_MS) { snapshotFlow { latestState }.first { it !== before } }
+                repeat(LAYOUT_FRAMES) { withFrameNanos { } }
+                dragAreas[over]?.landings(cards).orEmpty()
+            }
             return
         }
+        dragStack.release(drop = false, fallback = null) { cards -> dragAreas[current.from]?.rowRects(cards).orEmpty() }
         val home = latestState.workspaces.indexOfFirst { it.id == current.from }
         if (home >= 0 && home != pagerState.currentPage) scope.launch { pagerState.animateScrollToPage(home) }
     }
@@ -461,13 +476,19 @@ fun DejavuHome(
                             onDragStart = { offset ->
                                 val workspace = latestState.workspaces.getOrNull(pagerState.currentPage)
                                 val atEnd = if (isRtl) offset.x < size.width / 2f else offset.x >= size.width / 2f
-                                drag = workspace?.let { dragAreas[it.id] }?.start(offset, atEnd)
-                                if (drag != null) haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                val area = workspace?.let { dragAreas[it.id] }
+                                val started = area?.start(offset, atEnd)
+                                drag = started
+                                if (area != null && started != null) {
+                                    haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                    area.lift(dragStack, started, offset)
+                                }
                             },
                             onDrag = { change, amount ->
                                 val current = drag ?: return@detectDragGesturesAfterLongPress
                                 change.consume()
                                 drag = aim(current, current.pointer + amount)
+                                dragStack.anchor = current.pointer + amount
                             },
                             onDragEnd = { endDrag(drop = true) },
                             onDragCancel = { endDrag(drop = false) },
@@ -504,6 +525,7 @@ fun DejavuHome(
                         selection = activeSelection,
                         drag = drag,
                         dragAreas = dragAreas,
+                        dragStack = dragStack,
                         callbacks = WorkspacePageCallbacks(
                             onTabClick = { tab ->
                                 val current = selection
@@ -569,14 +591,7 @@ fun DejavuHome(
                         )
                     }
                 }
-                if (dragging != null) {
-                    DragGhost(
-                        label = dragging.label,
-                        isFolder = dragging.isFolder,
-                        pointer = dragging.pointer,
-                        blocked = dragging.blocked,
-                    )
-                }
+                if (dragStack.cards.isNotEmpty()) DragStack(dragStack, blocked = dragging?.blocked == true)
             }
 
             if (activeSelection == null) {
@@ -788,6 +803,10 @@ private const val SIDE_DWELL_MS = 600L
 private val AutoScrollEdge = 64.dp
 private const val AUTO_SCROLL_STEP = 14f
 private const val AUTO_SCROLL_FRAME_MS = 16L
+
+// After a drop, how long the drag stack waits for the rows to move, and frames for the page to lay them out.
+private const val LANDING_WAIT_MS = 300L
+private const val LAYOUT_FRAMES = 2
 
 // How long a reopened tab may take to come back before the home stops waiting to scroll to it.
 private const val REVEAL_TIMEOUT_MS = 3000L
