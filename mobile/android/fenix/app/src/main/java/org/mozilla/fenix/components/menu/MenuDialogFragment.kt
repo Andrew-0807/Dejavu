@@ -182,8 +182,12 @@ class MenuDialogFragment : BottomSheetDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         Events.toolbarMenuVisible.record(NoExtras())
 
-        if (DejavuMenu.opensFromTop(requireContext(), args.accesspoint, arguments)) {
+        val fromTop = DejavuMenu.opensFromTop(requireContext(), args.accesspoint, arguments)
+        if (fromTop) {
             return DejavuMenu.createTopSheetDialog(requireContext(), onMenuKey = ::dismiss)
+        }
+        if (DejavuMenu.floats(args.accesspoint, fromTop)) {
+            return DejavuMenu.createFloatingDialog(requireContext(), requireActivity().window)
         }
 
         return object : BottomSheetDialog(requireContext(), theme) {
@@ -905,7 +909,7 @@ class MenuDialogFragment : BottomSheetDialogFragment() {
                     customTabId = args.customTabSessionId,
                     menuStore = menuStore,
                     iconSize = 24.dpToPx(requireContext().resources.displayMetrics),
-                    onDismiss = { this@MenuDialogFragment.dismiss() },
+                    onDismiss = ::closeMenu,
                 ),
             owner = this@MenuDialogFragment,
             view = view,
@@ -1003,9 +1007,14 @@ class MenuDialogFragment : BottomSheetDialogFragment() {
         )
     }
 
+    /** Closes the menu, letting Dejavu's floating menu shrink back into the actions bar first. */
+    private fun closeMenu() {
+        if (!DejavuMenu.closeFloating(dialog)) dismiss()
+    }
+
     private fun handleNavigationEvent(event: NavigationEvent) {
         when (event) {
-            is NavigationEvent.Dismiss -> dismiss()
+            is NavigationEvent.Dismiss -> closeMenu()
             is NavigationEvent.DeleteBrowsingDataAndQuit ->
                 activity?.let { activity ->
                     activity.lifecycleScope.launch {

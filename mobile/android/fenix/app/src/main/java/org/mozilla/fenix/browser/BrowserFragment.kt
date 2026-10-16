@@ -71,6 +71,7 @@ import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.PagePictures
 import org.mozilla.fenix.dejavu.browser.PageTint
 import org.mozilla.fenix.dejavu.browser.addStatusBarScrim
+import org.mozilla.fenix.dejavu.browser.moreMenuSwipe
 import org.mozilla.fenix.dejavu.browser.openDejavuMenu
 import org.mozilla.fenix.dejavu.browser.padForNavigationBar
 import org.mozilla.fenix.dejavu.browser.padForSystemBarsAtSides
@@ -264,6 +265,7 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler {
                     onSwipe = { fromNavBar: Boolean ->
                         findNavController().openDejavuMenu(fromBottom = fromNavBar)
                     }.takeIf { DejavuToolbar.enabled },
+                    menuSwipe = findNavController().moreMenuSwipe().takeIf { DejavuToolbar.enabled },
                 )
             )
         }

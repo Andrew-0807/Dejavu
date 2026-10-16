@@ -6,6 +6,8 @@ package org.mozilla.fenix.dejavu.browser
 
 import android.app.Activity
 import android.graphics.Bitmap
+import android.os.Handler
+import android.os.Looper
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.compose.animation.core.Animatable
@@ -91,7 +93,12 @@ internal object TabZoom {
     /** A zoom in progress, with the picture of the tab's page it grows or shrinks. */
     private sealed class Zoom(val tabId: String, val picture: PageShot?) {
         class In(tabId: String, picture: PageShot?, val row: Rect, val open: () -> Unit) : Zoom(tabId, picture)
-        class Out(tabId: String, picture: PageShot, val leave: () -> Unit) : Zoom(tabId, picture) {
+        class Out(
+            tabId: String,
+            picture: PageShot,
+            val leave: () -> Unit,
+            val afterLeaving: () -> Unit,
+        ) : Zoom(tabId, picture) {
             val homeShown = CompletableDeferred<Unit>()
         }
     }
@@ -144,16 +151,22 @@ internal object TabZoom {
 
     /**
      * Leaves the page of the tab with [tabId] for the home screen with [leave]: pictures the page, then shrinks the
-     * picture back into the tab's row once the home screen shows. Without a page on screen it just leaves.
+     * picture back into the tab's row once the home screen shows, and runs [afterLeaving] once it is there. Without a
+     * page on screen it just leaves, running [afterLeaving] once the home screen took the browser's place.
      */
-    fun zoomOut(tabId: String, leave: () -> Unit) {
+    fun zoomOut(tabId: String, afterLeaving: () -> Unit = {}, leave: () -> Unit) {
         val content = PagePictures.shownView?.rootView?.findViewById<ViewGroup>(android.R.id.content)
-        if (content == null || isZooming || PagePictures.isCapturing) {
+        val leaveAtOnce = {
             leave()
+            // Navigating takes effect on the next turn of the main thread.
+            Handler(Looper.getMainLooper()).post(afterLeaving)
+        }
+        if (content == null || isZooming || PagePictures.isCapturing) {
+            leaveAtOnce()
             return
         }
         PagePictures.capture(tabId) { shot ->
-            if (shot == null) leave() else start(content, Zoom.Out(tabId, shot, leave))
+            if (shot == null) leaveAtOnce() else start(content, Zoom.Out(tabId, shot, leave, afterLeaving))
         }
     }
 
@@ -229,6 +242,7 @@ internal object TabZoom {
                     } else {
                         shown.animateTo(0f, tween(REVEAL_MS))
                     }
+                    current.afterLeaving()
                     current.picture?.let(::keepForReopening)
                 }
             }

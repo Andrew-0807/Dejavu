@@ -2118,8 +2118,8 @@ abstract class BaseBrowserFragment :
         return findInPageIntegration.onBackPressed() ||
             fullScreenFeature.onBackPressed() ||
             promptsFeature.onBackPressed() ||
-            sessionFeature.onBackPressed() ||
             handleDejavuBackPressed(customTabSessionId) ||
+            sessionFeature.onBackPressed() ||
             lastTabFeature.onBackPressed()
     }
 

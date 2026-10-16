@@ -168,13 +168,20 @@ private val DeviceLockedItems = setOf(
  * The surface of the "More" menu: a sheet that comes down from the top when the address bar is at the top, and up
  * from the bottom otherwise. A sheet at the top can be swiped up to close it; one at the bottom is closed by its
  * bottom sheet dialog.
+ *
+ * @param floating Shows the menu as a panel growing out of the actions bar instead, see [FloatingMoreMenu].
  */
 @Composable
 fun MoreMenuSheet(
     fromTop: Boolean,
     onDismiss: () -> Unit,
+    floating: Boolean = false,
     content: @Composable ColumnScope.() -> Unit,
 ) {
+    if (floating) {
+        FloatingMoreMenu(onDismiss = onDismiss, content = content)
+        return
+    }
     val corner = 28.dp
     val shape = if (fromTop) {
         RoundedCornerShape(bottomStart = corner, bottomEnd = corner)

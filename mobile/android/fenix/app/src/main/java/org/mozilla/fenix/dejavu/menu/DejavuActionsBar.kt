@@ -287,12 +287,12 @@ private fun reportBrokenSite(context: Context, navController: NavController, tab
     }
 }
 
-private val BAR_HEIGHT = 60.dp
-private val BAR_SIDE_MARGIN = 12.dp
+internal val BAR_HEIGHT = 60.dp
+internal val BAR_SIDE_MARGIN = 12.dp
 
 /** The space between the actions bar and the bottom of the screen, above the navigation bar. */
 internal val ACTIONS_BAR_BOTTOM_MARGIN = 12.dp
 private val BAR_SHAPE = RoundedCornerShape(percent = 50)
-private const val BORDER_ALPHA = 0.14f
+internal const val BORDER_ALPHA = 0.14f
 private const val HANDLE_ALPHA = 0.3f
 private const val DISABLED_ALPHA = 0.38f

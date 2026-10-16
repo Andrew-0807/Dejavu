@@ -27,12 +27,14 @@ import mozilla.components.compose.browser.toolbar.store.BrowserToolbarMenuItem.B
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarMenuItem.BrowserToolbarMenuButton.Text.StringText
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarMenuItem.BrowserToolbarMenuDivider
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarState
+import mozilla.components.concept.engine.utils.ABOUT_HOME_URL
 import mozilla.components.lib.state.Store
 import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.Components
 import org.mozilla.fenix.components.menu.MenuAccessPoint
 import org.mozilla.fenix.components.toolbar.PageOriginInteractions
+import org.mozilla.fenix.components.toolbar.gestures.ToolbarVerticalGesturesHandler
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.ContainerRecord
@@ -44,6 +46,7 @@ import org.mozilla.fenix.dejavu.containers.splitTemporary
 import org.mozilla.fenix.dejavu.home.displayTitle
 import org.mozilla.fenix.dejavu.home.titleOf
 import org.mozilla.fenix.dejavu.menu.DejavuMenu
+import org.mozilla.fenix.dejavu.menu.MoreMenuSwipe
 import org.mozilla.fenix.dejavu.menu.runActionsBarEntry
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.ext.components
@@ -195,31 +198,41 @@ object DejavuToolbar {
 }
 
 /**
- * Handles Back on a tab without history: closes the tab, then shows the tab it was opened from, or the home screen
- * when that one is gone too. A pinned tab keeps its pin. Custom tabs and tabs opened by other apps keep Fenix's
- * behavior.
+ * Handles Back on a tab with no earlier page: closes the tab, then shows the tab it was opened from, or the home screen
+ * when that one is gone too. A tab opened on the homepage counts as having no earlier page, as Back would show the
+ * home screen with the tab left open. A pinned tab keeps its pin. Custom tabs and tabs opened by other apps keep
+ * Fenix's behavior. Called before the tab goes back in its history.
  *
  * @return Whether Back was handled.
  */
 fun Fragment.handleDejavuBackPressed(customTabSessionId: String?): Boolean {
     if (customTabSessionId != null) return false
     val tab = requireComponents.core.store.state.selectedTab ?: return false
-    if (tab.source is SessionState.Source.External) return false
+    if (tab.source is SessionState.Source.External || tab.canGoBackToPage) return false
 
     closeShownTab(requireComponents, findNavController(), tab)
     return true
 }
+
+/** Whether Back would show an earlier page of this tab, rather than the homepage it was opened on. */
+internal val TabSessionState.canGoBackToPage: Boolean
+    get() {
+        val earlier = content.history.items.take(content.history.currentIndex)
+        return if (earlier.isEmpty()) content.canGoBack else earlier.any { it.uri != ABOUT_HOME_URL }
+    }
 
 /** Closes [tab], the shown one, then shows the tab it was opened from, or the home screen when that one is gone too. */
 internal fun closeShownTab(components: Components, navController: NavController, tab: TabSessionState) {
     if (tab.parentId?.let { components.core.store.state.findTab(it) } != null) {
         components.useCases.tabsUseCases.removeTab(tab.id, selectParentIfExists = true)
     } else {
-        // The home screen closes the tab once it shows, so the page does not switch to another tab first. The page
-        // shrinks back to where the tab's row was.
-        TabZoom.zoomOut(tab.id) {
-            navController.navigate(NavGraphDirections.actionGlobalHome(sessionToDelete = tab.id))
-        }
+        // The page shrinks back into the tab's row on the home screen before the tab closes, so it does not switch to
+        // another tab first either.
+        TabZoom.zoomOut(
+            tabId = tab.id,
+            leave = { navController.navigate(NavGraphDirections.actionGlobalHome()) },
+            afterLeaving = { components.useCases.tabsUseCases.removeTab(tab.id) },
+        )
     }
 }
 
@@ -236,4 +249,18 @@ fun NavController.openDejavuMenu(fromBottom: Boolean, opening: DejavuMenu.Openin
     val directions = NavGraphDirections.actionGlobalMenuDialogFragment(accesspoint = MenuAccessPoint.Browser)
     if (currentDestination?.id != R.id.browserFragment) return
     navigate(directions.actionId, directions.arguments.apply { putAll(DejavuMenu.arguments(fromBottom, opening)) })
+}
+
+/** Opens the "More" menu with a swipe up on the actions bar, the menu following the finger until it lets go. */
+internal fun NavController.moreMenuSwipe() = object : ToolbarVerticalGesturesHandler.MenuSwipe {
+    override fun onStart(): Boolean {
+        if (currentDestination?.id != R.id.browserFragment) return false
+        MoreMenuSwipe.start()
+        openDejavuMenu(fromBottom = true)
+        return true
+    }
+
+    override fun onMove(distanceUp: Float) = MoreMenuSwipe.move(distanceUp)
+
+    override fun onEnd(velocityUp: Float) = MoreMenuSwipe.end(velocityUp)
 }

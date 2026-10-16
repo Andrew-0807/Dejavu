@@ -6,12 +6,15 @@ package org.mozilla.fenix.dejavu.menu
 
 import android.app.Dialog
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.os.StrictMode
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.ViewGroup
+import android.view.Window
 import android.view.WindowManager
+import androidx.activity.ComponentDialog
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -33,6 +36,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toDrawable
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import mozilla.components.browser.state.selector.normalTabs
 import mozilla.components.browser.state.selector.selectedTab
@@ -62,6 +66,13 @@ object DejavuMenu {
 
     /** Whether Dejavu's menu replaces Fenix's for [accessPoint]. Custom tabs keep Fenix's menu. */
     fun replaces(accessPoint: MenuAccessPoint): Boolean = accessPoint != MenuAccessPoint.External
+
+    /**
+     * Whether the menu is a panel growing out of the actions bar, which the browser's menu is unless it comes down
+     * from the top.
+     */
+    fun floats(accessPoint: MenuAccessPoint, fromTop: Boolean): Boolean =
+        accessPoint == MenuAccessPoint.Browser && !fromTop
 
     /**
      * Whether the menu comes down from the top of the screen, which it does when it was opened from an address bar at
@@ -106,6 +117,58 @@ object DejavuMenu {
             }
         }
 
+    /**
+     * A dialog over the whole screen for the floating menu, which dims the page and moves in by itself. Back and the
+     * menu key go to the menu, which shrinks back into the actions bar before the dialog closes.
+     *
+     * @param activityWindow The window the menu opens over, whose system bar icons the dialog keeps.
+     */
+    fun createFloatingDialog(context: Context, activityWindow: Window): Dialog =
+        FloatingMenuDialog(context, activityWindow)
+
+    /**
+     * Closes [dialog] the way Back does when it shows the floating menu, which shrinks back into the actions bar first.
+     *
+     * @return Whether [dialog] shows the floating menu; any other dialog is left to close as usual.
+     */
+    fun closeFloating(dialog: Dialog?): Boolean {
+        val floating = dialog as? FloatingMenuDialog ?: return false
+        floating.onBackPressedDispatcher.onBackPressed()
+        return true
+    }
+
+    private class FloatingMenuDialog(
+        context: Context,
+        private val activityWindow: Window,
+    ) : ComponentDialog(context, R.style.DejavuFloatingMenuDialog) {
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            val own = window ?: return
+            own.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            own.setBackgroundDrawable(android.graphics.Color.TRANSPARENT.toDrawable())
+            own.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+            WindowCompat.setDecorFitsSystemWindows(own, false)
+            @Suppress("DEPRECATION")
+            own.statusBarColor = android.graphics.Color.TRANSPARENT
+            @Suppress("DEPRECATION")
+            own.navigationBarColor = android.graphics.Color.TRANSPARENT
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) own.isNavigationBarContrastEnforced = false
+            val behind = WindowCompat.getInsetsController(activityWindow, activityWindow.decorView)
+            WindowCompat.getInsetsController(own, own.decorView).apply {
+                isAppearanceLightStatusBars = behind.isAppearanceLightStatusBars
+                isAppearanceLightNavigationBars = behind.isAppearanceLightNavigationBars
+            }
+        }
+
+        override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_MENU) {
+                onBackPressedDispatcher.onBackPressed()
+                return true
+            }
+            return super.onKeyDown(keyCode, event)
+        }
+    }
+
     private const val TOP_SHEET_DIM = 0.32f
 }
 
@@ -137,7 +200,9 @@ fun DejavuMenuContent(
     val extensions = menuState.extensionMenuState.browserWebExtensionMenuItem
     val manageExtensions = { menuStore.dispatch(MenuAction.Navigate.ManageExtensions) }
 
-    MoreMenuSheet(fromTop = fromTop, onDismiss = onDismiss) {
+    MoreMenuSheet(fromTop = fromTop, onDismiss = onDismiss, floating = DejavuMenu.floats(accessPoint, fromTop)) {
+        val closer = LocalMenuCloser.current
+        val close: () -> Unit = if (closer == null) onDismiss else ({ closer.close() })
         if (accessPoint == MenuAccessPoint.Home) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -178,10 +243,11 @@ fun DejavuMenuContent(
             isBookmarked = menuState.browserMenuState?.bookmarkState?.isBookmarked == true,
             isDesktopMode = menuState.isDesktopMode,
         )
-        val actions = MenuActions(context, fenix, menuStore, repository, settings, current, navController, onDismiss)
+        val actions =
+            MenuActions(context, fenix, menuStore, repository, settings, current, navController, close, closer)
 
         asking?.let { action ->
-            ShownTabActionDialog(action = action, tab = current, navController = navController, onDone = onDismiss)
+            ShownTabActionDialog(action = action, tab = current, navController = navController, onDone = close)
         }
 
         if (pickingSplit) {
@@ -257,7 +323,12 @@ internal fun moreMenuState(
     )
 }
 
-/** Carries out the entries of the "More" menu for [tab]. */
+/**
+ * Carries out the entries of the "More" menu for [tab].
+ *
+ * @param dismiss Closes the menu.
+ * @param closer Closes the floating menu around the actions; `null` when the menu does not float.
+ */
 @Suppress("LongParameterList")
 private class MenuActions(
     private val context: Context,
@@ -268,6 +339,7 @@ private class MenuActions(
     private val tab: TabSessionState,
     private val navController: NavController,
     private val dismiss: () -> Unit,
+    private val closer: MenuCloser?,
 ) {
     private val commands = DejavuTabCommands(context, components, repository, settings, tab)
 
@@ -276,11 +348,19 @@ private class MenuActions(
         val item = when (entry) {
             is MoreMenuEntry.BuiltIn -> entry.item
             is MoreMenuEntry.Custom -> {
+                if (closer != null) {
+                    closer.close { commands.runCustomAction(entry.action, workspaces) }
+                    return
+                }
                 commands.runCustomAction(entry.action, workspaces)
                 dismiss()
                 return
             }
             is MoreMenuEntry.Tab -> {
+                if (closer != null) {
+                    closer.close { runOnShownTab(entry.action, context, navController, tab) }
+                    return
+                }
                 dismiss()
                 runOnShownTab(entry.action, context, navController, tab)
                 return
@@ -323,7 +403,10 @@ private class MenuActions(
         dismiss()
     }
 
-    private fun dispatch(action: MenuAction) = menuStore.dispatch(action)
+    /** Hands [action] to Fenix's menu, which closes the menu once done; a floating menu shrinks away first. */
+    private fun dispatch(action: MenuAction) {
+        if (closer != null) closer.closeBy { menuStore.dispatch(action) } else menuStore.dispatch(action)
+    }
 }
 
 internal fun <T> Components.readOnMainThread(block: () -> T): T =
