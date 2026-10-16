@@ -48,6 +48,7 @@ import mozilla.components.support.base.feature.UserInteractionHandler
 import mozilla.components.support.base.feature.ViewBoundFeatureWrapper
 import mozilla.components.support.ktx.kotlin.isContentUrl
 import org.mozilla.fenix.GleanMetrics.Translations
+import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.store.BrowserScreenAction.ReaderModeStatusUpdated
 import org.mozilla.fenix.components.Components
@@ -67,8 +68,12 @@ import org.mozilla.fenix.compose.snackbar.Snackbar
 import org.mozilla.fenix.compose.snackbar.SnackbarState
 import org.mozilla.fenix.dejavu.browser.DejavuLinkMenu
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.PageTint
+import org.mozilla.fenix.dejavu.browser.SearchBackdrop
+import org.mozilla.fenix.dejavu.browser.addStatusBarScrim
 import org.mozilla.fenix.dejavu.browser.openDejavuMenu
-import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
+import org.mozilla.fenix.dejavu.browser.padForNavigationBar
+import org.mozilla.fenix.dejavu.browser.padForSystemBarsAtSides
 import org.mozilla.fenix.ext.application
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getRectWithScreenLocation
@@ -94,7 +99,7 @@ import org.mozilla.fenix.utils.Settings
 
 /** Fragment used for browsing the web within the main app. */
 @Suppress("TooManyFunctions", "LargeClass")
-class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemInsetsPaddedFragment {
+class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler {
     private val windowFeature = ViewBoundFeatureWrapper<WindowFeature>()
     private val openInAppOnboardingObserver = ViewBoundFeatureWrapper<OpenInAppOnboardingObserver>()
     private val translationsBinding = ViewBoundFeatureWrapper<TranslationsBinding>()
@@ -165,6 +170,21 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
         val context = requireContext()
         val components = context.components
         val settings = components.settings
+
+        // Pages run from edge to edge, behind the status bar and the navigation bar. The fragment's own view listens
+        // for the keyboard, so the padding goes on the layout inside it.
+        val window = requireActivity().window
+        binding.browserWindow.padForSystemBarsAtSides(window, onBarsChanged = ::reinitializeEngineView)
+        binding.browserLayout.addStatusBarScrim(above = binding.tabReloadCover, window = window)
+        binding.readerViewControlsBar.padForNavigationBar()
+        SearchBackdrop.attach(binding.engineView)
+        PageTint(
+            window = window,
+            engineView = binding.engineView,
+            behindPage = binding.browserWindow,
+            layout = binding.browserLayout,
+            restoreTheme = { (activity as? HomeActivity)?.let { it.themeManager.applyStatusBarTheme(it) } },
+        ).start(viewLifecycleOwner, components.core.store, components.appStore)
 
         setupToolbarSwipeBehavior(settings, components)
 

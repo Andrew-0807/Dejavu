@@ -43,6 +43,8 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import mozilla.components.browser.state.search.SearchEngine
+import mozilla.components.browser.state.selector.findTab
+import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
 import mozilla.components.lib.state.ext.observeAsComposableState
 import mozilla.components.ui.icons.R as iconsR
@@ -53,6 +55,7 @@ import org.mozilla.fenix.components.components
 import org.mozilla.fenix.dejavu.NewTabContainerChoice
 import org.mozilla.fenix.dejavu.containers.ContainerIcon
 import org.mozilla.fenix.dejavu.containers.ContainerPick
+import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.containers.TemporaryContainerIcon
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
@@ -67,21 +70,35 @@ private sealed interface TabPlace {
 }
 
 /**
- * The chips above the address bar while searching. For a search that opens a new tab ([newTab]), the first line has the
- * containers it can open in, a new temporary container and a private tab, with the workspace's own choice picked:
- * its default container, a temporary container when every new tab gets one, or nothing. Below are the search engines,
- * the one searched with picked. They take the place of the search engine button of the address bar.
+ * The chips above the address bar while searching. The first line has the containers the search can open in, a new
+ * temporary container and a private tab. For a search that opens a new tab ([newTab]) the workspace's own choice is
+ * picked: its default container, a temporary container when every new tab gets one, or nothing. A search from a shown
+ * tab starts on the tab's own place, and picking another one opens the search in a new tab there. Below are the search
+ * engines, the one searched with picked. They take the place of the search engine button of the address bar.
  */
 @Composable
 fun DejavuSearchChips(newTab: Boolean, modifier: Modifier = Modifier) {
-    Column(modifier = modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surface).padding(vertical = 4.dp)) {
-        if (newTab) ContainerChips()
+    val fenix = components
+    val editedTab = remember(newTab) {
+        if (newTab) null else fenix.appStore.state.searchState.sourceTabId?.let { fenix.core.store.state.findTab(it) }
+    }
+    Column(modifier = modifier.fillMaxWidth().background(searchScreenBackground()).padding(vertical = 4.dp)) {
+        ContainerChips(editedTab)
         EngineChips()
     }
 }
 
+/** Where [tab] is, as the chips show it: in one of the containers, in a temporary one, private, or nowhere. */
+private fun placeOf(tab: TabSessionState, records: List<ContainerRecord>): TabPlace? {
+    if (tab.content.private) return TabPlace.Private
+    val contextId = tab.contextId ?: return null
+    val isTemporary = records.any { it.contextId == contextId && it.temporary }
+    return if (isTemporary) TabPlace.Temporary else TabPlace.Container(contextId)
+}
+
+/** The places a search can open in; with an [editedTab], the place of that tab is picked to start with. */
 @Composable
-private fun ContainerChips() {
+private fun ContainerChips(editedTab: TabSessionState?) {
     val context = LocalContext.current
     val storage = remember { DejavuContainerStorage.get(context) }
     val records by storage.records.collectAsState()
@@ -90,7 +107,13 @@ private fun ContainerChips() {
     val containers = records.orEmpty().filterNot { it.temporary }
     // The workspace of a device on the account only takes tabs without a container.
     val isDevice = workspace?.device != null
+    val editedPlace = remember(editedTab) { editedTab?.let { placeOf(it, records.orEmpty()) } }
     var picked by remember {
+        if (editedTab != null) {
+            // An earlier choice must not move this search to a new tab.
+            NewTabContainerChoice.clear()
+            return@remember mutableStateOf(editedPlace)
+        }
         val choice = NewTabContainerChoice.peek()
         val default = when {
             workspace == null || isDevice -> null
@@ -112,11 +135,13 @@ private fun ContainerChips() {
     fun pick(place: TabPlace) {
         val next = place.takeUnless { it == picked }
         picked = next
-        when (next) {
-            null -> NewTabContainerChoice.set(ContainerPick.NoContainer)
-            is TabPlace.Container -> NewTabContainerChoice.set(ContainerPick.Container(next.contextId))
-            TabPlace.Temporary -> NewTabContainerChoice.set(ContainerPick.Temporary)
-            TabPlace.Private -> NewTabContainerChoice.setPrivate()
+        when {
+            // Back on the edited tab's own place, the search stays in that tab.
+            editedTab != null && next == editedPlace -> NewTabContainerChoice.clear()
+            next == null -> NewTabContainerChoice.set(ContainerPick.NoContainer)
+            next is TabPlace.Container -> NewTabContainerChoice.set(ContainerPick.Container(next.contextId))
+            next == TabPlace.Temporary -> NewTabContainerChoice.set(ContainerPick.Temporary)
+            next == TabPlace.Private -> NewTabContainerChoice.setPrivate()
         }
     }
 

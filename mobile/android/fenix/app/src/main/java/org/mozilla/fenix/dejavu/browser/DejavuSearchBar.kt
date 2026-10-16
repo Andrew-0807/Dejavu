@@ -14,13 +14,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.graphicsLayer
@@ -56,6 +56,7 @@ fun DejavuSearchAboveKeyboard(
         if (target == 1f && fromBottom) {
             progress.snapTo(target)
         } else {
+            if (target == 1f && progress.value == 0f) awaitSteadyFrames()
             progress.animateTo(target, tween(MOVE_DURATION_MS, easing = FastOutSlowInEasing))
         }
     }
@@ -95,6 +96,8 @@ fun DejavuSearchAboveKeyboard(
 fun DejavuSearchOverlay(fromTop: Boolean, content: @Composable () -> Unit) {
     val progress = remember { Animatable(if (fromTop && !DejavuSearchStart.isFromBottom()) 0f else 1f) }
     LaunchedEffect(Unit) {
+        if (progress.value == 1f) return@LaunchedEffect
+        awaitSteadyFrames()
         progress.animateTo(1f, tween(MOVE_DURATION_MS, easing = FastOutSlowInEasing))
     }
     var height by remember { mutableIntStateOf(0) }
@@ -108,7 +111,7 @@ fun DejavuSearchOverlay(fromTop: Boolean, content: @Composable () -> Unit) {
                     translationY = -(1f - progress.value) * (height - barHeight).coerceAtLeast(0f)
                     alpha = if (height == 0) 0f else 1f
                 }
-                .background(MaterialTheme.colorScheme.surface),
+                .background(searchScreenBackground()),
         ) {
             content()
         }
@@ -116,6 +119,25 @@ fun DejavuSearchOverlay(fromTop: Boolean, content: @Composable () -> Unit) {
 }
 
 private val SEARCH_BAR_HEIGHT = 64.dp
+
+private const val STEADY_FRAMES = 3
+private const val STEADY_FRAME_NANOS = 34_000_000L
+private const val MAX_SETTLE_NANOS = 500_000_000L
+
+/**
+ * Waits until the screen is drawn at a steady pace again, for at most half a second, so that an animation started
+ * next is not skipped through while a search screen that just opened is still setting itself up.
+ */
+internal suspend fun awaitSteadyFrames() {
+    val first = withFrameNanos { it }
+    var last = first
+    var steady = 0
+    while (steady < STEADY_FRAMES && last - first < MAX_SETTLE_NANOS) {
+        val now = withFrameNanos { it }
+        steady = if (now - last <= STEADY_FRAME_NANOS) steady + 1 else 0
+        last = now
+    }
+}
 
 /**
  * Remembers that a search was just started from the bottom of the screen, so the search screens opening for it appear

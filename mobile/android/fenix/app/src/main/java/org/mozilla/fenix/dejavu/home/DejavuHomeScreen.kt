@@ -60,6 +60,9 @@ import org.mozilla.fenix.dejavu.actions.ActionPlace
 import org.mozilla.fenix.dejavu.actions.CustomAction
 import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.DejavuSearchOverlay
+import org.mozilla.fenix.dejavu.browser.SearchBackdrop
+import org.mozilla.fenix.dejavu.browser.SearchPageBackdrop
+import org.mozilla.fenix.dejavu.browser.blurBehindSearch
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
@@ -164,8 +167,15 @@ fun ComposeView.setDejavuHomeContent(
                 repository.refreshPinTitles(tabs.associate { it.id to (it.content.url to it.content.title) })
             }
 
+            // A search opened over a page shows the page blurred behind it, else the workspaces blur behind it.
+            val searchedPage by SearchBackdrop.page.collectAsState()
+            val showsPage = remember(searchedPage) {
+                searchedPage?.tabId?.let { it == fenix.appStore.state.searchState.sourceTabId } == true
+            }
+
             Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)) {
                 DejavuHome(
+                    modifier = Modifier.blurBehindSearch(active = isSearchActive && !showsPage),
                     state = workspaceState,
                     tabs = tabs,
                     privateTabs = if (isPrivateLocked) emptyList() else allPrivateTabs,
@@ -180,6 +190,10 @@ fun ComposeView.setDejavuHomeContent(
                     essentialsPerContainer = essentialsPerContainer,
                     interactor = interactor,
                 )
+
+                if (showsPage) {
+                    SearchPageBackdrop(active = isSearchActive, modifier = Modifier.fillMaxSize())
+                }
 
                 SnackbarHost(
                     hostState = snackbarHostState,

@@ -35,10 +35,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.NavController
 import mozilla.components.browser.state.action.AwesomeBarAction
+import mozilla.components.browser.state.selector.findTab
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.compose.base.theme.layout.AcornWindowSize
 import mozilla.components.compose.browser.awesomebar.AwesomeBar
+import mozilla.components.compose.browser.awesomebar.AwesomeBarDefaults
 import mozilla.components.compose.browser.awesomebar.AwesomeBarOrientation
+import mozilla.components.compose.browser.awesomebar.internal.CurrentTabData
 import mozilla.components.compose.browser.awesomebar.internal.CurrentTabDetailsInteractions.CopyClicked
 import mozilla.components.compose.browser.awesomebar.internal.CurrentTabDetailsInteractions.DetailsClicked
 import mozilla.components.compose.browser.awesomebar.internal.CurrentTabDetailsInteractions.EditClicked
@@ -56,6 +59,8 @@ import org.mozilla.fenix.components.AppStore
 import org.mozilla.fenix.components.Components
 import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchEnded
 import org.mozilla.fenix.components.metrics.MetricsUtils
+import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.searchScreenBackground
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getRootView
 import org.mozilla.fenix.home.toolbar.edgeToEdgeClipboardBarBackground
@@ -225,7 +230,7 @@ class AwesomeBarComposable(
             if (state.shouldShowSearchSuggestions) {
                 Box(
                     modifier =
-                        modifier.background(MaterialTheme.colorScheme.surface).fillMaxSize().pointerInput(
+                        modifier.background(searchScreenBackground()).fillMaxSize().pointerInput(
                             WindowInsets.isImeVisible
                         ) {
                             detectTapGestures(
@@ -234,6 +239,10 @@ class AwesomeBarComposable(
                                 },
                                 onTap = {
                                     focusManager.clearFocus()
+                                    // Dejavu: a search started from a page goes back to it, as Back does.
+                                    val isFromPage = appStore.state.searchState.sourceTabId != null &&
+                                        navController.currentDestination?.id == R.id.homeFragment
+                                    if (isFromPage) navController.navigate(R.id.browserFragment)
                                     appStore.dispatch(SearchEnded)
                                 },
                             )
@@ -242,7 +251,7 @@ class AwesomeBarComposable(
                     val currentTabDetailsToShow =
                         remember(state.query.isBlank()) {
                             when (state.query.isBlank() && showCurrentTabData) {
-                                true -> state.currentTabData
+                                true -> state.currentTabData ?: sourceTabData()
                                 else -> null
                             }
                         }
@@ -262,6 +271,9 @@ class AwesomeBarComposable(
                         AwesomeBar(
                             text = state.query,
                             currentTabData = currentTabDetailsToShow,
+                            colors = AwesomeBarDefaults.colors(
+                                background = searchScreenBackground(opaque = MaterialTheme.colorScheme.background),
+                            ),
                             providers = state.searchSuggestionsProviders,
                             hiddenSuggestions = state.hiddenSuggestions,
                             orientation = orientation,
@@ -372,4 +384,14 @@ class AwesomeBarComposable(
                     ),
             )
         }
+
+    /**
+     * Dejavu: the details of the tab a search in the browser was started from, shown like those of a search started
+     * from the address bar of a page, which is shown on the home screen.
+     */
+    private fun sourceTabData(): CurrentTabData? {
+        if (!DejavuToolbar.enabled) return null
+        val tab = appStore.state.searchState.sourceTabId?.let { browserStore.state.findTab(it) } ?: return null
+        return CurrentTabData(title = tab.content.title, url = tab.content.url, icon = tab.content.icon)
+    }
 }

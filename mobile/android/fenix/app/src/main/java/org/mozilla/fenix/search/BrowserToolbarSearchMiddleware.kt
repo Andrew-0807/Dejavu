@@ -99,6 +99,7 @@ import org.mozilla.fenix.components.metrics.MetricsUtils
 import org.mozilla.fenix.components.search.BOOKMARKS_SEARCH_ENGINE_ID
 import org.mozilla.fenix.components.search.HISTORY_SEARCH_ENGINE_ID
 import org.mozilla.fenix.components.search.TABS_SEARCH_ENGINE_ID
+import org.mozilla.fenix.dejavu.NewTabContainerChoice
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.ext.isGoogleSearchEngine
 import org.mozilla.fenix.ext.toolbarHintRes
@@ -343,9 +344,10 @@ class BrowserToolbarSearchMiddleware(
             if (settings.enableHomepageAsNewTab) {
                 false
             } else {
-                // Create a new tab if the source for where the search originated is not available.
+                // Create a new tab if the source for where the search originated is not available, or when another
+                // place than the source tab's own was picked for the search with Dejavu's chips.
                 appStore.state.searchState.sourceTabId?.run {
-                    browserStore.state.findTab(this) == null
+                    browserStore.state.findTab(this) == null || NewTabContainerChoice.peek() != null
                 } ?: true
             }
 

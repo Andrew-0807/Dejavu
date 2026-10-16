@@ -13,6 +13,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -58,6 +59,7 @@ import org.mozilla.fenix.dejavu.browser.DejavuSearchAboveKeyboard
 import org.mozilla.fenix.dejavu.browser.DejavuSearchChips
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.DejavuTopBar
+import org.mozilla.fenix.dejavu.browser.SearchPageBackdrop
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
 
@@ -162,44 +164,54 @@ class BrowserToolbarComposable(
                         }
 
                     MaterialTheme(colorScheme = colorScheme) {
+                        val isDejavuBar = DejavuToolbar.enabled && customTabSession == null
                         when (!shouldUseBottomToolbar) {
                             true ->
-                                DejavuSearchAboveKeyboard(
-                                    enabled = DejavuToolbar.enabled && customTabSession == null,
-                                    isSearching = isSearching,
-                                    toolbar = {
-                                        if (!isSearching) {
-                                            DejavuTopBar(toolbarStore)
-                                        } else {
-                                            Column {
-                                                DejavuSearchChips(newTab = false)
-                                                BrowserToolbar(
-                                                    store = toolbarStore,
-                                                    cfr = toolbarCFR,
-                                                    useMinimalBottomToolbarWhenEnteringText =
-                                                        settings.shouldUseMinimalBottomToolbarWhenEnteringText,
-                                                )
+                                // Pages run up to the top of the screen, behind Dejavu's address bar, which keeps
+                                // below the status bar; while searching the page shows blurred behind everything.
+                                Box {
+                                    if (isDejavuBar) {
+                                        SearchPageBackdrop(active = isSearching, modifier = Modifier.matchParentSize())
+                                    }
+                                    Box(modifier = if (isDejavuBar) Modifier.statusBarsPadding() else Modifier) {
+                                        DejavuSearchAboveKeyboard(
+                                            enabled = isDejavuBar,
+                                            isSearching = isSearching,
+                                            toolbar = {
+                                                if (!isSearching) {
+                                                    DejavuTopBar(toolbarStore)
+                                                } else {
+                                                    Column {
+                                                        DejavuSearchChips(newTab = false)
+                                                        BrowserToolbar(
+                                                            store = toolbarStore,
+                                                            cfr = toolbarCFR,
+                                                            useMinimalBottomToolbarWhenEnteringText =
+                                                                settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                                        )
+                                                    }
+                                                }
+                                            },
+                                            suggestions = searchSuggestionsContent,
+                                        ) {
+                                            Column(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
+                                                if (shouldShowTabStripAtTop) {
+                                                    tabStripContent()
+                                                }
+                                                if (isDejavuBar && !isSearching) {
+                                                    DejavuTopBar(toolbarStore)
+                                                } else {
+                                                    BrowserToolbar(
+                                                        store = toolbarStore,
+                                                        cfr = toolbarCFR,
+                                                        useMinimalBottomToolbarWhenEnteringText =
+                                                            settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                                    )
+                                                }
+                                                if (customTabSession == null) {
+                                                    searchSuggestionsContent(Modifier.weight(1f))
+                                                }
                                             }
-                                        }
-                                    },
-                                    suggestions = searchSuggestionsContent,
-                                ) {
-                                    Column(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
-                                        if (shouldShowTabStripAtTop) {
-                                            tabStripContent()
-                                        }
-                                        if (DejavuToolbar.enabled && customTabSession == null && !isSearching) {
-                                            DejavuTopBar(toolbarStore)
-                                        } else {
-                                            BrowserToolbar(
-                                                store = toolbarStore,
-                                                cfr = toolbarCFR,
-                                                useMinimalBottomToolbarWhenEnteringText =
-                                                    settings.shouldUseMinimalBottomToolbarWhenEnteringText,
-                                            )
-                                        }
-                                        if (customTabSession == null) {
-                                            searchSuggestionsContent(Modifier.weight(1f))
                                         }
                                     }
                                 }

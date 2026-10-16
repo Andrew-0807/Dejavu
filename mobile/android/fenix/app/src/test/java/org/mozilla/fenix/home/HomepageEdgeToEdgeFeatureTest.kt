@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.color.MaterialColors
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -245,7 +244,7 @@ class HomepageEdgeToEdgeFeatureTest {
         }
 
     @Test
-    fun `GIVEN search query is shown WHEN EdgeToEdge wallpaper is active THEN status bar background uses surface color`() =
+    fun `GIVEN search query is shown WHEN EdgeToEdge wallpaper is active THEN status bar background shows the blurred screen behind`() =
         runTest(testDispatcher) {
             every { settings.enableHomepageEdgeToEdgeBackgroundFeature } returns true
             every { settings.shouldUseBottomToolbar } returns false
@@ -272,17 +271,13 @@ class HomepageEdgeToEdgeFeatureTest {
             testScheduler.advanceUntilIdle()
 
             assertEquals(
-                MaterialColors.getColor(
-                    activity,
-                    com.google.android.material.R.attr.colorSurface,
-                    "Could not resolve color",
-                ),
+                Color.TRANSPARENT,
                 (decorView.getChildAt(initialChildCount).background as ColorDrawable).color,
             )
         }
 
     @Test
-    fun `GIVEN homepage trending and recent searches are enabled WHEN the toolbar is selected with no query on EdgeToEdge wallpaper THEN status bar background uses surface color`() =
+    fun `GIVEN homepage trending and recent searches are enabled WHEN the toolbar is selected with no query on EdgeToEdge wallpaper THEN status bar background shows the blurred screen behind`() =
         runTest(testDispatcher) {
             every { settings.enableHomepageEdgeToEdgeBackgroundFeature } returns true
             every { settings.shouldUseBottomToolbar } returns false
@@ -309,11 +304,7 @@ class HomepageEdgeToEdgeFeatureTest {
             testScheduler.advanceUntilIdle()
 
             assertEquals(
-                MaterialColors.getColor(
-                    activity,
-                    com.google.android.material.R.attr.colorSurface,
-                    "Could not resolve color",
-                ),
+                Color.TRANSPARENT,
                 (decorView.getChildAt(initialChildCount).background as ColorDrawable).color,
             )
         }

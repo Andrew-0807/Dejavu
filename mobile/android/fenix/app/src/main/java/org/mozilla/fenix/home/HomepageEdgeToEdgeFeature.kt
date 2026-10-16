@@ -31,6 +31,7 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.browsingmode.BrowsingMode
 import org.mozilla.fenix.browser.browsingmode.BrowsingModeManager
 import org.mozilla.fenix.components.AppStore
+import org.mozilla.fenix.dejavu.browser.isSearchScreenSeeThrough
 import org.mozilla.fenix.utils.Settings
 import org.mozilla.fenix.wallpapers.Wallpaper
 
@@ -187,6 +188,8 @@ class HomepageEdgeToEdgeFeature(
 
         return when {
             !shouldShow -> Color.TRANSPARENT
+            // Dejavu: the search screen shows what is behind it blurred, up to the top of the screen.
+            toolbarState.isShowingResultsScreen && isSearchScreenSeeThrough -> Color.TRANSPARENT
             isPrivateMode -> ContextCompat.getColor(activity, R.color.fx_mobile_private_surface)
             !settings.isTabStripEnabled &&
                 toolbarState.isShowingResultsScreen &&

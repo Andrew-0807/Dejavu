@@ -123,12 +123,7 @@ internal class HomeToolbarComposable(
         val wallpaperTextColor = WallpaperTheme.onWallpaper.takeIf { isUniversalEdgeToEdge && hasWallpaperBackground }
 
         BackInvokedHandler(isSearching) {
-            val sourceTabId = appStore.state.searchState.sourceTabId
-            if (sourceTabId != null) {
-                navController.navigate(R.id.browserFragment)
-            }
-            appStore.dispatch(SearchEnded)
-            browserStore.dispatch(AwesomeBarAction.EngagementFinished(abandoned = true))
+            abandonSearch()
         }
 
         FirefoxTheme {
@@ -148,6 +143,16 @@ internal class HomeToolbarComposable(
                 ToolbarContent(wallpaperTextColor = wallpaperTextColor)
             }
         }
+    }
+
+    /** Ends the search without opening anything, going back to the tab it was started from, if any. */
+    private fun abandonSearch() {
+        val sourceTabId = appStore.state.searchState.sourceTabId
+        if (sourceTabId != null) {
+            navController.navigate(R.id.browserFragment)
+        }
+        appStore.dispatch(SearchEnded)
+        browserStore.dispatch(AwesomeBarAction.EngagementFinished(abandoned = true))
     }
 
     @Composable
@@ -176,7 +181,7 @@ internal class HomeToolbarComposable(
                 Column(
                     modifier =
                         Modifier.weight(1f).fillMaxWidth().pointerInput(Unit) {
-                            detectTapGestures(onTap = { appStore.dispatch(SearchEnded) })
+                            detectTapGestures(onTap = { abandonSearch() })
                         }
                 ) {
                     searchSuggestionsContent(Modifier.weight(1f))

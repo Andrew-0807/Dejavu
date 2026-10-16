@@ -78,11 +78,13 @@ object DejavuToolbar {
     }
 
     /**
-     * The icon of the container of the shown tab, in the container's color, or `null` outside of containers. Tapping
-     * it lists the other containers to reopen the tab in.
+     * The icon of the container of the shown tab, in the container's color, or the "no container" icon outside of
+     * containers; `null` for a private tab, which takes none. Tapping it lists the other containers to reopen the tab
+     * in.
      */
     fun containerAction(context: Context, state: BrowserState): Action? {
-        val contextId = state.selectedTab?.contextId ?: return null
+        val tab = state.selectedTab?.takeUnless { it.content.private } ?: return null
+        val contextId = tab.contextId ?: return noContainerAction(context)
         val record = DejavuContainerStorage.get(context).records.value?.firstOrNull { it.contextId == contextId }
         val container = state.containers[contextId]
         val icon = record?.icon ?: container?.icon ?: return null
@@ -93,6 +95,16 @@ object DejavuToolbar {
             shouldTint = false,
             contentDescription = context.getString(R.string.dejavu_toolbar_container, record?.name ?: container?.name.orEmpty()),
             onClick = BrowserToolbarMenu { containerMenu(context, current = contextId) },
+        )
+    }
+
+    private fun noContainerAction(context: Context): Action? {
+        val drawable = AppCompatResources.getDrawable(context, R.drawable.dejavu_ic_no_container_24) ?: return null
+        return Action.ActionButton(
+            drawable = drawable,
+            shouldTint = true,
+            contentDescription = context.getString(R.string.dejavu_workspace_no_container),
+            onClick = BrowserToolbarMenu { containerMenu(context, current = null) },
         )
     }
 
@@ -143,7 +155,8 @@ object DejavuToolbar {
         components.reopenInContainer(tab, contextId, repository, selected = true, load = true)
     }
 
-    private fun containerMenu(context: Context, current: String): List<BrowserToolbarMenuItem> {
+    /** The containers to reopen the shown tab in, which is in the container [current], or in none when `null`. */
+    private fun containerMenu(context: Context, current: String?): List<BrowserToolbarMenuItem> {
         val others = DejavuContainerStorage.get(context).records.value.orEmpty().filter { it.contextId != current }
         val (permanent, temporary) = others.splitTemporary()
         fun button(icon: Icon, text: String, pick: ContainerPick) =
@@ -154,16 +167,18 @@ object DejavuToolbar {
             button(Icon.DrawableIcon(drawable, shouldTint = false), record.name, pick)
         }
         return buildList {
-            add(
-                button(
-                    Icon.DrawableResIcon(R.drawable.dejavu_ic_no_container_24),
-                    context.getString(R.string.dejavu_workspace_no_container),
-                    ContainerPick.NoContainer,
-                ),
-            )
-            if (permanent.isNotEmpty()) add(BrowserToolbarMenuDivider)
+            if (current != null) {
+                add(
+                    button(
+                        Icon.DrawableResIcon(R.drawable.dejavu_ic_no_container_24),
+                        context.getString(R.string.dejavu_workspace_no_container),
+                        ContainerPick.NoContainer,
+                    ),
+                )
+                if (permanent.isNotEmpty()) add(BrowserToolbarMenuDivider)
+            }
             addAll(containerButtons(permanent))
-            add(BrowserToolbarMenuDivider)
+            if (isNotEmpty()) add(BrowserToolbarMenuDivider)
             add(
                 button(
                     Icon.DrawableResIcon(R.drawable.dejavu_ic_temporary_container_24),

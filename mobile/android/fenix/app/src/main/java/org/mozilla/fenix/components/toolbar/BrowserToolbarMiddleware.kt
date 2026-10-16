@@ -147,6 +147,7 @@ import org.mozilla.fenix.components.toolbar.TabCounterInteractions.TabCounterLon
 import org.mozilla.fenix.components.usecases.ShareUseCases
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.DejavuToolbarEvent
+import org.mozilla.fenix.dejavu.browser.SearchBackdrop
 import org.mozilla.fenix.ext.canGoBackInHistoryOrToStories
 import org.mozilla.fenix.ext.nav
 import org.mozilla.fenix.ext.navigateSafe
@@ -337,7 +338,6 @@ class BrowserToolbarMiddleware(
                 observePermissionHighlightsUpdates(store)
                 observeIPProtectionUpdates(store)
                 observeTabReloadCoverUpdates(store)
-                observeContainerUpdates(store)
             }
 
             is StartPageActions.SiteInfoClicked -> {
@@ -430,18 +430,21 @@ class BrowserToolbarMiddleware(
 
                 val selectedTab = browserStore.state.selectedTab ?: return
                 val searchTerms = selectedTab.content.searchTerms
-                if (searchTerms.isBlank()) {
-                    navController.navigate(
-                        BrowserFragmentDirections.actionGlobalHome(
-                            focusOnAddressBar = true,
-                            sessionToStartSearchFor = selectedTab.id,
+                // Dejavu: the search screen shows the page blurred behind it, so the page is pictured first.
+                SearchBackdrop.capturePage(selectedTab.id) {
+                    if (searchTerms.isBlank()) {
+                        navController.navigate(
+                            BrowserFragmentDirections.actionGlobalHome(
+                                focusOnAddressBar = true,
+                                sessionToStartSearchFor = selectedTab.id,
+                            )
                         )
-                    )
-                } else {
-                    if (!settings.showAddressBarInFocusMode) {
-                        store.dispatch(SearchQueryUpdated(BrowserToolbarQuery(searchTerms), true))
+                    } else {
+                        if (!settings.showAddressBarInFocusMode) {
+                            store.dispatch(SearchQueryUpdated(BrowserToolbarQuery(searchTerms), true))
+                        }
+                        appStore.dispatch(SearchStarted(selectedTab.id))
                     }
-                    appStore.dispatch(SearchStarted(selectedTab.id))
                 }
             }
             is CopyToClipboardClicked -> {
@@ -766,8 +769,7 @@ class BrowserToolbarMiddleware(
     }
 
     private fun buildStartPageActions(): List<Action> {
-        return listOfNotNull(DejavuToolbar.containerAction(uiContext, browserStore.state)) +
-            listOf(
+        return listOf(
                 ToolbarActionConfig(ToolbarAction.SiteInfo) {
                     !browserScreenStore.state.readerModeStatus.isActive
                 }
@@ -1012,13 +1014,6 @@ class BrowserToolbarMiddleware(
                     updateEndBrowserActions(store)
                     updateNavigationActions(store)
                 }
-        }
-    }
-
-    private fun observeContainerUpdates(store: Store<BrowserToolbarState, BrowserToolbarAction>) {
-        browserStore.observeWhileActive {
-            distinctUntilChangedBy { it.selectedTab?.contextId to it.containers[it.selectedTab?.contextId] }
-                .collect { updateStartPageActions(store) }
         }
     }
 

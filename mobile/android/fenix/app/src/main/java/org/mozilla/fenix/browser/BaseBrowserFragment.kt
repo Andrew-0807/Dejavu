@@ -212,6 +212,9 @@ import org.mozilla.fenix.databinding.FragmentBrowserBinding
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
+import org.mozilla.fenix.dejavu.browser.navigationBarHeight
+import org.mozilla.fenix.dejavu.browser.padForNavigationBar
+import org.mozilla.fenix.dejavu.browser.statusBarHeight
 import org.mozilla.fenix.downloads.DownloadService
 import org.mozilla.fenix.downloads.RenameAndChangeLocationDialogFragment
 import org.mozilla.fenix.downloads.dialog.createDownloadAppDialog
@@ -559,9 +562,7 @@ abstract class BaseBrowserFragment :
                     browserLayout = getSwipeRefreshLayout(),
                     engineView = getEngineView(),
                     toolbar = browserToolbar,
-                    topToolbarHeight = {
-                        getTopToolbarHeight(includeTabStripIfAvailable = customTabSessionId == null)
-                    },
+                    topToolbarHeight = ::topToolbarHeightAbovePage,
                     onToolbarsReset = ::collapseBrowserView,
                 ),
             owner = this,
@@ -1477,7 +1478,7 @@ abstract class BaseBrowserFragment :
         )
 
         initializeEngineView(
-            topToolbarHeight = getTopToolbarHeight(includeTabStripIfAvailable = customTabSessionId == null),
+            topToolbarHeight = topToolbarHeightAbovePage(),
             bottomToolbarHeight = bottomToolbarHeight,
         )
 
@@ -2231,7 +2232,7 @@ abstract class BaseBrowserFragment :
         // Avoid any change for scenarios where the toolbar is not shown
         if (fullScreenFeature.get()?.isFullScreen == true) return 0 to 0
 
-        val topToolbarHeight = getTopToolbarHeight(includeTabStripIfAvailable = customTabSessionId == null)
+        val topToolbarHeight = topToolbarHeightAbovePage()
         val bottomToolbarHeight =
             getBottomToolbarHeight(
                 includeTabStripIfAvailable = customTabSessionId == null,
@@ -2240,6 +2241,25 @@ abstract class BaseBrowserFragment :
             )
 
         return topToolbarHeight to bottomToolbarHeight
+    }
+
+    /**
+     * The height the top toolbar takes above the page. Dejavu's address bar keeps below the status bar, which pages
+     * run up behind once the address bar scrolls away, so it takes the status bar's height too.
+     */
+    private fun topToolbarHeightAbovePage(): Int {
+        val toolbarHeight = getTopToolbarHeight(includeTabStripIfAvailable = customTabSessionId == null)
+        val isDejavuBar = DejavuToolbar.enabled && customTabSessionId == null && toolbarHeight > 0
+        return if (isDejavuBar) toolbarHeight + (view?.statusBarHeight ?: 0) else toolbarHeight
+    }
+
+    /**
+     * The keyboard's height left out of [keyboardHeight] for the navigation bar under it. Dejavu's browser runs behind
+     * the navigation bar instead of above it, so the space kept for a shown keyboard takes that height too.
+     */
+    private fun navigationBarUnderKeyboard(view: View, keyboardHeight: Int): Int {
+        val isDejavuBrowser = DejavuToolbar.enabled && customTabSessionId == null
+        return if (isDejavuBrowser && keyboardHeight > 0) view.navigationBarHeight else 0
     }
 
     /** Updates the site permissions rules based on user settings. */
@@ -2400,7 +2420,7 @@ abstract class BaseBrowserFragment :
     internal fun reinitializeEngineView() {
         val isFullscreen = fullScreenFeature.get()?.isFullScreen == true
         val shouldToolbarsBeHidden = isFullscreen || !webAppToolbarShouldBeVisible
-        val topToolbarHeight = getTopToolbarHeight(includeTabStripIfAvailable = customTabSessionId == null)
+        val topToolbarHeight = topToolbarHeightAbovePage()
         val bottomToolbarHeight =
             getBottomToolbarHeight(
                 includeTabStripIfAvailable = customTabSessionId == null,
@@ -2550,7 +2570,11 @@ abstract class BaseBrowserFragment :
     private fun launchFindInPageFeature(view: View, store: BrowserStore) {
         if (findInPageIntegration.get() == null) {
             val findInPageBar =
-                view.findViewById(R.id.findInPageView) ?: (binding.findInPageViewStub.inflate() as FindInPageBar)
+                view.findViewById(R.id.findInPageView)
+                    ?: (binding.findInPageViewStub.inflate() as FindInPageBar).also { bar ->
+                        // Pages run behind the navigation bar in Dejavu's browser, so the bar keeps above it.
+                        if (DejavuToolbar.enabled && customTabSessionId == null) bar.padForNavigationBar()
+                    }
             findInPageIntegration.set(
                 feature =
                     FindInPageIntegration(
@@ -2630,7 +2654,8 @@ abstract class BaseBrowserFragment :
                     },
                     onIMEAnimationFinished = { isKeyboardShowingUp, keyboardHeight ->
                         if (isKeyboardShowingUp || keyboardHeight == 0) {
-                            (view.layoutParams as? ViewGroup.MarginLayoutParams)?.bottomMargin = keyboardHeight
+                            (view.layoutParams as? ViewGroup.MarginLayoutParams)?.bottomMargin =
+                                keyboardHeight + navigationBarUnderKeyboard(view, keyboardHeight)
                             view.requestLayout()
                         }
                     },
