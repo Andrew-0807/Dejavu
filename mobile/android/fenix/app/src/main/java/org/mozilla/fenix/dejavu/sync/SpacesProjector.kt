@@ -167,9 +167,9 @@ internal class SpacesProjector(
     /**
      * Open tabs that are not pinned, like Zen's "Include unpinned tabs": each is a tab record that is not pinned, in its
      * workspace's children after the pinned items. A tab's address and title go out only when they changed here since
-     * the last sync, so a page loaded on two devices is not sent back and forth. Without them, and before the browser
-     * restored its tabs, the server's unpinned tabs are held. Those that never were open here are held too; the engine
-     * opens them.
+     * the last sync, so a page loaded on two devices is not sent back and forth. Zen has no temporary containers, so a
+     * tab in one goes out without a container and keeps it here. Without them, and before the browser restored its
+     * tabs, the server's unpinned tabs are held. Those that never were open here are held too; the engine opens them.
      */
     private fun projectNormalTabs() {
         val tabs = local.tabs?.takeIf { local.normalTabs }
@@ -182,8 +182,7 @@ internal class SpacesProjector(
             if (tab.id in pinnedTabs) continue
             val syncId = state.syncIdOf(tab.id)
             val workspaceId = state.workspaceOf(tab.id)
-            val inSyncedContainer = tab.contextId == null || tab.contextId in containerIds
-            if (!isSyncableUrl(tab.url) || workspaceId !in workspaceIds || !inSyncedContainer) {
+            if (!isSyncableUrl(tab.url) || workspaceId !in workspaceIds) {
                 held += syncId
                 continue
             }
