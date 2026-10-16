@@ -262,8 +262,9 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler {
                     navBarLayout = browserNavigationBar?.layout,
                     toolbarPosition = settings.toolbarPosition,
                     navController = findNavController(),
+                    // Only the actions bar opens the menu; a swipe down on the address bar does nothing.
                     onSwipe = { fromNavBar: Boolean ->
-                        findNavController().openDejavuMenu(fromBottom = fromNavBar)
+                        if (fromNavBar) findNavController().openDejavuMenu(fromBottom = true)
                     }.takeIf { DejavuToolbar.enabled },
                     menuSwipe = findNavController().moreMenuSwipe().takeIf { DejavuToolbar.enabled },
                 )
