@@ -6,6 +6,7 @@ package org.mozilla.fenix.dejavu.menu
 
 import android.content.Context
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -69,8 +71,8 @@ import org.mozilla.fenix.webcompat.WEB_COMPAT_REPORTER_URL
 import org.mozilla.fenix.webcompat.middleware.DefaultWebCompatReporterRetrievalService
 
 /**
- * Dejavu's bar below web pages: the buttons the user chose for it, Home and Search among them. Swiping the bar up opens
- * the "More" menu.
+ * Dejavu's bar below web pages: the buttons the user chose for it, Home and Search among them, on a rounded bar in the
+ * colors of the tab's workspace that floats over the bottom of the page. Swiping the bar up opens the "More" menu.
  *
  * @param onEvent Carries out what the user tapped.
  */
@@ -106,10 +108,13 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit) {
 
     Box(
         modifier = Modifier
+            .padding(start = BAR_SIDE_MARGIN, end = BAR_SIDE_MARGIN, bottom = BAR_BOTTOM_MARGIN)
             .fillMaxWidth()
             .height(BAR_HEIGHT)
+            .clip(BAR_SHAPE)
             .background(MaterialTheme.colorScheme.surface)
-            .workspaceTheme(shownWorkspaceTheme()),
+            .workspaceTheme(shownWorkspaceTheme())
+            .border(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = BORDER_ALPHA), BAR_SHAPE),
     ) {
         Box(
             modifier = Modifier
@@ -280,5 +285,9 @@ private fun reportBrokenSite(context: Context, navController: NavController, tab
 }
 
 private val BAR_HEIGHT = 60.dp
+private val BAR_SIDE_MARGIN = 12.dp
+private val BAR_BOTTOM_MARGIN = 12.dp
+private val BAR_SHAPE = RoundedCornerShape(percent = 50)
+private const val BORDER_ALPHA = 0.14f
 private const val HANDLE_ALPHA = 0.3f
 private const val DISABLED_ALPHA = 0.38f

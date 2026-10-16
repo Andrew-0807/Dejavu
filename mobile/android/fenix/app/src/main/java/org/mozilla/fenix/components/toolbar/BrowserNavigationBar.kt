@@ -69,7 +69,12 @@ class BrowserNavigationBar(
                 }
 
                 FirefoxTheme {
-                    Column(modifier = Modifier.background(MaterialTheme.colorScheme.surface)) {
+                    // Dejavu's actions bar floats over the page, so the space around it is left clear.
+                    val isDejavuBar = DejavuToolbar.enabled && customTabSessionId == null
+                    Column(
+                        modifier =
+                            if (isDejavuBar) Modifier else Modifier.background(MaterialTheme.colorScheme.surface),
+                    ) {
                         if (shouldShowTabStrip) {
                             tabStripContent().invoke()
                         }

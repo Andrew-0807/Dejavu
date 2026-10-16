@@ -5,7 +5,6 @@
 package org.mozilla.fenix.dejavu.browser
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,7 +12,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -46,12 +44,11 @@ import mozilla.components.support.utils.ClipboardHandler
 import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
 import org.mozilla.fenix.dejavu.ui.DejavuMenuItem
 import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
-import org.mozilla.fenix.dejavu.ui.glass
 
 /**
- * Dejavu's address bar while a page is shown: only its state, like Safari's. The page title sits in the middle of a
- * rounded field, after the icons of the tab's container and of the site's security, with no buttons, over the colors of
- * the tab's workspace. Tapping the bar starts a search, and long-pressing it copies the address or pastes one.
+ * Dejavu's address bar while a page is shown: only its state, like Safari's. The page title sits in the middle, after
+ * the icons of the tab's container and of the site's security, with no buttons and no background of its own. Tapping
+ * the bar starts a search, and long-pressing it copies the address or pastes one.
  *
  * @param store The store of the address bar.
  */
@@ -70,8 +67,6 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
         modifier = Modifier
             .fillMaxWidth()
             .height(BAR_HEIGHT)
-            .background(MaterialTheme.colorScheme.surface)
-            .workspaceTheme(theme)
             .semantics {
                 contentDescription = if (text == hint) hint else "$text. $hint"
                 role = Role.Button
@@ -92,7 +87,6 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
                 .fillMaxWidth()
                 .padding(horizontal = SIDE_PADDING)
                 .height(FIELD_HEIGHT)
-                .glass(glass, CircleShape)
                 .padding(horizontal = FIELD_PADDING),
         ) {
             ActionContainer(actions = display.pageActionsStart, onInteraction = { store.dispatch(it) })
