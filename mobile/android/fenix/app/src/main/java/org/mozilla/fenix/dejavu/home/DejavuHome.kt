@@ -381,7 +381,11 @@ fun DejavuHome(
 
     fun onPinClick(pin: PinnedItem) {
         val current = selection
-        if (current != null) selection = current.togglePin(pin.id).takeIf { it.size > 0 } else interactor.onPinClick(pin)
+        if (current != null) {
+            selection = current.togglePin(pin.id, state).takeIf { it.size > 0 }
+        } else {
+            interactor.onPinClick(pin)
+        }
     }
 
     // Dialogs and menus take on the look of the workspace they open over.
@@ -515,7 +519,7 @@ fun DejavuHome(
                             onFolderClick = { folder ->
                                 val current = selection
                                 if (current != null) {
-                                    selection = current.toggleFolder(folder.id).takeIf { it.size > 0 }
+                                    selection = current.toggleFolder(folder.id, state).takeIf { it.size > 0 }
                                 } else {
                                     interactor.onToggleFolder(folder.id)
                                 }

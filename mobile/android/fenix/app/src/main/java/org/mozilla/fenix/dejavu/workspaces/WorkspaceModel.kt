@@ -212,6 +212,15 @@ data class WorkspaceState(
         return 1 + (children.maxOfOrNull { folderHeight(it.id, seen + folderId) } ?: 0)
     }
 
+    /** Returns the IDs of the folders [itemId] is nested in, from its own folder up. */
+    fun ancestorIds(itemId: String): Set<String> {
+        val byId = pins.associateBy { it.id }
+        val result = LinkedHashSet<String>()
+        var parent = byId[itemId]?.parentId
+        while (parent != null && result.add(parent)) parent = byId[parent]?.parentId
+        return result
+    }
+
     /** Returns the IDs of every item nested below [folderId]. */
     fun descendantIds(folderId: String): Set<String> {
         val result = mutableSetOf<String>()

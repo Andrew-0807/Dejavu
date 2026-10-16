@@ -25,14 +25,44 @@ data class Selection(
 
     fun toggleTab(id: String) = copy(tabIds = tabIds.toggle(id))
 
-    fun togglePin(id: String) = copy(pinIds = pinIds.toggle(id))
+    /** Picks pinned tab [id], or leaves it out together with the folders it is in, which are no longer whole. */
+    fun togglePin(id: String, state: WorkspaceState): Selection = if (id in pinIds) {
+        copy(pinIds = pinIds - id, folderIds = folderIds - state.ancestorIds(id))
+    } else {
+        copy(pinIds = pinIds + id)
+    }
 
-    fun toggleFolder(id: String) = copy(folderIds = folderIds.toggle(id))
+    /**
+     * Picks folder [id] with everything inside it, its subfolders and their tabs included, or leaves all of that out
+     * together with the folders it is in, which are no longer whole.
+     */
+    fun toggleFolder(id: String, state: WorkspaceState): Selection {
+        val inside = state.descendantIds(id)
+        val (subfolders, tabs) = state.pins.filter { it.id in inside }.partition { it.isFolder }
+        val wholeFolder = subfolders.map { it.id }.toSet() + id
+        val folderTabs = tabs.map { it.id }.toSet()
+        return if (id in folderIds) {
+            copy(pinIds = pinIds - folderTabs, folderIds = folderIds - wholeFolder - state.ancestorIds(id))
+        } else {
+            copy(pinIds = pinIds + folderTabs, folderIds = folderIds + wholeFolder)
+        }
+    }
+
+    /** How many items are picked, leaving out those inside a picked folder, which go wherever it goes. */
+    fun topLevelCount(state: WorkspaceState): Int {
+        val inside = folderIds.flatMap { state.descendantIds(it) }.toSet()
+        return tabIds.size + (pinIds - inside).size + (folderIds - inside).size
+    }
 
     operator fun plus(other: Selection) =
         Selection(tabIds + other.tabIds, pinIds + other.pinIds, folderIds + other.folderIds)
 
     private fun Set<String>.toggle(id: String) = if (id in this) this - id else this + id
+
+    companion object {
+        /** Folder [id] picked with everything inside it. */
+        fun ofFolder(id: String, state: WorkspaceState): Selection = Selection().toggleFolder(id, state)
+    }
 }
 
 /**
