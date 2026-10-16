@@ -174,10 +174,10 @@ internal class HomeToolbarComposable(
                 // the tabs, bookmarks or history, so the address bar stays right above the keyboard. A tap there
                 // ends the search, as a tap beside the suggestions does, instead of reaching the workspace below.
                 Column(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth()
-                        .pointerInput(Unit) { detectTapGestures(onTap = { appStore.dispatch(SearchEnded) }) },
+                    modifier =
+                        Modifier.weight(1f).fillMaxWidth().pointerInput(Unit) {
+                            detectTapGestures(onTap = { appStore.dispatch(SearchEnded) })
+                        }
                 ) {
                     searchSuggestionsContent(Modifier.weight(1f))
                 }

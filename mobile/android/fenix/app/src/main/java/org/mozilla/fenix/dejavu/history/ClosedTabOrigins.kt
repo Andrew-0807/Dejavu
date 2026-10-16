@@ -166,6 +166,7 @@ class ClosedTabOrigins internal constructor(private val file: File) {
  * since. A tab whose temporary container went away comes back in a new one. Tabs Dejavu closes on its own never reach
  * undo, and so are not recorded.
  *
+ * @param origins Where the latest closed tabs were.
  * @param repository The workspaces, or `null` while they are not loaded yet.
  * @param isTemporary Whether the container with this context id is a temporary one.
  * @param newTemporary Starts a new temporary container and returns its context id.
