@@ -4,12 +4,16 @@
 
 package org.mozilla.fenix.dejavu.sync
 
+import mozilla.components.browser.state.state.ContainerState
+import org.json.JSONObject
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mozilla.fenix.dejavu.containers.ContainerColor
+import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.sync.ZenRecords.SPACE_PERSONAL
 import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_NORMAL
 import org.mozilla.fenix.dejavu.workspaces.PinKind
@@ -97,6 +101,28 @@ class SpacesNormalTabsTest {
         assertEquals("https://local.example/", record.string("url"))
         assertFalse(TAB_NORMAL in changes)
         assertEquals(TAB_NORMAL to "local-1", changes.getValue(SPACE_PERSONAL).data!!.strings("children")!!.takeLast(2).let { it[0] to it[1] })
+    }
+
+    @Test
+    fun `a tab in a temporary container goes out without a container, and keeps it when it comes back`() {
+        val temporary =
+            ContainerRecord("tmp-1", "tmp1", ContainerColor.WHITE, ContainerState.Icon.FINGERPRINT, 5L, 5L, temporary = true)
+        val state = desktop().state.let { it.copy(assignments = it.assignments + ("local-1" to SPACE_PERSONAL)) }
+        val local = LocalTab("local-1", "https://local.example/", "Local", contextId = temporary.contextId, awake = true)
+        val tabs = listOf(tab(TAB_NORMAL), local)
+        val server = ZenRecords.desktop().associateBy { it.id }
+
+        val record = SpacesProjector(LocalSpaces(state, containers + temporary, normalTabs = true, tabs = tabs), server)
+            .project()
+            .changesAgainst(server)
+            .single { it.id == "local-1" }
+
+        val data = record.data!!
+        assertEquals(JSONObject.NULL, data.opt("containerGuid"))
+        assertEquals(SPACE_PERSONAL, data.string("workspaceUuid"))
+        val back = apply(state, listOf(record), tabs, server = server + (record.id to record))
+        assertTrue(back.tabOps.isEmpty())
+        assertEquals(SPACE_PERSONAL, back.state.assignments["local-1"])
     }
 
     @Test
