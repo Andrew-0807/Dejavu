@@ -156,7 +156,7 @@ internal class SpacesProjector(
             if (previous == null) {
                 data.put("icon", "").put("hasStaticIcon", false).put("defaultContainer", false)
             }
-            data.putNullable("containerGuid", guidOf(pin.containerId))
+            data.putNullable("containerGuid", containerGuidOf(pin.containerId, previous))
                 .put("essential", pin.essential)
                 .put("pinned", true)
                 .putNullable("workspaceUuid", if (pin.essential) null else pin.workspaceId)
@@ -196,7 +196,7 @@ internal class SpacesProjector(
             }
             if (previous == null) data.put("icon", "").put("hasStaticIcon", false).put("defaultContainer", false)
             val folderId = folderOfNormalTab(previous, workspaceId)
-            data.putNullable("containerGuid", guidOf(tab.contextId))
+            data.putNullable("containerGuid", containerGuidOf(tab.contextId, previous))
                 .put("essential", false)
                 .put("pinned", false)
                 .put("workspaceUuid", workspaceId)
@@ -300,7 +300,7 @@ internal class SpacesProjector(
             if (previous == null || ZenThemes.toDejavu(previous.opt("theme")) != workspace.theme) {
                 data.put("theme", ZenThemes.fromDejavu(workspace.theme, previous?.opt("theme")))
             }
-            data.putNullable("containerGuid", guidOf(workspace.containerId))
+            data.putNullable("containerGuid", containerGuidOf(workspace.containerId, previous))
                 .put("children", JSONArray(children(workspace.id, null, previous?.strings("children"))))
             records[workspace.id] = SpacesRecord.of(workspace.id, RecordKind.SPACE, data)
         }
@@ -370,6 +370,13 @@ internal class SpacesProjector(
         pin.parentId?.takeIf { id -> pinsById[id]?.let { it.isFolder && it.workspaceId == pin.workspaceId } == true }
 
     private fun guidOf(contextId: String?): String? = contextId?.takeIf { it in containerIds }
+
+    /**
+     * The container a record names: the permanent one [contextId] is, or else the one [previous] names when that was
+     * removed on the server, which nothing here could join, so the record stays as it was.
+     */
+    private fun containerGuidOf(contextId: String?, previous: JSONObject?): String? =
+        guidOf(contextId) ?: previous?.string("containerGuid")?.takeIf { server[it]?.deleted == true }
 
     private fun previous(id: String, kind: String): JSONObject? =
         server[id]?.takeIf { !it.deleted && it.kind == kind }?.data

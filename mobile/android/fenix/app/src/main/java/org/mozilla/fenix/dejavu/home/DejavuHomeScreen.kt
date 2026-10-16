@@ -63,6 +63,7 @@ import org.mozilla.fenix.dejavu.browser.DejavuSearchOverlay
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
+import org.mozilla.fenix.dejavu.containers.TemporaryContainers
 import org.mozilla.fenix.dejavu.features.FeatureTour
 import org.mozilla.fenix.dejavu.features.FeatureTourDialog
 import org.mozilla.fenix.dejavu.features.wasUpdated
@@ -309,7 +310,12 @@ private class DefaultDejavuHomeInteractor(
             url = url,
             selectTab = true,
             title = pin.openTitle ?: pin.title,
-            contextId = pin.containerId,
+            contextId = TemporaryContainers.orReplacement(
+                pin.containerId,
+                store,
+                containerStorage,
+                settings.temporaryContainersByDefault.value,
+            ),
             source = SessionState.Source.Internal.None,
         )
         repository.attachPinned(pin.id, tabId)

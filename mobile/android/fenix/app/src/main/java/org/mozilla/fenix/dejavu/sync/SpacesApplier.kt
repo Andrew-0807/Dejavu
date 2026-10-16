@@ -30,9 +30,19 @@ internal class ApplyResult(
 
 /** A change to the open tabs that applying records asks for. */
 internal sealed interface TabOp {
-    /** Opens [url] as tab [id] of workspace [workspaceId] in container [contextId], without loading it. */
-    data class Open(val id: String, val url: String, val title: String, val contextId: String?, val workspaceId: String) :
-        TabOp
+    /**
+     * Opens [url] as tab [id] of workspace [workspaceId] in container [contextId], without loading it. When that
+     * container was removed, [containerRemoved] opens it in a new temporary container if new tabs open in one, or in
+     * none.
+     */
+    data class Open(
+        val id: String,
+        val url: String,
+        val title: String,
+        val contextId: String?,
+        val workspaceId: String,
+        val containerRemoved: Boolean = false,
+    ) : TabOp
 
     /** Points tab [id], whose page is not loaded, at [url]. */
     data class Retarget(val id: String, val url: String, val title: String) : TabOp
@@ -56,6 +66,8 @@ internal sealed interface TabOp {
  * @param normalTabs Whether tabs that are not pinned are synced too. Otherwise their records only unpin tabs.
  * @param tabs The open tabs that are not private by id, or `null` while the browser has not restored them. Records of
  *   tabs that are not pinned then wait.
+ * @param removedContainers Containers removed on the server. A tab in one would wait for it forever, so it is applied
+ *   without it: a pinned tab keeps the removed container's id, and finds a container when it opens.
  */
 internal class SpacesApplier(
     private val server: Map<String, SpacesRecord>,
@@ -65,14 +77,15 @@ internal class SpacesApplier(
     private val now: Long,
     private val normalTabs: Boolean = false,
     private val tabs: Map<String, LocalTab>? = null,
+    private val removedContainers: Set<String> = emptySet(),
 ) {
     /** Applies [incoming] to [state]. Pure: the same input always gives the same result. */
     fun apply(state: WorkspaceState, incoming: List<SpacesRecord>): ApplyResult = Pass(state, incoming).run()
 
     private enum class Outcome { APPLIED, FAILED, IGNORED }
 
-    /** A container a record refers to; [contextId] is `null` for no container. */
-    private class ContainerRef(val contextId: String?)
+    /** A container a record refers to; [contextId] is `null` for no container, and [removed] when it was removed. */
+    private class ContainerRef(val contextId: String?, val removed: Boolean = false)
 
     @Suppress("TooManyFunctions")
     private inner class Pass(private val original: WorkspaceState, private val incoming: List<SpacesRecord>) {
@@ -323,7 +336,14 @@ internal class SpacesApplier(
             val tabId = pin?.tabId?.takeIf { it in openTabs }
                 ?: tabIdsBySyncId[record.id]?.takeIf { id -> pins.none { it.tabId == id } }
             if (tabId == null) {
-                tabOps += TabOp.Open(record.id, url, title, container.contextId, workspaceId)
+                tabOps += TabOp.Open(
+                    record.id,
+                    url,
+                    title,
+                    container.contextId,
+                    workspaceId,
+                    containerRemoved = container.removed,
+                )
                 assignments[record.id] = workspaceId
                 applyLabel(record.id, data)
                 return Outcome.APPLIED
@@ -508,7 +528,11 @@ internal class SpacesApplier(
 
         private fun containerOf(data: JSONObject): ContainerRef? {
             val guid = data.string("containerGuid")?.takeIf { it.isNotEmpty() } ?: return ContainerRef(null)
-            return if (guid in containerIds) ContainerRef(guid) else null
+            return when (guid) {
+                in containerIds -> ContainerRef(guid)
+                in removedContainers -> ContainerRef(guid, removed = true)
+                else -> null
+            }
         }
 
         /** Keeps a local container the server cannot see, like a temporary one, while the synced one is unchanged. */

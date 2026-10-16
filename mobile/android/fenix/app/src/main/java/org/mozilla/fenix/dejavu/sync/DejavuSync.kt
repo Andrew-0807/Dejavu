@@ -55,6 +55,7 @@ import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerRemoval
 import org.mozilla.fenix.dejavu.containers.ContainerRemover
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
+import org.mozilla.fenix.dejavu.containers.TemporaryContainers
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
@@ -679,9 +680,15 @@ private class DejavuSpacesData(private val context: Context) : SpacesLocalData, 
                 is TabOp.Open -> {
                     if (store.state.findTab(op.id) != null) continue
                     repository.expectTab(op.id)
+                    val contextId = if (op.containerRemoved) {
+                        val temporary = DejavuSettings.get(context).temporaryContainersByDefault.value
+                        TemporaryContainers.orReplacement(op.contextId, store, containers, temporary)
+                    } else {
+                        op.contextId
+                    }
                     store.dispatch(
                         TabListAction.AddTabAction(
-                            createTab(url = op.url, id = op.id, title = op.title, contextId = op.contextId),
+                            createTab(url = op.url, id = op.id, title = op.title, contextId = contextId),
                             select = false,
                         ),
                     )
