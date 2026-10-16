@@ -79,6 +79,7 @@ import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.actions.icon
 import org.mozilla.fenix.dejavu.actions.label
+import org.mozilla.fenix.dejavu.browser.tabZoomTarget
 import org.mozilla.fenix.dejavu.containers.ContainerIcon
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.ContainerRecord
@@ -429,7 +430,7 @@ internal fun WorkspacePage(
                         onAction = { callbacks.onRowAction(it, targets) },
                         onClick = { if (drag == null) callbacks.onPinClick(item) },
                         onIconClick = resetPin?.let { action -> { if (drag == null) callbacks.onRowAction(action, targets) } },
-                        modifier = rowModifier,
+                        modifier = rowModifier.tabZoomTarget(tab?.id),
                     )
                 }
             }
@@ -497,7 +498,8 @@ internal fun WorkspacePage(
                     onClick = { if (drag == null) callbacks.onTabClick(tab) },
                     modifier = Modifier
                         .dropLine(dropLines?.of(key), lineColor, insideColor)
-                        .rowAlpha(key),
+                        .rowAlpha(key)
+                        .tabZoomTarget(tab.id),
                 )
             }
         }

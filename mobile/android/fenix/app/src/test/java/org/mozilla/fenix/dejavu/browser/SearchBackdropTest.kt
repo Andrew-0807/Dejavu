@@ -39,7 +39,7 @@ class SearchBackdropTest {
             every { asView() } returns page
             every { captureThumbnail(capture(picture)) } returns Unit
         }
-        SearchBackdrop.attach(engineView)
+        PagePictures.attach(engineView)
     }
 
     @After

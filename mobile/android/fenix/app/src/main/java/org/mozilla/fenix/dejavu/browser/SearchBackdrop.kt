@@ -25,88 +25,42 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.GraphicsLayerScope
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.TileMode
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.unit.dp
-import java.lang.ref.WeakReference
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import mozilla.components.concept.engine.EngineView
 
 private val BLUR_RADIUS = 24.dp
 private const val SCRIM_ALPHA = 0.65f
 private const val BLUR_DURATION_MS = 280
-private const val CAPTURE_TIMEOUT_MS = 300L
 
 /** Whether Android can blur what lies behind the search screens; older versions keep their plain background. */
 internal val canBlurBehindSearch: Boolean
     get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
-/**
- * A picture of the page of the tab with [tabId], taken as a search screen opened over it.
- *
- * @property bitmap The page.
- * @property offset Where the page was shown in the window.
- * @property tabId The tab showing the page.
- * @property edgeColor The color along the page's top edge, which also showed above the page.
- */
-internal class PageShot(val bitmap: ImageBitmap, val offset: Offset, val tabId: String, val edgeColor: Color)
-
 /** The page under the search screens opened from the browser, which show it blurred behind them. */
 internal object SearchBackdrop {
     private val _page = MutableStateFlow<PageShot?>(null)
-    private var engineView: WeakReference<EngineView>? = null
-    private var capturing = false
 
     /** The page pictured for the search screen open now, until that search screen is gone. */
     val page: StateFlow<PageShot?> = _page
 
-    /** Lets the search screens opened from the browser picture the page of [view], while it is on screen. */
-    fun attach(view: EngineView) {
-        engineView = WeakReference(view)
-    }
-
     /**
      * Pictures the page of the tab with [tabId] as it is shown now, for the search screen about to open over it, and
-     * opens that search screen with [open] once the picture is taken, or at the latest after [CAPTURE_TIMEOUT_MS].
-     * A search screen asked for while a picture is being taken is not opened twice.
+     * opens that search screen with [open] once the picture is taken, or soon after when it takes long. A search screen
+     * asked for while a picture is being taken is not opened twice.
      */
     fun capturePage(tabId: String, open: () -> Unit) {
-        val engineView = engineView?.get()
-        val view = engineView?.asView()
-        if (!isSearchScreenSeeThrough || view == null || !view.isAttachedToWindow) {
+        if (!isSearchScreenSeeThrough) {
             open()
             return
         }
-        if (capturing) return
-        capturing = true
-        val location = IntArray(2).also(view::getLocationInWindow)
-        var opened = false
-        val finish = Runnable {
-            if (!opened) {
-                opened = true
-                capturing = false
-                open()
-            }
-        }
-        view.postDelayed(finish, CAPTURE_TIMEOUT_MS)
-        runCatching {
-            engineView.captureThumbnail { bitmap ->
-                view.removeCallbacks(finish)
-                // A picture coming after the search screen opened would replace what it shows at once.
-                if (!opened && bitmap != null) {
-                    val offset = Offset(location[0].toFloat(), location[1].toFloat())
-                    _page.value = PageShot(bitmap.asImageBitmap(), offset, tabId, Color(bitmap.topEdgeColor()))
-                }
-                finish.run()
-            }
-        }.onFailure {
-            view.removeCallbacks(finish)
-            finish.run()
+        PagePictures.capture(tabId) { shot ->
+            if (shot != null) _page.value = shot
+            open()
         }
     }
 

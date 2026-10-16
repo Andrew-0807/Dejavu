@@ -62,6 +62,7 @@ import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.DejavuSearchOverlay
 import org.mozilla.fenix.dejavu.browser.SearchBackdrop
 import org.mozilla.fenix.dejavu.browser.SearchPageBackdrop
+import org.mozilla.fenix.dejavu.browser.TabZoom
 import org.mozilla.fenix.dejavu.browser.blurBehindSearch
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
@@ -243,6 +244,7 @@ fun ComposeView.setDejavuHomeContent(
 
             LaunchedEffect(Unit) {
                 onFirstFrameDrawn()
+                TabZoom.homeShown()
             }
         }
     }

@@ -82,7 +82,7 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(BAR_HEIGHT)
+            .height(DEJAVU_TOP_BAR_HEIGHT)
             .semantics {
                 contentDescription = if (text == hint) hint else "$text. $hint"
                 role = Role.Button
@@ -214,7 +214,8 @@ private fun containerAction(): Action? {
 /** The domain of [url], like "google.com" for "https://www.google.com/search", or `null` for one without a host. */
 private fun domainOf(url: String): String? = url.toUri().host?.removePrefix("www.")?.takeIf { it.isNotBlank() }
 
-private val BAR_HEIGHT = 64.dp
+/** The height of Dejavu's address bar while a page is shown, below the status bar. */
+internal val DEJAVU_TOP_BAR_HEIGHT = 64.dp
 private val SIDE_PADDING = 16.dp
 private val FIELD_HEIGHT = 48.dp
 private val FIELD_PADDING = 4.dp

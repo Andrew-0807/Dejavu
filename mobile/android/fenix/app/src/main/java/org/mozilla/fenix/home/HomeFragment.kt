@@ -113,6 +113,7 @@ import org.mozilla.fenix.components.metrics.installSourcePackage
 import org.mozilla.fenix.components.toolbar.ToolbarPosition
 import org.mozilla.fenix.compose.snackbar.SnackbarState
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.TabZoom
 import org.mozilla.fenix.dejavu.home.isDejavuHomeEnabled
 import org.mozilla.fenix.dejavu.home.setDejavuHomeContent
 import org.mozilla.fenix.ext.application
@@ -660,8 +661,13 @@ class HomeFragment : Fragment(), UserInteractionHandler, OnLongPressedListener {
                 navController = findNavController(),
                 searchToolbar = { toolbarView.Content() },
                 onOpenTab = { tabId ->
-                    requireComponents.useCases.tabsUseCases.selectTab(tabId)
-                    (requireActivity() as HomeActivity).openToBrowser(BrowserDirection.FromHome)
+                    val activity = requireActivity() as HomeActivity
+                    val tabsUseCases = requireComponents.useCases.tabsUseCases
+                    // The tab's page grows out of its row before the browser shows it.
+                    TabZoom.zoomIn(activity, tabId) {
+                        tabsUseCases.selectTab(tabId)
+                        activity.openToBrowser(BrowserDirection.FromHome)
+                    }
                 },
                 onFirstFrameDrawn = ::onFirstHomepageFrameDrawn,
             )

@@ -125,14 +125,14 @@ private const val STEADY_FRAME_NANOS = 34_000_000L
 private const val MAX_SETTLE_NANOS = 500_000_000L
 
 /**
- * Waits until the screen is drawn at a steady pace again, for at most half a second, so that an animation started
- * next is not skipped through while a search screen that just opened is still setting itself up.
+ * Waits until the screen is drawn at a steady pace again, for at most [maxNanos], so that an animation started next is
+ * not skipped through while a screen that just opened is still setting itself up.
  */
-internal suspend fun awaitSteadyFrames() {
+internal suspend fun awaitSteadyFrames(maxNanos: Long = MAX_SETTLE_NANOS) {
     val first = withFrameNanos { it }
     var last = first
     var steady = 0
-    while (steady < STEADY_FRAMES && last - first < MAX_SETTLE_NANOS) {
+    while (steady < STEADY_FRAMES && last - first < maxNanos) {
         val now = withFrameNanos { it }
         steady = if (now - last <= STEADY_FRAME_NANOS) steady + 1 else 0
         last = now

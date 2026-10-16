@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.dp
 import kotlin.math.abs
 import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.ui.icons.R as iconsR
+import org.mozilla.fenix.dejavu.browser.tabZoomTarget
 import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.color
 import org.mozilla.fenix.dejavu.workspaces.PinnedItem
@@ -213,7 +214,7 @@ internal fun EssentialsGrid(
                             selection = selection?.let { item.id in it.pinIds },
                             isDragged = current?.moved == true && current.pinId == item.id,
                             onClick = { if (drag == null) onClick(item) },
-                            modifier = Modifier.width(tileWidth),
+                            modifier = Modifier.width(tileWidth).tabZoomTarget(tab?.id),
                         )
                     }
                 }

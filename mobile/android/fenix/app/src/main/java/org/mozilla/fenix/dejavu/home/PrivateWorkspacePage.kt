@@ -33,6 +33,7 @@ import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
+import org.mozilla.fenix.dejavu.browser.tabZoomTarget
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
 
 /** Key of the private workspace page. Workspace IDs are braced UUIDs, so it cannot clash with one. */
@@ -137,6 +138,7 @@ internal fun PrivateWorkspacePage(
                 actions = listOf(close),
                 onAction = { onCloseTab(tab) },
                 onClick = { onTabClick(tab) },
+                modifier = Modifier.tabZoomTarget(tab.id),
             )
         }
     }

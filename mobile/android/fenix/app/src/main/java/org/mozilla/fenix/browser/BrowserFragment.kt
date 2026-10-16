@@ -68,8 +68,8 @@ import org.mozilla.fenix.compose.snackbar.Snackbar
 import org.mozilla.fenix.compose.snackbar.SnackbarState
 import org.mozilla.fenix.dejavu.browser.DejavuLinkMenu
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.PagePictures
 import org.mozilla.fenix.dejavu.browser.PageTint
-import org.mozilla.fenix.dejavu.browser.SearchBackdrop
 import org.mozilla.fenix.dejavu.browser.addStatusBarScrim
 import org.mozilla.fenix.dejavu.browser.openDejavuMenu
 import org.mozilla.fenix.dejavu.browser.padForNavigationBar
@@ -177,7 +177,7 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler {
         binding.browserWindow.padForSystemBarsAtSides(window, onBarsChanged = ::reinitializeEngineView)
         binding.browserLayout.addStatusBarScrim(above = binding.tabReloadCover, window = window)
         binding.readerViewControlsBar.padForNavigationBar()
-        SearchBackdrop.attach(binding.engineView)
+        PagePictures.attach(binding.engineView)
         PageTint(
             window = window,
             engineView = binding.engineView,

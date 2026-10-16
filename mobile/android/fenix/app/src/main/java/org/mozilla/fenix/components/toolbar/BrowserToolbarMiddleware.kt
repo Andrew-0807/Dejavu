@@ -148,6 +148,7 @@ import org.mozilla.fenix.components.usecases.ShareUseCases
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.DejavuToolbarEvent
 import org.mozilla.fenix.dejavu.browser.SearchBackdrop
+import org.mozilla.fenix.dejavu.browser.TabZoom
 import org.mozilla.fenix.ext.canGoBackInHistoryOrToStories
 import org.mozilla.fenix.ext.nav
 import org.mozilla.fenix.ext.navigateSafe
@@ -686,7 +687,13 @@ class BrowserToolbarMiddleware(
                     useCases.fenixBrowserUseCases.navigateToHomepage()
                 } else {
                     val directions = BrowserFragmentDirections.actionGlobalHome()
-                    navController.navigate(directions)
+                    // Dejavu: the page shrinks back into its tab's row on the home screen.
+                    val tabId = browserStore.state.selectedTabId
+                    if (tabId != null) {
+                        TabZoom.zoomOut(tabId) { navController.navigate(directions) }
+                    } else {
+                        navController.navigate(directions)
+                    }
                 }
                 next(action)
             }

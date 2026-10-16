@@ -215,8 +215,11 @@ internal fun closeShownTab(components: Components, navController: NavController,
     if (tab.parentId?.let { components.core.store.state.findTab(it) } != null) {
         components.useCases.tabsUseCases.removeTab(tab.id, selectParentIfExists = true)
     } else {
-        // The home screen closes the tab once it shows, so the page does not switch to another tab first.
-        navController.navigate(NavGraphDirections.actionGlobalHome(sessionToDelete = tab.id))
+        // The home screen closes the tab once it shows, so the page does not switch to another tab first. The page
+        // shrinks back to where the tab's row was.
+        TabZoom.zoomOut(tab.id) {
+            navController.navigate(NavGraphDirections.actionGlobalHome(sessionToDelete = tab.id))
+        }
     }
 }
 

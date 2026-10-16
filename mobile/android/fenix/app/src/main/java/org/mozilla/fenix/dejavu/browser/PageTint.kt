@@ -19,7 +19,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import kotlin.coroutines.resume
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -29,13 +28,11 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.suspendCancellableCoroutine
 import mozilla.components.browser.state.selector.selectedTab
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.concept.engine.EngineView
 import mozilla.components.lib.state.ext.flow
 import org.mozilla.fenix.components.AppStore
-import org.mozilla.geckoview.GeckoResult
 import org.mozilla.geckoview.GeckoView
 import org.mozilla.geckoview.captureTopEdge
 
@@ -158,8 +155,13 @@ internal class PageTint(
         val scrollY: Int?,
     )
 
-    private companion object {
-        val rememberedColors = LruCache<String, Int>(REMEMBERED_TABS)
+    companion object {
+        private val rememberedColors = LruCache<String, Int>(REMEMBERED_TABS)
+
+        /** Shows the tab with [tabId] with [color] above its page, until its page is pictured again. */
+        fun rememberColor(tabId: String, color: Int) {
+            rememberedColors.put(tabId, color)
+        }
     }
 }
 
@@ -171,17 +173,4 @@ private fun isLight(color: Int): Boolean =
 internal fun Bitmap.topEdgeColor(): Int {
     val row = IntArray(width).also { getPixels(it, 0, width, 0, 0, width, 1) }
     return row.groupBy { it and COLOR_BUCKET }.maxBy { it.value.size }.value.first() or OPAQUE
-}
-
-private suspend fun <T> GeckoResult<T>.valueOrNull(): T? = suspendCancellableCoroutine { continuation ->
-    then(
-        { value ->
-            continuation.resume(value)
-            GeckoResult<Void>()
-        },
-        {
-            continuation.resume(null)
-            GeckoResult<Void>()
-        },
-    )
 }
