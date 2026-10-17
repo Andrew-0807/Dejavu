@@ -36,6 +36,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateMapOf
@@ -186,6 +187,7 @@ fun DejavuHome(
     folderRowActions: List<RowAction>,
     selectionActions: List<RowAction>,
     essentialsPerContainer: Boolean,
+    downloads: State<DownloadsStatus>,
     interactor: DejavuHomeInteractor,
     modifier: Modifier = Modifier,
 ) {
@@ -606,6 +608,7 @@ fun DejavuHome(
                     },
                     onPrivateClick = { privateIndex?.let { scope.launch { pagerState.animateScrollToPage(it) } } },
                     onMove = interactor::onMoveWorkspace,
+                    downloads = downloads,
                     onDownloadsClick = interactor::onDownloadsClick,
                     onExtensionsClick = interactor::onExtensionsClick,
                     onBookmarksClick = interactor::onBookmarksClick,
@@ -849,6 +852,7 @@ private fun WorkspaceBar(
     onDotClick: (Int) -> Unit,
     onPrivateClick: () -> Unit,
     onMove: (workspaceId: String, index: Int) -> Unit,
+    downloads: State<DownloadsStatus>,
     onDownloadsClick: () -> Unit,
     onExtensionsClick: () -> Unit,
     onBookmarksClick: () -> Unit,
@@ -896,11 +900,7 @@ private fun WorkspaceBar(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth().height(56.dp).padding(horizontal = 4.dp),
     ) {
-        BarIconButton(
-            icon = iconsR.drawable.mozac_ic_download_24,
-            contentDescription = stringResource(R.string.dejavu_downloads),
-            onClick = onDownloadsClick,
-        )
+        DownloadsButton(status = downloads, onClick = onDownloadsClick)
         BarIconButton(
             icon = iconsR.drawable.mozac_ic_extension_24,
             contentDescription = stringResource(R.string.dejavu_extensions),

@@ -141,6 +141,8 @@ fun ComposeView.setDejavuHomeContent(
             val allPrivateTabs by fenix.core.store.observeAsComposableState { it.privateTabs }
             val isPrivateLocked by fenix.appStore.observeAsComposableState { it.isPrivateScreenLocked }
             val selectedTabId by fenix.core.store.observeAsComposableState { it.selectedTabId }
+            // Read only by the downloads button, so download progress redraws nothing else.
+            val downloads = fenix.core.store.observeAsComposableState { it.downloadsStatus() }
             val hasClosedTab by fenix.core.store.observeAsComposableState { it.hasClosedTab }
             val hasClipboardLink = rememberClipboardHasLink()
             val restoreComplete by fenix.core.store.observeAsComposableState { it.restoreComplete }
@@ -189,6 +191,7 @@ fun ComposeView.setDejavuHomeContent(
                     folderRowActions = resolveRowActions(folderKeys, ActionPlace.FOLDER_ROWS, customActions),
                     selectionActions = resolveSelectionActions(hiddenSelectionKeys, customActions),
                     essentialsPerContainer = essentialsPerContainer,
+                    downloads = downloads,
                     interactor = interactor,
                 )
 
