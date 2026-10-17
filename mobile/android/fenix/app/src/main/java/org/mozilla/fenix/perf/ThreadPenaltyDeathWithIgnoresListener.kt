@@ -19,6 +19,7 @@ private const val ACTIVITY_MANAGER_SERVICE_CLASS = "com.android.server.am.Activi
 private const val IN_MEMORY_DEX_CLASS_LOADER_CLASS = "dalvik.system.InMemoryDexClassLoader"
 private const val MIUI_MULTI_LANG_HELPER_CLASS = "miui.util.font.MultiLangHelper"
 private const val PLATFORM_PREFERENCE_CLASS = "androidx.preference.Preference"
+private const val SHARED_PREFERENCES_EDITOR_CLASS = "android.app.SharedPreferencesImpl\$EditorImpl"
 
 /**
  * A [StrictMode.OnThreadViolationListener] that recreates [StrictMode.ThreadPolicy.Builder.penaltyDeath] but will
@@ -55,6 +56,7 @@ class ThreadPenaltyDeathWithIgnoresListener(
         isSamsungLgEdmStorageProviderStartupViolation(violation) ||
             containsInstrumentedHooksClass(violation) ||
             isSamsungIdsController(violation) ||
+            isSamsungSharedPreferencesApply(violation) ||
             isXiaomiMultiLangHelperViolation(violation) ||
             isFinishAttachApplication(violation) ||
             containsInMemoryDexClassLoader(violation) ||
@@ -66,6 +68,15 @@ class ThreadPenaltyDeathWithIgnoresListener(
         // IdsController doesn't appear in Android code search so we match against it.
         // https://cs.android.com/search?q=IdsController
         return manufacturerChecker.isSamsung() && violation.stackTrace.any { it.className == IDS_CONTROLLER_CLASS }
+    }
+
+    private fun isSamsungSharedPreferencesApply(violation: Violation): Boolean {
+        // Samsung's Android 13 adds a check to SharedPreferences.Editor.apply() that looks for a file on disk, so every
+        // preference saved on the main thread is a DiskReadViolation; it crashes debug builds at startup on a Galaxy
+        // S20+. isSpeg is not in Android's own code, so we match against it.
+        return manufacturerChecker.isSamsung() && violation.stackTrace.any {
+            it.className == SHARED_PREFERENCES_EDITOR_CLASS && it.methodName == "isSpeg"
+        }
     }
 
     private fun isSamsungLgEdmStorageProviderStartupViolation(violation: Violation): Boolean {
