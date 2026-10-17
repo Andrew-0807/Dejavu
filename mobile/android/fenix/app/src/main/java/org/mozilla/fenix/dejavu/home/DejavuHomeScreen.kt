@@ -5,6 +5,7 @@
 package org.mozilla.fenix.dejavu.home
 
 import android.content.Context
+import android.net.Uri
 import android.os.StrictMode
 import java.util.UUID
 import androidx.compose.foundation.background
@@ -83,6 +84,8 @@ import org.mozilla.fenix.dejavu.workspaces.PinnedItem
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceWallpaper
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceWallpapers
 import org.mozilla.fenix.theme.FirefoxTheme
 
 /**
@@ -112,6 +115,7 @@ fun ComposeView.setDejavuHomeContent(
             val repository = remember { fenix.readOnMainThread { WorkspaceRepository.get(context) } }
             val settings = remember { fenix.readOnMainThread { DejavuSettings.get(context) } }
             val containerStorage = remember { DejavuContainerStorage.get(context) }
+            val wallpaperStore = remember { fenix.readOnMainThread { WorkspaceWallpapers.get(context) } }
             val scope = rememberCoroutineScope()
             val snackbarHostState = remember { SnackbarHostState() }
             val interactor = remember {
@@ -121,6 +125,7 @@ fun ComposeView.setDejavuHomeContent(
                     repository = repository,
                     settings = settings,
                     containerStorage = containerStorage,
+                    wallpapers = wallpaperStore,
                     navController = navController,
                     scope = scope,
                     snackbar = snackbarHostState,
@@ -129,6 +134,7 @@ fun ComposeView.setDejavuHomeContent(
             }
 
             val workspaceState by repository.state.collectAsState()
+            val wallpapers by wallpaperStore.wallpapers.collectAsState()
             val customActions by settings.customActions.collectAsState()
             val pinnedKeys by settings.pinnedRowKeys.collectAsState()
             val unpinnedKeys by settings.unpinnedRowKeys.collectAsState()
@@ -191,6 +197,7 @@ fun ComposeView.setDejavuHomeContent(
                     folderRowActions = resolveRowActions(folderKeys, ActionPlace.FOLDER_ROWS, customActions),
                     selectionActions = resolveSelectionActions(hiddenSelectionKeys, customActions),
                     essentialsPerContainer = essentialsPerContainer,
+                    wallpapers = wallpapers,
                     downloads = downloads,
                     interactor = interactor,
                 )
@@ -273,6 +280,7 @@ private class DefaultDejavuHomeInteractor(
     private val snackbar: SnackbarHostState,
     private val openTab: (String) -> Unit,
     private val containerStorage: DejavuContainerStorage,
+    private val wallpapers: WorkspaceWallpapers,
     private val runner: TabActionRunner = TabActionRunner(
         context = context,
         components = components,
@@ -297,13 +305,23 @@ private class DefaultDejavuHomeInteractor(
         containerId: String?,
         icon: String?,
         theme: WorkspaceTheme?,
+        wallpaper: WorkspaceWallpaper?,
     ) {
-        if (workspaceId == null) {
+        val savedId = if (workspaceId == null) {
             repository.addWorkspace(name, containerId, icon, theme)
         } else {
             repository.updateWorkspace(workspaceId, name, containerId, icon, theme)
+            workspaceId
         }
+        wallpapers.set(savedId, wallpaper)
     }
+
+    override suspend fun onImportWallpaper(uri: Uri): WorkspaceWallpaper? {
+        val screen = context.resources.displayMetrics
+        return wallpapers.importPicture(uri, screen.widthPixels, screen.heightPixels)
+    }
+
+    override fun onDiscardWallpaper(file: String) = wallpapers.discard(file)
 
     override fun onCreateContainer(name: String, color: ContainerColor, icon: ContainerState.Icon): String {
         val contextId = UUID.randomUUID().toString()
@@ -311,7 +329,10 @@ private class DefaultDejavuHomeInteractor(
         return contextId
     }
 
-    override fun onDeleteWorkspace(workspaceId: String) = repository.deleteWorkspace(workspaceId)
+    override fun onDeleteWorkspace(workspaceId: String) {
+        repository.deleteWorkspace(workspaceId)
+        if (repository.state.value.workspaces.none { it.id == workspaceId }) wallpapers.set(workspaceId, null)
+    }
 
     override fun onMoveWorkspace(workspaceId: String, index: Int) = repository.moveWorkspace(workspaceId, index)
 

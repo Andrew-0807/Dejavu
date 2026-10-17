@@ -54,19 +54,21 @@ class WorkspaceRepository private constructor(context: Context) {
         if (state.workspaces.none { it.id == id }) state else state.copy(activeWorkspaceId = id)
     }
 
-    fun addWorkspace(name: String, containerId: String?, icon: String?, theme: WorkspaceTheme?) = mutate { state ->
-        val now = now()
-        val workspace = Workspace(
-            id = WorkspaceSerializer.newWorkspaceId(),
-            name = name.trim().ifEmpty { defaultName },
-            containerId = containerId,
-            icon = icon,
-            theme = theme,
-            createdAt = now,
-            updatedAt = now,
-        )
-        state.copy(workspaces = state.workspaces + workspace, activeWorkspaceId = workspace.id)
-    }
+    /** Adds a workspace and shows it; returns its id. */
+    fun addWorkspace(name: String, containerId: String?, icon: String?, theme: WorkspaceTheme?): String =
+        update { state ->
+            val now = now()
+            val workspace = Workspace(
+                id = WorkspaceSerializer.newWorkspaceId(),
+                name = name.trim().ifEmpty { defaultName },
+                containerId = containerId,
+                icon = icon,
+                theme = theme,
+                createdAt = now,
+                updatedAt = now,
+            )
+            state.copy(workspaces = state.workspaces + workspace, activeWorkspaceId = workspace.id) to workspace.id
+        }
 
     /** Changes workspace [id]. The workspace of a device on the account only takes [theme]: the rest is the device's. */
     fun updateWorkspace(id: String, name: String, containerId: String?, icon: String?, theme: WorkspaceTheme?) =

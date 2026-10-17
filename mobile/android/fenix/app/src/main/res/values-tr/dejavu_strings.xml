@@ -45,6 +45,14 @@
     <string name="dejavu_workspace_theme_add_color">Renk ekle</string>
     <string name="dejavu_workspace_theme_remove_color">Bu rengi kaldır</string>
     <string name="dejavu_workspace_theme_code">Renk kodu</string>
+    <string name="dejavu_workspace_theme_color">Renk</string>
+    <string name="dejavu_workspace_wallpaper">Duvar kağıdı</string>
+    <string name="dejavu_workspace_wallpaper_hint">Resim bu telefonda kalır ve ana ekranda görünür. Renkleri, Zen ile eşitlenen tema olur.</string>
+    <string name="dejavu_workspace_wallpaper_choose">Resim seç</string>
+    <string name="dejavu_workspace_wallpaper_change">Değiştir</string>
+    <string name="dejavu_workspace_wallpaper_blur">Bulanıklık</string>
+    <string name="dejavu_workspace_wallpaper_failed">Bu resim açılamadı.</string>
+    <string name="dejavu_workspace_wallpaper_colors">Zen ile eşitlenen renkler</string>
     <string name="dejavu_workspace_move_left">Sola taşı</string>
     <string name="dejavu_workspace_move_right">Sağa taşı</string>
     <string name="dejavu_folder_new_subfolder">Yeni alt klasör</string>

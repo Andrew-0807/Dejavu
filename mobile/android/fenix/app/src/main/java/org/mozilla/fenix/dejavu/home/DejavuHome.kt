@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.dejavu.home
 
+import android.net.Uri
 import androidx.activity.compose.BackHandler
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.ScrollState
@@ -106,6 +107,7 @@ import org.mozilla.fenix.dejavu.workspaces.PinnedItem
 import org.mozilla.fenix.dejavu.workspaces.Workspace
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceWallpaper
 
 /**
  * User actions on the Dejavu home screen that leave the screen's own UI state.
@@ -113,7 +115,23 @@ import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
 @Suppress("TooManyFunctions")
 interface DejavuHomeInteractor : TabEditor {
     fun onWorkspaceSelected(workspaceId: String)
-    fun onSaveWorkspace(workspaceId: String?, name: String, containerId: String?, icon: String?, theme: WorkspaceTheme?)
+
+    /** Saves workspace [workspaceId], or a new workspace when it is `null`, with its [wallpaper] on this device. */
+    @Suppress("LongParameterList")
+    fun onSaveWorkspace(
+        workspaceId: String?,
+        name: String,
+        containerId: String?,
+        icon: String?,
+        theme: WorkspaceTheme?,
+        wallpaper: WorkspaceWallpaper?,
+    )
+
+    /** Copies the picture at [uri] into a wallpaper with the colors taken from it; `null` when it cannot be read. */
+    suspend fun onImportWallpaper(uri: Uri): WorkspaceWallpaper?
+
+    /** Deletes picture [file], copied for a wallpaper that was not saved. */
+    fun onDiscardWallpaper(file: String)
 
     /** Creates a container and returns its id, so that a workspace can use it right away. */
     fun onCreateContainer(name: String, color: ContainerColor, icon: ContainerState.Icon): String
@@ -170,7 +188,7 @@ interface DejavuHomeInteractor : TabEditor {
  * selection mode; keeping the finger down and moving drags the selection, also to other workspaces: resting the finger
  * on the strip that shows at a side of the page turns to the workspace on that side, see [SelectionDrag].
  * [hasClosedTab] tells whether a closed tab is left to reopen, and [hasClipboardLink] whether the clipboard holds a
- * link to open.
+ * link to open. [wallpapers] are the pictures workspaces show under their theme, by workspace id.
  */
 @Suppress("LongMethod", "LongParameterList", "CognitiveComplexMethod", "CyclomaticComplexMethod")
 @Composable
@@ -187,6 +205,7 @@ fun DejavuHome(
     folderRowActions: List<RowAction>,
     selectionActions: List<RowAction>,
     essentialsPerContainer: Boolean,
+    wallpapers: Map<String, WorkspaceWallpaper>,
     downloads: State<DownloadsStatus>,
     interactor: DejavuHomeInteractor,
     modifier: Modifier = Modifier,
@@ -219,6 +238,12 @@ fun DejavuHome(
 
     fun themeAt(page: Int): WorkspaceTheme? =
         if (page == privateIndex) privateWorkspaceTheme else state.workspaces.getOrNull(page)?.theme
+
+    fun wallpaperAt(page: Int): WorkspaceWallpaper? =
+        if (page == privateIndex) null else state.workspaces.getOrNull(page)?.let { wallpapers[it.id] }
+
+    // A wallpaper takes the place of its workspace's gradient, whose colors were taken from it.
+    fun gradientAt(page: Int): WorkspaceTheme? = themeAt(page).takeIf { wallpaperAt(page) == null }
 
     // Like Zen, there is only one private workspace: asking for a private tab elsewhere leads to it once it exists.
     val newPrivateTab: () -> Unit = {
@@ -407,218 +432,225 @@ fun DejavuHome(
 
     // Dialogs and menus take on the look of the workspace they open over.
     CompositionLocalProvider(LocalPopupTheme provides themeAt(pagerState.currentPage)) {
-        // The theme is drawn behind the system bars too, with the content kept clear of them.
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.surface)
-                .drawBehind {
-                    val position = pagerState.currentPage + pagerState.currentPageOffsetFraction
-                    val page = floor(position).toInt()
-                    drawWorkspaceTheme(
-                        theme = themeAt(page),
-                        next = themeAt(page + 1),
-                        fraction = position - page,
-                        grain = grain,
-                    )
-                }
-                .systemBarsPadding()
-                .imePadding(),
-        ) {
-            val activeSelection = selection
-            if (activeSelection == null) {
-                TopBar(interactor, onSearchClick = if (onPrivatePage) newPrivateTab else interactor::onSearchClick)
-            } else if (essentialsDrop != EssentialsDrop.NONE) {
-                EssentialsDropBar(active = essentialsDrop == EssentialsDrop.ACTIVE)
-            } else {
-                SelectionTopBar(
-                    count = activeSelection.size,
-                    onClose = { selection = null },
-                    onSelectAll = {
-                        selection = Selection(
-                            tabIds = tabs
-                                .filter {
-                                    state.workspaceOf(it.id) == currentWorkspace.id && state.pinOf(it.id) == null
-                                }
-                                .map { it.id }.toSet(),
-                            pinIds = state.pins.filter { it.workspaceId == currentWorkspace.id && !it.isFolder }
-                                .map { it.id }.toSet(),
-                        )
-                    },
-                )
-            }
-
-            if (essentials.isNotEmpty()) {
-                EssentialsGrid(
-                    essentials = essentials,
-                    tabsById = tabsById,
-                    selectedTabId = selectedTabId,
-                    containers = containers,
-                    selection = activeSelection,
-                    isDropTarget = essentialsDrop == EssentialsDrop.ACTIVE,
-                    onClick = ::onPinClick,
-                    onStartDrag = { pin -> selection = (selection ?: Selection()) + Selection(pinIds = setOf(pin.id)) },
-                    onMove = { pinId, index ->
-                        interactor.onMoveEssential(pinId, index)
-                        selection = null
-                    },
-                    modifier = Modifier.padding(bottom = 4.dp),
-                )
-            }
-
-            val selectionTargets = activeSelection?.let { ActionTargets.of(state, tabs, it) }
+        // The wallpapers and the theme are drawn behind the system bars too, with the content kept clear of them.
+        val surface = MaterialTheme.colorScheme.surface
+        Box(modifier = modifier.fillMaxSize().background(surface)) {
+            if (wallpapers.isNotEmpty()) WallpaperLayers(pagerState, ::wallpaperAt)
+            // The theme over the plain background, which lightly covers the wallpapers too.
             Box(
                 modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
-                    .onSizeChanged { pagesWidth = it.width }
-                    // The drag lives above the pages, so it goes on while they turn to another workspace.
-                    .pointerInput(isRtl, stripWidth, touchSlop) {
-                        detectDragGesturesAfterLongPress(
-                            onDragStart = { offset ->
-                                val workspace = latestState.workspaces.getOrNull(pagerState.currentPage)
-                                val atEnd = if (isRtl) offset.x < size.width / 2f else offset.x >= size.width / 2f
-                                val area = workspace?.let { dragAreas[it.id] }
-                                val started = area?.start(offset, atEnd)
-                                drag = started
-                                if (area != null && started != null) {
-                                    haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                                    area.lift(dragStack, started, offset)
-                                }
-                            },
-                            onDrag = { change, amount ->
-                                val current = drag ?: return@detectDragGesturesAfterLongPress
-                                change.consume()
-                                drag = aim(current, current.pointer + amount)
-                                dragStack.anchor = current.pointer + amount
-                            },
-                            onDragEnd = { endDrag(drop = true) },
-                            onDragCancel = { endDrag(drop = false) },
+                    .fillMaxSize()
+                    .graphicsLayer { alpha = coverAt(pagerState.position, ::wallpaperAt) }
+                    .drawBehind {
+                        val position = pagerState.position
+                        val page = floor(position).toInt()
+                        if (wallpaperAt(page) != null || wallpaperAt(page + 1) != null) drawRect(surface)
+                        drawWorkspaceTheme(
+                            theme = gradientAt(page),
+                            next = gradientAt(page + 1),
+                            fraction = position - page,
+                            grain = grain,
                         )
                     },
-            ) {
-                HorizontalPager(
-                    state = pagerState,
-                    userScrollEnabled = activeSelection == null,
-                    modifier = Modifier.fillMaxSize(),
-                    key = { state.workspaces.getOrNull(it)?.id ?: PRIVATE_PAGE_KEY },
-                ) { page ->
-                    if (page == privateIndex) {
-                        PrivateWorkspacePage(
-                            tabs = privateTabs,
-                            selectedTabId = selectedTabId,
-                            onTabClick = { interactor.onTabClick(it.id) },
-                            onCloseTab = { interactor.onCloseTab(it.id) },
-                            onNewTab = interactor::onNewPrivateTab,
-                            onCloseAll = interactor::onClosePrivateTabs,
-                        )
-                        return@HorizontalPager
-                    }
-                    val workspace = state.workspaces[page]
-                    WorkspacePage(
-                        state = state,
-                        workspace = workspace,
-                        tabs = tabs.filter { state.workspaceOf(it.id) == workspace.id },
-                        selectedTabId = selectedTabId,
-                        containers = containers,
-                        pinnedRowActions = pinnedRowActions,
-                        unpinnedRowActions = unpinnedRowActions,
-                        folderRowActions = folderRowActions,
-                        selection = activeSelection,
-                        drag = drag,
-                        dragAreas = dragAreas,
-                        dragStack = dragStack,
-                        callbacks = WorkspacePageCallbacks(
-                            onTabClick = { tab ->
-                                val current = selection
-                                if (current != null) selection = current.toggleTab(tab.id).takeIf { it.size > 0 } else interactor.onTabClick(tab.id)
-                            },
-                            onPinClick = ::onPinClick,
-                            onStartDrag = { picked ->
-                                val started = (selection ?: Selection()) + picked
-                                selection = started
-                                started
-                            },
-                            onRowAction = { action, targets -> runAction(action, targets, workspace.id) },
-                            onFolderClick = { folder ->
-                                val current = selection
-                                if (current != null) {
-                                    selection = current.toggleFolder(folder.id, state).takeIf { it.size > 0 }
-                                } else {
-                                    interactor.onToggleFolder(folder.id)
-                                }
-                            },
-                            onNewFolder = { dialog = HomeDialog.NewFolder(workspace.id, parentId = null) },
-                            onNewWorkspace = { dialog = HomeDialog.EditWorkspace(null) },
-                            onEditWorkspace = { dialog = HomeDialog.EditWorkspace(workspace.id) },
-                            onDeleteWorkspace = { dialog = HomeDialog.DeleteWorkspace(workspace.id) },
-                            onMoveWorkspace = { delta -> interactor.onMoveWorkspace(workspace.id, page + delta) },
-                            onNewTabClick = interactor::onSearchClick,
-                            onNewTabInContainer = interactor::onNewTabInContainer,
-                            onNewPrivateTab = newPrivateTab,
-                            onManageContainers = interactor::onManageContainers,
-                            onClearUnpinned = { interactor.onClearUnpinned(workspace.id) },
-                            onReopenClosedTab = { revealTabId = interactor.onReopenClosedTab() },
-                            onOpenClipboard = { interactor.onOpenClipboardLink(workspace.id) },
-                            onRevealed = { revealTabId = null },
-                        ),
-                        canDeleteWorkspace = state.workspaces.size > 1,
-                        canMoveLeft = page > 0,
-                        canMoveRight = page < state.workspaces.size - 1,
-                        hasClosedTab = hasClosedTab,
-                        hasClipboardLink = hasClipboardLink,
-                        revealTabId = revealTabId,
+            )
+            Column(modifier = Modifier.fillMaxSize().systemBarsPadding().imePadding()) {
+                val activeSelection = selection
+                if (activeSelection == null) {
+                    TopBar(interactor, onSearchClick = if (onPrivatePage) newPrivateTab else interactor::onSearchClick)
+                } else if (essentialsDrop != EssentialsDrop.NONE) {
+                    EssentialsDropBar(active = essentialsDrop == EssentialsDrop.ACTIVE)
+                } else {
+                    SelectionTopBar(
+                        count = activeSelection.size,
+                        onClose = { selection = null },
+                        onSelectAll = {
+                            selection = Selection(
+                                tabIds = tabs
+                                    .filter {
+                                        state.workspaceOf(it.id) == currentWorkspace.id && state.pinOf(it.id) == null
+                                    }
+                                    .map { it.id }.toSet(),
+                                pinIds = state.pins.filter { it.workspaceId == currentWorkspace.id && !it.isFolder }
+                                    .map { it.id }.toSet(),
+                            )
+                        },
                     )
                 }
 
-                val dragging = drag?.takeIf { it.moved }
-                if (dragging != null && dragging.canLeave && !onPrivatePage) {
-                    val page = pagerState.currentPage
-                    state.workspaces.getOrNull(page - 1)?.let { previous ->
-                        SideStrip(
-                            workspace = previous,
-                            container = previous.containerId?.let { containers[it] },
-                            active = dragging.side == -1,
-                            atEnd = false,
-                            modifier = Modifier.align(Alignment.CenterStart),
-                        )
-                    }
-                    state.workspaces.getOrNull(page + 1)?.let { next ->
-                        SideStrip(
-                            workspace = next,
-                            container = next.containerId?.let { containers[it] },
-                            active = dragging.side == 1,
-                            atEnd = true,
-                            modifier = Modifier.align(Alignment.CenterEnd),
-                        )
-                    }
+                if (essentials.isNotEmpty()) {
+                    EssentialsGrid(
+                        essentials = essentials,
+                        tabsById = tabsById,
+                        selectedTabId = selectedTabId,
+                        containers = containers,
+                        selection = activeSelection,
+                        isDropTarget = essentialsDrop == EssentialsDrop.ACTIVE,
+                        onClick = ::onPinClick,
+                        onStartDrag = { pin ->
+                            selection = (selection ?: Selection()) + Selection(pinIds = setOf(pin.id))
+                        },
+                        onMove = { pinId, index ->
+                            interactor.onMoveEssential(pinId, index)
+                            selection = null
+                        },
+                        modifier = Modifier.padding(bottom = 4.dp),
+                    )
                 }
-                if (dragStack.cards.isNotEmpty()) DragStack(dragStack, blocked = dragging?.blocked == true)
-            }
 
-            if (activeSelection == null) {
-                WorkspaceBar(
-                    workspaces = state.workspaces,
-                    containers = containers,
-                    activeIndex = pagerState.currentPage,
-                    hasPrivate = privateIndex != null,
-                    onDotClick = { index ->
-                        interactor.onWorkspaceSelected(state.workspaces[index].id)
-                        scope.launch { pagerState.animateScrollToPage(index) }
-                    },
-                    onPrivateClick = { privateIndex?.let { scope.launch { pagerState.animateScrollToPage(it) } } },
-                    onMove = interactor::onMoveWorkspace,
-                    downloads = downloads,
-                    onDownloadsClick = interactor::onDownloadsClick,
-                    onExtensionsClick = interactor::onExtensionsClick,
-                    onBookmarksClick = interactor::onBookmarksClick,
-                    onHistoryClick = interactor::onHistoryClick,
-                )
-            } else if (selectionTargets != null) {
-                SelectionBar(
-                    actions = selectionActions.filter { it.appliesTo(selectionTargets) },
-                    onAction = { runAction(it, selectionTargets, currentWorkspace.id) },
-                )
+                val selectionTargets = activeSelection?.let { ActionTargets.of(state, tabs, it) }
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .onSizeChanged { pagesWidth = it.width }
+                        // The drag lives above the pages, so it goes on while they turn to another workspace.
+                        .pointerInput(isRtl, stripWidth, touchSlop) {
+                            detectDragGesturesAfterLongPress(
+                                onDragStart = { offset ->
+                                    val workspace = latestState.workspaces.getOrNull(pagerState.currentPage)
+                                    val atEnd = if (isRtl) offset.x < size.width / 2f else offset.x >= size.width / 2f
+                                    val area = workspace?.let { dragAreas[it.id] }
+                                    val started = area?.start(offset, atEnd)
+                                    drag = started
+                                    if (area != null && started != null) {
+                                        haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                        area.lift(dragStack, started, offset)
+                                    }
+                                },
+                                onDrag = { change, amount ->
+                                    val current = drag ?: return@detectDragGesturesAfterLongPress
+                                    change.consume()
+                                    drag = aim(current, current.pointer + amount)
+                                    dragStack.anchor = current.pointer + amount
+                                },
+                                onDragEnd = { endDrag(drop = true) },
+                                onDragCancel = { endDrag(drop = false) },
+                            )
+                        },
+                ) {
+                    HorizontalPager(
+                        state = pagerState,
+                        userScrollEnabled = activeSelection == null,
+                        modifier = Modifier.fillMaxSize(),
+                        key = { state.workspaces.getOrNull(it)?.id ?: PRIVATE_PAGE_KEY },
+                    ) { page ->
+                        if (page == privateIndex) {
+                            PrivateWorkspacePage(
+                                tabs = privateTabs,
+                                selectedTabId = selectedTabId,
+                                onTabClick = { interactor.onTabClick(it.id) },
+                                onCloseTab = { interactor.onCloseTab(it.id) },
+                                onNewTab = interactor::onNewPrivateTab,
+                                onCloseAll = interactor::onClosePrivateTabs,
+                            )
+                            return@HorizontalPager
+                        }
+                        val workspace = state.workspaces[page]
+                        WorkspacePage(
+                            state = state,
+                            workspace = workspace,
+                            tabs = tabs.filter { state.workspaceOf(it.id) == workspace.id },
+                            selectedTabId = selectedTabId,
+                            containers = containers,
+                            pinnedRowActions = pinnedRowActions,
+                            unpinnedRowActions = unpinnedRowActions,
+                            folderRowActions = folderRowActions,
+                            selection = activeSelection,
+                            drag = drag,
+                            dragAreas = dragAreas,
+                            dragStack = dragStack,
+                            callbacks = WorkspacePageCallbacks(
+                                onTabClick = { tab ->
+                                    val current = selection
+                                    if (current != null) selection = current.toggleTab(tab.id).takeIf { it.size > 0 } else interactor.onTabClick(tab.id)
+                                },
+                                onPinClick = ::onPinClick,
+                                onStartDrag = { picked ->
+                                    val started = (selection ?: Selection()) + picked
+                                    selection = started
+                                    started
+                                },
+                                onRowAction = { action, targets -> runAction(action, targets, workspace.id) },
+                                onFolderClick = { folder ->
+                                    val current = selection
+                                    if (current != null) {
+                                        selection = current.toggleFolder(folder.id, state).takeIf { it.size > 0 }
+                                    } else {
+                                        interactor.onToggleFolder(folder.id)
+                                    }
+                                },
+                                onNewFolder = { dialog = HomeDialog.NewFolder(workspace.id, parentId = null) },
+                                onNewWorkspace = { dialog = HomeDialog.EditWorkspace(null) },
+                                onEditWorkspace = { dialog = HomeDialog.EditWorkspace(workspace.id) },
+                                onDeleteWorkspace = { dialog = HomeDialog.DeleteWorkspace(workspace.id) },
+                                onMoveWorkspace = { delta -> interactor.onMoveWorkspace(workspace.id, page + delta) },
+                                onNewTabClick = interactor::onSearchClick,
+                                onNewTabInContainer = interactor::onNewTabInContainer,
+                                onNewPrivateTab = newPrivateTab,
+                                onManageContainers = interactor::onManageContainers,
+                                onClearUnpinned = { interactor.onClearUnpinned(workspace.id) },
+                                onReopenClosedTab = { revealTabId = interactor.onReopenClosedTab() },
+                                onOpenClipboard = { interactor.onOpenClipboardLink(workspace.id) },
+                                onRevealed = { revealTabId = null },
+                            ),
+                            canDeleteWorkspace = state.workspaces.size > 1,
+                            canMoveLeft = page > 0,
+                            canMoveRight = page < state.workspaces.size - 1,
+                            hasClosedTab = hasClosedTab,
+                            hasClipboardLink = hasClipboardLink,
+                            revealTabId = revealTabId,
+                        )
+                    }
+
+                    val dragging = drag?.takeIf { it.moved }
+                    if (dragging != null && dragging.canLeave && !onPrivatePage) {
+                        val page = pagerState.currentPage
+                        state.workspaces.getOrNull(page - 1)?.let { previous ->
+                            SideStrip(
+                                workspace = previous,
+                                container = previous.containerId?.let { containers[it] },
+                                active = dragging.side == -1,
+                                atEnd = false,
+                                modifier = Modifier.align(Alignment.CenterStart),
+                            )
+                        }
+                        state.workspaces.getOrNull(page + 1)?.let { next ->
+                            SideStrip(
+                                workspace = next,
+                                container = next.containerId?.let { containers[it] },
+                                active = dragging.side == 1,
+                                atEnd = true,
+                                modifier = Modifier.align(Alignment.CenterEnd),
+                            )
+                        }
+                    }
+                    if (dragStack.cards.isNotEmpty()) DragStack(dragStack, blocked = dragging?.blocked == true)
+                }
+
+                if (activeSelection == null) {
+                    WorkspaceBar(
+                        workspaces = state.workspaces,
+                        containers = containers,
+                        activeIndex = pagerState.currentPage,
+                        hasPrivate = privateIndex != null,
+                        onDotClick = { index ->
+                            interactor.onWorkspaceSelected(state.workspaces[index].id)
+                            scope.launch { pagerState.animateScrollToPage(index) }
+                        },
+                        onPrivateClick = { privateIndex?.let { scope.launch { pagerState.animateScrollToPage(it) } } },
+                        onMove = interactor::onMoveWorkspace,
+                        downloads = downloads,
+                        onDownloadsClick = interactor::onDownloadsClick,
+                        onExtensionsClick = interactor::onExtensionsClick,
+                        onBookmarksClick = interactor::onBookmarksClick,
+                        onHistoryClick = interactor::onHistoryClick,
+                    )
+                } else if (selectionTargets != null) {
+                    SelectionBar(
+                        actions = selectionActions.filter { it.appliesTo(selectionTargets) },
+                        onAction = { runAction(it, selectionTargets, currentWorkspace.id) },
+                    )
+                }
             }
         }
 
@@ -627,6 +659,7 @@ fun DejavuHome(
                 dialog = current,
                 state = state,
                 containers = containers,
+                wallpapers = wallpapers,
                 interactor = interactor,
                 onDismiss = { dialog = null },
             )

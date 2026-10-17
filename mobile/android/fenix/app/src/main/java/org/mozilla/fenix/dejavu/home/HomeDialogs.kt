@@ -4,10 +4,12 @@
 
 package org.mozilla.fenix.dejavu.home
 
+import android.net.Uri
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Arrangement
@@ -16,6 +18,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,6 +26,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -47,6 +52,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
@@ -75,6 +81,7 @@ import org.mozilla.fenix.dejavu.workspaces.MAX_FOLDER_DEPTH
 import org.mozilla.fenix.dejavu.workspaces.Workspace
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceWallpaper
 
 /**
  * Changes to tabs, pinned tabs and folders that need the user's input first, asked for by [ItemDialogs]: on the home
@@ -105,6 +112,7 @@ internal fun HomeDialogs(
     dialog: HomeDialog,
     state: WorkspaceState,
     containers: Map<String, ContainerRecord>,
+    wallpapers: Map<String, WorkspaceWallpaper>,
     interactor: DejavuHomeInteractor,
     onDismiss: () -> Unit,
 ) {
@@ -113,10 +121,13 @@ internal fun HomeDialogs(
             val workspace = state.workspaces.firstOrNull { it.id == dialog.workspaceId }
             WorkspaceDialog(
                 workspace = workspace,
+                wallpaper = workspace?.let { wallpapers[it.id] },
                 containers = containers.values.filterNot { it.temporary },
                 onCreateContainer = interactor::onCreateContainer,
-                onSave = { name, containerId, icon, theme ->
-                    interactor.onSaveWorkspace(workspace?.id, name, containerId, icon, theme)
+                onImportWallpaper = interactor::onImportWallpaper,
+                onDiscardWallpaper = interactor::onDiscardWallpaper,
+                onSave = { name, containerId, icon, theme, wallpaper ->
+                    interactor.onSaveWorkspace(workspace?.id, name, containerId, icon, theme, wallpaper)
                     onDismiss()
                 },
                 onDismiss = onDismiss,
@@ -306,25 +317,70 @@ internal fun ItemDialogs(
     }
 }
 
-/** Creates or edits a workspace: its icon, name, theme and default container. */
-@Suppress("LongMethod")
+/**
+ * Creates or edits a workspace: its icon, name, look and default container. The look is either a theme of colors or
+ * a wallpaper, which gives the theme the colors taken from its picture, so that Zen, which syncs themes but not
+ * pictures, shows the same colors. [onImportWallpaper] copies a picture picked for the wallpaper, and
+ * [onDiscardWallpaper] deletes a copy that ends up unused.
+ */
+@Suppress("LongMethod", "LongParameterList")
 @Composable
 private fun WorkspaceDialog(
     workspace: Workspace?,
+    wallpaper: WorkspaceWallpaper?,
     containers: List<ContainerRecord>,
     onCreateContainer: (name: String, color: ContainerColor, icon: ContainerState.Icon) -> String,
-    onSave: (name: String, containerId: String?, icon: String?, theme: WorkspaceTheme?) -> Unit,
+    onImportWallpaper: suspend (Uri) -> WorkspaceWallpaper?,
+    onDiscardWallpaper: (file: String) -> Unit,
+    onSave: (
+        name: String,
+        containerId: String?,
+        icon: String?,
+        theme: WorkspaceTheme?,
+        wallpaper: WorkspaceWallpaper?,
+    ) -> Unit,
     onDismiss: () -> Unit,
 ) {
     var name by remember { mutableStateOf(workspace?.name.orEmpty()) }
     var containerId by remember { mutableStateOf(workspace?.containerId) }
     var icon by remember { mutableStateOf(workspace?.icon) }
     var theme by remember { mutableStateOf(workspace?.theme) }
+    val savedWallpaper = remember { wallpaper }
+    var shownWallpaper by remember { mutableStateOf(wallpaper) }
+    var usesWallpaper by remember { mutableStateOf(wallpaper != null) }
     var creatingContainer by remember { mutableStateOf(false) }
     var pickingColors by remember { mutableStateOf(false) }
     val isNew = workspace == null
     // The workspace of a device on the account takes its name and icon from the device, which keeps no container.
     val isDevice = workspace?.device != null
+
+    // A picture picked here is only kept once the workspace is saved with it.
+    fun dropPicked(keep: String?) {
+        shownWallpaper?.file?.takeIf { it != keep && it != savedWallpaper?.file }?.let(onDiscardWallpaper)
+    }
+    val cancel = {
+        dropPicked(keep = null)
+        onDismiss()
+    }
+    // The colors of a wallpaper saved before wallpapers had colors come once they are taken from its picture.
+    LaunchedEffect(wallpaper) {
+        val current = shownWallpaper
+        if (wallpaper != null && current?.file == wallpaper.file && current.colors.isEmpty()) {
+            shownWallpaper = current.copy(colors = wallpaper.colors)
+        }
+    }
+    val save = {
+        val keptWallpaper = shownWallpaper?.takeIf { usesWallpaper }
+        if (keptWallpaper == null) dropPicked(keep = null)
+        val savedTheme = keptWallpaper?.colors?.takeIf { it.isNotEmpty() }?.let { colors ->
+            WorkspaceTheme(
+                colors = colors,
+                opacity = theme?.opacity ?: WorkspaceTheme.DEFAULT_OPACITY,
+                texture = theme?.texture ?: 0f,
+            )
+        } ?: theme
+        onSave(name, containerId, icon, savedTheme, keptWallpaper)
+    }
 
     if (creatingContainer) {
         ContainerEditorDialog(
@@ -355,12 +411,12 @@ private fun WorkspaceDialog(
 
     DejavuDialog(
         title = stringResource(if (isNew) R.string.dejavu_add_workspace else R.string.dejavu_workspace_edit),
-        onDismissRequest = onDismiss,
+        onDismissRequest = cancel,
         buttons = {
-            DejavuDialogButton(text = stringResource(R.string.dejavu_cancel), onClick = onDismiss)
+            DejavuDialogButton(text = stringResource(R.string.dejavu_cancel), onClick = cancel)
             DejavuDialogButton(
                 text = stringResource(if (isNew) R.string.dejavu_create else R.string.dejavu_save),
-                onClick = { onSave(name, containerId, icon, theme) },
+                onClick = save,
                 style = DejavuButtonStyle.Primary,
             )
         },
@@ -400,42 +456,26 @@ private fun WorkspaceDialog(
         Spacer(Modifier.size(16.dp))
         Text(stringResource(R.string.dejavu_workspace_theme), style = MaterialTheme.typography.labelLarge)
         Spacer(Modifier.size(8.dp))
-        // A workspace in colors of the user's own shows them at the end of the row, scrolled into view.
-        val customColors = theme?.colors?.takeIf { it !in themePresets }
-        val themeRow = rememberLazyListState()
-        LaunchedEffect(Unit) {
-            if (customColors != null) themeRow.scrollToItem(themePresets.size + 1)
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.horizontalScroll(rememberScrollState()),
+        ) {
+            LookChip(R.string.dejavu_workspace_theme_color, selected = !usesWallpaper) { usesWallpaper = false }
+            LookChip(R.string.dejavu_workspace_wallpaper, selected = usesWallpaper) { usesWallpaper = true }
         }
-        LazyRow(state = themeRow, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            item { ThemeChoice(colors = null, selected = theme == null, onClick = { theme = null }) }
-            items(themePresets) { colors ->
-                ThemeChoice(
-                    colors = colors,
-                    selected = theme?.colors == colors,
-                    onClick = {
-                        theme = WorkspaceTheme(
-                            colors = colors,
-                            opacity = theme?.opacity ?: WorkspaceTheme.DEFAULT_OPACITY,
-                            texture = theme?.texture ?: 0f,
-                        )
-                    },
-                )
-            }
-            item {
-                CustomThemeChoice(
-                    colors = customColors,
-                    selected = customColors != null,
-                    onClick = { pickingColors = true },
-                )
-            }
-        }
-        theme?.let { current ->
-            SliderRow(R.string.dejavu_workspace_theme_intensity, current.opacity, MIN_THEME_OPACITY..1f) {
-                theme = current.copy(opacity = it)
-            }
-            SliderRow(R.string.dejavu_workspace_theme_grain, current.texture, 0f..1f) {
-                theme = current.copy(texture = it)
-            }
+        Spacer(Modifier.size(12.dp))
+        if (usesWallpaper) {
+            WallpaperSection(
+                wallpaper = shownWallpaper,
+                onImport = onImportWallpaper,
+                onPicked = { picked ->
+                    dropPicked(keep = picked.file)
+                    shownWallpaper = picked.copy(blur = shownWallpaper?.blur ?: picked.blur)
+                },
+                onBlurChange = { blur -> shownWallpaper = shownWallpaper?.copy(blur = blur) },
+            )
+        } else {
+            ThemeColors(theme = theme, onChange = { theme = it }, onCustomColors = { pickingColors = true })
         }
 
         if (isDevice) return@DejavuDialog
@@ -471,6 +511,73 @@ private fun WorkspaceDialog(
 
 private const val MIN_THEME_OPACITY = 0.1f
 private val PICKER_MAX_HEIGHT = 560.dp
+
+/** One of the two looks a workspace can have, colors or a wallpaper, filled while it is the one picked. */
+@Composable
+private fun LookChip(@StringRes label: Int, selected: Boolean, onClick: () -> Unit) {
+    val scheme = MaterialTheme.colorScheme
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .height(36.dp)
+            .clip(CircleShape)
+            .background(if (selected) scheme.primaryContainer else scheme.surfaceContainerHighest)
+            .border(1.dp, if (selected) scheme.primary else Color.Transparent, CircleShape)
+            .selectable(selected = selected, role = Role.RadioButton, onClick = onClick)
+            .padding(horizontal = 16.dp),
+    ) {
+        Text(
+            text = stringResource(label),
+            style = MaterialTheme.typography.labelLarge,
+            color = if (selected) scheme.onPrimaryContainer else scheme.onSurface,
+            maxLines = 1,
+            softWrap = false,
+        )
+    }
+}
+
+/**
+ * The colors of a workspace without a wallpaper: no theme, a preset or colors of the user's own, then the theme's
+ * intensity and grain. [onCustomColors] opens the color picker.
+ */
+@Composable
+private fun ThemeColors(theme: WorkspaceTheme?, onChange: (WorkspaceTheme?) -> Unit, onCustomColors: () -> Unit) {
+    // A workspace in colors of the user's own shows them at the end of the row, scrolled into view.
+    val customColors = theme?.colors?.takeIf { it !in themePresets }
+    val themeRow = rememberLazyListState()
+    LaunchedEffect(Unit) {
+        if (customColors != null) themeRow.scrollToItem(themePresets.size + 1)
+    }
+    LazyRow(state = themeRow, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        item { ThemeChoice(colors = null, selected = theme == null, onClick = { onChange(null) }) }
+        items(themePresets) { colors ->
+            ThemeChoice(
+                colors = colors,
+                selected = theme?.colors == colors,
+                onClick = {
+                    onChange(
+                        WorkspaceTheme(
+                            colors = colors,
+                            opacity = theme?.opacity ?: WorkspaceTheme.DEFAULT_OPACITY,
+                            texture = theme?.texture ?: 0f,
+                        ),
+                    )
+                },
+            )
+        }
+        item {
+            CustomThemeChoice(colors = customColors, selected = customColors != null, onClick = onCustomColors)
+        }
+    }
+    theme?.let { current ->
+        SliderRow(R.string.dejavu_workspace_theme_intensity, current.opacity, MIN_THEME_OPACITY..1f) {
+            onChange(current.copy(opacity = it))
+        }
+        SliderRow(R.string.dejavu_workspace_theme_grain, current.texture, 0f..1f) {
+            onChange(current.copy(texture = it))
+        }
+    }
+}
 
 /**
  * The workspace's [icon] in a circle, or the no-icon sign without one. Icons are picked from the list below it, but
@@ -554,7 +661,7 @@ private fun ThemeChoice(colors: List<Int>?, selected: Boolean, onClick: () -> Un
 }
 
 @Composable
-private fun SliderRow(
+internal fun SliderRow(
     @StringRes label: Int,
     value: Float,
     range: ClosedFloatingPointRange<Float>,

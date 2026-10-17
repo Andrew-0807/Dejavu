@@ -67,6 +67,14 @@
     <string name="dejavu_workspace_theme_add_color">Add a color</string>
     <string name="dejavu_workspace_theme_remove_color">Remove this color</string>
     <string name="dejavu_workspace_theme_code">Color code</string>
+    <string name="dejavu_workspace_theme_color">Color</string>
+    <string name="dejavu_workspace_wallpaper">Wallpaper</string>
+    <string name="dejavu_workspace_wallpaper_hint">The picture stays on this phone and shows on the home screen. Its colors become the theme that syncs with Zen.</string>
+    <string name="dejavu_workspace_wallpaper_choose">Choose a picture</string>
+    <string name="dejavu_workspace_wallpaper_change">Change</string>
+    <string name="dejavu_workspace_wallpaper_blur">Blur</string>
+    <string name="dejavu_workspace_wallpaper_failed">This picture could not be opened.</string>
+    <string name="dejavu_workspace_wallpaper_colors">Colors that sync with Zen</string>
     <string name="dejavu_workspace_move_left">Move left</string>
     <string name="dejavu_workspace_move_right">Move right</string>
 
