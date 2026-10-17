@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">مینوں اک کافی پلاؤ</string>
     <string name="dejavu_settings_coffee_summary">Dejavu وچ کوئی اشتہار نئيں۔ جے تہانوں ایہہ پسند اے، تے اک کافی ایہنوں ودھن وچ مدد کردی اے۔</string>
     <string name="dejavu_workspace_device_note">ایہہ ورک سپیس تہاڈے Mozilla اکاؤنٹ والے کسے ڈیوائس دیاں کھلیاں ٹیباں ڈکھاندی اے۔ ایہدا ناں تے آئیکن اوس ڈیوائس توں آؤندے نيں، تے تہاڈے چُݨے ہوئے رنگ ایسے فون تے رہندے نيں۔</string>
+    <string name="dejavu_settings_safe_browsing">Google محفوظ براؤزنگ</string>
+    <string name="dejavu_settings_safe_browsing_summary">فشنگ تے میلویئر سائٹاں بارے خبردار کردا اے۔ ایہدے لئی Dejavu، Google نال رابطہ کردا اے۔</string>
 </resources>

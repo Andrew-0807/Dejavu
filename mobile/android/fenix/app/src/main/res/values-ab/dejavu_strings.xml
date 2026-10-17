@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Акаҳуа исзаашәхәа</string>
     <string name="dejavu_settings_coffee_summary">Dejavu аҟны аӡыргақәа ыҟаӡам. Ишәгәаԥхозар, акаҳуа иара аизҳара иацхраауеит.</string>
     <string name="dejavu_workspace_device_note">Ари аҭыԥ шәы Mozilla аккаунт аҟны иҟоу амашьынак иаарту абларҭақәа иаанарԥшуеит. Ахьӡи аиконкеи уи амашьына аҟынтә иаауеит, иалышәхуа аԥштәқәа ари ателефон аҟны иаанхоит.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Афишинг-саитқәеи амалвер-саитқәеи ирызкны агәаҽанизаара ҟанаҵоит. Убри азы Dejavu Google иадҳәалоит.</string>
 </resources>

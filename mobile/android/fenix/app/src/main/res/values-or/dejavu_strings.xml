@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">ମୋତେ ଗୋଟିଏ କଫି କିଣିଦିଅନ୍ତୁ</string>
     <string name="dejavu_settings_coffee_summary">Dejavu ରେ କୌଣସି ବିଜ୍ଞାପନ ନାହିଁ। ଯଦି ଆପଣଙ୍କୁ ଏହା ଭଲ ଲାଗେ, ଗୋଟିଏ କଫି ଏହାକୁ ବଢ଼ିବାରେ ସାହାଯ୍ୟ କରେ।</string>
     <string name="dejavu_workspace_device_note">ଏହି କାର୍ଯ୍ୟକ୍ଷେତ୍ର ଆପଣଙ୍କ Mozilla ଆକାଉଣ୍ଟରେ ଥିବା ଏକ ଡିଭାଇସର ଖୋଲା ଟ୍ୟାବ୍ ଦେଖାଏ। ଏହାର ନାମ ଏବଂ ଆଇକନ୍ ସେହି ଡିଭାଇସରୁ ଆସେ, ଏବଂ ଆପଣ ବାଛୁଥିବା ରଙ୍ଗ ଏହି ଫୋନ୍‌ରେ ରହେ।</string>
+    <string name="dejavu_settings_safe_browsing">Google ସୁରକ୍ଷିତ ବ୍ରାଉଜିଂ</string>
+    <string name="dejavu_settings_safe_browsing_summary">ଫିସିଂ ଏବଂ ମାଲୱେର୍ ସାଇଟ୍ ବିଷୟରେ ଚେତାବନୀ ଦିଏ। ଏଥିପାଇଁ Dejavu, Google ସହ ଯୋଗାଯୋଗ କରେ।</string>
 </resources>

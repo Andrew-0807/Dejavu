@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">เลี้ยงกาแฟฉันสักแก้ว</string>
     <string name="dejavu_settings_coffee_summary">Dejavu ไม่มีโฆษณา หากคุณชอบ กาแฟสักแก้วจะช่วยให้ Dejavu เติบโต</string>
     <string name="dejavu_workspace_device_note">พื้นที่ทำงานนี้แสดงแท็บที่เปิดอยู่ของอุปกรณ์เครื่องหนึ่งในบัญชี Mozilla ของคุณ ชื่อและไอคอนมาจากอุปกรณ์เครื่องนั้น และสีที่คุณเลือกจะอยู่บนโทรศัพท์เครื่องนี้</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">เตือนเกี่ยวกับเว็บไซต์ฟิชชิงและมัลแวร์ ในการทำเช่นนี้ Dejavu จะติดต่อ Google</string>
 </resources>

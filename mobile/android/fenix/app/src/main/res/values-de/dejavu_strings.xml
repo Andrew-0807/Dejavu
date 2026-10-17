@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Spendier mir einen Kaffee</string>
     <string name="dejavu_settings_coffee_summary">Dejavu hat keine Werbung. Wenn es dir gefällt, hilft ein Kaffee beim Wachsen.</string>
     <string name="dejavu_workspace_device_note">Dieser Arbeitsbereich zeigt die offenen Tabs eines Geräts in deinem Mozilla-Konto. Name und Symbol stammen von dem Gerät, und die Farben, die du auswählst, bleiben auf diesem Smartphone.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Warnt vor Phishing- und Malware-Websites. Dazu nimmt Dejavu Kontakt zu Google auf.</string>
 </resources>

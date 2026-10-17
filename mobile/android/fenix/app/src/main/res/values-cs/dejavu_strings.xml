@@ -342,4 +342,6 @@
     <string name="dejavu_settings_coffee">Kupte mi kávu</string>
     <string name="dejavu_settings_coffee_summary">Dejavu nemá žádné reklamy. Pokud se vám líbí, káva mu pomůže růst.</string>
     <string name="dejavu_workspace_device_note">Tento pracovní prostor zobrazuje otevřené panely zařízení z vašeho účtu Mozilly. Jeho název a ikona pocházejí z daného zařízení a barvy, které zvolíte, zůstanou v tomto telefonu.</string>
+    <string name="dejavu_settings_safe_browsing">Bezpečné prohlížení Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Varuje před phishingovými stránkami a stránkami s malwarem. Dejavu se kvůli tomu spojuje se společností Google.</string>
 </resources>

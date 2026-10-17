@@ -342,4 +342,6 @@
     <string name="dejavu_settings_coffee">Пригостіть мене кавою</string>
     <string name="dejavu_settings_coffee_summary">Dejavu не має реклами. Якщо він вам подобається, кава допоможе йому розвиватися.</string>
     <string name="dejavu_workspace_device_note">Цей робочий простір показує відкриті вкладки пристрою з вашого облікового запису Mozilla. Його назва та значок беруться з того пристрою, а вибрані вами кольори залишаються на цьому телефоні.</string>
+    <string name="dejavu_settings_safe_browsing">Безпечний перегляд Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Попереджає про фішингові та шкідливі сайти. Для цього Dejavu звертається до Google.</string>
 </resources>

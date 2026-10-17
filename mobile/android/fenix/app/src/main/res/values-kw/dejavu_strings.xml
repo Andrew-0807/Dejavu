@@ -356,4 +356,6 @@
     <string name="dejavu_settings_coffee">Prena koffi dhymm</string>
     <string name="dejavu_settings_coffee_summary">Nyns eus argemmynnow yn Dejavu. Mars yw da genes, koffi a\'n gweres dhe devi.</string>
     <string name="dejavu_workspace_device_note">An tyller-ober ma a dhiskwedh tabow igor jynn war dha akont Mozilla. Y hanow ha\'y ikon a dheu a\'n jynn na, ha\'n liwyow a dhewisydh a drig war an pellgowser ma.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Y hwra gwarnya a-dro dhe wiasvaow phishing ha malware. Rag gul henna, Dejavu a omjoin gans Google.</string>
 </resources>

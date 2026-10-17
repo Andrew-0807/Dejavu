@@ -30,9 +30,10 @@ internal class DefaultDohSettingsProvider(
     val engine: Engine,
     val settings: Settings,
 ) : DohSettingsProvider {
+    // Dejavu: no Default Protection. There Firefox turns secure DNS on through Mozilla's rollout, which Dejavu does not
+    // run, so secure DNS stayed off; Dejavu turns it on with Increased Protection instead (see DejavuDefaults).
     override fun getProtectionLevels(): List<ProtectionLevel> {
         return listOf(
-            ProtectionLevel.Default,
             ProtectionLevel.Increased,
             ProtectionLevel.Max,
             ProtectionLevel.Off,
@@ -42,35 +43,39 @@ internal class DefaultDohSettingsProvider(
     // Bug 1946867 - Load DoH Provider List from Gecko instead of hardcoding
     private val dohDefaultProviderUrl = settings.dohDefaultProviderUrl
 
+    // Dejavu: the providers' own addresses, not the ones they run for Firefox under Mozilla's agreements. Quad9, a
+    // non-profit that also blocks malware domains, comes first.
+    private val quad9 =
+        Provider.BuiltIn(
+            url = quad9Uri,
+            name = "Quad9",
+            default = dohDefaultProviderUrl.isBlank() || dohDefaultProviderUrl == quad9Uri,
+        )
+    private val mullvad =
+        Provider.BuiltIn(
+            url = mullvadUri,
+            name = "Mullvad",
+            default = dohDefaultProviderUrl == mullvadUri,
+        )
     private val cloudflare =
         Provider.BuiltIn(
             url = cloudflareUri,
             name = "Cloudflare",
-            default = dohDefaultProviderUrl.isBlank() || dohDefaultProviderUrl == cloudflareUri,
+            default = dohDefaultProviderUrl == cloudflareUri,
         )
-    private val nextDns =
-        Provider.BuiltIn(
-            url = nextDnsUri,
-            name = "NextDNS",
-            default = dohDefaultProviderUrl == nextDnsUri,
-        )
+    private val builtIn = listOf(quad9, mullvad, cloudflare)
     private val providerUrl = settings.dohProviderUrl
     private val custom =
         Provider.Custom(
             url =
-                if (providerUrl != cloudflareUri && providerUrl != nextDnsUri) {
+                if (builtIn.none { it.url == providerUrl }) {
                     providerUrl
                 } else {
                     ""
                 }
         )
 
-    override fun getDefaultProviders(): List<Provider> =
-        listOf(
-            cloudflare,
-            nextDns,
-            custom,
-        )
+    override fun getDefaultProviders(): List<Provider> = builtIn + custom
 
     override fun getSelectedProtectionLevel(): ProtectionLevel {
         return when (settings.getDohSettingsMode()) {
@@ -89,11 +94,9 @@ internal class DefaultDohSettingsProvider(
             }
 
             else -> {
-                when (settings.dohProviderUrl) {
-                    cloudflareUri -> cloudflare
-                    nextDnsUri -> nextDns
-                    "" -> getDefaultProviders().first()
-                    else -> custom
+                when (val url = settings.dohProviderUrl) {
+                    "" -> builtIn.find { it.default } ?: builtIn.first()
+                    else -> builtIn.find { it.url == url } ?: custom
                 }
             }
         }
@@ -130,8 +133,10 @@ internal class DefaultDohSettingsProvider(
     }
 
     companion object {
-        @VisibleForTesting val cloudflareUri = "https://mozilla.cloudflare-dns.com/dns-query"
+        @VisibleForTesting val quad9Uri = "https://dns.quad9.net/dns-query"
 
-        @VisibleForTesting val nextDnsUri = "https://firefox.dns.nextdns.io/"
+        @VisibleForTesting val mullvadUri = "https://dns.mullvad.net/dns-query"
+
+        @VisibleForTesting val cloudflareUri = "https://cloudflare-dns.com/dns-query"
     }
 }

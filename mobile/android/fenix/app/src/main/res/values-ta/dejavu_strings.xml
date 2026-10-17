@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">எனக்கு ஒரு காபி வாங்கித் தாருங்கள்</string>
     <string name="dejavu_settings_coffee_summary">Dejavu-வில் விளம்பரங்கள் இல்லை. உங்களுக்குப் பிடித்திருந்தால், ஒரு காபி அதன் வளர்ச்சிக்கு உதவும்.</string>
     <string name="dejavu_workspace_device_note">இந்தப் பணியிடம் உங்கள் Mozilla கணக்கில் உள்ள ஒரு சாதனத்தின் திறந்த கீற்றுகளைக் காட்டுகிறது. அதன் பெயரும் சின்னமும் அந்தச் சாதனத்திலிருந்து வருகின்றன, நீங்கள் தேர்ந்தெடுக்கும் நிறங்கள் இந்தக் கைப்பேசியிலேயே இருக்கும்.</string>
+    <string name="dejavu_settings_safe_browsing">Google பாதுகாப்பு உலாவல்</string>
+    <string name="dejavu_settings_safe_browsing_summary">ஃபிஷிங் மற்றும் தீம்பொருள் தளங்களைப் பற்றி எச்சரிக்கிறது. இதற்காக Dejavu, Google-ஐத் தொடர்புகொள்கிறது.</string>
 </resources>

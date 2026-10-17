@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Taloq\'oj jun kafe chuwe</string>
     <string name="dejavu_settings_coffee_summary">Majun taq eltzijol pa Dejavu. We nuqa chawäch, jun kafe nuto\' richin nik\'iy.</string>
     <string name="dejavu_workspace_device_note">Re samajib\'äl re\' nuk\'ut ri jaqäl taq ruwi\' richin jun okisaxel pa ri Rukwenta Mozilla. Rub\'i\' chuqa\' ruretal yepe pa ri okisaxel ri\', chuqa\' ri taq b\'onil nacha\' yekanäj pa re oyonib\'äl re\'.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Nuya\' rutzijol chi kij ri taq ruxaq k\'amaya\'l richin phishing chuqa\' malware. Richin nub\'än re\', ri Dejavu nuk\'üj ri\' rik\'in Google.</string>
 </resources>

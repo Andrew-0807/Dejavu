@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">請我喝杯咖啡</string>
     <string name="dejavu_settings_coffee_summary">Dejavu 沒有廣告。如果您喜歡它，一杯咖啡能幫助它成長。</string>
     <string name="dejavu_workspace_device_note">此工作區會顯示您 Mozilla 帳號中某部裝置上開啟的分頁。其名稱和圖示來自該裝置，您選擇的顏色會留在這支手機上。</string>
+    <string name="dejavu_settings_safe_browsing">Google 安全瀏覽</string>
+    <string name="dejavu_settings_safe_browsing_summary">針對網路釣魚和惡意軟體網站發出警告。為此，Dejavu 會連線至 Google。</string>
 </resources>

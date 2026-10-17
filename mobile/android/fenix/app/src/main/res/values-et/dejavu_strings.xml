@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Osta mulle kohvi</string>
     <string name="dejavu_settings_coffee_summary">Dejavus pole reklaame. Kui see sulle meeldib, aitab kohv sel kasvada.</string>
     <string name="dejavu_workspace_device_note">See tööruum kuvab su Mozilla kontoga seotud seadme avatud kaardid. Selle nimi ja ikoon tulevad sellelt seadmelt ning su valitud värvid jäävad sellesse telefoni.</string>
+    <string name="dejavu_settings_safe_browsing">Google\'i turvaline sirvimine</string>
+    <string name="dejavu_settings_safe_browsing_summary">Hoiatab andmepüügi- ja pahavarasaitide eest. Selleks võtab Dejavu ühendust Google\'iga.</string>
 </resources>

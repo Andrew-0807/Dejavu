@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Paja in caffè a mai</string>
     <string name="dejavu_settings_coffee_summary">Dejavu n’ha naginas reclamas. Sch’el ta plascha, al gida in caffè a crescher.</string>
     <string name="dejavu_workspace_device_note">Quest spazi da lavur mussa ils tabs averts d’in apparat da tes conto Mozilla. Ses num e sia icona vegnan da quel apparat, e las colurs che ti tschernas restan sin quest telefon.</string>
+    <string name="dejavu_settings_safe_browsing">Navigaziun segira da Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Avertescha davart websites da phishing e malware. Per far quai, contactescha Dejavu Google.</string>
 </resources>

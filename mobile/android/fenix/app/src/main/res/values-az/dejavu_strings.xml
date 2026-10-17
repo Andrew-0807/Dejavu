@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Mənə bir qəhvə alın</string>
     <string name="dejavu_settings_coffee_summary">Dejavu-da reklam yoxdur. Xoşunuza gəlirsə, bir qəhvə onun böyüməsinə kömək edir.</string>
     <string name="dejavu_workspace_device_note">Bu iş sahəsi Mozilla hesabınızdakı bir cihazın açıq vərəqlərini göstərir. Onun adı və ikonu həmin cihazdan gəlir, seçdiyiniz rənglər isə bu telefonda qalır.</string>
+    <string name="dejavu_settings_safe_browsing">Google Təhlükəsiz Baxış</string>
+    <string name="dejavu_settings_safe_browsing_summary">Fişinq və zərərli proqram saytları barədə xəbərdarlıq edir. Bunun üçün Dejavu Google ilə əlaqə saxlayır.</string>
 </resources>

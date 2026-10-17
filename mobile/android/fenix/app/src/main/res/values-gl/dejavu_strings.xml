@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Convídame a un café</string>
     <string name="dejavu_settings_coffee_summary">Dejavu non ten anuncios. Se che gusta, un café axúdao a medrar.</string>
     <string name="dejavu_workspace_device_note">Este espazo de traballo amosa as lapelas abertas dun dispositivo da túa conta de Mozilla. O seu nome e a súa icona veñen dese dispositivo, e as cores que escollas quedan neste teléfono.</string>
+    <string name="dejavu_settings_safe_browsing">Navegación segura de Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Avisa dos sitios de phishing e malware. Para iso, Dejavu conéctase con Google.</string>
 </resources>

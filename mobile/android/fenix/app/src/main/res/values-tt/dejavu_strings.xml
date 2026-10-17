@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Миңа кофе алып бирегез</string>
     <string name="dejavu_settings_coffee_summary">Dejavu-да реклама юк. Ошаса, бер чынаяк кофе аңа үсәргә ярдәм итә.</string>
     <string name="dejavu_workspace_device_note">Бу эш өлкәсе Mozilla хисап язмагыздагы бер җиһазның ачык табларын күрсәтә. Аның исеме һәм билгечеге шул җиһаздан килә, ә сез сайлаган төсләр бу телефонда кала.</string>
+    <string name="dejavu_settings_safe_browsing">Google куркынычсыз карау</string>
+    <string name="dejavu_settings_safe_browsing_summary">Фишинг һәм зарарлы программа сайтлары турында кисәтә. Моның өчен Dejavu Google белән элемтәгә керә.</string>
 </resources>

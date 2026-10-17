@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">コーヒーをおごる</string>
     <string name="dejavu_settings_coffee_summary">Dejavuには広告がありません。気に入ったら、コーヒー1杯がDejavuの成長を支えます。</string>
     <string name="dejavu_workspace_device_note">このワークスペースには、Mozillaアカウントに接続された端末で開いているタブが表示されます。名前とアイコンはその端末のものが使われ、選んだ色はこのスマートフォンだけに保存されます。</string>
+    <string name="dejavu_settings_safe_browsing">Google セーフ ブラウジング</string>
+    <string name="dejavu_settings_safe_browsing_summary">フィッシングサイトやマルウェアサイトについて警告します。そのため、DejavuはGoogleと通信します。</string>
 </resources>

@@ -33,6 +33,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.lang.ref.WeakReference
@@ -74,6 +75,7 @@ import org.mozilla.fenix.components.Components
 import org.mozilla.fenix.components.accounts.FenixFxAEntryPoint
 import org.mozilla.fenix.databinding.AmoCollectionOverrideDialogBinding
 import org.mozilla.fenix.dejavu.DejavuLinks
+import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
 import org.mozilla.fenix.dejavu.features.DejavuFeatureTourFragment
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.application
@@ -728,6 +730,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         setupHomepagePreference(settings)
         setupTrackingProtectionPreference(settings)
         setupDnsOverHttpsPreference(settings)
+        setupSafeBrowsingPreference(settings)
         setupEmailMaskPreference(settings, requireComponents)
     }
 
@@ -914,6 +917,18 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                     Engine.DohSettingsMode.INCREASED -> getString(R.string.preference_doh_increased_protection)
                     Engine.DohSettingsMode.MAX -> getString(R.string.preference_doh_max_protection)
                 }
+        }
+    }
+
+    // Dejavu: the switch turns Google Safe Browsing on or off at once, in the running engine too.
+    private fun setupSafeBrowsingPreference(settings: Settings) {
+        with(requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_safe_browsing)) {
+            isChecked = settings.safeBrowsingEnabled
+            setOnPreferenceChangeListener<Boolean> { _, enabled ->
+                settings.safeBrowsingEnabled = enabled
+                GoogleSafeBrowsing.apply(requireComponents.core.engine, requireComponents.core.geckoRuntime, enabled)
+                true
+            }
         }
     }
 

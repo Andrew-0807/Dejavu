@@ -335,4 +335,6 @@
     <string name="dejavu_settings_coffee">קנו לי קפה</string>
     <string name="dejavu_settings_coffee_summary">אין ב-Dejavu פרסומות. אם הוא מוצא חן בעיניכם, קפה עוזר לו לגדול.</string>
     <string name="dejavu_workspace_device_note">מרחב העבודה הזה מציג את הלשוניות הפתוחות של מכשיר בחשבון Mozilla שלכם. השם והסמל שלו מגיעים מאותו מכשיר, והצבעים שתבחרו נשארים בטלפון הזה.</string>
+    <string name="dejavu_settings_safe_browsing">הגלישה הבטוחה של Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">מזהיר מפני אתרי פישינג ותוכנות זדוניות. לשם כך, Dejavu יוצר קשר עם Google.</string>
 </resources>

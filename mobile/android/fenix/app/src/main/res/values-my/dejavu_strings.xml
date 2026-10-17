@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">ကျွန်ုပ်ကို ကော်ဖီတစ်ခွက် တိုက်ပါ</string>
     <string name="dejavu_settings_coffee_summary">Dejavu တွင် ကြော်ငြာများ မရှိပါ။ သင်နှစ်သက်ပါက ကော်ဖီတစ်ခွက်က ၎င်းကို ကြီးထွားလာစေရန် ကူညီပေးသည်။</string>
     <string name="dejavu_workspace_device_note">ဤလုပ်ငန်းခွင်သည် သင့် Mozilla အကောင့်ရှိ စက်တစ်ခု၏ ပွင့်နေသော တက်ဗ်များကို ပြသသည်။ ၎င်း၏ အမည်နှင့် အိုင်ကွန်သည် ထိုစက်မှ လာပြီး သင်ရွေးသော အရောင်များသည် ဤဖုန်းတွင်သာ ရှိနေမည်။</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">ဖစ်ရှင်းနှင့် မဲလ်ဝဲဆိုက်များအကြောင်း သတိပေးသည်။ ယင်းအတွက် Dejavu သည် Google ကို ဆက်သွယ်သည်။</string>
 </resources>

@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Κεράστε με έναν καφέ</string>
     <string name="dejavu_settings_coffee_summary">Το Dejavu δεν έχει διαφημίσεις. Αν σας αρέσει, ένας καφές το βοηθά να μεγαλώσει.</string>
     <string name="dejavu_workspace_device_note">Αυτός ο χώρος εργασίας εμφανίζει τις ανοικτές καρτέλες μιας συσκευής του λογαριασμού σας Mozilla. Το όνομα και το εικονίδιό του προέρχονται από εκείνη τη συσκευή, και τα χρώματα που επιλέγετε μένουν σε αυτό το τηλέφωνο.</string>
+    <string name="dejavu_settings_safe_browsing">Ασφαλής περιήγηση Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Προειδοποιεί για ιστοτόπους ηλεκτρονικού ψαρέματος και κακόβουλου λογισμικού. Για να το κάνει αυτό, το Dejavu επικοινωνεί με την Google.</string>
 </resources>

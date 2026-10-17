@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">ລ້ຽງກາເຟຂ້ອຍຈອກໜຶ່ງ</string>
     <string name="dejavu_settings_coffee_summary">Dejavu ບໍ່ມີໂຄສະນາ. ຖ້າທ່ານມັກມັນ, ກາເຟຈອກໜຶ່ງຊ່ວຍໃຫ້ມັນເຕີບໂຕ.</string>
     <string name="dejavu_workspace_device_note">ພື້ນທີ່ເຮັດວຽກນີ້ສະແດງແທັບທີ່ເປີດຢູ່ຂອງອຸປະກອນໜຶ່ງໃນບັນຊີ Mozilla ຂອງທ່ານ. ຊື່ ແລະ ໄອຄອນຂອງມັນມາຈາກອຸປະກອນນັ້ນ, ແລະ ສີທີ່ທ່ານເລືອກຈະຢູ່ໃນໂທລະສັບນີ້.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">ເຕືອນກ່ຽວກັບເວັບໄຊຫຼອກລວງ ແລະ ມັນແວ. ເພື່ອເຮັດສິ່ງນີ້, Dejavu ຕິດຕໍ່ກັບ Google.</string>
 </resources>

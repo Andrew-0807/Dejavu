@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">Beliang tiang kopi</string>
     <string name="dejavu_settings_coffee_summary">Dejavu tusing ngelah iklan. Yen ragane demen, agelas kopi nulungin Dejavu apang tumbuh.</string>
     <string name="dejavu_workspace_device_note">Genah ené nampilang tab mukak uli piranti di akun Mozilla ragane. Adan lan ikonne uli piranti ento, lan warna ane pilih ragane tetep di ponsel ené.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Ngicénin pangéling indik situs phishing miwah malware. Mangda prasida, Dejavu nyambung ka Google.</string>
 </resources>

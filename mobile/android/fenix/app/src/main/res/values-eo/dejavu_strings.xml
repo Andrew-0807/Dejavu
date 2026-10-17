@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Aĉetu al mi kafon</string>
     <string name="dejavu_settings_coffee_summary">Dejavu ne havas reklamojn. Se ĝi plaĉas al vi, kafo helpas ĝin kreski.</string>
     <string name="dejavu_workspace_device_note">Ĉi tiu laborspaco montras la malfermitajn langetojn de aparato en via Mozilla-konto. Ĝiaj nomo kaj piktogramo venas de tiu aparato, kaj la koloroj, kiujn vi elektas, restas sur ĉi tiu telefono.</string>
+    <string name="dejavu_settings_safe_browsing">Sekura retumado de Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Avertas pri retejoj de retfiŝado kaj fiprogramaro. Por tio Dejavu kontaktas Google.</string>
 </resources>

@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Køb mig en kop kaffe</string>
     <string name="dejavu_settings_coffee_summary">Dejavu har ingen reklamer. Hvis du kan lide det, hjælper en kop kaffe det med at vokse.</string>
     <string name="dejavu_workspace_device_note">Dette arbejdsområde viser de åbne faneblade fra en enhed på din Mozilla-konto. Dets navn og ikon kommer fra den enhed, og de farver, du vælger, bliver på denne telefon.</string>
+    <string name="dejavu_settings_safe_browsing">Google Beskyttet browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Advarer om phishing- og malwarewebsteder. For at gøre det kontakter Dejavu Google.</string>
 </resources>

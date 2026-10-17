@@ -342,4 +342,6 @@
     <string name="dejavu_settings_coffee">Купіце мне каву</string>
     <string name="dejavu_settings_coffee_summary">У Dejavu няма рэкламы. Калі вам падабаецца, кава дапамагае яму расці.</string>
     <string name="dejavu_workspace_device_note">Гэтая прастора паказвае адкрытыя карткі прылады з вашага ўліковага запісу Mozilla. Яе назва і значок бяруцца з той прылады, а колеры, якія вы выбіраеце, застаюцца на гэтым тэлефоне.</string>
+    <string name="dejavu_settings_safe_browsing">Бяспечны прагляд Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Папярэджвае пра фішынгавыя і шкодныя сайты. Для гэтага Dejavu звяртаецца да Google.</string>
 </resources>

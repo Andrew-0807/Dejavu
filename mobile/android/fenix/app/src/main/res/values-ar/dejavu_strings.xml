@@ -356,4 +356,6 @@
     <string name="dejavu_settings_coffee">اشترِ لي قهوة</string>
     <string name="dejavu_settings_coffee_summary">لا إعلانات في Dejavu. إن أعجبك، فإن فنجان قهوة يساعده على النمو.</string>
     <string name="dejavu_workspace_device_note">تعرض مساحة العمل هذه التبويبات المفتوحة لجهاز على حساب Mozilla الخاص بك. يأتي اسمها وأيقونتها من ذلك الجهاز، وتبقى الألوان التي تختارها على هذا الهاتف.</string>
+    <string name="dejavu_settings_safe_browsing">التصفح الآمن من Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">يحذّرك من مواقع التصيّد الاحتيالي والبرمجيات الخبيثة. للقيام بذلك، يتصل Dejavu بـ Google.</string>
 </resources>

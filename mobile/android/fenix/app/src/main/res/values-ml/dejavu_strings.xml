@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">എനിക്കൊരു കാപ്പി വാങ്ങിത്തരൂ</string>
     <string name="dejavu_settings_coffee_summary">Dejavu-യിൽ പരസ്യങ്ങളില്ല. നിങ്ങൾക്കിത് ഇഷ്ടമായെങ്കിൽ, ഒരു കാപ്പി ഇതിന്റെ വളർച്ചയ്ക്ക് സഹായിക്കും.</string>
     <string name="dejavu_workspace_device_note">ഈ പണിയിടം നിങ്ങളുടെ Mozilla അക്കൗണ്ടിലുള്ള ഒരു ഉപകരണത്തിലെ തുറന്നിരിക്കുന്ന ടാബുകൾ കാണിക്കുന്നു. ഇതിന്റെ പേരും ചിഹ്നവും ആ ഉപകരണത്തിൽ നിന്നാണ് വരുന്നത്, നിങ്ങൾ തിരഞ്ഞെടുക്കുന്ന നിറങ്ങൾ ഈ ഫോണിൽ തന്നെ നിലനിൽക്കും.</string>
+    <string name="dejavu_settings_safe_browsing">Google സുരക്ഷിത ബ്രൗസിംഗ്</string>
+    <string name="dejavu_settings_safe_browsing_summary">ഫിഷിംഗ്, മാൽവെയർ സൈറ്റുകളെക്കുറിച്ച് മുന്നറിയിപ്പ് നൽകുന്നു. ഇതിനായി Dejavu, Google-മായി ബന്ധപ്പെടുന്നു.</string>
 </resources>

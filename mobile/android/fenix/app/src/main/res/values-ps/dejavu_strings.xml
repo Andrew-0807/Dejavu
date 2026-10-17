@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">ما ته یوه پیاله قهوه واخلئ</string>
     <string name="dejavu_settings_coffee_summary">په Dejavu کې اعلانونه نشته. که مو خوښ وي، یوه پیاله قهوه یې په وده کې مرسته کوي.</string>
     <string name="dejavu_workspace_device_note">دا ساحه ستاسو د Mozilla په حساب کې د یوې وسیلې خلاص ټبونه ښیي. د دې نوم او آیکون له هغې وسیلې راځي، او هغه رنګونه چې تاسو یې ټاکئ په دې تلیفون کې پاتې کېږي.</string>
+    <string name="dejavu_settings_safe_browsing">Google خوندي لټون</string>
+    <string name="dejavu_settings_safe_browsing_summary">د فیشنګ او ناوړه پروګرامونو د سایټونو په اړه خبرداری ورکوي. د دې لپاره، Dejavu له Google سره اړیکه نیسي.</string>
 </resources>

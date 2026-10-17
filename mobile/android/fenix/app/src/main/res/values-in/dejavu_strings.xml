@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">Traktir saya kopi</string>
     <string name="dejavu_settings_coffee_summary">Dejavu tidak memiliki iklan. Jika Anda menyukainya, secangkir kopi membantunya berkembang.</string>
     <string name="dejavu_workspace_device_note">Ruang kerja ini menampilkan tab terbuka dari sebuah perangkat di akun Mozilla Anda. Nama dan ikonnya berasal dari perangkat tersebut, dan warna yang Anda pilih tetap ada di ponsel ini.</string>
+    <string name="dejavu_settings_safe_browsing">Google Penjelajahan Aman</string>
+    <string name="dejavu_settings_safe_browsing_summary">Memperingatkan tentang situs phishing dan malware. Untuk itu, Dejavu menghubungi Google.</string>
 </resources>

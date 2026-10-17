@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">커피 한 잔 사 주세요</string>
     <string name="dejavu_settings_coffee_summary">Dejavu에는 광고가 없습니다. 마음에 드신다면 커피 한 잔이 Dejavu의 성장에 힘이 됩니다.</string>
     <string name="dejavu_workspace_device_note">이 작업 공간은 Mozilla 계정에 연결된 기기의 열린 탭을 표시합니다. 이름과 아이콘은 해당 기기에서 가져오며, 선택한 색상은 이 휴대폰에만 적용됩니다.</string>
+    <string name="dejavu_settings_safe_browsing">Google 세이프 브라우징</string>
+    <string name="dejavu_settings_safe_browsing_summary">피싱 및 멀웨어 사이트에 대해 경고합니다. 이를 위해 Dejavu가 Google에 연결합니다.</string>
 </resources>

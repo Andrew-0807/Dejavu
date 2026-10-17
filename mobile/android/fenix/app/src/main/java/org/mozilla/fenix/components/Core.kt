@@ -123,6 +123,7 @@ import org.mozilla.fenix.browser.desktopmode.DesktopModeMiddleware
 import org.mozilla.fenix.components.search.ApplicationSearchMiddleware
 import org.mozilla.fenix.components.search.SearchMigration
 import org.mozilla.fenix.components.search.SearchWidgetMiddleware
+import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
 import org.mozilla.fenix.dejavu.dejavuBrowserMiddleware
 import org.mozilla.fenix.downloads.DownloadService
 import org.mozilla.fenix.ext.components
@@ -266,6 +267,9 @@ class Core(
             )
             .also {
                 WebCompatFeature.install(it)
+                // Dejavu: the engine turns Safe Browsing on as it starts, so it follows the privacy settings again.
+                val safeBrowsing = context.components.settings.safeBrowsingEnabled
+                it.settings.safeBrowsingPolicy = GoogleSafeBrowsing.policy(safeBrowsing)
             }
     }
 

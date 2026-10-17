@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Bjóddu mér upp á kaffi</string>
     <string name="dejavu_settings_coffee_summary">Dejavu er án auglýsinga. Ef þér líkar það, hjálpar kaffibolli því að vaxa.</string>
     <string name="dejavu_workspace_device_note">Þetta vinnusvæði sýnir opna flipa tækis á Mozilla reikningnum þínum. Heiti þess og táknmynd koma frá því tæki og litirnir sem þú velur haldast á þessum síma.</string>
+    <string name="dejavu_settings_safe_browsing">Örugg vöfrun Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Varar við vefveiðum og spilliforritasíðum. Til þess hefur Dejavu samband við Google.</string>
 </resources>

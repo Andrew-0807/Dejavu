@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">მიყიდეთ ყავა</string>
     <string name="dejavu_settings_coffee_summary">Dejavu-ში რეკლამა არ არის. თუ მოგწონთ, ერთი ფინჯანი ყავა მის განვითარებას უწყობს ხელს.</string>
     <string name="dejavu_workspace_device_note">ეს სივრცე აჩვენებს თქვენს Mozilla-ანგარიშთან დაკავშირებული მოწყობილობის გახსნილ ჩანართებს. მისი სახელი და ხატულა იმ მოწყობილობიდან მოდის, თქვენ მიერ არჩეული ფერები კი ამ ტელეფონზე რჩება.</string>
+    <string name="dejavu_settings_safe_browsing">Google-ის უსაფრთხო დათვალიერება</string>
+    <string name="dejavu_settings_safe_browsing_summary">გაფრთხილებთ ფიშინგისა და მავნე პროგრამების საიტების შესახებ. ამისთვის Dejavu უკავშირდება Google-ს.</string>
 </resources>

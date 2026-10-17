@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">کنے کافی اس ہلبو</string>
     <string name="dejavu_settings_coffee_summary">Dejavu اٹ ہچو اشتہار اف۔ اگر نی اے پسند کن، کافی اس اے نا بڑھنگ اٹ کمک کن۔</string>
     <string name="dejavu_workspace_device_note">اے ورک سپیس نی نا Mozilla اکاؤنٹ نا ڈیوائس اس نا ملوکا ٹیباک دکھ ہن۔ اے نا پن او آئیکن او ڈیوائس ٹی ہن، او نی چُنتین رنگاک اے فون پار رہ ہن۔</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">فشنگ او میلویئر سائٹاک نا بارو اٹ خبردار کیک۔ دا کن کرسہ کن Dejavu، Google اٹ رابطہ کیک۔</string>
 </resources>

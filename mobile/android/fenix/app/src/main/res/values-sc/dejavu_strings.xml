@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Pàgami unu cafè</string>
     <string name="dejavu_settings_coffee_summary">Dejavu no tenet publitzidade. Si t\'agradat, unu cafè l\'agiudat a crèschere.</string>
     <string name="dejavu_workspace_device_note">Custu ispàtziu de traballu ammustrat is ischedas abertas de unu dispositivu de su contu Mozilla tuo. Su nòmine e s\'icona benint dae cussu dispositivu, e is colores chi seberas abarrant in custu telèfonu.</string>
+    <string name="dejavu_settings_safe_browsing">Navigatzione segura de Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Avisat de sos sitos de phishing e de malware. Pro lu fàghere, Dejavu si connetet a Google.</string>
 </resources>

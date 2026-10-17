@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Maǵan bir kofe satıp alıń</string>
     <string name="dejavu_settings_coffee_summary">Dejavu-da reklama joq. Eger ol sizge unasa, bir kofe onıń rawajlanıwına járdem beredi.</string>
     <string name="dejavu_workspace_device_note">Bul jumıs maydanı Mozilla akkauntıńızdaǵı bir qurılmanıń ashıq betlerin kórsetedi. Onıń atı hám belgishesi sol qurılmadan alınadı, al siz tańlaǵan reńler usı telefonda qaladı.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Fishing hám zıyanlı baǵdarlama saytları haqqında eskertedi. Bul ushın Dejavu Google menen baylanısadı.</string>
 </resources>

@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Qehweyekê ji min re bikire</string>
     <string name="dejavu_settings_coffee_summary">Dejavu bê reklam e. Heke tu jê hez dikî, qehweyek dibe alîkar ku ew pêş bikeve.</string>
     <string name="dejavu_workspace_device_note">Ev qad hilpekînên vekirî yên amûreke li ser hesabê te yê Mozilla nîşan dide. Nav û îkona wê ji wê amûrê tên, û rengên ku tu hildibijêrî li ser vê telefonê dimînin.</string>
+    <string name="dejavu_settings_safe_browsing">Gerîna Ewle ya Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Derbarê malperên phishing û malware de hişyar dike. Ji bo vê yekê, Dejavu bi Google re têkilî datîne.</string>
 </resources>

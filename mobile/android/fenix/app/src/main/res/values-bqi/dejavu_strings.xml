@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">یه قهوه سیم بخر</string>
     <string name="dejavu_settings_coffee_summary">Dejavu تبلیغ نداره. اگه خوشت اومد، یه قهوه کمکش می‌کنه که گپ بۊ.</string>
     <string name="dejavu_workspace_device_note">ای فضا بلگه یل واز یه دستگاه ره که رو حساب Mozilla ته نشون می‌ده. نوم و آیکونش ز همو دستگاه میان، و رنگ یلی که پسند می‌کنی رو ای گوشی می‌مونن.</string>
+    <string name="dejavu_settings_safe_browsing">مرور ایمن Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">ز سایت یل فیشینگ و بدافزار خبردار اکونه. سی ای کار، Dejavu وا Google وصل ابۊ.</string>
 </resources>

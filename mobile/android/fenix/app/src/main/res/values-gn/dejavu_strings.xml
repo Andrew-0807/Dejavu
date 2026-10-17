@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Ejogua chéve peteĩ kafe</string>
     <string name="dejavu_settings_coffee_summary">Dejavu ndorekói ñemurã. Rehayhúramo, peteĩ kafe oipytyvõ okakuaa hag̃ua.</string>
     <string name="dejavu_workspace_device_note">Ko tembiapo renda ohechauka tendayke ijurujáva peteĩ mba\'e\'oka ne kuenta Mozilla-pegua. Héra ha ita\'ãnga ou upe mba\'e\'okágui, ha umi sa\'y reiporavóva opyta ko pumbyrýpe.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Ombohesakã umi tenda phishing ha malware rehegua. Upéva ojapo hag̃ua, Dejavu oñembojoaju Google ndive.</string>
 </resources>

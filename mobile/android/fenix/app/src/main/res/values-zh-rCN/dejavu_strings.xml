@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">请我喝杯咖啡</string>
     <string name="dejavu_settings_coffee_summary">Dejavu 没有广告。如果您喜欢它，一杯咖啡能帮助它成长。</string>
     <string name="dejavu_workspace_device_note">此工作区显示您 Mozilla 账户中某台设备上打开的标签页。其名称和图标来自该设备，您选择的颜色会保留在此手机上。</string>
+    <string name="dejavu_settings_safe_browsing">Google 安全浏览</string>
+    <string name="dejavu_settings_safe_browsing_summary">针对网络钓鱼和恶意软件网站发出警告。为此，Dejavu 会联系 Google。</string>
 </resources>

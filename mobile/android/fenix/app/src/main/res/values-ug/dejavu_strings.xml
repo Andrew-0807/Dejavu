@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">ماڭا بىر قەھۋە ئېلىپ بېرىڭ</string>
     <string name="dejavu_settings_coffee_summary">Dejavu دا ئېلان يوق. ياقتۇرسىڭىز، بىر قەھۋە ئۇنىڭ تەرەققىي قىلىشىغا ياردەم بېرىدۇ.</string>
     <string name="dejavu_workspace_device_note">بۇ خىزمەت دائىرىسى Mozilla ھېساباتىڭىزدىكى بىر ئۈسكۈنىنىڭ ئوچۇق بەتكۈچلىرىنى كۆرسىتىدۇ. ئۇنىڭ ئىسمى ۋە سىنبەلگىسى شۇ ئۈسكۈنىدىن كېلىدۇ، سىز تاللىغان رەڭلەر بۇ تېلېفوندا قالىدۇ.</string>
+    <string name="dejavu_settings_safe_browsing">Google بىخەتەر كۆرۈش</string>
+    <string name="dejavu_settings_safe_browsing_summary">ئالدامچىلىق ۋە يامان غەرەزلىك يۇمشاق دېتال تور بەتلىرىدىن ئاگاھلاندۇرىدۇ. بۇنىڭ ئۈچۈن Dejavu، Google بىلەن ئالاقىلىشىدۇ.</string>
 </resources>

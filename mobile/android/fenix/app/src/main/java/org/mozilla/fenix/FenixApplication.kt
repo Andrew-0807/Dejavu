@@ -114,6 +114,7 @@ import org.mozilla.fenix.components.initializeGlean
 import org.mozilla.fenix.components.metrics.MozillaProductDetector
 import org.mozilla.fenix.components.startMetricsIfEnabled
 import org.mozilla.fenix.dejavu.DejavuDefaults
+import org.mozilla.fenix.dejavu.browser.UBlockOrigin
 import org.mozilla.fenix.dejavu.dejavuKeepsTab
 import org.mozilla.fenix.experiments.maybeFetchExperiments
 import org.mozilla.fenix.ext.application
@@ -900,6 +901,8 @@ open class FenixApplication : Application(), Provider, ThemeProvider {
                 onExtensionsLoaded = { extensions ->
                     components.addonUpdater.registerForFutureUpdates(extensions)
                     subscribeForNewAddonsIfNeeded(components.supportedAddonsChecker, extensions)
+                    // Dejavu: a fresh install gets uBlock Origin.
+                    UBlockOrigin.addIfDue(this, extensions)
                 },
                 onUpdatePermissionRequest = components.addonUpdater::onUpdatePermissionRequest,
             )

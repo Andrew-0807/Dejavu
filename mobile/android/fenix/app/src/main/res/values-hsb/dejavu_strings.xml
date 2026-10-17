@@ -342,4 +342,6 @@
     <string name="dejavu_settings_coffee">Kup mi kofej</string>
     <string name="dejavu_settings_coffee_summary">Dejavu nima wabjenja. Jeli so ći lubi, kofej jemu pomha rosć.</string>
     <string name="dejavu_workspace_device_note">Tutón dźěłowy rum pokazuje wočinjene rajtarki grata, kotryž je z twojim kontom Mozilla zwjazany. Jeho mjeno a symbol z toho grata pochadźatej, a barby, kotrež wuběraš, na tutym telefonje wostanu.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Warnuje před sydłami phishinga a škódneje softwary. Za to so Dejavu z Google zwjazuje.</string>
 </resources>

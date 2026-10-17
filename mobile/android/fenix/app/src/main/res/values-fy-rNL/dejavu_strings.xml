@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Traktearje my op in kofje</string>
     <string name="dejavu_settings_coffee_summary">Dejavu hat gjin advertinsjes. As it jo befalt, helpt in kofje it te groeien.</string>
     <string name="dejavu_workspace_device_note">Dizze wurkromte toant de iepen ljepblêden fan in apparaat yn jo Mozilla-akkount. De namme en it byldkaike komme fan dat apparaat, en de kleuren dy\'t jo kieze bliuwe op dizze telefoan.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Warskôget foar phishing- en malwarewebsites. Dêrfoar nimt Dejavu kontakt op mei Google.</string>
 </resources>

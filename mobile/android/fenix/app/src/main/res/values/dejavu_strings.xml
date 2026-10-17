@@ -7,6 +7,7 @@
     <string name="pref_key_dejavu_containers" translatable="false">pref_key_dejavu_containers</string>
     <string name="pref_key_dejavu_external_links" translatable="false">pref_key_dejavu_external_links</string>
     <string name="pref_key_dejavu_tab_sleep" translatable="false">pref_key_dejavu_tab_sleep</string>
+    <string name="pref_key_dejavu_safe_browsing" translatable="false">pref_key_dejavu_safe_browsing</string>
     <!-- Name of Mozilla's browser, for texts about Mozilla's own services like Firefox Suggest. -->
     <string name="dejavu_firefox_name" translatable="false" tools:ignore="BrandUsage">Firefox</string>
 
@@ -453,4 +454,9 @@
     <string name="dejavu_feature_workspace_order">Drag workspaces to reorder them</string>
     <!-- Feature tour title: long-pressing a link offers to open it in split view, below the page. -->
     <string name="dejavu_feature_split_view">Hold a link to open it in split view</string>
+
+    <!-- Switch in the privacy settings for Google Safe Browsing, which warns about phishing and malware sites. -->
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <!-- Summary of the Google Safe Browsing switch: its warnings need Dejavu to contact Google, which is why it can be turned off. -->
+    <string name="dejavu_settings_safe_browsing_summary">Warns about phishing and malware sites. To do this, Dejavu contacts Google.</string>
 </resources>

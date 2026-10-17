@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Erosidazu kafe bat</string>
     <string name="dejavu_settings_coffee_summary">Dejavuk ez du iragarkirik. Gustuko baduzu, kafe batek hazten laguntzen dio.</string>
     <string name="dejavu_workspace_device_note">Laneremu honek zure Mozilla kontuko gailu baten irekitako fitxak erakusten ditu. Bere izena eta ikonoa gailu horretatik datoz, eta aukeratzen dituzun koloreak telefono honetan geratzen dira.</string>
+    <string name="dejavu_settings_safe_browsing">Google-ren nabigatze segurua</string>
+    <string name="dejavu_settings_safe_browsing_summary">Phishing eta malware guneei buruz ohartarazten du. Horretarako, Dejavu Google-rekin konektatzen da.</string>
 </resources>

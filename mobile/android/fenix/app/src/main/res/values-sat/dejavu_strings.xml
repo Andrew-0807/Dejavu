@@ -335,4 +335,6 @@
     <string name="dejavu_settings_coffee">ᱤᱧ ᱞᱟᱹᱜᱤᱫ ᱢᱤᱫ ᱠᱚᱯᱷᱤ ᱠᱤᱨᱤᱧ ᱢᱮ</string>
     <string name="dejavu_settings_coffee_summary">Dejavu ᱨᱮ ᱡᱟᱦᱟᱱ ᱮᱰ ᱵᱟᱹᱱᱩᱜᱼᱟ ᱾ ᱡᱩᱫᱤ ᱟᱢ ᱱᱚᱶᱟ ᱨᱮ ᱠᱩᱥᱤ ᱢᱮᱱᱟᱢᱟ, ᱢᱤᱫ ᱠᱚᱯᱷᱤ ᱱᱚᱶᱟ ᱵᱟᱲᱦᱟᱣ ᱨᱮ ᱜᱚᱲᱚ ᱮᱢᱟᱭᱟ ᱾</string>
     <string name="dejavu_workspace_device_note">ᱱᱚᱶᱟ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱫᱚ ᱟᱢᱟᱜ Mozilla ᱟᱠᱟᱩᱱᱴ ᱨᱮᱭᱟᱜ ᱢᱤᱫ ᱰᱮᱵᱟᱭᱤᱥ ᱨᱮᱭᱟᱜ ᱡᱷᱤᱡᱽ ᱠᱟᱱ ᱴᱮᱵᱽ ᱠᱚ ᱩᱫᱩᱜ ᱟ ᱾ ᱱᱚᱶᱟ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ ᱟᱨ ᱟᱭᱠᱚᱱ ᱚᱱᱟ ᱰᱮᱵᱟᱭᱤᱥ ᱠᱷᱚᱱ ᱦᱤᱡᱩᱜ ᱟ, ᱟᱨ ᱟᱢ ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱨᱚᱝ ᱠᱚ ᱱᱚᱶᱟ ᱯᱷᱚᱱ ᱨᱮ ᱜᱮ ᱛᱟᱦᱮᱸ ᱟ ᱾</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">ᱯᱷᱤᱥᱤᱝ ᱟᱨ ᱢᱟᱞᱣᱮᱭᱟᱨ ᱥᱟᱭᱤᱴ ᱵᱟᱵᱚᱛ ᱦᱚᱥᱤᱭᱟᱹᱨ ᱮᱫᱟᱭ ᱾ ᱱᱚᱶᱟ ᱞᱟᱹᱜᱤᱫ Dejavu Google ᱥᱟᱶ ᱡᱚᱜᱟᱡᱚᱜ ᱮᱫᱟᱭ ᱾</string>
 </resources>

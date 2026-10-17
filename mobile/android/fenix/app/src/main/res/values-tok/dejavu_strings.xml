@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">o esun e telo pimeja tawa mi</string>
     <string name="dejavu_settings_coffee_summary">Dejavu li jo ala e sitelen esun. ona li pona tawa sina la, telo pimeja li pona e kama suli ona.</string>
     <string name="dejavu_workspace_device_note">kulupu poki ni li pana lukin e poki open pi ilo wan lon nimi Mozilla sina. nimi ona en sitelen lili ona li kama tan ilo ante ni. kule pi sina wile li awen lon ilo kalama ni taso.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">ona li toki e ike pi lipu lon pi jan pi pana ike en ilo ike. tan ni la, Dejavu li toki tawa Google.</string>
 </resources>

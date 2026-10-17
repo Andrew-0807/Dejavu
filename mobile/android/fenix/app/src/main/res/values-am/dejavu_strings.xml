@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">ቡና ይግዙልኝ</string>
     <string name="dejavu_settings_coffee_summary">Dejavu ማስታወቂያዎች የሉትም። ከወደዱት፣ አንድ ቡና እንዲያድግ ይረዳዋል።</string>
     <string name="dejavu_workspace_device_note">ይህ የስራ ቦታ በMozilla መለያዎ ላይ ያለ የአንድ መሣሪያ ክፍት ትሮችን ያሳያል። ስሙ እና አዶው ከዚያ መሣሪያ ይመጣሉ፣ የሚመርጧቸው ቀለሞች ደግሞ በዚህ ስልክ ላይ ይቆያሉ።</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">ስለ ማጭበርበሪያ እና ተንኮል-አዘል ሶፍትዌር ጣቢያዎች ያስጠነቅቃል። ይህን ለማድረግ Dejavu ከGoogle ጋር ይገናኛል።</string>
 </resources>

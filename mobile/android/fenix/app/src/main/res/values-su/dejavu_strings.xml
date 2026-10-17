@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">Traktir kuring kopi</string>
     <string name="dejavu_settings_coffee_summary">Dejavu teu aya iklanna. Upami anjeun resep, sacangkir kopi ngabantu Dejavu tumuwuh.</string>
     <string name="dejavu_workspace_device_note">Rohangan ieu némbongkeun tab nu kabuka tina hiji parabot dina akun Mozilla anjeun. Ngaran jeung ikonna asalna ti parabot éta, sarta warna nu dipilih tetep aya dina telepon ieu.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Méré peringetan ngeunaan situs phishing jeung malware. Pikeun éta, Dejavu nyambung ka Google.</string>
 </resources>

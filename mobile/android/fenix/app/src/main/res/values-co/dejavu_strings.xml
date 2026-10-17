@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Pagate mi un caffè</string>
     <string name="dejavu_settings_coffee_summary">Dejavu ùn hà micca publicità. S\'ellu vi piace, un caffè l\'aiuta à cresce.</string>
     <string name="dejavu_workspace_device_note">Stu spaziu di travagliu affissa l\'unghjette aperte d\'un apparechju di u vostru contu Mozilla. U so nome è a so icona venenu da quellu apparechju, è i culori ch\'è vo sceglite fermanu nant\'à stu telefonu.</string>
+    <string name="dejavu_settings_safe_browsing">Navigazione sicura di Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Avvisa nant\'à i siti di phishing è di malware. Per fà què, Dejavu si cunnetta à Google.</string>
 </resources>

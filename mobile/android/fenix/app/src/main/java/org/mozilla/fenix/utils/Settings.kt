@@ -168,8 +168,11 @@ class Settings(
         /** DoH is disabled, corresponds to TRR_MODE_DISABLED (5) from GeckoView */
         private const val DOH_SETTINGS_OFF = 5
 
-        /** Bug 1946867 - Currently "hardcoded" to the DoH TRR URI of Cloudflare */
-        private const val CLOUDFLARE_URI = "https://mozilla.cloudflare-dns.com/dns-query"
+        /**
+         * Bug 1946867 - Currently "hardcoded". Dejavu: Quad9's own address, not one that a provider runs for Firefox
+         * under Mozilla's agreements.
+         */
+        private const val QUAD9_URI = "https://dns.quad9.net/dns-query"
     }
 
     private val logger = Logger("Settings")
@@ -3108,12 +3111,12 @@ class Settings(
 
     /**
      * Stores the URI of the default DoH provider. Bug 1946867 - Currently "hardcoded" to
-     * "https://mozilla.cloudflare-dns.com/dns-query"
+     * "https://dns.quad9.net/dns-query"
      */
     val dohDefaultProviderUrl by
         stringPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_doh_default_provider_uri),
-            default = CLOUDFLARE_URI,
+            default = QUAD9_URI,
         )
 
     /** Stores a set of domains that are excluded from using DNS over HTTPS. */
@@ -3460,5 +3463,12 @@ class Settings(
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_enable_account_settings_new_ui),
             default = { true },
+        )
+
+    /** Dejavu: whether Google Safe Browsing warns about dangerous sites. Off, Dejavu does not contact Google for it. */
+    var safeBrowsingEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_safe_browsing),
+            default = true,
         )
 }

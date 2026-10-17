@@ -335,4 +335,6 @@
     <string name="dejavu_settings_coffee">Купите ми кафу</string>
     <string name="dejavu_settings_coffee_summary">Dejavu нема огласе. Ако вам се допада, кафа му помаже да расте.</string>
     <string name="dejavu_workspace_device_note">Овај радни простор приказује отворене језичке уређаја са вашег Mozilla налога. Његово име и икона потичу са тог уређаја, а боје које изаберете остају на овом телефону.</string>
+    <string name="dejavu_settings_safe_browsing">Google безбедно прегледање</string>
+    <string name="dejavu_settings_safe_browsing_summary">Упозорава на сајтове за пецање и злонамерни софтвер. За то се Dejavu повезује са Google-ом.</string>
 </resources>

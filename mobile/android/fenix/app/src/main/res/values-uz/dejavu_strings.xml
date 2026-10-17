@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Menga qahva olib bering</string>
     <string name="dejavu_settings_coffee_summary">Dejavu-da reklama yo\'q. Agar sizga yoqsa, bir chashka qahva uning rivojlanishiga yordam beradi.</string>
     <string name="dejavu_workspace_device_note">Bu ish maydoni Mozilla hisobingizdagi bir qurilmaning ochiq varaqlarini ko\'rsatadi. Uning nomi va nishonchasi o\'sha qurilmadan olinadi, siz tanlagan ranglar esa shu telefonda qoladi.</string>
+    <string name="dejavu_settings_safe_browsing">Google Xavfsiz koʻrish</string>
+    <string name="dejavu_settings_safe_browsing_summary">Fishing va zararli dastur saytlari haqida ogohlantiradi. Buning uchun Dejavu Google bilan bogʻlanadi.</string>
 </resources>

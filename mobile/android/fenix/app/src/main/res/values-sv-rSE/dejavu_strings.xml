@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Bjud mig på en kaffe</string>
     <string name="dejavu_settings_coffee_summary">Dejavu har inga annonser. Om du gillar appen hjälper en kaffe den att växa.</string>
     <string name="dejavu_workspace_device_note">Den här arbetsytan visar de öppna flikarna på en enhet i ditt Mozilla-konto. Namnet och ikonen kommer från den enheten, och färgerna du väljer stannar på den här telefonen.</string>
+    <string name="dejavu_settings_safe_browsing">Google Säker webbsökning</string>
+    <string name="dejavu_settings_safe_browsing_summary">Varnar för nätfiske- och skadeprogramwebbplatser. För att göra det kontaktar Dejavu Google.</string>
 </resources>

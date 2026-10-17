@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Aɣ-iyi-d lqahwa</string>
     <string name="dejavu_settings_coffee_summary">Ulac adellel deg Dejavu. Ma yeɛǧeb-ik, lqahwa ad as-tɛiwen ad yimɣur.</string>
     <string name="dejavu_workspace_device_note">Amkan-agi n umahil yesskan-d iseksal yeldin n yibenk deg umiḍan-ik Mozilla. Isem-is d tugna-s kkan-d seg yibenk-nni, yerna initen i tferneḍ ad qqimen ɣef tiliɣri-agi.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Ittwessi ɣef yismal n phishing d malware. I wakken ad t-yeg, Dejavu ad yeqqen ɣer Google.</string>
 </resources>

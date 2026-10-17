@@ -1,6 +1,6 @@
 # Dejavu Privacy Policy
 
-Effective date: October 3, 2026
+Effective date: October 17, 2026
 
 Dejavu is a web browser for Android, built from Mozilla's open source Firefox code. It is an independent project,
 not made, endorsed or supported by Mozilla. This policy explains what happens to your data when you use it.
@@ -29,6 +29,15 @@ When you open a website, it receives what every browser sends: your IP address, 
 it saved before and details about the browser. Enhanced Tracking Protection blocks many trackers. Each website has its
 own privacy policy.
 
+### Looking up website addresses (DNS over HTTPS)
+
+To open a website, Dejavu first looks up the address of its server. It does this over an encrypted connection to Quad9,
+a non-profit DNS service, so your network and internet provider cannot see or change which sites you look up. Quad9
+receives the names of the sites you look up and, like any service you connect to, your IP address. It describes how it
+handles data in the [Quad9 Privacy Policy](https://quad9.net/privacy/policy/). When Quad9 cannot be reached, Dejavu
+uses your network's DNS instead. You can pick another provider or turn this off in **Settings**, then
+**DNS over HTTPS**.
+
 ### Warnings for dangerous sites
 
 Dejavu warns you about pages that Google lists as phishing, malware or unwanted software, using Google Safe
@@ -37,6 +46,9 @@ checks the pages you open against them on your device. Only when a page matches 
 ask Google about it, and then it sends only that start, never the address of the page. Like any connection, these
 requests show Google your IP address. Google describes how it handles data in the
 [Google Privacy Policy](https://policies.google.com/privacy).
+
+You can turn this off in **Settings**, under **Privacy and security**, with **Google Safe Browsing**. Dejavu then
+neither downloads Google's lists nor asks Google about pages, and no longer warns about these sites.
 
 ### Search
 
@@ -67,6 +79,10 @@ Dejavu shows no sponsored shortcuts or sponsored stories, and does not download 
 
 Finding, installing and updating add-ons uses Mozilla's add-ons site, addons.mozilla.org. Add-ons you install can
 read and change web pages as their permissions allow, and they have their own privacy policies.
+
+A fresh install of Dejavu adds uBlock Origin, an open source blocker of ads and trackers, from addons.mozilla.org. It
+works on your device and downloads the lists of what it blocks from the websites of the people who make them. You can
+turn it off or remove it in **Extensions**.
 
 ### Security updates of the browser engine
 

@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Маған кофе алып беріңіз</string>
     <string name="dejavu_settings_coffee_summary">Dejavu-да жарнама жоқ. Ол сізге ұнаса, бір кесе кофе оның дамуына көмектеседі.</string>
     <string name="dejavu_workspace_device_note">Бұл жұмыс кеңістігі Mozilla есептік жазбаңыздағы бір құрылғының ашық беттерін көрсетеді. Оның атауы мен белгішесі сол құрылғыдан алынады, ал сіз таңдаған түстер осы телефонда қалады.</string>
+    <string name="dejavu_settings_safe_browsing">Google қауіпсіз шолу</string>
+    <string name="dejavu_settings_safe_browsing_summary">Фишингтік және зиянды бағдарламалары бар сайттар туралы ескертеді. Бұл үшін Dejavu Google-ға хабарласады.</string>
 </resources>

@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">मलाई एक कप कफी किनिदिनुहोस्</string>
     <string name="dejavu_settings_coffee_summary">Dejavu मा विज्ञापनहरु छैनन्। यदि तपाईंलाई यो मन पर्छ भने, एक कप कफीले यसलाई बढ्न मद्दत गर्छ।</string>
     <string name="dejavu_workspace_device_note">यो कार्यक्षेत्रले तपाईंको Mozilla खातामा भएको एउटा उपकरणका खुला ट्याबहरु देखाउँछ। यसको नाम र चिन्ह त्यो उपकरणबाट आउँछन्, र तपाईंले छान्नुभएका रङहरु यही फोनमा रहन्छन्।</string>
+    <string name="dejavu_settings_safe_browsing">Google सुरक्षित ब्राउजिङ</string>
+    <string name="dejavu_settings_safe_browsing_summary">फिसिङ र मालवेयर साइटहरूबारे चेतावनी दिन्छ। यसका लागि Dejavu ले Google लाई सम्पर्क गर्छ।</string>
 </resources>

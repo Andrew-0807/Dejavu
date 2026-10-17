@@ -356,4 +356,6 @@
     <string name="dejavu_settings_coffee">Prynwch goffi i mi</string>
     <string name="dejavu_settings_coffee_summary">Does dim hysbysebion yn Dejavu. Os ydych chi’n ei fwynhau, mae coffi’n ei helpu i dyfu.</string>
     <string name="dejavu_workspace_device_note">Mae’r gweithle hwn yn dangos tabiau agored dyfais ar eich cyfrif Mozilla. Mae ei enw a’i eicon yn dod o’r ddyfais honno, ac mae’r lliwiau rydych chi’n eu dewis yn aros ar y ffôn hwn.</string>
+    <string name="dejavu_settings_safe_browsing">Pori Diogel Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Yn rhybuddio am wefannau gwe-rwydo a maleiswedd. I wneud hyn, mae Dejavu yn cysylltu â Google.</string>
 </resources>

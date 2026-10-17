@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">برایم یک قهوه بخرید</string>
     <string name="dejavu_settings_coffee_summary">Dejavu تبلیغ ندارد. اگر از آن لذت می‌برید، یک قهوه به رشدش کمک می‌کند.</string>
     <string name="dejavu_workspace_device_note">این فضای کاری زبانه‌های باز یک دستگاه در حساب Mozilla شما را نشان می‌دهد. نام و نمادش از همان دستگاه می‌آید و رنگ‌هایی که انتخاب می‌کنید روی همین گوشی می‌مانند.</string>
+    <string name="dejavu_settings_safe_browsing">مرور ایمن Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">دربارهٔ سایت‌های فیشینگ و بدافزار هشدار می‌دهد. برای این کار، Dejavu با Google ارتباط برقرار می‌کند.</string>
 </resources>

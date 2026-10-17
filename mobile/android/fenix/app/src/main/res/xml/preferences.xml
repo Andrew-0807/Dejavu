@@ -206,6 +206,14 @@
             app:iconSpaceReserved="false"
             android:title="@string/preference_enhanced_tracking_protection" />
 
+        <!-- Dejavu: Google Safe Browsing can be turned off, so Dejavu does not contact Google for it. -->
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="@string/pref_key_dejavu_safe_browsing"
+            app:iconSpaceReserved="false"
+            android:defaultValue="true"
+            android:title="@string/dejavu_settings_safe_browsing"
+            android:summary="@string/dejavu_settings_safe_browsing_summary" />
+
         <androidx.preference.Preference
             android:key="@string/pref_key_site_permissions"
             app:iconSpaceReserved="false"

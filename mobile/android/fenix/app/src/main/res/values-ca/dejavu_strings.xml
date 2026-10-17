@@ -335,4 +335,6 @@
     <string name="dejavu_settings_coffee">Convideu-me a un cafè</string>
     <string name="dejavu_settings_coffee_summary">El Dejavu no té anuncis. Si us agrada, un cafè l\'ajuda a créixer.</string>
     <string name="dejavu_workspace_device_note">Aquest espai de treball mostra les pestanyes obertes d\'un dispositiu del vostre compte de Mozilla. El nom i la icona provenen d\'aquell dispositiu, i els colors que trieu es queden en aquest telèfon.</string>
+    <string name="dejavu_settings_safe_browsing">Navegació segura de Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Avisa dels llocs de pesca electrònica i de programari maliciós. Per fer-ho, el Dejavu es connecta amb Google.</string>
 </resources>

@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Pagime un caffè</string>
     <string name="dejavu_settings_coffee_summary">Dejavu o no l\'à de publicitæ. Se o te piaxe, un caffè o l\'agiutta a cresce.</string>
     <string name="dejavu_workspace_device_note">Sto spaçio de travaggio o amostra i feuggi averti de un dispoxitivo do tò conto Mozilla. O sò nomme e a sò icona vegnan da quello dispoxitivo, e i coloî che ti çerni restan in sce sto telefono.</string>
+    <string name="dejavu_settings_safe_browsing">Navegaçion segûa de Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">O l\'avvisa in sciô scito de phishing e malware. Pe fâlo, Dejavu o se conette a Google.</string>
 </resources>

@@ -335,4 +335,6 @@
     <string name="dejavu_settings_coffee">Cumpără-mi o cafea</string>
     <string name="dejavu_settings_coffee_summary">Dejavu nu are reclame. Dacă îți place, o cafea îl ajută să crească.</string>
     <string name="dejavu_workspace_device_note">Acest spațiu de lucru afișează filele deschise ale unui dispozitiv din contul tău Mozilla. Numele și pictograma lui vin de pe acel dispozitiv, iar culorile pe care le alegi rămân pe acest telefon.</string>
+    <string name="dejavu_settings_safe_browsing">Navigare sigură Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Avertizează despre site-urile de phishing și malware. Pentru aceasta, Dejavu contactează Google.</string>
 </resources>

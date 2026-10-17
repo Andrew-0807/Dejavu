@@ -342,4 +342,6 @@
     <string name="dejavu_settings_coffee">Postaw mi kawę</string>
     <string name="dejavu_settings_coffee_summary">Dejavu nie ma reklam. Jeśli ci się podoba, kawa pomaga jej się rozwijać.</string>
     <string name="dejavu_workspace_device_note">Ten obszar roboczy pokazuje otwarte karty urządzenia połączonego z twoim kontem Mozilli. Jego nazwa i ikona pochodzą z tego urządzenia, a wybrane przez ciebie kolory pozostają na tym telefonie.</string>
+    <string name="dejavu_settings_safe_browsing">Bezpieczne przeglądanie Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Ostrzega przed witrynami wyłudzającymi dane i zawierającymi złośliwe oprogramowanie. W tym celu Dejavu łączy się z Google.</string>
 </resources>

@@ -349,4 +349,6 @@
     <string name="dejavu_settings_coffee">Ceannaigh caife dom</string>
     <string name="dejavu_settings_coffee_summary">Níl aon fhógraíocht i Dejavu. Más maith leat é, cabhraíonn caife leis fás.</string>
     <string name="dejavu_workspace_device_note">Taispeánann an spás oibre seo cluaisíní oscailte gléis ar do chuntas Mozilla. Tagann a ainm agus a dheilbhín ón ngléas sin, agus fanann na dathanna a roghnaíonn tú ar an bhfón seo.</string>
+    <string name="dejavu_settings_safe_browsing">Brabhsáil Shábháilte Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Tugann sé rabhadh faoi shuíomhanna fioscaireachta agus bogearraí mailíseacha. Chuige sin, déanann Dejavu teagmháil le Google.</string>
 </resources>

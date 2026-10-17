@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">قاوەیەکم بۆ بکڕە</string>
     <string name="dejavu_settings_coffee_summary">Dejavu ڕیکلامی تێدا نییە. ئەگەر بەدڵت بوو، قاوەیەک یارمەتی دەدات گەشە بکات.</string>
     <string name="dejavu_workspace_device_note">ئەم فەزایە بازدەرە کراوەکانی ئامێرێک لە هەژماری Mozilla ی تۆ پیشان دەدات. ناو و ئایکۆنەکەی لەو ئامێرەوە دێن، و ئەو ڕەنگانەی هەڵیاندەبژێریت لەسەر ئەم مۆبایلە دەمێننەوە.</string>
+    <string name="dejavu_settings_safe_browsing">گەڕانی پارێزراوی Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">ئاگادارت دەکاتەوە لە ماڵپەڕەکانی فیشینگ و نەرمەکاڵای زیانبەخش. بۆ ئەمە، Dejavu پەیوەندی بە Google ـەوە دەکات.</string>
 </resources>

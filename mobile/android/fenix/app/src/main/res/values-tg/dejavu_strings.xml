@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Ба ман қаҳва харед</string>
     <string name="dejavu_settings_coffee_summary">Dejavu реклама надорад. Агар ба шумо писанд ояд, як пиёла қаҳва ба рушди он кӯмак мекунад.</string>
     <string name="dejavu_workspace_device_note">Ин фазо варақаҳои кушодаи яке аз дастгоҳҳои ҳисоби Mozilla-и шуморо нишон медиҳад. Ном ва нишонаи он аз ҳамон дастгоҳ меоянд ва рангҳое, ки шумо интихоб мекунед, дар ин телефон мемонанд.</string>
+    <string name="dejavu_settings_safe_browsing">Тамошои бехатари Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Дар бораи сомонаҳои фишинг ва нармафзори зараровар огоҳ мекунад. Барои ин Dejavu бо Google пайваст мешавад.</string>
 </resources>

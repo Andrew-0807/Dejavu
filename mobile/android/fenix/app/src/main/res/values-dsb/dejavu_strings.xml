@@ -342,4 +342,6 @@
     <string name="dejavu_settings_coffee">Kup mi kafej</string>
     <string name="dejavu_settings_coffee_summary">Dejavu njama žedno wabjenje. Jolic se śi spódoba, pomaga jomu kafej rosć.</string>
     <string name="dejavu_workspace_device_note">Toś ten źěłowy rum pokazujo wócynjone rejtariki rěda z twójogo Mozilla-konta. Jogo mě a symbol póchadatej z togo rěda, a barwy, kótarež wuběraš, wóstanu na toś tom telefonje.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Warnujo před sedłami phishinga a škódneje softwary. Za to se Dejavu z Google zwězujo.</string>
 </resources>

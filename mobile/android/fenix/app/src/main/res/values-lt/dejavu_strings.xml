@@ -342,4 +342,6 @@
     <string name="dejavu_settings_coffee">Nupirkite man kavos</string>
     <string name="dejavu_settings_coffee_summary">Dejavu neturi reklamų. Jei jums patinka, puodelis kavos padeda jai augti.</string>
     <string name="dejavu_workspace_device_note">Ši darbo erdvė rodo jūsų Mozilla paskyros įrenginio atvertas korteles. Jos pavadinimas ir piktograma gaunami iš to įrenginio, o jūsų pasirinktos spalvos lieka šiame telefone.</string>
+    <string name="dejavu_settings_safe_browsing">„Google“ saugus naršymas</string>
+    <string name="dejavu_settings_safe_browsing_summary">Įspėja apie sukčiavimo ir kenkėjiškų programų svetaines. Tam Dejavu susisiekia su „Google“.</string>
 </resources>

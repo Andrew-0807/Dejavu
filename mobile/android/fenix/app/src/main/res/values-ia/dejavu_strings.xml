@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Offere me un caffe</string>
     <string name="dejavu_settings_coffee_summary">Dejavu non ha publicitate. Si illo te place, un caffe lo adjuta a crescer.</string>
     <string name="dejavu_workspace_device_note">Iste spatio de labor monstra le schedas aperte de un apparato de tu conto Mozilla. Su nomine e su icone veni de ille apparato, e le colores que tu elige resta super iste telephono.</string>
+    <string name="dejavu_settings_safe_browsing">Navigation secur de Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Avisa super sitos de phishing e malware. Pro facer isto, Dejavu contacta Google.</string>
 </resources>

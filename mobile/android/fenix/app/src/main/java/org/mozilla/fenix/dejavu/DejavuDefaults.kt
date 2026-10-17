@@ -19,6 +19,7 @@ import mozilla.components.browser.state.action.SearchAction
 import mozilla.components.browser.state.state.availableSearchEngines
 import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
 import mozilla.components.browser.state.store.BrowserStore
+import mozilla.components.concept.engine.Engine
 import mozilla.components.feature.search.ext.createSearchEngine
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.ADDITIONAL_BUNDLED_SEARCH_ENGINE_IDS
@@ -26,6 +27,7 @@ import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getPreferenceKey
 import org.mozilla.fenix.onboarding.FenixOnboarding
 import org.mozilla.fenix.settings.ShortcutType
+import org.mozilla.fenix.utils.Settings
 
 /**
  * Fenix preferences Dejavu changes once, so the user can still change them back in Fenix's settings.
@@ -34,7 +36,7 @@ internal object DejavuDefaults {
     // Kept from before the rename to Dejavu, so saved data still loads.
     private const val PREFS_NAME = "kaizen_settings"
     private const val KEY_VERSION = "defaults_version"
-    private const val VERSION = 7
+    private const val VERSION = 8
     private const val POCKET_STORIES_WORK_TAG = "mozilla.components.service.pocket.recommendations.refresh.work.tag"
     private const val POCKET_SPONSORED_WORK_TAG = "mozilla.components.service.pocket.sponsored.content.refresh.work.tag"
     private const val KEY_SEARCH_VERSION = "search_defaults_version"
@@ -42,6 +44,12 @@ internal object DejavuDefaults {
 
     // The search engines shown above the address bar from the start; the others are turned on in the search settings.
     private val SHORTCUT_ENGINE_IDS = setOf("google", "ddg", "youtube")
+
+    // Addresses of secure DNS that Cloudflare and NextDNS run for Firefox, and their own public ones.
+    private val FIREFOX_DOH_ADDRESSES = mapOf(
+        "https://mozilla.cloudflare-dns.com/dns-query" to "https://cloudflare-dns.com/dns-query",
+        "https://firefox.dns.nextdns.io/" to "https://dns.nextdns.io/",
+    )
 
     // Site searches Dejavu adds to the search engines, as a name, a search URL and the site whose letter is their icon.
     private val ADDED_ENGINES = listOf(
@@ -109,8 +117,8 @@ internal object DejavuDefaults {
                 }
             }
             if (applied < 6) {
-                // Dejavu starts on its own home screen, without Firefox's onboarding or its Terms of Use prompt.
-                FenixOnboarding(context).finish()
+                // Dejavu starts on its own home screen, without Firefox's onboarding (marked done below) or its Terms
+                // of Use prompt.
                 isTermsOfUsePromptEnabled = false
             }
             if (applied < 7) {
@@ -126,7 +134,13 @@ internal object DejavuDefaults {
                 isEmailMaskSuggestionEnabled = false
                 stopStoryDownloads = true
             }
+            if (applied < 8) {
+                turnOnSecureDns()
+            }
         }
+        // Last, as it starts the browser engine (StrictMode's profiler marker does), which reads settings like secure
+        // DNS once, as it starts.
+        if (applied < 6) FenixOnboarding(context).finish()
         prefs.edit { putInt(KEY_VERSION, VERSION) }
         if (stopStoryDownloads) {
             // Downloads scheduled by an earlier version keep running until they are cancelled. The first use of
@@ -138,6 +152,18 @@ internal object DejavuDefaults {
                 }
             }
         }
+    }
+
+    /**
+     * Secure DNS (DNS over HTTPS) is on, through Quad9 unless another provider was picked. Default Protection left it
+     * off in Dejavu and is gone, so it becomes Increased Protection, which falls back to the network's DNS when the
+     * provider cannot be reached.
+     */
+    private fun Settings.turnOnSecureDns() {
+        if (getDohSettingsMode() == Engine.DohSettingsMode.DEFAULT) {
+            setDohSettingsMode(Engine.DohSettingsMode.INCREASED)
+        }
+        FIREFOX_DOH_ADDRESSES[dohProviderUrl]?.let { dohProviderUrl = it }
     }
 
     /**

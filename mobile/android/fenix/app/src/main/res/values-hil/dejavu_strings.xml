@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Ibakal mo ako sang kape</string>
     <string name="dejavu_settings_coffee_summary">Wala sing ads ang Dejavu. Kon nanamian ka sini, nagabulig ang isa ka kape sa iya pagdaku.</string>
     <string name="dejavu_workspace_device_note">Ginapakita sini nga workspace ang bukas nga mga tab sang isa ka device sa imo Mozilla account. Ang iya ngalan kag icon halin sa amo nga device, kag ang mga kolor nga imo ginapili nagapabilin sa sini nga telepono.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Nagapaandam parte sa mga phishing kag malware nga site. Agod mahimo ini, nagakonektar ang Dejavu sa Google.</string>
 </resources>

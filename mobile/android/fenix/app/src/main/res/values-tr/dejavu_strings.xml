@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Bana bir kahve ısmarlayın</string>
     <string name="dejavu_settings_coffee_summary">Dejavu\'da reklam yok. Beğendiyseniz bir kahve onun büyümesine yardımcı olur.</string>
     <string name="dejavu_workspace_device_note">Bu çalışma alanı, Mozilla hesabınızdaki bir cihazın açık sekmelerini gösterir. Adı ve simgesi o cihazdan gelir; seçtiğiniz renkler bu telefonda kalır.</string>
+    <string name="dejavu_settings_safe_browsing">Google Güvenli Tarama</string>
+    <string name="dejavu_settings_safe_browsing_summary">Kimlik avı ve kötü amaçlı yazılım siteleri hakkında uyarır. Bunun için Dejavu, Google ile bağlantı kurar.</string>
 </resources>

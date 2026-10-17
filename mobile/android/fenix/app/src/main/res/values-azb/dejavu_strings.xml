@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">منه بیر قهوه آلین</string>
     <string name="dejavu_settings_coffee_summary">Dejavu-دا تبلیغ یوخدور. خوشونوزا گلیرسه، بیر قهوه اونون بؤیومه‌سینه کؤمک ائدیر.</string>
     <string name="dejavu_workspace_device_note">بو ایش ساحه‌سی Mozilla حسابینیزداکی بیر جیهازین آچیق تاغلارینی گؤستریر. اونون آدی و آیکونو او جیهازدان گلیر، سئچدیگینیز رنگلر ایسه بو تلفنده قالیر.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">فیشینگ و زیانلی پروقرام سایتلاری حاقیندا خبردارلیق وئریر. بونون اوچون Dejavu، Google ایله باغلانیر.</string>
 </resources>

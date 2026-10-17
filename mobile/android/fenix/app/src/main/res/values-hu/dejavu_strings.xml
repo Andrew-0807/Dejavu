@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Hívjon meg egy kávéra</string>
     <string name="dejavu_settings_coffee_summary">A Dejavuban nincsenek reklámok. Ha tetszik, egy kávé segíti a fejlődését.</string>
     <string name="dejavu_workspace_device_note">Ez a munkaterület egy, a Mozilla-fiókjához tartozó eszköz nyitott lapjait jeleníti meg. Neve és ikonja arról az eszközről származik, a választott színek pedig ezen a telefonon maradnak.</string>
+    <string name="dejavu_settings_safe_browsing">Google Biztonságos Böngészés</string>
+    <string name="dejavu_settings_safe_browsing_summary">Figyelmeztet az adathalász és kártevőket terjesztő webhelyekre. Ehhez a Dejavu kapcsolatba lép a Google-lel.</string>
 </resources>

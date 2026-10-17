@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">ទិញកាហ្វេឲ្យខ្ញុំមួយកែវ</string>
     <string name="dejavu_settings_coffee_summary">Dejavu គ្មានការផ្សាយពាណិជ្ជកម្មទេ។ ប្រសិនបើអ្នកចូលចិត្តវា កាហ្វេមួយកែវជួយឲ្យវារីកចម្រើន។</string>
     <string name="dejavu_workspace_device_note">ចន្លោះការងារនេះបង្ហាញផ្ទាំងដែលបើករបស់ឧបករណ៍មួយនៅលើគណនី Mozilla របស់អ្នក។ ឈ្មោះ និងរូបតំណាងរបស់វាមកពីឧបករណ៍នោះ ហើយពណ៌ដែលអ្នកជ្រើសរើសនៅតែលើទូរស័ព្ទនេះ។</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">ព្រមានអំពីគេហទំព័របោកប្រាស់ និងមេរោគ។ ដើម្បីធ្វើដូច្នេះ Dejavu ទាក់ទងទៅ Google។</string>
 </resources>

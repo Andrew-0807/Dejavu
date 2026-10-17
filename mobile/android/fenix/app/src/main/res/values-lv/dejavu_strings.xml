@@ -335,4 +335,6 @@
     <string name="dejavu_settings_coffee">Uzsauciet man kafiju</string>
     <string name="dejavu_settings_coffee_summary">Dejavu nav reklāmu. Ja tā jums patīk, kafijas tase palīdz tai augt.</string>
     <string name="dejavu_workspace_device_note">Šī darbvieta rāda kādas jūsu Mozilla konta ierīces atvērtās cilnes. Tās nosaukums un ikona nāk no tās ierīces, un jūsu izvēlētās krāsas paliek šajā tālrunī.</string>
+    <string name="dejavu_settings_safe_browsing">Google droša pārlūkošana</string>
+    <string name="dejavu_settings_safe_browsing_summary">Brīdina par pikšķerēšanas un ļaunprātīgas programmatūras vietnēm. Šim nolūkam Dejavu sazinās ar Google.</string>
 </resources>

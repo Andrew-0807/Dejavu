@@ -342,4 +342,6 @@
     <string name="dejavu_settings_coffee">Postow mi kawa</string>
     <string name="dejavu_settings_coffee_summary">Dejavu niy mo reklam. Jak ci sie podobo, kawa pōmoże jij sie rozwijać.</string>
     <string name="dejavu_workspace_device_note">Tyn plac pokazuje ôdewrzite karty geratu na twojim kōncie Mozilla. Jego miano i ikōna pochodzōm z tego geratu, a farby, kere ôbieresz, ôstajōm na tym telefōnie.</string>
+    <string name="dejavu_settings_safe_browsing">Bezpieczne przeglōndanie Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Ôstrzega przed strōnami phishingowymi i ze szkodliwym ôprogramowaniym. Na to Dejavu łōnczy sie z Google.</string>
 </resources>

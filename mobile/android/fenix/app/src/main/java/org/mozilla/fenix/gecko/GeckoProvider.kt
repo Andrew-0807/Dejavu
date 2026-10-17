@@ -20,6 +20,7 @@ import mozilla.components.service.sync.autofill.GeckoCreditCardsAddressesStorage
 import mozilla.components.service.sync.logins.GeckoLoginStorageDelegate
 import org.mozilla.fenix.Config
 import org.mozilla.fenix.components.appstate.AppAction
+import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.nimbus.FxNimbus
 import org.mozilla.geckoview.GeckoRuntime
@@ -103,12 +104,15 @@ object GeckoProvider {
         context: Context,
         policy: TrackingProtectionPolicy,
     ): GeckoRuntimeSettings {
+        // Dejavu: Safe Browsing follows the privacy settings from the moment the engine starts.
+        val safeBrowsing = context.components.settings.safeBrowsingEnabled
         val builder =
             GeckoRuntimeSettings.Builder()
                 .crashHandler(CrashHandlerService::class.java)
                 .experimentDelegate(NimbusExperimentDelegate())
                 .contentBlocking(
                     policy.toContentBlockingSetting(
+                        safeBrowsingPolicy = GoogleSafeBrowsing.policy(safeBrowsing),
                         queryParameterStripping = false,
                         queryParameterStrippingPrivateBrowsing = false,
                         queryParameterStrippingAllowList = "",
@@ -117,14 +121,14 @@ object GeckoProvider {
                             context.components.settings.strictAllowListBaselineTrackingProtection,
                         allowListConvenienceTrackingProtection =
                             context.components.settings.strictAllowListConvenienceTrackingProtection,
-                        safeBrowsingGlobalCacheEnabled = Config.channel.isNightlyOrDebug,
-                        safeBrowsingRealTimeEnabled = Config.channel.isNightlyOrDebug,
-                        safeBrowsingRealTimeSimulationEnabled = Config.channel.isNightlyOrDebug,
+                        safeBrowsingGlobalCacheEnabled = Config.channel.isNightlyOrDebug && safeBrowsing,
+                        safeBrowsingRealTimeEnabled = Config.channel.isNightlyOrDebug && safeBrowsing,
+                        safeBrowsingRealTimeSimulationEnabled = Config.channel.isNightlyOrDebug && safeBrowsing,
                         safeBrowsingRealTimeSimulationHitProbability = 5,
                         safeBrowsingRealTimeSimulationCacheTTLSec = 300,
                         safeBrowsingRealTimeSimulationNegativeCacheEnabled = false,
                         safeBrowsingRealTimeSimulationNegativeCacheTTLSec = 300,
-                    )
+                    ).also { GoogleSafeBrowsing.applyLists(it, safeBrowsing) }
                 )
                 .consoleOutput(context.components.settings.enableGeckoLogs)
                 .debugLogging(Config.channel.isDebug || context.components.settings.enableGeckoLogs)

@@ -342,4 +342,6 @@
     <string name="dejavu_settings_coffee">Ceannaich cofaidh dhomh</string>
     <string name="dejavu_settings_coffee_summary">Chan eil sanasachd ann an Dejavu. Ma chòrdas e riut, cuidichidh cofaidh leis fàs.</string>
     <string name="dejavu_workspace_device_note">Seallaidh an t-àite-obrach seo na tabaichean fosgailte aig uidheam air a\' chunntas Mozilla agad. Thig an t-ainm \'s an ìomhaigheag aige on uidheam sin, agus fanaidh na dathan a thaghas tu air an fhòn seo.</string>
+    <string name="dejavu_settings_safe_browsing">Brabhsadh Sàbhailte Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Bheir e rabhadh mu làraichean fiasgaireachd is bathar-bog droch-rùnach. Airson seo, bidh Dejavu a\' conaltradh ri Google.</string>
 </resources>

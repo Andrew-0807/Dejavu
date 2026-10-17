@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Ilibre mo ako ng kape</string>
     <string name="dejavu_settings_coffee_summary">Walang ad ang Dejavu. Kung nagugustuhan mo ito, nakakatulong ang isang kape para lumago ito.</string>
     <string name="dejavu_workspace_device_note">Ipinapakita ng workspace na ito ang mga bukas na tab ng isang device sa iyong Mozilla account. Galing sa device na iyon ang pangalan at icon nito, at nananatili sa teleponong ito ang mga kulay na pipiliin mo.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Nagbababala tungkol sa mga phishing at malware site. Para magawa ito, kumokonekta ang Dejavu sa Google.</string>
 </resources>

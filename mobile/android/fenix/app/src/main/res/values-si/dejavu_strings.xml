@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">මට කෝපි එකක් අරන් දෙන්න</string>
     <string name="dejavu_settings_coffee_summary">Dejavu හි දැන්වීම් නැත. ඔබ එයට කැමති නම්, කෝපි එකක් එහි වර්ධනයට උදව් වේ.</string>
     <string name="dejavu_workspace_device_note">මෙම අවකාශය ඔබේ Mozilla ගිණුමේ ඇති උපාංගයක විවෘත පටිති පෙන්වයි. එහි නම සහ අයිකනය එම උපාංගයෙන් පැමිණෙන අතර, ඔබ තෝරන වර්ණ මෙම දුරකථනයේම පවතී.</string>
+    <string name="dejavu_settings_safe_browsing">Google ආරක්ෂිත බ්‍රවුස් කිරීම</string>
+    <string name="dejavu_settings_safe_browsing_summary">තතුබෑම් සහ අනිෂ්ට මෘදුකාංග අඩවි ගැන අනතුරු අඟවයි. මේ සඳහා Dejavu, Google හා සම්බන්ධ වේ.</string>
 </resources>

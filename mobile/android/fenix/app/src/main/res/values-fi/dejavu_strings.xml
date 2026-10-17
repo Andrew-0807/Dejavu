@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Tarjoa minulle kahvit</string>
     <string name="dejavu_settings_coffee_summary">Dejavussa ei ole mainoksia. Jos pidät siitä, kahvit auttavat sitä kasvamaan.</string>
     <string name="dejavu_workspace_device_note">Tämä työtila näyttää Mozilla-tilisi yhden laitteen avoimet välilehdet. Sen nimi ja kuvake tulevat kyseisestä laitteesta, ja valitsemasi värit pysyvät tässä puhelimessa.</string>
+    <string name="dejavu_settings_safe_browsing">Google Selaussuoja</string>
+    <string name="dejavu_settings_safe_browsing_summary">Varoittaa tietojenkalastelu- ja haittaohjelmasivustoista. Tätä varten Dejavu ottaa yhteyttä Googleen.</string>
 </resources>

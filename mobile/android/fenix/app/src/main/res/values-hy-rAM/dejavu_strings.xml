@@ -328,4 +328,6 @@
     <string name="dejavu_settings_coffee">Հյուրասիրեք ինձ սուրճով</string>
     <string name="dejavu_settings_coffee_summary">Dejavu֊ն գովազդ չունի։ Եթե այն ձեզ դուր է գալիս, մի բաժակ սուրճն օգնում է դրա զարգացմանը։</string>
     <string name="dejavu_workspace_device_note">Այս տարածքը ցուցադրում է ձեր Mozilla հաշվի սարքերից մեկի բաց ներդիրները։ Դրա անունն ու պատկերակը գալիս են այդ սարքից, իսկ ձեր ընտրած գույները մնում են այս հեռախոսում։</string>
+    <string name="dejavu_settings_safe_browsing">Google Անվտանգ դիտարկում</string>
+    <string name="dejavu_settings_safe_browsing_summary">Զգուշացնում է ֆիշինգային և վնասակար ծրագրերով կայքերի մասին։ Դրա համար Dejavu-ն կապվում է Google-ի հետ։</string>
 </resources>

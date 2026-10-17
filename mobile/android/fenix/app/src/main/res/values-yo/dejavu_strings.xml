@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">Ra kọfí fún mi</string>
     <string name="dejavu_settings_coffee_summary">Dejavu kò ní ìpolówó. Tí o bá gbádùn rẹ̀, kọfí kan ń ràn án lọ́wọ́ láti dàgbà.</string>
     <string name="dejavu_workspace_device_note">Ibi-iṣẹ́ yìí ń fi àwọn táàbù tí ó ṣí lórí ẹ̀rọ kan nínú àkáǹtì Mozilla rẹ hàn. Orúkọ àti Icon rẹ̀ wá láti ẹ̀rọ náà, àwọn àwọ̀ tí o bá yàn yóò sì wà lórí fóònù yìí.</string>
+    <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
+    <string name="dejavu_settings_safe_browsing_summary">Ó máa ń kìlọ̀ nípa àwọn ojú-òpó phishing àti malware. Láti ṣe èyí, Dejavu máa ń kàn sí Google.</string>
 </resources>

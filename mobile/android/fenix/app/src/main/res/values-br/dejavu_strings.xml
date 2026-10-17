@@ -349,4 +349,6 @@
     <string name="dejavu_settings_coffee">Prenit ur banne kafe din</string>
     <string name="dejavu_settings_coffee_summary">N’eus bruderezh ebet e Dejavu. Ma kavit mat anezhañ, ur banne kafe a sikour anezhañ da greskiñ.</string>
     <string name="dejavu_workspace_device_note">An egor labour-mañ a ziskouez ivinelloù digor un trevnad war ho kont Mozilla. E anv hag e arlun a zeu eus an trevnad-se, hag al livioù a zibabit a chom war ar pellgomzer-mañ.</string>
+    <string name="dejavu_settings_safe_browsing">Merdeiñ suraet Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Diwall a ra ac\'hanoc\'h diouzh al lec\'hiennoù pesketa-roadoù ha malware. Evit se e kevrea Dejavu ouzh Google.</string>
 </resources>

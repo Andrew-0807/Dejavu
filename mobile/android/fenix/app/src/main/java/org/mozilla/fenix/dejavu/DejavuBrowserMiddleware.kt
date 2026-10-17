@@ -22,6 +22,7 @@ import mozilla.components.lib.state.Middleware
 import mozilla.components.lib.state.Store
 import org.mozilla.fenix.dejavu.browser.SplitViewMiddleware
 import org.mozilla.fenix.dejavu.browser.TabSleepMiddleware
+import org.mozilla.fenix.dejavu.browser.UBlockOriginPromptMiddleware
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.containers.TemporaryContainerMiddleware
@@ -62,6 +63,7 @@ fun dejavuBrowserMiddleware(context: Context): List<Middleware<BrowserState, Bro
         SplitViewMiddleware(),
         VisitOriginsMiddleware(VisitOrigins.get(context)),
         TabSleepMiddleware(),
+        UBlockOriginPromptMiddleware(),
     )
 }
 

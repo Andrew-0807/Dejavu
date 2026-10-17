@@ -321,4 +321,6 @@
     <string name="dejavu_settings_coffee">Mời tôi một ly cà phê</string>
     <string name="dejavu_settings_coffee_summary">Dejavu không có quảng cáo. Nếu bạn thích, một ly cà phê sẽ giúp Dejavu phát triển.</string>
     <string name="dejavu_workspace_device_note">Không gian làm việc này hiển thị các thẻ đang mở của một thiết bị trong tài khoản Mozilla của bạn. Tên và biểu tượng của nó lấy từ thiết bị đó, còn các màu bạn chọn sẽ ở lại trên điện thoại này.</string>
+    <string name="dejavu_settings_safe_browsing">Duyệt web an toàn của Google</string>
+    <string name="dejavu_settings_safe_browsing_summary">Cảnh báo về các trang web lừa đảo và phần mềm độc hại. Để làm điều này, Dejavu kết nối với Google.</string>
 </resources>
