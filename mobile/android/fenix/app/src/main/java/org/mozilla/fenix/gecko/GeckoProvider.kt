@@ -128,7 +128,8 @@ object GeckoProvider {
                 )
                 .consoleOutput(context.components.settings.enableGeckoLogs)
                 .debugLogging(Config.channel.isDebug || context.components.settings.enableGeckoLogs)
-                .aboutConfigEnabled(Config.channel.isBeta || Config.channel.isNightlyOrDebug)
+                // Dejavu: about:config opens in release builds too, as it does in Firefox Beta and Nightly.
+                .aboutConfigEnabled(true)
                 .extensionsProcessEnabled(true)
                 .extensionsWebAPIEnabled(true)
                 .translationsOfferPopup(context.components.settings.offerTranslation)
