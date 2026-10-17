@@ -8,11 +8,14 @@ import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.activity.ComponentDialog
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.VisibleForTesting
@@ -20,13 +23,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ComposeView
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.DialogFragment
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import mozilla.components.concept.base.crash.Breadcrumb
 import mozilla.components.support.base.log.logger.Logger
 import mozilla.components.support.ktx.util.PromptAbuserDetector
 import mozilla.components.support.utils.OnEnterAnimationCompleteListener
 import org.mozilla.fenix.R
+import org.mozilla.fenix.dejavu.browser.DejavuDownloadDialog
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.settings.downloads.DefaultAndroidFileUtils
@@ -123,7 +127,17 @@ class RenameAndChangeLocationDialogFragment : DialogFragment(), OnEnterAnimation
 
         promptAbuserDetector.start()
 
-        return MaterialAlertDialogBuilder(requireContext()).setView(composeView).create()
+        // Dejavu: the prompt draws its own card, so its window is a see-through one as wide as the screen.
+        return ComponentDialog(requireContext()).apply {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            setContentView(composeView)
+            window?.apply {
+                setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+                setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+                @Suppress("DEPRECATION")
+                setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+            }
+        }
     }
 
     private fun buildDialogTitle(): String {
@@ -152,8 +166,8 @@ class RenameAndChangeLocationDialogFragment : DialogFragment(), OnEnterAnimation
                             downloadLocationFormatter.getFriendlyPath(defaultLocation)
                         }
 
-                    RenameAndChangeLocationDialogContent(
-                        dialogState = dialogState,
+                    DejavuDownloadDialog(
+                        fileName = dialogState.fileName,
                         friendlyPath = friendlyPath,
                         title = buildDialogTitle(),
                         onFileNameChange = { newFileName ->

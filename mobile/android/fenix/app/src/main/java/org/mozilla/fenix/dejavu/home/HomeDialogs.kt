@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -32,6 +33,7 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -319,6 +321,7 @@ private fun WorkspaceDialog(
     var icon by remember { mutableStateOf(workspace?.icon) }
     var theme by remember { mutableStateOf(workspace?.theme) }
     var creatingContainer by remember { mutableStateOf(false) }
+    var pickingColors by remember { mutableStateOf(false) }
     val isNew = workspace == null
     // The workspace of a device on the account takes its name and icon from the device, which keeps no container.
     val isDevice = workspace?.device != null
@@ -332,6 +335,21 @@ private fun WorkspaceDialog(
             },
             onDelete = {},
             onDismiss = { creatingContainer = false },
+        )
+    }
+
+    if (pickingColors) {
+        ThemeColorDialog(
+            initial = theme?.colors.orEmpty(),
+            onPick = { colors ->
+                theme = WorkspaceTheme(
+                    colors = colors,
+                    opacity = theme?.opacity ?: WorkspaceTheme.DEFAULT_OPACITY,
+                    texture = theme?.texture ?: 0f,
+                )
+                pickingColors = false
+            },
+            onDismiss = { pickingColors = false },
         )
     }
 
@@ -382,7 +400,13 @@ private fun WorkspaceDialog(
         Spacer(Modifier.size(16.dp))
         Text(stringResource(R.string.dejavu_workspace_theme), style = MaterialTheme.typography.labelLarge)
         Spacer(Modifier.size(8.dp))
-        LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        // A workspace in colors of the user's own shows them at the end of the row, scrolled into view.
+        val customColors = theme?.colors?.takeIf { it !in themePresets }
+        val themeRow = rememberLazyListState()
+        LaunchedEffect(Unit) {
+            if (customColors != null) themeRow.scrollToItem(themePresets.size + 1)
+        }
+        LazyRow(state = themeRow, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item { ThemeChoice(colors = null, selected = theme == null, onClick = { theme = null }) }
             items(themePresets) { colors ->
                 ThemeChoice(
@@ -395,6 +419,13 @@ private fun WorkspaceDialog(
                             texture = theme?.texture ?: 0f,
                         )
                     },
+                )
+            }
+            item {
+                CustomThemeChoice(
+                    colors = customColors,
+                    selected = customColors != null,
+                    onClick = { pickingColors = true },
                 )
             }
         }

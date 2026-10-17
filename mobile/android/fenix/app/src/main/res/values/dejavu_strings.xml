@@ -63,6 +63,10 @@
     <string name="dejavu_workspace_theme">Theme</string>
     <string name="dejavu_workspace_theme_intensity">Intensity</string>
     <string name="dejavu_workspace_theme_grain">Grain</string>
+    <string name="dejavu_workspace_theme_custom">Custom color</string>
+    <string name="dejavu_workspace_theme_add_color">Add a color</string>
+    <string name="dejavu_workspace_theme_remove_color">Remove this color</string>
+    <string name="dejavu_workspace_theme_code">Color code</string>
     <string name="dejavu_workspace_move_left">Move left</string>
     <string name="dejavu_workspace_move_right">Move right</string>
 

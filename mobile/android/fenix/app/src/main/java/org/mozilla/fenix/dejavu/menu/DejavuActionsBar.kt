@@ -119,14 +119,6 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit) {
             .workspaceTheme(shownWorkspaceTheme())
             .border(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = BORDER_ALPHA), BAR_SHAPE),
     ) {
-        Box(
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(top = 4.dp)
-                .size(width = 28.dp, height = 3.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = HANDLE_ALPHA)),
-        )
         val buttons = entries.map { entry ->
             BarItem(entry.look(state)) {
                 val action = (entry as? MoreMenuEntry.Tab)?.action
@@ -294,5 +286,4 @@ internal val BAR_SIDE_MARGIN = 12.dp
 internal val ACTIONS_BAR_BOTTOM_MARGIN = 12.dp
 private val BAR_SHAPE = RoundedCornerShape(percent = 50)
 internal const val BORDER_ALPHA = 0.14f
-private const val HANDLE_ALPHA = 0.3f
 private const val DISABLED_ALPHA = 0.38f

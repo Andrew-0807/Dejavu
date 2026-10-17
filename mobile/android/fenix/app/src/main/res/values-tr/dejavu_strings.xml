@@ -41,6 +41,10 @@
     <string name="dejavu_workspace_theme">Tema</string>
     <string name="dejavu_workspace_theme_intensity">Yoğunluk</string>
     <string name="dejavu_workspace_theme_grain">Doku</string>
+    <string name="dejavu_workspace_theme_custom">Özel renk</string>
+    <string name="dejavu_workspace_theme_add_color">Renk ekle</string>
+    <string name="dejavu_workspace_theme_remove_color">Bu rengi kaldır</string>
+    <string name="dejavu_workspace_theme_code">Renk kodu</string>
     <string name="dejavu_workspace_move_left">Sola taşı</string>
     <string name="dejavu_workspace_move_right">Sağa taşı</string>
     <string name="dejavu_folder_new_subfolder">Yeni alt klasör</string>

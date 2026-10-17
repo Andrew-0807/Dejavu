@@ -142,62 +142,77 @@ fun DejavuDialog(
     Dialog(onDismissRequest = onDismissRequest, properties = DialogProperties(usePlatformDefaultWidth = false)) {
         val window = (LocalView.current.parent as? DialogWindowProvider)?.window
         SideEffect { window?.resizeForKeyboard() }
-        Column(
-            modifier = modifier
-                .padding(horizontal = DIALOG_MARGIN, vertical = DIALOG_MARGIN)
-                .widthIn(max = DIALOG_MAX_WIDTH)
-                .fillMaxWidth()
-                .shadow(DIALOG_SHADOW, DejavuPopup.DialogShape)
-                .clip(DejavuPopup.DialogShape)
-                .background(DejavuPopup.containerColor)
-                .popupGlow()
-                .border(1.dp, DejavuPopup.edgeColor, DejavuPopup.DialogShape)
-                .padding(DIALOG_PADDING),
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                if (icon != null) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .size(40.dp)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.primaryContainer),
-                    ) {
-                        Icon(
-                            painter = painterResource(icon),
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                            modifier = Modifier.size(22.dp),
-                        )
-                    }
-                    Spacer(Modifier.width(14.dp))
-                }
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onSurface,
-                )
-            }
-            Column(
-                modifier = Modifier
-                    .padding(top = 16.dp)
-                    .weight(1f, fill = false)
-                    .verticalScroll(rememberScrollState()),
-            ) {
-                CompositionLocalProvider(
-                    LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant,
-                    LocalTextStyle provides MaterialTheme.typography.bodyMedium,
+        DejavuDialogCard(title = title, buttons = buttons, modifier = modifier, icon = icon, content = content)
+    }
+}
+
+/**
+ * The card of a [DejavuDialog], for dialogs whose window is made elsewhere, like the dialog fragments of Firefox's
+ * prompts. Its window should be see-through and as wide as the screen; the card keeps its own margins.
+ */
+@Composable
+fun DejavuDialogCard(
+    title: String,
+    buttons: @Composable RowScope.() -> Unit,
+    modifier: Modifier = Modifier,
+    @DrawableRes icon: Int? = null,
+    content: @Composable ColumnScope.() -> Unit,
+) {
+    Column(
+        modifier = modifier
+            .padding(horizontal = DIALOG_MARGIN, vertical = DIALOG_MARGIN)
+            .widthIn(max = DIALOG_MAX_WIDTH)
+            .fillMaxWidth()
+            .shadow(DIALOG_SHADOW, DejavuPopup.DialogShape)
+            .clip(DejavuPopup.DialogShape)
+            .background(DejavuPopup.containerColor)
+            .popupGlow()
+            .border(1.dp, DejavuPopup.edgeColor, DejavuPopup.DialogShape)
+            .padding(DIALOG_PADDING),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            if (icon != null) {
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.primaryContainer),
                 ) {
-                    content()
+                    Icon(
+                        painter = painterResource(icon),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                        modifier = Modifier.size(22.dp),
+                    )
                 }
+                Spacer(Modifier.width(14.dp))
             }
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth().padding(top = 24.dp),
-                content = buttons,
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.onSurface,
             )
         }
+        Column(
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .weight(1f, fill = false)
+                .verticalScroll(rememberScrollState()),
+        ) {
+            CompositionLocalProvider(
+                LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant,
+                LocalTextStyle provides MaterialTheme.typography.bodyMedium,
+            ) {
+                content()
+            }
+        }
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth().padding(top = 24.dp),
+            content = buttons,
+        )
     }
 }
 
