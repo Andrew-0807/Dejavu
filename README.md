@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="#download"><img alt="F-Droid: ByArchitect repository" src="https://img.shields.io/badge/F--Droid-ByArchitect%20repository-556B4F?logo=fdroid&logoColor=white"></a>
-  <a href="#download"><img alt="Google Play: in testing" src="https://img.shields.io/badge/Google%20Play-in%20testing-F2B84B?logo=googleplay&logoColor=white"></a>
+  <a href="https://play.google.com/store/apps/details?id=com.byarchitect.dejavu"><img alt="Google Play" src="https://img.shields.io/badge/Google%20Play-Dejavu-F2B84B?logo=googleplay&logoColor=white"></a>
   <a href="#download"><img alt="iOS: in development" src="https://img.shields.io/badge/iOS-in%20development-5A452A?logo=apple&logoColor=white"></a>
   <a href="LICENSE"><img alt="License: MPL 2.0" src="https://img.shields.io/badge/license-MPL%202.0-5A452A"></a>
   <a href="https://github.com/by-architect/Dejavu/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/by-architect/Dejavu?color=F2B84B"></a>
@@ -46,6 +46,12 @@ containers and pinned tabs show up on your phone too. Sync is the only thing the
 
 <a href="https://fdroid.byarchitect.org/fdroid/repo?fingerprint=50941BDAC56B056A520ABFA3FC7DAAB789DEE5B83B295DA54A1961C7BC8A91C9"><img src="docs/readme/fdroid-qr.svg" alt="QR code that adds the ByArchitect repository to F-Droid" width="170" align="right"></a>
 
+<p>
+  <a href="https://play.google.com/store/apps/details?id=com.byarchitect.dejavu"><img alt="Get it on Google Play" src="docs/readme/badge-google-play.png" height="80"></a>
+  <a href="https://fdroid.byarchitect.org/fdroid/repo?fingerprint=50941BDAC56B056A520ABFA3FC7DAAB789DEE5B83B295DA54A1961C7BC8A91C9"><img alt="Get it from the ByArchitect F-Droid repository" src="docs/readme/badge-fdroid-byarchitect.png" height="80"></a>
+  <a href="https://github.com/by-architect/Dejavu/releases/latest"><img alt="Get it on GitHub" src="docs/readme/badge-github.png" height="80"></a>
+</p>
+
 Dejavu needs Android 8.0 or newer on a 64-bit phone, which almost every phone from recent years is.
 
 **F-Droid (recommended):** Dejavu is in the ByArchitect F-Droid repository, and F-Droid keeps it up to date. In
@@ -53,11 +59,12 @@ F-Droid, open **Repositories**, tap **+** and scan the QR code, or open
 [this link](https://fdroid.byarchitect.org/fdroid/repo?fingerprint=50941BDAC56B056A520ABFA3FC7DAAB789DEE5B83B295DA54A1961C7BC8A91C9)
 on your phone to add the repository. Then search for Dejavu.
 
-**APK:** download `dejavu-<version>-arm64-v8a.apk` from the
+**APK:** download `dejavu-v<version>-arm64-v8a.apk` from the
 [latest release](https://github.com/by-architect/Dejavu/releases/latest). It does not update itself, so use F-Droid
 to get new versions.
 
-**Google Play:** in testing right now. The public release is planned for late October 2026.
+**Google Play:** get Dejavu from [Google Play](https://play.google.com/store/apps/details?id=com.byarchitect.dejavu). Google signs the Play version with its own key, so
+switching between Play and F-Droid or the APK means uninstalling first.
 
 **iOS:** We are working on an iOS app. News about it will be shared here.
 
