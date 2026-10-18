@@ -189,6 +189,15 @@ Dejavu is independent, free and open source, and it has no ads. If you enjoy it,
 We are also open to sponsors. If you or your company want to support Dejavu, email [byarchitect@disroot.org](mailto:byarchitect@disroot.org) and we will get
 in touch.
 
+### Supporters
+
+Members of the crew on Buy Me a Coffee, by level. The list is updated once a month; members who keep their support
+private are not shown.
+
+<!-- supporters:start -->
+No members yet. Be the first: [join the crew](https://buymeacoffee.com/ByArchitect/membership).
+<!-- supporters:end -->
+
 ## Build from source
 
 This repository is a fork of Mozilla's Firefox repository, kept up to date with it, but Dejavu is developed separately
