@@ -62,6 +62,7 @@ import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.openDejavuMenu
 import org.mozilla.fenix.dejavu.browser.shownWorkspaceTheme
+import org.mozilla.fenix.dejavu.browser.tabOrShown
 import org.mozilla.fenix.dejavu.browser.workspaceTheme
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
@@ -76,16 +77,17 @@ import org.mozilla.fenix.webcompat.middleware.DefaultWebCompatReporterRetrievalS
  * colors of the tab's workspace that floats over the bottom of the page. Swiping the bar up opens the "More" menu.
  *
  * @param onEvent Carries out what the user tapped.
+ * @param tabId The tab the bar is for, the shown tab when `null`.
  */
 @Suppress("LongMethod")
 @Composable
-fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit) {
+fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit, tabId: String? = null) {
     val context = LocalContext.current
     val view = LocalView.current
     val fenix = components
     val settings = remember { fenix.readOnMainThread { DejavuSettings.get(context) } }
     val repository = remember { fenix.readOnMainThread { WorkspaceRepository.get(context) } }
-    val tab by fenix.core.store.observeAsComposableState { it.selectedTab }
+    val tab by fenix.core.store.observeAsComposableState { it.tabOrShown(tabId) }
     val workspaces by repository.state.collectAsState()
     val barKeys by settings.actionsBarKeys.collectAsState()
     val customActions by settings.customActions.collectAsState()
@@ -116,7 +118,7 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit) {
             .height(BAR_HEIGHT)
             .clip(BAR_SHAPE)
             .background(MaterialTheme.colorScheme.surface)
-            .workspaceTheme(shownWorkspaceTheme())
+            .workspaceTheme(shownWorkspaceTheme(tabId))
             .border(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = BORDER_ALPHA), BAR_SHAPE),
     ) {
         val buttons = entries.map { entry ->

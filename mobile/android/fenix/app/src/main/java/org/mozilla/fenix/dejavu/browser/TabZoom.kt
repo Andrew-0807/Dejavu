@@ -11,10 +11,21 @@ import android.os.Looper
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.union
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -24,6 +35,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -42,10 +54,13 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.boundsInWindow
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
@@ -54,14 +69,17 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import kotlin.math.roundToInt
 import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeoutOrNull
 import mozilla.components.browser.state.selector.findTab
 import mozilla.components.concept.base.images.ImageLoadRequest
+import mozilla.components.lib.state.ext.observeAsComposableState
 import org.mozilla.fenix.R
+import org.mozilla.fenix.dejavu.menu.DejavuActionsBar
 import org.mozilla.fenix.ext.components
+import org.mozilla.fenix.theme.FirefoxTheme
+import org.mozilla.fenix.utils.Settings
 import org.mozilla.geckoview.captureTopEdge
 
 private val ROW_RADIUS = 16.dp
@@ -73,6 +91,11 @@ private const val REVEAL_TIMEOUT_MS = 1_200L
 private const val HOME_TIMEOUT_MS = 1_500L
 private const val ROW_FRAMES = 2
 private const val SHRINK_SETTLE_NANOS = 150_000_000L
+private const val NANOS_PER_MS = 1_000_000L
+private const val FRAME_NANOS = 16_666_667L
+
+// A frame coming later than this after the one before it follows a stall, not a steady pace.
+private const val STALL_NANOS = 34_000_000L
 private const val DRAWN_POLL_MS = 40L
 private const val THUMBNAIL_TIMEOUT_MS = 150L
 private const val DIM_ALPHA = 0.3f
@@ -84,8 +107,8 @@ private val Emphasized = CubicBezierEasing(0.2f, 0f, 0f, 1f)
 
 /**
  * Dejavu's zoom between a tab's row on the home screen and its page. Opening a tab grows a picture of its page out of
- * its row until it fills the screen, then the browser shows the page behind it. Going home shrinks a picture of the
- * page back into the tab's row.
+ * its row until it fills the screen, while the browser's bars come in from the top and the bottom of the screen, then
+ * the browser shows the page behind it. Going home shrinks a picture of the page back into the tab's row.
  */
 internal object TabZoom {
     private class Placed(val owner: Any, val bounds: Rect)
@@ -217,15 +240,7 @@ internal object TabZoom {
         LaunchedEffect(current) {
             when (current) {
                 is Zoom.In -> {
-                    coroutineScope {
-                        // The browser starts setting itself up once the card nearly fills the screen, as the last
-                        // frames of the growth hardly move it.
-                        launch {
-                            delay((ZOOM_IN_MS * OPEN_AT).toLong())
-                            current.open()
-                        }
-                        progress.animateTo(1f, tween(ZOOM_IN_MS, easing = Emphasized))
-                    }
+                    progress.grow(current.open)
                     withTimeoutOrNull(REVEAL_TIMEOUT_MS) { awaitPageDrawn() }
                     shown.animateTo(0f, tween(REVEAL_MS))
                 }
@@ -248,19 +263,50 @@ internal object TabZoom {
             }
             finish(current)
         }
-        Canvas(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
                 .onGloballyPositioned { origin = it.positionInWindow() }
-                .graphicsLayer { alpha = shown.value }
-                // Taps wait for the zoom to end, instead of reaching what is under it.
-                .pointerInput(Unit) {
-                    awaitPointerEventScope {
-                        while (true) awaitPointerEvent().changes.forEach { it.consume() }
-                    }
-                },
+                .graphicsLayer { alpha = shown.value },
         ) {
-            drawZoom(current.picture, row?.translate(-origin), progress.value, placeholder, origin)
+            Canvas(modifier = Modifier.fillMaxSize()) {
+                drawZoom(current.picture, row?.translate(-origin), progress.value, placeholder, origin)
+            }
+            // The browser's bars come in with the page, so they are in place once it fills the screen.
+            if (current is Zoom.In) BrowserBars(current.tabId, arrived = { progress.value })
+            // Taps wait for the zoom to end, instead of reaching what is under it.
+            Box(modifier = Modifier.fillMaxSize().swallowingTaps())
+        }
+    }
+
+    /**
+     * The address bar and the actions bar the browser will show for the tab with [tabId], coming in from the top and
+     * the bottom of the screen: [arrived] says how far, from 0 out of sight to 1 where the browser shows them. They
+     * only show what is coming, so screen readers skip them. Browsers with other bars show none.
+     */
+    @Composable
+    private fun BrowserBars(tabId: String, arrived: () -> Float) {
+        val components = LocalContext.current.components
+        if (!remember { components.settings.showsOnlyDejavuBars }) return
+        val tab by components.core.store.observeAsComposableState { it.findTab(tabId) }
+        val opening = tab ?: return
+        val sides = WindowInsets.systemBars.union(WindowInsets.displayCutout).only(WindowInsetsSides.Horizontal)
+        FirefoxTheme {
+            Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(sides).clearAndSetSemantics {}) {
+                MaterialTheme(colorScheme = DejavuToolbar.glass(MaterialTheme.colorScheme)) {
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .comingIn(arrived, fromTop = true)
+                            .statusBarsPadding(),
+                    ) {
+                        DejavuTopBarPreview(opening)
+                    }
+                }
+                Box(modifier = Modifier.align(Alignment.BottomCenter).comingIn(arrived, fromTop = false)) {
+                    DejavuActionsBar(onEvent = {}, tabId = tabId)
+                }
+            }
         }
     }
 
@@ -282,9 +328,53 @@ internal fun Modifier.tabZoomTarget(tabId: String?): Modifier {
     return onGloballyPositioned { TabZoom.rowPlaced(tabId, owner, it.boundsInWindow()) }
 }
 
+/** Whether the browser shows only Dejavu's address bar above pages and its actions bar below them. */
+private val Settings.showsOnlyDejavuBars: Boolean
+    get() = DejavuToolbar.enabled && !shouldUseBottomToolbar && !isTabStripEnabled && !shouldShowTabGroupsStrip
+
+/** Keeps every tap on this from reaching what is under it. */
+private fun Modifier.swallowingTaps() = pointerInput(Unit) {
+    awaitPointerEventScope {
+        while (true) awaitPointerEvent().changes.forEach { it.consume() }
+    }
+}
+
+/** Places this [arrived] of the way from just beyond the top or the bottom edge of the screen to its own place. */
+private fun Modifier.comingIn(arrived: () -> Float, fromTop: Boolean) = layout { measurable, constraints ->
+    val placeable = measurable.measure(constraints)
+    layout(placeable.width, placeable.height) {
+        val away = ((1f - arrived()) * placeable.height).roundToInt()
+        placeable.place(0, if (fromTop) -away else away)
+    }
+}
+
 /** A row cut away by the edge of its list, or on another workspace's page, has no room left. */
 private val Rect.isShown: Boolean
     get() = width > 1f && height > 1f
+
+/**
+ * Grows the card from the tab's row to the whole screen, as this goes from 0 to 1, and calls [open] once it is
+ * [OPEN_AT] of the way: the browser starts setting itself up then, as the last frames of the growth hardly move the
+ * card. Until then a frame coming after a stall moves the card on by one frame only, so the frames that first draw the
+ * zoom and the browser's bars skip none of its start.
+ */
+internal suspend fun Animatable<Float, AnimationVector1D>.grow(open: () -> Unit) {
+    val duration = ZOOM_IN_MS * NANOS_PER_MS
+    var played = 0L
+    var opened = false
+    var last = withFrameNanos { it }
+    while (played < duration) {
+        val now = withFrameNanos { it }
+        val step = if (now - last > STALL_NANOS && !opened) FRAME_NANOS else now - last
+        last = now
+        played = (played + step).coerceAtMost(duration)
+        snapTo(Emphasized.transform(played.toFloat() / duration))
+        if (!opened && played >= duration * OPEN_AT) {
+            opened = true
+            open()
+        }
+    }
+}
 
 /** Waits until the browser draws a page, which it can picture only once it does. */
 private suspend fun awaitPageDrawn() {

@@ -83,12 +83,12 @@ object DejavuToolbar {
     }
 
     /**
-     * The icon of the container of the shown tab, in the container's color, or the "no container" icon outside of
-     * containers; `null` for a private tab, which takes none. Tapping it lists the other containers to reopen the tab
-     * in.
+     * The icon of the container of [tab], the shown one unless given, in the container's color, or the "no container"
+     * icon outside of containers; `null` for a private tab, which takes none. Tapping it lists the other containers to
+     * reopen the shown tab in.
      */
-    fun containerAction(context: Context, state: BrowserState): Action? {
-        val tab = state.selectedTab?.takeUnless { it.content.private } ?: return null
+    fun containerAction(context: Context, state: BrowserState, tab: TabSessionState? = state.selectedTab): Action? {
+        if (tab == null || tab.content.private) return null
         val contextId = tab.contextId ?: return noContainerAction(context)
         val record = DejavuContainerStorage.get(context).records.value?.firstOrNull { it.contextId == contextId }
         val container = state.containers[contextId]
@@ -219,6 +219,10 @@ fun Fragment.handleDejavuBackPressed(customTabSessionId: String?): Boolean {
     closeShownTab(requireComponents, findNavController(), tab)
     return true
 }
+
+/** The tab with [tabId], or the shown tab when [tabId] is `null`. */
+internal fun BrowserState.tabOrShown(tabId: String?): TabSessionState? =
+    if (tabId == null) selectedTab else findTab(tabId)
 
 /** Whether Back would show an earlier page of this tab, rather than the homepage it was opened on. */
 internal val TabSessionState.canGoBackToPage: Boolean

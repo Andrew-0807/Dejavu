@@ -45,14 +45,21 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import mozilla.components.browser.state.selector.selectedTab
+import mozilla.components.browser.state.state.SecurityInfo
+import mozilla.components.browser.state.state.TabSessionState
+import mozilla.components.browser.toolbar.R as browserToolbarR
 import mozilla.components.compose.base.progressbar.AnimatedProgressBar
 import mozilla.components.compose.browser.toolbar.ActionContainer
 import mozilla.components.compose.browser.toolbar.R as toolbarR
 import mozilla.components.compose.browser.toolbar.concept.Action
 import mozilla.components.compose.browser.toolbar.concept.PageOrigin.Companion.ContextualMenuOption
+import mozilla.components.compose.browser.toolbar.store.BrowserToolbarInteraction.BrowserToolbarEvent
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarStore
+import mozilla.components.concept.engine.utils.ABOUT_HOME_URL
 import mozilla.components.lib.state.ext.observeAsComposableState
+import mozilla.components.support.ktx.kotlin.isContentUrl
 import mozilla.components.support.utils.ClipboardHandler
+import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.components
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
@@ -78,8 +85,6 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
     val pageInfo = stringResource(R.string.dejavu_page_info)
     val text = origin.url?.toString()?.takeIf { it.isNotBlank() } ?: origin.title?.takeIf { it.isNotBlank() } ?: hint
     val url by components.core.store.observeAsComposableState { it.selectedTab?.content?.url }
-    // The title already says the domain when it is the address itself.
-    val domain = url?.let(::domainOf)?.takeUnless { text.contains(it, ignoreCase = true) }
     val haptic = LocalHapticFeedback.current
     var menuOpen by remember { mutableStateOf(false) }
     val theme = shownWorkspaceTheme()
@@ -107,55 +112,15 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
                 },
             ),
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .align(Alignment.Center)
-                .fillMaxWidth()
-                .padding(horizontal = ADDRESS_FIELD_SIDE_MARGIN)
-                .height(ADDRESS_FIELD_HEIGHT)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surfaceContainerHigh)
-                .padding(horizontal = FIELD_PADDING),
-        ) {
-            Box(contentAlignment = Alignment.Center, modifier = Modifier.size(SLOT_SIZE)) {
-                ActionContainer(actions = listOfNotNull(containerAction()), onInteraction = { store.dispatch(it) })
-            }
-            Box(contentAlignment = Alignment.Center, modifier = Modifier.weight(1f)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    ActionContainer(actions = display.pageActionsStart, onInteraction = { store.dispatch(it) })
-                    // The bar's own description already says the title.
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.weight(1f, fill = false).padding(end = TITLE_END_PADDING).clearAndSetSemantics {},
-                    ) {
-                        Text(
-                            text = text,
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.Medium,
-                            color = if (text == hint) {
-                                MaterialTheme.colorScheme.onSurfaceVariant
-                            } else {
-                                MaterialTheme.colorScheme.onSurface
-                            },
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                        domain?.let {
-                            Text(
-                                text = it,
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                            )
-                        }
-                    }
-                }
-            }
-            // Kept free for a button to come, so the title stays in the middle.
-            Spacer(Modifier.size(SLOT_SIZE))
-        }
+        AddressField(
+            text = text,
+            isHint = text == hint,
+            url = url,
+            container = containerAction(),
+            pageActions = display.pageActionsStart,
+            onInteraction = { store.dispatch(it) },
+            modifier = Modifier.align(Alignment.Center),
+        )
         display.progressBarConfig?.let { config ->
             AnimatedProgressBar(
                 progress = config.progress,
@@ -176,6 +141,118 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
             )
         }
     }
+}
+
+/**
+ * How [DejavuTopBar] will show [tab] once the browser shows it, for the bar coming in while the tab opens: the same
+ * field, filled from the tab instead of from the address bar's store.
+ */
+@Composable
+internal fun DejavuTopBarPreview(tab: TabSessionState) {
+    val hint = stringResource(R.string.search_hint)
+    val text = DejavuToolbar.displayText(tab).takeUnless { it.isBlank() || tab.content.url == ABOUT_HOME_URL } ?: hint
+    Box(modifier = Modifier.fillMaxWidth().height(DEJAVU_TOP_BAR_HEIGHT)) {
+        AddressField(
+            text = text,
+            isHint = text == hint,
+            url = tab.content.url,
+            container = containerAction(tab.id),
+            pageActions = listOfNotNull(siteInfoPreview(tab)),
+            onInteraction = {},
+            modifier = Modifier.align(Alignment.Center),
+        )
+    }
+}
+
+/**
+ * The rounded field of the address bar: [container] at its start, then [pageActions] and [text] in the middle, with
+ * the domain of [url] in small letters below the text unless the text already says it.
+ */
+@Composable
+private fun AddressField(
+    text: String,
+    isHint: Boolean,
+    url: String?,
+    container: Action?,
+    pageActions: List<Action>,
+    onInteraction: (BrowserToolbarEvent) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val domain = url?.let(::domainOf)?.takeUnless { text.contains(it, ignoreCase = true) }
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = ADDRESS_FIELD_SIDE_MARGIN)
+            .height(ADDRESS_FIELD_HEIGHT)
+            .clip(CircleShape)
+            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+            .padding(horizontal = FIELD_PADDING),
+    ) {
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.size(SLOT_SIZE)) {
+            ActionContainer(actions = listOfNotNull(container), onInteraction = onInteraction)
+        }
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.weight(1f)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                ActionContainer(actions = pageActions, onInteraction = onInteraction)
+                // The bar's own description already says the title.
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .weight(1f, fill = false)
+                        .padding(end = TITLE_END_PADDING)
+                        .clearAndSetSemantics {},
+                ) {
+                    Text(
+                        text = text,
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.Medium,
+                        color = if (isHint) {
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                        } else {
+                            MaterialTheme.colorScheme.onSurface
+                        },
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                    domain?.let {
+                        Text(
+                            text = it,
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
+                }
+            }
+        }
+        // Kept free for a button to come, so the title stays in the middle.
+        Spacer(Modifier.size(SLOT_SIZE))
+    }
+}
+
+/**
+ * The site's security icon for [tab], as the address bar's store shows it once the page is shown; none in Reader
+ * View.
+ */
+private fun siteInfoPreview(tab: TabSessionState): Action? {
+    if (tab.readerState.active) return null
+    val security = tab.content.securityInfo
+    val protection = tab.trackingProtection
+    val icon = when {
+        tab.content.url.isContentUrl() -> iconsR.drawable.mozac_ic_page_portrait_24
+        security == SecurityInfo.Unknown -> iconsR.drawable.mozac_ic_globe_24
+        !security.isSecure -> iconsR.drawable.mozac_ic_shield_slash_24
+        protection.enabled && !protection.ignoredOnTrackingProtection -> iconsR.drawable.mozac_ic_shield_checkmark_24
+        else -> iconsR.drawable.mozac_ic_shield_cross_24
+    }
+    return Action.ActionButtonRes(
+        drawableResId = icon,
+        contentDescription = browserToolbarR.string.mozac_browser_toolbar_content_description_site_info,
+        highlighted = tab.content.permissionHighlights.permissionsChanged || protection.ignoredOnTrackingProtection,
+        onClick = object : BrowserToolbarEvent {},
+    )
 }
 
 @Composable
@@ -211,16 +288,23 @@ private val ContextualMenuOption.label: Int
         ContextualMenuOption.LoadFromClipboard -> toolbarR.string.mozac_browser_toolbar_long_press_popup_paste_and_go
     }
 
-/** The button of the shown tab's container, or of "no container", which opens the menu to move the tab to another. */
+/**
+ * The button of the container of the tab with [tabId], the shown tab when `null`, or of "no container", which opens
+ * the menu to move the tab to another.
+ */
 @Composable
-private fun containerAction(): Action? {
+private fun containerAction(tabId: String? = null): Action? {
     val context = LocalContext.current
     val browserStore = components.core.store
     val shown by browserStore.observeAsComposableState { state ->
-        state.selectedTab?.let { tab -> Triple(tab.contextId, state.containers[tab.contextId], tab.content.private) }
+        state.tabOrShown(tabId)?.let { tab ->
+            Triple(tab.contextId, state.containers[tab.contextId], tab.content.private)
+        }
     }
     val records by remember { DejavuContainerStorage.get(context).records }.collectAsState()
-    return remember(shown, records) { DejavuToolbar.containerAction(context, browserStore.state) }
+    return remember(shown, records) {
+        DejavuToolbar.containerAction(context, browserStore.state, browserStore.state.tabOrShown(tabId))
+    }
 }
 
 /** The domain of [url], like "google.com" for "https://www.google.com/search", or `null` for one without a host. */
