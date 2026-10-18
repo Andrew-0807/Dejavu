@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.dejavu.home
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -1089,10 +1090,16 @@ private fun WorkspaceState.openTabsIn(folderId: String, awakeTabIds: Set<String>
     return pins.count { it.id in inside && it.tabId != null && it.tabId in awakeTabIds }
 }
 
+/** The icon of a folder: the outline of a folder, dashed when nothing is inside. */
+@DrawableRes
+internal fun folderIcon(isEmpty: Boolean): Int =
+    if (isEmpty) R.drawable.dejavu_ic_folder_empty_24 else iconsR.drawable.mozac_ic_folder_24
+
 /**
  * A folder of the pinned section. Tapping it folds it, or selects it in selection mode. A closed folder shows
  * [openTabCount], the number of awake tabs hidden inside it, next to its icon. The buttons of [actions] act on
- * everything inside the folder; without any, a closed folder shows how many items it holds instead.
+ * everything inside the folder; without any, a closed folder shows how many items it holds instead. An empty folder has
+ * a dashed icon.
  */
 @Suppress("LongMethod", "LongParameterList")
 @Composable
@@ -1128,7 +1135,7 @@ private fun FolderRow(
         )
         Spacer(Modifier.width(6.dp))
         Icon(
-            painter = painterResource(iconsR.drawable.mozac_ic_folder_24),
+            painter = painterResource(folderIcon(isEmpty = childCount == 0)),
             contentDescription = null,
             tint = groupColor(folder.color) ?: MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(20.dp),

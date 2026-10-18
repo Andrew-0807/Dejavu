@@ -703,7 +703,7 @@ private fun FolderPickerDialog(
             PickerRow(
                 label = entry.item.title,
                 depth = entry.depth,
-                leading = { PickerIcon(iconsR.drawable.mozac_ic_folder_24) },
+                leading = { PickerIcon(folderIcon(isEmpty = state.pins.none { it.parentId == entry.item.id })) },
                 onClick = { onPick(entry.item.id) },
             )
         }
