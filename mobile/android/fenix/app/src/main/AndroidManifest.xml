@@ -66,9 +66,9 @@
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="false"
-        android:icon="@mipmap/dejavu_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/dejavu_launcher_round"
+        android:icon="${dejavuAppIcon}"
+        android:label="${dejavuAppLabel}"
+        android:roundIcon="${dejavuAppRoundIcon}"
         android:supportsRtl="true"
         android:theme="@style/NormalTheme"
         android:usesCleartextTraffic="true"
@@ -99,7 +99,7 @@
 
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -115,7 +115,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <!--
@@ -137,7 +137,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -153,7 +153,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -169,7 +169,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -185,7 +185,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -201,7 +201,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -217,7 +217,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -233,7 +233,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <!-- Gradient icons -->
@@ -251,7 +251,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -267,7 +267,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -283,7 +283,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -299,7 +299,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -315,7 +315,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -331,7 +331,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -347,7 +347,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <!-- Themed/alternative icons -->
@@ -365,7 +365,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -381,7 +381,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -397,7 +397,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -413,7 +413,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -429,7 +429,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -445,7 +445,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <activity-alias
@@ -461,7 +461,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
         <activity-alias
             android:name="${applicationId}.AppCool"
@@ -476,7 +476,7 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+                android:resource="${dejavuShortcuts}" />
         </activity-alias>
 
         <!--

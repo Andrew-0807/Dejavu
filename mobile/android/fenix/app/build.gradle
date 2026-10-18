@@ -34,6 +34,11 @@ def isAppBundle = gradle.startParameter.taskNames.any { it.toLowerCase().contain
 
 // Dejavu: the id Dejavu is published with. The launcher shortcuts in src/release/res/xml/shortcuts.xml use it too.
 def DEJAVU_APPLICATION_ID = "com.byarchitect.dejavu"
+// Dejavu: -PdejavuTest makes the release build Dejavu Test, the test version members get from the test repository
+// (scripts/dejavu-test-build.sh in the Kaizen project). It is an app of its own that installs beside Dejavu, from
+// whichever store: its own id (DEJAVU_APPLICATION_ID.test), name, icon, deep link scheme and launcher shortcuts
+// (src/main/res/xml/dejavu_test_shortcuts.xml), so it neither updates nor touches the user's Dejavu.
+def DEJAVU_TEST = project.hasProperty("dejavuTest")
 def DEJAVU_VERSION_CODE_BASE = 2016190000
 
 android {
@@ -75,7 +80,12 @@ android {
         buildConfigField "String", "DEEP_LINK_SCHEME", "\"$deepLinkSchemeValue\""
 
         manifestPlaceholders = [
-                "deepLinkScheme": deepLinkSchemeValue
+                "deepLinkScheme": deepLinkSchemeValue,
+                // Dejavu: the app's name, icon and launcher shortcuts, which Dejavu Test replaces.
+                "dejavuAppLabel": "@string/app_name",
+                "dejavuAppIcon": "@mipmap/dejavu_launcher",
+                "dejavuAppRoundIcon": "@mipmap/dejavu_launcher_round",
+                "dejavuShortcuts": "@xml/shortcuts",
         ]
 
         buildConfigField "String[]", "SUPPORTED_LOCALE_ARRAY", getSupportedLocales()
@@ -146,11 +156,19 @@ android {
             buildConfigField "boolean", "USE_RELEASE_VERSIONING", "true"
             // Dejavu: release builds are Dejavu, an app of its own. Its id is set in onVariants below, and it has its
             // own deep link scheme and no shared user id.
-            def deepLinkSchemeValue = "dejavu"
+            def deepLinkSchemeValue = DEJAVU_TEST ? "dejavu-test" : "dejavu"
             buildConfigField "String", "DEEP_LINK_SCHEME", "\"$deepLinkSchemeValue\""
             manifestPlaceholders.putAll([
                     "deepLinkScheme": deepLinkSchemeValue,
             ])
+            if (DEJAVU_TEST) {
+                manifestPlaceholders.putAll([
+                        "dejavuAppLabel": "Dejavu Test",
+                        "dejavuAppIcon": "@mipmap/dejavu_test_launcher",
+                        "dejavuAppRoundIcon": "@mipmap/dejavu_test_launcher_round",
+                        "dejavuShortcuts": "@xml/dejavu_test_shortcuts",
+                ])
+            }
         }
         benchmark releaseTemplate >> {
             initWith buildTypes.nightly
@@ -286,7 +304,7 @@ androidComponents {
     onVariants(selector().all()) { variant ->
         def buildType = variant.buildType
         if (buildType == 'release') {
-            variant.applicationId.set(DEJAVU_APPLICATION_ID)
+            variant.applicationId.set(DEJAVU_TEST ? "${DEJAVU_APPLICATION_ID}.test" : DEJAVU_APPLICATION_ID)
         }
 
         project.logger.debug("----------------------------------------------")
