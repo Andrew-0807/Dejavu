@@ -8,6 +8,7 @@ import android.app.Activity
 import android.graphics.Bitmap
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.compose.animation.core.Animatable
@@ -45,6 +46,7 @@ import androidx.compose.ui.geometry.lerp
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.clipPath
@@ -65,6 +67,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
+import androidx.core.view.drawToBitmap
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import kotlin.math.roundToInt
@@ -108,7 +111,8 @@ private val Emphasized = CubicBezierEasing(0.2f, 0f, 0f, 1f)
 /**
  * Dejavu's zoom between a tab's row on the home screen and its page. Opening a tab grows a picture of its page out of
  * its row until it fills the screen, while the browser's bars come in from the top and the bottom of the screen, then
- * the browser shows the page behind it. Going home shrinks a picture of the page back into the tab's row.
+ * the browser shows the page behind it. Going home shrinks a picture of the page back into the tab's row, while
+ * pictures of the bars go back out the same way.
  */
 internal object TabZoom {
     private class Placed(val owner: Any, val bounds: Rect)
@@ -116,9 +120,12 @@ internal object TabZoom {
     /** A zoom in progress, with the picture of the tab's page it grows or shrinks. */
     private sealed class Zoom(val tabId: String, val picture: PageShot?) {
         class In(tabId: String, picture: PageShot?, val row: Rect, val open: () -> Unit) : Zoom(tabId, picture)
+
+        /** A page going home, and [bars], pictures of the browser's bars as it left them. */
         class Out(
             tabId: String,
             picture: PageShot,
+            val bars: List<BarShot>,
             val leave: () -> Unit,
             val afterLeaving: () -> Unit,
         ) : Zoom(tabId, picture) {
@@ -189,7 +196,11 @@ internal object TabZoom {
             return
         }
         PagePictures.capture(tabId) { shot ->
-            if (shot == null) leaveAtOnce() else start(content, Zoom.Out(tabId, shot, leave, afterLeaving))
+            if (shot == null) {
+                leaveAtOnce()
+            } else {
+                start(content, Zoom.Out(tabId, shot, barShots(content), leave, afterLeaving))
+            }
         }
     }
 
@@ -237,6 +248,7 @@ internal object TabZoom {
         var row by remember { mutableStateOf((current as? Zoom.In)?.row) }
         var origin by remember { mutableStateOf(Offset.Zero) }
         val placeholder = colorResource(R.color.fx_mobile_surface)
+        val leftBars = (current as? Zoom.Out)?.bars.orEmpty()
         LaunchedEffect(current) {
             when (current) {
                 is Zoom.In -> {
@@ -271,6 +283,8 @@ internal object TabZoom {
         ) {
             Canvas(modifier = Modifier.fillMaxSize()) {
                 drawZoom(current.picture, row?.translate(-origin), progress.value, placeholder, origin)
+                // The bars left behind go back out as the page shrinks, and are gone once it is in its row.
+                drawBars(leftBars, progress.value, origin)
             }
             // The browser's bars come in with the page, so they are in place once it fills the screen.
             if (current is Zoom.In) BrowserBars(current.tabId, arrived = { progress.value })
@@ -289,7 +303,7 @@ internal object TabZoom {
         val components = LocalContext.current.components
         if (!remember { components.settings.showsOnlyDejavuBars }) return
         val tab by components.core.store.observeAsComposableState { it.findTab(tabId) }
-        val opening = tab ?: return
+        val barsTab = tab ?: return
         val sides = WindowInsets.systemBars.union(WindowInsets.displayCutout).only(WindowInsetsSides.Horizontal)
         FirefoxTheme {
             Box(modifier = Modifier.fillMaxSize().windowInsetsPadding(sides).clearAndSetSemantics {}) {
@@ -300,7 +314,7 @@ internal object TabZoom {
                             .comingIn(arrived, fromTop = true)
                             .statusBarsPadding(),
                     ) {
-                        DejavuTopBarPreview(opening)
+                        DejavuTopBarPreview(barsTab)
                     }
                 }
                 Box(modifier = Modifier.align(Alignment.BottomCenter).comingIn(arrived, fromTop = false)) {
@@ -382,6 +396,35 @@ private suspend fun awaitPageDrawn() {
         delay(DRAWN_POLL_MS)
         val view = PagePictures.shownGeckoView ?: continue
         if (captureTopEdge(view, 1)?.valueOrNull() != null) return
+    }
+}
+
+/** A picture of one of the browser's bars, shown at [offset] in the window, at the top of the screen or the bottom. */
+private class BarShot(val bitmap: ImageBitmap, val offset: Offset, val atTop: Boolean)
+
+/** Pictures of the browser's address bar and actions bar under [content] as they are shown now, when Dejavu's own. */
+private fun barShots(content: ViewGroup): List<BarShot> {
+    if (!content.context.components.settings.showsOnlyDejavuBars) return emptyList()
+    return listOf(R.id.composable_toolbar to true, R.id.navigation_bar to false).mapNotNull { (id, atTop) ->
+        content.findViewById<View>(id)
+            ?.takeIf { it.isShown && it.width > 0 && it.height > 0 }
+            ?.let { view -> runCatching { barShot(view, atTop) }.getOrNull() }
+    }
+}
+
+private fun barShot(view: View, atTop: Boolean): BarShot {
+    val location = IntArray(2).also(view::getLocationInWindow)
+    return BarShot(view.drawToBitmap().asImageBitmap(), Offset(location[0].toFloat(), location[1].toFloat()), atTop)
+}
+
+/**
+ * Draws [bars], pictures of the browser's bars, [progress] of the way from just beyond the top or the bottom edge of
+ * the screen to where they were shown.
+ */
+private fun DrawScope.drawBars(bars: List<BarShot>, progress: Float, origin: Offset) {
+    bars.forEach { bar ->
+        val away = (1f - progress) * bar.bitmap.height
+        drawImage(bar.bitmap, topLeft = bar.offset - origin + Offset(0f, if (bar.atTop) -away else away))
     }
 }
 
