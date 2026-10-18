@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Баргардонидан ба ҳолати пешфарз</string>
     <string name="dejavu_more_menu_hide_edit">Пинҳон кардани тугмаи таҳрир</string>
     <string name="dejavu_more_menu_hide_edit_summary">Тугмаи «Таҳрир кардан» дар поёни менюи иловагӣ</string>
-    <string name="dejavu_settings_sync">Ҳамоҳангсозӣ бо Firefox ё Zen</string>
-    <string name="dejavu_sync_hint">Фазоҳои шуморо бо рангу нишонаҳояшон, контейнерҳо, варақаҳои часпонидашуда, сомонаҳои муҳим ва ҷузвдонҳоро айнан монанди Zen Browser дар компютери шумо ва Dejavu дар дигар дастгоҳҳои шумо нигоҳ медорад. Ин ҳисоби Mozilla-ро истифода мебарад, ки шумо бо он маълумоти Firefox-ро ҳамоҳанг мекунед.</string>
     <string name="dejavu_sync_zen_hint">Дар Zen «Танзимот»-ро кушоед, сипас «Ҳамоҳангсозӣ»-ро ва ҳамоҳангсозии сутуни паҳлӯро фаъол кунед. Варақаҳое, ки часпонида нашудаанд, ҳамоҳанг намешаванд.</string>
     <string name="dejavu_sync_enabled">Ҳамоҳангсозии фазоҳо</string>
     <string name="dejavu_sync_syncing">Дар ҳоли ҳамоҳангсозӣ…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Барои иваз кардани тартиб фазоҳоро кашед</string>
     <string name="dejavu_feature_split_view">Барои кушодан дар намоиши тақсимшуда пайвандро дароз пахш кунед</string>
     <string name="dejavu_sync_choose_about">Фазоҳои худро тавассути ҳисоби Mozilla, ки бо он маълумоти Firefox-ро ҳамоҳанг мекунед, бо Firefox ё Zen Browser дар компютери худ ҳамоҳанг кунед.</string>
-    <string name="dejavu_sync_firefox_about">Варақаҳои кушодаи Firefox-ро дар ҳар яке аз компютерҳо ва телефонҳои шумо ҳамчун фазо нишон медиҳад ва онҳоро ҳамеша навсозӣ мекунад. Ин ҳисоби Mozilla-ро истифода мебарад, ки шумо бо он маълумоти Firefox-ро ҳамоҳанг мекунед.</string>
     <string name="dejavu_sync_firefox_hint">Дар Firefox «Танзимот»-ро кушоед, сипас «Ҳамоҳангсозӣ»-ро ва «Варақаҳои кушодашуда»-ро фаъол нигоҳ доред. Варақаҳое, ки дар фазои як дастгоҳ мекушоед ё мепӯшед, дар он ҷо низ кушода ё пӯшида мешаванд. Варақаҳое, ки дар дигар фазоҳои шумо ҳастанд, дар ин дастгоҳ мемонанд ва Firefox онҳоро дар зери дигар дастгоҳҳои шумо нишон медиҳад.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Он инчунин варақаҳоеро нишон медиҳад, ки на часпонида шудаанд ва на дар гурӯҳи варақаҳо ҳастанд, на танҳо варақаҳои часпонидашуда ва гурӯҳҳои варақаҳоро.</string>
     <string name="dejavu_sync_source">Ҳамоҳангсозӣ бо</string>
     <string name="dejavu_sync_source_none">Ҳанӯз интихоб нашудааст</string>
     <string name="dejavu_sync_choose_title">Интихоб кунед, ки бо чӣ ҳамоҳанг карда шавад</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Ин фазо варақаҳои кушодаи яке аз дастгоҳҳои ҳисоби Mozilla-и шуморо нишон медиҳад. Ном ва нишонаи он аз ҳамон дастгоҳ меоянд ва рангҳое, ки шумо интихоб мекунед, дар ин телефон мемонанд.</string>
     <string name="dejavu_settings_safe_browsing">Тамошои бехатари Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Дар бораи сомонаҳои фишинг ва нармафзори зараровар огоҳ мекунад. Барои ин Dejavu бо Google пайваст мешавад.</string>
+    <string name="dejavu_back">Бозгашт</string>
+    <string name="dejavu_sync_start_title">Якҷоя кардан ё аз нав оғоз кардан?</string>
+    <string name="dejavu_sync_start_intro">Ин дастгоҳ аллакай фазоҳо ва варақаҳои худро дорад.</string>
+    <string name="dejavu_sync_start_merge">Якҷоя кардан</string>
+    <string name="dejavu_sync_start_merge_zen">Онҳоро нигоҳ доштан ва фазоҳои худро аз Zen илова кардан. Онҳо низ бо Zen ҳамоҳанг мешаванд.</string>
+    <string name="dejavu_sync_start_merge_firefox">Онҳоро дар паҳлӯи фазо барои ҳар компютер ва телефон бо Firefox нигоҳ доштан.</string>
+    <string name="dejavu_sync_start_fresh">Аз нав оғоз кардан</string>
+    <string name="dejavu_sync_start_fresh_zen">Ин варақаҳоро пӯшидан ва ин фазоҳо, варақаҳои часпонидашуда, ҷузвдонҳо ва сомонаҳои муҳимро хориҷ кардан, сипас фазоҳои худро аз Zen гирифтан.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Ин варақаҳоро пӯшидан ва ин фазоҳо, варақаҳои часпонидашуда, ҷузвдонҳо ва сомонаҳои муҳимро хориҷ кардан, сипас варақаҳои компютерҳо ва телефонҳои худро бо Firefox нишон додан.</string>
 </resources>

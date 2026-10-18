@@ -233,8 +233,6 @@
     <string name="dejavu_more_menu_reset">ወደ ነባሪ መልስ</string>
     <string name="dejavu_more_menu_hide_edit">የአርትዕ አዝራርን ደብቅ</string>
     <string name="dejavu_more_menu_hide_edit_summary">በተጨማሪ ምናሌ ግርጌ ያለው የ«አርትዕ» አዝራር</string>
-    <string name="dejavu_settings_sync">ከFirefox ወይም ከZen ጋር አመሳስል</string>
-    <string name="dejavu_sync_hint">የስራ ቦታዎችዎን ከቀለሞቻቸው እና ከአዶዎቻቸው ጋር፣ መያዣዎችን፣ የተሰኩ ትሮችን፣ አስፈላጊዎችን እና አቃፊዎችን በኮምፒውተርዎ ላይ ካለው የZen አሳሽ እና በሌሎች መሣሪያዎችዎ ላይ ካለው Dejavu ጋር አንድ አይነት ያደርጋል። የFirefox ውሂብን የሚያመሳስሉበትን የMozilla መለያ ይጠቀማል።</string>
     <string name="dejavu_sync_zen_hint">በZen ውስጥ ቅንብሮችን፣ ከዚያም Syncን ይክፈቱ፣ እና የጎን አሞሌ ማመሳሰልን ያብሩ። ያልተሰኩ ትሮች አይመሳሰሉም።</string>
     <string name="dejavu_sync_enabled">የስራ ቦታዎችን አመሳስል</string>
     <string name="dejavu_sync_syncing">በማመሳሰል ላይ…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">ቅደም ተከተላቸውን ለመቀየር የስራ ቦታዎችን ይጎትቱ</string>
     <string name="dejavu_feature_split_view">አገናኝን በተከፈለ እይታ ለመክፈት ተጭነው ይያዙ</string>
     <string name="dejavu_sync_choose_about">የFirefox ውሂብን በሚያመሳስሉበት የMozilla መለያ በኩል የስራ ቦታዎችዎን በኮምፒውተርዎ ላይ ካለው Firefox ወይም የZen አሳሽ ጋር ያመሳስሉ።</string>
-    <string name="dejavu_sync_firefox_about">በእያንዳንዱ ኮምፒውተርዎ እና ስልክዎ ላይ ያሉትን የFirefox ክፍት ትሮች እንደ አንድ የስራ ቦታ ያሳያል፣ ወቅታዊም ያደርጋቸዋል። የFirefox ውሂብን የሚያመሳስሉበትን የMozilla መለያ ይጠቀማል።</string>
     <string name="dejavu_sync_firefox_hint">በFirefox ውስጥ ቅንብሮችን፣ ከዚያም Syncን ይክፈቱ፣ እና «ክፍት ትሮች» እንደበራ ይተዉት። በአንድ መሣሪያ የስራ ቦታ ውስጥ የሚከፍቷቸው ወይም የሚዘጓቸው ትሮች እዚያም ይከፈታሉ ወይም ይዘጋሉ። በሌሎች የስራ ቦታዎችዎ ውስጥ ያሉ ትሮች በዚህ መሣሪያ ላይ ይቆያሉ፣ Firefox ደግሞ በሌሎች መሣሪያዎችዎ ስር ይዘረዝራቸዋል።</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">እንዲሁም ያልተሰኩ እና በትር ቡድን ውስጥ ያልሆኑ ትሮችን ያሳያል፤ የተሰኩ ትሮችን እና የትር ቡድኖችን ብቻ ሳይሆን።</string>
     <string name="dejavu_sync_source">የሚመሳሰልበት አሳሽ</string>
     <string name="dejavu_sync_source_none">ገና አልተመረጠም</string>
     <string name="dejavu_sync_choose_title">ከምን ጋር እንደሚያመሳስሉ ይምረጡ</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">ይህ የስራ ቦታ በMozilla መለያዎ ላይ ያለ የአንድ መሣሪያ ክፍት ትሮችን ያሳያል። ስሙ እና አዶው ከዚያ መሣሪያ ይመጣሉ፣ የሚመርጧቸው ቀለሞች ደግሞ በዚህ ስልክ ላይ ይቆያሉ።</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">ስለ ማጭበርበሪያ እና ተንኮል-አዘል ሶፍትዌር ጣቢያዎች ያስጠነቅቃል። ይህን ለማድረግ Dejavu ከGoogle ጋር ይገናኛል።</string>
+    <string name="dejavu_back">ተመለስ</string>
+    <string name="dejavu_sync_start_title">ይዋሃድ ወይስ እንደ አዲስ ይጀመር?</string>
+    <string name="dejavu_sync_start_intro">ይህ መሣሪያ ቀድሞውንም የራሱ የስራ ቦታዎች እና ትሮች አሉት።</string>
+    <string name="dejavu_sync_start_merge">አዋህድ</string>
+    <string name="dejavu_sync_start_merge_zen">ያቆዩዋቸው እና የስራ ቦታዎችዎን ከZen ያክሉ። እነሱም ከZen ጋር ይመሳሰላሉ።</string>
+    <string name="dejavu_sync_start_merge_firefox">ያቆዩዋቸው፣ ለእያንዳንዱ የFirefox ኮምፒውተር እና ስልክ ከሚኖረው የስራ ቦታ ጎን።</string>
+    <string name="dejavu_sync_start_fresh">እንደ አዲስ ጀምር</string>
+    <string name="dejavu_sync_start_fresh_zen">እነዚህን ትሮች ይዝጉ፣ እነዚህን የስራ ቦታዎች፣ የተሰኩ ትሮች፣ አቃፊዎች እና አስፈላጊዎች ያስወግዱ፣ ከዚያም የስራ ቦታዎችዎን ከZen ያግኙ።</string>
+    <string name="dejavu_sync_start_fresh_firefox">እነዚህን ትሮች ይዝጉ፣ እነዚህን የስራ ቦታዎች፣ የተሰኩ ትሮች፣ አቃፊዎች እና አስፈላጊዎች ያስወግዱ፣ ከዚያም የFirefox ኮምፒውተሮችዎ እና ስልኮችዎ ትሮችን ያሳዩ።</string>
 </resources>

@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">Atur ulang ke default</string>
     <string name="dejavu_more_menu_hide_edit">Sembunyikan tombol sunting</string>
     <string name="dejavu_more_menu_hide_edit_summary">Tombol Sunting di bagian bawah Menu lainnya</string>
-    <string name="dejavu_settings_sync">Sinkronkan dengan Firefox atau Zen</string>
-    <string name="dejavu_sync_hint">Menjaga ruang kerja (beserta warna dan ikonnya), wadah, tab yang disemat, situs penting, dan folder Anda tetap sama seperti di Zen Browser pada komputer Anda dan di Dejavu pada perangkat lain Anda. Fitur ini memakai akun Mozilla yang Anda gunakan untuk menyinkronkan data Firefox.</string>
     <string name="dejavu_sync_zen_hint">Di Zen, buka Pengaturan, lalu Sinkronisasi, dan aktifkan sinkronisasi sidebar. Tab yang tidak disemat tidak akan disinkronkan.</string>
     <string name="dejavu_sync_enabled">Sinkronkan ruang kerja</string>
     <string name="dejavu_sync_syncing">Menyinkronkan…</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">Seret ruang kerja untuk mengubah urutannya</string>
     <string name="dejavu_feature_split_view">Tekan lama tautan untuk membukanya dalam tampilan terbagi</string>
     <string name="dejavu_sync_choose_about">Sinkronkan ruang kerja Anda dengan Firefox atau Zen Browser di komputer Anda, melalui akun Mozilla yang Anda gunakan untuk menyinkronkan data Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Menampilkan tab terbuka Firefox di setiap komputer dan ponsel Anda sebagai ruang kerja, dan selalu memperbaruinya. Fitur ini memakai akun Mozilla yang Anda gunakan untuk menyinkronkan data Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Di Firefox, buka Pengaturan, lalu Sinkronisasi, dan biarkan Tab terbuka tetap aktif. Tab yang Anda buka atau tutup di ruang kerja sebuah perangkat juga terbuka atau tertutup di sana. Tab di ruang kerja Anda yang lain tetap berada di perangkat ini, dan Firefox mencantumkannya di bawah perangkat lain Anda.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Fitur ini juga menampilkan tab yang tidak disemat dan tidak berada dalam grup tab, tidak hanya tab yang disemat dan grup tab.</string>
     <string name="dejavu_sync_source">Sinkronkan dengan</string>
     <string name="dejavu_sync_source_none">Belum dipilih</string>
     <string name="dejavu_sync_choose_title">Pilih peramban untuk sinkronisasi</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">Ruang kerja ini menampilkan tab terbuka dari sebuah perangkat di akun Mozilla Anda. Nama dan ikonnya berasal dari perangkat tersebut, dan warna yang Anda pilih tetap ada di ponsel ini.</string>
     <string name="dejavu_settings_safe_browsing">Google Penjelajahan Aman</string>
     <string name="dejavu_settings_safe_browsing_summary">Memperingatkan tentang situs phishing dan malware. Untuk itu, Dejavu menghubungi Google.</string>
+    <string name="dejavu_back">Kembali</string>
+    <string name="dejavu_sync_start_title">Gabungkan atau mulai dari awal?</string>
+    <string name="dejavu_sync_start_intro">Perangkat ini sudah memiliki ruang kerja dan tab sendiri.</string>
+    <string name="dejavu_sync_start_merge">Gabungkan</string>
+    <string name="dejavu_sync_start_merge_zen">Pertahankan semuanya dan tambahkan ruang kerja Anda dari Zen. Semua ini juga disinkronkan ke Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Pertahankan semuanya, di samping ruang kerja untuk setiap komputer dan ponsel dengan Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Mulai dari awal</string>
+    <string name="dejavu_sync_start_fresh_zen">Tutup tab ini dan hapus ruang kerja, tab yang disemat, folder, dan situs penting ini, lalu ambil ruang kerja Anda dari Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Tutup tab ini dan hapus ruang kerja, tab yang disemat, folder, dan situs penting ini, lalu tampilkan tab dari komputer dan ponsel Anda yang menjalankan Firefox.</string>
 </resources>

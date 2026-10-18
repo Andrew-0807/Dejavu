@@ -247,9 +247,10 @@ internal class FirefoxTabsEngine(
         return FirefoxSyncResult.Synced(computers.map { it.name })
     }
 
+    // Every tab of a computer shows: Include unpinned tabs is a setting of syncing with Zen.
     private fun mirror(current: LocalSpaces) = FirefoxMirror(
         now = clock.millis(),
-        normalTabs = current.normalTabs,
+        normalTabs = true,
         tabs = current.tabs?.associateBy { it.id },
         unnamedGroup = local.unnamedGroup,
     )

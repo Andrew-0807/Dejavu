@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">Bẹ̀rẹ̀ padà sí àkọ́kọ́</string>
     <string name="dejavu_more_menu_hide_edit">Fi bọ́tìnnì ṣàtúnṣe pamọ́</string>
     <string name="dejavu_more_menu_hide_edit_summary">Bọ́tìnnì Ṣàtúnṣe ní ìsàlẹ̀ Menu Àfikún</string>
-    <string name="dejavu_settings_sync">Sync pẹ̀lú Firefox tàbí Zen</string>
-    <string name="dejavu_sync_hint">Ó máa ń jẹ́ kí àwọn ibi-iṣẹ́ rẹ, pẹ̀lú àwọ̀ àti icon wọn, container, táàbù tí a fi Pin sí, Pàtàkì, àti fódà, jẹ́ ọ̀kan gẹ́gẹ́ bí ó ṣe rí nínú Zen Browser lórí kọ̀mpútà rẹ àti nínú Dejavu lórí àwọn ẹ̀rọ rẹ mìíràn. Ó ń lo àkáǹtì Mozilla tí ìwọ fi ń ṣe sync dátà Firefox rẹ.</string>
     <string name="dejavu_sync_zen_hint">Nínú Zen, ṣí Settings, lẹ́yìn náà Sync, kí o sì tan sidebar sync. A kì í ṣe sync àwọn táàbù tí a kò fi Pin sí.</string>
     <string name="dejavu_sync_enabled">Ṣe sync àwọn ibi-iṣẹ́</string>
     <string name="dejavu_sync_syncing">Ń ṣe sync...</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">Fa àwọn ibi-iṣẹ́ láti tún ètò wọn ṣe</string>
     <string name="dejavu_feature_split_view">Tẹ líǹkì mọ́ra láti ṣí i nínú split view</string>
     <string name="dejavu_sync_choose_about">Ṣe sync àwọn ibi-iṣẹ́ rẹ pẹ̀lú Firefox tàbí Zen Browser lórí kọ̀mpútà rẹ, nípasẹ̀ àkáǹtì Mozilla tí ìwọ fi ń ṣe sync dátà Firefox rẹ.</string>
-    <string name="dejavu_sync_firefox_about">Ó máa ń fi àwọn táàbù tí ó ṣí nínú Firefox lórí kọ̀mpútà àti fóònù rẹ kọ̀ọ̀kan hàn gẹ́gẹ́ bí ibi-iṣẹ́ kan, ó sì máa ń ṣe update wọn. Ó ń lo àkáǹtì Mozilla tí ìwọ fi ń ṣe sync dátà Firefox rẹ.</string>
     <string name="dejavu_sync_firefox_hint">Nínú Firefox, ṣí Settings, lẹ́yìn náà Sync, kí o sì fi Open tabs sílẹ̀ ní títàn. Àwọn táàbù tí o bá ṣí tàbí pa dé nínú ibi-iṣẹ́ ẹ̀rọ kan yóò tún ṣí tàbí pa dé lórí ẹ̀rọ náà. Àwọn táàbù tí ó wà nínú àwọn ibi-iṣẹ́ rẹ mìíràn yóò wà lórí ẹ̀rọ yìí, Firefox yóò sì to wọ́n sí abẹ́ àwọn ẹ̀rọ rẹ mìíràn.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Ó tún ń fi àwọn táàbù tí a kò fi Pin sí, tí kò sì sí nínú ẹgbẹ́ táàbù hàn, kì í ṣe àwọn táàbù tí a fi Pin sí àti ẹgbẹ́ táàbù nìkan.</string>
     <string name="dejavu_sync_source">Sync pẹ̀lú</string>
     <string name="dejavu_sync_source_none">A kò tí ì yan</string>
     <string name="dejavu_sync_choose_title">Yan ohun tí o fẹ́ ṣe sync pẹ̀lú</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">Ibi-iṣẹ́ yìí ń fi àwọn táàbù tí ó ṣí lórí ẹ̀rọ kan nínú àkáǹtì Mozilla rẹ hàn. Orúkọ àti Icon rẹ̀ wá láti ẹ̀rọ náà, àwọn àwọ̀ tí o bá yàn yóò sì wà lórí fóònù yìí.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Ó máa ń kìlọ̀ nípa àwọn ojú-òpó phishing àti malware. Láti ṣe èyí, Dejavu máa ń kàn sí Google.</string>
+    <string name="dejavu_back">Padà</string>
+    <string name="dejavu_sync_start_title">Dàpọ̀ tàbí bẹ̀rẹ̀ lákọ̀tun?</string>
+    <string name="dejavu_sync_start_intro">Ẹ̀rọ yìí ti ní àwọn ibi-iṣẹ́ àti táàbù tirẹ̀ tẹ́lẹ̀.</string>
+    <string name="dejavu_sync_start_merge">Dàpọ̀</string>
+    <string name="dejavu_sync_start_merge_zen">Pa wọ́n mọ́ kí o sì fi àwọn ibi-iṣẹ́ rẹ láti Zen kún wọn. A óò ṣe sync wọn sí Zen pẹ̀lú.</string>
+    <string name="dejavu_sync_start_merge_firefox">Pa wọ́n mọ́, lẹ́gbẹ̀ẹ́ ibi-iṣẹ́ kan fún kọ̀mpútà àti fóònù Firefox kọ̀ọ̀kan.</string>
+    <string name="dejavu_sync_start_fresh">Bẹ̀rẹ̀ lákọ̀tun</string>
+    <string name="dejavu_sync_start_fresh_zen">Pa àwọn táàbù wọ̀nyí dé, kí o sì yọ àwọn ibi-iṣẹ́, táàbù tí a fi Pin sí, fódà àti Pàtàkì wọ̀nyí kúrò, lẹ́yìn náà gba àwọn ibi-iṣẹ́ rẹ láti Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Pa àwọn táàbù wọ̀nyí dé, kí o sì yọ àwọn ibi-iṣẹ́, táàbù tí a fi Pin sí, fódà àti Pàtàkì wọ̀nyí kúrò, lẹ́yìn náà fi àwọn táàbù ti àwọn kọ̀mpútà àti fóònù Firefox rẹ hàn.</string>
 </resources>

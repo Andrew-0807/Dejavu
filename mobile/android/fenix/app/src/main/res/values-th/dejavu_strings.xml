@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">รีเซ็ตเป็นค่าเริ่มต้น</string>
     <string name="dejavu_more_menu_hide_edit">ซ่อนปุ่มแก้ไข</string>
     <string name="dejavu_more_menu_hide_edit_summary">ปุ่มแก้ไขที่ด้านล่างของเมนูเพิ่มเติม</string>
-    <string name="dejavu_settings_sync">ซิงค์กับ Firefox หรือ Zen</string>
-    <string name="dejavu_sync_hint">ทำให้พื้นที่ทำงาน (พร้อมสีและไอคอน) คอนเทนเนอร์ แท็บที่ปักหมุด เว็บที่ใช้บ่อย และโฟลเดอร์ของคุณเหมือนกันทั้งใน Zen Browser บนคอมพิวเตอร์และใน Dejavu บนอุปกรณ์อื่นของคุณ โดยใช้บัญชี Mozilla เดียวกับที่คุณใช้ซิงค์ข้อมูล Firefox</string>
     <string name="dejavu_sync_zen_hint">ใน Zen ให้เปิดการตั้งค่า จากนั้นไปที่การซิงค์ และเปิดใช้งานการซิงค์แถบด้านข้าง แท็บที่ไม่ได้ปักหมุดจะไม่ถูกซิงค์</string>
     <string name="dejavu_sync_enabled">ซิงค์พื้นที่ทำงาน</string>
     <string name="dejavu_sync_syncing">กำลังซิงค์…</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">ลากพื้นที่ทำงานเพื่อจัดลำดับใหม่</string>
     <string name="dejavu_feature_split_view">กดลิงก์ค้างไว้เพื่อเปิดแบบแบ่งหน้าจอ</string>
     <string name="dejavu_sync_choose_about">ซิงค์พื้นที่ทำงานของคุณกับ Firefox หรือ Zen Browser บนคอมพิวเตอร์ของคุณ ผ่านบัญชี Mozilla เดียวกับที่คุณใช้ซิงค์ข้อมูล Firefox</string>
-    <string name="dejavu_sync_firefox_about">แสดงแท็บที่เปิดอยู่ใน Firefox บนคอมพิวเตอร์และโทรศัพท์แต่ละเครื่องของคุณเป็นพื้นที่ทำงาน และอัปเดตให้เป็นปัจจุบันอยู่เสมอ โดยใช้บัญชี Mozilla เดียวกับที่คุณใช้ซิงค์ข้อมูล Firefox</string>
     <string name="dejavu_sync_firefox_hint">ใน Firefox ให้เปิดการตั้งค่า จากนั้นไปที่การซิงค์ และเปิด “แท็บที่เปิดอยู่” ไว้ แท็บที่คุณเปิดหรือปิดในพื้นที่ทำงานของอุปกรณ์เครื่องหนึ่งจะเปิดหรือปิดบนเครื่องนั้นด้วย แท็บในพื้นที่ทำงานอื่นของคุณจะอยู่บนอุปกรณ์นี้ และ Firefox จะแสดงแท็บเหล่านั้นภายใต้อุปกรณ์อื่นของคุณ</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">แสดงแท็บที่ไม่ได้ปักหมุดและไม่ได้อยู่ในกลุ่มแท็บด้วย ไม่ใช่แค่แท็บที่ปักหมุดและกลุ่มแท็บเท่านั้น</string>
     <string name="dejavu_sync_source">ซิงค์กับ</string>
     <string name="dejavu_sync_source_none">ยังไม่ได้เลือก</string>
     <string name="dejavu_sync_choose_title">เลือกว่าจะซิงค์กับอะไร</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">พื้นที่ทำงานนี้แสดงแท็บที่เปิดอยู่ของอุปกรณ์เครื่องหนึ่งในบัญชี Mozilla ของคุณ ชื่อและไอคอนมาจากอุปกรณ์เครื่องนั้น และสีที่คุณเลือกจะอยู่บนโทรศัพท์เครื่องนี้</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">เตือนเกี่ยวกับเว็บไซต์ฟิชชิงและมัลแวร์ ในการทำเช่นนี้ Dejavu จะติดต่อ Google</string>
+    <string name="dejavu_back">ย้อนกลับ</string>
+    <string name="dejavu_sync_start_title">รวมเข้าด้วยกันหรือเริ่มต้นใหม่?</string>
+    <string name="dejavu_sync_start_intro">อุปกรณ์นี้มีพื้นที่ทำงานและแท็บของตัวเองอยู่แล้ว</string>
+    <string name="dejavu_sync_start_merge">รวมเข้าด้วยกัน</string>
+    <string name="dejavu_sync_start_merge_zen">เก็บไว้และเพิ่มพื้นที่ทำงานของคุณจาก Zen สิ่งเหล่านี้จะซิงค์ไปยัง Zen ด้วย</string>
+    <string name="dejavu_sync_start_merge_firefox">เก็บไว้ควบคู่กับพื้นที่ทำงานของคอมพิวเตอร์และโทรศัพท์ที่ใช้ Firefox แต่ละเครื่อง</string>
+    <string name="dejavu_sync_start_fresh">เริ่มต้นใหม่</string>
+    <string name="dejavu_sync_start_fresh_zen">ปิดแท็บเหล่านี้และนำพื้นที่ทำงาน แท็บที่ปักหมุด โฟลเดอร์ และเว็บที่ใช้บ่อยเหล่านี้ออก แล้วรับพื้นที่ทำงานของคุณจาก Zen</string>
+    <string name="dejavu_sync_start_fresh_firefox">ปิดแท็บเหล่านี้และนำพื้นที่ทำงาน แท็บที่ปักหมุด โฟลเดอร์ และเว็บที่ใช้บ่อยเหล่านี้ออก แล้วแสดงแท็บของคอมพิวเตอร์และโทรศัพท์ที่ใช้ Firefox ของคุณ</string>
 </resources>

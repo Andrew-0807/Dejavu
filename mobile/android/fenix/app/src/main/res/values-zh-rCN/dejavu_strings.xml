@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">恢复默认</string>
     <string name="dejavu_more_menu_hide_edit">隐藏编辑按钮</string>
     <string name="dejavu_more_menu_hide_edit_summary">更多菜单底部的“编辑”按钮</string>
-    <string name="dejavu_settings_sync">与 Firefox 或 Zen 同步</string>
-    <string name="dejavu_sync_hint">使您的工作区(包括颜色和图标)、容器、固定标签页、常用网站和文件夹，与您计算机上的 Zen Browser 以及其他设备上的 Dejavu 保持一致。使用的是您同步 Firefox 数据所用的 Mozilla 账户。</string>
     <string name="dejavu_sync_zen_hint">在 Zen 中打开“设置”,然后进入“同步”,开启侧边栏同步。未固定的标签页不会同步。</string>
     <string name="dejavu_sync_enabled">同步工作区</string>
     <string name="dejavu_sync_syncing">正在同步…</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">拖动工作区以调整顺序</string>
     <string name="dejavu_feature_split_view">长按链接，在分屏视图中打开</string>
     <string name="dejavu_sync_choose_about">通过您同步 Firefox 数据所用的 Mozilla 账户，将工作区与您计算机上的 Firefox 或 Zen Browser 同步。</string>
-    <string name="dejavu_sync_firefox_about">将您每台计算机和手机上 Firefox 中打开的标签页显示为一个工作区，并保持更新。使用的是您同步 Firefox 数据所用的 Mozilla 账户。</string>
     <string name="dejavu_sync_firefox_hint">在 Firefox 中打开“设置”，然后进入“同步”，保持“打开的标签页”处于开启状态。您在某台设备的工作区中打开或关闭的标签页，也会在该设备上打开或关闭。您其他工作区中的标签页会保留在此设备上，Firefox 会将它们列在您的其他设备下。</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">同时显示既未固定、也不在标签页群组中的标签页，而不仅仅是固定标签页和标签页群组。</string>
     <string name="dejavu_sync_source">同步对象</string>
     <string name="dejavu_sync_source_none">尚未选择</string>
     <string name="dejavu_sync_choose_title">选择同步对象</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">此工作区显示您 Mozilla 账户中某台设备上打开的标签页。其名称和图标来自该设备，您选择的颜色会保留在此手机上。</string>
     <string name="dejavu_settings_safe_browsing">Google 安全浏览</string>
     <string name="dejavu_settings_safe_browsing_summary">针对网络钓鱼和恶意软件网站发出警告。为此，Dejavu 会联系 Google。</string>
+    <string name="dejavu_back">上一步</string>
+    <string name="dejavu_sync_start_title">合并还是重新开始？</string>
+    <string name="dejavu_sync_start_intro">此设备上已有自己的工作区和标签页。</string>
+    <string name="dejavu_sync_start_merge">合并</string>
+    <string name="dejavu_sync_start_merge_zen">保留它们，并添加您在 Zen 中的工作区。它们也会同步到 Zen。</string>
+    <string name="dejavu_sync_start_merge_firefox">保留它们，并为每台装有 Firefox 的计算机和手机各添加一个工作区。</string>
+    <string name="dejavu_sync_start_fresh">重新开始</string>
+    <string name="dejavu_sync_start_fresh_zen">关闭这些标签页，移除这些工作区、固定标签页、文件夹和常用网站，然后获取您在 Zen 中的工作区。</string>
+    <string name="dejavu_sync_start_fresh_firefox">关闭这些标签页，移除这些工作区、固定标签页、文件夹和常用网站，然后显示您装有 Firefox 的计算机和手机上的标签页。</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Restabelecer os valores predeterminados</string>
     <string name="dejavu_more_menu_hide_edit">Agochar o botón de edición</string>
     <string name="dejavu_more_menu_hide_edit_summary">O botón Editar da parte de abaixo do menú «Máis»</string>
-    <string name="dejavu_settings_sync">Sincronizar con Firefox ou Zen</string>
-    <string name="dejavu_sync_hint">Mantén os teus espazos de traballo coas súas cores e iconas, contedores, lapelas fixadas, esenciais e cartafoles igual que en Zen Browser no teu ordenador e en Dejavu nos teus outros dispositivos. Usa a conta de Mozilla coa que sincronizas os datos de Firefox.</string>
     <string name="dejavu_sync_zen_hint">En Zen, abre Configuración e logo Sincronización, e activa a sincronización da barra lateral. As lapelas que non están fixadas non se sincronizan.</string>
     <string name="dejavu_sync_enabled">Sincronizar espazos de traballo</string>
     <string name="dejavu_sync_syncing">Sincronizando…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Arrastra os espazos de traballo para reordenalos</string>
     <string name="dejavu_feature_split_view">Preme prolongadamente unha ligazón para abrila en vista dividida</string>
     <string name="dejavu_sync_choose_about">Sincroniza os teus espazos de traballo con Firefox ou Zen Browser no teu ordenador, a través da conta de Mozilla coa que sincronizas os datos de Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Amosa as lapelas abertas de Firefox en cada un dos teus ordenadores e teléfonos como un espazo de traballo e mantenas ao día. Usa a conta de Mozilla coa que sincronizas os datos de Firefox.</string>
     <string name="dejavu_sync_firefox_hint">En Firefox, abre Configuración e logo Sincronización, e mantén activada a opción Lapelas abertas. As lapelas que abres ou pechas no espazo de traballo dun dispositivo tamén se abren ou se pechan alí. As lapelas dos teus outros espazos de traballo quedan neste dispositivo, e Firefox amósaas entre as dos teus outros dispositivos.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Tamén amosa as lapelas que non están fixadas nin nun grupo de lapelas, non só as lapelas fixadas e os grupos de lapelas.</string>
     <string name="dejavu_sync_source">Sincronizar con</string>
     <string name="dejavu_sync_source_none">Aínda sen escoller</string>
     <string name="dejavu_sync_choose_title">Escolle con que sincronizar</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Este espazo de traballo amosa as lapelas abertas dun dispositivo da túa conta de Mozilla. O seu nome e a súa icona veñen dese dispositivo, e as cores que escollas quedan neste teléfono.</string>
     <string name="dejavu_settings_safe_browsing">Navegación segura de Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avisa dos sitios de phishing e malware. Para iso, Dejavu conéctase con Google.</string>
+    <string name="dejavu_back">Atrás</string>
+    <string name="dejavu_sync_start_title">Combinar ou comezar de cero?</string>
+    <string name="dejavu_sync_start_intro">Este dispositivo xa ten os seus propios espazos de traballo e lapelas.</string>
+    <string name="dejavu_sync_start_merge">Combinar</string>
+    <string name="dejavu_sync_start_merge_zen">Consérvaos e engade os teus espazos de traballo de Zen. Tamén se sincronizan con Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Consérvaos, xunto a un espazo de traballo para cada ordenador e teléfono con Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Comezar de cero</string>
+    <string name="dejavu_sync_start_fresh_zen">Pecha estas lapelas e elimina os espazos de traballo, as lapelas fixadas, os cartafoles e os esenciais, e despois trae os teus espazos de traballo de Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Pecha estas lapelas e elimina os espazos de traballo, as lapelas fixadas, os cartafoles e os esenciais, e despois amosa as lapelas dos teus ordenadores e teléfonos con Firefox.</string>
 </resources>

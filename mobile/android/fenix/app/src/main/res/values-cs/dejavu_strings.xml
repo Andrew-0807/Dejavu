@@ -212,8 +212,6 @@
     <string name="dejavu_more_menu_reset">Obnovit výchozí</string>
     <string name="dejavu_more_menu_hide_edit">Skrýt tlačítko úprav</string>
     <string name="dejavu_more_menu_hide_edit_summary">Tlačítko Upravit v dolní části nabídky Více</string>
-    <string name="dejavu_settings_sync">Synchronizace s Firefoxem nebo Zenem</string>
-    <string name="dejavu_sync_hint">Udržuje vaše pracovní prostory s jejich barvami a ikonami, kontejnery, připnuté panely, Oblíbené a složky stejné jako v Zen Browseru v počítači a v Dejavu na dalších zařízeních. Používá k tomu účet Mozilly, se kterým synchronizujete data Firefoxu.</string>
     <string name="dejavu_sync_zen_hint">V Zen otevřete Nastavení, poté Synchronizaci, a zapněte synchronizaci bočního panelu. Nepřipnuté panely se nesynchronizují.</string>
     <string name="dejavu_sync_enabled">Synchronizovat pracovní prostory</string>
     <string name="dejavu_sync_syncing">Synchronizuje se…</string>
@@ -299,9 +297,7 @@
     <string name="dejavu_feature_workspace_order">Přetažením pracovních prostorů změníte jejich pořadí</string>
     <string name="dejavu_feature_split_view">Podržením odkazu ho otevřete v děleném zobrazení</string>
     <string name="dejavu_sync_choose_about">Synchronizujte své pracovní prostory s Firefoxem nebo Zen Browserem v počítači pomocí účtu Mozilly, se kterým synchronizujete data Firefoxu.</string>
-    <string name="dejavu_sync_firefox_about">Zobrazuje otevřené panely Firefoxu z každého vašeho počítače a telefonu jako pracovní prostor a udržuje je aktuální. Používá k tomu účet Mozilly, se kterým synchronizujete data Firefoxu.</string>
     <string name="dejavu_sync_firefox_hint">Ve Firefoxu otevřete Nastavení, poté Synchronizaci, a nechte zapnuté Otevřené panely. Panely, které otevřete nebo zavřete v pracovním prostoru zařízení, se otevřou nebo zavřou i na něm. Panely ve vašich ostatních pracovních prostorech zůstávají na tomto zařízení a Firefox je ukazuje mezi vašimi dalšími zařízeními.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Také zobrazuje panely, které nejsou připnuté ani ve skupině panelů, nejen připnuté panely a skupiny panelů.</string>
     <string name="dejavu_sync_source">Synchronizovat s</string>
     <string name="dejavu_sync_source_none">Zatím nevybráno</string>
     <string name="dejavu_sync_choose_title">Vyberte, s čím synchronizovat</string>
@@ -344,4 +340,13 @@
     <string name="dejavu_workspace_device_note">Tento pracovní prostor zobrazuje otevřené panely zařízení z vašeho účtu Mozilly. Jeho název a ikona pocházejí z daného zařízení a barvy, které zvolíte, zůstanou v tomto telefonu.</string>
     <string name="dejavu_settings_safe_browsing">Bezpečné prohlížení Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Varuje před phishingovými stránkami a stránkami s malwarem. Dejavu se kvůli tomu spojuje se společností Google.</string>
+    <string name="dejavu_back">Zpět</string>
+    <string name="dejavu_sync_start_title">Sloučit, nebo začít načisto?</string>
+    <string name="dejavu_sync_start_intro">Toto zařízení už má vlastní pracovní prostory a panely.</string>
+    <string name="dejavu_sync_start_merge">Sloučit</string>
+    <string name="dejavu_sync_start_merge_zen">Ponechat je a přidat vaše pracovní prostory ze Zenu. Synchronizují se také se Zenem.</string>
+    <string name="dejavu_sync_start_merge_firefox">Ponechat je vedle pracovního prostoru pro každý počítač a telefon s Firefoxem.</string>
+    <string name="dejavu_sync_start_fresh">Začít načisto</string>
+    <string name="dejavu_sync_start_fresh_zen">Zavřít tyto panely, odstranit tyto pracovní prostory, připnuté panely, složky a Oblíbené a pak načíst vaše pracovní prostory ze Zenu.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Zavřít tyto panely, odstranit tyto pracovní prostory, připnuté panely, složky a Oblíbené a pak zobrazit panely vašich počítačů a telefonů s Firefoxem.</string>
 </resources>

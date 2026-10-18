@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">ڈیفالٹ ٹی ری سیٹ کبو</string>
     <string name="dejavu_more_menu_hide_edit">ایڈٹ بٹن لکاؤ</string>
     <string name="dejavu_more_menu_hide_edit_summary">مور مینو نا تلی ایڈٹ بٹن</string>
-    <string name="dejavu_settings_sync">Firefox یا Zen گدا سنک کبو</string>
-    <string name="dejavu_sync_hint">نی نا ورک سپیساک اے نا رنگاک او آئیکناک، کنٹینراک، پن ٹیباک، ضروری چیزاک او فولڈراک گدا، نی نا کمپیوٹر پار Zen Browser اٹ او نی نا ہور ڈیوائساک پار Dejavu اٹ جہو راکھ ہن۔ اے او Mozilla اکاؤنٹ استعمال ہس جیدا گدا نی Firefox ڈیٹا سنک کن۔</string>
     <string name="dejavu_sync_zen_hint">Zen اٹ، سیٹنگاک مل، پہ Sync، او سائیڈبار سنک آن کبو۔ جہ ٹیباک پن نی ہن اے سنک نی ہن۔</string>
     <string name="dejavu_sync_enabled">ورک سپیساک سنک کبو</string>
     <string name="dejavu_sync_syncing">سنک ہننا…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">ترتیب بدل کننگ کن ورک سپیساتے کشّبو</string>
     <string name="dejavu_feature_split_view">لنکے اسپلٹ ویو ٹی ملنگ کن دباسا ہلّبو</string>
     <string name="dejavu_sync_choose_about">نی نا کمپیوٹر پار Firefox یا Zen Browser گدا نی نا ورک سپیساک سنک کبو۔ اے او Mozilla اکاؤنٹ استعمال ہس جیدا گدا نی Firefox ڈیٹا سنک کن۔</string>
-    <string name="dejavu_sync_firefox_about">نی نا ہر کمپیوٹر او فون پار Firefox نا ملوکا ٹیباک ورک سپیس اس طور دکھ ہن، او اے تازہ راکھ ہن۔ اے او Mozilla اکاؤنٹ استعمال ہس جیدا گدا نی Firefox ڈیٹا سنک کن۔</string>
     <string name="dejavu_sync_firefox_hint">Firefox اٹ، سیٹنگاک مل، پہ Sync، او «ملوکا ٹیبآک» آن راکھ۔ ڈیوائس اس نا ورک سپیس اٹ نی مل کنا یا بند کنا ٹیباک اود بی مل ہن یا بند ہن۔ نی نا ہور ورک سپیساک نا ٹیباک اے ڈیوائس پار رہ ہن، او Firefox اے نی نا ہور ڈیوائساک نا تلی دکھ ہن۔</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">او ٹیباک ام دکھ ہن جہ نہ پن ہن او نہ ٹیب گروپ اٹ ہن، پن ٹیباک او ٹیب گروپاک تئو نئے۔</string>
     <string name="dejavu_sync_source">سنک براؤزر</string>
     <string name="dejavu_sync_source_none">ہلے تک چُن نی ہتین</string>
     <string name="dejavu_sync_choose_title">سنک نا واسطے براؤزر چُن</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">اے ورک سپیس نی نا Mozilla اکاؤنٹ نا ڈیوائس اس نا ملوکا ٹیباک دکھ ہن۔ اے نا پن او آئیکن او ڈیوائس ٹی ہن، او نی چُنتین رنگاک اے فون پار رہ ہن۔</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">فشنگ او میلویئر سائٹاک نا بارو اٹ خبردار کیک۔ دا کن کرسہ کن Dejavu، Google اٹ رابطہ کیک۔</string>
+    <string name="dejavu_back">پدا</string>
+    <string name="dejavu_sync_start_title">یکجا کبو یا دوبارہ شروع کبو؟</string>
+    <string name="dejavu_sync_start_intro">اے ڈیوائس نا پہلے ٹی اپنا ورک سپیساک او ٹیباک ہن۔</string>
+    <string name="dejavu_sync_start_merge">یکجا کبو</string>
+    <string name="dejavu_sync_start_merge_zen">اے راکھ او Zen ٹی نی نا ورک سپیساک شامل کبو۔ اے بی Zen گدا سنک ہن۔</string>
+    <string name="dejavu_sync_start_merge_firefox">اے راکھ، او ہر Firefox کمپیوٹر او فون نا اپنا ورک سپیس ہس۔</string>
+    <string name="dejavu_sync_start_fresh">دوبارہ شروع کبو</string>
+    <string name="dejavu_sync_start_fresh_zen">اے ٹیباک بند کبو او اے ورک سپیساک، پن ٹیباک، فولڈراک او ضروری چیزاک ہٹاؤ، پہ Zen ٹی نی نا ورک سپیساک حاصل کبو۔</string>
+    <string name="dejavu_sync_start_fresh_firefox">اے ٹیباک بند کبو او اے ورک سپیساک، پن ٹیباک، فولڈراک او ضروری چیزاک ہٹاؤ، پہ نی نا Firefox کمپیوٹر او فوناک نا ٹیباک دکھاؤ۔</string>
 </resources>

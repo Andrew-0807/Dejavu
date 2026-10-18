@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Riprìstina is valores predefinidos</string>
     <string name="dejavu_more_menu_hide_edit">Cua su butone de modìfica</string>
     <string name="dejavu_more_menu_hide_edit_summary">Su butone Modìfica in fundu de su menu Prus</string>
-    <string name="dejavu_settings_sync">Sincroniza cun Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Mantenit is ispàtzios de traballu tuos cun is colores e iconas issoro, cuntenidores, ischedas fissadas, essentziales e cartellas comente in Zen Browser in su computer tuo e in Dejavu in is àteros dispositivos tuos. Impreat su contu Mozilla cun su cale sincronizas is datos de Firefox.</string>
     <string name="dejavu_sync_zen_hint">In Zen, aberi Cunfiguratzione, a pustis Sincronizatzione, e ativa sa sincronizatzione de sa barra laterale. Is ischedas chi no sunt fissadas no si sincronizant.</string>
     <string name="dejavu_sync_enabled">Sincroniza is ispàtzios de traballu</string>
     <string name="dejavu_sync_syncing">Sincronizende…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Trisina is ispàtzios de traballu pro cambiare s\'òrdine issoro</string>
     <string name="dejavu_feature_split_view">Pretziona a longu unu ligàmene pro l\'abèrrere in vista partzida</string>
     <string name="dejavu_sync_choose_about">Sincroniza is ispàtzios de traballu tuos cun Firefox o Zen Browser in su computer tuo, pro mèdiu de su contu Mozilla cun su cale sincronizas is datos de Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Ammustrat is ischedas abertas de Firefox de dònnia computer e telèfonu tuo comente un ispàtziu de traballu, e las mantenet agiornadas. Impreat su contu Mozilla cun su cale sincronizas is datos de Firefox.</string>
     <string name="dejavu_sync_firefox_hint">In Firefox, aberi Cunfiguratzione, a pustis Sincronizatzione, e mantene ativadas is Ischedas abertas. Is ischedas chi aberis o serras in s\'ispàtziu de traballu de unu dispositivu si aberint o si serrant fintzas inie. Is ischedas in is àteros ispàtzios de traballu tuos abarrant in custu dispositivu, e Firefox las ammustrat asuta de is àteros dispositivos tuos.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Ammustrat fintzas is ischedas chi no sunt nen fissadas nen in unu grupu de ischedas, no isceti is ischedas fissadas e is grupos de ischedas.</string>
     <string name="dejavu_sync_source">Sincroniza cun</string>
     <string name="dejavu_sync_source_none">Non seberadu ancora</string>
     <string name="dejavu_sync_choose_title">Sèbera cun ite sincronizare</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Custu ispàtziu de traballu ammustrat is ischedas abertas de unu dispositivu de su contu Mozilla tuo. Su nòmine e s\'icona benint dae cussu dispositivu, e is colores chi seberas abarrant in custu telèfonu.</string>
     <string name="dejavu_settings_safe_browsing">Navigatzione segura de Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avisat de sos sitos de phishing e de malware. Pro lu fàghere, Dejavu si connetet a Google.</string>
+    <string name="dejavu_back">A coa</string>
+    <string name="dejavu_sync_start_title">Unire o cumintzare dae nou?</string>
+    <string name="dejavu_sync_start_intro">Custu dispositivu tenet giai ispàtzios de traballu e ischedas suos.</string>
+    <string name="dejavu_sync_start_merge">Uni</string>
+    <string name="dejavu_sync_start_merge_zen">Mantenelos e agiunghe is ispàtzios de traballu tuos de Zen. Fintzas issos si sincronizant cun Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Mantenelos a costadu de un ispàtziu de traballu pro dònnia computer e telèfonu cun Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Cumintza dae nou</string>
+    <string name="dejavu_sync_start_fresh_zen">Serra custas ischedas e tira custos ispàtzios de traballu, ischedas fissadas, cartellas e essentziales, a pustis piga is ispàtzios de traballu tuos dae Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Serra custas ischedas e tira custos ispàtzios de traballu, ischedas fissadas, cartellas e essentziales, a pustis ammustra is ischedas de is computer e de is telèfonos tuos cun Firefox.</string>
 </resources>

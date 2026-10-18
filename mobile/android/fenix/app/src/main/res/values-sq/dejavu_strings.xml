@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Riktheje te parazgjedhja</string>
     <string name="dejavu_more_menu_hide_edit">Fshihe butonin e përpunimit</string>
     <string name="dejavu_more_menu_hide_edit_summary">Butoni Përpunoje në fund të menusë «Më Tepër»</string>
-    <string name="dejavu_settings_sync">Njëkohësoje me Firefox-in ose Zen-in</string>
-    <string name="dejavu_sync_hint">I mban hapësirat tuaja të punës, me ngjyrat dhe ikonat e tyre, kontejnerët, skedat e fiksuara, thelbësoret dhe dosjet, njësoj si në Zen Browser në kompjuterin tuaj dhe në Dejavu në pajisjet tuaja të tjera. Përdor llogarinë Mozilla me të cilën njëkohësoni të dhënat e Firefox-it.</string>
     <string name="dejavu_sync_zen_hint">Në Zen, hapni Rregullime, mandej Njëkohësim, dhe aktivizoni njëkohësimin e panelit anësor. Skedat që nuk janë të fiksuara nuk njëkohësohen.</string>
     <string name="dejavu_sync_enabled">Njëkohëso hapësirat e punës</string>
     <string name="dejavu_sync_syncing">Po njëkohësohet…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Tërhiqini hapësirat e punës, që t\'u ndryshoni radhën</string>
     <string name="dejavu_feature_split_view">Bëni prekje të gjatë mbi një lidhje, që ta hapni në pamje të ndarë</string>
     <string name="dejavu_sync_choose_about">Njëkohësoni hapësirat tuaja të punës me Firefox-in ose Zen Browser në kompjuterin tuaj, përmes llogarisë Mozilla me të cilën njëkohësoni të dhënat e Firefox-it.</string>
-    <string name="dejavu_sync_firefox_about">Shfaq skedat e hapura të Firefox-it në secilin nga kompjuterët dhe telefonat tuaj si një hapësirë pune dhe i mban të përditësuara. Përdor llogarinë Mozilla me të cilën njëkohësoni të dhënat e Firefox-it.</string>
     <string name="dejavu_sync_firefox_hint">Në Firefox, hapni Rregullime, mandej Njëkohësim, dhe mbajeni të aktivizuar «Skeda të hapura». Skedat që hapni ose mbyllni në hapësirën e punës të një pajisjeje hapen ose mbyllen edhe atje. Skedat në hapësirat tuaja të tjera të punës mbeten në këtë pajisje dhe Firefox-i i shfaq nën pajisjet tuaja të tjera.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Gjithashtu shfaq skedat që nuk janë as të fiksuara, as në një grup skedash, jo vetëm skedat e fiksuara dhe grupet e skedave.</string>
     <string name="dejavu_sync_source">Njëkohësim me</string>
     <string name="dejavu_sync_source_none">Ende pa u zgjedhur</string>
     <string name="dejavu_sync_choose_title">Zgjidhni me çfarë të njëkohësohet</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Kjo hapësirë pune shfaq skedat e hapura të një pajisjeje në llogarinë tuaj Mozilla. Emri dhe ikona e saj vijnë nga ajo pajisje, ndërsa ngjyrat që zgjidhni mbeten në këtë telefon.</string>
     <string name="dejavu_settings_safe_browsing">Shfletim i sigurt nga Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Paralajmëron për sajte phishing dhe malware. Për ta bërë këtë, Dejavu lidhet me Google-in.</string>
+    <string name="dejavu_back">Mbrapsht</string>
+    <string name="dejavu_sync_start_title">Të përzihen, apo të fillohet nga e para?</string>
+    <string name="dejavu_sync_start_intro">Kjo pajisje ka tashmë hapësirat e veta të punës dhe skedat e veta.</string>
+    <string name="dejavu_sync_start_merge">Përzieji</string>
+    <string name="dejavu_sync_start_merge_zen">Mbajini dhe shtoni hapësirat tuaja të punës nga Zen-i. Edhe ato njëkohësohen me Zen-in.</string>
+    <string name="dejavu_sync_start_merge_firefox">Mbajini, krahas një hapësire pune për çdo kompjuter dhe telefon me Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Fillo nga e para</string>
+    <string name="dejavu_sync_start_fresh_zen">Mbyllini këto skeda dhe hiqni këto hapësira pune, skeda të fiksuara, dosje dhe thelbësore, mandej merrni hapësirat tuaja të punës nga Zen-i.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Mbyllini këto skeda dhe hiqni këto hapësira pune, skeda të fiksuara, dosje dhe thelbësore, mandej shfaqni skedat e kompjuterëve dhe telefonave tuaj me Firefox.</string>
 </resources>

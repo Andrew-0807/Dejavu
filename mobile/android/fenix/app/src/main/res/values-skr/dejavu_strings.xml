@@ -233,8 +233,6 @@
     <string name="dejavu_more_menu_reset">ڈیفالٹ تے ری سیٹ کرو</string>
     <string name="dejavu_more_menu_hide_edit">تبدیلی آلا بٹݨ لُکاؤ</string>
     <string name="dejavu_more_menu_hide_edit_summary">ودھیک مینیو دے تلے آلا تبدیلی بٹݨ</string>
-    <string name="dejavu_settings_sync">Firefox یا Zen نال ہم وقت کرو</string>
-    <string name="dejavu_sync_hint">ایہ تہاݙیاں ورک سپیساں (انہاں دے رنگاں تے آئیکاناں سمیت)، کنٹینر، پن تھیاں ٹیباں، ضروری ٹیباں تے فولڈر اوہو جہے رکھدا ہے جہڑے تہاݙے کمپیوٹر تے Zen Browser وچ تے تہاݙیاں ٻیاں ڈیوائساں تے Dejavu وچ ہن۔ ایہ اوہو Mozilla کھاتہ ورتیندا ہے جیندے نال تساں Firefox ڈیٹا ہم وقت کریندے ہو۔</string>
     <string name="dejavu_sync_zen_hint">Zen وچ ترتیباں کھولو، ول ہم وقت کرݨ، تے سائیڈ بار ہم وقت کرݨ چالو کرو۔ جہڑیاں ٹیباں پن کائنی، اوہ ہم وقت کائنی تھیندیاں۔</string>
     <string name="dejavu_sync_enabled">ورک سپیساں ہم وقت کرو</string>
     <string name="dejavu_sync_syncing">ہم وقت تھیندا پئے…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">ترتیب بدلݨ کیتے ورک سپیساں کوں گھسیٹو</string>
     <string name="dejavu_feature_split_view">لنک کوں ونڈے نظارے وچ کھولݨ کیتے اونکوں دبا تے رکھو</string>
     <string name="dejavu_sync_choose_about">آپݨیاں ورک سپیساں آپݨے کمپیوٹر تے Firefox یا Zen Browser نال ہم وقت کرو، اوں Mozilla کھاتے راہیں جیندے نال تساں Firefox ڈیٹا ہم وقت کریندے ہو۔</string>
-    <string name="dejavu_sync_firefox_about">ایہ تہاݙے ہر کمپیوٹر تے فون دے Firefox دیاں کھلیاں ٹیباں کوں ہک ورک سپیس دے طور تے ݙکھیندا ہے، تے انہاں کوں تازہ رکھدا ہے۔ ایہ اوہو Mozilla کھاتہ ورتیندا ہے جیندے نال تساں Firefox ڈیٹا ہم وقت کریندے ہو۔</string>
     <string name="dejavu_sync_firefox_hint">Firefox وچ ترتیباں کھولو، ول ہم وقت کرݨ، تے “ٹیب کھولو” چالو رکھو۔ جہڑیاں ٹیباں تساں ہک ڈیوائس دی ورک سپیس وچ کھولیندے یا بند کریندے ہو، اوہ اُتھاں وی کھلدیاں یا بند تھیندیاں ہن۔ تہاݙیاں ٻیاں ورک سپیساں دیاں ٹیباں ایں ڈیوائس تے رہندیاں ہن، تے Firefox انہاں کوں تہاݙیاں ٻیاں ڈیوائساں دے تلے ݙکھیندا ہے۔</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">ایہ اوہ ٹیباں وی ݙکھیندا ہے جہڑیاں نہ پن تھیاں ہن تے نہ کہیں ٹیب گروپ وچ ہن، صرف پن تھیاں ٹیباں تے ٹیب گروپ نہ۔</string>
     <string name="dejavu_sync_source">ہم وقت کرݨ کیتے براؤزر</string>
     <string name="dejavu_sync_source_none">اڄݨ کائنی چُݨیا</string>
     <string name="dejavu_sync_choose_title">چُݨو جو کیندے نال ہم وقت کرݨے</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">ایہ ورک سپیس تہاݙے Mozilla کھاتے وچ ہک ڈیوائس دیاں کھلیاں ٹیباں ݙکھیندی ہے۔ ایندا ناں تے آئیکان اوں ڈیوائس کنوں آندے ہن، تے جہڑے رنگ تساں چُݨدے ہو اوہ ایں فون تے رہندے ہن۔</string>
     <string name="dejavu_settings_safe_browsing">Google محفوظ براؤزنگ</string>
     <string name="dejavu_settings_safe_browsing_summary">فشنگ تے میلویئر سائٹاں بارے خبردار کریندا ہے۔ ایں کیتے Dejavu، Google نال رابطہ کریندا ہے۔</string>
+    <string name="dejavu_back">پچھوں</string>
+    <string name="dejavu_sync_start_title">ملاؤ یا نویں سرے کنوں شروع کرو؟</string>
+    <string name="dejavu_sync_start_intro">ایں ڈیوائس تے پہلے ای ایندیاں آپݨیاں ورک سپیساں تے ٹیباں ہن۔</string>
+    <string name="dejavu_sync_start_merge">ملاؤ</string>
+    <string name="dejavu_sync_start_merge_zen">انہاں کوں رکھو تے Zen کنوں آپݨیاں ورک سپیساں شامل کرو۔ ایہ وی Zen نال ہم وقت تھیسن۔</string>
+    <string name="dejavu_sync_start_merge_firefox">انہاں کوں رکھو، Firefox آلے ہر کمپیوٹر تے فون دی ہک ورک سپیس دے نال۔</string>
+    <string name="dejavu_sync_start_fresh">نویں سرے کنوں شروع کرو</string>
+    <string name="dejavu_sync_start_fresh_zen">ایہ ٹیباں بند کرو تے ایہ ورک سپیساں، پن تھیاں ٹیباں، فولڈر تے ضروری ٹیباں ہٹاؤ، ول Zen کنوں آپݨیاں ورک سپیساں گھن آؤ۔</string>
+    <string name="dejavu_sync_start_fresh_firefox">ایہ ٹیباں بند کرو تے ایہ ورک سپیساں، پن تھیاں ٹیباں، فولڈر تے ضروری ٹیباں ہٹاؤ، ول آپݨے Firefox آلے کمپیوٹراں تے فوناں دیاں ٹیباں ݙکھاؤ۔</string>
 </resources>

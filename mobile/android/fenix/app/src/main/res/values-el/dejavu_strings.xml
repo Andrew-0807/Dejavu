@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Επαναφορά στις προεπιλογές</string>
     <string name="dejavu_more_menu_hide_edit">Απόκρυψη κουμπιού επεξεργασίας</string>
     <string name="dejavu_more_menu_hide_edit_summary">Το κουμπί «Επεξεργασία» στο κάτω μέρος του μενού «Περισσότερα»</string>
-    <string name="dejavu_settings_sync">Συγχρονισμός με το Firefox ή το Zen</string>
-    <string name="dejavu_sync_hint">Διατηρεί τους χώρους εργασίας σας, με τα χρώματα και τα εικονίδιά τους, τους περιέκτες, τις καρφιτσωμένες καρτέλες, τα αγαπημένα και τους φακέλους ίδια με το Zen Browser στον υπολογιστή σας και με το Dejavu στις άλλες συσκευές σας. Χρησιμοποιεί τον λογαριασμό Mozilla με τον οποίο συγχρονίζετε τα δεδομένα του Firefox.</string>
     <string name="dejavu_sync_zen_hint">Στο Zen, ανοίξτε τις Ρυθμίσεις, μετά τον Συγχρονισμό, και ενεργοποιήστε τον συγχρονισμό της πλευρικής γραμμής. Οι καρτέλες που δεν είναι καρφιτσωμένες δεν συγχρονίζονται.</string>
     <string name="dejavu_sync_enabled">Συγχρονισμός χώρων εργασίας</string>
     <string name="dejavu_sync_syncing">Γίνεται συγχρονισμός…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Σύρετε τους χώρους εργασίας για να αλλάξετε τη σειρά τους</string>
     <string name="dejavu_feature_split_view">Πατήστε παρατεταμένα έναν σύνδεσμο για να ανοίξει σε διαχωρισμένη προβολή</string>
     <string name="dejavu_sync_choose_about">Συγχρονίστε τους χώρους εργασίας σας με το Firefox ή το Zen Browser στον υπολογιστή σας, μέσω του λογαριασμού Mozilla με τον οποίο συγχρονίζετε τα δεδομένα του Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Εμφανίζει τις ανοικτές καρτέλες του Firefox σε κάθε υπολογιστή και τηλέφωνό σας ως χώρο εργασίας και τις διατηρεί ενημερωμένες. Χρησιμοποιεί τον λογαριασμό Mozilla με τον οποίο συγχρονίζετε τα δεδομένα του Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Στο Firefox, ανοίξτε τις Ρυθμίσεις, μετά τον Συγχρονισμό, και αφήστε ενεργοποιημένες τις «Ανοικτές καρτέλες». Οι καρτέλες που ανοίγετε ή κλείνετε στον χώρο εργασίας μιας συσκευής ανοίγουν ή κλείνουν και σε εκείνη. Οι καρτέλες στους άλλους χώρους εργασίας σας παραμένουν σε αυτήν τη συσκευή και το Firefox τις εμφανίζει στην ενότητα των άλλων συσκευών σας.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Εμφανίζει επίσης τις καρτέλες που δεν είναι ούτε καρφιτσωμένες ούτε σε ομάδα καρτελών, όχι μόνο τις καρφιτσωμένες καρτέλες και τις ομάδες καρτελών.</string>
     <string name="dejavu_sync_source">Συγχρονισμός με</string>
     <string name="dejavu_sync_source_none">Δεν έχει επιλεγεί ακόμα</string>
     <string name="dejavu_sync_choose_title">Επιλέξτε με τι θα γίνεται ο συγχρονισμός</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Αυτός ο χώρος εργασίας εμφανίζει τις ανοικτές καρτέλες μιας συσκευής του λογαριασμού σας Mozilla. Το όνομα και το εικονίδιό του προέρχονται από εκείνη τη συσκευή, και τα χρώματα που επιλέγετε μένουν σε αυτό το τηλέφωνο.</string>
     <string name="dejavu_settings_safe_browsing">Ασφαλής περιήγηση Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Προειδοποιεί για ιστοτόπους ηλεκτρονικού ψαρέματος και κακόβουλου λογισμικού. Για να το κάνει αυτό, το Dejavu επικοινωνεί με την Google.</string>
+    <string name="dejavu_back">Πίσω</string>
+    <string name="dejavu_sync_start_title">Συγχώνευση ή νέα αρχή?</string>
+    <string name="dejavu_sync_start_intro">Αυτή η συσκευή έχει ήδη δικούς της χώρους εργασίας και καρτέλες.</string>
+    <string name="dejavu_sync_start_merge">Συγχώνευση</string>
+    <string name="dejavu_sync_start_merge_zen">Κρατήστε τους και προσθέστε τους χώρους εργασίας σας από το Zen. Συγχρονίζονται κι αυτοί με το Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Κρατήστε τους, δίπλα σε έναν χώρο εργασίας για κάθε υπολογιστή και τηλέφωνο με Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Νέα αρχή</string>
+    <string name="dejavu_sync_start_fresh_zen">Κλείστε αυτές τις καρτέλες και αφαιρέστε αυτούς τους χώρους εργασίας, τις καρφιτσωμένες καρτέλες, τους φακέλους και τα αγαπημένα, και μετά πάρτε τους χώρους εργασίας σας από το Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Κλείστε αυτές τις καρτέλες και αφαιρέστε αυτούς τους χώρους εργασίας, τις καρφιτσωμένες καρτέλες, τους φακέλους και τα αγαπημένα, και μετά εμφανίστε τις καρτέλες των υπολογιστών και των τηλεφώνων σας με Firefox.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">පෙරනිමියට යළි සකසන්න</string>
     <string name="dejavu_more_menu_hide_edit">සංස්කරණ බොත්තම සඟවන්න</string>
     <string name="dejavu_more_menu_hide_edit_summary">තව මෙනුවේ පහළින් ඇති සංස්කරණය කරන්න බොත්තම</string>
-    <string name="dejavu_settings_sync">Firefox හෝ Zen සමඟ සමමුහුර්ත කරන්න</string>
-    <string name="dejavu_sync_hint">ඔබේ පරිගණකයේ ඇති Zen Browser හි සහ ඔබේ අනෙකුත් උපාංගවල ඇති Dejavu හි මෙන්ම, ඔබේ අවකාශ ඒවායේ වර්ණ සහ අයිකන සමඟද, බහාලුම්, අමුණන ලද පටිති, අත්‍යවශ්‍යයන් සහ ෆෝල්ඩර එලෙසම තබා ගනී. එය ඔබ Firefox දත්ත සමමුහුර්ත කරන Mozilla ගිණුම භාවිත කරයි.</string>
     <string name="dejavu_sync_zen_hint">Zen හි, සැකසුම් විවෘත කර, පසුව Sync තෝරා, පැති තීරු සමමුහුර්තකරණය ක්‍රියාත්මක කරන්න. අමුණා නැති පටිති සමමුහුර්ත නොවේ.</string>
     <string name="dejavu_sync_enabled">අවකාශ සමමුහුර්ත කරන්න</string>
     <string name="dejavu_sync_syncing">සමමුහුර්ත වෙමින්…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">පිළිවෙළ වෙනස් කිරීමට අවකාශ අදින්න</string>
     <string name="dejavu_feature_split_view">සබැඳියක් බෙදුම් දසුනක විවෘත කිරීමට එය දිගු ඔබන්න</string>
     <string name="dejavu_sync_choose_about">ඔබ Firefox දත්ත සමමුහුර්ත කරන Mozilla ගිණුම හරහා, ඔබේ අවකාශ ඔබේ පරිගණකයේ ඇති Firefox හෝ Zen Browser සමඟ සමමුහුර්ත කරන්න.</string>
-    <string name="dejavu_sync_firefox_about">ඔබේ සෑම පරිගණකයකම සහ දුරකථනයකම ඇති Firefox හි විවෘත පටිති අවකාශයක් ලෙස පෙන්වා, ඒවා යාවත්කාලීනව තබා ගනී. එය ඔබ Firefox දත්ත සමමුහුර්ත කරන Mozilla ගිණුම භාවිත කරයි.</string>
     <string name="dejavu_sync_firefox_hint">Firefox හි, සැකසුම් විවෘත කර, පසුව Sync තෝරා, “පටිති අරින්න” ක්‍රියාත්මකව තබන්න. ඔබ උපාංගයක අවකාශයේ විවෘත කරන හෝ වසන පටිති එම උපාංගයේ ද විවෘත වේ හෝ වැසේ. ඔබේ අනෙකුත් අවකාශවල ඇති පටිති මෙම උපාංගයේ පවතින අතර, Firefox ඒවා ඔබේ අනෙකුත් උපාංග යටතේ පෙන්වයි.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">එය අමුණා නැති සහ පටිති සමූහයක නැති පටිති ද පෙන්වයි, අමුණන ලද පටිති සහ පටිති සමූහ පමණක් නොවේ.</string>
     <string name="dejavu_sync_source">සමමුහුර්ත කරන අතිරික්සුව</string>
     <string name="dejavu_sync_source_none">තවම තෝරා නැත</string>
     <string name="dejavu_sync_choose_title">සමමුහුර්ත කළ යුත්තේ කුමක් සමඟදැයි තෝරන්න</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">මෙම අවකාශය ඔබේ Mozilla ගිණුමේ ඇති උපාංගයක විවෘත පටිති පෙන්වයි. එහි නම සහ අයිකනය එම උපාංගයෙන් පැමිණෙන අතර, ඔබ තෝරන වර්ණ මෙම දුරකථනයේම පවතී.</string>
     <string name="dejavu_settings_safe_browsing">Google ආරක්ෂිත බ්‍රවුස් කිරීම</string>
     <string name="dejavu_settings_safe_browsing_summary">තතුබෑම් සහ අනිෂ්ට මෘදුකාංග අඩවි ගැන අනතුරු අඟවයි. මේ සඳහා Dejavu, Google හා සම්බන්ධ වේ.</string>
+    <string name="dejavu_back">ආපසු</string>
+    <string name="dejavu_sync_start_title">ඒකාබද්ධ කරන්නද, නැතහොත් නැවුම්ව අරඹන්නද?</string>
+    <string name="dejavu_sync_start_intro">මෙම උපාංගයේ දැනටමත් එයටම අයත් අවකාශ සහ පටිති ඇත.</string>
+    <string name="dejavu_sync_start_merge">ඒකාබද්ධ කරන්න</string>
+    <string name="dejavu_sync_start_merge_zen">ඒවා තබාගෙන Zen වෙතින් ඔබේ අවකාශ එක් කරන්න. ඒවා ද Zen වෙත සමමුහුර්ත වේ.</string>
+    <string name="dejavu_sync_start_merge_firefox">Firefox ඇති සෑම පරිගණකයක් සහ දුරකථනයක් සඳහාම වූ අවකාශයක් අසල ඒවා තබා ගන්න.</string>
+    <string name="dejavu_sync_start_fresh">නැවුම්ව අරඹන්න</string>
+    <string name="dejavu_sync_start_fresh_zen">මෙම පටිති වසා, මෙම අවකාශ, අමුණන ලද පටිති, ෆෝල්ඩර සහ අත්‍යවශ්‍යයන් ඉවත් කර, පසුව Zen වෙතින් ඔබේ අවකාශ ලබා ගන්න.</string>
+    <string name="dejavu_sync_start_fresh_firefox">මෙම පටිති වසා, මෙම අවකාශ, අමුණන ලද පටිති, ෆෝල්ඩර සහ අත්‍යවශ්‍යයන් ඉවත් කර, පසුව Firefox ඇති ඔබේ පරිගණක සහ දුරකථනවල පටිති පෙන්වන්න.</string>
 </resources>

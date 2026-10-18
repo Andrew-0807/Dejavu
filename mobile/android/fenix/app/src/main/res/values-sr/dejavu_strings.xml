@@ -211,8 +211,6 @@
     <string name="dejavu_more_menu_reset">Врати на подразумевано</string>
     <string name="dejavu_more_menu_hide_edit">Сакриј дугме за уређивање</string>
     <string name="dejavu_more_menu_hide_edit_summary">Дугме Уреди на дну менија „Више“</string>
-    <string name="dejavu_settings_sync">Синхронизација са Firefox-ом или Zen-ом</string>
-    <string name="dejavu_sync_hint">Ваши радни простори са бојама и иконама, контејнери, закачени језичци, Фаворити и фасцикле остају исти као у Zen Browser-у на вашем рачунару и у Dejavu-у на вашим осталим уређајима. Користи се Mozilla налог којим синхронизујете Firefox податке.</string>
     <string name="dejavu_sync_zen_hint">У Zen-у отворите Подешавања, затим Синхронизација, и укључите синхронизацију бочне траке. Језичци који нису закачени се не синхронизују.</string>
     <string name="dejavu_sync_enabled">Синхронизуј радне просторе</string>
     <string name="dejavu_sync_syncing">Синхронизација…</string>
@@ -292,9 +290,7 @@
     <string name="dejavu_feature_workspace_order">Превуците радне просторе да промените њихов редослед</string>
     <string name="dejavu_feature_split_view">Дуго притисните везу да је отворите у подељеном приказу</string>
     <string name="dejavu_sync_choose_about">Синхронизујте радне просторе са Firefox-ом или Zen Browser-ом на рачунару, преко Mozilla налога којим синхронизујете Firefox податке.</string>
-    <string name="dejavu_sync_firefox_about">Приказује отворене језичке Firefox-а са сваког вашег рачунара и телефона као радни простор и одржава их ажурним. Користи се Mozilla налог којим синхронизујете Firefox податке.</string>
     <string name="dejavu_sync_firefox_hint">У Firefox-у отворите Подешавања, затим Синхронизација, и оставите укључено „Отвори језичке“. Језичци које отворите или затворите у радном простору уређаја отварају се или затварају и тамо. Језичци у вашим осталим радним просторима остају на овом уређају, а Firefox их приказује међу вашим осталим уређајима.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Такође приказује језичке који нису ни закачени ни у групи језичака, не само закачене језичке и групе језичака.</string>
     <string name="dejavu_sync_source">Синхронизација са</string>
     <string name="dejavu_sync_source_none">Још није изабрано</string>
     <string name="dejavu_sync_choose_title">Изаберите са чиме да синхронизујете</string>
@@ -337,4 +333,13 @@
     <string name="dejavu_workspace_device_note">Овај радни простор приказује отворене језичке уређаја са вашег Mozilla налога. Његово име и икона потичу са тог уређаја, а боје које изаберете остају на овом телефону.</string>
     <string name="dejavu_settings_safe_browsing">Google безбедно прегледање</string>
     <string name="dejavu_settings_safe_browsing_summary">Упозорава на сајтове за пецање и злонамерни софтвер. За то се Dejavu повезује са Google-ом.</string>
+    <string name="dejavu_back">Назад</string>
+    <string name="dejavu_sync_start_title">Спојити или почети изнова?</string>
+    <string name="dejavu_sync_start_intro">Овај уређај већ има своје радне просторе и језичке.</string>
+    <string name="dejavu_sync_start_merge">Споји</string>
+    <string name="dejavu_sync_start_merge_zen">Задржите их и додајте своје радне просторе из Zen-а. И они ће се синхронизовати са Zen-ом.</string>
+    <string name="dejavu_sync_start_merge_firefox">Задржите их, поред радног простора за сваки рачунар и телефон са Firefox-ом.</string>
+    <string name="dejavu_sync_start_fresh">Почни изнова</string>
+    <string name="dejavu_sync_start_fresh_zen">Затворите ове језичке и уклоните ове радне просторе, закачене језичке, фасцикле и Фаворите, а затим преузмите своје радне просторе из Zen-а.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Затворите ове језичке и уклоните ове радне просторе, закачене језичке, фасцикле и Фаворите, а затим прикажите језичке својих рачунара и телефона са Firefox-ом.</string>
 </resources>

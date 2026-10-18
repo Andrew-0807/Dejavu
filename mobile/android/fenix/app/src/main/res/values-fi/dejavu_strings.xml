@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Palauta oletukset</string>
     <string name="dejavu_more_menu_hide_edit">Piilota muokkauspainike</string>
     <string name="dejavu_more_menu_hide_edit_summary">Muokkaa-painike lisävalikon alareunassa</string>
-    <string name="dejavu_settings_sync">Synkronoi Firefoxin tai Zenin kanssa</string>
-    <string name="dejavu_sync_hint">Pitää työtilasi väreineen ja kuvakkeineen, säiliöt, kiinnitetyt välilehdet, suosikit ja kansiot samanlaisina kuin Zen Browserissa tietokoneellasi ja Dejavussa muissa laitteissasi. Tämä käyttää samaa Mozilla-tiliä, jolla synkronoit Firefox-tietosi.</string>
     <string name="dejavu_sync_zen_hint">Avaa Zenissä Asetukset, sitten Synkronointi, ja ota sivupalkin synkronointi käyttöön. Välilehdet, joita ei ole kiinnitetty, eivät synkronoidu.</string>
     <string name="dejavu_sync_enabled">Synkronoi työtilat</string>
     <string name="dejavu_sync_syncing">Synkronoidaan …</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Vaihda työtilojen järjestystä vetämällä niitä</string>
     <string name="dejavu_feature_split_view">Avaa linkki jaetussa näkymässä painamalla sitä pitkään</string>
     <string name="dejavu_sync_choose_about">Synkronoi työtilasi tietokoneesi Firefoxin tai Zen Browserin kanssa sen Mozilla-tilin kautta, jolla synkronoit Firefox-tietosi.</string>
-    <string name="dejavu_sync_firefox_about">Näyttää jokaisen tietokoneesi ja puhelimesi Firefoxin avoimet välilehdet työtilana ja pitää ne ajan tasalla. Tämä käyttää samaa Mozilla-tiliä, jolla synkronoit Firefox-tietosi.</string>
     <string name="dejavu_sync_firefox_hint">Avaa Firefoxissa Asetukset, sitten Synkronointi, ja pidä Avoimet välilehdet -asetus käytössä. Laitteen työtilassa avaamasi tai sulkemasi välilehdet avautuvat tai sulkeutuvat myös kyseisessä laitteessa. Muissa työtiloissasi olevat välilehdet pysyvät tässä laitteessa, ja Firefox näyttää ne muiden laitteidesi joukossa.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Näyttää myös välilehdet, jotka eivät ole kiinnitettyjä eivätkä välilehtiryhmässä, ei pelkästään kiinnitettyjä välilehtiä ja välilehtiryhmiä.</string>
     <string name="dejavu_sync_source">Synkronoitava selain</string>
     <string name="dejavu_sync_source_none">Ei vielä valittu</string>
     <string name="dejavu_sync_choose_title">Valitse, minkä kanssa synkronoidaan</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Tämä työtila näyttää Mozilla-tilisi yhden laitteen avoimet välilehdet. Sen nimi ja kuvake tulevat kyseisestä laitteesta, ja valitsemasi värit pysyvät tässä puhelimessa.</string>
     <string name="dejavu_settings_safe_browsing">Google Selaussuoja</string>
     <string name="dejavu_settings_safe_browsing_summary">Varoittaa tietojenkalastelu- ja haittaohjelmasivustoista. Tätä varten Dejavu ottaa yhteyttä Googleen.</string>
+    <string name="dejavu_back">Takaisin</string>
+    <string name="dejavu_sync_start_title">Yhdistetäänkö vai aloitetaanko alusta?</string>
+    <string name="dejavu_sync_start_intro">Tässä laitteessa on jo omia työtiloja ja välilehtiä.</string>
+    <string name="dejavu_sync_start_merge">Yhdistä</string>
+    <string name="dejavu_sync_start_merge_zen">Säilytä ne ja lisää työtilasi Zenistä. Myös ne synkronoidaan Zenin kanssa.</string>
+    <string name="dejavu_sync_start_merge_firefox">Säilytä ne jokaisen Firefoxia käyttävän tietokoneen ja puhelimen oman työtilan rinnalla.</string>
+    <string name="dejavu_sync_start_fresh">Aloita alusta</string>
+    <string name="dejavu_sync_start_fresh_zen">Sulje nämä välilehdet ja poista nämä työtilat, kiinnitetyt välilehdet, kansiot ja suosikit, ja hae sitten työtilasi Zenistä.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Sulje nämä välilehdet ja poista nämä työtilat, kiinnitetyt välilehdet, kansiot ja suosikit, ja näytä sitten Firefoxia käyttävien tietokoneidesi ja puhelimiesi välilehdet.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Ripristina predefiniti</string>
     <string name="dejavu_more_menu_hide_edit">Nascondi pulsante di modifica</string>
     <string name="dejavu_more_menu_hide_edit_summary">Il pulsante Modifica in fondo al menu «Altro»</string>
-    <string name="dejavu_settings_sync">Sincronizza con Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Mantiene i tuoi spazi con i relativi colori e icone, contenitori, schede bloccate, preferiti e cartelle identici a quelli di Zen Browser sul tuo computer e di Dejavu sui tuoi altri dispositivi. Usa l’account Mozilla con cui sincronizzi i dati di Firefox.</string>
     <string name="dejavu_sync_zen_hint">In Zen, apri Impostazioni, poi Sincronizzazione, e attiva la sincronizzazione della barra laterale. Le schede non bloccate non vengono sincronizzate.</string>
     <string name="dejavu_sync_enabled">Sincronizza spazi</string>
     <string name="dejavu_sync_syncing">Sincronizzazione…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Trascina gli spazi per riordinarli</string>
     <string name="dejavu_feature_split_view">Tieni premuto un link per aprirlo in vista divisa</string>
     <string name="dejavu_sync_choose_about">Sincronizza i tuoi spazi con Firefox o Zen Browser sul tuo computer, tramite l’account Mozilla con cui sincronizzi i dati di Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Mostra le schede aperte di Firefox su ciascuno dei tuoi computer e telefoni come uno spazio, e le mantiene aggiornate. Usa l’account Mozilla con cui sincronizzi i dati di Firefox.</string>
     <string name="dejavu_sync_firefox_hint">In Firefox, apri Impostazioni, poi Sincronizzazione, e lascia attiva l’opzione Schede aperte. Le schede che apri o chiudi nello spazio di un dispositivo si aprono o si chiudono anche lì. Le schede dei tuoi altri spazi restano su questo dispositivo, e Firefox le elenca sotto i tuoi altri dispositivi.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Mostra anche le schede che non sono né bloccate né in un gruppo di schede, non solo le schede bloccate e i gruppi di schede.</string>
     <string name="dejavu_sync_source">Sincronizza con</string>
     <string name="dejavu_sync_source_none">Non ancora scelto</string>
     <string name="dejavu_sync_choose_title">Scegli con cosa sincronizzare</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Questo spazio mostra le schede aperte di un dispositivo del tuo account Mozilla. Il suo nome e la sua icona provengono da quel dispositivo, e i colori che scegli restano su questo telefono.</string>
     <string name="dejavu_settings_safe_browsing">Navigazione sicura di Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avvisa sui siti di phishing e malware. Per farlo, Dejavu contatta Google.</string>
+    <string name="dejavu_back">Indietro</string>
+    <string name="dejavu_sync_start_title">Unire o ricominciare da zero?</string>
+    <string name="dejavu_sync_start_intro">Questo dispositivo ha già spazi e schede propri.</string>
+    <string name="dejavu_sync_start_merge">Unisci</string>
+    <string name="dejavu_sync_start_merge_zen">Mantienili e aggiungi i tuoi spazi da Zen. Anche questi vengono sincronizzati con Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Mantienili, accanto a uno spazio per ogni computer e telefono con Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Ricomincia da zero</string>
+    <string name="dejavu_sync_start_fresh_zen">Chiudi queste schede e rimuovi gli spazi, le schede bloccate, le cartelle e i preferiti, poi recupera i tuoi spazi da Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Chiudi queste schede e rimuovi gli spazi, le schede bloccate, le cartelle e i preferiti, poi mostra le schede dei tuoi computer e telefoni con Firefox.</string>
 </resources>

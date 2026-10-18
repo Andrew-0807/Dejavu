@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Lähtesta vaikeseadetele</string>
     <string name="dejavu_more_menu_hide_edit">Peida muutmisnupp</string>
     <string name="dejavu_more_menu_hide_edit_summary">Nupp „Muuda” menüü „Rohkem” allosas</string>
-    <string name="dejavu_settings_sync">Sünkrooni Firefoxi või Zeniga</string>
-    <string name="dejavu_sync_hint">Hoiab su tööruumid koos värvide ja ikoonidega, konteinerid, kinnitatud kaardid, olulised ja kaustad samasugused nagu arvutis olevas Zen Browseris ja teistes seadmetes olevas Dejavus. Selleks kasutatakse Mozilla kontot, millega sünkroonid Firefoxi andmeid.</string>
     <string name="dejavu_sync_zen_hint">Ava Zenis Sätted, siis Sünkroonimine, ja lülita sisse külgriba sünkroonimine. Kinnitamata kaarte ei sünkroonita.</string>
     <string name="dejavu_sync_enabled">Sünkrooni tööruumid</string>
     <string name="dejavu_sync_syncing">Sünkroonimine…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Lohista tööruume, et nende järjekorda muuta</string>
     <string name="dejavu_feature_split_view">Vajuta linki pikalt, et see jagatud vaates avada</string>
     <string name="dejavu_sync_choose_about">Sünkrooni oma tööruumid arvutis oleva Firefoxi või Zen Browseriga Mozilla konto kaudu, millega sünkroonid Firefoxi andmeid.</string>
-    <string name="dejavu_sync_firefox_about">Kuvab iga su arvuti ja telefoni Firefoxi avatud kaardid tööruumina ja hoiab need ajakohasena. Selleks kasutatakse Mozilla kontot, millega sünkroonid Firefoxi andmeid.</string>
     <string name="dejavu_sync_firefox_hint">Ava Firefoxis Sätted, siis Sünkroonimine, ja jäta valik Avatud kaardid sisse lülitatuks. Kaardid, mille avad või suled mõne seadme tööruumis, avanevad või sulguvad ka seal. Su teiste tööruumide kaardid jäävad sellesse seadmesse ja Firefox näitab neid su teiste seadmete kaartide hulgas.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Kuvab ka kaardid, mis pole kinnitatud ega kaardirühmas, mitte ainult kinnitatud kaarte ja kaardirühmi.</string>
     <string name="dejavu_sync_source">Sünkroonitav brauser</string>
     <string name="dejavu_sync_source_none">Pole veel valitud</string>
     <string name="dejavu_sync_choose_title">Vali, millega sünkroonida</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">See tööruum kuvab su Mozilla kontoga seotud seadme avatud kaardid. Selle nimi ja ikoon tulevad sellelt seadmelt ning su valitud värvid jäävad sellesse telefoni.</string>
     <string name="dejavu_settings_safe_browsing">Google\'i turvaline sirvimine</string>
     <string name="dejavu_settings_safe_browsing_summary">Hoiatab andmepüügi- ja pahavarasaitide eest. Selleks võtab Dejavu ühendust Google\'iga.</string>
+    <string name="dejavu_back">Tagasi</string>
+    <string name="dejavu_sync_start_title">Kas ühendada või alustada nullist?</string>
+    <string name="dejavu_sync_start_intro">Selles seadmes on juba oma tööruumid ja kaardid.</string>
+    <string name="dejavu_sync_start_merge">Ühenda</string>
+    <string name="dejavu_sync_start_merge_zen">Jäta need alles ja lisa oma Zeni tööruumid. Ka need sünkroonitakse Zeniga.</string>
+    <string name="dejavu_sync_start_merge_firefox">Jäta need alles ning nende kõrvale tuleb tööruum iga Firefoxiga arvuti ja telefoni jaoks.</string>
+    <string name="dejavu_sync_start_fresh">Alusta nullist</string>
+    <string name="dejavu_sync_start_fresh_zen">Sulge need kaardid ja eemalda need tööruumid, kinnitatud kaardid, kaustad ja olulised, seejärel too oma tööruumid Zenist.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Sulge need kaardid ja eemalda need tööruumid, kinnitatud kaardid, kaustad ja olulised, seejärel näita oma Firefoxiga arvutite ja telefonide kaarte.</string>
 </resources>

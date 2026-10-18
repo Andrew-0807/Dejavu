@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">o open sin e nasin nanpa wan</string>
     <string name="dejavu_more_menu_hide_edit">o len e ilo lili pi ante</string>
     <string name="dejavu_more_menu_hide_edit_summary">ilo lili o ante lon anpa pi ilo mute</string>
-    <string name="dejavu_settings_sync">o sama kepeken Firefox anu Zen</string>
-    <string name="dejavu_sync_hint">ona li awen e kulupu poki sina (kepeken kule en sitelen lili ona), leko, poki awen, lipu suli, en tomo poki, li sama ilo Zen lon ilo sona sina en Dejavu lon ilo ante sina. ona li kepeken nimi Mozilla pi sina kepeken tan sama e sona Firefox.</string>
     <string name="dejavu_sync_zen_hint">lon Zen, o open e nasin ilo, la o open e sama, la o ken e sama pi poki poka. poki awen ala li sama ala.</string>
     <string name="dejavu_sync_enabled">o sama e kulupu poki</string>
     <string name="dejavu_sync_syncing">sama…</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">o tawa e kulupu poki tawa ante e nasin ona</string>
     <string name="dejavu_feature_split_view">o luka awen e nasin lipu tawa open e ona lon lukin tu</string>
     <string name="dejavu_sync_choose_about">o sama e kulupu poki sina kepeken ilo Firefox anu ilo Zen lon ilo sona sina. ni li kepeken nimi Mozilla pi sina kepeken tan sama e sona Firefox.</string>
-    <string name="dejavu_sync_firefox_about">poki open pi ilo Firefox lon ilo sona sina wan wan en ilo kalama sina wan wan li lon kulupu poki pi ona taso, li sin lon tenpo ale. ona li kepeken nimi Mozilla pi sina kepeken tan sama e sona Firefox.</string>
     <string name="dejavu_sync_firefox_hint">lon ilo Firefox, o open e nasin ilo, la o open e sama, la o lukin e ni: poki open li ken. sina open anu pini e poki lon kulupu poki pi ilo wan la, ona li open anu pini lon ilo ona kin. poki pi kulupu poki ante sina li awen lon ilo ni. ilo Firefox li pana lukin e ona lon lipu pi ilo ante sina.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">ona li pana lukin e poki ante kin (ona li awen ala, li lon ala kulupu poki lili), taso ala poki awen en kulupu poki lili taso.</string>
     <string name="dejavu_sync_source">sama kepeken</string>
     <string name="dejavu_sync_source_none">wile ala lon tenpo ni</string>
     <string name="dejavu_sync_choose_title">o wile e ilo tawa sama</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">kulupu poki ni li pana lukin e poki open pi ilo wan lon nimi Mozilla sina. nimi ona en sitelen lili ona li kama tan ilo ante ni. kule pi sina wile li awen lon ilo kalama ni taso.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">ona li toki e ike pi lipu lon pi jan pi pana ike en ilo ike. tan ni la, Dejavu li toki tawa Google.</string>
+    <string name="dejavu_back">o tawa pini</string>
+    <string name="dejavu_sync_start_title">sina wile wan e ona anu open sin?</string>
+    <string name="dejavu_sync_start_intro">lon tenpo ni la, ilo ni li jo e kulupu poki ona e poki ona.</string>
+    <string name="dejavu_sync_start_merge">o wan e ona</string>
+    <string name="dejavu_sync_start_merge_zen">o awen e ona, o pana e kulupu poki sina tan Zen tawa ilo ni. ona kin li sama lon Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">o awen e ona. poka ona la, ilo sona wan wan en ilo kalama wan wan pi ilo Firefox li jo e kulupu poki pi ona taso.</string>
+    <string name="dejavu_sync_start_fresh">o open sin</string>
+    <string name="dejavu_sync_start_fresh_zen">o pini e poki ni. o weka e kulupu poki ni e poki awen ni e tomo poki ni e lipu suli ni. ni pini la, o kama jo e kulupu poki sina tan Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">o pini e poki ni. o weka e kulupu poki ni e poki awen ni e tomo poki ni e lipu suli ni. ni pini la, o lukin e poki pi ilo Firefox lon ilo sona sina en ilo kalama sina.</string>
 </resources>

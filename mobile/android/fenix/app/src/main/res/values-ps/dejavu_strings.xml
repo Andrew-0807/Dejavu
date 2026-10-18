@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">اصلي حالت ته راستنېدل</string>
     <string name="dejavu_more_menu_hide_edit">د سمون تڼۍ پټول</string>
     <string name="dejavu_more_menu_hide_edit_summary">د نور مینو په پای کې د سمون تڼۍ</string>
-    <string name="dejavu_settings_sync">له Firefox یا Zen سره همغږي کول</string>
-    <string name="dejavu_sync_hint">ستاسو ساحې د رنګونو او آیکونونو سره، کانتینرونه، پین شوي ټبونه، مهمې ویب پاڼې او پوښې لکه څنګه چې ستاسو په کمپیوټر کې په Zen Browser او ستاسو په نورو وسایلو کې په Dejavu کې دي، ساتي. دا هماغه د Mozilla حساب کاروي چې تاسو د Firefox معلومات ورسره همغږي کوئ.</string>
     <string name="dejavu_sync_zen_hint">په Zen کې، «امستنې» خلاص کړئ، بیا «همغږي کول»، او د څنګ پټې همغږي فعاله کړئ. هغه ټبونه چې پین شوي نه دي همغږي نه کېږي.</string>
     <string name="dejavu_sync_enabled">ساحې همغږي کول</string>
     <string name="dejavu_sync_syncing">همغږي کېږي…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">د ترتیب بدلولو لپاره ساحې کش کړئ</string>
     <string name="dejavu_feature_split_view">یو لینک اوږده فشار کړئ ترڅو یې په وېشل شوي لید کې خلاص کړئ</string>
     <string name="dejavu_sync_choose_about">خپلې ساحې ستاسو په کمپیوټر کې له Firefox یا Zen Browser سره همغږي کړئ، د هغه Mozilla حساب له لارې چې تاسو د Firefox معلومات ورسره همغږي کوئ.</string>
-    <string name="dejavu_sync_firefox_about">ستاسو د هر کمپیوټر او تلیفون د Firefox خلاص ټبونه د یوې ساحې په توګه ښیي، او تازه یې ساتي. دا هماغه د Mozilla حساب کاروي چې تاسو د Firefox معلومات ورسره همغږي کوئ.</string>
     <string name="dejavu_sync_firefox_hint">په Firefox کې، «امستنې» خلاص کړئ، بیا «همغږي کول»، او «خلاص ټبونه» فعال وساتئ. هغه ټبونه چې تاسو یې د یوې وسیلې په ساحه کې خلاصوئ یا بندوئ، په هغې وسیله کې هم خلاصېږي یا بندېږي. ستاسو د نورو ساحو ټبونه په دې وسیله کې پاتې کېږي، او Firefox یې ستاسو د نورو وسایلو لاندې ښیي.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">دا هغه ټبونه هم ښیي چې نه پین شوي دي او نه د ټبونو په کومه ډله کې دي، نه یوازې پین شوي ټبونه او د ټبونو ډلې.</string>
     <string name="dejavu_sync_source">د همغږۍ براوزر</string>
     <string name="dejavu_sync_source_none">تراوسه ټاکل شوی نه دی</string>
     <string name="dejavu_sync_choose_title">وټاکئ چې له څه سره همغږي شي</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">دا ساحه ستاسو د Mozilla په حساب کې د یوې وسیلې خلاص ټبونه ښیي. د دې نوم او آیکون له هغې وسیلې راځي، او هغه رنګونه چې تاسو یې ټاکئ په دې تلیفون کې پاتې کېږي.</string>
     <string name="dejavu_settings_safe_browsing">Google خوندي لټون</string>
     <string name="dejavu_settings_safe_browsing_summary">د فیشنګ او ناوړه پروګرامونو د سایټونو په اړه خبرداری ورکوي. د دې لپاره، Dejavu له Google سره اړیکه نیسي.</string>
+    <string name="dejavu_back">شاته</string>
+    <string name="dejavu_sync_start_title">یوځای کول یا له سره پیل کول؟</string>
+    <string name="dejavu_sync_start_intro">دا وسیله دمخه خپلې ساحې او ټبونه لري.</string>
+    <string name="dejavu_sync_start_merge">یوځای کول</string>
+    <string name="dejavu_sync_start_merge_zen">دوی وساتئ او له Zen څخه خپلې ساحې ورزیاتې کړئ. دوی هم له Zen سره همغږي کېږي.</string>
+    <string name="dejavu_sync_start_merge_firefox">دوی وساتئ، او تر څنګ یې هر کمپیوټر او تلیفون چې Firefox لري خپله ساحه ترلاسه کوي.</string>
+    <string name="dejavu_sync_start_fresh">له سره پیل کول</string>
+    <string name="dejavu_sync_start_fresh_zen">دا ټبونه بند کړئ او دا ساحې، پین شوي ټبونه، پوښې او مهمې ویب پاڼې لرې کړئ، بیا له Zen څخه خپلې ساحې ترلاسه کړئ.</string>
+    <string name="dejavu_sync_start_fresh_firefox">دا ټبونه بند کړئ او دا ساحې، پین شوي ټبونه، پوښې او مهمې ویب پاڼې لرې کړئ، بیا په خپلو کمپیوټرونو او تلیفونونو کې د Firefox ټبونه وګورئ.</string>
 </resources>

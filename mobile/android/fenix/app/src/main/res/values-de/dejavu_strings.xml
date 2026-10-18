@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Auf Standard zurücksetzen</string>
     <string name="dejavu_more_menu_hide_edit">Bearbeiten-Schaltfläche ausblenden</string>
     <string name="dejavu_more_menu_hide_edit_summary">Die Schaltfläche „Bearbeiten“ unten im Menü „Mehr“</string>
-    <string name="dejavu_settings_sync">Mit Firefox oder Zen synchronisieren</string>
-    <string name="dejavu_sync_hint">Hält deine Arbeitsbereiche mit ihren Farben und Symbolen, Container, angeheftete Tabs, Favoriten und Ordner mit Zen Browser auf deinem Computer und mit Dejavu auf deinen anderen Geräten synchron. Dazu wird das Mozilla-Konto verwendet, mit dem du auch Firefox-Daten synchronisierst.</string>
     <string name="dejavu_sync_zen_hint">Öffne in Zen die Einstellungen, dann Sync, und aktiviere die Synchronisierung der Seitenleiste. Nicht angeheftete Tabs werden nicht synchronisiert.</string>
     <string name="dejavu_sync_enabled">Arbeitsbereiche synchronisieren</string>
     <string name="dejavu_sync_syncing">Wird synchronisiert …</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Arbeitsbereiche ziehen, um sie neu anzuordnen</string>
     <string name="dejavu_feature_split_view">Link gedrückt halten, um ihn in der geteilten Ansicht zu öffnen</string>
     <string name="dejavu_sync_choose_about">Synchronisiere deine Arbeitsbereiche mit Firefox oder Zen Browser auf deinem Computer, über das Mozilla-Konto, mit dem du auch Firefox-Daten synchronisierst.</string>
-    <string name="dejavu_sync_firefox_about">Zeigt die offenen Tabs von Firefox auf jedem deiner Computer und Smartphones als Arbeitsbereich an und hält sie aktuell. Dazu wird das Mozilla-Konto verwendet, mit dem du auch Firefox-Daten synchronisierst.</string>
     <string name="dejavu_sync_firefox_hint">Öffne in Firefox die Einstellungen, dann Sync, und lass „Offene Tabs“ aktiviert. Tabs, die du im Arbeitsbereich eines Geräts öffnest oder schließt, werden auch dort geöffnet oder geschlossen. Tabs in deinen anderen Arbeitsbereichen bleiben auf diesem Gerät, und Firefox listet sie unter deinen anderen Geräten auf.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Zeigt außerdem die Tabs an, die weder angeheftet noch in einer Tab-Gruppe sind, nicht nur angeheftete Tabs und Tab-Gruppen.</string>
     <string name="dejavu_sync_source">Synchronisieren mit</string>
     <string name="dejavu_sync_source_none">Noch nicht ausgewählt</string>
     <string name="dejavu_sync_choose_title">Wähle, womit du synchronisierst</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Dieser Arbeitsbereich zeigt die offenen Tabs eines Geräts in deinem Mozilla-Konto. Name und Symbol stammen von dem Gerät, und die Farben, die du auswählst, bleiben auf diesem Smartphone.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Warnt vor Phishing- und Malware-Websites. Dazu nimmt Dejavu Kontakt zu Google auf.</string>
+    <string name="dejavu_back">Zurück</string>
+    <string name="dejavu_sync_start_title">Zusammenführen oder neu beginnen?</string>
+    <string name="dejavu_sync_start_intro">Dieses Gerät hat bereits eigene Arbeitsbereiche und Tabs.</string>
+    <string name="dejavu_sync_start_merge">Zusammenführen</string>
+    <string name="dejavu_sync_start_merge_zen">Behalte sie und füge deine Arbeitsbereiche aus Zen hinzu. Sie werden auch mit Zen synchronisiert.</string>
+    <string name="dejavu_sync_start_merge_firefox">Behalte sie, neben einem Arbeitsbereich für jeden Computer und jedes Smartphone mit Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Neu beginnen</string>
+    <string name="dejavu_sync_start_fresh_zen">Schließe diese Tabs, entferne diese Arbeitsbereiche, angehefteten Tabs, Ordner und Favoriten und übernimm dann deine Arbeitsbereiche aus Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Schließe diese Tabs, entferne diese Arbeitsbereiche, angehefteten Tabs, Ordner und Favoriten und zeige dann die Tabs deiner Computer und Smartphones mit Firefox an.</string>
 </resources>

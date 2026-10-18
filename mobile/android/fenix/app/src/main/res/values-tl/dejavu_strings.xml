@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">I-reset sa default</string>
     <string name="dejavu_more_menu_hide_edit">Itago ang edit button</string>
     <string name="dejavu_more_menu_hide_edit_summary">Ang button na I-edit sa ibaba ng Karagdagang menu</string>
-    <string name="dejavu_settings_sync">I-sync kasama ang Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Pinapanatiling magkatulad ang iyong mga workspace kasama ang mga kulay at icon nito, container, naka-pin na tab, Mahahalaga, at folder, tulad ng nasa Zen Browser sa iyong kompyuter at sa Dejavu sa iyong ibang device. Ginagamit nito ang Mozilla account na ginagamit mo sa pag-sync ng data ng Firefox.</string>
     <string name="dejavu_sync_zen_hint">Sa Zen, buksan ang Settings, pagkatapos ay Sync, at i-on ang sidebar sync. Hindi sini-sync ang mga tab na hindi naka-pin.</string>
     <string name="dejavu_sync_enabled">I-sync ang mga workspace</string>
     <string name="dejavu_sync_syncing">Sini-sync...</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">I-drag ang mga workspace para ayusin ang pagkakasunod-sunod</string>
     <string name="dejavu_feature_split_view">Mag-long-press sa isang link para buksan ito sa split view</string>
     <string name="dejavu_sync_choose_about">I-sync ang iyong mga workspace kasama ang Firefox o Zen Browser sa iyong kompyuter, gamit ang Mozilla account na ginagamit mo sa pag-sync ng data ng Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Ipinapakita ang mga bukas na tab ng Firefox sa bawat isa sa iyong mga kompyuter at telepono bilang isang workspace, at pinapanatiling napapanahon ang mga ito. Ginagamit nito ang Mozilla account na ginagamit mo sa pag-sync ng data ng Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Sa Firefox, buksan ang Settings, pagkatapos ay Sync, at panatilihing naka-on ang Mga nakabukas na tab. Ang mga tab na binubuksan o isinasara mo sa workspace ng isang device ay bumubukas o nagsasara rin doon. Nananatili sa device na ito ang mga tab sa iyong ibang workspace, at inililista ito ng Firefox sa ilalim ng iyong ibang device.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Ipinapakita rin nito ang mga tab na hindi naka-pin at wala sa isang grupo ng tab, hindi lang ang mga naka-pin na tab at mga grupo ng tab.</string>
     <string name="dejavu_sync_source">I-sync kasama ang</string>
     <string name="dejavu_sync_source_none">Wala pang napili</string>
     <string name="dejavu_sync_choose_title">Piliin kung saan isi-sync</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Ipinapakita ng workspace na ito ang mga bukas na tab ng isang device sa iyong Mozilla account. Galing sa device na iyon ang pangalan at icon nito, at nananatili sa teleponong ito ang mga kulay na pipiliin mo.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Nagbababala tungkol sa mga phishing at malware site. Para magawa ito, kumokonekta ang Dejavu sa Google.</string>
+    <string name="dejavu_back">Bumalik</string>
+    <string name="dejavu_sync_start_title">Pagsamahin o magsimula nang bago?</string>
+    <string name="dejavu_sync_start_intro">May sarili nang mga workspace at tab ang device na ito.</string>
+    <string name="dejavu_sync_start_merge">Pagsamahin</string>
+    <string name="dejavu_sync_start_merge_zen">Panatilihin ang mga ito at idagdag ang iyong mga workspace mula sa Zen. Isi-sync din ang mga ito sa Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Panatilihin ang mga ito, katabi ng isang workspace para sa bawat kompyuter at telepono na may Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Magsimula nang bago</string>
+    <string name="dejavu_sync_start_fresh_zen">Isara ang mga tab na ito at alisin ang mga workspace, naka-pin na tab, folder, at Mahahalaga ng device na ito, pagkatapos ay kunin ang iyong mga workspace mula sa Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Isara ang mga tab na ito at alisin ang mga workspace, naka-pin na tab, folder, at Mahahalaga ng device na ito, pagkatapos ay ipakita ang mga tab ng iyong mga kompyuter at telepono na may Firefox.</string>
 </resources>

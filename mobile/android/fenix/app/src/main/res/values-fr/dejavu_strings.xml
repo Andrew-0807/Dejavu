@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Rétablir les valeurs par défaut</string>
     <string name="dejavu_more_menu_hide_edit">Masquer le bouton de modification</string>
     <string name="dejavu_more_menu_hide_edit_summary">Le bouton Modifier en bas du menu « Plus »</string>
-    <string name="dejavu_settings_sync">Synchroniser avec Firefox ou Zen</string>
-    <string name="dejavu_sync_hint">Garde tes espaces avec leurs couleurs et icônes, conteneurs, onglets épinglés, favoris et dossiers identiques à ceux de Zen Browser sur ton ordinateur et de Dejavu sur tes autres appareils. Cette fonction utilise le compte Mozilla avec lequel tu synchronises tes données Firefox.</string>
     <string name="dejavu_sync_zen_hint">Dans Zen, ouvre les paramètres, puis Synchronisation, et active la synchronisation de la barre latérale. Les onglets non épinglés ne sont pas synchronisés.</string>
     <string name="dejavu_sync_enabled">Synchroniser les espaces</string>
     <string name="dejavu_sync_syncing">Synchronisation…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Fais glisser les espaces pour les réorganiser</string>
     <string name="dejavu_feature_split_view">Fais un appui long sur un lien pour l’ouvrir en vue partagée</string>
     <string name="dejavu_sync_choose_about">Synchronise tes espaces avec Firefox ou Zen Browser sur ton ordinateur, via le compte Mozilla avec lequel tu synchronises tes données Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Affiche sous forme d’espace les onglets ouverts dans Firefox sur chacun de tes ordinateurs et téléphones, et les tient à jour. Cette fonction utilise le compte Mozilla avec lequel tu synchronises tes données Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Dans Firefox, ouvre les paramètres, puis Synchronisation, et laisse l’option Onglets ouverts activée. Les onglets que tu ouvres ou fermes dans l’espace d’un appareil s’ouvrent ou se ferment aussi là-bas. Les onglets de tes autres espaces restent sur cet appareil, et Firefox les affiche parmi ceux de tes autres appareils.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Affiche aussi les onglets qui ne sont ni épinglés ni dans un groupe d’onglets, pas seulement les onglets épinglés et les groupes d’onglets.</string>
     <string name="dejavu_sync_source">Synchroniser avec</string>
     <string name="dejavu_sync_source_none">Pas encore choisi</string>
     <string name="dejavu_sync_choose_title">Choisir avec quoi synchroniser</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Cet espace affiche les onglets ouverts d’un appareil de ton compte Mozilla. Son nom et son icône viennent de cet appareil, et les couleurs que tu choisis restent sur ce téléphone.</string>
     <string name="dejavu_settings_safe_browsing">Navigation sécurisée de Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Signale les sites d\'hameçonnage et de logiciels malveillants. Pour cela, Dejavu contacte Google.</string>
+    <string name="dejavu_back">Retour</string>
+    <string name="dejavu_sync_start_title">Fusionner ou repartir de zéro ?</string>
+    <string name="dejavu_sync_start_intro">Cet appareil a déjà ses propres espaces et onglets.</string>
+    <string name="dejavu_sync_start_merge">Fusionner</string>
+    <string name="dejavu_sync_start_merge_zen">Garde-les et ajoute tes espaces de Zen. Ils sont aussi synchronisés avec Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Garde-les, à côté d’un espace pour chaque ordinateur et téléphone avec Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Repartir de zéro</string>
+    <string name="dejavu_sync_start_fresh_zen">Ferme ces onglets et supprime ces espaces, onglets épinglés, dossiers et favoris, puis récupère tes espaces de Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Ferme ces onglets et supprime ces espaces, onglets épinglés, dossiers et favoris, puis affiche les onglets de tes ordinateurs et téléphones avec Firefox.</string>
 </resources>

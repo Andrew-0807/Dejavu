@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Restaurar los valores predeterminaos</string>
     <string name="dejavu_more_menu_hide_edit">Anubrir el botón d\'editar</string>
     <string name="dejavu_more_menu_hide_edit_summary">El botón Editar del fondu del menú Más</string>
-    <string name="dejavu_settings_sync">Sincronizar con Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Caltién los tos espacios de trabayu colos sos colores ya iconos, contenedores, llingüetes fixaes, esenciales y carpetes iguales que en Zen Browser nel to ordenador y en Dejavu nos tos otros preseos. Usa la cuenta Mozilla cola que sincronices los datos de Firefox.</string>
     <string name="dejavu_sync_zen_hint">En Zen, abri Configuración, dempués Sincronización, y activa la sincronización de la barra llateral. Les llingüetes que nun tán fixaes nun se sincronicen.</string>
     <string name="dejavu_sync_enabled">Sincronizar espacios de trabayu</string>
     <string name="dejavu_sync_syncing">Sincronizando…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Arrastra los espacios de trabayu pa reordenalos</string>
     <string name="dejavu_feature_split_view">Ten primíu un enllaz p\'abrilu na vista estremada</string>
     <string name="dejavu_sync_choose_about">Sincroniza los tos espacios de trabayu con Firefox o Zen Browser nel to ordenador, al traviés de la cuenta Mozilla cola que sincronices los datos de Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Amuesa les llingüetes abiertes de Firefox de cada ún de los tos ordenadores y teléfonos como un espaciu de trabayu, y caltiénles anovaes. Usa la cuenta Mozilla cola que sincronices los datos de Firefox.</string>
     <string name="dejavu_sync_firefox_hint">En Firefox, abri Configuración, dempués Sincronización, y dexa activada la opción Llingüetes abiertes. Les llingüetes qu\'abres o zarres nel espaciu de trabayu d\'un preséu ábrense o zárrense tamién ellí. Les llingüetes de los tos otros espacios de trabayu queden nesti preséu, y Firefox amuésales ente los tos otros preseos.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Amuesa tamién les llingüetes que nin tán fixaes nin nun grupu de llingüetes, non namás les llingüetes fixaes y los grupos de llingüetes.</string>
     <string name="dejavu_sync_source">Sincronizar con</string>
     <string name="dejavu_sync_source_none">Entá non escoyíu</string>
     <string name="dejavu_sync_choose_title">Escueyi con qué sincronizar</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Esti espaciu de trabayu amuesa les llingüetes abiertes d\'un preséu de la to cuenta Mozilla. El so nome y el so iconu vienen d\'esi preséu, y los colores qu\'escueyas queden nesti teléfonu.</string>
     <string name="dejavu_settings_safe_browsing">Navegación segura de Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avisa de sitios de phishing y malware. Pa facelo, Dejavu conéctase con Google.</string>
+    <string name="dejavu_back">Atrás</string>
+    <string name="dejavu_sync_start_title">¿Combinar o entamar dende cero?</string>
+    <string name="dejavu_sync_start_intro">Esti preséu yá tien los sos propios espacios de trabayu y llingüetes.</string>
+    <string name="dejavu_sync_start_merge">Combinar</string>
+    <string name="dejavu_sync_start_merge_zen">Caltiénlos y amiesta los tos espacios de trabayu de Zen. Tamién se sincronicen con Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Caltiénlos, xunto a un espaciu de trabayu pa cada ordenador y teléfonu con Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Entamar dende cero</string>
+    <string name="dejavu_sync_start_fresh_zen">Zarra estes llingüetes, desanicia estos espacios de trabayu, llingüetes fixaes, carpetes y esenciales, y dempués trai los tos espacios de trabayu de Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Zarra estes llingüetes, desanicia estos espacios de trabayu, llingüetes fixaes, carpetes y esenciales, y dempués amuesa les llingüetes de los tos ordenadores y teléfonos con Firefox.</string>
 </resources>

@@ -213,8 +213,6 @@
     <string name="dejavu_more_menu_reset">Athshocraigh go réamhshocrú</string>
     <string name="dejavu_more_menu_hide_edit">Folaigh an cnaipe eagair</string>
     <string name="dejavu_more_menu_hide_edit_summary">An cnaipe ‘Cuir in eagar’ ag bun an roghchláir ‘Tuilleadh’</string>
-    <string name="dejavu_settings_sync">Sioncronaigh le Firefox nó Zen</string>
-    <string name="dejavu_sync_hint">Coinníonn sé do spásanna oibre lena ndathanna agus lena ndeilbhíní, coimeádáin, cluaisíní greamaithe, riachtanais agus fillteáin mar an gcéanna le Zen Browser ar do ríomhaire agus le Dejavu ar do ghléasanna eile. Úsáideann sé an cuntas Mozilla a sioncronaíonn tú sonraí Firefox leis.</string>
     <string name="dejavu_sync_zen_hint">I Zen, oscail Socruithe, ansin Sioncrónú, agus cuir sioncrónú an bharra taoibh ar siúl. Ní shioncronaítear cluaisíní nach bhfuil greamaithe.</string>
     <string name="dejavu_sync_enabled">Sioncronaigh spásanna oibre</string>
     <string name="dejavu_sync_syncing">Ag sioncronú…</string>
@@ -306,9 +304,7 @@
     <string name="dejavu_feature_workspace_order">Tarraing spásanna oibre chun iad a athordú</string>
     <string name="dejavu_feature_split_view">Brúigh go fada ar nasc chun é a oscailt in amharc scoilte</string>
     <string name="dejavu_sync_choose_about">Sioncronaigh do spásanna oibre le Firefox nó Zen Browser ar do ríomhaire, tríd an gcuntas Mozilla a sioncronaíonn tú sonraí Firefox leis.</string>
-    <string name="dejavu_sync_firefox_about">Taispeánann sé cluaisíní oscailte Firefox ar gach ceann de do ríomhairí agus d’fhóin mar spás oibre, agus coinníonn sé cothrom le dáta iad. Úsáideann sé an cuntas Mozilla a sioncronaíonn tú sonraí Firefox leis.</string>
     <string name="dejavu_sync_firefox_hint">I Firefox, oscail Socruithe, ansin Sioncrónú, agus fág ‘Cluaisíní oscailte’ ar siúl. Osclaíonn nó dúnann cluaisíní a osclaíonn nó a dhúnann tú i spás oibre gléis ar an ngléas sin freisin. Fanann cluaisíní i do spásanna oibre eile ar an ngléas seo, agus liostaíonn Firefox iad faoi do ghléasanna eile.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Taispeánann sé freisin na cluaisíní nach bhfuil greamaithe ná i ngrúpa cluaisíní, ní hamháin cluaisíní greamaithe agus grúpaí cluaisíní.</string>
     <string name="dejavu_sync_source">Sioncronaigh le</string>
     <string name="dejavu_sync_source_none">Gan roghnú fós</string>
     <string name="dejavu_sync_choose_title">Roghnaigh an brabhsálaí le sioncronú leis</string>
@@ -351,4 +347,13 @@
     <string name="dejavu_workspace_device_note">Taispeánann an spás oibre seo cluaisíní oscailte gléis ar do chuntas Mozilla. Tagann a ainm agus a dheilbhín ón ngléas sin, agus fanann na dathanna a roghnaíonn tú ar an bhfón seo.</string>
     <string name="dejavu_settings_safe_browsing">Brabhsáil Shábháilte Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Tugann sé rabhadh faoi shuíomhanna fioscaireachta agus bogearraí mailíseacha. Chuige sin, déanann Dejavu teagmháil le Google.</string>
+    <string name="dejavu_back">Ar ais</string>
+    <string name="dejavu_sync_start_title">Cumasc nó tosú as an nua?</string>
+    <string name="dejavu_sync_start_intro">Tá spásanna oibre agus cluaisíní dá chuid féin ag an ngléas seo cheana.</string>
+    <string name="dejavu_sync_start_merge">Cumaisc</string>
+    <string name="dejavu_sync_start_merge_zen">Coinnigh iad agus cuir do spásanna oibre ó Zen leo. Sioncronaítear le Zen iad freisin.</string>
+    <string name="dejavu_sync_start_merge_firefox">Coinnigh iad, in éineacht le spás oibre do gach ríomhaire agus fón le Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Tosaigh as an nua</string>
+    <string name="dejavu_sync_start_fresh_zen">Dún na cluaisíní seo agus bain na spásanna oibre, na cluaisíní greamaithe, na fillteáin agus na riachtanais seo, ansin faigh do spásanna oibre ó Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Dún na cluaisíní seo agus bain na spásanna oibre, na cluaisíní greamaithe, na fillteáin agus na riachtanais seo, ansin taispeáin na cluaisíní atá ar do ríomhairí agus d’fhóin le Firefox.</string>
 </resources>

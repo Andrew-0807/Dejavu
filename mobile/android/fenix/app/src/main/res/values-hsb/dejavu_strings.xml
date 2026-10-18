@@ -212,8 +212,6 @@
     <string name="dejavu_more_menu_reset">Na standard wróćo stajić</string>
     <string name="dejavu_more_menu_hide_edit">Tłóčatko wobdźěłanja schować</string>
     <string name="dejavu_more_menu_hide_edit_summary">Tłóčatko Wobdźěłać deleka w dalšim meniju</string>
-    <string name="dejavu_settings_sync">Z Firefox abo Zen synchronizować</string>
-    <string name="dejavu_sync_hint">Dźerži twoje dźěłowe rumy z jich barbami a symbolemi, kontejnery, připjate rajtarki, najwažniše a zarjadniki jenake kaž w Zen Browser na twojim ličaku a w Dejavu na twojich druhich gratach. Wužiwa konto Mozilla, z kotrymž swoje daty Firefox synchronizuješ.</string>
     <string name="dejavu_sync_zen_hint">W Zen wočini Nastajenja, potom Synchronizacija, a zapinaj synchronizaciju bóčnicy. Rajtarki, kotrež njejsu připjate, so njesynchronizuja.</string>
     <string name="dejavu_sync_enabled">Dźěłowe rumy synchronizować</string>
     <string name="dejavu_sync_syncing">Synchronizuje so…</string>
@@ -299,9 +297,7 @@
     <string name="dejavu_feature_workspace_order">Dźěłowe rumy ćahnyć, zo by jich porjad změnił</string>
     <string name="dejavu_feature_split_view">Na wotkaz dołho tłóčić, zo by jón w dźělenym napohledźe wočinił</string>
     <string name="dejavu_sync_choose_about">Synchronizuj swoje dźěłowe rumy z Firefox abo Zen Browser na swojim ličaku, přez konto Mozilla, z kotrymž swoje daty Firefox synchronizuješ.</string>
-    <string name="dejavu_sync_firefox_about">Pokazuje wočinjene rajtarki Firefox na kóždym z twojich ličakow a telefonow jako dźěłowy rum a dźerži je aktualne. Wužiwa konto Mozilla, z kotrymž swoje daty Firefox synchronizuješ.</string>
     <string name="dejavu_sync_firefox_hint">W Firefox wočiń Nastajenja, potom Synchronizacija, a wostaj opciju Wočinjene rajtarki zmóžnjenu. Rajtarki, kotrež w dźěłowym rumje grata wočiniš abo začiniš, so tež na tym graće wočinjeja abo začinjeja. Rajtarki w twojich druhich dźěłowych rumach na tutym graće wostanu, a Firefox je pod twojimi druhimi gratami pokazuje.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Pokazuje tež rajtarki, kotrež ani připjate ani w skupinje rajtarkow njejsu, nic jenož připjate rajtarki a skupiny rajtarkow.</string>
     <string name="dejavu_sync_source">Synchronizować z</string>
     <string name="dejavu_sync_source_none">Hišće njewubrany</string>
     <string name="dejavu_sync_choose_title">Wubjer, z čim synchronizować</string>
@@ -344,4 +340,13 @@
     <string name="dejavu_workspace_device_note">Tutón dźěłowy rum pokazuje wočinjene rajtarki grata, kotryž je z twojim kontom Mozilla zwjazany. Jeho mjeno a symbol z toho grata pochadźatej, a barby, kotrež wuběraš, na tutym telefonje wostanu.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Warnuje před sydłami phishinga a škódneje softwary. Za to so Dejavu z Google zwjazuje.</string>
+    <string name="dejavu_back">Wróćo</string>
+    <string name="dejavu_sync_start_title">Zjednoćić abo znowa započeć?</string>
+    <string name="dejavu_sync_start_intro">Tutón grat ma hižo swójske dźěłowe rumy a rajtarki.</string>
+    <string name="dejavu_sync_start_merge">Zjednoćić</string>
+    <string name="dejavu_sync_start_merge_zen">Wobchowaj je a přidaj swoje dźěłowe rumy z Zen. Synchronizuja so tež z Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Wobchowaj je, pódla dźěłoweho ruma za kóždy ličak a telefon z Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Znowa započeć</string>
+    <string name="dejavu_sync_start_fresh_zen">Začiń tute rajtarki a wotstroń tute dźěłowe rumy, připjate rajtarki, zarjadniki a najwažniše, potom dóstanješ swoje dźěłowe rumy z Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Začiń tute rajtarki a wotstroń tute dźěłowe rumy, připjate rajtarki, zarjadniki a najwažniše, potom widźiš rajtarki swojich ličakow a telefonow z Firefox.</string>
 </resources>

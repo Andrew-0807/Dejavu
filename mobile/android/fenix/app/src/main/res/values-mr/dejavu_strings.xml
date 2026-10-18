@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">डीफॉल्टवर रीसेट करा</string>
     <string name="dejavu_more_menu_hide_edit">संपादन बटण लपवा</string>
     <string name="dejavu_more_menu_hide_edit_summary">अधिक मेनूच्या तळाशी असलेले संपादित करा बटण</string>
-    <string name="dejavu_settings_sync">Firefox किंवा Zen सह सिंक करा</string>
-    <string name="dejavu_sync_hint">तुमची कार्यक्षेत्रे त्यांच्या रंग आणि चिन्हांसह, कंटेनर, पिन केलेले टॅब, आवश्यक आणि फोल्डर तुमच्या संगणकावरील Zen ब्राउझर आणि तुमच्या इतर डिव्हाइसवरील Dejavu प्रमाणेच ठेवते. हे तुम्ही Firefox डेटा सिंक करण्यासाठी वापरत असलेले Mozilla खाते वापरते.</string>
     <string name="dejavu_sync_zen_hint">Zen मध्ये, सेटिंग उघडा, नंतर सिंक, आणि साइडबार सिंक सुरू करा. पिन न केलेले टॅब सिंक होत नाहीत.</string>
     <string name="dejavu_sync_enabled">कार्यक्षेत्रे सिंक करा</string>
     <string name="dejavu_sync_syncing">सिंक करत आहे…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">क्रम बदलण्यासाठी कार्यक्षेत्रे ड्रॅग करा</string>
     <string name="dejavu_feature_split_view">लिंक विभाजित दृश्यात उघडण्यासाठी ती दीर्घकाळ दाबा</string>
     <string name="dejavu_sync_choose_about">तुम्ही Firefox डेटा सिंक करण्यासाठी वापरत असलेल्या Mozilla खात्याद्वारे, तुमची कार्यक्षेत्रे तुमच्या संगणकावरील Firefox किंवा Zen ब्राउझरसह सिंक करा.</string>
-    <string name="dejavu_sync_firefox_about">तुमच्या प्रत्येक संगणकावरील आणि फोनवरील Firefox चे उघडे टॅब एक कार्यक्षेत्र म्हणून दाखवते, आणि ते नेहमी अद्ययावत ठेवते. हे तुम्ही Firefox डेटा सिंक करण्यासाठी वापरत असलेले Mozilla खाते वापरते.</string>
     <string name="dejavu_sync_firefox_hint">Firefox मध्ये, सेटिंग उघडा, नंतर सिंक, आणि “टॅब उघडा” सुरू ठेवा. एखाद्या डिव्हाइसच्या कार्यक्षेत्रात तुम्ही उघडलेले किंवा बंद केलेले टॅब त्या डिव्हाइसवरही उघडतात किंवा बंद होतात. तुमच्या इतर कार्यक्षेत्रांमधील टॅब या डिव्हाइसवरच राहतात, आणि Firefox ते तुमच्या इतर डिव्हाइसखाली दाखवते.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">हे पिन न केलेले आणि कोणत्याही टॅब गटात नसलेले टॅबदेखील दाखवते, फक्त पिन केलेले टॅब आणि टॅब गट नाही.</string>
     <string name="dejavu_sync_source">यासह सिंक करा</string>
     <string name="dejavu_sync_source_none">अद्याप निवडले नाही</string>
     <string name="dejavu_sync_choose_title">कशासह सिंक करायचे ते निवडा</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">हे कार्यक्षेत्र तुमच्या Mozilla खात्यावरील एका डिव्हाइसचे उघडे टॅब दाखवते. त्याचे नाव आणि चिन्ह त्या डिव्हाइसवरून येतात, आणि तुम्ही निवडलेले रंग या फोनवरच राहतात.</string>
     <string name="dejavu_settings_safe_browsing">Google सुरक्षित ब्राउझिंग</string>
     <string name="dejavu_settings_safe_browsing_summary">फिशिंग आणि मालवेअर साइट्सबद्दल चेतावणी देते. यासाठी Dejavu, Google शी संपर्क साधते.</string>
+    <string name="dejavu_back">मागे</string>
+    <string name="dejavu_sync_start_title">विलीन करायचे की नव्याने सुरुवात करायची?</string>
+    <string name="dejavu_sync_start_intro">या डिव्हाइसवर आधीच त्याची स्वतःची कार्यक्षेत्रे आणि टॅब आहेत.</string>
+    <string name="dejavu_sync_start_merge">विलीन करा</string>
+    <string name="dejavu_sync_start_merge_zen">ती ठेवा आणि Zen मधील तुमची कार्यक्षेत्रे जोडा. तीही Zen सोबत सिंक होतात.</string>
+    <string name="dejavu_sync_start_merge_firefox">Firefox असलेल्या प्रत्येक संगणकाच्या आणि फोनच्या कार्यक्षेत्रासोबत ती ठेवा.</string>
+    <string name="dejavu_sync_start_fresh">नव्याने सुरुवात करा</string>
+    <string name="dejavu_sync_start_fresh_zen">हे टॅब बंद करा आणि ही कार्यक्षेत्रे, पिन केलेले टॅब, फोल्डर आणि आवश्यक काढा, नंतर Zen मधून तुमची कार्यक्षेत्रे मिळवा.</string>
+    <string name="dejavu_sync_start_fresh_firefox">हे टॅब बंद करा आणि ही कार्यक्षेत्रे, पिन केलेले टॅब, फोल्डर आणि आवश्यक काढा, नंतर Firefox असलेल्या तुमच्या संगणकांचे आणि फोनचे टॅब दाखवा.</string>
 </resources>

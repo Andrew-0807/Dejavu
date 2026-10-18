@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Връщане по подразбиране</string>
     <string name="dejavu_more_menu_hide_edit">Скриване на бутона за редактиране</string>
     <string name="dejavu_more_menu_hide_edit_summary">Бутонът „Редактиране“ в долната част на меню „Още“</string>
-    <string name="dejavu_settings_sync">Синхронизиране с Firefox или Zen</string>
-    <string name="dejavu_sync_hint">Поддържа вашите работни пространства с техните цветове и икони, контейнери, закачени раздели, Любими и папки еднакви като в Zen Browser на компютъра ви и в Dejavu на другите ви устройства. Използва се профилът в Mozilla, с който синхронизирате данните на Firefox.</string>
     <string name="dejavu_sync_zen_hint">В Zen отворете Настройки, после Синхронизиране, и включете синхронизирането на страничния панел. Разделите, които не са закачени, не се синхронизират.</string>
     <string name="dejavu_sync_enabled">Синхронизиране на работни пространства</string>
     <string name="dejavu_sync_syncing">Синхронизиране…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Плъзнете работните пространства, за да ги подредите</string>
     <string name="dejavu_feature_split_view">Задръжте връзка, за да я отворите в разделен изглед</string>
     <string name="dejavu_sync_choose_about">Синхронизирайте работните си пространства с Firefox или Zen Browser на компютъра си чрез профила в Mozilla, с който синхронизирате данните на Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Показва отворените раздели на Firefox от всеки ваш компютър и телефон като работно пространство и ги поддържа актуални. Използва се профилът в Mozilla, с който синхронизирате данните на Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Във Firefox отворете Настройки, после Синхронизиране, и оставете опцията „Отворени раздели“ включена. Разделите, които отваряте или затваряте в работното пространство на дадено устройство, се отварят или затварят и на него. Разделите в другите ви работни пространства остават на това устройство, а Firefox ги показва сред другите ви устройства.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Показва също разделите, които не са нито закачени, нито в група раздели, а не само закачените раздели и групите раздели.</string>
     <string name="dejavu_sync_source">Синхронизиране с</string>
     <string name="dejavu_sync_source_none">Все още не е избрано</string>
     <string name="dejavu_sync_choose_title">Изберете с какво да синхронизирате</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Това работно пространство показва отворените раздели на устройство от профила ви в Mozilla. Името и иконата му идват от самото устройство, а цветовете, които изберете, остават на този телефон.</string>
     <string name="dejavu_settings_safe_browsing">Безопасно сърфиране с Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Предупреждава за фишинг сайтове и сайтове със зловреден софтуер. За целта Dejavu се свързва с Google.</string>
+    <string name="dejavu_back">Назад</string>
+    <string name="dejavu_sync_start_title">Обединяване или започване на чисто?</string>
+    <string name="dejavu_sync_start_intro">Това устройство вече има свои работни пространства и раздели.</string>
+    <string name="dejavu_sync_start_merge">Обединяване</string>
+    <string name="dejavu_sync_start_merge_zen">Запазете ги и добавете работните си пространства от Zen. Те също се синхронизират със Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Запазете ги, заедно с работно пространство за всеки компютър и телефон с Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Започване на чисто</string>
+    <string name="dejavu_sync_start_fresh_zen">Затворете тези раздели и премахнете тези работни пространства, закачени раздели, папки и Любими, след което вземете работните си пространства от Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Затворете тези раздели и премахнете тези работни пространства, закачени раздели, папки и Любими, след което покажете разделите на компютрите и телефоните си с Firefox.</string>
 </resources>

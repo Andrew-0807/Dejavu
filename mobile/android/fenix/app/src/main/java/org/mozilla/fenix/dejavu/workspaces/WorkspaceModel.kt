@@ -27,7 +27,14 @@ data class Workspace(
     val createdAt: Long,
     val updatedAt: Long,
     val device: SyncedDevice? = null,
-)
+) {
+    /**
+     * Whether it looks like the workspace a fresh Dejavu starts with, named [defaultName]: without an icon or a
+     * container, and with the gold theme or none.
+     */
+    fun isLikeNew(defaultName: String): Boolean =
+        name == defaultName && icon == null && containerId == null && (theme == null || theme == WorkspaceTheme.Gold)
+}
 
 /** A kind of device on the Mozilla account whose open tabs a workspace shows, see [Workspace.device]. */
 enum class SyncedDevice(val key: String) {

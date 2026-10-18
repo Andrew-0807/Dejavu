@@ -211,8 +211,6 @@
     <string name="dejavu_more_menu_reset">Restablecer valores predeterminados</string>
     <string name="dejavu_more_menu_hide_edit">Ocultar el botón de edición</string>
     <string name="dejavu_more_menu_hide_edit_summary">El botón Editar al final del menú Más</string>
-    <string name="dejavu_settings_sync">Sincronizar con Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Mantiene tus espacios de trabajo con sus colores e iconos, contenedores, pestañas fijadas, esenciales y carpetas igual que en Zen Browser en tu ordenador y en Dejavu en tus otros dispositivos. Usa la misma cuenta de Mozilla con la que sincronizas los datos de Firefox.</string>
     <string name="dejavu_sync_zen_hint">En Zen, abre Ajustes y luego Sincronización, y activa la sincronización de la barra lateral. Las pestañas que no están fijadas no se sincronizan.</string>
     <string name="dejavu_sync_enabled">Sincronizar espacios de trabajo</string>
     <string name="dejavu_sync_syncing">Sincronizando…</string>
@@ -292,9 +290,7 @@
     <string name="dejavu_feature_workspace_order">Arrastra los espacios de trabajo para reordenarlos</string>
     <string name="dejavu_feature_split_view">Mantén pulsado un enlace para abrirlo en vista dividida</string>
     <string name="dejavu_sync_choose_about">Sincroniza tus espacios de trabajo con Firefox o Zen Browser en tu ordenador, a través de la cuenta de Mozilla con la que sincronizas los datos de Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Muestra las pestañas abiertas de Firefox en cada uno de tus ordenadores y teléfonos como un espacio de trabajo y las mantiene al día. Usa la misma cuenta de Mozilla con la que sincronizas los datos de Firefox.</string>
     <string name="dejavu_sync_firefox_hint">En Firefox, abre Ajustes y luego Sincronización, y mantén activada la opción Pestañas abiertas. Las pestañas que abres o cierras en el espacio de trabajo de un dispositivo también se abren o se cierran allí. Las pestañas de tus otros espacios de trabajo se quedan en este dispositivo, y Firefox las muestra entre las de tus otros dispositivos.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">También muestra las pestañas que no están fijadas ni en un grupo de pestañas, no solo las pestañas fijadas y los grupos de pestañas.</string>
     <string name="dejavu_sync_source">Sincronizar con</string>
     <string name="dejavu_sync_source_none">Aún sin elegir</string>
     <string name="dejavu_sync_choose_title">Elige con qué sincronizar</string>
@@ -337,4 +333,13 @@
     <string name="dejavu_workspace_device_note">Este espacio de trabajo muestra las pestañas abiertas de un dispositivo de tu cuenta de Mozilla. Su nombre y su icono vienen de ese dispositivo, y los colores que elijas se quedan en este teléfono.</string>
     <string name="dejavu_settings_safe_browsing">Navegación segura de Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avisa sobre sitios de phishing y malware. Para ello, Dejavu se conecta con Google.</string>
+    <string name="dejavu_back">Atrás</string>
+    <string name="dejavu_sync_start_title">¿Combinar o empezar de cero?</string>
+    <string name="dejavu_sync_start_intro">Este dispositivo ya tiene sus propios espacios de trabajo y pestañas.</string>
+    <string name="dejavu_sync_start_merge">Combinar</string>
+    <string name="dejavu_sync_start_merge_zen">Consérvalos y añade tus espacios de trabajo de Zen. También se sincronizan con Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Consérvalos, junto a un espacio de trabajo para cada ordenador y teléfono con Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Empezar de cero</string>
+    <string name="dejavu_sync_start_fresh_zen">Cierra estas pestañas, elimina estos espacios de trabajo, pestañas fijadas, carpetas y esenciales, y luego trae tus espacios de trabajo de Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Cierra estas pestañas, elimina estos espacios de trabajo, pestañas fijadas, carpetas y esenciales, y luego muestra las pestañas de tus ordenadores y teléfonos con Firefox.</string>
 </resources>

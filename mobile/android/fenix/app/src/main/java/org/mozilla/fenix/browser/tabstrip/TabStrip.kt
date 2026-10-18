@@ -44,8 +44,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -86,6 +88,8 @@ import org.mozilla.fenix.components.components
 import org.mozilla.fenix.compose.Favicon
 import org.mozilla.fenix.compose.HorizontalFadingEdgeBox
 import org.mozilla.fenix.compose.ext.isItemPartiallyVisible
+import org.mozilla.fenix.dejavu.browser.DejavuTabStrip
+import org.mozilla.fenix.dejavu.browser.SLEEPING_TAB_ALPHA
 import org.mozilla.fenix.tabstray.browser.compose.ReorderableDragItemContainer
 import org.mozilla.fenix.tabstray.browser.compose.createListReorderState
 import org.mozilla.fenix.tabstray.browser.compose.detectListPressAndDrag
@@ -138,14 +142,16 @@ fun TabStrip(
         appStore.stateFlow.map { it.mode.isPrivate }
     }
         .collectAsState(initial = false)
+    val context = LocalContext.current
     val state by remember {
-        browserStore.stateFlow.map {
-            it.toTabStripState(
+        // Dejavu: the tabs of the place the shown tab is in, see siblingTabs.
+        DejavuTabStrip.siblings(context, browserStore.stateFlow).map { (browser, siblings) ->
+            browser.toTabStripState(
                 isSelectDisabled = isSelectDisabled,
                 isPossiblyPrivateMode = isPossiblyPrivateMode,
                 addTab = onAddTabClick,
                 closeTab = { isPrivate, numberOfTabs ->
-                    it.selectedTabId?.let { selectedTabId ->
+                    browser.selectedTabId?.let { selectedTabId ->
                         closeTab(
                             numberOfTabs = numberOfTabs,
                             isPrivate = isPrivate,
@@ -156,6 +162,7 @@ fun TabStrip(
                         )
                     }
                 },
+                siblings = siblings,
             )
         }
     }
@@ -194,8 +201,12 @@ fun TabStrip(
                     onLastTabClose = onLastTabClose,
                     onCloseTabClick = onCloseTabClick,
                 ),
-            onSelectedTabClick = createSelectedTabClickHandler(tabsUseCases, onSelectedTabClick),
-            onMove = createMoveTabHandler(tabsUseCases),
+            onSelectedTabClick = createSelectedTabClickHandler(tabsUseCases, onSelectedTabClick) { tabId ->
+                DejavuTabStrip.openClosed(context, tabId)
+            },
+            onMove = createMoveTabHandler(tabsUseCases) { tabId, targetId, placeAfter ->
+                DejavuTabStrip.movePinned(context, tabId, targetId, placeAfter)
+            },
             onTabCounterClick = onTabCounterClick,
         )
     }
@@ -222,19 +233,23 @@ private fun createCloseTabClickHandler(
     )
 }
 
+// Dejavu: [openClosed] opens a pinned tab whose tab is closed, and tells whether the tab was one.
 private fun createSelectedTabClickHandler(
     tabsUseCases: TabsUseCases,
     onSelectedTabClick: (url: String) -> Unit,
+    openClosed: (tabId: String) -> Boolean = { false },
 ): (tabId: String, url: String) -> Unit = { tabId, url ->
-    tabsUseCases.selectTab(tabId)
+    if (!openClosed(tabId)) tabsUseCases.selectTab(tabId)
     onSelectedTabClick(url)
     TabStripMetrics.selectTab.record()
 }
 
+// Dejavu: [movePinned] moves a pinned tab or essential among its pins, and tells whether the tab was one.
 private fun createMoveTabHandler(
-    tabsUseCases: TabsUseCases
+    tabsUseCases: TabsUseCases,
+    movePinned: (tabId: String, targetId: String, placeAfter: Boolean) -> Boolean = { _, _, _ -> false },
 ): (tabId: String, targetId: String, placeAfter: Boolean) -> Unit = { tabId, targetId, placeAfter ->
-    if (tabId != targetId) {
+    if (tabId != targetId && !movePinned(tabId, targetId, placeAfter)) {
         tabsUseCases.moveTabs(listOf(tabId), targetId, placeAfter)
     }
 }
@@ -444,7 +459,8 @@ private fun TabItem(
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Row(
-                modifier = Modifier.weight(1f),
+                // Dejavu: sleeping tabs show faded, as on the home screen.
+                modifier = Modifier.weight(1f).alpha(if (state.isAsleep) SLEEPING_TAB_ALPHA else 1f),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 // This makes sure that isRtl is only calculated when the title changes.

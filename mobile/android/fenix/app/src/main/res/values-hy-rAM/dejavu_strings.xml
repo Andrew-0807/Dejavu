@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Վերականգնել կանխադրվածը</string>
     <string name="dejavu_more_menu_hide_edit">Թաքցնել խմբագրման կոճակը</string>
     <string name="dejavu_more_menu_hide_edit_summary">«Խմբագրել» կոճակը լրացուցիչ ցանկի ներքևում</string>
-    <string name="dejavu_settings_sync">Համաժամացնել Firefox֊ի կամ Zen֊ի հետ</string>
-    <string name="dejavu_sync_hint">Ձեր տարածքները՝ իրենց գույներով ու պատկերակներով, կոնտեյներները, ամրացված ներդիրները, կարևոր կայքերն ու թղթապանակները պահպանում է նույնը, ինչ Zen Browser֊ում՝ ձեր համակարգչում, և Dejavu֊ում՝ ձեր մյուս սարքերում. Օգտագործվում է Mozilla հաշիվը, որով համաժամացնում եք Firefox֊ի տվյալները.</string>
     <string name="dejavu_sync_zen_hint">Zen֊ում բացեք «Կարգավորումներ», ապա «Համաժամացում» և միացրեք կողային վահանակի համաժամացումը. Չամրացված ներդիրները չեն համաժամացվում.</string>
     <string name="dejavu_sync_enabled">Համաժամացնել տարածքները</string>
     <string name="dejavu_sync_syncing">Համաժամացում…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Քաշեք տարածքները՝ դրանց հերթականությունը փոխելու համար</string>
     <string name="dejavu_feature_split_view">Երկար սեղմեք հղումը՝ այն տրոհված տեսքում բացելու համար</string>
     <string name="dejavu_sync_choose_about">Համաժամացրեք ձեր տարածքները ձեր համակարգչի Firefox֊ի կամ Zen Browser֊ի հետ՝ այն Mozilla հաշվի միջոցով, որով համաժամացնում եք Firefox֊ի տվյալները։</string>
-    <string name="dejavu_sync_firefox_about">Ձեր յուրաքանչյուր համակարգչի և հեռախոսի Firefox֊ի բաց ներդիրները ցուցադրում է որպես տարածք և պահում դրանք արդիական։ Օգտագործվում է Mozilla հաշիվը, որով համաժամացնում եք Firefox֊ի տվյալները։</string>
     <string name="dejavu_sync_firefox_hint">Firefox֊ում բացեք «Կարգավորումներ», ապա «Համաժամացում» և թողեք «Բացել ներդիրներ»֊ը միացված։ Որևէ սարքի տարածքում բացված կամ փակված ներդիրները բացվում կամ փակվում են նաև այդ սարքում։ Ձեր մյուս տարածքների ներդիրները մնում են այս սարքում, և Firefox֊ը դրանք ցուցադրում է ձեր մյուս սարքերի ցանկում։</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Այն ցուցադրում է նաև այն ներդիրները, որոնք ոչ ամրացված են, ոչ էլ ներդիրների խմբում են, ոչ միայն ամրացված ներդիրներն ու ներդիրների խմբերը։</string>
     <string name="dejavu_sync_source">Համաժամացում՝ սրա հետ</string>
     <string name="dejavu_sync_source_none">Դեռ ընտրված չէ</string>
     <string name="dejavu_sync_choose_title">Ընտրեք, թե ինչի հետ համաժամացնել</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Այս տարածքը ցուցադրում է ձեր Mozilla հաշվի սարքերից մեկի բաց ներդիրները։ Դրա անունն ու պատկերակը գալիս են այդ սարքից, իսկ ձեր ընտրած գույները մնում են այս հեռախոսում։</string>
     <string name="dejavu_settings_safe_browsing">Google Անվտանգ դիտարկում</string>
     <string name="dejavu_settings_safe_browsing_summary">Զգուշացնում է ֆիշինգային և վնասակար ծրագրերով կայքերի մասին։ Դրա համար Dejavu-ն կապվում է Google-ի հետ։</string>
+    <string name="dejavu_back">Հետ</string>
+    <string name="dejavu_sync_start_title">Միավորել, թե սկսել նորից?</string>
+    <string name="dejavu_sync_start_intro">Այս սարքն արդեն ունի իր սեփական տարածքներն ու ներդիրները։</string>
+    <string name="dejavu_sync_start_merge">Միավորել</string>
+    <string name="dejavu_sync_start_merge_zen">Դրանք կմնան, և կավելանան ձեր տարածքները Zen֊ից։ Դրանք նույնպես կհամաժամացվեն Zen֊ի հետ։</string>
+    <string name="dejavu_sync_start_merge_firefox">Դրանք կմնան Firefox֊ով յուրաքանչյուր համակարգչի և հեռախոսի տարածքի կողքին։</string>
+    <string name="dejavu_sync_start_fresh">Սկսել նորից</string>
+    <string name="dejavu_sync_start_fresh_zen">Այս ներդիրները կփակվեն, իսկ այս տարածքները, ամրացված ներդիրները, թղթապանակներն ու կարևոր կայքերը կհեռացվեն, ապա ձեր տարածքները կբերվեն Zen֊ից։</string>
+    <string name="dejavu_sync_start_fresh_firefox">Այս ներդիրները կփակվեն, իսկ այս տարածքները, ամրացված ներդիրները, թղթապանակներն ու կարևոր կայքերը կհեռացվեն, ապա կցուցադրվեն Firefox֊ով ձեր համակարգիչների և հեռախոսների ներդիրները։</string>
 </resources>

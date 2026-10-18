@@ -211,8 +211,6 @@
     <string name="dejavu_more_menu_reset">Repor predefinições</string>
     <string name="dejavu_more_menu_hide_edit">Ocultar botão de edição</string>
     <string name="dejavu_more_menu_hide_edit_summary">O botão Editar no fundo do menu Mais</string>
-    <string name="dejavu_settings_sync">Sincronizar com Firefox ou Zen</string>
-    <string name="dejavu_sync_hint">Mantém os teus espaços de trabalho com as cores e ícones, contentores, separadores fixados, essenciais e pastas iguais aos do Zen Browser no teu computador e do Dejavu nos teus outros dispositivos. Usa a mesma conta Mozilla com a qual sincronizas os dados do Firefox.</string>
     <string name="dejavu_sync_zen_hint">No Zen, abre Definições e depois Sincronização, e ativa a sincronização da barra lateral. Separadores que não estão fixados não são sincronizados.</string>
     <string name="dejavu_sync_enabled">Sincronizar espaços de trabalho</string>
     <string name="dejavu_sync_syncing">A sincronizar…</string>
@@ -292,9 +290,7 @@
     <string name="dejavu_feature_workspace_order">Arrasta os espaços de trabalho para os reordenar</string>
     <string name="dejavu_feature_split_view">Mantém premida uma ligação para a abrir na vista dividida</string>
     <string name="dejavu_sync_choose_about">Sincroniza os teus espaços de trabalho com o Firefox ou o Zen Browser no teu computador, através da conta Mozilla com a qual sincronizas os dados do Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Mostra os separadores abertos do Firefox em cada um dos teus computadores e telemóveis como um espaço de trabalho e mantém-nos atualizados. Usa a mesma conta Mozilla com a qual sincronizas os dados do Firefox.</string>
     <string name="dejavu_sync_firefox_hint">No Firefox, abre Definições e depois Sincronização, e mantém a opção Separadores abertos ativada. Os separadores que abres ou fechas no espaço de trabalho de um dispositivo também abrem ou fecham nesse dispositivo. Os separadores dos teus outros espaços de trabalho ficam neste dispositivo, e o Firefox lista-os entre os teus outros dispositivos.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Também mostra os separadores que não estão fixados nem num grupo de separadores, não só os separadores fixados e os grupos de separadores.</string>
     <string name="dejavu_sync_source">Sincronizar com</string>
     <string name="dejavu_sync_source_none">Ainda não escolhido</string>
     <string name="dejavu_sync_choose_title">Escolhe com o que sincronizar</string>
@@ -337,4 +333,13 @@
     <string name="dejavu_workspace_device_note">Este espaço de trabalho mostra os separadores abertos de um dispositivo da tua conta Mozilla. O nome e o ícone vêm desse dispositivo, e as cores que escolheres ficam neste telemóvel.</string>
     <string name="dejavu_settings_safe_browsing">Navegação segura da Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avisa sobre sites de phishing e malware. Para isso, o Dejavu liga-se à Google.</string>
+    <string name="dejavu_back">Voltar</string>
+    <string name="dejavu_sync_start_title">Juntar ou começar do zero?</string>
+    <string name="dejavu_sync_start_intro">Este dispositivo já tem os seus próprios espaços de trabalho e separadores.</string>
+    <string name="dejavu_sync_start_merge">Juntar</string>
+    <string name="dejavu_sync_start_merge_zen">Mantê-los e adicionar os teus espaços de trabalho do Zen. Também são sincronizados com o Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Mantê-los, ao lado de um espaço de trabalho para cada computador e telemóvel com o Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Começar do zero</string>
+    <string name="dejavu_sync_start_fresh_zen">Fechar estes separadores e remover estes espaços de trabalho, separadores fixados, pastas e essenciais, e depois obter os teus espaços de trabalho do Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Fechar estes separadores e remover estes espaços de trabalho, separadores fixados, pastas e essenciais, e depois mostrar os separadores dos teus computadores e telemóveis com o Firefox.</string>
 </resources>

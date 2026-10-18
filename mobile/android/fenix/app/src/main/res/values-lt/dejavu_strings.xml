@@ -212,8 +212,6 @@
     <string name="dejavu_more_menu_reset">Atstatyti numatytuosius</string>
     <string name="dejavu_more_menu_hide_edit">Slėpti redagavimo mygtuką</string>
     <string name="dejavu_more_menu_hide_edit_summary">Mygtukas „Redaguoti“ meniu „Daugiau“ apačioje</string>
-    <string name="dejavu_settings_sync">Sinchronizavimas su Firefox arba Zen</string>
-    <string name="dejavu_sync_hint">Palaiko jūsų darbo erdves su jų spalvomis ir piktogramomis, konteinerius, prisegtas korteles, Mėgstamiausius ir aplankus tokius pačius kaip Zen Browser jūsų kompiuteryje ir Dejavu kituose jūsų įrenginiuose. Naudojama Mozilla paskyra, kuria sinchronizuojate Firefox duomenis.</string>
     <string name="dejavu_sync_zen_hint">Zen naršyklėje atverkite Nuostatos, tada Sinchronizavimas, ir įjunkite šoninės juostos sinchronizavimą. Neprisegtos kortelės nesinchronizuojamos.</string>
     <string name="dejavu_sync_enabled">Sinchronizuoti darbo erdves</string>
     <string name="dejavu_sync_syncing">Sinchronizuojama…</string>
@@ -299,9 +297,7 @@
     <string name="dejavu_feature_workspace_order">Vilkite darbo erdves, kad pakeistumėte jų tvarką</string>
     <string name="dejavu_feature_split_view">Ilgai paspauskite nuorodą, kad atvertumėte ją padalytame rodinyje</string>
     <string name="dejavu_sync_choose_about">Sinchronizuokite darbo erdves su Firefox arba Zen Browser savo kompiuteryje per Mozilla paskyrą, kuria sinchronizuojate Firefox duomenis.</string>
-    <string name="dejavu_sync_firefox_about">Rodo kiekvieno jūsų kompiuterio ir telefono Firefox atvertas korteles kaip darbo erdvę ir nuolat jas atnaujina. Naudojama Mozilla paskyra, kuria sinchronizuojate Firefox duomenis.</string>
     <string name="dejavu_sync_firefox_hint">Firefox naršyklėje atverkite Nuostatos, tada Sinchronizavimas, ir palikite įjungtą parinktį „Atvertos kortelės“. Kortelės, kurias atveriate ar užveriate įrenginio darbo erdvėje, atveriamos ar užveriamos ir tame įrenginyje. Kitų jūsų darbo erdvių kortelės lieka šiame įrenginyje, o Firefox jas rodo tarp kitų jūsų įrenginių.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Taip pat rodo korteles, kurios nėra nei prisegtos, nei kortelių grupėje, o ne tik prisegtas korteles ir kortelių grupes.</string>
     <string name="dejavu_sync_source">Sinchronizuoti su</string>
     <string name="dejavu_sync_source_none">Dar nepasirinkta</string>
     <string name="dejavu_sync_choose_title">Pasirinkite, su kuo sinchronizuoti</string>
@@ -344,4 +340,13 @@
     <string name="dejavu_workspace_device_note">Ši darbo erdvė rodo jūsų Mozilla paskyros įrenginio atvertas korteles. Jos pavadinimas ir piktograma gaunami iš to įrenginio, o jūsų pasirinktos spalvos lieka šiame telefone.</string>
     <string name="dejavu_settings_safe_browsing">„Google“ saugus naršymas</string>
     <string name="dejavu_settings_safe_browsing_summary">Įspėja apie sukčiavimo ir kenkėjiškų programų svetaines. Tam Dejavu susisiekia su „Google“.</string>
+    <string name="dejavu_back">Atgal</string>
+    <string name="dejavu_sync_start_title">Sujungti ar pradėti iš naujo?</string>
+    <string name="dejavu_sync_start_intro">Šiame įrenginyje jau yra savų darbo erdvių ir kortelių.</string>
+    <string name="dejavu_sync_start_merge">Sujungti</string>
+    <string name="dejavu_sync_start_merge_zen">Palikite jas ir pridėkite savo darbo erdves iš Zen. Jos taip pat sinchronizuojamos su Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Palikite jas šalia darbo erdvės kiekvienam kompiuteriui ir telefonui su Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Pradėti iš naujo</string>
+    <string name="dejavu_sync_start_fresh_zen">Užverkite šias korteles ir pašalinkite šias darbo erdves, prisegtas korteles, aplankus ir Mėgstamiausius, tada gausite savo darbo erdves iš Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Užverkite šias korteles ir pašalinkite šias darbo erdves, prisegtas korteles, aplankus ir Mėgstamiausius, tada matysite savo kompiuterių ir telefonų su Firefox korteles.</string>
 </resources>

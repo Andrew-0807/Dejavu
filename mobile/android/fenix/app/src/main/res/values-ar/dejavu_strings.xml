@@ -214,8 +214,6 @@
     <string name="dejavu_more_menu_reset">إعادة الضبط إلى الافتراضي</string>
     <string name="dejavu_more_menu_hide_edit">إخفاء زر التعديل</string>
     <string name="dejavu_more_menu_hide_edit_summary">زر «حرّر» أسفل قائمة «المزيد»</string>
-    <string name="dejavu_settings_sync">المزامنة مع Firefox أو Zen</string>
-    <string name="dejavu_sync_hint">يُبقي مساحات عملك بألوانها وأيقوناتها، وحاوياتك، وتبويباتك المثبتة، وأساسياتك، ومجلداتك متطابقة مع Zen Browser على حاسوبك ومع Dejavu على أجهزتك الأخرى. يستخدم لذلك حساب Mozilla الذي تُزامن به بيانات Firefox.</string>
     <string name="dejavu_sync_zen_hint">في Zen، افتح الإعدادات ثم المزامنة، وفعّل مزامنة الشريط الجانبي. التبويبات غير المثبتة لا تُزامَن.</string>
     <string name="dejavu_sync_enabled">مزامنة مساحات العمل</string>
     <string name="dejavu_sync_syncing">جارٍ المزامنة…</string>
@@ -313,9 +311,7 @@
     <string name="dejavu_feature_workspace_order">اسحب مساحات العمل لإعادة ترتيبها</string>
     <string name="dejavu_feature_split_view">اضغط مطولًا على رابط لفتحه في العرض المقسم</string>
     <string name="dejavu_sync_choose_about">زامن مساحات عملك مع Firefox أو Zen Browser على حاسوبك، عبر حساب Mozilla الذي تُزامن به بيانات Firefox.</string>
-    <string name="dejavu_sync_firefox_about">يعرض التبويبات المفتوحة في Firefox على كل حاسوب وهاتف لديك كمساحة عمل، ويُبقيها محدّثة. يستخدم لذلك حساب Mozilla الذي تُزامن به بيانات Firefox.</string>
     <string name="dejavu_sync_firefox_hint">في Firefox، افتح الإعدادات ثم المزامنة، وأبقِ خيار «التبويبات المفتوحة» مفعّلًا. التبويبات التي تفتحها أو تغلقها في مساحة عمل أحد أجهزتك تُفتح أو تُغلق هناك أيضًا. تبقى التبويبات الموجودة في مساحات عملك الأخرى على هذا الجهاز، ويعرضها Firefox ضمن أجهزتك الأخرى.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">يعرض أيضًا التبويبات غير المثبتة التي ليست في مجموعة تبويبات، وليس فقط التبويبات المثبتة ومجموعات التبويبات.</string>
     <string name="dejavu_sync_source">المزامنة مع</string>
     <string name="dejavu_sync_source_none">لم يُختر بعد</string>
     <string name="dejavu_sync_choose_title">اختر ما تُزامن معه</string>
@@ -358,4 +354,13 @@
     <string name="dejavu_workspace_device_note">تعرض مساحة العمل هذه التبويبات المفتوحة لجهاز على حساب Mozilla الخاص بك. يأتي اسمها وأيقونتها من ذلك الجهاز، وتبقى الألوان التي تختارها على هذا الهاتف.</string>
     <string name="dejavu_settings_safe_browsing">التصفح الآمن من Google</string>
     <string name="dejavu_settings_safe_browsing_summary">يحذّرك من مواقع التصيّد الاحتيالي والبرمجيات الخبيثة. للقيام بذلك، يتصل Dejavu بـ Google.</string>
+    <string name="dejavu_back">رجوع</string>
+    <string name="dejavu_sync_start_title">الدمج أم البدء من جديد؟</string>
+    <string name="dejavu_sync_start_intro">يحتوي هذا الجهاز بالفعل على مساحات عمل وتبويبات خاصة به.</string>
+    <string name="dejavu_sync_start_merge">دمج</string>
+    <string name="dejavu_sync_start_merge_zen">احتفظ بها وأضف مساحات عملك من Zen. وتُزامَن هي أيضًا مع Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">احتفظ بها، إلى جانب مساحة عمل لكل حاسوب وهاتف عليه Firefox.</string>
+    <string name="dejavu_sync_start_fresh">البدء من جديد</string>
+    <string name="dejavu_sync_start_fresh_zen">أغلق هذه التبويبات، وأزل مساحات العمل والتبويبات المثبتة والمجلدات والأساسيات هذه، ثم اجلب مساحات عملك من Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">أغلق هذه التبويبات، وأزل مساحات العمل والتبويبات المثبتة والمجلدات والأساسيات هذه، ثم اعرض تبويبات حواسيبك وهواتفك التي عليها Firefox.</string>
 </resources>

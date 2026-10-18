@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Terugzetten naar standaard</string>
     <string name="dejavu_more_menu_hide_edit">Bewerkknop verbergen</string>
     <string name="dejavu_more_menu_hide_edit_summary">De knop Bewerken onderaan het menu “Meer”</string>
-    <string name="dejavu_settings_sync">Synchroniseren met Firefox of Zen</string>
-    <string name="dejavu_sync_hint">Houdt je werkruimtes met hun kleuren en pictogrammen, containers, vastgemaakte tabbladen, favorieten en mappen gelijk aan die in Zen Browser op je computer en in Dejavu op je andere apparaten. Hiervoor wordt het Mozilla-account gebruikt waarmee je Firefox-gegevens synchroniseert.</string>
     <string name="dejavu_sync_zen_hint">Open in Zen Instellingen, dan Synchronisatie, en zet synchronisatie van de zijbalk aan. Tabbladen die niet zijn vastgemaakt, worden niet gesynchroniseerd.</string>
     <string name="dejavu_sync_enabled">Werkruimtes synchroniseren</string>
     <string name="dejavu_sync_syncing">Synchroniseren…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Sleep werkruimtes om de volgorde te wijzigen</string>
     <string name="dejavu_feature_split_view">Druk lang op een link om deze in gesplitste weergave te openen</string>
     <string name="dejavu_sync_choose_about">Synchroniseer je werkruimtes met Firefox of Zen Browser op je computer, via het Mozilla-account waarmee je Firefox-gegevens synchroniseert.</string>
-    <string name="dejavu_sync_firefox_about">Toont de open tabbladen van Firefox op elk van je computers en telefoons als een werkruimte, en houdt ze actueel. Hiervoor wordt het Mozilla-account gebruikt waarmee je Firefox-gegevens synchroniseert.</string>
     <string name="dejavu_sync_firefox_hint">Open in Firefox Instellingen, dan Synchronisatie, en laat Open tabbladen aan staan. Tabbladen die je in de werkruimte van een apparaat opent of sluit, worden daar ook geopend of gesloten. Tabbladen in je andere werkruimtes blijven op dit apparaat, en Firefox toont ze onder je andere apparaten.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Toont ook de tabbladen die niet vastgemaakt zijn en niet in een tabbladgroep zitten, niet alleen vastgemaakte tabbladen en tabbladgroepen.</string>
     <string name="dejavu_sync_source">Synchroniseren met</string>
     <string name="dejavu_sync_source_none">Nog niet gekozen</string>
     <string name="dejavu_sync_choose_title">Kies waarmee je wilt synchroniseren</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Deze werkruimte toont de open tabbladen van een apparaat op je Mozilla-account. De naam en het pictogram komen van dat apparaat, en de kleuren die je kiest blijven op deze telefoon.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Waarschuwt voor phishing- en malwarewebsites. Hiervoor neemt Dejavu contact op met Google.</string>
+    <string name="dejavu_back">Terug</string>
+    <string name="dejavu_sync_start_title">Samenvoegen of opnieuw beginnen?</string>
+    <string name="dejavu_sync_start_intro">Dit apparaat heeft al eigen werkruimtes en tabbladen.</string>
+    <string name="dejavu_sync_start_merge">Samenvoegen</string>
+    <string name="dejavu_sync_start_merge_zen">Behoud ze en voeg je werkruimtes uit Zen toe. Ze worden ook met Zen gesynchroniseerd.</string>
+    <string name="dejavu_sync_start_merge_firefox">Behoud ze, naast een werkruimte voor elke computer en telefoon met Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Opnieuw beginnen</string>
+    <string name="dejavu_sync_start_fresh_zen">Sluit deze tabbladen en verwijder deze werkruimtes, vastgemaakte tabbladen, mappen en favorieten, en haal daarna je werkruimtes uit Zen op.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Sluit deze tabbladen en verwijder deze werkruimtes, vastgemaakte tabbladen, mappen en favorieten, en toon daarna de tabbladen van je computers en telefoons met Firefox.</string>
 </resources>

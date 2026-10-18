@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Titzolïx chi achi\'el nab\'ey</string>
     <string name="dejavu_more_menu_hide_edit">Tewäx botón richin tinuk\'</string>
     <string name="dejavu_more_menu_hide_edit_summary">Ri botón Tinuk\' chuxe\'el ri menú Ch\'aqa\' chik</string>
-    <string name="dejavu_settings_sync">Junamirisanik rik\'in Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Nuyäk ri taq samajib\'äl rik\'in ki b\'onil chuqa\' ki retal, taq k\'olib\'äl, ximon taq ruwi\', taq rajawaxel chuqa\' taq karpeta, junam achi\'el pa Zen Browser pa ak\'wan chuqa\' pa Dejavu pa ch\'aqa\' chik ay\'ab\'il. Nukusaj ri Rukwenta Mozilla ak\'wan nawokisaj richin najunamirisaj rutzij Firefox.</string>
     <string name="dejavu_sync_zen_hint">Pa Zen, tajäq Nuk\'ulem, k\'a ri\' Junamirisanik, k\'a ri\' tatzija\' ri junamirisanik richin sidebar. Ri taq ruwi\' man ximon ta man ye junamirisäx ta.</string>
     <string name="dejavu_sync_enabled">Tijunamirisäx taq samajib\'äl</string>
     <string name="dejavu_sync_syncing">Yejunamirisäx…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Tajurula\' ri taq samajib\'äl richin nijalwachij rucholajem</string>
     <string name="dejavu_feature_split_view">Tapitz\' jun ximonel richin najaq pa vista pa ka\'i\'</string>
     <string name="dejavu_sync_choose_about">Tajunamirisaj ri taq asamajib\'äl rik\'in Firefox o Zen Browser pa akematz\'ib\', rik\'in ri Rukwenta Mozilla nawokisaj richin najunamirisaj rutzij Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Nuk\'ut ri jaqäl taq ruwi\' richin Firefox pa chi jujunal akematz\'ib\' chuqa\' awoyonib\'al achi\'el jun samajib\'äl, chuqa\' jantape\' yeruk\'ak\'a\'irisaj. Nukusaj ri Rukwenta Mozilla nawokisaj richin najunamirisaj rutzij Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Pa Firefox, tajäq Nuk\'ulem, k\'a ri\' Junamirisanik, k\'a ri\' tatzija\' Kejaq ruwi\'. Ri taq ruwi\' ye\'ajaq o ye\'atz\'apij pa rusamajib\'äl jun okisaxel chuqa\' yejaq o yetz\'apïx chiri\'. Ri taq ruwi\' pa ri ch\'aqa\' chik taq asamajib\'äl yekanäj pa re aparato re\', chuqa\' Firefox yeruk\'ut kik\'in ri ch\'aqa\' chik taq awokisaxel.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Nuk\'ut chuqa\' ri taq ruwi\' man ximon ta chuqa\' man e k\'o ta pa jun molaj ruwi\', man xaxe\' ta ri ximon taq ruwi\' chuqa\' ri molaj taq ruwi\'.</string>
     <string name="dejavu_sync_source">Junamirisanik rik\'in</string>
     <string name="dejavu_sync_source_none">Majun cha\'on</string>
     <string name="dejavu_sync_choose_title">Tacha\' achike rik\'in najunamirisaj</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Re samajib\'äl re\' nuk\'ut ri jaqäl taq ruwi\' richin jun okisaxel pa ri Rukwenta Mozilla. Rub\'i\' chuqa\' ruretal yepe pa ri okisaxel ri\', chuqa\' ri taq b\'onil nacha\' yekanäj pa re oyonib\'äl re\'.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Nuya\' rutzijol chi kij ri taq ruxaq k\'amaya\'l richin phishing chuqa\' malware. Richin nub\'än re\', ri Dejavu nuk\'üj ri\' rik\'in Google.</string>
+    <string name="dejavu_back">Chi rij</string>
+    <string name="dejavu_sync_start_title">¿Ketunüx o titikirisäx chik?</string>
+    <string name="dejavu_sync_start_intro">Re aparato re\' k\'o chik ruyonil taq rusamajib\'äl chuqa\' taq ruwi\'.</string>
+    <string name="dejavu_sync_start_merge">Ketunüx</string>
+    <string name="dejavu_sync_start_merge_zen">Yekanäj, chuqa\' yetz\'aqatisäx ri taq asamajib\'äl richin Zen. Chuqa\' yejunamirisäx rik\'in Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Yekanäj, chunaqaj jun samajib\'äl richin chi jujunal kematz\'ib\' chuqa\' oyonib\'äl rik\'in Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Titikirisäx chik</string>
+    <string name="dejavu_sync_start_fresh_zen">Ketz\'apïx re taq ruwi\' re\' chuqa\' keyuj re taq samajib\'äl, ximon taq ruwi\', taq karpeta chuqa\' taq rajawaxel re\', k\'a ri\' yepe ri taq asamajib\'äl richin Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Ketz\'apïx re taq ruwi\' re\' chuqa\' keyuj re taq samajib\'äl, ximon taq ruwi\', taq karpeta chuqa\' taq rajawaxel re\', k\'a ri\' yek\'ut ri taq ruwi\' richin ri taq akematz\'ib\' chuqa\' taq awoyonib\'äl rik\'in Firefox.</string>
 </resources>

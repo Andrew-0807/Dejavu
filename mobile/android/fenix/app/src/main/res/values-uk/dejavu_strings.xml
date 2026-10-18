@@ -212,8 +212,6 @@
     <string name="dejavu_more_menu_reset">Скинути до типових</string>
     <string name="dejavu_more_menu_hide_edit">Приховати кнопку редагування</string>
     <string name="dejavu_more_menu_hide_edit_summary">Кнопка «Змінити» внизу меню «Ще»</string>
-    <string name="dejavu_settings_sync">Синхронізація з Firefox або Zen</string>
-    <string name="dejavu_sync_hint">Зберігає ваші робочі простори з їхніми кольорами й значками, контейнери, закріплені вкладки, обране і теки однаковими в Zen Browser на комп’ютері та в Dejavu на інших ваших пристроях. Використовується той самий обліковий запис Mozilla, яким ви синхронізуєте дані Firefox.</string>
     <string name="dejavu_sync_zen_hint">У Zen відкрийте «Налаштування», потім «Синхронізацію», і увімкніть синхронізацію бічної панелі. Незакріплені вкладки не синхронізуються.</string>
     <string name="dejavu_sync_enabled">Синхронізувати робочі простори</string>
     <string name="dejavu_sync_syncing">Синхронізація…</string>
@@ -299,9 +297,7 @@
     <string name="dejavu_feature_workspace_order">Перетягуйте робочі простори, щоб змінити їхній порядок</string>
     <string name="dejavu_feature_split_view">Натисніть і утримуйте посилання, щоб відкрити його в режимі розділення екрана</string>
     <string name="dejavu_sync_choose_about">Синхронізуйте робочі простори з Firefox або Zen Browser на комп’ютері через обліковий запис Mozilla, яким ви синхронізуєте дані Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Показує відкриті вкладки Firefox на кожному вашому комп’ютері й телефоні як робочий простір і підтримує їх в актуальному стані. Використовується той самий обліковий запис Mozilla, яким ви синхронізуєте дані Firefox.</string>
     <string name="dejavu_sync_firefox_hint">У Firefox відкрийте «Налаштування», потім «Синхронізацію», і залиште увімкненим пункт «Вкладки». Вкладки, які ви відкриваєте чи закриваєте в робочому просторі пристрою, відкриваються чи закриваються й там. Вкладки у ваших інших робочих просторах залишаються на цьому пристрої, а Firefox показує їх серед ваших інших пристроїв.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Також показує вкладки, які не закріплені й не входять до групи вкладок, а не лише закріплені вкладки й групи вкладок.</string>
     <string name="dejavu_sync_source">Синхронізація з</string>
     <string name="dejavu_sync_source_none">Ще не вибрано</string>
     <string name="dejavu_sync_choose_title">Виберіть, з чим синхронізувати</string>
@@ -344,4 +340,13 @@
     <string name="dejavu_workspace_device_note">Цей робочий простір показує відкриті вкладки пристрою з вашого облікового запису Mozilla. Його назва та значок беруться з того пристрою, а вибрані вами кольори залишаються на цьому телефоні.</string>
     <string name="dejavu_settings_safe_browsing">Безпечний перегляд Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Попереджає про фішингові та шкідливі сайти. Для цього Dejavu звертається до Google.</string>
+    <string name="dejavu_back">Назад</string>
+    <string name="dejavu_sync_start_title">Об’єднати чи почати з нуля?</string>
+    <string name="dejavu_sync_start_intro">На цьому пристрої вже є власні робочі простори та вкладки.</string>
+    <string name="dejavu_sync_start_merge">Об’єднати</string>
+    <string name="dejavu_sync_start_merge_zen">Залишити їх і додати ваші робочі простори із Zen. Вони теж синхронізуватимуться із Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Залишити їх поруч із робочим простором для кожного комп’ютера й телефону з Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Почати з нуля</string>
+    <string name="dejavu_sync_start_fresh_zen">Закрити ці вкладки та прибрати ці робочі простори, закріплені вкладки, теки й обране, а потім отримати ваші робочі простори із Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Закрити ці вкладки та прибрати ці робочі простори, закріплені вкладки, теки й обране, а потім показати вкладки ваших комп’ютерів і телефонів із Firefox.</string>
 </resources>

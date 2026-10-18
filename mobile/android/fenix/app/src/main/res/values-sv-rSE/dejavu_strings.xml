@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Återställ till standard</string>
     <string name="dejavu_more_menu_hide_edit">Dölj redigeringsknapp</string>
     <string name="dejavu_more_menu_hide_edit_summary">Knappen Redigera längst ned i Mer-menyn</string>
-    <string name="dejavu_settings_sync">Synkronisera med Firefox eller Zen</string>
-    <string name="dejavu_sync_hint">Håller dina arbetsytor med sina färger och ikoner, behållare, fästa flikar, favoriter och mappar likadana som i Zen Browser på datorn och i Dejavu på dina andra enheter. Det används med samma Mozilla-konto som du synkroniserar Firefox-data med.</string>
     <string name="dejavu_sync_zen_hint">I Zen öppnar du Inställningar, sedan Synkronisering, och slår på synkronisering av sidofältet. Flikar som inte är fästa synkroniseras inte.</string>
     <string name="dejavu_sync_enabled">Synkronisera arbetsytor</string>
     <string name="dejavu_sync_syncing">Synkroniserar …</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Dra arbetsytor för att ändra ordningen</string>
     <string name="dejavu_feature_split_view">Tryck länge på en länk för att öppna den i delad vy</string>
     <string name="dejavu_sync_choose_about">Synkronisera dina arbetsytor med Firefox eller Zen Browser på datorn, via Mozilla-kontot som du synkroniserar Firefox-data med.</string>
-    <string name="dejavu_sync_firefox_about">Visar de öppna flikarna i Firefox på var och en av dina datorer och telefoner som en arbetsyta och håller dem uppdaterade. Det använder samma Mozilla-konto som du synkroniserar Firefox-data med.</string>
     <string name="dejavu_sync_firefox_hint">I Firefox öppnar du Inställningar, sedan Synkronisering, och låter Öppna flikar vara på. Flikar du öppnar eller stänger i en enhets arbetsyta öppnas eller stängs även där. Flikar i dina andra arbetsytor stannar på den här enheten, och Firefox listar dem under dina andra enheter.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Visar även flikar som varken är fästa eller i en flikgrupp, inte bara fästa flikar och flikgrupper.</string>
     <string name="dejavu_sync_source">Synkronisera med</string>
     <string name="dejavu_sync_source_none">Inte valt än</string>
     <string name="dejavu_sync_choose_title">Välj vad du vill synkronisera med</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Den här arbetsytan visar de öppna flikarna på en enhet i ditt Mozilla-konto. Namnet och ikonen kommer från den enheten, och färgerna du väljer stannar på den här telefonen.</string>
     <string name="dejavu_settings_safe_browsing">Google Säker webbsökning</string>
     <string name="dejavu_settings_safe_browsing_summary">Varnar för nätfiske- och skadeprogramwebbplatser. För att göra det kontaktar Dejavu Google.</string>
+    <string name="dejavu_back">Tillbaka</string>
+    <string name="dejavu_sync_start_title">Slå ihop eller börja om?</string>
+    <string name="dejavu_sync_start_intro">Den här enheten har redan egna arbetsytor och flikar.</string>
+    <string name="dejavu_sync_start_merge">Slå ihop</string>
+    <string name="dejavu_sync_start_merge_zen">Behåll dem och lägg till dina arbetsytor från Zen. De synkroniseras också med Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Behåll dem, bredvid en arbetsyta för varje dator och telefon med Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Börja om</string>
+    <string name="dejavu_sync_start_fresh_zen">Stäng de här flikarna och ta bort de här arbetsytorna, fästa flikarna, mapparna och favoriterna, och hämta sedan dina arbetsytor från Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Stäng de här flikarna och ta bort de här arbetsytorna, fästa flikarna, mapparna och favoriterna, och visa sedan flikarna från dina datorer och telefoner med Firefox.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Ripristina i valoî predefiniti</string>
     <string name="dejavu_more_menu_hide_edit">Ascondi o buttón de modifica</string>
     <string name="dejavu_more_menu_hide_edit_summary">O buttón Modifica in fondo a-o menû Ciù</string>
-    <string name="dejavu_settings_sync">Sincronizza con Firefox ò Zen</string>
-    <string name="dejavu_sync_hint">O mantegne i tò spaçi de travaggio co-i sò coloî e icone, contenitoi, feuggi fissæ, essençiali e cartelle compagn-e comme inte Zen Browser in sciô tò computer e inte Dejavu inti tò âtri dispoxitivi. O doeä o conto Mozilla co-o quæ ti sincronizzi i dæti de Firefox.</string>
     <string name="dejavu_sync_zen_hint">Inte Zen, arvi Inpostaçioin, poi Sincronizzaçion, e attivi a sincronizzaçion de a barra laterale. I feuggi che no son fissæ no vegnan sincronizæ.</string>
     <string name="dejavu_sync_enabled">Sincronizza i spaçi de travaggio</string>
     <string name="dejavu_sync_syncing">Sincronizzando…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Strascina i spaçi de travaggio pe cangiâ l\'ordine</string>
     <string name="dejavu_feature_split_view">Tegni apreisso un ligamme pe arvîlo inte a vista spartia</string>
     <string name="dejavu_sync_choose_about">Sincronizza i tò spaçi de travaggio con Firefox ò Zen Browser in sciô tò computer, atraverso o conto Mozilla co-o quæ ti sincronizzi i dæti de Firefox.</string>
-    <string name="dejavu_sync_firefox_about">O amostra i feuggi averti de Firefox de ciaschedun di tò computer e telefoni comme un spaçio de travaggio, e o i tegne agiornæ. O doeä o conto Mozilla co-o quæ ti sincronizzi i dæti de Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Inte Firefox, arvi Inpostaçioin, poi Sincronizzaçion, e lascia attivo «Feuggi averti». I feuggi che t\'arvi ò che ti særi inte o spaçio de travaggio de un dispoxitivo s\'arvan ò se særan ascì in sce quello dispoxitivo. I feuggi di tò âtri spaçi de travaggio restan in sce sto dispoxitivo, e Firefox o i amostra sotto i tò âtri dispoxitivi.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">O amostra ascì i feuggi che no son né fissæ né inte \'n gruppo de feuggi, no solo i feuggi fissæ e i gruppi de feuggi.</string>
     <string name="dejavu_sync_source">Sincronizza con</string>
     <string name="dejavu_sync_source_none">No ancon seleçionou</string>
     <string name="dejavu_sync_choose_title">Sceggi con cöse sincronizzâ</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Sto spaçio de travaggio o amostra i feuggi averti de un dispoxitivo do tò conto Mozilla. O sò nomme e a sò icona vegnan da quello dispoxitivo, e i coloî che ti çerni restan in sce sto telefono.</string>
     <string name="dejavu_settings_safe_browsing">Navegaçion segûa de Google</string>
     <string name="dejavu_settings_safe_browsing_summary">O l\'avvisa in sciô scito de phishing e malware. Pe fâlo, Dejavu o se conette a Google.</string>
+    <string name="dejavu_back">Inderê</string>
+    <string name="dejavu_sync_start_title">Unî ò ricominçâ da zero?</string>
+    <string name="dejavu_sync_start_intro">Sto dispoxitivo o gh\'à za i sò spaçi de travaggio e i sò feuggi.</string>
+    <string name="dejavu_sync_start_merge">Unisci</string>
+    <string name="dejavu_sync_start_merge_zen">Tegnili e azzonzi i tò spaçi de travaggio da Zen. Se sincronizzan ascì con Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Tegnili, a-o fianco de un spaçio de travaggio pe ògni computer e telefono con Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Ricominça da zero</string>
+    <string name="dejavu_sync_start_fresh_zen">Særa sti feuggi e caccia sti spaçi de travaggio, feuggi fissæ, cartelle e essençiali, poi piggia i tò spaçi de travaggio da Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Særa sti feuggi e caccia sti spaçi de travaggio, feuggi fissæ, cartelle e essençiali, poi amostra i feuggi di tò computer e telefoni con Firefox.</string>
 </resources>

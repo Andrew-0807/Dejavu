@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">ნაგულისხმევზე დაბრუნება</string>
     <string name="dejavu_more_menu_hide_edit">ჩასწორების ღილაკის დამალვა</string>
     <string name="dejavu_more_menu_hide_edit_summary">ღილაკი „ჩასწორება“ დამატებითი მენიუს ბოლოში</string>
-    <string name="dejavu_settings_sync">სინქრონიზაცია Firefox-თან ან Zen-თან</string>
-    <string name="dejavu_sync_hint">თქვენს სივრცეებს — ფერებითა და ხატულებით, კონტეინერებს, მიმაგრებულ ჩანართებს, საჭირო საიტებსა და საქაღალდეებს — იმავეს ინახავს, რაც Zen Browser-შია თქვენს კომპიუტერზე და Dejavu-ში თქვენს სხვა მოწყობილობებზე. გამოიყენება Mozilla-ანგარიში, რომლითაც Firefox-ის მონაცემებს ასინქრონებთ.</string>
     <string name="dejavu_sync_zen_hint">Zen-ში გახსენით „პარამეტრები“, შემდეგ „სინქრონიზაცია“ და ჩართეთ გვერდითი პანელის სინქრონიზაცია. მიუმაგრებელი ჩანართები არ სინქრონდება.</string>
     <string name="dejavu_sync_enabled">სივრცეების სინქრონიზაცია</string>
     <string name="dejavu_sync_syncing">სინქრონდება…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">გადაათრიეთ სივრცეები მათი რიგის შესაცვლელად</string>
     <string name="dejavu_feature_split_view">გრძლივად დააჭირეთ ბმულს, რომ გაყოფილ ხედში გახსნათ</string>
     <string name="dejavu_sync_choose_about">დაასინქრონეთ თქვენი სივრცეები თქვენს კომპიუტერზე არსებულ Firefox-თან ან Zen Browser-თან იმ Mozilla-ანგარიშით, რომლითაც Firefox-ის მონაცემებს ასინქრონებთ.</string>
-    <string name="dejavu_sync_firefox_about">აჩვენებს Firefox-ის გახსნილ ჩანართებს თქვენს თითოეულ კომპიუტერსა და ტელეფონზე სივრცის სახით და მუდამ განახლებულს ინახავს. გამოიყენება Mozilla-ანგარიში, რომლითაც Firefox-ის მონაცემებს ასინქრონებთ.</string>
     <string name="dejavu_sync_firefox_hint">Firefox-ში გახსენით „პარამეტრები“, შემდეგ „სინქრონიზაცია“ და დატოვეთ ჩართული „გახსნილი ჩანართები“. მოწყობილობის სივრცეში გახსნილი ან დახურული ჩანართები იმ მოწყობილობაზეც იხსნება ან იხურება. თქვენი სხვა სივრცეების ჩანართები ამ მოწყობილობაზე რჩება, Firefox კი მათ თქვენს სხვა მოწყობილობებს შორის აჩვენებს.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">ის ასევე აჩვენებს ჩანართებს, რომლებიც არც მიმაგრებულია და არც ჩანართების ჯგუფშია, და არა მხოლოდ მიმაგრებულ ჩანართებსა და ჩანართების ჯგუფებს.</string>
     <string name="dejavu_sync_source">სინქრონიზაცია ამასთან</string>
     <string name="dejavu_sync_source_none">ჯერ არ არის არჩეული</string>
     <string name="dejavu_sync_choose_title">აირჩიეთ, რასთან დასინქრონდეს</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">ეს სივრცე აჩვენებს თქვენს Mozilla-ანგარიშთან დაკავშირებული მოწყობილობის გახსნილ ჩანართებს. მისი სახელი და ხატულა იმ მოწყობილობიდან მოდის, თქვენ მიერ არჩეული ფერები კი ამ ტელეფონზე რჩება.</string>
     <string name="dejavu_settings_safe_browsing">Google-ის უსაფრთხო დათვალიერება</string>
     <string name="dejavu_settings_safe_browsing_summary">გაფრთხილებთ ფიშინგისა და მავნე პროგრამების საიტების შესახებ. ამისთვის Dejavu უკავშირდება Google-ს.</string>
+    <string name="dejavu_back">უკან</string>
+    <string name="dejavu_sync_start_title">გავაერთიანოთ თუ თავიდან დავიწყოთ?</string>
+    <string name="dejavu_sync_start_intro">ამ მოწყობილობას უკვე აქვს საკუთარი სივრცეები და ჩანართები.</string>
+    <string name="dejavu_sync_start_merge">გაერთიანება</string>
+    <string name="dejavu_sync_start_merge_zen">ისინი დარჩება და დაემატება თქვენი სივრცეები Zen-იდან. ესენიც Zen-თან სინქრონდება.</string>
+    <string name="dejavu_sync_start_merge_firefox">ისინი დარჩება Firefox-იანი თითოეული კომპიუტერისა და ტელეფონის სივრცის გვერდით.</string>
+    <string name="dejavu_sync_start_fresh">თავიდან დაწყება</string>
+    <string name="dejavu_sync_start_fresh_zen">ეს ჩანართები დაიხურება, ეს სივრცეები, მიმაგრებული ჩანართები, საქაღალდეები და საჭირო საიტები წაიშლება, შემდეგ კი Zen-იდან ჩამოიტვირთება თქვენი სივრცეები.</string>
+    <string name="dejavu_sync_start_fresh_firefox">ეს ჩანართები დაიხურება, ეს სივრცეები, მიმაგრებული ჩანართები, საქაღალდეები და საჭირო საიტები წაიშლება, შემდეგ კი გამოჩნდება თქვენი Firefox-იანი კომპიუტერებისა და ტელეფონების ჩანართები.</string>
 </resources>

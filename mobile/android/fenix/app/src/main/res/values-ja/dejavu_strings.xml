@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">既定値に戻す</string>
     <string name="dejavu_more_menu_hide_edit">編集ボタンを非表示</string>
     <string name="dejavu_more_menu_hide_edit_summary">その他メニューの下部にある［編集］ボタン</string>
-    <string name="dejavu_settings_sync">FirefoxまたはZenと同期</string>
-    <string name="dejavu_sync_hint">色やアイコンを含むワークスペース、コンテナー、ピン留めタブ、よく使うサイト、フォルダーを、パソコンのZen Browserや他の端末のDejavuと同じ状態に保ちます。Firefoxのデータ同期に使っているMozillaアカウントを使用します。</string>
     <string name="dejavu_sync_zen_hint">Zenで「設定」を開き、「同期」でサイドバーの同期をオンにしてください。ピン留めしていないタブは同期されません。</string>
     <string name="dejavu_sync_enabled">ワークスペースを同期</string>
     <string name="dejavu_sync_syncing">同期中…</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">ワークスペースをドラッグして並べ替え</string>
     <string name="dejavu_feature_split_view">リンクを長押しして分割ビューで開く</string>
     <string name="dejavu_sync_choose_about">Firefoxのデータ同期に使っているMozillaアカウントを通じて、ワークスペースをパソコンのFirefoxまたはZen Browserと同期します。</string>
-    <string name="dejavu_sync_firefox_about">各パソコンとスマートフォンのFirefoxで開いているタブをワークスペースとして表示し、常に最新の状態に保ちます。Firefoxのデータ同期に使っているMozillaアカウントを使用します。</string>
     <string name="dejavu_sync_firefox_hint">Firefoxで「設定」を開き、「同期」で「開いているタブ」をオンのままにしてください。端末のワークスペースで開いたり閉じたりしたタブは、その端末でも開いたり閉じたりします。他のワークスペースのタブはこの端末に残り、Firefoxでは他の端末の一覧に表示されます。</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">ピン留めタブとタブグループだけでなく、ピン留めされておらずタブグループにも入っていないタブも表示します。</string>
     <string name="dejavu_sync_source">同期先</string>
     <string name="dejavu_sync_source_none">まだ選択していません</string>
     <string name="dejavu_sync_choose_title">同期先を選択</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">このワークスペースには、Mozillaアカウントに接続された端末で開いているタブが表示されます。名前とアイコンはその端末のものが使われ、選んだ色はこのスマートフォンだけに保存されます。</string>
     <string name="dejavu_settings_safe_browsing">Google セーフ ブラウジング</string>
     <string name="dejavu_settings_safe_browsing_summary">フィッシングサイトやマルウェアサイトについて警告します。そのため、DejavuはGoogleと通信します。</string>
+    <string name="dejavu_back">戻る</string>
+    <string name="dejavu_sync_start_title">統合しますか、それとも一から始めますか?</string>
+    <string name="dejavu_sync_start_intro">この端末には、すでに独自のワークスペースとタブがあります。</string>
+    <string name="dejavu_sync_start_merge">統合する</string>
+    <string name="dejavu_sync_start_merge_zen">これらを残したまま、Zenのワークスペースを追加します。これらもZenと同期されます。</string>
+    <string name="dejavu_sync_start_merge_firefox">これらを残し、Firefoxを使っているパソコンとスマートフォンごとのワークスペースと並べます。</string>
+    <string name="dejavu_sync_start_fresh">一から始める</string>
+    <string name="dejavu_sync_start_fresh_zen">これらのタブを閉じ、ワークスペース、ピン留めタブ、フォルダー、よく使うサイトを削除してから、Zenのワークスペースを取得します。</string>
+    <string name="dejavu_sync_start_fresh_firefox">これらのタブを閉じ、ワークスペース、ピン留めタブ、フォルダー、よく使うサイトを削除してから、Firefoxを使っているパソコンとスマートフォンのタブを表示します。</string>
 </resources>

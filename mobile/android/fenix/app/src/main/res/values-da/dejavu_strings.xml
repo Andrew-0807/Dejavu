@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Nulstil til standard</string>
     <string name="dejavu_more_menu_hide_edit">Skjul redigeringsknap</string>
     <string name="dejavu_more_menu_hide_edit_summary">Knappen Rediger nederst i Mere-menuen</string>
-    <string name="dejavu_settings_sync">Synkroniser med Firefox eller Zen</string>
-    <string name="dejavu_sync_hint">Holder dine arbejdsområder med deres farver og ikoner, beholdere, fastgjorte faneblade, favoritter og mapper synkroniseret med Zen Browser på din computer og Dejavu på dine andre enheder. Det bruger den Mozilla-konto, du synkroniserer Firefox-data med.</string>
     <string name="dejavu_sync_zen_hint">Åbn Indstillinger i Zen, derefter Synkronisering, og slå synkronisering af sidepanelet til. Faneblade, der ikke er fastgjort, synkroniseres ikke.</string>
     <string name="dejavu_sync_enabled">Synkroniser arbejdsområder</string>
     <string name="dejavu_sync_syncing">Synkroniserer …</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Træk arbejdsområder for at ændre rækkefølgen</string>
     <string name="dejavu_feature_split_view">Hold et link nede for at åbne det i delt visning</string>
     <string name="dejavu_sync_choose_about">Synkroniser dine arbejdsområder med Firefox eller Zen Browser på din computer via den Mozilla-konto, du synkroniserer Firefox-data med.</string>
-    <string name="dejavu_sync_firefox_about">Viser de åbne faneblade i Firefox på hver af dine computere og telefoner som et arbejdsområde og holder dem opdateret. Det bruger den Mozilla-konto, du synkroniserer Firefox-data med.</string>
     <string name="dejavu_sync_firefox_hint">Åbn Indstillinger i Firefox, derefter Synkronisering, og lad Åbne faneblade være slået til. Faneblade, du åbner eller lukker i en enheds arbejdsområde, åbnes eller lukkes også på den enhed. Faneblade i dine andre arbejdsområder bliver på denne enhed, og Firefox viser dem under dine andre enheder.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Viser også de faneblade, der hverken er fastgjort eller i en fanebladsgruppe, ikke kun fastgjorte faneblade og fanebladsgrupper.</string>
     <string name="dejavu_sync_source">Synkroniser med</string>
     <string name="dejavu_sync_source_none">Endnu ikke valgt</string>
     <string name="dejavu_sync_choose_title">Vælg, hvad der skal synkroniseres med</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Dette arbejdsområde viser de åbne faneblade fra en enhed på din Mozilla-konto. Dets navn og ikon kommer fra den enhed, og de farver, du vælger, bliver på denne telefon.</string>
     <string name="dejavu_settings_safe_browsing">Google Beskyttet browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Advarer om phishing- og malwarewebsteder. For at gøre det kontakter Dejavu Google.</string>
+    <string name="dejavu_back">Tilbage</string>
+    <string name="dejavu_sync_start_title">Flet sammen eller start forfra?</string>
+    <string name="dejavu_sync_start_intro">Denne enhed har allerede sine egne arbejdsområder og faneblade.</string>
+    <string name="dejavu_sync_start_merge">Flet sammen</string>
+    <string name="dejavu_sync_start_merge_zen">Behold dem og tilføj dine arbejdsområder fra Zen. De synkroniseres også med Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Behold dem ved siden af et arbejdsområde for hver computer og telefon med Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Start forfra</string>
+    <string name="dejavu_sync_start_fresh_zen">Luk disse faneblade, fjern disse arbejdsområder, fastgjorte faneblade, mapper og favoritter, og hent derefter dine arbejdsområder fra Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Luk disse faneblade, fjern disse arbejdsområder, fastgjorte faneblade, mapper og favoritter, og vis derefter fanebladene fra dine computere og telefoner med Firefox.</string>
 </resources>

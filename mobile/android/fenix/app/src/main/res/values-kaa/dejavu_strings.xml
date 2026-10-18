@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Ádepkige qayta ornatıw</string>
     <string name="dejavu_more_menu_hide_edit">Óńlew knopkasın jasırıw</string>
     <string name="dejavu_more_menu_hide_edit_summary">«Kóbirek» menyusiniń astındaǵı «Óńlew» knopkası</string>
-    <string name="dejavu_settings_sync">Firefox yamasa Zen penen sinxronlastırıw</string>
-    <string name="dejavu_sync_hint">Reńleri hám belgisheleri menen jumıs maydanlarıńızdı, konteynerlerińizdi, bekitilgen betlerińizdi, tiykarǵılarıńızdı hám papkalarıńızdı kompyuterińizdegi Zen Browser hám basqa qurılmalarıńızdaǵı Dejavu menen bir qılıp turadı. Bunıń ushın Firefox maǵlıwmatlarıńızdı sinxronlastıratuǵın Mozilla akkauntı qollanıladı.</string>
     <string name="dejavu_sync_zen_hint">Zen-de Sazlawlardı, soń Sinxronlastırıwdı ashıń hám yan panel sinxronlastırıwın qosıń. Bekitilmegen betler sinxronlastırılmaydı.</string>
     <string name="dejavu_sync_enabled">Jumıs maydanların sinxronlastırıw</string>
     <string name="dejavu_sync_syncing">Sinxronlastırılıp atır…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Jumıs maydanlarınıń tártibin ózgertiw ushın olardı súyreń</string>
     <string name="dejavu_feature_split_view">Siltemeni bólingen kóriniste ashıw ushın onı basıp turıń</string>
     <string name="dejavu_sync_choose_about">Jumıs maydanlarıńızdı Firefox maǵlıwmatlarıńızdı sinxronlastıratuǵın Mozilla akkauntı arqalı kompyuterińizdegi Firefox yamasa Zen Browser menen sinxronlastırıń.</string>
-    <string name="dejavu_sync_firefox_about">Hár bir kompyuterińiz hám telefonıńızdaǵı Firefox ashıq betlerin jumıs maydanı sıpatında kórsetedi hám olardı jańalap turadı. Bunıń ushın Firefox maǵlıwmatlarıńızdı sinxronlastıratuǵın Mozilla akkauntı qollanıladı.</string>
     <string name="dejavu_sync_firefox_hint">Firefox-ta Sazlawlardı, soń Sinxronlastırıwdı ashıń hám Ashıq betler parametrin qosılǵan halda qaldırıń. Qurılmanıń jumıs maydanında ashqan yamasa japqan betlerińiz sol qurılmada da ashıladı yamasa jabıladı. Basqa jumıs maydanlarıńızdaǵı betler usı qurılmada qaladı, al Firefox olardı basqa qurılmalarıńız astında kórsetedi.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Sonday-aq, bekitilmegen hám betler toparında joq betlerdi de kórsetedi, tek bekitilgen betler hám betler toparların emes.</string>
     <string name="dejavu_sync_source">Mınıń menen sinxronlastırıw</string>
     <string name="dejavu_sync_source_none">Áli tańlanbaǵan</string>
     <string name="dejavu_sync_choose_title">Neniń menen sinxronlastırıwdı tańlań</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Bul jumıs maydanı Mozilla akkauntıńızdaǵı bir qurılmanıń ashıq betlerin kórsetedi. Onıń atı hám belgishesi sol qurılmadan alınadı, al siz tańlaǵan reńler usı telefonda qaladı.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Fishing hám zıyanlı baǵdarlama saytları haqqında eskertedi. Bul ushın Dejavu Google menen baylanısadı.</string>
+    <string name="dejavu_back">Artqa</string>
+    <string name="dejavu_sync_start_title">Birlestiriw me yamasa jańadan baslaw ma?</string>
+    <string name="dejavu_sync_start_intro">Bul qurılmada álleqashan óziniń jumıs maydanları hám betleri bar.</string>
+    <string name="dejavu_sync_start_merge">Birlestiriw</string>
+    <string name="dejavu_sync_start_merge_zen">Olardı saqlap, Zen-nen jumıs maydanlarıńızdı qosıń. Olar da Zen menen sinxronlastırıladı.</string>
+    <string name="dejavu_sync_start_merge_firefox">Olardı Firefox ornatılǵan hár bir kompyuter hám telefonnıń jumıs maydanı menen qatar saqlań.</string>
+    <string name="dejavu_sync_start_fresh">Jańadan baslaw</string>
+    <string name="dejavu_sync_start_fresh_zen">Bul betlerdi jabıp, bul jumıs maydanların, bekitilgen betlerdi, papkalardı hám tiykarǵılardı óshiriń, soń jumıs maydanlarıńızdı Zen-nen alıń.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Bul betlerdi jabıp, bul jumıs maydanların, bekitilgen betlerdi, papkalardı hám tiykarǵılardı óshiriń, soń Firefox ornatılǵan kompyuterlerińiz hám telefonlarıńızdıń betlerin kórsetiń.</string>
 </resources>

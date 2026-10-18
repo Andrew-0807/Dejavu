@@ -212,8 +212,6 @@
     <string name="dejavu_more_menu_reset">Скінуць да прадвызначаных</string>
     <string name="dejavu_more_menu_hide_edit">Схаваць кнопку рэдагавання</string>
     <string name="dejavu_more_menu_hide_edit_summary">Кнопка «Рэдагаваць» унізе меню «Яшчэ»</string>
-    <string name="dejavu_settings_sync">Сінхранізаваць з Firefox або Zen</string>
-    <string name="dejavu_sync_hint">Захоўвае вашы прасторы з іх колерамі і значкамі, кантэйнеры, замацаваныя карткі, важнае і папкі такімі ж, як у Zen Browser на вашым камп\'ютары і ў Dejavu на іншых вашых прыладах. Для гэтага выкарыстоўваецца ўліковы запіс Mozilla, з якім вы сінхранізуеце даныя Firefox.</string>
     <string name="dejavu_sync_zen_hint">У Zen адкрыйце Налады, затым Сінхранізацыю, і ўключыце сінхранізацыю бакавой панэлі. Незамацаваныя карткі не сінхранізуюцца.</string>
     <string name="dejavu_sync_enabled">Сінхранізаваць прасторы</string>
     <string name="dejavu_sync_syncing">Сінхранізацыя…</string>
@@ -299,9 +297,7 @@
     <string name="dejavu_feature_workspace_order">Перацягвайце прасторы, каб змяніць іх парадак</string>
     <string name="dejavu_feature_split_view">Утрымлівайце спасылку, каб адкрыць яе ў падзеленым выглядзе</string>
     <string name="dejavu_sync_choose_about">Сінхранізуйце свае прасторы з Firefox або Zen Browser на вашым камп\'ютары праз уліковы запіс Mozilla, з якім вы сінхранізуеце даныя Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Паказвае адкрытыя карткі Firefox з кожнага вашага камп\'ютара і тэлефона як прастору і падтрымлівае іх у актуальным стане. Для гэтага выкарыстоўваецца ўліковы запіс Mozilla, з якім вы сінхранізуеце даныя Firefox.</string>
     <string name="dejavu_sync_firefox_hint">У Firefox адкрыйце Налады, затым Сінхранізацыю, і пакіньце ўключаным параметр «Адкрытыя карткі». Карткі, якія вы адкрываеце або закрываеце ў прасторы прылады, адкрываюцца або закрываюцца і на ёй. Карткі ў іншых вашых прасторах застаюцца на гэтай прыладзе, а Firefox паказвае іх сярод іншых вашых прылад.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Таксама паказвае карткі, якія не замацаваны і не ўваходзяць у групу картак, а не толькі замацаваныя карткі і групы картак.</string>
     <string name="dejavu_sync_source">Сінхранізаваць з</string>
     <string name="dejavu_sync_source_none">Яшчэ не выбрана</string>
     <string name="dejavu_sync_choose_title">Выберыце, з чым сінхранізаваць</string>
@@ -344,4 +340,13 @@
     <string name="dejavu_workspace_device_note">Гэтая прастора паказвае адкрытыя карткі прылады з вашага ўліковага запісу Mozilla. Яе назва і значок бяруцца з той прылады, а колеры, якія вы выбіраеце, застаюцца на гэтым тэлефоне.</string>
     <string name="dejavu_settings_safe_browsing">Бяспечны прагляд Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Папярэджвае пра фішынгавыя і шкодныя сайты. Для гэтага Dejavu звяртаецца да Google.</string>
+    <string name="dejavu_back">Назад</string>
+    <string name="dejavu_sync_start_title">Аб\'яднаць ці пачаць з нуля?</string>
+    <string name="dejavu_sync_start_intro">На гэтай прыладзе ўжо ёсць уласныя прасторы і карткі.</string>
+    <string name="dejavu_sync_start_merge">Аб\'яднаць</string>
+    <string name="dejavu_sync_start_merge_zen">Пакінуць іх і дадаць вашы прасторы з Zen. Яны таксама сінхранізуюцца з Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Пакінуць іх побач з прасторай для кожнага камп\'ютара і тэлефона з Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Пачаць з нуля</string>
+    <string name="dejavu_sync_start_fresh_zen">Закрыць гэтыя карткі і выдаліць гэтыя прасторы, замацаваныя карткі, папкі і важнае, а потым атрымаць вашы прасторы з Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Закрыць гэтыя карткі і выдаліць гэтыя прасторы, замацаваныя карткі, папкі і важнае, а потым паказаць карткі вашых камп\'ютараў і тэлефонаў з Firefox.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">സ്ഥിരമായതിലേക്ക് പുനഃസജ്ജമാക്കുക</string>
     <string name="dejavu_more_menu_hide_edit">തിരുത്തൽ ബട്ടൺ മറയ്ക്കുക</string>
     <string name="dejavu_more_menu_hide_edit_summary">കൂടുതൽ മെനുവിന്റെ താഴെയുള്ള തിരുത്തുക ബട്ടൺ</string>
-    <string name="dejavu_settings_sync">Firefox അല്ലെങ്കിൽ Zen യുമായി സിങ്ക് ചെയ്യുക</string>
-    <string name="dejavu_sync_hint">നിങ്ങളുടെ പണിയിടങ്ങളെ അവയുടെ നിറങ്ങളും ചിഹ്നങ്ങളും സഹിതം, കണ്ടെയ്നറുകൾ, പിൻ ചെയ്ത ടാബുകൾ, പ്രധാനപ്പെട്ടവ, ഫോൾഡറുകൾ എന്നിവയെ നിങ്ങളുടെ കമ്പ്യൂട്ടറിലെ Zen ബ്രൗസറിലും നിങ്ങളുടെ മറ്റ് ഉപകരണങ്ങളിലെ Dejavu-യിലും ഉള്ളതുപോലെതന്നെ സൂക്ഷിക്കുന്നു. ഇത് നിങ്ങൾ Firefox ഡാറ്റ സിങ്ക് ചെയ്യാൻ ഉപയോഗിക്കുന്ന Mozilla അക്കൗണ്ട് ഉപയോഗിക്കുന്നു.</string>
     <string name="dejavu_sync_zen_hint">Zen-ൽ, ക്രമീകരണങ്ങൾ തുറന്ന്, പിന്നെ സിങ്ക് തുറന്ന്, സൈഡ്‌ബാർ സിങ്ക് ഓൺ ചെയ്യുക. പിൻ ചെയ്യാത്ത ടാബുകൾ സിങ്ക് ആകില്ല.</string>
     <string name="dejavu_sync_enabled">പണിയിടങ്ങൾ സിങ്ക് ചെയ്യുക</string>
     <string name="dejavu_sync_syncing">സിങ്ക് ചെയ്യുന്നു…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">ക്രമം മാറ്റാൻ പണിയിടങ്ങൾ വലിച്ചിടുക</string>
     <string name="dejavu_feature_split_view">ഒരു ലിങ്ക് വിഭജിത കാഴ്ചയിൽ തുറക്കാൻ അത് അമർത്തിപ്പിടിക്കുക</string>
     <string name="dejavu_sync_choose_about">നിങ്ങൾ Firefox ഡാറ്റ സിങ്ക് ചെയ്യാൻ ഉപയോഗിക്കുന്ന Mozilla അക്കൗണ്ട് വഴി, നിങ്ങളുടെ പണിയിടങ്ങൾ നിങ്ങളുടെ കമ്പ്യൂട്ടറിലെ Firefox അല്ലെങ്കിൽ Zen ബ്രൗസറുമായി സിങ്ക് ചെയ്യുക.</string>
-    <string name="dejavu_sync_firefox_about">നിങ്ങളുടെ ഓരോ കമ്പ്യൂട്ടറിലെയും ഫോണിലെയും Firefox-ൽ തുറന്നിരിക്കുന്ന ടാബുകൾ ഒരു പണിയിടമായി കാണിക്കുകയും അവ എപ്പോഴും കാലികമായി നിലനിർത്തുകയും ചെയ്യുന്നു. ഇത് നിങ്ങൾ Firefox ഡാറ്റ സിങ്ക് ചെയ്യാൻ ഉപയോഗിക്കുന്ന Mozilla അക്കൗണ്ട് ഉപയോഗിക്കുന്നു.</string>
     <string name="dejavu_sync_firefox_hint">Firefox-ൽ, ക്രമീകരണങ്ങൾ തുറന്ന്, പിന്നെ സിങ്ക് തുറന്ന്, “തുറന്നിരിക്കുന്ന ടാബുകൾ” ഓണായി നിലനിർത്തുക. ഒരു ഉപകരണത്തിന്റെ പണിയിടത്തിൽ നിങ്ങൾ തുറക്കുകയോ അടയ്ക്കുകയോ ചെയ്യുന്ന ടാബുകൾ ആ ഉപകരണത്തിലും തുറക്കുകയോ അടയുകയോ ചെയ്യും. നിങ്ങളുടെ മറ്റ് പണിയിടങ്ങളിലെ ടാബുകൾ ഈ ഉപകരണത്തിൽ തന്നെ നിൽക്കും, Firefox അവയെ നിങ്ങളുടെ മറ്റ് ഉപകരണങ്ങൾക്ക് കീഴിൽ കാണിക്കും.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">പിൻ ചെയ്യാത്തതും ഒരു ടാബുകൂട്ടത്തിലും ഇല്ലാത്തതുമായ ടാബുകളും ഇത് കാണിക്കുന്നു, പിൻ ചെയ്ത ടാബുകളും ടാബുകൂട്ടങ്ങളും മാത്രമല്ല.</string>
     <string name="dejavu_sync_source">ഇതുമായി സിങ്ക് ചെയ്യുക</string>
     <string name="dejavu_sync_source_none">ഇതുവരെ തിരഞ്ഞെടുത്തിട്ടില്ല</string>
     <string name="dejavu_sync_choose_title">എന്തുമായി സിങ്ക് ചെയ്യണമെന്ന് തിരഞ്ഞെടുക്കുക</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">ഈ പണിയിടം നിങ്ങളുടെ Mozilla അക്കൗണ്ടിലുള്ള ഒരു ഉപകരണത്തിലെ തുറന്നിരിക്കുന്ന ടാബുകൾ കാണിക്കുന്നു. ഇതിന്റെ പേരും ചിഹ്നവും ആ ഉപകരണത്തിൽ നിന്നാണ് വരുന്നത്, നിങ്ങൾ തിരഞ്ഞെടുക്കുന്ന നിറങ്ങൾ ഈ ഫോണിൽ തന്നെ നിലനിൽക്കും.</string>
     <string name="dejavu_settings_safe_browsing">Google സുരക്ഷിത ബ്രൗസിംഗ്</string>
     <string name="dejavu_settings_safe_browsing_summary">ഫിഷിംഗ്, മാൽവെയർ സൈറ്റുകളെക്കുറിച്ച് മുന്നറിയിപ്പ് നൽകുന്നു. ഇതിനായി Dejavu, Google-മായി ബന്ധപ്പെടുന്നു.</string>
+    <string name="dejavu_back">പിന്നോട്ട്</string>
+    <string name="dejavu_sync_start_title">ലയിപ്പിക്കണോ, പുതുതായി തുടങ്ങണോ?</string>
+    <string name="dejavu_sync_start_intro">ഈ ഉപകരണത്തിൽ ഇതിനകം സ്വന്തം പണിയിടങ്ങളും ടാബുകളും ഉണ്ട്.</string>
+    <string name="dejavu_sync_start_merge">ലയിപ്പിക്കുക</string>
+    <string name="dejavu_sync_start_merge_zen">അവ നിലനിർത്തി Zen-ൽ നിന്നുള്ള നിങ്ങളുടെ പണിയിടങ്ങൾ ചേർക്കുക. അവയും Zen-ലേക്ക് സിങ്ക് ചെയ്യും.</string>
+    <string name="dejavu_sync_start_merge_firefox">Firefox ഉള്ള ഓരോ കമ്പ്യൂട്ടറിനും ഫോണിനുമുള്ള പണിയിടത്തിനൊപ്പം അവ നിലനിർത്തുക.</string>
+    <string name="dejavu_sync_start_fresh">പുതുതായി തുടങ്ങുക</string>
+    <string name="dejavu_sync_start_fresh_zen">ഈ ടാബുകൾ അടച്ച്, ഈ പണിയിടങ്ങൾ, പിൻ ചെയ്ത ടാബുകൾ, ഫോൾഡറുകൾ, പ്രധാനപ്പെട്ടവ എന്നിവ നീക്കം ചെയ്യുക, തുടർന്ന് Zen-ൽ നിന്ന് നിങ്ങളുടെ പണിയിടങ്ങൾ നേടുക.</string>
+    <string name="dejavu_sync_start_fresh_firefox">ഈ ടാബുകൾ അടച്ച്, ഈ പണിയിടങ്ങൾ, പിൻ ചെയ്ത ടാബുകൾ, ഫോൾഡറുകൾ, പ്രധാനപ്പെട്ടവ എന്നിവ നീക്കം ചെയ്യുക, തുടർന്ന് Firefox ഉള്ള നിങ്ങളുടെ കമ്പ്യൂട്ടറുകളിലെയും ഫോണുകളിലെയും ടാബുകൾ കാണിക്കുക.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Vegere rewşa bingehîn</string>
     <string name="dejavu_more_menu_hide_edit">Bişkoka serrastkirinê veşêre</string>
     <string name="dejavu_more_menu_hide_edit_summary">Bişkoka Serrast bike li binê menuya zêde</string>
-    <string name="dejavu_settings_sync">Bi Firefox an Zen re hevdemkirin</string>
-    <string name="dejavu_sync_hint">Qadên te bi reng û îkonên wan, konteyneran, hilpekînên sabît, malperên girîng û peldankan wekî di Zen Browser de li ser kompîturê te û di Dejavu de li ser amûrên te yên din didomîne. Ew hesabê Mozilla yê ku tu daneyên Firefox pê re hevdem dikî, bi kar tîne.</string>
     <string name="dejavu_sync_zen_hint">Di Zen de, «Sazkarî» veke, paşê «Hevdemkirin», û hevdemkirina darika kêlekê vekirî bike. Hilpekînên ku ne sabît in nayên hevdemkirin.</string>
     <string name="dejavu_sync_enabled">Qadan hevdem bike</string>
     <string name="dejavu_sync_syncing">Tê hevdemkirin…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Qadan bikişîne û rêza wan biguherîne</string>
     <string name="dejavu_feature_split_view">Bi dirêjahî li girêdanekê bitikîne û wê di dîmena dabeşkirî de veke</string>
     <string name="dejavu_sync_choose_about">Qadên xwe bi Firefox an Zen Browser re li ser kompîturê xwe hevdem bike, bi rêya hesabê Mozilla yê ku tu daneyên Firefox pê re hevdem dikî.</string>
-    <string name="dejavu_sync_firefox_about">Hilpekînên vekirî yên Firefox li ser her kompîtur û telefona te wek qadekê nîşan dide û wan rojane dihêle. Ew hesabê Mozilla yê ku tu daneyên Firefox pê re hevdem dikî, bi kar tîne.</string>
     <string name="dejavu_sync_firefox_hint">Di Firefox de «Sazkarî» veke, paşê «Hevdemkirin», û «Hilpekînên vekirî» vekirî bihêle. Hilpekînên ku tu di qada amûrekê de vedikî an digirî, li wir jî vedibin an tên girtin. Hilpekînên qadên te yên din li ser vê amûrê dimînin, û Firefox wan di bin amûrên te yên din de nîşan dide.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Herwiha hilpekînên ku ne sabît in, ne jî di komeke hilpekînan de ne, nîşan dide, ne tenê hilpekînên sabît û komên hilpekînan.</string>
     <string name="dejavu_sync_source">Hevdemkirin bi</string>
     <string name="dejavu_sync_source_none">Hê nehatiye hilbijartin</string>
     <string name="dejavu_sync_choose_title">Hilbijêre ka bi çi re hevdem bikî</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Ev qad hilpekînên vekirî yên amûreke li ser hesabê te yê Mozilla nîşan dide. Nav û îkona wê ji wê amûrê tên, û rengên ku tu hildibijêrî li ser vê telefonê dimînin.</string>
     <string name="dejavu_settings_safe_browsing">Gerîna Ewle ya Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Derbarê malperên phishing û malware de hişyar dike. Ji bo vê yekê, Dejavu bi Google re têkilî datîne.</string>
+    <string name="dejavu_back">Paşve</string>
+    <string name="dejavu_sync_start_title">Bike yek an ji nû ve dest pê bike?</string>
+    <string name="dejavu_sync_start_intro">Ev amûr jixwe xwedî qad û hilpekînên xwe ye.</string>
+    <string name="dejavu_sync_start_merge">Bike yek</string>
+    <string name="dejavu_sync_start_merge_zen">Wan bihêle û qadên xwe yên ji Zen lê zêde bike. Ew jî bi Zen re tên hevdemkirin.</string>
+    <string name="dejavu_sync_start_merge_firefox">Wan bihêle, li kêleka qadekê ji bo her kompîtur û telefona bi Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Ji nû ve dest pê bike</string>
+    <string name="dejavu_sync_start_fresh_zen">Van hilpekînan bigire û van qadan, hilpekînên sabît, peldankan û malperên girîng rake, paşê qadên xwe ji Zen bîne.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Van hilpekînan bigire û van qadan, hilpekînên sabît, peldankan û malperên girîng rake, paşê hilpekînên kompîtur û telefonên xwe yên bi Firefox nîşan bide.</string>
 </resources>

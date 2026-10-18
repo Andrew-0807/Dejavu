@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Гадәттәгегә кире кайтару</string>
     <string name="dejavu_more_menu_hide_edit">Төзәтү төймәсен яшерү</string>
     <string name="dejavu_more_menu_hide_edit_summary">«Тагын» менюсы астындагы «Төзәтү» төймәсе</string>
-    <string name="dejavu_settings_sync">Firefox яки Zen белән синхронлаштыру</string>
-    <string name="dejavu_sync_hint">Төсләре һәм билгечекләре белән бергә эш өлкәләрегезне, контейнерләрегезне, беркетелгән табларыгызны, төп сайтларыгызны һәм папкаларыгызны компьютерегездәге Zen Browser һәм башка җиһазларыгыздагы Dejavu белән бер төсле итеп тота. Моның өчен Firefox мәгълүматларыгызны синхронлаштырган Mozilla хисап язмасы кулланыла.</string>
     <string name="dejavu_sync_zen_hint">Zen-дә Көйләүләрне, аннары Синхронлаштыруны ачыгыз һәм як панель синхронлаштыруын кабызыгыз. Беркетелмәгән таблар синхронлаштырылмый.</string>
     <string name="dejavu_sync_enabled">Эш өлкәләрен синхронлаштыру</string>
     <string name="dejavu_sync_syncing">Синхронлаштырыла…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Тәртибен үзгәртү өчен эш өлкәләрен тартып күчерегез</string>
     <string name="dejavu_feature_split_view">Сылтаманы бүленгән күренештә ачу өчен аны басып торыгыз</string>
     <string name="dejavu_sync_choose_about">Эш өлкәләрегезне компьютерегездәге Firefox яки Zen Browser белән, Firefox мәгълүматларыгызны синхронлаштырган Mozilla хисап язмасы аша синхронлаштырыгыз.</string>
-    <string name="dejavu_sync_firefox_about">Һәр компьютерегездәге һәм телефоныгыздагы Firefox-ның ачык табларын эш өлкәсе итеп күрсәтә һәм аларны яңартып тора. Моның өчен Firefox мәгълүматларыгызны синхронлаштырган Mozilla хисап язмасы кулланыла.</string>
     <string name="dejavu_sync_firefox_hint">Firefox-та Көйләүләрне, аннары Синхронлаштыруны ачыгыз һәм «Ачык битләр» опциясен кабызылган килеш калдырыгыз. Җиһазның эш өлкәсендә ачкан яки япкан табларыгыз шул җиһазда да ачыла яки ябыла. Башка эш өлкәләрегездәге таблар бу җиһазда кала, ә Firefox аларны башка җиһазларыгыз исемлегендә күрсәтә.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Шулай ук беркетелмәгән һәм таб төркемендә булмаган табларны да күрсәтә, ялгыз гына беркетелгән таблар һәм таб төркемнәрен түгел.</string>
     <string name="dejavu_sync_source">Нәрсә белән синхронлаштыру</string>
     <string name="dejavu_sync_source_none">Әле сайланмаган</string>
     <string name="dejavu_sync_choose_title">Нәрсә белән синхронлаштыруны сайлагыз</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Бу эш өлкәсе Mozilla хисап язмагыздагы бер җиһазның ачык табларын күрсәтә. Аның исеме һәм билгечеге шул җиһаздан килә, ә сез сайлаган төсләр бу телефонда кала.</string>
     <string name="dejavu_settings_safe_browsing">Google куркынычсыз карау</string>
     <string name="dejavu_settings_safe_browsing_summary">Фишинг һәм зарарлы программа сайтлары турында кисәтә. Моның өчен Dejavu Google белән элемтәгә керә.</string>
+    <string name="dejavu_back">Артка</string>
+    <string name="dejavu_sync_start_title">Берләштерергәме, әллә яңадан башларгамы?</string>
+    <string name="dejavu_sync_start_intro">Бу җиһазның инде үз эш өлкәләре һәм таблары бар.</string>
+    <string name="dejavu_sync_start_merge">Берләштерү</string>
+    <string name="dejavu_sync_start_merge_zen">Аларны саклау һәм Zen-нән эш өлкәләрегезне өстәү. Алар да Zen белән синхронлаштырыла.</string>
+    <string name="dejavu_sync_start_merge_firefox">Аларны саклау, ә янәшәдә Firefox булган һәр компьютер һәм телефон үз эш өлкәсен ала.</string>
+    <string name="dejavu_sync_start_fresh">Яңадан башлау</string>
+    <string name="dejavu_sync_start_fresh_zen">Бу табларны ябу һәм бу эш өлкәләрен, беркетелгән табларны, папкаларны һәм төп сайтларны чыгару, аннары эш өлкәләрегезне Zen-нән алу.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Бу табларны ябу һәм бу эш өлкәләрен, беркетелгән табларны, папкаларны һәм төп сайтларны чыгару, аннары Firefox булган компьютерләрегез һәм телефоннарыгызның табларын күрсәтү.</string>
 </resources>

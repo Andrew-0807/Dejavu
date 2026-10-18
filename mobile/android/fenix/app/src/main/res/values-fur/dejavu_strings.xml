@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Ripristine i valôrs predefinîts</string>
     <string name="dejavu_more_menu_hide_edit">Plate il boton di modifiche</string>
     <string name="dejavu_more_menu_hide_edit_summary">Il boton Modifiche in bas dal menù Plui</string>
-    <string name="dejavu_settings_sync">Sincronize cun Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Al mantëin i tiei spazis di lavôr cui lôr colôrs e iconis, contenidôrs, schedis fissadis, essenziâi e cartelis compagns come in Zen Browser sul to computer e in Dejavu sui tiei altris dispositîfs. Al dopre l\'account Mozilla cun cui tu sincronizis i dâts di Firefox.</string>
     <string name="dejavu_sync_zen_hint">In Zen, vierç Impostazions, dopo Sincronizazion, e ative la sincronizazion de sbare laterâl. Lis schedis che no son fissadis no vegnin sincronizadis.</string>
     <string name="dejavu_sync_enabled">Sincronize i spazis di lavôr</string>
     <string name="dejavu_sync_syncing">Daûr a sincronizâ…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Strissine i spazis di lavôr par cambiâ il lôr ordin</string>
     <string name="dejavu_feature_split_view">Ten premût un leam par vierzilu in viodude dividude</string>
     <string name="dejavu_sync_choose_about">Sincronize i tiei spazis di lavôr cun Firefox o Zen Browser sul to computer, doprant l\'account Mozilla cun cui tu sincronizis i dâts di Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Al mostre lis schedis viertis di Firefox di ognidun dai tiei computers e telefons come un spazi di lavôr, e lis ten inzornadis. Al dopre l\'account Mozilla cun cui tu sincronizis i dâts di Firefox.</string>
     <string name="dejavu_sync_firefox_hint">In Firefox, vierç Impostazions, dopo Sincronizazion, e lasse ative la opzion Schedis viertis. Lis schedis che tu vierzis o sieris tal spazi di lavôr di un dispositîf si vierzin o si sierin ancje li. Lis schedis dai tiei altris spazis di lavôr a restin su chest dispositîf, e Firefox lis mostre insieme a chês dai tiei altris dispositîfs.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Al mostre ancje lis schedis che no son ni fissadis ni intun grup di schedis, no dome lis schedis fissadis e i grups di schedis.</string>
     <string name="dejavu_sync_source">Sincronize cun</string>
     <string name="dejavu_sync_source_none">No ancjemò sielzût</string>
     <string name="dejavu_sync_choose_title">Sielç cun ce sincronizâ</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Chest spazi di lavôr al mostre lis schedis viertis di un dispositîf dal to account Mozilla. Il so non e la sô icone a vegnin di chel dispositîf, e i colôrs che tu sielzis a restin su chest telefon.</string>
     <string name="dejavu_settings_safe_browsing">Navigazion sigure di Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Al vise sui sîts di phishing e di malware. Par fâlu, Dejavu si conet cun Google.</string>
+    <string name="dejavu_back">Indaûr</string>
+    <string name="dejavu_sync_start_title">Unî o scomençâ di gnûf?</string>
+    <string name="dejavu_sync_start_intro">Chest dispositîf al à za i siei spazis di lavôr e lis sôs schedis.</string>
+    <string name="dejavu_sync_start_merge">Unìs</string>
+    <string name="dejavu_sync_start_merge_zen">A restin e si zontin i tiei spazis di lavôr di Zen. Ancje lôr a vegnin sincronizâts cun Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">A restin, dongje di un spazi di lavôr par ogni computer e telefon cun Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Scomence di gnûf</string>
+    <string name="dejavu_sync_start_fresh_zen">Siere chestis schedis e gjave chescj spazis di lavôr, schedis fissadis, cartelis e essenziâi, dopo cjape i tiei spazis di lavôr di Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Siere chestis schedis e gjave chescj spazis di lavôr, schedis fissadis, cartelis e essenziâi, dopo mostre lis schedis dai tiei computers e telefons cun Firefox.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Varsayılana sıfırla</string>
     <string name="dejavu_more_menu_hide_edit">Düzenle düğmesini gizle</string>
     <string name="dejavu_more_menu_hide_edit_summary">Diğer menüsünün altındaki Düzenle düğmesi</string>
-    <string name="dejavu_settings_sync">Firefox veya Zen ile eşitle</string>
-    <string name="dejavu_sync_hint">Çalışma alanlarınızı renkleri ve simgeleriyle, kapsayıcılarınızı, sabitlenmiş sekmelerinizi, temel sekmelerinizi ve klasörlerinizi bilgisayarınızdaki Zen Browser ve diğer cihazlarınızdaki Dejavu ile aynı tutar. Firefox verilerinizi eşitlediğiniz Mozilla hesabını kullanır.</string>
     <string name="dejavu_sync_zen_hint">Zen\'de Ayarlar\'ı, ardından Eşitleme\'yi açın ve kenar çubuğu eşitlemesini açın. Sabitlenmemiş sekmeler eşitlenmez.</string>
     <string name="dejavu_sync_enabled">Çalışma alanlarını eşitle</string>
     <string name="dejavu_sync_syncing">Eşitleniyor…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Çalışma alanlarını sürükleyerek yeniden sıralayın</string>
     <string name="dejavu_feature_split_view">Bir bağlantıyı bölünmüş görünümde açmak için uzun basın</string>
     <string name="dejavu_sync_choose_about">Çalışma alanlarınızı, Firefox verilerinizi eşitlediğiniz Mozilla hesabı üzerinden bilgisayarınızdaki Firefox veya Zen Browser ile eşitleyin.</string>
-    <string name="dejavu_sync_firefox_about">Bilgisayarlarınızın ve telefonlarınızın her birinde Firefox\'ta açık olan sekmeleri bir çalışma alanı olarak gösterir ve güncel tutar. Firefox verilerinizi eşitlediğiniz Mozilla hesabını kullanır.</string>
     <string name="dejavu_sync_firefox_hint">Firefox\'ta Ayarlar\'ı, ardından Eşitleme\'yi açın ve Açık sekmeler seçeneğini açık tutun. Bir cihazın çalışma alanında açtığınız veya kapattığınız sekmeler o cihazda da açılır veya kapanır. Diğer çalışma alanlarınızdaki sekmeler bu cihazda kalır; Firefox bunları diğer cihazlarınızın altında listeler.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Ayrıca ne sabitlenmiş ne de bir sekme grubunda olan sekmeleri de gösterir, yalnızca sabitlenmiş sekmeleri ve sekme gruplarını değil.</string>
     <string name="dejavu_sync_source">Şununla eşitle</string>
     <string name="dejavu_sync_source_none">Henüz seçilmedi</string>
     <string name="dejavu_sync_choose_title">Neyle eşitleyeceğinizi seçin</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Bu çalışma alanı, Mozilla hesabınızdaki bir cihazın açık sekmelerini gösterir. Adı ve simgesi o cihazdan gelir; seçtiğiniz renkler bu telefonda kalır.</string>
     <string name="dejavu_settings_safe_browsing">Google Güvenli Tarama</string>
     <string name="dejavu_settings_safe_browsing_summary">Kimlik avı ve kötü amaçlı yazılım siteleri hakkında uyarır. Bunun için Dejavu, Google ile bağlantı kurar.</string>
+    <string name="dejavu_back">Geri</string>
+    <string name="dejavu_sync_start_title">Birleştirilsin mi, sıfırdan mı başlansın?</string>
+    <string name="dejavu_sync_start_intro">Bu cihazın zaten kendi çalışma alanları ve sekmeleri var.</string>
+    <string name="dejavu_sync_start_merge">Birleştir</string>
+    <string name="dejavu_sync_start_merge_zen">Bunlar korunur ve Zen\'deki çalışma alanlarınız eklenir. Bunlar da Zen\'e eşitlenir.</string>
+    <string name="dejavu_sync_start_merge_firefox">Bunlar korunur ve yanlarına Firefox kullanan her bilgisayar ve telefon için birer çalışma alanı eklenir.</string>
+    <string name="dejavu_sync_start_fresh">Sıfırdan başla</string>
+    <string name="dejavu_sync_start_fresh_zen">Bu sekmeler kapatılır; bu çalışma alanları, sabitlenmiş sekmeler, klasörler ve temel sekmeler kaldırılır, ardından Zen\'deki çalışma alanlarınız alınır.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Bu sekmeler kapatılır; bu çalışma alanları, sabitlenmiş sekmeler, klasörler ve temel sekmeler kaldırılır, ardından Firefox kullanan bilgisayarlarınızın ve telefonlarınızın sekmeleri gösterilir.</string>
 </resources>

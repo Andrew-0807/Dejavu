@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Restaurar predeterminaus</string>
     <string name="dejavu_more_menu_hide_edit">Amagar o botón d\'editar</string>
     <string name="dejavu_more_menu_hide_edit_summary">O botón Editar d\'o fundo d\'o menú Más</string>
-    <string name="dejavu_settings_sync">Sincronizar con Firefox u Zen</string>
-    <string name="dejavu_sync_hint">Mantién os tuyos espacios de treballo con os suyos colors y iconos, contenedors, pestanyas fixadas, esenciales y carpetas iguals que en Zen Browser en o tuyo ordinador y en Dejavu en os tuyos atros dispositivos. Emplega la cuenta de Mozilla con a que sincronizas os datos de Firefox.</string>
     <string name="dejavu_sync_zen_hint">En Zen, ubre Achustes, dimpués Sincronización, y activa la sincronización de la barra lateral. As pestanyas que no son fixadas no se sincronizan.</string>
     <string name="dejavu_sync_enabled">Sincronizar espacios de treballo</string>
     <string name="dejavu_sync_syncing">Sincronizando…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Arrociega os espacios de treballo pa reordenar-los</string>
     <string name="dejavu_feature_split_view">Mantiene pretau un vinclo pa ubrir-lo en vista partida</string>
     <string name="dejavu_sync_choose_about">Sincroniza os tuyos espacios de treballo con Firefox u Zen Browser en o tuyo ordinador, a traviés d\'a cuenta de Mozilla con a que sincronizas os datos de Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Amuestra as pestanyas ubiertas de Firefox de cadaguno d\'os tuyos ordinadors y telefonos como un espacio de treballo, y las mantién actualizadas. Emplega la cuenta de Mozilla con a que sincronizas os datos de Firefox.</string>
     <string name="dejavu_sync_firefox_hint">En Firefox, ubre Achustes, dimpués Sincronización, y mantién activada la opción Pestanyas ubiertas. As pestanyas que ubres u zarras en o espacio de treballo d\'un dispositivo tamién s\'ubren u se zarran astí. As pestanyas d\'os tuyos atros espacios de treballo se quedan en este dispositivo, y Firefox las amuestra entre os tuyos atros dispositivos.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Amuestra tamién as pestanyas que no son ni fixadas ni en un grupo de pestanyas, no nomás as pestanyas fixadas y os grupos de pestanyas.</string>
     <string name="dejavu_sync_source">Sincronizar con</string>
     <string name="dejavu_sync_source_none">Encara no trigau</string>
     <string name="dejavu_sync_choose_title">Triga con qué sincronizar</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Este espacio de treballo amuestra as pestanyas ubiertas d\'un dispositivo d\'a tuya cuenta de Mozilla. O suyo nombre y o suyo icono vienen d\'ixe dispositivo, y as colors que trigues se quedan en este telefono.</string>
     <string name="dejavu_settings_safe_browsing">Navegación segura de Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avisa d\'os puestos de phishing y malware. Ta fer-lo, Dejavu se connecta con Google.</string>
+    <string name="dejavu_back">Dezaga</string>
+    <string name="dejavu_sync_start_title">Combinar u encetar dende cero?</string>
+    <string name="dejavu_sync_start_intro">Este dispositivo ya tiene os suyos propios espacios de treballo y pestanyas.</string>
+    <string name="dejavu_sync_start_merge">Combinar</string>
+    <string name="dejavu_sync_start_merge_zen">Mantién-los y adhibe os tuyos espacios de treballo de Zen. Tamién se sincronizan con Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Mantién-los, chunto a un espacio de treballo ta cada ordinador y telefono con Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Encetar dende cero</string>
+    <string name="dejavu_sync_start_fresh_zen">Zarra estas pestanyas, elimina estes espacios de treballo, pestanyas fixadas, carpetas y esenciales, y dimpués trai os tuyos espacios de treballo de Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Zarra estas pestanyas, elimina estes espacios de treballo, pestanyas fixadas, carpetas y esenciales, y dimpués amuestra as pestanyas d\'os tuyos ordinadors y telefonos con Firefox.</string>
 </resources>

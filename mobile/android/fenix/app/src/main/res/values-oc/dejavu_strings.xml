@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Reïnicializar per defaut</string>
     <string name="dejavu_more_menu_hide_edit">Amagar lo boton de modificacion</string>
     <string name="dejavu_more_menu_hide_edit_summary">Lo boton Modificar en bas del menú Mai</string>
-    <string name="dejavu_settings_sync">Sincronizar amb Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Garda vòstres espacis de trabalh amb lors colors e icònas, contenidors, onglets fixats, essencials e dossièrs identics a Zen Browser sus vòstre ordenador e a Dejavu sus vòstres autres aparelhs. Utiliza lo compte Mozilla amb lo qual sincronizatz vòstras donadas Firefox.</string>
     <string name="dejavu_sync_zen_hint">Dins Zen, dobrissètz Paramètres, puèi Sincronizacion, e activatz la sincronizacion de la barra laterala. Los onglets pas fixats son pas sincronizats.</string>
     <string name="dejavu_sync_enabled">Sincronizar los espacis de trabalh</string>
     <string name="dejavu_sync_syncing">Sincronizacion…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Fasètz lisar los espacis de trabalh per cambiar lor òrdre</string>
     <string name="dejavu_feature_split_view">Fasètz un long-clic sus un ligam per lo dobrir en vista dividida</string>
     <string name="dejavu_sync_choose_about">Sincronizatz vòstres espacis de trabalh amb Firefox o Zen Browser sus vòstre ordenador, amb lo compte Mozilla qu’utilizatz per sincronizar vòstras donadas Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Aficha los onglets dobèrts de Firefox sus cadun de vòstres ordenadors e telefòns coma un espaci de trabalh, e los ten a jorn. Utiliza lo compte Mozilla amb lo qual sincronizatz vòstras donadas Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Dins Firefox, dobrissètz Paramètres, puèi Sincronizacion, e daissatz lo paramètre Onglets dobèrts activat. Los onglets que dobrissètz o tampatz dins l’espaci de trabalh d’un aparelh se dobrisson o se tampan tanben sus aquel aparelh. Los onglets de vòstres autres espacis de trabalh demòran sus aqueste aparelh, e Firefox los aficha jos vòstres autres aparelhs.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Aficha tanben los onglets que son pas ni fixats ni dins un grop d’onglets, non pas sonque los onglets fixats e los grops d’onglets.</string>
     <string name="dejavu_sync_source">Sincronizar amb</string>
     <string name="dejavu_sync_source_none">Pas encara causit</string>
     <string name="dejavu_sync_choose_title">Causissètz amb qué sincronizar</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Aqueste espaci de trabalh aficha los onglets dobèrts d’un aparelh de vòstre compte Mozilla. Son nom e son icòna venon d’aquel aparelh, e las colors que causissètz demòran sus aqueste telefòn.</string>
     <string name="dejavu_settings_safe_browsing">Navegacion segura de Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avisa dels sites d\'escrocariá e de logicials malvolents. Per o far, Dejavu se connècta a Google.</string>
+    <string name="dejavu_back">Tornar</string>
+    <string name="dejavu_sync_start_title">Fusionar o començar de zèro ?</string>
+    <string name="dejavu_sync_start_intro">Aqueste aparelh a ja sos pròpris espacis de trabalh e onglets.</string>
+    <string name="dejavu_sync_start_merge">Fusionar</string>
+    <string name="dejavu_sync_start_merge_zen">Gardatz-los e apondètz vòstres espacis de trabalh de Zen. Se sincronizan tanben amb Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Gardatz-los, al costat d’un espaci de trabalh per cada ordenador e telefòn amb Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Començar de zèro</string>
+    <string name="dejavu_sync_start_fresh_zen">Tampatz aquestes onglets e levatz aquestes espacis de trabalh, onglets fixats, dossièrs e essencials, puèi recuperatz vòstres espacis de trabalh de Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Tampatz aquestes onglets e levatz aquestes espacis de trabalh, onglets fixats, dossièrs e essencials, puèi afichatz los onglets de vòstres ordenadors e telefòns amb Firefox.</string>
 </resources>

@@ -63,10 +63,10 @@ import org.mozilla.fenix.dejavu.browser.DejavuSearchOverlay
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
-import org.mozilla.fenix.dejavu.containers.TemporaryContainers
 import org.mozilla.fenix.dejavu.features.FeatureTour
 import org.mozilla.fenix.dejavu.features.FeatureTourDialog
 import org.mozilla.fenix.dejavu.features.wasUpdated
+import org.mozilla.fenix.dejavu.openClosedPin
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.settings.resolveRowActions
 import org.mozilla.fenix.dejavu.settings.resolveSelectionActions
@@ -221,7 +221,9 @@ fun ComposeView.setDejavuHomeContent(
                 CompositionLocalProvider(LocalPopupTheme provides workspaceState.activeWorkspace?.theme) {
                     SyncSourceDialog(
                         status = syncStatus,
-                        onChoose = { DejavuSync.chooseSource(context, it) },
+                        workspaces = workspaceState,
+                        tabs = tabs,
+                        onChoose = { source, start -> DejavuSync.chooseSource(context, source, start) },
                         onDismiss = { DejavuSync.putOffSourceChoice(context) },
                     )
                 }
@@ -304,22 +306,7 @@ private class DefaultDejavuHomeInteractor(
             openTab(liveTabId)
             return
         }
-        // A pin whose tab closed opens where that tab was, like a sleeping tab wakes up.
-        val url = pin.pageUrl.takeIf { it.isNotEmpty() } ?: return
-        val tabId = tabsUseCases.addTab(
-            url = url,
-            selectTab = true,
-            title = pin.openTitle ?: pin.title,
-            contextId = TemporaryContainers.orReplacement(
-                pin.containerId,
-                store,
-                containerStorage,
-                settings.temporaryContainersByDefault.value,
-            ),
-            source = SessionState.Source.Internal.None,
-        )
-        repository.attachPinned(pin.id, tabId)
-        openTab(tabId)
+        openClosedPin(context, pin)?.let(openTab)
     }
 
     override fun onTabAction(action: TabAction, targets: ActionTargets, workspaceId: String) =

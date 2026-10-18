@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Әдепкіге қалпына келтіру</string>
     <string name="dejavu_more_menu_hide_edit">Түзету түймесін жасыру</string>
     <string name="dejavu_more_menu_hide_edit_summary">«Көбірек» мәзірінің төменгі жағындағы «Түзету» түймесі</string>
-    <string name="dejavu_settings_sync">Firefox немесе Zen-мен синхрондау</string>
-    <string name="dejavu_sync_hint">Түстері мен белгішелерімен бірге жұмыс кеңістіктеріңізді, контейнерлеріңізді, бекітілген беттеріңізді, негізгілеріңізді және қалталарыңызды компьютеріңіздегі Zen Browser және басқа құрылғыларыңыздағы Dejavu-мен бірдей етіп сақтайды. Ол үшін Firefox деректеріңізді синхрондайтын Mozilla есептік жазбасы қолданылады.</string>
     <string name="dejavu_sync_zen_hint">Zen-де Баптауларды, содан кейін Синхрондауды ашыңыз және бүйірлік тақта синхрондауын қосыңыз. Бекітілмеген беттер синхрондалмайды.</string>
     <string name="dejavu_sync_enabled">Жұмыс кеңістіктерін синхрондау</string>
     <string name="dejavu_sync_syncing">Синхрондалуда…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Ретін өзгерту үшін жұмыс кеңістіктерін сүйреңіз</string>
     <string name="dejavu_feature_split_view">Сілтемені бөлінген көріністе ашу үшін оны басып тұрыңыз</string>
     <string name="dejavu_sync_choose_about">Firefox деректеріңізді синхрондайтын Mozilla есептік жазбасы арқылы жұмыс кеңістіктеріңізді компьютеріңіздегі Firefox немесе Zen Browser-мен синхрондаңыз.</string>
-    <string name="dejavu_sync_firefox_about">Әрбір компьютеріңіз бен телефоныңыздағы Firefox-тың ашық беттерін жұмыс кеңістігі ретінде көрсетеді және оларды үнемі жаңартып отырады. Ол үшін Firefox деректеріңізді синхрондайтын Mozilla есептік жазбасы қолданылады.</string>
     <string name="dejavu_sync_firefox_hint">Firefox-та Баптауларды, содан кейін Синхрондауды ашыңыз және «Ашық беттер» опциясын қосулы қалдырыңыз. Құрылғының жұмыс кеңістігінде ашқан немесе жапқан беттеріңіз сол құрылғыда да ашылады немесе жабылады. Басқа жұмыс кеңістіктеріңіздегі беттер осы құрылғыда қалады, ал Firefox оларды басқа құрылғыларыңыздың тізімінде көрсетеді.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Сондай-ақ, бекітілмеген және ешбір беттер тобында жоқ беттерді де көрсетеді, тек бекітілген беттер мен беттер топтарын ғана емес.</string>
     <string name="dejavu_sync_source">Мынамен синхрондау</string>
     <string name="dejavu_sync_source_none">Әлі таңдалмаған</string>
     <string name="dejavu_sync_choose_title">Немен синхрондауды таңдаңыз</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Бұл жұмыс кеңістігі Mozilla есептік жазбаңыздағы бір құрылғының ашық беттерін көрсетеді. Оның атауы мен белгішесі сол құрылғыдан алынады, ал сіз таңдаған түстер осы телефонда қалады.</string>
     <string name="dejavu_settings_safe_browsing">Google қауіпсіз шолу</string>
     <string name="dejavu_settings_safe_browsing_summary">Фишингтік және зиянды бағдарламалары бар сайттар туралы ескертеді. Бұл үшін Dejavu Google-ға хабарласады.</string>
+    <string name="dejavu_back">Артқа</string>
+    <string name="dejavu_sync_start_title">Біріктіру ме, әлде жаңадан бастау ма?</string>
+    <string name="dejavu_sync_start_intro">Бұл құрылғыда бұрыннан өз жұмыс кеңістіктері мен беттері бар.</string>
+    <string name="dejavu_sync_start_merge">Біріктіру</string>
+    <string name="dejavu_sync_start_merge_zen">Оларды сақтап, Zen-нен жұмыс кеңістіктеріңізді қосыңыз. Олар да Zen-мен синхрондалады.</string>
+    <string name="dejavu_sync_start_merge_firefox">Оларды Firefox бар әрбір компьютер мен телефонның жұмыс кеңістігімен қатар сақтаңыз.</string>
+    <string name="dejavu_sync_start_fresh">Жаңадан бастау</string>
+    <string name="dejavu_sync_start_fresh_zen">Бұл беттерді жауып, осы жұмыс кеңістіктерін, бекітілген беттерді, қалталар мен негізгілерді өшіріңіз, содан кейін жұмыс кеңістіктеріңізді Zen-нен алыңыз.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Бұл беттерді жауып, осы жұмыс кеңістіктерін, бекітілген беттерді, қалталар мен негізгілерді өшіріңіз, содан кейін Firefox бар компьютерлеріңіз бен телефондарыңыздың беттерін көрсетіңіз.</string>
 </resources>

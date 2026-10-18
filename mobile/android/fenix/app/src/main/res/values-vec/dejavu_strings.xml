@@ -211,8 +211,6 @@
     <string name="dejavu_more_menu_reset">Reprìstina el predefinìo</string>
     <string name="dejavu_more_menu_hide_edit">Sconde el boton de modìfega</string>
     <string name="dejavu_more_menu_hide_edit_summary">El boton Modifega in fondo al menù Altro</string>
-    <string name="dejavu_settings_sync">Sincronisa co Firefox o Zen</string>
-    <string name="dejavu_sync_hint">El tien i to spasi de laoro co i so coƚori e icone, contenidori, schede fisà, essensiałi e cartełe conpanji a Zen Browser so’l to computer e a Dejavu sui to altri aparechi. El dopara l’account Mozilla co ła qual te sincronizi i to dati de Firefox.</string>
     <string name="dejavu_sync_zen_hint">In Zen, verxi Inpostasion, dopo Sincronizasion, e ativa ła sincronizasion de ła bara łaterałe. Łe schede mìa fisà no łe vien sincronizà.</string>
     <string name="dejavu_sync_enabled">Sincronisa i spasi de laoro</string>
     <string name="dejavu_sync_syncing">Sincronizasion in corso…</string>
@@ -292,9 +290,7 @@
     <string name="dejavu_feature_workspace_order">Strasina i spasi de laoro par canbiarghe l’orden</string>
     <string name="dejavu_feature_split_view">Tien apresà un łinco par vèrxerlo in vista divisa</string>
     <string name="dejavu_sync_choose_about">Sincronisa i to spasi de laoro co Firefox o Zen Browser so’l to computer, tramite l’account Mozilla co ła qual te sincronizi i to dati de Firefox.</string>
-    <string name="dejavu_sync_firefox_about">El mostra łe schede verte de Firefox so onji to computer e tełèfono come un spasio de laoro, e el łe tien ajornà. El dopara l’account Mozilla co ła qual te sincronizi i to dati de Firefox.</string>
     <string name="dejavu_sync_firefox_hint">In Firefox, verxi Inpostasion, dopo Sincronizasion, e tien ativa l’opsion Schede verte. Łe schede che te verxi o te sari intel spasio de laoro de un aparechio łe se verxe o łe se sara anca là. Łe schede intei to altri spasi de laoro łe resta so sto aparechio, e Firefox el łe mostra soto i to altri aparechi.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">El mostra anca łe schede che no łe xe né fisà né in un grupo de schede, no soło łe schede fisà e i grupi de schede.</string>
     <string name="dejavu_sync_source">Sincronisa co</string>
     <string name="dejavu_sync_source_none">Gnancora sielto</string>
     <string name="dejavu_sync_choose_title">Sielsi co cosa sincronizar</string>
@@ -337,4 +333,13 @@
     <string name="dejavu_workspace_device_note">Sto spasio de laoro el mostra łe schede verte de un aparechio del to account Mozilla. El so nome e ła so icona i vien da quel aparechio, e i coƚori che te sielsi i resta so sto tełèfono.</string>
     <string name="dejavu_settings_safe_browsing">Navegasion segura de Google</string>
     <string name="dejavu_settings_safe_browsing_summary">El te avisa sui siti de phishing e malware. Par farlo, Dejavu el se conete a Google.</string>
+    <string name="dejavu_back">Indrio</string>
+    <string name="dejavu_sync_start_title">Conbinar o scomensar da novo?</string>
+    <string name="dejavu_sync_start_intro">Sto aparechio el ga xa i so spasi de laoro e łe so schede.</string>
+    <string name="dejavu_sync_start_merge">Conbina</string>
+    <string name="dejavu_sync_start_merge_zen">Tienli e gionta i to spasi de laoro de Zen. Anca lori i vien sincronizà co Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Tienli rente a un spasio de laoro par onji computer e tełèfono co Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Scomensa da novo</string>
+    <string name="dejavu_sync_start_fresh_zen">Sara ste schede e cava via sti spasi de laoro, schede fisà, cartełe e essensiałi, dopo ciapa i to spasi de laoro da Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Sara ste schede e cava via sti spasi de laoro, schede fisà, cartełe e essensiałi, dopo mostra łe schede dei to computer e tełèfoni co Firefox.</string>
 </resources>

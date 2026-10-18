@@ -212,8 +212,6 @@
     <string name="dejavu_more_menu_reset">Obnoviť predvolené</string>
     <string name="dejavu_more_menu_hide_edit">Skryť tlačidlo úprav</string>
     <string name="dejavu_more_menu_hide_edit_summary">Tlačidlo Upraviť v dolnej časti ponuky „Viac“</string>
-    <string name="dejavu_settings_sync">Synchronizovať s Firefoxom alebo Zenom</string>
-    <string name="dejavu_sync_hint">Udržiava vaše pracovné priestory s ich farbami a ikonami, kontajnery, pripnuté karty, obľúbené a priečinky rovnaké ako v prehliadači Zen Browser na počítači a v Dejavu na ostatných zariadeniach. Používa na to rovnaký účet Mozilla, akým synchronizujete údaje Firefoxu.</string>
     <string name="dejavu_sync_zen_hint">V Zene otvorte Nastavenia, potom Synchronizáciu, a zapnite synchronizáciu bočného panela. Karty, ktoré nie sú pripnuté, sa nesynchronizujú.</string>
     <string name="dejavu_sync_enabled">Synchronizovať pracovné priestory</string>
     <string name="dejavu_sync_syncing">Synchronizuje sa…</string>
@@ -299,9 +297,7 @@
     <string name="dejavu_feature_workspace_order">Potiahnutím zmeňte poradie pracovných priestorov</string>
     <string name="dejavu_feature_split_view">Dlho podržte odkaz a otvorte ho v rozdelenom zobrazení</string>
     <string name="dejavu_sync_choose_about">Synchronizujte svoje pracovné priestory s Firefoxom alebo prehliadačom Zen Browser na počítači prostredníctvom účtu Mozilla, ktorým synchronizujete údaje Firefoxu.</string>
-    <string name="dejavu_sync_firefox_about">Zobrazuje otvorené karty Firefoxu z každého vášho počítača a telefónu ako pracovný priestor a udržiava ich aktuálne. Používa na to rovnaký účet Mozilla, akým synchronizujete údaje Firefoxu.</string>
     <string name="dejavu_sync_firefox_hint">Vo Firefoxe otvorte Nastavenia, potom Synchronizáciu, a nechajte zapnutú možnosť Otvorené karty. Karty, ktoré otvoríte alebo zavriete v pracovnom priestore zariadenia, sa otvoria alebo zavrú aj tam. Karty vo vašich ostatných pracovných priestoroch zostanú na tomto zariadení a Firefox ich zobrazí medzi vašimi ostatnými zariadeniami.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Taktiež zobrazuje karty, ktoré nie sú pripnuté ani v skupine kariet, nielen pripnuté karty a skupiny kariet.</string>
     <string name="dejavu_sync_source">Synchronizovať s</string>
     <string name="dejavu_sync_source_none">Zatiaľ nevybrané</string>
     <string name="dejavu_sync_choose_title">Vyberte, s čím synchronizovať</string>
@@ -344,4 +340,13 @@
     <string name="dejavu_workspace_device_note">Tento pracovný priestor zobrazuje otvorené karty zariadenia vo vašom účte Mozilla. Jeho názov a ikona pochádzajú z daného zariadenia a farby, ktoré si vyberiete, zostanú na tomto telefóne.</string>
     <string name="dejavu_settings_safe_browsing">Bezpečné prehliadanie Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Upozorňuje na phishingové stránky a stránky so škodlivým softvérom. Na tento účel sa Dejavu spája so spoločnosťou Google.</string>
+    <string name="dejavu_back">Naspäť</string>
+    <string name="dejavu_sync_start_title">Zlúčiť alebo začať odznova?</string>
+    <string name="dejavu_sync_start_intro">Toto zariadenie už má vlastné pracovné priestory a karty.</string>
+    <string name="dejavu_sync_start_merge">Zlúčiť</string>
+    <string name="dejavu_sync_start_merge_zen">Ponechať ich a pridať vaše pracovné priestory zo Zenu. Aj tie sa budú synchronizovať so Zenom.</string>
+    <string name="dejavu_sync_start_merge_firefox">Ponechať ich vedľa pracovného priestoru pre každý počítač a telefón s Firefoxom.</string>
+    <string name="dejavu_sync_start_fresh">Začať odznova</string>
+    <string name="dejavu_sync_start_fresh_zen">Zavrieť tieto karty a odstrániť tieto pracovné priestory, pripnuté karty, priečinky a obľúbené, potom získať vaše pracovné priestory zo Zenu.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Zavrieť tieto karty a odstrániť tieto pracovné priestory, pripnuté karty, priečinky a obľúbené, potom zobraziť karty vašich počítačov a telefónov s Firefoxom.</string>
 </resources>

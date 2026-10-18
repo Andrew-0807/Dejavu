@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Ripristina i valuri predefinuti</string>
     <string name="dejavu_more_menu_hide_edit">Ammuccia u buttuni di mòdìfica</string>
     <string name="dejavu_more_menu_hide_edit_summary">U buttuni Mòdìfica ô funnu dû menù Cchiù</string>
-    <string name="dejavu_settings_sync">Sincronizza cu Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Mantèni i spazzii di travagghiu tò cu i sò culuri e icona, cuntinituri, schedi ficcati, essenziali e carteddi ugguali a comu nta Zen Browser supra u computer tò e nta Dejavu nnê autri dispositivi tò. Usa u cuntu Mozilla cu u quali sincronizzi i dati di Firefox.</string>
     <string name="dejavu_sync_zen_hint">Nta Zen, grapi Mpustazzioni, doppu Sincronizzazzioni, e attiva a sincronizzazzioni dâ barra laterali. I schedi ca non sunnu ficcati non vènunu sincronizzati.</string>
     <string name="dejavu_sync_enabled">Sincronizza i spazzii di travagghiu</string>
     <string name="dejavu_sync_syncing">Sincronizzannu…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Strascina i spazzii di travagghiu pi canciari l\'òrdini</string>
     <string name="dejavu_feature_split_view">Teni premutu un lijami pi grapìrilu nta vista spartuta</string>
     <string name="dejavu_sync_choose_about">Sincronizza i spazzii di travagghiu tò cu Firefox o Zen Browser supra u computer tò, attraversu u cuntu Mozilla cu u quali sincronizzi i dati di Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Mustra i schedi aperti di Firefox supra ognunu dî computer e tilèfuni tò comu un spazziu di travagghiu, e i teni agghiurnati. Usa u cuntu Mozilla cu u quali sincronizzi i dati di Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Nta Firefox, grapi Mpustazzioni, doppu Sincronizzazzioni, e teni attivi i Schedi graputi. I schedi ca grapi o chiuji nnô spazziu di travagghiu di un dispositivu si grapunu o si chiùjunu macari ddà. I schedi nnê autri spazzii di travagghiu tò restanu supra stu dispositivu, e Firefox i mustra sutta ê autri dispositivi tò.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Mustra macari i schedi ca nun sunnu nè ficcati nè nta un gruppu di schedi, non sulu i schedi ficcati e i gruppi di schedi.</string>
     <string name="dejavu_sync_source">Sincronizza cu</string>
     <string name="dejavu_sync_source_none">Ancora non scigghiutu</string>
     <string name="dejavu_sync_choose_title">Scegghi cu chi sincronizzari</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Stu spazziu di travagghiu mustra i schedi aperti di un dispositivu dû tò cuntu Mozilla. U nomu e l\'icona vennu di ddu dispositivu, e i culuri ca scegghi restanu supra stu tilèfunu.</string>
     <string name="dejavu_settings_safe_browsing">Navicazzioni sicura di Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avvisa supra i siti di phishing e malware. Pi fàrilu, Dejavu si cunnetti cu Google.</string>
+    <string name="dejavu_back">Nn\'arrè</string>
+    <string name="dejavu_sync_start_title">Unìri o accuminciari di zeru?</string>
+    <string name="dejavu_sync_start_intro">Stu dispositivu havi già i sò spazzii di travagghiu e i sò schedi.</string>
+    <string name="dejavu_sync_start_merge">Unisci</string>
+    <string name="dejavu_sync_start_merge_zen">Tenili e junci i spazzii di travagghiu tò di Zen. Macari iddi si sincronizzanu cu Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Tenili accantu a un spazziu di travagghiu pi ogni computer e tilèfunu cu Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Accumincia di zeru</string>
+    <string name="dejavu_sync_start_fresh_zen">Chiuji sti schedi e leva sti spazzii di travagghiu, schedi ficcati, carteddi e essenziali, doppu pigghia i spazzii di travagghiu tò di Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Chiuji sti schedi e leva sti spazzii di travagghiu, schedi ficcati, carteddi e essenziali, doppu mustra i schedi dî tò computer e tilèfuni cu Firefox.</string>
 </resources>

@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">ຕັ້ງຄືນເປັນຄ່າເລີ່ມຕົ້ນ</string>
     <string name="dejavu_more_menu_hide_edit">ເຊື່ອງປຸ່ມແກ້ໄຂ</string>
     <string name="dejavu_more_menu_hide_edit_summary">ປຸ່ມແກ້ໄຂຢູ່ລຸ່ມສຸດຂອງເມນູເພີ່ມເຕີມ</string>
-    <string name="dejavu_settings_sync">ຊິງຄ໌ກັບ Firefox ຫຼື Zen</string>
-    <string name="dejavu_sync_hint">ຮັກສາພື້ນທີ່ເຮັດວຽກຂອງທ່ານພ້ອມສີ ແລະ ໄອຄອນ, ຄອນເທນເນີ, ແທັບທີ່ປັກໄວ້, ສິ່ງສຳຄັນ ແລະ ໂຟນເດີ ໃຫ້ຄືກັນກັບໃນ Zen Browser ຢູ່ຄອມພິວເຕີຂອງທ່ານ ແລະ ໃນ Dejavu ຢູ່ອຸປະກອນອື່ນຂອງທ່ານ. ມັນໃຊ້ບັນຊີ Mozilla ທີ່ທ່ານໃຊ້ຊິງຄ໌ຂໍ້ມູນ Firefox ນຳ.</string>
     <string name="dejavu_sync_zen_hint">ໃນ Zen, ເປີດການຕັ້ງຄ່າ, ແລ້ວໄປທີ່ Sync, ແລະ ເປີດການຊິງຄ໌ແຖບຂ້າງ. ແທັບທີ່ບໍ່ໄດ້ປັກໄວ້ຈະບໍ່ຖືກຊິງຄ໌.</string>
     <string name="dejavu_sync_enabled">ຊິງຄ໌ພື້ນທີ່ເຮັດວຽກ</string>
     <string name="dejavu_sync_syncing">ກຳລັງຊິງຄ໌…</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">ລາກພື້ນທີ່ເຮັດວຽກເພື່ອຈັດລຳດັບໃຫມ່</string>
     <string name="dejavu_feature_split_view">ກົດຄ້າງລິ້ງເພື່ອເປີດໃນມູມມອງແບບແຍກ</string>
     <string name="dejavu_sync_choose_about">ຊິງຄ໌ພື້ນທີ່ເຮັດວຽກຂອງທ່ານກັບ Firefox ຫຼື Zen Browser ຢູ່ຄອມພິວເຕີຂອງທ່ານ ຜ່ານບັນຊີ Mozilla ທີ່ທ່ານໃຊ້ຊິງຄ໌ຂໍ້ມູນ Firefox ນຳ.</string>
-    <string name="dejavu_sync_firefox_about">ສະແດງແທັບທີ່ເປີດຢູ່ໃນ Firefox ຢູ່ແຕ່ລະຄອມພິວເຕີ ແລະ ໂທລະສັບຂອງທ່ານເປັນພື້ນທີ່ເຮັດວຽກ, ແລະ ອັບເດດພວກມັນຢູ່ສະເໝີ. ມັນໃຊ້ບັນຊີ Mozilla ທີ່ທ່ານໃຊ້ຊິງຄ໌ຂໍ້ມູນ Firefox ນຳ.</string>
     <string name="dejavu_sync_firefox_hint">ໃນ Firefox, ເປີດການຕັ້ງຄ່າ, ແລ້ວໄປທີ່ Sync, ແລະ ເປີດ “ເປີດແທັບ” ໄວ້. ແທັບທີ່ທ່ານເປີດ ຫຼື ປິດໃນພື້ນທີ່ເຮັດວຽກຂອງອຸປະກອນໃດໜຶ່ງ ຈະເປີດ ຫຼື ປິດຢູ່ອຸປະກອນນັ້ນນຳ. ແທັບໃນພື້ນທີ່ເຮັດວຽກອື່ນຂອງທ່ານ ຈະຢູ່ໃນອຸປະກອນນີ້, ແລະ Firefox ຈະສະແດງພວກມັນຢູ່ພາຍໃຕ້ອຸປະກອນອື່ນຂອງທ່ານ.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">ມັນຍັງສະແດງແທັບທີ່ບໍ່ໄດ້ປັກໄວ້ ແລະ ບໍ່ໄດ້ຢູ່ໃນກຸ່ມແທັບໃດນຳ, ບໍ່ແມ່ນແຕ່ແທັບທີ່ປັກໄວ້ ແລະ ກຸ່ມແທັບເທົ່ານັ້ນ.</string>
     <string name="dejavu_sync_source">ຊິງຄ໌ກັບ</string>
     <string name="dejavu_sync_source_none">ຍັງບໍ່ທັນເລືອກ</string>
     <string name="dejavu_sync_choose_title">ເລືອກວ່າຈະຊິງຄ໌ກັບຫຍັງ</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">ພື້ນທີ່ເຮັດວຽກນີ້ສະແດງແທັບທີ່ເປີດຢູ່ຂອງອຸປະກອນໜຶ່ງໃນບັນຊີ Mozilla ຂອງທ່ານ. ຊື່ ແລະ ໄອຄອນຂອງມັນມາຈາກອຸປະກອນນັ້ນ, ແລະ ສີທີ່ທ່ານເລືອກຈະຢູ່ໃນໂທລະສັບນີ້.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">ເຕືອນກ່ຽວກັບເວັບໄຊຫຼອກລວງ ແລະ ມັນແວ. ເພື່ອເຮັດສິ່ງນີ້, Dejavu ຕິດຕໍ່ກັບ Google.</string>
+    <string name="dejavu_back">ກັບຄືນ</string>
+    <string name="dejavu_sync_start_title">ລວມເຂົ້າກັນ ຫຼື ເລີ່ມໃໝ່?</string>
+    <string name="dejavu_sync_start_intro">ອຸປະກອນນີ້ມີພື້ນທີ່ເຮັດວຽກ ແລະ ແທັບຂອງຕົນເອງຢູ່ແລ້ວ.</string>
+    <string name="dejavu_sync_start_merge">ລວມເຂົ້າກັນ</string>
+    <string name="dejavu_sync_start_merge_zen">ເກັບພວກມັນໄວ້ ແລະ ເພີ່ມພື້ນທີ່ເຮັດວຽກຂອງທ່ານຈາກ Zen. ພວກມັນຈະຊິງຄ໌ໄປ Zen ນຳ.</string>
+    <string name="dejavu_sync_start_merge_firefox">ເກັບພວກມັນໄວ້ ຄຽງຂ້າງພື້ນທີ່ເຮັດວຽກຂອງຄອມພິວເຕີ ແລະ ໂທລະສັບທີ່ມີ Firefox ແຕ່ລະເຄື່ອງ.</string>
+    <string name="dejavu_sync_start_fresh">ເລີ່ມໃໝ່</string>
+    <string name="dejavu_sync_start_fresh_zen">ປິດແທັບເຫຼົ່ານີ້ ແລະ ເອົາພື້ນທີ່ເຮັດວຽກ, ແທັບທີ່ປັກໄວ້, ໂຟນເດີ ແລະ ສິ່ງສຳຄັນເຫຼົ່ານີ້ອອກ, ຈາກນັ້ນເອົາພື້ນທີ່ເຮັດວຽກຂອງທ່ານມາຈາກ Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">ປິດແທັບເຫຼົ່ານີ້ ແລະ ເອົາພື້ນທີ່ເຮັດວຽກ, ແທັບທີ່ປັກໄວ້, ໂຟນເດີ ແລະ ສິ່ງສຳຄັນເຫຼົ່ານີ້ອອກ, ຈາກນັ້ນສະແດງແທັບຂອງຄອມພິວເຕີ ແລະ ໂທລະສັບທີ່ມີ Firefox ຂອງທ່ານ.</string>
 </resources>

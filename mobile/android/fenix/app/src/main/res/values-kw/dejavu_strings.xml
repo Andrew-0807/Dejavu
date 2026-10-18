@@ -214,8 +214,6 @@
     <string name="dejavu_more_menu_reset">Daswul dhe\'n standard</string>
     <string name="dejavu_more_menu_hide_edit">Kudha an boten chanjya</string>
     <string name="dejavu_more_menu_hide_edit_summary">An boten Chanjya yn goles an Roll Moy</string>
-    <string name="dejavu_settings_sync">Kesunya gans Firefox po Zen</string>
-    <string name="dejavu_sync_hint">Y syns dha dyleryow-ober gans aga liwyow hag ikonyow, kontaynerow, tabow fastyes, Pythow Poesek ha plegellow kepar ha\'n re yn Zen Browser war dha jynn-amontya hag yn Dejavu war dha jynnow erell. Usys yw an akont Mozilla may hwredh kesunya dhodho dha dhata Firefox.</string>
     <string name="dejavu_sync_zen_hint">Yn Zen, igeri Settyansow, ena Kesunyans, ha treylya yn ban kesunyans an barr-esedh. Tabow nag yns fastyes ny vydhons kesunys.</string>
     <string name="dejavu_sync_enabled">Kesunya tyleryow-ober</string>
     <string name="dejavu_sync_syncing">Ow kesunya…</string>
@@ -313,9 +311,7 @@
     <string name="dejavu_feature_workspace_order">Tenna tyleryow-ober rag chanjya aga aray</string>
     <string name="dejavu_feature_split_view">Gwaska yn hir war gevren rag hy igeri yn gwel rannek</string>
     <string name="dejavu_sync_choose_about">Kesunya dha dyleryow-ober gans Firefox po Zen Browser war dha jynn-amontya, dre an akont Mozilla may hwredh kesunya dhodho dha dhata Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Y tiskwedh tabow igor Firefox war bub huni a\'th jynnow-amontya ha\'th bellgowsers avel tyller-ober, ha\'ga gwitha nowedhys. Usys yw an akont Mozilla may hwredh kesunya dhodho dha dhata Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Yn Firefox, igeri Settyansow, ena Kesunyans, ha gasa \'Tabow igor\' treylys yn ban. An tabow a igerydh po a dhegeydh yn tyller-ober onan a\'th jynnow a wra igeri po degea ena ynwedh. An tabow yn dha dyleryow-ober erell a drig war an jynn ma, ha Firefox a\'s diskwedh yn-dann dha jynnow erell.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Y hwra ynwedh diskwedhes an tabow nag yns fastyes ha nag yns yn bagas tabow, adar tabow fastyes ha bagasow tabow yn unnsel.</string>
     <string name="dejavu_sync_source">Kesunya gans</string>
     <string name="dejavu_sync_source_none">Ny vydh dewisys hwath</string>
     <string name="dejavu_sync_choose_title">Dewis gans pyth dhe gesunya</string>
@@ -358,4 +354,13 @@
     <string name="dejavu_workspace_device_note">An tyller-ober ma a dhiskwedh tabow igor jynn war dha akont Mozilla. Y hanow ha\'y ikon a dheu a\'n jynn na, ha\'n liwyow a dhewisydh a drig war an pellgowser ma.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Y hwra gwarnya a-dro dhe wiasvaow phishing ha malware. Rag gul henna, Dejavu a omjoin gans Google.</string>
+    <string name="dejavu_back">War-dhelergh</string>
+    <string name="dejavu_sync_start_title">Kemmyska po dalleth a-nowydh?</string>
+    <string name="dejavu_sync_start_intro">Yma dhe\'n jynn ma seulabrys y dyleryow-ober ha\'y dabow y honan.</string>
+    <string name="dejavu_sync_start_merge">Kemmyska</string>
+    <string name="dejavu_sync_start_merge_zen">Gwitha i ha keworra dha dyleryow-ober a Zen. I a vydh kesunys gans Zen ynwedh.</string>
+    <string name="dejavu_sync_start_merge_firefox">Gwitha i, ryb tyller-ober rag pub jynn-amontya ha pellgowser gans Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Dalleth a-nowydh</string>
+    <string name="dejavu_sync_start_fresh_zen">Degea an tabow ma ha removya an tyleryow-ober, tabow fastyes, plegellow ha Pythow Poesek ma, ena kyrghes dha dyleryow-ober a Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Degea an tabow ma ha removya an tyleryow-ober, tabow fastyes, plegellow ha Pythow Poesek ma, ena diskwedhes tabow dha jynnow-amontya ha\'th bellgowsers gans Firefox.</string>
 </resources>

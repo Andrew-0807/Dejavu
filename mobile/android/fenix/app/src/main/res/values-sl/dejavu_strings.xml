@@ -212,8 +212,6 @@
     <string name="dejavu_more_menu_reset">Ponastavi na privzeto</string>
     <string name="dejavu_more_menu_hide_edit">Skrij gumb za urejanje</string>
     <string name="dejavu_more_menu_hide_edit_summary">Gumb Uredi na dnu menija „Več“</string>
-    <string name="dejavu_settings_sync">Sinhronizacija s Firefoxom ali Zenom</string>
-    <string name="dejavu_sync_hint">Vaši delovni prostori z barvami in ikonami, vsebniki, pripeti zavihki, Izbrano in mape ostanejo enaki kot v Zen Browserju na vašem računalniku in v Dejavuju na vaših drugih napravah. Uporablja se račun Mozilla, s katerim sinhronizirate podatke Firefoxa.</string>
     <string name="dejavu_sync_zen_hint">V Zenu odprite Nastavitve, nato Sinhronizacija, in vklopite sinhronizacijo stranske vrstice. Zavihki, ki niso pripeti, se ne sinhronizirajo.</string>
     <string name="dejavu_sync_enabled">Sinhroniziraj delovne prostore</string>
     <string name="dejavu_sync_syncing">Sinhroniziranje …</string>
@@ -299,9 +297,7 @@
     <string name="dejavu_feature_workspace_order">Povlecite delovne prostore, da spremenite njihov vrstni red</string>
     <string name="dejavu_feature_split_view">Pridržite povezavo, da jo odprete v razdeljenem pogledu</string>
     <string name="dejavu_sync_choose_about">Sinhronizirajte delovne prostore s Firefoxom ali Zen Browserjem na svojem računalniku prek računa Mozilla, s katerim sinhronizirate podatke Firefoxa.</string>
-    <string name="dejavu_sync_firefox_about">Prikaže odprte zavihke Firefoxa z vsakega vašega računalnika in telefona kot delovni prostor in jih sproti posodablja. Uporablja se račun Mozilla, s katerim sinhronizirate podatke Firefoxa.</string>
     <string name="dejavu_sync_firefox_hint">V Firefoxu odprite Nastavitve, nato Sinhronizacija, in pustite vklopljeno možnost Odprti zavihki. Zavihki, ki jih odprete ali zaprete v delovnem prostoru naprave, se tudi tam odprejo ali zaprejo. Zavihki v vaših drugih delovnih prostorih ostanejo na tej napravi, Firefox pa jih navede med vašimi drugimi napravami.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Prikaže tudi zavihke, ki niso niti pripeti niti v skupini zavihkov, ne le pripete zavihke in skupine zavihkov.</string>
     <string name="dejavu_sync_source">Brskalnik za sinhronizacijo</string>
     <string name="dejavu_sync_source_none">Še ni izbran</string>
     <string name="dejavu_sync_choose_title">Izberite, s čim želite sinhronizirati</string>
@@ -344,4 +340,13 @@
     <string name="dejavu_workspace_device_note">Ta delovni prostor prikazuje odprte zavihke naprave v vašem računu Mozilla. Njegovo ime in ikona prihajata iz tiste naprave, barve, ki jih izberete, pa ostanejo na tem telefonu.</string>
     <string name="dejavu_settings_safe_browsing">Google Varno brskanje</string>
     <string name="dejavu_settings_safe_browsing_summary">Opozarja na spletna mesta z lažnim predstavljanjem in zlonamerno programsko opremo. Za to se Dejavu poveže z Googlom.</string>
+    <string name="dejavu_back">Nazaj</string>
+    <string name="dejavu_sync_start_title">Združiti ali začeti znova?</string>
+    <string name="dejavu_sync_start_intro">Ta naprava že ima svoje delovne prostore in zavihke.</string>
+    <string name="dejavu_sync_start_merge">Združi</string>
+    <string name="dejavu_sync_start_merge_zen">Obdržite jih in dodajte svoje delovne prostore iz Zena. Tudi ti se bodo sinhronizirali z Zenom.</string>
+    <string name="dejavu_sync_start_merge_firefox">Obdržite jih poleg delovnega prostora za vsak računalnik in telefon s Firefoxom.</string>
+    <string name="dejavu_sync_start_fresh">Začni znova</string>
+    <string name="dejavu_sync_start_fresh_zen">Zaprite te zavihke in odstranite te delovne prostore, pripete zavihke, mape in Izbrano, nato pa pridobite svoje delovne prostore iz Zena.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Zaprite te zavihke in odstranite te delovne prostore, pripete zavihke, mape in Izbrano, nato pa prikažite zavihke svojih računalnikov in telefonov s Firefoxom.</string>
 </resources>

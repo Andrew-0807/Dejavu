@@ -211,8 +211,6 @@
     <string name="dejavu_more_menu_reset">Vrati na zadano</string>
     <string name="dejavu_more_menu_hide_edit">Sakrij gumb za uređivanje</string>
     <string name="dejavu_more_menu_hide_edit_summary">Gumb Uredi na dnu izbornika „Više“</string>
-    <string name="dejavu_settings_sync">Sinkronizacija s Firefoxom ili Zenom</string>
-    <string name="dejavu_sync_hint">Vaši radni prostori s bojama i ikonama, spremnici, prikvačene kartice, Favoriti i mape ostaju isti kao u Zen Browseru na vašem računalu i u Dejavuu na vašim ostalim uređajima. Koristi se Mozilla račun kojim sinkronizirate Firefox podatke.</string>
     <string name="dejavu_sync_zen_hint">U Zenu otvorite Postavke, zatim Sinkronizacija, i uključite sinkronizaciju bočne trake. Kartice koje nisu prikvačene se ne sinkroniziraju.</string>
     <string name="dejavu_sync_enabled">Sinkroniziraj radne prostore</string>
     <string name="dejavu_sync_syncing">Sinkronizacija…</string>
@@ -292,9 +290,7 @@
     <string name="dejavu_feature_workspace_order">Povucite radne prostore da biste promijenili njihov redoslijed</string>
     <string name="dejavu_feature_split_view">Dugo pritisnite poveznicu da biste je otvorili u podijeljenom prikazu</string>
     <string name="dejavu_sync_choose_about">Sinkronizirajte svoje radne prostore s Firefoxom ili Zen Browserom na svom računalu, putem Mozilla računa kojim sinkronizirate Firefox podatke.</string>
-    <string name="dejavu_sync_firefox_about">Prikazuje otvorene kartice Firefoxa na svakom vašem računalu i telefonu kao radni prostor i stalno ih ažurira. Koristi se Mozilla račun kojim sinkronizirate Firefox podatke.</string>
     <string name="dejavu_sync_firefox_hint">U Firefoxu otvorite Postavke, zatim Sinkronizacija, i ostavite uključenu opciju Otvorene kartice. Kartice koje otvorite ili zatvorite u radnom prostoru nekog uređaja otvaraju se ili zatvaraju i na tom uređaju. Kartice u vašim ostalim radnim prostorima ostaju na ovom uređaju, a Firefox ih prikazuje pod vašim ostalim uređajima.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Također prikazuje kartice koje nisu ni prikvačene ni u grupi kartica, ne samo prikvačene kartice i grupe kartica.</string>
     <string name="dejavu_sync_source">Sinkronizacija s</string>
     <string name="dejavu_sync_source_none">Još nije odabrano</string>
     <string name="dejavu_sync_choose_title">Odaberite s čime sinkronizirati</string>
@@ -337,4 +333,13 @@
     <string name="dejavu_workspace_device_note">Ovaj radni prostor prikazuje otvorene kartice jednog uređaja na vašem Mozilla računu. Njegov naziv i ikona dolaze s tog uređaja, a boje koje odaberete ostaju na ovom telefonu.</string>
     <string name="dejavu_settings_safe_browsing">Google sigurno pregledavanje</string>
     <string name="dejavu_settings_safe_browsing_summary">Upozorava na phishing stranice i stranice sa zlonamjernim softverom. Za to se Dejavu povezuje s Googleom.</string>
+    <string name="dejavu_back">Natrag</string>
+    <string name="dejavu_sync_start_title">Spojiti ili početi ispočetka?</string>
+    <string name="dejavu_sync_start_intro">Ovaj uređaj već ima vlastite radne prostore i kartice.</string>
+    <string name="dejavu_sync_start_merge">Spoji</string>
+    <string name="dejavu_sync_start_merge_zen">Zadržite ih i dodajte svoje radne prostore iz Zena. I oni se sinkroniziraju sa Zenom.</string>
+    <string name="dejavu_sync_start_merge_firefox">Zadržite ih, uz radni prostor za svako računalo i telefon s Firefoxom.</string>
+    <string name="dejavu_sync_start_fresh">Počni ispočetka</string>
+    <string name="dejavu_sync_start_fresh_zen">Zatvorite ove kartice i uklonite ove radne prostore, prikvačene kartice, mape i Favorite, a zatim preuzmite svoje radne prostore iz Zena.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Zatvorite ove kartice i uklonite ove radne prostore, prikvačene kartice, mape i Favorite, a zatim ćete vidjeti kartice svojih računala i telefona s Firefoxom.</string>
 </resources>

@@ -129,15 +129,17 @@ last, or a private tab. Back takes you straight back to the app you came from.
 
 1. Sign in to the same Mozilla account in Zen on your computer and in Dejavu.
 2. In Zen, open **Settings**, then **Sync**, and turn on sidebar sync.
-3. In Dejavu, tap the account button at the top left, open **Sync with Firefox or Zen**, choose **Zen** and turn on
-   **Sync workspaces**.
-4. To sync the tabs that are not pinned as well, turn on **Include unpinned tabs** in both Dejavu and Zen.
+3. In Dejavu, tap the account button at the top left, tap **Sync with** and choose **Zen**. If Dejavu already has
+   workspaces or tabs, choose **Merge** to keep them, or **Start fresh** to replace them with what Zen has.
+4. Under **Choose what to sync**, keep **Sync workspaces** on. To sync the tabs that are not pinned as well, turn on
+   **Include unpinned tabs** in both Dejavu and Zen.
 
 ### Set up sync with Firefox
 
 1. Sign in to the same Mozilla account in Firefox and in Dejavu.
 2. In Firefox, open **Settings**, then **Sync**, and keep **Open tabs** on.
-3. In Dejavu, tap the account button at the top left, open **Sync with Firefox or Zen** and choose **Firefox**.
+3. In Dejavu, tap the account button at the top left, tap **Sync with** and choose **Firefox**. If Dejavu already has
+   workspaces or tabs, choose **Merge** to keep them, or **Start fresh** to see only what Firefox has open.
 4. Each computer and phone with Firefox gets its own workspace: pinned tabs stay pinned and tab groups become folders in
    their colors. Open or close a tab there, and Firefox does the same.
 

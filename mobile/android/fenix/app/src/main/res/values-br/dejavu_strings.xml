@@ -213,8 +213,6 @@
     <string name="dejavu_more_menu_reset">Adderaouekaat dre ziouer</string>
     <string name="dejavu_more_menu_hide_edit">Kuzhat an afell gemmañ</string>
     <string name="dejavu_more_menu_hide_edit_summary">An afell Kemmañ e traoñ ar meuziad Muioc’h</string>
-    <string name="dejavu_settings_sync">Goubredañ gant Firefox pe Zen</string>
-    <string name="dejavu_sync_hint">Mirout a ra hoc’h egorioù labour gant o livioù hag arlunioù, kontenerioù, ivinelloù spilhennet, traoù pouezus ha teuliadoù heñvel doc’h Zen Browser war hoc’h urzhiataer ha doc’h Dejavu war ho trevnadoù all. Implijout a ra ar gont Mozilla ma c’houbredit ho roadennoù Firefox gantañ.</string>
     <string name="dejavu_sync_zen_hint">E Zen, digorit Arventennoù, ha goude Goubredañ, ha weredekait goubredañ ar varrenn gostez. An ivinelloù dispilhennet ne vezont ket goubredet.</string>
     <string name="dejavu_sync_enabled">Goubredañ an egorioù labour</string>
     <string name="dejavu_sync_syncing">O c’houbredañ…</string>
@@ -306,9 +304,7 @@
     <string name="dejavu_feature_workspace_order">Riklañ an egorioù labour evit o adurzhiañ</string>
     <string name="dejavu_feature_split_view">Derc\'hel war ul liamm evit e zigeriñ er gwel rannet</string>
     <string name="dejavu_sync_choose_about">Goubredit hoc’h egorioù labour gant Firefox pe Zen Browser war hoc’h urzhiataer, dre ar gont Mozilla ma c’houbredit ho roadennoù Firefox gantañ.</string>
-    <string name="dejavu_sync_firefox_about">Diskouez a ra ivinelloù digor Firefox war pep hini eus hoc’h urzhiataerioù hag ho pellgomzerioù evel un egor labour, hag o dalc’h hizivaet. Implijout a ra ar gont Mozilla ma c’houbredit ho roadennoù Firefox gantañ.</string>
     <string name="dejavu_sync_firefox_hint">E Firefox, digorit Arventennoù, ha goude Goubredañ, ha lezit Ivinelloù digor gweredekaet. An ivinelloù a zigorit pe a serrit en egor labour un trevnad a zigor pe a serr eno ivez. An ivinelloù en hoc’h egorioù labour all a chom war an trevnad-mañ, ha Firefox a ziskouez anezho e-touez ho trevnadoù all.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Diskouez a ra ivez an ivinelloù n’int na spilhennet nag en ur strollad ivinelloù, ha ket hepken an ivinelloù spilhennet hag ar strolladoù ivinelloù.</string>
     <string name="dejavu_sync_source">Goubredañ gant</string>
     <string name="dejavu_sync_source_none">N’eo ket bet dibabet c’hoazh</string>
     <string name="dejavu_sync_choose_title">Dibabit gant petra goubredañ</string>
@@ -351,4 +347,13 @@
     <string name="dejavu_workspace_device_note">An egor labour-mañ a ziskouez ivinelloù digor un trevnad war ho kont Mozilla. E anv hag e arlun a zeu eus an trevnad-se, hag al livioù a zibabit a chom war ar pellgomzer-mañ.</string>
     <string name="dejavu_settings_safe_browsing">Merdeiñ suraet Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Diwall a ra ac\'hanoc\'h diouzh al lec\'hiennoù pesketa-roadoù ha malware. Evit se e kevrea Dejavu ouzh Google.</string>
+    <string name="dejavu_back">Distreiñ</string>
+    <string name="dejavu_sync_start_title">Kendeuziñ pe kregiñ en-dro?</string>
+    <string name="dejavu_sync_start_intro">An trevnad-mañ en deus dija egorioù labour hag ivinelloù dezhañ e-unan.</string>
+    <string name="dejavu_sync_start_merge">Kendeuziñ</string>
+    <string name="dejavu_sync_start_merge_zen">Mirout anezho hag ouzhpennañ hoc’h egorioù labour eus Zen. Goubredet e vezont gant Zen ivez.</string>
+    <string name="dejavu_sync_start_merge_firefox">Mirout anezho, e-kichen un egor labour evit pep urzhiataer ha pellgomzer gant Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Kregiñ en-dro</string>
+    <string name="dejavu_sync_start_fresh_zen">Serriñ an ivinelloù-mañ ha lemel an egorioù labour, an ivinelloù spilhennet, an teuliadoù hag an traoù pouezus-mañ, ha goude-se degemer hoc’h egorioù labour eus Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Serriñ an ivinelloù-mañ ha lemel an egorioù labour, an ivinelloù spilhennet, an teuliadoù hag an traoù pouezus-mañ, ha goude-se diskouez ivinelloù hoc’h urzhiataerioù ha pellgomzerioù gant Firefox.</string>
 </resources>

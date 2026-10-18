@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">كۆڭۈلدىكىگە قايتۇر</string>
     <string name="dejavu_more_menu_hide_edit">تەھرىرلەش توپچىسىنى يوشۇر</string>
     <string name="dejavu_more_menu_hide_edit_summary">«تېخىمۇ كۆپ» تىزىملىكىنىڭ ئاستىدىكى «تەھرىرلە» توپچىسى</string>
-    <string name="dejavu_settings_sync">Firefox ياكى Zen بىلەن قەدەمداشلا</string>
-    <string name="dejavu_sync_hint">رەڭلىرى ۋە سىنبەلگىلىرى بىلەن خىزمەت دائىرىلىرىڭىزنى، قاچىلىرىڭىزنى، مىخلانغان بەتكۈچلىرىڭىزنى، مۇھىملىرىڭىزنى ۋە قىسقۇچلىرىڭىزنى كومپيۇتېرىڭىزدىكى Zen Browser ۋە باشقا ئۈسكۈنىلىرىڭىزدىكى Dejavu بىلەن ئوخشاش تۇتىدۇ. بۇنىڭ ئۈچۈن Firefox سانلىق مەلۇماتلىرىڭىزنى قەدەمداشلايدىغان Mozilla ھېساباتى ئىشلىتىلىدۇ.</string>
     <string name="dejavu_sync_zen_hint">Zen دا تەڭشەكنى، ئاندىن قەدەمداشلاشنى ئېچىڭ ۋە يان پانېل قەدەمداشلىشىنى ئېچىڭ. مىخلانمىغان بەتكۈچلەر قەدەمداشلانمايدۇ.</string>
     <string name="dejavu_sync_enabled">خىزمەت دائىرىلىرىنى قەدەمداشلا</string>
     <string name="dejavu_sync_syncing">قەدەمداشلىنىۋاتىدۇ…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">تەرتىپىنى ئۆزگەرتىش ئۈچۈن خىزمەت دائىرىلىرىنى سۆرەڭ</string>
     <string name="dejavu_feature_split_view">ئۇلانمىنى بۆلۈنگەن كۆرۈنۈشتە ئېچىش ئۈچۈن ئۇنى بېسىپ تۇرۇڭ</string>
     <string name="dejavu_sync_choose_about">خىزمەت دائىرىلىرىڭىزنى Firefox سانلىق مەلۇماتلىرىڭىزنى قەدەمداشلايدىغان Mozilla ھېساباتى ئارقىلىق كومپيۇتېرىڭىزدىكى Firefox ياكى Zen Browser بىلەن قەدەمداشلاڭ.</string>
-    <string name="dejavu_sync_firefox_about">ھەر بىر كومپيۇتېرىڭىز ۋە تېلېفونىڭىزدىكى Firefox نىڭ ئوچۇق بەتكۈچلىرىنى بىر خىزمەت دائىرىسى سۈپىتىدە كۆرسىتىدۇ ۋە ئۇلارنى ۋاقتىدا يېڭىلاپ تۇرىدۇ. بۇنىڭ ئۈچۈن Firefox سانلىق مەلۇماتلىرىڭىزنى قەدەمداشلايدىغان Mozilla ھېساباتى ئىشلىتىلىدۇ.</string>
     <string name="dejavu_sync_firefox_hint">Firefox دا تەڭشەكنى، ئاندىن قەدەمداشلاشنى ئېچىڭ ۋە «بەتكۈچ ئاچ» تاللانمىسىنى ئوچۇق قالدۇرۇڭ. بىر ئۈسكۈنىنىڭ خىزمەت دائىرىسىدە ئاچقان ياكى ياپقان بەتكۈچلىرىڭىز شۇ ئۈسكۈنىدىمۇ ئېچىلىدۇ ياكى تاقىلىدۇ. باشقا خىزمەت دائىرىلىرىڭىزدىكى بەتكۈچلەر بۇ ئۈسكۈنىدە قالىدۇ، Firefox ئۇلارنى باشقا ئۈسكۈنىلىرىڭىزنىڭ ئاستىدا كۆرسىتىدۇ.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">شۇنىڭ بىلەن بىر ۋاقىتتا مىخلانمىغان ۋە بەتكۈچ گۇرۇپپىسىدا بولمىغان بەتكۈچلەرنىمۇ كۆرسىتىدۇ، يالغۇز مىخلانغان بەتكۈچلەر ۋە بەتكۈچ گۇرۇپپىلىرىلا ئەمەس.</string>
     <string name="dejavu_sync_source">نېمە بىلەن قەدەمداشلاش</string>
     <string name="dejavu_sync_source_none">تېخى تاللانمىدى</string>
     <string name="dejavu_sync_choose_title">نېمە بىلەن قەدەمداشلاشنى تاللاڭ</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">بۇ خىزمەت دائىرىسى Mozilla ھېساباتىڭىزدىكى بىر ئۈسكۈنىنىڭ ئوچۇق بەتكۈچلىرىنى كۆرسىتىدۇ. ئۇنىڭ ئىسمى ۋە سىنبەلگىسى شۇ ئۈسكۈنىدىن كېلىدۇ، سىز تاللىغان رەڭلەر بۇ تېلېفوندا قالىدۇ.</string>
     <string name="dejavu_settings_safe_browsing">Google بىخەتەر كۆرۈش</string>
     <string name="dejavu_settings_safe_browsing_summary">ئالدامچىلىق ۋە يامان غەرەزلىك يۇمشاق دېتال تور بەتلىرىدىن ئاگاھلاندۇرىدۇ. بۇنىڭ ئۈچۈن Dejavu، Google بىلەن ئالاقىلىشىدۇ.</string>
+    <string name="dejavu_back">قايت</string>
+    <string name="dejavu_sync_start_title">بىرلەشتۈرەمسىز ياكى يېڭىدىن باشلامسىز؟</string>
+    <string name="dejavu_sync_start_intro">بۇ ئۈسكۈنىدە ئاللىقاچان ئۆزىنىڭ خىزمەت دائىرىلىرى ۋە بەتكۈچلىرى بار.</string>
+    <string name="dejavu_sync_start_merge">بىرلەشتۈر</string>
+    <string name="dejavu_sync_start_merge_zen">ئۇلارنى ساقلاپ، Zen دىكى خىزمەت دائىرىلىرىڭىزنى قوشۇڭ. ئۇلارمۇ Zen غا قەدەمداشلىنىدۇ.</string>
+    <string name="dejavu_sync_start_merge_firefox">ئۇلارنى Firefox بار ھەر بىر كومپيۇتېر ۋە تېلېفوننىڭ خىزمەت دائىرىسى بىلەن يانمۇيان ساقلاڭ.</string>
+    <string name="dejavu_sync_start_fresh">يېڭىدىن باشلا</string>
+    <string name="dejavu_sync_start_fresh_zen">بۇ بەتكۈچلەرنى يېپىپ، بۇ خىزمەت دائىرىلىرى، مىخلانغان بەتكۈچلەر، قىسقۇچلار ۋە مۇھىملارنى چىقىرىۋېتىڭ، ئاندىن Zen دىن خىزمەت دائىرىلىرىڭىزنى ئېلىڭ.</string>
+    <string name="dejavu_sync_start_fresh_firefox">بۇ بەتكۈچلەرنى يېپىپ، بۇ خىزمەت دائىرىلىرى، مىخلانغان بەتكۈچلەر، قىسقۇچلار ۋە مۇھىملارنى چىقىرىۋېتىڭ، ئاندىن Firefox بار كومپيۇتېر ۋە تېلېفونلىرىڭىزنىڭ بەتكۈچلىرىنى كۆرۈڭ.</string>
 </resources>

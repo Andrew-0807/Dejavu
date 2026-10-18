@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">ଡିଫଲ୍ଟକୁ ରିସେଟ୍ କରନ୍ତୁ</string>
     <string name="dejavu_more_menu_hide_edit">ସମ୍ପାଦନ ବଟନ୍ ଲୁଚାନ୍ତୁ</string>
     <string name="dejavu_more_menu_hide_edit_summary">ଅଧିକ ମେନୁର ତଳେ ଥିବା ସମ୍ପାଦନ ବଟନ୍</string>
-    <string name="dejavu_settings_sync">Firefox କିମ୍ବା Zen ସହିତ ସିଙ୍କ କରନ୍ତୁ</string>
-    <string name="dejavu_sync_hint">ଆପଣଙ୍କ କମ୍ପ୍ୟୁଟରର Zen Browser ଏବଂ ଆପଣଙ୍କ ଅନ୍ୟ ଡିଭାଇସର Dejavu ପରି ସମାନ ରଙ୍ଗ ଓ ଆଇକନ୍ ସହିତ ଆପଣଙ୍କ କାର୍ଯ୍ୟକ୍ଷେତ୍ର, କଣ୍ଟେନର, ପିନ୍ ଟ୍ୟାବ୍, ଆବଶ୍ୟକୀୟ ଏବଂ ଫୋଲଡର ରଖେ। ଏହା ଆପଣ Firefox ଡାଟା ସିଙ୍କ କରୁଥିବା Mozilla ଆକାଉଣ୍ଟ ବ୍ୟବହାର କରେ।</string>
     <string name="dejavu_sync_zen_hint">Zen ରେ, ସେଟିଂସମୂହ ଖୋଲନ୍ତୁ, ତାପରେ ସିଙ୍କ, ଏବଂ ସାଇଡବାର ସିଙ୍କ ଅନ୍ କରନ୍ତୁ। ପିନ୍ ହୋଇନଥିବା ଟ୍ୟାବ୍ ସିଙ୍କ ହୁଏ ନାହିଁ।</string>
     <string name="dejavu_sync_enabled">କାର୍ଯ୍ୟକ୍ଷେତ୍ର ସିଙ୍କ କରନ୍ତୁ</string>
     <string name="dejavu_sync_syncing">ସିଙ୍କ ହେଉଛି…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">କ୍ରମ ବଦଳାଇବାକୁ କାର୍ଯ୍ୟକ୍ଷେତ୍ରକୁ ଡ୍ରାଗ୍ କରନ୍ତୁ</string>
     <string name="dejavu_feature_split_view">ଲିଙ୍କ୍‌କୁ ବିଭାଜିତ ଦୃଶ୍ୟରେ ଖୋଲିବାକୁ ଏହାକୁ ଲମ୍ବା ଦବାନ୍ତୁ</string>
     <string name="dejavu_sync_choose_about">ଆପଣ Firefox ଡାଟା ସିଙ୍କ କରୁଥିବା Mozilla ଆକାଉଣ୍ଟ ମାଧ୍ୟମରେ, ଆପଣଙ୍କ କାର୍ଯ୍ୟକ୍ଷେତ୍ରକୁ ଆପଣଙ୍କ କମ୍ପ୍ୟୁଟରର Firefox କିମ୍ବା Zen Browser ସହିତ ସିଙ୍କ କରନ୍ତୁ।</string>
-    <string name="dejavu_sync_firefox_about">ଆପଣଙ୍କ ପ୍ରତ୍ୟେକ କମ୍ପ୍ୟୁଟର ଏବଂ ଫୋନ୍‌ରେ ଥିବା Firefox ର ଖୋଲା ଟ୍ୟାବ୍ ଏକ କାର୍ଯ୍ୟକ୍ଷେତ୍ର ଭାବେ ଦେଖାଏ, ଏବଂ ସେଗୁଡ଼ିକୁ ଅପଡେଟ୍ ରଖେ। ଏହା ଆପଣ Firefox ଡାଟା ସିଙ୍କ କରୁଥିବା Mozilla ଆକାଉଣ୍ଟ ବ୍ୟବହାର କରେ।</string>
     <string name="dejavu_sync_firefox_hint">Firefox ରେ, ସେଟିଂସମୂହ ଖୋଲନ୍ତୁ, ତାପରେ ସିଙ୍କ, ଏବଂ ଖୋଲା ଟ୍ୟାବ୍ ବିକଳ୍ପ ଅନ୍ ରଖନ୍ତୁ। ଆପଣ କୌଣସି ଡିଭାଇସର କାର୍ଯ୍ୟକ୍ଷେତ୍ରରେ ଖୋଲୁଥିବା କିମ୍ବା ବନ୍ଦ କରୁଥିବା ଟ୍ୟାବ୍ ସେହି ଡିଭାଇସରେ ମଧ୍ୟ ଖୋଲେ କିମ୍ବା ବନ୍ଦ ହୁଏ। ଆପଣଙ୍କ ଅନ୍ୟ କାର୍ଯ୍ୟକ୍ଷେତ୍ରଗୁଡ଼ିକର ଟ୍ୟାବ୍ ଏହି ଡିଭାଇସରେ ରହେ, ଏବଂ Firefox ସେଗୁଡ଼ିକୁ ଆପଣଙ୍କ ଅନ୍ୟ ଡିଭାଇସ ତଳେ ଦେଖାଏ।</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">ଏହା ପିନ୍ ହୋଇନଥିବା ଏବଂ କୌଣସି ଟ୍ୟାବ୍ ଗୋଷ୍ଠୀରେ ନଥିବା ଟ୍ୟାବ୍ ମଧ୍ୟ ଦେଖାଏ, କେବଳ ପିନ୍ ଟ୍ୟାବ୍ ଏବଂ ଟ୍ୟାବ୍ ଗୋଷ୍ଠୀ ନୁହେଁ।</string>
     <string name="dejavu_sync_source">ଏହା ସହିତ ସିଙ୍କ କରନ୍ତୁ</string>
     <string name="dejavu_sync_source_none">ଏପର୍ଯ୍ୟନ୍ତ ବଛାଯାଇନାହିଁ</string>
     <string name="dejavu_sync_choose_title">କାହା ସହିତ ସିଙ୍କ କରିବେ ବାଛନ୍ତୁ</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">ଏହି କାର୍ଯ୍ୟକ୍ଷେତ୍ର ଆପଣଙ୍କ Mozilla ଆକାଉଣ୍ଟରେ ଥିବା ଏକ ଡିଭାଇସର ଖୋଲା ଟ୍ୟାବ୍ ଦେଖାଏ। ଏହାର ନାମ ଏବଂ ଆଇକନ୍ ସେହି ଡିଭାଇସରୁ ଆସେ, ଏବଂ ଆପଣ ବାଛୁଥିବା ରଙ୍ଗ ଏହି ଫୋନ୍‌ରେ ରହେ।</string>
     <string name="dejavu_settings_safe_browsing">Google ସୁରକ୍ଷିତ ବ୍ରାଉଜିଂ</string>
     <string name="dejavu_settings_safe_browsing_summary">ଫିସିଂ ଏବଂ ମାଲୱେର୍ ସାଇଟ୍ ବିଷୟରେ ଚେତାବନୀ ଦିଏ। ଏଥିପାଇଁ Dejavu, Google ସହ ଯୋଗାଯୋଗ କରେ।</string>
+    <string name="dejavu_back">ପଛକୁ</string>
+    <string name="dejavu_sync_start_title">ମିଶାଇବେ ନା ନୂଆରୁ ଆରମ୍ଭ କରିବେ?</string>
+    <string name="dejavu_sync_start_intro">ଏହି ଡିଭାଇସରେ ପୂର୍ବରୁ ଏହାର ନିଜସ୍ୱ କାର୍ଯ୍ୟକ୍ଷେତ୍ର ଏବଂ ଟ୍ୟାବ୍ ଅଛି।</string>
+    <string name="dejavu_sync_start_merge">ମିଶାନ୍ତୁ</string>
+    <string name="dejavu_sync_start_merge_zen">ସେଗୁଡ଼ିକୁ ରଖନ୍ତୁ ଏବଂ Zen ରୁ ଆପଣଙ୍କ କାର୍ଯ୍ୟକ୍ଷେତ୍ର ଯୋଡନ୍ତୁ। ସେଗୁଡ଼ିକ ମଧ୍ୟ Zen ସହିତ ସିଙ୍କ ହୁଏ।</string>
+    <string name="dejavu_sync_start_merge_firefox">Firefox ଥିବା ପ୍ରତ୍ୟେକ କମ୍ପ୍ୟୁଟର ଏବଂ ଫୋନ୍ ପାଇଁ ଥିବା କାର୍ଯ୍ୟକ୍ଷେତ୍ର ସହିତ ସେଗୁଡ଼ିକୁ ରଖନ୍ତୁ।</string>
+    <string name="dejavu_sync_start_fresh">ନୂଆରୁ ଆରମ୍ଭ କରନ୍ତୁ</string>
+    <string name="dejavu_sync_start_fresh_zen">ଏହି ଟ୍ୟାବ୍ ବନ୍ଦ କରନ୍ତୁ ଏବଂ ଏହି କାର୍ଯ୍ୟକ୍ଷେତ୍ର, ପିନ୍ ଟ୍ୟାବ୍, ଫୋଲଡର ଏବଂ ଆବଶ୍ୟକୀୟ ହଟାନ୍ତୁ, ତାପରେ Zen ରୁ ଆପଣଙ୍କ କାର୍ଯ୍ୟକ୍ଷେତ୍ର ଆଣନ୍ତୁ।</string>
+    <string name="dejavu_sync_start_fresh_firefox">ଏହି ଟ୍ୟାବ୍ ବନ୍ଦ କରନ୍ତୁ ଏବଂ ଏହି କାର୍ଯ୍ୟକ୍ଷେତ୍ର, ପିନ୍ ଟ୍ୟାବ୍, ଫୋଲଡର ଏବଂ ଆବଶ୍ୟକୀୟ ହଟାନ୍ତୁ, ତାପରେ Firefox ଥିବା ଆପଣଙ୍କ କମ୍ପ୍ୟୁଟର ଏବଂ ଫୋନ୍‌ର ଟ୍ୟାବ୍ ଦେଖାନ୍ତୁ।</string>
 </resources>

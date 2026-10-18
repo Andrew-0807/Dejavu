@@ -211,8 +211,6 @@
     <string name="dejavu_more_menu_reset">ᱰᱤᱯᱷᱚᱞᱴ ᱛᱮ ᱨᱤᱥᱮᱴ ᱢᱮ</string>
     <string name="dejavu_more_menu_hide_edit">ᱥᱟᱯᱲᱟᱣ ᱵᱚᱴᱚᱱ ᱩᱠᱩ ᱢᱮ</string>
     <string name="dejavu_more_menu_hide_edit_summary">ᱢᱚᱨ ᱢᱮᱱᱩ ᱞᱟᱛᱟᱨ ᱨᱮᱭᱟᱜ ᱥᱟᱯᱲᱟᱣ ᱵᱚᱴᱚᱱ</string>
-    <string name="dejavu_settings_sync">Firefox ᱥᱮ Zen ᱢᱮᱫ ᱛᱮ ᱥᱤᱝᱠ ᱢᱮ</string>
-    <string name="dejavu_sync_hint">ᱟᱢᱟᱜ ᱠᱚᱢᱯᱤᱭᱩᱴᱚᱨ ᱨᱮᱭᱟᱜ Zen Browser ᱟᱨ ᱮᱴᱟᱜ ᱰᱮᱵᱟᱭᱤᱥ ᱨᱮᱭᱟᱜ Dejavu ᱞᱮᱠᱷᱟᱱ, ᱟᱢᱟᱜ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ ᱟᱭᱢᱟᱛ ᱨᱚᱝ ᱟᱨ ᱟᱭᱠᱚᱱ, ᱠᱚᱱᱴᱮᱱᱟᱨ, ᱯᱤᱱ ᱴᱮᱵᱽ, ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱟᱨ ᱯᱷᱚᱞᱰᱚᱨ ᱛᱮᱭᱟᱜ ᱢᱤᱫ ᱴᱷᱮᱱ ᱛᱟᱦᱮᱸ ᱟ ᱾ ᱚᱱᱟ ᱟᱢ Firefox ᱰᱟᱴᱟ ᱥᱤᱝᱠ ᱢᱮ ᱢᱮᱱᱟᱜ Mozilla ᱟᱠᱟᱩᱱᱴ ᱵᱮᱵᱚᱦᱟᱨ ᱦᱚᱜ ᱟ ᱾</string>
     <string name="dejavu_sync_zen_hint">Zen ᱨᱮ, ᱥᱟᱡᱟᱣ ᱡᱷᱤᱡᱽ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱥᱤᱝᱠ, ᱟᱨ ᱥᱟᱭᱰᱵᱟᱨ ᱥᱤᱝᱠ ᱚᱱ ᱢᱮ ᱾ ᱵᱟᱝ ᱯᱤᱱ ᱴᱮᱵᱽ ᱠᱚ ᱥᱤᱝᱠ ᱵᱟᱭ ᱦᱩᱭ ᱟ ᱾</string>
     <string name="dejavu_sync_enabled">ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ ᱥᱤᱝᱠ ᱢᱮ</string>
     <string name="dejavu_sync_syncing">ᱥᱤᱝᱠ ᱦᱩᱭ ᱠᱟᱱᱟ…</string>
@@ -292,9 +290,7 @@
     <string name="dejavu_feature_workspace_order">ᱛᱷᱟᱨ ᱵᱚᱫᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ ᱚᱨ ᱢᱮ</string>
     <string name="dejavu_feature_split_view">ᱥᱯᱞᱤᱴ ᱣᱤᱭᱩ ᱨᱮ ᱡᱷᱤᱡᱽ ᱞᱟᱹᱜᱤᱫ ᱞᱤᱝᱠ ᱚᱛᱟ ᱟᱨ ᱥᱟᱵ ᱢᱮ</string>
     <string name="dejavu_sync_choose_about">ᱟᱢ Firefox ᱰᱟᱴᱟ ᱥᱤᱝᱠ ᱠᱟᱱ Mozilla ᱟᱠᱟᱩᱱᱴ ᱵᱮᱵᱚᱦᱟᱨ ᱠᱟᱛᱮ, ᱟᱢᱟᱜ ᱠᱚᱢᱯᱤᱭᱩᱴᱚᱨ ᱨᱮᱭᱟᱜ Firefox ᱥᱮ Zen Browser ᱢᱮᱫ ᱛᱮ ᱟᱢᱟᱜ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ ᱥᱤᱝᱠ ᱢᱮ ᱾</string>
-    <string name="dejavu_sync_firefox_about">ᱟᱢᱟᱜ ᱢᱤᱫ ᱢᱤᱫ ᱠᱚᱢᱯᱤᱭᱩᱴᱚᱨ ᱟᱨ ᱯᱷᱚᱱ ᱨᱮᱭᱟᱜ Firefox ᱨᱮ ᱡᱷᱤᱡᱽ ᱠᱟᱱ ᱴᱮᱵᱽ ᱠᱚ ᱢᱤᱫ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱞᱮᱠᱷᱟ ᱩᱫᱩᱜ ᱟ, ᱟᱨ ᱚᱱᱟ ᱠᱚ ᱟᱯᱰᱮᱴ ᱫᱚᱦᱚᱭ ᱟ ᱾ ᱚᱱᱟ ᱟᱢ Firefox ᱰᱟᱴᱟ ᱥᱤᱝᱠ ᱢᱮ ᱢᱮᱱᱟᱜ Mozilla ᱟᱠᱟᱩᱱᱴ ᱵᱮᱵᱚᱦᱟᱨ ᱦᱚᱜ ᱟ ᱾</string>
     <string name="dejavu_sync_firefox_hint">Firefox ᱨᱮ, ᱥᱟᱡᱟᱣ ᱡᱷᱤᱡᱽ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ ᱥᱤᱝᱠ, ᱟᱨ «ᱡᱷᱤᱡᱽ ᱠᱟᱱ ᱴᱮᱵᱽ ᱠᱚ» ᱚᱱ ᱫᱚᱦᱚᱭ ᱢᱮ ᱾ ᱢᱤᱫ ᱰᱮᱵᱟᱭᱤᱥ ᱨᱮᱭᱟᱜ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱨᱮ ᱟᱢ ᱡᱷᱤᱡᱽ ᱥᱮ ᱵᱚᱸᱫ ᱠᱟᱱ ᱴᱮᱵᱽ ᱠᱚ ᱚᱱᱟ ᱰᱮᱵᱟᱭᱤᱥ ᱨᱮ ᱦᱚᱸ ᱡᱷᱤᱡᱽ ᱥᱮ ᱵᱚᱸᱫ ᱦᱩᱭ ᱟ ᱾ ᱟᱢᱟᱜ ᱮᱴᱟᱜ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ ᱨᱮᱭᱟᱜ ᱴᱮᱵᱽ ᱠᱚ ᱱᱚᱶᱟ ᱰᱮᱵᱟᱭᱤᱥ ᱨᱮ ᱛᱟᱦᱮᱸ ᱟ, ᱟᱨ Firefox ᱚᱱᱟ ᱠᱚ ᱟᱢᱟᱜ ᱮᱴᱟᱜ ᱰᱮᱵᱟᱭᱤᱥ ᱠᱚ ᱞᱟᱛᱟᱨ ᱨᱮ ᱩᱫᱩᱜ ᱟ ᱾</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">ᱯᱤᱱ ᱵᱟᱝ ᱟᱨ ᱴᱮᱵᱽ ᱜᱟᱫᱮᱞ ᱨᱮ ᱦᱚᱸ ᱵᱟᱹᱱᱩᱜ ᱴᱮᱵᱽ ᱠᱚ ᱦᱚᱸ ᱩᱫᱩᱜ ᱢᱮ, ᱥᱩᱢᱩᱝ ᱯᱤᱱ ᱴᱮᱵᱽ ᱠᱚ ᱟᱨ ᱴᱮᱵᱽ ᱜᱟᱫᱮᱞ ᱠᱚ ᱵᱟᱝ ᱾</string>
     <string name="dejavu_sync_source">ᱢᱮᱫ ᱛᱮ ᱥᱤᱝᱠ</string>
     <string name="dejavu_sync_source_none">ᱚᱨᱚ ᱵᱟᱭ ᱵᱟᱪᱷᱟᱣ ᱦᱩᱭ ᱟᱠᱟᱱᱟ</string>
     <string name="dejavu_sync_choose_title">ᱪᱮᱫ ᱢᱮᱫ ᱛᱮ ᱥᱤᱝᱠ ᱦᱩᱭ ᱚᱱᱟ ᱵᱟᱪᱷᱟᱣ ᱢᱮ</string>
@@ -337,4 +333,13 @@
     <string name="dejavu_workspace_device_note">ᱱᱚᱶᱟ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱫᱚ ᱟᱢᱟᱜ Mozilla ᱟᱠᱟᱩᱱᱴ ᱨᱮᱭᱟᱜ ᱢᱤᱫ ᱰᱮᱵᱟᱭᱤᱥ ᱨᱮᱭᱟᱜ ᱡᱷᱤᱡᱽ ᱠᱟᱱ ᱴᱮᱵᱽ ᱠᱚ ᱩᱫᱩᱜ ᱟ ᱾ ᱱᱚᱶᱟ ᱨᱮᱭᱟᱜ ᱧᱩᱛᱩᱢ ᱟᱨ ᱟᱭᱠᱚᱱ ᱚᱱᱟ ᱰᱮᱵᱟᱭᱤᱥ ᱠᱷᱚᱱ ᱦᱤᱡᱩᱜ ᱟ, ᱟᱨ ᱟᱢ ᱵᱟᱪᱷᱟᱣ ᱟᱠᱟᱱ ᱨᱚᱝ ᱠᱚ ᱱᱚᱶᱟ ᱯᱷᱚᱱ ᱨᱮ ᱜᱮ ᱛᱟᱦᱮᱸ ᱟ ᱾</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">ᱯᱷᱤᱥᱤᱝ ᱟᱨ ᱢᱟᱞᱣᱮᱭᱟᱨ ᱥᱟᱭᱤᱴ ᱵᱟᱵᱚᱛ ᱦᱚᱥᱤᱭᱟᱹᱨ ᱮᱫᱟᱭ ᱾ ᱱᱚᱶᱟ ᱞᱟᱹᱜᱤᱫ Dejavu Google ᱥᱟᱶ ᱡᱚᱜᱟᱡᱚᱜ ᱮᱫᱟᱭ ᱾</string>
+    <string name="dejavu_back">ᱛᱟᱭᱚᱢ</string>
+    <string name="dejavu_sync_start_title">ᱢᱤᱫ ᱢᱮ ᱥᱮ ᱱᱟᱶᱟ ᱛᱮ ᱮᱦᱚᱵ ᱢᱮ?</string>
+    <string name="dejavu_sync_start_intro">ᱱᱚᱶᱟ ᱰᱮᱵᱟᱭᱤᱥ ᱨᱮ ᱢᱟᱲᱟᱝ ᱠᱷᱚᱱ ᱜᱮ ᱟᱭᱢᱟᱛ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ ᱟᱨ ᱴᱮᱵᱽ ᱠᱚ ᱢᱮᱱᱟᱜ ᱠᱚᱣᱟ ᱾</string>
+    <string name="dejavu_sync_start_merge">ᱢᱤᱫ ᱢᱮ</string>
+    <string name="dejavu_sync_start_merge_zen">ᱚᱱᱟ ᱠᱚ ᱥᱟᱧᱪᱟᱣ ᱢᱮ ᱟᱨ Zen ᱠᱷᱚᱱ ᱟᱢᱟᱜ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ ᱥᱮᱞᱮᱫᱽ ᱢᱮ ᱾ ᱚᱱᱟ ᱠᱚ ᱦᱚᱸ Zen ᱥᱟᱶ ᱥᱤᱝᱠ ᱦᱩᱭ ᱟ ᱾</string>
+    <string name="dejavu_sync_start_merge_firefox">Firefox ᱢᱮᱱᱟᱜ ᱢᱤᱫ ᱢᱤᱫ ᱠᱚᱢᱯᱤᱭᱩᱴᱚᱨ ᱟᱨ ᱯᱷᱚᱱ ᱨᱮᱭᱟᱜ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱥᱩᱨ ᱨᱮ ᱚᱱᱟ ᱠᱚ ᱥᱟᱧᱪᱟᱣ ᱢᱮ ᱾</string>
+    <string name="dejavu_sync_start_fresh">ᱱᱟᱶᱟ ᱛᱮ ᱮᱦᱚᱵ ᱢᱮ</string>
+    <string name="dejavu_sync_start_fresh_zen">ᱱᱚᱶᱟ ᱴᱮᱵᱽ ᱠᱚ ᱵᱚᱸᱫᱚᱭ ᱢᱮ ᱟᱨ ᱱᱚᱶᱟ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ, ᱯᱤᱱ ᱴᱮᱵᱽ ᱠᱚ, ᱯᱷᱚᱞᱰᱚᱨ ᱠᱚ ᱟᱨ ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱠᱚ ᱚᱰᱚᱠ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ Zen ᱠᱷᱚᱱ ᱟᱢᱟᱜ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ ᱧᱟᱢ ᱢᱮ ᱾</string>
+    <string name="dejavu_sync_start_fresh_firefox">ᱱᱚᱶᱟ ᱴᱮᱵᱽ ᱠᱚ ᱵᱚᱸᱫᱚᱭ ᱢᱮ ᱟᱨ ᱱᱚᱶᱟ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ, ᱯᱤᱱ ᱴᱮᱵᱽ ᱠᱚ, ᱯᱷᱚᱞᱰᱚᱨ ᱠᱚ ᱟᱨ ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱠᱚ ᱚᱰᱚᱠ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ Firefox ᱢᱮᱱᱟᱜ ᱟᱢᱟᱜ ᱠᱚᱢᱯᱤᱭᱩᱴᱚᱨ ᱟᱨ ᱯᱷᱚᱱ ᱠᱚᱣᱟᱜ ᱴᱮᱵᱽ ᱠᱚ ᱩᱫᱩᱜ ᱢᱮ ᱾</string>
 </resources>

@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">កំណត់ត្រឡប់ទៅលំនាំដើម</string>
     <string name="dejavu_more_menu_hide_edit">លាក់ប៊ូតុងកែសម្រួល</string>
     <string name="dejavu_more_menu_hide_edit_summary">ប៊ូតុងកែសម្រួលនៅខាងក្រោមម៉ឺនុយបន្ថែម</string>
-    <string name="dejavu_settings_sync">ធ្វើសមកាលកម្មជាមួយ Firefox ឬ Zen</string>
-    <string name="dejavu_sync_hint">រក្សាចន្លោះការងាររបស់អ្នកជាមួយពណ៌ និងរូបតំណាងរបស់វា កុងតឺន័រ ផ្ទាំងបានខ្ទាស់ សំខាន់ៗ និងថត ឲ្យដូចគ្នានឹងនៅក្នុង Zen Browser លើកុំព្យូទ័ររបស់អ្នក និងនៅក្នុង Dejavu លើឧបករណ៍ផ្សេងទៀតរបស់អ្នក។ វាប្រើគណនី Mozilla ដែលអ្នកប្រើសម្រាប់ធ្វើសមកាលកម្មទិន្នន័យ Firefox។</string>
     <string name="dejavu_sync_zen_hint">នៅក្នុង Zen បើកការកំណត់ បន្ទាប់មកសមកាលកម្ម ហើយបើកសមកាលកម្មរបារចំហៀង។ ផ្ទាំងដែលមិនបានខ្ទាស់មិនត្រូវបានធ្វើសមកាលកម្មទេ។</string>
     <string name="dejavu_sync_enabled">ធ្វើសមកាលកម្មចន្លោះការងារ</string>
     <string name="dejavu_sync_syncing">កំពុងធ្វើសមកាលកម្ម…</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">អូសចន្លោះការងារ ដើម្បីប្ដូរលំដាប់</string>
     <string name="dejavu_feature_split_view">ចុចសង្កត់តំណ ដើម្បីបើកវាក្នុងទិដ្ឋភាពបំបែក</string>
     <string name="dejavu_sync_choose_about">ធ្វើសមកាលកម្មចន្លោះការងាររបស់អ្នកជាមួយ Firefox ឬ Zen Browser លើកុំព្យូទ័ររបស់អ្នក តាមរយៈគណនី Mozilla ដែលអ្នកប្រើសម្រាប់ធ្វើសមកាលកម្មទិន្នន័យ Firefox។</string>
-    <string name="dejavu_sync_firefox_about">បង្ហាញផ្ទាំងដែលបើកនៅក្នុង Firefox លើកុំព្យូទ័រ និងទូរស័ព្ទនីមួយៗរបស់អ្នកជាចន្លោះការងារមួយ ហើយរក្សាពួកវាឲ្យទាន់សម័យជានិច្ច។ វាប្រើគណនី Mozilla ដែលអ្នកប្រើសម្រាប់ធ្វើសមកាលកម្មទិន្នន័យ Firefox។</string>
     <string name="dejavu_sync_firefox_hint">នៅក្នុង Firefox បើកការកំណត់ បន្ទាប់មកសមកាលកម្ម ហើយទុក “ផ្ទាំងដែលបើក” ឲ្យនៅបើក។ ផ្ទាំងដែលអ្នកបើក ឬបិទនៅក្នុងចន្លោះការងាររបស់ឧបករណ៍ណាមួយ ក៏បើក ឬបិទនៅលើឧបករណ៍នោះផងដែរ។ ផ្ទាំងនៅក្នុងចន្លោះការងារផ្សេងទៀតរបស់អ្នក នៅតែលើឧបករណ៍នេះ ហើយ Firefox រាយបញ្ជីពួកវានៅក្រោមឧបករណ៍ផ្សេងទៀតរបស់អ្នក។</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">វាក៏បង្ហាញផ្ទាំងដែលមិនបានខ្ទាស់ ហើយមិននៅក្នុងក្រុមផ្ទាំងផងដែរ មិនមែនគ្រាន់តែផ្ទាំងបានខ្ទាស់ និងក្រុមផ្ទាំងប៉ុណ្ណោះទេ។</string>
     <string name="dejavu_sync_source">ធ្វើសមកាលកម្មជាមួយ</string>
     <string name="dejavu_sync_source_none">មិនទាន់បានជ្រើសរើសនៅឡើយទេ</string>
     <string name="dejavu_sync_choose_title">ជ្រើសរើសអ្វីដែលត្រូវធ្វើសមកាលកម្មជាមួយ</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">ចន្លោះការងារនេះបង្ហាញផ្ទាំងដែលបើករបស់ឧបករណ៍មួយនៅលើគណនី Mozilla របស់អ្នក។ ឈ្មោះ និងរូបតំណាងរបស់វាមកពីឧបករណ៍នោះ ហើយពណ៌ដែលអ្នកជ្រើសរើសនៅតែលើទូរស័ព្ទនេះ។</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">ព្រមានអំពីគេហទំព័របោកប្រាស់ និងមេរោគ។ ដើម្បីធ្វើដូច្នេះ Dejavu ទាក់ទងទៅ Google។</string>
+    <string name="dejavu_back">ថយក្រោយ</string>
+    <string name="dejavu_sync_start_title">បញ្ចូលគ្នា ឬចាប់ផ្ដើមថ្មី?</string>
+    <string name="dejavu_sync_start_intro">ឧបករណ៍នេះមានចន្លោះការងារ និងផ្ទាំងផ្ទាល់ខ្លួនរួចហើយ។</string>
+    <string name="dejavu_sync_start_merge">បញ្ចូលគ្នា</string>
+    <string name="dejavu_sync_start_merge_zen">រក្សាទុកពួកវា ហើយបន្ថែមចន្លោះការងាររបស់អ្នកពី Zen។ ពួកវាក៏ធ្វើសមកាលកម្មទៅ Zen ដែរ។</string>
+    <string name="dejavu_sync_start_merge_firefox">រក្សាទុកពួកវា នៅក្បែរចន្លោះការងាររបស់កុំព្យូទ័រ និងទូរស័ព្ទ Firefox នីមួយៗ។</string>
+    <string name="dejavu_sync_start_fresh">ចាប់ផ្ដើមថ្មី</string>
+    <string name="dejavu_sync_start_fresh_zen">បិទផ្ទាំងទាំងនេះ ហើយដកចេញចន្លោះការងារ ផ្ទាំងបានខ្ទាស់ ថត និងសំខាន់ៗទាំងនេះ បន្ទាប់មកយកចន្លោះការងាររបស់អ្នកពី Zen។</string>
+    <string name="dejavu_sync_start_fresh_firefox">បិទផ្ទាំងទាំងនេះ ហើយដកចេញចន្លោះការងារ ផ្ទាំងបានខ្ទាស់ ថត និងសំខាន់ៗទាំងនេះ បន្ទាប់មកបង្ហាញផ្ទាំងរបស់កុំព្យូទ័រ និងទូរស័ព្ទ Firefox របស់អ្នក។</string>
 </resources>

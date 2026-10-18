@@ -212,8 +212,6 @@
     <string name="dejavu_more_menu_reset">Zresetuj do wychodnych</string>
     <string name="dejavu_more_menu_hide_edit">Skryj knefel edycyje</string>
     <string name="dejavu_more_menu_hide_edit_summary">Knefel Edytuj na spodku menu „Wiyncyj”</string>
-    <string name="dejavu_settings_sync">Synchronizuj z Firefox abo Zen</string>
-    <string name="dejavu_sync_hint">Trzimo twoje place z jejich farbami i ikōnami, kōntynery, przipiynte karty, nojważniejsze i foldry take same jak w Zen Browser na twojim kōmputrze i w Dejavu na twojich inkszych geratach. Używo kōnta Mozilla, kerym synchronizujesz dane Firefox.</string>
     <string name="dejavu_sync_zen_hint">W Zen ôdewrzij Sztalōnki, potym Synchronizacyjo, i włōncz synchronizacyjo bocznego posku. Karty, kere niy sōm przipiynte, niy sōm synchronizowane.</string>
     <string name="dejavu_sync_enabled">Synchronizuj place</string>
     <string name="dejavu_sync_syncing">Synchronizowanie…</string>
@@ -299,9 +297,7 @@
     <string name="dejavu_feature_workspace_order">Przeciōng place, coby zmiynić jejich porzōndek</string>
     <string name="dejavu_feature_split_view">Przitrzim długo link, coby go ôdewrzić w podzielōnym widoku</string>
     <string name="dejavu_sync_choose_about">Synchronizuj twoje place z Firefox abo Zen Browser na twojim kōmputrze. Używo kōnta Mozilla, kerym synchronizujesz dane Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Pokazuje ôdewrzite karty Firefox z kożdego twojigo kōmputra i telefōnu za plac i trzimo je aktualne. Używo kōnta Mozilla, kerym synchronizujesz dane Firefox.</string>
     <string name="dejavu_sync_firefox_hint">W Firefox ôdewrzij Sztalōnki, potym Synchronizacyjo, i trzim włōnczōne „Ôtwarte karty”. Karty, kere ôdwiyrosz abo zawiyrosz na placu geratu, ôdwiyrajōm abo zawiyrajōm sie tyż tam. Karty na twojich inkszych placach ôstajōm na tym geracie, a Firefox pokazuje je pod twojimi inkszymi geratami.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Pokazuje tyż karty, kere niy sōm ani przipiynte, ani w grupie kart, niy ino przipiynte karty i grupy kart.</string>
     <string name="dejavu_sync_source">Synchronizuj z</string>
     <string name="dejavu_sync_source_none">Jeszcze niy ôbrane</string>
     <string name="dejavu_sync_choose_title">Ôbier, z czym synchronizować</string>
@@ -344,4 +340,13 @@
     <string name="dejavu_workspace_device_note">Tyn plac pokazuje ôdewrzite karty geratu na twojim kōncie Mozilla. Jego miano i ikōna pochodzōm z tego geratu, a farby, kere ôbieresz, ôstajōm na tym telefōnie.</string>
     <string name="dejavu_settings_safe_browsing">Bezpieczne przeglōndanie Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Ôstrzega przed strōnami phishingowymi i ze szkodliwym ôprogramowaniym. Na to Dejavu łōnczy sie z Google.</string>
+    <string name="dejavu_back">Nazod</string>
+    <string name="dejavu_sync_start_title">Połōnczyć abo zaczōnć ôd nowa?</string>
+    <string name="dejavu_sync_start_intro">Tyn geret mo już swoje włosne place i karty.</string>
+    <string name="dejavu_sync_start_merge">Połōncz</string>
+    <string name="dejavu_sync_start_merge_zen">Zachowej je i dodej swoje place z Zen. Ône tyż bydōm synchronizowane z Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Zachowej je kole placu dlo kożdego kōmputra i telefōnu z Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Zacznij ôd nowa</string>
+    <string name="dejavu_sync_start_fresh_zen">Zawrzij te karty i wyciep te place, przipiynte karty, foldry i nojważniejsze, a potym weź swoje place z Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Zawrzij te karty i wyciep te place, przipiynte karty, foldry i nojważniejsze, a potym pokoż karty twojich kōmputrōw i telefōnōw z Firefox.</string>
 </resources>

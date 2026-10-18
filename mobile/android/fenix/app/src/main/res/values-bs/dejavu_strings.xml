@@ -211,8 +211,6 @@
     <string name="dejavu_more_menu_reset">Vrati na podrazumijevano</string>
     <string name="dejavu_more_menu_hide_edit">Sakrij dugme za uređivanje</string>
     <string name="dejavu_more_menu_hide_edit_summary">Dugme Uredi na dnu menija „Više“</string>
-    <string name="dejavu_settings_sync">Sinhronizacija sa Firefoxom ili Zenom</string>
-    <string name="dejavu_sync_hint">Vaši radni prostori sa bojama i ikonama, kontejneri, prikvačeni tabovi, Favoriti i folderi ostaju isti kao u Zen Browseru na vašem računaru i u Dejavuu na vašim ostalim uređajima. Koristi se Mozilla račun kojim sinhronizujete Firefox podatke.</string>
     <string name="dejavu_sync_zen_hint">U Zenu otvorite Postavke, zatim Sinhronizacija, i uključite sinhronizaciju bočne trake. Tabovi koji nisu prikvačeni se ne sinhronizuju.</string>
     <string name="dejavu_sync_enabled">Sinhronizuj radne prostore</string>
     <string name="dejavu_sync_syncing">Sinhronizacija…</string>
@@ -292,9 +290,7 @@
     <string name="dejavu_feature_workspace_order">Prevucite radne prostore da ih preuredite</string>
     <string name="dejavu_feature_split_view">Zadržite link da ga otvorite u podijeljenom prikazu</string>
     <string name="dejavu_sync_choose_about">Sinhronizujte svoje radne prostore sa Firefoxom ili Zen Browserom na svom računaru, preko Mozilla računa kojim sinhronizujete Firefox podatke.</string>
-    <string name="dejavu_sync_firefox_about">Prikazuje otvorene tabove Firefoxa sa svakog vašeg računara i telefona kao radni prostor i održava ih ažurnim. Koristi se Mozilla račun kojim sinhronizujete Firefox podatke.</string>
     <string name="dejavu_sync_firefox_hint">U Firefoxu otvorite Postavke, zatim Sinhronizacija, i ostavite opciju „Otvori tabove“ uključenom. Tabovi koje otvorite ili zatvorite u radnom prostoru nekog uređaja otvaraju se ili zatvaraju i na tom uređaju. Tabovi u vašim ostalim radnim prostorima ostaju na ovom uređaju, a Firefox ih prikazuje među vašim ostalim uređajima.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Također prikazuje tabove koji nisu ni prikvačeni ni u grupi tabova, ne samo prikvačene tabove i grupe tabova.</string>
     <string name="dejavu_sync_source">Sinhronizacija sa</string>
     <string name="dejavu_sync_source_none">Još nije izabrano</string>
     <string name="dejavu_sync_choose_title">Izaberite sa čim sinhronizovati</string>
@@ -337,4 +333,13 @@
     <string name="dejavu_workspace_device_note">Ovaj radni prostor prikazuje otvorene tabove uređaja na vašem Mozilla računu. Njegov naziv i ikona dolaze s tog uređaja, a boje koje odaberete ostaju na ovom telefonu.</string>
     <string name="dejavu_settings_safe_browsing">Google sigurno pregledanje</string>
     <string name="dejavu_settings_safe_browsing_summary">Upozorava na phishing stranice i stranice sa zlonamjernim softverom. Za to se Dejavu povezuje s Googleom.</string>
+    <string name="dejavu_back">Nazad</string>
+    <string name="dejavu_sync_start_title">Spojiti ili početi ispočetka?</string>
+    <string name="dejavu_sync_start_intro">Ovaj uređaj već ima svoje radne prostore i tabove.</string>
+    <string name="dejavu_sync_start_merge">Spoji</string>
+    <string name="dejavu_sync_start_merge_zen">Zadržite ih i dodajte svoje radne prostore iz Zena. I oni se sinhronizuju sa Zenom.</string>
+    <string name="dejavu_sync_start_merge_firefox">Zadržite ih, pored radnog prostora za svaki računar i telefon sa Firefoxom.</string>
+    <string name="dejavu_sync_start_fresh">Počni ispočetka</string>
+    <string name="dejavu_sync_start_fresh_zen">Zatvorite ove tabove i uklonite ove radne prostore, prikvačene tabove, foldere i Favorite, a zatim preuzmite svoje radne prostore iz Zena.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Zatvorite ove tabove i uklonite ove radne prostore, prikvačene tabove, foldere i Favorite, a zatim prikažite tabove svojih računara i telefona sa Firefoxom.</string>
 </resources>

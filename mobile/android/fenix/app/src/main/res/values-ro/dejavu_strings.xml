@@ -211,8 +211,6 @@
     <string name="dejavu_more_menu_reset">Resetează la implicit</string>
     <string name="dejavu_more_menu_hide_edit">Ascunde butonul de editare</string>
     <string name="dejavu_more_menu_hide_edit_summary">Butonul Editează din partea de jos a meniului „Mai multe”</string>
-    <string name="dejavu_settings_sync">Sincronizează cu Firefox sau Zen</string>
-    <string name="dejavu_sync_hint">Îți păstrează spațiile de lucru, cu culorile și pictogramele lor, containerele, filele fixate, favorite și folderele identice cu cele din Zen Browser de pe computer și din Dejavu de pe celelalte dispozitive. Folosește contul Mozilla cu care sincronizezi datele Firefox.</string>
     <string name="dejavu_sync_zen_hint">În Zen, deschide Setări, apoi Sincronizare, și activează sincronizarea barei laterale. Filele care nu sunt fixate nu sunt sincronizate.</string>
     <string name="dejavu_sync_enabled">Sincronizează spațiile de lucru</string>
     <string name="dejavu_sync_syncing">Se sincronizează…</string>
@@ -292,9 +290,7 @@
     <string name="dejavu_feature_workspace_order">Trage spațiile de lucru pentru a le reordona</string>
     <string name="dejavu_feature_split_view">Ține apăsat pe un link pentru a-l deschide în ecran împărțit</string>
     <string name="dejavu_sync_choose_about">Sincronizează-ți spațiile de lucru cu Firefox sau Zen Browser de pe computer, prin contul Mozilla cu care sincronizezi datele Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Afișează filele deschise din Firefox de pe fiecare dintre computerele și telefoanele tale ca un spațiu de lucru și le ține la zi. Folosește contul Mozilla cu care sincronizezi datele Firefox.</string>
     <string name="dejavu_sync_firefox_hint">În Firefox, deschide Setări, apoi Sincronizare, și lasă activată opțiunea File deschise. Filele pe care le deschizi sau le închizi în spațiul de lucru al unui dispozitiv se deschid sau se închid și pe acel dispozitiv. Filele din celelalte spații de lucru ale tale rămân pe acest dispozitiv, iar Firefox le listează printre celelalte dispozitive ale tale.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Afișează și filele care nu sunt nici fixate, nici într-un grup de file, nu doar filele fixate și grupurile de file.</string>
     <string name="dejavu_sync_source">Sincronizează cu</string>
     <string name="dejavu_sync_source_none">Încă nu ai ales</string>
     <string name="dejavu_sync_choose_title">Alege cu ce să sincronizezi</string>
@@ -337,4 +333,13 @@
     <string name="dejavu_workspace_device_note">Acest spațiu de lucru afișează filele deschise ale unui dispozitiv din contul tău Mozilla. Numele și pictograma lui vin de pe acel dispozitiv, iar culorile pe care le alegi rămân pe acest telefon.</string>
     <string name="dejavu_settings_safe_browsing">Navigare sigură Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avertizează despre site-urile de phishing și malware. Pentru aceasta, Dejavu contactează Google.</string>
+    <string name="dejavu_back">Înapoi</string>
+    <string name="dejavu_sync_start_title">Combini sau începi de la zero?</string>
+    <string name="dejavu_sync_start_intro">Acest dispozitiv are deja propriile spații de lucru și file.</string>
+    <string name="dejavu_sync_start_merge">Combină</string>
+    <string name="dejavu_sync_start_merge_zen">Păstrează-le și adaugă spațiile tale de lucru din Zen. Se sincronizează și ele cu Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Păstrează-le, alături de câte un spațiu de lucru pentru fiecare computer și telefon cu Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Începe de la zero</string>
+    <string name="dejavu_sync_start_fresh_zen">Închide aceste file și elimină aceste spații de lucru, file fixate, foldere și favorite, apoi preia spațiile tale de lucru din Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Închide aceste file și elimină aceste spații de lucru, file fixate, foldere și favorite, apoi afișează filele computerelor și telefoanelor tale cu Firefox.</string>
 </resources>

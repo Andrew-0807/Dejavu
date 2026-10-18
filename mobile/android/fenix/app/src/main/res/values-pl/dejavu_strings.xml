@@ -212,8 +212,6 @@
     <string name="dejavu_more_menu_reset">Przywróć domyślne</string>
     <string name="dejavu_more_menu_hide_edit">Ukryj przycisk edycji</string>
     <string name="dejavu_more_menu_hide_edit_summary">Przycisk Edytuj na dole menu „Więcej”</string>
-    <string name="dejavu_settings_sync">Synchronizuj z Firefoksem lub Zen</string>
-    <string name="dejavu_sync_hint">Zachowuje twoje obszary robocze z ich kolorami i ikonami, kontenery, przypięte karty, ulubione i foldery takie same jak w Zen Browser na komputerze i w Dejavu na innych urządzeniach. Wykorzystuje do tego konto Mozilli, za pomocą którego synchronizujesz dane Firefoksa.</string>
     <string name="dejavu_sync_zen_hint">W Zen otwórz Ustawienia, potem Synchronizację, i włącz synchronizację paska bocznego. Nieprzypięte karty nie są synchronizowane.</string>
     <string name="dejavu_sync_enabled">Synchronizuj obszary robocze</string>
     <string name="dejavu_sync_syncing">Synchronizowanie…</string>
@@ -299,9 +297,7 @@
     <string name="dejavu_feature_workspace_order">Przeciągaj obszary robocze, aby zmienić ich kolejność</string>
     <string name="dejavu_feature_split_view">Przytrzymaj odnośnik, aby otworzyć go w widoku podzielonym</string>
     <string name="dejavu_sync_choose_about">Synchronizuj obszary robocze z Firefoksem lub Zen Browser na komputerze, korzystając z konta Mozilli, za pomocą którego synchronizujesz dane Firefoksa.</string>
-    <string name="dejavu_sync_firefox_about">Pokazuje otwarte karty Firefoksa z każdego twojego komputera i telefonu jako obszar roboczy i na bieżąco je aktualizuje. Wykorzystuje do tego konto Mozilli, za pomocą którego synchronizujesz dane Firefoksa.</string>
     <string name="dejavu_sync_firefox_hint">W Firefoksie otwórz Ustawienia, potem Synchronizację, i pozostaw włączoną opcję Otwarte karty. Karty otwierane lub zamykane w obszarze roboczym urządzenia otwierają się lub zamykają też na tym urządzeniu. Karty w innych obszarach roboczych pozostają na tym urządzeniu, a Firefox pokazuje je na liście twoich innych urządzeń.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Pokazuje też karty, które nie są ani przypięte, ani w grupie kart, a nie tylko przypięte karty i grupy kart.</string>
     <string name="dejavu_sync_source">Synchronizuj z</string>
     <string name="dejavu_sync_source_none">Jeszcze nie wybrano</string>
     <string name="dejavu_sync_choose_title">Wybierz, z czym synchronizować</string>
@@ -344,4 +340,13 @@
     <string name="dejavu_workspace_device_note">Ten obszar roboczy pokazuje otwarte karty urządzenia połączonego z twoim kontem Mozilli. Jego nazwa i ikona pochodzą z tego urządzenia, a wybrane przez ciebie kolory pozostają na tym telefonie.</string>
     <string name="dejavu_settings_safe_browsing">Bezpieczne przeglądanie Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Ostrzega przed witrynami wyłudzającymi dane i zawierającymi złośliwe oprogramowanie. W tym celu Dejavu łączy się z Google.</string>
+    <string name="dejavu_back">Wstecz</string>
+    <string name="dejavu_sync_start_title">Scalić czy zacząć od nowa?</string>
+    <string name="dejavu_sync_start_intro">To urządzenie ma już własne obszary robocze i karty.</string>
+    <string name="dejavu_sync_start_merge">Scal</string>
+    <string name="dejavu_sync_start_merge_zen">Zachowaj je i dodaj swoje obszary robocze z Zen. One też będą synchronizowane z Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Zachowaj je obok obszaru roboczego dla każdego komputera i telefonu z Firefoksem.</string>
+    <string name="dejavu_sync_start_fresh">Zacznij od nowa</string>
+    <string name="dejavu_sync_start_fresh_zen">Zamknij te karty i usuń te obszary robocze, przypięte karty, foldery i ulubione, a potem pobierz swoje obszary robocze z Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Zamknij te karty i usuń te obszary robocze, przypięte karty, foldery i ulubione, a potem pokaż karty swoich komputerów i telefonów z Firefoksem.</string>
 </resources>

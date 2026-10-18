@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Restabilir il standard</string>
     <string name="dejavu_more_menu_hide_edit">Zuppentar il buttun d’edit</string>
     <string name="dejavu_more_menu_hide_edit_summary">Il buttun Modifitgar giusut en il menu Dapli</string>
-    <string name="dejavu_settings_sync">Sincronisar cun Firefox u Zen</string>
-    <string name="dejavu_sync_hint">Tegna tes spazis da lavur cun lur colurs ed iconas, containers, tabs fixads, essenzials e dossiers identics sco en Zen Browser sin tes computer e sco en Dejavu sin tes auters apparats. Douvra il conto Mozilla cun il qual ti sincronisas tias datas da Firefox.</string>
     <string name="dejavu_sync_zen_hint">En Zen, avra Parameters, lura Sync, ed activescha la sincronisaziun da la trav laterala. Tabs betg fixads na vegnan betg sincronisads.</string>
     <string name="dejavu_sync_enabled">Sincronisar ils spazis da lavur</string>
     <string name="dejavu_sync_syncing">Sincronisar…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Trair ils spazis da lavur per als ordinar da nov</string>
     <string name="dejavu_feature_split_view">Tegnair smatgà ina colliaziun per l\'avrir en la vista divisa</string>
     <string name="dejavu_sync_choose_about">Sincronisescha tes spazis da lavur cun Firefox u Zen Browser sin tes computer, tras il conto Mozilla cun il qual ti sincronisas tias datas da Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Mussa ils tabs averts da Firefox sin mintgin da tes computers e telefons sco in spazi da lavur ed als tegna actuals. Douvra il conto Mozilla cun il qual ti sincronisas tias datas da Firefox.</string>
     <string name="dejavu_sync_firefox_hint">En Firefox, avra Parameters, lura Sync, e lascha activada l’opziun Tabs averts. Tabs ch’i avras u serras en il spazi da lavur d’in apparat vegnan er averts u serrads là. Tabs en tes auters spazis da lavur restan sin quest apparat, e Firefox als mussa sut tes auters apparats.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Mussa er ils tabs che n’èn ni fixads ni en ina gruppa da tabs, betg mo ils tabs fixads e las gruppas da tabs.</string>
     <string name="dejavu_sync_source">Sincronisar cun</string>
     <string name="dejavu_sync_source_none">Anc betg tschernì</string>
     <string name="dejavu_sync_choose_title">Tscherna cun tge sincronisar</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Quest spazi da lavur mussa ils tabs averts d’in apparat da tes conto Mozilla. Ses num e sia icona vegnan da quel apparat, e las colurs che ti tschernas restan sin quest telefon.</string>
     <string name="dejavu_settings_safe_browsing">Navigaziun segira da Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avertescha davart websites da phishing e malware. Per far quai, contactescha Dejavu Google.</string>
+    <string name="dejavu_back">Enavos</string>
+    <string name="dejavu_sync_start_title">Unir u cumenzar da nov?</string>
+    <string name="dejavu_sync_start_intro">Quest apparat ha gia ses agens spazis da lavur e tabs.</string>
+    <string name="dejavu_sync_start_merge">Unir</string>
+    <string name="dejavu_sync_start_merge_zen">Als tegnair ed agiuntar tes spazis da lavur da Zen. Er quels vegnan sincronisads cun Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Als tegnair, sper in spazi da lavur per mintga computer e telefon cun Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Cumenzar da nov</string>
+    <string name="dejavu_sync_start_fresh_zen">Serrar quests tabs ed allontanar quests spazis da lavur, tabs fixads, dossiers ed essenzials, lura survegnir tes spazis da lavur da Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Serrar quests tabs ed allontanar quests spazis da lavur, tabs fixads, dossiers ed essenzials, lura mussar ils tabs da tes computers e telefons cun Firefox.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Standarta sıfırla</string>
     <string name="dejavu_more_menu_hide_edit">Redaktə düyməsini gizlət</string>
     <string name="dejavu_more_menu_hide_edit_summary">“Daha çox” menyusunun altındakı “Redaktə et” düyməsi</string>
-    <string name="dejavu_settings_sync">Firefox və ya Zen ilə sinxronlaşdır</string>
-    <string name="dejavu_sync_hint">Rəng və ikonları ilə birlikdə iş sahələrinizi, konteynerlərinizi, bərkidilmiş vərəqlərinizi, əsaslarınızı və qovluqlarınızı kompüterinizdəki Zen Browser və digər cihazlarınızdakı Dejavu ilə eyni saxlayır. Bunun üçün Firefox məlumatlarınızı sinxronlaşdırdığınız Mozilla hesabından istifadə olunur.</string>
     <string name="dejavu_sync_zen_hint">Zen-də Tənzimləmələri, sonra Sinxronlaşdırmanı açın və yan panel sinxronlaşdırmasını aktivləşdirin. Bərkidilməmiş vərəqlər sinxronlaşdırılmır.</string>
     <string name="dejavu_sync_enabled">İş sahələrini sinxronlaşdır</string>
     <string name="dejavu_sync_syncing">Sinxronlaşdırılır…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Yenidən sıralamaq üçün iş sahələrini sürükləyin</string>
     <string name="dejavu_feature_split_view">Bölünmüş görünüşdə açmaq üçün keçidi basıb saxlayın</string>
     <string name="dejavu_sync_choose_about">İş sahələrinizi Firefox məlumatlarınızı sinxronlaşdırdığınız Mozilla hesabı vasitəsilə kompüterinizdəki Firefox və ya Zen Browser ilə sinxronlaşdırın.</string>
-    <string name="dejavu_sync_firefox_about">Hər kompüterinizdəki və telefonunuzdakı Firefox-un açıq vərəqlərini bir iş sahəsi kimi göstərir və onları güncəl saxlayır. Bunun üçün Firefox məlumatlarınızı sinxronlaşdırdığınız Mozilla hesabından istifadə olunur.</string>
     <string name="dejavu_sync_firefox_hint">Firefox-da Tənzimləmələri, sonra Sinxronlaşdırmanı açın və Açıq vərəqlər seçimini aktiv saxlayın. Bir cihazın iş sahəsində açdığınız və ya bağladığınız vərəqlər orada da açılır və ya bağlanır. Digər iş sahələrinizdəki vərəqlər bu cihazda qalır və Firefox onları digər cihazlarınızın altında göstərir.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Bundan başqa, bərkidilməmiş və vərəq qrupunda olmayan vərəqləri də göstərir, təkcə bərkidilmiş vərəqləri və vərəq qruplarını yox.</string>
     <string name="dejavu_sync_source">Sinxronlaşdırılan brauzer</string>
     <string name="dejavu_sync_source_none">Hələ seçilməyib</string>
     <string name="dejavu_sync_choose_title">Nə ilə sinxronlaşdıracağınızı seçin</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Bu iş sahəsi Mozilla hesabınızdakı bir cihazın açıq vərəqlərini göstərir. Onun adı və ikonu həmin cihazdan gəlir, seçdiyiniz rənglər isə bu telefonda qalır.</string>
     <string name="dejavu_settings_safe_browsing">Google Təhlükəsiz Baxış</string>
     <string name="dejavu_settings_safe_browsing_summary">Fişinq və zərərli proqram saytları barədə xəbərdarlıq edir. Bunun üçün Dejavu Google ilə əlaqə saxlayır.</string>
+    <string name="dejavu_back">Geri</string>
+    <string name="dejavu_sync_start_title">Birləşdirmək, yoxsa sıfırdan başlamaq?</string>
+    <string name="dejavu_sync_start_intro">Bu cihazın artıq öz iş sahələri və vərəqləri var.</string>
+    <string name="dejavu_sync_start_merge">Birləşdir</string>
+    <string name="dejavu_sync_start_merge_zen">Onları saxlayın və Zen-dəki iş sahələrinizi əlavə edin. Onlar da Zen ilə sinxronlaşdırılır.</string>
+    <string name="dejavu_sync_start_merge_firefox">Onları saxlayın, Firefox olan hər kompüter və telefon üçün bir iş sahəsi ilə yanaşı.</string>
+    <string name="dejavu_sync_start_fresh">Sıfırdan başla</string>
+    <string name="dejavu_sync_start_fresh_zen">Bu vərəqləri bağlayın və bu iş sahələrini, bərkidilmiş vərəqləri, qovluqları və əsasları silin, sonra iş sahələrinizi Zen-dən alın.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Bu vərəqləri bağlayın və bu iş sahələrini, bərkidilmiş vərəqləri, qovluqları və əsasları silin, sonra Firefox olan kompüter və telefonlarınızın vərəqlərini göstərin.</string>
 </resources>

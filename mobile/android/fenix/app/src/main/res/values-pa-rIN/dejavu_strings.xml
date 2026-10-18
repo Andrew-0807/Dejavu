@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">ਡਿਫਾਲਟ ‘ਤੇ ਮੁੜ-ਸੈੱਟ ਕਰੋ</string>
     <string name="dejavu_more_menu_hide_edit">ਸੋਧ ਬਟਨ ਲੁਕਾਓ</string>
     <string name="dejavu_more_menu_hide_edit_summary">ਹੋਰ ਮੀਨੂ ਦੇ ਹੇਠਾਂ ਵਾਲਾ ਸੋਧੋ ਬਟਨ</string>
-    <string name="dejavu_settings_sync">Firefox ਜਾਂ Zen ਨਾਲ ਸਿੰਕ ਕਰੋ</string>
-    <string name="dejavu_sync_hint">ਤੁਹਾਡੀਆਂ ਵਰਕਸਪੇਸਾਂ ਨੂੰ ਉਹਨਾਂ ਦੇ ਰੰਗਾਂ ਅਤੇ ਆਈਕਨਾਂ ਸਮੇਤ, ਕੰਟੇਨਰ, ਪਿੰਨ ਕੀਤੀਆਂ ਟੈਬਾਂ, ਜ਼ਰੂਰੀ ਅਤੇ ਫੋਲਡਰ ਤੁਹਾਡੇ ਕੰਪਿਊਟਰ ‘ਤੇ Zen ਬਰਾਊਜ਼ਰ ਅਤੇ ਤੁਹਾਡੇ ਹੋਰ ਡਿਵਾਈਸਾਂ ‘ਤੇ Dejavu ਵਾਂਗ ਹੀ ਰੱਖਦਾ ਹੈ। ਇਹ ਉਹ Mozilla ਖਾਤਾ ਵਰਤਦਾ ਹੈ ਜਿਸ ਨਾਲ ਤੁਸੀਂ Firefox ਡਾਟਾ ਸਿੰਕ ਕਰਦੇ ਹੋ।</string>
     <string name="dejavu_sync_zen_hint">Zen ਵਿੱਚ, ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ, ਫਿਰ ਸਿੰਕ, ਅਤੇ ਸਾਈਡਬਾਰ ਸਿੰਕ ਚਾਲੂ ਕਰੋ। ਜਿਹੜੀਆਂ ਟੈਬਾਂ ਪਿੰਨ ਨਹੀਂ ਕੀਤੀਆਂ, ਉਹ ਸਿੰਕ ਨਹੀਂ ਹੁੰਦੀਆਂ।</string>
     <string name="dejavu_sync_enabled">ਵਰਕਸਪੇਸਾਂ ਸਿੰਕ ਕਰੋ</string>
     <string name="dejavu_sync_syncing">ਸਿੰਕ ਹੋ ਰਿਹਾ ਹੈ…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">ਕ੍ਰਮ ਬਦਲਣ ਲਈ ਵਰਕਸਪੇਸਾਂ ਨੂੰ ਖਿੱਚੋ</string>
     <string name="dejavu_feature_split_view">ਲਿੰਕ ਨੂੰ ਵੰਡੇ ਦ੍ਰਿਸ਼ ਵਿੱਚ ਖੋਲ੍ਹਣ ਲਈ ਉਸ ਨੂੰ ਦੇਰ ਤੱਕ ਦਬਾਓ</string>
     <string name="dejavu_sync_choose_about">ਆਪਣੀਆਂ ਵਰਕਸਪੇਸਾਂ ਨੂੰ ਆਪਣੇ ਕੰਪਿਊਟਰ ‘ਤੇ Firefox ਜਾਂ Zen ਬਰਾਊਜ਼ਰ ਨਾਲ ਸਿੰਕ ਕਰੋ, ਉਸ Mozilla ਖਾਤੇ ਰਾਹੀਂ ਜਿਸ ਨਾਲ ਤੁਸੀਂ Firefox ਡਾਟਾ ਸਿੰਕ ਕਰਦੇ ਹੋ।</string>
-    <string name="dejavu_sync_firefox_about">ਤੁਹਾਡੇ ਹਰ ਕੰਪਿਊਟਰ ਅਤੇ ਫ਼ੋਨ ‘ਤੇ Firefox ਦੀਆਂ ਖੁੱਲ੍ਹੀਆਂ ਟੈਬਾਂ ਨੂੰ ਇੱਕ ਵਰਕਸਪੇਸ ਵਜੋਂ ਦਿਖਾਉਂਦਾ ਹੈ, ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਅੱਪਡੇਟ ਰੱਖਦਾ ਹੈ। ਇਹ ਉਹ Mozilla ਖਾਤਾ ਵਰਤਦਾ ਹੈ ਜਿਸ ਨਾਲ ਤੁਸੀਂ Firefox ਡਾਟਾ ਸਿੰਕ ਕਰਦੇ ਹੋ।</string>
     <string name="dejavu_sync_firefox_hint">Firefox ਵਿੱਚ, ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ, ਫਿਰ ਸਿੰਕ, ਅਤੇ “ਟੈਬਾਂ ਖੋਲ੍ਹੋ” ਵਿਕਲਪ ਚਾਲੂ ਰੱਖੋ। ਜਿਹੜੀਆਂ ਟੈਬਾਂ ਤੁਸੀਂ ਕਿਸੇ ਡਿਵਾਈਸ ਦੀ ਵਰਕਸਪੇਸ ਵਿੱਚ ਖੋਲ੍ਹਦੇ ਜਾਂ ਬੰਦ ਕਰਦੇ ਹੋ, ਉਹ ਉਸ ਡਿਵਾਈਸ ‘ਤੇ ਵੀ ਖੁੱਲ੍ਹ ਜਾਂ ਬੰਦ ਹੋ ਜਾਂਦੀਆਂ ਹਨ। ਤੁਹਾਡੀਆਂ ਹੋਰ ਵਰਕਸਪੇਸਾਂ ਦੀਆਂ ਟੈਬਾਂ ਇਸ ਡਿਵਾਈਸ ‘ਤੇ ਰਹਿੰਦੀਆਂ ਹਨ, ਅਤੇ Firefox ਉਹਨਾਂ ਨੂੰ ਤੁਹਾਡੇ ਹੋਰ ਡਿਵਾਈਸਾਂ ਹੇਠ ਦਿਖਾਉਂਦਾ ਹੈ।</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">ਇਹ ਉਹ ਟੈਬਾਂ ਵੀ ਦਿਖਾਉਂਦਾ ਹੈ ਜੋ ਨਾ ਪਿੰਨ ਕੀਤੀਆਂ ਹਨ ਅਤੇ ਨਾ ਹੀ ਕਿਸੇ ਟੈਬ ਗਰੁੱਪ ਵਿੱਚ ਹਨ, ਸਿਰਫ਼ ਪਿੰਨ ਕੀਤੀਆਂ ਟੈਬਾਂ ਅਤੇ ਟੈਬ ਗਰੁੱਪ ਹੀ ਨਹੀਂ।</string>
     <string name="dejavu_sync_source">ਇਸ ਨਾਲ ਸਿੰਕ ਕਰੋ</string>
     <string name="dejavu_sync_source_none">ਹਾਲੇ ਨਹੀਂ ਚੁਣਿਆ</string>
     <string name="dejavu_sync_choose_title">ਚੁਣੋ ਕਿ ਕਿਸ ਨਾਲ ਸਿੰਕ ਕਰਨਾ ਹੈ</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">ਇਹ ਵਰਕਸਪੇਸ ਤੁਹਾਡੇ Mozilla ਖਾਤੇ ਵਾਲੇ ਕਿਸੇ ਡਿਵਾਈਸ ਦੀਆਂ ਖੁੱਲ੍ਹੀਆਂ ਟੈਬਾਂ ਦਿਖਾਉਂਦੀ ਹੈ। ਇਸ ਦਾ ਨਾਂ ਅਤੇ ਆਈਕਨ ਉਸ ਡਿਵਾਈਸ ਤੋਂ ਆਉਂਦੇ ਹਨ, ਅਤੇ ਤੁਹਾਡੇ ਚੁਣੇ ਰੰਗ ਇਸ ਫ਼ੋਨ ‘ਤੇ ਹੀ ਰਹਿੰਦੇ ਹਨ।</string>
     <string name="dejavu_settings_safe_browsing">Google ਸੁਰੱਖਿਅਤ ਬ੍ਰਾਊਜ਼ਿੰਗ</string>
     <string name="dejavu_settings_safe_browsing_summary">ਫਿਸ਼ਿੰਗ ਅਤੇ ਮਾਲਵੇਅਰ ਸਾਈਟਾਂ ਬਾਰੇ ਚਿਤਾਵਨੀ ਦਿੰਦਾ ਹੈ। ਇਸ ਲਈ Dejavu, Google ਨਾਲ ਸੰਪਰਕ ਕਰਦਾ ਹੈ।</string>
+    <string name="dejavu_back">ਪਿੱਛੇ</string>
+    <string name="dejavu_sync_start_title">ਮਿਲਾਉਣਾ ਹੈ ਜਾਂ ਨਵੇਂ ਸਿਰਿਓਂ ਸ਼ੁਰੂ ਕਰਨਾ ਹੈ?</string>
+    <string name="dejavu_sync_start_intro">ਇਸ ਡਿਵਾਈਸ ‘ਤੇ ਪਹਿਲਾਂ ਹੀ ਇਸ ਦੀਆਂ ਆਪਣੀਆਂ ਵਰਕਸਪੇਸਾਂ ਅਤੇ ਟੈਬਾਂ ਹਨ।</string>
+    <string name="dejavu_sync_start_merge">ਮਿਲਾਓ</string>
+    <string name="dejavu_sync_start_merge_zen">ਇਹਨਾਂ ਨੂੰ ਰੱਖੋ ਅਤੇ Zen ਤੋਂ ਆਪਣੀਆਂ ਵਰਕਸਪੇਸਾਂ ਜੋੜੋ। ਇਹ ਵੀ Zen ਨਾਲ ਸਿੰਕ ਹੁੰਦੀਆਂ ਹਨ।</string>
+    <string name="dejavu_sync_start_merge_firefox">ਇਹਨਾਂ ਨੂੰ Firefox ਵਾਲੇ ਹਰ ਕੰਪਿਊਟਰ ਅਤੇ ਫ਼ੋਨ ਦੀ ਵਰਕਸਪੇਸ ਦੇ ਨਾਲ ਰੱਖੋ।</string>
+    <string name="dejavu_sync_start_fresh">ਨਵੇਂ ਸਿਰਿਓਂ ਸ਼ੁਰੂ ਕਰੋ</string>
+    <string name="dejavu_sync_start_fresh_zen">ਇਹ ਟੈਬਾਂ ਬੰਦ ਕਰੋ ਅਤੇ ਇਹ ਵਰਕਸਪੇਸਾਂ, ਪਿੰਨ ਕੀਤੀਆਂ ਟੈਬਾਂ, ਫੋਲਡਰ ਅਤੇ ਜ਼ਰੂਰੀ ਹਟਾਓ, ਫਿਰ Zen ਤੋਂ ਆਪਣੀਆਂ ਵਰਕਸਪੇਸਾਂ ਲਿਆਓ।</string>
+    <string name="dejavu_sync_start_fresh_firefox">ਇਹ ਟੈਬਾਂ ਬੰਦ ਕਰੋ ਅਤੇ ਇਹ ਵਰਕਸਪੇਸਾਂ, ਪਿੰਨ ਕੀਤੀਆਂ ਟੈਬਾਂ, ਫੋਲਡਰ ਅਤੇ ਜ਼ਰੂਰੀ ਹਟਾਓ, ਫਿਰ Firefox ਵਾਲੇ ਆਪਣੇ ਕੰਪਿਊਟਰਾਂ ਅਤੇ ਫ਼ੋਨਾਂ ਦੀਆਂ ਟੈਬਾਂ ਦਿਖਾਓ।</string>
 </resources>

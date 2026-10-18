@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">Đặt lại về mặc định</string>
     <string name="dejavu_more_menu_hide_edit">Ẩn nút chỉnh sửa</string>
     <string name="dejavu_more_menu_hide_edit_summary">Nút Chỉnh sửa ở cuối Trình đơn khác</string>
-    <string name="dejavu_settings_sync">Đồng bộ hóa với Firefox hoặc Zen</string>
-    <string name="dejavu_sync_hint">Giữ cho không gian làm việc (cùng màu sắc và biểu tượng), vùng chứa, thẻ đã ghim, trang thiết yếu và thư mục của bạn giống như trong Zen Browser trên máy tính và trong Dejavu trên các thiết bị khác của bạn. Tính năng này dùng tài khoản Mozilla mà bạn dùng để đồng bộ hóa dữ liệu Firefox.</string>
     <string name="dejavu_sync_zen_hint">Trong Zen, mở Cài đặt, rồi vào Đồng bộ hóa, và bật đồng bộ hóa thanh bên. Các thẻ chưa ghim sẽ không được đồng bộ hóa.</string>
     <string name="dejavu_sync_enabled">Đồng bộ hóa không gian làm việc</string>
     <string name="dejavu_sync_syncing">Đang đồng bộ hóa…</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">Kéo các không gian làm việc để sắp xếp lại</string>
     <string name="dejavu_feature_split_view">Nhấn giữ liên kết để mở ở chế độ chia đôi màn hình</string>
     <string name="dejavu_sync_choose_about">Đồng bộ hóa không gian làm việc của bạn với Firefox hoặc Zen Browser trên máy tính, thông qua tài khoản Mozilla mà bạn dùng để đồng bộ hóa dữ liệu Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Hiển thị các thẻ đang mở của Firefox trên từng máy tính và điện thoại của bạn dưới dạng một không gian làm việc và luôn cập nhật chúng. Tính năng này dùng tài khoản Mozilla mà bạn dùng để đồng bộ hóa dữ liệu Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Trong Firefox, mở Cài đặt, rồi vào Đồng bộ hóa, và luôn bật mục Các thẻ đang mở. Các thẻ bạn mở hoặc đóng trong không gian làm việc của một thiết bị cũng sẽ mở hoặc đóng trên thiết bị đó. Các thẻ trong các không gian làm việc khác của bạn sẽ ở lại trên thiết bị này, và Firefox liệt kê chúng dưới các thiết bị khác của bạn.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Hiển thị cả các thẻ không được ghim và không thuộc nhóm thẻ nào, không chỉ thẻ đã ghim và nhóm thẻ.</string>
     <string name="dejavu_sync_source">Đồng bộ hóa với</string>
     <string name="dejavu_sync_source_none">Chưa chọn</string>
     <string name="dejavu_sync_choose_title">Chọn trình duyệt để đồng bộ hóa</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">Không gian làm việc này hiển thị các thẻ đang mở của một thiết bị trong tài khoản Mozilla của bạn. Tên và biểu tượng của nó lấy từ thiết bị đó, còn các màu bạn chọn sẽ ở lại trên điện thoại này.</string>
     <string name="dejavu_settings_safe_browsing">Duyệt web an toàn của Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Cảnh báo về các trang web lừa đảo và phần mềm độc hại. Để làm điều này, Dejavu kết nối với Google.</string>
+    <string name="dejavu_back">Quay lại</string>
+    <string name="dejavu_sync_start_title">Hợp nhất hay bắt đầu lại từ đầu?</string>
+    <string name="dejavu_sync_start_intro">Thiết bị này đã có không gian làm việc và thẻ của riêng nó.</string>
+    <string name="dejavu_sync_start_merge">Hợp nhất</string>
+    <string name="dejavu_sync_start_merge_zen">Giữ lại chúng và thêm không gian làm việc của bạn từ Zen. Chúng cũng sẽ được đồng bộ hóa với Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Giữ lại chúng, bên cạnh một không gian làm việc cho mỗi máy tính và điện thoại dùng Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Bắt đầu lại từ đầu</string>
+    <string name="dejavu_sync_start_fresh_zen">Đóng các thẻ này và xóa các không gian làm việc, thẻ đã ghim, thư mục và trang thiết yếu này, rồi lấy không gian làm việc của bạn từ Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Đóng các thẻ này và xóa các không gian làm việc, thẻ đã ghim, thư mục và trang thiết yếu này, rồi hiển thị các thẻ của máy tính và điện thoại dùng Firefox của bạn.</string>
 </resources>

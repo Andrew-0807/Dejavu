@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Odatiy holatga qaytarish</string>
     <string name="dejavu_more_menu_hide_edit">Tahrirlash tugmasini yashirish</string>
     <string name="dejavu_more_menu_hide_edit_summary">«Ko\'proq» menyusining pastidagi «Tahrirlash» tugmasi</string>
-    <string name="dejavu_settings_sync">Firefox yoki Zen bilan sinxronlashtirish</string>
-    <string name="dejavu_sync_hint">Ranglari va nishonchalari bilan birga ish maydonlaringizni, konteynerlaringizni, mahkamlangan varaqlaringizni, muhimlaringizni va jildlaringizni kompyuteringizdagi Zen Browser va boshqa qurilmalaringizdagi Dejavu bilan bir xil qilib saqlaydi. Buning uchun Firefox ma\'lumotlaringizni sinxronlashtiradigan Mozilla hisobi ishlatiladi.</string>
     <string name="dejavu_sync_zen_hint">Zen-da Sozlamalarni, keyin Sinxronlashtirishni oching va yon panel sinxronlashini yoqing. Mahkamlanmagan varaqlar sinxronlashtirilmaydi.</string>
     <string name="dejavu_sync_enabled">Ish maydonlarini sinxronlashtirish</string>
     <string name="dejavu_sync_syncing">Sinxronlashtirilmoqda…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Tartibini o\'zgartirish uchun ish maydonlarini sudrang</string>
     <string name="dejavu_feature_split_view">Havolani bo\'lingan ko\'rinishda ochish uchun uni bosib turing</string>
     <string name="dejavu_sync_choose_about">Ish maydonlaringizni Firefox ma\'lumotlaringizni sinxronlashtiradigan Mozilla hisobi orqali kompyuteringizdagi Firefox yoki Zen Browser bilan sinxronlashtiring.</string>
-    <string name="dejavu_sync_firefox_about">Har bir kompyuteringiz va telefoningizdagi Firefox-ning ochiq varaqlarini ish maydoni sifatida ko\'rsatadi va ularni doim yangilab turadi. Buning uchun Firefox ma\'lumotlaringizni sinxronlashtiradigan Mozilla hisobi ishlatiladi.</string>
     <string name="dejavu_sync_firefox_hint">Firefox-da Sozlamalarni, keyin Sinxronlashtirishni oching va «Varaqlarni ochish» parametrini yoqilgan holda qoldiring. Qurilmaning ish maydonida ochgan yoki yopgan varaqlaringiz o\'sha qurilmada ham ochiladi yoki yopiladi. Boshqa ish maydonlaringizdagi varaqlar shu qurilmada qoladi, Firefox esa ularni boshqa qurilmalaringiz ro\'yxatida ko\'rsatadi.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Bundan tashqari, mahkamlanmagan va varaqlar guruhida bo\'lmagan varaqlarni ham ko\'rsatadi, faqat mahkamlangan varaqlar va varaqlar guruhlarinigina emas.</string>
     <string name="dejavu_sync_source">Nima bilan sinxronlashtirish</string>
     <string name="dejavu_sync_source_none">Hali tanlanmagan</string>
     <string name="dejavu_sync_choose_title">Nima bilan sinxronlashtirishni tanlang</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Bu ish maydoni Mozilla hisobingizdagi bir qurilmaning ochiq varaqlarini ko\'rsatadi. Uning nomi va nishonchasi o\'sha qurilmadan olinadi, siz tanlagan ranglar esa shu telefonda qoladi.</string>
     <string name="dejavu_settings_safe_browsing">Google Xavfsiz koʻrish</string>
     <string name="dejavu_settings_safe_browsing_summary">Fishing va zararli dastur saytlari haqida ogohlantiradi. Buning uchun Dejavu Google bilan bogʻlanadi.</string>
+    <string name="dejavu_back">Orqaga</string>
+    <string name="dejavu_sync_start_title">Birlashtirish yoki yangidan boshlash?</string>
+    <string name="dejavu_sync_start_intro">Bu qurilmada allaqachon o\'zining ish maydonlari va varaqlari bor.</string>
+    <string name="dejavu_sync_start_merge">Birlashtirish</string>
+    <string name="dejavu_sync_start_merge_zen">Ularni saqlab qolish va Zen-dagi ish maydonlaringizni qo\'shish. Ular ham Zen bilan sinxronlashtiriladi.</string>
+    <string name="dejavu_sync_start_merge_firefox">Ularni Firefox o\'rnatilgan har bir kompyuter va telefon uchun ish maydoni yonida saqlab qolish.</string>
+    <string name="dejavu_sync_start_fresh">Yangidan boshlash</string>
+    <string name="dejavu_sync_start_fresh_zen">Bu varaqlarni yopish va bu ish maydonlari, mahkamlangan varaqlar, jildlar va muhimlarni olib tashlash, keyin ish maydonlaringizni Zen-dan olish.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Bu varaqlarni yopish va bu ish maydonlari, mahkamlangan varaqlar, jildlar va muhimlarni olib tashlash, keyin Firefox o\'rnatilgan kompyuter va telefonlaringiz varaqlarini ko\'rsatish.</string>
 </resources>

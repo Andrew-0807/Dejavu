@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Weromsette nei standert</string>
     <string name="dejavu_more_menu_hide_edit">Bewurkje-knop ferstopje</string>
     <string name="dejavu_more_menu_hide_edit_summary">De knop Bewurkje ûnderoan it Mear-menu</string>
-    <string name="dejavu_settings_sync">Syngronisearje mei Firefox of Zen</string>
-    <string name="dejavu_sync_hint">Hâldt jo wurkromten mei harren kleuren en byldkaikes, konteners, fêstsette ljepblêden, essinsjes en mappen gelyk oan dy yn Zen Browser op jo kompjûter en yn Dejavu op jo oare apparaten. It brûkt it Mozilla-akkount wêrmei\'t jo Firefox-gegevens syngronisearje.</string>
     <string name="dejavu_sync_zen_hint">Iepenje yn Zen de Ynstellingen, dan Syngronisaasje, en set de syngronisaasje fan de sidebalke oan. Ljepblêden dy\'t net fêstsetten binne, wurde net syngronisearre.</string>
     <string name="dejavu_sync_enabled">Wurkromten syngronisearje</string>
     <string name="dejavu_sync_syncing">Dwaande mei syngronisearjen…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Sleep wurkromten om de folchoarder te wizigjen</string>
     <string name="dejavu_feature_split_view">Druk lang op in keppeling om dy yn dûbele werjefte te iepenjen</string>
     <string name="dejavu_sync_choose_about">Syngronisearje jo wurkromten mei Firefox of Zen Browser op jo kompjûter, fia it Mozilla-akkount wêrmei\'t jo Firefox-gegevens syngronisearje.</string>
-    <string name="dejavu_sync_firefox_about">Toant de iepen ljepblêden fan Firefox op elk fan jo kompjûters en telefoans as in wurkromte en hâldt se bywurke. It brûkt it Mozilla-akkount wêrmei\'t jo Firefox-gegevens syngronisearje.</string>
     <string name="dejavu_sync_firefox_hint">Iepenje yn Firefox de Ynstellingen, dan Syngronisaasje, en lit de opsje Iepen ljepblêden oan stean. Ljepblêden dy\'t jo yn de wurkromte fan in apparaat iepenje of slute, wurde dêr ek iepene of sluten. Ljepblêden yn jo oare wurkromten bliuwe op dit apparaat, en Firefox toant se ûnder jo oare apparaten.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Toant ek de ljepblêden dy\'t net fêstset binne en ek net yn in ljepblêdgroep sitte, net allinnich fêstsette ljepblêden en ljepblêdgroepen.</string>
     <string name="dejavu_sync_source">Syngronisearje mei</string>
     <string name="dejavu_sync_source_none">Noch net keazen</string>
     <string name="dejavu_sync_choose_title">Kies wêrmei\'t jo syngronisearje wolle</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Dizze wurkromte toant de iepen ljepblêden fan in apparaat yn jo Mozilla-akkount. De namme en it byldkaike komme fan dat apparaat, en de kleuren dy\'t jo kieze bliuwe op dizze telefoan.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Warskôget foar phishing- en malwarewebsites. Dêrfoar nimt Dejavu kontakt op mei Google.</string>
+    <string name="dejavu_back">Tebek</string>
+    <string name="dejavu_sync_start_title">Gearfoegje of opnij begjinne?</string>
+    <string name="dejavu_sync_start_intro">Dit apparaat hat al eigen wurkromten en ljepblêden.</string>
+    <string name="dejavu_sync_start_merge">Gearfoegje</string>
+    <string name="dejavu_sync_start_merge_zen">Se hâlde en jo wurkromten út Zen tafoegje. Ek dizze wurde mei Zen syngronisearre.</string>
+    <string name="dejavu_sync_start_merge_firefox">Se hâlde, neist in wurkromte foar elke kompjûter en telefoan mei Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Opnij begjinne</string>
+    <string name="dejavu_sync_start_fresh_zen">Dizze ljepblêden slute en dizze wurkromten, fêstsette ljepblêden, mappen en essinsjes fuortsmite, en dan jo wurkromten út Zen ophelje.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Dizze ljepblêden slute en dizze wurkromten, fêstsette ljepblêden, mappen en essinsjes fuortsmite, en dan de ljepblêden fan jo kompjûters en telefoans mei Firefox toane.</string>
 </resources>

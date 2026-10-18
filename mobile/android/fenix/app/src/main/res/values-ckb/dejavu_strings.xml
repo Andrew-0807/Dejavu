@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">گەڕانەوە بۆ بنەڕەت</string>
     <string name="dejavu_more_menu_hide_edit">شاردنەوەی دوگمەی دەستکاریکردن</string>
     <string name="dejavu_more_menu_hide_edit_summary">دوگمەی دەستکاریکردن لە خوارەوەی پێڕستی زیاتر</string>
-    <string name="dejavu_settings_sync">هاوکاتکردن لەگەڵ Firefox یان Zen</string>
-    <string name="dejavu_sync_hint">فەزاکانت بە ڕەنگ و ئایکۆنەکانیانەوە، کۆنتەینەرەکان، بازدەرە چەسپاوەکان، ماڵپەڕە گرنگەکان و پۆشەکان وەک یەک ڕادەگرێت لەگەڵ Zen Browser لە کۆمپیوتەرەکەت و Dejavu لە ئامێرەکانی ترت. هەژماری Mozilla بەکاردێنێت کە داتای Firefox پێی هاوکات دەکەیت.</string>
     <string name="dejavu_sync_zen_hint">لە Zen دا، «ڕێکخستنەکان» بکەرەوە، پاشان «هاوکاتکردن»، و هاوکاتکردنی لاتەنیشت چالاک بکە. بازدەرەکانی کە چەسپاو نین هاوکات ناکرێن.</string>
     <string name="dejavu_sync_enabled">هاوکاتکردنی فەزاکان</string>
     <string name="dejavu_sync_syncing">هاوکاتکردن…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">فەزاکان ڕابکێشە بۆ ڕیزکردنەوەیان</string>
     <string name="dejavu_feature_split_view">بەستەرێک دابگرە بۆ کردنەوەی لە دیمەنی دووبەشکراودا</string>
     <string name="dejavu_sync_choose_about">فەزاکانت لەگەڵ Firefox یان Zen Browser لە کۆمپیوتەرەکەت هاوکات بکە، لە ڕێگەی ئەو هەژمارەی Mozilla کە داتای Firefox پێی هاوکات دەکەیت.</string>
-    <string name="dejavu_sync_firefox_about">بازدەرە کراوەکانی Firefox لە هەر یەکێک لە کۆمپیوتەر و مۆبایلەکانت وەک فەزایەک پیشان دەدات و بە نوێیی ڕایاندەگرێت. هەژماری Mozilla بەکاردێنێت کە داتای Firefox پێی هاوکات دەکەیت.</string>
     <string name="dejavu_sync_firefox_hint">لە Firefox دا، «ڕێکخستنەکان» بکەرەوە، پاشان «هاوکاتکردن»، و «بازدەرەکان بکەرەوە» بە چالاکی بهێڵەوە. ئەو بازدەرانەی لە فەزای ئامێرێکدا دەیانکەیتەوە یان دایاندەخەیت، لەو ئامێرەشدا دەکرێنەوە یان دادەخرێن. بازدەرەکانی فەزاکانی ترت لەم ئامێرەدا دەمێننەوە، و Firefox لە ژێر ئامێرەکانی ترتدا پیشانیان دەدات.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">هەروەها ئەو بازدەرانەش پیشان دەدات کە نە چەسپاون و نە لە گرووپی بازدەردان، نەک تەنها بازدەرە چەسپاوەکان و گرووپەکانی بازدەر.</string>
     <string name="dejavu_sync_source">هاوکاتکردن لەگەڵ</string>
     <string name="dejavu_sync_source_none">هێشتا هەڵنەبژێردراوە</string>
     <string name="dejavu_sync_choose_title">هەڵبژێرە لەگەڵ چی هاوکات بکەیت</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">ئەم فەزایە بازدەرە کراوەکانی ئامێرێک لە هەژماری Mozilla ی تۆ پیشان دەدات. ناو و ئایکۆنەکەی لەو ئامێرەوە دێن، و ئەو ڕەنگانەی هەڵیاندەبژێریت لەسەر ئەم مۆبایلە دەمێننەوە.</string>
     <string name="dejavu_settings_safe_browsing">گەڕانی پارێزراوی Google</string>
     <string name="dejavu_settings_safe_browsing_summary">ئاگادارت دەکاتەوە لە ماڵپەڕەکانی فیشینگ و نەرمەکاڵای زیانبەخش. بۆ ئەمە، Dejavu پەیوەندی بە Google ـەوە دەکات.</string>
+    <string name="dejavu_back">گەڕانەوە</string>
+    <string name="dejavu_sync_start_title">یەکخستن یان دەستپێکردنی نوێ؟</string>
+    <string name="dejavu_sync_start_intro">ئەم ئامێرە پێشتر فەزا و بازدەری تایبەت بە خۆی هەیە.</string>
+    <string name="dejavu_sync_start_merge">یەکخستن</string>
+    <string name="dejavu_sync_start_merge_zen">بیانهێڵەوە و فەزاکانت لە Zen ەوە زیاد بکە. ئەوانیش لەگەڵ Zen هاوکات دەکرێن.</string>
+    <string name="dejavu_sync_start_merge_firefox">بیانهێڵەوە، لە تەنیشت فەزایەک بۆ هەر کۆمپیوتەر و مۆبایلێکی Firefox.</string>
+    <string name="dejavu_sync_start_fresh">دەستپێکردنی نوێ</string>
+    <string name="dejavu_sync_start_fresh_zen">ئەم بازدەرانە دابخە و ئەم فەزایانە، بازدەرە چەسپاوەکان، پۆشەکان و ماڵپەڕە گرنگەکان لاببە، پاشان فەزاکانت لە Zen ەوە وەربگرە.</string>
+    <string name="dejavu_sync_start_fresh_firefox">ئەم بازدەرانە دابخە و ئەم فەزایانە، بازدەرە چەسپاوەکان، پۆشەکان و ماڵپەڕە گرنگەکان لاببە، پاشان بازدەرەکانی ئەو کۆمپیوتەر و مۆبایلانەت پیشان بدە کە Firefox یان تێدایە.</string>
 </resources>

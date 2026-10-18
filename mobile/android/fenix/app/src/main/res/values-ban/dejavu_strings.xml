@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">Reset ka utama</string>
     <string name="dejavu_more_menu_hide_edit">Engkebang tombol edit</string>
     <string name="dejavu_more_menu_hide_edit_summary">Tombol Edit ring beten Menu tambahan</string>
-    <string name="dejavu_settings_sync">Sync ajak Firefox wiadin Zen</string>
-    <string name="dejavu_sync_hint">Nyaga genah ragane apang patuh, ajak warna lan ikonne, wadah, tab kasemat, Penting, lan map, patuh cara di Zen Browser di komputer ragane lan di Dejavu di piranti ragane ane lenan. Ené nganggo akun Mozilla ane anggo ragane nyinkronang data Firefox.</string>
     <string name="dejavu_sync_zen_hint">Di Zen, bukak Settings, lantas Sync, lan idupang sidebar sync. Tab ane tusing kasemat tusing kasinkron.</string>
     <string name="dejavu_sync_enabled">Sinkronang genah</string>
     <string name="dejavu_sync_syncing">Nyinkronang...</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">Seret genah anggen ngewah urutan</string>
     <string name="dejavu_feature_split_view">Tekan tur tegakang link anggen ngungkab ring split view</string>
     <string name="dejavu_sync_choose_about">Sinkronang genah ragane ajak Firefox wiadin Zen Browser di komputer ragane, nganggo akun Mozilla ane anggo ragane nyinkronang data Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Nampilang tab ane mukak di Firefox di tiap komputer lan ponsel ragane dadi genah, lan nyaga apang setata anyar. Ené nganggo akun Mozilla ane anggo ragane nyinkronang data Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Di Firefox, bukak Settings, lantas Sync, lan biarang Open tabs tetep idup. Tab ane bukak wiadin tutup ragane di genah piranti masih mukak wiadin matutup ditu. Tab di genah ragane ane lenan tetep di piranti ené, lan Firefox nampilang tab-tab ento di beten piranti ragane ane lenan.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Masih nampilang tab ane tusing kasemat lan tusing ada di grup tab, boya ja wantah tab kasemat lan grup tab.</string>
     <string name="dejavu_sync_source">Sinkronang ajak</string>
     <string name="dejavu_sync_source_none">Nu tusing kapilih</string>
     <string name="dejavu_sync_choose_title">Pilih lakar nyinkronang ajak apa</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">Genah ené nampilang tab mukak uli piranti di akun Mozilla ragane. Adan lan ikonne uli piranti ento, lan warna ane pilih ragane tetep di ponsel ené.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Ngicénin pangéling indik situs phishing miwah malware. Mangda prasida, Dejavu nyambung ka Google.</string>
+    <string name="dejavu_back">Mundur</string>
+    <string name="dejavu_sync_start_title">Gabungang wiadin mulai uli awal?</string>
+    <string name="dejavu_sync_start_intro">Piranti ené suba ngelah genah lan tab padidi.</string>
+    <string name="dejavu_sync_start_merge">Gabungang</string>
+    <string name="dejavu_sync_start_merge_zen">Simpen ento lan tambahang genah ragane uli Zen. Ento masih kasinkron ajak Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Simpen ento, di samping genah anggen tiap komputer lan ponsel Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Mulai uli awal</string>
+    <string name="dejavu_sync_start_fresh_zen">Tutup tab-tab ené lan ilangang genah, tab kasemat, map, lan Penting ené, lantas jemak genah ragane uli Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Tutup tab-tab ené lan ilangang genah, tab kasemat, map, lan Penting ené, lantas tampilang tab uli komputer lan ponsel Firefox ragane.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Ripristinà i valori predefiniti</string>
     <string name="dejavu_more_menu_hide_edit">Piattà u buttone di mudificazione</string>
     <string name="dejavu_more_menu_hide_edit_summary">U buttone Mudificà in fondu di u menu Più</string>
-    <string name="dejavu_settings_sync">Sincrunizà cù Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Mantene i vostri spazii di travagliu cù i so culori è icone, cuntenitori, unghjette fissate, essenziali è cartulari listessi chè in Zen Browser nant\'à u vostru urdinatore è in Dejavu nant\'à i vostri altri apparecchi. Adopra u contu Mozilla cù u quale sincrunizate i dati di Firefox.</string>
     <string name="dejavu_sync_zen_hint">In Zen, apre Parametri, dopu Sincrunizazione, è attivate a sincrunizazione di a barra laterale. L\'unghjette micca fissate ùn sò micca sincrunizate.</string>
     <string name="dejavu_sync_enabled">Sincrunizà i spazii di travagliu</string>
     <string name="dejavu_sync_syncing">Sincrunizazione…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Trascinate i spazii di travagliu per riurdinà li</string>
     <string name="dejavu_feature_split_view">Tenite appughjatu un liame per apre lu in vista spartuta</string>
     <string name="dejavu_sync_choose_about">Sincrunizate i vostri spazii di travagliu cù Firefox o Zen Browser nant\'à u vostru urdinatore, per mezu di u contu Mozilla cù u quale sincrunizate i dati di Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Affissa l\'unghjette aperte di Firefox nant\'à ognunu di i vostri urdinatori è telefoni cum\'è un spaziu di travagliu, è e mantene à ghjornu. Adopra u contu Mozilla cù u quale sincrunizate i dati di Firefox.</string>
     <string name="dejavu_sync_firefox_hint">In Firefox, aprite Parametri, dopu Sincrunizazione, è lasciate attivata l\'opzione «Apre l\'unghjette». L\'unghjette ch\'è vo aprite o chjudite in u spaziu di travagliu d\'un apparechju si apronu o si chjudenu ancu culà. L\'unghjette di i vostri altri spazii di travagliu fermanu nant\'à st\'apparecchiu, è Firefox l\'affissa sottu à i vostri altri apparecchi.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Affissa ancu l\'unghjette chì ùn sò nè fissate nè in un gruppu d\'unghjette, micca solu l\'unghjette fissate è i gruppi d\'unghjette.</string>
     <string name="dejavu_sync_source">Sincrunizà cù</string>
     <string name="dejavu_sync_source_none">Ùn hè ancu statu sceltu</string>
     <string name="dejavu_sync_choose_title">Sceglite cù chì sincrunizà</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Stu spaziu di travagliu affissa l\'unghjette aperte d\'un apparechju di u vostru contu Mozilla. U so nome è a so icona venenu da quellu apparechju, è i culori ch\'è vo sceglite fermanu nant\'à stu telefonu.</string>
     <string name="dejavu_settings_safe_browsing">Navigazione sicura di Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avvisa nant\'à i siti di phishing è di malware. Per fà què, Dejavu si cunnetta à Google.</string>
+    <string name="dejavu_back">Ritornu</string>
+    <string name="dejavu_sync_start_title">Unisce o ricumincià da zeru?</string>
+    <string name="dejavu_sync_start_intro">St\'apparecchiu hà dighjà i so propii spazii di travagliu è unghjette.</string>
+    <string name="dejavu_sync_start_merge">Unisce</string>
+    <string name="dejavu_sync_start_merge_zen">Cunservateli è aghjunghjite i vostri spazii di travagliu di Zen. Sò dinù sincrunizati cù Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Cunservateli, accantu à un spaziu di travagliu per ogni urdinatore è telefonu cù Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Ricumincià da zeru</string>
+    <string name="dejavu_sync_start_fresh_zen">Chjudite st\'unghjette è cacciate sti spazii di travagliu, unghjette fissate, cartulari è essenziali, dopu pigliate i vostri spazii di travagliu di Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Chjudite st\'unghjette è cacciate sti spazii di travagliu, unghjette fissate, cartulari è essenziali, dopu affissate l\'unghjette di i vostri urdinatori è telefoni cù Firefox.</string>
 </resources>

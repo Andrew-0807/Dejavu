@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Mbojevy ijypyguápe</string>
     <string name="dejavu_more_menu_hide_edit">Emokañy votã mbosako\'ihápe</string>
     <string name="dejavu_more_menu_hide_edit_summary">Pe votã Mbosako\'i Menu Ambueve guýpe</string>
-    <string name="dejavu_settings_sync">Sincronizar Firefox térã Zen ndive</string>
-    <string name="dejavu_sync_hint">Ombojoja nde tembiapo renda isa\'y ha ita\'ãnga reheve, ryru, tendayke mboguapypyre, iporãvéva ha karpeta, Zen Browser nde mba\'e\'okápe ha Dejavu ambue mba\'e\'okakuérape g̃uarã. Oiporu pe kuenta Mozilla-gua reiporúva resincronizar hağua nde mba\'ekuaarã Firefox-pegua.</string>
     <string name="dejavu_sync_zen_hint">Zen-pe, embojuruja Ñemboheko, upéi Sincronizar, ha emyendy pe sidebar sincronización. Umi tendayke mboguapypyre\'ỹva nosincronizahái.</string>
     <string name="dejavu_sync_enabled">Sincronizar tembiapo renda</string>
     <string name="dejavu_sync_syncing">Osincronizahína…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Egueraha tembiapo renda emohenda jey hag̃ua</string>
     <string name="dejavu_feature_split_view">Eñepysãnga peteĩ enlace embojuruja hag̃ua mokõi ojuehe pype</string>
     <string name="dejavu_sync_choose_about">Esincroniza ne tembiapo renda Firefox térã Zen Browser ndive ne mohendahápe, pe kuenta Mozilla-gua reiporúva resincronizar hag̃ua nde mba\'ekuaarã Firefox-pegua rupive.</string>
-    <string name="dejavu_sync_firefox_about">Ohechauka tendayke ijurujáva Firefox-pegua peteĩteĩ ne mohendaha ha ne pumbyrýpe peteĩ tembiapo rendarõ, ha ombopyahu tapiaite. Oiporu pe kuenta Mozilla-gua reiporúva resincronizar hag̃ua nde mba\'ekuaarã Firefox-pegua.</string>
     <string name="dejavu_sync_firefox_hint">Firefox-pe, embojuruja Ñemboheko, upéi Sincronizar, ha eheja myendypyre Tendayke ijurujáva. Umi tendayke rembojurujáva térã rembotýva peteĩ mba\'e\'oka tembiapo rendápe ojejuru térã oñemboty avei upe mba\'e\'okápe. Umi tendayke oĩva ambue ne tembiapo rendápe opyta ko mba\'e\'okápe, ha Firefox ohechauka chupekuéra ambue ne mba\'e\'okakuéra apytépe.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Ohechauka avei umi tendayke mboguapy\'ỹva ha ndoĩríva tendayke atýpe, ndaha\'éi tendayke mboguapypyre ha tendayke aty año.</string>
     <string name="dejavu_sync_source">Sincronizar ndive</string>
     <string name="dejavu_sync_source_none">Ndojeporavói gueteri</string>
     <string name="dejavu_sync_choose_title">Eiporavo mba\'e ndivépa resincronizáta</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Ko tembiapo renda ohechauka tendayke ijurujáva peteĩ mba\'e\'oka ne kuenta Mozilla-pegua. Héra ha ita\'ãnga ou upe mba\'e\'okágui, ha umi sa\'y reiporavóva opyta ko pumbyrýpe.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Ombohesakã umi tenda phishing ha malware rehegua. Upéva ojapo hag̃ua, Dejavu oñembojoaju Google ndive.</string>
+    <string name="dejavu_back">Tapykue</string>
+    <string name="dejavu_sync_start_title">¿Embojoaju térã eñepyrũ ipyahúpe?</string>
+    <string name="dejavu_sync_start_intro">Ko mba\'e\'oka oguerekóma itembiapo renda ha itendayke ijeheguíva.</string>
+    <string name="dejavu_sync_start_merge">Embojoaju</string>
+    <string name="dejavu_sync_start_merge_zen">Eñongatu chupekuéra ha embojuaju ne tembiapo renda Zen-pegua. Oñesincroniza avei Zen ndive.</string>
+    <string name="dejavu_sync_start_merge_firefox">Eñongatu chupekuéra peteĩteĩ mohendaha ha pumbyry Firefox reheve tembiapo renda ykére.</string>
+    <string name="dejavu_sync_start_fresh">Eñepyrũ ipyahúpe</string>
+    <string name="dejavu_sync_start_fresh_zen">Emboty ko\'ã tendayke ha emboguete ko\'ã tembiapo renda, tendayke mboguapypyre, karpeta ha iporãvéva, upéi egueru ne tembiapo renda Zen-gui.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Emboty ko\'ã tendayke ha emboguete ko\'ã tembiapo renda, tendayke mboguapypyre, karpeta ha iporãvéva, upéi ehechauka umi tendayke oĩva ne mohendaha ha ne pumbyrýpe Firefox reheve.</string>
 </resources>

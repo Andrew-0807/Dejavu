@@ -266,8 +266,6 @@
     <string name="dejavu_more_menu_hide_edit_summary">વધુ વિકલ્પ મેનૂની નીચે આવેલું ફેરફાર કરો બટન</string>
 
     <!-- Settings: syncing workspaces with Firefox or Zen -->
-    <string name="dejavu_settings_sync">Firefox અથવા Zen સાથે સમન્વયિત કરો</string>
-    <string name="dejavu_sync_hint">તમારા વર્કસ્પેસ (તેમના રંગો અને આઇકન સાથે), કન્ટેનર, પિન કરેલી ટૅબ્સ, એસેન્શિયલ્સ અને ફોલ્ડર્સને તમારા કમ્પ્યુટર પરના Zen બ્રાઉઝર અને તમારાં અન્ય ઉપકરણો પરના Dejavu જેવાં જ રાખે છે. તે એ જ Mozilla એકાઉન્ટનો ઉપયોગ કરે છે જેનાથી તમે Firefox ડેટા સમન્વયિત કરો છો.</string>
     <string name="dejavu_sync_zen_hint">Zen માં સેટિંગ્સ, પછી સમન્વયન ખોલો અને સાઇડબાર સમન્વયન ચાલુ કરો. પિન ન કરેલી ટૅબ્સ સમન્વયિત થતી નથી.</string>
     <string name="dejavu_sync_enabled">વર્કસ્પેસ સમન્વયિત કરો</string>
     <string name="dejavu_sync_syncing">સમન્વયિત થઈ રહ્યું છે…</string>
@@ -318,9 +316,7 @@
     <string name="dejavu_feature_workspace_order">વર્કસ્પેસનો ક્રમ બદલવા માટે તેમને ખેંચો</string>
     <string name="dejavu_feature_split_view">લિંકને સ્પ્લિટ વ્યૂમાં ખોલવા માટે તેને દબાવી રાખો</string>
     <string name="dejavu_sync_choose_about">તમે જે Mozilla એકાઉન્ટથી Firefox ડેટા સમન્વયિત કરો છો તેના દ્વારા, તમારા વર્કસ્પેસને તમારા કમ્પ્યુટર પરના Firefox અથવા Zen બ્રાઉઝર સાથે સમન્વયિત કરો.</string>
-    <string name="dejavu_sync_firefox_about">તે તમારા દરેક કમ્પ્યુટર અને ફોન પરના Firefox ની ખુલ્લી ટૅબ્સને એક વર્કસ્પેસ તરીકે બતાવે છે અને તેમને અદ્યતન રાખે છે. તે એ જ Mozilla એકાઉન્ટનો ઉપયોગ કરે છે જેનાથી તમે Firefox ડેટા સમન્વયિત કરો છો.</string>
     <string name="dejavu_sync_firefox_hint">Firefox માં સેટિંગ્સ, પછી સમન્વયન ખોલો અને “ખુલ્લી ટૅબ્સ” ચાલુ રાખો. તમે કોઈ ઉપકરણના વર્કસ્પેસમાં ખોલો કે બંધ કરો છો તે ટૅબ્સ ત્યાં પણ ખૂલે કે બંધ થાય છે. તમારા અન્ય વર્કસ્પેસની ટૅબ્સ આ ઉપકરણ પર જ રહે છે, અને Firefox તેમને તમારાં અન્ય ઉપકરણોની યાદીમાં બતાવે છે.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">જે ટૅબ્સ પિન કરેલી નથી અને કોઈ ટૅબ જૂથમાં પણ નથી, તેમને પણ બતાવે છે, ફક્ત પિન કરેલી ટૅબ્સ અને ટૅબ જૂથોને જ નહીં.</string>
     <string name="dejavu_sync_source">કોની સાથે સમન્વયિત કરવું</string>
     <string name="dejavu_sync_source_none">હજી પસંદ કર્યું નથી</string>
     <string name="dejavu_sync_choose_title">શેની સાથે સમન્વયિત કરવું તે પસંદ કરો</string>
@@ -363,4 +359,13 @@
     <string name="dejavu_workspace_device_note">આ વર્કસ્પેસ તમારા Mozilla એકાઉન્ટ પરના એક ઉપકરણની ખુલ્લી ટૅબ્સ બતાવે છે. તેનું નામ અને આઇકન તે ઉપકરણમાંથી આવે છે, અને તમે પસંદ કરો છો તે રંગો આ ફોન પર જ રહે છે.</string>
     <string name="dejavu_settings_safe_browsing">Google સુરક્ષિત બ્રાઉઝિંગ</string>
     <string name="dejavu_settings_safe_browsing_summary">ફિશિંગ અને માલવેર સાઇટ્સ વિશે ચેતવણી આપે છે. આ માટે Dejavu, Googleનો સંપર્ક કરે છે.</string>
+    <string name="dejavu_back">પાછળ</string>
+    <string name="dejavu_sync_start_title">મર્જ કરીએ કે નવેસરથી શરૂ કરીએ?</string>
+    <string name="dejavu_sync_start_intro">આ ઉપકરણ પર પહેલેથી જ તેના પોતાના વર્કસ્પેસ અને ટૅબ્સ છે.</string>
+    <string name="dejavu_sync_start_merge">મર્જ કરો</string>
+    <string name="dejavu_sync_start_merge_zen">તેમને રાખો અને Zen માંથી તમારા વર્કસ્પેસ ઉમેરો. તે પણ Zen સાથે સમન્વયિત થાય છે.</string>
+    <string name="dejavu_sync_start_merge_firefox">Firefox ધરાવતા દરેક કમ્પ્યુટર અને ફોન માટેના વર્કસ્પેસની સાથે તેમને રાખો.</string>
+    <string name="dejavu_sync_start_fresh">નવેસરથી શરૂ કરો</string>
+    <string name="dejavu_sync_start_fresh_zen">આ ટૅબ્સ બંધ કરો અને આ વર્કસ્પેસ, પિન કરેલી ટૅબ્સ, ફોલ્ડર્સ અને એસેન્શિયલ્સ દૂર કરો, પછી Zen માંથી તમારા વર્કસ્પેસ મેળવો.</string>
+    <string name="dejavu_sync_start_fresh_firefox">આ ટૅબ્સ બંધ કરો અને આ વર્કસ્પેસ, પિન કરેલી ટૅબ્સ, ફોલ્ડર્સ અને એસેન્શિયલ્સ દૂર કરો, પછી Firefox ધરાવતાં તમારાં કમ્પ્યુટર અને ફોનની ટૅબ્સ બતાવો.</string>
 </resources>

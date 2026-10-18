@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Alapértelmezés visszaállítása</string>
     <string name="dejavu_more_menu_hide_edit">Szerkesztés gomb elrejtése</string>
     <string name="dejavu_more_menu_hide_edit_summary">A Szerkesztés gomb a Továbbiak menü alján</string>
-    <string name="dejavu_settings_sync">Szinkronizálás a Firefoxszal vagy a Zennel</string>
-    <string name="dejavu_sync_hint">Megőrzi a munkaterületeit a színeikkel és ikonjaikkal, a konténereket, a kitűzött lapokat, a kedvenceket és a mappákat ugyanolyannak, mint a Zen Browserben a számítógépén, és a Dejavuban a többi eszközén. Ugyanazt a Mozilla-fiókot használja, amellyel a Firefox-adatait szinkronizálja.</string>
     <string name="dejavu_sync_zen_hint">A Zenben nyissa meg a Beállításokat, majd a Szinkronizálást, és kapcsolja be az oldalsó sáv szinkronizálását. A nem kitűzött lapok nem szinkronizálódnak.</string>
     <string name="dejavu_sync_enabled">Munkaterületek szinkronizálása</string>
     <string name="dejavu_sync_syncing">Szinkronizálás…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Rendezze át a munkaterületeket húzással</string>
     <string name="dejavu_feature_split_view">Nyomjon hosszan egy hivatkozást, hogy osztott nézetben nyissa meg</string>
     <string name="dejavu_sync_choose_about">Szinkronizálja munkaterületeit a számítógépén lévő Firefoxszal vagy Zen Browserrel, azzal a Mozilla-fiókkal, amellyel a Firefox-adatait szinkronizálja.</string>
-    <string name="dejavu_sync_firefox_about">Az egyes számítógépein és telefonjain futó Firefox nyitott lapjait egy-egy munkaterületként jeleníti meg, és naprakészen tartja őket. Ugyanazt a Mozilla-fiókot használja, amellyel a Firefox-adatait szinkronizálja.</string>
     <string name="dejavu_sync_firefox_hint">A Firefoxban nyissa meg a Beállításokat, majd a Szinkronizálást, és hagyja bekapcsolva a Nyitott lapokat. Egy eszköz munkaterületén megnyitott vagy bezárt lapok azon az eszközön is megnyílnak vagy bezáródnak. A többi munkaterületén lévő lapok ezen az eszközön maradnak, és a Firefox a többi eszköze alatt sorolja fel őket.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Emellett azokat a lapokat is megjeleníti, amelyek nincsenek kitűzve és lapcsoportban sincsenek, nem csak a kitűzött lapokat és a lapcsoportokat.</string>
     <string name="dejavu_sync_source">Szinkronizálás ezzel:</string>
     <string name="dejavu_sync_source_none">Még nincs kiválasztva</string>
     <string name="dejavu_sync_choose_title">Válassza ki, mivel szinkronizáljon</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Ez a munkaterület egy, a Mozilla-fiókjához tartozó eszköz nyitott lapjait jeleníti meg. Neve és ikonja arról az eszközről származik, a választott színek pedig ezen a telefonon maradnak.</string>
     <string name="dejavu_settings_safe_browsing">Google Biztonságos Böngészés</string>
     <string name="dejavu_settings_safe_browsing_summary">Figyelmeztet az adathalász és kártevőket terjesztő webhelyekre. Ehhez a Dejavu kapcsolatba lép a Google-lel.</string>
+    <string name="dejavu_back">Vissza</string>
+    <string name="dejavu_sync_start_title">Egyesítés vagy újrakezdés?</string>
+    <string name="dejavu_sync_start_intro">Ezen az eszközön már vannak saját munkaterületek és lapok.</string>
+    <string name="dejavu_sync_start_merge">Egyesítés</string>
+    <string name="dejavu_sync_start_merge_zen">Megtartja ezeket, és hozzáadja a Zenben lévő munkaterületeit. Ezek is szinkronizálódnak a Zennel.</string>
+    <string name="dejavu_sync_start_merge_firefox">Megtartja ezeket a Firefoxot futtató számítógépek és telefonok saját munkaterületei mellett.</string>
+    <string name="dejavu_sync_start_fresh">Újrakezdés</string>
+    <string name="dejavu_sync_start_fresh_zen">Bezárja ezeket a lapokat, eltávolítja ezeket a munkaterületeket, kitűzött lapokat, mappákat és kedvenceket, majd betölti a munkaterületeit a Zenből.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Bezárja ezeket a lapokat, eltávolítja ezeket a munkaterületeket, kitűzött lapokat, mappákat és kedvenceket, majd megjeleníti a Firefoxot futtató számítógépei és telefonjai lapjait.</string>
 </resources>

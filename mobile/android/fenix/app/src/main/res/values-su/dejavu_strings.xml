@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">Reset kana baku</string>
     <string name="dejavu_more_menu_hide_edit">Sumputkeun tombol édit</string>
     <string name="dejavu_more_menu_hide_edit_summary">Tombol Édit di handapeun Menu tambahan</string>
-    <string name="dejavu_settings_sync">Singkronkeun jeung Firefox atawa Zen</string>
-    <string name="dejavu_sync_hint">Ngajaga rohangan anjeun sina sarua, kaasup warna jeung ikonna, wadah, tab nu disemat, Penting, jeung map, sakumaha dina Zen Browser di komputer anjeun jeung dina Dejavu di parabot anjeun nu séjén. Ieu maké akun Mozilla nu dipaké pikeun nyingkronkeun data Firefox.</string>
     <string name="dejavu_sync_zen_hint">Dina Zen, buka Settings, tuluy Sync, jeung hurungkeun sidebar sync. Tab nu teu disemat moal disingkronkeun.</string>
     <string name="dejavu_sync_enabled">Singkronkeun rohangan</string>
     <string name="dejavu_sync_syncing">Nyingkronkeun...</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">Sérétkeun rohangan pikeun ngarobah urutanana</string>
     <string name="dejavu_feature_split_view">Long-press tutumbu pikeun mukana dina split view</string>
     <string name="dejavu_sync_choose_about">Singkronkeun rohangan anjeun jeung Firefox atawa Zen Browser di komputer anjeun, ngaliwatan akun Mozilla nu dipaké pikeun nyingkronkeun data Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Némbongkeun tab nu kabuka dina Firefox di unggal komputer jeung telepon anjeun jadi hiji rohangan, sarta terus ngamutakhirkeunana. Ieu maké akun Mozilla nu dipaké pikeun nyingkronkeun data Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Dina Firefox, buka Setélan, tuluy Sync, jeung antepkeun \"Buka tab\" tetep hurung. Tab nu dibuka atawa ditutup dina rohangan hiji parabot ogé muka atawa nutup di dinya. Tab dina rohangan anjeun nu séjén tetep aya dina parabot ieu, sarta Firefox némbongkeunana di handapeun parabot anjeun nu séjén.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Ogé némbongkeun tab nu teu disemat jeung teu aya dina kelompok tab, henteu ngan ukur tab nu disemat jeung kelompok tab.</string>
     <string name="dejavu_sync_source">Singkronkeun jeung</string>
     <string name="dejavu_sync_source_none">Acan dipilih</string>
     <string name="dejavu_sync_choose_title">Pilih rék disingkronkeun jeung naon</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">Rohangan ieu némbongkeun tab nu kabuka tina hiji parabot dina akun Mozilla anjeun. Ngaran jeung ikonna asalna ti parabot éta, sarta warna nu dipilih tetep aya dina telepon ieu.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Méré peringetan ngeunaan situs phishing jeung malware. Pikeun éta, Dejavu nyambung ka Google.</string>
+    <string name="dejavu_back">Mundur</string>
+    <string name="dejavu_sync_start_title">Gabungkeun atawa mimitian ti awal?</string>
+    <string name="dejavu_sync_start_intro">Parabot ieu geus boga rohangan jeung tab sorangan.</string>
+    <string name="dejavu_sync_start_merge">Gabungkeun</string>
+    <string name="dejavu_sync_start_merge_zen">Simpen éta jeung tambahkeun rohangan anjeun ti Zen. Éta ogé bakal disingkronkeun ka Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Simpen éta, gigireun rohangan pikeun unggal komputer jeung telepon nu maké Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Mimitian ti awal</string>
+    <string name="dejavu_sync_start_fresh_zen">Tutup tab ieu jeung piceun rohangan, tab nu disemat, map, jeung Penting ieu, tuluy candak rohangan anjeun ti Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Tutup tab ieu jeung piceun rohangan, tab nu disemat, map, jeung Penting ieu, tuluy témbongkeun tab tina komputer jeung telepon anjeun nu maké Firefox.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">i-Reset sa default</string>
     <string name="dejavu_more_menu_hide_edit">Tagua ang edit button</string>
     <string name="dejavu_more_menu_hide_edit_summary">Ang Edit nga button sa idalom sang Dugang nga menu</string>
-    <string name="dejavu_settings_sync">i-Sync upod ang Firefox ukon Zen</string>
-    <string name="dejavu_sync_hint">Ginabantayan nga pareho ang imo mga workspace upod ang ila mga kolor kag icon, container, naka-pin nga tab, Importante, kag folder, pareho sang ara sa Zen Browser sa imo kompyuter kag sa Dejavu sa imo iban nga device. Ginagamit sini ang Mozilla account nga imo ginagamit sa pag-sync sang data sang Firefox.</string>
     <string name="dejavu_sync_zen_hint">Sa Zen, abrihan ang Settings, dayon Sync, kag i-on ang sidebar sync. Ang mga tab nga indi naka-pin indi ma-sync.</string>
     <string name="dejavu_sync_enabled">i-Sync ang mga workspace</string>
     <string name="dejavu_sync_syncing">Nagasync...</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">i-Drag ang mga workspace para baylohan ang ila han-ay</string>
     <string name="dejavu_feature_split_view">i-Long-press ang link para i-open ini sa split view</string>
     <string name="dejavu_sync_choose_about">i-Sync ang imo mga workspace upod ang Firefox ukon Zen Browser sa imo kompyuter, paagi sa Mozilla account nga imo ginagamit sa pag-sync sang data sang Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Ginapakita sini ang bukas nga mga tab sang Firefox sa kada isa sang imo mga kompyuter kag telepono bilang isa ka workspace, kag ginabantayan nga updated ini. Ginagamit sini ang Mozilla account nga imo ginagamit sa pag-sync sang data sang Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Sa Firefox, abrihan ang Settings, dayon Sync, kag bayai nga naka-on ang Open tabs. Ang mga tab nga imo ginaabli ukon ginasira sa workspace sang isa ka device nagaabli ukon nagasira man didto. Ang mga tab sa imo iban nga mga workspace nagapabilin sa sini nga device, kag ginalista ini sang Firefox sa idalom sang imo iban nga mga device.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Ginapakita man sini ang mga tab nga indi naka-pin kag wala sa grupo sang tab, indi lang ang naka-pin nga tab kag mga grupo sang tab.</string>
     <string name="dejavu_sync_source">i-Sync upod ang</string>
     <string name="dejavu_sync_source_none">Wala pa mapili</string>
     <string name="dejavu_sync_choose_title">Pilia kon diin mag-sync</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Ginapakita sini nga workspace ang bukas nga mga tab sang isa ka device sa imo Mozilla account. Ang iya ngalan kag icon halin sa amo nga device, kag ang mga kolor nga imo ginapili nagapabilin sa sini nga telepono.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Nagapaandam parte sa mga phishing kag malware nga site. Agod mahimo ini, nagakonektar ang Dejavu sa Google.</string>
+    <string name="dejavu_back">Balikan</string>
+    <string name="dejavu_sync_start_title">Isagol ukon magsugod liwat?</string>
+    <string name="dejavu_sync_start_intro">Ini nga device may kaugalingon na nga mga workspace kag tab.</string>
+    <string name="dejavu_sync_start_merge">Isagol</string>
+    <string name="dejavu_sync_start_merge_zen">Tipigan ini kag idugang ang imo mga workspace halin sa Zen. Ma-sync man ini sa Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Tipigan ini, tupad sa isa ka workspace para sa kada kompyuter kag telepono nga may Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Magsugod liwat</string>
+    <string name="dejavu_sync_start_fresh_zen">Isira ini nga mga tab kag tangtanga ini nga mga workspace, naka-pin nga tab, folder kag Importante, dayon kuhaa ang imo mga workspace halin sa Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Isira ini nga mga tab kag tangtanga ini nga mga workspace, naka-pin nga tab, folder kag Importante, dayon ipakita ang mga tab sang imo mga kompyuter kag telepono nga may Firefox.</string>
 </resources>

@@ -9,7 +9,6 @@ import org.mozilla.fenix.dejavu.workspaces.PinKind
 import org.mozilla.fenix.dejavu.workspaces.PinnedItem
 import org.mozilla.fenix.dejavu.workspaces.Workspace
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
-import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
 
 /**
  * The outcome of applying incoming records.
@@ -187,9 +186,7 @@ internal class SpacesApplier(
         private fun dropPristineWorkspace(created: List<String>, layout: SpacesRecord?) {
             if (!firstSync || created.isEmpty() || original.workspaces.size != 1) return
             val initial = original.workspaces.single()
-            val pristine = initial.name == defaultName && initial.icon == null &&
-                (initial.theme == null || initial.theme == WorkspaceTheme.Gold) &&
-                initial.containerId == null && pins.none { it.workspaceId == initial.id }
+            val pristine = initial.isLikeNew(defaultName) && pins.none { it.workspaceId == initial.id }
             if (!pristine || initial.id in created) return
             val target = layout?.data?.strings("spaces")?.firstOrNull { it in created } ?: created.first()
             workspaces.removeAll { it.id == initial.id }

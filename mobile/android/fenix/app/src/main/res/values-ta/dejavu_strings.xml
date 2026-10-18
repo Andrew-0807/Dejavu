@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">முன்னிருப்புக்கு மீட்டமை</string>
     <string name="dejavu_more_menu_hide_edit">திருத்தும் பொத்தானை மறை</string>
     <string name="dejavu_more_menu_hide_edit_summary">மேலும் பட்டியின் கீழே உள்ள திருத்து பொத்தான்</string>
-    <string name="dejavu_settings_sync">Firefox அல்லது Zen உடன் ஒத்திசை</string>
-    <string name="dejavu_sync_hint">உங்கள் பணியிடங்களை அவற்றின் நிறங்கள் மற்றும் சின்னங்களுடன், கொள்கலன்கள், பொருத்தப்பட்ட கீற்றுகள், முக்கியவை மற்றும் கோப்புறைகளை உங்கள் கணினியில் உள்ள Zen உலாவியிலும் உங்கள் மற்ற சாதனங்களில் உள்ள Dejavu-விலும் இருப்பதைப் போலவே வைத்திருக்கும். இது நீங்கள் Firefox தரவை ஒத்திசைக்கப் பயன்படுத்தும் Mozilla கணக்கைப் பயன்படுத்தும்.</string>
     <string name="dejavu_sync_zen_hint">Zen-இல், அமைவுகளைத் திறந்து, பிறகு ஒத்திசைவைத் திறந்து, பக்கப்பட்டி ஒத்திசைவை இயக்கவும். பொருத்தப்படாத கீற்றுகள் ஒத்திசைக்கப்படாது.</string>
     <string name="dejavu_sync_enabled">பணியிடங்களை ஒத்திசை</string>
     <string name="dejavu_sync_syncing">ஒத்திசைக்கிறது…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">வரிசையை மாற்ற பணியிடங்களை இழுக்கவும்</string>
     <string name="dejavu_feature_split_view">இணைப்பைப் பிரிந்த காட்சியில் திறக்க அதை நீண்டநேரம் அழுத்தவும்</string>
     <string name="dejavu_sync_choose_about">நீங்கள் Firefox தரவை ஒத்திசைக்கப் பயன்படுத்தும் Mozilla கணக்கின் வழியாக, உங்கள் பணியிடங்களை உங்கள் கணினியில் உள்ள Firefox அல்லது Zen உலாவியுடன் ஒத்திசைக்கவும்.</string>
-    <string name="dejavu_sync_firefox_about">உங்கள் ஒவ்வொரு கணினியிலும் கைப்பேசியிலும் உள்ள Firefox-இன் திறந்த கீற்றுகளை ஒரு பணியிடமாகக் காட்டி, அவற்றைப் புதுப்பித்த நிலையில் வைத்திருக்கும். இது நீங்கள் Firefox தரவை ஒத்திசைக்கப் பயன்படுத்தும் Mozilla கணக்கைப் பயன்படுத்தும்.</string>
     <string name="dejavu_sync_firefox_hint">Firefox-இல், அமைவுகளைத் திறந்து, பிறகு ஒத்திசைவைத் திறந்து, திறந்த கீற்றுகள் என்பதை இயக்கத்திலேயே வைத்திருக்கவும். ஒரு சாதனத்தின் பணியிடத்தில் நீங்கள் திறக்கும் அல்லது மூடும் கீற்றுகள் அந்தச் சாதனத்திலும் திறக்கப்படும் அல்லது மூடப்படும். உங்கள் மற்ற பணியிடங்களில் உள்ள கீற்றுகள் இந்தச் சாதனத்திலேயே இருக்கும், Firefox அவற்றை உங்கள் மற்ற சாதனங்களின் கீழ் பட்டியலிடும்.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">இது பொருத்தப்படாத, எந்தக் கீற்றுக் குழுவிலும் இல்லாத கீற்றுகளையும் காட்டுகிறது, பொருத்தப்பட்ட கீற்றுகள் மற்றும் கீற்றுக் குழுக்களை மட்டும் அல்ல.</string>
     <string name="dejavu_sync_source">இதனுடன் ஒத்திசை</string>
     <string name="dejavu_sync_source_none">இன்னும் தேர்ந்தெடுக்கப்படவில்லை</string>
     <string name="dejavu_sync_choose_title">எதனுடன் ஒத்திசைக்க வேண்டும் எனத் தேர்வுசெய்யவும்</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">இந்தப் பணியிடம் உங்கள் Mozilla கணக்கில் உள்ள ஒரு சாதனத்தின் திறந்த கீற்றுகளைக் காட்டுகிறது. அதன் பெயரும் சின்னமும் அந்தச் சாதனத்திலிருந்து வருகின்றன, நீங்கள் தேர்ந்தெடுக்கும் நிறங்கள் இந்தக் கைப்பேசியிலேயே இருக்கும்.</string>
     <string name="dejavu_settings_safe_browsing">Google பாதுகாப்பு உலாவல்</string>
     <string name="dejavu_settings_safe_browsing_summary">ஃபிஷிங் மற்றும் தீம்பொருள் தளங்களைப் பற்றி எச்சரிக்கிறது. இதற்காக Dejavu, Google-ஐத் தொடர்புகொள்கிறது.</string>
+    <string name="dejavu_back">பின்செல்</string>
+    <string name="dejavu_sync_start_title">ஒன்றிணைக்கவா அல்லது புதிதாகத் தொடங்கவா?</string>
+    <string name="dejavu_sync_start_intro">இந்தச் சாதனத்தில் ஏற்கெனவே அதன் சொந்தப் பணியிடங்களும் கீற்றுகளும் உள்ளன.</string>
+    <string name="dejavu_sync_start_merge">ஒன்றிணை</string>
+    <string name="dejavu_sync_start_merge_zen">அவற்றை வைத்துக்கொண்டு, Zen-இலிருந்து உங்கள் பணியிடங்களைச் சேர்க்கவும். அவையும் Zen-உடன் ஒத்திசைக்கப்படும்.</string>
+    <string name="dejavu_sync_start_merge_firefox">Firefox உள்ள ஒவ்வொரு கணினிக்கும் கைப்பேசிக்குமான பணியிடத்துடன் சேர்த்து அவற்றை வைத்திருக்கவும்.</string>
+    <string name="dejavu_sync_start_fresh">புதிதாகத் தொடங்கு</string>
+    <string name="dejavu_sync_start_fresh_zen">இந்தக் கீற்றுகளை மூடி, இந்தப் பணியிடங்கள், பொருத்தப்பட்ட கீற்றுகள், கோப்புறைகள், முக்கியவை ஆகியவற்றை அகற்றி, பிறகு Zen-இலிருந்து உங்கள் பணியிடங்களைப் பெறவும்.</string>
+    <string name="dejavu_sync_start_fresh_firefox">இந்தக் கீற்றுகளை மூடி, இந்தப் பணியிடங்கள், பொருத்தப்பட்ட கீற்றுகள், கோப்புறைகள், முக்கியவை ஆகியவற்றை அகற்றி, பிறகு Firefox உள்ள உங்கள் கணினிகள் மற்றும் கைப்பேசிகளின் கீற்றுகளைக் காட்டவும்.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Endurstilla á sjálfgefið</string>
     <string name="dejavu_more_menu_hide_edit">Fela breytingahnapp</string>
     <string name="dejavu_more_menu_hide_edit_summary">Hnappurinn Breyta neðst í valmyndinni „Meira“</string>
-    <string name="dejavu_settings_sync">Samstilla við Firefox eða Zen</string>
-    <string name="dejavu_sync_hint">Heldur vinnusvæðunum þínum, með litum og táknmyndum þeirra, hólfum, festum flipum, eftirlæti og möppum, eins og í Zen Browser á tölvunni þinni og í Dejavu á öðrum tækjum þínum. Notaður er Mozilla reikningurinn sem þú samstillir Firefox gögn með.</string>
     <string name="dejavu_sync_zen_hint">Í Zen skaltu opna Stillingar, svo Samstillingu, og kveikja á samstillingu hliðarstikunnar. Flipar sem eru ekki festir eru ekki samstilltir.</string>
     <string name="dejavu_sync_enabled">Samstilla vinnusvæði</string>
     <string name="dejavu_sync_syncing">Samstillir…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Dragðu vinnusvæði til að endurraða þeim</string>
     <string name="dejavu_feature_split_view">Haltu inni tengli til að opna hann í klofinni sýn</string>
     <string name="dejavu_sync_choose_about">Samstilltu vinnusvæðin þín við Firefox eða Zen Browser á tölvunni þinni, í gegnum Mozilla reikninginn sem þú samstillir Firefox gögn með.</string>
-    <string name="dejavu_sync_firefox_about">Sýnir opna flipa Firefox á hverri tölvu og hverjum síma þínum sem vinnusvæði og heldur þeim uppfærðum. Notaður er Mozilla reikningurinn sem þú samstillir Firefox gögn með.</string>
     <string name="dejavu_sync_firefox_hint">Í Firefox skaltu opna Stillingar, svo Samstillingu, og hafa kveikt á „Opnir flipar“. Flipar sem þú opnar eða lokar á vinnusvæði tækis opnast eða lokast líka á því tæki. Flipar á öðrum vinnusvæðum þínum haldast á þessu tæki og Firefox birtir þá undir öðrum tækjum þínum.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Sýnir einnig flipa sem eru hvorki festir né í flipahópi, ekki bara festa flipa og flipahópa.</string>
     <string name="dejavu_sync_source">Samstilla við</string>
     <string name="dejavu_sync_source_none">Ekki valið enn</string>
     <string name="dejavu_sync_choose_title">Veldu við hvað á að samstilla</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Þetta vinnusvæði sýnir opna flipa tækis á Mozilla reikningnum þínum. Heiti þess og táknmynd koma frá því tæki og litirnir sem þú velur haldast á þessum síma.</string>
     <string name="dejavu_settings_safe_browsing">Örugg vöfrun Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Varar við vefveiðum og spilliforritasíðum. Til þess hefur Dejavu samband við Google.</string>
+    <string name="dejavu_back">Til baka</string>
+    <string name="dejavu_sync_start_title">Sameina eða byrja upp á nýtt?</string>
+    <string name="dejavu_sync_start_intro">Þetta tæki er nú þegar með eigin vinnusvæði og flipa.</string>
+    <string name="dejavu_sync_start_merge">Sameina</string>
+    <string name="dejavu_sync_start_merge_zen">Haltu þeim og bættu við vinnusvæðunum þínum úr Zen. Þau samstillast líka við Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Haltu þeim, við hlið vinnusvæðis fyrir hverja tölvu og hvern síma með Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Byrja upp á nýtt</string>
+    <string name="dejavu_sync_start_fresh_zen">Lokaðu þessum flipum og fjarlægðu þessi vinnusvæði, festu flipa, möppur og eftirlæti, og sæktu svo vinnusvæðin þín úr Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Lokaðu þessum flipum og fjarlægðu þessi vinnusvæði, festu flipa, möppur og eftirlæti, og sjáðu svo flipa tölvanna og símanna þinna með Firefox.</string>
 </resources>

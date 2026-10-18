@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Reinitialisar al predefinition</string>
     <string name="dejavu_more_menu_hide_edit">Celar le button de edition</string>
     <string name="dejavu_more_menu_hide_edit_summary">Le button Rediger al fundo del menu ‘Plus’</string>
-    <string name="dejavu_settings_sync">Synchronisar con Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Mantene tu spatios de labor con lor colores e icones, recipientes, schedas fixate, essentiales e dossiers identic a illos in Zen Browser super tu computator e in Dejavu super tu altere apparatos. Illo usa le conto Mozilla con le qual tu synchronisa datos de Firefox.</string>
     <string name="dejavu_sync_zen_hint">In Zen, aperi Parametros, postea Synchronisation, e activa le synchronisation del barra lateral. Le schedas que non es fixate non es synchronisate.</string>
     <string name="dejavu_sync_enabled">Synchronisar spatios de labor</string>
     <string name="dejavu_sync_syncing">Synchronisation…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Trahe spatios de labor pro reordinar los</string>
     <string name="dejavu_feature_split_view">Preme longemente sur un ligamine pro aperir lo in vista divise</string>
     <string name="dejavu_sync_choose_about">Synchronisa tu spatios de labor con Firefox o Zen Browser super tu computator, per le conto Mozilla con le qual tu synchronisa datos de Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Monstra le schedas aperte de Firefox super cata un de tu computatores e telephonos como un spatio de labor, e los mantene actualisate. Illo usa le conto Mozilla con le qual tu synchronisa datos de Firefox.</string>
     <string name="dejavu_sync_firefox_hint">In Firefox, aperi Parametros, postea Synchronisation, e mantene Schedas aperte active. Le schedas que tu aperi o claude in le spatio de labor de un apparato se aperi o se claude etiam illac. Le schedas in tu altere spatios de labor resta super iste apparato, e Firefox los lista sub tu altere apparatos.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Monstra etiam le schedas que non es fixate ni in un gruppo de schedas, non solmente le schedas fixate e le gruppos de schedas.</string>
     <string name="dejavu_sync_source">Synchronisar con</string>
     <string name="dejavu_sync_source_none">Non ancora seligite</string>
     <string name="dejavu_sync_choose_title">Elige con que synchronisar</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Iste spatio de labor monstra le schedas aperte de un apparato de tu conto Mozilla. Su nomine e su icone veni de ille apparato, e le colores que tu elige resta super iste telephono.</string>
     <string name="dejavu_settings_safe_browsing">Navigation secur de Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Avisa super sitos de phishing e malware. Pro facer isto, Dejavu contacta Google.</string>
+    <string name="dejavu_back">Retro</string>
+    <string name="dejavu_sync_start_title">Fusionar o comenciar de novo?</string>
+    <string name="dejavu_sync_start_intro">Iste apparato ha jam su proprie spatios de labor e schedas.</string>
+    <string name="dejavu_sync_start_merge">Fusionar</string>
+    <string name="dejavu_sync_start_merge_zen">Conserva los e adde tu spatios de labor de Zen. Illos se synchronisa etiam con Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Conserva los, juxta un spatio de labor pro cata computator e telephono con Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Comenciar de novo</string>
+    <string name="dejavu_sync_start_fresh_zen">Claude iste schedas e remove iste spatios de labor, schedas fixate, dossiers e essentiales, postea obtene tu spatios de labor de Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Claude iste schedas e remove iste spatios de labor, schedas fixate, dossiers e essentiales, postea monstra le schedas de tu computatores e telephonos con Firefox.</string>
 </resources>

@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">ڈیفالٹ پر ری سیٹ کریں</string>
     <string name="dejavu_more_menu_hide_edit">ترمیم کا بٹن چھپائیں</string>
     <string name="dejavu_more_menu_hide_edit_summary">مزید کے مینو کے نیچے ترمیم کا بٹن</string>
-    <string name="dejavu_settings_sync">Firefox یا Zen کے ساتھ ہم وقت سازی</string>
-    <string name="dejavu_sync_hint">آپ کی ورک اسپیسز کو ان کے رنگوں اور آئیکنز، کنٹینرز، پن کردہ ٹیبز، اہم اور فولڈرز سمیت آپ کے کمپیوٹر پر Zen Browser اور آپ کی دیگر ڈیوائسز پر Dejavu جیسا ہی رکھتا ہے۔ یہ اسی Mozilla اکاؤنٹ کا استعمال کرتا ہے جس سے آپ Firefox کا ڈیٹا ہم وقت کرتے ہیں۔</string>
     <string name="dejavu_sync_zen_hint">Zen میں، سیٹنگز کھولیں، پھر سنک، اور سائیڈ بار ہم وقت سازی کو آن کریں۔ وہ ٹیبز جو پن نہیں کیے گئے ہم وقت نہیں ہوتے۔</string>
     <string name="dejavu_sync_enabled">ورک اسپیسز ہم وقت کریں</string>
     <string name="dejavu_sync_syncing">ہم وقت سازی ہو رہی ہے…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">ترتیب بدلنے کے لیے ورک اسپیسز کو گھسیٹیں</string>
     <string name="dejavu_feature_split_view">لنک کو اسپلٹ ویو میں کھولنے کے لیے اسے دیر تک دبائیں</string>
     <string name="dejavu_sync_choose_about">اپنی ورک اسپیسز کو اپنے کمپیوٹر پر Firefox یا Zen Browser کے ساتھ ہم وقت کریں، اسی Mozilla اکاؤنٹ کے ذریعے جس سے آپ Firefox کا ڈیٹا ہم وقت کرتے ہیں۔</string>
-    <string name="dejavu_sync_firefox_about">آپ کے ہر کمپیوٹر اور فون پر Firefox کے کھلے ٹیبز کو ایک ورک اسپیس کے طور پر دکھاتا ہے، اور انہیں تازہ رکھتا ہے۔ یہ اسی Mozilla اکاؤنٹ کا استعمال کرتا ہے جس سے آپ Firefox کا ڈیٹا ہم وقت کرتے ہیں۔</string>
     <string name="dejavu_sync_firefox_hint">Firefox میں، سیٹنگز کھولیں، پھر سنک، اور “ٹیبز کھولیں” کو آن رکھیں۔ جو ٹیبز آپ کسی ڈیوائس کی ورک اسپیس میں کھولتے یا بند کرتے ہیں وہ وہاں بھی کھلتے یا بند ہوتے ہیں۔ آپ کی دیگر ورک اسپیسز کے ٹیبز اسی ڈیوائس پر رہتے ہیں، اور Firefox انہیں آپ کی دیگر ڈیوائسز کے تحت دکھاتا ہے۔</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">وہ ٹیبز بھی دکھاتا ہے جو نہ پن کردہ ہیں نہ کسی ٹیب گروپ میں، صرف پن کردہ ٹیبز اور ٹیب گروپس نہیں۔</string>
     <string name="dejavu_sync_source">اس کے ساتھ ہم وقت سازی</string>
     <string name="dejavu_sync_source_none">ابھی منتخب نہیں کیا گیا</string>
     <string name="dejavu_sync_choose_title">منتخب کریں کہ کس کے ساتھ ہم وقت کرنا ہے</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">یہ ورک اسپیس آپ کے Mozilla اکاؤنٹ میں موجود ایک ڈیوائس کے کھلے ٹیبز دکھاتی ہے۔ اس کا نام اور آئیکن متعلقہ ڈیوائس سے آتے ہیں، اور آپ کے چنے ہوئے رنگ اسی فون پر رہتے ہیں۔</string>
     <string name="dejavu_settings_safe_browsing">Google محفوظ براؤزنگ</string>
     <string name="dejavu_settings_safe_browsing_summary">فشنگ اور میلویئر سائٹس کے بارے میں خبردار کرتا ہے۔ اس کے لیے Dejavu، Google سے رابطہ کرتا ہے۔</string>
+    <string name="dejavu_back">واپس</string>
+    <string name="dejavu_sync_start_title">ضم کریں یا نئے سرے سے شروع کریں؟</string>
+    <string name="dejavu_sync_start_intro">اس ڈیوائس پر پہلے سے ہی اس کی اپنی ورک اسپیسز اور ٹیبز موجود ہیں۔</string>
+    <string name="dejavu_sync_start_merge">ضم کریں</string>
+    <string name="dejavu_sync_start_merge_zen">انہیں رکھیں اور Zen سے اپنی ورک اسپیسز شامل کریں۔ انہیں بھی Zen کے ساتھ ہم وقت کیا جاتا ہے۔</string>
+    <string name="dejavu_sync_start_merge_firefox">انہیں Firefox والے ہر کمپیوٹر اور فون کی ورک اسپیس کے ساتھ رکھیں۔</string>
+    <string name="dejavu_sync_start_fresh">نئے سرے سے شروع کریں</string>
+    <string name="dejavu_sync_start_fresh_zen">یہ ٹیبز بند کریں اور یہ ورک اسپیسز، پن کردہ ٹیبز، فولڈرز اور اہم ہٹائیں، پھر Zen سے اپنی ورک اسپیسز حاصل کریں۔</string>
+    <string name="dejavu_sync_start_fresh_firefox">یہ ٹیبز بند کریں اور یہ ورک اسپیسز، پن کردہ ٹیبز، فولڈرز اور اہم ہٹائیں، پھر Firefox والے اپنے کمپیوٹرز اور فونز کے ٹیبز دکھائیں۔</string>
 </resources>

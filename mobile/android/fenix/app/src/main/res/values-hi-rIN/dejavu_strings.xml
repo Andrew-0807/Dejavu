@@ -266,8 +266,6 @@
     <string name="dejavu_more_menu_hide_edit_summary">और विकल्प मेन्यू के नीचे का एडिट बटन</string>
 
     <!-- Settings: syncing workspaces with Firefox or Zen -->
-    <string name="dejavu_settings_sync">Firefox या Zen के साथ सिंक करें</string>
-    <string name="dejavu_sync_hint">आपके वर्कस्पेस (उनके कलर और आइकन के साथ), कंटेनर, पिन किए गए टैब, एसेंशियल्स और फ़ोल्डर को आपके कंप्यूटर के Zen ब्राउज़र और आपके दूसरे डिवाइस के Dejavu जैसा ही रखता है। इसके लिए वही Mozilla अकाउंट इस्तेमाल होता है जिससे आप Firefox डेटा सिंक करते हैं।</string>
     <string name="dejavu_sync_zen_hint">Zen में सेटिंग और फिर सिंक खोलें, और साइडबार सिंक चालू करें। जो टैब पिन नहीं किए गए हैं, वे सिंक नहीं होते।</string>
     <string name="dejavu_sync_enabled">वर्कस्पेस सिंक करें</string>
     <string name="dejavu_sync_syncing">सिंक हो रहा है…</string>
@@ -318,9 +316,7 @@
     <string name="dejavu_feature_workspace_order">वर्कस्पेस का क्रम बदलने के लिए उन्हें खींचें</string>
     <string name="dejavu_feature_split_view">किसी लिंक को स्प्लिट व्यू में खोलने के लिए उसे टच करके रखें</string>
     <string name="dejavu_sync_choose_about">अपने वर्कस्पेस को अपने कंप्यूटर के Firefox या Zen ब्राउज़र के साथ, उसी Mozilla अकाउंट से सिंक करें जिससे आप Firefox डेटा सिंक करते हैं।</string>
-    <string name="dejavu_sync_firefox_about">आपके हर कंप्यूटर और फ़ोन के Firefox के खुले टैब को एक वर्कस्पेस के रूप में दिखाता है, और उन्हें अप-टू-डेट रखता है। इसके लिए वही Mozilla अकाउंट इस्तेमाल होता है जिससे आप Firefox डेटा सिंक करते हैं।</string>
     <string name="dejavu_sync_firefox_hint">Firefox में सेटिंग और फिर सिंक खोलें, और खुले हुए टैब को चालू रखें। किसी डिवाइस के वर्कस्पेस में आप जो टैब खोलते या बंद करते हैं, वे उस डिवाइस पर भी खुलते या बंद होते हैं। आपके बाकी वर्कस्पेस के टैब इसी डिवाइस पर रहते हैं, और Firefox उन्हें आपके दूसरे डिवाइस की सूची में दिखाता है।</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">यह उन टैब को भी दिखाता है जो न पिन किए गए हैं और न किसी टैब ग्रुप में हैं, न कि सिर्फ़ पिन किए गए टैब और टैब ग्रुप को।</string>
     <string name="dejavu_sync_source">किसके साथ सिंक करें</string>
     <string name="dejavu_sync_source_none">अभी तक नहीं चुना गया</string>
     <string name="dejavu_sync_choose_title">चुनें कि किसके साथ सिंक करना है</string>
@@ -363,4 +359,13 @@
     <string name="dejavu_workspace_device_note">यह वर्कस्पेस आपके Mozilla अकाउंट के किसी डिवाइस के खुले टैब दिखाता है। इसका नाम और आइकन उसी डिवाइस से आते हैं, और आपके चुने हुए कलर इसी फ़ोन पर रहते हैं।</string>
     <string name="dejavu_settings_safe_browsing">Google सुरक्षित ब्राउज़िंग</string>
     <string name="dejavu_settings_safe_browsing_summary">फ़िशिंग और मैलवेयर साइटों के बारे में चेतावनी देता है। इसके लिए Dejavu, Google से संपर्क करता है।</string>
+    <string name="dejavu_back">वापस</string>
+    <string name="dejavu_sync_start_title">मर्ज करें या नए सिरे से शुरू करें?</string>
+    <string name="dejavu_sync_start_intro">इस डिवाइस पर पहले से ही इसके अपने वर्कस्पेस और टैब हैं।</string>
+    <string name="dejavu_sync_start_merge">मर्ज करें</string>
+    <string name="dejavu_sync_start_merge_zen">इन्हें रखें और Zen से अपने वर्कस्पेस जोड़ें। ये भी Zen के साथ सिंक होते हैं।</string>
+    <string name="dejavu_sync_start_merge_firefox">इन्हें Firefox वाले हर कंप्यूटर और फ़ोन के वर्कस्पेस के साथ रखें।</string>
+    <string name="dejavu_sync_start_fresh">नए सिरे से शुरू करें</string>
+    <string name="dejavu_sync_start_fresh_zen">ये टैब बंद करें और ये वर्कस्पेस, पिन किए गए टैब, फ़ोल्डर और एसेंशियल्स हटाएं, फिर Zen से अपने वर्कस्पेस लाएं।</string>
+    <string name="dejavu_sync_start_fresh_firefox">ये टैब बंद करें और ये वर्कस्पेस, पिन किए गए टैब, फ़ोल्डर और एसेंशियल्स हटाएं, फिर Firefox वाले अपने कंप्यूटर और फ़ोन के टैब दिखाएं।</string>
 </resources>

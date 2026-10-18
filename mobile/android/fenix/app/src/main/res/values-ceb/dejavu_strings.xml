@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">i-Reset sa default</string>
     <string name="dejavu_more_menu_hide_edit">Tagoa ang edit button</string>
     <string name="dejavu_more_menu_hide_edit_summary">Ang Edit nga button sa ubos sa Dugang nga menu</string>
-    <string name="dejavu_settings_sync">i-Sync uban sa Firefox o Zen</string>
-    <string name="dejavu_sync_hint">Nagpabilin nga parehas ang imong mga workspace uban sa mga kolor ug icon niini, container, naka-pin nga tab, Mahinungdanon, ug folder, sama sa naa sa Zen Browser sa imong kompyuter ug sa Dejavu sa imong ubang device. Gigamit niini ang Mozilla account nga imong gigamit sa pag-sync sa data sa Firefox.</string>
     <string name="dejavu_sync_zen_hint">Sa Zen, ablihi ang Settings, dayon Sync, ug i-on ang sidebar sync. Ang mga tab nga dili naka-pin dili ma-sync.</string>
     <string name="dejavu_sync_enabled">i-Sync ang mga workspace</string>
     <string name="dejavu_sync_syncing">Nag-sync...</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">I-drag ang mga workspace aron usbon ang han-ay</string>
     <string name="dejavu_feature_split_view">Pugngi ang usa ka link aron ablihan kini sa split view</string>
     <string name="dejavu_sync_choose_about">i-Sync ang imong mga workspace uban sa Firefox o Zen Browser sa imong kompyuter, pinaagi sa Mozilla account nga imong gigamit sa pag-sync sa data sa Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Gipakita niini ang naabli nga mga tab sa Firefox sa matag usa sa imong mga kompyuter ug telepono isip usa ka workspace, ug kanunay kining gi-update. Gigamit niini ang Mozilla account nga imong gigamit sa pag-sync sa data sa Firefox.</string>
     <string name="dejavu_sync_firefox_hint">Sa Firefox, ablihi ang Settings, dayon Sync, ug ipabilin nga naka-on ang Open tabs. Ang mga tab nga imong ablihan o sirad-an sa workspace sa usa ka device maabli o masira usab didto. Ang mga tab sa imong ubang mga workspace magpabilin niini nga device, ug ipakita kini sa Firefox ubos sa imong ubang mga device.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Ipakita usab ang mga tab nga dili naka-pin ug wala sa tab group, dili lang ang naka-pin nga mga tab ug mga tab group.</string>
     <string name="dejavu_sync_source">i-Sync uban sa</string>
     <string name="dejavu_sync_source_none">Wala pa mapili</string>
     <string name="dejavu_sync_choose_title">Pilia kung asa i-sync ang imong mga workspace</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Kini nga workspace nagpakita sa naabli nga mga tab sa usa ka device sa imong Mozilla account. Ang ngalan ug icon niini gikan sa maong device, ug ang mga kolor nga imong pilion magpabilin niini nga telepono.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Nagpasidaan bahin sa mga phishing ug malware nga site. Aron mabuhat kini, mokonektar ang Dejavu sa Google.</string>
+    <string name="dejavu_back">Balik</string>
+    <string name="dejavu_sync_start_title">Hiusahon o magsugod og bag-o?</string>
+    <string name="dejavu_sync_start_intro">Kini nga device aduna nay kaugalingong mga workspace ug mga tab.</string>
+    <string name="dejavu_sync_start_merge">Hiusaha</string>
+    <string name="dejavu_sync_start_merge_zen">Ipabilin kini ug idugang ang imong mga workspace gikan sa Zen. Ma-sync usab kini sa Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Ipabilin kini, tupad sa usa ka workspace para sa matag kompyuter ug telepono nga adunay Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Sugdi og bag-o</string>
+    <string name="dejavu_sync_start_fresh_zen">Isira kini nga mga tab ug tangtanga kini nga mga workspace, naka-pin nga tab, folder, ug Mahinungdanon, dayon kuhaa ang imong mga workspace gikan sa Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Isira kini nga mga tab ug tangtanga kini nga mga workspace, naka-pin nga tab, folder, ug Mahinungdanon, dayon ipakita ang mga tab sa imong mga kompyuter ug telepono nga adunay Firefox.</string>
 </resources>

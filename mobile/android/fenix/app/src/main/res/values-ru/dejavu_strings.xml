@@ -212,8 +212,6 @@
     <string name="dejavu_more_menu_reset">Сбросить к стандартным</string>
     <string name="dejavu_more_menu_hide_edit">Скрыть кнопку изменения</string>
     <string name="dejavu_more_menu_hide_edit_summary">Кнопка «Изменить» внизу меню «Ещё»</string>
-    <string name="dejavu_settings_sync">Синхронизация с Firefox или Zen</string>
-    <string name="dejavu_sync_hint">Сохраняет ваши рабочие пространства с их цветами и значками, контейнеры, закреплённые вкладки, избранное и папки одинаковыми в Zen Browser на компьютере и в Dejavu на других ваших устройствах. Используется тот же аккаунт Mozilla, с которым вы синхронизируете данные Firefox.</string>
     <string name="dejavu_sync_zen_hint">В Zen откройте «Настройки», затем «Синхронизация», и включите синхронизацию боковой панели. Незакреплённые вкладки не синхронизируются.</string>
     <string name="dejavu_sync_enabled">Синхронизировать рабочие пространства</string>
     <string name="dejavu_sync_syncing">Синхронизация…</string>
@@ -299,9 +297,7 @@
     <string name="dejavu_feature_workspace_order">Перетаскивайте рабочие пространства, чтобы изменить их порядок</string>
     <string name="dejavu_feature_split_view">Удерживайте ссылку, чтобы открыть её при разделении экрана</string>
     <string name="dejavu_sync_choose_about">Синхронизируйте рабочие пространства с Firefox или Zen Browser на компьютере через аккаунт Mozilla, с которым вы синхронизируете данные Firefox.</string>
-    <string name="dejavu_sync_firefox_about">Показывает открытые вкладки Firefox на каждом из ваших компьютеров и телефонов как рабочее пространство и поддерживает их в актуальном состоянии. Используется тот же аккаунт Mozilla, с которым вы синхронизируете данные Firefox.</string>
     <string name="dejavu_sync_firefox_hint">В Firefox откройте «Настройки», затем «Синхронизация», и оставьте включённым пункт «Открытые вкладки». Вкладки, которые вы открываете или закрываете в рабочем пространстве устройства, открываются или закрываются и на самом устройстве. Вкладки в остальных рабочих пространствах остаются на этом устройстве, а Firefox показывает их в списке ваших других устройств.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Также показывает вкладки, которые не закреплены и не входят в группу вкладок, а не только закреплённые вкладки и группы вкладок.</string>
     <string name="dejavu_sync_source">Синхронизация с</string>
     <string name="dejavu_sync_source_none">Ещё не выбрано</string>
     <string name="dejavu_sync_choose_title">Выберите, с чем синхронизировать</string>
@@ -344,4 +340,13 @@
     <string name="dejavu_workspace_device_note">Это рабочее пространство показывает открытые вкладки устройства, подключённого к вашему аккаунту Mozilla. Его название и значок берутся с этого устройства, а выбранные вами цвета остаются на этом телефоне.</string>
     <string name="dejavu_settings_safe_browsing">Безопасный просмотр Google</string>
     <string name="dejavu_settings_safe_browsing_summary">Предупреждает о фишинговых и вредоносных сайтах. Для этого Dejavu обращается к Google.</string>
+    <string name="dejavu_back">Назад</string>
+    <string name="dejavu_sync_start_title">Объединить или начать заново?</string>
+    <string name="dejavu_sync_start_intro">На этом устройстве уже есть свои рабочие пространства и вкладки.</string>
+    <string name="dejavu_sync_start_merge">Объединить</string>
+    <string name="dejavu_sync_start_merge_zen">Оставить их и добавить ваши рабочие пространства из Zen. Они тоже синхронизируются с Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Оставить их рядом с рабочим пространством для каждого компьютера и телефона с Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Начать заново</string>
+    <string name="dejavu_sync_start_fresh_zen">Закрыть эти вкладки и удалить эти рабочие пространства, закреплённые вкладки, папки и избранное, а затем получить ваши рабочие пространства из Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Закрыть эти вкладки и удалить эти рабочие пространства, закреплённые вкладки, папки и избранное, а затем показать вкладки ваших компьютеров и телефонов с Firefox.</string>
 </resources>

@@ -209,8 +209,6 @@
     <string name="dejavu_more_menu_reset">မူလအတိုင်း ပြန်သတ်မှတ်ရန်</string>
     <string name="dejavu_more_menu_hide_edit">တည်းဖြတ်ခလုတ်ကို ဖျောက်ရန်</string>
     <string name="dejavu_more_menu_hide_edit_summary">နောက်ထပ် မီနူး၏ အောက်ခြေရှိ တည်းဖြတ်ရန် ခလုတ်</string>
-    <string name="dejavu_settings_sync">Firefox သို့မဟုတ် Zen နှင့် စင့်ခ်ချရန်</string>
-    <string name="dejavu_sync_hint">သင့်ကွန်ပျူတာရှိ Zen Browser နှင့် သင့်အခြားစက်ပစ္စည်းများရှိ Dejavu တွင်ကဲ့သို့ သင့်လုပ်ငန်းခွင်များကို ၎င်းတို့၏ အရောင်နှင့် အိုင်ကွန်များ၊ ကွန်တိန်နာများ၊ ပင်ထိုးထားသော တက်ဗ်များ၊ မရှိမဖြစ်များနှင့် ဖိုင်တွဲများနှင့်အတူ တူညီအောင် ထိန်းထားပေးသည်။ ၎င်းသည် သင် Firefox ဒေတာကို စင့်ခ်ချရာတွင် သုံးသော Mozilla အကောင့်ကို အသုံးပြုသည်။</string>
     <string name="dejavu_sync_zen_hint">Zen တွင် Settings ကိုဖွင့်ပြီး Sync ကို ရွေးပါ၊ ထို့နောက် sidebar sync ကို ဖွင့်ပါ။ ပင်မထိုးထားသော တက်ဗ်များကို စင့်ခ်ချမည် မဟုတ်ပါ။</string>
     <string name="dejavu_sync_enabled">လုပ်ငန်းခွင်များ စင့်ခ်ချရန်</string>
     <string name="dejavu_sync_syncing">စင့်ခ်ချနေသည်…</string>
@@ -278,9 +276,7 @@
     <string name="dejavu_feature_workspace_order">အစီအစဉ်ပြောင်းရန် လုပ်ငန်းခွင်များကို ဆွဲရွှေ့ပါ</string>
     <string name="dejavu_feature_split_view">လင့်ခ်ကို မျက်နှာပြင်ခွဲတွင် ဖွင့်ရန် ၎င်းကို ဖိထားပါ</string>
     <string name="dejavu_sync_choose_about">သင် Firefox ဒေတာကို စင့်ခ်ချရာတွင် သုံးသော Mozilla အကောင့်မှတစ်ဆင့် သင့်လုပ်ငန်းခွင်များကို သင့်ကွန်ပျူတာရှိ Firefox သို့မဟုတ် Zen Browser နှင့် စင့်ခ်ချပါ။</string>
-    <string name="dejavu_sync_firefox_about">သင့်ကွန်ပျူတာနှင့် ဖုန်းတစ်ခုစီရှိ Firefox ၏ ပွင့်နေသော တက်ဗ်များကို လုပ်ငန်းခွင်တစ်ခုအဖြစ် ပြသပြီး ၎င်းတို့ကို အမြဲ နောက်ဆုံးအခြေအနေအတိုင်း ထားပေးသည်။ ၎င်းသည် သင် Firefox ဒေတာကို စင့်ခ်ချရာတွင် သုံးသော Mozilla အကောင့်ကို အသုံးပြုသည်။</string>
     <string name="dejavu_sync_firefox_hint">Firefox တွင် Settings ကိုဖွင့်ပြီး Sync ကို ရွေးပါ၊ ထို့နောက် “ပွင့်နေသော တက်ဗ်များ” ကို ဖွင့်ထားပါ။ စက်တစ်ခု၏ လုပ်ငန်းခွင်တွင် သင်ဖွင့်သော သို့မဟုတ် ပိတ်သော တက်ဗ်များသည် ထိုစက်တွင်လည်း ပွင့်မည် သို့မဟုတ် ပိတ်မည်။ သင့်အခြားလုပ်ငန်းခွင်များရှိ တက်ဗ်များသည် ဤစက်တွင်သာ ရှိနေမည်ဖြစ်ပြီး Firefox က ၎င်းတို့ကို သင့်အခြားစက်ပစ္စည်းများအောက်တွင် ပြသမည်။</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">ပင်ထိုးထားသော တက်ဗ်များနှင့် တက်ဗ်အုပ်စုများသာမက ပင်မထိုးထားသည့်အပြင် မည်သည့် တက်ဗ်အုပ်စုတွင်မျှ မပါသော တက်ဗ်များကိုလည်း ပြသသည်။</string>
     <string name="dejavu_sync_source">စင့်ခ်ချမည့် ဘရောက်ဇာ</string>
     <string name="dejavu_sync_source_none">မရွေးရသေးပါ</string>
     <string name="dejavu_sync_choose_title">မည်သည့်ဘရောက်ဇာနှင့် စင့်ခ်ချမည်ကို ရွေးပါ</string>
@@ -323,4 +319,13 @@
     <string name="dejavu_workspace_device_note">ဤလုပ်ငန်းခွင်သည် သင့် Mozilla အကောင့်ရှိ စက်တစ်ခု၏ ပွင့်နေသော တက်ဗ်များကို ပြသသည်။ ၎င်း၏ အမည်နှင့် အိုင်ကွန်သည် ထိုစက်မှ လာပြီး သင်ရွေးသော အရောင်များသည် ဤဖုန်းတွင်သာ ရှိနေမည်။</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">ဖစ်ရှင်းနှင့် မဲလ်ဝဲဆိုက်များအကြောင်း သတိပေးသည်။ ယင်းအတွက် Dejavu သည် Google ကို ဆက်သွယ်သည်။</string>
+    <string name="dejavu_back">နောက်သို့</string>
+    <string name="dejavu_sync_start_title">ပေါင်းစည်းမလား၊ အသစ်ပြန်စမလား?</string>
+    <string name="dejavu_sync_start_intro">ဤစက်တွင် ကိုယ်ပိုင် လုပ်ငန်းခွင်များနှင့် တက်ဗ်များ ရှိပြီးသားဖြစ်သည်။</string>
+    <string name="dejavu_sync_start_merge">ပေါင်းစည်းရန်</string>
+    <string name="dejavu_sync_start_merge_zen">၎င်းတို့ကို ထားရှိပြီး Zen မှ သင့်လုပ်ငန်းခွင်များကို ထည့်ပါ။ ၎င်းတို့ကိုလည်း Zen သို့ စင့်ခ်ချမည်။</string>
+    <string name="dejavu_sync_start_merge_firefox">Firefox ရှိသော ကွန်ပျူတာနှင့် ဖုန်းတစ်ခုစီ၏ လုပ်ငန်းခွင်များနှင့်အတူ ၎င်းတို့ကို ထားရှိပါ။</string>
+    <string name="dejavu_sync_start_fresh">အသစ်ပြန်စရန်</string>
+    <string name="dejavu_sync_start_fresh_zen">ဤတက်ဗ်များကို ပိတ်ပြီး ဤလုပ်ငန်းခွင်များ၊ ပင်ထိုးထားသော တက်ဗ်များ၊ ဖိုင်တွဲများနှင့် မရှိမဖြစ်များကို ဖယ်ရှားပါ၊ ထို့နောက် Zen မှ သင့်လုပ်ငန်းခွင်များကို ရယူပါ။</string>
+    <string name="dejavu_sync_start_fresh_firefox">ဤတက်ဗ်များကို ပိတ်ပြီး ဤလုပ်ငန်းခွင်များ၊ ပင်ထိုးထားသော တက်ဗ်များ၊ ဖိုင်တွဲများနှင့် မရှိမဖြစ်များကို ဖယ်ရှားပါ၊ ထို့နောက် Firefox ရှိသော သင့်ကွန်ပျူတာနှင့် ဖုန်းများ၏ တက်ဗ်များကို ပြပါ။</string>
 </resources>

@@ -211,8 +211,6 @@
     <string name="dejavu_more_menu_reset">איפוס לברירת המחדל</string>
     <string name="dejavu_more_menu_hide_edit">הסתרת כפתור העריכה</string>
     <string name="dejavu_more_menu_hide_edit_summary">כפתור העריכה שבתחתית תפריט “עוד”</string>
-    <string name="dejavu_settings_sync">סנכרון עם Firefox או Zen</string>
-    <string name="dejavu_sync_hint">שומר על מרחבי העבודה שלכם, עם הצבעים והסמלים שלהם, המארזים, הלשוניות המוצמדות, המועדפים והתיקיות זהים בין Zen Browser במחשב שלכם לבין Dejavu במכשירים האחרים שלכם. הוא משתמש בחשבון Mozilla שדרכו אתם מסנכרנים נתוני Firefox.</string>
     <string name="dejavu_sync_zen_hint">ב-Zen, פתחו את ההגדרות, ואז את הסנכרון, והפעילו את סנכרון סרגל הצד. לשוניות שאינן מוצמדות אינן מסונכרנות.</string>
     <string name="dejavu_sync_enabled">סנכרון מרחבי עבודה</string>
     <string name="dejavu_sync_syncing">מסנכרן…</string>
@@ -292,9 +290,7 @@
     <string name="dejavu_feature_workspace_order">גררו מרחבי עבודה כדי לשנות את הסדר שלהם</string>
     <string name="dejavu_feature_split_view">לחצו לחיצה ארוכה על קישור כדי לפתוח אותו בתצוגה מפוצלת</string>
     <string name="dejavu_sync_choose_about">סנכרנו את מרחבי העבודה שלכם עם Firefox או Zen Browser במחשב שלכם, דרך חשבון Mozilla שדרכו אתם מסנכרנים נתוני Firefox.</string>
-    <string name="dejavu_sync_firefox_about">מציג את הלשוניות הפתוחות של Firefox בכל אחד מהמחשבים והטלפונים שלכם כמרחב עבודה, ושומר אותן מעודכנות. הוא משתמש בחשבון Mozilla שדרכו אתם מסנכרנים נתוני Firefox.</string>
     <string name="dejavu_sync_firefox_hint">ב-Firefox, פתחו את ההגדרות, ואז את הסנכרון, והשאירו את האפשרות “לשוניות פתוחות” מופעלת. לשוניות שאתם פותחים או סוגרים במרחב העבודה של מכשיר נפתחות או נסגרות גם באותו מכשיר. לשוניות במרחבי העבודה האחרים שלכם נשארות במכשיר הזה, ו-Firefox מציג אותן תחת המכשירים האחרים שלכם.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">מציג גם את הלשוניות שאינן מוצמדות ואינן בקבוצת לשוניות, ולא רק את הלשוניות המוצמדות וקבוצות הלשוניות.</string>
     <string name="dejavu_sync_source">סנכרון עם</string>
     <string name="dejavu_sync_source_none">עדיין לא נבחר</string>
     <string name="dejavu_sync_choose_title">בחירת דפדפן לסנכרון</string>
@@ -337,4 +333,13 @@
     <string name="dejavu_workspace_device_note">מרחב העבודה הזה מציג את הלשוניות הפתוחות של מכשיר בחשבון Mozilla שלכם. השם והסמל שלו מגיעים מאותו מכשיר, והצבעים שתבחרו נשארים בטלפון הזה.</string>
     <string name="dejavu_settings_safe_browsing">הגלישה הבטוחה של Google</string>
     <string name="dejavu_settings_safe_browsing_summary">מזהיר מפני אתרי פישינג ותוכנות זדוניות. לשם כך, Dejavu יוצר קשר עם Google.</string>
+    <string name="dejavu_back">חזרה</string>
+    <string name="dejavu_sync_start_title">למזג או להתחיל מחדש?</string>
+    <string name="dejavu_sync_start_intro">במכשיר הזה כבר יש מרחבי עבודה ולשוניות משלו.</string>
+    <string name="dejavu_sync_start_merge">מיזוג</string>
+    <string name="dejavu_sync_start_merge_zen">שומרים עליהם ומוסיפים את מרחבי העבודה שלכם מ-Zen. גם הם מסתנכרנים עם Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">שומרים עליהם, לצד מרחב עבודה לכל מחשב וטלפון עם Firefox.</string>
+    <string name="dejavu_sync_start_fresh">התחלה מחדש</string>
+    <string name="dejavu_sync_start_fresh_zen">סוגרים את הלשוניות האלה ומסירים את מרחבי העבודה, הלשוניות המוצמדות, התיקיות והמועדפים האלה, ואז מביאים את מרחבי העבודה שלכם מ-Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">סוגרים את הלשוניות האלה ומסירים את מרחבי העבודה, הלשוניות המוצמדות, התיקיות והמועדפים האלה, ואז מציגים את הלשוניות של המחשבים והטלפונים שלכם עם Firefox.</string>
 </resources>

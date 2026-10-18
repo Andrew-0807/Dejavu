@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">برگردنه بره حالت ٱصلی</string>
     <string name="dejavu_more_menu_hide_edit">قایم کردن دکمه آلشت</string>
     <string name="dejavu_more_menu_hide_edit_summary">دکمه آلشت زیر منوی دیه</string>
-    <string name="dejavu_settings_sync">همگام کردن با Firefox یا Zen</string>
-    <string name="dejavu_sync_hint">فضا یلته با رنگ و آیکون یلشون، کانتینر یل، بلگه یل سنجاق‌وابیده، سایت یل مهم و پوشه یل، عین اونی که من Zen Browser رو کامپیوترت و من Dejavu رو دستگاه یل دیه‌ته هسه، جا می‌ده. ای حساب Mozilla ره کار می‌بره که تو باهاش دیتای Firefox همگام می‌کنی.</string>
     <string name="dejavu_sync_zen_hint">من Zen، «سامووا» ره وا کو، بعد «همگام کردن»، و همگام کردن نوار پهلو ره روشن کو. بلگه یلی که سنجاق نوابیدن همگام نمی‌بن.</string>
     <string name="dejavu_sync_enabled">همگام کردن فضا یل</string>
     <string name="dejavu_sync_syncing">داره همگام می‌بۊ…</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">فضا یل ن بکش تا ترتیبشون عوض بۊ</string>
     <string name="dejavu_feature_split_view">لینک ن نگه دار تا من دید دوتایی واز بۊ</string>
     <string name="dejavu_sync_choose_about">فضا یلته با Firefox یا Zen Browser رو کامپیوترت همگام کو، با همو حساب Mozilla که باهاش دیتای Firefox همگام می‌کنی.</string>
-    <string name="dejavu_sync_firefox_about">بلگه یل واز Firefox رو هر کدوم ز کامپیوترا و گوشی یلت ره به عنوان یه فضا نشون می‌ده و همیشه تازه نگهشون می‌داره. ای حساب Mozilla ره کار می‌بره که تو باهاش دیتای Firefox همگام می‌کنی.</string>
     <string name="dejavu_sync_firefox_hint">من Firefox، «سامووا» ره وا کو، بعد «همگام کردن»، و «بلگه یل واز» ره روشن نگه دار. بلگه یلی که من فضای یه دستگاه وا می‌کنی یا می‌بندی، اونجا ام وا می‌بن یا بسته می‌بن. بلگه یل من فضا یل دیه‌ت رو ای دستگاه می‌مونن، و Firefox اونا ره زیر دستگاه یل دیه‌ت نشون می‌ده.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">بلگه یلی که نه سنجاق‌وابیدن و نه من بونکۊ بلگه هسن ره ام نشون می‌ده، نه تنیا بلگه یل سنجاق‌وابیده و بونکۊ یل بلگه.</string>
     <string name="dejavu_sync_source">همگام کردن با</string>
     <string name="dejavu_sync_source_none">هنو پسند نوابیده</string>
     <string name="dejavu_sync_choose_title">پسند کو با چی همگام کنی</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">ای فضا بلگه یل واز یه دستگاه ره که رو حساب Mozilla ته نشون می‌ده. نوم و آیکونش ز همو دستگاه میان، و رنگ یلی که پسند می‌کنی رو ای گوشی می‌مونن.</string>
     <string name="dejavu_settings_safe_browsing">مرور ایمن Google</string>
     <string name="dejavu_settings_safe_browsing_summary">ز سایت یل فیشینگ و بدافزار خبردار اکونه. سی ای کار، Dejavu وا Google وصل ابۊ.</string>
+    <string name="dejavu_back">وورگشتن</string>
+    <string name="dejavu_sync_start_title">یکی کردن یا شروع ز نۊ؟</string>
+    <string name="dejavu_sync_start_intro">ای دستگاه ز پیش فضا یل و بلگه یل خوشه داره.</string>
+    <string name="dejavu_sync_start_merge">یکی کردن</string>
+    <string name="dejavu_sync_start_merge_zen">نگهشون دار و فضا یلت ره ز Zen بیار. اونا ام با Zen همگام می‌بن.</string>
+    <string name="dejavu_sync_start_merge_firefox">نگهشون دار، کنار یه فضا بره هر کامپیوتر و گوشی Firefox.</string>
+    <string name="dejavu_sync_start_fresh">شروع ز نۊ</string>
+    <string name="dejavu_sync_start_fresh_zen">ای بلگه یل ره ببند و ای فضا یل، بلگه یل سنجاق‌وابیده، پوشه یل و سایت یل مهم ره پاک کو، بعد فضا یلت ره ز Zen بگیر.</string>
+    <string name="dejavu_sync_start_fresh_firefox">ای بلگه یل ره ببند و ای فضا یل، بلگه یل سنجاق‌وابیده، پوشه یل و سایت یل مهم ره پاک کو، بعد بلگه یل کامپیوتر و گوشی یل Firefox ت ره نشون بده.</string>
 </resources>

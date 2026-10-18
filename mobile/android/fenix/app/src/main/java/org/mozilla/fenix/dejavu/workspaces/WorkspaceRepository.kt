@@ -113,6 +113,24 @@ class WorkspaceRepository private constructor(context: Context) {
         )
     }
 
+    /**
+     * Removes every workspace with its pinned tabs and folders, and the essentials, leaving the one empty workspace a
+     * fresh Dejavu starts with. The workspaces of devices on the account stay as they are, since sync adds and removes
+     * them. Saved at once.
+     */
+    fun startFresh() = mutate(saveNow = true) { state ->
+        val fresh = WorkspaceSerializer.read(null, defaultName, now())
+        val devices = state.workspaces.filter { it.device != null }
+        val deviceIds = devices.map { it.id }.toSet()
+        val assignments = state.assignments.filterValues { it in deviceIds }
+        fresh.copy(
+            workspaces = fresh.workspaces + devices,
+            pins = state.pins.filter { it.workspaceId in deviceIds },
+            assignments = assignments,
+            splits = state.splits.filter { split -> split.tabIds.all { it in assignments } },
+        )
+    }
+
     /** Points every workspace and pinned tab using container [oldId] to [newId], or to no container. */
     fun replaceContainer(oldId: String, newId: String?) = mutate { state ->
         val now = now()

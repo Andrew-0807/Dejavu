@@ -210,8 +210,6 @@
     <string name="dejavu_more_menu_reset">Tilbakestill til standard</string>
     <string name="dejavu_more_menu_hide_edit">Gøym rediger-knappen</string>
     <string name="dejavu_more_menu_hide_edit_summary">Rediger-knappen nedst i Meir-menyen</string>
-    <string name="dejavu_settings_sync">Synkroniser med Firefox eller Zen</string>
-    <string name="dejavu_sync_hint">Held arbeidsområda dine, med fargar og ikon, behaldarar, festa faner, favorittar og mapper like som i Zen Browser på datamaskina di og i Dejavu på dei andre einingane dine. Dette bruker Mozilla-kontoen du synkroniserer Firefox-data med.</string>
     <string name="dejavu_sync_zen_hint">Opne Innstillingar i Zen, deretter Synkronisering, og slå på synkronisering av sidestolpen. Faner som ikkje er festa, vert ikkje synkroniserte.</string>
     <string name="dejavu_sync_enabled">Synkroniser arbeidsområde</string>
     <string name="dejavu_sync_syncing">Synkroniserer …</string>
@@ -285,9 +283,7 @@
     <string name="dejavu_feature_workspace_order">Dra arbeidsområde for å endre rekkjefølgja</string>
     <string name="dejavu_feature_split_view">Trykk lenge på ei lenke for å opne henne i delt vising</string>
     <string name="dejavu_sync_choose_about">Synkroniser arbeidsområda dine med Firefox eller Zen Browser på datamaskina di, gjennom Mozilla-kontoen du synkroniserer Firefox-data med.</string>
-    <string name="dejavu_sync_firefox_about">Viser dei opne fanene i Firefox på kvar av datamaskinene og telefonane dine som eit arbeidsområde, og held dei oppdaterte. Dette bruker Mozilla-kontoen du synkroniserer Firefox-data med.</string>
     <string name="dejavu_sync_firefox_hint">Opne Innstillingar i Firefox, deretter Synkronisering, og la innstillinga Opne faner vere slått på. Faner du opnar eller lèt att i arbeidsområdet til ei eining, vert også opna eller stengde der. Faner i dei andre arbeidsområda dine vert verande på denne eininga, og Firefox viser dei under dei andre einingane dine.</string>
-    <string name="dejavu_sync_normal_tabs_firefox_summary">Viser også fanene som verken er festa eller i ei fanegruppe, ikkje berre festa faner og fanegrupper.</string>
     <string name="dejavu_sync_source">Synkroniser med</string>
     <string name="dejavu_sync_source_none">Ikkje valt enno</string>
     <string name="dejavu_sync_choose_title">Vel kva du vil synkronisere med</string>
@@ -330,4 +326,13 @@
     <string name="dejavu_workspace_device_note">Dette arbeidsområdet viser dei opne fanene til ei eining på Mozilla-kontoen din. Namnet og ikonet kjem frå den eininga, og fargane du vel, vert verande på denne telefonen.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <string name="dejavu_settings_safe_browsing_summary">Åtvarar mot nettfiske- og skadevarenettstadar. For å gjere dette kontaktar Dejavu Google.</string>
+    <string name="dejavu_back">Tilbake</string>
+    <string name="dejavu_sync_start_title">Slå saman eller starte på nytt?</string>
+    <string name="dejavu_sync_start_intro">Denne eininga har allereie eigne arbeidsområde og faner.</string>
+    <string name="dejavu_sync_start_merge">Slå saman</string>
+    <string name="dejavu_sync_start_merge_zen">Behald dei og legg til arbeidsområda dine frå Zen. Dei vert òg synkroniserte med Zen.</string>
+    <string name="dejavu_sync_start_merge_firefox">Behald dei, ved sida av eit arbeidsområde for kvar datamaskin og telefon med Firefox.</string>
+    <string name="dejavu_sync_start_fresh">Start på nytt</string>
+    <string name="dejavu_sync_start_fresh_zen">Lat att desse fanene og fjern desse arbeidsområda, festa fanene, mappene og favorittane, og hent så arbeidsområda dine frå Zen.</string>
+    <string name="dejavu_sync_start_fresh_firefox">Lat att desse fanene og fjern desse arbeidsområda, festa fanene, mappene og favorittane, og vis så fanene frå datamaskinene og telefonane dine med Firefox.</string>
 </resources>
