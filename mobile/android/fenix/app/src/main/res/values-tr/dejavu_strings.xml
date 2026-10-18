@@ -176,6 +176,14 @@
     <string name="dejavu_link_open_in_workspace">Çalışma alanında aç</string>
     <string name="dejavu_link_opened_in">%1$s içinde açıldı</string>
     <string name="dejavu_toolbar_container">Kapsayıcı: %1$s</string>
+    <string name="dejavu_page_info">Sayfa ayrıntıları</string>
+    <string name="dejavu_page_info_container">Kapsayıcı</string>
+    <string name="dejavu_page_info_workspace">Çalışma alanı</string>
+    <string name="dejavu_page_info_site_details">Güvenlik ve izinler</string>
+    <string name="dejavu_page_info_pinned">Sabitlenmiş</string>
+    <string name="dejavu_page_info_essential">Temel sekme</string>
+    <string name="dejavu_page_info_reader_view">Okuyucu görünümü</string>
+    <string name="dejavu_page_info_translated">Çevrildi</string>
     <string name="dejavu_menu_back">Geri</string>
     <string name="dejavu_menu_forward">İleri</string>
     <string name="dejavu_menu_share">Paylaş</string>

@@ -824,7 +824,7 @@ private fun PickerRow(
 
 /** A workspace as the workspace bar shows it: its icon, or a dot in its container's color. */
 @Composable
-private fun WorkspaceMark(workspace: Workspace, container: ContainerRecord?) {
+internal fun WorkspaceMark(workspace: Workspace, container: ContainerRecord?) {
     Box(contentAlignment = Alignment.Center, modifier = Modifier.size(20.dp)) {
         val icon = workspaceIconText(workspace.icon)
         if (icon != null) {

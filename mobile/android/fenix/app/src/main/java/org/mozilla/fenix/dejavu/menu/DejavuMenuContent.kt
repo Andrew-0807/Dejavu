@@ -61,29 +61,32 @@ object DejavuMenu {
     private const val ARG_FROM_BOTTOM = "dejavu_menu_from_bottom"
     private const val ARG_OPENING = "dejavu_menu_opening"
 
-    /** What the menu shows when it opens. */
-    enum class Opening { MENU, EXTENSIONS, SPLIT_PICKER }
+    /**
+     * What the menu shows when it opens. The page's details are no part of the "More" menu, but a panel of their own
+     * growing out of the address bar, which the menu's dialog shows the same way, see [PageInfoMenu].
+     */
+    enum class Opening { MENU, EXTENSIONS, SPLIT_PICKER, PAGE_INFO }
 
     /** Whether Dejavu's menu replaces Fenix's for [accessPoint]. Custom tabs keep Fenix's menu. */
     fun replaces(accessPoint: MenuAccessPoint): Boolean = accessPoint != MenuAccessPoint.External
 
     /**
-     * Whether the menu is a panel growing out of the actions bar, which the browser's menu is unless it comes down
-     * from the top.
+     * Whether the menu is a panel growing out of the actions bar, or the page's details growing out of the address bar,
+     * which the browser's menu is unless it comes down from the top.
      */
     fun floats(accessPoint: MenuAccessPoint, fromTop: Boolean): Boolean =
         accessPoint == MenuAccessPoint.Browser && !fromTop
 
     /**
-     * Whether the menu comes down from the top of the screen, which it does when it was opened from an address bar at
-     * the top.
-     *
-     * @param arguments The arguments of the menu dialog, as made by [arguments].
+     * Whether the menu opened from [accessPoint] with [arguments], as [DejavuMenu.arguments] makes them, comes down
+     * from the top of the screen, which it does when it was opened from an address bar at the top. The page's details
+     * grow out of the address bar instead.
      */
     fun opensFromTop(context: Context, accessPoint: MenuAccessPoint, arguments: Bundle?): Boolean =
         accessPoint == MenuAccessPoint.Browser &&
             !context.contextComponents.settings.shouldUseBottomToolbar &&
-            arguments?.getBoolean(ARG_FROM_BOTTOM) != true
+            arguments?.getBoolean(ARG_FROM_BOTTOM) != true &&
+            opening(arguments) != Opening.PAGE_INFO
 
     /** What the menu opened with [arguments] shows first. */
     fun opening(arguments: Bundle?): Opening =
@@ -173,8 +176,8 @@ object DejavuMenu {
 }
 
 /**
- * The content of the menu dialog when Dejavu replaces Fenix's menu: the "More" menu of the browser, or the
- * extensions of the home screen.
+ * The content of the menu dialog when Dejavu replaces Fenix's menu: the "More" menu of the browser, the page's details
+ * of the browser, or the extensions of the home screen.
  *
  * @param menuStore Fenix's menu store, which carries out the actions Fenix's menu also has.
  * @param accessPoint Where the menu was opened from.
@@ -184,9 +187,28 @@ object DejavuMenu {
  * @param onEdit Opens the settings of the menu.
  * @param onDismiss Closes the menu.
  */
-@Suppress("LongParameterList", "LongMethod")
+@Suppress("LongParameterList")
 @Composable
 fun DejavuMenuContent(
+    menuStore: MenuStore,
+    accessPoint: MenuAccessPoint,
+    fromTop: Boolean,
+    opening: DejavuMenu.Opening,
+    navController: NavController,
+    onEdit: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    if (opening == DejavuMenu.Opening.PAGE_INFO && accessPoint == MenuAccessPoint.Browser) {
+        PageInfoMenu(menuStore = menuStore, navController = navController, onDismiss = onDismiss)
+    } else {
+        MoreMenuContent(menuStore, accessPoint, fromTop, opening, navController, onEdit, onDismiss)
+    }
+}
+
+/** The "More" menu of the browser, or the extensions of the home screen, see [DejavuMenuContent]. */
+@Suppress("LongParameterList", "LongMethod")
+@Composable
+private fun MoreMenuContent(
     menuStore: MenuStore,
     accessPoint: MenuAccessPoint,
     fromTop: Boolean,

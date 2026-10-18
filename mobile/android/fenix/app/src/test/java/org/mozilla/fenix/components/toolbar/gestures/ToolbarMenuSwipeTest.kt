@@ -34,6 +34,7 @@ class ToolbarMenuSwipeTest {
     private val navBarLayout = spyk(View(testContext))
     private val navController: NavController = mockk(relaxed = true)
     private val menuSwipe = RecordedMenuSwipe()
+    private val pageInfoSwipe = RecordedMenuSwipe()
     private var swipedFromNavBar: Boolean? = null
 
     @Before
@@ -76,14 +77,43 @@ class ToolbarMenuSwipeTest {
     }
 
     @Test
-    fun `a swipe down on the address bar at the top is not followed`() {
+    fun `a swipe down on the address bar at the top is followed by the page's details, not the menu`() {
         val handler = handler()
         val start = PointF(SCREEN_WIDTH / 2f, BAR_HEIGHT / 2f)
 
-        handler.onSwipeStarted(start, PointF(start.x, start.y + 60f))
+        assertTrue(handler.onSwipeStarted(start, PointF(start.x, start.y + 60f)))
+        handler.onSwipeUpdate(distanceX = 0f, distanceY = -40f)
+        handler.onSwipeUpdate(distanceX = 0f, distanceY = 30f)
+        handler.onSwipeFinished(velocityX = 0f, velocityY = 1500f)
+
+        assertEquals(1, pageInfoSwipe.starts)
+        assertEquals(listOf(60f, 100f, 70f), pageInfoSwipe.moves)
+        assertEquals(1500f, pageInfoSwipe.endVelocity)
+        assertEquals(0, menuSwipe.starts)
+        assertNull(swipedFromNavBar)
+    }
+
+    @Test
+    fun `a swipe down the page's details do not follow is left to the usual handling`() {
+        pageInfoSwipe.follows = false
+        val handler = handler()
+        val start = PointF(SCREEN_WIDTH / 2f, BAR_HEIGHT / 2f)
+
+        assertFalse(handler.onSwipeStarted(start, PointF(start.x, start.y + 60f)))
 
         assertEquals(false, swipedFromNavBar)
+        assertTrue(pageInfoSwipe.moves.isEmpty())
+    }
+
+    @Test
+    fun `a swipe up on the address bar at the top is not followed`() {
+        val handler = handler()
+        val start = PointF(SCREEN_WIDTH / 2f, BAR_HEIGHT / 2f)
+
+        assertFalse(handler.onSwipeStarted(start, PointF(start.x, start.y - 60f)))
+
         assertEquals(0, menuSwipe.starts)
+        assertEquals(0, pageInfoSwipe.starts)
     }
 
     private fun handler() = ToolbarVerticalGesturesHandler(
@@ -94,6 +124,7 @@ class ToolbarMenuSwipeTest {
         navController = navController,
         onSwipe = { fromNavBar -> swipedFromNavBar = fromNavBar },
         menuSwipe = menuSwipe,
+        pageInfoSwipe = pageInfoSwipe,
     )
 
     private fun place(view: View, top: Int) {
@@ -117,12 +148,12 @@ class ToolbarMenuSwipeTest {
             return follows
         }
 
-        override fun onMove(distanceUp: Float) {
-            moves += distanceUp
+        override fun onMove(distance: Float) {
+            moves += distance
         }
 
-        override fun onEnd(velocityUp: Float) {
-            endVelocity = velocityUp
+        override fun onEnd(velocity: Float) {
+            endVelocity = velocity
         }
     }
 }

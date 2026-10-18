@@ -46,6 +46,7 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
@@ -55,9 +56,11 @@ import androidx.compose.ui.input.pointer.changedToDownIgnoreConsumed
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.util.VelocityTracker
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import kotlin.math.roundToInt
@@ -67,26 +70,30 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.mozilla.fenix.R
+import org.mozilla.fenix.dejavu.browser.ADDRESS_FIELD_HEIGHT
+import org.mozilla.fenix.dejavu.browser.ADDRESS_FIELD_SIDE_MARGIN
+import org.mozilla.fenix.dejavu.browser.ADDRESS_FIELD_TOP_MARGIN
 import org.mozilla.fenix.dejavu.browser.shownWorkspaceTheme
 import org.mozilla.fenix.dejavu.browser.workspaceTheme
 
 /**
- * The swipe up on the actions bar that opens the "More" menu. The swipe starts in the browser's window and stays
- * there after the menu's dialog came up over it, so the browser passes it on here for the menu to follow.
+ * A swipe on one of the browser's bars that opens a floating panel: up on the actions bar for the "More" menu, or down
+ * on the address bar for the page's details. The swipe starts in the browser's window and stays there after the
+ * panel's dialog came up over it, so the browser passes it on here for the panel to follow.
  */
-internal object MoreMenuSwipe {
+internal open class PanelSwipe {
     private var startedAt = 0L
     private var claimed = true
 
-    /** Whether the finger that opened the menu is still on the screen. */
+    /** Whether the finger that opened the panel is still on the screen. */
     var isFollowing by mutableStateOf(false)
         private set
 
-    /** How far the finger moved up since it touched the bar, in pixels. */
+    /** How far the finger moved the way the panel opens since it touched the bar, in pixels. */
     var distance by mutableFloatStateOf(0f)
         private set
 
-    /** How fast the finger moved up when it left the screen, in pixels per second. */
+    /** How fast the finger moved the way the panel opens when it left the screen, in pixels per second. */
     var releaseVelocity = 0f
         private set
 
@@ -98,13 +105,13 @@ internal object MoreMenuSwipe {
         isFollowing = true
     }
 
-    fun move(distanceUp: Float) {
-        if (isFollowing) distance = distanceUp
+    fun move(distance: Float) {
+        if (isFollowing) this.distance = distance
     }
 
-    fun end(velocityUp: Float) {
+    fun end(velocity: Float) {
         if (!isFollowing) return
-        releaseVelocity = velocityUp
+        releaseVelocity = velocity
         isFollowing = false
     }
 
@@ -113,47 +120,80 @@ internal object MoreMenuSwipe {
         claimed = true
     }
 
-    /** Whether a swipe just opened the menu, which then follows it. Each swipe is followed by one menu only. */
+    /** Whether a swipe just opened the panel, which then follows it. Each swipe is followed by one panel only. */
     fun claim(): Boolean {
         val unclaimed = !claimed && SystemClock.uptimeMillis() - startedAt < CLAIM_WINDOW_MS
         claimed = true
         return unclaimed
     }
 
-    private const val CLAIM_WINDOW_MS = 2000L
+    private companion object {
+        const val CLAIM_WINDOW_MS = 2000L
+    }
 }
 
-/** Closes the floating "More" menu, shrinking it back into the actions bar first. */
+/** The swipe up on the actions bar that opens the "More" menu. */
+internal object MoreMenuSwipe : PanelSwipe()
+
+/** The swipe down on the address bar that opens the page's details, see [PageInfoMenu]. */
+internal object PageInfoSwipe : PanelSwipe()
+
+/** Closes a floating panel, shrinking it back into its bar first. */
 internal interface MenuCloser {
-    /** Closes the menu, running [then] once the panel shrank away, so its work does not hold up the animation. */
+    /** Closes the panel, running [then] once it shrank away, so its work does not hold up the animation. */
     fun close(then: () -> Unit = {})
 
     /**
-     * Shrinks the panel away, then runs [action], which closes the menu itself once its work is done, so the work
-     * neither holds up the animation nor gets cut short by the menu going away.
+     * Shrinks the panel away, then runs [action], which closes the panel itself once its work is done, so the work
+     * neither holds up the animation nor gets cut short by the panel going away.
      */
     fun closeBy(action: () -> Unit)
 }
 
-/** Closes the floating "More" menu the content is in; `null` outside such a menu. */
+/** Closes the floating panel the content is in; `null` outside such a panel. */
 internal val LocalMenuCloser = staticCompositionLocalOf<MenuCloser?> { null }
 
+/** The edge of the screen a floating panel grows from, out of the bar there. */
+internal enum class PanelEdge { TOP, BOTTOM }
+
 /**
- * The "More" menu of a web page: a panel that grows out of the actions bar and keeps the bar's margins. While the
- * finger that swiped the bar up stays down, the panel follows it, and letting go opens or closes the panel. The menu's
- * tiles wait where they end up while the panel grows over them, and fade in as it nears its full size. The open panel
- * can be dragged down by its handle or its content to close it.
+ * The "More" menu of a web page: a panel that grows out of the actions bar, see [FloatingPanel].
  *
  * @param onDismiss Removes the menu, once the panel shrank back into the bar.
+ * @param content The menu's tiles.
  */
 @Composable
-internal fun FloatingMoreMenu(onDismiss: () -> Unit, content: @Composable ColumnScope.() -> Unit) {
+internal fun FloatingMoreMenu(onDismiss: () -> Unit, content: @Composable ColumnScope.() -> Unit) =
+    FloatingPanel(edge = PanelEdge.BOTTOM, swipe = MoreMenuSwipe, onDismiss = onDismiss, content = content)
+
+/**
+ * A panel that grows out of one of the browser's bars and keeps the bar's margins: the actions bar at the bottom of the
+ * screen, or the address bar at the top. While the finger that swiped the bar stays down, the panel follows it, and
+ * letting go opens or closes the panel. The content waits where it ends up while the panel grows over it, and fades in
+ * as the panel nears its full size. The open panel can be dragged back by its handle, on its far edge, or by its
+ * content to close it.
+ *
+ * @param edge The edge of the screen whose bar the panel grows out of.
+ * @param swipe The swipe on that bar that opens the panel.
+ * @param onDismiss Removes the panel, once it shrank back into the bar.
+ * @param content What the panel shows, in a column that scrolls when it does not fit.
+ */
+@Composable
+internal fun FloatingPanel(
+    edge: PanelEdge,
+    swipe: PanelSwipe,
+    onDismiss: () -> Unit,
+    content: @Composable ColumnScope.() -> Unit,
+) {
     val scope = rememberCoroutineScope()
     val density = LocalDensity.current
+    val look = remember(edge) { lookOf(edge) }
     val panel = remember {
         MenuPanel(
             scope = scope,
-            barHeight = with(density) { BAR_HEIGHT.toPx() },
+            swipe = swipe,
+            opensDown = edge == PanelEdge.TOP,
+            barHeight = with(density) { look.barHeight.toPx() },
             flingVelocity = with(density) { FLING_VELOCITY.toPx() },
             onClosed = onDismiss,
         )
@@ -161,9 +201,9 @@ internal fun FloatingMoreMenu(onDismiss: () -> Unit, content: @Composable Column
     val close = remember(panel) { { panel.close() } }
 
     LaunchedEffect(panel) {
-        if (MoreMenuSwipe.claim()) panel.followSwipe() else panel.open()
+        if (swipe.claim()) panel.followSwipe() else panel.open()
     }
-    // Back, and actions done with their work, close the menu through here; see DejavuMenu.closeFloating.
+    // Back, and actions done with their work, close the panel through here; see DejavuMenu.closeFloating.
     BackHandler(onBack = panel::remove)
 
     Box(
@@ -190,53 +230,83 @@ internal fun FloatingMoreMenu(onDismiss: () -> Unit, content: @Composable Column
                     onClick = close,
                 ),
         )
-        Layout(
-            content = {
-                CompositionLocalProvider(LocalMenuCloser provides panel) {
-                    PanelMenu(panel, content)
-                }
-                PanelHandle(panel)
-            },
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .statusBarsPadding()
-                .navigationBarsPadding()
-                .padding(
-                    start = BAR_SIDE_MARGIN,
-                    end = BAR_SIDE_MARGIN,
-                    top = PANEL_TOP_MARGIN,
-                    bottom = ACTIONS_BAR_BOTTOM_MARGIN,
-                )
-                .graphicsLayer {
-                    alpha = smoothstep(panel.progress / SURFACE_FADE)
-                    shape = PANEL_SHAPE
-                    clip = true
-                }
-                .background(MaterialTheme.colorScheme.surface)
-                .workspaceTheme(shownWorkspaceTheme())
-                .border(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = BORDER_ALPHA), PANEL_SHAPE),
-        ) { measurables, constraints ->
-            val width = constraints.maxWidth
-            val handle = measurables[1].measure(Constraints.fixedWidth(width))
-            val menu = measurables[0].measure(
-                Constraints(
-                    minWidth = width,
-                    maxWidth = width,
-                    maxHeight = (constraints.maxHeight - handle.height).coerceAtLeast(0),
-                ),
-            )
-            val travel = (handle.height + menu.height - panel.barHeight).coerceAtLeast(1f)
-            panel.measured(travel)
-            val height = (panel.barHeight + travel * panel.progress).roundToInt().coerceIn(0, constraints.maxHeight)
-            layout(width, height) {
-                // The menu waits where it ends up while the panel grows over it, so its tiles do not ride up from the
-                // bar; an open panel pulled down takes the menu along under its edge.
-                val menuY = if (panel.ridesEdge) handle.height else height - menu.height
-                panel.menuHiddenTop = (handle.height - menuY).coerceAtLeast(0).toFloat()
-                menu.place(0, menuY)
-                handle.place(0, 0)
+        PanelLayout(
+            panel = panel,
+            look = look,
+            modifier = Modifier.align(if (panel.opensDown) Alignment.TopCenter else Alignment.BottomCenter),
+            content = content,
+        )
+    }
+}
+
+/** The panel itself, in the margins of its bar and as tall as it is open, with its content and its handle. */
+@Composable
+private fun PanelLayout(
+    panel: MenuPanel,
+    look: PanelLook,
+    modifier: Modifier,
+    content: @Composable ColumnScope.() -> Unit,
+) {
+    Layout(
+        content = {
+            CompositionLocalProvider(LocalMenuCloser provides panel) {
+                PanelContent(panel, content)
             }
-        }
+            PanelHandle(panel)
+        },
+        modifier = modifier
+            .statusBarsPadding()
+            .navigationBarsPadding()
+            .padding(
+                start = look.sideMargin,
+                end = look.sideMargin,
+                top = if (panel.opensDown) look.barMargin else PANEL_FAR_MARGIN,
+                bottom = if (panel.opensDown) PANEL_FAR_MARGIN else look.barMargin,
+            )
+            .graphicsLayer {
+                alpha = smoothstep(panel.progress / SURFACE_FADE)
+                shape = look.shape
+                clip = true
+            }
+            .background(MaterialTheme.colorScheme.surface)
+            .workspaceTheme(shownWorkspaceTheme())
+            .border(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = BORDER_ALPHA), look.shape),
+    ) { measurables, constraints ->
+        val width = constraints.maxWidth
+        val handle = measurables[1].measure(Constraints.fixedWidth(width))
+        val menu = measurables[0].measure(
+            Constraints(
+                minWidth = width,
+                maxWidth = width,
+                maxHeight = (constraints.maxHeight - handle.height).coerceAtLeast(0),
+            ),
+        )
+        val travel = (handle.height + menu.height - panel.barHeight).coerceAtLeast(1f)
+        panel.measured(travel)
+        val height = (panel.barHeight + travel * panel.progress).roundToInt().coerceIn(0, constraints.maxHeight)
+        layout(width, height) { placePanel(panel, menu, handle, height) }
+    }
+}
+
+/** Places the content and the handle of a panel that is [height] tall. */
+private fun Placeable.PlacementScope.placePanel(panel: MenuPanel, menu: Placeable, handle: Placeable, height: Int) {
+    if (panel.opensDown) {
+        // The same as below, upside down: the handle is on the bottom edge, and an open panel pushed back up takes the
+        // content along over its edge.
+        val handleY = height - handle.height
+        val menuY = if (panel.ridesEdge) handleY - menu.height else 0
+        panel.hiddenTop = 0f
+        panel.hiddenBottom = (menuY + menu.height - handleY).coerceAtLeast(0).toFloat()
+        menu.place(0, menuY)
+        handle.place(0, handleY)
+    } else {
+        // The menu waits where it ends up while the panel grows over it, so its tiles do not ride up from the bar; an
+        // open panel pulled down takes the menu along under its edge.
+        val menuY = if (panel.ridesEdge) handle.height else height - menu.height
+        panel.hiddenTop = (handle.height - menuY).coerceAtLeast(0).toFloat()
+        panel.hiddenBottom = 0f
+        menu.place(0, menuY)
+        handle.place(0, 0)
     }
 }
 
@@ -265,24 +335,37 @@ private fun PanelHandle(panel: MenuPanel) {
 }
 
 @Composable
-private fun PanelMenu(panel: MenuPanel, content: @Composable ColumnScope.() -> Unit) {
+private fun PanelContent(panel: MenuPanel, content: @Composable ColumnScope.() -> Unit) {
     Column(
         modifier = Modifier
-            .drawWithContent { clipRect(top = panel.menuHiddenTop) { this@drawWithContent.drawContent() } }
+            .drawWithContent {
+                clipRect(top = panel.hiddenTop, bottom = size.height - panel.hiddenBottom) {
+                    this@drawWithContent.drawContent()
+                }
+            }
             .graphicsLayer { alpha = smoothstep((panel.progress - CONTENT_FADE_START) / CONTENT_FADE) }
             .nestedScroll(panel)
             .verticalScroll(rememberScrollState())
-            .padding(start = 12.dp, end = 12.dp, bottom = 8.dp),
+            .padding(
+                start = 12.dp,
+                end = 12.dp,
+                top = if (panel.opensDown) CONTENT_END_PADDING else 0.dp,
+                bottom = if (panel.opensDown) 0.dp else CONTENT_END_PADDING,
+            ),
         content = content,
     )
 }
 
 /**
- * How far the floating menu is open and what moves it: the swipe that opened it, drags on the panel, and the springs
- * that settle it open or shrink it away.
+ * How far the floating panel is open and what moves it: the swipe that opened it, drags on the panel, and the springs
+ * that settle it open or shrink it away. The panel grows down from the top of the screen when [opensDown], and up from
+ * the bottom otherwise.
  */
+@Suppress("LongParameterList")
 private class MenuPanel(
     private val scope: CoroutineScope,
+    private val swipe: PanelSwipe,
+    val opensDown: Boolean,
     val barHeight: Float,
     private val flingVelocity: Float,
     private val onClosed: () -> Unit,
@@ -298,7 +381,10 @@ private class MenuPanel(
     private val fingerVelocity = VelocityTracker()
     private var motion: Job? = null
 
-    /** Where the finger last touched down on the menu, in the coordinates of [fingerAt]. */
+    /** How a finger's way down counts toward opening the panel: 1 when it opens downward, -1 when it opens upward. */
+    private val opening = if (opensDown) 1f else -1f
+
+    /** Where the finger last touched down on the panel, in the coordinates of [fingerAt]. */
     var downY = 0f
         private set
 
@@ -306,20 +392,23 @@ private class MenuPanel(
     var isClosing by mutableStateOf(false)
         private set
 
-    /** Whether the menu moves with the panel's top edge, as it does while an open panel is pulled down. */
+    /** Whether the content moves with the panel's far edge, as it does while an open panel is dragged back. */
     var ridesEdge by mutableStateOf(false)
         private set
 
-    /** How much of the top of the menu is behind the strip of the handle, which it is not drawn over, in pixels. */
-    var menuHiddenTop by mutableFloatStateOf(0f)
+    /** How much of the top of the content is behind the strip of a handle on top, which it is not drawn over, in px. */
+    var hiddenTop by mutableFloatStateOf(0f)
+
+    /** How much of the bottom of the content is behind the strip of a handle at the bottom, in pixels. */
+    var hiddenBottom by mutableFloatStateOf(0f)
 
     private var hasShrunk = false
 
-    /** How far the panel is open, from 0 at the size of the actions bar to 1 at the size of the whole menu. */
+    /** How far the panel is open, from 0 at the size of its bar to 1 at the size of the whole content. */
     val progress: Float
-        get() = if (followsSwipe) (MoreMenuSwipe.distance / travel).coerceIn(0f, 1f) else dragged ?: settled.value
+        get() = if (followsSwipe) (swipe.distance / travel).coerceIn(0f, 1f) else dragged ?: settled.value
 
-    /** Takes how far the panel grows from the size of the bar to the size of the whole menu, in pixels. */
+    /** Takes how far the panel grows from the size of the bar to the size of the whole content, in pixels. */
     fun measured(travel: Float) {
         this.travel = travel
         if (!isMeasured) isMeasured = true
@@ -333,11 +422,11 @@ private class MenuPanel(
     fun followSwipe() = move {
         awaitMeasured()
         followsSwipe = true
-        snapshotFlow { MoreMenuSwipe.isFollowing }.first { !it }
-        settle(MoreMenuSwipe.releaseVelocity, startedAt = 0f)
+        snapshotFlow { swipe.isFollowing }.first { !it }
+        settle(swipe.releaseVelocity, startedAt = 0f)
     }
 
-    /** Takes where the finger on the menu is, in the coordinates of the box around the panel, which does not move. */
+    /** Takes where the finger on the panel is, in the coordinates of the box around the panel, which does not move. */
     fun fingerAt(y: Float, uptimeMillis: Long, pressed: Boolean) {
         if (pressed) {
             downY = y
@@ -359,18 +448,18 @@ private class MenuPanel(
             anchorY = startY
             motion?.cancel()
             followsSwipe = false
-            // Only a panel picked up at its full size takes the menu along, where both places of the menu meet.
+            // Only a panel picked up at its full size takes the content along, where both places of the content meet.
             if (dragStart >= FULLY_OPEN) ridesEdge = true
         }
-        dragged = (dragStart + (anchorY - fingerY) / travel).coerceIn(0f, 1f)
+        dragged = (dragStart + opening * (fingerY - anchorY) / travel).coerceIn(0f, 1f)
     }
 
     /** Opens or closes the panel the finger let go of. */
     fun release() {
         if (dragged == null || isClosing) return
-        val velocityUp = -fingerVelocity.calculateVelocity().y
+        val velocity = opening * fingerVelocity.calculateVelocity().y
         val startedAt = dragStart
-        move { settle(velocityUp, startedAt) }
+        move { settle(velocity, startedAt) }
     }
 
     override fun close(then: () -> Unit) = shrinkAway {
@@ -384,7 +473,7 @@ private class MenuPanel(
         onClosed()
     }
 
-    /** Removes the menu when asked to: right away once the panel shrank away, after shrinking it otherwise. */
+    /** Removes the panel when asked to: right away once it shrank away, after shrinking it otherwise. */
     fun remove() {
         if (hasShrunk) onClosed() else close()
     }
@@ -404,26 +493,29 @@ private class MenuPanel(
     }
 
     /**
-     * Opens or closes the panel the finger let go of, whichever way it took the panel far enough from [startedAt],
-     * where it picked the panel up.
+     * Opens or closes the panel the finger let go of, whichever way it took the panel far enough from where it picked
+     * the panel up.
+     *
+     * @param velocity How fast the finger moved the way the panel opens, in pixels per second.
+     * @param startedAt How far the panel was open when the finger picked it up.
      */
-    private suspend fun settle(velocityUp: Float, startedAt: Float) {
+    private suspend fun settle(velocity: Float, startedAt: Float) {
         val from = progress
         val threshold = SETTLE_SHARE + (1f - 2 * SETTLE_SHARE) * startedAt
         val open = when {
-            velocityUp > flingVelocity -> true
-            velocityUp < -flingVelocity -> false
+            velocity > flingVelocity -> true
+            velocity < -flingVelocity -> false
             else -> from > threshold
         }
         settled.snapTo(from)
         followsSwipe = false
         dragged = null
         if (open) {
-            settled.animateTo(1f, OPEN_SPRING, initialVelocity = velocityUp / travel)
+            settled.animateTo(1f, OPEN_SPRING, initialVelocity = velocity / travel)
             ridesEdge = false
         } else {
             isClosing = true
-            settled.animateTo(0f, CLOSE_SPRING, initialVelocity = velocityUp / travel)
+            settled.animateTo(0f, CLOSE_SPRING, initialVelocity = velocity / travel)
             onClosed()
         }
     }
@@ -439,15 +531,15 @@ private class MenuPanel(
 
     override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
         val from = dragged ?: return Offset.Zero
-        if (source != NestedScrollSource.UserInput || available.y >= 0f || from >= 1f) return Offset.Zero
-        // A finger going back up first opens the panel again, then scrolls the menu.
+        if (source != NestedScrollSource.UserInput || available.y * opening <= 0f || from >= 1f) return Offset.Zero
+        // A finger going back the way the panel opens first opens it again, then scrolls the content.
         follow(anchorY)
         return Offset(0f, available.y)
     }
 
     override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset {
-        if (source != NestedScrollSource.UserInput || available.y <= 0f || isClosing) return Offset.Zero
-        // The menu is at its top, so the rest of the finger's way down pulls the panel down.
+        if (source != NestedScrollSource.UserInput || available.y * opening >= 0f || isClosing) return Offset.Zero
+        // The content is at its end, so the rest of the finger's way back drags the panel back.
         follow(startY = fingerY - available.y)
         return Offset(0f, available.y)
     }
@@ -459,15 +551,28 @@ private class MenuPanel(
     }
 }
 
+/** The size and place of the bar a panel grows out of, which the panel has while it is that small. */
+private class PanelLook(val barHeight: Dp, val sideMargin: Dp, val barMargin: Dp) {
+    val shape: Shape = RoundedCornerShape(barHeight / 2)
+}
+
+private fun lookOf(edge: PanelEdge) = when (edge) {
+    PanelEdge.BOTTOM -> PanelLook(BAR_HEIGHT, BAR_SIDE_MARGIN, ACTIONS_BAR_BOTTOM_MARGIN)
+    PanelEdge.TOP -> PanelLook(ADDRESS_FIELD_HEIGHT, ADDRESS_FIELD_SIDE_MARGIN, ADDRESS_FIELD_TOP_MARGIN)
+}
+
 private fun smoothstep(x: Float): Float {
     val t = x.coerceIn(0f, 1f)
     return t * t * (3f - 2f * t)
 }
 
-private val PANEL_SHAPE = RoundedCornerShape(BAR_HEIGHT / 2)
-private val PANEL_TOP_MARGIN = 48.dp
+/** How far a panel stays from the edge of the screen it grows toward, past the system bars. */
+private val PANEL_FAR_MARGIN = 48.dp
 
-/** How long the shrunk menu waits at most for an action to close it, in case the action never does. */
+/** The space between the content and the edge of the panel across from its handle. */
+private val CONTENT_END_PADDING = 8.dp
+
+/** How long the shrunk panel waits at most for an action to close it, in case the action never does. */
 private const val REMOVAL_TIMEOUT_MS = 3000L
 
 /** How fast a finger has to leave the screen for the panel to go its way whatever its size, per second. */
@@ -479,19 +584,19 @@ private val OPEN_SPRING = spring(dampingRatio = 0.9f, stiffness = 600f, visibili
 private val CLOSE_SPRING = spring(dampingRatio = 1f, stiffness = 500f, visibilityThreshold = VISIBILITY_THRESHOLD)
 
 /**
- * How much of the way between the bar and the whole menu a finger has to take the panel for it to go on that way when
- * let go, rather than back.
+ * How much of the way between the bar and the whole content a finger has to take the panel for it to go on that way
+ * when let go, rather than back.
  */
 private const val SETTLE_SHARE = 0.3f
 
-/** How far the panel opens while its surface fades in over the actions bar. */
+/** How far the panel opens while its surface fades in over the bar. */
 private const val SURFACE_FADE = 0.2f
 
-/** How far the panel is open when the menu's tiles start to fade in, and over how much of the way they do. */
+/** How far the panel is open when its content starts to fade in, and over how much of the way it does. */
 private const val CONTENT_FADE_START = 0.55f
 private const val CONTENT_FADE = 0.45f
 
-/** How far open a panel picked up has to be to take the menu along when pulled down, see [MenuPanel.ridesEdge]. */
+/** How far open a panel picked up has to be to take the content along when dragged back, see [MenuPanel.ridesEdge]. */
 private const val FULLY_OPEN = 0.995f
 private const val SCRIM_ALPHA = 0.32f
 private const val HANDLE_ALPHA = 0.4f

@@ -33,9 +33,11 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.CustomAccessibilityAction
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
@@ -51,6 +53,7 @@ import mozilla.components.compose.browser.toolbar.concept.PageOrigin.Companion.C
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarStore
 import mozilla.components.lib.state.ext.observeAsComposableState
 import mozilla.components.support.utils.ClipboardHandler
+import org.mozilla.fenix.R
 import org.mozilla.fenix.components.components
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
@@ -61,7 +64,8 @@ import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
  * Dejavu's address bar while a page is shown: only its state, like Safari's. A field in the app's colors shows the
  * page title in the middle, with the site's security icon next to it and the site's domain in small letters below it.
  * The tab's container, or the "no container" icon, sits at its start; its end is kept free for a button to come.
- * Tapping the bar starts a search, and long-pressing it copies the address or pastes one.
+ * Tapping the bar starts a search, long-pressing it copies the address or pastes one, and swiping it down shows the
+ * page's details, see [org.mozilla.fenix.dejavu.menu.PageInfoMenu].
  *
  * @param store The store of the address bar.
  */
@@ -71,6 +75,7 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
     val display by store.observeAsComposableState { it.displayState }
     val origin = display.pageOrigin
     val hint = stringResource(origin.hint)
+    val pageInfo = stringResource(R.string.dejavu_page_info)
     val text = origin.url?.toString()?.takeIf { it.isNotBlank() } ?: origin.title?.takeIf { it.isNotBlank() } ?: hint
     val url by components.core.store.observeAsComposableState { it.selectedTab?.content?.url }
     // The title already says the domain when it is the address itself.
@@ -86,6 +91,13 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
             .semantics {
                 contentDescription = if (text == hint) hint else "$text. $hint"
                 role = Role.Button
+                // Screen readers cannot swipe the bar down, so the page's details are also an action of the bar.
+                customActions = listOf(
+                    CustomAccessibilityAction(pageInfo) {
+                        store.dispatch(DejavuToolbar.PageInfoRequested)
+                        true
+                    },
+                )
             }
             .combinedClickable(
                 onClick = { origin.onClick?.let { store.dispatch(it) } },
@@ -100,8 +112,8 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
             modifier = Modifier
                 .align(Alignment.Center)
                 .fillMaxWidth()
-                .padding(horizontal = SIDE_PADDING)
-                .height(FIELD_HEIGHT)
+                .padding(horizontal = ADDRESS_FIELD_SIDE_MARGIN)
+                .height(ADDRESS_FIELD_HEIGHT)
                 .clip(CircleShape)
                 .background(MaterialTheme.colorScheme.surfaceContainerHigh)
                 .padding(horizontal = FIELD_PADDING),
@@ -212,12 +224,15 @@ private fun containerAction(): Action? {
 }
 
 /** The domain of [url], like "google.com" for "https://www.google.com/search", or `null` for one without a host. */
-private fun domainOf(url: String): String? = url.toUri().host?.removePrefix("www.")?.takeIf { it.isNotBlank() }
+internal fun domainOf(url: String): String? = url.toUri().host?.removePrefix("www.")?.takeIf { it.isNotBlank() }
 
 /** The height of Dejavu's address bar while a page is shown, below the status bar. */
 internal val DEJAVU_TOP_BAR_HEIGHT = 64.dp
-private val SIDE_PADDING = 16.dp
-private val FIELD_HEIGHT = 48.dp
+
+/** The size and place of the rounded field of the address bar, in the middle of the bar. */
+internal val ADDRESS_FIELD_HEIGHT = 48.dp
+internal val ADDRESS_FIELD_SIDE_MARGIN = 16.dp
+internal val ADDRESS_FIELD_TOP_MARGIN = (DEJAVU_TOP_BAR_HEIGHT - ADDRESS_FIELD_HEIGHT) / 2
 private val FIELD_PADDING = 4.dp
 private val SLOT_SIZE = 48.dp
 private val TITLE_END_PADDING = 8.dp

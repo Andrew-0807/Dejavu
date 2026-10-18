@@ -47,6 +47,8 @@ import org.mozilla.fenix.dejavu.home.displayTitle
 import org.mozilla.fenix.dejavu.home.titleOf
 import org.mozilla.fenix.dejavu.menu.DejavuMenu
 import org.mozilla.fenix.dejavu.menu.MoreMenuSwipe
+import org.mozilla.fenix.dejavu.menu.PageInfoSwipe
+import org.mozilla.fenix.dejavu.menu.PanelSwipe
 import org.mozilla.fenix.dejavu.menu.runActionsBarEntry
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.ext.components
@@ -123,6 +125,9 @@ object DejavuToolbar {
     /** The user asked for the whole "More" menu without swiping the actions bar up, from a screen reader. */
     data object MenuRequested : DejavuToolbarEvent
 
+    /** The user asked for the page's details without swiping the address bar down, from a screen reader. */
+    data object PageInfoRequested : DejavuToolbarEvent
+
     /** Carries out [event], with [navController] and the [store] of the address bar. */
     fun onEvent(
         context: Context,
@@ -138,6 +143,7 @@ object DejavuToolbar {
                 store.dispatch(PageOriginInteractions.OriginClicked)
             }
             MenuRequested -> navController.openDejavuMenu(fromBottom = true)
+            PageInfoRequested -> navController.openDejavuPageInfo()
         }
     }
 
@@ -251,16 +257,25 @@ fun NavController.openDejavuMenu(fromBottom: Boolean, opening: DejavuMenu.Openin
     navigate(directions.actionId, directions.arguments.apply { putAll(DejavuMenu.arguments(fromBottom, opening)) })
 }
 
+/** Opens the details of the shown page, as swiping the address bar down does. */
+fun NavController.openDejavuPageInfo() = openDejavuMenu(fromBottom = false, opening = DejavuMenu.Opening.PAGE_INFO)
+
 /** Opens the "More" menu with a swipe up on the actions bar, the menu following the finger until it lets go. */
-internal fun NavController.moreMenuSwipe() = object : ToolbarVerticalGesturesHandler.MenuSwipe {
-    override fun onStart(): Boolean {
-        if (currentDestination?.id != R.id.browserFragment) return false
-        MoreMenuSwipe.start()
-        openDejavuMenu(fromBottom = true)
-        return true
+internal fun NavController.moreMenuSwipe() = panelSwipe(MoreMenuSwipe) { openDejavuMenu(fromBottom = true) }
+
+/** Opens the page's details with a swipe down on the address bar, following the finger until it lets go. */
+internal fun NavController.pageInfoSwipe() = panelSwipe(PageInfoSwipe) { openDejavuPageInfo() }
+
+private fun NavController.panelSwipe(swipe: PanelSwipe, open: () -> Unit): ToolbarVerticalGesturesHandler.MenuSwipe =
+    object : ToolbarVerticalGesturesHandler.MenuSwipe {
+        override fun onStart(): Boolean {
+            if (currentDestination?.id != R.id.browserFragment) return false
+            swipe.start()
+            open()
+            return true
+        }
+
+        override fun onMove(distance: Float) = swipe.move(distance)
+
+        override fun onEnd(velocity: Float) = swipe.end(velocity)
     }
-
-    override fun onMove(distanceUp: Float) = MoreMenuSwipe.move(distanceUp)
-
-    override fun onEnd(velocityUp: Float) = MoreMenuSwipe.end(velocityUp)
-}
