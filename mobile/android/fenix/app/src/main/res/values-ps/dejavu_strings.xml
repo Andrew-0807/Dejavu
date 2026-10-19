@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">تاریخچه</string>
     <string name="dejavu_menu_translate">ژباړل</string>
     <string name="dejavu_menu_summarize">لنډیز کول</string>
-    <string name="dejavu_menu_report_broken_site">د سایټ ستونزه راپور کول</string>
     <string name="dejavu_menu_pin_tab">ټب پین کول</string>
     <string name="dejavu_menu_unpin_tab">ټب پین ایستل</string>
     <string name="dejavu_menu_essential_tab">مهمو ویب پاڼو ته زیاتول</string>

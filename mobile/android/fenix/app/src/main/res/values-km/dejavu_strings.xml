@@ -180,7 +180,6 @@
     <string name="dejavu_menu_history">ប្រវត្តិ</string>
     <string name="dejavu_menu_translate">បកប្រែ</string>
     <string name="dejavu_menu_summarize">សង្ខេប</string>
-    <string name="dejavu_menu_report_broken_site">រាយការណ៍បញ្ហាគេហទំព័រ</string>
     <string name="dejavu_menu_pin_tab">ខ្ទាស់ផ្ទាំង</string>
     <string name="dejavu_menu_unpin_tab">ដកខ្ទាស់ផ្ទាំង</string>
     <string name="dejavu_menu_essential_tab">បន្ថែមទៅសំខាន់ៗ</string>

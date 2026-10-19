@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Aslol</string>
     <string name="dejavu_menu_translate">Traduire</string>
     <string name="dejavu_menu_summarize">Résumer</string>
-    <string name="dejavu_menu_report_broken_site">Signaler un problème du site</string>
     <string name="dejavu_menu_pin_tab">Épingler la tabbere</string>
     <string name="dejavu_menu_unpin_tab">Désépingler la tabbere</string>
     <string name="dejavu_menu_essential_tab">Ajouter aux essentiels</string>

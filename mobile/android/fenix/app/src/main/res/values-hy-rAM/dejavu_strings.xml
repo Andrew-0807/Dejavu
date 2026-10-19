@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Պատմություն</string>
     <string name="dejavu_menu_translate">Թարգմանել</string>
     <string name="dejavu_menu_summarize">Ամփոփել</string>
-    <string name="dejavu_menu_report_broken_site">Հայտնել կայքի խնդրի մասին</string>
     <string name="dejavu_menu_pin_tab">Ամրացնել ներդիրը</string>
     <string name="dejavu_menu_unpin_tab">Ապամրացնել ներդիրը</string>
     <string name="dejavu_menu_essential_tab">Ավելացնել կարևոր կայքերում</string>

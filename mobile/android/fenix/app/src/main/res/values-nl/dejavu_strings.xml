@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Geschiedenis</string>
     <string name="dejavu_menu_translate">Vertalen</string>
     <string name="dejavu_menu_summarize">Samenvatten</string>
-    <string name="dejavu_menu_report_broken_site">Websiteprobleem melden</string>
     <string name="dejavu_menu_pin_tab">Tabblad vastmaken</string>
     <string name="dejavu_menu_unpin_tab">Tabblad losmaken</string>
     <string name="dejavu_menu_essential_tab">Toevoegen aan favorieten</string>

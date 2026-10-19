@@ -52,6 +52,14 @@
         <item quantity="one">Link copied</item>
         <item quantity="other">%1$d links copied</item>
     </plurals>
+    <!-- Shown after copying the link of a private tab, as a warning that it is now in the clipboard. -->
+    <string name="dejavu_private_link_copied">Private tab\'s link copied. It stays in the clipboard until you copy something else.</string>
+    <!-- Title of the warning before a pinned tab or essential opens an address that is not a web page. -->
+    <string name="dejavu_open_non_web_pin_title">Open this address?</string>
+    <!-- Message of that warning. %1$s is the address, like intent://… or about:config. -->
+    <string name="dejavu_open_non_web_pin_message">This pinned tab opens an address that is not a web page. It may have come from another device on your account.\n\n%1$s</string>
+    <!-- Button of that warning that opens the address. -->
+    <string name="dejavu_open">Open</string>
 
     <!-- Workspaces -->
     <string name="dejavu_workspace_menu">Workspace menu</string>
@@ -256,7 +264,6 @@
     <string name="dejavu_menu_history">History</string>
     <string name="dejavu_menu_translate">Translate</string>
     <string name="dejavu_menu_summarize">Summarize</string>
-    <string name="dejavu_menu_report_broken_site">Report site issue</string>
     <string name="dejavu_menu_pin_tab">Pin tab</string>
     <string name="dejavu_menu_unpin_tab">Unpin tab</string>
     <string name="dejavu_menu_essential_tab">Add to essentials</string>

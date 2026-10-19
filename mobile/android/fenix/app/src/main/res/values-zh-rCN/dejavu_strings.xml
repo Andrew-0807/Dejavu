@@ -180,7 +180,6 @@
     <string name="dejavu_menu_history">历史记录</string>
     <string name="dejavu_menu_translate">翻译</string>
     <string name="dejavu_menu_summarize">总结</string>
-    <string name="dejavu_menu_report_broken_site">报告网站问题</string>
     <string name="dejavu_menu_pin_tab">固定标签页</string>
     <string name="dejavu_menu_unpin_tab">取消固定标签页</string>
     <string name="dejavu_menu_essential_tab">添加到常用网站</string>

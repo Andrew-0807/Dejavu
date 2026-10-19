@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Historik</string>
     <string name="dejavu_menu_translate">Oversæt</string>
     <string name="dejavu_menu_summarize">Opsummer</string>
-    <string name="dejavu_menu_report_broken_site">Rapportér problem med websted</string>
     <string name="dejavu_menu_pin_tab">Fastgør faneblad</string>
     <string name="dejavu_menu_unpin_tab">Frigør faneblad</string>
     <string name="dejavu_menu_essential_tab">Føj til Favoritter</string>

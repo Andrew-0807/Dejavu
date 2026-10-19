@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Historia</string>
     <string name="dejavu_menu_translate">Itzuli</string>
     <string name="dejavu_menu_summarize">Laburtu</string>
-    <string name="dejavu_menu_report_broken_site">Jakinarazi gunearen arazoa</string>
     <string name="dejavu_menu_pin_tab">Finkatu fitxa</string>
     <string name="dejavu_menu_unpin_tab">Desfinkatu fitxa</string>
     <string name="dejavu_menu_essential_tab">Gehitu funtsezkoetara</string>

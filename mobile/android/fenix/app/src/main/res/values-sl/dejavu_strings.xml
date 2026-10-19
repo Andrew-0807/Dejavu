@@ -183,7 +183,6 @@
     <string name="dejavu_menu_history">Zgodovina</string>
     <string name="dejavu_menu_translate">Prevedi</string>
     <string name="dejavu_menu_summarize">Povzemi</string>
-    <string name="dejavu_menu_report_broken_site">Prijavi težavo s stranjo</string>
     <string name="dejavu_menu_pin_tab">Pripni zavihek</string>
     <string name="dejavu_menu_unpin_tab">Odpni zavihek</string>
     <string name="dejavu_menu_essential_tab">Dodaj v Izbrano</string>

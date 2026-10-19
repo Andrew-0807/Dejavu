@@ -80,7 +80,11 @@ internal fun runOnShownTab(action: TabAction, context: Context, navController: N
             navController.navigate(NavGraphDirections.actionGlobalHome())
             components.core.store.dispatch(EngineAction.SuspendEngineSessionAction(tab.id))
         }
-        TabAction.COPY_LINK -> {
+        TabAction.COPY_LINK -> if (tab.content.private) {
+            // Like Fenix's address bar: Android leaves it out of its clipboard preview, and keyboards do not keep it.
+            components.clipboardHandler.sensitiveText = tab.content.url
+            Toast.makeText(context, R.string.dejavu_private_link_copied, Toast.LENGTH_LONG).show()
+        } else {
             components.clipboardHandler.text = tab.content.url
             Toast.makeText(context, context.resources.getQuantityString(R.plurals.dejavu_links_copied, 1, 1), Toast.LENGTH_SHORT)
                 .show()

@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Шолу тарихы</string>
     <string name="dejavu_menu_translate">Аудару</string>
     <string name="dejavu_menu_summarize">Қысқаша мазмұндау</string>
-    <string name="dejavu_menu_report_broken_site">Сайт мәселесі туралы хабарлау</string>
     <string name="dejavu_menu_pin_tab">Бетті бекіту</string>
     <string name="dejavu_menu_unpin_tab">Бетті бекітуден шығару</string>
     <string name="dejavu_menu_essential_tab">Негізгілерге қосу</string>

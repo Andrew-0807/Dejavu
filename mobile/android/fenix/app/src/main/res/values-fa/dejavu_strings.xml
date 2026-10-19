@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">تاریخچه</string>
     <string name="dejavu_menu_translate">ترجمه</string>
     <string name="dejavu_menu_summarize">خلاصه‌سازی</string>
-    <string name="dejavu_menu_report_broken_site">گزارش مشکل سایت</string>
     <string name="dejavu_menu_pin_tab">سنجاق کردن زبانه</string>
     <string name="dejavu_menu_unpin_tab">برداشتن سنجاق زبانه</string>
     <string name="dejavu_menu_essential_tab">افزودن به ضروریات</string>

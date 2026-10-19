@@ -184,7 +184,6 @@
     <string name="dejavu_menu_history">Stair</string>
     <string name="dejavu_menu_translate">Aistrigh</string>
     <string name="dejavu_menu_summarize">Achoimrigh</string>
-    <string name="dejavu_menu_report_broken_site">Tuairiscigh fadhb leis an suíomh</string>
     <string name="dejavu_menu_pin_tab">Greamaigh an cluaisín</string>
     <string name="dejavu_menu_unpin_tab">Díghreamaigh an cluaisín</string>
     <string name="dejavu_menu_essential_tab">Cuir leis na riachtanais</string>

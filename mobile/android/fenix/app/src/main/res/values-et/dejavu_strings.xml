@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Ajalugu</string>
     <string name="dejavu_menu_translate">Tõlgi</string>
     <string name="dejavu_menu_summarize">Tee kokkuvõte</string>
-    <string name="dejavu_menu_report_broken_site">Teata saidi probleemist</string>
     <string name="dejavu_menu_pin_tab">Kinnita kaart</string>
     <string name="dejavu_menu_unpin_tab">Eemalda kaardi kinnitus</string>
     <string name="dejavu_menu_essential_tab">Lisa olulistesse</string>

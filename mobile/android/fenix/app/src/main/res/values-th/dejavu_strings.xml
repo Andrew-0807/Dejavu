@@ -180,7 +180,6 @@
     <string name="dejavu_menu_history">ประวัติ</string>
     <string name="dejavu_menu_translate">แปล</string>
     <string name="dejavu_menu_summarize">สรุป</string>
-    <string name="dejavu_menu_report_broken_site">รายงานปัญหาเว็บไซต์</string>
     <string name="dejavu_menu_pin_tab">ปักหมุดแท็บ</string>
     <string name="dejavu_menu_unpin_tab">เลิกปักหมุดแท็บ</string>
     <string name="dejavu_menu_essential_tab">เพิ่มลงในเว็บที่ใช้บ่อย</string>

@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Istoric</string>
     <string name="dejavu_menu_translate">Traduire</string>
     <string name="dejavu_menu_summarize">Resumir</string>
-    <string name="dejavu_menu_report_broken_site">Senhalar un problèma amb lo site</string>
     <string name="dejavu_menu_pin_tab">Fixar l’onglet</string>
     <string name="dejavu_menu_unpin_tab">Desfixar l’onglet</string>
     <string name="dejavu_menu_essential_tab">Apondre als essencials</string>

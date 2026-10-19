@@ -880,7 +880,14 @@ private class DejavuSpacesData(private val context: Context) : SpacesLocalData, 
     override suspend fun removeContainer(contextId: String) {
         val record = containers.records.value?.firstOrNull { it.contextId == contextId } ?: return
         withContext(Dispatchers.Main) {
-            ContainerRemover(context.components, repository).remove(record, ContainerRemoval.MoveTabs(null))
+            // Forgotten rather than closed by the user, so nothing closes on the other devices for them: the tabs the
+            // other device keeps come back with a later sync.
+            val state = repository.state.value
+            val unpinned = context.components.core.store.state.tabs.filter { tab ->
+                tab.contextId == contextId && !tab.content.private && state.pinOf(tab.id) == null
+            }
+            DejavuSync.forgetTabs(context, unpinned.map { state.syncIdOf(it.id) })
+            ContainerRemover(context.components, repository).remove(record, ContainerRemoval.FollowSync)
         }
     }
 

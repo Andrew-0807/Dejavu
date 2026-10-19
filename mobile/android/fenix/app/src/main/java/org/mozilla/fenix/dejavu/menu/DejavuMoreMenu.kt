@@ -148,8 +148,7 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
         MoreMenuItem.RESET_PINNED_URL, MoreMenuItem.REPLACE_PINNED_URL -> default.copy(enabled = state.isPinChanged)
         MoreMenuItem.OPEN_IN_APP -> default.copy(enabled = state.hasExternalApp)
         MoreMenuItem.TRANSLATE -> default.copy(enabled = state.canTranslate, active = state.isTranslated)
-        MoreMenuItem.SHARE, MoreMenuItem.FIND_IN_PAGE, MoreMenuItem.REPORT_BROKEN_SITE, MoreMenuItem.SAVE_AS_PDF,
-        MoreMenuItem.PRINT,
+        MoreMenuItem.SHARE, MoreMenuItem.FIND_IN_PAGE, MoreMenuItem.SAVE_AS_PDF, MoreMenuItem.PRINT,
         -> default.copy(enabled = state.isWebPage)
         MoreMenuItem.EXTENSIONS, MoreMenuItem.PASSWORDS, MoreMenuItem.BOOKMARKS, MoreMenuItem.DOWNLOADS,
         MoreMenuItem.HISTORY, MoreMenuItem.SETTINGS,

@@ -49,10 +49,9 @@ import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
 import org.mozilla.fenix.dejavu.ui.glass
 
 /**
- * Dejavu's address bar while a page is shown: only its state, like Safari's. The site of the page, never its title,
- * sits in the middle of a rounded field, after the icons of the tab's container and of the site's security, with no
- * buttons, over the colors of the tab's workspace. Tapping the bar starts a search, and long-pressing it copies the
- * address or pastes one.
+ * Dejavu's address bar while a page is shown: only its state, like Safari's. The page title sits in the middle of a
+ * rounded field, after the icons of the tab's container and of the site's security, with no buttons, over the colors of
+ * the tab's workspace. Tapping the bar starts a search, and long-pressing it copies the address or pastes one.
  *
  * @param store The store of the address bar.
  */
@@ -62,8 +61,7 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
     val display by store.observeAsComposableState { it.displayState }
     val origin = display.pageOrigin
     val hint = stringResource(origin.hint)
-    val site = origin.url?.takeIf { it.isNotBlank() }
-    val text = site?.toString() ?: hint
+    val text = origin.url?.toString()?.takeIf { it.isNotBlank() } ?: origin.title?.takeIf { it.isNotBlank() } ?: hint
     val haptic = LocalHapticFeedback.current
     var menuOpen by remember { mutableStateOf(false) }
     val theme = shownWorkspaceTheme()
@@ -98,20 +96,15 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
                 .padding(horizontal = FIELD_PADDING),
         ) {
             ActionContainer(actions = display.pageActionsStart, onInteraction = { store.dispatch(it) })
-            // The bar's own description already says it.
-            val textModifier = Modifier.weight(1f, fill = false).padding(end = TEXT_END_PADDING).clearAndSetSemantics {}
-            if (site != null) {
-                SiteText(site = site, style = MaterialTheme.typography.bodyLarge, modifier = textModifier)
-            } else {
-                Text(
-                    text = hint,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = textModifier,
-                )
-            }
+            Text(
+                text = text,
+                style = MaterialTheme.typography.bodyLarge,
+                color = if (text == hint) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                // The bar's own description already says it.
+                modifier = Modifier.weight(1f, fill = false).padding(end = TITLE_END_PADDING).clearAndSetSemantics {},
+            )
         }
         display.progressBarConfig?.let { config ->
             AnimatedProgressBar(
@@ -172,4 +165,4 @@ private val BAR_HEIGHT = 64.dp
 private val SIDE_PADDING = 16.dp
 private val FIELD_HEIGHT = 46.dp
 private val FIELD_PADDING = 12.dp
-private val TEXT_END_PADDING = 8.dp
+private val TITLE_END_PADDING = 8.dp

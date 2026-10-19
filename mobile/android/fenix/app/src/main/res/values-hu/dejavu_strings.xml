@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Előzmények</string>
     <string name="dejavu_menu_translate">Fordítás</string>
     <string name="dejavu_menu_summarize">Összegzés</string>
-    <string name="dejavu_menu_report_broken_site">Oldalprobléma jelentése</string>
     <string name="dejavu_menu_pin_tab">Lap kitűzése</string>
     <string name="dejavu_menu_unpin_tab">Lap kitűzésének megszüntetése</string>
     <string name="dejavu_menu_essential_tab">Hozzáadás a kedvencekhez</string>

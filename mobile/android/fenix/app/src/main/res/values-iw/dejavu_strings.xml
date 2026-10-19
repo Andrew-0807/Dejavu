@@ -182,7 +182,6 @@
     <string name="dejavu_menu_history">היסטוריה</string>
     <string name="dejavu_menu_translate">תרגום</string>
     <string name="dejavu_menu_summarize">סיכום</string>
-    <string name="dejavu_menu_report_broken_site">דיווח על בעיה באתר</string>
     <string name="dejavu_menu_pin_tab">הצמדת לשונית</string>
     <string name="dejavu_menu_unpin_tab">ביטול הצמדת לשונית</string>
     <string name="dejavu_menu_essential_tab">הוספה למועדפים</string>

@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">வரலாறு</string>
     <string name="dejavu_menu_translate">மொழிபெயர்</string>
     <string name="dejavu_menu_summarize">சுருக்கமாகக் கூறு</string>
-    <string name="dejavu_menu_report_broken_site">தள சிக்கலைப் புகாரளி</string>
     <string name="dejavu_menu_pin_tab">கீற்றைப் பின் செய்</string>
     <string name="dejavu_menu_unpin_tab">கீற்றின் பின்னை நீக்கு</string>
     <string name="dejavu_menu_essential_tab">முக்கியவையில் சேர்</string>

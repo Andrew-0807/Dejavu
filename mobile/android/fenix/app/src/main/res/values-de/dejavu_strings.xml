@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Chronik</string>
     <string name="dejavu_menu_translate">Übersetzen</string>
     <string name="dejavu_menu_summarize">Zusammenfassen</string>
-    <string name="dejavu_menu_report_broken_site">Website-Problem melden</string>
     <string name="dejavu_menu_pin_tab">Tab anheften</string>
     <string name="dejavu_menu_unpin_tab">Tab lösen</string>
     <string name="dejavu_menu_essential_tab">Zu Favoriten hinzufügen</string>

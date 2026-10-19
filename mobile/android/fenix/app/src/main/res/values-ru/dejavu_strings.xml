@@ -183,7 +183,6 @@
     <string name="dejavu_menu_history">История</string>
     <string name="dejavu_menu_translate">Перевести</string>
     <string name="dejavu_menu_summarize">Обобщить</string>
-    <string name="dejavu_menu_report_broken_site">Сообщить о проблеме с сайтом</string>
     <string name="dejavu_menu_pin_tab">Закрепить вкладку</string>
     <string name="dejavu_menu_unpin_tab">Открепить вкладку</string>
     <string name="dejavu_menu_essential_tab">Добавить в избранное</string>

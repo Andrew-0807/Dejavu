@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">ඉතිහාසය</string>
     <string name="dejavu_menu_translate">පරිවර්තනය කරන්න</string>
     <string name="dejavu_menu_summarize">සාරාංශ කරන්න</string>
-    <string name="dejavu_menu_report_broken_site">අඩවියේ ගැටලුවක් වාර්තා කරන්න</string>
     <string name="dejavu_menu_pin_tab">පටිත්ත අමුණන්න</string>
     <string name="dejavu_menu_unpin_tab">පටිත්ත ගළවන්න</string>
     <string name="dejavu_menu_essential_tab">අත්‍යවශ්‍යයට එක් කරන්න</string>

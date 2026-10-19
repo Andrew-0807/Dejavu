@@ -180,7 +180,6 @@
     <string name="dejavu_menu_history">Riwayat</string>
     <string name="dejavu_menu_translate">Terjemahkan</string>
     <string name="dejavu_menu_summarize">Ringkas</string>
-    <string name="dejavu_menu_report_broken_site">Laporkan masalah situs</string>
     <string name="dejavu_menu_pin_tab">Sematkan tab</string>
     <string name="dejavu_menu_unpin_tab">Lepas sematan tab</string>
     <string name="dejavu_menu_essential_tab">Tambahkan ke situs penting</string>

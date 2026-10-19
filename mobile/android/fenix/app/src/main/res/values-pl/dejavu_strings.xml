@@ -183,7 +183,6 @@
     <string name="dejavu_menu_history">Historia</string>
     <string name="dejavu_menu_translate">Przetłumacz</string>
     <string name="dejavu_menu_summarize">Podsumuj</string>
-    <string name="dejavu_menu_report_broken_site">Zgłoś problem z witryną</string>
     <string name="dejavu_menu_pin_tab">Przypnij kartę</string>
     <string name="dejavu_menu_unpin_tab">Odepnij kartę</string>
     <string name="dejavu_menu_essential_tab">Dodaj do ulubionych</string>

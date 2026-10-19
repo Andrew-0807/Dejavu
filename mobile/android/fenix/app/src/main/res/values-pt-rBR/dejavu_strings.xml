@@ -182,7 +182,6 @@
     <string name="dejavu_menu_history">Histórico</string>
     <string name="dejavu_menu_translate">Traduzir</string>
     <string name="dejavu_menu_summarize">Resumir</string>
-    <string name="dejavu_menu_report_broken_site">Informar problema no site</string>
     <string name="dejavu_menu_pin_tab">Fixar aba</string>
     <string name="dejavu_menu_unpin_tab">Desafixar aba</string>
     <string name="dejavu_menu_essential_tab">Adicionar aos essenciais</string>

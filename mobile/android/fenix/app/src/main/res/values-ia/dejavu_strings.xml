@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Chronologia</string>
     <string name="dejavu_menu_translate">Traducer</string>
     <string name="dejavu_menu_summarize">Resumer</string>
-    <string name="dejavu_menu_report_broken_site">Signalar problema de sito</string>
     <string name="dejavu_menu_pin_tab">Fixar scheda</string>
     <string name="dejavu_menu_unpin_tab">Defixar scheda</string>
     <string name="dejavu_menu_essential_tab">Adder al essentiales</string>

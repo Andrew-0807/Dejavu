@@ -185,7 +185,6 @@
     <string name="dejavu_menu_history">التأريخ</string>
     <string name="dejavu_menu_translate">ترجمة</string>
     <string name="dejavu_menu_summarize">تلخيص</string>
-    <string name="dejavu_menu_report_broken_site">الإبلاغ عن مشكلة في الموقع</string>
     <string name="dejavu_menu_pin_tab">تثبيت التبويب</string>
     <string name="dejavu_menu_unpin_tab">إلغاء تثبيت التبويب</string>
     <string name="dejavu_menu_essential_tab">إضافة إلى الأساسيات</string>

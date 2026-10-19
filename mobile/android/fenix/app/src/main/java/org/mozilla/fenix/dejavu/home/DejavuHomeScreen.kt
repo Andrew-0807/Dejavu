@@ -306,7 +306,7 @@ private class DefaultDejavuHomeInteractor(
             openTab(liveTabId)
             return
         }
-        openClosedPin(context, pin)?.let(openTab)
+        openClosedPin(context, pin, onOpened = openTab)?.let(openTab)
     }
 
     override fun onTabAction(action: TabAction, targets: ActionTargets, workspaceId: String) =

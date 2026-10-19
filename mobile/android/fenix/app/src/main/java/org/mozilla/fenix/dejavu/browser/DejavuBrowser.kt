@@ -27,7 +27,6 @@ import mozilla.components.compose.browser.toolbar.store.BrowserToolbarMenuItem.B
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarMenuItem.BrowserToolbarMenuButton.Text.StringText
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarMenuItem.BrowserToolbarMenuDivider
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarState
-import mozilla.components.lib.publicsuffixlist.PublicSuffixList
 import mozilla.components.lib.state.Store
 import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
@@ -42,6 +41,8 @@ import org.mozilla.fenix.dejavu.containers.TemporaryContainers
 import org.mozilla.fenix.dejavu.containers.drawable
 import org.mozilla.fenix.dejavu.containers.reopenInContainer
 import org.mozilla.fenix.dejavu.containers.splitTemporary
+import org.mozilla.fenix.dejavu.home.displayTitle
+import org.mozilla.fenix.dejavu.home.titleOf
 import org.mozilla.fenix.dejavu.menu.DejavuMenu
 import org.mozilla.fenix.dejavu.menu.runActionsBarEntry
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
@@ -68,11 +69,13 @@ object DejavuToolbar {
     private const val GLASS_FIELD_ALPHA = 0.09f
 
     /**
-     * What the address bar shows until it is focused: the site of the page at [url], see [siteLabel]. Never its title,
-     * which the page chooses, so a page cannot pass for another site.
+     * What the address bar shows until it is focused: the tab's title as the home screen shows it, or the address
+     * when the page has no title.
      */
-    suspend fun displayText(url: String, publicSuffixList: PublicSuffixList): CharSequence =
-        siteLabel(url, publicSuffixList)
+    fun displayText(tab: TabSessionState?): String {
+        tab ?: return ""
+        return WorkspaceRepository.peek()?.state?.value?.titleOf(tab) ?: tab.displayTitle
+    }
 
     /**
      * The icon of the container of the shown tab, in the container's color, or `null` outside of containers. Tapping

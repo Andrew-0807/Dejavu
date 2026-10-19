@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Ιστορικό</string>
     <string name="dejavu_menu_translate">Μετάφραση</string>
     <string name="dejavu_menu_summarize">Σύνοψη</string>
-    <string name="dejavu_menu_report_broken_site">Αναφορά προβλήματος ιστοτόπου</string>
     <string name="dejavu_menu_pin_tab">Καρφίτσωμα καρτέλας</string>
     <string name="dejavu_menu_unpin_tab">Ξεκαρφίτσωμα καρτέλας</string>
     <string name="dejavu_menu_essential_tab">Προσθήκη στα αγαπημένα</string>

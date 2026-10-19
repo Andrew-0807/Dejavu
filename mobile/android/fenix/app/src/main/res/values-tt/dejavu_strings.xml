@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Тарих</string>
     <string name="dejavu_menu_translate">Тәрҗемә итү</string>
     <string name="dejavu_menu_summarize">Кыскача бәян итү</string>
-    <string name="dejavu_menu_report_broken_site">Сайт проблемасы турында хәбәр итү</string>
     <string name="dejavu_menu_pin_tab">Табны беркетү</string>
     <string name="dejavu_menu_unpin_tab">Табны беркетүдән чыгару</string>
     <string name="dejavu_menu_essential_tab">Төп сайтларга өстәү</string>

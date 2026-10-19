@@ -180,7 +180,6 @@
     <string name="dejavu_menu_history">表示履歴</string>
     <string name="dejavu_menu_translate">翻訳</string>
     <string name="dejavu_menu_summarize">要約</string>
-    <string name="dejavu_menu_report_broken_site">サイトの問題を報告</string>
     <string name="dejavu_menu_pin_tab">タブをピン留め</string>
     <string name="dejavu_menu_unpin_tab">タブのピン留めを解除</string>
     <string name="dejavu_menu_essential_tab">よく使うサイトに追加</string>

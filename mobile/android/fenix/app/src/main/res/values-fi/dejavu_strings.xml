@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Historia</string>
     <string name="dejavu_menu_translate">Käännä</string>
     <string name="dejavu_menu_summarize">Tiivistä</string>
-    <string name="dejavu_menu_report_broken_site">Ilmoita sivusto-ongelmasta</string>
     <string name="dejavu_menu_pin_tab">Kiinnitä välilehti</string>
     <string name="dejavu_menu_unpin_tab">Irrota välilehden kiinnitys</string>
     <string name="dejavu_menu_essential_tab">Lisää suosikkeihin</string>

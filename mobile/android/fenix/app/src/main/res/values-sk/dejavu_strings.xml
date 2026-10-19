@@ -183,7 +183,6 @@
     <string name="dejavu_menu_history">História</string>
     <string name="dejavu_menu_translate">Preložiť</string>
     <string name="dejavu_menu_summarize">Zhrnúť</string>
-    <string name="dejavu_menu_report_broken_site">Nahlásiť problém so stránkou</string>
     <string name="dejavu_menu_pin_tab">Pripnúť kartu</string>
     <string name="dejavu_menu_unpin_tab">Odopnúť kartu</string>
     <string name="dejavu_menu_essential_tab">Pridať medzi obľúbené</string>

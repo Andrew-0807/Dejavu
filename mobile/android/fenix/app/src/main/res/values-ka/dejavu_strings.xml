@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">ისტორია</string>
     <string name="dejavu_menu_translate">თარგმნა</string>
     <string name="dejavu_menu_summarize">შეჯამება</string>
-    <string name="dejavu_menu_report_broken_site">საიტის პრობლემის შეტყობინება</string>
     <string name="dejavu_menu_pin_tab">ჩანართის მიმაგრება</string>
     <string name="dejavu_menu_unpin_tab">ჩანართის მიმაგრების მოხსნა</string>
     <string name="dejavu_menu_essential_tab">საჭირო საიტებში დამატება</string>

@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Geçmiş</string>
     <string name="dejavu_menu_translate">Çevir</string>
     <string name="dejavu_menu_summarize">Özetle</string>
-    <string name="dejavu_menu_report_broken_site">Site sorunu bildir</string>
     <string name="dejavu_menu_pin_tab">Sekmeyi sabitle</string>
     <string name="dejavu_menu_unpin_tab">Sabitlemeyi kaldır</string>
     <string name="dejavu_menu_essential_tab">Temel sekmelere ekle</string>

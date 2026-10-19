@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">История</string>
     <string name="dejavu_menu_translate">Превеждане</string>
     <string name="dejavu_menu_summarize">Обобщаване</string>
-    <string name="dejavu_menu_report_broken_site">Докладване на проблем със сайта</string>
     <string name="dejavu_menu_pin_tab">Закачане на раздел</string>
     <string name="dejavu_menu_unpin_tab">Откачане на раздел</string>
     <string name="dejavu_menu_essential_tab">Добавяне към Любими</string>

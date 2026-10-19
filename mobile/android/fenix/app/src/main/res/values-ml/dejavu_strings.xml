@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">നാള്‍വഴി</string>
     <string name="dejavu_menu_translate">വിവർത്തനം ചെയ്യുക</string>
     <string name="dejavu_menu_summarize">സംഗ്രഹിക്കുക</string>
-    <string name="dejavu_menu_report_broken_site">സൈറ്റ് പ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക</string>
     <string name="dejavu_menu_pin_tab">ടാബ് പിൻ ചെയ്യുക</string>
     <string name="dejavu_menu_unpin_tab">ടാബ് പിൻ നീക്കുക</string>
     <string name="dejavu_menu_essential_tab">പ്രധാനപ്പെട്ടവയിൽ ചേർക്കുക</string>

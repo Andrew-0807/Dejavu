@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">చరిత్ర</string>
     <string name="dejavu_menu_translate">అనువదించు</string>
     <string name="dejavu_menu_summarize">సారాంశం చేయి</string>
-    <string name="dejavu_menu_report_broken_site">సైటు సమస్యను నివేదించు</string>
     <string name="dejavu_menu_pin_tab">ట్యాబును పిన్ చేయి</string>
     <string name="dejavu_menu_unpin_tab">ట్యాబు పిన్‌ను తీసివేయి</string>
     <string name="dejavu_menu_essential_tab">ముఖ్యమైనవాటిలో చేర్చు</string>

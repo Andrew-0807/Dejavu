@@ -183,7 +183,6 @@
     <string name="dejavu_menu_history">An eachdraidh</string>
     <string name="dejavu_menu_translate">Eadar-theangaich</string>
     <string name="dejavu_menu_summarize">Giorraich</string>
-    <string name="dejavu_menu_report_broken_site">Dèan aithris air duilgheadas leis an làrach</string>
     <string name="dejavu_menu_pin_tab">Prìnich an taba</string>
     <string name="dejavu_menu_unpin_tab">Dì-phrìnich an taba</string>
     <string name="dejavu_menu_essential_tab">Cuir ris na feumalachdan</string>

@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Historikk</string>
     <string name="dejavu_menu_translate">Omset</string>
     <string name="dejavu_menu_summarize">Oppsummer</string>
-    <string name="dejavu_menu_report_broken_site">Rapporter problem med nettstaden</string>
     <string name="dejavu_menu_pin_tab">Fest fane</string>
     <string name="dejavu_menu_unpin_tab">Løys fane</string>
     <string name="dejavu_menu_essential_tab">Legg til i favorittar</string>

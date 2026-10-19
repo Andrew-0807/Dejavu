@@ -180,7 +180,6 @@
     <string name="dejavu_menu_history">瀏覽紀錄</string>
     <string name="dejavu_menu_translate">翻譯</string>
     <string name="dejavu_menu_summarize">摘要</string>
-    <string name="dejavu_menu_report_broken_site">回報網站問題</string>
     <string name="dejavu_menu_pin_tab">釘選分頁</string>
     <string name="dejavu_menu_unpin_tab">取消釘選分頁</string>
     <string name="dejavu_menu_essential_tab">新增到常用網站</string>

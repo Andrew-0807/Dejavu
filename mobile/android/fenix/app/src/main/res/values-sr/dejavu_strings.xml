@@ -182,7 +182,6 @@
     <string name="dejavu_menu_history">Историја</string>
     <string name="dejavu_menu_translate">Преведи</string>
     <string name="dejavu_menu_summarize">Сажми</string>
-    <string name="dejavu_menu_report_broken_site">Пријави проблем са страницом</string>
     <string name="dejavu_menu_pin_tab">Закачи језичак</string>
     <string name="dejavu_menu_unpin_tab">Откачи језичак</string>
     <string name="dejavu_menu_essential_tab">Додај у Фаворите</string>

@@ -182,7 +182,6 @@
     <string name="dejavu_menu_history">Istoric</string>
     <string name="dejavu_menu_translate">Tradu</string>
     <string name="dejavu_menu_summarize">Rezumă</string>
-    <string name="dejavu_menu_report_broken_site">Raportează o problemă a site-ului</string>
     <string name="dejavu_menu_pin_tab">Fixează fila</string>
     <string name="dejavu_menu_unpin_tab">Anulează fixarea filei</string>
     <string name="dejavu_menu_essential_tab">Adaugă la favorite</string>

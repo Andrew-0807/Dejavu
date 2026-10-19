@@ -180,7 +180,6 @@
     <string name="dejavu_menu_history">기록</string>
     <string name="dejavu_menu_translate">번역</string>
     <string name="dejavu_menu_summarize">요약</string>
-    <string name="dejavu_menu_report_broken_site">사이트 문제 신고</string>
     <string name="dejavu_menu_pin_tab">탭 고정</string>
     <string name="dejavu_menu_unpin_tab">탭 고정 해제</string>
     <string name="dejavu_menu_essential_tab">필수 사이트에 추가</string>

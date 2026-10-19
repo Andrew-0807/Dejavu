@@ -28,7 +28,10 @@ internal interface SpacesLocalData {
     /** Creates container [contextId], or updates its name, color and icon. */
     suspend fun saveContainer(contextId: String, name: String, color: ContainerColor, icon: ContainerState.Icon)
 
-    /** Deletes container [contextId]; its tabs move out of it. */
+    /**
+     * Deletes container [contextId], which another device deleted: its open tabs close, as they did there, and its
+     * pinned tabs stay, without the container.
+     */
     suspend fun removeContainer(contextId: String)
 
     fun builtinName(container: BuiltinContainer): String

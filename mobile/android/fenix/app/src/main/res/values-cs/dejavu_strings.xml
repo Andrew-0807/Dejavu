@@ -183,7 +183,6 @@
     <string name="dejavu_menu_history">Historie</string>
     <string name="dejavu_menu_translate">Přeložit</string>
     <string name="dejavu_menu_summarize">Shrnout</string>
-    <string name="dejavu_menu_report_broken_site">Nahlásit problém s webem</string>
     <string name="dejavu_menu_pin_tab">Připnout panel</string>
     <string name="dejavu_menu_unpin_tab">Odepnout panel</string>
     <string name="dejavu_menu_essential_tab">Přidat do Oblíbených</string>

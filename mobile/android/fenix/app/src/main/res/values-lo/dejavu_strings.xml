@@ -180,7 +180,6 @@
     <string name="dejavu_menu_history">ປະຫວັດ</string>
     <string name="dejavu_menu_translate">ແປພາສາ</string>
     <string name="dejavu_menu_summarize">ສະຫຼຸບ</string>
-    <string name="dejavu_menu_report_broken_site">ລາຍງານບັນຫາເວັບໄຊ</string>
     <string name="dejavu_menu_pin_tab">ປັກແທັບ</string>
     <string name="dejavu_menu_unpin_tab">ເອົາປັກແທັບອອກ</string>
     <string name="dejavu_menu_essential_tab">ເພີ່ມເຂົ້າສິ່ງສຳຄັນ</string>

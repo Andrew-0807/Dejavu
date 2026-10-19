@@ -1005,7 +1005,8 @@ class BrowserToolbarMiddleware(
 
     private fun observePageOriginUpdates(store: Store<BrowserToolbarState, BrowserToolbarAction>) {
         browserStore.observeWhileActive {
-            distinctUntilChangedBy { it.selectedTab?.content?.url }
+            // Dejavu shows the page title, so the address bar follows title changes too.
+            distinctUntilChangedBy { it.selectedTab?.content?.url to it.selectedTab?.content?.title }
                 .collect {
                     updateCurrentPageOrigin(store)
                     updateEndBrowserActions(store)
@@ -1059,7 +1060,7 @@ class BrowserToolbarMiddleware(
                 // Default to showing the toolbar hint when the URL is ABOUT_HOME.
                 ""
             } else if (DejavuToolbar.enabled) {
-                DejavuToolbar.displayText(originalUrl.toString(), publicSuffixList)
+                DejavuToolbar.displayText(browserStore.state.selectedTab)
             } else if (searchTerms.isNotBlank()) {
                 searchTerms
             } else {

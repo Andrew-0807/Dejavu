@@ -182,7 +182,6 @@
     <string name="dejavu_menu_history">Vēsture</string>
     <string name="dejavu_menu_translate">Tulkot</string>
     <string name="dejavu_menu_summarize">Apkopot</string>
-    <string name="dejavu_menu_report_broken_site">Ziņot par vietnes problēmu</string>
     <string name="dejavu_menu_pin_tab">Piespraust cilni</string>
     <string name="dejavu_menu_unpin_tab">Atspraust cilni</string>
     <string name="dejavu_menu_essential_tab">Pievienot Izlasei</string>

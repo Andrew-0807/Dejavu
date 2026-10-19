@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">مێژوو</string>
     <string name="dejavu_menu_translate">وەرگێڕان</string>
     <string name="dejavu_menu_summarize">پوختەکردن</string>
-    <string name="dejavu_menu_report_broken_site">ڕاپۆرتکردنی کێشەی ماڵپەڕ</string>
     <string name="dejavu_menu_pin_tab">چەسپاندنی بازدەر</string>
     <string name="dejavu_menu_unpin_tab">لابردنی چەسپانی بازدەر</string>
     <string name="dejavu_menu_essential_tab">زیادکردن بۆ ماڵپەڕە گرنگەکان</string>

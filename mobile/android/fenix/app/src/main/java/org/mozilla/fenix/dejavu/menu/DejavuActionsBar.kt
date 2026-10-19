@@ -41,17 +41,13 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import mozilla.appservices.places.BookmarkRoot
 import mozilla.components.browser.state.selector.selectedTab
-import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarInteraction.BrowserToolbarEvent
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarInteraction.BrowserToolbarEvent.Source
 import mozilla.components.lib.state.ext.observeAsComposableState
 import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
-import org.mozilla.fenix.browser.BrowserFragmentDirections
 import org.mozilla.fenix.components.appstate.AppAction.FindInPageAction
 import org.mozilla.fenix.components.components
 import org.mozilla.fenix.components.toolbar.DisplayActions
@@ -64,9 +60,6 @@ import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.ext.components as contextComponents
 import org.mozilla.fenix.ext.nav
-import org.mozilla.fenix.webcompat.DefaultWebCompatReporterMoreInfoSender
-import org.mozilla.fenix.webcompat.WEB_COMPAT_REPORTER_URL
-import org.mozilla.fenix.webcompat.middleware.DefaultWebCompatReporterRetrievalService
 
 /**
  * Dejavu's bar below web pages: the buttons the user chose for it, Home and Search among them. Swiping the bar up opens
@@ -240,7 +233,6 @@ internal fun runActionsBarEntry(context: Context, navController: NavController, 
         MoreMenuItem.DOWNLOADS -> navController.nav(R.id.browserFragment, NavGraphDirections.actionGlobalDownloadsFragment())
         MoreMenuItem.HISTORY -> navController.nav(R.id.browserFragment, NavGraphDirections.actionGlobalHistoryFragment())
         MoreMenuItem.SETTINGS -> navController.nav(R.id.browserFragment, NavGraphDirections.actionGlobalSettingsFragment())
-        MoreMenuItem.REPORT_BROKEN_SITE -> reportBrokenSite(context, navController, tab)
         MoreMenuItem.OPEN_IN_APP -> {
             val redirect = components.useCases.appLinksUseCases.appLinkRedirect(tab.content.url)
             if (redirect.hasExternalApp()) {
@@ -249,33 +241,6 @@ internal fun runActionsBarEntry(context: Context, navController: NavController, 
             }
         }
         else -> Unit
-    }
-}
-
-/** Reports the page of [tab] as broken, the way Fenix's menu does. */
-private fun reportBrokenSite(context: Context, navController: NavController, tab: TabSessionState) {
-    val components = context.contextComponents
-    val url = tab.content.url
-    if (components.settings.isTelemetryEnabled) {
-        navController.nav(
-            R.id.browserFragment,
-            BrowserFragmentDirections.actionBrowserFragmentToWebCompatReporterFragment(tabUrl = url),
-        )
-        return
-    }
-    components.applicationScope.launch(Dispatchers.Main) {
-        DefaultWebCompatReporterMoreInfoSender(DefaultWebCompatReporterRetrievalService(components.core.store))
-            .sendMoreWebCompatInfo(
-                reason = null,
-                problemDescription = null,
-                enteredUrl = null,
-                tabUrl = url,
-                engineSession = tab.engineState.engineSession,
-            )
-        components.useCases.fenixBrowserUseCases.loadUrlOrSearch(
-            searchTermOrURL = "$WEB_COMPAT_REPORTER_URL$url",
-            newTab = true,
-        )
     }
 }
 

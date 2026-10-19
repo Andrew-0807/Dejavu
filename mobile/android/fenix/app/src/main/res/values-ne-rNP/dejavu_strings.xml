@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">इतिहास</string>
     <string name="dejavu_menu_translate">अनुवाद गर्नुहोस्</string>
     <string name="dejavu_menu_summarize">सारांश बनाउनुहोस्</string>
-    <string name="dejavu_menu_report_broken_site">साइट समस्या रिपोर्ट गर्नुहोस्</string>
     <string name="dejavu_menu_pin_tab">ट्याब पिन गर्नुहोस्</string>
     <string name="dejavu_menu_unpin_tab">ट्याबको पिन हटाउनुहोस्</string>
     <string name="dejavu_menu_essential_tab">आवश्यकमा थप्नुहोस्</string>

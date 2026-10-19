@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Tarix</string>
     <string name="dejavu_menu_translate">Tarjima qilish</string>
     <string name="dejavu_menu_summarize">Qisqacha bayon qilish</string>
-    <string name="dejavu_menu_report_broken_site">Sayt muammosi haqida xabar berish</string>
     <string name="dejavu_menu_pin_tab">Varaqni mahkamlash</string>
     <string name="dejavu_menu_unpin_tab">Varaqni mahkamlashdan chiqarish</string>
     <string name="dejavu_menu_essential_tab">Muhimlarga qo\'shish</string>

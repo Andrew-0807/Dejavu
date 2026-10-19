@@ -310,7 +310,6 @@ private class MenuActions(
             MoreMenuItem.DOWNLOADS -> dispatch(MenuAction.Navigate.Downloads)
             MoreMenuItem.HISTORY -> dispatch(MenuAction.Navigate.History)
             MoreMenuItem.TRANSLATE -> dispatch(MenuAction.Navigate.Translate)
-            MoreMenuItem.REPORT_BROKEN_SITE -> dispatch(MenuAction.Navigate.WebCompatReporter)
             MoreMenuItem.OPEN_IN_APP -> dispatch(MenuAction.OpenInApp)
             MoreMenuItem.SETTINGS -> dispatch(MenuAction.Navigate.Settings)
             else -> Unit

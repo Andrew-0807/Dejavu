@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Tarixçə</string>
     <string name="dejavu_menu_translate">Tərcümə et</string>
     <string name="dejavu_menu_summarize">Xülasə et</string>
-    <string name="dejavu_menu_report_broken_site">Sayt problemini bildir</string>
     <string name="dejavu_menu_pin_tab">Vərəqi bərkit</string>
     <string name="dejavu_menu_unpin_tab">Vərəqi bərkitmədən çıxar</string>
     <string name="dejavu_menu_essential_tab">Əsaslara əlavə et</string>

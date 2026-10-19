@@ -185,7 +185,6 @@
     <string name="dejavu_menu_history">Hanes</string>
     <string name="dejavu_menu_translate">Cyfieithu</string>
     <string name="dejavu_menu_summarize">Crynhoi</string>
-    <string name="dejavu_menu_report_broken_site">Rhoi gwybod am broblem gwefan</string>
     <string name="dejavu_menu_pin_tab">Pinio’r tab</string>
     <string name="dejavu_menu_unpin_tab">Datbinio’r tab</string>
     <string name="dejavu_menu_essential_tab">Ychwanegu at yr hanfodion</string>

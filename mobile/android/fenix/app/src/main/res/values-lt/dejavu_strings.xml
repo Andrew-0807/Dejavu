@@ -183,7 +183,6 @@
     <string name="dejavu_menu_history">Žurnalas</string>
     <string name="dejavu_menu_translate">Versti</string>
     <string name="dejavu_menu_summarize">Apibendrinti</string>
-    <string name="dejavu_menu_report_broken_site">Pranešti apie svetainės problemą</string>
     <string name="dejavu_menu_pin_tab">Prisegti kortelę</string>
     <string name="dejavu_menu_unpin_tab">Atsegti kortelę</string>
     <string name="dejavu_menu_essential_tab">Pridėti prie Mėgstamiausių</string>

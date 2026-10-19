@@ -204,7 +204,6 @@
     <string name="dejavu_menu_history">ታሪክ</string>
     <string name="dejavu_menu_translate">ተርጉም</string>
     <string name="dejavu_menu_summarize">አጠቃልል</string>
-    <string name="dejavu_menu_report_broken_site">የድረ-ገፅ ችግር አሳውቅ</string>
     <string name="dejavu_menu_pin_tab">ትሩን ሰካ</string>
     <string name="dejavu_menu_unpin_tab">ትሩን ንቀል</string>
     <string name="dejavu_menu_essential_tab">ወደ አስፈላጊዎች አክል</string>

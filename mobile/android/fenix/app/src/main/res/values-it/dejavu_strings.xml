@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Cronologia</string>
     <string name="dejavu_menu_translate">Traduci</string>
     <string name="dejavu_menu_summarize">Riassumi</string>
-    <string name="dejavu_menu_report_broken_site">Segnala un problema del sito</string>
     <string name="dejavu_menu_pin_tab">Blocca scheda</string>
     <string name="dejavu_menu_unpin_tab">Sblocca scheda</string>
     <string name="dejavu_menu_essential_tab">Aggiungi ai preferiti</string>

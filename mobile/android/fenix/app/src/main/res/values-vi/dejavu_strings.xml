@@ -180,7 +180,6 @@
     <string name="dejavu_menu_history">Lịch sử</string>
     <string name="dejavu_menu_translate">Dịch</string>
     <string name="dejavu_menu_summarize">Tóm tắt</string>
-    <string name="dejavu_menu_report_broken_site">Báo cáo sự cố trang web</string>
     <string name="dejavu_menu_pin_tab">Ghim thẻ</string>
     <string name="dejavu_menu_unpin_tab">Bỏ ghim thẻ</string>
     <string name="dejavu_menu_essential_tab">Thêm vào trang thiết yếu</string>

@@ -182,7 +182,6 @@
     <string name="dejavu_menu_history">Povijest</string>
     <string name="dejavu_menu_translate">Prevedi</string>
     <string name="dejavu_menu_summarize">Sažmi</string>
-    <string name="dejavu_menu_report_broken_site">Prijavi problem sa stranicom</string>
     <string name="dejavu_menu_pin_tab">Prikvači karticu</string>
     <string name="dejavu_menu_unpin_tab">Otkvači karticu</string>
     <string name="dejavu_menu_essential_tab">Dodaj u Favorite</string>

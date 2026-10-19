@@ -182,7 +182,6 @@
     <string name="dejavu_menu_history">Historial</string>
     <string name="dejavu_menu_translate">Tradueix</string>
     <string name="dejavu_menu_summarize">Resumeix</string>
-    <string name="dejavu_menu_report_broken_site">Informa d\'un problema del lloc</string>
     <string name="dejavu_menu_pin_tab">Fixa la pestanya</string>
     <string name="dejavu_menu_unpin_tab">Desfixa la pestanya</string>
     <string name="dejavu_menu_essential_tab">Afegeix als essencials</string>

@@ -233,7 +233,6 @@
     <string name="dejavu_menu_history">हिस्ट्री</string>
     <string name="dejavu_menu_translate">अनुवाद करें</string>
     <string name="dejavu_menu_summarize">सारांश बनाएं</string>
-    <string name="dejavu_menu_report_broken_site">साइट की समस्या की रिपोर्ट करें</string>
     <string name="dejavu_menu_pin_tab">टैब पिन करें</string>
     <string name="dejavu_menu_unpin_tab">टैब अनपिन करें</string>
     <string name="dejavu_menu_essential_tab">एसेंशियल्स में जोड़ें</string>

@@ -181,7 +181,6 @@
     <string name="dejavu_menu_history">Historik</string>
     <string name="dejavu_menu_translate">Översätt</string>
     <string name="dejavu_menu_summarize">Sammanfatta</string>
-    <string name="dejavu_menu_report_broken_site">Rapportera webbplatsproblem</string>
     <string name="dejavu_menu_pin_tab">Fäst flik</string>
     <string name="dejavu_menu_unpin_tab">Lossa flik</string>
     <string name="dejavu_menu_essential_tab">Lägg till i Favoriter</string>

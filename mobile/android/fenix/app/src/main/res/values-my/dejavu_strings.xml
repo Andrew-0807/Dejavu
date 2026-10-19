@@ -180,7 +180,6 @@
     <string name="dejavu_menu_history">မှတ်တမ်း</string>
     <string name="dejavu_menu_translate">ဘာသာပြန်ရန်</string>
     <string name="dejavu_menu_summarize">အနှစ်ချုပ်ရန်</string>
-    <string name="dejavu_menu_report_broken_site">ဆိုက် ပြဿနာ တိုင်ကြားရန်</string>
     <string name="dejavu_menu_pin_tab">တက်ဗ် ပင်ထိုးရန်</string>
     <string name="dejavu_menu_unpin_tab">တက်ဗ် ပင်ထုတ်ရန်</string>
     <string name="dejavu_menu_essential_tab">မရှိမဖြစ်များထဲ ထည့်ရန်</string>
