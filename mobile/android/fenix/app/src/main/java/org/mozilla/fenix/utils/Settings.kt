@@ -2274,6 +2274,10 @@ class Settings(
     var isVerticalTabsCollapsed by
         booleanPreference(appContext.getPreferenceKey(R.string.pref_key_vertical_tabs_collapsed), default = false)
 
+    /** Hides the vertical tabs sidebar until a swipe from the left edge shows it over the page. */
+    var isVerticalTabsAutoHide by
+        booleanPreference(appContext.getPreferenceKey(R.string.pref_key_vertical_tabs_auto_hide), default = false)
+
     var isDynamicToolbarEnabled by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_dynamic_toolbar),
