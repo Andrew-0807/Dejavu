@@ -170,6 +170,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        shownGroup = savedInstanceState?.getString(SHOWN_GROUP)?.let(SettingsGroup::valueOf)
 
         components = requireContext().components
 
@@ -290,7 +291,12 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         val shown = group ?: SettingsGroup.entries.first().takeIf { wide }
         if (shown != shownGroup) listView?.scrollToPosition(0)
         shownGroup = shown
-        SettingsGroup.entries.forEach { findPreference<Preference>(getString(it.key))?.isVisible = it == shown }
+        SettingsGroup.entries.forEach { group ->
+            findPreference<Preference>(getString(group.key))?.apply {
+                isVisible = group == shown
+                title = if (wide) getString(group.title) else null
+            }
+        }
         homeView?.let { home ->
             home.isVisible = wide || shown == null
             home.layoutParams = LinearLayout.LayoutParams(
@@ -302,6 +308,11 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         listContainer?.isVisible = shown != null
         backToHome.isEnabled = !wide && shown != null
         if (isResumed) updateToolbar()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        shownGroup?.let { outState.putString(SHOWN_GROUP, it.name) }
     }
 
     private fun groupOf(key: String): SettingsGroup? {
@@ -366,9 +377,11 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         val suffix = nimbusValidation.settingsPunctuation
         toolbarTitle = "$title$suffix"
 
-        if (creatingFragment) {
-            args.preferenceToScrollTo?.let { key -> groupOf(key)?.let(::showGroup) }
-        }
+        // Dejavu: the searched preference is shown once. Its group is shown first, and the scroll waits for the list to
+        // hold it, so a later resume (back from a sub screen) neither reopens the group nor scrolls again.
+        val scrollTo = arguments?.getString(PREFERENCE_TO_SCROLL_TO)
+        arguments?.remove(PREFERENCE_TO_SCROLL_TO)
+        scrollTo?.let { key -> groupOf(key)?.let(::showGroup) }
         updateToolbar()
 
         // Account UI state is updated as part of `onCreate`. To not do it twice in a row, we only
@@ -382,9 +395,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
             .findViewById<RecyclerView>(R.id.recycler_view)
             ?.hideInitialScrollBar(viewLifecycleOwner.lifecycleScope)
 
-        args.preferenceToScrollTo?.let {
-            scrollToPreferenceWithHighlight(it)
-        }
+        scrollTo?.let { key -> listView?.post { if (view != null) scrollToPreferenceWithHighlight(key) } }
         // Consider finish of `onResume` to be the point at which we consider this fragment as 'created'.
         creatingFragment = false
     }
@@ -1077,5 +1088,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         private const val FXA_SYNC_OVERRIDE_EXIT_DELAY = 2000L
         private const val AMO_COLLECTION_OVERRIDE_EXIT_DELAY = 3000L
         private const val HOME_PANE_WIDTH_DP = 360
+        private const val SHOWN_GROUP = "dejavu_shown_group"
+        private const val PREFERENCE_TO_SCROLL_TO = "preference_to_scroll_to"
     }
 }

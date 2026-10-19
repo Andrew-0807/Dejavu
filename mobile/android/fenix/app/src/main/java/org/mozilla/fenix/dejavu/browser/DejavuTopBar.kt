@@ -18,6 +18,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -59,8 +60,9 @@ import org.mozilla.fenix.ext.components
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun DejavuTopBar(store: BrowserToolbarStore) {
-    val display by store.observeAsComposableState { it.displayState }
-    val origin = display.pageOrigin
+    // Narrow slices, so the progress ticks of a loading page only redraw the progress bar.
+    val origin by store.observeAsComposableState { it.displayState.pageOrigin }
+    val pageActionsStart by store.observeAsComposableState { it.displayState.pageActionsStart }
     val hint = stringResource(origin.hint)
     val text = origin.url?.toString()?.takeIf { it.isNotBlank() } ?: origin.title?.takeIf { it.isNotBlank() } ?: hint
     val haptic = LocalHapticFeedback.current
@@ -69,6 +71,13 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
     val settings = LocalContext.current.components.settings
     fun run(key: String) {
         if (key == "address_menu") menuOpen = true else store.dispatch(DejavuToolbar.GestureTriggered(key))
+    }
+    // A toolbar gesture seen outside this bar, see runToolbarGesture.
+    LaunchedEffect(DejavuAddressMenu.requested) {
+        if (DejavuAddressMenu.requested) {
+            DejavuAddressMenu.requested = false
+            menuOpen = true
+        }
     }
 
     Box(
@@ -101,7 +110,7 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
                 .glass(glass, CircleShape)
                 .padding(horizontal = FIELD_PADDING),
         ) {
-            ActionContainer(actions = display.pageActionsStart, onInteraction = { store.dispatch(it) })
+            ActionContainer(actions = pageActionsStart, onInteraction = { store.dispatch(it) })
             Text(
                 text = text,
                 style = MaterialTheme.typography.bodyLarge,
@@ -112,14 +121,7 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
                 modifier = Modifier.weight(1f, fill = false).padding(end = TITLE_END_PADDING).clearAndSetSemantics {},
             )
         }
-        display.progressBarConfig?.let { config ->
-            AnimatedProgressBar(
-                progress = config.progress,
-                color = config.color,
-                trackColor = Color.Transparent,
-                modifier = Modifier.align(Alignment.BottomCenter),
-            )
-        }
+        ProgressBar(store, Modifier.align(Alignment.BottomCenter))
         CompositionLocalProvider(LocalPopupTheme provides theme) {
             LongPressMenu(
                 expanded = menuOpen,
@@ -131,6 +133,19 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
                 onDismiss = { menuOpen = false },
             )
         }
+    }
+}
+
+@Composable
+private fun ProgressBar(store: BrowserToolbarStore, modifier: Modifier) {
+    val config by store.observeAsComposableState { it.displayState.progressBarConfig }
+    config?.let {
+        AnimatedProgressBar(
+            progress = it.progress,
+            color = it.color,
+            trackColor = Color.Transparent,
+            modifier = modifier,
+        )
     }
 }
 

@@ -143,11 +143,10 @@
         android:key="@string/pref_key_privacy_security_category"
         android:title="@string/preferences_category_privacy_security"
         android:layout="@layout/preference_category_no_icon_style">
-        <!-- Dejavu: private tabs live in the private workspace, and links from other apps can open in private tabs. -->
+        <!-- Dejavu: shown in the redesign, it holds the private tabs lock and screenshots in private tabs. -->
         <androidx.preference.Preference
             android:key="@string/pref_key_private_browsing"
             app:iconSpaceReserved="false"
-            app:isPreferenceVisible="false"
             android:title="@string/preferences_private_browsing_options" />
         <org.mozilla.fenix.settings.IPProtectionPreference
             android:key="@string/pref_key_ip_protection_settings"

@@ -240,8 +240,8 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
             binding.gestureLayout.addGestureListener(
                 ToolbarHorizontalGesturesHandler(
                     activity = requireActivity(),
-                    contentLayout = binding.browserLayout,
-                    tabPreview = binding.tabPreview,
+                    contentLayout = binding.swipeRefresh,
+                    tabPreview = binding.tabPreview.apply { showsToolbar = false },
                     toolbarLayoutRect = { browserToolbar.layout.getRectWithScreenLocation() },
                     navBarLayoutRect = { browserNavigationBar?.layout?.getRectWithScreenLocation() },
                     store = components.core.store,
@@ -253,6 +253,8 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
                                 trigger = BrowserThumbnailsFacts.CaptureAttemptedTriggers.SWIPE_TO_SWITCH_TABS
                             )
                     },
+                    // The split pane belongs to the page, so it slides with it while the toolbars stay.
+                    contentFollowers = { listOfNotNull(splitPaneView()) },
                 )
             )
         }

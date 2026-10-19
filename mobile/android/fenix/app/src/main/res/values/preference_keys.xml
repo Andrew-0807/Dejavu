@@ -662,4 +662,7 @@
     <string name="pref_key_webcompat_reporter_enhancements" translatable="false">pref_key_webcompat_reporter_enhancements</string>
 
     <string name="pref_key_deleted_report_site_domains_datastore" translatable="false">pref_key_deleted_report_site_domains_datastore</string>
+
+    <!-- Dejavu: bookmark guid to URL for the bookmarks that have a search keyword. -->
+    <string name="pref_key_dejavu_bookmark_keyword_urls" translatable="false">pref_key_dejavu_bookmark_keyword_urls</string>
 </resources>

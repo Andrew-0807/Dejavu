@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
   "name": "Dejavu mouse",
-  "version": "1.0",
+  "version": "1.1",
   "browser_specific_settings": {
     "gecko": {
       "id": "dejavu-mouse@dejavu.app"
     }
   },
-  "permissions": ["geckoViewAddons", "nativeMessaging"],
+  "permissions": ["geckoViewAddons", "nativeMessaging", "nativeMessagingFromContent"],
   "background": {
     "scripts": ["background.js"]
   },

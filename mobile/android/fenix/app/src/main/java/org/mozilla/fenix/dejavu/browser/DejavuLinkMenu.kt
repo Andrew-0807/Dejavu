@@ -51,7 +51,8 @@ object DejavuLinkMenu {
             ContextMenuCandidate(
                 id = "dejavu.contextmenu.open_in_split_view",
                 label = context.getString(R.string.dejavu_link_open_in_split_view),
-                showFor = newTab.showFor,
+                // Split views leave private tabs out, so the link could only open as a lone background tab there.
+                showFor = { tab, hit -> newTab.showFor(tab, hit) && !tab.content.private },
                 action = { tab, hit -> links.openInSplitView(tab, linkOf(hit)) },
             ),
             ContextMenuCandidate(
@@ -85,8 +86,13 @@ private class LinkOpener(
     private val components = context.components
     private val tabsUseCases = components.useCases.tabsUseCases
 
-    /** Opens [url] in a new tab shown next to [parent], in its container and workspace. */
+    /**
+     * Opens [url] in a new tab shown next to [parent], in its container and workspace. [parent] is shown on top, so
+     * the split view appears even when the link was in the split pane.
+     */
     fun openInSplitView(parent: SessionState, url: String) {
+        // The split pane never shows private tabs: opening one here would leave a lone tab in the background.
+        if (parent.content.private) return
         val repository = WorkspaceRepository.peek() ?: return
         val tabId = tabsUseCases.addTab(
             url = url,
@@ -94,10 +100,12 @@ private class LinkOpener(
             startLoading = true,
             parentId = parent.id,
             contextId = parent.contextId,
+            private = false,
             textDirectiveUserActivation = true,
         )
         repository.assignTab(tabId, repository.state.value.workspaceOf(parent.id))
         repository.createSplit(parent.id, tabId)
+        if (components.core.store.state.selectedTabId != parent.id) tabsUseCases.selectTab(parent.id)
     }
 
     fun pickContainer(parent: SessionState, url: String) {

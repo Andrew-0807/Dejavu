@@ -10,18 +10,45 @@ import java.net.URLEncoder
 /** A typed keyword match: search [engineId] for [text], or, when [engineId] is null, open the URL [text]. */
 data class KeywordMatch(val engineId: String?, val text: String)
 
-/** Splits "keyword rest" and looks the keyword up in [engineKeywords] (keyword to engine id) or [bookmarkKeywords] (keyword to URL with %s). */
+/**
+ * Splits "keyword rest" and looks the keyword up in [engineKeywords] (keyword to engine id) or [bookmarkKeywords]
+ * (keyword to bookmark guid, or to a URL as saved by older versions). [bookmarkUrl] gives a bookmark's URL by guid.
+ * An engine keyword needs search text. A bookmark keyword works alone too: its %s becomes the rest, URL encoded, and a
+ * bookmark without %s just opens.
+ */
 fun resolveSearchKeyword(
     input: String,
     engineKeywords: Map<String, String>,
     bookmarkKeywords: Map<String, String>,
+    bookmarkUrl: (String) -> String? = { null },
 ): KeywordMatch? {
     val parts = input.trim().split(" ", limit = 2)
     val rest = parts.getOrElse(1) { "" }.trim()
-    if (rest.isEmpty()) return null
     val word = parts[0].lowercase()
-    engineKeywords[word]?.let { return KeywordMatch(it, rest) }
-    return bookmarkKeywords[word]?.let { KeywordMatch(null, it.replace("%s", URLEncoder.encode(rest, "UTF-8"))) }
+    engineKeywords[word]?.let { return if (rest.isEmpty()) null else KeywordMatch(it, rest) }
+    val target = bookmarkKeywords[word] ?: return null
+    val url = if (target.contains(':')) target else bookmarkUrl(target) ?: return null
+    return KeywordMatch(null, url.replace("%s", URLEncoder.encode(rest, "UTF-8")))
+}
+
+/** What [keywordOwner] returns for the settings search keyword. */
+const val SETTINGS_KEYWORD_OWNER = "dejavu:settings"
+
+/**
+ * What already uses [keyword]: an engine id from [engineKeywords] (pass them with their defaults), a bookmark guid or
+ * old URL from [bookmarkKeywords], or [SETTINGS_KEYWORD_OWNER]. Null when it is free or blank.
+ */
+fun keywordOwner(
+    keyword: String,
+    engineKeywords: Map<String, String>,
+    bookmarkKeywords: Map<String, String>,
+    settingsKeyword: String,
+): String? {
+    val word = keyword.trim().lowercase()
+    if (word.isEmpty()) return null
+    return engineKeywords[word]?.takeIf { it.isNotEmpty() }
+        ?: bookmarkKeywords[word]
+        ?: SETTINGS_KEYWORD_OWNER.takeIf { word == settingsKeyword.trim().lowercase() }
 }
 
 /** Returns a copy where [value] has [keyword] as its only keyword, or none when [keyword] is blank. */

@@ -2283,6 +2283,10 @@ class Settings(
     var isVerticalTabsAutoHide by
         booleanPreference(appContext.getPreferenceKey(R.string.pref_key_vertical_tabs_auto_hide), default = false)
 
+    /** Draws the handle that pulls out the auto-hidden sidebar. Without it the handle still works, unseen. */
+    var isSidebarHandleShown by
+        booleanPreference(appContext.getPreferenceKey(R.string.pref_key_dejavu_sidebar_handle), default = true)
+
     var isDynamicToolbarEnabled by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_dynamic_toolbar),
@@ -2342,7 +2346,7 @@ class Settings(
     var toolbarDoubleTapGesture: String by
         stringPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_toolbar_double_tap_gesture),
-            default = { "scroll_top" },
+            default = { "none" },
         )
 
     var toolbarLongPressGesture: String by
@@ -3584,11 +3588,27 @@ class Settings(
             default = "o",
         )
 
-    /** Dejavu: typed keyword to bookmark URL, where %s is replaced by the search text. */
+    /** Dejavu: typed keyword to bookmark guid (or URL, as older versions saved), see `resolveSearchKeyword`. */
     var bookmarkKeywords: Map<String, String>
         get() = bookmarkKeywordsJson.toKeywordMap()
         set(value) {
             bookmarkKeywordsJson = value.toKeywordJson()
+        }
+
+    private var bookmarkKeywordUrlsJson by
+        stringPreference(
+            appContext.getPreferenceKey(R.string.pref_key_dejavu_bookmark_keyword_urls),
+            default = "{}",
+        )
+
+    /**
+     * Dejavu: bookmark guid to URL for the bookmarks that have a keyword, so typing a keyword reads no bookmark from
+     * storage. Kept current by the bookmark editor and `UseCases.refreshBookmarkKeywords`.
+     */
+    var bookmarkKeywordUrls: Map<String, String>
+        get() = bookmarkKeywordUrlsJson.toKeywordMap()
+        set(value) {
+            bookmarkKeywordUrlsJson = value.toKeywordJson()
         }
 
     // Dejavu: the account page always has the newer layout, where Dejavu adds syncing workspaces with Firefox or Zen.

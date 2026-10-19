@@ -112,7 +112,9 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
                 },
             ),
         )
-        args.preferenceToScrollTo?.let {
+        // Dejavu: scroll to a searched preference once, not again on return from a sub screen.
+        arguments?.getString(PREFERENCE_TO_SCROLL_TO)?.let {
+            arguments?.remove(PREFERENCE_TO_SCROLL_TO)
             scrollToPreferenceWithHighlight(it)
         }
     }
@@ -429,6 +431,10 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             isChecked = context.components.settings.isVerticalTabsAutoHide
             onPreferenceChangeListener = SharedPreferenceUpdater()
         }
+        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_sidebar_handle).apply {
+            isChecked = context.components.settings.isSidebarHandleShown
+            onPreferenceChangeListener = SharedPreferenceUpdater()
+        }
         requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dynamic_toolbar).apply {
             isChecked = context.components.settings.isDynamicToolbarEnabled
             onPreferenceChangeListener = SharedPreferenceUpdater()
@@ -489,6 +495,7 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
         const val SECTION_LOOK = "look"
         const val SECTION_TABS = "tabs"
         const val SECTION_INPUT = "input"
+        private const val PREFERENCE_TO_SCROLL_TO = "preference_to_scroll_to"
 
         // Used to send telemetry data about toolbar position changes
         enum class Position {

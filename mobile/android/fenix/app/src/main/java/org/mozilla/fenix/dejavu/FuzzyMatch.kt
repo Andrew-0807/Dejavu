@@ -17,9 +17,18 @@ const val FUZZY_GOOD_SCORE_PER_CHAR = 20
  * Scores [text] for [query] like fzf: every query character must appear in order, and matches at word starts or right
  * after the previous match score higher, gaps lower. Returns null when [text] does not match.
  */
-fun fuzzyScore(query: String, text: String): Int? {
+fun fuzzyScore(query: String, text: String): Int? = scoreNeedle(fuzzyNeedle(query), text)
+
+/** Every item whose [text] matches [query], best first, with its score. The query is normalized once. */
+fun <T> List<T>.fuzzyRanked(query: String, text: (T) -> String): List<Pair<T, Int>> {
+    val needle = fuzzyNeedle(query)
+    return mapNotNull { item -> scoreNeedle(needle, text(item))?.let { item to it } }.sortedByDescending { it.second }
+}
+
+private fun fuzzyNeedle(query: String) = query.lowercase().filterNot { it.isWhitespace() }
+
+private fun scoreNeedle(needle: String, text: String): Int? {
     // ponytail: greedy leftmost match, not fzf's optimal alignment. Add the backward pass if rankings look off.
-    val needle = query.lowercase().filterNot { it.isWhitespace() }
     if (needle.isEmpty()) return null
     val haystack = text.lowercase()
     var score = 0

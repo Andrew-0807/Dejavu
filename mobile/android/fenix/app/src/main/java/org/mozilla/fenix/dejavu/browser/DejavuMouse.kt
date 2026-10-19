@@ -14,14 +14,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.children
+import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.snackbar.Snackbar
-import mozilla.components.browser.state.selector.selectedTab
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import mozilla.components.concept.engine.EngineSession
 import mozilla.components.concept.engine.webextension.MessageHandler
+import mozilla.components.concept.toolbar.ScrollableToolbar
 import mozilla.components.feature.contextmenu.R as contextMenuR
+import mozilla.components.lib.state.ext.flowScoped
 import org.json.JSONObject
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.snackbar.FenixSnackbarDelegate
@@ -36,7 +43,7 @@ object DejavuMouse {
     private const val NAME = "dejavuMouse"
 
     private var onHover: ((String) -> Unit)? = null
-    private var onOpen: ((String) -> Unit)? = null
+    private var onOpen: ((String, EngineSession?) -> Unit)? = null
     private var installed = false
 
     fun install(fragment: Fragment, browserLayout: CoordinatorLayout, snackbarContainer: View) {
@@ -61,7 +68,7 @@ object DejavuMouse {
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             ).apply {
                 gravity = Gravity.BOTTOM or Gravity.START
-                setMargins((8 * density).toInt(), 0, 0, (80 * density).toInt())
+                setMargins((8 * density).toInt(), 0, 0, (16 * density).toInt())
             }
         }
         browserLayout.addView(pill)
@@ -71,9 +78,12 @@ object DejavuMouse {
                 override fun onStart(owner: LifecycleOwner) {
                     onHover = { url ->
                         pill.text = url
+                        pill.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                            bottomMargin = browserLayout.bottomToolbarHeight() + (16 * density).toInt()
+                        }
                         pill.visibility = if (url.isEmpty()) View.GONE else View.VISIBLE
                     }
-                    onOpen = { url -> openInBackground(fragment, snackbarContainer, url) }
+                    onOpen = { url, source -> openInBackground(fragment, snackbarContainer, url, source) }
                 }
 
                 override fun onStop(owner: LifecycleOwner) {
@@ -88,29 +98,47 @@ object DejavuMouse {
 
         if (installed) return
         installed = true
+        val store = components.core.store
         components.core.engine.installBuiltInWebExtension(
             ID,
             URL,
-            onSuccess = { it.registerBackgroundMessageHandler(NAME, handler) },
+            onSuccess = { extension ->
+                // Each page reports to the handler of its own session, so a click is known to come from its tab.
+                store.flowScoped(dispatcher = Dispatchers.Main) { flow ->
+                    flow.map { state -> state.tabs.mapNotNull { it.engineState.engineSession } }
+                        .distinctUntilChanged()
+                        .collect { sessions ->
+                            sessions.filterNot { extension.hasContentMessageHandler(it, NAME) }
+                                .forEach { extension.registerContentMessageHandler(it, NAME, handler) }
+                        }
+                }
+            },
             onError = { installed = false },
         )
     }
+
+    /** How far the visible toolbars at the bottom reach into [this], as they are shown right now. */
+    private fun CoordinatorLayout.bottomToolbarHeight(): Int = children
+        .filter { it is ScrollableToolbar && it.isVisible && it.top >= height / 2 }
+        .maxOfOrNull { (height - it.top - it.translationY.toInt()).coerceAtLeast(0) } ?: 0
 
     private val handler = object : MessageHandler {
         override fun onMessage(message: Any, source: EngineSession?): Any? {
             val json = message as? JSONObject ?: return null
             val url = json.optString("url")
             when (json.optString("type")) {
-                "hover" -> onHover?.invoke(url)
-                "open" -> if (url.isNotEmpty()) onOpen?.invoke(url)
+                "hover" -> onHover?.invoke(url.takeIf(::isOpenableLink).orEmpty())
+                "open" -> if (isOpenableLink(url)) onOpen?.invoke(url, source)
             }
             return null
         }
     }
 
-    private fun openInBackground(fragment: Fragment, snackbarContainer: View, url: String) {
+    /** Opens [url] next to the tab whose page, shown by [source], was clicked: the split pane may show another tab. */
+    private fun openInBackground(fragment: Fragment, snackbarContainer: View, url: String, source: EngineSession?) {
         val components = fragment.requireComponents
-        val tab = components.core.store.state.selectedTab ?: return
+        val state = components.core.store.state
+        val tab = state.tabs.firstOrNull { source != null && it.engineState.engineSession === source } ?: return
         val tabId = components.useCases.tabsUseCases.addTab(
             url = url,
             selectTab = false,
@@ -128,4 +156,13 @@ object DejavuMouse {
             listener = { components.useCases.tabsUseCases.selectTab(tabId) },
         )
     }
+}
+
+/** Schemes a page may open in a new tab with a middle-click: web pages only, never local or privileged ones. */
+private val OPENABLE_SCHEMES = setOf("http", "https")
+
+/** Whether [url], reported by a page, is a web address that a middle-click may open. */
+internal fun isOpenableLink(url: String): Boolean {
+    val scheme = url.substringBefore(':', missingDelimiterValue = "")
+    return scheme.lowercase() in OPENABLE_SCHEMES && url.startsWith("$scheme://") && url.length > scheme.length + 3
 }

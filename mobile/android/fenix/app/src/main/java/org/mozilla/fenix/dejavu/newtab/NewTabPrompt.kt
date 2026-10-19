@@ -37,6 +37,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,6 +61,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import mozilla.components.browser.state.search.DefaultSearchEngineProvider
 import mozilla.components.browser.state.search.SearchEngine
 import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
@@ -75,7 +79,8 @@ import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.metrics.MetricsUtils
 import org.mozilla.fenix.dejavu.FUZZY_GOOD_SCORE_PER_CHAR
-import org.mozilla.fenix.dejavu.fuzzyScore
+import org.mozilla.fenix.browser.browsingmode.BrowsingMode
+import org.mozilla.fenix.dejavu.fuzzyRanked
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.search.SearchEngineSource
 import org.mozilla.fenix.search.awesomebar.DefaultSuggestionIconProvider
@@ -83,8 +88,9 @@ import org.mozilla.fenix.search.awesomebar.DefaultSuggestionsStringsProvider
 import org.mozilla.fenix.search.awesomebar.SearchSuggestionsProvidersBuilder
 import org.mozilla.fenix.search.awesomebar.toSearchProviderState
 import org.mozilla.fenix.search.createInitialSearchFragmentState
-import org.mozilla.fenix.settings.settingssearch.PreferenceFileInformation
+import org.mozilla.fenix.search.shouldShowSearchSuggestions
 import org.mozilla.fenix.settings.settingssearch.SettingsSearchItem
+import org.mozilla.fenix.settings.settingssearch.distinctPreferringDejavuScreens
 import org.mozilla.fenix.theme.FirefoxTheme
 
 /**
@@ -114,9 +120,12 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
     val isPrivate = activity.browsingModeManager.mode.isPrivate
     var text by remember { mutableStateOf("") }
     val keyword = remember { components.settings.settingsSearchKeyword }
-    val settingsOnly = keyword.isNotEmpty() && text.startsWith("$keyword ", ignoreCase = true)
-    val query = if (settingsOnly) text.substring(keyword.length + 1) else text
+    val (settingsOnly, query) = queryOf(text, keyword)
     val navController = remember { activity.findNavController(R.id.container) }
+    val scope = rememberCoroutineScope()
+    val defaultEngine = remember {
+        components.core.store.state.search.selectedOrDefaultSearchEngine(private = isPrivate)
+    }
     val focus = remember { FocusRequester() }
     val shown = remember { Animatable(0f) }
     LaunchedEffect(Unit) {
@@ -135,7 +144,7 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
             newTab = true,
             private = isPrivate,
             forceSearch = forceSearch,
-            searchEngine = engine,
+            searchEngine = engine ?: defaultEngine,
             flags = flags ?: LoadUrlFlags.none(),
         )
         showBrowser()
@@ -148,10 +157,33 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
         onClose()
     }
 
+    // Enter and the keyboard's Go: the best setting when only settings are shown, else what was typed.
+    fun submit() {
+        val typed = queryOf(text, keyword)
+        when {
+            typed.settingsOnly -> scope.launch {
+                SettingsProvider.ranked(activity, typed.query).firstOrNull()?.let { (item, _) -> openSetting(item) }
+            }
+            typed.query.isNotBlank() -> load(typed.query)
+        }
+    }
+
     val webProviders = remember {
-        val defaultEngine = components.core.store.state.search.selectedOrDefaultSearchEngine(private = isPrivate)
-        val state = createInitialSearchFragmentState(activity, components, null, null, MetricsUtils.Source.NONE)
-            .copy(searchEngineSource = defaultEngine?.let { SearchEngineSource.Default(it) } ?: SearchEngineSource.None)
+        val state = createInitialSearchFragmentState(activity, components, null, null, MetricsUtils.Source.NONE).let {
+            // A private prompt shows no history of normal tabs, and web suggestions only when allowed in private tabs.
+            if (!isPrivate) {
+                it
+            } else {
+                it.copy(
+                    showSearchTermHistory = false,
+                    showAllHistorySuggestions = false,
+                    showHistorySuggestionsForCurrentEngine = false,
+                    showRecentSearches = false,
+                    showSearchSuggestionsFromCurrentEngine =
+                        shouldShowSearchSuggestions(BrowsingMode.Private, components.settings),
+                )
+            }
+        }.copy(searchEngineSource = defaultEngine?.let { SearchEngineSource.Default(it) } ?: SearchEngineSource.None)
         val builder = SearchSuggestionsProvidersBuilder(
             components = components,
             scope = ProcessLifecycleOwner.get().lifecycleScope,
@@ -166,8 +198,11 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
                 ) = load(url, flags = flags)
             },
             searchUseCase = object : SearchUseCase {
-                override fun invoke(searchTerms: String, searchEngine: SearchEngine?, parentSessionId: String?) =
-                    load(searchTerms, forceSearch = true, engine = searchEngine)
+                // A suggestion that repeats the typed text goes through keywords like Enter does.
+                override fun invoke(searchTerms: String, searchEngine: SearchEngine?, parentSessionId: String?) {
+                    val typed = searchTerms.trim().equals(queryOf(text, keyword).query.trim(), ignoreCase = true)
+                    load(searchTerms, forceSearch = !typed, engine = searchEngine)
+                }
             },
             selectTabUseCase = object : SelectTabUseCase {
                 override fun invoke(tabId: String) {
@@ -235,7 +270,7 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
                     ),
                     cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri, imeAction = ImeAction.Go),
-                    keyboardActions = KeyboardActions(onGo = { if (query.isNotBlank()) load(query) }),
+                    keyboardActions = KeyboardActions(onGo = { submit() }),
                     modifier = Modifier
                         .align(Alignment.CenterStart)
                         .fillMaxWidth()
@@ -244,12 +279,7 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
                             if (it.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
                             when (it.key) {
                                 Key.Escape -> onClose()
-                                Key.Enter, Key.NumPadEnter -> when {
-                                    settingsOnly -> SettingsProvider.ranked(activity, query).firstOrNull()
-                                        ?.let { (item, _) -> openSetting(item) }
-                                    query.isNotBlank() -> load(query)
-                                    else -> {}
-                                }
+                                Key.Enter, Key.NumPadEnter -> submit()
                                 else -> return@onPreviewKeyEvent false
                             }
                             true
@@ -282,8 +312,6 @@ private class SettingsProvider(
     override fun groupTitle() = context.getString(R.string.settings_title)
 
     override suspend fun onInputChanged(text: String): List<SuggestionItem> {
-        val indexer = context.components.settingsIndexer
-        if (indexer.indexedSettings().isEmpty()) indexer.indexAllSettings()
         val good = text.length * FUZZY_GOOD_SCORE_PER_CHAR
         return ranked(context, text)
             .filter { (_, score) -> onlySettings || (text.length >= MIN_AUTO_CHARS && score >= good) }
@@ -301,13 +329,23 @@ private class SettingsProvider(
     }
 
     companion object {
-        fun ranked(context: Context, text: String): List<Pair<SettingsSearchItem, Int>> =
-            context.components.settingsIndexer.indexedSettings()
-                .sortedBy { it.preferenceFileInformation !is PreferenceFileInformation.DejavuScreen }
-                .distinctBy { it.preferenceKey }
-                .mapNotNull { item -> fuzzyScore(text, item.title)?.let { item to it } }
-                .sortedByDescending { it.second }
+        /** Settings matching [text], best first. Indexes on first use and ranks off the main thread. */
+        suspend fun ranked(context: Context, text: String): List<Pair<SettingsSearchItem, Int>> =
+            withContext(Dispatchers.Default) {
+                val indexer = context.components.settingsIndexer
+                if (indexer.indexedSettings().isEmpty()) indexer.indexAllSettings()
+                indexer.indexedSettings().distinctPreferringDejavuScreens().fuzzyRanked(text) { it.title }
+            }
     }
+}
+
+/** What the prompt searches for: [query], in settings only when [settingsOnly]. */
+private data class PromptQuery(val settingsOnly: Boolean, val query: String)
+
+/** Typing the settings search [keyword] and a space first limits the results to settings. */
+private fun queryOf(text: String, keyword: String): PromptQuery {
+    val settingsOnly = keyword.isNotEmpty() && text.startsWith("$keyword ", ignoreCase = true)
+    return PromptQuery(settingsOnly, if (settingsOnly) text.substring(keyword.length + 1) else text)
 }
 
 private val PromptShape = RoundedCornerShape(15.dp)

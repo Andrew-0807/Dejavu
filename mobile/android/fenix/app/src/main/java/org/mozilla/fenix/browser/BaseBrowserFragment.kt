@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.browser
 
+import android.app.Activity
 import android.app.KeyguardManager
 import android.content.Context
 import android.content.DialogInterface
@@ -45,6 +46,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.viewinterop.AndroidView
@@ -81,6 +83,7 @@ import mozilla.components.browser.state.action.ContentAction
 import mozilla.components.browser.state.action.SystemPermissionRequestAction
 import mozilla.components.browser.state.selector.findCustomTab
 import mozilla.components.browser.state.selector.findCustomTabOrSelectedTab
+import mozilla.components.browser.state.selector.findTab
 import mozilla.components.browser.state.selector.findTabOrCustomTab
 import mozilla.components.browser.state.selector.findTabOrCustomTabOrSelectedTab
 import mozilla.components.browser.state.selector.getNormalOrPrivateTabs
@@ -207,7 +210,6 @@ import org.mozilla.fenix.browser.store.BrowserScreenMiddleware
 import org.mozilla.fenix.browser.store.BrowserScreenState
 import org.mozilla.fenix.browser.store.BrowserScreenStore
 import org.mozilla.fenix.browser.tabstrip.TabSidebar
-import org.mozilla.fenix.browser.tabstrip.TabSidebarEdgeSwipe
 import org.mozilla.fenix.browser.tabstrip.TabStrip
 import org.mozilla.fenix.components.AppStore
 import org.mozilla.fenix.components.FenixAutocompletePrompt
@@ -234,9 +236,11 @@ import org.mozilla.fenix.customtabs.ExternalAppBrowserActivity
 import org.mozilla.fenix.databinding.FragmentBrowserBinding
 import org.mozilla.fenix.dejavu.browser.DejavuMouse
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.SplitPanes
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
 import org.mozilla.fenix.dejavu.shortcuts.KeyboardShortcuts
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.downloads.DownloadService
 import org.mozilla.fenix.downloads.RenameAndChangeLocationDialogFragment
 import org.mozilla.fenix.downloads.dialog.createDownloadAppDialog
@@ -245,6 +249,7 @@ import org.mozilla.fenix.ext.breadcrumb
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getBottomToolbarHeight
 import org.mozilla.fenix.ext.getPreferenceKey
+import org.mozilla.fenix.ext.getRectWithScreenLocation
 import org.mozilla.fenix.ext.getTopToolbarHeight
 import org.mozilla.fenix.ext.hideToolbar
 import org.mozilla.fenix.ext.isOnline
@@ -254,6 +259,7 @@ import org.mozilla.fenix.ext.registerForActivityResult
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.runIfFragmentIsAttached
 import org.mozilla.fenix.ext.secure
+import org.mozilla.fenix.ext.setSystemBarsShown
 import org.mozilla.fenix.ext.tabClosedUndoMessage
 import org.mozilla.fenix.ext.updateMicrosurveyPromptForConfigurationChange
 import org.mozilla.fenix.messaging.FenixMessageSurfaceId
@@ -569,6 +575,9 @@ abstract class BaseBrowserFragment :
         }
 
         _browserToolbar = initializeBrowserToolbar(activity, store, readerMenuController)
+        if (customTabSessionId == null && settings.shouldUseCompactToolbar) {
+            browserToolbar.layout.addOnLayoutChangeListener(compactBarResizeListener)
+        }
         browserTabStrip = initializeBrowserTabStripView(activity, appStore, settings)
         initializeTabSidebar(settings)
 
@@ -1251,6 +1260,9 @@ abstract class BaseBrowserFragment :
         installDejavuSplitView(binding.browserLayout, binding.swipeRefresh, binding.engineView, customTabSessionId) {
             getContextMenuCandidates(context, binding.dynamicSnackbarContainer)
         }
+        binding.gestureLayout.onTouchDown = { x, y ->
+            splitPaneTouched = splitPaneView()?.getRectWithScreenLocation()?.contains(x.toInt(), y.toInt()) == true
+        }
 
         if (customTabSessionId == null) {
             DejavuMouse.install(this, binding.browserLayout, binding.dynamicSnackbarContainer)
@@ -1667,14 +1679,22 @@ abstract class BaseBrowserFragment :
                 startToEnd = ConstraintLayout.LayoutParams.UNSET
                 startToStart = ConstraintLayout.LayoutParams.PARENT_ID
             }
-            binding.gestureLayout.addGestureListener(TabSidebarEdgeSwipe(binding.gestureLayout, overlayShown))
         }
         binding.tabSidebar.setContent {
+            val handleShown = androidx.compose.runtime.remember { mutableStateOf(settings.isSidebarHandleShown) }
+            androidx.compose.runtime.DisposableEffect(Unit) {
+                val listener = android.content.SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
+                    handleShown.value = settings.isSidebarHandleShown
+                }
+                settings.preferences.registerOnSharedPreferenceChangeListener(listener)
+                onDispose { settings.preferences.unregisterOnSharedPreferenceChangeListener(listener) }
+            }
             FirefoxTheme {
                 TabSidebar(
                     navController = findNavController(),
                     onNoTabs = { findNavController().navigate(BrowserFragmentDirections.actionGlobalHome()) },
                     overlayShown = overlayShown,
+                    showHandle = handleShown.value && !isImmersive,
                 )
             }
         }
@@ -2136,6 +2156,16 @@ abstract class BaseBrowserFragment :
             components.useCases.sessionUseCases.reload()
         }
         hideToolbar()
+        if (restoreImmersive) {
+            // Full immersive mode was on before the fragment was made again; the toolbars are set up after a layout.
+            restoreImmersive = false
+            view?.post {
+                if (isResumed && _browserToolbar != null) {
+                    enterFullImmersive()
+                    restoreImmersiveExtras()
+                }
+            }
+        }
         if (components.settings.shouldHideSystemBars) {
             systemBarsFollowToolbar = isToolbarDynamic(requireContext())
             systemBarsHidden = null
@@ -2182,11 +2212,10 @@ abstract class BaseBrowserFragment :
                 fullScreenChanged(false)
             }
         }
-        exitFullImmersive()
+        // Dejavu: full immersive mode stays while the app is in the background, and ends when the page is left.
+        if (isRemoving || activity?.isFinishing == true) exitFullImmersive()
         if (requireComponents.settings.shouldHideSystemBars) {
-            activity?.exitImmersiveMode(
-                unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
-            )
+            setSystemBarsHidden(false)
         }
     }
 
@@ -2213,22 +2242,57 @@ abstract class BaseBrowserFragment :
         val activity = activity ?: return
         if (hidden == systemBarsHidden) return
         systemBarsHidden = hidden
-        if (hidden) {
-            activity.enterImmersiveMode(
-                setOnApplyWindowInsetsListener = { key: String, listener: OnApplyWindowInsetsListener ->
-                    binding.engineView.addWindowInsetsListener(key, listener)
-                }
-            )
-        } else {
-            activity.exitImmersiveMode(
-                unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
-            )
-        }
+        // Only the insets controller: enterImmersiveMode also toggles window flags, which would lay the window out
+        // again on every scroll and stop the keyboard from resizing it.
+        activity.setSystemBarsShown(!hidden)
+    }
+
+    /** Whether the window was put in immersive mode with enterImmersiveMode, which has to be undone. */
+    private var isWindowImmersive = false
+
+    private fun enterWindowImmersive(activity: Activity) {
+        isWindowImmersive = true
+        activity.enterImmersiveMode(
+            setOnApplyWindowInsetsListener = { key: String, listener: OnApplyWindowInsetsListener ->
+                binding.engineView.addWindowInsetsListener(key, listener)
+            }
+        )
+    }
+
+    private fun exitWindowImmersive(activity: Activity) {
+        isWindowImmersive = false
+        activity.exitImmersiveMode(
+            unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
+        )
     }
 
     // Dejavu: full immersive mode. A swipe down on the bottom bar hides the system bars and every browser bar.
     // A floating button that can be dragged anywhere brings them back.
-    private var isImmersive = false
+    private var isImmersive by mutableStateOf(false)
+
+    /** Whether full immersive mode was on when the state of this fragment was saved, so it comes back on resume. */
+    private var restoreImmersive = false
+
+    /** The rotation lock and the brightness of full immersive mode, saved with it, to set again on restore. */
+    private var restoredOrientationBeforeLock: Int? = null
+    private var restoredBrightness: Float? = null
+
+    /** Locks the rotation and sets the brightness again as they were before the fragment was made again. */
+    private fun restoreImmersiveExtras() {
+        val activity = activity ?: return
+        val before = restoredOrientationBeforeLock
+        val brightness = restoredBrightness
+        restoredOrientationBeforeLock = null
+        restoredBrightness = null
+        if (!isImmersive) return
+        if (before != null) {
+            orientationBeforeLock = before
+            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
+        }
+        if (brightness != null && brightness >= 0f) {
+            activity.window.attributes = activity.window.attributes.apply { screenBrightness = brightness }
+        }
+    }
     private var exitImmersiveButton: View? = null
     private val exitImmersiveButtonPlacer = View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
         placeExitImmersiveButton()
@@ -2260,11 +2324,7 @@ abstract class BaseBrowserFragment :
         if (requireComponents.settings.shouldHideSystemBars) {
             setSystemBarsHidden(true)
         } else {
-            activity.enterImmersiveMode(
-                setOnApplyWindowInsetsListener = { key: String, listener: OnApplyWindowInsetsListener ->
-                    binding.engineView.addWindowInsetsListener(key, listener)
-                }
-            )
+            enterWindowImmersive(activity)
         }
         // Like fullscreen video, so dragging the button over the hidden toolbar does not switch tabs.
         (view as? SwipeGestureLayout)?.isSwipeEnabled = false
@@ -2456,7 +2516,24 @@ abstract class BaseBrowserFragment :
         menu.isOutsideTouchable = true
         menu.setOnDismissListener { if (immersiveMenu === menu) immersiveMenu = null }
         immersiveMenu = menu
-        menu.showAsDropDown(button)
+        // Placed by hand, below the button or above it near the bottom, so it stays on screen wherever it is dragged.
+        val decor = activity.window.decorView
+        content.measure(
+            View.MeasureSpec.makeMeasureSpec(decor.width, View.MeasureSpec.AT_MOST),
+            View.MeasureSpec.makeMeasureSpec(decor.height, View.MeasureSpec.AT_MOST),
+        )
+        val location = IntArray(2).also { button.getLocationInWindow(it) }
+        val (x, y) =
+            immersiveMenuPosition(
+                anchorX = location[0],
+                anchorY = location[1],
+                anchorHeight = button.height,
+                menuWidth = content.measuredWidth,
+                menuHeight = content.measuredHeight,
+                windowWidth = decor.width,
+                windowHeight = decor.height,
+            )
+        menu.showAtLocation(button, Gravity.NO_GRAVITY, x, y)
     }
 
     private fun placeExitImmersiveButton() {
@@ -2488,11 +2565,58 @@ abstract class BaseBrowserFragment :
         }
     }
 
+    // Dejavu: Back goes to the split pane when the user last touched it.
+    /** Whether the last touch on the browser was in the split pane. */
+    private var splitPaneTouched = false
+
+    /** The id of the tab in the split pane next to the shown tab, or `null` without a split view. */
+    private fun splitPaneTabId(): String? {
+        if (customTabSessionId != null) return null
+        val selectedId = requireComponents.core.store.state.selectedTabId ?: return null
+        return WorkspaceRepository.peek()?.state?.value?.splitOf(selectedId)?.tabIds?.firstOrNull { it != selectedId }
+    }
+
+    /** The split pane, its bar and its page, when this browser shows one. */
+    internal fun splitPaneView(): View? {
+        val binding = _binding ?: return null
+        val tabId = splitPaneTabId() ?: return null
+        val paneEngineView = SplitPanes.active?.engineViewOf(tabId)?.takeIf { it !== binding.engineView } ?: return null
+        var pane = paneEngineView.asView()
+        while (true) {
+            val parent = pane.parent as? View ?: return null
+            if (parent === binding.browserLayout) return pane
+            pane = parent
+        }
+    }
+
+    /**
+     * Goes back in the split pane when the user last touched it. With no page to go back to there, the split view
+     * closes and both tabs stay open.
+     */
+    private fun handleSplitPaneBack(): Boolean {
+        if (!splitPaneTouched) return false
+        val tabId = splitPaneTabId()
+        if (tabId == null || splitPaneView() == null) {
+            splitPaneTouched = false
+            return false
+        }
+        val tab = requireComponents.core.store.state.findTab(tabId) ?: return false
+        if (tab.content.canGoBack) {
+            requireComponents.useCases.sessionUseCases.goBack(tabId)
+        } else {
+            WorkspaceRepository.peek()?.unsplit(setOf(tabId))
+            splitPaneTouched = false
+        }
+        return true
+    }
+
     @CallSuper
     override fun onBackPressed(): Boolean {
         return findInPageIntegration.onBackPressed() ||
             fullScreenFeature.onBackPressed() ||
+            exitFullImmersive() ||
             promptsFeature.onBackPressed() ||
+            handleSplitPaneBack() ||
             sessionFeature.onBackPressed() ||
             handleDejavuBackPressed(customTabSessionId) ||
             lastTabFeature.onBackPressed()
@@ -2533,6 +2657,11 @@ abstract class BaseBrowserFragment :
         super.onSaveInstanceState(outState)
         outState.putString(KEY_CUSTOM_TAB_SESSION_ID, customTabSessionId)
         outState.putString(LAST_SAVED_GENERATED_PASSWORD, lastSavedGeneratedPassword)
+        outState.putBoolean(KEY_IMMERSIVE, isImmersive)
+        if (isImmersive) {
+            orientationBeforeLock?.let { outState.putInt(KEY_ORIENTATION_BEFORE_LOCK, it) }
+            activity?.window?.attributes?.screenBrightness?.let { outState.putFloat(KEY_BRIGHTNESS, it) }
+        }
     }
 
     /** Retrieves the external app session ID saved by [onSaveInstanceState]. */
@@ -2544,6 +2673,10 @@ abstract class BaseBrowserFragment :
             }
         }
         lastSavedGeneratedPassword = savedInstanceState?.getString(LAST_SAVED_GENERATED_PASSWORD)
+        restoreImmersive = savedInstanceState?.getBoolean(KEY_IMMERSIVE) == true
+        restoredOrientationBeforeLock = savedInstanceState?.takeIf { it.containsKey(KEY_ORIENTATION_BEFORE_LOCK) }
+            ?.getInt(KEY_ORIENTATION_BEFORE_LOCK)
+        restoredBrightness = savedInstanceState?.takeIf { it.containsKey(KEY_BRIGHTNESS) }?.getFloat(KEY_BRIGHTNESS)
     }
 
     /** Forwards permission grant results to one of the features. */
@@ -2686,11 +2819,7 @@ abstract class BaseBrowserFragment :
                 )
                 .show()
 
-            activity.enterImmersiveMode(
-                setOnApplyWindowInsetsListener = { key: String, listener: OnApplyWindowInsetsListener ->
-                    binding.engineView.addWindowInsetsListener(key, listener)
-                }
-            )
+            enterWindowImmersive(activity)
             (view as? SwipeGestureLayout)?.isSwipeEnabled = false
             binding.tabSidebar.isVisible = false
             tabSidebarOverlay?.value = false
@@ -2700,11 +2829,11 @@ abstract class BaseBrowserFragment :
         } else {
             // Dejavu: the system bars stay hidden and follow the toolbar again from the next frame.
             if (requireComponents.settings.shouldHideSystemBars) {
+                // Fullscreen video set the window flags, which the insets controller alone does not undo.
+                if (isWindowImmersive) exitWindowImmersive(activity)
                 systemBarsHidden = null
             } else {
-                activity.exitImmersiveMode(
-                    unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
-                )
+                exitWindowImmersive(activity)
             }
 
             (view as? SwipeGestureLayout)?.isSwipeEnabled = true
@@ -2796,9 +2925,36 @@ abstract class BaseBrowserFragment :
 
         initializeEngineView(
             topToolbarHeight = if (shouldToolbarsBeHidden) 0 else topToolbarHeight,
-            bottomToolbarHeight = if (shouldToolbarsBeHidden) 0 else bottomToolbarHeight,
+            bottomToolbarHeight =
+                if (shouldToolbarsBeHidden) 0 else bottomToolbarHeight.coerceAtLeast(compactBarHeight()),
         )
     }
+
+    /**
+     * Dejavu: the height of the compact toolbar as it is shown, with its buttons when they are swiped up, or 0 when it
+     * is not used, not shown or shows search suggestions.
+     */
+    private fun compactBarHeight(): Int {
+        if (customTabSessionId != null || !requireComponents.settings.shouldUseCompactToolbar) return 0
+        if (requireComponents.appStore.state.searchState.isSearchActive) return 0
+        return _browserToolbar?.layout?.takeIf { it.isVisible }?.height ?: 0
+    }
+
+    // Dejavu: the compact toolbar grows when its buttons are swiped up. Once its size settles, the page is laid out
+    // again above it, so the bottom of the page does not hide behind the buttons.
+    private val reinitializeForCompactBar = Runnable {
+        val isFullScreen = fullScreenFeature.get()?.isFullScreen == true
+        if (_binding != null && _browserToolbar != null && !isImmersive && !isFullScreen) reinitializeEngineView()
+    }
+    private val compactBarResizeListener =
+        View.OnLayoutChangeListener { v, _, top, _, bottom, _, oldTop, _, oldBottom ->
+            val height = bottom - top
+            val oldHeight = oldBottom - oldTop
+            if (v.isVisible && height > 0 && oldHeight > 0 && height != oldHeight) {
+                v.removeCallbacks(reinitializeForCompactBar)
+                v.postDelayed(reinitializeForCompactBar, COMPACT_BAR_SETTLE_MS)
+            }
+        }
 
     /*
      * Dereference these views when the fragment view is destroyed to prevent memory leaks
@@ -2812,6 +2968,18 @@ abstract class BaseBrowserFragment :
 
         binding.engineView.setActivityContext(null)
         requireContext().accessibilityManager.removeAccessibilityStateChangeListener(this)
+
+        // Dejavu: the floating button, its layout listener and its pending fade hold this fragment, as do the
+        // compact toolbar listener and the touch hook. Immersive mode stays only for the fragment made again after a
+        // configuration change, which turns it back on in onResume.
+        if (activity?.isChangingConfigurations != true) exitFullImmersive()
+        removeExitImmersiveButton()
+        _browserToolbar?.layout?.let {
+            it.removeOnLayoutChangeListener(compactBarResizeListener)
+            it.removeCallbacks(reinitializeForCompactBar)
+        }
+        binding.gestureLayout.onTouchDown = null
+        splitPaneTouched = false
 
         loginSelectBar = null
         addressSelectBar = null
@@ -2852,6 +3020,10 @@ abstract class BaseBrowserFragment :
         private const val REQUEST_CODE_PROMPT_PERMISSIONS = 2
         private const val REQUEST_CODE_APP_PERMISSIONS = 3
         private const val LAST_SAVED_GENERATED_PASSWORD = "last_saved_generated_password"
+        private const val KEY_IMMERSIVE = "dejavu_full_immersive"
+        private const val KEY_ORIENTATION_BEFORE_LOCK = "dejavu_immersive_orientation_before_lock"
+        private const val KEY_BRIGHTNESS = "dejavu_immersive_brightness"
+        private const val COMPACT_BAR_SETTLE_MS = 150L
 
         // Dejavu: the floating button that leaves full immersive mode.
         private const val BUTTON_SIZE_DP = 44
@@ -3159,4 +3331,27 @@ abstract class BaseBrowserFragment :
             )
         }
     }
+}
+
+/**
+ * Dejavu: where the menu of the full immersive button opens, in window coordinates: below the button at [anchorX],
+ * [anchorY] and [anchorHeight] high, or above it when there is no room below, moved in so it stays in the window.
+ */
+internal fun immersiveMenuPosition(
+    anchorX: Int,
+    anchorY: Int,
+    anchorHeight: Int,
+    menuWidth: Int,
+    menuHeight: Int,
+    windowWidth: Int,
+    windowHeight: Int,
+): Pair<Int, Int> {
+    val x = anchorX.coerceAtMost(windowWidth - menuWidth).coerceAtLeast(0)
+    val below = anchorY + anchorHeight
+    val y = when {
+        below + menuHeight <= windowHeight -> below
+        anchorY - menuHeight >= 0 -> anchorY - menuHeight
+        else -> (windowHeight - menuHeight).coerceAtLeast(0)
+    }
+    return x to y
 }

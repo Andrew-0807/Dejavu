@@ -6,6 +6,7 @@ package org.mozilla.fenix.dejavu.settings
 
 import android.os.Bundle
 import android.os.StrictMode
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,7 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -803,6 +805,15 @@ class DejavuShortcutsFragment : DejavuComposeFragment(R.string.dejavu_settings_s
     }
 }
 
+/** Keys that move focus, kept inside the shortcut dialog's recording field. */
+private val FOCUS_KEYS = setOf(
+    KeyEvent.KEYCODE_TAB,
+    KeyEvent.KEYCODE_DPAD_UP,
+    KeyEvent.KEYCODE_DPAD_DOWN,
+    KeyEvent.KEYCODE_DPAD_LEFT,
+    KeyEvent.KEYCODE_DPAD_RIGHT,
+)
+
 @Composable
 private fun ShortcutDialog(
     action: ShortcutAction,
@@ -812,15 +823,19 @@ private fun ShortcutDialog(
     onDismiss: () -> Unit,
 ) {
     var captured by remember { mutableStateOf<KeyCombo?>(null) }
-    val taken = captured?.let { KeyboardShortcuts.actionFor(it, saved) }?.takeIf { it != action }
+    val current = KeyboardShortcuts.comboOf(action, saved)
+    val taken = captured?.let { KeyboardShortcuts.conflictOf(action, it, saved) }
     val focus = remember { FocusRequester() }
     LaunchedEffect(Unit) { focus.requestFocus() }
+    DisposableEffect(Unit) {
+        KeyboardShortcuts.recording = true
+        onDispose { KeyboardShortcuts.recording = false }
+    }
     DejavuDialog(
         title = stringResource(action.label, action.labelArg),
         onDismissRequest = onDismiss,
         buttons = {
-            DejavuDialogButton(stringResource(R.string.dejavu_shortcuts_reset), { onSet(null); onDismiss() })
-            DejavuDialogButton(stringResource(R.string.dejavu_shortcuts_clear), { onSet(""); onDismiss() })
+            DejavuDialogButton(stringResource(R.string.dejavu_cancel), onDismiss)
             val combo = captured
             if (taken != null && combo != null) {
                 DejavuDialogButton(
@@ -833,33 +848,63 @@ private fun ShortcutDialog(
                     stringResource(R.string.dejavu_shortcuts_save),
                     { onSet(combo?.encode()); onDismiss() },
                     DejavuButtonStyle.Primary,
-                    enabled = combo != null,
+                    enabled = combo != null && combo != current,
                 )
             }
         },
     ) {
         Text(
+            text = stringResource(
+                R.string.dejavu_shortcuts_current,
+                current?.label() ?: stringResource(R.string.dejavu_shortcuts_none),
+            ),
+            style = MaterialTheme.typography.bodyMedium,
+        )
+        Text(
             text = captured?.label() ?: stringResource(R.string.dejavu_shortcuts_press),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier
+                .padding(vertical = 16.dp)
                 .focusRequester(focus)
                 .onPreviewKeyEvent {
-                    val combo = if (it.type == KeyEventType.KeyDown) KeyCombo.of(it.nativeKeyEvent) else null
-                    if (combo?.hasCtrlOrAlt == true) captured = combo
-                    combo?.hasCtrlOrAlt == true
+                    // Lone modifiers and keys without Ctrl or Alt are not shortcuts, so they keep their usual job,
+                    // except Tab and arrows, which would move focus off this field and stop the recording.
+                    val pressed = KeyCombo.of(it.nativeKeyEvent)?.takeIf { combo -> combo.hasCtrlOrAlt }
+                        ?: return@onPreviewKeyEvent it.nativeKeyEvent.keyCode in FOCUS_KEYS
+                    if (it.type == KeyEventType.KeyDown) captured = pressed
+                    true
                 }
                 .focusable(),
         )
-        if (taken != null) {
+        val combo = captured
+        if (taken != null && combo != null) {
             Text(
                 text = stringResource(
                     R.string.dejavu_shortcuts_taken,
-                    captured?.label().orEmpty(),
+                    combo.label(),
                     stringResource(taken.label, taken.labelArg),
                 ),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.error,
+            )
+        } else if (combo?.editsText == true) {
+            Text(
+                text = stringResource(R.string.dejavu_shortcuts_text_keys, combo.label()),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        }
+        Row(modifier = Modifier.padding(top = 16.dp)) {
+            DejavuDialogButton(
+                stringResource(R.string.dejavu_shortcuts_reset),
+                { onSet(null); onDismiss() },
+                enabled = action.key in saved,
+            )
+            Spacer(Modifier.width(8.dp))
+            DejavuDialogButton(
+                stringResource(R.string.dejavu_shortcuts_clear),
+                { onSet(""); onDismiss() },
+                enabled = current != null,
             )
         }
     }

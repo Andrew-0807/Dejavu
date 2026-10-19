@@ -14,7 +14,9 @@
     <string name="dejavu_settings_shortcuts_summary">Change the keys of the shortcuts for a hardware keyboard</string>
     <string name="dejavu_shortcuts_hint">Tap a shortcut to give it another key. Shortcuts need Ctrl or Alt.</string>
     <string name="dejavu_shortcuts_press">Press the new key combination.</string>
-    <string name="dejavu_shortcuts_taken">%1$s is used by \"%2$s\".</string>
+    <string name="dejavu_shortcuts_taken">%1$s is already used by \"%2$s\". Swap gives \"%2$s\" this shortcut\'s current key, or cancel to change nothing.</string>
+    <string name="dejavu_shortcuts_current">Current: %1$s</string>
+    <string name="dejavu_shortcuts_text_keys">Text fields and web pages keep %1$s while they have focus.</string>
     <string name="dejavu_shortcuts_none">None</string>
     <string name="dejavu_shortcuts_save">Save</string>
     <string name="dejavu_shortcuts_swap">Swap</string>
@@ -335,6 +337,8 @@
     <string name="pref_key_dejavu_swipe_down_immersive" translatable="false">pref_key_dejavu_swipe_down_immersive</string>
     <string name="pref_key_dejavu_immersive_button_x" translatable="false">pref_key_dejavu_immersive_button_x</string>
     <string name="pref_key_dejavu_immersive_button_y" translatable="false">pref_key_dejavu_immersive_button_y</string>
+    <string name="pref_key_dejavu_sidebar_handle" translatable="false">pref_key_dejavu_sidebar_handle</string>
+    <string name="dejavu_settings_sidebar_handle">Show sidebar handle</string>
     <string name="dejavu_settings_swipe_down_immersive">Swipe down on the toolbar for full screen</string>
     <string name="dejavu_settings_swipe_down_immersive_summary">Hides every bar. Tap the floating button, which you can drag anywhere, to bring them back.</string>
     <!-- Content description of the floating button that leaves full screen -->

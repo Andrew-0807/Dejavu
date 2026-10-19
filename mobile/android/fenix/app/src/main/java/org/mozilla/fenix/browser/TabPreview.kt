@@ -82,6 +82,15 @@ constructor(
     private val translationsFeatureSettings = TranslationsEnabledSettings.dataStore(context)
 
     private lateinit var mockToolbarView: View
+
+    /** Whether the preview draws a toolbar of its own, or the real toolbars stay over it. */
+    var showsToolbar = true
+        set(value) {
+            field = value
+            binding.composableTopToolbar.isVisible = value
+            binding.composableBottomToolbar.isVisible = value
+        }
+
     private val browserToolbarStore: BrowserToolbarStore by
         lazy(LazyThreadSafetyMode.NONE) {
             BrowserToolbarStore()
@@ -303,10 +312,11 @@ constructor(
         super.onLayout(changed, left, top, right, bottom)
 
         binding.previewThumbnail.translationY =
-            if (context.components.settings.toolbarPosition == ToolbarPosition.TOP) {
-                mockToolbarView.height.toFloat()
-            } else {
-                0f
+            when {
+                // The page sits below a fixed top toolbar by its top margin, and the real toolbar stays over the preview.
+                !showsToolbar -> (parent as? View)?.findViewById<View>(R.id.swipeRefresh)?.top?.toFloat() ?: 0f
+                context.components.settings.toolbarPosition == ToolbarPosition.TOP -> mockToolbarView.height.toFloat()
+                else -> 0f
             }
     }
 
@@ -418,7 +428,7 @@ constructor(
                 }
             }
                 .apply {
-                    isVisible = true
+                    isVisible = showsToolbar
                 }
         }
     }
@@ -450,7 +460,7 @@ constructor(
                 }
             }
                 .apply {
-                    isVisible = true
+                    isVisible = showsToolbar
                 }
         }
     }

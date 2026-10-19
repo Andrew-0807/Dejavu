@@ -204,6 +204,8 @@ class BrowserToolbarSearchMiddleware(
             }
 
             is ExitEditMode -> {
+                // A Shift+Enter that committed nothing must not make a later commit open a new tab.
+                commitInNewTab = false
                 syncCurrentSearchEngineJob?.cancel()
                 syncAvailableSearchEnginesJob?.cancel()
 

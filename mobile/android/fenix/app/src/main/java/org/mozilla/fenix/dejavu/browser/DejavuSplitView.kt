@@ -66,8 +66,10 @@ import mozilla.components.browser.state.action.TabListAction
 import mozilla.components.browser.state.selector.findTab
 import mozilla.components.browser.state.selector.selectedTab
 import mozilla.components.browser.state.state.BrowserState
+import mozilla.components.browser.state.state.ContentState
 import mozilla.components.concept.engine.EngineSession
 import mozilla.components.concept.engine.EngineView
+import mozilla.components.concept.engine.prompt.PromptRequest
 import mozilla.components.concept.toolbar.ScrollableToolbar
 import mozilla.components.feature.contextmenu.ContextMenuCandidate
 import mozilla.components.feature.contextmenu.ContextMenuFeature
@@ -75,6 +77,7 @@ import mozilla.components.lib.state.Middleware
 import mozilla.components.lib.state.Store
 import mozilla.components.lib.state.ext.flowScoped
 import mozilla.components.support.ktx.android.content.getColorFromAttr
+import mozilla.components.support.locale.ActivityContextWrapper
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.Components
@@ -116,12 +119,22 @@ fun Fragment.installDejavuSplitView(
     )
 }
 
-/** The tab shown in the split pane. */
+/**
+ * The tab shown in the split pane.
+ *
+ * @property fullScreen Whether the selected tab fills the screen, which hides the pane until it leaves full screen.
+ * @property wantsAttention Whether the tab waits for a dialog or permission prompt, which only the tab on top shows.
+ * @property wantsFullScreen Whether the page in the pane asked to fill the screen, like a video, which only the tab on
+ *   top can.
+ */
 private data class PaneTarget(
     val tabId: String,
     val engineSession: EngineSession?,
     val title: String,
     val url: String,
+    val fullScreen: Boolean,
+    val wantsAttention: Boolean,
+    val wantsFullScreen: Boolean,
 )
 
 /**
@@ -151,6 +164,9 @@ internal class SplitPaneFeature(
     private var appliedEndMargin = false
     private var previousSelectedTabId: String? = null
     private var mainSessionAtSwitch: GeckoSession? = null
+
+    /** The tab that was on top before the page of the pane was brought on top to fill the screen. */
+    private var swappedForFullScreen: String? = null
     private val retryBind = Runnable { target?.let(::bind) }
     // Also runs when only the toolbars change, like entering or leaving full immersive mode. applyLayout only sets
     // layout params that differ, so the layouts it causes settle after one pass.
@@ -182,6 +198,9 @@ internal class SplitPaneFeature(
         if (selected != null && selected == shownTabId) releaseEngine()
     }
 
+    /** The view that shows the tab [tabId]: the pane when it shows that tab, else the browser's own. */
+    fun engineViewOf(tabId: String): EngineView = pane?.engineView?.takeIf { tabId == shownTabId } ?: mainEngineView
+
     /** Called before the tabs [tabIds] are closed or unloaded. */
     fun onTabsLeaving(tabIds: Collection<String>) {
         if (shownTabId in tabIds) releaseEngine()
@@ -189,19 +208,58 @@ internal class SplitPaneFeature(
 
     private fun targetOf(state: BrowserState, workspaces: WorkspaceState): PaneTarget? {
         val selected = state.selectedTab ?: return null
-        if (selected.content.private || selected.content.fullScreen) return null
+        if (selected.content.private) return null
         val partnerId = workspaces.splitOf(selected.id)?.tabIds?.firstOrNull { it != selected.id } ?: return null
         val partner = state.findTab(partnerId)?.takeIf { !it.content.private } ?: return null
-        return PaneTarget(partner.id, partner.engineState.engineSession, workspaces.titleOf(partner), partner.content.url)
+        return PaneTarget(
+            tabId = partner.id,
+            engineSession = partner.engineState.engineSession,
+            title = workspaces.titleOf(partner),
+            url = partner.content.url,
+            fullScreen = selected.content.fullScreen,
+            // Waits while the tab on top has a prompt of its own, so that the two tabs never keep swapping.
+            wantsAttention = partner.content.wantsAttention() && !selected.content.wantsAttention(),
+            wantsFullScreen = partner.content.fullScreen,
+        )
     }
 
+    /**
+     * Whether the page waits for a prompt that blocks it: a dialog, a file picker or a permission request. The
+     * browser's prompt features only serve the tab on top, so such a tab is brought on top. The address, card and
+     * login pickers above the keyboard only offer help and are left out.
+     */
+    private fun ContentState.wantsAttention(): Boolean =
+        permissionRequestsList.isNotEmpty() ||
+            appPermissionRequestsList.isNotEmpty() ||
+            promptRequests.any {
+                it !is PromptRequest.SelectLoginPrompt &&
+                    it !is PromptRequest.SelectCreditCard &&
+                    it !is PromptRequest.SelectAddress
+            }
+
     private fun update(next: PaneTarget?) {
+        if (next != null && (next.wantsAttention || next.wantsFullScreen) && !next.fullScreen) {
+            // The pane gets the tab on top next, once the browser shows the one asking.
+            if (next.wantsFullScreen) swappedForFullScreen = store.state.selectedTabId
+            components.useCases.tabsUseCases.selectTab(next.tabId)
+            return
+        }
+        val swapped = swappedForFullScreen
+        if (swapped != null && next?.fullScreen != true) {
+            // The page that filled the screen goes back to the pane once it leaves full screen.
+            swappedForFullScreen = null
+            if (next?.tabId == swapped) {
+                components.useCases.tabsUseCases.selectTab(swapped)
+                return
+            }
+        }
         target = next
         if (next == null) {
             hide()
         } else {
             show()
             bind(next)
+            applyLayout()
         }
     }
 
@@ -247,6 +305,8 @@ internal class SplitPaneFeature(
         if (pane != null) return
         val context = browserLayout.context
         val engineView = components.core.engine.createView(context)
+        // Pages in the pane may open what needs an activity, like a print or passkey dialog.
+        engineView.setActivityContext(ActivityContextWrapper.getOriginalContext(fragment.requireActivity()))
         engineView.asView().findGeckoView()?.let { geckoView ->
             // Drawn as a normal view, so the pane covers the page on top where their areas meet while the toolbar
             // slides, and its scrolling does not move the toolbar.
@@ -288,9 +348,15 @@ internal class SplitPaneFeature(
         val current = pane ?: return
         browserLayout.removeCallbacks(retryBind)
         releaseEngine()
+        current.engineView.setActivityContext(null)
         browserLayout.removeOnLayoutChangeListener(layoutListener)
         browserLayout.removeView(current)
         pane = null
+        restoreMargins()
+    }
+
+    /** Gives the page of the selected tab back the room the pane took from it. */
+    private fun restoreMargins() {
         val params = swipeRefresh.marginParams
         if (appliedBottomMargin != null && params.bottomMargin == appliedBottomMargin) {
             params.bottomMargin = baseBottomMargin
@@ -336,6 +402,13 @@ internal class SplitPaneFeature(
             }
             return
         }
+        if (target?.fullScreen == true) {
+            // Hidden rather than removed, so that the pane keeps its page while the tab on top fills the screen.
+            pane.isVisible = false
+            restoreMargins()
+            return
+        }
+        pane.isVisible = true
         val (available, bottomBars) = pageArea()
         if (available <= 0) return
         if (pane.side) {
@@ -353,7 +426,7 @@ internal class SplitPaneFeature(
 
         val params = swipeRefresh.marginParams
         // Fenix may have set its own margin since, which then becomes the one to restore.
-        if (appliedBottomMargin != null && params.bottomMargin != appliedBottomMargin) baseBottomMargin = params.bottomMargin
+        if (appliedBottomMargin == null || params.bottomMargin != appliedBottomMargin) baseBottomMargin = params.bottomMargin
         val margin = baseBottomMargin + paneHeight
         if (params.bottomMargin != margin) {
             params.bottomMargin = margin

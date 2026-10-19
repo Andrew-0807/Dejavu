@@ -6,6 +6,7 @@ package org.mozilla.fenix.dejavu.shortcuts
 
 import android.os.StrictMode
 import android.view.KeyEvent
+import android.view.View
 import androidx.annotation.StringRes
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.key.Key
@@ -17,6 +18,7 @@ import androidx.compose.ui.input.key.type
 import mozilla.components.browser.state.selector.getNormalOrPrivateTabs
 import mozilla.components.browser.state.selector.selectedTab
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarStore
+import mozilla.components.concept.engine.EngineView
 import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.newtab.NewTabPrompt
@@ -27,6 +29,11 @@ import org.mozilla.fenix.search.AddressBarEnterPressed
 /** A key and the modifiers held with it, as [KeyEvent.META_CTRL_ON], [KeyEvent.META_SHIFT_ON] and [KeyEvent.META_ALT_ON]. */
 data class KeyCombo(val keyCode: Int, val meta: Int) {
     val hasCtrlOrAlt: Boolean get() = meta and (KeyEvent.META_CTRL_ON or KeyEvent.META_ALT_ON) != 0
+
+    /** Whether text fields and web pages use this combo themselves: clipboard, undo, select all, moving the caret. */
+    val editsText: Boolean
+        get() = keyCode in CARET_KEYS ||
+            (keyCode in CLIPBOARD_KEYS && meta and KeyEvent.META_CTRL_ON != 0 && meta and KeyEvent.META_ALT_ON == 0)
 
     fun encode() = "$meta:$keyCode"
 
@@ -40,12 +47,38 @@ data class KeyCombo(val keyCode: Int, val meta: Int) {
     companion object {
         private const val MODIFIERS = KeyEvent.META_CTRL_ON or KeyEvent.META_SHIFT_ON or KeyEvent.META_ALT_ON
 
-        /** The combo [event] presses, or `null` when only a modifier key is down. */
-        fun of(event: KeyEvent): KeyCombo? = if (KeyEvent.isModifierKey(event.keyCode)) {
-            null
-        } else {
-            KeyCombo(event.keyCode, event.metaState and MODIFIERS)
-        }
+        private val CLIPBOARD_KEYS = setOf(
+            KeyEvent.KEYCODE_A,
+            KeyEvent.KEYCODE_C,
+            KeyEvent.KEYCODE_V,
+            KeyEvent.KEYCODE_X,
+            KeyEvent.KEYCODE_Y,
+            KeyEvent.KEYCODE_Z,
+        )
+
+        private val CARET_KEYS = setOf(
+            KeyEvent.KEYCODE_DPAD_LEFT,
+            KeyEvent.KEYCODE_DPAD_RIGHT,
+            KeyEvent.KEYCODE_DPAD_UP,
+            KeyEvent.KEYCODE_DPAD_DOWN,
+            KeyEvent.KEYCODE_MOVE_HOME,
+            KeyEvent.KEYCODE_MOVE_END,
+            KeyEvent.KEYCODE_PAGE_UP,
+            KeyEvent.KEYCODE_PAGE_DOWN,
+            KeyEvent.KEYCODE_DEL,
+            KeyEvent.KEYCODE_FORWARD_DEL,
+        )
+
+        /**
+         * The combo [event] presses, or `null` when only a modifier key is down. Left and right modifier flags count
+         * as the plain ones, since some keyboards only send `META_CTRL_LEFT_ON`.
+         */
+        fun of(event: KeyEvent): KeyCombo? =
+            if (KeyEvent.isModifierKey(event.keyCode) || event.keyCode == KeyEvent.KEYCODE_UNKNOWN) {
+                null
+            } else {
+                KeyCombo(event.keyCode, KeyEvent.normalizeMetaState(event.metaState) and MODIFIERS)
+            }
 
         fun parse(text: String): KeyCombo? {
             val parts = text.split(":")
@@ -88,6 +121,12 @@ object KeyboardShortcuts {
     /** Set by the browser screen to focus its address bar. */
     var focusAddressBar: (() -> Unit)? = null
 
+    /** True while the remap dialog records a combo, so every key reaches it instead of running a shortcut. */
+    var recording = false
+
+    /** The key whose press ran a shortcut, so its repeats and its release are consumed too. */
+    private var consumedKey: Int? = null
+
     /** The user's changed shortcuts, by action key. */
     fun saved(activity: HomeActivity): Map<String, String> =
         activity.components.strictMode.allowViolation(StrictMode::allowThreadDiskReads) {
@@ -103,6 +142,35 @@ object KeyboardShortcuts {
 
     fun actionFor(combo: KeyCombo, saved: Map<String, String>): ShortcutAction? =
         ShortcutAction.entries.firstOrNull { comboOf(it, saved) == combo }
+
+    /** The other action that already has [combo], which giving it to [action] would take it from. */
+    fun conflictOf(action: ShortcutAction, combo: KeyCombo, saved: Map<String, String>): ShortcutAction? =
+        actionFor(combo, saved)?.takeIf { it != action }
+
+    /**
+     * Runs the shortcut [event] presses, for [HomeActivity.dispatchKeyEvent]. Returns whether it consumed [event].
+     * Text editing combos stay with a focused text field or web page.
+     */
+    fun dispatch(activity: HomeActivity, event: KeyEvent): Boolean {
+        val consumed = consumedKey
+        return when {
+            event.action == KeyEvent.ACTION_UP -> (event.keyCode == consumed).also { if (it) consumedKey = null }
+            event.action != KeyEvent.ACTION_DOWN -> false
+            event.repeatCount > 0 -> event.keyCode == consumed
+            else -> {
+                // A new press of the same key means its release went to another window, like a dialog it opened.
+                if (event.keyCode == consumed) consumedKey = null
+                val combo = KeyCombo.of(event)?.takeIf { it.hasCtrlOrAlt }
+                val action = combo?.takeUnless { recording || (it.editsText && activity.currentFocus.takesTyping()) }
+                    ?.let { actionFor(it, saved(activity)) }
+                (action != null && run(activity, action)).also { if (it) consumedKey = event.keyCode }
+            }
+        }
+    }
+
+    /** Whether this focused view, or a view around it, takes typing: a text field or a web page. */
+    private fun View?.takesTyping(): Boolean =
+        generateSequence(this) { it.parent as? View }.any { it is EngineView || it.onCheckIsTextEditor() }
 
     /** Does what [action] says. Returns whether it did something. */
     fun run(activity: HomeActivity, action: ShortcutAction): Boolean {

@@ -36,6 +36,7 @@ import org.mozilla.fenix.GleanMetrics.Events
 import org.mozilla.fenix.R
 import org.mozilla.fenix.databinding.SearchEngineRadioButtonBinding
 import org.mozilla.fenix.dejavu.keywordFor
+import org.mozilla.fenix.dejavu.keywordOwner
 import org.mozilla.fenix.dejavu.withDefaultEngineKeywords
 import org.mozilla.fenix.dejavu.withEngineKeyword
 import org.mozilla.fenix.ext.components
@@ -250,15 +251,17 @@ constructor(
     private fun editKeyword(engine: SearchEngine) {
         val settings = context.components.settings
         val engineIds = context.components.core.store.state.search.searchEngines.map { it.id }
-        val shown = settings.engineKeywords.withDefaultEngineKeywords(engineIds).keywordFor(engine.id)
+        val engineKeywords = settings.engineKeywords.withDefaultEngineKeywords(engineIds)
+        val shown = engineKeywords.keywordFor(engine.id)
         val input = EditText(context).apply { setText(shown) }
         AlertDialog.Builder(context)
             .setTitle(R.string.dejavu_search_keyword)
             .setView(input)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 val keyword = input.text.toString().trim().lowercase()
-                val taken = keyword == settings.settingsSearchKeyword || keyword in settings.bookmarkKeywords
-                if (keyword.isNotEmpty() && taken) {
+                val owner =
+                    keywordOwner(keyword, engineKeywords, settings.bookmarkKeywords, settings.settingsSearchKeyword)
+                if (owner != null && owner != engine.id) {
                     showKeywordTaken(context, keyword)
                 } else {
                     settings.engineKeywords = settings.engineKeywords.withEngineKeyword(keyword, engine.id, engineIds)
@@ -301,6 +304,9 @@ constructor(
         }
 
         context.components.useCases.searchUseCases.removeSearchEngine(engine)
+        // Dejavu: the keyword goes with the engine, so it is free again.
+        val settings = context.components.settings
+        settings.engineKeywords = settings.engineKeywords.filterValues { it != engine.id }
     }
 
     companion object {
