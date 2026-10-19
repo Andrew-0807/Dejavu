@@ -103,11 +103,14 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit) {
             isDesktopMode = current.content.desktopMode,
         )
     } ?: MoreMenuState()
+    // getBottomToolbarHeight reports the same dimen. Not dimensionResource, which divides by the LocalDensity that
+    // ScaledToolbar scales, so the bar would not shrink.
+    val barHeight = context.resources.run { (getDimension(R.dimen.browser_navbar_height) / displayMetrics.density).dp }
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(BAR_HEIGHT)
+            .height(barHeight)
             .background(MaterialTheme.colorScheme.surface)
             .workspaceTheme(shownWorkspaceTheme()),
     ) {
@@ -279,6 +282,5 @@ private fun reportBrokenSite(context: Context, navController: NavController, tab
     }
 }
 
-private val BAR_HEIGHT = 60.dp
 private const val HANDLE_ALPHA = 0.3f
 private const val DISABLED_ALPHA = 0.38f

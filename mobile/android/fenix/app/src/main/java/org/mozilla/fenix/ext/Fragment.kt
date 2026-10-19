@@ -263,7 +263,13 @@ fun Fragment.getBottomToolbarHeight(
         (DejavuToolbar.enabled || (settings.shouldUseExpandedToolbar && isTallWindow() && !isWideWindow()))
     val shouldShowTabStrip = includeTabStripIfAvailable && settings.shouldShowTabStripAtBottom
     val shouldShowTabGroupsStrip = includeTabGroupsStrip && settings.shouldShowTabGroupsStrip
-    val navBarDimen = if (isToolbarAtBottom) R.dimen.browser_navbar_height_small else R.dimen.browser_navbar_height
+    // Dejavu's actions bar is as tall at the bottom as anywhere, and reads its height from browser_navbar_height.
+    val navBarDimen =
+        if (isToolbarAtBottom && !DejavuToolbar.enabled) {
+            R.dimen.browser_navbar_height_small
+        } else {
+            R.dimen.browser_navbar_height
+        }
 
     val microsurveyHeight =
         if (isMicrosurveyEnabled) {

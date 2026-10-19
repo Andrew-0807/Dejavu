@@ -97,7 +97,7 @@ class FragmentTest {
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight()
 
-        assertEquals(195, bottomToolbarHeight)
+        assertEquals(255, bottomToolbarHeight)
     }
 
     @Test
@@ -119,7 +119,7 @@ class FragmentTest {
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight()
 
-        assertEquals(64, bottomToolbarHeight)
+        assertEquals(124, bottomToolbarHeight)
     }
 
     @Test
@@ -155,7 +155,7 @@ class FragmentTest {
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight()
 
-        assertEquals(235, bottomToolbarHeight)
+        assertEquals(247, bottomToolbarHeight)
     }
 
     @Test
@@ -166,7 +166,7 @@ class FragmentTest {
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight()
 
-        assertEquals(64, bottomToolbarHeight)
+        assertEquals(124, bottomToolbarHeight)
     }
 
     @Test
@@ -178,7 +178,7 @@ class FragmentTest {
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight()
 
-        assertEquals(112, bottomToolbarHeight)
+        assertEquals(172, bottomToolbarHeight)
     }
 
     @Test
@@ -197,7 +197,7 @@ class FragmentTest {
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight()
 
-        assertEquals(291, bottomToolbarHeight)
+        assertEquals(303, bottomToolbarHeight)
     }
 
     @Test
@@ -208,7 +208,7 @@ class FragmentTest {
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight(includeTabStripIfAvailable = false)
 
-        assertEquals(64, bottomToolbarHeight)
+        assertEquals(124, bottomToolbarHeight)
     }
 
     @Test
@@ -310,7 +310,7 @@ class FragmentTest {
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight()
 
-        assertEquals(104, bottomToolbarHeight)
+        assertEquals(116, bottomToolbarHeight)
     }
 
     @Test
