@@ -95,7 +95,7 @@ internal class DejavuTabCommands(
             return
         }
         components.applicationScope.launch(Dispatchers.Main) {
-            components.useCases.tabsUseCases.restore(closed, components.core.recentlyClosedTabsStorage.engineStateStorage())
+            components.useCases.tabsUseCases.restore(closed, components.core.recentlyClosedTabsStorage.value.engineStateStorage())
             components.core.store.dispatch(RecentlyClosedAction.RemoveClosedTabAction(closed))
         }
     }
