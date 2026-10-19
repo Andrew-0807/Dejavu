@@ -47,7 +47,8 @@ import org.mozilla.fenix.components.toolbar.DisplayActions
  * up shows [buttons] above it, swiping up again opens the "More" menu, and swiping down hides the buttons.
  *
  * @param store The store of the address bar.
- * @param buttons The bar with the other toolbar buttons, shown only while the compact toolbar is swiped up.
+ * @param buttons The bar with the other toolbar buttons, shown only while the compact toolbar is swiped up. It must
+ *   apply [ScaledToolbar] itself, as only the address bar row is wrapped here.
  * @param onSwipeDownWhenCollapsed Called on a swipe down while [buttons] are hidden. Nothing happens when `null`.
  */
 @Composable
@@ -101,33 +102,36 @@ fun DejavuCompactBar(
         ) {
             buttons()
         }
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.surface)
-                .workspaceTheme(shownWorkspaceTheme()),
-        ) {
-            Box(modifier = Modifier.weight(1f)) {
-                DejavuTopBar(store)
-            }
-            val homeLabel = stringResource(R.string.dejavu_actions_bar_home)
-            Box(
-                contentAlignment = Alignment.Center,
+        // The buttons scale themselves (BrowserNavigationBar wraps them), so only this row is wrapped here.
+        ScaledToolbar {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .padding(end = 8.dp)
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .clickable(role = Role.Button) {
-                        store.dispatch(DisplayActions.HomepageClicked(Source.AddressBar.BrowserEnd))
-                    },
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.surface)
+                    .workspaceTheme(shownWorkspaceTheme()),
             ) {
-                Icon(
-                    painter = painterResource(iconsR.drawable.mozac_ic_home_24),
-                    contentDescription = homeLabel,
-                    tint = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.size(22.dp),
-                )
+                Box(modifier = Modifier.weight(1f)) {
+                    DejavuTopBar(store)
+                }
+                val homeLabel = stringResource(R.string.dejavu_actions_bar_home)
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .padding(end = 8.dp)
+                        .size(48.dp)
+                        .clip(CircleShape)
+                        .clickable(role = Role.Button) {
+                            store.dispatch(DisplayActions.HomepageClicked(Source.AddressBar.BrowserEnd))
+                        },
+                ) {
+                    Icon(
+                        painter = painterResource(iconsR.drawable.mozac_ic_home_24),
+                        contentDescription = homeLabel,
+                        tint = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.size(22.dp),
+                    )
+                }
             }
         }
     }

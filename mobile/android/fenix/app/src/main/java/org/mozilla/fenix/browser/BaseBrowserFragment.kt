@@ -220,6 +220,7 @@ import org.mozilla.fenix.crashes.CrashContentView
 import org.mozilla.fenix.customtabs.ExternalAppBrowserActivity
 import org.mozilla.fenix.databinding.FragmentBrowserBinding
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.ScaledToolbar
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
 import org.mozilla.fenix.downloads.DownloadService
@@ -1637,17 +1638,19 @@ abstract class BaseBrowserFragment :
         if (customTabSessionId != null || !settings.isVerticalTabsEnabled) return
         binding.tabSidebar.setContent {
             FirefoxTheme {
-                TabSidebar(
-                    settings = settings,
-                    onAddTabClick = { openNewTab(appStore, settings) },
-                    onCloseTabClick = { isPrivate ->
-                        showUndoSnackbar(requireContext().tabClosedUndoMessage(isPrivate))
-                    },
-                    onLastTabClose = { isPrivate ->
-                        requireComponents.appStore.dispatch(AppAction.TabStripAction.UpdateLastTabClosed(isPrivate))
-                        findNavController().navigate(BrowserFragmentDirections.actionGlobalHome())
-                    },
-                )
+                ScaledToolbar {
+                    TabSidebar(
+                        settings = settings,
+                        onAddTabClick = { openNewTab(appStore, settings) },
+                        onCloseTabClick = { isPrivate ->
+                            showUndoSnackbar(requireContext().tabClosedUndoMessage(isPrivate))
+                        },
+                        onLastTabClose = { isPrivate ->
+                            requireComponents.appStore.dispatch(AppAction.TabStripAction.UpdateLastTabClosed(isPrivate))
+                            findNavController().navigate(BrowserFragmentDirections.actionGlobalHome())
+                        },
+                    )
+                }
             }
         }
     }
