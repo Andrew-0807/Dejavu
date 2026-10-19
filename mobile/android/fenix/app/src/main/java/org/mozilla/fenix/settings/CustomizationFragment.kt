@@ -295,11 +295,20 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             updateToolbarLayoutIcons()
         }
 
-        val toolbarPosition = requireComponents.settings.toolbarPosition
-        topPreference.setCheckedWithoutClickListener(toolbarPosition == ToolbarPosition.TOP)
-        bottomPreference.setCheckedWithoutClickListener(toolbarPosition == ToolbarPosition.BOTTOM)
+        val compactPreference = requirePreference<RadioButtonPreference>(R.string.pref_key_toolbar_compact)
+        compactPreference.onClickListener {
+            ToolbarSettings.changedPosition.record(ToolbarSettings.ChangedPositionExtra(Position.BOTTOM.name))
 
-        addToRadioGroup(topPreference, bottomPreference)
+            updateToolbarLayoutIcons()
+        }
+
+        val toolbarPosition = requireComponents.settings.toolbarPosition
+        val isCompact = requireComponents.settings.shouldUseCompactToolbar
+        topPreference.setCheckedWithoutClickListener(toolbarPosition == ToolbarPosition.TOP)
+        bottomPreference.setCheckedWithoutClickListener(toolbarPosition == ToolbarPosition.BOTTOM && !isCompact)
+        compactPreference.setCheckedWithoutClickListener(isCompact)
+
+        addToRadioGroup(topPreference, bottomPreference, compactPreference)
     }
 
     private fun setupTabStripDisplayCategory() {

@@ -257,8 +257,9 @@ fun Fragment.getBottomToolbarHeight(
 
     val isMicrosurveyEnabled = settings.shouldShowMicrosurveyPrompt
     val isToolbarAtBottom = settings.toolbarPosition == ToolbarPosition.BOTTOM
-    val isNavBarEnabled =
-        DejavuToolbar.enabled || (settings.shouldUseExpandedToolbar && isTallWindow() && !isWideWindow())
+    // The compact toolbar shows the navigation bar only while swiped up, over the page.
+    val isNavBarEnabled = !settings.shouldUseCompactToolbar &&
+        (DejavuToolbar.enabled || (settings.shouldUseExpandedToolbar && isTallWindow() && !isWideWindow()))
     val shouldShowTabStrip = includeTabStripIfAvailable && settings.shouldShowTabStripAtBottom
     val shouldShowTabGroupsStrip = includeTabGroupsStrip && settings.shouldShowTabGroupsStrip
     val navBarDimen = if (isToolbarAtBottom) R.dimen.browser_navbar_height_small else R.dimen.browser_navbar_height
