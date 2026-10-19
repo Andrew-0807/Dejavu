@@ -8,7 +8,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
 import android.content.res.XmlResourceParser
-import androidx.annotation.VisibleForTesting
 import java.io.IOException
 import java.util.concurrent.atomic.AtomicReference
 import kotlinx.coroutines.Dispatchers
@@ -80,7 +79,7 @@ class DefaultFenixSettingsIndexer(
                 .filter { item ->
                     item.title.contains(trimmedQuery, ignoreCase = true)
                 }
-                .distinctBy { it.preferenceKey }
+                .distinctPreferringDejavuScreens()
         }
     }
 
@@ -90,7 +89,7 @@ class DefaultFenixSettingsIndexer(
      * @return List of all [SettingsSearchItem]s built by the last [indexAllSettings] call, or an empty list if it has
      *   not run yet.
      */
-    @VisibleForTesting internal fun indexedSettings(): List<SettingsSearchItem> = settings.get()
+    fun indexedSettings(): List<SettingsSearchItem> = settings.get()
 
     private fun getXmlParserForFile(xmlResourceId: Int): XmlResourceParser? {
         try {
@@ -127,10 +126,12 @@ class DefaultFenixSettingsIndexer(
                             }
                             CHECKBOX_PREFERENCE_TAG,
                             DEFAULT_BROWSER_PREFERENCE_TAG,
+                            LIST_PREFERENCE_TAG,
                             PREFERENCE_TAG,
                             SWITCH_PREFERENCE_TAG,
                             SWITCH_PREFERENCE_PLAIN_TAG,
-                            TOGGLE_RADIO_BUTTON_PREFERENCE_TAG -> {
+                            TOGGLE_RADIO_BUTTON_PREFERENCE_TAG,
+                            TOOLBAR_SIZE_PREFERENCE_TAG -> {
                                 val item =
                                     createSettingsSearchItemFromAttributes(
                                         parser = parser,
@@ -340,6 +341,8 @@ class DefaultFenixSettingsIndexer(
         private const val PREFERENCE_CATEGORY_TAG = "androidx.preference.PreferenceCategory"
         private const val CHECKBOX_PREFERENCE_TAG = "androidx.preference.CheckBoxPreference"
         private const val PREFERENCE_TAG = "androidx.preference.Preference"
+        private const val LIST_PREFERENCE_TAG = "androidx.preference.ListPreference"
+        private const val TOOLBAR_SIZE_PREFERENCE_TAG = "org.mozilla.fenix.settings.ToolbarSizePreference"
         private const val SWITCH_PREFERENCE_TAG = "androidx.preference.SwitchPreferenceCompat"
         private const val SWITCH_PREFERENCE_PLAIN_TAG = "SwitchPreferenceCompat"
         private const val DEFAULT_BROWSER_PREFERENCE_TAG = "org.mozilla.fenix.settings.DefaultBrowserPreference"
@@ -384,4 +387,14 @@ class DefaultFenixSettingsIndexer(
                 R.string.preferences_about,
             )
     }
+}
+
+/**
+ * Dejavu: one item per preference key. A Dejavu screen shares the key of the row that opens it, and wins, so the result
+ * opens that screen directly instead of the settings page holding the row.
+ */
+fun List<SettingsSearchItem>.distinctPreferringDejavuScreens(): List<SettingsSearchItem> {
+    val screens = filter { it.preferenceFileInformation is PreferenceFileInformation.DejavuScreen }
+        .associateBy { it.preferenceKey }
+    return map { screens[it.preferenceKey] ?: it }.distinctBy { it.preferenceKey }
 }

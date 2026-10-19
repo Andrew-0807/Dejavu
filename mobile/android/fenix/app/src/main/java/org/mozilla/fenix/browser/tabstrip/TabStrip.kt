@@ -42,6 +42,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -63,6 +64,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.coerceIn
 import androidx.compose.ui.unit.dp
 import androidx.core.text.BidiFormatter
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import mozilla.components.browser.state.action.TabListAction
 import mozilla.components.browser.state.state.createTab
@@ -135,25 +138,28 @@ fun TabStrip(
     onSelectedTabClick: (url: String) -> Unit,
     onTabCounterClick: () -> Unit,
 ) {
-    val isPossiblyPrivateMode by remember {
-        appStore.stateFlow.map { it.mode.isPrivate }
-    }
-        .collectAsState(initial = false)
-    val state by remember {
-        browserStore.stateFlow.map {
-            it.toTabStripState(
+    // The callers' lambdas change between recompositions, so the flow and the handlers read the latest ones.
+    val currentOnAddTabClick by rememberUpdatedState(onAddTabClick)
+    val currentOnCloseTabClick by rememberUpdatedState(onCloseTabClick)
+    val currentOnLastTabClose by rememberUpdatedState(onLastTabClose)
+    val currentOnSelectedTabClick by rememberUpdatedState(onSelectedTabClick)
+    val state by remember(browserStore, appStore, tabsUseCases, isSelectDisabled) {
+        val addTab = { currentOnAddTabClick() }
+        val isPossiblyPrivateFlow = appStore.stateFlow.map { it.mode.isPrivate }.distinctUntilChanged()
+        browserStore.stateFlow.combine(isPossiblyPrivateFlow) { browserState, isPossiblyPrivateMode ->
+            browserState.toTabStripState(
                 isSelectDisabled = isSelectDisabled,
                 isPossiblyPrivateMode = isPossiblyPrivateMode,
-                addTab = onAddTabClick,
+                addTab = addTab,
                 closeTab = { isPrivate, numberOfTabs ->
-                    it.selectedTabId?.let { selectedTabId ->
+                    browserState.selectedTabId?.let { selectedTabId ->
                         closeTab(
                             numberOfTabs = numberOfTabs,
                             isPrivate = isPrivate,
                             tabsUseCases = tabsUseCases,
                             tabId = selectedTabId,
-                            onLastTabClose = onLastTabClose,
-                            onCloseTabClick = onCloseTabClick,
+                            onLastTabClose = { currentOnLastTabClose(it) },
+                            onCloseTabClick = { currentOnCloseTabClick(it) },
                         )
                     }
                 },
@@ -161,6 +167,21 @@ fun TabStrip(
         }
     }
         .collectAsState(initial = TabStripState.initial)
+
+    val numberOfTabs = state.tabs.size
+    val addTabClickHandler = remember { createAddTabClickHandler { currentOnAddTabClick() } }
+    val closeTabClickHandler =
+        remember(numberOfTabs, tabsUseCases) {
+            createCloseTabClickHandler(
+                numberOfTabs = numberOfTabs,
+                tabsUseCases = tabsUseCases,
+                onLastTabClose = { currentOnLastTabClose(it) },
+                onCloseTabClick = { currentOnCloseTabClick(it) },
+            )
+        }
+    val selectedTabClickHandler =
+        remember(tabsUseCases) { createSelectedTabClickHandler(tabsUseCases) { currentOnSelectedTabClick(it) } }
+    val moveTabHandler = remember(tabsUseCases) { createMoveTabHandler(tabsUseCases) }
 
     val isKeyboardVisible =
         if (hideWhenKeyboardShown) {
@@ -188,16 +209,10 @@ fun TabStrip(
                 state = state,
                 showTabCounterButton = showTabCounterButton,
                 colors = tabStripColors,
-                onAddTabClick = createAddTabClickHandler(onAddTabClick),
-                onCloseTabClick =
-                    createCloseTabClickHandler(
-                        numberOfTabs = state.tabs.size,
-                        tabsUseCases = tabsUseCases,
-                        onLastTabClose = onLastTabClose,
-                        onCloseTabClick = onCloseTabClick,
-                    ),
-                onSelectedTabClick = createSelectedTabClickHandler(tabsUseCases, onSelectedTabClick),
-                onMove = createMoveTabHandler(tabsUseCases),
+                onAddTabClick = addTabClickHandler,
+                onCloseTabClick = closeTabClickHandler,
+                onSelectedTabClick = selectedTabClickHandler,
+                onMove = moveTabHandler,
                 onTabCounterClick = onTabCounterClick,
             )
         }

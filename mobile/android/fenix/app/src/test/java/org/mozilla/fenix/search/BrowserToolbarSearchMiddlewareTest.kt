@@ -1159,6 +1159,61 @@ class BrowserToolbarSearchMiddlewareTest {
     }
 
     @Test
+    fun `GIVEN the source tab is available WHEN search term is committed with Shift+Enter THEN perform search in a new tab once`() {
+        val searchTerm = "Firefox"
+        val browserUseCases: FenixBrowserUseCases = mockk(relaxed = true)
+        val components: Components =
+            mockk(relaxed = true) {
+                every { useCases.fenixBrowserUseCases } returns browserUseCases
+            }
+        val settings: Settings =
+            mockk(relaxed = true) {
+                every { enableHomepageAsNewTab } returns false
+            }
+        val browsingModeManager: BrowsingModeManager =
+            mockk(relaxed = true) {
+                every { mode } returns Normal
+            }
+        val appStore = AppStore(AppState(searchState = AppSearchState.EMPTY.copy(sourceTabId = "test")))
+        val browserStore =
+            BrowserStore(
+                BrowserState(
+                    tabs = listOf(createTab("https://test.com", id = "test")),
+                    search = fakeSearchState(),
+                )
+            )
+        val (_, store) =
+            buildMiddlewareAndAddToStore(
+                appStore = appStore,
+                browserStore = browserStore,
+                components = components,
+                settings = settings,
+                browsingModeManager = browsingModeManager,
+            )
+
+        store.dispatch(AddressBarEnterPressed(withShift = true))
+        store.dispatch(CommitUrl(searchTerm))
+        store.dispatch(CommitUrl(searchTerm))
+
+        verifyOrder {
+            browserUseCases.loadUrlOrSearch(
+                searchTermOrURL = searchTerm,
+                newTab = true,
+                forceSearch = false,
+                private = false,
+                searchEngine = any(),
+            )
+            browserUseCases.loadUrlOrSearch(
+                searchTermOrURL = searchTerm,
+                newTab = false,
+                forceSearch = false,
+                private = false,
+                searchEngine = any(),
+            )
+        }
+    }
+
+    @Test
     fun `GIVEN homepage as a new tab is disabled and the source tab is not available WHEN search term is committed THEN perform search in a new tab`() {
         val searchTerm = "Firefox"
         val captorMiddleware = CaptureActionsMiddleware<AppState, AppAction>()

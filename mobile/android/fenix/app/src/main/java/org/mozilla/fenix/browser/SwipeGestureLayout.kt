@@ -9,7 +9,9 @@ import android.graphics.PointF
 import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.ViewConfiguration
 import android.widget.FrameLayout
+import kotlin.math.abs
 
 /** Interface that allows intercepting and handling swipe gestures received in a [SwipeGestureLayout]. */
 interface SwipeGestureListener {
@@ -39,6 +41,15 @@ interface SwipeGestureListener {
      * @param velocityY the velocity of the swipe along the y-axis
      */
     fun onSwipeFinished(velocityX: Float, velocityY: Float)
+
+    /**
+     * Called once the swipe moved half the touch slop. Returning true claims it before the views under it and the
+     * other listeners can, as from then on only [onSwipeStarted] with no movement yet and [onSwipeUpdate] follow.
+     */
+    fun claimsEarly(start: PointF, next: PointF): Boolean = false
+
+    /** Called instead of [onSwipeFinished] when the swipe is cancelled. Must not commit the swipe. */
+    fun onSwipeCancelled() = onSwipeFinished(velocityX = 0f, velocityY = 0f)
 }
 
 /**
@@ -57,6 +68,9 @@ constructor(
 
     /** Controls whether the swiping functionality is active or not. */
     var isSwipeEnabled = true
+
+    /** Dejavu: called with the screen position of every touch that starts in this layout, swipes or not. */
+    var onTouchDown: ((x: Float, y: Float) -> Unit)? = null
 
     private val gestureListener =
         object : GestureDetector.SimpleOnGestureListener() {
@@ -104,6 +118,35 @@ constructor(
     private val listeners = mutableListOf<SwipeGestureListener>()
     private var activeListener: SwipeGestureListener? = null
     private var handledInitialScroll = false
+    private val halfSlop = ViewConfiguration.get(context).scaledTouchSlop / 2f
+    private var downPoint: PointF? = null
+    private var claimedEarly = false
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        val start = downPoint
+        if (event.actionMasked == MotionEvent.ACTION_DOWN) {
+            onTouchDown?.invoke(event.rawX, event.rawY)
+            downPoint = PointF(event.rawX, event.rawY)
+            claimedEarly = false
+        } else if (isSwipeEnabled && start != null && event.actionMasked == MotionEvent.ACTION_MOVE &&
+            maxOf(abs(event.rawX - start.x), abs(event.rawY - start.y)) > halfSlop
+        ) {
+            downPoint = null
+            val next = PointF(event.rawX, event.rawY)
+            listeners.firstOrNull { it.claimsEarly(start, next) }?.let {
+                // No movement on purpose: the GestureDetector has not scrolled yet (half slop is under its slop),
+                // so its first onScroll reports the whole delta since ACTION_DOWN. Passing next would count it twice.
+                it.onSwipeStarted(start, start)
+                activeListener = it
+                handledInitialScroll = true
+                claimedEarly = true
+                // Lets onInterceptTouchEvent run even if a view under the finger asked not to be intercepted.
+                requestDisallowInterceptTouchEvent(false)
+                parent?.requestDisallowInterceptTouchEvent(true)
+            }
+        }
+        return super.dispatchTouchEvent(event)
+    }
 
     fun addGestureListener(listener: SwipeGestureListener) {
         listeners.add(listener)
@@ -120,7 +163,7 @@ constructor(
                 gestureDetector.onTouchEvent(event)
                 false
             }
-            else -> gestureDetector.onTouchEvent(event)
+            else -> gestureDetector.onTouchEvent(event) || claimedEarly
         }
     }
 
@@ -131,10 +174,11 @@ constructor(
                 gestureDetector.onTouchEvent(event)
                 // If the active listener is not null here, then we haven't detected a fling
                 // so notify the listener that the swipe was finished with 0 velocity
-                activeListener?.onSwipeFinished(
-                    velocityX = 0f,
-                    velocityY = 0f,
-                )
+                if (event.actionMasked == MotionEvent.ACTION_UP) {
+                    activeListener?.onSwipeFinished(velocityX = 0f, velocityY = 0f)
+                } else {
+                    activeListener?.onSwipeCancelled()
+                }
                 activeListener = null
 
                 if (event.actionMasked == MotionEvent.ACTION_UP) {

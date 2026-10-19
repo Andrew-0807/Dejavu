@@ -41,7 +41,11 @@ import org.mozilla.fenix.components.toolbar.gestures.ToolbarHorizontalGesturesHa
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.maxActiveTime
 
-/** Handles intercepting touch events on the toolbar for swipe gestures and executes the necessary animations. */
+/**
+ * Handles intercepting touch events on the toolbar for swipe gestures and executes the necessary animations.
+ *
+ * Dejavu: [contentFollowers] are views that slide along with [contentLayout], like the pane of a split view.
+ */
 @Suppress("LargeClass", "TooManyFunctions", "LongParameterList")
 class ToolbarHorizontalGesturesHandler(
     private val activity: Activity,
@@ -53,6 +57,7 @@ class ToolbarHorizontalGesturesHandler(
     private val selectTabUseCase: TabsUseCases.SelectTabUseCase,
     private val onSwipeStarted: () -> Unit,
     private val onTabSwitched: (TabSessionState) -> Unit = {},
+    private val contentFollowers: () -> List<View> = { emptyList() },
 ) : SwipeGestureListener {
 
     private enum class GestureDirection {
@@ -122,7 +127,7 @@ class ToolbarHorizontalGesturesHandler(
                                 )
                                 .coerceAtMost(0f)
                     }
-                contentLayout.translationX =
+                contentX =
                     when (gestureDirection) {
                         GestureDirection.RIGHT_TO_LEFT ->
                             min(
@@ -142,7 +147,7 @@ class ToolbarHorizontalGesturesHandler(
                 // If there is no "next" tab to swipe to in the gesture direction, only do a
                 // partial animation to show that we are at the end of the tab list
                 val maxContentHidden = contentLayout.width * OVERSCROLL_HIDE_PERCENT
-                contentLayout.translationX =
+                contentX =
                     when (gestureDirection) {
                         GestureDirection.RIGHT_TO_LEFT ->
                             max(
@@ -159,6 +164,19 @@ class ToolbarHorizontalGesturesHandler(
                     }
             }
         }
+    }
+
+    /** The horizontal offset of [contentLayout], applied to [contentFollowers] too. */
+    private var contentX: Float
+        get() = contentLayout.translationX
+        set(value) {
+            contentLayout.translationX = value
+            contentFollowers().forEach { it.translationX = value }
+        }
+
+    /** A cancelled swipe, by the system or a parent, slides back and never switches tabs. */
+    override fun onSwipeCancelled() {
+        animateCanceledGesture(velocityX = 0f)
     }
 
     override fun onSwipeFinished(
@@ -257,7 +275,7 @@ class ToolbarHorizontalGesturesHandler(
             this.interpolator = LinearOutSlowInInterpolator()
             addUpdateListener { animator ->
                 val value = animator.animatedValue as Float
-                contentLayout.translationX = value
+                contentX = value
                 tabPreview.translationX =
                     when (gestureDirection) {
                         GestureDirection.RIGHT_TO_LEFT -> value + windowWidth + previewOffset
@@ -278,7 +296,7 @@ class ToolbarHorizontalGesturesHandler(
         getAnimator(browserFinalXCoordinate, FINISHED_GESTURE_ANIMATION_DURATION)
             .apply {
                 doOnEnd {
-                    contentLayout.translationX = 0f
+                    contentX = 0f
                     selectTabUseCase(tab.id)
                     onTabSwitched.invoke(tab)
 

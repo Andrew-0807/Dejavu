@@ -30,6 +30,9 @@ import org.mozilla.fenix.tabstray.redux.state.Page
 
 private const val TOOLBAR_HEIGHT_MAXIMUM_SWIPE_FACTOR = 0.8f
 
+/** Whether a swipe that moved by [dx] and [dy] counts as vertical. Shared by the toolbar swipes. */
+fun isVerticalSwipe(dx: Float, dy: Float) = abs(dy) > abs(dx) * 0.75f
+
 /**
  * Toolbars (address bar + navigation bar) specific gesture handler that will show the tabs tray for the appropriate
  * swip up/down gesture.
@@ -54,12 +57,19 @@ class ToolbarVerticalGesturesHandler(
     private var currentSwipeXDistance = 0f
     private var currentSwipeYDistance = 0f
     private var startTouchPoint = PointF(0f, 0f)
+    private var fired = false
+
+    override fun claimsEarly(start: PointF, next: PointF): Boolean {
+        startTouchPoint = start
+        return isEnabled() && start.isSwipeValid(next.x - start.x, next.y - start.y)
+    }
 
     override fun onSwipeStarted(
         start: PointF,
         next: PointF,
     ): Boolean {
         startTouchPoint = start
+        fired = false
         currentSwipeXDistance = next.x - start.x
         currentSwipeYDistance = next.y - start.y
 
@@ -77,23 +87,23 @@ class ToolbarVerticalGesturesHandler(
         // no-op
     }
 
-    private fun maybeShowTabsOnSwipe(): Boolean {
+    private fun isEnabled(): Boolean {
         val currentDestinationId = navController.currentDestination?.id
         // Avoid negative side effects of the race between navigation and swipe callbacks
         val isCurrentDestinationValid =
             currentDestinationId == R.id.browserFragment || currentDestinationId == R.id.homeFragment
+        return isCurrentDestinationValid &&
+            !appStore.state.searchState.isSearchActive &&
+            !startTouchPoint.isInSystemGestureInset()
+    }
 
-        @Suppress("ComplexCondition")
-        if (
-            !isCurrentDestinationValid ||
-                appStore.state.searchState.isSearchActive ||
-                startTouchPoint.isInSystemGestureInset() ||
-                !startTouchPoint.isSwipeValid(currentSwipeXDistance, currentSwipeYDistance)
-        ) {
+    private fun maybeShowTabsOnSwipe(): Boolean {
+        if (fired || !isEnabled() || !startTouchPoint.isSwipeValid(currentSwipeXDistance, currentSwipeYDistance)) {
             return false
         }
 
         if (isSwipeValid()) {
+            fired = true
             onSwipe?.let {
                 it(startTouchPoint.isInTarget(navBarLayout))
                 return false
@@ -125,21 +135,21 @@ class ToolbarVerticalGesturesHandler(
         val minimumSwipeDistance = scaledTouchSlop.coerceAtMost(maximumToolbarSwipeNeeded.toInt())
 
         return abs(currentSwipeYDistance) >= minimumSwipeDistance &&
-            abs(currentSwipeXDistance) < minimumSwipeDistance &&
             startTouchPoint.isSwipeValid(currentSwipeXDistance, currentSwipeYDistance)
     }
 
     /** Check if the swipe originated from the toolbar or navigation bar. */
     private fun PointF.isSwipeValid(distanceX: Float, distanceY: Float): Boolean {
-        val isHorizontalSwipe = abs(distanceX) > abs(distanceY)
-        if (isHorizontalSwipe) return false
+        if (!isVerticalSwipe(distanceX, distanceY)) return false
 
         val isSwipeUpOverNavbar = distanceY.isSwipeUp && isInTarget(navBarLayout)
         if (isSwipeUpOverNavbar) return true
 
+        // Dejavu's gesture is "Swipe the toolbar up" wherever the toolbar is. A swipe down on a top toolbar is left to
+        // the other handlers, like the one for full immersive mode.
         val isToolbarSwipeDirectionValid =
             when (toolbarPosition) {
-                TOP -> distanceY.isSwipeDown
+                TOP -> if (onSwipe != null) distanceY.isSwipeUp else distanceY.isSwipeDown
                 BOTTOM -> distanceY.isSwipeUp
             }
         return isToolbarSwipeDirectionValid && isInTarget(toolbarLayout)

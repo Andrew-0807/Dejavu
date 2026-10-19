@@ -55,6 +55,15 @@
                 android:visibility="gone"
                 android:importantForAccessibility="no" />
 
+            <!-- Under the toolbars, which are added after it, so they stay in place while swiping between tabs. -->
+            <org.mozilla.fenix.browser.TabPreview
+                android:id="@+id/tabPreview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:focusable="false"
+                android:visibility="gone" />
+
             <ViewStub
                 android:id="@+id/findInPageViewStub"
                 android:layout_width="match_parent"
@@ -132,12 +141,4 @@
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <org.mozilla.fenix.browser.TabPreview
-        android:id="@+id/tabPreview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="false"
-        android:focusable="false"
-        android:visibility="gone" />
 </org.mozilla.fenix.browser.SwipeGestureLayout>

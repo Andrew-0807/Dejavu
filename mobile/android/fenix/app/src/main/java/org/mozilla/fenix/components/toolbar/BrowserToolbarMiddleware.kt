@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mozilla.components.browser.state.action.ContentAction
 import mozilla.components.browser.state.action.EngineAction
+import mozilla.components.browser.state.ext.getUrl
 import mozilla.components.browser.state.search.SearchEngine
 import mozilla.components.browser.state.selector.getNormalOrPrivateTabs
 import mozilla.components.browser.state.selector.selectedTab
@@ -148,6 +149,7 @@ import org.mozilla.fenix.components.usecases.ShareUseCases
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.DejavuToolbarEvent
 import org.mozilla.fenix.ext.canGoBackInHistoryOrToStories
+import org.mozilla.fenix.ext.isLargeWindow
 import org.mozilla.fenix.ext.nav
 import org.mozilla.fenix.ext.navigateSafe
 import org.mozilla.fenix.nimbus.FxNimbus
@@ -430,7 +432,7 @@ class BrowserToolbarMiddleware(
 
                 val selectedTab = browserStore.state.selectedTab ?: return
                 val searchTerms = selectedTab.content.searchTerms
-                if (searchTerms.isBlank()) {
+                if (searchTerms.isBlank() && !uiContext.isLargeWindow()) {
                     navController.navigate(
                         BrowserFragmentDirections.actionGlobalHome(
                             focusOnAddressBar = true,
@@ -438,9 +440,8 @@ class BrowserToolbarMiddleware(
                         )
                     )
                 } else {
-                    if (!settings.showAddressBarInFocusMode) {
-                        store.dispatch(SearchQueryUpdated(BrowserToolbarQuery(searchTerms), true))
-                    }
+                    val query = searchTerms.ifBlank { selectedTab.getUrl().orEmpty() }
+                    store.dispatch(SearchQueryUpdated(BrowserToolbarQuery(query), true))
                     appStore.dispatch(SearchStarted(selectedTab.id))
                 }
             }

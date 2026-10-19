@@ -8,12 +8,15 @@
     <string name="pref_key_dejavu_external_links" translatable="false">pref_key_dejavu_external_links</string>
     <string name="pref_key_dejavu_engine_keywords" translatable="false">pref_key_dejavu_engine_keywords</string>
     <string name="pref_key_dejavu_bookmark_keywords" translatable="false">pref_key_dejavu_bookmark_keywords</string>
+    <string name="pref_key_dejavu_settings_keyword" translatable="false">pref_key_dejavu_settings_keyword</string>
     <string name="pref_key_dejavu_shortcuts" translatable="false">pref_key_dejavu_shortcuts</string>
     <string name="dejavu_settings_shortcuts">Keyboard shortcuts</string>
     <string name="dejavu_settings_shortcuts_summary">Change the keys of the shortcuts for a hardware keyboard</string>
     <string name="dejavu_shortcuts_hint">Tap a shortcut to give it another key. Shortcuts need Ctrl or Alt.</string>
     <string name="dejavu_shortcuts_press">Press the new key combination.</string>
-    <string name="dejavu_shortcuts_taken">%1$s is used by \"%2$s\".</string>
+    <string name="dejavu_shortcuts_taken">%1$s is already used by \"%2$s\". Swap gives \"%2$s\" this shortcut\'s current key, or cancel to change nothing.</string>
+    <string name="dejavu_shortcuts_current">Current: %1$s</string>
+    <string name="dejavu_shortcuts_text_keys">Text fields and web pages keep %1$s while they have focus.</string>
     <string name="dejavu_shortcuts_none">None</string>
     <string name="dejavu_shortcuts_save">Save</string>
     <string name="dejavu_shortcuts_swap">Swap</string>
@@ -334,6 +337,8 @@
     <string name="pref_key_dejavu_swipe_down_immersive" translatable="false">pref_key_dejavu_swipe_down_immersive</string>
     <string name="pref_key_dejavu_immersive_button_x" translatable="false">pref_key_dejavu_immersive_button_x</string>
     <string name="pref_key_dejavu_immersive_button_y" translatable="false">pref_key_dejavu_immersive_button_y</string>
+    <string name="pref_key_dejavu_sidebar_handle" translatable="false">pref_key_dejavu_sidebar_handle</string>
+    <string name="dejavu_settings_sidebar_handle">Show sidebar handle</string>
     <string name="dejavu_settings_swipe_down_immersive">Swipe down on the toolbar for full screen</string>
     <string name="dejavu_settings_swipe_down_immersive_summary">Hides every bar. Tap the floating button, which you can drag anywhere, to bring them back.</string>
     <!-- Content description of the floating button that leaves full screen -->
@@ -548,4 +553,39 @@
     <string name="dejavu_preference_mouse_support_summary">Middle-click opens a link in a background tab, and hovering a link shows its address. Applies to new tabs.</string>
     <!-- Label of the field and menu item where a short word is set that searches a search engine or opens a bookmark when typed before a search. -->
     <string name="dejavu_search_keyword">Keyword</string>
+    <!-- Settings home: each category is a top level category of the root preferences. -->
+    <string name="pref_key_dejavu_group_account" translatable="false">pref_key_dejavu_group_account</string>
+    <string name="pref_key_dejavu_group_look" translatable="false">pref_key_dejavu_group_look</string>
+    <string name="pref_key_dejavu_group_tabs" translatable="false">pref_key_dejavu_group_tabs</string>
+    <string name="pref_key_dejavu_group_input" translatable="false">pref_key_dejavu_group_input</string>
+    <string name="pref_key_dejavu_group_search" translatable="false">pref_key_dejavu_group_search</string>
+    <string name="pref_key_dejavu_group_downloads" translatable="false">pref_key_dejavu_group_downloads</string>
+    <string name="pref_key_dejavu_group_about" translatable="false">pref_key_dejavu_group_about</string>
+    <string name="pref_key_dejavu_customize_tabs" translatable="false">pref_key_dejavu_customize_tabs</string>
+    <string name="pref_key_dejavu_customize_input" translatable="false">pref_key_dejavu_customize_input</string>
+    <string name="dejavu_settings_group_account">Account and sync</string>
+    <string name="dejavu_settings_group_account_summary">Sign in and sync your tabs, spaces and passwords</string>
+    <string name="dejavu_settings_group_look">Look and layout</string>
+    <string name="dejavu_settings_group_look_summary">Theme, toolbar, home screen and text size</string>
+    <string name="dejavu_settings_group_tabs">Tabs and sidebar</string>
+    <string name="dejavu_settings_group_tabs_summary">Tab bar, sidebar, tab actions, sleep and containers</string>
+    <string name="dejavu_settings_group_input">Gestures and input</string>
+    <string name="dejavu_settings_group_input_summary">Toolbar gestures, mouse and keyboard shortcuts</string>
+    <string name="dejavu_settings_group_search">Search and links</string>
+    <string name="dejavu_settings_group_search_summary">Search engines, default browser and links from other apps</string>
+    <string name="dejavu_settings_group_privacy_summary">Tracking protection, passwords, permissions and data</string>
+    <string name="dejavu_settings_group_downloads">Downloads and extensions</string>
+    <string name="dejavu_settings_group_downloads_summary">Where downloads go and your add-ons</string>
+    <string name="dejavu_settings_group_advanced_summary">Translations, debugging and developer options</string>
+    <string name="dejavu_settings_group_about">About Dejavu</string>
+    <string name="dejavu_settings_group_about_summary">What’s new, the source code and support</string>
+    <string name="dejavu_settings_customize_look_summary">Theme, toolbar, actions bar and full screen</string>
+    <string name="dejavu_settings_customize_tabs">Tab bar and sidebar</string>
+    <string name="dejavu_settings_customize_tabs_summary">Show tabs in a bar or a sidebar, and where</string>
+    <string name="dejavu_settings_customize_input">Gestures and mouse</string>
+    <string name="dejavu_settings_customize_input_summary">Toolbar swipes, taps and mouse support</string>
+    <!-- Setting title: the keyword that, typed before a search in the new tab prompt, shows only settings. -->
+    <string name="dejavu_settings_search_keyword">Settings search keyword</string>
+    <!-- Shown when a keyword is already used. %1$s is the keyword. -->
+    <string name="dejavu_search_keyword_taken">\"%1$s\" is already used by another keyword.</string>
 </resources>

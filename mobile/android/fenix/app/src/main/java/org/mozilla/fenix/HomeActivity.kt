@@ -143,7 +143,6 @@ import org.mozilla.fenix.debugsettings.data.DefaultDebugSettingsRepository
 import org.mozilla.fenix.debugsettings.gleandebugtools.DefaultGleanDebugToolsStorage
 import org.mozilla.fenix.debugsettings.ui.FenixOverlay
 import org.mozilla.fenix.dejavu.settings.DejavuPreferenceCards
-import org.mozilla.fenix.dejavu.shortcuts.KeyCombo
 import org.mozilla.fenix.dejavu.shortcuts.KeyboardShortcuts
 import org.mozilla.fenix.dejavu.shortcuts.ShortcutAction
 import org.mozilla.fenix.downloads.DownloadSnackbar
@@ -1361,14 +1360,7 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity, Crash
                 }
             }
         }
-        if (event.action == KeyEvent.ACTION_DOWN && event.repeatCount == 0) {
-            val combo = KeyCombo.of(event)
-            if (combo != null && combo.hasCtrlOrAlt) {
-                val saved = KeyboardShortcuts.saved(this)
-                val action = KeyboardShortcuts.actionFor(combo, saved)
-                if (action != null && KeyboardShortcuts.run(this, action)) return true
-            }
-        }
+        if (KeyboardShortcuts.dispatch(this, event)) return true
         return super.dispatchKeyEvent(event)
     }
 

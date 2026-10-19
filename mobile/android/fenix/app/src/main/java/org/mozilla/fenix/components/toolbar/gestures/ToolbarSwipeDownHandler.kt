@@ -52,4 +52,8 @@ class ToolbarSwipeDownHandler(
             onSwipeDown()
         }
     }
+
+    override fun onSwipeCancelled() {
+        target = null
+    }
 }

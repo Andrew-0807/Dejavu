@@ -106,17 +106,6 @@
 
     <androidx.preference.PreferenceCategory
         android:layout="@layout/preference_cat_style"
-        android:title="@string/dejavu_settings_shortcuts"
-        app:iconSpaceReserved="false">
-        <androidx.preference.Preference
-            app:iconSpaceReserved="false"
-            android:key="@string/pref_key_dejavu_shortcuts"
-            android:title="@string/dejavu_settings_shortcuts"
-            android:summary="@string/dejavu_settings_shortcuts_summary" />
-    </androidx.preference.PreferenceCategory>
-
-    <androidx.preference.PreferenceCategory
-        android:layout="@layout/preference_cat_style"
         android:title="@string/preferences_tab_strip"
         app:iconSpaceReserved="false">
         <androidx.preference.SwitchPreferenceCompat
@@ -129,6 +118,11 @@
             android:dependency="@string/pref_key_vertical_tabs"
             android:key="@string/pref_key_vertical_tabs_auto_hide"
             android:title="@string/preference_vertical_tabs_auto_hide" />
+        <androidx.preference.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:dependency="@string/pref_key_vertical_tabs_auto_hide"
+            android:key="@string/pref_key_dejavu_sidebar_handle"
+            android:title="@string/dejavu_settings_sidebar_handle" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
@@ -192,7 +186,7 @@
         <androidx.preference.ListPreference
             android:key="@string/pref_key_toolbar_double_tap_gesture"
             android:title="@string/dejavu_gesture_double_tap"
-            android:defaultValue="scroll_top"
+            android:defaultValue="none"
             android:entries="@array/dejavu_gesture_entries"
             android:entryValues="@array/dejavu_gesture_values"
             app:useSimpleSummaryProvider="true" />

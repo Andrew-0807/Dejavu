@@ -16,35 +16,80 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import java.io.File
+import kotlin.math.sqrt
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mozilla.components.concept.engine.EngineView
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.Components
+import org.mozilla.fenix.dejavu.browser.SplitPanes
 import org.mozilla.fenix.ext.asActivity
 
 private const val FOLDER = "Dejavu"
 
 /** Saves the whole page of the shown tab to Pictures/Dejavu, then offers to open or share it. */
-internal fun captureFullPageScreenshot(context: Context, components: Components) {
+internal fun captureFullPageScreenshot(context: Context, components: Components, tabId: String) {
     val activity = context.asActivity() ?: return
-    // ponytail: first engine view of the window, so in split view the main pane is captured
-    val engineView = activity.window.decorView.findEngineView() ?: return
-    engineView.captureFullPage { bitmap ->
+    val engineView = SplitPanes.active?.engineViewOf(tabId) ?: activity.window.decorView.findEngineView() ?: return
+    engineView.captureFullPage { captured ->
+        val bitmap = captured?.let(::capped)
         if (bitmap == null) {
             Toast.makeText(activity, R.string.dejavu_screenshot_failed, Toast.LENGTH_SHORT).show()
             return@captureFullPage
         }
         components.applicationScope.launch(Dispatchers.Main) {
-            val uri = withContext(Dispatchers.IO) { save(activity, bitmap) }
-            if (uri == null) {
-                Toast.makeText(activity, R.string.dejavu_screenshot_failed, Toast.LENGTH_SHORT).show()
-            } else if (!activity.isFinishing) {
-                showSaved(activity, uri)
+            val uri = try {
+                withContext(Dispatchers.IO) { save(activity, bitmap) }
+            } finally {
+                bitmap.recycle()
+            }
+            when {
+                activity.isFinishing || activity.isDestroyed -> Unit
+                uri == null -> Toast.makeText(activity, R.string.dejavu_screenshot_failed, Toast.LENGTH_SHORT).show()
+                else -> showSaved(activity, uri)
             }
         }
     }
+}
+
+/** Largest width or height of a saved screenshot: image viewers and GPU textures often refuse bigger ones. */
+internal const val MAX_SCREENSHOT_DIMENSION = 16_384
+
+/** Largest size of a saved screenshot in memory, at 4 bytes per pixel. */
+internal const val MAX_SCREENSHOT_BYTES = 64L * 1024 * 1024
+
+private const val BYTES_PER_PIXEL = 4
+
+/**
+ * The size a [width] by [height] screenshot is saved at: scaled down, keeping its proportions, until neither side is
+ * longer than [MAX_SCREENSHOT_DIMENSION] and it takes at most [MAX_SCREENSHOT_BYTES]. Sides stay at least 1 pixel.
+ */
+internal fun cappedScreenshotSize(width: Int, height: Int): Pair<Int, Int> {
+    val bytes = width.toLong() * height * BYTES_PER_PIXEL
+    val scale = minOf(
+        1.0,
+        MAX_SCREENSHOT_DIMENSION.toDouble() / width,
+        MAX_SCREENSHOT_DIMENSION.toDouble() / height,
+        sqrt(MAX_SCREENSHOT_BYTES.toDouble() / bytes),
+    )
+    if (scale >= 1.0) return width to height
+    return (width * scale).toInt().coerceAtLeast(1) to (height * scale).toInt().coerceAtLeast(1)
+}
+
+/**
+ * [bitmap] scaled down to [cappedScreenshotSize], recycling the original, or null when there is no memory for it.
+ * ponytail: the engine still captures the whole page at full size first, since GeckoView offers no scale for
+ * captureFullPage through EngineView; capping before capture needs a scaled capture API in the engine.
+ */
+private fun capped(bitmap: Bitmap): Bitmap? {
+    val (width, height) = cappedScreenshotSize(bitmap.width, bitmap.height)
+    if (width == bitmap.width && height == bitmap.height) return bitmap
+    // Catches OutOfMemoryError too.
+    val scaled = runCatching { Bitmap.createScaledBitmap(bitmap, width, height, true) }.getOrNull()
+    if (scaled !== bitmap) bitmap.recycle()
+    return scaled
 }
 
 private fun View.findEngineView(): EngineView? = when {
@@ -54,15 +99,24 @@ private fun View.findEngineView(): EngineView? = when {
 }
 
 private fun save(context: Context, bitmap: Bitmap): Uri? {
+    val name = "Dejavu-${System.currentTimeMillis()}.png"
     val values = ContentValues().apply {
-        put(MediaStore.Images.Media.DISPLAY_NAME, "Dejavu-${System.currentTimeMillis()}.png")
+        put(MediaStore.Images.Media.DISPLAY_NAME, name)
         put(MediaStore.Images.Media.MIME_TYPE, "image/png")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             put(MediaStore.Images.Media.RELATIVE_PATH, "${Environment.DIRECTORY_PICTURES}/$FOLDER")
+        } else {
+            @Suppress("DEPRECATION")
+            val dir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), FOLDER)
+            dir.mkdirs()
+            @Suppress("DEPRECATION")
+            put(MediaStore.Images.Media.DATA, File(dir, name).absolutePath)
         }
     }
     val resolver = context.contentResolver
-    val uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values) ?: return null
+    // Before Android 10 this needs the storage permission, which the app only has once it was granted for downloads.
+    val uri = runCatching { resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values) }.getOrNull()
+        ?: return null
     val saved = runCatching {
         resolver.openOutputStream(uri)?.use { bitmap.compress(Bitmap.CompressFormat.PNG, 100, it) } == true
     }.getOrDefault(false)

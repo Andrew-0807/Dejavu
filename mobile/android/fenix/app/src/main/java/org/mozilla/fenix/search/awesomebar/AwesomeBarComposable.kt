@@ -12,9 +12,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.isImeVisible
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -24,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
@@ -75,6 +79,10 @@ import org.mozilla.fenix.settings.SupportUtils
 
 private const val MATERIAL_DESIGN_SCRIM = "#52000000"
 private const val AWESOMEBAR_MAX_WIDTH = 600
+private const val DROPDOWN_SIDE_PADDING = 12
+private const val DROPDOWN_MAX_HEIGHT = 480
+private const val DROPDOWN_ELEVATION = 8
+private const val DROPDOWN_RADIUS = 12
 
 /**
  * Cap the width of the awesomebar content to [AcornWindowSize.Small] and center it in the available space as a staged
@@ -104,6 +112,8 @@ private fun Modifier.awesomeBarContentWidth(useAddressBarFocusMode: Boolean) =
  * @param isEdgeToEdgeBackgroundEnabled Whether the Edge2Edge background is enabled.
  * @param suggestionsAtBottom Whether the suggestions start at the bottom, next to an address bar shown there while
  *   searching. Defaults to the position of the address bar.
+ * @param dropdownOnLargeWindow Whether, on tablets, the suggestions show in a dropdown next to the address bar
+ *   instead of covering the screen.
  */
 @Suppress("LongParameterList")
 class AwesomeBarComposable(
@@ -120,6 +130,7 @@ class AwesomeBarComposable(
     private val searchAccessPoint: MetricsUtils.Source = MetricsUtils.Source.NONE,
     private val isEdgeToEdgeBackgroundEnabled: Boolean = false,
     private val suggestionsAtBottom: Boolean? = null,
+    private val dropdownOnLargeWindow: Boolean = false,
 ) {
     private val searchStore by initializeSearchStore()
 
@@ -139,10 +150,12 @@ class AwesomeBarComposable(
             }
         val isSearchActive = appStore.observeAsComposableState { it.searchState.isSearchActive }.value
         val state = searchStore.observeAsComposableState { it }.value
+        val dropdown = dropdownOnLargeWindow && AcornWindowSize.isLargeWindow()
         val orientation by
-            remember(state.searchSuggestionsOrientedAtBottom) {
+            remember(state.searchSuggestionsOrientedAtBottom, dropdown) {
                 derivedStateOf {
-                    when (suggestionsAtBottom ?: searchStore.state.searchSuggestionsOrientedAtBottom) {
+                    val atBottom = suggestionsAtBottom.takeUnless { dropdown }
+                    when (atBottom ?: searchStore.state.searchSuggestionsOrientedAtBottom) {
                         true -> AwesomeBarOrientation.BOTTOM
                         false -> AwesomeBarOrientation.TOP
                     }
@@ -224,8 +237,15 @@ class AwesomeBarComposable(
             }
             if (state.shouldShowSearchSuggestions) {
                 Box(
+                    contentAlignment =
+                        when (dropdown && orientation == AwesomeBarOrientation.BOTTOM) {
+                            true -> Alignment.BottomStart
+                            false -> Alignment.TopStart
+                        },
                     modifier =
-                        modifier.background(MaterialTheme.colorScheme.surface).fillMaxSize().pointerInput(
+                        modifier.then(
+                            if (dropdown) Modifier else Modifier.background(MaterialTheme.colorScheme.surface),
+                        ).fillMaxSize().pointerInput(
                             WindowInsets.isImeVisible
                         ) {
                             detectTapGestures(
@@ -247,7 +267,18 @@ class AwesomeBarComposable(
                             }
                         }
 
-                    Box(modifier = Modifier.awesomeBarContentWidth(showCurrentTabData)) {
+                    Box(
+                        modifier =
+                            if (dropdown) {
+                                Modifier.fillMaxWidth()
+                                    .padding(horizontal = DROPDOWN_SIDE_PADDING.dp)
+                                    .heightIn(max = DROPDOWN_MAX_HEIGHT.dp)
+                                    .shadow(DROPDOWN_ELEVATION.dp, RoundedCornerShape(DROPDOWN_RADIUS.dp))
+                                    .background(MaterialTheme.colorScheme.surface)
+                            } else {
+                                Modifier.awesomeBarContentWidth(showCurrentTabData)
+                            },
+                    ) {
                         // Dejavu: the suggestions kept in the browser store hold this screen's search helpers, so
                         // forget them once they are no longer shown, or they keep a closed browser screen in memory.
                         DisposableEffect(Unit) {

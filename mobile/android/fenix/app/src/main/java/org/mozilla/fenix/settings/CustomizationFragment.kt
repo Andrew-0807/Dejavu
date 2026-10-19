@@ -19,6 +19,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceGroup
 import androidx.preference.SwitchPreferenceCompat
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -102,8 +103,18 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
 
     override fun onResume() {
         super.onResume()
-        showToolbar(getString(R.string.preferences_customize))
-        args.preferenceToScrollTo?.let {
+        showToolbar(
+            getString(
+                when (args.section) {
+                    SECTION_TABS -> R.string.dejavu_settings_customize_tabs
+                    SECTION_INPUT -> R.string.dejavu_settings_customize_input
+                    else -> R.string.preferences_customize
+                },
+            ),
+        )
+        // Dejavu: scroll to a searched preference once, not again on return from a sub screen.
+        arguments?.getString(PREFERENCE_TO_SCROLL_TO)?.let {
+            arguments?.remove(PREFERENCE_TO_SCROLL_TO)
             scrollToPreferenceWithHighlight(it)
         }
     }
@@ -131,6 +142,26 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             isSummarizationEnabled = status.isSummarizationFeatureEnabled,
             isSummarizationGestureEnabled = status.isSummarizationGestureEnabled,
         )
+        showSection()
+    }
+
+    /** Dejavu: the settings home opens one section of this screen, see docs/dejavu/settings-redesign.md. */
+    private fun showSection() {
+        val section = args.section ?: return
+        val tabs = listOf(getString(R.string.pref_key_tab_strip_show), getString(R.string.pref_key_tab_strip_location))
+        val input = getString(R.string.pref_key_dynamic_toolbar)
+        val screen = preferenceScreen
+        for (index in 0 until screen.preferenceCount) {
+            val category = screen.getPreference(index) as? PreferenceGroup ?: continue
+            val keys = listOfNotNull(category.key) +
+                (0 until category.preferenceCount).mapNotNull { category.getPreference(it).key }
+            val place = when {
+                keys.any { it in tabs } -> SECTION_TABS
+                input in keys -> SECTION_INPUT
+                else -> SECTION_LOOK
+            }
+            if (place != section) category.isVisible = false
+        }
     }
 
     private fun updateToolbarShortcut() {
@@ -323,6 +354,7 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             setupToolbarLayout()
             setupTabStripLocationCategory()
             updateToolbarShortcut()
+            showSection()
             true
         }
     }
@@ -399,6 +431,10 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             isChecked = context.components.settings.isVerticalTabsAutoHide
             onPreferenceChangeListener = SharedPreferenceUpdater()
         }
+        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_sidebar_handle).apply {
+            isChecked = context.components.settings.isSidebarHandleShown
+            onPreferenceChangeListener = SharedPreferenceUpdater()
+        }
         requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dynamic_toolbar).apply {
             isChecked = context.components.settings.isDynamicToolbarEnabled
             onPreferenceChangeListener = SharedPreferenceUpdater()
@@ -437,10 +473,6 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
                 findNavController().navigate(R.id.dejavu_more_menu_graph)
                 return true
             }
-            resources.getString(R.string.pref_key_dejavu_shortcuts) -> {
-                findNavController().navigate(R.id.dejavu_shortcuts_graph)
-                return true
-            }
             resources.getString(R.string.pref_key_website_pull_to_refresh) -> {
                 PullToRefreshInBrowser.enabled.set(requireComponents.settings.isPullToRefreshEnabledInBrowser)
             }
@@ -455,9 +487,16 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
         super.onConfigurationChanged(newConfig)
         setupToolbarLayout()
         updateToolbarShortcut()
+        showSection()
     }
 
     companion object {
+        /** Dejavu: values of the `section` argument. */
+        const val SECTION_LOOK = "look"
+        const val SECTION_TABS = "tabs"
+        const val SECTION_INPUT = "input"
+        private const val PREFERENCE_TO_SCROLL_TO = "preference_to_scroll_to"
+
         // Used to send telemetry data about toolbar position changes
         enum class Position {
             TOP,

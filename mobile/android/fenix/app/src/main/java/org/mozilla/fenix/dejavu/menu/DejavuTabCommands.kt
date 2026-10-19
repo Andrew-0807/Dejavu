@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import mozilla.components.browser.state.action.RecentlyClosedAction
 import mozilla.components.browser.state.action.TabListAction
 import mozilla.components.browser.state.state.TabSessionState
+import mozilla.components.browser.state.state.recover.TabState
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.Components
 import org.mozilla.fenix.dejavu.actions.ActionContext
@@ -47,7 +48,7 @@ internal class DejavuTabCommands(
         val pin = workspaces.pinOf(tab.id)
         when (item) {
             MoreMenuItem.SAVE_AS_PDF -> sessionUseCases.saveToPdf(tab.id)
-            MoreMenuItem.SCREENSHOT -> captureFullPageScreenshot(context, components)
+            MoreMenuItem.SCREENSHOT -> captureFullPageScreenshot(context, components, tab.id)
             MoreMenuItem.PRINT -> sessionUseCases.printContent(tab.id)
             MoreMenuItem.PIN_TAB ->
                 if (pin != null && !pin.essential) repository.unpin(setOf(pin.id)) else repository.pinTabs(listOf(tab.toPinSource()))
@@ -89,15 +90,35 @@ internal class DejavuTabCommands(
         }
     }
 
+    /**
+     * Brings back the tab closed last in the browsing mode of [tab]: the ones the undo snackbar still offers first,
+     * then the recently closed ones, which only hold normal tabs.
+     */
     private fun restoreClosedTab() {
-        val closed = components.core.store.state.closedTabs.firstOrNull()
-        if (closed == null) {
-            Toast.makeText(appContext, R.string.dejavu_no_closed_tabs, Toast.LENGTH_SHORT).show()
-            return
-        }
-        components.applicationScope.launch(Dispatchers.Main) {
-            components.useCases.tabsUseCases.restore(closed, components.core.recentlyClosedTabsStorage.value.engineStateStorage())
-            components.core.store.dispatch(RecentlyClosedAction.RemoveClosedTabAction(closed))
+        if (restoring) return
+        val state = components.core.store.state
+        val choice = restoreChoiceOf(
+            private = tab.content.private,
+            undoTabs = state.undoHistory.tabs.map { it.state },
+            closedTabs = state.closedTabs,
+        )
+        when (choice) {
+            RestoreChoice.Undo -> components.useCases.tabsUseCases.undo()
+            is RestoreChoice.Closed -> {
+                restoring = true
+                components.applicationScope.launch(Dispatchers.Main) {
+                    try {
+                        components.useCases.tabsUseCases.restore(
+                            choice.tab,
+                            components.core.recentlyClosedTabsStorage.value.engineStateStorage(),
+                        )
+                        components.core.store.dispatch(RecentlyClosedAction.RemoveClosedTabAction(choice.tab))
+                    } finally {
+                        restoring = false
+                    }
+                }
+            }
+            RestoreChoice.None -> Toast.makeText(appContext, R.string.dejavu_no_closed_tabs, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -123,5 +144,32 @@ internal class DejavuTabCommands(
 
     private companion object {
         const val ISO_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssXXX"
+
+        /** Whether a closed tab is being restored, so that quick repeated taps do not restore it twice. */
+        var restoring = false
     }
+}
+
+/** What restoring the last closed tab brings back. */
+internal sealed interface RestoreChoice {
+    /** The tabs of the last close, which the undo snackbar still offers. */
+    data object Undo : RestoreChoice
+
+    /** The recently closed [tab]. */
+    data class Closed(val tab: TabState) : RestoreChoice
+
+    /** Nothing: no tab was closed in this browsing mode. */
+    data object None : RestoreChoice
+}
+
+/**
+ * What restoring the last closed tab brings back in [private] or normal browsing: the tabs of the last close while
+ * undo can still bring them back ([undoTabs]), else the closed tab used last among [closedTabs]. Private tabs are
+ * never kept among [closedTabs].
+ */
+internal fun restoreChoiceOf(private: Boolean, undoTabs: List<TabState>, closedTabs: List<TabState>): RestoreChoice {
+    if (undoTabs.isNotEmpty() && undoTabs.all { it.private == private }) return RestoreChoice.Undo
+    if (private) return RestoreChoice.None
+    return closedTabs.filterNot { it.private }.maxByOrNull { it.lastAccess }?.let(RestoreChoice::Closed)
+        ?: RestoreChoice.None
 }

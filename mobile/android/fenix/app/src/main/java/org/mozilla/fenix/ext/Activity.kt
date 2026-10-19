@@ -16,6 +16,9 @@ import android.view.WindowManager
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
@@ -88,6 +91,21 @@ fun Activity.enterToImmersiveMode() {
             View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
             View.SYSTEM_UI_FLAG_FULLSCREEN or
             View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+}
+
+/**
+ * Dejavu: hides or shows the system bars through the window's insets controller only. Unlike `enterImmersiveMode`, it
+ * leaves the window flags alone, so calling it while scrolling does not lay the window out again. Hidden bars come
+ * back for a moment on a swipe from the edge.
+ */
+fun Activity.setSystemBarsShown(shown: Boolean) {
+    val controller = WindowCompat.getInsetsController(window, window.decorView)
+    if (shown) {
+        controller.show(WindowInsetsCompat.Type.systemBars())
+    } else {
+        controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        controller.hide(WindowInsetsCompat.Type.systemBars())
+    }
 }
 
 fun Activity.breadcrumb(

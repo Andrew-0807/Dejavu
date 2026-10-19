@@ -7,6 +7,9 @@ package org.mozilla.fenix.dejavu.browser
 import android.content.Context
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.compose.material3.ColorScheme
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -219,10 +222,19 @@ fun NavController.openDejavuMenu(fromBottom: Boolean, opening: DejavuMenu.Openin
     navigate(directions.actionId, directions.arguments.apply { putAll(DejavuMenu.arguments(fromBottom, opening)) })
 }
 
-/** Carries out the toolbar gesture [key], one of `dejavu_gesture_values` but the address menu, which the bar opens. */
+/**
+ * Asks the shown address bar, [DejavuTopBar], to open its menu that copies or pastes the address. It is a flag, so a
+ * gesture from outside the bar, like a swipe the bar does not see, can open it.
+ */
+object DejavuAddressMenu {
+    var requested by mutableStateOf(false)
+}
+
+/** Carries out the toolbar gesture [key], one of `dejavu_gesture_values`. */
 fun runToolbarGesture(context: Context, navController: NavController, key: String, fromBottom: Boolean) {
     val components = context.components
     when (key) {
+        "address_menu" -> DejavuAddressMenu.requested = true
         "scroll_top" ->
             components.useCases.sessionUseCases.loadUrl("javascript:window.scrollTo({top:0,behavior:'smooth'});void 0")
         "reload" -> components.useCases.sessionUseCases.reload()
