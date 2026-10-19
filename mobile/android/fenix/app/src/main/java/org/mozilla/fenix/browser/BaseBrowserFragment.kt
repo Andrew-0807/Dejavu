@@ -2070,6 +2070,7 @@ abstract class BaseBrowserFragment :
             components.useCases.sessionUseCases.reload()
         }
         hideToolbar()
+        if (components.settings.shouldHideSystemBars) hideSystemBars()
 
         BiometricAuthenticationManager.biometricAuthenticationNeededInfo.shouldShowAuthenticationPrompt = true
         BiometricAuthenticationManager.biometricAuthenticationNeededInfo.authenticationStatus =
@@ -2110,6 +2111,19 @@ abstract class BaseBrowserFragment :
                 fullScreenChanged(false)
             }
         }
+        if (requireComponents.settings.shouldHideSystemBars) {
+            activity?.exitImmersiveMode(
+                unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
+            )
+        }
+    }
+
+    private fun hideSystemBars() {
+        activity?.enterImmersiveMode(
+            setOnApplyWindowInsetsListener = { key: String, listener: OnApplyWindowInsetsListener ->
+                binding.engineView.addWindowInsetsListener(key, listener)
+            }
+        )
     }
 
     @CallSuper
@@ -2318,9 +2332,14 @@ abstract class BaseBrowserFragment :
 
             MediaState.fullscreen.record(NoExtras())
         } else {
-            activity.exitImmersiveMode(
-                unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
-            )
+            // Dejavu: keep the system bars hidden when the user chose so.
+            if (requireComponents.settings.shouldHideSystemBars) {
+                hideSystemBars()
+            } else {
+                activity.exitImmersiveMode(
+                    unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
+                )
+            }
 
             (view as? SwipeGestureLayout)?.isSwipeEnabled = true
             (activity as? HomeActivity)?.let { homeActivity ->

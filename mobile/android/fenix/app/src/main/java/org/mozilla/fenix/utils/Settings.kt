@@ -2251,6 +2251,13 @@ class Settings(
             default = true,
         )
 
+    // Dejavu: hide the status bar and the navigation bar while a page is shown.
+    var shouldHideSystemBars by
+        booleanPreference(
+            appContext.getPreferenceKey(R.string.pref_key_dejavu_hide_system_bars),
+            default = false,
+        )
+
     var useNewDynamicToolbarBehaviour by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_use_scroll_data_for_dynamic_toolbar),
