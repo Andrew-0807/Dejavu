@@ -152,8 +152,10 @@ internal class SplitPaneFeature(
     private var previousSelectedTabId: String? = null
     private var mainSessionAtSwitch: GeckoSession? = null
     private val retryBind = Runnable { target?.let(::bind) }
-    private val layoutListener = View.OnLayoutChangeListener { view, _, _, _, _, oldLeft, oldTop, oldRight, oldBottom ->
-        if (view.height != oldBottom - oldTop || view.width != oldRight - oldLeft) browserLayout.post { applyLayout() }
+    // Also runs when only the toolbars change, like entering or leaving full immersive mode. applyLayout only sets
+    // layout params that differ, so the layouts it causes settle after one pass.
+    private val layoutListener = View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+        browserLayout.post { applyLayout() }
     }
 
     fun start() {

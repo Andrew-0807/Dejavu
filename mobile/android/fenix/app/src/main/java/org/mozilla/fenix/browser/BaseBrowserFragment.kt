@@ -42,6 +42,7 @@ import androidx.biometric.BiometricManager
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
@@ -1644,10 +1645,14 @@ abstract class BaseBrowserFragment :
         }
     }
 
+    /** Whether the auto-hidden tabs sidebar is shown over the page, or null when it is not auto-hidden. */
+    private var tabSidebarOverlay: MutableState<Boolean>? = null
+
     /** Shows the vertical tabs sidebar next to the page on large screens when the user turned it on. */
     private fun initializeTabSidebar(appStore: AppStore, settings: org.mozilla.fenix.utils.Settings) {
         if (customTabSessionId != null || !settings.isVerticalTabsEnabled) return
         val overlayShown = mutableStateOf(false).takeIf { settings.isVerticalTabsAutoHide }
+        tabSidebarOverlay = overlayShown
         if (overlayShown != null) {
             // The page keeps the full width and the sidebar slides over it from the left edge.
             binding.tabSidebar.translationZ = resources.getDimension(R.dimen.browser_fragment_toolbar_elevation)
@@ -2264,8 +2269,9 @@ abstract class BaseBrowserFragment :
         }
         // Like fullscreen video, so dragging the button over the hidden toolbar does not switch tabs.
         (view as? SwipeGestureLayout)?.isSwipeEnabled = false
-        // fullScreenChanged(false) shows the sidebar again on exit.
+        // fullScreenChanged(false) shows the sidebar again on exit, with the auto-hidden one still closed.
         binding.tabSidebar.isVisible = false
+        tabSidebarOverlay?.value = false
         expandBrowserView()
         showExitImmersiveButton()
     }
@@ -2688,6 +2694,7 @@ abstract class BaseBrowserFragment :
             )
             (view as? SwipeGestureLayout)?.isSwipeEnabled = false
             binding.tabSidebar.isVisible = false
+            tabSidebarOverlay?.value = false
             expandBrowserView()
 
             MediaState.fullscreen.record(NoExtras())
