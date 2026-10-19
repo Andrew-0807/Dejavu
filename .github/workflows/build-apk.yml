@@ -1,0 +1,39 @@
+name: Build debug APK
+
+on:
+  push:
+    branches: [ci/build-apk]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL && df -h /
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Write mozconfig
+        run: |
+          cat > mozconfig <<'CFG'
+          ac_add_options --enable-project=mobile/android
+          ac_add_options --target=aarch64-linux-android
+          ac_add_options --enable-artifact-builds
+          mk_add_options MOZ_OBJDIR=./objdir-frontend
+          CFG
+
+      - name: Bootstrap
+        run: ./mach --no-interactive bootstrap --application-choice="GeckoView/Firefox for Android Artifact Mode"
+
+      - name: Build
+        run: |
+          ./mach build
+          ./mach gradle :fenix:assembleDebug
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dejavu-debug-apk
+          path: objdir-frontend/gradle/build/mobile/android/fenix/app/outputs/apk/debug/*arm64-v8a*.apk
