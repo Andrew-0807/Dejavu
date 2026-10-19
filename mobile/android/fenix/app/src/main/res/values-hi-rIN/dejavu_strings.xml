@@ -367,4 +367,8 @@
     <string name="dejavu_sync_start_fresh">नए सिरे से शुरू करें</string>
     <string name="dejavu_sync_start_fresh_zen">ये टैब बंद करें और ये वर्कस्पेस, पिन किए गए टैब, फ़ोल्डर और एसेंशियल्स हटाएं, फिर Zen से अपने वर्कस्पेस लाएं।</string>
     <string name="dejavu_sync_start_fresh_firefox">ये टैब बंद करें और ये वर्कस्पेस, पिन किए गए टैब, फ़ोल्डर और एसेंशियल्स हटाएं, फिर Firefox वाले अपने कंप्यूटर और फ़ोन के टैब दिखाएं।</string>
+    <string name="dejavu_private_link_copied">निजी टैब का लिंक कॉपी हुआ। जब तक आप कुछ और कॉपी नहीं करते, यह क्लिपबोर्ड में रहेगा।</string>
+    <string name="dejavu_open_non_web_pin_title">यह पता खोलें?</string>
+    <string name="dejavu_open_non_web_pin_message">यह पिन किया गया टैब ऐसा पता खोलता है जो वेब पेज नहीं है। हो सकता है यह आपके खाते के किसी दूसरे डिवाइस से आया हो।\n\n%1$s</string>
+    <string name="dejavu_open">खोलें</string>
 </resources>

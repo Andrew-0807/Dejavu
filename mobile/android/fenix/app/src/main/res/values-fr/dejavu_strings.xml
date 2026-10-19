@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Repartir de zéro</string>
     <string name="dejavu_sync_start_fresh_zen">Ferme ces onglets et supprime ces espaces, onglets épinglés, dossiers et favoris, puis récupère tes espaces de Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Ferme ces onglets et supprime ces espaces, onglets épinglés, dossiers et favoris, puis affiche les onglets de tes ordinateurs et téléphones avec Firefox.</string>
+    <string name="dejavu_private_link_copied">Lien de l\'onglet privé copié. Il reste dans le presse-papiers jusqu\'à ce que vous copiiez autre chose.</string>
+    <string name="dejavu_open_non_web_pin_title">Ouvrir cette adresse ?</string>
+    <string name="dejavu_open_non_web_pin_message">Cet onglet épinglé ouvre une adresse qui n\'est pas une page web. Elle provient peut-être d\'un autre appareil de votre compte.\n\n%1$s</string>
+    <string name="dejavu_open">Ouvrir</string>
 </resources>

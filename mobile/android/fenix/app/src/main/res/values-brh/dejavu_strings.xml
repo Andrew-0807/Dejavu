@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">دوبارہ شروع کبو</string>
     <string name="dejavu_sync_start_fresh_zen">اے ٹیباک بند کبو او اے ورک سپیساک، پن ٹیباک، فولڈراک او ضروری چیزاک ہٹاؤ، پہ Zen ٹی نی نا ورک سپیساک حاصل کبو۔</string>
     <string name="dejavu_sync_start_fresh_firefox">اے ٹیباک بند کبو او اے ورک سپیساک، پن ٹیباک، فولڈراک او ضروری چیزاک ہٹاؤ، پہ نی نا Firefox کمپیوٹر او فوناک نا ٹیباک دکھاؤ۔</string>
+    <string name="dejavu_private_link_copied">خاص ٹیب نا لنک کاپی مس. ہرا وخت اسہ پین چیز کاپی کپیس، کلپ بورڈ ٹی سلیک.</string>
+    <string name="dejavu_open_non_web_pin_title">دا پتہ ملنگے؟</string>
+    <string name="dejavu_open_non_web_pin_message">دا پن کروکا ٹیب اسہ ہندا پتہ ملک ہرادے ویب پنہ اف. ممکن اے کہ نا اکاؤنٹ نا اسہ پین ڈیوائس آن بسنے.\n\n%1$s</string>
+    <string name="dejavu_open">ملہ</string>
 </resources>

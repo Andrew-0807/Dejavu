@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Sıfırdan başla</string>
     <string name="dejavu_sync_start_fresh_zen">Bu vərəqləri bağlayın və bu iş sahələrini, bərkidilmiş vərəqləri, qovluqları və əsasları silin, sonra iş sahələrinizi Zen-dən alın.</string>
     <string name="dejavu_sync_start_fresh_firefox">Bu vərəqləri bağlayın və bu iş sahələrini, bərkidilmiş vərəqləri, qovluqları və əsasları silin, sonra Firefox olan kompüter və telefonlarınızın vərəqlərini göstərin.</string>
+    <string name="dejavu_private_link_copied">Məxfi vərəqin keçidi kopyalandı. Başqa bir şey kopyalayana qədər mübadilə buferində qalır.</string>
+    <string name="dejavu_open_non_web_pin_title">Bu ünvan açılsın?</string>
+    <string name="dejavu_open_non_web_pin_message">Bu bərkidilmiş vərəq veb səhifə olmayan bir ünvan açır. O, hesabınızdakı başqa cihazdan gəlmiş ola bilər.\n\n%1$s</string>
+    <string name="dejavu_open">Aç</string>
 </resources>

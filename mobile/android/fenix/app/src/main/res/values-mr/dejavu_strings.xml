@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">नव्याने सुरुवात करा</string>
     <string name="dejavu_sync_start_fresh_zen">हे टॅब बंद करा आणि ही कार्यक्षेत्रे, पिन केलेले टॅब, फोल्डर आणि आवश्यक काढा, नंतर Zen मधून तुमची कार्यक्षेत्रे मिळवा.</string>
     <string name="dejavu_sync_start_fresh_firefox">हे टॅब बंद करा आणि ही कार्यक्षेत्रे, पिन केलेले टॅब, फोल्डर आणि आवश्यक काढा, नंतर Firefox असलेल्या तुमच्या संगणकांचे आणि फोनचे टॅब दाखवा.</string>
+    <string name="dejavu_private_link_copied">खाजगी टॅबचा दुवा कॉपी केला. तुम्ही दुसरे काही कॉपी करेपर्यंत तो क्लिपबोर्डवर राहतो.</string>
+    <string name="dejavu_open_non_web_pin_title">हा पत्ता उघडायचा?</string>
+    <string name="dejavu_open_non_web_pin_message">हा पिन केलेला टॅब वेब पृष्ठ नसलेला पत्ता उघडतो. तो तुमच्या खात्यातील दुसऱ्या उपकरणावरून आला असू शकतो.\n\n%1$s</string>
+    <string name="dejavu_open">उघडा</string>
 </resources>

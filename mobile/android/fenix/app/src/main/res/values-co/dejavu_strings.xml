@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Ricumincià da zeru</string>
     <string name="dejavu_sync_start_fresh_zen">Chjudite st\'unghjette è cacciate sti spazii di travagliu, unghjette fissate, cartulari è essenziali, dopu pigliate i vostri spazii di travagliu di Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Chjudite st\'unghjette è cacciate sti spazii di travagliu, unghjette fissate, cartulari è essenziali, dopu affissate l\'unghjette di i vostri urdinatori è telefoni cù Firefox.</string>
+    <string name="dejavu_private_link_copied">U liame di l\'unghjetta privata hè statu cupiatu. Ferma in u preme-papei finu à chì vo cupiate qualcosa d\'altru.</string>
+    <string name="dejavu_open_non_web_pin_title">Apre st\'indirizzu?</string>
+    <string name="dejavu_open_non_web_pin_message">St\'unghjetta puntarulata apre un indirizzu chì ùn hè micca una pagina web. Pò esse ghjuntu da un altru apparechju di u vostru contu.\n\n%1$s</string>
+    <string name="dejavu_open">Apre</string>
 </resources>

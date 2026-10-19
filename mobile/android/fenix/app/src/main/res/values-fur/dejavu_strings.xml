@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Scomence di gnûf</string>
     <string name="dejavu_sync_start_fresh_zen">Siere chestis schedis e gjave chescj spazis di lavôr, schedis fissadis, cartelis e essenziâi, dopo cjape i tiei spazis di lavôr di Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Siere chestis schedis e gjave chescj spazis di lavôr, schedis fissadis, cartelis e essenziâi, dopo mostre lis schedis dai tiei computers e telefons cun Firefox.</string>
+    <string name="dejavu_private_link_copied">Il colegament de schede privade al è stât copiât. Al reste tes notis fintremai che no tu copiis alc altri.</string>
+    <string name="dejavu_open_non_web_pin_title">Vierzi cheste direzion?</string>
+    <string name="dejavu_open_non_web_pin_message">Cheste schede fissade e vierç une direzion che no je une pagjine web. E podarès vignî di un altri dispositîf dal to account.\n\n%1$s</string>
+    <string name="dejavu_open">Vierç</string>
 </resources>

@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Začni znova</string>
     <string name="dejavu_sync_start_fresh_zen">Zaprite te zavihke in odstranite te delovne prostore, pripete zavihke, mape in Izbrano, nato pa pridobite svoje delovne prostore iz Zena.</string>
     <string name="dejavu_sync_start_fresh_firefox">Zaprite te zavihke in odstranite te delovne prostore, pripete zavihke, mape in Izbrano, nato pa prikažite zavihke svojih računalnikov in telefonov s Firefoxom.</string>
+    <string name="dejavu_private_link_copied">Povezava zasebnega zavihka je kopirana. Ostane v odložišču, dokler ne kopirate česa drugega.</string>
+    <string name="dejavu_open_non_web_pin_title">Odprem ta naslov?</string>
+    <string name="dejavu_open_non_web_pin_message">Ta pripeti zavihek odpre naslov, ki ni spletna stran. Morda je prišel z druge naprave v vašem računu.\n\n%1$s</string>
+    <string name="dejavu_open">Odpri</string>
 </resources>

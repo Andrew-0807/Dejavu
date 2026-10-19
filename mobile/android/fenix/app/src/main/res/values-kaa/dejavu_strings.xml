@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Jańadan baslaw</string>
     <string name="dejavu_sync_start_fresh_zen">Bul betlerdi jabıp, bul jumıs maydanların, bekitilgen betlerdi, papkalardı hám tiykarǵılardı óshiriń, soń jumıs maydanlarıńızdı Zen-nen alıń.</string>
     <string name="dejavu_sync_start_fresh_firefox">Bul betlerdi jabıp, bul jumıs maydanların, bekitilgen betlerdi, papkalardı hám tiykarǵılardı óshiriń, soń Firefox ornatılǵan kompyuterlerińiz hám telefonlarıńızdıń betlerin kórsetiń.</string>
+    <string name="dejavu_private_link_copied">Jeke betniń siltemesi kóshirildi. Basqa nárse kóshirmegenińizshe ol almasıw buferinde qaladı.</string>
+    <string name="dejavu_open_non_web_pin_title">Bul mánzil ashılsın ba?</string>
+    <string name="dejavu_open_non_web_pin_message">Bul bekitilgen bet veb-bet bolmaǵan mánzildi ashadı. Ol esabıńızdaǵı basqa qurılmadan kelgen bolıwı múmkin.\n\n%1$s</string>
+    <string name="dejavu_open">Ashıw</string>
 </resources>

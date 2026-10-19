@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Ricomincia da zero</string>
     <string name="dejavu_sync_start_fresh_zen">Chiudi queste schede e rimuovi gli spazi, le schede bloccate, le cartelle e i preferiti, poi recupera i tuoi spazi da Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Chiudi queste schede e rimuovi gli spazi, le schede bloccate, le cartelle e i preferiti, poi mostra le schede dei tuoi computer e telefoni con Firefox.</string>
+    <string name="dejavu_private_link_copied">Link della scheda anonima copiato. Rimane negli appunti finché non copi qualcos\'altro.</string>
+    <string name="dejavu_open_non_web_pin_title">Aprire questo indirizzo?</string>
+    <string name="dejavu_open_non_web_pin_message">Questa scheda bloccata apre un indirizzo che non è una pagina web. Potrebbe provenire da un altro dispositivo del tuo account.\n\n%1$s</string>
+    <string name="dejavu_open">Apri</string>
 </resources>

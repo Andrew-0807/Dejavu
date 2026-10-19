@@ -367,4 +367,8 @@
     <string name="dejavu_sync_start_fresh">નવેસરથી શરૂ કરો</string>
     <string name="dejavu_sync_start_fresh_zen">આ ટૅબ્સ બંધ કરો અને આ વર્કસ્પેસ, પિન કરેલી ટૅબ્સ, ફોલ્ડર્સ અને એસેન્શિયલ્સ દૂર કરો, પછી Zen માંથી તમારા વર્કસ્પેસ મેળવો.</string>
     <string name="dejavu_sync_start_fresh_firefox">આ ટૅબ્સ બંધ કરો અને આ વર્કસ્પેસ, પિન કરેલી ટૅબ્સ, ફોલ્ડર્સ અને એસેન્શિયલ્સ દૂર કરો, પછી Firefox ધરાવતાં તમારાં કમ્પ્યુટર અને ફોનની ટૅબ્સ બતાવો.</string>
+    <string name="dejavu_private_link_copied">ખાનગી ટૅબની લિંક કૉપિ થઈ. તમે બીજું કંઈ કૉપિ ન કરો ત્યાં સુધી તે ક્લિપબોર્ડમાં રહે છે.</string>
+    <string name="dejavu_open_non_web_pin_title">આ સરનામું ખોલવું છે?</string>
+    <string name="dejavu_open_non_web_pin_message">આ પિન કરેલું ટૅબ એવું સરનામું ખોલે છે જે વેબ પેજ નથી. તે તમારા ખાતાના બીજા ઉપકરણમાંથી આવ્યું હોઈ શકે.\n\n%1$s</string>
+    <string name="dejavu_open">ખોલો</string>
 </resources>

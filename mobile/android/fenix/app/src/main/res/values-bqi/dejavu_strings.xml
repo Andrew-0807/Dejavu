@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">شروع ز نۊ</string>
     <string name="dejavu_sync_start_fresh_zen">ای بلگه یل ره ببند و ای فضا یل، بلگه یل سنجاق‌وابیده، پوشه یل و سایت یل مهم ره پاک کو، بعد فضا یلت ره ز Zen بگیر.</string>
     <string name="dejavu_sync_start_fresh_firefox">ای بلگه یل ره ببند و ای فضا یل، بلگه یل سنجاق‌وابیده، پوشه یل و سایت یل مهم ره پاک کو، بعد بلگه یل کامپیوتر و گوشی یل Firefox ت ره نشون بده.</string>
+    <string name="dejavu_private_link_copied">پیوند بلگه خصوصی کپی بی. تا وختی چیز دیری کپی نکردی، تو کلیپ بورد مئمونه.</string>
+    <string name="dejavu_open_non_web_pin_title">ای نشونی واز بوئه؟</string>
+    <string name="dejavu_open_non_web_pin_message">ای بلگه سنجاق بیه نشونیی واز مئکه که بلگه وب نئ. شایت ز دسگا دیری تو حساوت اومائه.\n\n%1$s</string>
+    <string name="dejavu_open">واز کردن</string>
 </resources>

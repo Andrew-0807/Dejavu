@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Znowa započeć</string>
     <string name="dejavu_sync_start_fresh_zen">Začiń tute rajtarki a wotstroń tute dźěłowe rumy, připjate rajtarki, zarjadniki a najwažniše, potom dóstanješ swoje dźěłowe rumy z Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Začiń tute rajtarki a wotstroń tute dźěłowe rumy, připjate rajtarki, zarjadniki a najwažniše, potom widźiš rajtarki swojich ličakow a telefonow z Firefox.</string>
+    <string name="dejavu_private_link_copied">Wotkaz priwatneho rajtarka je so kopěrował. Wostanje w mjezyskładźe, doniž něšto druhe njekopěrujeće.</string>
+    <string name="dejavu_open_non_web_pin_title">Tutu adresu wočinić?</string>
+    <string name="dejavu_open_non_web_pin_message">Tutón připjaty rajtark wočinja adresu, kotraž webstrona njeje. Je snano z druheho grata na wašim konće přišła.\n\n%1$s</string>
+    <string name="dejavu_open">Wočinić</string>
 </resources>

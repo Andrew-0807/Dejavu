@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">እንደ አዲስ ጀምር</string>
     <string name="dejavu_sync_start_fresh_zen">እነዚህን ትሮች ይዝጉ፣ እነዚህን የስራ ቦታዎች፣ የተሰኩ ትሮች፣ አቃፊዎች እና አስፈላጊዎች ያስወግዱ፣ ከዚያም የስራ ቦታዎችዎን ከZen ያግኙ።</string>
     <string name="dejavu_sync_start_fresh_firefox">እነዚህን ትሮች ይዝጉ፣ እነዚህን የስራ ቦታዎች፣ የተሰኩ ትሮች፣ አቃፊዎች እና አስፈላጊዎች ያስወግዱ፣ ከዚያም የFirefox ኮምፒውተሮችዎ እና ስልኮችዎ ትሮችን ያሳዩ።</string>
+    <string name="dejavu_private_link_copied">የግል ትር አገናኝ ተቀድቷል። ሌላ ነገር እስኪቀዱ ድረስ በቅንጥብ ሰሌዳው ላይ ይቆያል።</string>
+    <string name="dejavu_open_non_web_pin_title">ይህን አድራሻ ልክፈት?</string>
+    <string name="dejavu_open_non_web_pin_message">ይህ የተሰካ ትር የድር ገጽ ያልሆነ አድራሻ ይከፍታል። ከመለያዎ ሌላ መሣሪያ የመጣ ሊሆን ይችላል።\n\n%1$s</string>
+    <string name="dejavu_open">ክፈት</string>
 </resources>

@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">Bắt đầu lại từ đầu</string>
     <string name="dejavu_sync_start_fresh_zen">Đóng các thẻ này và xóa các không gian làm việc, thẻ đã ghim, thư mục và trang thiết yếu này, rồi lấy không gian làm việc của bạn từ Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Đóng các thẻ này và xóa các không gian làm việc, thẻ đã ghim, thư mục và trang thiết yếu này, rồi hiển thị các thẻ của máy tính và điện thoại dùng Firefox của bạn.</string>
+    <string name="dejavu_private_link_copied">Đã sao chép liên kết của thẻ riêng tư. Liên kết sẽ ở trong bộ nhớ tạm cho đến khi bạn sao chép thứ khác.</string>
+    <string name="dejavu_open_non_web_pin_title">Mở địa chỉ này?</string>
+    <string name="dejavu_open_non_web_pin_message">Thẻ được ghim này mở một địa chỉ không phải trang web. Địa chỉ có thể đến từ một thiết bị khác trong tài khoản của bạn.\n\n%1$s</string>
+    <string name="dejavu_open">Mở</string>
 </resources>

@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">ਨਵੇਂ ਸਿਰਿਓਂ ਸ਼ੁਰੂ ਕਰੋ</string>
     <string name="dejavu_sync_start_fresh_zen">ਇਹ ਟੈਬਾਂ ਬੰਦ ਕਰੋ ਅਤੇ ਇਹ ਵਰਕਸਪੇਸਾਂ, ਪਿੰਨ ਕੀਤੀਆਂ ਟੈਬਾਂ, ਫੋਲਡਰ ਅਤੇ ਜ਼ਰੂਰੀ ਹਟਾਓ, ਫਿਰ Zen ਤੋਂ ਆਪਣੀਆਂ ਵਰਕਸਪੇਸਾਂ ਲਿਆਓ।</string>
     <string name="dejavu_sync_start_fresh_firefox">ਇਹ ਟੈਬਾਂ ਬੰਦ ਕਰੋ ਅਤੇ ਇਹ ਵਰਕਸਪੇਸਾਂ, ਪਿੰਨ ਕੀਤੀਆਂ ਟੈਬਾਂ, ਫੋਲਡਰ ਅਤੇ ਜ਼ਰੂਰੀ ਹਟਾਓ, ਫਿਰ Firefox ਵਾਲੇ ਆਪਣੇ ਕੰਪਿਊਟਰਾਂ ਅਤੇ ਫ਼ੋਨਾਂ ਦੀਆਂ ਟੈਬਾਂ ਦਿਖਾਓ।</string>
+    <string name="dejavu_private_link_copied">ਨਿੱਜੀ ਟੈਬ ਦਾ ਲਿੰਕ ਕਾਪੀ ਕੀਤਾ ਗਿਆ। ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਕੁਝ ਹੋਰ ਕਾਪੀ ਨਹੀਂ ਕਰਦੇ, ਇਹ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਰਹਿੰਦਾ ਹੈ।</string>
+    <string name="dejavu_open_non_web_pin_title">ਕੀ ਇਹ ਪਤਾ ਖੋਲ੍ਹਣਾ ਹੈ?</string>
+    <string name="dejavu_open_non_web_pin_message">ਇਹ ਪਿੰਨ ਕੀਤੀ ਟੈਬ ਅਜਿਹਾ ਪਤਾ ਖੋਲ੍ਹਦੀ ਹੈ ਜੋ ਵੈੱਬ ਸਫ਼ਾ ਨਹੀਂ ਹੈ। ਇਹ ਤੁਹਾਡੇ ਖਾਤੇ ਦੇ ਕਿਸੇ ਹੋਰ ਡਿਵਾਈਸ ਤੋਂ ਆਇਆ ਹੋ ਸਕਦਾ ਹੈ।\n\n%1$s</string>
+    <string name="dejavu_open">ਖੋਲ੍ਹੋ</string>
 </resources>

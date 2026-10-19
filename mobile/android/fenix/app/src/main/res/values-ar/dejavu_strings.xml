@@ -362,4 +362,8 @@
     <string name="dejavu_sync_start_fresh">البدء من جديد</string>
     <string name="dejavu_sync_start_fresh_zen">أغلق هذه التبويبات، وأزل مساحات العمل والتبويبات المثبتة والمجلدات والأساسيات هذه، ثم اجلب مساحات عملك من Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">أغلق هذه التبويبات، وأزل مساحات العمل والتبويبات المثبتة والمجلدات والأساسيات هذه، ثم اعرض تبويبات حواسيبك وهواتفك التي عليها Firefox.</string>
+    <string name="dejavu_private_link_copied">نُسخ رابط اللسان الخاص. سيبقى في الحافظة حتى تنسخ شيئًا آخر.</string>
+    <string name="dejavu_open_non_web_pin_title">أتريد فتح هذا العنوان؟</string>
+    <string name="dejavu_open_non_web_pin_message">يفتح هذا اللسان المثبّت عنوانًا ليس صفحة وِب. ربما جاء من جهاز آخر على حسابك.\n\n%1$s</string>
+    <string name="dejavu_open">افتح</string>
 </resources>

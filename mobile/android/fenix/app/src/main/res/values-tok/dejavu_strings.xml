@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">o open sin</string>
     <string name="dejavu_sync_start_fresh_zen">o pini e poki ni. o weka e kulupu poki ni e poki awen ni e tomo poki ni e lipu suli ni. ni pini la, o kama jo e kulupu poki sina tan Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">o pini e poki ni. o weka e kulupu poki ni e poki awen ni e tomo poki ni e lipu suli ni. ni pini la, o lukin e poki pi ilo Firefox lon ilo sona sina en ilo kalama sina.</string>
+    <string name="dejavu_private_link_copied">sina kama jo e nimi linja pi lipu len. ona li awen lon poki sama la sina jo ala e ijo ante.</string>
+    <string name="dejavu_open_non_web_pin_title">sina wile ala wile open e nimi ni?</string>
+    <string name="dejavu_open_non_web_pin_message">lipu ni pi awen sewi li open e nimi ma pi lipu linluwi ala. ona li ken kama tan ilo ante pi sijelo sina.\n\n%1$s</string>
+    <string name="dejavu_open">o open</string>
 </resources>

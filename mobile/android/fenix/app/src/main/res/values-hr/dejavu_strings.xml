@@ -341,4 +341,8 @@
     <string name="dejavu_sync_start_fresh">Počni ispočetka</string>
     <string name="dejavu_sync_start_fresh_zen">Zatvorite ove kartice i uklonite ove radne prostore, prikvačene kartice, mape i Favorite, a zatim preuzmite svoje radne prostore iz Zena.</string>
     <string name="dejavu_sync_start_fresh_firefox">Zatvorite ove kartice i uklonite ove radne prostore, prikvačene kartice, mape i Favorite, a zatim ćete vidjeti kartice svojih računala i telefona s Firefoxom.</string>
+    <string name="dejavu_private_link_copied">Poveznica privatne kartice je kopirana. Ostaje u međuspremniku dok ne kopiraš nešto drugo.</string>
+    <string name="dejavu_open_non_web_pin_title">Otvoriti ovu adresu?</string>
+    <string name="dejavu_open_non_web_pin_message">Ova prikvačena kartica otvara adresu koja nije web-stranica. Možda je došla s drugog uređaja na tvom računu.\n\n%1$s</string>
+    <string name="dejavu_open">Otvori</string>
 </resources>

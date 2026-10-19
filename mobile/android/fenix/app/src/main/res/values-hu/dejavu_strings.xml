@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Újrakezdés</string>
     <string name="dejavu_sync_start_fresh_zen">Bezárja ezeket a lapokat, eltávolítja ezeket a munkaterületeket, kitűzött lapokat, mappákat és kedvenceket, majd betölti a munkaterületeit a Zenből.</string>
     <string name="dejavu_sync_start_fresh_firefox">Bezárja ezeket a lapokat, eltávolítja ezeket a munkaterületeket, kitűzött lapokat, mappákat és kedvenceket, majd megjeleníti a Firefoxot futtató számítógépei és telefonjai lapjait.</string>
+    <string name="dejavu_private_link_copied">A privát lap hivatkozása másolva. A vágólapon marad, amíg mást nem másol.</string>
+    <string name="dejavu_open_non_web_pin_title">Megnyitja ezt a címet?</string>
+    <string name="dejavu_open_non_web_pin_message">Ez a rögzített lap olyan címet nyit meg, amely nem weboldal. Lehet, hogy a fiókja egy másik eszközéről érkezett.\n\n%1$s</string>
+    <string name="dejavu_open">Megnyitás</string>
 </resources>

@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">പുതുതായി തുടങ്ങുക</string>
     <string name="dejavu_sync_start_fresh_zen">ഈ ടാബുകൾ അടച്ച്, ഈ പണിയിടങ്ങൾ, പിൻ ചെയ്ത ടാബുകൾ, ഫോൾഡറുകൾ, പ്രധാനപ്പെട്ടവ എന്നിവ നീക്കം ചെയ്യുക, തുടർന്ന് Zen-ൽ നിന്ന് നിങ്ങളുടെ പണിയിടങ്ങൾ നേടുക.</string>
     <string name="dejavu_sync_start_fresh_firefox">ഈ ടാബുകൾ അടച്ച്, ഈ പണിയിടങ്ങൾ, പിൻ ചെയ്ത ടാബുകൾ, ഫോൾഡറുകൾ, പ്രധാനപ്പെട്ടവ എന്നിവ നീക്കം ചെയ്യുക, തുടർന്ന് Firefox ഉള്ള നിങ്ങളുടെ കമ്പ്യൂട്ടറുകളിലെയും ഫോണുകളിലെയും ടാബുകൾ കാണിക്കുക.</string>
+    <string name="dejavu_private_link_copied">സ്വകാര്യ ടാബിന്റെ കണ്ണി പകർത്തി. മറ്റെന്തെങ്കിലും പകർത്തുന്നതുവരെ അത് ക്ലിപ്ബോർഡിൽ ഉണ്ടാകും.</string>
+    <string name="dejavu_open_non_web_pin_title">ഈ വിലാസം തുറക്കണോ?</string>
+    <string name="dejavu_open_non_web_pin_message">പിൻ ചെയ്ത ഈ ടാബ് ഒരു വെബ് താളല്ലാത്ത വിലാസം തുറക്കുന്നു. ഇത് നിങ്ങളുടെ അക്കൗണ്ടിലെ മറ്റൊരു ഉപകരണത്തിൽ നിന്ന് വന്നതാകാം.\n\n%1$s</string>
+    <string name="dejavu_open">തുറക്കുക</string>
 </resources>

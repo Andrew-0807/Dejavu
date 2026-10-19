@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">Bẹ̀rẹ̀ lákọ̀tun</string>
     <string name="dejavu_sync_start_fresh_zen">Pa àwọn táàbù wọ̀nyí dé, kí o sì yọ àwọn ibi-iṣẹ́, táàbù tí a fi Pin sí, fódà àti Pàtàkì wọ̀nyí kúrò, lẹ́yìn náà gba àwọn ibi-iṣẹ́ rẹ láti Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Pa àwọn táàbù wọ̀nyí dé, kí o sì yọ àwọn ibi-iṣẹ́, táàbù tí a fi Pin sí, fódà àti Pàtàkì wọ̀nyí kúrò, lẹ́yìn náà fi àwọn táàbù ti àwọn kọ̀mpútà àti fóònù Firefox rẹ hàn.</string>
+    <string name="dejavu_private_link_copied">A ti ṣe ẹ̀dà ìjápọ̀ táàbù àdáni. Yóò wà nínú pátákó ìgékúrú títí o fi ṣe ẹ̀dà nǹkan mìíràn.</string>
+    <string name="dejavu_open_non_web_pin_title">Ṣé kí o ṣí àdírẹ́sì yìí?</string>
+    <string name="dejavu_open_non_web_pin_message">Táàbù tí a pín yìí ń ṣí àdírẹ́sì tí kì í ṣe ojú-ìwé wẹ́ẹ̀bù. Ó lè ti wá láti ẹ̀rọ mìíràn lórí àkọọ́lẹ̀ rẹ.\n\n%1$s</string>
+    <string name="dejavu_open">Ṣí i</string>
 </resources>

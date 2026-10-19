@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">یئنی‌دن باشلا</string>
     <string name="dejavu_sync_start_fresh_zen">بو تاغلاری باغلایین، بو ایش ساحه‌لرینی، برکیدیلمیش تاغلاری، پوشه‌لری و اساس‌لاری سیلین، سونرا ایش ساحه‌لرینیزی Zen-دن آلین.</string>
     <string name="dejavu_sync_start_fresh_firefox">بو تاغلاری باغلایین، بو ایش ساحه‌لرینی، برکیدیلمیش تاغلاری، پوشه‌لری و اساس‌لاری سیلین، سونرا Firefox اولان کومپیوتر و تلفن‌لرینیزین تاغلارینی گؤسترین.</string>
+    <string name="dejavu_private_link_copied">گیزلی تاغین باغلانتیسی کوپی اولدو. باشقا بیر شئی کوپی ائدنه قدر بوفرده قالار.</string>
+    <string name="dejavu_open_non_web_pin_title">بو آدرس آچیلسین؟</string>
+    <string name="dejavu_open_non_web_pin_message">بو سانجیلمیش تاغ وب صفحه اولمایان بیر آدرس آچیر. حسابینیزداکی باشقا بیر جهازدان گلمیش اولا بیلر.\n\n%1$s</string>
+    <string name="dejavu_open">آچ</string>
 </resources>

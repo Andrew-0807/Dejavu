@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">အသစ်ပြန်စရန်</string>
     <string name="dejavu_sync_start_fresh_zen">ဤတက်ဗ်များကို ပိတ်ပြီး ဤလုပ်ငန်းခွင်များ၊ ပင်ထိုးထားသော တက်ဗ်များ၊ ဖိုင်တွဲများနှင့် မရှိမဖြစ်များကို ဖယ်ရှားပါ၊ ထို့နောက် Zen မှ သင့်လုပ်ငန်းခွင်များကို ရယူပါ။</string>
     <string name="dejavu_sync_start_fresh_firefox">ဤတက်ဗ်များကို ပိတ်ပြီး ဤလုပ်ငန်းခွင်များ၊ ပင်ထိုးထားသော တက်ဗ်များ၊ ဖိုင်တွဲများနှင့် မရှိမဖြစ်များကို ဖယ်ရှားပါ၊ ထို့နောက် Firefox ရှိသော သင့်ကွန်ပျူတာနှင့် ဖုန်းများ၏ တက်ဗ်များကို ပြပါ။</string>
+    <string name="dejavu_private_link_copied">ကိုယ်ပိုင်တက်ဘ်၏ လင့်ခ်ကို ကူးယူပြီးပါပြီ။ အခြားအရာကို ကူးယူသည်အထိ ကလစ်ဘုတ်တွင် ရှိနေပါမည်။</string>
+    <string name="dejavu_open_non_web_pin_title">ဤလိပ်စာကို ဖွင့်မလား။</string>
+    <string name="dejavu_open_non_web_pin_message">ဤပင်တွဲထားသော တက်ဘ်သည် ဝဘ်စာမျက်နှာမဟုတ်သော လိပ်စာကို ဖွင့်သည်။ ၎င်းသည် သင့်အကောင့်ရှိ အခြားစက်မှ လာခြင်းဖြစ်နိုင်သည်။\n\n%1$s</string>
+    <string name="dejavu_open">ဖွင့်ရန်</string>
 </resources>

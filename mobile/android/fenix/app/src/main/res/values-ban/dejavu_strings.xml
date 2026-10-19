@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">Mulai uli awal</string>
     <string name="dejavu_sync_start_fresh_zen">Tutup tab-tab ené lan ilangang genah, tab kasemat, map, lan Penting ené, lantas jemak genah ragane uli Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Tutup tab-tab ené lan ilangang genah, tab kasemat, map, lan Penting ené, lantas tampilang tab uli komputer lan ponsel Firefox ragane.</string>
+    <string name="dejavu_private_link_copied">Tautan tab pribadi sampun kakopi. Puniki kantun ring clipboard kantos ragané ngopi sane lianan.</string>
+    <string name="dejavu_open_non_web_pin_title">Buka alamat puniki?</string>
+    <string name="dejavu_open_non_web_pin_message">Tab sane kapin puniki ngungkab alamat sane nenten kaca web. Prasida rauh saking piranti lianan ring akun ragané.\n\n%1$s</string>
+    <string name="dejavu_open">Buka</string>
 </resources>

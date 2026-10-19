@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Start forfra</string>
     <string name="dejavu_sync_start_fresh_zen">Luk disse faneblade, fjern disse arbejdsområder, fastgjorte faneblade, mapper og favoritter, og hent derefter dine arbejdsområder fra Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Luk disse faneblade, fjern disse arbejdsområder, fastgjorte faneblade, mapper og favoritter, og vis derefter fanebladene fra dine computere og telefoner med Firefox.</string>
+    <string name="dejavu_private_link_copied">Linket til den private fane er kopieret. Det bliver i udklipsholderen, indtil du kopierer noget andet.</string>
+    <string name="dejavu_open_non_web_pin_title">Åbn denne adresse?</string>
+    <string name="dejavu_open_non_web_pin_message">Dette fastgjorte faneblad åbner en adresse, der ikke er en webside. Den kan komme fra en anden enhed på din konto.\n\n%1$s</string>
+    <string name="dejavu_open">Åbn</string>
 </resources>

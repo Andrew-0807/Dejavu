@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Začít načisto</string>
     <string name="dejavu_sync_start_fresh_zen">Zavřít tyto panely, odstranit tyto pracovní prostory, připnuté panely, složky a Oblíbené a pak načíst vaše pracovní prostory ze Zenu.</string>
     <string name="dejavu_sync_start_fresh_firefox">Zavřít tyto panely, odstranit tyto pracovní prostory, připnuté panely, složky a Oblíbené a pak zobrazit panely vašich počítačů a telefonů s Firefoxem.</string>
+    <string name="dejavu_private_link_copied">Odkaz anonymního panelu byl zkopírován. Zůstane ve schránce, dokud nezkopírujete něco jiného.</string>
+    <string name="dejavu_open_non_web_pin_title">Otevřít tuto adresu?</string>
+    <string name="dejavu_open_non_web_pin_message">Tento připnutý panel otevírá adresu, která není webovou stránkou. Mohla přijít z jiného zařízení ve vašem účtu.\n\n%1$s</string>
+    <string name="dejavu_open">Otevřít</string>
 </resources>

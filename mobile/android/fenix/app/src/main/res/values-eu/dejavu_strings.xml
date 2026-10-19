@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Hasi hutsetik</string>
     <string name="dejavu_sync_start_fresh_zen">Itxi fitxa hauek eta kendu laneremu, finkatutako fitxa, karpeta eta funtsezko hauek, eta gero ekarri Zeneko zure laneremuak.</string>
     <string name="dejavu_sync_start_fresh_firefox">Itxi fitxa hauek eta kendu laneremu, finkatutako fitxa, karpeta eta funtsezko hauek, eta gero erakutsi Firefox duten zure ordenagailu eta telefonoetako fitxak.</string>
+    <string name="dejavu_private_link_copied">Fitxa pribatuaren esteka kopiatu da. Arbelean geratuko da beste zerbait kopiatu arte.</string>
+    <string name="dejavu_open_non_web_pin_title">Helbide hau ireki?</string>
+    <string name="dejavu_open_non_web_pin_message">Finkatutako fitxa honek web orria ez den helbide bat irekitzen du. Zure kontuko beste gailu batetik etorri ahal izan da.\n\n%1$s</string>
+    <string name="dejavu_open">Ireki</string>
 </resources>

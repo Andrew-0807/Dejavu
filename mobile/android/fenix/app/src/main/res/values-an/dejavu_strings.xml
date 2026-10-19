@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Encetar dende cero</string>
     <string name="dejavu_sync_start_fresh_zen">Zarra estas pestanyas, elimina estes espacios de treballo, pestanyas fixadas, carpetas y esenciales, y dimpués trai os tuyos espacios de treballo de Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Zarra estas pestanyas, elimina estes espacios de treballo, pestanyas fixadas, carpetas y esenciales, y dimpués amuestra as pestanyas d\'os tuyos ordinadors y telefonos con Firefox.</string>
+    <string name="dejavu_private_link_copied">S\'ha copiau o vinclo d\'una pestanya privada. Se quedará en o portapapels dica que copies belatra cosa.</string>
+    <string name="dejavu_open_non_web_pin_title">Ubrir esta adreza?</string>
+    <string name="dejavu_open_non_web_pin_message">Esta pestanya fixada ubre una adreza que no ye una pachina web. Puede vinir d\'atro dispositivo d\'a tuya cuenta.\n\n%1$s</string>
+    <string name="dejavu_open">Ubrir</string>
 </resources>

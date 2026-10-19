@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">يېڭىدىن باشلا</string>
     <string name="dejavu_sync_start_fresh_zen">بۇ بەتكۈچلەرنى يېپىپ، بۇ خىزمەت دائىرىلىرى، مىخلانغان بەتكۈچلەر، قىسقۇچلار ۋە مۇھىملارنى چىقىرىۋېتىڭ، ئاندىن Zen دىن خىزمەت دائىرىلىرىڭىزنى ئېلىڭ.</string>
     <string name="dejavu_sync_start_fresh_firefox">بۇ بەتكۈچلەرنى يېپىپ، بۇ خىزمەت دائىرىلىرى، مىخلانغان بەتكۈچلەر، قىسقۇچلار ۋە مۇھىملارنى چىقىرىۋېتىڭ، ئاندىن Firefox بار كومپيۇتېر ۋە تېلېفونلىرىڭىزنىڭ بەتكۈچلىرىنى كۆرۈڭ.</string>
+    <string name="dejavu_private_link_copied">شەخسىي بەتكۈچنىڭ ئۇلانمىسى كۆچۈرۈلدى. باشقا نەرسە كۆچۈرمىگۈچە ئۇ چاپلاش تاختىسىدا تۇرىدۇ.</string>
+    <string name="dejavu_open_non_web_pin_title">بۇ ئادرېسنى ئاچامسىز؟</string>
+    <string name="dejavu_open_non_web_pin_message">بۇ مىقلانغان بەتكۈچ تور بېتى بولمىغان ئادرېسنى ئاچىدۇ. ئۇ ھېساباتىڭىزدىكى باشقا ئۈسكۈنىدىن كەلگەن بولۇشى مۇمكىن.\n\n%1$s</string>
+    <string name="dejavu_open">ئاچ</string>
 </resources>

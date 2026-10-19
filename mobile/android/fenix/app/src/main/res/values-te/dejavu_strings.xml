@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">కొత్తగా ప్రారంభించు</string>
     <string name="dejavu_sync_start_fresh_zen">ఈ ట్యాబులను మూసివేసి, ఈ కార్యస్థలాలు, పిన్ చేసిన ట్యాబులు, ఫోల్డర్లు మరియు ముఖ్యమైనవాటిని తీసివేసి, తర్వాత Zen నుండి మీ కార్యస్థలాలను పొందండి.</string>
     <string name="dejavu_sync_start_fresh_firefox">ఈ ట్యాబులను మూసివేసి, ఈ కార్యస్థలాలు, పిన్ చేసిన ట్యాబులు, ఫోల్డర్లు మరియు ముఖ్యమైనవాటిని తీసివేసి, తర్వాత Firefox ఉన్న మీ కంప్యూటర్లు మరియు ఫోనుల ట్యాబులను చూపించండి.</string>
+    <string name="dejavu_private_link_copied">ప్రైవేటు ట్యాబు లంకె కాపీ అయింది. మీరు వేరేదైనా కాపీ చేసేవరకు అది క్లిప్‌బోర్డులో ఉంటుంది.</string>
+    <string name="dejavu_open_non_web_pin_title">ఈ చిరునామాను తెరవాలా?</string>
+    <string name="dejavu_open_non_web_pin_message">ఈ పిన్ చేసిన ట్యాబు వెబ్ పేజీ కాని చిరునామాను తెరుస్తుంది. అది మీ ఖాతాలోని వేరే పరికరం నుండి వచ్చి ఉండవచ్చు.\n\n%1$s</string>
+    <string name="dejavu_open">తెరువు</string>
 </resources>

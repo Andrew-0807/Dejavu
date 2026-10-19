@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">重新開始</string>
     <string name="dejavu_sync_start_fresh_zen">關閉這些分頁，移除這些工作區、已釘選分頁、資料夾與常用網站，然後取得您在 Zen 中的工作區。</string>
     <string name="dejavu_sync_start_fresh_firefox">關閉這些分頁，移除這些工作區、已釘選分頁、資料夾與常用網站，然後顯示您裝有 Firefox 的電腦和手機上的分頁。</string>
+    <string name="dejavu_private_link_copied">已複製隱私分頁的鏈結。在您複製其他內容之前，它會一直留在剪貼簿中。</string>
+    <string name="dejavu_open_non_web_pin_title">要開啟此網址嗎？</string>
+    <string name="dejavu_open_non_web_pin_message">此釘選分頁開啟的網址不是網頁。它可能來自您帳號中的另一台裝置。\n\n%1$s</string>
+    <string name="dejavu_open">開啟</string>
 </resources>

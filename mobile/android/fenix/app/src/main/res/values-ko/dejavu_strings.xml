@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">새로 시작</string>
     <string name="dejavu_sync_start_fresh_zen">이 탭을 닫고 작업 공간, 고정된 탭, 폴더, 필수 사이트를 제거한 다음 Zen에서 작업 공간을 가져옵니다.</string>
     <string name="dejavu_sync_start_fresh_firefox">이 탭을 닫고 작업 공간, 고정된 탭, 폴더, 필수 사이트를 제거한 다음 Firefox 컴퓨터와 휴대폰의 탭을 표시합니다.</string>
+    <string name="dejavu_private_link_copied">사생활 보호 탭의 링크를 복사했습니다. 다른 것을 복사할 때까지 클립보드에 남아 있습니다.</string>
+    <string name="dejavu_open_non_web_pin_title">이 주소를 여시겠습니까?</string>
+    <string name="dejavu_open_non_web_pin_message">이 고정된 탭은 웹 페이지가 아닌 주소를 엽니다. 계정의 다른 기기에서 왔을 수 있습니다.\n\n%1$s</string>
+    <string name="dejavu_open">열기</string>
 </resources>

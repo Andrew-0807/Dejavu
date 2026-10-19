@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Започване на чисто</string>
     <string name="dejavu_sync_start_fresh_zen">Затворете тези раздели и премахнете тези работни пространства, закачени раздели, папки и Любими, след което вземете работните си пространства от Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Затворете тези раздели и премахнете тези работни пространства, закачени раздели, папки и Любими, след което покажете разделите на компютрите и телефоните си с Firefox.</string>
+    <string name="dejavu_private_link_copied">Връзката към частния раздел е копирана. Остава в клипборда, докато не копирате нещо друго.</string>
+    <string name="dejavu_open_non_web_pin_title">Отваряне на този адрес?</string>
+    <string name="dejavu_open_non_web_pin_message">Този закачен раздел отваря адрес, който не е уеб страница. Може да е дошъл от друго устройство в профила ви.\n\n%1$s</string>
+    <string name="dejavu_open">Отваряне</string>
 </resources>

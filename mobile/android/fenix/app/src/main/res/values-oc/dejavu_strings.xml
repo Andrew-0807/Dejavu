@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Començar de zèro</string>
     <string name="dejavu_sync_start_fresh_zen">Tampatz aquestes onglets e levatz aquestes espacis de trabalh, onglets fixats, dossièrs e essencials, puèi recuperatz vòstres espacis de trabalh de Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Tampatz aquestes onglets e levatz aquestes espacis de trabalh, onglets fixats, dossièrs e essencials, puèi afichatz los onglets de vòstres ordenadors e telefòns amb Firefox.</string>
+    <string name="dejavu_private_link_copied">Lo ligam de l\'onglet privat es estat copiat. Demòra dins lo quichapapièrs fins que copiatz quicòm mai.</string>
+    <string name="dejavu_open_non_web_pin_title">Dobrir aquesta adreça ?</string>
+    <string name="dejavu_open_non_web_pin_message">Aqueste onglet penjat dobrís una adreça que es pas una pagina web. Pòt venir d\'un autre aparelh de vòstre compte.\n\n%1$s</string>
+    <string name="dejavu_open">Dobrir</string>
 </resources>

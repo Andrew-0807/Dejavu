@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">ចាប់ផ្ដើមថ្មី</string>
     <string name="dejavu_sync_start_fresh_zen">បិទផ្ទាំងទាំងនេះ ហើយដកចេញចន្លោះការងារ ផ្ទាំងបានខ្ទាស់ ថត និងសំខាន់ៗទាំងនេះ បន្ទាប់មកយកចន្លោះការងាររបស់អ្នកពី Zen។</string>
     <string name="dejavu_sync_start_fresh_firefox">បិទផ្ទាំងទាំងនេះ ហើយដកចេញចន្លោះការងារ ផ្ទាំងបានខ្ទាស់ ថត និងសំខាន់ៗទាំងនេះ បន្ទាប់មកបង្ហាញផ្ទាំងរបស់កុំព្យូទ័រ និងទូរស័ព្ទ Firefox របស់អ្នក។</string>
+    <string name="dejavu_private_link_copied">បានចម្លងតំណ​របស់​ផ្ទាំងឯកជន។ វានៅក្នុងឃ្លីបបតរហូតដល់អ្នកចម្លងអ្វីផ្សេងទៀត។</string>
+    <string name="dejavu_open_non_web_pin_title">បើកអាសយដ្ឋាននេះ?</string>
+    <string name="dejavu_open_non_web_pin_message">ផ្ទាំងដែលបានខ្ទាស់នេះបើកអាសយដ្ឋានដែលមិនមែនជាទំព័របណ្ដាញ។ វាប្រហែលជាមកពីឧបករណ៍ផ្សេងទៀតនៅក្នុងគណនីរបស់អ្នក។\n\n%1$s</string>
+    <string name="dejavu_open">បើក</string>
 </resources>

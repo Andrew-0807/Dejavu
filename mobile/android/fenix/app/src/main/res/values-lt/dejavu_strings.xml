@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Pradėti iš naujo</string>
     <string name="dejavu_sync_start_fresh_zen">Užverkite šias korteles ir pašalinkite šias darbo erdves, prisegtas korteles, aplankus ir Mėgstamiausius, tada gausite savo darbo erdves iš Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Užverkite šias korteles ir pašalinkite šias darbo erdves, prisegtas korteles, aplankus ir Mėgstamiausius, tada matysite savo kompiuterių ir telefonų su Firefox korteles.</string>
+    <string name="dejavu_private_link_copied">Privačios kortelės saitas nukopijuotas. Jis liks iškarpinėje, kol nukopijuosite ką nors kita.</string>
+    <string name="dejavu_open_non_web_pin_title">Atverti šį adresą?</string>
+    <string name="dejavu_open_non_web_pin_message">Ši prisegta kortelė atveria adresą, kuris nėra tinklalapis. Jis galėjo ateiti iš kito jūsų paskyros įrenginio.\n\n%1$s</string>
+    <string name="dejavu_open">Atverti</string>
 </resources>

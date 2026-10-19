@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Sıfırdan başla</string>
     <string name="dejavu_sync_start_fresh_zen">Bu sekmeler kapatılır; bu çalışma alanları, sabitlenmiş sekmeler, klasörler ve temel sekmeler kaldırılır, ardından Zen\'deki çalışma alanlarınız alınır.</string>
     <string name="dejavu_sync_start_fresh_firefox">Bu sekmeler kapatılır; bu çalışma alanları, sabitlenmiş sekmeler, klasörler ve temel sekmeler kaldırılır, ardından Firefox kullanan bilgisayarlarınızın ve telefonlarınızın sekmeleri gösterilir.</string>
+    <string name="dejavu_private_link_copied">Gizli sekmenin bağlantısı kopyalandı. Başka bir şey kopyalayana kadar panoda kalır.</string>
+    <string name="dejavu_open_non_web_pin_title">Bu adres açılsın mı?</string>
+    <string name="dejavu_open_non_web_pin_message">Bu sabitlenmiş sekme, web sayfası olmayan bir adresi açıyor. Hesabınızdaki başka bir cihazdan gelmiş olabilir.\n\n%1$s</string>
+    <string name="dejavu_open">Aç</string>
 </resources>

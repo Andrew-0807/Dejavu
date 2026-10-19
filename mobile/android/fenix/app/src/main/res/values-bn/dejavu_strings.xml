@@ -367,4 +367,8 @@
     <string name="dejavu_sync_start_fresh">নতুন করে শুরু করুন</string>
     <string name="dejavu_sync_start_fresh_zen">এই ট্যাবগুলো বন্ধ করুন এবং এই ওয়ার্কস্পেস, পিন করা ট্যাব, ফোল্ডার ও এসেনশিয়াল সরিয়ে দিন, তারপর Zen থেকে আপনার ওয়ার্কস্পেস নিয়ে আসুন।</string>
     <string name="dejavu_sync_start_fresh_firefox">এই ট্যাবগুলো বন্ধ করুন এবং এই ওয়ার্কস্পেস, পিন করা ট্যাব, ফোল্ডার ও এসেনশিয়াল সরিয়ে দিন, তারপর Firefox থাকা আপনার কম্পিউটার ও ফোনগুলোর ট্যাব দেখান।</string>
+    <string name="dejavu_private_link_copied">ব্যক্তিগত ট্যাবের লিংক কপি হয়েছে। অন্য কিছু কপি না করা পর্যন্ত এটি ক্লিপবোর্ডে থাকবে।</string>
+    <string name="dejavu_open_non_web_pin_title">এই ঠিকানাটি খুলবেন?</string>
+    <string name="dejavu_open_non_web_pin_message">এই পিন করা ট্যাবটি এমন একটি ঠিকানা খোলে যা কোনো ওয়েব পাতা নয়। এটি আপনার অ্যাকাউন্টের অন্য কোনো ডিভাইস থেকে এসে থাকতে পারে।\n\n%1$s</string>
+    <string name="dejavu_open">খুলুন</string>
 </resources>

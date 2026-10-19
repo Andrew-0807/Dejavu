@@ -341,4 +341,8 @@
     <string name="dejavu_sync_start_fresh">Scomensa da novo</string>
     <string name="dejavu_sync_start_fresh_zen">Sara ste schede e cava via sti spasi de laoro, schede fisà, cartełe e essensiałi, dopo ciapa i to spasi de laoro da Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Sara ste schede e cava via sti spasi de laoro, schede fisà, cartełe e essensiałi, dopo mostra łe schede dei to computer e tełèfoni co Firefox.</string>
+    <string name="dejavu_private_link_copied">El link de ła scheda privata el xe stà copià. El resta inte i aponti fin che no te copi calcos\'altro.</string>
+    <string name="dejavu_open_non_web_pin_title">Verzar sto indirizo?</string>
+    <string name="dejavu_open_non_web_pin_message">Sta scheda fisada ła verze un indirizo che no xe na pàxena web. El podaria vegner da n\'altro dispositivo del to conto.\n\n%1$s</string>
+    <string name="dejavu_open">Verzi</string>
 </resources>

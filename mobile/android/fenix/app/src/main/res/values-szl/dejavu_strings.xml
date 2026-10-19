@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Zacznij ôd nowa</string>
     <string name="dejavu_sync_start_fresh_zen">Zawrzij te karty i wyciep te place, przipiynte karty, foldry i nojważniejsze, a potym weź swoje place z Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Zawrzij te karty i wyciep te place, przipiynte karty, foldry i nojważniejsze, a potym pokoż karty twojich kōmputrōw i telefōnōw z Firefox.</string>
+    <string name="dejavu_private_link_copied">Link prywatnyj karty skopiowany. Ôstanie w schowku, aże skopiujesz cosik inkszego.</string>
+    <string name="dejavu_open_non_web_pin_title">Ôtworzić ta adresa?</string>
+    <string name="dejavu_open_non_web_pin_message">Ta przipniynto karta ôtwiyro adresa, kero niy ma stronōm internetowōm. Mogła prziś z inkszego masziny na twojim kōncie.\n\n%1$s</string>
+    <string name="dejavu_open">Ôtwōrz</string>
 </resources>

@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Ji nû ve dest pê bike</string>
     <string name="dejavu_sync_start_fresh_zen">Van hilpekînan bigire û van qadan, hilpekînên sabît, peldankan û malperên girîng rake, paşê qadên xwe ji Zen bîne.</string>
     <string name="dejavu_sync_start_fresh_firefox">Van hilpekînan bigire û van qadan, hilpekînên sabît, peldankan û malperên girîng rake, paşê hilpekînên kompîtur û telefonên xwe yên bi Firefox nîşan bide.</string>
+    <string name="dejavu_private_link_copied">Girêdana hilpekîna veşartî hat jêgirtin. Heta tu tiştekî din jê bigirî, ew di panoyê de dimîne.</string>
+    <string name="dejavu_open_non_web_pin_title">Vê navnîşanê veke?</string>
+    <string name="dejavu_open_non_web_pin_message">Ev hilpekîna derzîkirî navnîşaneke ku ne rûpelekî webê ye vedike. Dibe ku ji amûreke din a hesabê te hatibe.\n\n%1$s</string>
+    <string name="dejavu_open">Veke</string>
 </resources>

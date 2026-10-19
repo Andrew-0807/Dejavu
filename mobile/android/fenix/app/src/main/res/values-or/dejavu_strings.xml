@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">ନୂଆରୁ ଆରମ୍ଭ କରନ୍ତୁ</string>
     <string name="dejavu_sync_start_fresh_zen">ଏହି ଟ୍ୟାବ୍ ବନ୍ଦ କରନ୍ତୁ ଏବଂ ଏହି କାର୍ଯ୍ୟକ୍ଷେତ୍ର, ପିନ୍ ଟ୍ୟାବ୍, ଫୋଲଡର ଏବଂ ଆବଶ୍ୟକୀୟ ହଟାନ୍ତୁ, ତାପରେ Zen ରୁ ଆପଣଙ୍କ କାର୍ଯ୍ୟକ୍ଷେତ୍ର ଆଣନ୍ତୁ।</string>
     <string name="dejavu_sync_start_fresh_firefox">ଏହି ଟ୍ୟାବ୍ ବନ୍ଦ କରନ୍ତୁ ଏବଂ ଏହି କାର୍ଯ୍ୟକ୍ଷେତ୍ର, ପିନ୍ ଟ୍ୟାବ୍, ଫୋଲଡର ଏବଂ ଆବଶ୍ୟକୀୟ ହଟାନ୍ତୁ, ତାପରେ Firefox ଥିବା ଆପଣଙ୍କ କମ୍ପ୍ୟୁଟର ଏବଂ ଫୋନ୍‌ର ଟ୍ୟାବ୍ ଦେଖାନ୍ତୁ।</string>
+    <string name="dejavu_private_link_copied">ବ୍ୟକ୍ତିଗତ ଟ୍ୟାବର ଲିଙ୍କ କପି ହେଲା। ଆପଣ ଅନ୍ୟ କିଛି କପି ନକରିବା ପର୍ଯ୍ୟନ୍ତ ଏହା କ୍ଲିପବୋର୍ଡରେ ରହେ।</string>
+    <string name="dejavu_open_non_web_pin_title">ଏହି ଠିକଣା ଖୋଲିବେ?</string>
+    <string name="dejavu_open_non_web_pin_message">ଏହି ପିନ କରାଯାଇଥିବା ଟ୍ୟାବ ଏକ ୱେବ ପୃଷ୍ଠା ନଥିବା ଠିକଣା ଖୋଲେ। ଏହା ଆପଣଙ୍କ ଆକାଉଣ୍ଟର ଅନ୍ୟ ଏକ ଉପକରଣରୁ ଆସିଥାଇପାରେ।\n\n%1$s</string>
+    <string name="dejavu_open">ଖୋଲନ୍ତୁ</string>
 </resources>

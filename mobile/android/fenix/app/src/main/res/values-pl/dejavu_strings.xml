@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Zacznij od nowa</string>
     <string name="dejavu_sync_start_fresh_zen">Zamknij te karty i usuń te obszary robocze, przypięte karty, foldery i ulubione, a potem pobierz swoje obszary robocze z Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Zamknij te karty i usuń te obszary robocze, przypięte karty, foldery i ulubione, a potem pokaż karty swoich komputerów i telefonów z Firefoksem.</string>
+    <string name="dejavu_private_link_copied">Skopiowano odnośnik karty prywatnej. Pozostanie w schowku, dopóki nie skopiujesz czegoś innego.</string>
+    <string name="dejavu_open_non_web_pin_title">Otworzyć ten adres?</string>
+    <string name="dejavu_open_non_web_pin_message">Ta przypięta karta otwiera adres, który nie jest stroną internetową. Mógł on pochodzić z innego urządzenia na Twoim koncie.\n\n%1$s</string>
+    <string name="dejavu_open">Otwórz</string>
 </resources>

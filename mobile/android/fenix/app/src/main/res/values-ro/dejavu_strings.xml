@@ -341,4 +341,8 @@
     <string name="dejavu_sync_start_fresh">Începe de la zero</string>
     <string name="dejavu_sync_start_fresh_zen">Închide aceste file și elimină aceste spații de lucru, file fixate, foldere și favorite, apoi preia spațiile tale de lucru din Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Închide aceste file și elimină aceste spații de lucru, file fixate, foldere și favorite, apoi afișează filele computerelor și telefoanelor tale cu Firefox.</string>
+    <string name="dejavu_private_link_copied">Linkul filei private a fost copiat. Rămâne în clipboard până când copiezi altceva.</string>
+    <string name="dejavu_open_non_web_pin_title">Deschizi această adresă?</string>
+    <string name="dejavu_open_non_web_pin_message">Această filă fixată deschide o adresă care nu este o pagină web. Este posibil să provină de pe alt dispozitiv din contul tău.\n\n%1$s</string>
+    <string name="dejavu_open">Deschide</string>
 </resources>

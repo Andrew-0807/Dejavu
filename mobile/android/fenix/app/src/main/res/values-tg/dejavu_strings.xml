@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Аз нав оғоз кардан</string>
     <string name="dejavu_sync_start_fresh_zen">Ин варақаҳоро пӯшидан ва ин фазоҳо, варақаҳои часпонидашуда, ҷузвдонҳо ва сомонаҳои муҳимро хориҷ кардан, сипас фазоҳои худро аз Zen гирифтан.</string>
     <string name="dejavu_sync_start_fresh_firefox">Ин варақаҳоро пӯшидан ва ин фазоҳо, варақаҳои часпонидашуда, ҷузвдонҳо ва сомонаҳои муҳимро хориҷ кардан, сипас варақаҳои компютерҳо ва телефонҳои худро бо Firefox нишон додан.</string>
+    <string name="dejavu_private_link_copied">Пайванди варақаи хусусӣ нусхабардорӣ шуд. То он даме ки чизи дигареро нусхабардорӣ накунед, он дар ҷойи мубодила мемонад.</string>
+    <string name="dejavu_open_non_web_pin_title">Ин нишониро кушоед?</string>
+    <string name="dejavu_open_non_web_pin_message">Ин варақаи васлшуда нишониеро мекушояд, ки саҳифаи сомона нест. Он метавонад аз дастгоҳи дигари ҳисоби шумо омада бошад.\n\n%1$s</string>
+    <string name="dejavu_open">Кушодан</string>
 </resources>

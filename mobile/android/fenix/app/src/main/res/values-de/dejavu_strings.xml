@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Neu beginnen</string>
     <string name="dejavu_sync_start_fresh_zen">Schließe diese Tabs, entferne diese Arbeitsbereiche, angehefteten Tabs, Ordner und Favoriten und übernimm dann deine Arbeitsbereiche aus Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Schließe diese Tabs, entferne diese Arbeitsbereiche, angehefteten Tabs, Ordner und Favoriten und zeige dann die Tabs deiner Computer und Smartphones mit Firefox an.</string>
+    <string name="dejavu_private_link_copied">Link des privaten Tabs kopiert. Er bleibt in der Zwischenablage, bis Sie etwas anderes kopieren.</string>
+    <string name="dejavu_open_non_web_pin_title">Diese Adresse öffnen?</string>
+    <string name="dejavu_open_non_web_pin_message">Dieser angeheftete Tab öffnet eine Adresse, die keine Webseite ist. Sie stammt möglicherweise von einem anderen Gerät in Ihrem Konto.\n\n%1$s</string>
+    <string name="dejavu_open">Öffnen</string>
 </resources>

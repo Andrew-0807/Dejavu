@@ -355,4 +355,8 @@
     <string name="dejavu_sync_start_fresh">Tosaigh as an nua</string>
     <string name="dejavu_sync_start_fresh_zen">Dún na cluaisíní seo agus bain na spásanna oibre, na cluaisíní greamaithe, na fillteáin agus na riachtanais seo, ansin faigh do spásanna oibre ó Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Dún na cluaisíní seo agus bain na spásanna oibre, na cluaisíní greamaithe, na fillteáin agus na riachtanais seo, ansin taispeáin na cluaisíní atá ar do ríomhairí agus d’fhóin le Firefox.</string>
+    <string name="dejavu_private_link_copied">Cóipeáladh nasc an chluaisín phríobháidigh. Fanfaidh sé ar an ghearrthaisce go gcóipeálfaidh tú rud éigin eile.</string>
+    <string name="dejavu_open_non_web_pin_title">An seoladh seo a oscailt?</string>
+    <string name="dejavu_open_non_web_pin_message">Osclaíonn an cluaisín greamaithe seo seoladh nach leathanach Gréasáin é. B\'fhéidir gur tháinig sé ó ghléas eile ar do chuntas.\n\n%1$s</string>
+    <string name="dejavu_open">Oscail</string>
 </resources>

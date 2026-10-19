@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Aloita alusta</string>
     <string name="dejavu_sync_start_fresh_zen">Sulje nämä välilehdet ja poista nämä työtilat, kiinnitetyt välilehdet, kansiot ja suosikit, ja hae sitten työtilasi Zenistä.</string>
     <string name="dejavu_sync_start_fresh_firefox">Sulje nämä välilehdet ja poista nämä työtilat, kiinnitetyt välilehdet, kansiot ja suosikit, ja näytä sitten Firefoxia käyttävien tietokoneidesi ja puhelimiesi välilehdet.</string>
+    <string name="dejavu_private_link_copied">Yksityisen välilehden linkki kopioitu. Se pysyy leikepöydällä, kunnes kopioit jotain muuta.</string>
+    <string name="dejavu_open_non_web_pin_title">Avataanko tämä osoite?</string>
+    <string name="dejavu_open_non_web_pin_message">Tämä kiinnitetty välilehti avaa osoitteen, joka ei ole verkkosivu. Se on voinut tulla toiselta tilisi laitteelta.\n\n%1$s</string>
+    <string name="dejavu_open">Avaa</string>
 </resources>

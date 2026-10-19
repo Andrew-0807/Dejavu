@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Ҿыц алагара</string>
     <string name="dejavu_sync_start_fresh_zen">Арҭ абларҭақәа ркра, арҭ аҭыԥқәа, ификсациатә абларҭақәа, апапкақәа, иҵакыу сайтқәа рныхра, нас Zen аҟынтәи шәыҭыԥқәа рыдкылара.</string>
     <string name="dejavu_sync_start_fresh_firefox">Арҭ абларҭақәа ркра, арҭ аҭыԥқәа, ификсациатә абларҭақәа, апапкақәа, иҵакыу сайтқәа рныхра, нас Firefox змоу шәкомпьютерқәеи шәтелефонқәеи рабларҭақәа раадырԥшра.</string>
+    <string name="dejavu_private_link_copied">Ихшәаны иҟоу аҭыжь аимадара ахкьыҧхьаӡеит. Уи абуфер аҿы иҟалоит егьырҭ акы ахкьыҧхьаӡаанза.</string>
+    <string name="dejavu_open_non_web_pin_title">Ари аҭыжьымҭа аарттуама?</string>
+    <string name="dejavu_open_non_web_pin_message">Ари иԥхьаӡоу аҭыжь веб-даҟьа ада аҭыжьымҭа аартуеит. Уи уаккаунт аҿы егьи аиҭаныз аҟынтә иаауазар ҟалоит.\n\n%1$s</string>
+    <string name="dejavu_open">Аартра</string>
 </resources>

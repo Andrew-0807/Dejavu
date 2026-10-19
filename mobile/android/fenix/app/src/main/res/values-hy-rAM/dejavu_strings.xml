@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Սկսել նորից</string>
     <string name="dejavu_sync_start_fresh_zen">Այս ներդիրները կփակվեն, իսկ այս տարածքները, ամրացված ներդիրները, թղթապանակներն ու կարևոր կայքերը կհեռացվեն, ապա ձեր տարածքները կբերվեն Zen֊ից։</string>
     <string name="dejavu_sync_start_fresh_firefox">Այս ներդիրները կփակվեն, իսկ այս տարածքները, ամրացված ներդիրները, թղթապանակներն ու կարևոր կայքերը կհեռացվեն, ապա կցուցադրվեն Firefox֊ով ձեր համակարգիչների և հեռախոսների ներդիրները։</string>
+    <string name="dejavu_private_link_copied">Գաղտնի ներդիրի հղումը պատճենվեց։ Այն սեղմատախտակում կմնա, մինչև այլ բան պատճենեք։</string>
+    <string name="dejavu_open_non_web_pin_title">Բացե՞լ այս հասցեն</string>
+    <string name="dejavu_open_non_web_pin_message">Այս ամրացված ներդիրը բացում է հասցե, որը վեբ էջ չէ։ Այն կարող է եկած լինել ձեր հաշվի մեկ այլ սարքից։\n\n%1$s</string>
+    <string name="dejavu_open">Բացել</string>
 </resources>

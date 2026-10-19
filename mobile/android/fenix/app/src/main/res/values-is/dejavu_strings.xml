@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Byrja upp á nýtt</string>
     <string name="dejavu_sync_start_fresh_zen">Lokaðu þessum flipum og fjarlægðu þessi vinnusvæði, festu flipa, möppur og eftirlæti, og sæktu svo vinnusvæðin þín úr Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Lokaðu þessum flipum og fjarlægðu þessi vinnusvæði, festu flipa, möppur og eftirlæti, og sjáðu svo flipa tölvanna og símanna þinna með Firefox.</string>
+    <string name="dejavu_private_link_copied">Tengill á huliðsflipa afritaður. Hann verður á klippispjaldinu þar til þú afritar eitthvað annað.</string>
+    <string name="dejavu_open_non_web_pin_title">Opna þetta vistfang?</string>
+    <string name="dejavu_open_non_web_pin_message">Þessi festi flipi opnar vistfang sem er ekki vefsíða. Það gæti hafa komið frá öðru tæki á aðgangnum þínum.\n\n%1$s</string>
+    <string name="dejavu_open">Opna</string>
 </resources>

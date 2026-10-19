@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Comenciar de novo</string>
     <string name="dejavu_sync_start_fresh_zen">Claude iste schedas e remove iste spatios de labor, schedas fixate, dossiers e essentiales, postea obtene tu spatios de labor de Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Claude iste schedas e remove iste spatios de labor, schedas fixate, dossiers e essentiales, postea monstra le schedas de tu computatores e telephonos con Firefox.</string>
+    <string name="dejavu_private_link_copied">Ligamine del scheda private copiate. Illo remane in le area de transferentia usque tu copia altere cosa.</string>
+    <string name="dejavu_open_non_web_pin_title">Aperir iste adresse?</string>
+    <string name="dejavu_open_non_web_pin_message">Iste scheda fixate aperi un adresse que non es un pagina web. Illo pote venir de un altere apparato de tu conto.\n\n%1$s</string>
+    <string name="dejavu_open">Aperir</string>
 </resources>

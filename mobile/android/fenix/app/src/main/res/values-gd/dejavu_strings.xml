@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Tòisich às ùr</string>
     <string name="dejavu_sync_start_fresh_zen">Dùin na tabaichean seo is thoir air falbh na h-àiteachan-obrach, na tabaichean prìnichte, na pasganan \'s na feumalachdan seo, an uairsin faigh na h-àiteachan-obrach agad o Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Dùin na tabaichean seo is thoir air falbh na h-àiteachan-obrach, na tabaichean prìnichte, na pasganan \'s na feumalachdan seo, an uairsin seall tabaichean nan coimpiutairean \'s nam fònaichean agad le Firefox.</string>
+    <string name="dejavu_private_link_copied">Chaidh ceangal an taba phrìobhaidich a lethbhreacadh. Fanaidh e air an stòr-bhòrd gus an dèan thu lethbhreac de rudeigin eile.</string>
+    <string name="dejavu_open_non_web_pin_title">A bheil thu airson an seòladh seo fhosgladh?</string>
+    <string name="dejavu_open_non_web_pin_message">Fosglaidh an taba prìnichte seo seòladh nach e duilleag-lìn a th\' ann. Dh\'fhaoidte gun tàinig e o uidheam eile air a\' chunntas agad.\n\n%1$s</string>
+    <string name="dejavu_open">Fosgail</string>
 </resources>

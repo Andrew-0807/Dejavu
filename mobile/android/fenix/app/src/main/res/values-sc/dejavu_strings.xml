@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Cumintza dae nou</string>
     <string name="dejavu_sync_start_fresh_zen">Serra custas ischedas e tira custos ispàtzios de traballu, ischedas fissadas, cartellas e essentziales, a pustis piga is ispàtzios de traballu tuos dae Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Serra custas ischedas e tira custos ispàtzios de traballu, ischedas fissadas, cartellas e essentziales, a pustis ammustra is ischedas de is computer e de is telèfonos tuos cun Firefox.</string>
+    <string name="dejavu_private_link_copied">Su ligòngiu de s\'ischeda privada est istadu copiadu. Abarrat in punta de billete fintzas a cando no copies àteru.</string>
+    <string name="dejavu_open_non_web_pin_title">Boles abèrrere custu indiritzu?</string>
+    <string name="dejavu_open_non_web_pin_message">Custa ischeda fissada aberit un\'indiritzu chi no est una pàgina web. Diat pòdere bènnere dae un\'àteru dispositivu de su contu tuo.\n\n%1$s</string>
+    <string name="dejavu_open">Aberi</string>
 </resources>

@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Fillo nga e para</string>
     <string name="dejavu_sync_start_fresh_zen">Mbyllini këto skeda dhe hiqni këto hapësira pune, skeda të fiksuara, dosje dhe thelbësore, mandej merrni hapësirat tuaja të punës nga Zen-i.</string>
     <string name="dejavu_sync_start_fresh_firefox">Mbyllini këto skeda dhe hiqni këto hapësira pune, skeda të fiksuara, dosje dhe thelbësore, mandej shfaqni skedat e kompjuterëve dhe telefonave tuaj me Firefox.</string>
+    <string name="dejavu_private_link_copied">Lidhja e skedës private u kopjua. Ajo mbetet në të papastër deri sa të kopjoni diçka tjetër.</string>
+    <string name="dejavu_open_non_web_pin_title">Të hapet kjo adresë?</string>
+    <string name="dejavu_open_non_web_pin_message">Kjo skedë e fiksuar hap një adresë që s\'është faqe web. Mund të ketë ardhur nga një pajisje tjetër e llogarisë suaj.\n\n%1$s</string>
+    <string name="dejavu_open">Hape</string>
 </resources>

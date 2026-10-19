@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">له سره پیل کول</string>
     <string name="dejavu_sync_start_fresh_zen">دا ټبونه بند کړئ او دا ساحې، پین شوي ټبونه، پوښې او مهمې ویب پاڼې لرې کړئ، بیا له Zen څخه خپلې ساحې ترلاسه کړئ.</string>
     <string name="dejavu_sync_start_fresh_firefox">دا ټبونه بند کړئ او دا ساحې، پین شوي ټبونه، پوښې او مهمې ویب پاڼې لرې کړئ، بیا په خپلو کمپیوټرونو او تلیفونونو کې د Firefox ټبونه وګورئ.</string>
+    <string name="dejavu_private_link_copied">د شخصي ټب تړنه کاپي شوه. تر هغه چې بل څه کاپي نه کړئ، په کليپ بورډ کې پاتې کېږي.</string>
+    <string name="dejavu_open_non_web_pin_title">دا پته پرانيزئ؟</string>
+    <string name="dejavu_open_non_web_pin_message">دا پن شوی ټب داسې پته پرانيزي چې وېب پاڼه نه ده. کېدای شي ستاسې د حساب له بلې وسيلې راغلې وي.\n\n%1$s</string>
+    <string name="dejavu_open">پرانيستل</string>
 </resources>

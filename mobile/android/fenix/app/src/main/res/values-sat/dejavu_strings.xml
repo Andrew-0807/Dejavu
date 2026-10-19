@@ -341,4 +341,8 @@
     <string name="dejavu_sync_start_fresh">ᱱᱟᱶᱟ ᱛᱮ ᱮᱦᱚᱵ ᱢᱮ</string>
     <string name="dejavu_sync_start_fresh_zen">ᱱᱚᱶᱟ ᱴᱮᱵᱽ ᱠᱚ ᱵᱚᱸᱫᱚᱭ ᱢᱮ ᱟᱨ ᱱᱚᱶᱟ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ, ᱯᱤᱱ ᱴᱮᱵᱽ ᱠᱚ, ᱯᱷᱚᱞᱰᱚᱨ ᱠᱚ ᱟᱨ ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱠᱚ ᱚᱰᱚᱠ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ Zen ᱠᱷᱚᱱ ᱟᱢᱟᱜ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ ᱧᱟᱢ ᱢᱮ ᱾</string>
     <string name="dejavu_sync_start_fresh_firefox">ᱱᱚᱶᱟ ᱴᱮᱵᱽ ᱠᱚ ᱵᱚᱸᱫᱚᱭ ᱢᱮ ᱟᱨ ᱱᱚᱶᱟ ᱣᱟᱨᱠᱥᱯᱮᱥ ᱠᱚ, ᱯᱤᱱ ᱴᱮᱵᱽ ᱠᱚ, ᱯᱷᱚᱞᱰᱚᱨ ᱠᱚ ᱟᱨ ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱠᱚ ᱚᱰᱚᱠ ᱢᱮ, ᱚᱱᱟ ᱛᱟᱭᱚᱢ Firefox ᱢᱮᱱᱟᱜ ᱟᱢᱟᱜ ᱠᱚᱢᱯᱤᱭᱩᱴᱚᱨ ᱟᱨ ᱯᱷᱚᱱ ᱠᱚᱣᱟᱜ ᱴᱮᱵᱽ ᱠᱚ ᱩᱫᱩᱜ ᱢᱮ ᱾</string>
+    <string name="dejavu_private_link_copied">ᱱᱤᱡᱮᱨᱟᱜ ᱴᱮᱵᱽ ᱨᱮᱭᱟᱜ ᱞᱤᱝᱠ ᱱᱚᱠᱚᱞ ᱮᱱᱟ ᱾ ᱮᱴᱟᱜ ᱡᱤᱱᱤᱥ ᱱᱚᱠᱚᱞ ᱦᱟᱹᱵᱤᱡ ᱱᱚᱶᱟ ᱠᱞᱤᱯᱵᱚᱰ ᱨᱮ ᱛᱟᱦᱮᱸᱱᱟ ᱾</string>
+    <string name="dejavu_open_non_web_pin_title">ᱱᱚᱶᱟ ᱴᱷᱤᱠᱬᱟᱹ ᱡᱷᱤᱡᱽ ᱢᱮ?</string>
+    <string name="dejavu_open_non_web_pin_message">ᱱᱚᱶᱟ ᱯᱤᱱ ᱟᱠᱟᱱ ᱴᱮᱵᱽ ᱫᱚ ᱡᱟᱦᱟᱸ ᱣᱮᱵᱽ ᱥᱟᱦᱴᱟ ᱵᱟᱝ ᱠᱟᱱᱟ ᱚᱱᱟ ᱴᱷᱤᱠᱬᱟᱹ ᱡᱷᱤᱡᱽᱟ ᱾ ᱱᱚᱶᱟ ᱟᱢᱟᱜ ᱠᱷᱟᱛᱟ ᱨᱮᱭᱟᱜ ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱠᱷᱚᱱ ᱦᱤᱡᱩᱜ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾\n\n%1$s</string>
+    <string name="dejavu_open">ᱡᱷᱤᱡᱽ</string>
 </resources>

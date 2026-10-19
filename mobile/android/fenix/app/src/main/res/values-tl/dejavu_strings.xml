@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Magsimula nang bago</string>
     <string name="dejavu_sync_start_fresh_zen">Isara ang mga tab na ito at alisin ang mga workspace, naka-pin na tab, folder, at Mahahalaga ng device na ito, pagkatapos ay kunin ang iyong mga workspace mula sa Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Isara ang mga tab na ito at alisin ang mga workspace, naka-pin na tab, folder, at Mahahalaga ng device na ito, pagkatapos ay ipakita ang mga tab ng iyong mga kompyuter at telepono na may Firefox.</string>
+    <string name="dejavu_private_link_copied">Nakopya ang link ng pribadong tab. Mananatili ito sa clipboard hanggang kumopya ka ng iba.</string>
+    <string name="dejavu_open_non_web_pin_title">Buksan ang address na ito?</string>
+    <string name="dejavu_open_non_web_pin_message">Ang naka-pin na tab na ito ay nagbubukas ng address na hindi web page. Maaaring galing ito sa ibang device sa iyong account.\n\n%1$s</string>
+    <string name="dejavu_open">Buksan</string>
 </resources>

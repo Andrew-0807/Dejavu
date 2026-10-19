@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">თავიდან დაწყება</string>
     <string name="dejavu_sync_start_fresh_zen">ეს ჩანართები დაიხურება, ეს სივრცეები, მიმაგრებული ჩანართები, საქაღალდეები და საჭირო საიტები წაიშლება, შემდეგ კი Zen-იდან ჩამოიტვირთება თქვენი სივრცეები.</string>
     <string name="dejavu_sync_start_fresh_firefox">ეს ჩანართები დაიხურება, ეს სივრცეები, მიმაგრებული ჩანართები, საქაღალდეები და საჭირო საიტები წაიშლება, შემდეგ კი გამოჩნდება თქვენი Firefox-იანი კომპიუტერებისა და ტელეფონების ჩანართები.</string>
+    <string name="dejavu_private_link_copied">პირადი ჩანართის ბმული დაკოპირდა. ის ბუფერში დარჩება, სანამ სხვა რამეს არ დააკოპირებთ.</string>
+    <string name="dejavu_open_non_web_pin_title">გაიხსნას ეს მისამართი?</string>
+    <string name="dejavu_open_non_web_pin_message">ეს მიმაგრებული ჩანართი ხსნის მისამართს, რომელიც ვებგვერდი არ არის. ის შესაძლოა თქვენი ანგარიშის სხვა მოწყობილობიდან მოვიდა.\n\n%1$s</string>
+    <string name="dejavu_open">გახსნა</string>
 </resources>

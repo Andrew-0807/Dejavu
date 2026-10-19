@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Titikirisäx chik</string>
     <string name="dejavu_sync_start_fresh_zen">Ketz\'apïx re taq ruwi\' re\' chuqa\' keyuj re taq samajib\'äl, ximon taq ruwi\', taq karpeta chuqa\' taq rajawaxel re\', k\'a ri\' yepe ri taq asamajib\'äl richin Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Ketz\'apïx re taq ruwi\' re\' chuqa\' keyuj re taq samajib\'äl, ximon taq ruwi\', taq karpeta chuqa\' taq rajawaxel re\', k\'a ri\' yek\'ut ri taq ruwi\' richin ri taq akematz\'ib\' chuqa\' taq awoyonib\'äl rik\'in Firefox.</string>
+    <string name="dejavu_private_link_copied">Xwachib\'ëx ri ruximonel ichinan ruwi\'. Xkekanäj pa molwuj k\'a ri nawachib\'ej jun chik.</string>
+    <string name="dejavu_open_non_web_pin_title">¿Najäq re ochochib\'äl re\'?</string>
+    <string name="dejavu_open_non_web_pin_message">Re ruwi\' re\' nujäq jun ochochib\'äl man ruxaq ajk\'amaya\'l ta. Rik\'in jub\'a\' xpe pa jun chik okisaxel richin ri rub\'i\' ataqoya\'l.\n\n%1$s</string>
+    <string name="dejavu_open">Tijaq</string>
 </resources>

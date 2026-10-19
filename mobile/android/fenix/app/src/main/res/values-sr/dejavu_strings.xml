@@ -341,4 +341,8 @@
     <string name="dejavu_sync_start_fresh">Почни изнова</string>
     <string name="dejavu_sync_start_fresh_zen">Затворите ове језичке и уклоните ове радне просторе, закачене језичке, фасцикле и Фаворите, а затим преузмите своје радне просторе из Zen-а.</string>
     <string name="dejavu_sync_start_fresh_firefox">Затворите ове језичке и уклоните ове радне просторе, закачене језичке, фасцикле и Фаворите, а затим прикажите језичке својих рачунара и телефона са Firefox-ом.</string>
+    <string name="dejavu_private_link_copied">Веза приватне картице је копирана. Остаје у оставу док не копирате нешто друго.</string>
+    <string name="dejavu_open_non_web_pin_title">Отворити ову адресу?</string>
+    <string name="dejavu_open_non_web_pin_message">Ова закачена картица отвара адресу која није веб страница. Можда је стигла са другог уређаја на вашем налогу.\n\n%1$s</string>
+    <string name="dejavu_open">Отвори</string>
 </resources>

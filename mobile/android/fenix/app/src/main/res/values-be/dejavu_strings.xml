@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Пачаць з нуля</string>
     <string name="dejavu_sync_start_fresh_zen">Закрыць гэтыя карткі і выдаліць гэтыя прасторы, замацаваныя карткі, папкі і важнае, а потым атрымаць вашы прасторы з Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Закрыць гэтыя карткі і выдаліць гэтыя прасторы, замацаваныя карткі, папкі і важнае, а потым паказаць карткі вашых камп\'ютараў і тэлефонаў з Firefox.</string>
+    <string name="dejavu_private_link_copied">Спасылка прыватнай карткі скапіявана. Яна застанецца ў буферы абмену, пакуль вы не скапіюеце нешта іншае.</string>
+    <string name="dejavu_open_non_web_pin_title">Адкрыць гэты адрас?</string>
+    <string name="dejavu_open_non_web_pin_message">Гэта замацаваная картка адкрывае адрас, які не з\'яўляецца вэб-старонкай. Ён мог прыйсці з іншай прылады вашага ўліковага запісу.\n\n%1$s</string>
+    <string name="dejavu_open">Адкрыць</string>
 </resources>

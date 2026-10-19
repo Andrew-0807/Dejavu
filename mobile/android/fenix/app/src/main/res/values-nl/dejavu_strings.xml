@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Opnieuw beginnen</string>
     <string name="dejavu_sync_start_fresh_zen">Sluit deze tabbladen en verwijder deze werkruimtes, vastgemaakte tabbladen, mappen en favorieten, en haal daarna je werkruimtes uit Zen op.</string>
     <string name="dejavu_sync_start_fresh_firefox">Sluit deze tabbladen en verwijder deze werkruimtes, vastgemaakte tabbladen, mappen en favorieten, en toon daarna de tabbladen van je computers en telefoons met Firefox.</string>
+    <string name="dejavu_private_link_copied">Koppeling van privétabblad gekopieerd. Deze blijft op het klembord totdat u iets anders kopieert.</string>
+    <string name="dejavu_open_non_web_pin_title">Dit adres openen?</string>
+    <string name="dejavu_open_non_web_pin_message">Dit vastgezette tabblad opent een adres dat geen webpagina is. Het kan afkomstig zijn van een ander apparaat in uw account.\n\n%1$s</string>
+    <string name="dejavu_open">Openen</string>
 </resources>

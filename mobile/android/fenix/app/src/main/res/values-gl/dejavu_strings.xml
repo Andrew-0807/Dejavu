@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Comezar de cero</string>
     <string name="dejavu_sync_start_fresh_zen">Pecha estas lapelas e elimina os espazos de traballo, as lapelas fixadas, os cartafoles e os esenciais, e despois trae os teus espazos de traballo de Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Pecha estas lapelas e elimina os espazos de traballo, as lapelas fixadas, os cartafoles e os esenciais, e despois amosa as lapelas dos teus ordenadores e teléfonos con Firefox.</string>
+    <string name="dejavu_private_link_copied">Copiouse a ligazón dunha lapela privada. Queda no portapapeis ata que copies outra cousa.</string>
+    <string name="dejavu_open_non_web_pin_title">Abrir este enderezo?</string>
+    <string name="dejavu_open_non_web_pin_message">Esta lapela fixada abre un enderezo que non é unha páxina web. Pode vir doutro dispositivo da túa conta.\n\n%1$s</string>
+    <string name="dejavu_open">Abrir</string>
 </resources>

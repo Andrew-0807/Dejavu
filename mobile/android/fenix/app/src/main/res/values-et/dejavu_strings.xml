@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Alusta nullist</string>
     <string name="dejavu_sync_start_fresh_zen">Sulge need kaardid ja eemalda need tööruumid, kinnitatud kaardid, kaustad ja olulised, seejärel too oma tööruumid Zenist.</string>
     <string name="dejavu_sync_start_fresh_firefox">Sulge need kaardid ja eemalda need tööruumid, kinnitatud kaardid, kaustad ja olulised, seejärel näita oma Firefoxiga arvutite ja telefonide kaarte.</string>
+    <string name="dejavu_private_link_copied">Privaatse kaardi link kopeeriti. See jääb lõikelauale, kuni kopeerid midagi muud.</string>
+    <string name="dejavu_open_non_web_pin_title">Kas avada see aadress?</string>
+    <string name="dejavu_open_non_web_pin_message">See kinnitatud kaart avab aadressi, mis pole veebileht. See võis tulla mõnest teisest sinu konto seadmest.\n\n%1$s</string>
+    <string name="dejavu_open">Ava</string>
 </resources>

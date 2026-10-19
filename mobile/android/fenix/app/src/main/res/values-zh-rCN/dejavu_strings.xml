@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">重新开始</string>
     <string name="dejavu_sync_start_fresh_zen">关闭这些标签页，移除这些工作区、固定标签页、文件夹和常用网站，然后获取您在 Zen 中的工作区。</string>
     <string name="dejavu_sync_start_fresh_firefox">关闭这些标签页，移除这些工作区、固定标签页、文件夹和常用网站，然后显示您装有 Firefox 的计算机和手机上的标签页。</string>
+    <string name="dejavu_private_link_copied">已复制隐私标签页的链接。在您复制其他内容之前，它会一直留在剪贴板中。</string>
+    <string name="dejavu_open_non_web_pin_title">要打开此地址吗？</string>
+    <string name="dejavu_open_non_web_pin_message">此固定标签页打开的地址不是网页。它可能来自您账户中的另一台设备。\n\n%1$s</string>
+    <string name="dejavu_open">打开</string>
 </resources>

@@ -341,4 +341,8 @@
     <string name="dejavu_sync_start_fresh">Começar do zero</string>
     <string name="dejavu_sync_start_fresh_zen">Fechar estes separadores e remover estes espaços de trabalho, separadores fixados, pastas e essenciais, e depois obter os teus espaços de trabalho do Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Fechar estes separadores e remover estes espaços de trabalho, separadores fixados, pastas e essenciais, e depois mostrar os separadores dos teus computadores e telemóveis com o Firefox.</string>
+    <string name="dejavu_private_link_copied">Ligação do separador privado copiada. Fica na área de transferência até copiar outra coisa.</string>
+    <string name="dejavu_open_non_web_pin_title">Abrir este endereço?</string>
+    <string name="dejavu_open_non_web_pin_message">Este separador fixado abre um endereço que não é uma página web. Pode ter vindo de outro dispositivo da sua conta.\n\n%1$s</string>
+    <string name="dejavu_open">Abrir</string>
 </resources>

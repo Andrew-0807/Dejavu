@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Ricominça da zero</string>
     <string name="dejavu_sync_start_fresh_zen">Særa sti feuggi e caccia sti spaçi de travaggio, feuggi fissæ, cartelle e essençiali, poi piggia i tò spaçi de travaggio da Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Særa sti feuggi e caccia sti spaçi de travaggio, feuggi fissæ, cartelle e essençiali, poi amostra i feuggi di tò computer e telefoni con Firefox.</string>
+    <string name="dejavu_private_link_copied">O link do feuggio privòu o l\'é stæto copiòu. O resta inti appunti fin che no ti copi quarcösa d\'atro.</string>
+    <string name="dejavu_open_non_web_pin_title">Arvî st\'indirisso?</string>
+    <string name="dejavu_open_non_web_pin_message">Sto feuggio fissou o l\'arve un indirisso ch\'o no l\'é unna pagina web. O porieiva vegnî da un atro dispoxitivo do teu conto.\n\n%1$s</string>
+    <string name="dejavu_open">Arvi</string>
 </resources>

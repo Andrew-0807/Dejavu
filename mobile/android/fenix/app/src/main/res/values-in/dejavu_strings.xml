@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">Mulai dari awal</string>
     <string name="dejavu_sync_start_fresh_zen">Tutup tab ini dan hapus ruang kerja, tab yang disemat, folder, dan situs penting ini, lalu ambil ruang kerja Anda dari Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Tutup tab ini dan hapus ruang kerja, tab yang disemat, folder, dan situs penting ini, lalu tampilkan tab dari komputer dan ponsel Anda yang menjalankan Firefox.</string>
+    <string name="dejavu_private_link_copied">Tautan tab pribadi disalin. Tautan tetap ada di papan klip hingga Anda menyalin hal lain.</string>
+    <string name="dejavu_open_non_web_pin_title">Buka alamat ini?</string>
+    <string name="dejavu_open_non_web_pin_message">Tab yang disematkan ini membuka alamat yang bukan halaman web. Alamat ini mungkin berasal dari perangkat lain di akun Anda.\n\n%1$s</string>
+    <string name="dejavu_open">Buka</string>
 </resources>

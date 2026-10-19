@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Cumenzar da nov</string>
     <string name="dejavu_sync_start_fresh_zen">Serrar quests tabs ed allontanar quests spazis da lavur, tabs fixads, dossiers ed essenzials, lura survegnir tes spazis da lavur da Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Serrar quests tabs ed allontanar quests spazis da lavur, tabs fixads, dossiers ed essenzials, lura mussar ils tabs da tes computers e telefons cun Firefox.</string>
+    <string name="dejavu_private_link_copied">La colliaziun dal tab privat è vegnida copiada. Ella resta en l\'archiv provisoric fin che ti copias insatge auter.</string>
+    <string name="dejavu_open_non_web_pin_title">Avrir questa adressa?</string>
+    <string name="dejavu_open_non_web_pin_message">Quest tab fixà avra ina adressa che n\'è betg ina pagina web. Ella po derivar d\'in auter apparat da tes conto.\n\n%1$s</string>
+    <string name="dejavu_open">Avrir</string>
 </resources>

@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Eñepyrũ ipyahúpe</string>
     <string name="dejavu_sync_start_fresh_zen">Emboty ko\'ã tendayke ha emboguete ko\'ã tembiapo renda, tendayke mboguapypyre, karpeta ha iporãvéva, upéi egueru ne tembiapo renda Zen-gui.</string>
     <string name="dejavu_sync_start_fresh_firefox">Emboty ko\'ã tendayke ha emboguete ko\'ã tembiapo renda, tendayke mboguapypyre, karpeta ha iporãvéva, upéi ehechauka umi tendayke oĩva ne mohendaha ha ne pumbyrýpe Firefox reheve.</string>
+    <string name="dejavu_private_link_copied">Oñekopia tendayke ñemiguáva joapy. Opyta mbohasaha ryepýpe remokopia peve ambue mba\'e.</string>
+    <string name="dejavu_open_non_web_pin_title">¿Embojuruja ko kundaharape?</string>
+    <string name="dejavu_open_non_web_pin_message">Ko tendayke mboja\'ypyre ombojuruja kundaharape ndaha\'éiva ñandutirovetã. Ikatu ou ambue mba\'e\'okágui ne mba\'ete.\n\n%1$s</string>
+    <string name="dejavu_open">Embojuruja</string>
 </resources>

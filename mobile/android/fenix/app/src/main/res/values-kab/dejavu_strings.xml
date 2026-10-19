@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Bdu seg tazwara</string>
     <string name="dejavu_sync_start_fresh_zen">Mdel iccaren-agi, kkes imukan-agi n umahil, iccaren yessersen, ikuramen d wayen ilaqen, syen awi-d imukan n umahil-ik seg Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Mdel iccaren-agi, kkes imukan-agi n umahil, iccaren yessersen, ikuramen d wayen ilaqen, syen sken-d iccaren n yiselkimen-ik d tiliɣriwin-ik s Firefox.</string>
+    <string name="dejavu_private_link_copied">Aseɣwen n yiccer uslig yettwanɣel. Ad yeqqim deg tecfawit armi tneɣleḍ kra nniḍen.</string>
+    <string name="dejavu_open_non_web_pin_title">Ad teldiḍ tansa-a?</string>
+    <string name="dejavu_open_non_web_pin_message">Iccer-a yettwasenṭḍen yettaldi tansa ur nelli d asebter web. Yezmer d yiwen n yibenk nniḍen n umiḍan-ik i d-t-id-yuzen.\n\n%1$s</string>
+    <string name="dejavu_open">Ldi</string>
 </resources>

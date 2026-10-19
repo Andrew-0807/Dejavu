@@ -341,4 +341,8 @@
     <string name="dejavu_sync_start_fresh">Sākt no jauna</string>
     <string name="dejavu_sync_start_fresh_zen">Aizveriet šīs cilnes un noņemiet šīs darbvietas, piespraustās cilnes, mapes un Izlasi, pēc tam saņemsiet savas darbvietas no Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Aizveriet šīs cilnes un noņemiet šīs darbvietas, piespraustās cilnes, mapes un Izlasi, pēc tam redzēsiet savu datoru un tālruņu ar Firefox cilnes.</string>
+    <string name="dejavu_private_link_copied">Privātās cilnes saite nokopēta. Tā paliek starpliktuvē, līdz nokopējat ko citu.</string>
+    <string name="dejavu_open_non_web_pin_title">Atvērt šo adresi?</string>
+    <string name="dejavu_open_non_web_pin_message">Šī piespraustā cilne atver adresi, kas nav tīmekļa lapa. Tā var būt atnākusi no citas jūsu konta ierīces.\n\n%1$s</string>
+    <string name="dejavu_open">Atvērt</string>
 </resources>

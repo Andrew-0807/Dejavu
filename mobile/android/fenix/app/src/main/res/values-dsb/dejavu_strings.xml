@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Znowego zachopiś</string>
     <string name="dejavu_sync_start_fresh_zen">Toś te rejtariki zacyniś a toś te źěłowe rumy, pśipěte rejtariki, zarědniki a nejwažnjejše wótwónoźeś, pótom twóje źěłowe rumy ze Zen dostaś.</string>
     <string name="dejavu_sync_start_fresh_firefox">Toś te rejtariki zacyniś a toś te źěłowe rumy, pśipěte rejtariki, zarědniki a nejwažnjejše wótwónoźeś, pótom rejtariki twójich licadłow a telefonow z Firefox pokazaś.</string>
+    <string name="dejavu_private_link_copied">Wótkaz priwatnego rejtarika jo se kopěrował. Wóstanjo w mjazywótkłaźe, až něco druge kopěrujośo.</string>
+    <string name="dejavu_open_non_web_pin_title">Toś tu adresu wócyniś?</string>
+    <string name="dejavu_open_non_web_pin_message">Toś ten pśipěty rejtarik wócynja adresu, kótaraž njejo webbok. Jo snaź z drugego rěda na wašom konśe pśišła.\n\n%1$s</string>
+    <string name="dejavu_open">Wócyniś</string>
 </resources>

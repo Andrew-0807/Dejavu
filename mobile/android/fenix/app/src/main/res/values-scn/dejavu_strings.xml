@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Accumincia di zeru</string>
     <string name="dejavu_sync_start_fresh_zen">Chiuji sti schedi e leva sti spazzii di travagghiu, schedi ficcati, carteddi e essenziali, doppu pigghia i spazzii di travagghiu tò di Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Chiuji sti schedi e leva sti spazzii di travagghiu, schedi ficcati, carteddi e essenziali, doppu mustra i schedi dî tò computer e tilèfuni cu Firefox.</string>
+    <string name="dejavu_private_link_copied">U culligamentu dâ scheda privata fu cupiatu. Arresta ntê appunti nzinu a quannu nun cupii n\'àutra cosa.</string>
+    <string name="dejavu_open_non_web_pin_title">Apriri st\'indirizzu?</string>
+    <string name="dejavu_open_non_web_pin_message">Sta scheda fissata apri n\'indirizzu ca nun è na pàggina web. Putissi vèniri di n\'àutru dispusitivu dû to cuntu.\n\n%1$s</string>
+    <string name="dejavu_open">Apri</string>
 </resources>

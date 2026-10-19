@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">دەستپێکردنی نوێ</string>
     <string name="dejavu_sync_start_fresh_zen">ئەم بازدەرانە دابخە و ئەم فەزایانە، بازدەرە چەسپاوەکان، پۆشەکان و ماڵپەڕە گرنگەکان لاببە، پاشان فەزاکانت لە Zen ەوە وەربگرە.</string>
     <string name="dejavu_sync_start_fresh_firefox">ئەم بازدەرانە دابخە و ئەم فەزایانە، بازدەرە چەسپاوەکان، پۆشەکان و ماڵپەڕە گرنگەکان لاببە، پاشان بازدەرەکانی ئەو کۆمپیوتەر و مۆبایلانەت پیشان بدە کە Firefox یان تێدایە.</string>
+    <string name="dejavu_private_link_copied">بەستەری بازدەری تایبەت لەبەرگیرایەوە. لە کلیپبۆردەکەدا دەمێنێتەوە تا شتێکی تر لەبەر دەگریتەوە.</string>
+    <string name="dejavu_open_non_web_pin_title">ئەم ناونیشانە بکرێتەوە؟</string>
+    <string name="dejavu_open_non_web_pin_message">ئەم بازدەرە چەسپاوە ناونیشانێک دەکاتەوە کە پەڕەی وێب نییە. لەوانەیە لە ئامێرێکی تری هەژمارەکەتەوە هاتبێت.\n\n%1$s</string>
+    <string name="dejavu_open">کردنەوە</string>
 </resources>

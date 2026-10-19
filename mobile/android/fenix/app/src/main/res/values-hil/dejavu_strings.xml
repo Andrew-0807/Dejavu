@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Magsugod liwat</string>
     <string name="dejavu_sync_start_fresh_zen">Isira ini nga mga tab kag tangtanga ini nga mga workspace, naka-pin nga tab, folder kag Importante, dayon kuhaa ang imo mga workspace halin sa Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Isira ini nga mga tab kag tangtanga ini nga mga workspace, naka-pin nga tab, folder kag Importante, dayon ipakita ang mga tab sang imo mga kompyuter kag telepono nga may Firefox.</string>
+    <string name="dejavu_private_link_copied">Nakopya ang link sang pribado nga tab. Magapabilin ini sa clipboard tubtob magkopya ka sang iban.</string>
+    <string name="dejavu_open_non_web_pin_title">Buksan ini nga adres?</string>
+    <string name="dejavu_open_non_web_pin_message">Ining naka-pin nga tab nagabukas sang adres nga indi web page. Basi naghalin ini sa iban nga device sa imo account.\n\n%1$s</string>
+    <string name="dejavu_open">Buksan</string>
 </resources>

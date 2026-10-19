@@ -341,4 +341,8 @@
     <string name="dejavu_sync_start_fresh">התחלה מחדש</string>
     <string name="dejavu_sync_start_fresh_zen">סוגרים את הלשוניות האלה ומסירים את מרחבי העבודה, הלשוניות המוצמדות, התיקיות והמועדפים האלה, ואז מביאים את מרחבי העבודה שלכם מ-Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">סוגרים את הלשוניות האלה ומסירים את מרחבי העבודה, הלשוניות המוצמדות, התיקיות והמועדפים האלה, ואז מציגים את הלשוניות של המחשבים והטלפונים שלכם עם Firefox.</string>
+    <string name="dejavu_private_link_copied">הקישור של הלשונית הפרטית הועתק. הוא יישאר בלוח הגזירים עד שיועתק משהו אחר.</string>
+    <string name="dejavu_open_non_web_pin_title">לפתוח את הכתובת הזאת?</string>
+    <string name="dejavu_open_non_web_pin_message">לשונית מוצמדת זו פותחת כתובת שאינה דף אינטרנט. ייתכן שהיא הגיעה ממכשיר אחר בחשבון שלך.\n\n%1$s</string>
+    <string name="dejavu_open">פתיחה</string>
 </resources>

@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">一から始める</string>
     <string name="dejavu_sync_start_fresh_zen">これらのタブを閉じ、ワークスペース、ピン留めタブ、フォルダー、よく使うサイトを削除してから、Zenのワークスペースを取得します。</string>
     <string name="dejavu_sync_start_fresh_firefox">これらのタブを閉じ、ワークスペース、ピン留めタブ、フォルダー、よく使うサイトを削除してから、Firefoxを使っているパソコンとスマートフォンのタブを表示します。</string>
+    <string name="dejavu_private_link_copied">プライベートタブのリンクをコピーしました。別のものをコピーするまでクリップボードに残ります。</string>
+    <string name="dejavu_open_non_web_pin_title">このアドレスを開きますか？</string>
+    <string name="dejavu_open_non_web_pin_message">このピン留めタブはウェブページではないアドレスを開きます。アカウントの別の端末から同期された可能性があります。\n\n%1$s</string>
+    <string name="dejavu_open">開く</string>
 </resources>

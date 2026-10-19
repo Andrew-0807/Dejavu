@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Komenci de nulo</string>
     <string name="dejavu_sync_start_fresh_zen">Fermi ĉi tiujn langetojn kaj forigi ĉi tiujn laborspacojn, pinglitajn langetojn, dosierujojn kaj esencaĵojn, poste ricevi viajn laborspacojn el Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Fermi ĉi tiujn langetojn kaj forigi ĉi tiujn laborspacojn, pinglitajn langetojn, dosierujojn kaj esencaĵojn, poste montri la langetojn de viaj komputiloj kaj telefonoj kun Firefox.</string>
+    <string name="dejavu_private_link_copied">La ligilo de privata langeto estis kopiita. Ĝi restos en la tondujo ĝis vi kopios ion alian.</string>
+    <string name="dejavu_open_non_web_pin_title">Ĉu malfermi tiun ĉi adreson?</string>
+    <string name="dejavu_open_non_web_pin_message">Tiu ĉi alpinglita langeto malfermas adreson, kiu ne estas retpaĝo. Ĝi eble venis el alia aparato de via konto.\n\n%1$s</string>
+    <string name="dejavu_open">Malfermi</string>
 </resources>

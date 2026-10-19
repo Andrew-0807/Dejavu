@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">नयाँ सिराबाट सुरु गर्नुहोस्</string>
     <string name="dejavu_sync_start_fresh_zen">यी ट्याबहरु बन्द गर्नुहोस् र यी कार्यक्षेत्रहरु, पिन गरिएका ट्याबहरु, फोल्डरहरु र आवश्यक हटाउनुहोस्, त्यसपछि Zen बाट आफ्ना कार्यक्षेत्रहरु ल्याउनुहोस्।</string>
     <string name="dejavu_sync_start_fresh_firefox">यी ट्याबहरु बन्द गर्नुहोस् र यी कार्यक्षेत्रहरु, पिन गरिएका ट्याबहरु, फोल्डरहरु र आवश्यक हटाउनुहोस्, त्यसपछि Firefox भएका आफ्ना कम्प्युटर र फोनहरुका ट्याबहरु देखाउनुहोस्।</string>
+    <string name="dejavu_private_link_copied">निजी ट्याबको लिङ्क प्रतिलिपि भयो। तपाईंले अर्को केही प्रतिलिपि नगरेसम्म यो क्लिपबोर्डमा रहन्छ।</string>
+    <string name="dejavu_open_non_web_pin_title">यो ठेगाना खोल्ने?</string>
+    <string name="dejavu_open_non_web_pin_message">यो पिन गरिएको ट्याबले वेब पृष्ठ नभएको ठेगाना खोल्छ। यो तपाईंको खाताको अर्को यन्त्रबाट आएको हुन सक्छ।\n\n%1$s</string>
+    <string name="dejavu_open">खोल्नुहोस्</string>
 </resources>

@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Empezar de cero</string>
     <string name="dejavu_sync_start_fresh_zen">Cierra estas pestañas y quita los espacios de trabajo, las pestañas fijadas, las carpetas y los esenciales, y luego trae tus espacios de trabajo de Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Cierra estas pestañas y quita los espacios de trabajo, las pestañas fijadas, las carpetas y los esenciales, y luego muestra las pestañas de tus computadoras y teléfonos con Firefox.</string>
+    <string name="dejavu_private_link_copied">Kopiado ña enlace pestaña privada. Kitáva nuu portapapeles nda kopiaro inka ña.</string>
+    <string name="dejavu_open_non_web_pin_title">¿Nune dirección yo?</string>
+    <string name="dejavu_open_non_web_pin_message">Pestaña yo fijada nune iin dirección ña kúu páxina web. Va\'a kixi ña iin inka dispositivo ña kúu cuenta ró.\n\n%1$s</string>
+    <string name="dejavu_open">Nune</string>
 </resources>

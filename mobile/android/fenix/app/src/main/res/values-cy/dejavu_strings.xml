@@ -362,4 +362,8 @@
     <string name="dejavu_sync_start_fresh">Dechrau o’r newydd</string>
     <string name="dejavu_sync_start_fresh_zen">Caewch y tabiau hyn a thynnwch y gweithleoedd, y tabiau wedi’u pinio, y ffolderi a’r hanfodion hyn, yna dewch â’ch gweithleoedd o Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Caewch y tabiau hyn a thynnwch y gweithleoedd, y tabiau wedi’u pinio, y ffolderi a’r hanfodion hyn, yna dangoswch dabiau eich cyfrifiaduron a’ch ffonau Firefox.</string>
+    <string name="dejavu_private_link_copied">Mae dolen y tab preifat wedi\'i chopïo. Mae\'n aros ar y clipfwrdd nes i chi gopïo rhywbeth arall.</string>
+    <string name="dejavu_open_non_web_pin_title">Agor y cyfeiriad hwn?</string>
+    <string name="dejavu_open_non_web_pin_message">Mae\'r tab pinio hwn yn agor cyfeiriad nad yw\'n dudalen we. Efallai ei fod wedi dod o ddyfais arall ar eich cyfrif.\n\n%1$s</string>
+    <string name="dejavu_open">Agor</string>
 </resources>

@@ -355,4 +355,8 @@
     <string name="dejavu_sync_start_fresh">Kregiñ en-dro</string>
     <string name="dejavu_sync_start_fresh_zen">Serriñ an ivinelloù-mañ ha lemel an egorioù labour, an ivinelloù spilhennet, an teuliadoù hag an traoù pouezus-mañ, ha goude-se degemer hoc’h egorioù labour eus Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Serriñ an ivinelloù-mañ ha lemel an egorioù labour, an ivinelloù spilhennet, an teuliadoù hag an traoù pouezus-mañ, ha goude-se diskouez ivinelloù hoc’h urzhiataerioù ha pellgomzerioù gant Firefox.</string>
+    <string name="dejavu_private_link_copied">Eilet eo bet ere an ivinell prevez. Chom a ra er golver betek ma eilfec\'h un dra all.</string>
+    <string name="dejavu_open_non_web_pin_title">Digeriñ ar chomlec\'h-mañ?</string>
+    <string name="dejavu_open_non_web_pin_message">An ivinell spilhennet-mañ a zigor ur chomlec\'h n\'eo ket ur bajenn web. Marteze eo deuet eus un trevnad all war ho kont.\n\n%1$s</string>
+    <string name="dejavu_open">Digeriñ</string>
 </resources>

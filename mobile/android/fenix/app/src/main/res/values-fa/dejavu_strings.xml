@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">شروع از نو</string>
     <string name="dejavu_sync_start_fresh_zen">این زبانه‌ها را ببندید و این فضاهای کاری، زبانه‌های سنجاق‌شده، پوشه‌ها و ضروریات را حذف کنید، سپس فضاهای کاری‌تان را از Zen بگیرید.</string>
     <string name="dejavu_sync_start_fresh_firefox">این زبانه‌ها را ببندید و این فضاهای کاری، زبانه‌های سنجاق‌شده، پوشه‌ها و ضروریات را حذف کنید، سپس زبانه‌های رایانه‌ها و گوشی‌هایتان را که Firefox دارند نشان دهید.</string>
+    <string name="dejavu_private_link_copied">پیوند زبانهٔ خصوصی رونوشت شد. تا وقتی چیز دیگری رونوشت نکنید در بریده‌دان می‌ماند.</string>
+    <string name="dejavu_open_non_web_pin_title">این نشانی باز شود؟</string>
+    <string name="dejavu_open_non_web_pin_message">این زبانهٔ سنجاق‌شده نشانی‌ای را باز می‌کند که صفحهٔ وب نیست. ممکن است از دستگاه دیگری در حسابتان آمده باشد.\n\n%1$s</string>
+    <string name="dejavu_open">باز کردن</string>
 </resources>

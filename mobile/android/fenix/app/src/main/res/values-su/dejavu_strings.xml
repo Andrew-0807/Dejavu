@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">Mimitian ti awal</string>
     <string name="dejavu_sync_start_fresh_zen">Tutup tab ieu jeung piceun rohangan, tab nu disemat, map, jeung Penting ieu, tuluy candak rohangan anjeun ti Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Tutup tab ieu jeung piceun rohangan, tab nu disemat, map, jeung Penting ieu, tuluy témbongkeun tab tina komputer jeung telepon anjeun nu maké Firefox.</string>
+    <string name="dejavu_private_link_copied">Tutumbu tab pribadi geus ditiron. Bakal tetep aya dina papan klip nepi ka anjeun niron nu séjén.</string>
+    <string name="dejavu_open_non_web_pin_title">Buka alamat ieu?</string>
+    <string name="dejavu_open_non_web_pin_message">Tab nu disematkeun ieu muka alamat nu lain kaca raramat. Bisa jadi asalna ti piranti séjén dina akun anjeun.\n\n%1$s</string>
+    <string name="dejavu_open">Buka</string>
 </resources>

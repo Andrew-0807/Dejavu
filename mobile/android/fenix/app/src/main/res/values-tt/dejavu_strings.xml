@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Яңадан башлау</string>
     <string name="dejavu_sync_start_fresh_zen">Бу табларны ябу һәм бу эш өлкәләрен, беркетелгән табларны, папкаларны һәм төп сайтларны чыгару, аннары эш өлкәләрегезне Zen-нән алу.</string>
     <string name="dejavu_sync_start_fresh_firefox">Бу табларны ябу һәм бу эш өлкәләрен, беркетелгән табларны, папкаларны һәм төп сайтларны чыгару, аннары Firefox булган компьютерләрегез һәм телефоннарыгызның табларын күрсәтү.</string>
+    <string name="dejavu_private_link_copied">Хосусый битнең сылтамасы күчерелде. Сез башка нәрсә күчермичә ул алмашу буферында кала.</string>
+    <string name="dejavu_open_non_web_pin_title">Бу адресны ачаргамы?</string>
+    <string name="dejavu_open_non_web_pin_message">Бу беркетелгән бит веб-бит булмаган адресны ача. Ул сезнең хисап язмасындагы башка җайланмадан килгән булырга мөмкин.\n\n%1$s</string>
+    <string name="dejavu_open">Ачу</string>
 </resources>

@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">ಹೊಸದಾಗಿ ಆರಂಭಿಸು</string>
     <string name="dejavu_sync_start_fresh_zen">ಈ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಮುಚ್ಚಿ ಮತ್ತು ಈ ಕಾರ್ಯಕ್ಷೇತ್ರಗಳು, ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್‌ಗಳು, ಫೋಲ್ಡರ್‌ಗಳು ಮತ್ತು ಅಗತ್ಯವಾದವನ್ನು ತೆಗೆದುಹಾಕಿ, ನಂತರ Zen ನಿಂದ ನಿಮ್ಮ ಕಾರ್ಯಕ್ಷೇತ್ರಗಳನ್ನು ಪಡೆಯಿರಿ.</string>
     <string name="dejavu_sync_start_fresh_firefox">ಈ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಮುಚ್ಚಿ ಮತ್ತು ಈ ಕಾರ್ಯಕ್ಷೇತ್ರಗಳು, ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್‌ಗಳು, ಫೋಲ್ಡರ್‌ಗಳು ಮತ್ತು ಅಗತ್ಯವಾದವನ್ನು ತೆಗೆದುಹಾಕಿ, ನಂತರ Firefox ಇರುವ ನಿಮ್ಮ ಕಂಪ್ಯೂಟರ್‌ಗಳು ಮತ್ತು ಫೋನ್‌ಗಳ ಟ್ಯಾಬ್‌ಗಳನ್ನು ತೋರಿಸಿ.</string>
+    <string name="dejavu_private_link_copied">ಖಾಸಗಿ ಟ್ಯಾಬ್‌ನ ಕೊಂಡಿಯನ್ನು ನಕಲಿಸಲಾಗಿದೆ. ನೀವು ಬೇರೆ ಏನನ್ನಾದರೂ ನಕಲಿಸುವವರೆಗೆ ಅದು ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ಇರುತ್ತದೆ.</string>
+    <string name="dejavu_open_non_web_pin_title">ಈ ವಿಳಾಸವನ್ನು ತೆರೆಯಬೇಕೆ?</string>
+    <string name="dejavu_open_non_web_pin_message">ಈ ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್ ಜಾಲಪುಟವಲ್ಲದ ವಿಳಾಸವನ್ನು ತೆರೆಯುತ್ತದೆ. ಇದು ನಿಮ್ಮ ಖಾತೆಯ ಬೇರೆ ಸಾಧನದಿಂದ ಬಂದಿರಬಹುದು.\n\n%1$s</string>
+    <string name="dejavu_open">ತೆರೆ</string>
 </resources>

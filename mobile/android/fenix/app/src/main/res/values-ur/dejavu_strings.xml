@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">نئے سرے سے شروع کریں</string>
     <string name="dejavu_sync_start_fresh_zen">یہ ٹیبز بند کریں اور یہ ورک اسپیسز، پن کردہ ٹیبز، فولڈرز اور اہم ہٹائیں، پھر Zen سے اپنی ورک اسپیسز حاصل کریں۔</string>
     <string name="dejavu_sync_start_fresh_firefox">یہ ٹیبز بند کریں اور یہ ورک اسپیسز، پن کردہ ٹیبز، فولڈرز اور اہم ہٹائیں، پھر Firefox والے اپنے کمپیوٹرز اور فونز کے ٹیبز دکھائیں۔</string>
+    <string name="dejavu_private_link_copied">نجی ٹیب کا ربط کاپی ہو گیا۔ جب تک آپ کچھ اور کاپی نہیں کرتے، یہ کلپ بورڈ میں رہے گا۔</string>
+    <string name="dejavu_open_non_web_pin_title">یہ پتہ کھولیں؟</string>
+    <string name="dejavu_open_non_web_pin_message">یہ پن کیا ہوا ٹیب ایسا پتہ کھولتا ہے جو ویب صفحہ نہیں ہے۔ ہو سکتا ہے یہ آپ کے کھاتے کے کسی اور آلے سے آیا ہو۔\n\n%1$s</string>
+    <string name="dejavu_open">کھولیں</string>
 </resources>

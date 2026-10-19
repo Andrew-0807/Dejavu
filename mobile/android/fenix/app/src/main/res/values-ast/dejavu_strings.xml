@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Entamar dende cero</string>
     <string name="dejavu_sync_start_fresh_zen">Zarra estes llingüetes, desanicia estos espacios de trabayu, llingüetes fixaes, carpetes y esenciales, y dempués trai los tos espacios de trabayu de Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Zarra estes llingüetes, desanicia estos espacios de trabayu, llingüetes fixaes, carpetes y esenciales, y dempués amuesa les llingüetes de los tos ordenadores y teléfonos con Firefox.</string>
+    <string name="dejavu_private_link_copied">Copióse l\'enllaz d\'una llingüeta privada. Queda nel cartafueyu hasta que copies otra cosa.</string>
+    <string name="dejavu_open_non_web_pin_title">¿Abrir esta direición?</string>
+    <string name="dejavu_open_non_web_pin_message">Esta llingüeta fixada abre una direición que nun ye una páxina web. Ye posible que venga d\'otru preséu de la to cuenta.\n\n%1$s</string>
+    <string name="dejavu_open">Abrir</string>
 </resources>

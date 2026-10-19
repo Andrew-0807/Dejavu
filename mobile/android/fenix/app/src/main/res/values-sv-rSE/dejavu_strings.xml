@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Börja om</string>
     <string name="dejavu_sync_start_fresh_zen">Stäng de här flikarna och ta bort de här arbetsytorna, fästa flikarna, mapparna och favoriterna, och hämta sedan dina arbetsytor från Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Stäng de här flikarna och ta bort de här arbetsytorna, fästa flikarna, mapparna och favoriterna, och visa sedan flikarna från dina datorer och telefoner med Firefox.</string>
+    <string name="dejavu_private_link_copied">Länken till den privata fliken har kopierats. Den ligger kvar i urklipp tills du kopierar något annat.</string>
+    <string name="dejavu_open_non_web_pin_title">Öppna den här adressen?</string>
+    <string name="dejavu_open_non_web_pin_message">Den här fästa fliken öppnar en adress som inte är en webbsida. Den kan komma från en annan enhet på ditt konto.\n\n%1$s</string>
+    <string name="dejavu_open">Öppna</string>
 </resources>

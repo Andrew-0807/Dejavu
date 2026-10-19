@@ -327,4 +327,8 @@
     <string name="dejavu_sync_start_fresh">เริ่มต้นใหม่</string>
     <string name="dejavu_sync_start_fresh_zen">ปิดแท็บเหล่านี้และนำพื้นที่ทำงาน แท็บที่ปักหมุด โฟลเดอร์ และเว็บที่ใช้บ่อยเหล่านี้ออก แล้วรับพื้นที่ทำงานของคุณจาก Zen</string>
     <string name="dejavu_sync_start_fresh_firefox">ปิดแท็บเหล่านี้และนำพื้นที่ทำงาน แท็บที่ปักหมุด โฟลเดอร์ และเว็บที่ใช้บ่อยเหล่านี้ออก แล้วแสดงแท็บของคอมพิวเตอร์และโทรศัพท์ที่ใช้ Firefox ของคุณ</string>
+    <string name="dejavu_private_link_copied">คัดลอกลิงก์ของแท็บส่วนตัวแล้ว ลิงก์จะอยู่ในคลิปบอร์ดจนกว่าคุณจะคัดลอกสิ่งอื่น</string>
+    <string name="dejavu_open_non_web_pin_title">เปิดที่อยู่นี้หรือไม่?</string>
+    <string name="dejavu_open_non_web_pin_message">แท็บที่ปักหมุดนี้จะเปิดที่อยู่ที่ไม่ใช่หน้าเว็บ ที่อยู่นี้อาจมาจากอุปกรณ์อื่นในบัญชีของคุณ\n\n%1$s</string>
+    <string name="dejavu_open">เปิด</string>
 </resources>

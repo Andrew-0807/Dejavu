@@ -341,4 +341,8 @@
     <string name="dejavu_sync_start_fresh">Comença de zero</string>
     <string name="dejavu_sync_start_fresh_zen">Tanqueu aquestes pestanyes, suprimiu aquests espais de treball, pestanyes fixades, carpetes i essencials, i després obteniu els vostres espais de treball del Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Tanqueu aquestes pestanyes, suprimiu aquests espais de treball, pestanyes fixades, carpetes i essencials, i després mostreu les pestanyes dels vostres ordinadors i telèfons amb el Firefox.</string>
+    <string name="dejavu_private_link_copied">S\'ha copiat l\'enllaç d\'una pestanya privada. Es queda al porta-retalls fins que copieu una altra cosa.</string>
+    <string name="dejavu_open_non_web_pin_title">Voleu obrir aquesta adreça?</string>
+    <string name="dejavu_open_non_web_pin_message">Aquesta pestanya fixada obre una adreça que no és una pàgina web. Pot haver arribat d\'un altre dispositiu del vostre compte.\n\n%1$s</string>
+    <string name="dejavu_open">Obre</string>
 </resources>

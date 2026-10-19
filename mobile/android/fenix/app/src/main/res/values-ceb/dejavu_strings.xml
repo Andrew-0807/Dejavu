@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Sugdi og bag-o</string>
     <string name="dejavu_sync_start_fresh_zen">Isira kini nga mga tab ug tangtanga kini nga mga workspace, naka-pin nga tab, folder, ug Mahinungdanon, dayon kuhaa ang imong mga workspace gikan sa Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Isira kini nga mga tab ug tangtanga kini nga mga workspace, naka-pin nga tab, folder, ug Mahinungdanon, dayon ipakita ang mga tab sa imong mga kompyuter ug telepono nga adunay Firefox.</string>
+    <string name="dejavu_private_link_copied">Nakopya ang link sa pribadong tab. Magpabilin kini sa clipboard hangtod mokopya ka og lain.</string>
+    <string name="dejavu_open_non_web_pin_title">Ablihan kini nga adres?</string>
+    <string name="dejavu_open_non_web_pin_message">Kining gi-pin nga tab nag-abli og adres nga dili web page. Basin gikan kini sa laing device sa imong account.\n\n%1$s</string>
+    <string name="dejavu_open">Ablihi</string>
 </resources>

@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Opnij begjinne</string>
     <string name="dejavu_sync_start_fresh_zen">Dizze ljepblêden slute en dizze wurkromten, fêstsette ljepblêden, mappen en essinsjes fuortsmite, en dan jo wurkromten út Zen ophelje.</string>
     <string name="dejavu_sync_start_fresh_firefox">Dizze ljepblêden slute en dizze wurkromten, fêstsette ljepblêden, mappen en essinsjes fuortsmite, en dan de ljepblêden fan jo kompjûters en telefoans mei Firefox toane.</string>
+    <string name="dejavu_private_link_copied">Keppeling fan priveeljepblêd kopiearre. Dizze bliuwt op it klamboerd oant jo wat oars kopiearje.</string>
+    <string name="dejavu_open_non_web_pin_title">Dit adres iepenje?</string>
+    <string name="dejavu_open_non_web_pin_message">Dit fêstsette ljepblêd iepenet in adres dat gjin webside is. It kin fan in oar apparaat yn jo account komme.\n\n%1$s</string>
+    <string name="dejavu_open">Iepenje</string>
 </resources>

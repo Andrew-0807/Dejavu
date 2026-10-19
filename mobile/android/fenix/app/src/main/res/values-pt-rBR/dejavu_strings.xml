@@ -341,4 +341,8 @@
     <string name="dejavu_sync_start_fresh">Começar do zero</string>
     <string name="dejavu_sync_start_fresh_zen">Fechar essas abas e remover esses espaços de trabalho, abas fixadas, pastas e essenciais, e depois trazer seus espaços de trabalho do Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Fechar essas abas e remover esses espaços de trabalho, abas fixadas, pastas e essenciais, e depois mostrar as abas dos seus computadores e celulares com Firefox.</string>
+    <string name="dejavu_private_link_copied">Link da aba privativa copiado. Ele fica na área de transferência até você copiar outra coisa.</string>
+    <string name="dejavu_open_non_web_pin_title">Abrir este endereço?</string>
+    <string name="dejavu_open_non_web_pin_message">Esta aba fixada abre um endereço que não é uma página web. Ele pode ter vindo de outro dispositivo da sua conta.\n\n%1$s</string>
+    <string name="dejavu_open">Abrir</string>
 </resources>

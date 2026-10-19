@@ -362,4 +362,8 @@
     <string name="dejavu_sync_start_fresh">Dalleth a-nowydh</string>
     <string name="dejavu_sync_start_fresh_zen">Degea an tabow ma ha removya an tyleryow-ober, tabow fastyes, plegellow ha Pythow Poesek ma, ena kyrghes dha dyleryow-ober a Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Degea an tabow ma ha removya an tyleryow-ober, tabow fastyes, plegellow ha Pythow Poesek ma, ena diskwedhes tabow dha jynnow-amontya ha\'th bellgowsers gans Firefox.</string>
+    <string name="dejavu_private_link_copied">Kevren an tab privedh a veu dasskrifys. Hi a remain y\'n klappkenn bys pan dhasskrifydh neppyth aral.</string>
+    <string name="dejavu_open_non_web_pin_title">Ygeri an trigva ma?</string>
+    <string name="dejavu_open_non_web_pin_message">An tab pinnys ma a eger trigva nag yw folen wias. Martesen hi a dheuth a dhyvis aral war agas akont.\n\n%1$s</string>
+    <string name="dejavu_open">Ygeri</string>
 </resources>

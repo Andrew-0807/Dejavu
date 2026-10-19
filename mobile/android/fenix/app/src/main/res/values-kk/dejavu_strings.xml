@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Жаңадан бастау</string>
     <string name="dejavu_sync_start_fresh_zen">Бұл беттерді жауып, осы жұмыс кеңістіктерін, бекітілген беттерді, қалталар мен негізгілерді өшіріңіз, содан кейін жұмыс кеңістіктеріңізді Zen-нен алыңыз.</string>
     <string name="dejavu_sync_start_fresh_firefox">Бұл беттерді жауып, осы жұмыс кеңістіктерін, бекітілген беттерді, қалталар мен негізгілерді өшіріңіз, содан кейін Firefox бар компьютерлеріңіз бен телефондарыңыздың беттерін көрсетіңіз.</string>
+    <string name="dejavu_private_link_copied">Жеке беттің сілтемесі көшірілді. Басқа нәрсені көшірмейінше ол алмасу буферінде қалады.</string>
+    <string name="dejavu_open_non_web_pin_title">Бұл адресті ашу керек пе?</string>
+    <string name="dejavu_open_non_web_pin_message">Бұл бекітілген бет веб-парақ емес адресті ашады. Ол тіркелгіңіздегі басқа құрылғыдан келген болуы мүмкін.\n\n%1$s</string>
+    <string name="dejavu_open">Ашу</string>
 </resources>

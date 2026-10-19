@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">نویں سرے توں شروع کرو</string>
     <string name="dejavu_sync_start_fresh_zen">ایہہ ٹیباں بند کرو تے ایہہ ورک سپیساں، پن کیتیاں ٹیباں، فولڈر تے ضروری چیزاں ہٹاؤ، فیر Zen توں اپݨیاں ورک سپیساں لے آؤ۔</string>
     <string name="dejavu_sync_start_fresh_firefox">ایہہ ٹیباں بند کرو تے ایہہ ورک سپیساں، پن کیتیاں ٹیباں، فولڈر تے ضروری چیزاں ہٹاؤ، فیر Firefox والے اپݨے کمپیوٹراں تے فوناں دیاں ٹیباں ڈکھاؤ۔</string>
+    <string name="dejavu_private_link_copied">نجی ٹیب دا لنک کاپی ہو گیا۔ جدوں تک تسیں کجھ ہور کاپی نہیں کردے، ایہہ کلپ بورڈ وچ رہندا اے۔</string>
+    <string name="dejavu_open_non_web_pin_title">کیہ ایہہ پتہ کھولنا اے؟</string>
+    <string name="dejavu_open_non_web_pin_message">ایہہ پن کیتی ٹیب اجیہا پتہ کھولدی اے جیہڑا ویب صفحہ نہیں۔ ایہہ تہاڈے کھاتے دے کسے ہور ڈیوائس توں آیا ہو سکدا اے۔\n\n%1$s</string>
+    <string name="dejavu_open">کھولو</string>
 </resources>

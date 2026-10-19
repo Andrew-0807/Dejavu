@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Start på nytt</string>
     <string name="dejavu_sync_start_fresh_zen">Lat att desse fanene og fjern desse arbeidsområda, festa fanene, mappene og favorittane, og hent så arbeidsområda dine frå Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Lat att desse fanene og fjern desse arbeidsområda, festa fanene, mappene og favorittane, og vis så fanene frå datamaskinene og telefonane dine med Firefox.</string>
+    <string name="dejavu_private_link_copied">Lenka til den private fana er kopiert. Ho blir liggjande på utklippstavla til du kopierer noko anna.</string>
+    <string name="dejavu_open_non_web_pin_title">Opne denne adressa?</string>
+    <string name="dejavu_open_non_web_pin_message">Denne festa fana opnar ei adresse som ikkje er ei nettside. Ho kan kome frå ei anna eining på kontoen din.\n\n%1$s</string>
+    <string name="dejavu_open">Opne</string>
 </resources>

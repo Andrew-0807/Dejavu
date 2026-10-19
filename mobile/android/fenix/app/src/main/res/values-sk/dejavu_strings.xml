@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Začať odznova</string>
     <string name="dejavu_sync_start_fresh_zen">Zavrieť tieto karty a odstrániť tieto pracovné priestory, pripnuté karty, priečinky a obľúbené, potom získať vaše pracovné priestory zo Zenu.</string>
     <string name="dejavu_sync_start_fresh_firefox">Zavrieť tieto karty a odstrániť tieto pracovné priestory, pripnuté karty, priečinky a obľúbené, potom zobraziť karty vašich počítačov a telefónov s Firefoxom.</string>
+    <string name="dejavu_private_link_copied">Odkaz súkromnej karty bol skopírovaný. Zostane v schránke, kým neskopírujete niečo iné.</string>
+    <string name="dejavu_open_non_web_pin_title">Otvoriť túto adresu?</string>
+    <string name="dejavu_open_non_web_pin_message">Táto pripnutá karta otvára adresu, ktorá nie je webovou stránkou. Mohla prísť z iného zariadenia vo vašom účte.\n\n%1$s</string>
+    <string name="dejavu_open">Otvoriť</string>
 </resources>

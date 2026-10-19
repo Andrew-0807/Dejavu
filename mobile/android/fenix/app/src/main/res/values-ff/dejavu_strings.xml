@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Repartir de zéro</string>
     <string name="dejavu_sync_start_fresh_zen">Ferme ces tabbe et supprime ces espaces de travail, tabbe épinglées, dossiers et essentiels, puis récupère tes espaces de travail de Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Ferme ces tabbe et supprime ces espaces de travail, tabbe épinglées, dossiers et essentiels, puis affiche les tabbe de tes ordinateurs et téléphones avec Firefox.</string>
+    <string name="dejavu_private_link_copied">Jokkol tabbere suturo ndee natte. Ina heddoo e ɗakkorde haa nde natto-ɗaa goɗɗum goɗɗo.</string>
+    <string name="dejavu_open_non_web_pin_title">Uddit ndee ñiiɓirde?</string>
+    <string name="dejavu_open_non_web_pin_message">Ndee tabbere ndeenaande na uddita ñiiɓirde nde wonaa hello geese. Ina waawi iwde e kaɓirgol goɗngol e konte maa.\n\n%1$s</string>
+    <string name="dejavu_open">Uddit</string>
 </resources>

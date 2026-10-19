@@ -348,4 +348,8 @@
     <string name="dejavu_sync_start_fresh">Почати з нуля</string>
     <string name="dejavu_sync_start_fresh_zen">Закрити ці вкладки та прибрати ці робочі простори, закріплені вкладки, теки й обране, а потім отримати ваші робочі простори із Zen.</string>
     <string name="dejavu_sync_start_fresh_firefox">Закрити ці вкладки та прибрати ці робочі простори, закріплені вкладки, теки й обране, а потім показати вкладки ваших комп’ютерів і телефонів із Firefox.</string>
+    <string name="dejavu_private_link_copied">Посилання приватної вкладки скопійовано. Воно залишиться в буфері обміну, доки ви не скопіюєте щось інше.</string>
+    <string name="dejavu_open_non_web_pin_title">Відкрити цю адресу?</string>
+    <string name="dejavu_open_non_web_pin_message">Ця закріплена вкладка відкриває адресу, яка не є вебсторінкою. Вона могла надійти з іншого пристрою вашого облікового запису.\n\n%1$s</string>
+    <string name="dejavu_open">Відкрити</string>
 </resources>

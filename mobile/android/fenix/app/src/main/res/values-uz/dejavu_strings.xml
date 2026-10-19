@@ -334,4 +334,8 @@
     <string name="dejavu_sync_start_fresh">Yangidan boshlash</string>
     <string name="dejavu_sync_start_fresh_zen">Bu varaqlarni yopish va bu ish maydonlari, mahkamlangan varaqlar, jildlar va muhimlarni olib tashlash, keyin ish maydonlaringizni Zen-dan olish.</string>
     <string name="dejavu_sync_start_fresh_firefox">Bu varaqlarni yopish va bu ish maydonlari, mahkamlangan varaqlar, jildlar va muhimlarni olib tashlash, keyin Firefox o\'rnatilgan kompyuter va telefonlaringiz varaqlarini ko\'rsatish.</string>
+    <string name="dejavu_private_link_copied">Maxfiy varaq havolasi nusxalandi. Boshqa narsa nusxalamaguningizcha u almashish buferida qoladi.</string>
+    <string name="dejavu_open_non_web_pin_title">Bu manzil ochilsinmi?</string>
+    <string name="dejavu_open_non_web_pin_message">Bu qadalgan varaq veb-sahifa boʻlmagan manzilni ochadi. U hisobingizdagi boshqa qurilmadan kelgan boʻlishi mumkin.\n\n%1$s</string>
+    <string name="dejavu_open">Ochish</string>
 </resources>
