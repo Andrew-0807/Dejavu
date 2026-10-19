@@ -240,6 +240,8 @@
     <string name="dejavu_menu_bookmarks">Bookmarks</string>
     <string name="dejavu_menu_downloads">Downloads</string>
     <string name="dejavu_menu_history">History</string>
+    <string name="dejavu_menu_restore_closed_tab">Restore closed tab</string>
+    <string name="dejavu_no_closed_tabs">No recently closed tabs</string>
     <string name="dejavu_menu_translate">Translate</string>
     <string name="dejavu_menu_summarize">Summarize</string>
     <string name="dejavu_menu_report_broken_site">Report site issue</string>
