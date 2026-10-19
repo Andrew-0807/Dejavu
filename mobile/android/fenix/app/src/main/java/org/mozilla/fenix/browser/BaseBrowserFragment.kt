@@ -29,14 +29,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.getSystemService
 import androidx.core.text.HtmlCompat
 import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -187,6 +190,7 @@ import org.mozilla.fenix.browser.store.BrowserScreenMiddleware
 import org.mozilla.fenix.browser.store.BrowserScreenState
 import org.mozilla.fenix.browser.store.BrowserScreenStore
 import org.mozilla.fenix.browser.tabstrip.TabSidebar
+import org.mozilla.fenix.browser.tabstrip.TabSidebarEdgeSwipe
 import org.mozilla.fenix.browser.tabstrip.TabStrip
 import org.mozilla.fenix.components.AppStore
 import org.mozilla.fenix.components.FenixAutocompletePrompt
@@ -1622,6 +1626,16 @@ abstract class BaseBrowserFragment :
     /** Shows the vertical tabs sidebar next to the page on large screens when the user turned it on. */
     private fun initializeTabSidebar(appStore: AppStore, settings: org.mozilla.fenix.utils.Settings) {
         if (customTabSessionId != null || !settings.isVerticalTabsEnabled) return
+        val overlayShown = mutableStateOf(false).takeIf { settings.isVerticalTabsAutoHide }
+        if (overlayShown != null) {
+            // The page keeps the full width and the sidebar slides over it from the left edge.
+            binding.tabSidebar.translationZ = resources.getDimension(R.dimen.browser_fragment_toolbar_elevation)
+            binding.browserLayout.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                startToEnd = ConstraintLayout.LayoutParams.UNSET
+                startToStart = ConstraintLayout.LayoutParams.PARENT_ID
+            }
+            binding.gestureLayout.addGestureListener(TabSidebarEdgeSwipe(binding.gestureLayout, overlayShown))
+        }
         binding.tabSidebar.setContent {
             FirefoxTheme {
                 TabSidebar(
@@ -1634,6 +1648,7 @@ abstract class BaseBrowserFragment :
                         requireComponents.appStore.dispatch(AppAction.TabStripAction.UpdateLastTabClosed(isPrivate))
                         findNavController().navigate(BrowserFragmentDirections.actionGlobalHome())
                     },
+                    overlayShown = overlayShown,
                 )
             }
         }

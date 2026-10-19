@@ -85,6 +85,10 @@
         <androidx.preference.SwitchPreferenceCompat
             android:key="@string/pref_key_vertical_tabs"
             android:title="@string/preference_vertical_tabs" />
+        <androidx.preference.SwitchPreferenceCompat
+            android:dependency="@string/pref_key_vertical_tabs"
+            android:key="@string/pref_key_vertical_tabs_auto_hide"
+            android:title="@string/preference_vertical_tabs_auto_hide" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
