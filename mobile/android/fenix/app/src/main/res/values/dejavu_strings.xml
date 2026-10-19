@@ -6,6 +6,8 @@
     <string name="pref_key_dejavu_tab_actions" translatable="false">pref_key_dejavu_tab_actions</string>
     <string name="pref_key_dejavu_containers" translatable="false">pref_key_dejavu_containers</string>
     <string name="pref_key_dejavu_external_links" translatable="false">pref_key_dejavu_external_links</string>
+    <string name="pref_key_dejavu_engine_keywords" translatable="false">pref_key_dejavu_engine_keywords</string>
+    <string name="pref_key_dejavu_bookmark_keywords" translatable="false">pref_key_dejavu_bookmark_keywords</string>
     <string name="pref_key_dejavu_tab_sleep" translatable="false">pref_key_dejavu_tab_sleep</string>
     <string name="pref_key_toolbar_swipe_gesture" translatable="false">pref_key_toolbar_swipe_gesture</string>
     <string name="pref_key_toolbar_double_tap_gesture" translatable="false">pref_key_toolbar_double_tap_gesture</string>
@@ -524,4 +526,6 @@
     <string name="dejavu_preference_mouse_support">Mouse support</string>
     <!-- Setting summary of the mouse support switch. -->
     <string name="dejavu_preference_mouse_support_summary">Middle-click opens a link in a background tab, and hovering a link shows its address. Applies to new tabs.</string>
+    <!-- Label of the field and menu item where a short word is set that searches a search engine or opens a bookmark when typed before a search. -->
+    <string name="dejavu_search_keyword">Keyword</string>
 </resources>

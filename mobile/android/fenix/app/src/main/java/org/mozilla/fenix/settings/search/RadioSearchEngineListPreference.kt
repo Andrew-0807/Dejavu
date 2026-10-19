@@ -11,8 +11,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RadioGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isVisible
 import androidx.navigation.findNavController
@@ -32,6 +34,8 @@ import mozilla.components.support.ktx.android.view.toScope
 import org.mozilla.fenix.GleanMetrics.Events
 import org.mozilla.fenix.R
 import org.mozilla.fenix.databinding.SearchEngineRadioButtonBinding
+import org.mozilla.fenix.dejavu.keywordFor
+import org.mozilla.fenix.dejavu.withKeyword
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.telemetryName
 
@@ -162,7 +166,7 @@ constructor(
         binding.radioButton.isChecked = isSelected
         binding.radioButton.setOnCheckedChangeListener(this)
         binding.engineText.text = engine.name
-        binding.overflowMenu.isVisible = allowDeletion || isCustomSearchEngine
+        binding.overflowMenu.isVisible = true
         binding.overflowMenu.setOnClickListener {
             SearchEngineMenu(
                     context = context,
@@ -171,6 +175,7 @@ constructor(
                     onItemTapped = {
                         when (it) {
                             is SearchEngineMenu.Item.Edit -> editCustomSearchEngine(wrapper, engine)
+                            is SearchEngineMenu.Item.Keyword -> editKeyword(engine)
                             is SearchEngineMenu.Item.Delete ->
                                 deleteSearchEngine(
                                     context,
@@ -238,6 +243,19 @@ constructor(
                 isPrivateDefault = isForPrivateBrowsing,
             )
         )
+    }
+
+    private fun editKeyword(engine: SearchEngine) {
+        val settings = context.components.settings
+        val input = EditText(context).apply { setText(settings.engineKeywords.keywordFor(engine.id)) }
+        AlertDialog.Builder(context)
+            .setTitle(R.string.dejavu_search_keyword)
+            .setView(input)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                settings.engineKeywords = settings.engineKeywords.withKeyword(input.text.toString(), engine.id)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     private fun editCustomSearchEngine(view: View, engine: SearchEngine) {
