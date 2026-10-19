@@ -47,6 +47,7 @@ import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
 import org.mozilla.fenix.dejavu.ui.DejavuMenuItem
 import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
 import org.mozilla.fenix.dejavu.ui.glass
+import org.mozilla.fenix.ext.components
 
 /**
  * Dejavu's address bar while a page is shown: only its state, like Safari's. The page title sits in the middle of a
@@ -65,6 +66,10 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
     val haptic = LocalHapticFeedback.current
     var menuOpen by remember { mutableStateOf(false) }
     val theme = shownWorkspaceTheme()
+    val settings = LocalContext.current.components.settings
+    fun run(key: String) {
+        if (key == "address_menu") menuOpen = true else store.dispatch(DejavuToolbar.GestureTriggered(key))
+    }
 
     Box(
         modifier = Modifier
@@ -80,8 +85,9 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
                 onClick = { origin.onClick?.let { store.dispatch(it) } },
                 onLongClick = {
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                    menuOpen = true
+                    run(settings.toolbarLongPressGesture)
                 },
+                onDoubleClick = settings.toolbarDoubleTapGesture.takeIf { it != "none" }?.let { key -> { run(key) } },
             ),
     ) {
         Row(

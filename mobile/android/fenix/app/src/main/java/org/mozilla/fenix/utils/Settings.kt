@@ -2328,6 +2328,24 @@ class Settings(
             default = true,
         )
 
+    var toolbarSwipeGesture: String by
+        stringPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_toolbar_swipe_gesture),
+            default = { "more_menu" },
+        )
+
+    var toolbarDoubleTapGesture: String by
+        stringPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_toolbar_double_tap_gesture),
+            default = { "scroll_top" },
+        )
+
+    var toolbarLongPressGesture: String by
+        stringPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_toolbar_long_press_gesture),
+            default = { "address_menu" },
+        )
+
     /** Address Sync feature. */
     @Suppress("DEPRECATION")
     var isAddressSyncEnabled by
