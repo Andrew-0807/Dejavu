@@ -8,6 +8,7 @@ import android.app.KeyguardManager
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -17,15 +18,21 @@ import android.os.storage.StorageManager
 import android.provider.Settings
 import android.util.Log
 import android.view.Gravity
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.view.WindowManager
 import android.view.accessibility.AccessibilityManager
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.PopupWindow
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.CallSuper
 import androidx.annotation.VisibleForTesting
@@ -2176,6 +2183,13 @@ abstract class BaseBrowserFragment :
     private val exitImmersiveButtonPlacer = View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
         placeExitImmersiveButton()
     }
+    private val fadeExitImmersiveButton = Runnable {
+        exitImmersiveButton?.animate()?.alpha(BUTTON_FADED_ALPHA)?.setDuration(BUTTON_FADE_MS)
+    }
+    private var immersiveMenu: PopupWindow? = null
+
+    /** The requestedOrientation from before the rotation was locked, or null when it is not locked. */
+    private var orientationBeforeLock: Int? = null
 
     /** The bottom-most visible browser bar, or the top toolbar when nothing is shown at the bottom. */
     internal fun immersiveSwipeTarget(): View? =
@@ -2220,6 +2234,12 @@ abstract class BaseBrowserFragment :
         var downX = 0f
         var downY = 0f
         var isDragging = false
+        var isLongPressed = false
+        val longPress = Runnable {
+            isLongPressed = true
+            exitImmersiveButton?.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            showImmersiveMenu()
+        }
         val button =
             ImageView(context).apply {
                 setImageResource(R.drawable.dejavu_ic_fullscreen_exit)
@@ -2240,10 +2260,17 @@ abstract class BaseBrowserFragment :
                             downX = event.rawX
                             downY = event.rawY
                             isDragging = false
+                            isLongPressed = false
+                            // Any touch brings a faded button back at once.
+                            v.removeCallbacks(fadeExitImmersiveButton)
+                            v.animate().cancel()
+                            v.alpha = 1f
+                            v.postDelayed(longPress, ViewConfiguration.getLongPressTimeout().toLong())
                         }
                         MotionEvent.ACTION_MOVE -> {
-                            if (hypot(event.rawX - downX, event.rawY - downY) > touchSlop) {
+                            if (!isLongPressed && hypot(event.rawX - downX, event.rawY - downY) > touchSlop) {
                                 isDragging = true
+                                v.removeCallbacks(longPress)
                             }
                             if (isDragging) {
                                 v.translationX = (v.translationX + event.rawX - downX).coerceIn(0f, maxX)
@@ -2253,15 +2280,21 @@ abstract class BaseBrowserFragment :
                             }
                         }
                         MotionEvent.ACTION_UP -> {
+                            v.removeCallbacks(longPress)
+                            v.postDelayed(fadeExitImmersiveButton, BUTTON_FADE_DELAY_MS)
                             if (isDragging) {
                                 // Saved as fractions of the screen so the position survives rotation.
                                 requireComponents.settings.immersiveButtonX =
                                     if (maxX > 0f) v.translationX / maxX else 0f
                                 requireComponents.settings.immersiveButtonY =
                                     if (maxY > 0f) v.translationY / maxY else 0f
-                            } else {
+                            } else if (!isLongPressed) {
                                 v.performClick()
                             }
+                        }
+                        MotionEvent.ACTION_CANCEL -> {
+                            v.removeCallbacks(longPress)
+                            v.postDelayed(fadeExitImmersiveButton, BUTTON_FADE_DELAY_MS)
                         }
                     }
                     true
@@ -2271,6 +2304,103 @@ abstract class BaseBrowserFragment :
         exitImmersiveButton = button
         placeExitImmersiveButton()
         root.addOnLayoutChangeListener(exitImmersiveButtonPlacer)
+        button.postDelayed(fadeExitImmersiveButton, BUTTON_FADE_DELAY_MS)
+    }
+
+    /**
+     * The quick menu opened by a long press on the floating button. It is not focusable, so the activity window keeps
+     * focus and the system bars stay hidden.
+     */
+    private fun showImmersiveMenu() {
+        val button = exitImmersiveButton ?: return
+        val activity = activity ?: return
+        val context = button.context
+        val padding = (MENU_PADDING_DP * context.resources.displayMetrics.density).toInt()
+        immersiveMenu?.dismiss()
+        val content = LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            minimumWidth = (MENU_WIDTH_DP * context.resources.displayMetrics.density).toInt()
+        }
+        val menu = PopupWindow(content, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, false)
+        fun addItem(text: String, onClick: (() -> Unit)?) {
+            content.addView(
+                TextView(context).apply {
+                    this.text = text
+                    setTextColor(Color.WHITE)
+                    setPadding(padding, padding, padding, padding)
+                    if (onClick != null) {
+                        setOnClickListener {
+                            menu.dismiss()
+                            onClick()
+                        }
+                    }
+                },
+                LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT),
+            )
+        }
+        addItem(context.getString(R.string.browser_menu_back)) {
+            getCurrentTab()?.takeIf { it.content.canGoBack }?.let {
+                requireComponents.useCases.sessionUseCases.goBack(it.id)
+            }
+        }
+        addItem(context.getString(R.string.browser_menu_refresh)) {
+            getCurrentTab()?.let { requireComponents.useCases.sessionUseCases.reload(it.id) }
+        }
+        addItem(
+            context.getString(
+                if (orientationBeforeLock == null) R.string.dejavu_lock_rotation else R.string.dejavu_unlock_rotation
+            )
+        ) {
+            val before = orientationBeforeLock
+            if (before == null) {
+                orientationBeforeLock = activity.requestedOrientation
+                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
+            } else {
+                orientationBeforeLock = null
+                activity.requestedOrientation = before
+            }
+        }
+        addItem(context.getString(R.string.dejavu_brightness), null)
+        content.addView(
+            SeekBar(context).apply {
+                max = MAX_BRIGHTNESS_PROGRESS
+                val brightness = activity.window.attributes.screenBrightness
+                progress =
+                    if (brightness >= 0f) {
+                        (brightness * MAX_BRIGHTNESS_PROGRESS).toInt()
+                    } else {
+                        MAX_BRIGHTNESS_PROGRESS / 2
+                    }
+                setPadding(padding, 0, padding, padding)
+                setOnSeekBarChangeListener(
+                    object : SeekBar.OnSeekBarChangeListener {
+                        override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                            if (!fromUser) return
+                            // Only this window, so no system permission is needed. Never fully dark.
+                            activity.window.attributes = activity.window.attributes.apply {
+                                screenBrightness = progress.coerceAtLeast(1).toFloat() / MAX_BRIGHTNESS_PROGRESS
+                            }
+                        }
+
+                        override fun onStartTrackingTouch(seekBar: SeekBar) = Unit
+
+                        override fun onStopTrackingTouch(seekBar: SeekBar) = Unit
+                    }
+                )
+            },
+            LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT),
+        )
+        addItem(context.getString(R.string.dejavu_exit_full_screen)) { exitFullImmersive() }
+        menu.setBackgroundDrawable(
+            GradientDrawable().apply {
+                cornerRadius = padding.toFloat()
+                setColor(Color.argb(MENU_BACKGROUND_ALPHA, 0, 0, 0))
+            }
+        )
+        menu.isOutsideTouchable = true
+        menu.setOnDismissListener { if (immersiveMenu === menu) immersiveMenu = null }
+        immersiveMenu = menu
+        menu.showAsDropDown(button)
     }
 
     private fun placeExitImmersiveButton() {
@@ -2286,6 +2416,16 @@ abstract class BaseBrowserFragment :
         isImmersive = false
         val button = exitImmersiveButton ?: return
         exitImmersiveButton = null
+        button.removeCallbacks(fadeExitImmersiveButton)
+        button.animate().cancel()
+        immersiveMenu?.dismiss()
+        activity?.let { activity ->
+            orientationBeforeLock?.let { activity.requestedOrientation = it }
+            activity.window.attributes = activity.window.attributes.apply {
+                screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
+            }
+        }
+        orientationBeforeLock = null
         (button.parent as? ViewGroup)?.let {
             it.removeOnLayoutChangeListener(exitImmersiveButtonPlacer)
             it.removeView(button)
@@ -2656,7 +2796,14 @@ abstract class BaseBrowserFragment :
 
         // Dejavu: the floating button that leaves full immersive mode.
         private const val BUTTON_SIZE_DP = 44
-        private const val BUTTON_BACKGROUND_ALPHA = 128
+        private const val BUTTON_BACKGROUND_ALPHA = 191
+        private const val BUTTON_FADED_ALPHA = 0.2f
+        private const val BUTTON_FADE_MS = 300L
+        private const val BUTTON_FADE_DELAY_MS = 3000L
+        private const val MENU_BACKGROUND_ALPHA = 230
+        private const val MENU_PADDING_DP = 12
+        private const val MENU_WIDTH_DP = 200
+        private const val MAX_BRIGHTNESS_PROGRESS = 100
     }
 
     override fun onAccessibilityStateChanged(enabled: Boolean) {

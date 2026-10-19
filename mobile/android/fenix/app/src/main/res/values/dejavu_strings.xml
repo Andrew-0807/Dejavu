@@ -273,6 +273,10 @@
     <string name="dejavu_settings_swipe_down_immersive_summary">Hides every bar. Tap the floating button, which you can drag anywhere, to bring them back.</string>
     <!-- Content description of the floating button that leaves full screen -->
     <string name="dejavu_exit_full_screen">Exit full screen</string>
+    <!-- Quick menu opened by a long press on the floating full screen button -->
+    <string name="dejavu_lock_rotation">Lock rotation</string>
+    <string name="dejavu_unlock_rotation">Unlock rotation</string>
+    <string name="dejavu_brightness">Brightness</string>
 
     <!-- Settings: "More" menu editor -->
     <string name="pref_key_dejavu_more_menu" translatable="false">pref_key_dejavu_more_menu</string>
