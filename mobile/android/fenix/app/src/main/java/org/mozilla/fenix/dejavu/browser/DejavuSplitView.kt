@@ -4,10 +4,12 @@
 
 package org.mozilla.fenix.dejavu.browser
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Looper
 import android.os.StrictMode
 import android.view.Gravity
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -72,6 +74,7 @@ import mozilla.components.feature.contextmenu.ContextMenuFeature
 import mozilla.components.lib.state.Middleware
 import mozilla.components.lib.state.Store
 import mozilla.components.lib.state.ext.flowScoped
+import mozilla.components.support.ktx.android.content.getColorFromAttr
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.Components
@@ -79,15 +82,17 @@ import org.mozilla.fenix.compose.Favicon
 import org.mozilla.fenix.dejavu.home.titleOf
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
+import org.mozilla.fenix.ext.isLargeWindow
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.geckoview.GeckoSession
 import org.mozilla.geckoview.GeckoView
 
 /**
- * Shows the other tab of a split view in a pane below the page of the selected tab, like Zen's split views. The
- * selected tab keeps the toolbar and every browser feature; the pane's bar shows its tab on top instead, closes the
- * split, and resizes the pane when dragged. Custom tabs are left alone.
+ * Shows the other tab of a split view in a pane below the page of the selected tab, like Zen's split views, or next
+ * to it on large windows. The selected tab keeps the toolbar and every browser feature; the pane's bar swaps its tab
+ * with the selected one and closes the split. Dragging the bar, or the divider on large windows, resizes the pane.
+ * Custom tabs are left alone.
  */
 fun Fragment.installDejavuSplitView(
     browserLayout: CoordinatorLayout,
@@ -143,11 +148,12 @@ internal class SplitPaneFeature(
     private var contextMenu: ContextMenuFeature? = null
     private var baseBottomMargin = 0
     private var appliedBottomMargin: Int? = null
+    private var appliedEndMargin = false
     private var previousSelectedTabId: String? = null
     private var mainSessionAtSwitch: GeckoSession? = null
     private val retryBind = Runnable { target?.let(::bind) }
-    private val layoutListener = View.OnLayoutChangeListener { _, _, top, _, bottom, _, oldTop, _, oldBottom ->
-        if (bottom - top != oldBottom - oldTop) browserLayout.post { applyLayout() }
+    private val layoutListener = View.OnLayoutChangeListener { view, _, _, _, _, oldLeft, oldTop, oldRight, oldBottom ->
+        if (view.height != oldBottom - oldTop || view.width != oldRight - oldLeft) browserLayout.post { applyLayout() }
     }
 
     fun start() {
@@ -245,6 +251,7 @@ internal class SplitPaneFeature(
             geckoView.setViewBackend(GeckoView.BACKEND_TEXTURE_VIEW)
             ViewCompat.setNestedScrollingEnabled(geckoView, false)
         }
+        val side = context.isLargeWindow()
         val bar = ComposeView(context).apply {
             setContent {
                 FirefoxTheme {
@@ -252,6 +259,7 @@ internal class SplitPaneFeature(
                         SplitPaneBar(
                             title = current.title,
                             url = current.url,
+                            side = side,
                             onShowOnTop = { components.useCases.tabsUseCases.selectTab(current.tabId) },
                             onClose = { repository.unsplit(setOf(current.tabId)) },
                             onDragTo = ::resizeTo,
@@ -260,10 +268,13 @@ internal class SplitPaneFeature(
                 }
             }
         }
-        val newPane = SplitPane(context, engineView, bar)
+        val divider = if (side) dividerView(context) else null
+        val newPane = SplitPane(context, engineView, bar, divider)
         browserLayout.addView(
             newPane,
-            CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0).apply { gravity = Gravity.BOTTOM },
+            CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0).apply {
+                gravity = if (side) Gravity.BOTTOM or Gravity.END else Gravity.BOTTOM
+            },
         )
         pane = newPane
         baseBottomMargin = swipeRefresh.marginParams.bottomMargin
@@ -284,6 +295,23 @@ internal class SplitPaneFeature(
             swipeRefresh.layoutParams = params
         }
         appliedBottomMargin = null
+        if (appliedEndMargin) {
+            params.marginEnd = 0
+            swipeRefresh.layoutParams = params
+            appliedEndMargin = false
+        }
+    }
+
+    /** The bar between the two pages on large windows, which resizes them when dragged. */
+    @SuppressLint("ClickableViewAccessibility")
+    private fun dividerView(context: Context) = View(context).apply {
+        setBackgroundColor(context.getColorFromAttr(R.attr.layer3))
+        setOnTouchListener { _, event ->
+            if (event.actionMasked == MotionEvent.ACTION_DOWN || event.actionMasked == MotionEvent.ACTION_MOVE) {
+                resizeSideTo(event.rawX)
+            }
+            true
+        }
     }
 
     /** Height left for the two pages between the toolbars, and the height of the toolbars at the bottom. */
@@ -297,8 +325,21 @@ internal class SplitPaneFeature(
 
     private fun applyLayout() {
         val pane = pane ?: return
+        if (pane.side != browserLayout.context.isLargeWindow()) {
+            // The window crossed the large size: build the pane again for the other layout.
+            browserLayout.post {
+                if (this.pane !== pane) return@post
+                hide()
+                target?.let(::update)
+            }
+            return
+        }
         val (available, bottomBars) = pageArea()
         if (available <= 0) return
+        if (pane.side) {
+            applySideLayout(pane, available, bottomBars)
+            return
+        }
         val paneHeight = (available * (1 - mainFraction)).roundToInt()
 
         val paneParams = pane.layoutParams as CoordinatorLayout.LayoutParams
@@ -319,6 +360,39 @@ internal class SplitPaneFeature(
         appliedBottomMargin = margin
     }
 
+    /** Places the pane at the end of the page area, [available] high, and narrows the page of the selected tab. */
+    private fun applySideLayout(pane: SplitPane, available: Int, bottomBars: Int) {
+        val paneWidth = (browserLayout.width * (1 - sideMainFraction)).roundToInt()
+        val paneParams = pane.layoutParams as CoordinatorLayout.LayoutParams
+        if (paneParams.width != paneWidth || paneParams.height != available || paneParams.bottomMargin != bottomBars) {
+            paneParams.width = paneWidth
+            paneParams.height = available
+            paneParams.bottomMargin = bottomBars
+            pane.layoutParams = paneParams
+        }
+        val params = swipeRefresh.marginParams
+        if (params.marginEnd != paneWidth) {
+            params.marginEnd = paneWidth
+            swipeRefresh.layoutParams = params
+        }
+        appliedEndMargin = true
+    }
+
+    /** Resizes the side pane so that its divider is at [x], in screen coordinates. */
+    private fun resizeSideTo(x: Float) {
+        val width = browserLayout.width
+        if (width <= 0) return
+        val location = IntArray(2)
+        browserLayout.getLocationOnScreen(location)
+        val mainWidth = if (browserLayout.layoutDirection == View.LAYOUT_DIRECTION_RTL) {
+            location[0] + width - x
+        } else {
+            x - location[0]
+        }
+        sideMainFraction = (mainWidth / width).coerceIn(MIN_SIDE_FRACTION, MAX_SIDE_FRACTION)
+        applyLayout()
+    }
+
     /** Resizes the pane so that its bar starts at [barTop], in window coordinates. */
     private fun resizeTo(barTop: Float) {
         val (available, bottomBars) = pageArea()
@@ -337,9 +411,14 @@ internal class SplitPaneFeature(
         private const val BIND_RETRY_MS = 50L
         private const val MIN_MAIN_FRACTION = 0.25f
         private const val MAX_MAIN_FRACTION = 0.8f
+        private const val MIN_SIDE_FRACTION = 0.3f
+        private const val MAX_SIDE_FRACTION = 0.7f
 
         /** Share of the page area the tab on top gets, kept while the app runs. */
         private var mainFraction = 0.5f
+
+        /** Share of the width the selected tab gets when the pages are side by side, kept while the app runs. */
+        private var sideMainFraction = 0.5f
     }
 }
 
@@ -380,12 +459,34 @@ internal class SplitViewMiddleware : Middleware<BrowserState, BrowserAction> {
     }
 }
 
-/** The bar above the page and the page of the tab in the split pane. */
-private class SplitPane(context: Context, val engineView: EngineView, bar: View) : LinearLayout(context) {
+/**
+ * The bar above the page and the page of the tab in the split pane, after the [divider] that resizes it when the
+ * pages are side by side.
+ */
+private class SplitPane(
+    context: Context,
+    val engineView: EngineView,
+    bar: View,
+    divider: View?,
+) : LinearLayout(context) {
+    val side = divider != null
+
     init {
-        orientation = VERTICAL
-        addView(bar, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
-        addView(engineView.asView(), LayoutParams(LayoutParams.MATCH_PARENT, 0, 1f))
+        orientation = HORIZONTAL
+        divider?.let {
+            val width = (DIVIDER_WIDTH_DP * resources.displayMetrics.density).roundToInt()
+            addView(it, LayoutParams(width, LayoutParams.MATCH_PARENT))
+        }
+        val column = LinearLayout(context).apply {
+            orientation = VERTICAL
+            addView(bar, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
+            addView(engineView.asView(), LayoutParams(LayoutParams.MATCH_PARENT, 0, 1f))
+        }
+        addView(column, LayoutParams(0, LayoutParams.MATCH_PARENT, 1f))
+    }
+
+    private companion object {
+        const val DIVIDER_WIDTH_DP = 8
     }
 }
 
@@ -397,7 +498,8 @@ private fun View.findGeckoView(): GeckoView? = when (this) {
 
 /**
  * The bar of the split pane: tapping it shows its tab on top, dragging it resizes the pane. The bar moves with the
- * finger, so the drag is followed in window coordinates.
+ * finger, so the drag is followed in window coordinates. When the pages are [side] by side, the divider resizes the
+ * pane instead and the button swaps the two tabs.
  *
  * @param onDragTo Called with where the top of the bar should be, in window coordinates.
  */
@@ -405,6 +507,7 @@ private fun View.findGeckoView(): GeckoView? = when (this) {
 private fun SplitPaneBar(
     title: String,
     url: String,
+    side: Boolean,
     onShowOnTop: () -> Unit,
     onClose: () -> Unit,
     onDragTo: (Float) -> Unit,
@@ -416,7 +519,8 @@ private fun SplitPaneBar(
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.surfaceContainerHigh)
             .onGloballyPositioned { coordinates = it }
-            .pointerInput(Unit) {
+            .pointerInput(side) {
+                if (side) return@pointerInput
                 detectVerticalDragGestures(
                     onDragStart = { grabOffset = it.y },
                     onVerticalDrag = { change, _ ->
@@ -427,14 +531,16 @@ private fun SplitPaneBar(
             }
             .clickable(onClickLabel = stringResource(R.string.dejavu_split_show_on_top), onClick = onShowOnTop),
     ) {
-        Box(
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(top = 4.dp)
-                .size(width = 32.dp, height = 4.dp)
-                .clip(RoundedCornerShape(2.dp))
-                .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)),
-        )
+        if (!side) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .padding(top = 4.dp)
+                    .size(width = 32.dp, height = 4.dp)
+                    .clip(RoundedCornerShape(2.dp))
+                    .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)),
+            )
+        }
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth().height(44.dp).padding(start = 14.dp),
@@ -451,8 +557,16 @@ private fun SplitPaneBar(
             )
             IconButton(onClick = onShowOnTop) {
                 Icon(
-                    painter = painterResource(iconsR.drawable.mozac_ic_chevron_up_24),
-                    contentDescription = stringResource(R.string.dejavu_split_show_on_top),
+                    painter = painterResource(
+                        if (side) {
+                            iconsR.drawable.mozac_ic_swap_horizontal_24
+                        } else {
+                            iconsR.drawable.mozac_ic_chevron_up_24
+                        },
+                    ),
+                    contentDescription = stringResource(
+                        if (side) R.string.dejavu_split_swap else R.string.dejavu_split_show_on_top,
+                    ),
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.size(20.dp),
                 )
