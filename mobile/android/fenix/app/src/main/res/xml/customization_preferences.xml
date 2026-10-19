@@ -193,6 +193,10 @@
             android:entryValues="@array/dejavu_gesture_values"
             app:useSimpleSummaryProvider="true" />
         <androidx.preference.SwitchPreferenceCompat
+            android:key="@string/pref_key_mouse_support"
+            android:title="@string/dejavu_preference_mouse_support"
+            android:summary="@string/dejavu_preference_mouse_support_summary" />
+        <androidx.preference.SwitchPreferenceCompat
             android:key="@string/pref_key_shake_gesture_enabled"
             android:title="@string/preferences_shake_to_summarize"
             app:isPreferenceVisible="false" />
