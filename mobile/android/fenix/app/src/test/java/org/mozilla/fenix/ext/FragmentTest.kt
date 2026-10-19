@@ -255,6 +255,19 @@ class FragmentTest {
     }
 
     @Test
+    fun `GIVEN a toolbar size below the minimum WHEN getTopToolbarHeight THEN returns the height at the minimum size`() {
+        every { mockContext.resources } returns testContext.resources
+        every { settings.toolbarPosition } returns ToolbarPosition.TOP
+        every { settings.shouldShowTabStripAtTop } returns true
+        every { settings.toolbarSizePercent } returns 50
+
+        val topToolbarHeight = fragment.getTopToolbarHeight()
+
+        // 120 * 70%, as 50% is clamped to the smallest size offered.
+        assertEquals(84, topToolbarHeight)
+    }
+
+    @Test
     @Config(qualifiers = "h481dp") // navbar is only shown on screens taller than 480dp
     fun `GIVEN navigation bar and microsurvey is shown at bottom WHEN getBottomToolbarHeight THEN returns the combined height`() {
         val configuration =

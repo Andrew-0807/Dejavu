@@ -30,6 +30,7 @@ import mozilla.components.support.utils.KeyboardState
 import mozilla.components.support.utils.keyboardAsState
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.ScaledToolbar
 import org.mozilla.fenix.dejavu.menu.DejavuActionsBar
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
@@ -139,15 +140,17 @@ class BrowserNavigationBar(
                     ),
             ) {
                 FirefoxTheme {
-                    if (isDejavuBar) {
-                        DejavuActionsBar(onEvent = { toolbarStore.dispatch(it) })
-                        return@FirefoxTheme
+                    ScaledToolbar {
+                        if (isDejavuBar) {
+                            DejavuActionsBar(onEvent = { toolbarStore.dispatch(it) })
+                        } else {
+                            NavigationBar(
+                                actions = uiState.displayState.navigationActions,
+                                toolbarGravity = toolbarGravity,
+                                onInteraction = { toolbarStore.dispatch(it) },
+                            )
+                        }
                     }
-                    NavigationBar(
-                        actions = uiState.displayState.navigationActions,
-                        toolbarGravity = toolbarGravity,
-                        onInteraction = { toolbarStore.dispatch(it) },
-                    )
                 }
             }
         }

@@ -57,6 +57,7 @@ import org.mozilla.fenix.components.toolbar.ToolbarPosition.TOP
 import org.mozilla.fenix.dejavu.browser.DejavuSearchAboveKeyboard
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.DejavuTopBar
+import org.mozilla.fenix.dejavu.browser.ScaledToolbar
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
 
@@ -167,15 +168,17 @@ class BrowserToolbarComposable(
                                     enabled = DejavuToolbar.enabled && customTabSession == null,
                                     isSearching = isSearching,
                                     toolbar = {
-                                        if (!isSearching) {
-                                            DejavuTopBar(toolbarStore)
-                                        } else {
-                                            BrowserToolbar(
-                                                store = toolbarStore,
-                                                cfr = toolbarCFR,
-                                                useMinimalBottomToolbarWhenEnteringText =
-                                                    settings.shouldUseMinimalBottomToolbarWhenEnteringText,
-                                            )
+                                        ScaledToolbar {
+                                            if (!isSearching) {
+                                                DejavuTopBar(toolbarStore)
+                                            } else {
+                                                BrowserToolbar(
+                                                    store = toolbarStore,
+                                                    cfr = toolbarCFR,
+                                                    useMinimalBottomToolbarWhenEnteringText =
+                                                        settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                                )
+                                            }
                                         }
                                     },
                                     suggestions = searchSuggestionsContent,
@@ -184,15 +187,17 @@ class BrowserToolbarComposable(
                                         if (shouldShowTabStripAtTop) {
                                             tabStripContent()
                                         }
-                                        if (DejavuToolbar.enabled && customTabSession == null && !isSearching) {
-                                            DejavuTopBar(toolbarStore)
-                                        } else {
-                                            BrowserToolbar(
-                                                store = toolbarStore,
-                                                cfr = toolbarCFR,
-                                                useMinimalBottomToolbarWhenEnteringText =
-                                                    settings.shouldUseMinimalBottomToolbarWhenEnteringText,
-                                            )
+                                        ScaledToolbar {
+                                            if (DejavuToolbar.enabled && customTabSession == null && !isSearching) {
+                                                DejavuTopBar(toolbarStore)
+                                            } else {
+                                                BrowserToolbar(
+                                                    store = toolbarStore,
+                                                    cfr = toolbarCFR,
+                                                    useMinimalBottomToolbarWhenEnteringText =
+                                                        settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                                )
+                                            }
                                         }
                                         if (customTabSession == null) {
                                             searchSuggestionsContent(Modifier.weight(1f))
@@ -213,12 +218,14 @@ class BrowserToolbarComposable(
                                     if (shouldShowTabGroupsStrip) {
                                         tabGroupsStripContent()
                                     }
-                                    BrowserToolbar(
-                                        store = toolbarStore,
-                                        cfr = toolbarCFR,
-                                        useMinimalBottomToolbarWhenEnteringText =
-                                            settings.shouldUseMinimalBottomToolbarWhenEnteringText,
-                                    )
+                                    ScaledToolbar {
+                                        BrowserToolbar(
+                                            store = toolbarStore,
+                                            cfr = toolbarCFR,
+                                            useMinimalBottomToolbarWhenEnteringText =
+                                                settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                        )
+                                    }
                                     navigationBarContent?.invoke()
                                 }
                         }
