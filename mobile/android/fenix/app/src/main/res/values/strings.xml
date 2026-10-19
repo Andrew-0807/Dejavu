@@ -1264,6 +1264,10 @@
     <!-- Tab Strip Preferences-->
     <!-- Preferences for showing tab strip -->
     <string name="preference_tab_strip_show">Show tab bar</string>
+    <!-- Preference for showing the open tabs in a sidebar next to the page on large screens -->
+    <string name="preference_vertical_tabs">Vertical tabs on large screens</string>
+    <!-- Content description of the button that collapses or expands the vertical tabs sidebar -->
+    <string name="vertical_tabs_toggle">Collapse or expand tabs</string>
     <!-- Preference for tab bar placement (top or bottom of the screen) -->
     <string name="preference_tab_strip_location_header">Tab bar location</string>
     <!-- Preference for using top tab strip -->

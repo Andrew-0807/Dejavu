@@ -374,6 +374,10 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             isChecked = context.components.settings.isPullToRefreshEnabledInBrowser
             onPreferenceChangeListener = SharedPreferenceUpdater()
         }
+        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_vertical_tabs).apply {
+            isChecked = context.components.settings.isVerticalTabsEnabled
+            onPreferenceChangeListener = SharedPreferenceUpdater()
+        }
         requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dynamic_toolbar).apply {
             isChecked = context.components.settings.isDynamicToolbarEnabled
             onPreferenceChangeListener = SharedPreferenceUpdater()
