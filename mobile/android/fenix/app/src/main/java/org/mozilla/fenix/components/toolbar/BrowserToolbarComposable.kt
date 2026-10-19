@@ -54,6 +54,7 @@ import org.mozilla.fenix.components.AppStore
 import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchEnded
 import org.mozilla.fenix.components.toolbar.ToolbarPosition.BOTTOM
 import org.mozilla.fenix.components.toolbar.ToolbarPosition.TOP
+import org.mozilla.fenix.dejavu.browser.DejavuCompactBar
 import org.mozilla.fenix.dejavu.browser.DejavuSearchAboveKeyboard
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.DejavuTopBar
@@ -116,6 +117,7 @@ class BrowserToolbarComposable(
                 }
                 val customColors = browserScreenStore.observeAsComposableState { it.customTabColors }
                 val shouldUseBottomToolbar = remember { settings.shouldUseBottomToolbar }
+                val shouldUseCompactToolbar = remember { customTabSession == null && settings.shouldUseCompactToolbar }
 
                 val toolbarState by toolbarStore.stateFlow.collectAsState()
                 val toolbarCFR = toolbarState.displayState.cfr
@@ -213,13 +215,21 @@ class BrowserToolbarComposable(
                                     if (shouldShowTabGroupsStrip) {
                                         tabGroupsStripContent()
                                     }
-                                    BrowserToolbar(
-                                        store = toolbarStore,
-                                        cfr = toolbarCFR,
-                                        useMinimalBottomToolbarWhenEnteringText =
-                                            settings.shouldUseMinimalBottomToolbarWhenEnteringText,
-                                    )
-                                    navigationBarContent?.invoke()
+                                    if (shouldUseCompactToolbar && !isSearching) {
+                                        // The integrator passes onSwipeDownWhenCollapsed here, e.g. to go immersive.
+                                        DejavuCompactBar(
+                                            store = toolbarStore,
+                                            buttons = { navigationBarContent?.invoke() },
+                                        )
+                                    } else {
+                                        BrowserToolbar(
+                                            store = toolbarStore,
+                                            cfr = toolbarCFR,
+                                            useMinimalBottomToolbarWhenEnteringText =
+                                                settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                        )
+                                        navigationBarContent?.invoke()
+                                    }
                                 }
                         }
                     }

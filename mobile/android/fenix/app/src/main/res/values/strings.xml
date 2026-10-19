@@ -1224,6 +1224,14 @@
     <string name="preference_top_toolbar">Top</string>
     <!-- Preference for using bottom toolbar -->
     <string name="preference_bottom_toolbar">Bottom</string>
+    <!-- Preference for using one bottom toolbar with only the address bar and a Home button, whose other buttons show when it is swiped up -->
+    <string name="preference_compact_toolbar">Compact</string>
+    <!-- Summary of the preference for the compact toolbar -->
+    <string name="preference_compact_toolbar_summary">Address bar at the bottom. Swipe it up for more buttons</string>
+    <!-- Accessibility action of the compact toolbar that shows its other buttons, as swiping it up does -->
+    <string name="compact_toolbar_show_buttons">Show toolbar buttons</string>
+    <!-- Accessibility action of the compact toolbar that hides its other buttons, as swiping it down does -->
+    <string name="compact_toolbar_hide_buttons">Hide toolbar buttons</string>
     <!-- Preference for using simple toolbar -->
     <string name="preference_simple_toolbar">Simple</string>
     <!-- Preference for using expanded toolbar -->

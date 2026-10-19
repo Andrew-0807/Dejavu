@@ -1151,6 +1151,25 @@ class SettingsTest {
     }
 
     @Test
+    fun `GIVEN the compact toolbar is chosen THEN the address bar is at the bottom at its full height`() {
+        testContext.resources.configuration.apply {
+            screenHeightDp = 481
+            screenWidthDp = 599
+        }
+        settings.shouldUseBottomToolbar = false
+        settings.shouldUseExpandedToolbar = true
+        settings.shouldUseCompactToolbar = true
+
+        assertTrue(settings.shouldUseBottomToolbar)
+        assertEquals(ToolbarPosition.BOTTOM, settings.toolbarPosition)
+        assertEquals(64, settings.getBrowserToolbarHeight(testContext))
+
+        settings.shouldUseCompactToolbar = false
+
+        assertFalse(settings.shouldUseBottomToolbar)
+    }
+
+    @Test
     fun `GIVEN bottom composable toolbar is enabled and navigation bar is enabled but window is not tall enough WHEN querying the toolbar height THEN get the height of the composable toolbar`() {
         testContext.resources.configuration.apply {
             screenHeightDp = 479

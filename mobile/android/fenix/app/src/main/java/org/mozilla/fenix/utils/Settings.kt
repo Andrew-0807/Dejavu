@@ -1617,11 +1617,28 @@ class Settings(
             )
         }
 
-    var shouldUseBottomToolbar by
+    private var isBottomToolbarChosen by
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_toolbar_bottom),
             default = { FxNimbus.features.defaultBottomToolbar.value().enabled },
             persistDefaultIfNotExists = true,
+        )
+
+    /** Whether the address bar is at the bottom of the screen, on its own or in the compact toolbar. */
+    var shouldUseBottomToolbar: Boolean
+        get() = isBottomToolbarChosen || shouldUseCompactToolbar
+        set(value) {
+            isBottomToolbarChosen = value
+        }
+
+    /**
+     * Whether the address bar is at the bottom with only a Home button beside it, and the other toolbar buttons show
+     * above it when it is swiped up.
+     */
+    var shouldUseCompactToolbar by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_toolbar_compact),
+            default = false,
         )
 
     var shouldUseExpandedToolbar by
@@ -2747,7 +2764,8 @@ class Settings(
         val isTallWindow = uiContext.resources.configuration.screenHeightDp > TALL_SCREEN_HEIGHT_DP
         val isWideWindow = uiContext.resources.configuration.screenWidthDp > WIDE_SCREEN_WIDTH_DP
         val isBottomExpandedOnTallNarrowWindow =
-            toolbarPosition == ToolbarPosition.BOTTOM && shouldUseExpandedToolbar && isTallWindow && !isWideWindow
+            toolbarPosition == ToolbarPosition.BOTTOM && shouldUseExpandedToolbar && isTallWindow && !isWideWindow &&
+                !shouldUseCompactToolbar
         val dimen =
             if (isBottomExpandedOnTallNarrowWindow) {
                 R.dimen.composable_browser_toolbar_height_small

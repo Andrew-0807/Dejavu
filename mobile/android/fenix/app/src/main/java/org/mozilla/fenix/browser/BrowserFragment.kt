@@ -241,7 +241,8 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
             )
         }
 
-        if (settings.isSwipeToolbarToShowTabsEnabled || DejavuToolbar.enabled) {
+        // The compact toolbar handles its own vertical swipes, in DejavuCompactBar.
+        if ((settings.isSwipeToolbarToShowTabsEnabled || DejavuToolbar.enabled) && !settings.shouldUseCompactToolbar) {
             binding.gestureLayout.addGestureListener(
                 ToolbarVerticalGesturesHandler(
                     appStore = components.appStore,
