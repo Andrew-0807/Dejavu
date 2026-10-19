@@ -243,7 +243,8 @@ features:
       enabled:
         type: Boolean
         description: If true, the import bookmarks feature will be enabled.
-        default: false
+        # Dejavu: release builds can import bookmarks from a file too.
+        default: true
     defaults:
       - channel: developer
         value:
