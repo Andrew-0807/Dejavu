@@ -222,15 +222,19 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
 
     private fun setupToolbarSwipeBehavior(settings: Settings, components: Components) {
         // Dejavu: added first so a swipe down on the bar enters full immersive mode before other handlers see it.
-        binding.gestureLayout.addGestureListener(
-            ToolbarSwipeDownHandler(
-                targetView = ::immersiveSwipeTarget,
-                isEnabled = {
-                    settings.isSwipeDownForImmersiveEnabled && !components.appStore.state.searchState.isSearchActive
-                },
-                onSwipeDown = ::enterFullImmersive,
+        // The compact toolbar detects its own swipe down, since this layout would intercept and cancel its drag.
+        if (!settings.shouldUseCompactToolbar) {
+            binding.gestureLayout.addGestureListener(
+                ToolbarSwipeDownHandler(
+                    targetView = ::immersiveSwipeTarget,
+                    isEnabled = {
+                        settings.isSwipeDownForImmersiveEnabled &&
+                            !components.appStore.state.searchState.isSearchActive
+                    },
+                    onSwipeDown = ::enterFullImmersive,
+                )
             )
-        )
+        }
 
         if (!settings.isTabStripEnabled && settings.isSwipeToolbarToSwitchTabsEnabled) {
             binding.gestureLayout.addGestureListener(

@@ -1548,6 +1548,10 @@ abstract class BaseBrowserFragment :
                 (awesomeBarComposable ?: buildAwesomeBar(activity, toolbarStore, modifier)).SearchSuggestions()
             },
             navigationBarContent = browserNavigationBar?.asComposable(),
+            // Dejavu: in compact mode the bar detects its own swipes, so it starts full immersive mode itself.
+            onCompactBarSwipeDown = {
+                if (settings.isSwipeDownForImmersiveEnabled) enterFullImmersive()
+            },
         )
     }
 
@@ -2201,12 +2205,15 @@ abstract class BaseBrowserFragment :
         placeExitImmersiveButton()
     }
 
-    /** The bottom-most visible browser bar, or the top toolbar when nothing is shown at the bottom. */
+    /**
+     * The bottom-most visible browser bar, or `null` when nothing is shown at the bottom. A top toolbar is never
+     * returned, so its own swipe down gesture keeps working.
+     */
     internal fun immersiveSwipeTarget(): View? =
         listOfNotNull(
                 _bottomToolbarContainerView?.toolbarContainerView,
                 browserNavigationBar?.layout,
-                _browserToolbar?.layout,
+                _browserToolbar?.layout?.takeIf { context?.isToolbarAtBottom() == true },
             )
             .firstOrNull { it.isVisible && it.height > 0 }
 
@@ -2225,6 +2232,8 @@ abstract class BaseBrowserFragment :
         }
         // Like fullscreen video, so dragging the button over the hidden toolbar does not switch tabs.
         (view as? SwipeGestureLayout)?.isSwipeEnabled = false
+        // fullScreenChanged(false) shows the sidebar again on exit.
+        binding.tabSidebar.isVisible = false
         expandBrowserView()
         showExitImmersiveButton()
     }

@@ -77,6 +77,7 @@ import org.mozilla.fenix.utils.Settings
  * @param searchSuggestionsContent [Composable] as the search suggestions content to be displayed together with this
  *   toolbar.
  * @param navigationBarContent [Composable] content for the navigation bar.
+ * @param onCompactBarSwipeDown Invoked on a swipe down on the collapsed compact toolbar.
  */
 @Suppress("LongParameterList")
 class BrowserToolbarComposable(
@@ -92,6 +93,7 @@ class BrowserToolbarComposable(
     private val tabGroupsStripContent: @Composable () -> Unit,
     private val searchSuggestionsContent: @Composable (Modifier) -> Unit,
     private val navigationBarContent: (@Composable () -> Unit)?,
+    private val onCompactBarSwipeDown: (() -> Unit)? = null,
 ) : ScrollableToolbar {
     init {
         if (!settings.shouldUseMinimalBottomToolbarWhenEnteringText) {
@@ -216,10 +218,10 @@ class BrowserToolbarComposable(
                                         tabGroupsStripContent()
                                     }
                                     if (shouldUseCompactToolbar && !isSearching) {
-                                        // The integrator passes onSwipeDownWhenCollapsed here, e.g. to go immersive.
                                         DejavuCompactBar(
                                             store = toolbarStore,
                                             buttons = { navigationBarContent?.invoke() },
+                                            onSwipeDownWhenCollapsed = onCompactBarSwipeDown,
                                         )
                                     } else {
                                         BrowserToolbar(
