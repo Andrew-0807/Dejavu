@@ -451,4 +451,8 @@
     <string name="dejavu_feature_workspace_order">Drag workspaces to reorder them</string>
     <!-- Feature tour title: long-pressing a link offers to open it in split view, below the page. -->
     <string name="dejavu_feature_split_view">Hold a link to open it in split view</string>
+    <!-- Setting title: middle-clicking a link opens it in a background tab and hovering a link shows its address. -->
+    <string name="dejavu_preference_mouse_support">Mouse support</string>
+    <!-- Setting summary of the mouse support switch. -->
+    <string name="dejavu_preference_mouse_support_summary">Middle-click opens a link in a background tab, and hovering a link shows its address. Applies to new tabs.</string>
 </resources>

@@ -209,6 +209,7 @@ import org.mozilla.fenix.crashes.CrashContentIntegration
 import org.mozilla.fenix.crashes.CrashContentView
 import org.mozilla.fenix.customtabs.ExternalAppBrowserActivity
 import org.mozilla.fenix.databinding.FragmentBrowserBinding
+import org.mozilla.fenix.dejavu.browser.DejavuMouse
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
@@ -1224,6 +1225,10 @@ abstract class BaseBrowserFragment :
 
         installDejavuSplitView(binding.browserLayout, binding.swipeRefresh, binding.engineView, customTabSessionId) {
             getContextMenuCandidates(context, binding.dynamicSnackbarContainer)
+        }
+
+        if (customTabSessionId == null) {
+            DejavuMouse.install(this, binding.browserLayout, binding.dynamicSnackbarContainer)
         }
 
         val isCoverEnabled = TabReloadCoverGating.isCoverEnabled(settings)

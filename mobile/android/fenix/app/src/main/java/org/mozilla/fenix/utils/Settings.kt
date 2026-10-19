@@ -2268,6 +2268,12 @@ class Settings(
             default = true,
         )
 
+    var isMouseSupportEnabled by
+        booleanPreference(
+            appContext.getPreferenceKey(R.string.pref_key_mouse_support),
+            default = true,
+        )
+
     /** Address Sync feature. */
     @Suppress("DEPRECATION")
     var isAddressSyncEnabled by
