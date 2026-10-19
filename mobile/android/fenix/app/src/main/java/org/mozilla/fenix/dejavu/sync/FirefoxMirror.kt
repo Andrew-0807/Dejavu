@@ -118,8 +118,13 @@ internal data class SentTab(val id: String, val clientId: String, val url: Strin
  *
  * @property toSend Tabs opened here in the workspace of a computer, with their titles, to send to it.
  * @property gone Tabs sent before that are not here anymore: they were closed before their computer showed them.
+ * @property forgotten Tabs sent before that were removed here all at once, which their computer keeps.
  */
-internal class OpenedHere(val toSend: List<Pair<SentTab, String>>, val gone: List<SentTab>)
+internal class OpenedHere(
+    val toSend: List<Pair<SentTab, String>>,
+    val gone: List<SentTab>,
+    val forgotten: List<SentTab> = emptyList(),
+)
 
 /**
  * Shows the open tabs of Firefox computers in Dejavu, each computer as a workspace: its pinned tabs as pinned tabs, each
@@ -136,6 +141,8 @@ internal class OpenedHere(val toSend: List<Pair<SentTab, String>>, val gone: Lis
  *   browser has not restored its tabs, Dejavu leaves those tabs as they are.
  * @param tabs The open tabs that are not private by id, or `null` while the browser has not restored them.
  * @param unnamedGroup Name of the folder of a tab group without a name.
+ * @param forgotten Ids of tabs that were removed all at once rather than closed by the user, see
+ *   [LocalSpaces.forgotten]. Firefox is not asked to close them.
  * @param newId Makes ids for new pinned and open tabs.
  */
 internal class FirefoxMirror(
@@ -143,6 +150,7 @@ internal class FirefoxMirror(
     private val normalTabs: Boolean,
     private val tabs: Map<String, LocalTab>?,
     private val unnamedGroup: String,
+    private val forgotten: Set<String> = emptySet(),
     private val newId: () -> String = { UUID.randomUUID().toString() },
 ) {
     private val showsLooseTabs = normalTabs && tabs != null
@@ -151,8 +159,8 @@ internal class FirefoxMirror(
      * Finds the tabs of [devices] that are gone here, closed or removed by the user, and marks them. Their computers are
      * asked to close them. Tabs never seen here since Dejavu showed them are forgotten instead, so they are shown
      * again, unless [shownHere], the tabs shown during this run of the app, has them: those can only be gone because
-     * the user closed them. The ones seen for the first time are confirmed. Nothing is looked at while the browser has
-     * not restored its tabs.
+     * the user closed them. The [forgotten] tabs, removed all at once, are forgotten in any case. The ones seen for the
+     * first time are confirmed. Nothing is looked at while the browser has not restored its tabs.
      */
     fun findClosedHere(
         state: WorkspaceState,
@@ -170,7 +178,7 @@ internal class FirefoxMirror(
                     when {
                         tab.closedHere || (!tab.isPin && !normalTabs) -> tab
                         tab.id in present -> if (tab.confirmed) tab else tab.copy(confirmed = true).also { changed = true }
-                        !tab.confirmed && tab.id !in shownHere -> null.also { changed = true }
+                        tab.id in forgotten || (!tab.confirmed && tab.id !in shownHere) -> null.also { changed = true }
                         else -> {
                             marked++
                             changed = true
@@ -185,9 +193,10 @@ internal class FirefoxMirror(
     }
 
     /**
-     * Finds the tabs opened here since [since] in the workspace of a computer that are not its tabs yet, to send to
-     * it once their page loaded, and the tabs of [sent] that are not here anymore. Pinned tabs stay here, and nothing
-     * is sent while tabs that are neither pinned nor in a group are not shown, or before the browser restored its tabs.
+     * Finds the tabs the user opened here since [since] in the workspace of a computer that are not its tabs yet, to
+     * send to it once their page loaded, and the tabs of [sent] that are not here anymore. Tabs a page opened by
+     * itself ([WorkspaceState.openedByPages]) and pinned tabs stay here, and nothing is sent while tabs that are
+     * neither pinned nor in a group are not shown, or before the browser restored its tabs.
      */
     fun findOpenedHere(
         state: WorkspaceState,
@@ -197,23 +206,24 @@ internal class FirefoxMirror(
     ): OpenedHere {
         val openTabs = tabs ?: return OpenedHere(emptyList(), emptyList())
         val here = openTabs.keys.mapTo(HashSet()) { state.syncIdOf(it) }
-        val gone = sent.filter { it.id !in here }
-        if (!showsLooseTabs) return OpenedHere(emptyList(), gone)
+        val (dropped, gone) = sent.filter { it.id !in here }.partition { it.id in forgotten }
+        if (!showsLooseTabs) return OpenedHere(emptyList(), gone, dropped)
         val pinnedTabs = state.pins.mapNotNullTo(HashSet()) { it.tabId }
         val waiting = sent.mapTo(HashSet()) { it.id }
         val toSend = devices.filter { it.fxaDeviceId != null }.flatMap { device ->
             val theirs = device.tabs.mapTo(HashSet()) { it.id }
             openTabs.values
                 .filter { tab ->
-                    state.workspaceOf(tab.id) == device.workspaceId && tab.id !in pinnedTabs && !tab.loading &&
-                        tab.createdAt >= since && isSyncableUrl(tab.url)
+                    state.workspaceOf(tab.id) == device.workspaceId && tab.id !in pinnedTabs &&
+                        tab.id !in state.openedByPages && !tab.loading && tab.createdAt >= since &&
+                        isSyncableUrl(tab.url)
                 }
                 .mapNotNull { tab ->
                     val id = state.syncIdOf(tab.id)
                     if (id in theirs || id in waiting) null else SentTab(id, device.clientId, tab.url) to tab.title
                 }
         }
-        return OpenedHere(toSend, gone)
+        return OpenedHere(toSend, gone, dropped)
     }
 
     /**

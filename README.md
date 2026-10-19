@@ -132,7 +132,8 @@ last, or a private tab. Back takes you straight back to the app you came from.
 3. In Dejavu, tap the account button at the top left, tap **Sync with** and choose **Zen**. If Dejavu already has
    workspaces or tabs, choose **Merge** to keep them, or **Start fresh** to replace them with what Zen has.
 4. Under **Choose what to sync**, keep **Sync workspaces** on. To sync the tabs that are not pinned as well, turn on
-   **Include unpinned tabs** in both Dejavu and Zen.
+   **Include unpinned tabs** in Zen. It is off in Dejavu at first, like in Zen, and Dejavu turns it on once it finds
+   tabs that are not pinned in what Zen syncs, unless you turned it off yourself.
 
 ### Set up sync with Firefox
 

@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.dejavu.home
 
+import android.graphics.Bitmap
 import androidx.annotation.StringRes
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -1010,6 +1011,10 @@ private fun FolderRow(
     }
 }
 
+/**
+ * The row of an open tab. [isPrivate] is for a private tab, whose site icon is its own [icon] when it has one, or else
+ * loaded as private browsing does.
+ */
 @Suppress("LongParameterList", "LongMethod")
 @Composable
 internal fun TabRow(
@@ -1026,6 +1031,8 @@ internal fun TabRow(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     onIconClick: (() -> Unit)? = null,
+    isPrivate: Boolean = false,
+    icon: Bitmap? = null,
 ) {
     val background = when {
         selection == true -> MaterialTheme.colorScheme.secondaryContainer
@@ -1080,7 +1087,7 @@ internal fun TabRow(
             ) {
                 // Tabs loaded in the browser are shown bright, the others dimmed.
                 Box(modifier = Modifier.alpha(if (isAwake) 1f else DIMMED_ALPHA)) {
-                    SiteIcon(url = url, size = 20.dp)
+                    SiteIcon(url = url, size = 20.dp, isPrivate = isPrivate, icon = icon)
                 }
             }
         }

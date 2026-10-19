@@ -56,7 +56,7 @@ class SpacesSyncEngineTest {
 
         val result = engine.sync(auth)
 
-        assertEquals(SpacesSyncResult.Synced(received = 16, sent = 0, pending = 0), result)
+        assertEquals(SpacesSyncResult.Synced(received = 16, sent = 0, pending = 0, unpinnedTabs = true), result)
         assertEquals(emptyList<List<String>>(), server.uploads)
         assertEquals(listOf(SPACE_PERSONAL, SPACE_WORK), local.state.workspaces.map { it.id })
         assertEquals(setOf(CONTAINER, "builtin-2"), local.containers.map { it.contextId }.toSet())
@@ -69,7 +69,7 @@ class SpacesSyncEngineTest {
         engine.sync(auth)
         server.requests.clear()
 
-        assertEquals(SpacesSyncResult.Synced(received = 0, sent = 0, pending = 0), engine.sync(auth))
+        assertEquals(SpacesSyncResult.Synced(received = 0, sent = 0, pending = 0, unpinnedTabs = true), engine.sync(auth))
 
         assertEquals(
             listOf("GET info/collections", "GET info/configuration", "GET storage/meta/global", "GET storage/crypto/keys"),
@@ -101,7 +101,7 @@ class SpacesSyncEngineTest {
 
         val result = engine.sync(auth)
 
-        assertEquals(SpacesSyncResult.Synced(received = 1, sent = 0, pending = 0), result)
+        assertEquals(SpacesSyncResult.Synced(received = 1, sent = 0, pending = 0, unpinnedTabs = true), result)
         assertEquals("https://example.com/moved", local.state.pins.single { it.id == TAB_PINNED }.url)
         assertEquals(emptyList<List<String>>(), server.uploads)
     }

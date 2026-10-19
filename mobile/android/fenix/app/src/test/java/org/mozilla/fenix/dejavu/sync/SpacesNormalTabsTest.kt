@@ -60,8 +60,9 @@ class SpacesNormalTabsTest {
         tabs: List<LocalTab>?,
         seen: Map<String, String> = emptyMap(),
         server: Map<String, SpacesRecord> = ZenRecords.desktop().associateBy { it.id },
+        forgotten: Set<String> = emptySet(),
     ): Map<String, SpacesRecord> =
-        SpacesProjector(LocalSpaces(state, containers, normalTabs = true, tabs = tabs), server, seen)
+        SpacesProjector(LocalSpaces(state, containers, normalTabs = true, tabs = tabs, forgotten = forgotten), server, seen)
             .project()
             .changesAgainst(server)
             .associateBy { it.id }
@@ -140,6 +141,14 @@ class SpacesNormalTabsTest {
         assertTrue(changes(state, tabs = emptyList(), seen = mapOf(TAB_NORMAL to tab(TAB_NORMAL).fingerprint)).getValue(TAB_NORMAL).deleted)
         assertFalse(TAB_NORMAL in changes(state, tabs = emptyList()))
         assertFalse(TAB_NORMAL in changes(state, tabs = null, seen = mapOf(TAB_NORMAL to tab(TAB_NORMAL).fingerprint)))
+    }
+
+    @Test
+    fun `a tab removed here all at once, like by deleting browsing data, is kept on the server`() {
+        val state = desktop().state
+        val seen = mapOf(TAB_NORMAL to tab(TAB_NORMAL).fingerprint)
+
+        assertFalse(TAB_NORMAL in changes(state, tabs = emptyList(), seen = seen, forgotten = setOf(TAB_NORMAL)))
     }
 
     @Test

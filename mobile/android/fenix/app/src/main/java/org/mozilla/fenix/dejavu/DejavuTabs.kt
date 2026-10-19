@@ -11,17 +11,23 @@ import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.containers.TemporaryContainers
 import org.mozilla.fenix.dejavu.home.pageUrl
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
+import org.mozilla.fenix.dejavu.sync.DejavuSync
 import org.mozilla.fenix.dejavu.workspaces.PinnedItem
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.ext.components
 
 /**
  * Tells which tabs to restore even when Firefox would close them for being unused for too long: Dejavu only closes
- * unpinned tabs, so pinned tabs and essentials stay. Reads the workspaces on first use, so call it off the main thread.
+ * unpinned tabs, so pinned tabs and essentials stay. Sync forgets the tabs closed this way, rather than closing them
+ * on the other devices, see [DejavuSync.forgetTabs]. Reads the workspaces on first use, so call it off the main thread.
  */
 fun dejavuKeepsTab(context: Context): (RecoverableTab) -> Boolean {
-    val pinnedTabIds by lazy { WorkspaceRepository.get(context).state.value.pins.mapNotNullTo(HashSet()) { it.tabId } }
-    return { tab -> tab.state.id in pinnedTabIds }
+    val state by lazy { WorkspaceRepository.get(context).state.value }
+    val pinnedTabIds by lazy { state.pins.mapNotNullTo(HashSet()) { it.tabId } }
+    return { tab ->
+        val id = tab.state.id
+        (id in pinnedTabIds).also { kept -> if (!kept) DejavuSync.forgetTabs(context, listOf(state.syncIdOf(id))) }
+    }
 }
 
 /**

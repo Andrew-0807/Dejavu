@@ -122,7 +122,8 @@ enum class SyncStart {
  *
  * @property enabled Whether syncing with Zen is turned on in Dejavu. Firefox's workspaces do not depend on it.
  * @property normalTabs Whether tabs that are not pinned are synced with Zen too, like Zen's "Include unpinned tabs".
- *   Firefox's workspaces always show every tab.
+ *   Off like in Zen, until the user turns it on, or synced data shows that another device syncs them. Firefox's
+ *   workspaces always show every tab.
  * @property signedIn Whether a Mozilla account is signed in.
  * @property syncing Whether a sync is running.
  * @property lastSynced Time of the last complete sync in milliseconds, or 0.
@@ -134,7 +135,7 @@ enum class SyncStart {
  */
 data class DejavuSyncStatus(
     val enabled: Boolean = true,
-    val normalTabs: Boolean = true,
+    val normalTabs: Boolean = false,
     val signedIn: Boolean = false,
     val syncing: Boolean = false,
     val lastSynced: Long = 0L,
@@ -168,6 +169,7 @@ object DejavuSync {
     private const val KEY_NORMAL_TABS = "normal_tabs"
     private const val KEY_SOURCE = "source"
     private const val KEY_SOURCE_PUT_OFF = "source_put_off"
+    private const val KEY_FORGOTTEN = "forgotten_tabs"
     private const val STORE_FILE = "kaizen_spaces_sync.json"
     private const val FIREFOX_STORE_FILE = "dejavu_firefox_sync.json"
     private const val LOCAL_CHANGE_DELAY_MS = 3_000L
@@ -181,6 +183,7 @@ object DejavuSync {
     private val logger = Logger("DejavuSync")
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private val mutex = Mutex()
+    private val forgottenLock = Any()
     private val requests = Channel<Boolean>(Channel.CONFLATED)
     private val _status = MutableStateFlow(DejavuSyncStatus())
 
@@ -254,7 +257,7 @@ object DejavuSync {
         _status.update {
             it.copy(
                 enabled = prefs.getBoolean(KEY_ENABLED, true),
-                normalTabs = prefs.getBoolean(KEY_NORMAL_TABS, true),
+                normalTabs = prefs.getBoolean(KEY_NORMAL_TABS, false),
                 source = source,
                 lastSynced = when (source) {
                     DejavuSyncSource.ZEN -> store.load().lastSynced
@@ -282,7 +285,7 @@ object DejavuSync {
                 val signedIn = manager.authenticatedAccount() != null
                 accountManagerReady = true
                 _status.update { it.copy(signedIn = signedIn) }
-                if (signedIn) request()
+                if (signedIn) request() else stopForgetting(app)
             }
         }
         watchLocalChanges(app)
@@ -325,6 +328,44 @@ object DejavuSync {
         prefs(context).edit { putBoolean(KEY_NORMAL_TABS, enabled) }
         _status.update { it.copy(normalTabs = enabled) }
         syncNow()
+    }
+
+    /**
+     * Turns on syncing the tabs that are not pinned once synced data shows another device syncs them, like Zen with
+     * its own "Include unpinned tabs" on, as long as the user did not turn it on or off on this device.
+     */
+    private fun followUnpinnedTabs(context: Context, result: SpacesSyncResult) {
+        if (result !is SpacesSyncResult.Synced || !result.unpinnedTabs) return
+        if (_status.value.normalTabs || prefs(context).contains(KEY_NORMAL_TABS)) return
+        logger.info("Another device syncs unpinned tabs, syncing them here too")
+        setNormalTabs(context, true)
+    }
+
+    /**
+     * Makes sync forget the tabs that synced under [syncIds], which were removed all at once rather than closed by the
+     * user, like by Delete browsing data, or by Firefox for being unused too long. They are not closed on the other
+     * devices, and come back from there instead. Kept until a sync took them into account.
+     */
+    fun forgetTabs(context: Context, syncIds: Collection<String>) {
+        if (syncIds.isEmpty()) return
+        synchronized(forgottenLock) {
+            val prefs = prefs(context)
+            prefs.edit { putStringSet(KEY_FORGOTTEN, prefs.getStringSet(KEY_FORGOTTEN, null).orEmpty() + syncIds) }
+        }
+    }
+
+    /** The ids of the tabs sync forgets, see [forgetTabs]. */
+    internal fun forgottenTabs(context: Context): Set<String> =
+        prefs(context).getStringSet(KEY_FORGOTTEN, null).orEmpty().toSet()
+
+    /** Stops forgetting [syncIds], which a sync took into account, or every tab when [syncIds] is `null`. */
+    private fun stopForgetting(context: Context, syncIds: Set<String>? = null) {
+        synchronized(forgottenLock) {
+            val prefs = prefs(context)
+            if (!prefs.contains(KEY_FORGOTTEN)) return
+            val left = syncIds?.let { prefs.getStringSet(KEY_FORGOTTEN, null).orEmpty() - it }.orEmpty()
+            prefs.edit { if (left.isEmpty()) remove(KEY_FORGOTTEN) else putStringSet(KEY_FORGOTTEN, left) }
+        }
     }
 
     /**
@@ -450,6 +491,7 @@ object DejavuSync {
         val account = context.components.backgroundServices.accountManager.authenticatedAccount()
         if (account == null) {
             _status.update { it.copy(signedIn = false) }
+            stopForgetting(context)
             return
         }
         val turnOn = turnOnRequested && manual
@@ -515,7 +557,7 @@ object DejavuSync {
 
     /**
      * Syncs once with [source], after looking at what the account has of Firefox and Zen when [scan] is set. Without a
-     * source, it only looks.
+     * source, it only looks. The tabs to forget, see [forgetTabs], are forgotten once a sync took them into account.
      */
     @Suppress("TooGenericExceptionCaught", "ReturnCount")
     private suspend fun sync(
@@ -525,6 +567,8 @@ object DejavuSync {
         scan: Boolean,
         turnOn: Boolean,
     ): Outcome {
+        val context = appContext ?: return Outcome(null)
+        val forgotten = forgottenTabs(context)
         return try {
             val auth = authOf(account) ?: throw SyncAuthException("The account has no sync key")
             val connected = connectedDevices(account)
@@ -541,11 +585,20 @@ object DejavuSync {
                 null
             }
             val problem = when (source) {
-                null -> DejavuSyncProblem.CHOOSE_SOURCE
-                DejavuSyncSource.ZEN -> problemOf(engines.zen.sync(auth, turnOn))
+                null -> {
+                    stopForgetting(context)
+                    DejavuSyncProblem.CHOOSE_SOURCE
+                }
+                DejavuSyncSource.ZEN -> {
+                    val result = engines.zen.sync(auth, turnOn)
+                    if (result is SpacesSyncResult.Synced) stopForgetting(context, forgotten)
+                    followUnpinnedTabs(context, result)
+                    problemOf(result)
+                }
                 DejavuSyncSource.FIREFOX -> {
                     val result = engines.firefox.sync(auth, connected, localDeviceId, refreshDevices)
                     computerTabs = engines.firefox.computerTabs()
+                    if (result is FirefoxSyncResult.Synced) stopForgetting(context, forgotten)
                     problemOf(result)
                 }
             }
@@ -635,6 +688,7 @@ object DejavuSync {
                     remove(KEY_SOURCE)
                     remove(KEY_SOURCE_PUT_OFF)
                 }
+                stopForgetting(context)
             }
             sourcePutOff = false
             _status.update {
@@ -728,6 +782,7 @@ private class DejavuSpacesData(private val context: Context) : SpacesLocalData, 
             containers = containers.records.value.orEmpty(),
             normalTabs = DejavuSync.status.value.normalTabs,
             tabs = tabs,
+            forgotten = DejavuSync.forgottenTabs(context),
         )
     }
 

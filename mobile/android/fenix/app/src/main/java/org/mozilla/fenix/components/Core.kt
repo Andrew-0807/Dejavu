@@ -123,6 +123,7 @@ import org.mozilla.fenix.browser.desktopmode.DesktopModeMiddleware
 import org.mozilla.fenix.components.search.ApplicationSearchMiddleware
 import org.mozilla.fenix.components.search.SearchMigration
 import org.mozilla.fenix.components.search.SearchWidgetMiddleware
+import org.mozilla.fenix.dejavu.PrivateNewTabMiddleware
 import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
 import org.mozilla.fenix.dejavu.dejavuBrowserMiddleware
 import org.mozilla.fenix.downloads.DownloadService
@@ -342,6 +343,7 @@ class Core(
 
         val middlewareList =
             listOf(
+                PrivateNewTabMiddleware(),
                 ProfileMarkerMiddleware(markerName = "BrowserStore", profiler = engine.profiler),
                 LogMiddleware(tag = "BrowserStore", shouldIncludeDetailedData = { Config.channel.isDebug }),
                 LastAccessMiddleware(),

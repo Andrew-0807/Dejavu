@@ -42,8 +42,16 @@ internal interface SpacesLocalData {
 
 /** How a sync ended when it did not throw. */
 internal sealed interface SpacesSyncResult {
-    /** Synced; counts of records received, sent and still waiting to apply. */
-    data class Synced(val received: Int, val sent: Int, val pending: Int) : SpacesSyncResult
+    /**
+     * Synced; counts of records received, sent and still waiting to apply, and whether the server has tabs that are
+     * not pinned, which only a device that syncs them puts there.
+     */
+    data class Synced(
+        val received: Int,
+        val sent: Int,
+        val pending: Int,
+        val unpinnedTabs: Boolean = false,
+    ) : SpacesSyncResult
 
     /** Firefox Sync has not set up this account's storage yet; Firefox's own sync does it. */
     data object NotSetUp : SpacesSyncResult
@@ -147,7 +155,9 @@ internal class SpacesSyncEngine(
 
         val batch = LinkedHashMap<String, SpacesRecord>()
         data.failed.values.forEach { batch[it.id] = it }
-        unopenedTabs(local.read(), data).forEach { batch[it.id] = it }
+        val beforeApplying = local.read()
+        data.seen.keys.removeAll(beforeApplying.forgotten)
+        unopenedTabs(beforeApplying, data).forEach { batch[it.id] = it }
         batch.putAll(incoming)
         if (batch.isNotEmpty()) applyIncoming(batch.values.toList(), data)
         data.lastModified = collectionModified
@@ -181,7 +191,12 @@ internal class SpacesSyncEngine(
         }
         data.lastSynced = clock.millis()
         store.save(data)
-        return SpacesSyncResult.Synced(received = incoming.size, sent = sent, pending = data.failed.size)
+        return SpacesSyncResult.Synced(
+            received = incoming.size,
+            sent = sent,
+            pending = data.failed.size,
+            unpinnedTabs = data.server.values.any { it.isNormalTab },
+        )
     }
 
     /**

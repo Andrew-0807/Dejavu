@@ -152,7 +152,7 @@ internal class FirefoxTabsEngine(
         if (data.devices.isEmpty() || data.sendingSince == 0L) return
         val current = local.read()
         val opened = mirror(current).findOpenedHere(current.state, data.devices, data.sent, data.sendingSince)
-        if (opened.toSend.isEmpty() && opened.gone.isEmpty()) return
+        if (opened.toSend.isEmpty() && opened.gone.isEmpty() && opened.forgotten.isEmpty()) return
         val deviceIds = data.devices.associate { it.clientId to it.fxaDeviceId }
         opened.gone.groupBy { it.clientId }.forEach { (clientId, tabs) ->
             val deviceId = deviceIds[clientId] ?: return@forEach
@@ -160,7 +160,7 @@ internal class FirefoxTabsEngine(
             runCatching { local.closeRemoteTabs(deviceId, tabs.map { it.url }) }
                 .onFailure { log("Could not ask to close tabs: $it") }
         }
-        val sent = (data.sent - opened.gone.toSet()).toMutableList()
+        val sent = (data.sent - (opened.gone + opened.forgotten).toSet()).toMutableList()
         var count = 0
         for ((tab, title) in opened.toSend) {
             val deviceId = deviceIds[tab.clientId] ?: continue
@@ -253,6 +253,7 @@ internal class FirefoxTabsEngine(
         normalTabs = true,
         tabs = current.tabs?.associateBy { it.id },
         unnamedGroup = local.unnamedGroup,
+        forgotten = current.forgotten,
     )
 
     private companion object {

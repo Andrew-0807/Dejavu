@@ -1,6 +1,6 @@
 # Dejavu Privacy Policy
 
-Effective date: October 17, 2026
+Effective date: October 19, 2026
 
 Dejavu is a web browser for Android, built from Mozilla's open source Firefox code. It is an independent project,
 not made, endorsed or supported by Mozilla. This policy explains what happens to your data when you use it.
@@ -14,7 +14,9 @@ send data somewhere. Those features are listed below, and most of them are off u
 Dejavu stores your browsing history, bookmarks, open tabs, workspaces, pinned tabs, essentials, folders, containers,
 saved logins, addresses and cards, cookies and site data, downloads and settings on your device.
 
-You can delete this data in **Settings**, then **Delete browsing data**. Uninstalling Dejavu deletes all of it.
+You can delete this data in **Settings**, then **Delete browsing data**. Deleting your history also deletes what
+Dejavu keeps of the pages you visited: the workspace each page was opened in, which History can group pages by, and
+the page a closed pinned tab reopens on. Uninstalling Dejavu deletes all of it.
 
 ## What we collect
 
@@ -58,8 +60,15 @@ what you type while you type, are off unless you turn them on.
 ### Mozilla account and sync (optional)
 
 If you sign in with a Mozilla account, Firefox Sync keeps your bookmarks, history, passwords, open tabs and other data
-the same on your devices. Dejavu also syncs your workspaces, containers, pinned tabs, essentials and folders, and your
-other tabs if you turn that on, so they match Zen Browser and Dejavu on your other devices.
+the same on your devices. Dejavu also syncs your workspaces, containers, pinned tabs, essentials and folders, so they
+match Zen Browser and Dejavu on your other devices.
+
+Your other tabs, the ones that are not pinned, sync with Zen only while **Include unpinned tabs** is on. Like in Zen,
+it is off at first. When another device on your account already syncs these tabs, Dejavu turns it on too, so your
+devices keep matching, unless you turned it off yourself. You can turn it on or off under **Choose what to sync**.
+
+To tell what changed between syncs, Dejavu keeps a copy of what it last synced on your device, the addresses and titles
+of synced tabs included. This copy is deleted when you sign out.
 
 Synced data is stored on Mozilla's servers, encrypted with keys that only your devices have, so Mozilla cannot read
 it. Your account is handled by Mozilla, as described in the

@@ -62,7 +62,11 @@ internal object WorkspaceSerializer {
             obj.keys().asSequence().associateWith { obj.getString(it) }
         }.orEmpty()
 
-        return WorkspaceState(workspaces, pins, activeId, assignments, splits, tabTitles, tabSyncIds)
+        val openedByPages = root?.optJSONArray("openedByPages")?.let { ids ->
+            (0 until ids.length()).mapNotNull { ids.optString(it).ifEmpty { null } }.toSet()
+        }.orEmpty()
+
+        return WorkspaceState(workspaces, pins, activeId, assignments, splits, tabTitles, tabSyncIds, openedByPages)
     }
 
     fun write(state: WorkspaceState): String = JSONObject().apply {
@@ -116,6 +120,7 @@ internal object WorkspaceSerializer {
         put("assignments", JSONObject(state.assignments))
         put("tabTitles", JSONObject(state.tabTitles))
         put("tabSyncIds", JSONObject(state.tabSyncIds))
+        put("openedByPages", JSONArray(state.openedByPages))
         put(
             "splits",
             JSONArray().apply {

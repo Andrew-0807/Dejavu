@@ -15,12 +15,16 @@ import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
  *
  * @property normalTabs Whether tabs that are not pinned are synced too, like Zen's "Include unpinned tabs".
  * @property tabs The open tabs that are not private, or `null` while the browser has not restored them yet.
+ * @property forgotten Ids that tabs which are gone synced under, removed all at once rather than closed by the user,
+ *   like by Delete browsing data. Sync forgets them instead of closing them on the other devices, see
+ *   [DejavuSync.forgetTabs].
  */
 internal data class LocalSpaces(
     val state: WorkspaceState,
     val containers: List<ContainerRecord>,
     val normalTabs: Boolean = false,
     val tabs: List<LocalTab>? = null,
+    val forgotten: Set<String> = emptySet(),
 )
 
 /**
@@ -172,7 +176,8 @@ internal class SpacesProjector(
      * tab in one goes out without a container and keeps it here. Zen keeps unpinned tabs in folders too, which Dejavu
      * shows among the unpinned tabs: such a tab goes out in its folder while it stays in that workspace and the folder
      * stays. Without them, and before the browser restored its tabs, the server's unpinned tabs are held. Those that
-     * never were open here are held too; the engine opens them.
+     * never were open here are held too; the engine opens them. So are the ones [LocalSpaces.forgotten], which the
+     * engine opens again later.
      */
     private fun projectNormalTabs() {
         val tabs = local.tabs?.takeIf { local.normalTabs }
@@ -211,7 +216,7 @@ internal class SpacesProjector(
         }
         for (record in server.values) {
             if (!record.isNormalTab || record.id in records || record.id in held) continue
-            if (record.id in seen) closedTabs += record.id else held += record.id
+            if (record.id in seen && record.id !in local.forgotten) closedTabs += record.id else held += record.id
         }
     }
 

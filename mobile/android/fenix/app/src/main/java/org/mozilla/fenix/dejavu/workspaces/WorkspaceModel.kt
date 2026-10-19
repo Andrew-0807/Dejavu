@@ -145,6 +145,9 @@ data class SplitView(val id: String, val tabIds: List<String>)
  * @property tabTitles Titles the user gave to tabs that are not pinned, by tab ID. Local to this device.
  * @property tabSyncIds Sync ids of open tabs that sync under another id than their own, by tab ID: the id of the pin
  *   they were the tab of, once it was unpinned, so the tab stays the same tab on other devices. Local to this device.
+ * @property openedByPages Open tabs that a page opened by itself, like a pop-up, rather than the user. They stay on
+ *   this device and are never sent to a Firefox computer, until the user moves them to a workspace. Local to this
+ *   device.
  */
 data class WorkspaceState(
     val workspaces: List<Workspace>,
@@ -154,6 +157,7 @@ data class WorkspaceState(
     val splits: List<SplitView> = emptyList(),
     val tabTitles: Map<String, String> = emptyMap(),
     val tabSyncIds: Map<String, String> = emptyMap(),
+    val openedByPages: Set<String> = emptySet(),
 ) {
     val activeIndex: Int
         get() = workspaces.indexOfFirst { it.id == activeWorkspaceId }.coerceAtLeast(0)
