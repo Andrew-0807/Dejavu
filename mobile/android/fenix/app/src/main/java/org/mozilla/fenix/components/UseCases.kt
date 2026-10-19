@@ -8,6 +8,7 @@ import android.content.Context
 import android.os.StrictMode
 import android.util.Size
 import androidx.annotation.VisibleForTesting
+import mozilla.components.browser.state.state.searchEngines
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.concept.engine.Engine
 import mozilla.components.concept.fetch.Client
@@ -42,6 +43,7 @@ import org.mozilla.fenix.components.share.DefaultShareSheetLauncher
 import org.mozilla.fenix.components.share.ShareSheetLauncher
 import org.mozilla.fenix.components.usecases.FenixBrowserUseCases
 import org.mozilla.fenix.components.usecases.ShareUseCases
+import org.mozilla.fenix.dejavu.resolveSearchKeyword
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.home.mars.MARSUseCases
 import org.mozilla.fenix.pbmlock.PrivateBrowsingLockUseCases
@@ -167,6 +169,13 @@ class UseCases(
             searchUseCases = searchUseCases,
             homepageTitle = context.getString(R.string.tab_tray_homepage_tab),
             profiler = engine.value.profiler,
+            keywordResolver = { input ->
+                val settings = context.components.settings
+                resolveSearchKeyword(input, settings.engineKeywords, settings.bookmarkKeywords)?.let { match ->
+                    val found = store.value.state.search.searchEngines.find { it.id == match.engineId }
+                    if (match.engineId != null && found == null) null else found to match.text
+                }
+            },
         )
     }
 

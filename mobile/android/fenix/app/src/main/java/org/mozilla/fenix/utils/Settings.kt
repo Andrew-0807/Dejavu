@@ -55,6 +55,8 @@ import org.mozilla.fenix.components.toolbar.ToolbarPosition
 import org.mozilla.fenix.crashes.crashReportOption
 import org.mozilla.fenix.debugsettings.addresses.EmptyAddressesDebugRegionRepository
 import org.mozilla.fenix.debugsettings.addresses.SharedPrefsAddressesDebugRegionRepository
+import org.mozilla.fenix.dejavu.toKeywordJson
+import org.mozilla.fenix.dejavu.toKeywordMap
 import org.mozilla.fenix.ext.TALL_SCREEN_HEIGHT_DP
 import org.mozilla.fenix.ext.WIDE_SCREEN_WIDTH_DP
 import org.mozilla.fenix.ext.components
@@ -3454,6 +3456,32 @@ class Settings(
             key = appContext.getPreferenceKey(R.string.pref_key_enable_pdf_tools),
             default = { FxNimbus.features.pdfViewer.value().androidUiTools },
         )
+
+    private var engineKeywordsJson by
+        stringPreference(
+            appContext.getPreferenceKey(R.string.pref_key_dejavu_engine_keywords),
+            default = "{}",
+        )
+
+    private var bookmarkKeywordsJson by
+        stringPreference(
+            appContext.getPreferenceKey(R.string.pref_key_dejavu_bookmark_keywords),
+            default = "{}",
+        )
+
+    /** Dejavu: typed keyword to search engine id. */
+    var engineKeywords: Map<String, String>
+        get() = engineKeywordsJson.toKeywordMap()
+        set(value) {
+            engineKeywordsJson = value.toKeywordJson()
+        }
+
+    /** Dejavu: typed keyword to bookmark URL, where %s is replaced by the search text. */
+    var bookmarkKeywords: Map<String, String>
+        get() = bookmarkKeywordsJson.toKeywordMap()
+        set(value) {
+            bookmarkKeywordsJson = value.toKeywordJson()
+        }
 
     // Dejavu: the account page always has the newer layout, where Dejavu adds syncing workspaces with Firefox or Zen.
     var accountSettingsNewUi by
