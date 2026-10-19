@@ -466,4 +466,11 @@
     <string name="dejavu_feature_workspace_order">Drag workspaces to reorder them</string>
     <!-- Feature tour title: long-pressing a link offers to open it in split view, below the page. -->
     <string name="dejavu_feature_split_view">Hold a link to open it in split view</string>
+
+    <!-- Settings: toolbar size -->
+    <string name="pref_key_dejavu_toolbar_size" translatable="false">pref_key_dejavu_toolbar_size</string>
+    <string name="dejavu_settings_toolbar_size">Toolbar size</string>
+    <string name="dejavu_settings_toolbar_size_summary">Smaller bars leave more room for pages</string>
+    <!-- The toolbar size as a percent of the normal size, like "85%". %1$d is the number. -->
+    <string name="dejavu_settings_toolbar_size_value">%1$d%%</string>
 </resources>

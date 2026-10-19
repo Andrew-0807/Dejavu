@@ -57,6 +57,7 @@ class BaseBrowserFragmentTest {
         settings =
             mockk(relaxed = true) {
                 every { isTabStripEnabled } returns false
+                every { toolbarScale } returns 1f
             }
         testContext = mockk(relaxed = true)
         container = mockk(relaxed = true)

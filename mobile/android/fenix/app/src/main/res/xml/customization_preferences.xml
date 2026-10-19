@@ -69,6 +69,17 @@
 
     <androidx.preference.PreferenceCategory
         android:layout="@layout/preference_cat_style"
+        android:title="@string/dejavu_settings_toolbar_size"
+        app:iconSpaceReserved="false">
+        <org.mozilla.fenix.settings.ToolbarSizePreference
+            android:key="@string/pref_key_dejavu_toolbar_size"
+            android:title="@string/dejavu_settings_toolbar_size"
+            android:summary="@string/dejavu_settings_toolbar_size_summary"
+            android:persistent="false" />
+    </androidx.preference.PreferenceCategory>
+
+    <androidx.preference.PreferenceCategory
+        android:layout="@layout/preference_cat_style"
         android:title="@string/dejavu_settings_actions_bar"
         app:iconSpaceReserved="false">
         <androidx.preference.Preference

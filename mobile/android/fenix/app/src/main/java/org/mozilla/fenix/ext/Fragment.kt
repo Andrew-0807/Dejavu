@@ -27,6 +27,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.R as materialR
+import kotlin.math.roundToInt
 import mozilla.components.concept.base.crash.Breadcrumb
 import mozilla.components.support.utils.ext.isLandscape
 import mozilla.components.support.utils.ext.pixelSizeFor
@@ -297,7 +298,9 @@ fun Fragment.getBottomToolbarHeight(
             else -> 0
         }
 
-    return microsurveyHeight + toolbarHeight + navBarHeight + tabstripHeight + tabGroupsStripHeight
+    // The bars are drawn at the user's toolbar size, the microsurvey prompt is not.
+    val barsHeight = toolbarHeight + navBarHeight + tabstripHeight + tabGroupsStripHeight
+    return microsurveyHeight + (barsHeight * settings.toolbarScale).roundToInt()
 }
 
 /**
@@ -323,7 +326,7 @@ fun Fragment.getTopToolbarHeight(includeTabStripIfAvailable: Boolean = true): In
             else -> 0
         }
 
-    return toolbarHeight + tabStripHeight
+    return ((toolbarHeight + tabStripHeight) * settings.toolbarScale).roundToInt()
 }
 
 /**

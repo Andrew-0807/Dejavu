@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import org.mozilla.fenix.R
+import org.mozilla.fenix.dejavu.browser.ScaledToolbar
 import org.mozilla.fenix.theme.FirefoxTheme
 
 /**
@@ -28,15 +29,17 @@ fun TabGroupsStrip(
     modifier: Modifier = Modifier,
     containerColor: Color = MaterialTheme.colorScheme.surface,
 ) {
-    Surface(
-        modifier =
-            modifier
-                .fillMaxWidth()
-                .height(dimensionResource(R.dimen.tab_groups_strip_height))
-                .testTag(TabGroupsTestTag.TAB_GROUPS_STRIP),
-        color = containerColor,
-        content = {},
-    )
+    ScaledToolbar {
+        Surface(
+            modifier =
+                modifier
+                    .fillMaxWidth()
+                    .height(dimensionResource(R.dimen.tab_groups_strip_height))
+                    .testTag(TabGroupsTestTag.TAB_GROUPS_STRIP),
+            color = containerColor,
+            content = {},
+        )
+    }
 }
 
 @PreviewLightDark

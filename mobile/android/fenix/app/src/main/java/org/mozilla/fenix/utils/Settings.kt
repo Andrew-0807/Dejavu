@@ -101,6 +101,10 @@ class Settings(
     companion object {
         const val FENIX_PREFERENCES = "fenix_preferences"
 
+        /** Smallest [toolbarSizePercent] that keeps the toolbars' text readable and their buttons tappable. */
+        const val MIN_TOOLBAR_SIZE_PERCENT = 70
+        const val MAX_TOOLBAR_SIZE_PERCENT = 100
+
         private const val BLOCKED_INT = 0
         private const val ASK_TO_ALLOW_INT = 1
         private const val ALLOWED_INT = 2
@@ -2788,6 +2792,19 @@ class Settings(
     /** Indicates if the feature to close synced tabs is enabled. */
     val enableCloseSyncedTabs: Boolean
         get() = FxNimbus.features.remoteTabManagement.value().closeTabsEnabled
+
+    /** Size of the toolbars, tab strip and actions bar, in percent of their normal size. */
+    var toolbarSizePercent by
+        intPreference(
+            appContext.getPreferenceKey(R.string.pref_key_dejavu_toolbar_size),
+            default = MAX_TOOLBAR_SIZE_PERCENT,
+        )
+
+    /** [toolbarSizePercent] as a factor, clamped to the sizes the setting offers. */
+    val toolbarScale: Float
+        get() =
+            toolbarSizePercent.coerceIn(MIN_TOOLBAR_SIZE_PERCENT, MAX_TOOLBAR_SIZE_PERCENT) /
+                MAX_TOOLBAR_SIZE_PERCENT.toFloat()
 
     /**
      * Returns the height of the browser toolbar height.

@@ -86,6 +86,7 @@ import org.mozilla.fenix.components.components
 import org.mozilla.fenix.compose.Favicon
 import org.mozilla.fenix.compose.HorizontalFadingEdgeBox
 import org.mozilla.fenix.compose.ext.isItemPartiallyVisible
+import org.mozilla.fenix.dejavu.browser.ScaledToolbar
 import org.mozilla.fenix.tabstray.browser.compose.ReorderableDragItemContainer
 import org.mozilla.fenix.tabstray.browser.compose.createListReorderState
 import org.mozilla.fenix.tabstray.browser.compose.detectListPressAndDrag
@@ -169,35 +170,37 @@ fun TabStrip(
             false
         }
 
-    AnimatedVisibility(
-        visible = !isKeyboardVisible,
-        enter =
-            expandVertically(
-                expandFrom = Alignment.Bottom,
-                animationSpec = tween(durationMillis = TAB_STRIP_VISIBILITY_ANIMATION_MS),
-            ),
-        exit =
-            shrinkVertically(
-                shrinkTowards = Alignment.Bottom,
-                animationSpec = tween(durationMillis = TAB_STRIP_VISIBILITY_ANIMATION_MS),
-            ),
-    ) {
-        TabStripContent(
-            state = state,
-            showTabCounterButton = showTabCounterButton,
-            colors = tabStripColors,
-            onAddTabClick = createAddTabClickHandler(onAddTabClick),
-            onCloseTabClick =
-                createCloseTabClickHandler(
-                    numberOfTabs = state.tabs.size,
-                    tabsUseCases = tabsUseCases,
-                    onLastTabClose = onLastTabClose,
-                    onCloseTabClick = onCloseTabClick,
+    ScaledToolbar {
+        AnimatedVisibility(
+            visible = !isKeyboardVisible,
+            enter =
+                expandVertically(
+                    expandFrom = Alignment.Bottom,
+                    animationSpec = tween(durationMillis = TAB_STRIP_VISIBILITY_ANIMATION_MS),
                 ),
-            onSelectedTabClick = createSelectedTabClickHandler(tabsUseCases, onSelectedTabClick),
-            onMove = createMoveTabHandler(tabsUseCases),
-            onTabCounterClick = onTabCounterClick,
-        )
+            exit =
+                shrinkVertically(
+                    shrinkTowards = Alignment.Bottom,
+                    animationSpec = tween(durationMillis = TAB_STRIP_VISIBILITY_ANIMATION_MS),
+                ),
+        ) {
+            TabStripContent(
+                state = state,
+                showTabCounterButton = showTabCounterButton,
+                colors = tabStripColors,
+                onAddTabClick = createAddTabClickHandler(onAddTabClick),
+                onCloseTabClick =
+                    createCloseTabClickHandler(
+                        numberOfTabs = state.tabs.size,
+                        tabsUseCases = tabsUseCases,
+                        onLastTabClose = onLastTabClose,
+                        onCloseTabClick = onCloseTabClick,
+                    ),
+                onSelectedTabClick = createSelectedTabClickHandler(tabsUseCases, onSelectedTabClick),
+                onMove = createMoveTabHandler(tabsUseCases),
+                onTabCounterClick = onTabCounterClick,
+            )
+        }
     }
 }
 

@@ -51,6 +51,7 @@ import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchStarte
 import org.mozilla.fenix.components.appstate.VoiceSearchAction.VoiceInputRequested
 import org.mozilla.fenix.components.metrics.MetricsUtils
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.ScaledToolbar
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
 import org.mozilla.fenix.wallpapers.WallpaperTheme
@@ -173,7 +174,7 @@ internal class HomeToolbarComposable(
                 tabStripContent()
             }
 
-            AddressBar(wallpaperTextColor = wallpaperTextColor)
+            ScaledToolbar { AddressBar(wallpaperTextColor = wallpaperTextColor) }
 
             if (shouldUseBottomToolbar) {
                 if (!DejavuToolbar.enabled) navigationBarContent?.invoke()
