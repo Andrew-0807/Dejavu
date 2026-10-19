@@ -6,7 +6,63 @@
     <string name="pref_key_dejavu_tab_actions" translatable="false">pref_key_dejavu_tab_actions</string>
     <string name="pref_key_dejavu_containers" translatable="false">pref_key_dejavu_containers</string>
     <string name="pref_key_dejavu_external_links" translatable="false">pref_key_dejavu_external_links</string>
+    <string name="pref_key_dejavu_engine_keywords" translatable="false">pref_key_dejavu_engine_keywords</string>
+    <string name="pref_key_dejavu_bookmark_keywords" translatable="false">pref_key_dejavu_bookmark_keywords</string>
+    <string name="pref_key_dejavu_shortcuts" translatable="false">pref_key_dejavu_shortcuts</string>
+    <string name="dejavu_settings_shortcuts">Keyboard shortcuts</string>
+    <string name="dejavu_settings_shortcuts_summary">Change the keys of the shortcuts for a hardware keyboard</string>
+    <string name="dejavu_shortcuts_hint">Tap a shortcut to give it another key. Shortcuts need Ctrl or Alt.</string>
+    <string name="dejavu_shortcuts_press">Press the new key combination.</string>
+    <string name="dejavu_shortcuts_taken">%1$s is used by \"%2$s\".</string>
+    <string name="dejavu_shortcuts_none">None</string>
+    <string name="dejavu_shortcuts_save">Save</string>
+    <string name="dejavu_shortcuts_swap">Swap</string>
+    <string name="dejavu_shortcuts_clear">Clear</string>
+    <string name="dejavu_shortcuts_reset">Reset to default</string>
+    <string name="dejavu_shortcut_next_tab">Next tab</string>
+    <string name="dejavu_shortcut_previous_tab">Previous tab</string>
+    <string name="dejavu_shortcut_new_tab">New tab</string>
+    <string name="dejavu_shortcut_close_tab">Close tab</string>
+    <string name="dejavu_shortcut_restore_tab">Restore closed tab</string>
+    <string name="dejavu_shortcut_address_bar">Edit address</string>
+    <string name="dejavu_shortcut_reload">Reload page</string>
+    <string name="dejavu_shortcut_tab_n">Go to tab %1$d</string>
+    <string name="dejavu_shortcut_last_tab">Go to last tab</string>
     <string name="pref_key_dejavu_tab_sleep" translatable="false">pref_key_dejavu_tab_sleep</string>
+    <string name="pref_key_toolbar_swipe_gesture" translatable="false">pref_key_toolbar_swipe_gesture</string>
+    <string name="pref_key_toolbar_double_tap_gesture" translatable="false">pref_key_toolbar_double_tap_gesture</string>
+    <string name="pref_key_toolbar_long_press_gesture" translatable="false">pref_key_toolbar_long_press_gesture</string>
+    <string name="dejavu_gesture_swipe">Swipe the toolbar up</string>
+    <string name="dejavu_gesture_double_tap">Double-tap the toolbar</string>
+    <string name="dejavu_gesture_long_press">Long-press the toolbar</string>
+    <string name="dejavu_gesture_none">Nothing</string>
+    <string name="dejavu_gesture_scroll_top">Scroll to the top</string>
+    <string name="dejavu_gesture_reload">Reload the page</string>
+    <string name="dejavu_gesture_close_tab">Close the tab</string>
+    <string name="dejavu_gesture_tab_list">Open the tab list</string>
+    <string name="dejavu_gesture_restore_closed">Restore the last closed tab</string>
+    <string name="dejavu_gesture_more_menu">Open the menu</string>
+    <string name="dejavu_gesture_address_menu">Copy or paste the address</string>
+    <string-array name="dejavu_gesture_values" translatable="false">
+        <item>none</item>
+        <item>scroll_top</item>
+        <item>reload</item>
+        <item>close_tab</item>
+        <item>tab_list</item>
+        <item>restore_closed</item>
+        <item>more_menu</item>
+        <item>address_menu</item>
+    </string-array>
+    <string-array name="dejavu_gesture_entries">
+        <item>@string/dejavu_gesture_none</item>
+        <item>@string/dejavu_gesture_scroll_top</item>
+        <item>@string/dejavu_gesture_reload</item>
+        <item>@string/dejavu_gesture_close_tab</item>
+        <item>@string/dejavu_gesture_tab_list</item>
+        <item>@string/dejavu_gesture_restore_closed</item>
+        <item>@string/dejavu_gesture_more_menu</item>
+        <item>@string/dejavu_gesture_address_menu</item>
+    </string-array>
     <!-- Name of Mozilla's browser, for texts about Mozilla's own services like Firefox Suggest. -->
     <string name="dejavu_firefox_name" translatable="false" tools:ignore="BrandUsage">Firefox</string>
 
@@ -242,6 +298,8 @@
     <string name="dejavu_menu_bookmarks">Bookmarks</string>
     <string name="dejavu_menu_downloads">Downloads</string>
     <string name="dejavu_menu_history">History</string>
+    <string name="dejavu_menu_restore_closed_tab">Restore closed tab</string>
+    <string name="dejavu_no_closed_tabs">No recently closed tabs</string>
     <string name="dejavu_menu_translate">Translate</string>
     <string name="dejavu_menu_summarize">Summarize</string>
     <string name="dejavu_menu_report_broken_site">Report site issue</string>
@@ -251,6 +309,11 @@
     <string name="dejavu_menu_remove_essential">Remove essential</string>
     <string name="dejavu_menu_save_as_pdf">Save as PDF</string>
     <string name="dejavu_menu_print">Print</string>
+    <string name="dejavu_menu_screenshot">Full page screenshot</string>
+    <string name="dejavu_screenshot_saved">Saved to %1$s</string>
+    <string name="dejavu_screenshot_failed">Could not capture the page</string>
+    <string name="dejavu_screenshot_open">Open</string>
+    <string name="dejavu_screenshot_share">Share</string>
     <string name="dejavu_menu_open_in_app">Open in app</string>
     <string name="dejavu_menu_reset_pinned_url">Reset to pinned URL</string>
     <string name="dejavu_menu_replace_pinned_url">Pin this URL</string>
@@ -479,4 +542,10 @@
     <string name="dejavu_settings_toolbar_size_summary">Smaller bars leave more room for pages</string>
     <!-- The toolbar size as a percent of the normal size, like "85%". %1$d is the number. -->
     <string name="dejavu_settings_toolbar_size_value">%1$d%%</string>
+    <!-- Setting title: middle-clicking a link opens it in a background tab and hovering a link shows its address. -->
+    <string name="dejavu_preference_mouse_support">Mouse support</string>
+    <!-- Setting summary of the mouse support switch. -->
+    <string name="dejavu_preference_mouse_support_summary">Middle-click opens a link in a background tab, and hovering a link shows its address. Applies to new tabs.</string>
+    <!-- Label of the field and menu item where a short word is set that searches a search engine or opens a bookmark when typed before a search. -->
+    <string name="dejavu_search_keyword">Keyword</string>
 </resources>

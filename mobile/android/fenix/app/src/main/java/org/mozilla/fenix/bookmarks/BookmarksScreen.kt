@@ -118,6 +118,8 @@ import org.mozilla.fenix.compose.Favicon
 import org.mozilla.fenix.compose.list.FaviconListItem
 import org.mozilla.fenix.compose.list.SelectableFaviconListItem
 import org.mozilla.fenix.compose.list.SelectableIconListItem
+import org.mozilla.fenix.dejavu.keywordFor
+import org.mozilla.fenix.dejavu.withKeyword
 import org.mozilla.fenix.tabstray.ui.tabpage.EmptyTabPage
 import org.mozilla.fenix.theme.FirefoxTheme
 
@@ -1387,6 +1389,8 @@ private fun BookmarkEditor(
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
     }
+    val settings = components.settings
+    var keyword by remember { mutableStateOf(settings.bookmarkKeywords.keywordFor(bookmarkItem.url)) }
     Row(
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -1419,6 +1423,17 @@ private fun BookmarkEditor(
                     Modifier.semantics {
                         testTag = EDIT_BOOKMARK_ITEM_URL_TEXT_FIELD
                     },
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            ClearableTextField(
+                value = keyword,
+                onValueChange = {
+                    keyword = it
+                    settings.bookmarkKeywords = settings.bookmarkKeywords.withKeyword(it, bookmarkItem.url)
+                },
+                placeholder = stringResource(R.string.dejavu_search_keyword),
             )
         }
     }

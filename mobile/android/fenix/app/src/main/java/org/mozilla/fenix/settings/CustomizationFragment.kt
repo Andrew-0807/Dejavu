@@ -414,6 +414,10 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             isChecked = context.components.settings.isSwipeToolbarToShowTabsEnabled
             onPreferenceChangeListener = SharedPreferenceUpdater()
         }
+        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_mouse_support).apply {
+            isChecked = context.components.settings.isMouseSupportEnabled
+            onPreferenceChangeListener = SharedPreferenceUpdater()
+        }
         requirePreference<SwitchPreferenceCompat>(R.string.pref_key_shake_gesture_enabled).apply {
             isVisible = context.components.settings.shakeToSummarizeFeatureFlagEnabled && isSummarizationEnabled
             isChecked = isSummarizationGestureEnabled
@@ -431,6 +435,10 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
         when (preference.key) {
             resources.getString(R.string.pref_key_dejavu_more_menu) -> {
                 findNavController().navigate(R.id.dejavu_more_menu_graph)
+                return true
+            }
+            resources.getString(R.string.pref_key_dejavu_shortcuts) -> {
+                findNavController().navigate(R.id.dejavu_shortcuts_graph)
                 return true
             }
             resources.getString(R.string.pref_key_website_pull_to_refresh) -> {

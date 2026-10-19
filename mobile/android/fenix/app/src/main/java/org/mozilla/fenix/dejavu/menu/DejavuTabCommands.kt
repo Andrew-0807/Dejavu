@@ -11,6 +11,7 @@ import java.util.Date
 import java.util.Locale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import mozilla.components.browser.state.action.RecentlyClosedAction
 import mozilla.components.browser.state.action.TabListAction
 import mozilla.components.browser.state.state.TabSessionState
 import org.mozilla.fenix.R
@@ -28,7 +29,7 @@ import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 
 /** The entries of the "More" menu that only Dejavu has, carried out on [tab]. */
 internal class DejavuTabCommands(
-    context: Context,
+    private val context: Context,
     private val components: Components,
     private val repository: WorkspaceRepository,
     private val settings: DejavuSettings,
@@ -46,6 +47,7 @@ internal class DejavuTabCommands(
         val pin = workspaces.pinOf(tab.id)
         when (item) {
             MoreMenuItem.SAVE_AS_PDF -> sessionUseCases.saveToPdf(tab.id)
+            MoreMenuItem.SCREENSHOT -> captureFullPageScreenshot(context, components)
             MoreMenuItem.PRINT -> sessionUseCases.printContent(tab.id)
             MoreMenuItem.PIN_TAB ->
                 if (pin != null && !pin.essential) repository.unpin(setOf(pin.id)) else repository.pinTabs(listOf(tab.toPinSource()))
@@ -53,6 +55,7 @@ internal class DejavuTabCommands(
             MoreMenuItem.RESET_PINNED_URL -> pin?.url?.let { sessionUseCases.loadUrl(it, tab.id) }
             MoreMenuItem.REPLACE_PINNED_URL -> pin?.let { repository.replacePinUrl(it.id, tab.content.url, tab.content.title) }
             MoreMenuItem.SPLIT_VIEW -> repository.unsplit(setOf(tab.id))
+            MoreMenuItem.RESTORE_CLOSED_TAB -> restoreClosedTab()
             else -> return false
         }
         return true
@@ -83,6 +86,18 @@ internal class DejavuTabCommands(
         components.applicationScope.launch(Dispatchers.Main) {
             val result = CustomActionRunner(components.core.client).run(action, listOf(actionContext))
             Toast.makeText(appContext, result.message(appContext, action, 1), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun restoreClosedTab() {
+        val closed = components.core.store.state.closedTabs.firstOrNull()
+        if (closed == null) {
+            Toast.makeText(appContext, R.string.dejavu_no_closed_tabs, Toast.LENGTH_SHORT).show()
+            return
+        }
+        components.applicationScope.launch(Dispatchers.Main) {
+            components.useCases.tabsUseCases.restore(closed, components.core.recentlyClosedTabsStorage.engineStateStorage())
+            components.core.store.dispatch(RecentlyClosedAction.RemoveClosedTabAction(closed))
         }
     }
 
