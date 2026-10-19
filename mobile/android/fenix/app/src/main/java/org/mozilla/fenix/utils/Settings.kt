@@ -2262,6 +2262,14 @@ class Settings(
                     (isTabStripEligible(appContext) || FxNimbus.features.tabStrip.value().allowOnAllDevices),
         )
 
+    /** Shows the open tabs in a sidebar next to the page on large screens. */
+    var isVerticalTabsEnabled by
+        booleanPreference(appContext.getPreferenceKey(R.string.pref_key_vertical_tabs), default = false)
+
+    /** Whether the vertical tabs sidebar only shows the icons of the tabs. */
+    var isVerticalTabsCollapsed by
+        booleanPreference(appContext.getPreferenceKey(R.string.pref_key_vertical_tabs_collapsed), default = false)
+
     var isDynamicToolbarEnabled by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_dynamic_toolbar),

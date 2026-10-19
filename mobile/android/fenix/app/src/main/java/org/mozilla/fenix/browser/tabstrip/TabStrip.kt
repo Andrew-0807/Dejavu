@@ -515,7 +515,7 @@ private fun TabItem(
  * @param icon The tab's favicon bitmap, if available.
  */
 @Composable
-private fun TabStripIcon(
+internal fun TabStripIcon(
     url: String,
     icon: Bitmap?,
 ) {

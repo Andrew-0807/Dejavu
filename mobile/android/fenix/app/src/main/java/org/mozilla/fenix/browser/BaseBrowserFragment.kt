@@ -195,6 +195,7 @@ import org.mozilla.fenix.browser.reloadcover.TabReloadCoverGating
 import org.mozilla.fenix.browser.store.BrowserScreenMiddleware
 import org.mozilla.fenix.browser.store.BrowserScreenState
 import org.mozilla.fenix.browser.store.BrowserScreenStore
+import org.mozilla.fenix.browser.tabstrip.TabSidebar
 import org.mozilla.fenix.browser.tabstrip.TabStrip
 import org.mozilla.fenix.components.AppStore
 import org.mozilla.fenix.components.FenixAutocompletePrompt
@@ -554,6 +555,7 @@ abstract class BaseBrowserFragment :
 
         _browserToolbar = initializeBrowserToolbar(activity, store, readerMenuController)
         browserTabStrip = initializeBrowserTabStripView(activity, appStore, settings)
+        initializeTabSidebar(appStore, settings)
 
         if (settings.microsurveyFeatureEnabled) {
             listenForMicrosurveyMessage(context)
@@ -1597,20 +1599,7 @@ abstract class BaseBrowserFragment :
             TabStrip(
                 showTabCounterButton = false,
                 hideWhenKeyboardShown = settings.shouldUseBottomTabStrip,
-                onAddTabClick = {
-                    if (settings.enableHomepageAsNewTab) {
-                        requireComponents.useCases.fenixBrowserUseCases.addNewHomepageTab(
-                            private = appStore.state.mode.isPrivate
-                        )
-                    } else {
-                        findNavController()
-                            .navigate(
-                                NavGraphDirections.actionGlobalHome(
-                                    focusOnAddressBar = !settings.enableHomepageTrendingRecentSearch
-                                )
-                            )
-                    }
-                },
+                onAddTabClick = { openNewTab(appStore, settings) },
                 onLastTabClose = { isPrivate ->
                     requireComponents.appStore.dispatch(AppAction.TabStripAction.UpdateLastTabClosed(isPrivate))
                     findNavController().navigate(BrowserFragmentDirections.actionGlobalHome())
@@ -1621,6 +1610,41 @@ abstract class BaseBrowserFragment :
                 },
                 onTabCounterClick = { onTabCounterClicked(appStore.state.mode) },
             )
+        }
+    }
+
+    private fun openNewTab(appStore: AppStore, settings: org.mozilla.fenix.utils.Settings) {
+        if (settings.enableHomepageAsNewTab) {
+            requireComponents.useCases.fenixBrowserUseCases.addNewHomepageTab(
+                private = appStore.state.mode.isPrivate
+            )
+        } else {
+            findNavController()
+                .navigate(
+                    NavGraphDirections.actionGlobalHome(
+                        focusOnAddressBar = !settings.enableHomepageTrendingRecentSearch
+                    )
+                )
+        }
+    }
+
+    /** Shows the vertical tabs sidebar next to the page on large screens when the user turned it on. */
+    private fun initializeTabSidebar(appStore: AppStore, settings: org.mozilla.fenix.utils.Settings) {
+        if (customTabSessionId != null || !settings.isVerticalTabsEnabled) return
+        binding.tabSidebar.setContent {
+            FirefoxTheme {
+                TabSidebar(
+                    settings = settings,
+                    onAddTabClick = { openNewTab(appStore, settings) },
+                    onCloseTabClick = { isPrivate ->
+                        showUndoSnackbar(requireContext().tabClosedUndoMessage(isPrivate))
+                    },
+                    onLastTabClose = { isPrivate ->
+                        requireComponents.appStore.dispatch(AppAction.TabStripAction.UpdateLastTabClosed(isPrivate))
+                        findNavController().navigate(BrowserFragmentDirections.actionGlobalHome())
+                    },
+                )
+            }
         }
     }
 
@@ -2496,6 +2520,7 @@ abstract class BaseBrowserFragment :
                 }
             )
             (view as? SwipeGestureLayout)?.isSwipeEnabled = false
+            binding.tabSidebar.isVisible = false
             expandBrowserView()
 
             MediaState.fullscreen.record(NoExtras())
@@ -2510,6 +2535,7 @@ abstract class BaseBrowserFragment :
             }
 
             (view as? SwipeGestureLayout)?.isSwipeEnabled = true
+            binding.tabSidebar.isVisible = true
             (activity as? HomeActivity)?.let { homeActivity ->
                 // ExternalAppBrowserActivity exclusively handles it's own theming unless in private mode.
                 if (homeActivity !is ExternalAppBrowserActivity || homeActivity.browsingModeManager.mode.isPrivate) {
