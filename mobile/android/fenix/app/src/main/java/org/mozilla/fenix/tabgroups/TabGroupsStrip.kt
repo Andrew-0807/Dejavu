@@ -12,10 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.browser.ScaledToolbar
+import org.mozilla.fenix.dejavu.browser.unscaledDimensionResource
 import org.mozilla.fenix.theme.FirefoxTheme
 
 /**
@@ -34,7 +34,7 @@ fun TabGroupsStrip(
             modifier =
                 modifier
                     .fillMaxWidth()
-                    .height(dimensionResource(R.dimen.tab_groups_strip_height))
+                    .height(unscaledDimensionResource(R.dimen.tab_groups_strip_height))
                     .testTag(TabGroupsTestTag.TAB_GROUPS_STRIP),
             color = containerColor,
             content = {},

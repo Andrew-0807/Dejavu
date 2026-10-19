@@ -46,7 +46,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.CustomAccessibilityAction
@@ -87,6 +86,7 @@ import org.mozilla.fenix.compose.Favicon
 import org.mozilla.fenix.compose.HorizontalFadingEdgeBox
 import org.mozilla.fenix.compose.ext.isItemPartiallyVisible
 import org.mozilla.fenix.dejavu.browser.ScaledToolbar
+import org.mozilla.fenix.dejavu.browser.unscaledDimensionResource
 import org.mozilla.fenix.tabstray.browser.compose.ReorderableDragItemContainer
 import org.mozilla.fenix.tabstray.browser.compose.createListReorderState
 import org.mozilla.fenix.tabstray.browser.compose.detectListPressAndDrag
@@ -256,7 +256,7 @@ private fun TabStripContent(
     Row(
         modifier =
             Modifier.fillMaxWidth()
-                .height(dimensionResource(R.dimen.tab_strip_height))
+                .height(unscaledDimensionResource(R.dimen.tab_strip_height))
                 .background(brush = colors.backgroundBrush)
                 .systemGestureExclusion(),
         verticalAlignment = Alignment.CenterVertically,
@@ -287,7 +287,7 @@ private fun TabStripContent(
         if (showTabCounterButton) {
             TabStripTabCounterButton(
                 tabCount = state.tabs.size,
-                size = dimensionResource(R.dimen.tab_strip_height),
+                size = unscaledDimensionResource(R.dimen.tab_strip_height),
                 menuItems = state.menuItems,
                 privacyBadgeVisible = state.isPrivateMode,
                 onClick = onTabCounterClick,
@@ -629,7 +629,7 @@ private fun TabStripPreview(
 
 @Composable
 private fun TabStripContentPreview(tabs: List<TabStripItem>) {
-    Surface(modifier = Modifier.fillMaxWidth().height(dimensionResource(id = R.dimen.tab_strip_height))) {
+    Surface(modifier = Modifier.fillMaxWidth().height(unscaledDimensionResource(id = R.dimen.tab_strip_height))) {
         TabStripContent(
             state =
                 TabStripState(
@@ -653,7 +653,7 @@ private fun TabStripPreview(@PreviewParameter(PreviewThemeProvider::class) theme
     val browserStore = BrowserStore()
 
     FirefoxTheme(theme) {
-        Surface(modifier = Modifier.fillMaxWidth().height(dimensionResource(id = R.dimen.tab_strip_height))) {
+        Surface(modifier = Modifier.fillMaxWidth().height(unscaledDimensionResource(id = R.dimen.tab_strip_height))) {
             TabStrip(
                 appStore = AppStore(),
                 browserStore = browserStore,

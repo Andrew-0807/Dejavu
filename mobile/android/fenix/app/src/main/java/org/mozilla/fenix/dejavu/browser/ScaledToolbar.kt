@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.dejavu.browser
 
+import androidx.annotation.DimenRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -11,6 +12,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import org.mozilla.fenix.ext.components
 
 /**
@@ -31,3 +34,8 @@ fun ScaledToolbar(content: @Composable () -> Unit) {
     val scaled = remember(density, scale) { Density(density.density * scale, density.fontScale) }
     CompositionLocalProvider(LocalDensity provides scaled, content = content)
 }
+
+/** Like `dimensionResource`, which divides by the scaled [LocalDensity] and so undoes [ScaledToolbar]'s shrinking. */
+@Composable
+fun unscaledDimensionResource(@DimenRes id: Int): Dp =
+    LocalContext.current.resources.run { (getDimension(id) / displayMetrics.density).dp }

@@ -59,6 +59,7 @@ import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.openDejavuMenu
 import org.mozilla.fenix.dejavu.browser.shownWorkspaceTheme
+import org.mozilla.fenix.dejavu.browser.unscaledDimensionResource
 import org.mozilla.fenix.dejavu.browser.workspaceTheme
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
@@ -103,9 +104,8 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit) {
             isDesktopMode = current.content.desktopMode,
         )
     } ?: MoreMenuState()
-    // getBottomToolbarHeight reports the same dimen. Not dimensionResource, which divides by the LocalDensity that
-    // ScaledToolbar scales, so the bar would not shrink.
-    val barHeight = context.resources.run { (getDimension(R.dimen.browser_navbar_height) / displayMetrics.density).dp }
+    // getBottomToolbarHeight reports the same dimen.
+    val barHeight = unscaledDimensionResource(R.dimen.browser_navbar_height)
 
     Box(
         modifier = Modifier
