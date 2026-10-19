@@ -18,6 +18,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.view.accessibility.AccessibilityManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.CallSuper
@@ -47,6 +48,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import java.lang.ref.WeakReference
 import kotlin.coroutines.cancellation.CancellationException
+import kotlin.math.abs
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -2070,7 +2072,11 @@ abstract class BaseBrowserFragment :
             components.useCases.sessionUseCases.reload()
         }
         hideToolbar()
-        if (components.settings.shouldHideSystemBars) hideSystemBars()
+        if (components.settings.shouldHideSystemBars) {
+            systemBarsFollowToolbar = isToolbarDynamic(requireContext())
+            systemBarsHidden = null
+            view?.viewTreeObserver?.addOnPreDrawListener(systemBarsUpdater)
+        }
 
         BiometricAuthenticationManager.biometricAuthenticationNeededInfo.shouldShowAuthenticationPrompt = true
         BiometricAuthenticationManager.biometricAuthenticationNeededInfo.authenticationStatus =
@@ -2090,6 +2096,7 @@ abstract class BaseBrowserFragment :
     override fun onPause() {
         super.onPause()
         view?.hideKeyboard()
+        view?.viewTreeObserver?.removeOnPreDrawListener(systemBarsUpdater)
     }
 
     override fun onStart() {
@@ -2118,12 +2125,39 @@ abstract class BaseBrowserFragment :
         }
     }
 
-    private fun hideSystemBars() {
-        activity?.enterImmersiveMode(
-            setOnApplyWindowInsetsListener = { key: String, listener: OnApplyWindowInsetsListener ->
-                binding.engineView.addWindowInsetsListener(key, listener)
-            }
+    // Dejavu: the system bars follow the dynamic toolbar. They hide when it is fully scrolled away and
+    // show as soon as it slides back in. With a fixed toolbar they stay hidden.
+    private var systemBarsFollowToolbar = false
+    private var systemBarsHidden: Boolean? = null
+    private val systemBarsUpdater = ViewTreeObserver.OnPreDrawListener {
+        setSystemBarsHidden(
+            !systemBarsFollowToolbar ||
+                isFullyScrolledAway(_browserToolbar?.layout) ||
+                isFullyScrolledAway(_bottomToolbarContainerView?.toolbarContainerView)
         )
+        true
+    }
+
+    // Like EngineViewClippingBehavior, treat a toolbar within 2px of hidden as hidden.
+    private fun isFullyScrolledAway(toolbar: View?) =
+        toolbar != null &&
+            (!toolbar.isVisible || (toolbar.height > 0 && toolbar.height - abs(toolbar.translationY) <= 2))
+
+    private fun setSystemBarsHidden(hidden: Boolean) {
+        val activity = activity ?: return
+        if (hidden == systemBarsHidden) return
+        systemBarsHidden = hidden
+        if (hidden) {
+            activity.enterImmersiveMode(
+                setOnApplyWindowInsetsListener = { key: String, listener: OnApplyWindowInsetsListener ->
+                    binding.engineView.addWindowInsetsListener(key, listener)
+                }
+            )
+        } else {
+            activity.exitImmersiveMode(
+                unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
+            )
+        }
     }
 
     @CallSuper
@@ -2332,9 +2366,9 @@ abstract class BaseBrowserFragment :
 
             MediaState.fullscreen.record(NoExtras())
         } else {
-            // Dejavu: keep the system bars hidden when the user chose so.
+            // Dejavu: the system bars stay hidden and follow the toolbar again from the next frame.
             if (requireComponents.settings.shouldHideSystemBars) {
-                hideSystemBars()
+                systemBarsHidden = null
             } else {
                 activity.exitImmersiveMode(
                     unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
