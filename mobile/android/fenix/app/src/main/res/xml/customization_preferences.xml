@@ -135,6 +135,27 @@
         <androidx.preference.SwitchPreferenceCompat
             android:key="@string/pref_key_swipe_toolbar_show_tabs"
             android:title="@string/preference_gestures_swipe_toolbar_show_tabs_2" />
+        <androidx.preference.ListPreference
+            android:key="@string/pref_key_toolbar_swipe_gesture"
+            android:title="@string/dejavu_gesture_swipe"
+            android:defaultValue="more_menu"
+            android:entries="@array/dejavu_gesture_entries"
+            android:entryValues="@array/dejavu_gesture_values"
+            app:useSimpleSummaryProvider="true" />
+        <androidx.preference.ListPreference
+            android:key="@string/pref_key_toolbar_double_tap_gesture"
+            android:title="@string/dejavu_gesture_double_tap"
+            android:defaultValue="scroll_top"
+            android:entries="@array/dejavu_gesture_entries"
+            android:entryValues="@array/dejavu_gesture_values"
+            app:useSimpleSummaryProvider="true" />
+        <androidx.preference.ListPreference
+            android:key="@string/pref_key_toolbar_long_press_gesture"
+            android:title="@string/dejavu_gesture_long_press"
+            android:defaultValue="address_menu"
+            android:entries="@array/dejavu_gesture_entries"
+            android:entryValues="@array/dejavu_gesture_values"
+            app:useSimpleSummaryProvider="true" />
         <androidx.preference.SwitchPreferenceCompat
             android:key="@string/pref_key_shake_gesture_enabled"
             android:title="@string/preferences_shake_to_summarize"

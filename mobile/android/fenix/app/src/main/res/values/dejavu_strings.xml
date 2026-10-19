@@ -7,6 +7,40 @@
     <string name="pref_key_dejavu_containers" translatable="false">pref_key_dejavu_containers</string>
     <string name="pref_key_dejavu_external_links" translatable="false">pref_key_dejavu_external_links</string>
     <string name="pref_key_dejavu_tab_sleep" translatable="false">pref_key_dejavu_tab_sleep</string>
+    <string name="pref_key_toolbar_swipe_gesture" translatable="false">pref_key_toolbar_swipe_gesture</string>
+    <string name="pref_key_toolbar_double_tap_gesture" translatable="false">pref_key_toolbar_double_tap_gesture</string>
+    <string name="pref_key_toolbar_long_press_gesture" translatable="false">pref_key_toolbar_long_press_gesture</string>
+    <string name="dejavu_gesture_swipe">Swipe the toolbar up</string>
+    <string name="dejavu_gesture_double_tap">Double-tap the toolbar</string>
+    <string name="dejavu_gesture_long_press">Long-press the toolbar</string>
+    <string name="dejavu_gesture_none">Nothing</string>
+    <string name="dejavu_gesture_scroll_top">Scroll to the top</string>
+    <string name="dejavu_gesture_reload">Reload the page</string>
+    <string name="dejavu_gesture_close_tab">Close the tab</string>
+    <string name="dejavu_gesture_tab_list">Open the tab list</string>
+    <string name="dejavu_gesture_restore_closed">Restore the last closed tab</string>
+    <string name="dejavu_gesture_more_menu">Open the menu</string>
+    <string name="dejavu_gesture_address_menu">Copy or paste the address</string>
+    <string-array name="dejavu_gesture_values" translatable="false">
+        <item>none</item>
+        <item>scroll_top</item>
+        <item>reload</item>
+        <item>close_tab</item>
+        <item>tab_list</item>
+        <item>restore_closed</item>
+        <item>more_menu</item>
+        <item>address_menu</item>
+    </string-array>
+    <string-array name="dejavu_gesture_entries">
+        <item>@string/dejavu_gesture_none</item>
+        <item>@string/dejavu_gesture_scroll_top</item>
+        <item>@string/dejavu_gesture_reload</item>
+        <item>@string/dejavu_gesture_close_tab</item>
+        <item>@string/dejavu_gesture_tab_list</item>
+        <item>@string/dejavu_gesture_restore_closed</item>
+        <item>@string/dejavu_gesture_more_menu</item>
+        <item>@string/dejavu_gesture_address_menu</item>
+    </string-array>
     <!-- Name of Mozilla's browser, for texts about Mozilla's own services like Firefox Suggest. -->
     <string name="dejavu_firefox_name" translatable="false" tools:ignore="BrandUsage">Firefox</string>
 

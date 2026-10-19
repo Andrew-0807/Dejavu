@@ -68,7 +68,7 @@ import org.mozilla.fenix.compose.snackbar.SnackbarState
 import org.mozilla.fenix.dejavu.browser.DejavuLinkMenu
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.DejavuWindowTheme
-import org.mozilla.fenix.dejavu.browser.openDejavuMenu
+import org.mozilla.fenix.dejavu.browser.runToolbarGesture
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.application
 import org.mozilla.fenix.ext.components
@@ -250,7 +250,8 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
                     toolbarPosition = settings.toolbarPosition,
                     navController = findNavController(),
                     onSwipe = { fromNavBar: Boolean ->
-                        findNavController().openDejavuMenu(fromBottom = fromNavBar)
+                        val gesture = settings.toolbarSwipeGesture
+                        runToolbarGesture(requireContext(), findNavController(), gesture, fromNavBar)
                     }.takeIf { DejavuToolbar.enabled },
                 )
             )

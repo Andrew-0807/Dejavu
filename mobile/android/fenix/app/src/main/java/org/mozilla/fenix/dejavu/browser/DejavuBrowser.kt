@@ -103,6 +103,9 @@ object DejavuToolbar {
     /** The user tapped the search button of the actions bar. */
     data object SearchClicked : DejavuToolbarEvent
 
+    /** The user did the toolbar gesture set to [key], see [runToolbarGesture]. */
+    data class GestureTriggered(val key: String) : DejavuToolbarEvent
+
     /** The user asked for the whole "More" menu without swiping the actions bar up, from a screen reader. */
     data object MenuRequested : DejavuToolbarEvent
 
@@ -121,6 +124,7 @@ object DejavuToolbar {
                 store.dispatch(PageOriginInteractions.OriginClicked)
             }
             MenuRequested -> navController.openDejavuMenu(fromBottom = true)
+            is GestureTriggered -> runToolbarGesture(context, navController, event.key, fromBottom = true)
         }
     }
 
@@ -213,4 +217,18 @@ fun NavController.openDejavuMenu(fromBottom: Boolean, opening: DejavuMenu.Openin
     val directions = NavGraphDirections.actionGlobalMenuDialogFragment(accesspoint = MenuAccessPoint.Browser)
     if (currentDestination?.id != R.id.browserFragment) return
     navigate(directions.actionId, directions.arguments.apply { putAll(DejavuMenu.arguments(fromBottom, opening)) })
+}
+
+/** Carries out the toolbar gesture [key], one of `dejavu_gesture_values` but the address menu, which the bar opens. */
+fun runToolbarGesture(context: Context, navController: NavController, key: String, fromBottom: Boolean) {
+    val components = context.components
+    when (key) {
+        "scroll_top" ->
+            components.useCases.sessionUseCases.loadUrl("javascript:window.scrollTo({top:0,behavior:'smooth'});void 0")
+        "reload" -> components.useCases.sessionUseCases.reload()
+        "close_tab" -> components.core.store.state.selectedTab?.let { closeShownTab(components, navController, it) }
+        "tab_list" -> navController.navigate(NavGraphDirections.actionGlobalHome())
+        "restore_closed" -> components.useCases.tabsUseCases.undo()
+        "more_menu" -> navController.openDejavuMenu(fromBottom)
+    }
 }
