@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -42,6 +43,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.nativeKeyEvent
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.painterResource
@@ -75,6 +82,9 @@ import org.mozilla.fenix.dejavu.containers.color
 import org.mozilla.fenix.dejavu.containers.drawable
 import org.mozilla.fenix.dejavu.menu.ActionsBarLayout
 import org.mozilla.fenix.dejavu.menu.menuKey
+import org.mozilla.fenix.dejavu.shortcuts.KeyCombo
+import org.mozilla.fenix.dejavu.shortcuts.KeyboardShortcuts
+import org.mozilla.fenix.dejavu.shortcuts.ShortcutAction
 import org.mozilla.fenix.dejavu.sync.workspaceIconText
 import org.mozilla.fenix.dejavu.ui.DejavuButtonStyle
 import org.mozilla.fenix.dejavu.ui.DejavuDialog
@@ -739,3 +749,119 @@ internal fun Fragment.workspaceRepository(): WorkspaceRepository =
     requireComponents.strictMode.allowViolation(StrictMode::allowThreadDiskReads) {
         WorkspaceRepository.get(requireContext())
     }
+
+/** Every keyboard shortcut with its key. Tapping one captures the key combination to give it. */
+class DejavuShortcutsFragment : DejavuComposeFragment(R.string.dejavu_settings_shortcuts) {
+    @Composable
+    override fun DejavuScreen() {
+        val settings = remember { dejavuSettings() }
+        val saved by settings.shortcuts.collectAsState()
+        var editing by remember { mutableStateOf<ShortcutAction?>(null) }
+        Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+            Text(
+                text = stringResource(R.string.dejavu_shortcuts_hint),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(16.dp),
+            )
+            ShortcutAction.entries.forEachIndexed { index, action ->
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .settingsCard(index, ShortcutAction.entries.size)
+                        .fillMaxWidth()
+                        .clickable { editing = action }
+                        .padding(horizontal = 16.dp, vertical = 16.dp),
+                ) {
+                    Text(
+                        text = stringResource(action.label, action.labelArg),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.weight(1f),
+                    )
+                    Text(
+                        text = KeyboardShortcuts.comboOf(action, saved)?.label()
+                            ?: stringResource(R.string.dejavu_shortcuts_none),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+            Spacer(Modifier.height(24.dp))
+        }
+        editing?.let { action ->
+            ShortcutDialog(
+                action = action,
+                saved = saved,
+                onSet = { settings.setShortcut(action.key, it) },
+                onSwap = { other, combo ->
+                    settings.setShortcut(other.key, KeyboardShortcuts.comboOf(action, saved)?.encode() ?: "")
+                    settings.setShortcut(action.key, combo.encode())
+                },
+                onDismiss = { editing = null },
+            )
+        }
+    }
+}
+
+@Composable
+private fun ShortcutDialog(
+    action: ShortcutAction,
+    saved: Map<String, String>,
+    onSet: (String?) -> Unit,
+    onSwap: (ShortcutAction, KeyCombo) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    var captured by remember { mutableStateOf<KeyCombo?>(null) }
+    val taken = captured?.let { KeyboardShortcuts.actionFor(it, saved) }?.takeIf { it != action }
+    val focus = remember { FocusRequester() }
+    LaunchedEffect(Unit) { focus.requestFocus() }
+    DejavuDialog(
+        title = stringResource(action.label, action.labelArg),
+        onDismissRequest = onDismiss,
+        buttons = {
+            DejavuDialogButton(stringResource(R.string.dejavu_shortcuts_reset), { onSet(null); onDismiss() })
+            DejavuDialogButton(stringResource(R.string.dejavu_shortcuts_clear), { onSet(""); onDismiss() })
+            val combo = captured
+            if (taken != null && combo != null) {
+                DejavuDialogButton(
+                    stringResource(R.string.dejavu_shortcuts_swap),
+                    { onSwap(taken, combo); onDismiss() },
+                    DejavuButtonStyle.Primary,
+                )
+            } else {
+                DejavuDialogButton(
+                    stringResource(R.string.dejavu_shortcuts_save),
+                    { onSet(combo?.encode()); onDismiss() },
+                    DejavuButtonStyle.Primary,
+                    enabled = combo != null,
+                )
+            }
+        },
+    ) {
+        Text(
+            text = captured?.label() ?: stringResource(R.string.dejavu_shortcuts_press),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier
+                .focusRequester(focus)
+                .onPreviewKeyEvent {
+                    val combo = if (it.type == KeyEventType.KeyDown) KeyCombo.of(it.nativeKeyEvent) else null
+                    if (combo?.hasCtrlOrAlt == true) captured = combo
+                    combo?.hasCtrlOrAlt == true
+                }
+                .focusable(),
+        )
+        if (taken != null) {
+            Text(
+                text = stringResource(
+                    R.string.dejavu_shortcuts_taken,
+                    captured?.label().orEmpty(),
+                    stringResource(taken.label, taken.labelArg),
+                ),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.error,
+            )
+        }
+    }
+}

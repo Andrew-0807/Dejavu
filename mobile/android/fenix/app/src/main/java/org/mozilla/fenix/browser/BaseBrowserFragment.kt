@@ -201,6 +201,7 @@ import org.mozilla.fenix.components.toolbar.BottomToolbarContainerView
 import org.mozilla.fenix.components.toolbar.BrowserNavigationBar
 import org.mozilla.fenix.components.toolbar.BrowserTabStrip
 import org.mozilla.fenix.components.toolbar.BrowserToolbarComposable
+import org.mozilla.fenix.components.toolbar.PageOriginInteractions
 import org.mozilla.fenix.components.toolbar.ToolbarContainerView
 import org.mozilla.fenix.components.toolbar.ToolbarPosition
 import org.mozilla.fenix.components.toolbar.ToolbarsIntegration
@@ -212,6 +213,7 @@ import org.mozilla.fenix.databinding.FragmentBrowserBinding
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
+import org.mozilla.fenix.dejavu.shortcuts.KeyboardShortcuts
 import org.mozilla.fenix.downloads.DownloadService
 import org.mozilla.fenix.downloads.RenameAndChangeLocationDialogFragment
 import org.mozilla.fenix.downloads.dialog.createDownloadAppDialog
@@ -1490,6 +1492,7 @@ abstract class BaseBrowserFragment :
         readerModeController: DefaultReaderModeController,
     ): BrowserToolbarComposable {
         val toolbarStore by buildToolbarStore(activity, readerModeController)
+        KeyboardShortcuts.focusAddressBar = { toolbarStore.dispatch(PageOriginInteractions.OriginClicked) }
         val components = requireComponents
         val settings = components.settings
         val appStore = components.appStore
