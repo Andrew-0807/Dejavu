@@ -123,6 +123,8 @@
     <!-- Split view -->
     <string name="dejavu_split_view">Split view</string>
     <string name="dejavu_split_show_on_top">Show on top</string>
+    <!-- Button in the split view pane that swaps its tab with the selected tab, when the two are side by side. -->
+    <string name="dejavu_split_swap">Swap tabs</string>
     <string name="dejavu_split_close">Close split view</string>
     <string name="dejavu_action_reset_pin">Reset pinned tab</string>
     <string name="dejavu_action_add_to_essentials">Add to essentials</string>
