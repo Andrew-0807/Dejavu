@@ -2258,6 +2258,26 @@ class Settings(
             default = false,
         )
 
+    // Dejavu: swipe down on the bottom bar to hide every bar until the floating button is tapped.
+    var isSwipeDownForImmersiveEnabled by
+        booleanPreference(
+            appContext.getPreferenceKey(R.string.pref_key_dejavu_swipe_down_immersive),
+            default = true,
+        )
+
+    // Dejavu: where the floating button that leaves full immersive mode sits, as fractions of the screen.
+    var immersiveButtonX by
+        floatPreference(
+            appContext.getPreferenceKey(R.string.pref_key_dejavu_immersive_button_x),
+            default = 1f,
+        )
+
+    var immersiveButtonY by
+        floatPreference(
+            appContext.getPreferenceKey(R.string.pref_key_dejavu_immersive_button_y),
+            default = 0.75f,
+        )
+
     var useNewDynamicToolbarBehaviour by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_use_scroll_data_for_dynamic_toolbar),

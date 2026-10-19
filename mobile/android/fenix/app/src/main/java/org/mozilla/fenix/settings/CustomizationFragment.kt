@@ -378,6 +378,10 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             isChecked = context.components.settings.shouldHideSystemBars
             onPreferenceChangeListener = SharedPreferenceUpdater()
         }
+        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_swipe_down_immersive).apply {
+            isChecked = context.components.settings.isSwipeDownForImmersiveEnabled
+            onPreferenceChangeListener = SharedPreferenceUpdater()
+        }
         requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dynamic_toolbar).apply {
             isChecked = context.components.settings.isDynamicToolbarEnabled
             onPreferenceChangeListener = SharedPreferenceUpdater()

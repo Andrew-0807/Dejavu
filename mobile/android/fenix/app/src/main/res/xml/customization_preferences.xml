@@ -83,6 +83,10 @@
             android:key="@string/pref_key_dejavu_hide_system_bars"
             android:title="@string/dejavu_settings_hide_system_bars"
             android:summary="@string/dejavu_settings_hide_system_bars_summary" />
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="@string/pref_key_dejavu_swipe_down_immersive"
+            android:title="@string/dejavu_settings_swipe_down_immersive"
+            android:summary="@string/dejavu_settings_swipe_down_immersive_summary" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory

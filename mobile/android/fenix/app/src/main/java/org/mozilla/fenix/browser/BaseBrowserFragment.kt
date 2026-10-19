@@ -9,6 +9,8 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.storage.StorageManager
@@ -16,10 +18,14 @@ import android.provider.Settings
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.accessibility.AccessibilityManager
+import android.widget.FrameLayout
+import android.widget.ImageView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.CallSuper
 import androidx.annotation.VisibleForTesting
@@ -49,6 +55,7 @@ import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import java.lang.ref.WeakReference
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.math.abs
+import kotlin.math.hypot
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -2118,6 +2125,7 @@ abstract class BaseBrowserFragment :
                 fullScreenChanged(false)
             }
         }
+        exitFullImmersive()
         if (requireComponents.settings.shouldHideSystemBars) {
             activity?.exitImmersiveMode(
                 unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
@@ -2131,7 +2139,8 @@ abstract class BaseBrowserFragment :
     private var systemBarsHidden: Boolean? = null
     private val systemBarsUpdater = ViewTreeObserver.OnPreDrawListener {
         setSystemBarsHidden(
-            !systemBarsFollowToolbar ||
+            isImmersive ||
+                !systemBarsFollowToolbar ||
                 isFullyScrolledAway(_browserToolbar?.layout) ||
                 isFullyScrolledAway(_bottomToolbarContainerView?.toolbarContainerView)
         )
@@ -2157,6 +2166,129 @@ abstract class BaseBrowserFragment :
             activity.exitImmersiveMode(
                 unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
             )
+        }
+    }
+
+    // Dejavu: full immersive mode. A swipe down on the bottom bar hides the system bars and every browser bar.
+    // A floating button that can be dragged anywhere brings them back.
+    private var isImmersive = false
+    private var exitImmersiveButton: View? = null
+    private val exitImmersiveButtonPlacer = View.OnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+        placeExitImmersiveButton()
+    }
+
+    /** The bottom-most visible browser bar, or the top toolbar when nothing is shown at the bottom. */
+    internal fun immersiveSwipeTarget(): View? =
+        listOfNotNull(
+                _bottomToolbarContainerView?.toolbarContainerView,
+                browserNavigationBar?.layout,
+                _browserToolbar?.layout,
+            )
+            .firstOrNull { it.isVisible && it.height > 0 }
+
+    internal fun enterFullImmersive() {
+        val activity = activity ?: return
+        if (isImmersive || fullScreenFeature.get()?.isFullScreen == true) return
+        isImmersive = true
+        if (requireComponents.settings.shouldHideSystemBars) {
+            setSystemBarsHidden(true)
+        } else {
+            activity.enterImmersiveMode(
+                setOnApplyWindowInsetsListener = { key: String, listener: OnApplyWindowInsetsListener ->
+                    binding.engineView.addWindowInsetsListener(key, listener)
+                }
+            )
+        }
+        // Like fullscreen video, so dragging the button over the hidden toolbar does not switch tabs.
+        (view as? SwipeGestureLayout)?.isSwipeEnabled = false
+        expandBrowserView()
+        showExitImmersiveButton()
+    }
+
+    /** Leaves full immersive mode the way fullscreen video is left. Returns false when it was not active. */
+    internal fun exitFullImmersive(): Boolean {
+        if (!isImmersive) return false
+        fullScreenChanged(false)
+        return true
+    }
+
+    private fun showExitImmersiveButton() {
+        val root = view as? ViewGroup ?: return
+        val context = root.context
+        val size = (BUTTON_SIZE_DP * context.resources.displayMetrics.density).toInt()
+        val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
+        var downX = 0f
+        var downY = 0f
+        var isDragging = false
+        val button =
+            ImageView(context).apply {
+                setImageResource(R.drawable.dejavu_ic_fullscreen_exit)
+                setColorFilter(Color.WHITE)
+                background =
+                    GradientDrawable().apply {
+                        shape = GradientDrawable.OVAL
+                        setColor(Color.argb(BUTTON_BACKGROUND_ALPHA, 0, 0, 0))
+                    }
+                setPadding(size / 4, size / 4, size / 4, size / 4)
+                contentDescription = context.getString(R.string.dejavu_exit_full_screen)
+                setOnClickListener { exitFullImmersive() }
+                setOnTouchListener { v, event ->
+                    val maxX = (root.width - v.width).coerceAtLeast(0).toFloat()
+                    val maxY = (root.height - v.height).coerceAtLeast(0).toFloat()
+                    when (event.actionMasked) {
+                        MotionEvent.ACTION_DOWN -> {
+                            downX = event.rawX
+                            downY = event.rawY
+                            isDragging = false
+                        }
+                        MotionEvent.ACTION_MOVE -> {
+                            if (hypot(event.rawX - downX, event.rawY - downY) > touchSlop) {
+                                isDragging = true
+                            }
+                            if (isDragging) {
+                                v.translationX = (v.translationX + event.rawX - downX).coerceIn(0f, maxX)
+                                v.translationY = (v.translationY + event.rawY - downY).coerceIn(0f, maxY)
+                                downX = event.rawX
+                                downY = event.rawY
+                            }
+                        }
+                        MotionEvent.ACTION_UP -> {
+                            if (isDragging) {
+                                // Saved as fractions of the screen so the position survives rotation.
+                                requireComponents.settings.immersiveButtonX =
+                                    if (maxX > 0f) v.translationX / maxX else 0f
+                                requireComponents.settings.immersiveButtonY =
+                                    if (maxY > 0f) v.translationY / maxY else 0f
+                            } else {
+                                v.performClick()
+                            }
+                        }
+                    }
+                    true
+                }
+            }
+        root.addView(button, FrameLayout.LayoutParams(size, size))
+        exitImmersiveButton = button
+        placeExitImmersiveButton()
+        root.addOnLayoutChangeListener(exitImmersiveButtonPlacer)
+    }
+
+    private fun placeExitImmersiveButton() {
+        val button = exitImmersiveButton ?: return
+        val root = button.parent as? View ?: return
+        val size = button.layoutParams.width
+        val settings = requireComponents.settings
+        button.translationX = settings.immersiveButtonX.coerceIn(0f, 1f) * (root.width - size).coerceAtLeast(0)
+        button.translationY = settings.immersiveButtonY.coerceIn(0f, 1f) * (root.height - size).coerceAtLeast(0)
+    }
+
+    private fun removeExitImmersiveButton() {
+        isImmersive = false
+        val button = exitImmersiveButton ?: return
+        exitImmersiveButton = null
+        (button.parent as? ViewGroup)?.let {
+            it.removeOnLayoutChangeListener(exitImmersiveButtonPlacer)
+            it.removeView(button)
         }
     }
 
@@ -2344,6 +2476,8 @@ abstract class BaseBrowserFragment :
     @VisibleForTesting
     internal fun fullScreenChanged(inFullScreen: Boolean) {
         val activity = activity ?: return
+        // Dejavu: leaving fullscreen and entering fullscreen video both end full immersive mode.
+        removeExitImmersiveButton()
         if (inFullScreen) {
             // Close find in page bar if opened
             findInPageIntegration.onBackPressed()
@@ -2422,7 +2556,7 @@ abstract class BaseBrowserFragment :
 
     @VisibleForTesting(otherwise = VisibleForTesting.PROTECTED)
     internal fun collapseBrowserView() {
-        if (webAppToolbarShouldBeVisible) {
+        if (webAppToolbarShouldBeVisible && !isImmersive) {
             browserTabStrip?.visible()
             browserToolbar.visible()
             browserNavigationBar?.visible()
@@ -2519,6 +2653,10 @@ abstract class BaseBrowserFragment :
         private const val REQUEST_CODE_PROMPT_PERMISSIONS = 2
         private const val REQUEST_CODE_APP_PERMISSIONS = 3
         private const val LAST_SAVED_GENERATED_PASSWORD = "last_saved_generated_password"
+
+        // Dejavu: the floating button that leaves full immersive mode.
+        private const val BUTTON_SIZE_DP = 44
+        private const val BUTTON_BACKGROUND_ALPHA = 128
     }
 
     override fun onAccessibilityStateChanged(enabled: Boolean) {
@@ -2530,7 +2668,11 @@ abstract class BaseBrowserFragment :
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
 
-        if (findInPageIntegration.get()?.isFeatureActive != true && fullScreenFeature.get()?.isFullScreen != true) {
+        if (
+            findInPageIntegration.get()?.isFeatureActive != true &&
+                fullScreenFeature.get()?.isFullScreen != true &&
+                !isImmersive
+        ) {
             _browserToolbar?.let {
                 onUpdateToolbarForConfigurationChange(it)
             }

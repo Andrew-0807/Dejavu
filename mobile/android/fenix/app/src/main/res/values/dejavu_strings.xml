@@ -265,6 +265,15 @@
     <string name="dejavu_settings_hide_system_bars">Hide status and navigation bars</string>
     <string name="dejavu_settings_hide_system_bars_summary">Pages fill the whole screen. Swipe from the edge to show the bars for a moment.</string>
 
+    <!-- Settings: swipe down on the toolbar to hide every bar until the floating button is tapped -->
+    <string name="pref_key_dejavu_swipe_down_immersive" translatable="false">pref_key_dejavu_swipe_down_immersive</string>
+    <string name="pref_key_dejavu_immersive_button_x" translatable="false">pref_key_dejavu_immersive_button_x</string>
+    <string name="pref_key_dejavu_immersive_button_y" translatable="false">pref_key_dejavu_immersive_button_y</string>
+    <string name="dejavu_settings_swipe_down_immersive">Swipe down on the toolbar for full screen</string>
+    <string name="dejavu_settings_swipe_down_immersive_summary">Hides every bar. Tap the floating button, which you can drag anywhere, to bring them back.</string>
+    <!-- Content description of the floating button that leaves full screen -->
+    <string name="dejavu_exit_full_screen">Exit full screen</string>
+
     <!-- Settings: "More" menu editor -->
     <string name="pref_key_dejavu_more_menu" translatable="false">pref_key_dejavu_more_menu</string>
     <string name="dejavu_settings_more_menu">More menu</string>

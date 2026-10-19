@@ -62,6 +62,7 @@ import org.mozilla.fenix.components.metrics.installSourcePackage
 import org.mozilla.fenix.components.share.isSystemShareSheetSupported
 import org.mozilla.fenix.components.toolbar.ToolbarPosition
 import org.mozilla.fenix.components.toolbar.gestures.ToolbarHorizontalGesturesHandler
+import org.mozilla.fenix.components.toolbar.gestures.ToolbarSwipeDownHandler
 import org.mozilla.fenix.components.toolbar.gestures.ToolbarVerticalGesturesHandler
 import org.mozilla.fenix.compose.snackbar.Snackbar
 import org.mozilla.fenix.compose.snackbar.SnackbarState
@@ -220,6 +221,17 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
     }
 
     private fun setupToolbarSwipeBehavior(settings: Settings, components: Components) {
+        // Dejavu: added first so a swipe down on the bar enters full immersive mode before other handlers see it.
+        binding.gestureLayout.addGestureListener(
+            ToolbarSwipeDownHandler(
+                targetView = ::immersiveSwipeTarget,
+                isEnabled = {
+                    settings.isSwipeDownForImmersiveEnabled && !components.appStore.state.searchState.isSearchActive
+                },
+                onSwipeDown = ::enterFullImmersive,
+            )
+        )
+
         if (!settings.isTabStripEnabled && settings.isSwipeToolbarToSwitchTabsEnabled) {
             binding.gestureLayout.addGestureListener(
                 ToolbarHorizontalGesturesHandler(
@@ -475,7 +487,7 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
     }
 
     override fun onBackPressed(): Boolean {
-        return readerViewFeature.onBackPressed() || super.onBackPressed()
+        return exitFullImmersive() || readerViewFeature.onBackPressed() || super.onBackPressed()
     }
 
     override fun navToQuickSettingsSheet(tab: SessionState, sitePermissions: SitePermissions?) {
