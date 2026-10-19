@@ -8,19 +8,29 @@ import android.Manifest.permission.ACCESS_LOCAL_NETWORK
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.VisibleForTesting
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -56,7 +66,6 @@ import mozilla.components.support.utils.BuildManufacturerChecker
 import mozilla.components.support.utils.DateTimeProvider
 import mozilla.components.support.utils.DefaultDateTimeProvider
 import mozilla.components.support.utils.ext.navigateToDefaultBrowserAppsSettings
-import mozilla.components.ui.icons.R as iconsR
 import mozilla.components.ui.widgets.withCenterAlignedButtons
 import mozilla.telemetry.glean.private.NoExtras
 import org.mozilla.fenix.Config
@@ -75,17 +84,19 @@ import org.mozilla.fenix.components.accounts.FenixFxAEntryPoint
 import org.mozilla.fenix.databinding.AmoCollectionOverrideDialogBinding
 import org.mozilla.fenix.dejavu.DejavuLinks
 import org.mozilla.fenix.dejavu.features.DejavuFeatureTourFragment
+import org.mozilla.fenix.dejavu.settings.SettingsGroup
+import org.mozilla.fenix.dejavu.settings.SettingsHome
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.application
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getPreferenceKey
+import org.mozilla.fenix.ext.isWideWindow
 import org.mozilla.fenix.ext.navigateToAppDetailsSettings
 import org.mozilla.fenix.ext.navigateToNotificationsSettings
 import org.mozilla.fenix.ext.openInNewTab
 import org.mozilla.fenix.ext.openToBrowser
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.showToolbar
-import org.mozilla.fenix.ext.showToolbarWithIconButton
 import org.mozilla.fenix.home.maybeNavigateToSystemSetToDefaultAction
 import org.mozilla.fenix.home.maybeRequestDefaultBrowserPrompt
 import org.mozilla.fenix.nimbus.FxNimbus
@@ -94,6 +105,7 @@ import org.mozilla.fenix.perf.ProfilerViewModelFactory
 import org.mozilla.fenix.settings.account.AccountUiView
 import org.mozilla.fenix.snackbar.FenixSnackbarDelegate
 import org.mozilla.fenix.snackbar.SnackbarBinding
+import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
 
 /** Main settings screen. */
@@ -118,6 +130,16 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
     private var localNetworkPermissionRequestAttempted = false
 
     private val dateTimeProvider: DateTimeProvider by lazy { DefaultDateTimeProvider() }
+
+    // Dejavu: the settings home and the category it shows, see docs/dejavu/settings-redesign.md.
+    private var shownGroup by mutableStateOf<SettingsGroup?>(null)
+    private var homeView: View? = null
+    private var listContainer: View? = null
+    private var toolbarTitle = ""
+    private val backToHome =
+        object : OnBackPressedCallback(false) {
+            override fun handleOnBackPressed() = showGroup(null)
+        }
 
     @VisibleForTesting
     internal val accountObserver =
@@ -237,8 +259,76 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
             getString(R.string.dejavu_settings_author, getString(R.string.dejavu_author_name))
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val list = super.onCreateView(inflater, container, savedInstanceState)
+        val home = ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                FirefoxTheme {
+                    SettingsHome(
+                        selected = shownGroup,
+                        onSearch = if (args.searchInProgress) null else ::openSearch,
+                        onSelect = ::showGroup,
+                    )
+                }
+            }
+        }
+        homeView = home
+        listContainer = list
+        return LinearLayout(requireContext()).apply {
+            addView(home)
+            addView(list, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1f))
+        }
+    }
+
+    /**
+     * Dejavu: shows the root preferences of [group] only. A phone shows the settings home instead when [group] is
+     * `null`, a tablet shows the home on the left and a category, the first one by default, on the right.
+     */
+    private fun showGroup(group: SettingsGroup?) {
+        val wide = isWideWindow()
+        val shown = group ?: SettingsGroup.entries.first().takeIf { wide }
+        if (shown != shownGroup) listView?.scrollToPosition(0)
+        shownGroup = shown
+        SettingsGroup.entries.forEach { findPreference<Preference>(getString(it.key))?.isVisible = it == shown }
+        homeView?.let { home ->
+            home.isVisible = wide || shown == null
+            home.layoutParams = LinearLayout.LayoutParams(
+                if (wide) (HOME_PANE_WIDTH_DP * resources.displayMetrics.density).toInt() else 0,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                if (wide) 0f else 1f,
+            )
+        }
+        listContainer?.isVisible = shown != null
+        backToHome.isEnabled = !wide && shown != null
+        if (isResumed) updateToolbar()
+    }
+
+    private fun groupOf(key: String): SettingsGroup? {
+        val keys = generateSequence(findPreference<Preference>(key)) { it.parent }.map { it.key }.toList()
+        return SettingsGroup.entries.firstOrNull { getString(it.key) in keys }
+    }
+
+    private fun updateToolbar() {
+        val group = shownGroup?.takeIf { !isWideWindow() }
+        showToolbar(group?.let { getString(it.title) } ?: toolbarTitle)
+    }
+
+    private fun openSearch() {
+        SettingsSearch.opened.record()
+        findNavController().navigate(R.id.action_settingsFragment_to_settingsSearchFragment)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        if (view != null) showGroup(shownGroup)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backToHome)
+        showGroup(shownGroup)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -274,23 +364,12 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
         val title = nimbusValidation.settingsTitle
         val suffix = nimbusValidation.settingsPunctuation
-        val toolbarTitle = "$title$suffix"
+        toolbarTitle = "$title$suffix"
 
-        val showSearch = !args.searchInProgress
-
-        if (showSearch) {
-            showToolbarWithIconButton(
-                title = toolbarTitle,
-                contentDescription = getString(R.string.settings_search_button_content_description),
-                iconResId = iconsR.drawable.mozac_ic_search_24,
-                onClick = {
-                    SettingsSearch.opened.record()
-                    findNavController().navigate(R.id.action_settingsFragment_to_settingsSearchFragment)
-                },
-            )
-        } else {
-            showToolbar(toolbarTitle)
+        if (creatingFragment) {
+            args.preferenceToScrollTo?.let { key -> groupOf(key)?.let(::showGroup) }
         }
+        updateToolbar()
 
         // Account UI state is updated as part of `onCreate`. To not do it twice in a row, we only
         // update it here if we're not going through the `onCreate->onStart->onResume` lifecycle chain.
@@ -330,6 +409,8 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
     override fun onDestroyView() {
         super.onDestroyView()
         accountUiView.cancel()
+        homeView = null
+        listContainer = null
     }
 
     private fun update(
@@ -452,7 +533,25 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                 }
 
                 resources.getString(R.string.pref_key_customize) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToCustomizationFragment()
+                    SettingsFragmentDirections.actionSettingsFragmentToCustomizationFragment(
+                        section = CustomizationFragment.SECTION_LOOK,
+                    )
+                }
+
+                resources.getString(R.string.pref_key_dejavu_customize_tabs) -> {
+                    SettingsFragmentDirections.actionSettingsFragmentToCustomizationFragment(
+                        section = CustomizationFragment.SECTION_TABS,
+                    )
+                }
+
+                resources.getString(R.string.pref_key_dejavu_customize_input) -> {
+                    SettingsFragmentDirections.actionSettingsFragmentToCustomizationFragment(
+                        section = CustomizationFragment.SECTION_INPUT,
+                    )
+                }
+
+                resources.getString(R.string.pref_key_dejavu_shortcuts) -> {
+                    ActionOnlyNavDirections(R.id.dejavu_shortcuts_graph)
                 }
 
                 resources.getString(R.string.pref_key_passwords) -> {
@@ -977,5 +1076,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         private const val SCROLL_INDICATOR_DELAY = 10L
         private const val FXA_SYNC_OVERRIDE_EXIT_DELAY = 2000L
         private const val AMO_COLLECTION_OVERRIDE_EXIT_DELAY = 3000L
+        private const val HOME_PANE_WIDTH_DP = 360
     }
 }

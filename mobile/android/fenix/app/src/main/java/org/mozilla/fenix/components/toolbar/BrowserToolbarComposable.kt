@@ -31,6 +31,7 @@ import mozilla.components.browser.state.action.AwesomeBarAction
 import mozilla.components.browser.state.state.CustomTabSessionState
 import mozilla.components.browser.state.state.ExternalAppType
 import mozilla.components.browser.state.store.BrowserStore
+import mozilla.components.compose.base.theme.layout.AcornWindowSize
 import mozilla.components.compose.base.utils.BackInvokedHandler
 import mozilla.components.compose.browser.toolbar.BrowserToolbar
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarAction.ToolbarGravityUpdated
@@ -59,6 +60,7 @@ import org.mozilla.fenix.dejavu.browser.DejavuSearchAboveKeyboard
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.DejavuTopBar
 import org.mozilla.fenix.dejavu.browser.ScaledToolbar
+import org.mozilla.fenix.dejavu.shortcuts.reportShiftEnter
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
 
@@ -169,19 +171,22 @@ class BrowserToolbarComposable(
                         when (!shouldUseBottomToolbar) {
                             true ->
                                 DejavuSearchAboveKeyboard(
-                                    enabled = DejavuToolbar.enabled && customTabSession == null,
+                                    enabled = DejavuToolbar.enabled && customTabSession == null &&
+                                        !AcornWindowSize.isLargeWindow(),
                                     isSearching = isSearching,
                                     toolbar = {
                                         ScaledToolbar {
                                             if (!isSearching) {
                                                 DejavuTopBar(toolbarStore)
                                             } else {
-                                                BrowserToolbar(
-                                                    store = toolbarStore,
-                                                    cfr = toolbarCFR,
-                                                    useMinimalBottomToolbarWhenEnteringText =
-                                                        settings.shouldUseMinimalBottomToolbarWhenEnteringText,
-                                                )
+                                                Box(Modifier.reportShiftEnter(toolbarStore)) {
+                                                    BrowserToolbar(
+                                                        store = toolbarStore,
+                                                        cfr = toolbarCFR,
+                                                        useMinimalBottomToolbarWhenEnteringText =
+                                                            settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                                    )
+                                                }
                                             }
                                         }
                                     },
@@ -195,12 +200,14 @@ class BrowserToolbarComposable(
                                             if (DejavuToolbar.enabled && customTabSession == null && !isSearching) {
                                                 DejavuTopBar(toolbarStore)
                                             } else {
-                                                BrowserToolbar(
-                                                    store = toolbarStore,
-                                                    cfr = toolbarCFR,
-                                                    useMinimalBottomToolbarWhenEnteringText =
-                                                        settings.shouldUseMinimalBottomToolbarWhenEnteringText,
-                                                )
+                                                Box(Modifier.reportShiftEnter(toolbarStore)) {
+                                                    BrowserToolbar(
+                                                        store = toolbarStore,
+                                                        cfr = toolbarCFR,
+                                                        useMinimalBottomToolbarWhenEnteringText =
+                                                            settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                                    )
+                                                }
                                             }
                                         }
                                         if (customTabSession == null) {
@@ -230,12 +237,14 @@ class BrowserToolbarComposable(
                                         )
                                     } else {
                                         ScaledToolbar {
-                                            BrowserToolbar(
-                                                store = toolbarStore,
-                                                cfr = toolbarCFR,
-                                                useMinimalBottomToolbarWhenEnteringText =
-                                                    settings.shouldUseMinimalBottomToolbarWhenEnteringText,
-                                            )
+                                            Box(Modifier.reportShiftEnter(toolbarStore)) {
+                                                BrowserToolbar(
+                                                    store = toolbarStore,
+                                                    cfr = toolbarCFR,
+                                                    useMinimalBottomToolbarWhenEnteringText =
+                                                        settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                                )
+                                            }
                                         }
                                         navigationBarContent?.invoke()
                                     }

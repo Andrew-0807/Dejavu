@@ -28,6 +28,30 @@ fun resolveSearchKeyword(
 fun Map<String, String>.withKeyword(keyword: String, value: String): Map<String, String> =
     filterValues { it != value } + if (keyword.isBlank()) emptyMap() else mapOf(keyword.trim().lowercase() to value)
 
+private val DEFAULT_ENGINE_KEYWORDS = mapOf("g" to "google", "d" to "ddg")
+
+/**
+ * The engine keywords with the defaults "g" for Google and "d" for DuckDuckGo added for the installed [engineIds] the
+ * user gave no keyword. A saved "" marks a default the user cleared.
+ */
+fun Map<String, String>.withDefaultEngineKeywords(engineIds: List<String>): Map<String, String> =
+    filterValues { it.isNotEmpty() } + DEFAULT_ENGINE_KEYWORDS.mapNotNull { (keyword, idStart) ->
+        engineIds.firstOrNull { it.startsWith(idStart) }
+            ?.takeIf { keyword !in this && it !in values }
+            ?.let { keyword to it }
+    }
+
+/** [withKeyword] for an engine, remembering a cleared default keyword so it does not come back. */
+fun Map<String, String>.withEngineKeyword(
+    keyword: String,
+    engineId: String,
+    engineIds: List<String>,
+): Map<String, String> {
+    val cleared = withDefaultEngineKeywords(engineIds).keywordFor(engineId)
+        .takeIf { keyword.isBlank() && it in DEFAULT_ENGINE_KEYWORDS }
+    return withKeyword(keyword, engineId) + listOfNotNull(cleared?.let { it to "" })
+}
+
 fun Map<String, String>.keywordFor(value: String): String = entries.find { it.value == value }?.key.orEmpty()
 
 fun String.toKeywordMap(): Map<String, String> =

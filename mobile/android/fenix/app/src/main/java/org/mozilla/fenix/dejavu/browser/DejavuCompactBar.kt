@@ -40,6 +40,7 @@ import mozilla.components.compose.browser.toolbar.store.BrowserToolbarInteractio
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarStore
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
+import org.mozilla.fenix.browser.tabstrip.isHomeSidebarShown
 import org.mozilla.fenix.components.toolbar.DisplayActions
 
 /**
@@ -114,23 +115,25 @@ fun DejavuCompactBar(
                 Box(modifier = Modifier.weight(1f)) {
                     DejavuTopBar(store)
                 }
-                val homeLabel = stringResource(R.string.dejavu_actions_bar_home)
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .padding(end = 8.dp)
-                        .size(48.dp)
-                        .clip(CircleShape)
-                        .clickable(role = Role.Button) {
-                            store.dispatch(DisplayActions.HomepageClicked(Source.AddressBar.BrowserEnd))
-                        },
-                ) {
-                    Icon(
-                        painter = painterResource(iconsR.drawable.mozac_ic_home_24),
-                        contentDescription = homeLabel,
-                        tint = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.size(22.dp),
-                    )
+                if (!isHomeSidebarShown()) {
+                    val homeLabel = stringResource(R.string.dejavu_actions_bar_home)
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .padding(end = 8.dp)
+                            .size(48.dp)
+                            .clip(CircleShape)
+                            .clickable(role = Role.Button) {
+                                store.dispatch(DisplayActions.HomepageClicked(Source.AddressBar.BrowserEnd))
+                            },
+                    ) {
+                        Icon(
+                            painter = painterResource(iconsR.drawable.mozac_ic_home_24),
+                            contentDescription = homeLabel,
+                            tint = MaterialTheme.colorScheme.onSurface,
+                            modifier = Modifier.size(22.dp),
+                        )
+                    }
                 }
             }
         }

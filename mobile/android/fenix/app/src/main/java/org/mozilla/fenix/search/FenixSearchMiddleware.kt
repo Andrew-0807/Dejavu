@@ -335,6 +335,7 @@ class FenixSearchMiddleware(
     }
 
     @VisibleForTesting
+    @Suppress("UNUSED_PARAMETER")
     internal fun loadUrlUseCase(store: Store<SearchFragmentState, SearchFragmentAction>) =
         object : LoadUrlUseCase {
             override fun invoke(
@@ -349,7 +350,7 @@ class FenixSearchMiddleware(
                         if (settings.enableHomepageAsNewTab) {
                             false
                         } else {
-                            store.state.tabId == null
+                            sessionSearchWasStartedFor == null
                         },
                     usePrivateMode = browsingModeManager.mode.isPrivate,
                     flags = flags,
@@ -377,7 +378,7 @@ class FenixSearchMiddleware(
                         if (settings.enableHomepageAsNewTab) {
                             false
                         } else {
-                            store.state.tabId == null
+                            sessionSearchWasStartedFor == null
                         },
                     usePrivateMode = browsingModeManager.mode.isPrivate,
                     forceSearch = true,

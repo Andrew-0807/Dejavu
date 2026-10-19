@@ -1134,6 +1134,11 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="section"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/action_customizationFragment_appIconSelectionFragment"
             app:destination="@+id/appIconSelectionFragment"

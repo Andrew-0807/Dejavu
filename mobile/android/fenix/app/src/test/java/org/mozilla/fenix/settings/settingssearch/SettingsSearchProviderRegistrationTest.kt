@@ -12,6 +12,7 @@ import mozilla.components.support.test.robolectric.testContext
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mozilla.fenix.components.settingsSearchProviders
+import org.mozilla.fenix.dejavu.settings.DejavuSettingsSearchProvider
 import org.mozilla.fenix.settings.summarize.FakeSummarizationFeatureConfiguration
 
 /**
@@ -28,8 +29,12 @@ import org.mozilla.fenix.settings.summarize.FakeSummarizationFeatureConfiguratio
 @RunWith(AndroidJUnit4::class)
 class SettingsSearchProviderRegistrationTest {
 
-    /** Every declared screen, including any these tests cannot turn into an instance. */
-    private val allSubclasses = PreferenceFileInformation::class.sealedSubclasses
+    /**
+     * Every declared screen, including any these tests cannot turn into an instance. [PreferenceFileInformation.DejavuScreen]
+     * is left out: it is one class for all of Dejavu's screens, built by [DejavuSettingsSearchProvider] and checked below.
+     */
+    private val allSubclasses =
+        PreferenceFileInformation::class.sealedSubclasses - PreferenceFileInformation.DejavuScreen::class
 
     /** The subset of [allSubclasses] these tests can actually assert against. */
     private val allScreens = allSubclasses.mapNotNull { it.objectInstance }
@@ -192,5 +197,12 @@ class SettingsSearchProviderRegistrationTest {
                             "Remove it from knownIndexingGaps.",
                 )
             }
+        }
+
+    @Test
+    fun `GIVEN the registered providers WHEN the index is built THEN the Dejavu settings screens are searchable`() =
+        runTest {
+            assertTrue(DejavuSettingsSearchProvider in registeredProviders())
+            assertTrue(screensReachedByIndexer().any { it is PreferenceFileInformation.DejavuScreen })
         }
 }

@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.components
 
+import org.mozilla.fenix.dejavu.settings.DejavuSettingsSearchProvider
 import org.mozilla.fenix.settings.ToolbarShortcutSettingsSearchProvider
 import org.mozilla.fenix.settings.ai.AIControlsSearchProvider
 import org.mozilla.fenix.settings.datachoices.DataChoicesSearchProvider
@@ -33,4 +34,5 @@ internal fun settingsSearchProviders(
         PageSummariesSettingsSearchProvider(summarizationFeatureConfiguration),
         FirefoxLabsSettingsSearchProvider(),
         ToolbarShortcutSettingsSearchProvider,
+        DejavuSettingsSearchProvider,
     )

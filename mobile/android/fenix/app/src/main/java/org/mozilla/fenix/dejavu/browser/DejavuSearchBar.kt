@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import mozilla.components.compose.base.theme.layout.AcornWindowSize
 
 private const val MOVE_DURATION_MS = 280
 
@@ -93,6 +94,10 @@ fun DejavuSearchAboveKeyboard(
  */
 @Composable
 fun DejavuSearchOverlay(fromTop: Boolean, content: @Composable () -> Unit) {
+    if (AcornWindowSize.isLargeWindow()) {
+        Box(modifier = Modifier.fillMaxSize()) { content() }
+        return
+    }
     val progress = remember { Animatable(if (fromTop && !DejavuSearchStart.isFromBottom()) 0f else 1f) }
     LaunchedEffect(Unit) {
         progress.animateTo(1f, tween(MOVE_DURATION_MS, easing = FastOutSlowInEasing))

@@ -44,6 +44,7 @@ import org.mozilla.fenix.components.share.ShareSheetLauncher
 import org.mozilla.fenix.components.usecases.FenixBrowserUseCases
 import org.mozilla.fenix.components.usecases.ShareUseCases
 import org.mozilla.fenix.dejavu.resolveSearchKeyword
+import org.mozilla.fenix.dejavu.withDefaultEngineKeywords
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.home.mars.MARSUseCases
 import org.mozilla.fenix.pbmlock.PrivateBrowsingLockUseCases
@@ -171,8 +172,10 @@ class UseCases(
             profiler = engine.value.profiler,
             keywordResolver = { input ->
                 val settings = context.components.settings
-                resolveSearchKeyword(input, settings.engineKeywords, settings.bookmarkKeywords)?.let { match ->
-                    val found = store.value.state.search.searchEngines.find { it.id == match.engineId }
+                val engines = store.value.state.search.searchEngines
+                val engineKeywords = settings.engineKeywords.withDefaultEngineKeywords(engines.map { it.id })
+                resolveSearchKeyword(input, engineKeywords, settings.bookmarkKeywords)?.let { match ->
+                    val found = engines.find { it.id == match.engineId }
                     if (match.engineId != null && found == null) null else found to match.text
                 }
             },

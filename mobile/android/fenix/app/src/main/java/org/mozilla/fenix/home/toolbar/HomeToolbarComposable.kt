@@ -33,6 +33,7 @@ import mozilla.components.browser.state.action.AwesomeBarAction
 import mozilla.components.browser.state.ext.getUrl
 import mozilla.components.browser.state.selector.findTab
 import mozilla.components.browser.state.store.BrowserStore
+import mozilla.components.compose.base.theme.layout.AcornWindowSize
 import mozilla.components.compose.base.utils.BackInvokedHandler
 import mozilla.components.compose.browser.toolbar.BrowserToolbar
 import mozilla.components.compose.browser.toolbar.store.BrowserEditToolbarAction.SearchQueryUpdated
@@ -52,6 +53,7 @@ import org.mozilla.fenix.components.appstate.VoiceSearchAction.VoiceInputRequest
 import org.mozilla.fenix.components.metrics.MetricsUtils
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.ScaledToolbar
+import org.mozilla.fenix.dejavu.shortcuts.reportShiftEnter
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
 import org.mozilla.fenix.wallpapers.WallpaperTheme
@@ -149,9 +151,13 @@ internal class HomeToolbarComposable(
 
     @Composable
     private fun ToolbarContent(wallpaperTextColor: Color?) {
-        // Dejavu shows this toolbar only while searching, with the address bar right above the keyboard.
-        val shouldUseBottomToolbar = remember { settings.shouldUseBottomToolbar || DejavuToolbar.enabled }
-        val shouldShowTabStrip = remember {
+        // Dejavu shows this toolbar only while searching, with the address bar right above the keyboard, or at the top
+        // with the suggestions in a dropdown on tablets.
+        val isLargeWindow = AcornWindowSize.isLargeWindow()
+        val shouldUseBottomToolbar = remember(isLargeWindow) {
+            settings.shouldUseBottomToolbar || (DejavuToolbar.enabled && !isLargeWindow)
+        }
+        val shouldShowTabStrip = remember(shouldUseBottomToolbar) {
             if (shouldUseBottomToolbar) {
                 settings.shouldShowTabStripAtBottom
             } else {
@@ -212,10 +218,12 @@ internal class HomeToolbarComposable(
                             )
                     ),
             ) {
-                BrowserToolbar(
-                    store = toolbarStore,
-                    browserActionsColor = wallpaperTextColor,
-                )
+                Box(Modifier.reportShiftEnter(toolbarStore)) {
+                    BrowserToolbar(
+                        store = toolbarStore,
+                        browserActionsColor = wallpaperTextColor,
+                    )
+                }
             }
         }
     }
@@ -268,7 +276,7 @@ internal class HomeToolbarComposable(
     private fun handleTypedSearchRequest() {
         handleStartingSearch(directToSearchConfig)
 
-        if (directToSearchConfig.sessionId != null && !settings.showAddressBarInFocusMode) {
+        if (directToSearchConfig.sessionId != null) {
             browserStore.state.findTab(directToSearchConfig.sessionId)?.let {
                 toolbarStore.dispatch(
                     SearchQueryUpdated(

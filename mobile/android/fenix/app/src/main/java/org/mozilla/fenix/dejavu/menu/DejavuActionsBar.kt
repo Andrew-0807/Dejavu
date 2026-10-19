@@ -52,6 +52,7 @@ import mozilla.components.lib.state.ext.observeAsComposableState
 import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.BrowserFragmentDirections
+import org.mozilla.fenix.browser.tabstrip.isHomeSidebarShown
 import org.mozilla.fenix.components.appstate.AppAction.FindInPageAction
 import org.mozilla.fenix.components.components
 import org.mozilla.fenix.components.toolbar.DisplayActions
@@ -87,7 +88,10 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit) {
     val workspaces by repository.state.collectAsState()
     val barKeys by settings.actionsBarKeys.collectAsState()
     val customActions by settings.customActions.collectAsState()
-    val entries = remember(barKeys, customActions) { ActionsBarLayout.resolve(barKeys, customActions) }
+    val hasHomeSidebar = isHomeSidebarShown()
+    val entries = remember(barKeys, customActions, hasHomeSidebar) {
+        ActionsBarLayout.resolve(barKeys, customActions).filterNot { hasHomeSidebar && it == MoreMenuEntry.Home }
+    }
     var asking by remember { mutableStateOf<TabAction?>(null) }
     val snackbar by fenix.appStore.observeAsComposableState { it.snackbarState }
     val url = tab?.content?.url.orEmpty()

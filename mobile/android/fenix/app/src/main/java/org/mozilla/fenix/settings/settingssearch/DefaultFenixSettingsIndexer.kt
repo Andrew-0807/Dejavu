@@ -8,7 +8,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
 import android.content.res.XmlResourceParser
-import androidx.annotation.VisibleForTesting
 import java.io.IOException
 import java.util.concurrent.atomic.AtomicReference
 import kotlinx.coroutines.Dispatchers
@@ -90,7 +89,7 @@ class DefaultFenixSettingsIndexer(
      * @return List of all [SettingsSearchItem]s built by the last [indexAllSettings] call, or an empty list if it has
      *   not run yet.
      */
-    @VisibleForTesting internal fun indexedSettings(): List<SettingsSearchItem> = settings.get()
+    fun indexedSettings(): List<SettingsSearchItem> = settings.get()
 
     private fun getXmlParserForFile(xmlResourceId: Int): XmlResourceParser? {
         try {

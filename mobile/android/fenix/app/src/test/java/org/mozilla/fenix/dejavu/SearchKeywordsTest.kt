@@ -29,6 +29,21 @@ class SearchKeywordsTest {
     }
 
     @Test
+    fun `default keywords search Google and DuckDuckGo until the user changes them`() {
+        val ids = listOf("google-b-m", "ddg", "wikipedia")
+        val defaults = emptyMap<String, String>().withDefaultEngineKeywords(ids)
+        assertEquals(KeywordMatch("google-b-m", "cats"), resolveSearchKeyword("g cats", defaults, emptyMap()))
+        assertEquals(KeywordMatch("ddg", "cats"), resolveSearchKeyword("d cats", defaults, emptyMap()))
+        val googleOnly = emptyMap<String, String>().withDefaultEngineKeywords(listOf("google"))
+        assertNull(resolveSearchKeyword("d cats", googleOnly, emptyMap()))
+        val cleared = emptyMap<String, String>().withEngineKeyword("", "ddg", ids)
+        assertNull(resolveSearchKeyword("d cats", cleared.withDefaultEngineKeywords(ids), emptyMap()))
+        val renamed = emptyMap<String, String>().withEngineKeyword("gg", "google-b-m", ids)
+            .withDefaultEngineKeywords(ids)
+        assertNull(resolveSearchKeyword("g cats", renamed, emptyMap()))
+    }
+
+    @Test
     fun `withKeyword replaces old keyword`() {
         assertEquals(mapOf("wk" to "wikipedia"), engines.withKeyword("WK", "wikipedia"))
         assertEquals(emptyMap<String, String>(), engines.withKeyword("", "wikipedia"))

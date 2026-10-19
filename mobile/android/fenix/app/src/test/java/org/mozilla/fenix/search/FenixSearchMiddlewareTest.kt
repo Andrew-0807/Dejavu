@@ -552,6 +552,28 @@ class FenixSearchMiddlewareTest {
     }
 
     @Test
+    fun `GIVEN homepage as a new tab is disabled and the source tab exists WHEN needing to load an URL THEN load it in that tab`() {
+        val url = "https://mozilla.com"
+        val flags = LoadUrlFlags.all()
+        every { settings.enableHomepageAsNewTab } returns false
+        val currentTab = createTab("https://firefox.com")
+        stubSearchSourceTab(currentTab.id)
+        val middleware = buildMiddleware(browserStore = buildBrowserStore(currentTab))
+        val store = buildStore(middleware)
+
+        middleware.loadUrlUseCase(store).invoke(url, flags, null, null)
+
+        verify {
+            fenixBrowserUseCasesMock.loadUrlOrSearch(
+                searchTermOrURL = url,
+                newTab = false,
+                private = false,
+                flags = flags,
+            )
+        }
+    }
+
+    @Test
     fun `WHEN needing to search for specific terms THEN open them in browser, record search ended and record telemetry`() =
         runTest {
             val searchTerm = "test"

@@ -140,6 +140,9 @@ internal sealed class EditPageEndActionsInteractions : BrowserToolbarEvent {
     data object VoiceSearchButtonClicked : SearchSelectorEvents()
 }
 
+/** Enter was pressed in the address bar, [withShift] when Shift was held on that key event. */
+internal data class AddressBarEnterPressed(val withShift: Boolean) : BrowserToolbarEvent
+
 /**
  * [BrowserToolbarStore] middleware handling the configuration of the composable toolbar while in edit mode.
  *
@@ -171,6 +174,7 @@ class BrowserToolbarSearchMiddleware(
     private var observeLensInputJob: Job? = null
     private var observeVoiceInputJob: Job? = null
     private var updateAutocompleteJob: Job? = null
+    private var commitInNewTab = false
 
     override fun invoke(
         store: Store<BrowserToolbarState, BrowserToolbarAction>,
@@ -210,13 +214,19 @@ class BrowserToolbarSearchMiddleware(
                 observeVoiceInputJob?.cancel()
             }
 
-            is CommitUrl -> handleCommitingUrl(action.text)
+            is AddressBarEnterPressed -> commitInNewTab = action.withShift
+
+            is CommitUrl -> {
+                val inNewTab = commitInNewTab
+                commitInNewTab = false
+                handleCommitingUrl(action.text, inNewTab)
+            }
 
             else -> handleToolbarButtonsActions(store, action)
         }
     }
 
-    private fun handleCommitingUrl(url: String) {
+    private fun handleCommitingUrl(url: String, inNewTab: Boolean) {
         // Do not load URL if application search engine is selected.
         if (reconcileSelectedEngine()?.type == SearchEngine.Type.APPLICATION) {
             return
@@ -243,11 +253,12 @@ class BrowserToolbarSearchMiddleware(
                 openSearchOrUrl(
                     SupportUtils.getMozillaPageUrl(SupportUtils.MozillaPage.MANIFESTO),
                     navController,
+                    inNewTab,
                 )
 
             else ->
                 if (url.isNotBlank()) {
-                    openSearchOrUrl(url, navController)
+                    openSearchOrUrl(url, navController, inNewTab)
                 } else {
                     browserStore.dispatch(EngagementFinished(abandoned = true))
                 }
@@ -331,7 +342,7 @@ class BrowserToolbarSearchMiddleware(
             }
         }
 
-    private fun openSearchOrUrl(text: String, navController: NavController) {
+    private fun openSearchOrUrl(text: String, navController: NavController, inNewTab: Boolean) {
         val searchEngine = reconcileSelectedEngine()
         val isDefaultEngine =
             (searchEngine?.id ==
@@ -339,7 +350,9 @@ class BrowserToolbarSearchMiddleware(
                     .selectedOrDefaultSearchEngine(private = browsingModeManager.mode.isPrivate)
                     ?.id)
         val newTab =
-            if (settings.enableHomepageAsNewTab) {
+            if (inNewTab) {
+                true
+            } else if (settings.enableHomepageAsNewTab) {
                 false
             } else {
                 // Create a new tab if the source for where the search originated is not available.

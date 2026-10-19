@@ -7,14 +7,22 @@ package org.mozilla.fenix.dejavu.shortcuts
 import android.os.StrictMode
 import android.view.KeyEvent
 import androidx.annotation.StringRes
-import androidx.navigation.findNavController
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.isShiftPressed
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
 import mozilla.components.browser.state.selector.getNormalOrPrivateTabs
 import mozilla.components.browser.state.selector.selectedTab
+import mozilla.components.compose.browser.toolbar.store.BrowserToolbarStore
 import org.mozilla.fenix.HomeActivity
-import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
+import org.mozilla.fenix.dejavu.newtab.NewTabPrompt
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.ext.components
+import org.mozilla.fenix.search.AddressBarEnterPressed
 
 /** A key and the modifiers held with it, as [KeyEvent.META_CTRL_ON], [KeyEvent.META_SHIFT_ON] and [KeyEvent.META_ALT_ON]. */
 data class KeyCombo(val keyCode: Int, val meta: Int) {
@@ -116,11 +124,22 @@ object KeyboardShortcuts {
             }
             ShortcutAction.RELOAD -> selectedId?.let { components.useCases.sessionUseCases.reload(it) } != null
             ShortcutAction.NEW_TAB -> {
-                activity.findNavController(R.id.container).navigate(NavGraphDirections.actionGlobalHome(focusOnAddressBar = true))
+                NewTabPrompt.show(activity)
                 true
             }
             ShortcutAction.ADDRESS_BAR -> focusAddressBar?.invoke() != null
             else -> select(action.labelArg - 1)
         }
     }
+}
+
+/**
+ * Tells [store] whether Shift is held on each Enter in the address bar inside this node, before the field commits
+ * the address, so Shift+Enter opens it in a new tab.
+ */
+fun Modifier.reportShiftEnter(store: BrowserToolbarStore): Modifier = onPreviewKeyEvent { event ->
+    if (event.type == KeyEventType.KeyDown && (event.key == Key.Enter || event.key == Key.NumPadEnter)) {
+        store.dispatch(AddressBarEnterPressed(event.isShiftPressed))
+    }
+    false
 }

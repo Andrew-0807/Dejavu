@@ -6,319 +6,320 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Dejavu: what each version brought, who makes Dejavu, and a way to support it, on top of every setting. -->
+    <!-- Dejavu: every top level category is one category of the settings home, see docs/dejavu/settings-redesign.md. -->
     <androidx.preference.PreferenceCategory
-        android:key="@string/pref_key_dejavu_top_category"
-        android:title="@string/dejavu_settings_title"
+        android:key="@string/pref_key_dejavu_group_account"
+        android:title="@string/dejavu_settings_group_account"
         android:layout="@layout/preference_category_no_icon_style">
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_account_category"
+            android:title="@string/preferences_category_account"
+            app:isPreferenceVisible="false"
+            android:layout="@layout/preference_category_no_icon_style">
 
+            <org.mozilla.fenix.settings.account.AccountPreference
+                android:icon="@drawable/mozac_ic_avatar_circle_24"
+                android:key="@string/pref_key_account"
+                app:widgetLayout="@layout/dejavu_preference_badge" />
+
+            <org.mozilla.fenix.settings.account.AccountAuthErrorPreference
+                android:icon="@drawable/ic_account_warning"
+                android:key="@string/pref_key_account_auth_error" />
+        </androidx.preference.PreferenceCategory>
         <androidx.preference.Preference
-            android:icon="@drawable/mozac_ic_whats_new_24"
-            android:key="@string/pref_key_dejavu_whats_new"
-            android:summary="@string/dejavu_settings_whats_new_summary"
-            android:title="@string/dejavu_settings_whats_new"
-            app:widgetLayout="@layout/dejavu_preference_badge" />
-
-        <androidx.preference.Preference
-            android:icon="@drawable/dejavu_author_avatar"
-            android:key="@string/pref_key_dejavu_author"
-            android:summary="@string/dejavu_about_source_code"
-            app:widgetLayout="@layout/preference_widget_external_link" />
-
-        <androidx.preference.Preference
-            android:icon="@drawable/dejavu_ic_coffee_24"
-            android:key="@string/pref_key_dejavu_coffee"
-            android:summary="@string/dejavu_settings_coffee_summary"
-            android:title="@string/dejavu_settings_coffee"
-            app:widgetLayout="@layout/preference_widget_external_link" />
-    </androidx.preference.PreferenceCategory>
-
-    <androidx.preference.Preference
-        android:key="@string/pref_key_sign_in"
-        android:layout="@layout/sign_in_preference"
-        android:summary="@string/preferences_sign_in_description"
-        android:title="@string/preferences_sign_in"
-        app:allowDividerBelow="false" />
-
-    <androidx.preference.PreferenceCategory
-        android:key="@string/pref_key_account_category"
-        android:title="@string/preferences_category_account"
-        app:isPreferenceVisible="false"
-        android:layout="@layout/preference_category_no_icon_style">
-
-        <org.mozilla.fenix.settings.account.AccountPreference
-            android:icon="@drawable/mozac_ic_avatar_circle_24"
-            android:key="@string/pref_key_account"
-            app:widgetLayout="@layout/dejavu_preference_badge" />
-
-        <org.mozilla.fenix.settings.account.AccountAuthErrorPreference
-            android:icon="@drawable/ic_account_warning"
-            android:key="@string/pref_key_account_auth_error" />
-    </androidx.preference.PreferenceCategory>
-
-    <androidx.preference.Preference
-        app:iconSpaceReserved="false"
-        android:key="@string/pref_key_sync_debug"
-        android:title="@string/preferences_sync_debug"
-        app:isPreferenceVisible="false" />
-
-    <androidx.preference.PreferenceCategory
-        android:title="@string/preferences_category_general"
-        android:layout="@layout/preference_category_no_icon_style">
+            android:key="@string/pref_key_sign_in"
+            android:layout="@layout/sign_in_preference"
+            android:summary="@string/preferences_sign_in_description"
+            android:title="@string/preferences_sign_in"
+            app:allowDividerBelow="false" />
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
-            android:key="@string/pref_key_search_settings"
-            android:title="@string/preferences_search" />
+            android:key="@string/pref_key_sync_debug"
+            android:title="@string/preferences_sync_debug"
+            app:isPreferenceVisible="false" />
+    </androidx.preference.PreferenceCategory>
 
+    <androidx.preference.PreferenceCategory
+        android:key="@string/pref_key_dejavu_group_look"
+        android:title="@string/dejavu_settings_group_look"
+        android:layout="@layout/preference_category_no_icon_style">
+        <androidx.preference.Preference
+            android:key="@string/pref_key_customize"
+            app:iconSpaceReserved="false"
+            android:title="@string/preferences_customize"
+            android:summary="@string/dejavu_settings_customize_look_summary" />
+        <androidx.preference.Preference
+            app:iconSpaceReserved="false"
+            android:key="@string/pref_key_home"
+            android:title="@string/preferences_home_2" />
+        <androidx.preference.Preference
+            android:key="@string/pref_key_accessibility"
+            app:iconSpaceReserved="false"
+            android:title="@string/preferences_accessibility" />
+        <androidx.preference.Preference
+            android:key="@string/pref_key_language"
+            app:iconSpaceReserved="false"
+            android:title="@string/preferences_language" />
+    </androidx.preference.PreferenceCategory>
+
+    <androidx.preference.PreferenceCategory
+        android:key="@string/pref_key_dejavu_group_tabs"
+        android:title="@string/dejavu_settings_group_tabs"
+        android:layout="@layout/preference_category_no_icon_style">
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
             android:key="@string/pref_key_tabs"
             android:title="@string/preferences_tabs" />
-
+        <androidx.preference.Preference
+            app:iconSpaceReserved="false"
+            android:key="@string/pref_key_dejavu_customize_tabs"
+            android:title="@string/dejavu_settings_customize_tabs"
+            android:summary="@string/dejavu_settings_customize_tabs_summary" />
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
             app:widgetLayout="@layout/dejavu_preference_badge"
             android:key="@string/pref_key_dejavu_tab_actions"
             android:title="@string/dejavu_settings_tab_actions"
             android:summary="@string/dejavu_settings_tab_actions_entry_summary" />
-
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
             app:widgetLayout="@layout/dejavu_preference_badge"
             android:key="@string/pref_key_dejavu_tab_sleep"
             android:title="@string/dejavu_settings_tab_sleep"
             android:summary="@string/dejavu_settings_tab_sleep_summary" />
-
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
             app:widgetLayout="@layout/dejavu_preference_badge"
             android:key="@string/pref_key_dejavu_containers"
             android:title="@string/dejavu_settings_containers"
             android:summary="@string/dejavu_settings_containers_entry_summary" />
+    </androidx.preference.PreferenceCategory>
 
+    <androidx.preference.PreferenceCategory
+        android:key="@string/pref_key_dejavu_group_input"
+        android:title="@string/dejavu_settings_group_input"
+        android:layout="@layout/preference_category_no_icon_style">
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
-            android:key="@string/pref_key_home"
-            android:title="@string/preferences_home_2" />
-
-        <androidx.preference.Preference
-            android:key="@string/pref_key_customize"
-            app:iconSpaceReserved="false"
-            android:title="@string/preferences_customize" />
-
-        <androidx.preference.Preference
-            android:key="@string/pref_key_passwords"
-            app:iconSpaceReserved="false"
-            android:title="@string/preferences_passwords_logins_and_passwords_2" />
-
-        <androidx.preference.Preference
-            android:key="@string/pref_key_email_masks"
-            android:title="@string/preferences_email_masks"
-            app:iconSpaceReserved="false"
-            app:isPreferenceVisible="false" />
-
+            android:key="@string/pref_key_dejavu_customize_input"
+            android:title="@string/dejavu_settings_customize_input"
+            android:summary="@string/dejavu_settings_customize_input_summary" />
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
-            android:key="@string/pref_key_credit_cards"
-            android:title="@string/preferences_credit_cards_2" />
+            android:key="@string/pref_key_dejavu_shortcuts"
+            android:title="@string/dejavu_settings_shortcuts"
+            android:summary="@string/dejavu_settings_shortcuts_summary" />
+    </androidx.preference.PreferenceCategory>
 
+    <androidx.preference.PreferenceCategory
+        android:key="@string/pref_key_dejavu_group_search"
+        android:title="@string/dejavu_settings_group_search"
+        android:layout="@layout/preference_category_no_icon_style">
         <androidx.preference.Preference
-            android:key="@string/pref_key_accessibility"
             app:iconSpaceReserved="false"
-            android:title="@string/preferences_accessibility" />
-
-        <androidx.preference.Preference
-            android:key="@string/pref_key_language"
-            app:iconSpaceReserved="false"
-            android:title="@string/preferences_language" />
-
-        <androidx.preference.Preference
-            android:key="@string/pref_key_translation"
-            app:iconSpaceReserved="false"
-            app:isPreferenceVisible="false"
-            android:title="@string/preferences_translations" />
-
-        <androidx.preference.Preference
-            android:key="@string/pref_key_page_summaries"
-            app:iconSpaceReserved="false"
-            app:isPreferenceVisible="false"
-            android:title="@string/preferences_page_summaries" />
-
-        <androidx.preference.Preference
-            android:key="@string/pref_key_ai_controls"
-            app:iconSpaceReserved="false"
-            app:isPreferenceVisible="false"
-            android:title="@string/preferences_ai_controls" />
-
-        <androidx.preference.Preference
-            android:key="@string/pref_key_import_bookmarks"
-            app:iconSpaceReserved="false"
-            app:isPreferenceVisible="false"
-            android:title="@string/preferences_import_bookmarks" />
-
+            android:key="@string/pref_key_search_settings"
+            android:title="@string/preferences_search" />
         <org.mozilla.fenix.settings.DefaultBrowserPreference
             android:key="@string/pref_key_make_default_browser"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_set_as_default_browser" />
-
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
             app:widgetLayout="@layout/dejavu_preference_badge"
             android:key="@string/pref_key_dejavu_external_links"
             android:title="@string/dejavu_settings_external_links"
             android:summary="@string/dejavu_settings_external_links_summary" />
+        <androidx.preference.Preference
+            android:key="@string/pref_key_open_links_in_apps"
+            android:title="@string/preferences_open_links_in_apps"
+            app:iconSpaceReserved="false" />
+        <androidx.preference.Preference
+            android:key="@string/pref_key_link_sharing"
+            app:iconSpaceReserved="false"
+            android:title="@string/preferences_link_sharing" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
-        android:title="@string/preferences_category_privacy_security"
         android:key="@string/pref_key_privacy_security_category"
+        android:title="@string/preferences_category_privacy_security"
         android:layout="@layout/preference_category_no_icon_style">
-
         <!-- Dejavu: private tabs live in the private workspace, and links from other apps can open in private tabs. -->
         <androidx.preference.Preference
             android:key="@string/pref_key_private_browsing"
             app:iconSpaceReserved="false"
             app:isPreferenceVisible="false"
             android:title="@string/preferences_private_browsing_options" />
-
         <org.mozilla.fenix.settings.IPProtectionPreference
             android:key="@string/pref_key_ip_protection_settings"
             app:iconSpaceReserved="false"
             app:isPreferenceVisible="false"
             app:allowDividerAbove="false"/>
-
         <androidx.preference.Preference
             android:key="@string/pref_key_https_only_settings"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_https_only_title" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_doh_settings"
             app:iconSpaceReserved="false"
             app:isPreferenceVisible="false"
             android:title="@string/preference_doh_title" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_tracking_protection_settings"
             app:iconSpaceReserved="false"
             android:title="@string/preference_enhanced_tracking_protection" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_site_permissions"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_site_settings" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_delete_browsing_data"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_delete_browsing_data" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_delete_browsing_data_on_quit_preference"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_delete_browsing_data_on_quit" />
-
+        <androidx.preference.Preference
+            android:key="@string/pref_key_passwords"
+            app:iconSpaceReserved="false"
+            android:title="@string/preferences_passwords_logins_and_passwords_2" />
+        <androidx.preference.Preference
+            android:key="@string/pref_key_email_masks"
+            android:title="@string/preferences_email_masks"
+            app:iconSpaceReserved="false"
+            app:isPreferenceVisible="false" />
+        <androidx.preference.Preference
+            app:iconSpaceReserved="false"
+            android:key="@string/pref_key_credit_cards"
+            android:title="@string/preferences_credit_cards_2" />
         <androidx.preference.Preference
             android:key="@string/pref_key_notifications"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_notifications" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_data_choices"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_data_collection" />
-
     </androidx.preference.PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/preferences_category_advanced"
-        android:key="@string/pref_key_advanced"
+    <androidx.preference.PreferenceCategory
+        android:key="@string/pref_key_dejavu_group_downloads"
+        android:title="@string/dejavu_settings_group_downloads"
         android:layout="@layout/preference_category_no_icon_style">
+        <androidx.preference.Preference
+            android:key="@string/pref_key_downloads"
+            app:iconSpaceReserved="false"
+            android:title="@string/preferences_downloads_2" />
         <androidx.preference.Preference
             android:key="@string/pref_key_addons"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_extensions" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_install_local_addon"
             app:iconSpaceReserved="false"
             app:isPreferenceVisible="false"
             android:title="@string/preferences_install_local_extension" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_override_amo_collection"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_customize_extension_collection" />
+    </androidx.preference.PreferenceCategory>
 
+    <androidx.preference.PreferenceCategory
+        android:key="@string/pref_key_advanced"
+        android:title="@string/preferences_category_advanced"
+        android:layout="@layout/preference_category_no_icon_style">
         <androidx.preference.Preference
-            android:key="@string/pref_key_link_sharing"
+            android:key="@string/pref_key_translation"
             app:iconSpaceReserved="false"
-            android:title="@string/preferences_link_sharing" />
-
+            app:isPreferenceVisible="false"
+            android:title="@string/preferences_translations" />
         <androidx.preference.Preference
-            android:key="@string/pref_key_open_links_in_apps"
-            android:title="@string/preferences_open_links_in_apps"
-            app:iconSpaceReserved="false" />
-
-        <androidx.preference.Preference
-            android:key="@string/pref_key_downloads"
+            android:key="@string/pref_key_page_summaries"
             app:iconSpaceReserved="false"
-            android:title="@string/preferences_downloads_2" />
-
+            app:isPreferenceVisible="false"
+            android:title="@string/preferences_page_summaries" />
+        <androidx.preference.Preference
+            android:key="@string/pref_key_ai_controls"
+            app:iconSpaceReserved="false"
+            app:isPreferenceVisible="false"
+            android:title="@string/preferences_ai_controls" />
+        <androidx.preference.Preference
+            android:key="@string/pref_key_import_bookmarks"
+            app:iconSpaceReserved="false"
+            app:isPreferenceVisible="false"
+            android:title="@string/preferences_import_bookmarks" />
         <androidx.preference.Preference
             android:key="@string/pref_key_firefox_labs"
             app:iconSpaceReserved="false"
             android:title="@string/firefox_labs_title" />
-
         <androidx.preference.SwitchPreferenceCompat
             android:key="@string/pref_key_leakcanary"
             android:title="@string/preference_leakcanary"
             app:iconSpaceReserved="false"
             app:isPreferenceVisible="@bool/IS_DEBUG" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_remote_improvements"
             android:title="@string/preferences_remote_improvements"
             app:iconSpaceReserved="false" />
-
         <androidx.preference.SwitchPreferenceCompat
             android:key="@string/pref_key_remote_debugging"
             android:title="@string/preferences_remote_debugging"
             app:iconSpaceReserved="false"
             android:defaultValue="false" />
-
         <androidx.preference.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="@string/pref_key_enable_gecko_logs"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_enable_gecko_logs" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_local_network_access"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_local_network_access" />
-    </PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
-        android:title="@string/preferences_category_about"
-        app:iconSpaceReserved="false"
+        android:key="@string/pref_key_dejavu_group_about"
+        android:title="@string/dejavu_settings_group_about"
         android:layout="@layout/preference_category_no_icon_style">
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_dejavu_top_category"
+            android:title="@string/dejavu_settings_title"
+            android:layout="@layout/preference_category_no_icon_style">
+
+            <androidx.preference.Preference
+                android:icon="@drawable/mozac_ic_whats_new_24"
+                android:key="@string/pref_key_dejavu_whats_new"
+                android:summary="@string/dejavu_settings_whats_new_summary"
+                android:title="@string/dejavu_settings_whats_new"
+                app:widgetLayout="@layout/dejavu_preference_badge" />
+
+            <androidx.preference.Preference
+                android:icon="@drawable/dejavu_author_avatar"
+                android:key="@string/pref_key_dejavu_author"
+                android:summary="@string/dejavu_about_source_code"
+                app:widgetLayout="@layout/preference_widget_external_link" />
+
+            <androidx.preference.Preference
+                android:icon="@drawable/dejavu_ic_coffee_24"
+                android:key="@string/pref_key_dejavu_coffee"
+                android:summary="@string/dejavu_settings_coffee_summary"
+                android:title="@string/dejavu_settings_coffee"
+                app:widgetLayout="@layout/preference_widget_external_link" />
+        </androidx.preference.PreferenceCategory>
         <androidx.preference.Preference
             android:key="@string/pref_key_rate"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_rate" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_about"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_about" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_debug_settings"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_debug_settings"
             app:isPreferenceVisible="false" />
-
         <androidx.preference.Preference
             android:key="@string/pref_key_nimbus_experiments"
             app:iconSpaceReserved="false"
@@ -330,4 +331,5 @@
             android:title="@string/preferences_start_profiler"
             app:isPreferenceVisible="false" />
     </androidx.preference.PreferenceCategory>
+
 </androidx.preference.PreferenceScreen>

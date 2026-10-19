@@ -234,7 +234,6 @@ import org.mozilla.fenix.customtabs.ExternalAppBrowserActivity
 import org.mozilla.fenix.databinding.FragmentBrowserBinding
 import org.mozilla.fenix.dejavu.browser.DejavuMouse
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
-import org.mozilla.fenix.dejavu.browser.ScaledToolbar
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
 import org.mozilla.fenix.dejavu.shortcuts.KeyboardShortcuts
@@ -571,7 +570,7 @@ abstract class BaseBrowserFragment :
 
         _browserToolbar = initializeBrowserToolbar(activity, store, readerMenuController)
         browserTabStrip = initializeBrowserTabStripView(activity, appStore, settings)
-        initializeTabSidebar(appStore, settings)
+        initializeTabSidebar(settings)
 
         if (settings.microsurveyFeatureEnabled) {
             listenForMicrosurveyMessage(context)
@@ -1656,8 +1655,8 @@ abstract class BaseBrowserFragment :
     /** Whether the auto-hidden tabs sidebar is shown over the page, or null when it is not auto-hidden. */
     private var tabSidebarOverlay: MutableState<Boolean>? = null
 
-    /** Shows the vertical tabs sidebar next to the page on large screens when the user turned it on. */
-    private fun initializeTabSidebar(appStore: AppStore, settings: org.mozilla.fenix.utils.Settings) {
+    /** Shows the home screen in a sidebar next to the page on large screens when the user turned it on. */
+    private fun initializeTabSidebar(settings: org.mozilla.fenix.utils.Settings) {
         if (customTabSessionId != null || !settings.isVerticalTabsEnabled) return
         val overlayShown = mutableStateOf(false).takeIf { settings.isVerticalTabsAutoHide }
         tabSidebarOverlay = overlayShown
@@ -1672,20 +1671,11 @@ abstract class BaseBrowserFragment :
         }
         binding.tabSidebar.setContent {
             FirefoxTheme {
-                ScaledToolbar {
-                    TabSidebar(
-                        settings = settings,
-                        onAddTabClick = { openNewTab(appStore, settings) },
-                        onCloseTabClick = { isPrivate ->
-                            showUndoSnackbar(requireContext().tabClosedUndoMessage(isPrivate))
-                        },
-                        onLastTabClose = { isPrivate ->
-                            requireComponents.appStore.dispatch(AppAction.TabStripAction.UpdateLastTabClosed(isPrivate))
-                            findNavController().navigate(BrowserFragmentDirections.actionGlobalHome())
-                        },
-                        overlayShown = overlayShown,
-                    )
-                }
+                TabSidebar(
+                    navController = findNavController(),
+                    onNoTabs = { findNavController().navigate(BrowserFragmentDirections.actionGlobalHome()) },
+                    overlayShown = overlayShown,
+                )
             }
         }
     }
@@ -1708,6 +1698,7 @@ abstract class BaseBrowserFragment :
                 navController = findNavController(),
                 showScrimWhenNoSuggestions = true,
                 suggestionsAtBottom = true.takeIf { DejavuToolbar.enabled },
+                dropdownOnLargeWindow = true,
             )
             .also {
                 awesomeBarComposable = it

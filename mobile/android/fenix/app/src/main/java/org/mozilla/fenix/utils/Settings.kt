@@ -2268,9 +2268,12 @@ class Settings(
                     (isTabStripEligible(appContext) || FxNimbus.features.tabStrip.value().allowOnAllDevices),
         )
 
-    /** Shows the open tabs in a sidebar next to the page on large screens. */
+    /** Shows the home screen in a sidebar next to the page on large screens, on by default on tablets. */
     var isVerticalTabsEnabled by
-        booleanPreference(appContext.getPreferenceKey(R.string.pref_key_vertical_tabs), default = false)
+        booleanPreference(
+            appContext.getPreferenceKey(R.string.pref_key_vertical_tabs),
+            default = { appContext.isLargeScreenSize() },
+        )
 
     /** Whether the vertical tabs sidebar only shows the icons of the tabs. */
     var isVerticalTabsCollapsed by
@@ -3573,6 +3576,13 @@ class Settings(
         set(value) {
             engineKeywordsJson = value.toKeywordJson()
         }
+
+    /** Dejavu: typed before a search in the new tab prompt, it limits the results to settings. */
+    var settingsSearchKeyword by
+        stringPreference(
+            appContext.getPreferenceKey(R.string.pref_key_dejavu_settings_keyword),
+            default = "o",
+        )
 
     /** Dejavu: typed keyword to bookmark URL, where %s is replaced by the search text. */
     var bookmarkKeywords: Map<String, String>

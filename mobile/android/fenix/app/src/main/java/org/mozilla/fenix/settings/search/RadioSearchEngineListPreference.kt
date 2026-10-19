@@ -14,6 +14,7 @@ import android.widget.CompoundButton
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isVisible
@@ -35,7 +36,8 @@ import org.mozilla.fenix.GleanMetrics.Events
 import org.mozilla.fenix.R
 import org.mozilla.fenix.databinding.SearchEngineRadioButtonBinding
 import org.mozilla.fenix.dejavu.keywordFor
-import org.mozilla.fenix.dejavu.withKeyword
+import org.mozilla.fenix.dejavu.withDefaultEngineKeywords
+import org.mozilla.fenix.dejavu.withEngineKeyword
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.telemetryName
 
@@ -247,12 +249,20 @@ constructor(
 
     private fun editKeyword(engine: SearchEngine) {
         val settings = context.components.settings
-        val input = EditText(context).apply { setText(settings.engineKeywords.keywordFor(engine.id)) }
+        val engineIds = context.components.core.store.state.search.searchEngines.map { it.id }
+        val shown = settings.engineKeywords.withDefaultEngineKeywords(engineIds).keywordFor(engine.id)
+        val input = EditText(context).apply { setText(shown) }
         AlertDialog.Builder(context)
             .setTitle(R.string.dejavu_search_keyword)
             .setView(input)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                settings.engineKeywords = settings.engineKeywords.withKeyword(input.text.toString(), engine.id)
+                val keyword = input.text.toString().trim().lowercase()
+                val taken = keyword == settings.settingsSearchKeyword || keyword in settings.bookmarkKeywords
+                if (keyword.isNotEmpty() && taken) {
+                    showKeywordTaken(context, keyword)
+                } else {
+                    settings.engineKeywords = settings.engineKeywords.withEngineKeyword(keyword, engine.id, engineIds)
+                }
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
@@ -297,3 +307,6 @@ constructor(
         private const val USE_DEFAULT_TAG = "use_default_search_engine"
     }
 }
+
+internal fun showKeywordTaken(context: Context, keyword: String) =
+    Toast.makeText(context, context.getString(R.string.dejavu_search_keyword_taken, keyword), Toast.LENGTH_LONG).show()

@@ -1303,6 +1303,7 @@ class HomeFragment : Fragment(), UserInteractionHandler, OnLongPressedListener {
                 searchAccessPoint = args.searchAccessPoint,
                 isEdgeToEdgeBackgroundEnabled = isEdgeToEdgeBackgroundEnabled(),
                 suggestionsAtBottom = true.takeIf { DejavuToolbar.enabled },
+                dropdownOnLargeWindow = true,
             )
             .also {
                 awesomeBarComposable = it

@@ -30,5 +30,9 @@
             android:key="@string/pref_key_add_search_engine"
             android:title="@string/search_engine_add_custom_search_engine_title"
             android:layout="@layout/preference_search_add_engine"/>
+        <Preference
+            android:key="@string/pref_key_dejavu_settings_keyword"
+            android:title="@string/dejavu_settings_search_keyword"
+            app:iconSpaceReserved="false"/>
     </PreferenceCategory>
 </PreferenceScreen>

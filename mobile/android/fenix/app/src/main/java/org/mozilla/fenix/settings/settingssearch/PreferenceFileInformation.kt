@@ -202,4 +202,12 @@ sealed class PreferenceFileInformation(
             categoryHeaderResourceId = R.string.preferences_category_advanced,
             fragmentId = R.id.firefoxLabsFragment,
         )
+
+    /** Dejavu: one of Dejavu's own Compose settings screens, opened at the graph [fragmentId]. */
+    class DejavuScreen(titleResourceId: Int, fragmentId: Int) :
+        PreferenceFileInformation(
+            topBreadcrumbResourceId = titleResourceId,
+            categoryHeaderResourceId = R.string.dejavu_settings_title,
+            fragmentId = fragmentId,
+        )
 }

@@ -30,6 +30,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kotlinx.coroutines.CoroutineScope
@@ -101,129 +102,151 @@ fun ComposeView.setDejavuHomeContent(
 ) {
     setContent {
         FirefoxTheme {
-            val fenix = components
-            val repository = remember { fenix.readOnMainThread { WorkspaceRepository.get(context) } }
-            val settings = remember { fenix.readOnMainThread { DejavuSettings.get(context) } }
-            val containerStorage = remember { DejavuContainerStorage.get(context) }
-            val scope = rememberCoroutineScope()
-            val snackbarHostState = remember { SnackbarHostState() }
-            val interactor = remember {
-                DefaultDejavuHomeInteractor(
-                    context = context,
-                    components = fenix,
-                    repository = repository,
-                    settings = settings,
-                    containerStorage = containerStorage,
-                    navController = navController,
-                    scope = scope,
-                    snackbar = snackbarHostState,
-                    openTab = onOpenTab,
+            DejavuHomeScreen(
+                navController = navController,
+                onOpenTab = onOpenTab,
+                searchToolbar = searchToolbar,
+                onFirstFrameDrawn = onFirstFrameDrawn,
+            )
+        }
+    }
+}
+
+/**
+ * The Dejavu workspace home. [isSidebar] shows it next to a page: it then leaves the browsing mode, search and
+ * dialogs of the first launch to the page.
+ */
+@Composable
+fun DejavuHomeScreen(
+    navController: NavController,
+    onOpenTab: (String) -> Unit,
+    isSidebar: Boolean = false,
+    searchToolbar: @Composable () -> Unit = {},
+    onFirstFrameDrawn: () -> Unit = {},
+) {
+    val context = LocalContext.current
+    val fenix = components
+    val repository = remember { fenix.readOnMainThread { WorkspaceRepository.get(context) } }
+    val settings = remember { fenix.readOnMainThread { DejavuSettings.get(context) } }
+    val containerStorage = remember { DejavuContainerStorage.get(context) }
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val interactor = remember {
+        DefaultDejavuHomeInteractor(
+            context = context,
+            components = fenix,
+            repository = repository,
+            settings = settings,
+            containerStorage = containerStorage,
+            navController = navController,
+            scope = scope,
+            snackbar = snackbarHostState,
+            openTab = onOpenTab,
+        )
+    }
+
+    val workspaceState by repository.state.collectAsState()
+    val customActions by settings.customActions.collectAsState()
+    val pinnedKeys by settings.pinnedRowKeys.collectAsState()
+    val unpinnedKeys by settings.unpinnedRowKeys.collectAsState()
+    val folderKeys by settings.folderRowKeys.collectAsState()
+    val hiddenSelectionKeys by settings.hiddenSelectionKeys.collectAsState()
+    val essentialsPerContainer by settings.essentialsPerContainer.collectAsState()
+    val containerRecords by containerStorage.records.collectAsState()
+    val containers = remember(containerRecords) { containerRecords.orEmpty().associateBy { it.contextId } }
+    val tabs by fenix.core.store.observeAsComposableState { it.normalTabs }
+    val allPrivateTabs by fenix.core.store.observeAsComposableState { it.privateTabs }
+    val isPrivateLocked by fenix.appStore.observeAsComposableState { it.isPrivateScreenLocked }
+    val selectedTabId by fenix.core.store.observeAsComposableState { it.selectedTabId }
+    val restoreComplete by fenix.core.store.observeAsComposableState { it.restoreComplete }
+    val isSearchActive by fenix.appStore.observeAsComposableState { it.searchState.isSearchActive }
+
+    LaunchedEffect(Unit) {
+        containerStorage.load()
+    }
+
+    // Coming home from a private tab leaves the app in private browsing; the home itself is never private.
+    LaunchedEffect(Unit) {
+        val activity = context as? HomeActivity ?: return@LaunchedEffect
+        if (isSidebar) return@LaunchedEffect
+        if (activity.browsingModeManager.mode.isPrivate) activity.browsingModeManager.mode = BrowsingMode.Normal
+    }
+
+    LaunchedEffect(isSearchActive) {
+        if (!isSearchActive) {
+            delay(SEARCH_ABANDON_GRACE_MS)
+            NewTabContainerChoice.clear()
+        }
+    }
+
+    LaunchedEffect(tabs, restoreComplete) {
+        repository.syncWithTabs(tabs.map { it.id }.toSet(), restoreComplete)
+        repository.refreshPinTitles(tabs.associate { it.id to (it.content.url to it.content.title) })
+    }
+
+    Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)) {
+        DejavuHome(
+            state = workspaceState,
+            tabs = tabs,
+            privateTabs = if (isPrivateLocked) emptyList() else allPrivateTabs,
+            selectedTabId = selectedTabId,
+            containers = containers,
+            pinnedRowActions = resolveRowActions(pinnedKeys, ActionPlace.PINNED_ROWS, customActions),
+            unpinnedRowActions = resolveRowActions(unpinnedKeys, ActionPlace.UNPINNED_ROWS, customActions),
+            folderRowActions = resolveRowActions(folderKeys, ActionPlace.FOLDER_ROWS, customActions),
+            selectionActions = resolveSelectionActions(hiddenSelectionKeys, customActions),
+            essentialsPerContainer = essentialsPerContainer,
+            interactor = interactor,
+        )
+
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .systemBarsPadding()
+                .imePadding()
+                .padding(bottom = 64.dp),
+        )
+
+        if (isSearchActive && !isSidebar) {
+            Box(modifier = Modifier.systemBarsPadding().imePadding()) {
+                DejavuSearchOverlay(
+                    fromTop = !fenix.settings.shouldUseBottomToolbar ||
+                        fenix.appStore.state.searchState.sourceTabId == null,
+                    content = searchToolbar,
                 )
-            }
-
-            val workspaceState by repository.state.collectAsState()
-            val customActions by settings.customActions.collectAsState()
-            val pinnedKeys by settings.pinnedRowKeys.collectAsState()
-            val unpinnedKeys by settings.unpinnedRowKeys.collectAsState()
-            val folderKeys by settings.folderRowKeys.collectAsState()
-            val hiddenSelectionKeys by settings.hiddenSelectionKeys.collectAsState()
-            val essentialsPerContainer by settings.essentialsPerContainer.collectAsState()
-            val containerRecords by containerStorage.records.collectAsState()
-            val containers = remember(containerRecords) { containerRecords.orEmpty().associateBy { it.contextId } }
-            val tabs by fenix.core.store.observeAsComposableState { it.normalTabs }
-            val allPrivateTabs by fenix.core.store.observeAsComposableState { it.privateTabs }
-            val isPrivateLocked by fenix.appStore.observeAsComposableState { it.isPrivateScreenLocked }
-            val selectedTabId by fenix.core.store.observeAsComposableState { it.selectedTabId }
-            val restoreComplete by fenix.core.store.observeAsComposableState { it.restoreComplete }
-            val isSearchActive by fenix.appStore.observeAsComposableState { it.searchState.isSearchActive }
-
-            LaunchedEffect(Unit) {
-                containerStorage.load()
-            }
-
-            // Coming home from a private tab leaves the app in private browsing; the home itself is never private.
-            LaunchedEffect(Unit) {
-                val activity = context as? HomeActivity ?: return@LaunchedEffect
-                if (activity.browsingModeManager.mode.isPrivate) activity.browsingModeManager.mode = BrowsingMode.Normal
-            }
-
-            LaunchedEffect(isSearchActive) {
-                if (!isSearchActive) {
-                    delay(SEARCH_ABANDON_GRACE_MS)
-                    NewTabContainerChoice.clear()
-                }
-            }
-
-            LaunchedEffect(tabs, restoreComplete) {
-                repository.syncWithTabs(tabs.map { it.id }.toSet(), restoreComplete)
-                repository.refreshPinTitles(tabs.associate { it.id to (it.content.url to it.content.title) })
-            }
-
-            Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)) {
-                DejavuHome(
-                    state = workspaceState,
-                    tabs = tabs,
-                    privateTabs = if (isPrivateLocked) emptyList() else allPrivateTabs,
-                    selectedTabId = selectedTabId,
-                    containers = containers,
-                    pinnedRowActions = resolveRowActions(pinnedKeys, ActionPlace.PINNED_ROWS, customActions),
-                    unpinnedRowActions = resolveRowActions(unpinnedKeys, ActionPlace.UNPINNED_ROWS, customActions),
-                    folderRowActions = resolveRowActions(folderKeys, ActionPlace.FOLDER_ROWS, customActions),
-                    selectionActions = resolveSelectionActions(hiddenSelectionKeys, customActions),
-                    essentialsPerContainer = essentialsPerContainer,
-                    interactor = interactor,
-                )
-
-                SnackbarHost(
-                    hostState = snackbarHostState,
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .systemBarsPadding()
-                        .imePadding()
-                        .padding(bottom = 64.dp),
-                )
-
-                if (isSearchActive) {
-                    Box(modifier = Modifier.systemBarsPadding().imePadding()) {
-                        DejavuSearchOverlay(
-                            fromTop = !fenix.settings.shouldUseBottomToolbar ||
-                                fenix.appStore.state.searchState.sourceTabId == null,
-                            content = searchToolbar,
-                        )
-                    }
-                }
-            }
-
-            val dueChapters = remember { FeatureTour.dueChapters(settings, updated = context.wasUpdated()) }
-            var showTour by remember { mutableStateOf(dueChapters.isNotEmpty()) }
-            if (showTour) {
-                CompositionLocalProvider(LocalPopupTheme provides workspaceState.activeWorkspace?.theme) {
-                    FeatureTourDialog(
-                        chapters = dueChapters,
-                        onDismiss = {
-                            FeatureTour.markSeen(settings)
-                            showTour = false
-                        },
-                    )
-                }
-            }
-
-            // Once Dejavu found what the account syncs from Firefox and Zen, it asks which one workspaces follow.
-            val syncStatus by DejavuSync.status.collectAsState()
-            if (!showTour && syncStatus.askSource) {
-                CompositionLocalProvider(LocalPopupTheme provides workspaceState.activeWorkspace?.theme) {
-                    SyncSourceDialog(
-                        status = syncStatus,
-                        onChoose = { DejavuSync.chooseSource(context, it) },
-                        onDismiss = { DejavuSync.putOffSourceChoice(context) },
-                    )
-                }
-            }
-
-            LaunchedEffect(Unit) {
-                onFirstFrameDrawn()
             }
         }
+    }
+
+    val dueChapters = remember { FeatureTour.dueChapters(settings, updated = context.wasUpdated()) }
+    var showTour by remember { mutableStateOf(!isSidebar && dueChapters.isNotEmpty()) }
+    if (showTour) {
+        CompositionLocalProvider(LocalPopupTheme provides workspaceState.activeWorkspace?.theme) {
+            FeatureTourDialog(
+                chapters = dueChapters,
+                onDismiss = {
+                    FeatureTour.markSeen(settings)
+                    showTour = false
+                },
+            )
+        }
+    }
+
+    // Once Dejavu found what the account syncs from Firefox and Zen, it asks which one workspaces follow.
+    val syncStatus by DejavuSync.status.collectAsState()
+    if (!isSidebar && !showTour && syncStatus.askSource) {
+        CompositionLocalProvider(LocalPopupTheme provides workspaceState.activeWorkspace?.theme) {
+            SyncSourceDialog(
+                status = syncStatus,
+                onChoose = { DejavuSync.chooseSource(context, it) },
+                onDismiss = { DejavuSync.putOffSourceChoice(context) },
+            )
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        onFirstFrameDrawn()
     }
 }
 
