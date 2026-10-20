@@ -13,6 +13,7 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.showToolbar
+import org.mozilla.fenix.settings.SettingsSection
 import org.mozilla.fenix.settings.SharedPreferenceUpdater
 import org.mozilla.fenix.settings.requirePreference
 
@@ -21,18 +22,7 @@ import org.mozilla.fenix.settings.requirePreference
  * in the main menu.
  */
 class DeleteBrowsingDataOnQuitFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment {
-
-    private val checkboxes by lazy {
-        val context = requireContext()
-        DeleteBrowsingDataOnQuitType.entries
-            .asSequence()
-            .mapNotNull { type ->
-                findPreference<CheckBoxPreference>(type.getPreferenceKey(context))?.let { pref ->
-                    type to pref
-                }
-            }
-            .toMap()
-    }
+    private val section = DeleteBrowsingDataOnQuitSection(this)
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.delete_browsing_data_quit_preferences, rootKey)
@@ -41,9 +31,32 @@ class DeleteBrowsingDataOnQuitFragment : PreferenceFragmentCompat(), SystemInset
     override fun onResume() {
         super.onResume()
         showToolbar(getString(R.string.preferences_delete_browsing_data_on_quit))
+        section.onResume()
+    }
+}
 
+/**
+ * The preferences of [DeleteBrowsingDataOnQuitFragment]. The settings page shows them inline, see
+ * docs/dejavu/settings-redesign.md.
+ */
+class DeleteBrowsingDataOnQuitSection(private val fragment: PreferenceFragmentCompat) : SettingsSection {
+
+    private val checkboxes by lazy {
+        val context = fragment.requireContext()
+        DeleteBrowsingDataOnQuitType.entries
+            .asSequence()
+            .mapNotNull { type ->
+                fragment.findPreference<CheckBoxPreference>(type.getPreferenceKey(context))?.let { pref ->
+                    type to pref
+                }
+            }
+            .toMap()
+    }
+
+    override fun onResume() {
         // Delete Browsing Data on Quit Switch
-        val deleteOnQuitPref = requirePreference<SwitchPreferenceCompat>(R.string.pref_key_delete_browsing_data_on_quit)
+        val deleteOnQuitPref =
+            fragment.requirePreference<SwitchPreferenceCompat>(R.string.pref_key_delete_browsing_data_on_quit)
         deleteOnQuitPref.apply {
             onPreferenceChangeListener =
                 object : SharedPreferenceUpdater() {

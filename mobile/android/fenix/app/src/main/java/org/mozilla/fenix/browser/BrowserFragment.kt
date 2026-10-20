@@ -75,6 +75,7 @@ import org.mozilla.fenix.ext.application
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getRectWithScreenLocation
 import org.mozilla.fenix.ext.isGoogleSearchEngine
+import org.mozilla.fenix.ext.isLargeWindow
 import org.mozilla.fenix.ext.nav
 import org.mozilla.fenix.ext.navigateSafe
 import org.mozilla.fenix.ext.requireComponents
@@ -236,7 +237,8 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
             )
         }
 
-        if (!settings.isTabStripEnabled && settings.isSwipeToolbarToSwitchTabsEnabled) {
+        // The tab strip replaces this swipe only while it is shown, which changes with the window size.
+        if (settings.isSwipeToolbarToSwitchTabsEnabled) {
             binding.gestureLayout.addGestureListener(
                 ToolbarHorizontalGesturesHandler(
                     activity = requireActivity(),
@@ -255,6 +257,7 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
                     },
                     // The split pane belongs to the page, so it slides with it while the toolbars stay.
                     contentFollowers = { listOfNotNull(splitPaneView()) },
+                    isEnabled = { !settings.isTabStripShown(requireContext().isLargeWindow()) },
                 )
             )
         }

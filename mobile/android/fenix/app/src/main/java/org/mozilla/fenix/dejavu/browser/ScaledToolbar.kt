@@ -7,6 +7,7 @@ package org.mozilla.fenix.dejavu.browser
 import android.content.SharedPreferences
 import androidx.annotation.DimenRes
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.constrainWidth
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlin.math.roundToInt
+import mozilla.components.compose.browser.toolbar.ui.LocalToolbarScale
 import org.mozilla.fenix.R
 import org.mozilla.fenix.ext.components
 
@@ -41,7 +43,8 @@ fun ScaledToolbar(content: @Composable () -> Unit) {
         content()
         return
     }
-    Layout(content = content) { measurables, constraints ->
+    val scaledContent: @Composable () -> Unit = { CompositionLocalProvider(LocalToolbarScale provides scale, content) }
+    Layout(content = scaledContent) { measurables, constraints ->
         fun unscaled(px: Int) = if (px == Constraints.Infinity) px else (px / scale).roundToInt()
         val inner = Constraints(
             minWidth = unscaled(constraints.minWidth),

@@ -28,8 +28,10 @@ class ToolbarGestureMathTest {
 
     @Test
     fun `compact bar opens, runs the gesture, hides and reports a swipe down past the thresholds`() {
-        assertEquals(CompactBarSettle.EXPAND, settle(start = 0f, distance = -80f))
-        assertEquals(CompactBarSettle.EXPAND, settle(start = 0f, distance = -10f, velocity = -2000f))
+        // One swipe up from the collapsed bar is enough to run the gesture.
+        assertEquals(CompactBarSettle.EXPAND_AND_RUN_GESTURE, settle(start = 0f, distance = -80f))
+        assertEquals(CompactBarSettle.EXPAND_AND_RUN_GESTURE, settle(start = 0f, distance = -10f, velocity = -2000f))
+        assertEquals(CompactBarSettle.EXPAND, settle(start = 0.5f, distance = -80f))
         assertEquals(CompactBarSettle.EXPAND_AND_RUN_GESTURE, settle(start = 1f, distance = -80f))
         assertEquals(CompactBarSettle.EXPAND_AND_RUN_GESTURE, settle(start = 1f, distance = -10f, velocity = -2000f))
         assertEquals(CompactBarSettle.COLLAPSE, settle(start = 1f, distance = 80f))

@@ -13,11 +13,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.InteractionSource
-import androidx.compose.foundation.layout.Arrangement.Center
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -30,7 +27,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Bottom
 import androidx.compose.ui.Alignment.Companion.Start
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.ContentDrawScope
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.node.DelegatableNode
@@ -42,19 +38,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import mozilla.components.compose.base.menu.CustomPlacementPopup
 import mozilla.components.compose.base.menu.CustomPlacementPopupHorizontalContent
 import mozilla.components.compose.base.modifier.thenConditional
-import mozilla.components.compose.base.text.FadedText
-import mozilla.components.compose.base.text.TruncationDirection.END
-import mozilla.components.compose.base.text.TruncationDirection.START
 import mozilla.components.compose.base.theme.AcornTheme
 import mozilla.components.compose.browser.toolbar.R
-import mozilla.components.compose.browser.toolbar.concept.BrowserToolbarTestTags.ADDRESSBAR_TITLE
 import mozilla.components.compose.browser.toolbar.concept.BrowserToolbarTestTags.ADDRESSBAR_URL
 import mozilla.components.compose.browser.toolbar.concept.PageOrigin.Companion.ContextualMenuOption
 import mozilla.components.compose.browser.toolbar.concept.PageOrigin.Companion.TextGravity
@@ -63,14 +52,8 @@ import mozilla.components.compose.browser.toolbar.concept.PageOrigin.Companion.T
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarInteraction
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarInteraction.BrowserToolbarEvent
 import mozilla.components.compose.browser.toolbar.utils.PageOriginContextualMenuBuilder
-import mozilla.components.compose.browser.toolbar.utils.sanitizeUrlForDisplay
-import mozilla.components.compose.browser.toolbar.utils.truncateUrlAroundDomain
-import mozilla.components.support.ktx.kotlin.getRegistrableDomainIndexRange
+import mozilla.components.compose.browser.toolbar.utils.addressParts
 import mozilla.components.support.utils.ClipboardHandler
-
-private const val URL_TEXT_SIZE_ALONE = 15
-private const val URL_TEXT_SIZE_WITH_TITLE = 12
-private const val FADE_LENGTH = 66
 
 /**
  * Custom layout for showing the origin - title and url of a webpage.
@@ -86,7 +69,7 @@ private const val FADE_LENGTH = 66
  * @param onInteraction Callback for handling [BrowserToolbarEvent]s on user interactions.
  */
 @Composable
-@Suppress("LongMethod")
+@Suppress("LongMethod", "UNUSED_PARAMETER") // textGravity: Dejavu always starts the text at the start, see AddressDisplayText.
 internal fun Origin(
     @StringRes hint: Int,
     modifier: Modifier = Modifier,
@@ -107,24 +90,9 @@ internal fun Origin(
     var showMenu by remember { mutableStateOf(false) }
     val clipboardHandler = remember(view) { ClipboardHandler(view.context) }
 
-    val shouldShowTitle = remember(title) { title != null && title.isNotBlank() }
-    val urlTextSize =
-        remember(shouldShowTitle) {
-            when (shouldShowTitle) {
-                true -> URL_TEXT_SIZE_WITH_TITLE
-                false -> URL_TEXT_SIZE_ALONE
-            }
-        }
-
     val hint = stringResource(hint)
-    val urlToShow: CharSequence =
-        remember(url) {
-            when (url == null || url.isBlank()) {
-                true -> hint
-                else -> url
-            }
-        }
-    val contentDescription: String = getContentDescription(urlToShow, hint, title)
+    val parts = remember(title, url) { addressParts(title, url?.toString()) }
+    val contentDescription = parts?.let { "${it.spoken}. $hint" } ?: hint
 
     CompositionLocalProvider(LocalIndication provides NoRippleIndication) {
         Box(
@@ -155,88 +123,12 @@ internal fun Origin(
                         shouldReactToLongClicks
                     },
         ) {
-            Column(verticalArrangement = Center) {
-                val hasTitle = !title.isNullOrBlank()
-                if (hasTitle) {
-                    Title(title = title, textGravity = textGravity)
-                }
-
-                Url(
-                    url = urlToShow,
-                    fontSize = urlTextSize,
-                    color = getUrlColor(showUrlOnly = hasTitle || urlToShow == hint),
-                )
-            }
+            AddressDisplayText(parts = parts, hint = hint, modifier = Modifier.testTag(ADDRESSBAR_URL))
 
             LongPressMenu(showMenu, contextualMenuOptions, clipboardHandler, onInteraction) {
                 showMenu = false
             }
         }
-    }
-}
-
-@Composable
-private fun Title(
-    title: String,
-    textGravity: TextGravity,
-) {
-    FadedText(
-        text = title,
-        modifier = Modifier.testTag(ADDRESSBAR_TITLE),
-        style =
-            TextStyle(
-                fontSize = URL_TEXT_SIZE_ALONE.sp,
-                color = MaterialTheme.colorScheme.onSurface,
-            ),
-        truncationDirection = textGravity.toTextTruncationDirection(),
-        fadeLength = FADE_LENGTH.dp,
-    )
-}
-
-@Composable
-private fun Url(
-    url: CharSequence,
-    fontSize: Int,
-    color: Color,
-) {
-    // Ensure compatibility with MaterialTheme attributes. See bug 1936346 for more context.
-    val materialTextStyle = LocalTextStyle.current
-
-    val (urlString, registrableDomainIndexRange) =
-        remember(url) {
-            sanitizeUrlForDisplay(
-                url = url.toString(),
-                registrableDomainIndexRange = url.getRegistrableDomainIndexRange(),
-            )
-        }
-    val (truncatedUrl, adjustedDomainIndexRange) =
-        remember(urlString, registrableDomainIndexRange) {
-            truncateUrlAroundDomain(urlString, registrableDomainIndexRange)
-        }
-
-    HighlightedDomainUrl(
-        url = truncatedUrl,
-        registrableDomainIndexRange = adjustedDomainIndexRange,
-        fadedTextStyle =
-            materialTextStyle.merge(
-                fontSize = fontSize.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            ),
-        boldedTextStyle =
-            materialTextStyle.merge(
-                fontSize = fontSize.sp,
-                color = color,
-            ),
-        modifier = Modifier.testTag(ADDRESSBAR_URL),
-    )
-}
-
-@Composable
-private fun getUrlColor(showUrlOnly: Boolean): Color {
-    return if (showUrlOnly) {
-        MaterialTheme.colorScheme.onSurfaceVariant
-    } else {
-        MaterialTheme.colorScheme.onSurface
     }
 }
 
@@ -270,22 +162,6 @@ private fun LongPressMenu(
         }
     }
 }
-
-private fun TextGravity.toTextTruncationDirection() =
-    when (this) {
-        TEXT_GRAVITY_START -> END
-        TEXT_GRAVITY_END -> START
-    }
-
-@Composable
-private fun getContentDescription(urlToShow: CharSequence, hint: String, title: String?) =
-    remember(urlToShow) {
-        if (urlToShow == hint) {
-            hint
-        } else {
-            "${title ?: ""} $urlToShow. $hint"
-        }
-    }
 
 /** Custom indication disabling click ripples. */
 private object NoRippleIndication : IndicationNodeFactory {

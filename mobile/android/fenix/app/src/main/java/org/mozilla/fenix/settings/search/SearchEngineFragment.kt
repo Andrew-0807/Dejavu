@@ -7,6 +7,7 @@ package org.mozilla.fenix.settings.search
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.os.Bundle
+import androidx.annotation.StringRes
 import androidx.annotation.VisibleForTesting
 import androidx.core.content.edit
 import androidx.navigation.fragment.findNavController
@@ -26,6 +27,7 @@ import org.mozilla.fenix.ext.navigateWithBreadcrumb
 import org.mozilla.fenix.ext.openToBrowser
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.showToolbar
+import org.mozilla.fenix.settings.SettingsSection
 import org.mozilla.fenix.settings.SharedPreferenceUpdater
 import org.mozilla.fenix.settings.SupportUtils
 import org.mozilla.fenix.settings.SwitchWithCaptionPreference
@@ -36,159 +38,203 @@ import org.mozilla.gecko.search.SearchWidgetProvider
 
 /** Settings screen allowing users to configure the browser search functionality. */
 class SearchEngineFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment {
+    private val section = SearchSettingsSection(this)
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(
             R.xml.search_settings_preferences,
             rootKey,
         )
-
-        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_sponsored_suggestions).apply {
-            isVisible = context.components.settings.enableFxSuggest
-        }
-        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_nonsponsored_suggestions).apply {
-            isVisible = context.components.settings.enableFxSuggest
-        }
-        requirePreference<CheckBoxPreference>(R.string.pref_key_search_optimization_cards).apply {
-            isVisible =
-                context.components.settings.enableFxSuggest && context.components.settings.isSearchOptimizationEnabled
-        }
-        requirePreference<Preference>(R.string.pref_key_learn_about_fx_suggest).apply {
-            isVisible = context.components.settings.enableFxSuggest
-        }
-        requirePreference<Preference>(R.string.pref_key_search_widget_installed_2).apply {
-            isVisible = canShowAddSearchWidgetPrompt(AppWidgetManager.getInstance(requireContext()))
-        }
+        section.onCreate()
 
         view?.hideKeyboard()
     }
 
-    @Suppress("LongMethod")
     override fun onResume() {
         super.onResume()
         view?.hideKeyboard()
         showToolbar(getString(R.string.preferences_search))
+        section.onResume()
+    }
 
-        val showVoiceSearchPreference =
-            requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_voice_search).apply {
-                isChecked = context.components.settings.shouldShowVoiceSearch
-            }
+    override fun onPreferenceTreeClick(preference: Preference): Boolean {
+        section.onPreferenceTreeClick(preference)
+        return super.onPreferenceTreeClick(preference)
+    }
 
-        initialiseVoiceSearchPreference(showVoiceSearchPreference)
-        updateDefaultSearchEnginePreference()
+    @VisibleForTesting
+    internal fun updateDefaultSearchEnginePreference() = section.updateDefaultSearchEnginePreference()
 
-        val searchSuggestionsPreference =
-            requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_search_suggestions).apply {
-                isChecked = context.components.settings.shouldShowSearchSuggestions
-            }
+    @VisibleForTesting
+    internal fun initialiseVoiceSearchPreference(preference: SwitchPreferenceCompat) =
+        section.initialiseVoiceSearchPreference(preference)
 
-        val searchWidgetPreference =
-            requirePreference<SwitchPreferenceCompat>(R.string.pref_key_search_widget_installed_2).apply {
-                isChecked = context.components.settings.searchWidgetInstalled
-            }
+    @VisibleForTesting
+    internal fun initialiseGoogleLensPreference(preference: SwitchWithCaptionPreference) =
+        section.initialiseGoogleLensPreference(preference)
+}
 
-        val trendingSearchSuggestionsPreference =
-            requirePreference<CheckBoxPreference>(R.string.pref_key_show_trending_search_suggestions).apply {
-                isChecked = context.components.settings.trendingSearchSuggestionsEnabled
-                isEnabled =
-                    getSelectedSearchEngine(requireContext())?.trendingUrl != null &&
-                        context.components.settings.shouldShowSearchSuggestions
-            }
+/**
+ * The preferences of [SearchEngineFragment]: search engines, suggestions and the address bar. The settings page shows
+ * them inline, see docs/dejavu/settings-redesign.md. Its navigation actions are also declared on the settings page.
+ */
+class SearchSettingsSection(private val fragment: PreferenceFragmentCompat) : SettingsSection {
+    private val context get() = fragment.context
+    private val requireComponents get() = fragment.requireComponents
 
-        val recentSearchSuggestionsPreference =
-            requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_recent_search_suggestions).apply {
-                isChecked = context.components.settings.shouldShowRecentSearchSuggestions
-            }
+    private fun requireContext() = fragment.requireContext()
 
-        val autocompleteURLsPreference =
-            requirePreference<SwitchPreferenceCompat>(R.string.pref_key_enable_autocomplete_urls).apply {
-                isChecked = context.components.settings.shouldAutocompleteInAwesomebar
-            }
+    private fun getString(@StringRes id: Int) = fragment.getString(id)
 
-        initialiseGoogleLensPreference(requirePreference(R.string.pref_key_google_lens_integration_user_enabled))
+    private fun <T : Preference> requirePreference(@StringRes id: Int): T = fragment.requirePreference(id)
 
-        val searchSuggestionsInPrivatePreference =
-            requirePreference<CheckBoxPreference>(R.string.pref_key_show_search_suggestions_in_private).apply {
-                isChecked = context.components.settings.shouldShowSearchSuggestionsInPrivate
-                isEnabled = context.components.settings.shouldShowSearchSuggestions
-            }
+    private fun findNavController() = fragment.findNavController()
 
-        val showHistorySuggestions =
-            requirePreference<SwitchPreferenceCompat>(R.string.pref_key_search_browsing_history).apply {
-                isChecked = context.components.settings.shouldShowHistorySuggestions
-            }
-
-        val showBookmarkSuggestions =
-            requirePreference<SwitchPreferenceCompat>(R.string.pref_key_search_bookmarks).apply {
-                isChecked = context.components.settings.shouldShowBookmarkSuggestions
-            }
-
-        val showSyncedTabsSuggestions =
-            requirePreference<SwitchPreferenceCompat>(R.string.pref_key_search_synced_tabs).apply {
-                isChecked = context.components.settings.shouldShowSyncedTabsSuggestions
-            }
-
-        val showClipboardSuggestions =
-            requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_clipboard_suggestions).apply {
-                isChecked = context.components.settings.shouldShowClipboardSuggestions
-            }
-
-        val showSponsoredSuggestionsPreference =
+    override fun onCreate() {
+        with(fragment) {
             requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_sponsored_suggestions).apply {
-                isChecked = context.components.settings.showSponsoredSuggestions
-                // Dejavu: Firefox Suggest is Mozilla's service, so its settings name Firefox, not Dejavu.
-                summary =
-                    getString(
-                        R.string.preferences_show_sponsored_suggestions_summary,
-                        getString(R.string.dejavu_firefox_name),
-                    )
+                isVisible = context.components.settings.enableFxSuggest
             }
-
-        val showNonSponsoredSuggestionsPreference =
             requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_nonsponsored_suggestions).apply {
-                isChecked = context.components.settings.showNonSponsoredSuggestions
-                title =
-                    getString(
-                        R.string.preferences_show_nonsponsored_suggestions,
-                        getString(R.string.dejavu_firefox_name),
-                    )
+                isVisible = context.components.settings.enableFxSuggest
             }
-        val showSuggestionCardsPreference =
             requirePreference<CheckBoxPreference>(R.string.pref_key_search_optimization_cards).apply {
-                isChecked = context.components.settings.shouldShowSearchOptimizationCards
+                isVisible =
+                    context.components.settings.enableFxSuggest && context.components.settings.isSearchOptimizationEnabled
             }
-
-        searchWidgetPreference.onPreferenceChangeListener =
-            object : SharedPreferenceUpdater() {
-                override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
-                    // We cannot remove a widget added to device's homescreen so this cannot be toggled by users.
-                    // The toggle status is set separately from our widget AppWidgetProvider.
-                    return false
-                }
+            requirePreference<Preference>(R.string.pref_key_learn_about_fx_suggest).apply {
+                isVisible = context.components.settings.enableFxSuggest
             }
-        searchSuggestionsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
-        showHistorySuggestions.onPreferenceChangeListener = SharedPreferenceUpdater()
-        showBookmarkSuggestions.onPreferenceChangeListener = SharedPreferenceUpdater()
-        showSyncedTabsSuggestions.onPreferenceChangeListener = SharedPreferenceUpdater()
-        showClipboardSuggestions.onPreferenceChangeListener = SharedPreferenceUpdater()
-        searchSuggestionsInPrivatePreference.onPreferenceChangeListener = SharedPreferenceUpdater()
-        trendingSearchSuggestionsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
-        recentSearchSuggestionsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
-        autocompleteURLsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
-
-        searchSuggestionsPreference.setOnPreferenceClickListener {
-            searchSuggestionsInPrivatePreference.isEnabled = searchSuggestionsPreference.isChecked
-            trendingSearchSuggestionsPreference.isEnabled =
-                getSelectedSearchEngine(requireContext())?.trendingUrl != null && searchSuggestionsPreference.isChecked
-            true
+            requirePreference<Preference>(R.string.pref_key_search_widget_installed_2).apply {
+                isVisible = canShowAddSearchWidgetPrompt(AppWidgetManager.getInstance(requireContext()))
+            }
         }
+    }
 
-        showSponsoredSuggestionsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
-        showNonSponsoredSuggestionsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
-        showSuggestionCardsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
-        showNonSponsoredSuggestionsPreference.setOnPreferenceClickListener {
-            showSuggestionCardsPreference.isEnabled = showNonSponsoredSuggestionsPreference.isChecked
-            true
+    @Suppress("LongMethod")
+    override fun onResume() {
+        with(fragment) {
+            val showVoiceSearchPreference =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_voice_search).apply {
+                    isChecked = context.components.settings.shouldShowVoiceSearch
+                }
+
+            initialiseVoiceSearchPreference(showVoiceSearchPreference)
+            updateDefaultSearchEnginePreference()
+
+            val searchSuggestionsPreference =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_search_suggestions).apply {
+                    isChecked = context.components.settings.shouldShowSearchSuggestions
+                }
+
+            val searchWidgetPreference =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_search_widget_installed_2).apply {
+                    isChecked = context.components.settings.searchWidgetInstalled
+                }
+
+            val trendingSearchSuggestionsPreference =
+                requirePreference<CheckBoxPreference>(R.string.pref_key_show_trending_search_suggestions).apply {
+                    isChecked = context.components.settings.trendingSearchSuggestionsEnabled
+                    isEnabled =
+                        getSelectedSearchEngine(requireContext())?.trendingUrl != null &&
+                            context.components.settings.shouldShowSearchSuggestions
+                }
+
+            val recentSearchSuggestionsPreference =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_recent_search_suggestions).apply {
+                    isChecked = context.components.settings.shouldShowRecentSearchSuggestions
+                }
+
+            val autocompleteURLsPreference =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_enable_autocomplete_urls).apply {
+                    isChecked = context.components.settings.shouldAutocompleteInAwesomebar
+                }
+
+            initialiseGoogleLensPreference(requirePreference(R.string.pref_key_google_lens_integration_user_enabled))
+
+            val searchSuggestionsInPrivatePreference =
+                requirePreference<CheckBoxPreference>(R.string.pref_key_show_search_suggestions_in_private).apply {
+                    isChecked = context.components.settings.shouldShowSearchSuggestionsInPrivate
+                    isEnabled = context.components.settings.shouldShowSearchSuggestions
+                }
+
+            val showHistorySuggestions =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_search_browsing_history).apply {
+                    isChecked = context.components.settings.shouldShowHistorySuggestions
+                }
+
+            val showBookmarkSuggestions =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_search_bookmarks).apply {
+                    isChecked = context.components.settings.shouldShowBookmarkSuggestions
+                }
+
+            val showSyncedTabsSuggestions =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_search_synced_tabs).apply {
+                    isChecked = context.components.settings.shouldShowSyncedTabsSuggestions
+                }
+
+            val showClipboardSuggestions =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_clipboard_suggestions).apply {
+                    isChecked = context.components.settings.shouldShowClipboardSuggestions
+                }
+
+            val showSponsoredSuggestionsPreference =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_sponsored_suggestions).apply {
+                    isChecked = context.components.settings.showSponsoredSuggestions
+                    // Dejavu: Firefox Suggest is Mozilla's service, so its settings name Firefox, not Dejavu.
+                    summary =
+                        getString(
+                            R.string.preferences_show_sponsored_suggestions_summary,
+                            getString(R.string.dejavu_firefox_name),
+                        )
+                }
+
+            val showNonSponsoredSuggestionsPreference =
+                requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_nonsponsored_suggestions).apply {
+                    isChecked = context.components.settings.showNonSponsoredSuggestions
+                    title =
+                        getString(
+                            R.string.preferences_show_nonsponsored_suggestions,
+                            getString(R.string.dejavu_firefox_name),
+                        )
+                }
+            val showSuggestionCardsPreference =
+                requirePreference<CheckBoxPreference>(R.string.pref_key_search_optimization_cards).apply {
+                    isChecked = context.components.settings.shouldShowSearchOptimizationCards
+                }
+
+            searchWidgetPreference.onPreferenceChangeListener =
+                object : SharedPreferenceUpdater() {
+                    override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
+                        // We cannot remove a widget added to device's homescreen so this cannot be toggled by users.
+                        // The toggle status is set separately from our widget AppWidgetProvider.
+                        return false
+                    }
+                }
+            searchSuggestionsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
+            showHistorySuggestions.onPreferenceChangeListener = SharedPreferenceUpdater()
+            showBookmarkSuggestions.onPreferenceChangeListener = SharedPreferenceUpdater()
+            showSyncedTabsSuggestions.onPreferenceChangeListener = SharedPreferenceUpdater()
+            showClipboardSuggestions.onPreferenceChangeListener = SharedPreferenceUpdater()
+            searchSuggestionsInPrivatePreference.onPreferenceChangeListener = SharedPreferenceUpdater()
+            trendingSearchSuggestionsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
+            recentSearchSuggestionsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
+            autocompleteURLsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
+
+            searchSuggestionsPreference.setOnPreferenceClickListener {
+                searchSuggestionsInPrivatePreference.isEnabled = searchSuggestionsPreference.isChecked
+                trendingSearchSuggestionsPreference.isEnabled =
+                    getSelectedSearchEngine(requireContext())?.trendingUrl != null && searchSuggestionsPreference.isChecked
+                true
+            }
+
+            showSponsoredSuggestionsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
+            showNonSponsoredSuggestionsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
+            showSuggestionCardsPreference.onPreferenceChangeListener = SharedPreferenceUpdater()
+            showNonSponsoredSuggestionsPreference.setOnPreferenceClickListener {
+                showSuggestionCardsPreference.isEnabled = showNonSponsoredSuggestionsPreference.isChecked
+                true
+            }
         }
     }
 
@@ -285,21 +331,21 @@ class SearchEngineFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragm
 
     override fun onPreferenceTreeClick(preference: Preference): Boolean {
         when (preference.key) {
-            getPreferenceKey(R.string.pref_key_default_search_engine) -> {
+            fragment.getPreferenceKey(R.string.pref_key_default_search_engine) -> {
                 openDefaultEngineSettings()
             }
-            getPreferenceKey(R.string.pref_key_manage_search_shortcuts) -> {
+            fragment.getPreferenceKey(R.string.pref_key_manage_search_shortcuts) -> {
                 openSearchShortcutsSettings()
             }
-            getPreferenceKey(R.string.pref_key_search_widget_installed_2) -> {
-                maybeShowAddSearchWidgetPrompt(requireActivity())
+            fragment.getPreferenceKey(R.string.pref_key_search_widget_installed_2) -> {
+                maybeShowAddSearchWidgetPrompt(fragment.requireActivity())
             }
-            getPreferenceKey(R.string.pref_key_learn_about_fx_suggest) -> {
+            fragment.getPreferenceKey(R.string.pref_key_learn_about_fx_suggest) -> {
                 openLearnMoreLink()
             }
+            else -> return false
         }
-
-        return super.onPreferenceTreeClick(preference)
+        return true
     }
 
     /**

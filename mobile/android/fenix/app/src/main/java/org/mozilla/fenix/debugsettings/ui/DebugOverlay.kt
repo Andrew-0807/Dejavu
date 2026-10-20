@@ -35,11 +35,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -55,6 +57,9 @@ private const val INITIAL_FAB_OFFSET_X = 0f
 
 /** The initial y offset of the debug drawer FAB from [Alignment.CenterStart]. */
 private const val INITIAL_FAB_OFFSET_Y = 0f
+
+/** The space between the debug drawer FAB and the start of the screen. */
+private val FAB_START_PADDING = 16.dp
 
 /**
  * Overlay for presenting app-wide debugging content.
@@ -86,18 +91,34 @@ fun DebugOverlay(
         onDrawerClose()
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    // Dejavu: the button is kept inside the window, so it is never dragged or rotated off screen.
+    var overlaySize by remember { mutableStateOf(IntSize.Zero) }
+    var fabSize by remember { mutableStateOf(IntSize.Zero) }
+    val fabStartPadding = with(density) { FAB_START_PADDING.toPx() }
+    fun clampX(x: Float): Float {
+        val max = (overlaySize.width - fabSize.width - fabStartPadding).coerceAtLeast(0f)
+        return x.coerceIn(-fabStartPadding, max)
+    }
+    fun clampY(y: Float): Float {
+        val half = ((overlaySize.height - fabSize.height) / 2f).coerceAtLeast(0f)
+        return y.coerceIn(-half, half)
+    }
+
+    Box(modifier = Modifier.fillMaxSize().onSizeChanged { overlaySize = it }) {
         FloatingActionButton(
             icon = painterResource(R.drawable.ic_debug_transparent_fire_24),
             modifier =
                 Modifier.align(Alignment.CenterStart)
-                    .padding(start = 16.dp)
-                    .offset { IntOffset(debugDrawerFabOffsetX.roundToInt(), debugDrawerFabOffsetY.roundToInt()) }
+                    .padding(start = FAB_START_PADDING)
+                    .onSizeChanged { fabSize = it }
+                    .offset {
+                        IntOffset(clampX(debugDrawerFabOffsetX).roundToInt(), clampY(debugDrawerFabOffsetY).roundToInt())
+                    }
                     .draggable2D(
                         state =
                             rememberDraggable2DState { offset ->
-                                debugDrawerFabOffsetX += offset.x
-                                debugDrawerFabOffsetY += offset.y
+                                debugDrawerFabOffsetX = clampX(debugDrawerFabOffsetX + offset.x)
+                                debugDrawerFabOffsetY = clampY(debugDrawerFabOffsetY + offset.y)
                             }
                     ),
             onClick = {

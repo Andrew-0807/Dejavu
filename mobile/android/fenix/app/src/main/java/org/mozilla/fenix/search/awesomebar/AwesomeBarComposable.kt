@@ -5,6 +5,7 @@
 package org.mozilla.fenix.search.awesomebar
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -42,6 +43,7 @@ import mozilla.components.browser.state.action.AwesomeBarAction
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.compose.base.theme.layout.AcornWindowSize
 import mozilla.components.compose.browser.awesomebar.AwesomeBar
+import mozilla.components.compose.browser.awesomebar.AwesomeBarDefaults
 import mozilla.components.compose.browser.awesomebar.AwesomeBarOrientation
 import mozilla.components.compose.browser.awesomebar.internal.CurrentTabDetailsInteractions.CopyClicked
 import mozilla.components.compose.browser.awesomebar.internal.CurrentTabDetailsInteractions.DetailsClicked
@@ -82,7 +84,8 @@ private const val AWESOMEBAR_MAX_WIDTH = 600
 private const val DROPDOWN_SIDE_PADDING = 12
 private const val DROPDOWN_MAX_HEIGHT = 480
 private const val DROPDOWN_ELEVATION = 8
-private const val DROPDOWN_RADIUS = 12
+private const val DROPDOWN_RADIUS = 20
+private const val DROPDOWN_INNER_PADDING = 6
 
 /**
  * Cap the width of the awesomebar content to [AcornWindowSize.Small] and center it in the available space as a staged
@@ -151,6 +154,7 @@ class AwesomeBarComposable(
         val isSearchActive = appStore.observeAsComposableState { it.searchState.isSearchActive }.value
         val state = searchStore.observeAsComposableState { it }.value
         val dropdown = dropdownOnLargeWindow && AcornWindowSize.isLargeWindow()
+        val dropdownShape = RoundedCornerShape(DROPDOWN_RADIUS.dp)
         val orientation by
             remember(state.searchSuggestionsOrientedAtBottom, dropdown) {
                 derivedStateOf {
@@ -273,8 +277,10 @@ class AwesomeBarComposable(
                                 Modifier.fillMaxWidth()
                                     .padding(horizontal = DROPDOWN_SIDE_PADDING.dp)
                                     .heightIn(max = DROPDOWN_MAX_HEIGHT.dp)
-                                    .shadow(DROPDOWN_ELEVATION.dp, RoundedCornerShape(DROPDOWN_RADIUS.dp))
-                                    .background(MaterialTheme.colorScheme.surface)
+                                    .shadow(DROPDOWN_ELEVATION.dp, dropdownShape)
+                                    .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+                                    .border(1.dp, MaterialTheme.colorScheme.outlineVariant, dropdownShape)
+                                    .padding(DROPDOWN_INNER_PADDING.dp)
                             } else {
                                 Modifier.awesomeBarContentWidth(showCurrentTabData)
                             },
@@ -293,6 +299,16 @@ class AwesomeBarComposable(
                         AwesomeBar(
                             text = state.query,
                             currentTabData = currentTabDetailsToShow,
+                            colors =
+                                AwesomeBarDefaults.colors(
+                                    background =
+                                        if (dropdown) {
+                                            MaterialTheme.colorScheme.surfaceContainerHigh
+                                        } else {
+                                            MaterialTheme.colorScheme.background
+                                        },
+                                    groupTitle = MaterialTheme.colorScheme.primary,
+                                ),
                             providers = state.searchSuggestionsProviders,
                             hiddenSuggestions = state.hiddenSuggestions,
                             orientation = orientation,

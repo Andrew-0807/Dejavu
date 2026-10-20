@@ -157,11 +157,11 @@ internal class HomeToolbarComposable(
         val shouldUseBottomToolbar = remember(isLargeWindow) {
             settings.shouldUseBottomToolbar || (DejavuToolbar.enabled && !isLargeWindow)
         }
-        val shouldShowTabStrip = remember(shouldUseBottomToolbar) {
+        val shouldShowTabStrip = remember(shouldUseBottomToolbar, isLargeWindow) {
             if (shouldUseBottomToolbar) {
-                settings.shouldShowTabStripAtBottom
+                settings.shouldShowTabStripAtBottom(isLargeWindow)
             } else {
-                settings.shouldShowTabStripAtTop
+                settings.shouldShowTabStripAtTop(isLargeWindow)
             }
         }
 

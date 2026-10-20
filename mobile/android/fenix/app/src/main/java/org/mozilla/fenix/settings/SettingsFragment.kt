@@ -21,8 +21,11 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.StringRes
 import androidx.annotation.VisibleForTesting
+import androidx.annotation.XmlRes
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ComposeView
@@ -31,6 +34,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -42,7 +46,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
+import androidx.preference.PreferenceDataStore
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceGroup
+import androidx.preference.PreferenceGroupAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.lang.ref.WeakReference
@@ -50,7 +58,6 @@ import kotlin.system.exitProcess
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
 import mozilla.components.concept.engine.Engine
 import mozilla.components.concept.sync.AccountObserver
 import mozilla.components.concept.sync.AuthType
@@ -74,7 +81,6 @@ import org.mozilla.fenix.GleanMetrics.Addons
 import org.mozilla.fenix.GleanMetrics.Events
 import org.mozilla.fenix.GleanMetrics.Settings as SettingsMetrics
 import org.mozilla.fenix.GleanMetrics.SettingsSearch
-import org.mozilla.fenix.GleanMetrics.TrackingProtection
 import org.mozilla.fenix.GleanMetrics.Translations
 import org.mozilla.fenix.GleanMetrics.Vpn
 import org.mozilla.fenix.HomeActivity
@@ -84,8 +90,13 @@ import org.mozilla.fenix.components.accounts.FenixFxAEntryPoint
 import org.mozilla.fenix.databinding.AmoCollectionOverrideDialogBinding
 import org.mozilla.fenix.dejavu.DejavuLinks
 import org.mozilla.fenix.dejavu.features.DejavuFeatureTourFragment
+import org.mozilla.fenix.dejavu.settings.ExternalLinksSettings
+import org.mozilla.fenix.dejavu.settings.HttpsOnlySettings
 import org.mozilla.fenix.dejavu.settings.SettingsGroup
 import org.mozilla.fenix.dejavu.settings.SettingsHome
+import org.mozilla.fenix.dejavu.settings.TabSleepSettings
+import org.mozilla.fenix.dejavu.settings.dejavuSettings
+import org.mozilla.fenix.dejavu.settings.workspaceRepository
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.application
 import org.mozilla.fenix.ext.components
@@ -103,6 +114,9 @@ import org.mozilla.fenix.nimbus.FxNimbus
 import org.mozilla.fenix.perf.ProfilerViewModel
 import org.mozilla.fenix.perf.ProfilerViewModelFactory
 import org.mozilla.fenix.settings.account.AccountUiView
+import org.mozilla.fenix.settings.deletebrowsingdata.DeleteBrowsingDataOnQuitSection
+import org.mozilla.fenix.settings.downloads.DownloadsSettingsSection
+import org.mozilla.fenix.settings.search.SearchSettingsSection
 import org.mozilla.fenix.snackbar.FenixSnackbarDelegate
 import org.mozilla.fenix.snackbar.SnackbarBinding
 import org.mozilla.fenix.theme.FirefoxTheme
@@ -140,6 +154,29 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         object : OnBackPressedCallback(false) {
             override fun handleOnBackPressed() = showGroup(null)
         }
+
+    // Dejavu: the logic of the settings shown inline, written once for this page and their own screens.
+    private val sections: List<SettingsSection> =
+        listOf(
+            CustomizationSection(this),
+            HomeSettingsSection(this),
+            AccessibilitySection(this),
+            TabsSettingsSection(this),
+            SearchSettingsSection(this),
+            OpenLinksInAppsSection(this),
+            LinkSharingSection(this),
+            TrackingProtectionSection(this, R.id.settingsFragment),
+            PrivateBrowsingSection(this),
+            DeleteBrowsingDataOnQuitSection(this),
+            DownloadsSettingsSection(this),
+        )
+
+    // Dejavu: the sections hidden because none of their settings is shown, see [hideEmptySections].
+    private val emptySections = mutableSetOf<PreferenceGroup>()
+    private val anchorKeys = mutableSetOf<String>()
+
+    // Dejavu: a wide window follows the scrolling with the highlighted category, unless a category was just tapped.
+    private var followScroll = true
 
     @VisibleForTesting
     internal val accountObserver =
@@ -258,6 +295,92 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         // Dejavu: the maker's name is not translated.
         findPreference<Preference>(getString(R.string.pref_key_dejavu_author))?.title =
             getString(R.string.dejavu_settings_author, getString(R.string.dejavu_author_name))
+        inlineSettings()
+        sections.forEach { it.onCreate() }
+    }
+
+    /**
+     * Dejavu: puts the settings of the simple screens on this page, each under its anchor category, see
+     * docs/dejavu/settings-redesign.md.
+     */
+    private fun inlineSettings() {
+        spaceSectionOrders()
+        val tabKeys =
+            listOf(getString(R.string.pref_key_tab_strip_show), getString(R.string.pref_key_tab_strip_location))
+        val inputKey = getString(R.string.pref_key_dynamic_toolbar)
+        anchorKeys += getString(R.string.pref_key_dejavu_customize_tabs)
+        anchorKeys += getString(R.string.pref_key_dejavu_customize_input)
+        inline(R.xml.customization_preferences, R.string.pref_key_customize) { category ->
+            val keys = listOfNotNull(category.key) +
+                (0 until category.preferenceCount).mapNotNull { category.getPreference(it).key }
+            getString(customizationAnchor(keys, tabKeys, inputKey))
+        }
+        inline(R.xml.home_preferences, R.string.pref_key_home)
+        // Accessibility settings are kept in the Fenix preferences file, not in the default one of this page.
+        inline(
+            R.xml.accessibility_preferences,
+            R.string.pref_key_accessibility,
+            store = SharedPreferencesDataStore(requireComponents.settings.preferences),
+        )
+        inline(R.xml.tabs_preferences, R.string.pref_key_tabs)
+        inline(R.xml.search_settings_preferences, R.string.pref_key_search_settings)
+        inline(R.xml.open_links_in_apps_preferences, R.string.pref_key_open_links_in_apps)
+        inline(R.xml.link_sharing_preferences, R.string.pref_key_dejavu_section_link_sharing)
+        inline(R.xml.tracking_protection_preferences, R.string.pref_key_tracking_protection_settings)
+        inline(R.xml.private_browsing_preferences, R.string.pref_key_private_browsing)
+        inline(R.xml.delete_browsing_data_quit_preferences, R.string.pref_key_delete_browsing_data_on_quit_preference)
+        inline(R.xml.downloads_settings_preferences, R.string.pref_key_downloads)
+        // The spacer of the downloads screen would be an empty row in a card here.
+        findPreference<PreferenceGroup>(getString(R.string.pref_key_downloads))?.let { downloads ->
+            (0 until downloads.preferenceCount).map { downloads.getPreference(it) }
+                .filter { it.layoutResource == R.layout.preference_spacer }
+                .forEach { it.isVisible = false }
+        }
+
+        val context = requireContext()
+        anchorKeys += getString(R.string.pref_key_dejavu_tab_sleep)
+        requirePreference<PreferenceGroup>(R.string.pref_key_dejavu_tab_sleep).addPreference(
+            InlineComposePreference(context) { TabSleepSettings(remember { dejavuSettings() }) },
+        )
+        anchorKeys += getString(R.string.pref_key_dejavu_external_links)
+        requirePreference<PreferenceGroup>(R.string.pref_key_dejavu_external_links).addPreference(
+            InlineComposePreference(context) {
+                ExternalLinksSettings(
+                    settings = remember { dejavuSettings() },
+                    repository = remember { workspaceRepository() },
+                    fenixSettings = requireComponents.settings,
+                )
+            },
+        )
+        anchorKeys += getString(R.string.pref_key_https_only_settings)
+        requirePreference<PreferenceGroup>(R.string.pref_key_https_only_settings).addPreference(
+            InlineComposePreference(context) {
+                HttpsOnlySettings(
+                    fenixSettings = requireComponents.settings,
+                    onChanged = ::updateEngineHttpsOnlyMode,
+                    onLearnMore = ::openHttpsOnlyArticle,
+                )
+            },
+        )
+    }
+
+    private fun inline(
+        @XmlRes xml: Int,
+        @StringRes anchor: Int,
+        store: PreferenceDataStore? = null,
+        route: ((PreferenceCategory) -> String)? = null,
+    ) {
+        val anchorKey = getString(anchor)
+        anchorKeys += anchorKey
+        inlinePreferences(xml, anchorKey, store, route ?: { anchorKey })
+    }
+
+    private fun updateEngineHttpsOnlyMode() {
+        requireComponents.core.engine.settings.httpsOnlyMode = requireComponents.settings.getHttpsOnlyMode()
+    }
+
+    private fun openHttpsOnlyArticle() {
+        openDejavuPage(SupportUtils.getGenericSumoURLForTopic(SupportUtils.SumoTopic.HTTPS_ONLY_MODE))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -269,7 +392,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                     SettingsHome(
                         selected = shownGroup,
                         onSearch = if (args.searchInProgress) null else ::openSearch,
-                        onSelect = ::showGroup,
+                        onSelect = ::selectGroup,
                     )
                 }
             }
@@ -283,18 +406,20 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
     }
 
     /**
-     * Dejavu: shows the root preferences of [group] only. A phone shows the settings home instead when [group] is
-     * `null`, a tablet shows the home on the left and a category, the first one by default, on the right.
+     * Dejavu: a phone shows the settings of [group] only, or the settings home when [group] is `null`. A wide window
+     * shows the home on the left and every category in one list on the right, with [group] (the first one by default)
+     * highlighted, see docs/dejavu/settings-redesign.md.
      */
     private fun showGroup(group: SettingsGroup?) {
         val wide = isWideWindow()
-        val shown = group ?: SettingsGroup.entries.first().takeIf { wide }
-        if (shown != shownGroup) listView?.scrollToPosition(0)
+        val shown = group ?: shownGroup?.takeIf { wide } ?: SettingsGroup.entries.first().takeIf { wide }
+        if (!wide && shown != shownGroup) listView?.scrollToPosition(0)
         shownGroup = shown
-        SettingsGroup.entries.forEach { group ->
-            findPreference<Preference>(getString(group.key))?.apply {
-                isVisible = group == shown
-                title = if (wide) getString(group.title) else null
+        // A wide window lists every category under its heading, a phone shows one category named by the toolbar.
+        SettingsGroup.entries.forEach { entry ->
+            findPreference<Preference>(getString(entry.key))?.apply {
+                isVisible = wide || entry == shown
+                title = if (wide) getString(entry.title) else null
             }
         }
         homeView?.let { home ->
@@ -315,9 +440,79 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         shownGroup?.let { outState.putString(SHOWN_GROUP, it.name) }
     }
 
-    private fun groupOf(key: String): SettingsGroup? {
-        val keys = generateSequence(findPreference<Preference>(key)) { it.parent }.map { it.key }.toList()
+    private fun groupOf(key: String): SettingsGroup? = findPreference<Preference>(key)?.let(::groupOf)
+
+    private fun groupOf(preference: Preference): SettingsGroup? {
+        val keys = generateSequence(preference) { it.parent }.map { it.key }.toList()
         return SettingsGroup.entries.firstOrNull { getString(it.key) in keys }
+    }
+
+    /** Dejavu: a tapped category. A wide window scrolls the one list to it, a phone opens it. */
+    private fun selectGroup(group: SettingsGroup) {
+        if (!isWideWindow()) return showGroup(group)
+        shownGroup = group
+        followScroll = false
+        val key = getString(group.key)
+        listView?.post { scrollToTop(key) }
+    }
+
+    /** Dejavu: scrolls the list so the preference with [key] is at its top. */
+    private fun scrollToTop(key: String) {
+        val list = listView ?: return
+        val adapter = list.adapter as? PreferenceGroupAdapter ?: return
+        val position = adapter.getPreferenceAdapterPosition(key)
+        if (position == RecyclerView.NO_POSITION) return
+        list.stopScroll()
+        (list.layoutManager as? LinearLayoutManager)?.scrollToPositionWithOffset(position, 0)
+    }
+
+    /** Dejavu: highlights the category the user scrolled to, in a wide window. */
+    private val scrollSpy =
+        object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING) followScroll = true
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (!followScroll || !isWideWindow()) return
+                val layout = recyclerView.layoutManager as? LinearLayoutManager ?: return
+                val adapter = recyclerView.adapter as? PreferenceGroupAdapter ?: return
+                val group =
+                    spiedGroup(
+                        first = layout.findFirstVisibleItemPosition(),
+                        last = layout.findLastVisibleItemPosition(),
+                        atEnd = !recyclerView.canScrollVertically(1),
+                    ) { position ->
+                        adapter.takeIf { position in 0 until it.itemCount }?.getItem(position)?.let(::groupOf)
+                    }
+                if (group != null) shownGroup = group
+            }
+        }
+
+    /**
+     * Dejavu: hides each section of the page whose settings are all hidden, and shows it again once one is shown, so no
+     * header stands alone. Sections hidden by their own logic are left alone.
+     */
+    private fun hideEmptySections() {
+        SettingsGroup.entries.forEach { group ->
+            findPreference<PreferenceGroup>(getString(group.key))?.let(::hideEmptySectionsIn)
+        }
+    }
+
+    private fun hideEmptySectionsIn(group: PreferenceGroup) {
+        for (index in 0 until group.preferenceCount) {
+            val section = group.getPreference(index) as? PreferenceCategory ?: continue
+            hideEmptySectionsIn(section)
+            if (section.title.isNullOrEmpty() && section.key !in anchorKeys) continue
+            val empty = (0 until section.preferenceCount).none { section.getPreference(it).isVisible }
+            if (empty && section.isVisible) {
+                section.isVisible = false
+                emptySections += section
+            } else if (!empty && section in emptySections) {
+                section.isVisible = true
+                emptySections -= section
+            }
+        }
     }
 
     private fun updateToolbar() {
@@ -332,14 +527,24 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        if (view != null) showGroup(shownGroup)
+        if (view == null) return
+        showGroup(shownGroup)
+        sections.forEach { it.onConfigurationChanged() }
+        hideEmptySections()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backToHome)
+        sections.forEach { it.onViewCreated(view) }
         showGroup(shownGroup)
+        listView?.apply {
+            addOnScrollListener(scrollSpy)
+            // The last setting can scroll clear of the screen edge.
+            clipToPadding = false
+            updatePadding(bottom = (LIST_BOTTOM_PADDING_DP * resources.displayMetrics.density).toInt())
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -381,7 +586,14 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         // hold it, so a later resume (back from a sub screen) neither reopens the group nor scrolls again.
         val scrollTo = arguments?.getString(PREFERENCE_TO_SCROLL_TO)
         arguments?.remove(PREFERENCE_TO_SCROLL_TO)
-        scrollTo?.let { key -> groupOf(key)?.let(::showGroup) }
+        scrollTo?.let { key ->
+            groupOf(key)?.let { group ->
+                showGroup(group)
+                followScroll = !isWideWindow()
+            }
+        }
+        sections.forEach { it.onResume() }
+        hideEmptySections()
         updateToolbar()
 
         // Account UI state is updated as part of `onCreate`. To not do it twice in a row, we only
@@ -432,18 +644,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         val appName = getString(R.string.app_name)
         aboutPreference.title = getString(R.string.preferences_about, appName)
 
-        val deleteBrowsingDataPreference =
-            requirePreference<Preference>(R.string.pref_key_delete_browsing_data_on_quit_preference)
-        deleteBrowsingDataPreference.summary =
-            if (settings.shouldDeleteBrowsingDataOnQuit) {
-                getString(R.string.delete_browsing_data_quit_on)
-            } else {
-                getString(R.string.delete_browsing_data_quit_off)
-            }
-
-        val tabSettingsPreference = requirePreference<Preference>(R.string.pref_key_tabs)
-        tabSettingsPreference.summary = settings.getTabTimeoutString()
-
         val autofillPreference = requirePreference<Preference>(R.string.pref_key_credit_cards)
         autofillPreference.title =
             if (settings.addressFeature) {
@@ -451,9 +651,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
             } else {
                 getString(R.string.preferences_credit_cards_2)
             }
-
-        val openLinksInAppsSettingsPreference = requirePreference<Preference>(R.string.pref_key_open_links_in_apps)
-        openLinksInAppsSettingsPreference.summary = settings.getOpenLinksInAppsString()
 
         setupPreferences(settings)
 
@@ -473,9 +670,8 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
     @Suppress("LongMethod", "CyclomaticComplexMethod")
     override fun onPreferenceTreeClick(preference: Preference): Boolean {
-        // Hide the scrollbar so the animation looks smoother
-        val recyclerView = requireView().findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView.isVerticalScrollBarEnabled = false
+        // Dejavu: a setting shown inline is handled by its section.
+        if (sections.any { it.onPreferenceTreeClick(preference) }) return true
 
         val directions: NavDirections? =
             when (preference.key) {
@@ -515,51 +711,17 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                 }
 
                 // General preferences
-                resources.getString(R.string.pref_key_search_settings) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToSearchEngineFragment()
-                }
 
-                resources.getString(R.string.pref_key_tabs) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToTabsSettingsFragment()
-                }
-
-                resources.getString(R.string.pref_key_home) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToHomeSettingsFragment()
-                }
 
                 resources.getString(R.string.pref_key_dejavu_tab_actions) -> {
                     ActionOnlyNavDirections(R.id.dejavu_tab_actions_graph)
-                }
-
-                resources.getString(R.string.pref_key_dejavu_tab_sleep) -> {
-                    ActionOnlyNavDirections(R.id.dejavu_tab_sleep_graph)
                 }
 
                 resources.getString(R.string.pref_key_dejavu_containers) -> {
                     ActionOnlyNavDirections(R.id.dejavu_containers_graph)
                 }
 
-                resources.getString(R.string.pref_key_dejavu_external_links) -> {
-                    ActionOnlyNavDirections(R.id.dejavu_external_links_graph)
-                }
 
-                resources.getString(R.string.pref_key_customize) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToCustomizationFragment(
-                        section = CustomizationFragment.SECTION_LOOK,
-                    )
-                }
-
-                resources.getString(R.string.pref_key_dejavu_customize_tabs) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToCustomizationFragment(
-                        section = CustomizationFragment.SECTION_TABS,
-                    )
-                }
-
-                resources.getString(R.string.pref_key_dejavu_customize_input) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToCustomizationFragment(
-                        section = CustomizationFragment.SECTION_INPUT,
-                    )
-                }
 
                 resources.getString(R.string.pref_key_dejavu_shortcuts) -> {
                     ActionOnlyNavDirections(R.id.dejavu_shortcuts_graph)
@@ -577,10 +739,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                 resources.getString(R.string.pref_key_credit_cards) -> {
                     SettingsMetrics.autofill.record()
                     SettingsFragmentDirections.actionSettingsFragmentToAutofillSettingFragment()
-                }
-
-                resources.getString(R.string.pref_key_accessibility) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToAccessibilityFragment()
                 }
 
                 resources.getString(R.string.pref_key_language) -> {
@@ -601,24 +759,12 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                 }
 
                 // Privacy and security preferences
-                resources.getString(R.string.pref_key_private_browsing) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToPrivateBrowsingFragment()
-                }
-
-                resources.getString(R.string.pref_key_https_only_settings) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToHttpsOnlyFragment()
-                }
 
                 resources.getString(R.string.pref_key_ip_protection_settings) -> {
                     Vpn.settingsPageTapped.record(Vpn.SettingsPageTappedExtra(entrypoint = "Settings"))
                     SettingsFragmentDirections.actionSettingsFragmentToIpProtectionFragment(
                         entrypoint = FenixFxAEntryPoint.IPProtectionSettings
                     )
-                }
-
-                resources.getString(R.string.pref_key_tracking_protection_settings) -> {
-                    TrackingProtection.etpSettings.record(NoExtras())
-                    SettingsFragmentDirections.actionSettingsFragmentToTrackingProtectionFragment()
                 }
 
                 resources.getString(R.string.pref_key_doh_settings) -> {
@@ -631,10 +777,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
                 resources.getString(R.string.pref_key_delete_browsing_data) -> {
                     SettingsFragmentDirections.actionSettingsFragmentToDeleteBrowsingDataFragment()
-                }
-
-                resources.getString(R.string.pref_key_delete_browsing_data_on_quit_preference) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToDeleteBrowsingDataOnQuitFragment()
                 }
 
                 resources.getString(R.string.pref_key_notifications) -> {
@@ -710,21 +852,10 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                     null
                 }
 
-                resources.getString(R.string.pref_key_link_sharing) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToLinkSharingFragment()
-                }
-
                 resources.getString(R.string.pref_key_remote_improvements) -> {
                     SettingsFragmentDirections.actionSettingsFragmentToRemoteImprovementsFragment()
                 }
 
-                resources.getString(R.string.pref_key_open_links_in_apps) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToOpenLinksInAppsFragment()
-                }
-
-                resources.getString(R.string.pref_key_downloads) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToOpenDownloadsSettingsFragment()
-                }
 
                 resources.getString(R.string.pref_key_firefox_labs) -> {
                     SettingsMetrics.firefoxLabs.record()
@@ -769,7 +900,11 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
                 else -> null
             }
-        directions?.let { navigateFromSettings(directions) }
+        directions?.let {
+            // Hide the scrollbar so the animation looks smoother. Only when leaving the page: inline settings stay.
+            requireView().findViewById<RecyclerView>(R.id.recycler_view).isVerticalScrollBarEnabled = false
+            navigateFromSettings(directions)
+        }
         return super.onPreferenceTreeClick(preference)
     }
 
@@ -820,7 +955,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
             FeatureFlags.customExtensionCollectionFeature,
         )
         setupGeckoLogsPreference(settings)
-        setupHttpsOnlyPreferences(settings)
         setupIPProtectionPreferences(components.ipProtection.store)
         setupNotificationPreference(NotificationManagerCompat.from(requireContext()).areNotificationsEnabled())
 
@@ -834,9 +968,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         } else {
             requirePreference<Preference>(R.string.pref_key_local_network_access).isVisible = false
         }
-        setupSearchPreference(components.core.store.state.search.selectedOrDefaultSearchEngine?.name)
-        setupHomepagePreference(settings)
-        setupTrackingProtectionPreference(settings)
         setupDnsOverHttpsPreference(settings)
         setupEmailMaskPreference(settings, requireComponents)
     }
@@ -974,46 +1105,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         }
     }
 
-    @VisibleForTesting
-    internal fun setupHomepagePreference(settings: Settings) {
-        with(requirePreference<Preference>(R.string.pref_key_home)) {
-            summary =
-                when {
-                    settings.alwaysOpenTheHomepageWhenOpeningTheApp ->
-                        getString(R.string.opening_screen_homepage_summary)
-
-                    settings.openHomepageAfterFourHoursOfInactivity ->
-                        getString(R.string.opening_screen_after_four_hours_of_inactivity_summary)
-
-                    settings.alwaysOpenTheLastTabWhenOpeningTheApp ->
-                        getString(R.string.opening_screen_last_tab_summary)
-
-                    else -> null
-                }
-        }
-    }
-
-    @VisibleForTesting
-    internal fun setupSearchPreference(selectedOrDefaultSearchEngineName: String?) {
-        with(requirePreference<Preference>(R.string.pref_key_search_settings)) {
-            summary = selectedOrDefaultSearchEngineName
-        }
-    }
-
-    @VisibleForTesting
-    internal fun setupTrackingProtectionPreference(settings: Settings) {
-        with(requirePreference<Preference>(R.string.pref_key_tracking_protection_settings)) {
-            summary =
-                when {
-                    !settings.shouldUseTrackingProtection -> getString(R.string.tracking_protection_off)
-                    settings.useStandardTrackingProtection -> getString(R.string.tracking_protection_standard)
-                    settings.useStrictTrackingProtection -> getString(R.string.tracking_protection_strict)
-                    settings.useCustomTrackingProtection -> getString(R.string.tracking_protection_custom)
-                    else -> null
-                }
-        }
-    }
-
     private fun setupDnsOverHttpsPreference(settings: Settings) {
         with(requirePreference<Preference>(R.string.pref_key_doh_settings)) {
             isVisible = settings.showDohEntryPoint
@@ -1045,21 +1136,10 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
     @VisibleForTesting
     internal fun setLinkSharingPreference() {
-        with(requirePreference<Preference>(R.string.pref_key_link_sharing)) {
+        // Dejavu: the link sharing section, shown inline.
+        with(requirePreference<Preference>(R.string.pref_key_dejavu_section_link_sharing)) {
             isVisible = FxNimbus.features.sentFromFirefox.value().enabled
         }
-    }
-
-    @VisibleForTesting
-    internal fun setupHttpsOnlyPreferences(settings: Settings) {
-        val httpsOnlyPreference = requirePreference<Preference>(R.string.pref_key_https_only_settings)
-        httpsOnlyPreference.summary =
-            when {
-                !settings.shouldUseHttpsOnly -> getString(R.string.preferences_https_only_off)
-                settings.shouldUseHttpsOnlyInAllTabs -> getString(R.string.preferences_https_only_on_all)
-                settings.shouldUseHttpsOnlyInPrivateTabsOnly -> getString(R.string.preferences_https_only_on_private)
-                else -> null
-            }
     }
 
     @VisibleForTesting
@@ -1088,6 +1168,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         private const val FXA_SYNC_OVERRIDE_EXIT_DELAY = 2000L
         private const val AMO_COLLECTION_OVERRIDE_EXIT_DELAY = 3000L
         private const val HOME_PANE_WIDTH_DP = 360
+        private const val LIST_BOTTOM_PADDING_DP = 32
         private const val SHOWN_GROUP = "dejavu_shown_group"
         private const val PREFERENCE_TO_SCROLL_TO = "preference_to_scroll_to"
     }

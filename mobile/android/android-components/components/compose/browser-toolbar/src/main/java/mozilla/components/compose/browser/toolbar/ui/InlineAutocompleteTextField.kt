@@ -85,7 +85,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -98,7 +97,6 @@ import mozilla.components.support.base.utils.MAX_URI_LENGTH
 import mozilla.components.support.ktx.kotlin.trimmed
 import mozilla.components.support.utils.SafeUrl
 
-private const val TEXT_SIZE = 15f
 private const val MIN_CHAR_COUNT_FOR_MULTILINE = 10_000
 
 /**
@@ -370,7 +368,7 @@ internal fun InlineAutocompleteTextField(
                         },
                 textStyle =
                     TextStyle(
-                        fontSize = TEXT_SIZE.sp,
+                        fontSize = AddressFieldDefaults.textSize(),
                         color = MaterialTheme.colorScheme.onSurface,
                         textAlign =
                             when (deviceLayoutDirection) {
@@ -611,7 +609,7 @@ private fun AutocompleteDecorator(
                 text = hint,
                 style =
                     LocalTextStyle.current.merge(
-                        fontSize = TEXT_SIZE.sp,
+                        fontSize = AddressFieldDefaults.textSize(),
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     ),
                 maxLines = 1,

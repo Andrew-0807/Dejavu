@@ -7,15 +7,12 @@ package org.mozilla.fenix.dejavu.browser
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
@@ -35,25 +32,28 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import mozilla.components.compose.base.progressbar.AnimatedProgressBar
 import mozilla.components.compose.browser.toolbar.ActionContainer
 import mozilla.components.compose.browser.toolbar.R as toolbarR
 import mozilla.components.compose.browser.toolbar.concept.PageOrigin.Companion.ContextualMenuOption
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarStore
+import mozilla.components.compose.browser.toolbar.ui.AddressDisplayText
+import mozilla.components.compose.browser.toolbar.ui.AddressFieldDefaults
+import mozilla.components.compose.browser.toolbar.ui.addressFieldSurface
+import mozilla.components.compose.browser.toolbar.utils.addressParts
 import mozilla.components.lib.state.ext.observeAsComposableState
 import mozilla.components.support.utils.ClipboardHandler
 import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
 import org.mozilla.fenix.dejavu.ui.DejavuMenuItem
 import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
-import org.mozilla.fenix.dejavu.ui.glass
 import org.mozilla.fenix.ext.components
 
 /**
- * Dejavu's address bar while a page is shown: only its state, like Safari's. The page title sits in the middle of a
- * rounded field, after the icons of the tab's container and of the site's security, with no buttons, over the colors of
- * the tab's workspace. Tapping the bar starts a search, and long-pressing it copies the address or pastes one.
+ * Dejavu's address bar while a page is shown, over the colors of the tab's workspace. The rounded field shows the icons
+ * of the tab's container and of the site's security, the page title or its address (see [AddressDisplayText]), and the
+ * page actions such as reader view. Tapping the bar starts a search, and long-pressing it copies the address or pastes
+ * one. The look is shared with the other address bars, see `docs/dejavu/address-bar.md`.
  *
  * @param store The store of the address bar.
  */
@@ -63,8 +63,9 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
     // Narrow slices, so the progress ticks of a loading page only redraw the progress bar.
     val origin by store.observeAsComposableState { it.displayState.pageOrigin }
     val pageActionsStart by store.observeAsComposableState { it.displayState.pageActionsStart }
+    val pageActionsEnd by store.observeAsComposableState { it.displayState.pageActionsEnd }
     val hint = stringResource(origin.hint)
-    val text = origin.url?.toString()?.takeIf { it.isNotBlank() } ?: origin.title?.takeIf { it.isNotBlank() } ?: hint
+    val parts = remember(origin.title, origin.url) { addressParts(origin.title, origin.url?.toString()) }
     val haptic = LocalHapticFeedback.current
     var menuOpen by remember { mutableStateOf(false) }
     val theme = shownWorkspaceTheme()
@@ -87,7 +88,7 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
             .background(MaterialTheme.colorScheme.surface)
             .workspaceTheme(theme)
             .semantics {
-                contentDescription = if (text == hint) hint else "$text. $hint"
+                contentDescription = parts?.let { "${it.spoken}. $hint" } ?: hint
                 role = Role.Button
             }
             .combinedClickable(
@@ -101,25 +102,27 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .align(Alignment.Center)
                 .fillMaxWidth()
                 .padding(horizontal = SIDE_PADDING)
-                .height(FIELD_HEIGHT)
-                .glass(glass, CircleShape)
-                .padding(horizontal = FIELD_PADDING),
+                .height(AddressFieldDefaults.Height)
+                .addressFieldSurface(AddressFieldDefaults.colors()),
         ) {
             ActionContainer(actions = pageActionsStart, onInteraction = { store.dispatch(it) })
-            Text(
-                text = text,
-                style = MaterialTheme.typography.bodyLarge,
-                color = if (text == hint) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
+            AddressDisplayText(
+                parts = parts,
+                hint = hint,
                 // The bar's own description already says it.
-                modifier = Modifier.weight(1f, fill = false).padding(end = TITLE_END_PADDING).clearAndSetSemantics {},
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(
+                        start = if (pageActionsStart.isEmpty()) AddressFieldDefaults.HorizontalPadding else 0.dp,
+                        end = if (pageActionsEnd.isEmpty()) AddressFieldDefaults.HorizontalPadding else 0.dp,
+                    )
+                    .clearAndSetSemantics {},
             )
+            ActionContainer(actions = pageActionsEnd, onInteraction = { store.dispatch(it) })
         }
         ProgressBar(store, Modifier.align(Alignment.BottomCenter))
         CompositionLocalProvider(LocalPopupTheme provides theme) {
@@ -184,6 +187,3 @@ private val ContextualMenuOption.label: Int
 
 private val BAR_HEIGHT = 64.dp
 private val SIDE_PADDING = 16.dp
-private val FIELD_HEIGHT = 46.dp
-private val FIELD_PADDING = 12.dp
-private val TITLE_END_PADDING = 8.dp

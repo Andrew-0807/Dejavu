@@ -51,11 +51,13 @@ import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
@@ -96,6 +98,7 @@ import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.showToolbar
 import org.mozilla.fenix.theme.FirefoxTheme
+import org.mozilla.fenix.utils.Settings as FenixSettings
 
 /**
  * Base for the Dejavu settings screens: a Compose screen below the settings toolbar.
@@ -571,47 +574,48 @@ class DejavuTabSleepFragment : DejavuComposeFragment(R.string.dejavu_settings_ta
     @Composable
     override fun DejavuScreen() {
         val settings = remember { dejavuSettings() }
-        val minutes by settings.tabSleepMinutes.collectAsState()
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
-            Text(
-                text = stringResource(R.string.dejavu_tab_sleep_hint),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(16.dp),
-            )
-            SettingsSectionHeader(
-                text = stringResource(R.string.dejavu_tab_sleep_when),
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
-            SLEEP_CHOICES.forEachIndexed { index, choice ->
-                val label = when (choice) {
-                    0 -> stringResource(R.string.dejavu_tab_sleep_never)
-                    MINUTES_PER_HOUR -> stringResource(R.string.dejavu_tab_sleep_after_hour)
-                    else -> pluralStringResource(R.plurals.dejavu_tab_sleep_after_minutes, choice, choice)
-                }
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .settingsCard(index, SLEEP_CHOICES.size)
-                        .fillMaxWidth()
-                        .clickable { settings.setTabSleepMinutes(choice) }
-                        .padding(horizontal = 8.dp, vertical = 4.dp),
-                ) {
-                    RadioButton(selected = minutes == choice, onClick = { settings.setTabSleepMinutes(choice) })
-                    Text(
-                        text = label,
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurface,
-                    )
-                }
-            }
+            TabSleepSettings(settings)
             Spacer(Modifier.height(24.dp))
         }
     }
+}
 
-    private companion object {
-        const val MINUTES_PER_HOUR = 60
-        val SLEEP_CHOICES = listOf(10, DejavuSettings.DEFAULT_TAB_SLEEP_MINUTES, MINUTES_PER_HOUR, 0)
+private const val MINUTES_PER_HOUR = 60
+private val SLEEP_CHOICES = listOf(10, DejavuSettings.DEFAULT_TAB_SLEEP_MINUTES, MINUTES_PER_HOUR, 0)
+private const val DISABLED_ALPHA = 0.4f
+
+/**
+ * The tab sleep choices, shown on their own screen and inline on the settings page, see
+ * docs/dejavu/settings-redesign.md. It does not scroll, the host does.
+ */
+@Composable
+fun TabSleepSettings(settings: DejavuSettings) {
+    val minutes by settings.tabSleepMinutes.collectAsState()
+    Column {
+        Text(
+            text = stringResource(R.string.dejavu_tab_sleep_hint),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(16.dp),
+        )
+        SettingsSectionHeader(
+            text = stringResource(R.string.dejavu_tab_sleep_when),
+            modifier = Modifier.padding(horizontal = 16.dp),
+        )
+        SLEEP_CHOICES.forEachIndexed { index, choice ->
+            val label = when (choice) {
+                0 -> stringResource(R.string.dejavu_tab_sleep_never)
+                MINUTES_PER_HOUR -> stringResource(R.string.dejavu_tab_sleep_after_hour)
+                else -> pluralStringResource(R.plurals.dejavu_tab_sleep_after_minutes, choice, choice)
+            }
+            ChoiceRow(
+                label = label,
+                selected = minutes == choice,
+                modifier = Modifier.settingsCard(index, SLEEP_CHOICES.size),
+                onClick = { settings.setTabSleepMinutes(choice) },
+            )
+        }
     }
 }
 
@@ -620,124 +624,194 @@ class DejavuExternalLinksFragment : DejavuComposeFragment(R.string.dejavu_settin
     @Composable
     override fun DejavuScreen() {
         val settings = remember { dejavuSettings() }
-        val repository = remember {
-            requireComponents.strictMode.allowViolation(StrictMode::allowThreadDiskReads) {
-                WorkspaceRepository.get(requireContext())
-            }
-        }
-        val storage = remember { DejavuContainerStorage.get(requireContext()) }
-        val workspaces by repository.state.collectAsState()
-        val records by storage.records.collectAsState()
-        val workspaceId by settings.externalLinkWorkspaceId.collectAsState()
-        val container by settings.externalLinkContainer.collectAsState()
-        LaunchedEffect(Unit) { storage.load() }
-        val chosenWorkspace = workspaces.workspaces.firstOrNull { it.id == workspaceId }
-        val fenixSettings = requireComponents.settings
-        var openInPrivate by remember { mutableStateOf(fenixSettings.openLinksInAPrivateTab) }
-
+        val repository = remember { workspaceRepository() }
         Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
-            Text(
-                text = stringResource(R.string.dejavu_external_links_hint),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(16.dp),
-            )
-            SwitchListItem(
-                label = stringResource(R.string.dejavu_external_links_private),
-                description = stringResource(R.string.dejavu_external_links_private_summary),
-                maxDescriptionLines = 3,
-                checked = openInPrivate,
-                showSwitchAfter = true,
-                modifier = Modifier.settingsCard(index = 0, count = 1),
-                onClick = { checked ->
-                    fenixSettings.openLinksInAPrivateTab = checked
-                    openInPrivate = checked
-                },
-            )
-            Column(modifier = Modifier.alpha(if (openInPrivate) DISABLED_ALPHA else 1f)) {
-                SettingsSectionHeader(
-                    text = stringResource(R.string.dejavu_external_links_workspace),
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                )
-                val workspaceRows = workspaces.workspaces.size + 1
-                ChoiceRow(
-                    label = stringResource(R.string.dejavu_external_links_last_workspace),
-                    selected = chosenWorkspace == null,
-                    modifier = Modifier.settingsCard(0, workspaceRows),
-                    onClick = { settings.setExternalLinkWorkspace(null) },
-                )
-                workspaces.workspaces.forEachIndexed { index, workspace ->
-                    ChoiceRow(
-                        label = listOfNotNull(workspaceIconText(workspace.icon), workspace.name).joinToString("  "),
-                        selected = workspace.id == chosenWorkspace?.id,
-                        modifier = Modifier.settingsCard(index + 1, workspaceRows),
-                        onClick = { settings.setExternalLinkWorkspace(workspace.id) },
-                    )
-                }
-                SettingsSectionHeader(
-                    text = stringResource(R.string.dejavu_external_links_container),
-                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
-                )
-                val permanent = records.orEmpty().filterNot { it.temporary }
-                val containerRows = permanent.size + 3
-                ChoiceRow(
-                    label = stringResource(R.string.dejavu_external_links_workspace_container),
-                    selected = container == null,
-                    modifier = Modifier.settingsCard(0, containerRows),
-                    onClick = { settings.setExternalLinkContainer(null) },
-                )
-                ChoiceRow(
-                    label = stringResource(R.string.dejavu_workspace_no_container),
-                    selected = container == ContainerPick.NoContainer,
-                    leading = { NoContainerIcon() },
-                    modifier = Modifier.settingsCard(1, containerRows),
-                    onClick = { settings.setExternalLinkContainer(ContainerPick.NoContainer) },
-                )
-                ChoiceRow(
-                    label = stringResource(R.string.dejavu_new_temporary_container),
-                    selected = container == ContainerPick.Temporary,
-                    leading = { TemporaryContainerIcon() },
-                    modifier = Modifier.settingsCard(2, containerRows),
-                    onClick = { settings.setExternalLinkContainer(ContainerPick.Temporary) },
-                )
-                permanent.forEachIndexed { index, record ->
-                    val pick = ContainerPick.Container(record.contextId)
-                    ChoiceRow(
-                        label = record.name,
-                        selected = container == pick,
-                        leading = { ContainerIcon(record) },
-                        modifier = Modifier.settingsCard(index + 3, containerRows),
-                        onClick = { settings.setExternalLinkContainer(pick) },
-                    )
-                }
-            }
+            ExternalLinksSettings(settings, repository, requireComponents.settings)
             Spacer(Modifier.height(24.dp))
         }
     }
+}
 
-    private companion object {
-        const val DISABLED_ALPHA = 0.4f
-    }
+/**
+ * Where links from other apps open: a private tab, or a workspace and a container. Shown on its own screen and inline
+ * on the settings page, see docs/dejavu/settings-redesign.md. It does not scroll, the host does.
+ */
+@Composable
+fun ExternalLinksSettings(settings: DejavuSettings, repository: WorkspaceRepository, fenixSettings: FenixSettings) {
+    val context = LocalContext.current
+    val storage = remember { DejavuContainerStorage.get(context) }
+    val workspaces by repository.state.collectAsState()
+    val records by storage.records.collectAsState()
+    val workspaceId by settings.externalLinkWorkspaceId.collectAsState()
+    val container by settings.externalLinkContainer.collectAsState()
+    LaunchedEffect(Unit) { storage.load() }
+    val chosenWorkspace = workspaces.workspaces.firstOrNull { it.id == workspaceId }
+    var openInPrivate by remember { mutableStateOf(fenixSettings.openLinksInAPrivateTab) }
 
-    @Composable
-    private fun ChoiceRow(
-        label: String,
-        selected: Boolean,
-        onClick: () -> Unit,
-        modifier: Modifier = Modifier,
-        leading: (@Composable () -> Unit)? = null,
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 8.dp, vertical = 4.dp),
-        ) {
-            RadioButton(selected = selected, onClick = onClick)
-            if (leading != null) {
-                leading()
-                Spacer(Modifier.width(12.dp))
+    Column {
+        Text(
+            text = stringResource(R.string.dejavu_external_links_hint),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(16.dp),
+        )
+        SwitchListItem(
+            label = stringResource(R.string.dejavu_external_links_private),
+            description = stringResource(R.string.dejavu_external_links_private_summary),
+            maxDescriptionLines = 3,
+            checked = openInPrivate,
+            showSwitchAfter = true,
+            modifier = Modifier.settingsCard(index = 0, count = 1),
+            onClick = { checked ->
+                fenixSettings.openLinksInAPrivateTab = checked
+                openInPrivate = checked
+            },
+        )
+        Column(modifier = Modifier.alpha(if (openInPrivate) DISABLED_ALPHA else 1f)) {
+            SettingsSectionHeader(
+                text = stringResource(R.string.dejavu_external_links_workspace),
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
+            val workspaceRows = workspaces.workspaces.size + 1
+            ChoiceRow(
+                label = stringResource(R.string.dejavu_external_links_last_workspace),
+                selected = chosenWorkspace == null,
+                modifier = Modifier.settingsCard(0, workspaceRows),
+                onClick = { settings.setExternalLinkWorkspace(null) },
+            )
+            workspaces.workspaces.forEachIndexed { index, workspace ->
+                ChoiceRow(
+                    label = listOfNotNull(workspaceIconText(workspace.icon), workspace.name).joinToString("  "),
+                    selected = workspace.id == chosenWorkspace?.id,
+                    modifier = Modifier.settingsCard(index + 1, workspaceRows),
+                    onClick = { settings.setExternalLinkWorkspace(workspace.id) },
+                )
             }
-            Text(text = label, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurface)
+            SettingsSectionHeader(
+                text = stringResource(R.string.dejavu_external_links_container),
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
+            )
+            val permanent = records.orEmpty().filterNot { it.temporary }
+            val containerRows = permanent.size + 3
+            ChoiceRow(
+                label = stringResource(R.string.dejavu_external_links_workspace_container),
+                selected = container == null,
+                modifier = Modifier.settingsCard(0, containerRows),
+                onClick = { settings.setExternalLinkContainer(null) },
+            )
+            ChoiceRow(
+                label = stringResource(R.string.dejavu_workspace_no_container),
+                selected = container == ContainerPick.NoContainer,
+                leading = { NoContainerIcon() },
+                modifier = Modifier.settingsCard(1, containerRows),
+                onClick = { settings.setExternalLinkContainer(ContainerPick.NoContainer) },
+            )
+            ChoiceRow(
+                label = stringResource(R.string.dejavu_new_temporary_container),
+                selected = container == ContainerPick.Temporary,
+                leading = { TemporaryContainerIcon() },
+                modifier = Modifier.settingsCard(2, containerRows),
+                onClick = { settings.setExternalLinkContainer(ContainerPick.Temporary) },
+            )
+            permanent.forEachIndexed { index, record ->
+                val pick = ContainerPick.Container(record.contextId)
+                ChoiceRow(
+                    label = record.name,
+                    selected = container == pick,
+                    leading = { ContainerIcon(record) },
+                    modifier = Modifier.settingsCard(index + 3, containerRows),
+                    onClick = { settings.setExternalLinkContainer(pick) },
+                )
+            }
         }
+    }
+}
+
+/**
+ * HTTPS-Only mode: a switch and where it applies, inline on the settings page, see docs/dejavu/settings-redesign.md.
+ * It stores the same preferences as [org.mozilla.fenix.settings.HttpsOnlyFragment]: turning it off forgets the choice
+ * of tabs, as that screen does. [onChanged] applies the mode to the engine, [onLearnMore] opens the support article.
+ */
+@Composable
+fun HttpsOnlySettings(fenixSettings: FenixSettings, onChanged: () -> Unit, onLearnMore: () -> Unit) {
+    val context = LocalContext.current
+    var enabled by remember { mutableStateOf(fenixSettings.shouldUseHttpsOnly) }
+    var privateOnly by remember { mutableStateOf(fenixSettings.shouldUseHttpsOnlyInPrivateTabsOnly) }
+    Column {
+        SwitchListItem(
+            label = stringResource(R.string.preferences_https_only_title),
+            description = stringResource(R.string.preferences_https_only_summary),
+            maxDescriptionLines = 4,
+            checked = enabled,
+            showSwitchAfter = true,
+            modifier = Modifier.settingsCard(index = 0, count = 4),
+            onClick = { checked ->
+                fenixSettings.shouldUseHttpsOnly = checked
+                if (!checked) {
+                    fenixSettings.preferences.edit {
+                        remove(context.getString(R.string.pref_key_https_only_in_all_tabs))
+                        remove(context.getString(R.string.pref_key_https_only_in_private_tabs))
+                    }
+                    privateOnly = false
+                }
+                enabled = checked
+                onChanged()
+            },
+        )
+        listOf(
+            false to R.string.preferences_https_only_in_all_tabs,
+            true to R.string.preferences_https_only_in_private_tabs,
+        ).forEachIndexed { index, (private, label) ->
+                ChoiceRow(
+                    label = stringResource(label),
+                    selected = enabled && privateOnly == private,
+                    enabled = enabled,
+                    modifier = Modifier.settingsCard(index + 1, count = 4),
+                    onClick = {
+                        fenixSettings.shouldUseHttpsOnlyInAllTabs = !private
+                        fenixSettings.shouldUseHttpsOnlyInPrivateTabsOnly = private
+                        privateOnly = private
+                        onChanged()
+                    },
+                )
+            }
+        Text(
+            text = stringResource(R.string.preferences_http_only_learn_more),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .settingsCard(index = 3, count = 4)
+                .fillMaxWidth()
+                .clickable(onClick = onLearnMore)
+                .padding(16.dp),
+        )
+    }
+}
+
+/** A choice of a list of settings: a radio button, an optional icon and a label. */
+@Composable
+private fun ChoiceRow(
+    label: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    leading: (@Composable () -> Unit)? = null,
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+            .fillMaxWidth()
+            .alpha(if (enabled) 1f else DISABLED_ALPHA)
+            .clickable(enabled = enabled, onClick = onClick)
+            .padding(horizontal = 8.dp, vertical = 4.dp),
+    ) {
+        RadioButton(selected = selected, onClick = onClick, enabled = enabled)
+        if (leading != null) {
+            leading()
+            Spacer(Modifier.width(12.dp))
+        }
+        Text(text = label, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurface)
     }
 }
 

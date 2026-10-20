@@ -10,16 +10,15 @@ import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceGroup
 import androidx.preference.SwitchPreferenceCompat
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -39,6 +38,7 @@ import org.mozilla.fenix.ext.isTallWindow
 import org.mozilla.fenix.ext.isWideWindow
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.showToolbar
+import org.mozilla.fenix.settings.CustomizationFragment.Companion.Position
 import org.mozilla.fenix.settings.settingssearch.PreferenceFileInformation.CustomizationPreferences
 import org.mozilla.fenix.settings.settingssearch.SettingsSearchItem
 import org.mozilla.fenix.settings.settingssearch.SettingsSearchProvider
@@ -47,14 +47,61 @@ import org.mozilla.fenix.utils.Settings
 import org.mozilla.fenix.utils.view.addToRadioGroup
 
 /** Lets the user customize the UI. */
-@Suppress("TooManyFunctions")
 class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment {
+    private val section = CustomizationSection(this)
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.customization_preferences, rootKey)
+        section.onCreate()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        section.onViewCreated(view)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showToolbar(getString(R.string.preferences_customize))
+        // Dejavu: scroll to a searched preference once, not again on return from a sub screen.
+        arguments?.getString(PREFERENCE_TO_SCROLL_TO)?.let {
+            arguments?.remove(PREFERENCE_TO_SCROLL_TO)
+            scrollToPreferenceWithHighlight(it)
+        }
+    }
+
+    override fun onPreferenceTreeClick(preference: Preference): Boolean {
+        section.onPreferenceTreeClick(preference)
+        return super.onPreferenceTreeClick(preference)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        section.onConfigurationChanged()
+    }
+
+    companion object {
+        private const val PREFERENCE_TO_SCROLL_TO = "preference_to_scroll_to"
+
+        // Used to send telemetry data about toolbar position changes
+        enum class Position {
+            TOP,
+            BOTTOM,
+        }
+    }
+}
+
+/**
+ * The preferences of [CustomizationFragment]: theme, toolbar, tab bar and gestures. The settings page shows them
+ * inline, see docs/dejavu/settings-redesign.md.
+ */
+@Suppress("TooManyFunctions")
+class CustomizationSection(private val fragment: PreferenceFragmentCompat) : SettingsSection {
     private lateinit var radioLightTheme: RadioButtonPreference
     private lateinit var radioDarkTheme: RadioButtonPreference
     private lateinit var radioDarkestTheme: RadioButtonPreference
     private lateinit var radioAutoBatteryTheme: RadioButtonPreference
     private lateinit var radioFollowDeviceTheme: RadioButtonPreference
-    private val args by navArgs<CustomizationFragmentArgs>()
 
     // Cached reactive feature state used when (re)building preferences.
     // Defaults match the DataStore defaults (summarization off, translations on)
@@ -66,15 +113,25 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             isTranslationsFeatureSupported = false,
         )
 
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.customization_preferences, rootKey)
+    private val requireComponents get() = fragment.requireComponents
+    private val activity get() = fragment.activity
+    private val viewLifecycleOwner get() = fragment.viewLifecycleOwner
 
+    private fun requireContext() = fragment.requireContext()
+
+    private fun getString(@StringRes id: Int) = fragment.getString(id)
+
+    private fun <T : Preference> requirePreference(@StringRes id: Int): T = fragment.requirePreference(id)
+
+    private fun isTallWindow() = fragment.isTallWindow()
+
+    private fun isWideWindow() = fragment.isWideWindow()
+
+    override fun onCreate() {
         setupPreferences(dynamicFeaturesStatus)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun onViewCreated(view: View) = with(fragment) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 val summarizationDataStore = SummarizationSettings.dataStore(requireContext())
@@ -99,24 +156,7 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
                     }
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        showToolbar(
-            getString(
-                when (args.section) {
-                    SECTION_TABS -> R.string.dejavu_settings_customize_tabs
-                    SECTION_INPUT -> R.string.dejavu_settings_customize_input
-                    else -> R.string.preferences_customize
-                },
-            ),
-        )
-        // Dejavu: scroll to a searched preference once, not again on return from a sub screen.
-        arguments?.getString(PREFERENCE_TO_SCROLL_TO)?.let {
-            arguments?.remove(PREFERENCE_TO_SCROLL_TO)
-            scrollToPreferenceWithHighlight(it)
-        }
+        Unit
     }
 
     private fun setupPreferences(status: DynamicFeaturesStatus) {
@@ -136,32 +176,12 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
 
         // if tab strip is enabled, swipe toolbar to switch tabs should not be enabled so the
         // preference is not shown
-        val tabletAndTabStripEnabled = Settings(requireContext()).isTabStripEnabled
+        val tabletAndTabStripEnabled = Settings(fragment.requireContext()).isTabStripEnabled
         setupGesturesCategory(
             isSwipeToolbarToSwitchTabsVisible = !tabletAndTabStripEnabled,
             isSummarizationEnabled = status.isSummarizationFeatureEnabled,
             isSummarizationGestureEnabled = status.isSummarizationGestureEnabled,
         )
-        showSection()
-    }
-
-    /** Dejavu: the settings home opens one section of this screen, see docs/dejavu/settings-redesign.md. */
-    private fun showSection() {
-        val section = args.section ?: return
-        val tabs = listOf(getString(R.string.pref_key_tab_strip_show), getString(R.string.pref_key_tab_strip_location))
-        val input = getString(R.string.pref_key_dynamic_toolbar)
-        val screen = preferenceScreen
-        for (index in 0 until screen.preferenceCount) {
-            val category = screen.getPreference(index) as? PreferenceGroup ?: continue
-            val keys = listOfNotNull(category.key) +
-                (0 until category.preferenceCount).mapNotNull { category.getPreference(it).key }
-            val place = when {
-                keys.any { it in tabs } -> SECTION_TABS
-                input in keys -> SECTION_INPUT
-                else -> SECTION_LOOK
-            }
-            if (place != section) category.isVisible = false
-        }
     }
 
     private fun updateToolbarShortcut() {
@@ -354,7 +374,6 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             setupToolbarLayout()
             setupTabStripLocationCategory()
             updateToolbarShortcut()
-            showSection()
             true
         }
     }
@@ -469,39 +488,23 @@ class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
 
     override fun onPreferenceTreeClick(preference: Preference): Boolean {
         when (preference.key) {
-            resources.getString(R.string.pref_key_dejavu_more_menu) -> {
-                findNavController().navigate(R.id.dejavu_more_menu_graph)
+            getString(R.string.pref_key_dejavu_more_menu) -> {
+                fragment.findNavController().navigate(R.id.dejavu_more_menu_graph)
                 return true
             }
-            resources.getString(R.string.pref_key_website_pull_to_refresh) -> {
+            getString(R.string.pref_key_website_pull_to_refresh) -> {
                 PullToRefreshInBrowser.enabled.set(requireComponents.settings.isPullToRefreshEnabledInBrowser)
             }
-            resources.getString(R.string.pref_key_dynamic_toolbar) -> {
+            getString(R.string.pref_key_dynamic_toolbar) -> {
                 CustomizationSettings.dynamicToolbar.set(requireComponents.settings.isDynamicToolbarEnabled)
             }
         }
-        return super.onPreferenceTreeClick(preference)
+        return false
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
+    override fun onConfigurationChanged() {
         setupToolbarLayout()
         updateToolbarShortcut()
-        showSection()
-    }
-
-    companion object {
-        /** Dejavu: values of the `section` argument. */
-        const val SECTION_LOOK = "look"
-        const val SECTION_TABS = "tabs"
-        const val SECTION_INPUT = "input"
-        private const val PREFERENCE_TO_SCROLL_TO = "preference_to_scroll_to"
-
-        // Used to send telemetry data about toolbar position changes
-        enum class Position {
-            TOP,
-            BOTTOM,
-        }
     }
 
     private data class DynamicFeaturesStatus(

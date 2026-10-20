@@ -7,14 +7,20 @@ package mozilla.components.compose.browser.awesomebar.internal
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.dp
 import mozilla.components.compose.base.theme.AcornTheme
 import mozilla.components.compose.browser.awesomebar.AwesomeBarColors
+
+private val HEADER_MIN_HEIGHT = 36.dp
 
 /** Renders a header for a group of suggestions. */
 @Composable
@@ -31,13 +37,15 @@ internal fun SuggestionGroup(
         Text(
             title,
             color = colors.groupTitle,
+            style = MaterialTheme.typography.labelLarge,
             modifier =
-                Modifier.padding(
+                Modifier.heightIn(min = HEADER_MIN_HEIGHT)
+                    .wrapContentHeight(Alignment.CenterVertically)
+                    .padding(
                         vertical = AcornTheme.layout.space.static100,
                         horizontal = AcornTheme.layout.space.dynamic200,
                     )
                     .fillMaxWidth(),
-            fontSize = 14.sp,
         )
     }
 }

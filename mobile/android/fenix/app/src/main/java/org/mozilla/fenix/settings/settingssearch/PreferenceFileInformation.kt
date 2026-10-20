@@ -16,6 +16,8 @@ import org.mozilla.fenix.R
  * @property categoryHeaderResourceId The category header of the item as a resource id.
  * @property fragmentId The fragment ID of the fragment where the item is displayed.
  */
+// Dejavu: the screens whose settings the settings page shows inline open that page, which scrolls to the setting, see
+// docs/dejavu/settings-redesign.md.
 sealed class PreferenceFileInformation(
     val xmlResourceId: Int? = null,
     val topBreadcrumbResourceId: Int,
@@ -39,7 +41,7 @@ sealed class PreferenceFileInformation(
             xmlResourceId = R.xml.accessibility_preferences,
             topBreadcrumbResourceId = R.string.preferences_accessibility,
             categoryHeaderResourceId = R.string.preferences_category_general,
-            fragmentId = R.id.accessibilityFragment,
+            fragmentId = R.id.settingsFragment,
         )
 
     /** Represents the "Autofill" settings screen. */
@@ -57,7 +59,7 @@ sealed class PreferenceFileInformation(
             xmlResourceId = R.xml.customization_preferences,
             topBreadcrumbResourceId = R.string.preferences_customize,
             categoryHeaderResourceId = R.string.preferences_category_general,
-            fragmentId = R.id.customizationFragment,
+            fragmentId = R.id.settingsFragment,
         )
 
     /** Represents the "Default Search Engine" settings screen. */
@@ -66,7 +68,7 @@ sealed class PreferenceFileInformation(
             xmlResourceId = R.xml.default_search_engine_preferences,
             topBreadcrumbResourceId = R.string.preferences_default_search_engine,
             categoryHeaderResourceId = R.string.preferences_category_general,
-            fragmentId = R.id.search_engine_graph,
+            fragmentId = R.id.defaultEngineFragment,
         )
 
     /** Represents the "Downloads" settings screen. */
@@ -75,7 +77,7 @@ sealed class PreferenceFileInformation(
             xmlResourceId = R.xml.downloads_settings_preferences,
             topBreadcrumbResourceId = R.string.preferences_downloads_2,
             categoryHeaderResourceId = R.string.preferences_category_advanced,
-            fragmentId = R.id.openDownloadsSettingsFragment,
+            fragmentId = R.id.settingsFragment,
         )
 
     /** Represents the "Home" settings screen. */
@@ -84,7 +86,7 @@ sealed class PreferenceFileInformation(
             xmlResourceId = R.xml.home_preferences,
             topBreadcrumbResourceId = R.string.preferences_home_2,
             categoryHeaderResourceId = R.string.preferences_category_general,
-            fragmentId = R.id.homeSettingsFragment,
+            fragmentId = R.id.settingsFragment,
         )
 
     /** Represents the "Open Links in Apps" settings screen. */
@@ -93,7 +95,7 @@ sealed class PreferenceFileInformation(
             xmlResourceId = R.xml.open_links_in_apps_preferences,
             topBreadcrumbResourceId = R.string.preferences_open_links_in_apps,
             categoryHeaderResourceId = R.string.preferences_category_advanced,
-            fragmentId = R.id.openLinksInAppsFragment,
+            fragmentId = R.id.settingsFragment,
         )
 
     /** Represents the "Private Browsing" settings screen. */
@@ -102,7 +104,7 @@ sealed class PreferenceFileInformation(
             xmlResourceId = R.xml.private_browsing_preferences,
             topBreadcrumbResourceId = R.string.preferences_private_browsing_options,
             categoryHeaderResourceId = R.string.preferences_category_privacy_security,
-            fragmentId = R.id.privateBrowsingFragment,
+            fragmentId = R.id.settingsFragment,
         )
 
     /** Represents the "Save Logins" settings screen. */
@@ -120,7 +122,7 @@ sealed class PreferenceFileInformation(
             xmlResourceId = R.xml.search_settings_preferences,
             topBreadcrumbResourceId = R.string.preferences_search,
             categoryHeaderResourceId = R.string.preferences_category_general,
-            fragmentId = R.id.search_engine_graph,
+            fragmentId = R.id.settingsFragment,
         )
 
     /** Represents the "Site Settings" settings screen. */
@@ -138,7 +140,7 @@ sealed class PreferenceFileInformation(
             xmlResourceId = R.xml.tabs_preferences,
             topBreadcrumbResourceId = R.string.preferences_tabs,
             categoryHeaderResourceId = R.string.preferences_category_general,
-            fragmentId = R.id.tabsSettingsFragment,
+            fragmentId = R.id.settingsFragment,
         )
 
     /** Represents the "Tracking Protection" settings screen. */
@@ -147,7 +149,7 @@ sealed class PreferenceFileInformation(
             xmlResourceId = R.xml.tracking_protection_preferences,
             topBreadcrumbResourceId = R.string.preference_enhanced_tracking_protection,
             categoryHeaderResourceId = R.string.preferences_category_privacy_security,
-            fragmentId = R.id.trackingProtectionFragment,
+            fragmentId = R.id.settingsFragment,
         )
 
     /** Represents the Secret Settings screen. */

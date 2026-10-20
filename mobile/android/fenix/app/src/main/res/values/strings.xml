@@ -1278,8 +1278,16 @@
     <string name="vertical_tabs_toggle">Collapse or expand tabs</string>
     <!-- Preference for hiding the vertical tabs sidebar until the user swipes from the left edge of the screen -->
     <string name="preference_vertical_tabs_auto_hide">Hide the sidebar until you swipe from the left edge</string>
-    <!-- Placeholder of the field that filters the tabs listed in the vertical tabs sidebar -->
-    <string name="vertical_tabs_search">Search tabs</string>
+    <!-- Hint of the one search field at the top of the vertical tabs sidebar, which finds open tabs and loads addresses and searches -->
+    <string name="vertical_tabs_search_or_address">Search tabs or enter address</string>
+    <!-- Header above the open tabs that match what was typed in the vertical tabs sidebar search field -->
+    <string name="vertical_tabs_search_open_tabs">Open tabs</string>
+    <!-- Content description of the button that empties the vertical tabs sidebar search field -->
+    <string name="vertical_tabs_search_clear">Clear search</string>
+    <!-- Accessibility label of the edge of the vertical tabs sidebar that is dragged to change its width; double tapping it resets the width -->
+    <string name="vertical_tabs_resize">Resize sidebar. Double tap to reset its width</string>
+    <!-- Name of the keyboard shortcut (Ctrl+K by default) that focuses the search field of the sidebar or the address bar -->
+    <string name="dejavu_shortcut_search_field">Focus the search field</string>
     <!-- Preference for tab bar placement (top or bottom of the screen) -->
     <string name="preference_tab_strip_location_header">Tab bar location</string>
     <!-- Preference for using top tab strip -->

@@ -11,10 +11,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
@@ -23,11 +25,12 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -56,6 +59,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
@@ -68,6 +72,7 @@ import androidx.compose.ui.unit.dp
 import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
+import org.mozilla.fenix.browser.tabstrip.TabSidebarLayout
 import org.mozilla.fenix.components.menu.store.WebExtensionMenuItem
 import org.mozilla.fenix.dejavu.browser.shownWorkspaceTheme
 import org.mozilla.fenix.dejavu.browser.workspaceTheme
@@ -189,35 +194,51 @@ fun MoreMenuSheet(
     val handleDrag = rememberDraggableState { delta -> swipeUp.drag(delta) }
     val bottomSheetScroll = rememberNestedScrollInteropConnection()
 
-    Column(
+    // The dialog spans the window: the sheet is capped and centered beside the tabs sidebar, and a tap beside it
+    // closes it like a tap on the dimmed page does.
+    Box(
+        contentAlignment = if (fromTop) Alignment.TopCenter else Alignment.BottomCenter,
         modifier = Modifier
             .fillMaxWidth()
-            .graphicsLayer { translationY = shownOffset }
-            .clip(shape)
-            .background(MaterialTheme.colorScheme.surface)
-            .workspaceTheme(shownWorkspaceTheme())
-            .windowInsetsPadding(if (fromTop) WindowInsets.statusBars else WindowInsets.navigationBars)
-            .nestedScroll(if (fromTop) swipeUp else bottomSheetScroll),
+            .pointerInput(onDismiss) { detectTapGestures { onDismiss() } }
+            .padding(start = TabSidebarLayout.occupiedWidth),
     ) {
-        if (!fromTop) SheetHandle()
         Column(
             modifier = Modifier
-                .weight(1f, fill = false)
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 12.dp, vertical = 4.dp),
-            content = content,
-        )
-        if (fromTop) {
-            SheetHandle(
-                modifier = Modifier.draggable(
-                    state = handleDrag,
-                    orientation = Orientation.Vertical,
-                    onDragStopped = { velocity -> swipeUp.release(velocity) },
-                ),
+                .widthIn(max = SheetMaxWidth)
+                .fillMaxWidth()
+                .graphicsLayer { translationY = shownOffset }
+                .clip(shape)
+                // Taps on the sheet itself stay on it.
+                .pointerInput(Unit) { detectTapGestures {} }
+                .background(MaterialTheme.colorScheme.surface)
+                .workspaceTheme(shownWorkspaceTheme())
+                .windowInsetsPadding(if (fromTop) WindowInsets.statusBars else WindowInsets.navigationBars)
+                .nestedScroll(if (fromTop) swipeUp else bottomSheetScroll),
+        ) {
+            if (!fromTop) SheetHandle()
+            Column(
+                modifier = Modifier
+                    .weight(1f, fill = false)
+                    .verticalScroll(rememberScrollState())
+                    .padding(horizontal = 12.dp, vertical = 4.dp),
+                content = content,
             )
+            if (fromTop) {
+                SheetHandle(
+                    modifier = Modifier.draggable(
+                        state = handleDrag,
+                        orientation = Orientation.Vertical,
+                        onDragStopped = { velocity -> swipeUp.release(velocity) },
+                    ),
+                )
+            }
         }
     }
 }
+
+/** The widest the menu sheet gets, so on tablets and wide windows it stays a sheet instead of a stretched band. */
+private val SheetMaxWidth = 640.dp
 
 /** Lets a sheet at the top of the screen follow upward swipes that its content does not scroll, and close. */
 private class SwipeUpToDismiss(
@@ -295,42 +316,46 @@ fun MoreMenu(
     onManageExtensions: () -> Unit,
     onEdit: (() -> Unit)? = null,
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(vertical = 6.dp)) {
-        rows.forEach { row ->
-            val single = row.singleOrNull()
-            if (single is MoreMenuEntry.BuiltIn && single.item == MoreMenuItem.EXTENSIONS) {
-                ExtensionsDrawer(
-                    extensions = extensions,
-                    expanded = extensionsExpanded,
-                    onToggle = onToggleExtensions,
-                    onManage = onManageExtensions,
-                )
-            } else {
-                Row(modifier = Modifier.fillMaxWidth()) {
-                    row.forEach { entry ->
-                        MenuTile(
-                            look = entry.look(state),
-                            onClick = { onEntryClick(entry) },
-                            modifier = Modifier.weight(1f),
-                        )
+    // As many columns as fit the width, so a wide sheet lays its tiles out in a grid instead of stretching them.
+    BoxWithConstraints {
+        val columns = MoreMenuLayout.columnsFor(maxWidth.value)
+        Column(verticalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(vertical = 6.dp)) {
+            MoreMenuLayout.gridRows(rows, columns).forEach { row ->
+                val single = row.singleOrNull()
+                if (single is MoreMenuEntry.BuiltIn && single.item == MoreMenuItem.EXTENSIONS) {
+                    ExtensionsDrawer(
+                        extensions = extensions,
+                        expanded = extensionsExpanded,
+                        onToggle = onToggleExtensions,
+                        onManage = onManageExtensions,
+                    )
+                } else {
+                    Row(modifier = Modifier.fillMaxWidth()) {
+                        row.forEach { entry ->
+                            MenuTile(
+                                look = entry.look(state),
+                                onClick = { onEntryClick(entry) },
+                                modifier = Modifier.weight(1f),
+                            )
+                        }
+                        repeat(columns - row.size) { Spacer(Modifier.weight(1f)) }
                     }
-                    repeat(MoreMenuLayout.MAX_PER_ROW - row.size) { Spacer(Modifier.weight(1f)) }
                 }
             }
-        }
-        if (onEdit != null) {
-            Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
-                TextButton(
-                    onClick = onEdit,
-                    colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.onSurfaceVariant),
-                ) {
-                    Icon(
-                        painter = painterResource(iconsR.drawable.mozac_ic_edit_24),
-                        contentDescription = null,
-                        modifier = Modifier.size(18.dp),
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    Text(stringResource(R.string.dejavu_menu_edit))
+            if (onEdit != null) {
+                Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+                    TextButton(
+                        onClick = onEdit,
+                        colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.onSurfaceVariant),
+                    ) {
+                        Icon(
+                            painter = painterResource(iconsR.drawable.mozac_ic_edit_24),
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp),
+                        )
+                        Spacer(Modifier.width(8.dp))
+                        Text(stringResource(R.string.dejavu_menu_edit))
+                    }
                 }
             }
         }

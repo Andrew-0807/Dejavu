@@ -7,6 +7,8 @@ package org.mozilla.fenix.settings
 import android.content.DialogInterface
 import android.os.Bundle
 import android.text.SpannableStringBuilder
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.HtmlCompat
@@ -37,9 +39,37 @@ import org.mozilla.fenix.utils.view.addToRadioGroup
 class TrackingProtectionFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment {
     private val args by navArgs<TrackingProtectionFragmentArgs>()
 
+    @VisibleForTesting internal val section = TrackingProtectionSection(this, R.id.trackingProtectionFragment)
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.tracking_protection_preferences, rootKey)
+        section.onCreate()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showToolbar(getString(R.string.preference_enhanced_tracking_protection))
+        section.onResume()
+
+        args.preferenceToScrollTo?.let {
+            scrollToPreferenceWithHighlight(it)
+        }
+    }
+}
+
+/**
+ * The preferences of [TrackingProtectionFragment]: the switch, the standard, strict and custom modes with their
+ * options, and the exceptions. The settings page shows them inline, see docs/dejavu/settings-redesign.md. [hostId] is
+ * the destination of the host, which declares the navigation actions used here.
+ */
+@Suppress("TooManyFunctions", "LargeClass")
+class TrackingProtectionSection(
+    private val fragment: PreferenceFragmentCompat,
+    @param:IdRes private val hostId: Int,
+) : SettingsSection {
     private val exceptionsClickListener = Preference.OnPreferenceClickListener {
         val directions = TrackingProtectionFragmentDirections.actionTrackingProtectionFragmentToExceptionsFragment()
-        requireView().findNavController().navigate(directions)
+        fragment.requireView().findNavController().navigate(directions)
         true
     }
 
@@ -75,8 +105,20 @@ class TrackingProtectionFragment : PreferenceFragmentCompat(), SystemInsetsPadde
 
     @VisibleForTesting lateinit var alertDialog: AlertDialog
 
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.tracking_protection_preferences, rootKey)
+    private val context get() = fragment.context
+    private val requireComponents get() = fragment.requireComponents
+
+    private fun requireContext() = fragment.requireContext()
+
+    private fun getString(@StringRes id: Int) = fragment.getString(id)
+
+    private fun getString(@StringRes id: Int, vararg args: Any) = fragment.getString(id, *args)
+
+    private fun <T : Preference> requirePreference(@StringRes id: Int): T = fragment.requirePreference(id)
+
+    private fun findNavController() = fragment.findNavController()
+
+    override fun onCreate() {
         val radioStrict = bindStrict()
         val radioStandard = bindTrackingProtectionRadio(TrackingProtectionMode.STANDARD)
         val radioCustom = bindCustom()
@@ -86,9 +128,6 @@ class TrackingProtectionFragment : PreferenceFragmentCompat(), SystemInsetsPadde
     }
 
     override fun onResume() {
-        super.onResume()
-        showToolbar(getString(R.string.preference_enhanced_tracking_protection))
-
         // Tracking Protection Switch
         val preferenceTP = requirePreference<FenixSwitchPreference>(R.string.pref_key_tracking_protection)
 
@@ -131,10 +170,6 @@ class TrackingProtectionFragment : PreferenceFragmentCompat(), SystemInsetsPadde
                     }
                 }
         }
-
-        args.preferenceToScrollTo?.let {
-            scrollToPreferenceWithHighlight(it)
-        }
     }
 
     private fun bindTrackingProtectionRadio(mode: TrackingProtectionMode): RadioButtonInfoPreference {
@@ -149,8 +184,8 @@ class TrackingProtectionFragment : PreferenceFragmentCompat(), SystemInsetsPadde
         }
 
         radio.onInfoClickListener {
-            nav(
-                R.id.trackingProtectionFragment,
+            fragment.nav(
+                hostId,
                 TrackingProtectionFragmentDirections
                     .actionTrackingProtectionFragmentToTrackingProtectionBlockingFragment(mode),
             )

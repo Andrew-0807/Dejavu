@@ -111,11 +111,14 @@ class BrowserToolbarComposable(
     val layout: View =
         ScrollableToolbarComposeView(activity, this) {
                 val isSearching = toolbarStore.observeAsComposableState { it.isEditMode() }.value
-                val shouldShowTabStripAtTop = remember {
-                    customTabSession == null && settings.shouldShowTabStripAtTop
+                // Dejavu: the window size decides whether the sidebar replaces the tab strip, so it is read again on
+                // rotation and resize.
+                val isLargeWindow = AcornWindowSize.isLargeWindow()
+                val shouldShowTabStripAtTop = remember(isLargeWindow) {
+                    customTabSession == null && settings.shouldShowTabStripAtTop(isLargeWindow)
                 }
-                val shouldShowTabStripAtBottom = remember {
-                    customTabSession == null && settings.shouldShowTabStripAtBottom
+                val shouldShowTabStripAtBottom = remember(isLargeWindow) {
+                    customTabSession == null && settings.shouldShowTabStripAtBottom(isLargeWindow)
                 }
                 val shouldShowTabGroupsStrip: Boolean = remember {
                     customTabSession == null && settings.shouldShowTabGroupsStrip

@@ -44,7 +44,8 @@ import org.mozilla.fenix.ext.maxActiveTime
 /**
  * Handles intercepting touch events on the toolbar for swipe gestures and executes the necessary animations.
  *
- * Dejavu: [contentFollowers] are views that slide along with [contentLayout], like the pane of a split view.
+ * Dejavu: [contentFollowers] are views that slide along with [contentLayout], like the pane of a split view. Swipes
+ * start only while [isEnabled], which is read at each swipe so it can follow the window size.
  */
 @Suppress("LargeClass", "TooManyFunctions", "LongParameterList")
 class ToolbarHorizontalGesturesHandler(
@@ -58,6 +59,7 @@ class ToolbarHorizontalGesturesHandler(
     private val onSwipeStarted: () -> Unit,
     private val onTabSwitched: (TabSessionState) -> Unit = {},
     private val contentFollowers: () -> List<View> = { emptyList() },
+    private val isEnabled: () -> Boolean = { true },
 ) : SwipeGestureListener {
 
     private enum class GestureDirection {
@@ -93,7 +95,8 @@ class ToolbarHorizontalGesturesHandler(
 
         @Suppress("ComplexCondition")
         return if (
-            !activity.window.decorView.isKeyboardVisible() &&
+            isEnabled() &&
+                !activity.window.decorView.isKeyboardVisible() &&
                 start.isInToolbar() &&
                 abs(dx) > touchSlop &&
                 abs(dy) < abs(dx)

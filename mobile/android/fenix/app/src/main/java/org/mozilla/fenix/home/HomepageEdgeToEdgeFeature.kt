@@ -31,6 +31,7 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.browsingmode.BrowsingMode
 import org.mozilla.fenix.browser.browsingmode.BrowsingModeManager
 import org.mozilla.fenix.components.AppStore
+import org.mozilla.fenix.ext.isLargeWindow
 import org.mozilla.fenix.utils.Settings
 import org.mozilla.fenix.wallpapers.Wallpaper
 
@@ -188,7 +189,7 @@ class HomepageEdgeToEdgeFeature(
         return when {
             !shouldShow -> Color.TRANSPARENT
             isPrivateMode -> ContextCompat.getColor(activity, R.color.fx_mobile_private_surface)
-            !settings.isTabStripEnabled &&
+            !settings.isTabStripShown(activity.isLargeWindow()) &&
                 toolbarState.isShowingResultsScreen &&
                 browsingModeManager.mode == BrowsingMode.Normal &&
                 (settings.enableHomepageTrendingRecentSearch ||

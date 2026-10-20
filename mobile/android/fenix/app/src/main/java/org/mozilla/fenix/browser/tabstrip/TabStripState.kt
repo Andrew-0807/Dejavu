@@ -9,6 +9,7 @@ import mozilla.components.browser.state.selector.getNormalOrPrivateTabs
 import mozilla.components.browser.state.selector.selectedTab
 import mozilla.components.browser.state.state.BrowserState
 import mozilla.components.browser.state.state.TabSessionState
+import org.mozilla.fenix.dejavu.home.pageLabel
 
 private const val MAX_TABS_WITH_CLOSE_BUTTON_VISIBLE = 7
 
@@ -130,7 +131,8 @@ private fun TabSessionState.toTabStripItem(
     val isSelected = !isSelectDisabled && id == selectedTabId
     return TabStripItem(
         id = id,
-        title = content.title.ifBlank { content.url },
+        // Dejavu: like the sidebar, a page without a title, or titled with its own address, shows its short address.
+        title = pageLabel(content.title, content.url),
         url = content.url,
         icon = content.icon,
         isPrivate = content.private,

@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.coordinatorlayout.widget.CoordinatorLayout.LayoutParams
 import androidx.core.view.isVisible
+import mozilla.components.compose.base.theme.layout.AcornWindowSize
 import mozilla.components.compose.browser.toolbar.NavigationBar
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarStore
 import mozilla.components.compose.browser.toolbar.store.ToolbarGravity.Bottom
@@ -62,8 +63,9 @@ class BrowserNavigationBar(
 ) {
     val layout =
         NavigationBarComposeView(context) {
-                val shouldShowTabStrip = remember {
-                    customTabSessionId == null && settings.shouldShowTabStripAtBottom
+                val isLargeWindow = AcornWindowSize.isLargeWindow()
+                val shouldShowTabStrip = remember(isLargeWindow) {
+                    customTabSessionId == null && settings.shouldShowTabStripAtBottom(isLargeWindow)
                 }
                 val shouldShowTabGroupsStrip = remember {
                     customTabSessionId == null && settings.shouldShowTabGroupsStrip

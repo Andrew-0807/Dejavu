@@ -1094,8 +1094,8 @@ class SettingsTest {
         settings.isTabStripEnabled = true
         settings.shouldUseBottomTabStrip = false
 
-        assertTrue(settings.shouldShowTabStripAtTop)
-        assertFalse(settings.shouldShowTabStripAtBottom)
+        assertTrue(settings.shouldShowTabStripAtTop(isLargeWindow = false))
+        assertFalse(settings.shouldShowTabStripAtBottom(isLargeWindow = false))
     }
 
     @Test
@@ -1103,8 +1103,8 @@ class SettingsTest {
         settings.isTabStripEnabled = true
         settings.shouldUseBottomTabStrip = true
 
-        assertFalse(settings.shouldShowTabStripAtTop)
-        assertTrue(settings.shouldShowTabStripAtBottom)
+        assertFalse(settings.shouldShowTabStripAtTop(isLargeWindow = false))
+        assertTrue(settings.shouldShowTabStripAtBottom(isLargeWindow = false))
     }
 
     @Test
@@ -1112,12 +1112,28 @@ class SettingsTest {
         settings.isTabStripEnabled = false
 
         settings.shouldUseBottomTabStrip = false
-        assertFalse(settings.shouldShowTabStripAtTop)
-        assertFalse(settings.shouldShowTabStripAtBottom)
+        assertFalse(settings.shouldShowTabStripAtTop(isLargeWindow = false))
+        assertFalse(settings.shouldShowTabStripAtBottom(isLargeWindow = false))
 
         settings.shouldUseBottomTabStrip = true
-        assertFalse(settings.shouldShowTabStripAtTop)
-        assertFalse(settings.shouldShowTabStripAtBottom)
+        assertFalse(settings.shouldShowTabStripAtTop(isLargeWindow = false))
+        assertFalse(settings.shouldShowTabStripAtBottom(isLargeWindow = false))
+    }
+
+    @Test
+    fun `GIVEN vertical tabs WHEN checking where tabs show THEN the strip shows only where the sidebar does not`() {
+        settings.isTabStripEnabled = true
+        settings.shouldUseBottomTabStrip = false
+        settings.isVerticalTabsEnabled = true
+
+        assertTrue(settings.isTabSidebarShown(isLargeWindow = true))
+        assertFalse(settings.shouldShowTabStripAtTop(isLargeWindow = true))
+        assertFalse(settings.isTabSidebarShown(isLargeWindow = false))
+        assertTrue(settings.shouldShowTabStripAtTop(isLargeWindow = false))
+
+        settings.isVerticalTabsEnabled = false
+        assertFalse(settings.isTabSidebarShown(isLargeWindow = true))
+        assertTrue(settings.shouldShowTabStripAtTop(isLargeWindow = true))
     }
 
     @Test

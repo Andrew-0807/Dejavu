@@ -162,7 +162,7 @@ class FragmentTest {
     fun `GIVEN just the toolbar at the bottom WHEN getBottomToolbarHeight THEN returns the toolbar height`() {
         every { mockContext.resources } returns testContext.resources
         every { settings.toolbarPosition } returns ToolbarPosition.BOTTOM
-        every { settings.shouldShowTabStripAtBottom } returns false
+        every { settings.shouldShowTabStripAtBottom(any()) } returns false
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight()
 
@@ -193,7 +193,7 @@ class FragmentTest {
         every { settings.shouldShowMicrosurveyPrompt } returns true
         every { settings.shouldUseExpandedToolbar } returns true
         every { settings.toolbarPosition } returns ToolbarPosition.BOTTOM
-        every { settings.shouldShowTabStripAtBottom } returns true
+        every { settings.shouldShowTabStripAtBottom(any()) } returns true
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight()
 
@@ -204,7 +204,7 @@ class FragmentTest {
     fun `GIVEN the tabstrip and toolbar are shown at bottom WHEN getBottomToolbarHeight excludes the tabstrip THEN returns the toolbar height`() {
         every { mockContext.resources } returns testContext.resources
         every { settings.toolbarPosition } returns ToolbarPosition.BOTTOM
-        every { settings.shouldShowTabStripAtBottom } returns true
+        every { settings.shouldShowTabStripAtBottom(any()) } returns true
 
         val bottomToolbarHeight = fragment.getBottomToolbarHeight(includeTabStripIfAvailable = false)
 
@@ -215,7 +215,7 @@ class FragmentTest {
     fun `GIVEN the tabstrip and toolbar are shown at top WHEN getTopToolbarHeight THEN returns their combined height`() {
         every { mockContext.resources } returns testContext.resources
         every { settings.toolbarPosition } returns ToolbarPosition.TOP
-        every { settings.shouldShowTabStripAtTop } returns true
+        every { settings.shouldShowTabStripAtTop(any()) } returns true
 
         val topToolbarHeight = fragment.getTopToolbarHeight()
 
@@ -225,7 +225,7 @@ class FragmentTest {
     @Test
     fun `GIVEN just the tabstrip is shown at top WHEN getTopToolbarHeight THEN returns the tabstrip height`() {
         every { settings.toolbarPosition } returns ToolbarPosition.BOTTOM
-        every { settings.shouldShowTabStripAtTop } returns true
+        every { settings.shouldShowTabStripAtTop(any()) } returns true
 
         val topToolbarHeight = fragment.getTopToolbarHeight()
 
@@ -236,7 +236,7 @@ class FragmentTest {
     fun `GIVEN just the toolbar is shown at top WHEN getTopToolbarHeight THEN returns the toolbar height`() {
         every { mockContext.resources } returns testContext.resources
         every { settings.toolbarPosition } returns ToolbarPosition.TOP
-        every { settings.shouldShowTabStripAtTop } returns false
+        every { settings.shouldShowTabStripAtTop(any()) } returns false
 
         val topToolbarHeight = fragment.getTopToolbarHeight()
 
@@ -247,7 +247,7 @@ class FragmentTest {
     fun `GIVEN the tabstrip and toolbar are shown at top WHEN getTopToolbarHeight excludes the tabstrip THEN returns the toolbar height`() {
         every { mockContext.resources } returns testContext.resources
         every { settings.toolbarPosition } returns ToolbarPosition.TOP
-        every { settings.shouldShowTabStripAtTop } returns true
+        every { settings.shouldShowTabStripAtTop(any()) } returns true
 
         val topToolbarHeight = fragment.getTopToolbarHeight(includeTabStripIfAvailable = false)
 
@@ -258,7 +258,7 @@ class FragmentTest {
     fun `GIVEN a toolbar size below the minimum WHEN getTopToolbarHeight THEN returns the height at the minimum size`() {
         every { mockContext.resources } returns testContext.resources
         every { settings.toolbarPosition } returns ToolbarPosition.TOP
-        every { settings.shouldShowTabStripAtTop } returns true
+        every { settings.shouldShowTabStripAtTop(any()) } returns true
         every { settings.toolbarSizePercent } returns 50
 
         val topToolbarHeight = fragment.getTopToolbarHeight()

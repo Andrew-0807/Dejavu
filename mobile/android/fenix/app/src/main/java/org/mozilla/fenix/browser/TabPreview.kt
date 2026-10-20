@@ -53,6 +53,7 @@ import org.mozilla.fenix.browser.browsingmode.BrowsingMode.Private
 import org.mozilla.fenix.components.toolbar.ToolbarPosition
 import org.mozilla.fenix.databinding.TabPreviewBinding
 import org.mozilla.fenix.ext.components
+import org.mozilla.fenix.ext.isLargeWindow
 import org.mozilla.fenix.ext.isTallWindow
 import org.mozilla.fenix.ext.isWideWindow
 import org.mozilla.fenix.home.toolbar.BrowserSimpleToolbar
@@ -478,7 +479,7 @@ constructor(
     private fun buildComposableToolbarPageEndActions(tab: TabSessionState?): List<Action> {
         val settings = context.components.settings
         val isWideScreen = context.isWideWindow()
-        val tabStripEnabled = settings.isTabStripEnabled
+        val tabStripEnabled = settings.isTabStripShown(context.isLargeWindow())
         val shareShortcutEnabled = ShortcutType.fromValue(settings.toolbarSimpleShortcutKey) == ShortcutType.SHARE
 
         return listOf(
@@ -610,7 +611,7 @@ constructor(
                 when {
                     summarizationFeatureSettings.canShowFeature -> ToolbarAction.Summarize
                     // The tab strip already provides a new tab button, so fall back to the default tab strip shortcut.
-                    context.components.settings.isTabStripEnabled -> ToolbarAction.Share
+                    context.components.settings.isTabStripShown(context.isLargeWindow()) -> ToolbarAction.Share
                     else -> ToolbarAction.NewTab
                 }
             ShortcutType.NONE -> null

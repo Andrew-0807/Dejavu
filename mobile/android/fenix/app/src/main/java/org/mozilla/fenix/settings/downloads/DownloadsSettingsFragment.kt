@@ -12,6 +12,7 @@ import android.os.Environment
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.StringRes
 import androidx.annotation.VisibleForTesting
 import androidx.navigation.fragment.navArgs
 import androidx.preference.Preference
@@ -24,22 +25,59 @@ import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.showToolbar
 import org.mozilla.fenix.nimbus.FxNimbus
+import org.mozilla.fenix.settings.SettingsSection
 import org.mozilla.fenix.settings.scrollToPreferenceWithHighlight
 
 /** A [androidx.preference.PreferenceFragmentCompat] that displays settings related to downloads. */
 class DownloadsSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment {
-    private val logger = Logger("DownloadsSettingsFragment")
     private val args by navArgs<DownloadsSettingsFragmentArgs>()
-    private lateinit var downloadLocationFormatter: DownloadLocationFormatter
+    private val section = DownloadsSettingsSection(this)
 
     @VisibleForTesting
-    internal var launcher: ActivityResultLauncher<Uri?> =
-        registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
-            handleSelectedDownloadDirectory(uri)
-        }
+    internal var launcher: ActivityResultLauncher<Uri?> by section::launcher
 
     /** Launches the SAF folder picker, showing an error toast if no activity can handle it. */
     @VisibleForTesting
+    internal fun launchDirectoryPicker() = section.launchDirectoryPicker()
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.downloads_settings_preferences, rootKey)
+        section.onCreate()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showToolbar(getString(R.string.preferences_downloads_2))
+        section.onResume()
+        args.preferenceToScrollTo?.let {
+            scrollToPreferenceWithHighlight(it)
+        }
+    }
+}
+
+/**
+ * The preferences of [DownloadsSettingsFragment]: download location, delete behaviour and the app for downloads. The
+ * settings page shows them inline, see docs/dejavu/settings-redesign.md. Create it while the host is constructed, it
+ * registers for the folder picker result.
+ */
+class DownloadsSettingsSection(private val fragment: PreferenceFragmentCompat) : SettingsSection {
+    private val logger = Logger("DownloadsSettingsFragment")
+    private lateinit var downloadLocationFormatter: DownloadLocationFormatter
+
+    internal var launcher: ActivityResultLauncher<Uri?> =
+        fragment.registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
+            handleSelectedDownloadDirectory(uri)
+        }
+
+    private val requireComponents get() = fragment.requireComponents
+
+    private fun requireContext() = fragment.requireContext()
+
+    private fun getString(@StringRes id: Int) = fragment.getString(id)
+
+    private fun <T : Preference> findPreference(key: String): T? = fragment.findPreference(key)
+
+    /** Launches the SAF folder picker, showing an error toast if no activity can handle it. */
     internal fun launchDirectoryPicker() {
         try {
             launcher.launch(null)
@@ -77,9 +115,8 @@ class DownloadsSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPadded
         updateDownloadsLocationSummary()
     }
 
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+    override fun onCreate() {
         downloadLocationFormatter = DefaultDownloadLocationFormatter(DefaultAndroidFileUtils(requireContext()))
-        setPreferencesFromResource(R.xml.downloads_settings_preferences, rootKey)
         findPreference<Preference>(getString(R.string.pref_key_downloads_default_location))?.apply {
             onPreferenceClickListener = Preference.OnPreferenceClickListener {
                 launchDirectoryPicker()
@@ -103,12 +140,7 @@ class DownloadsSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPadded
     }
 
     override fun onResume() {
-        super.onResume()
-        showToolbar(getString(R.string.preferences_downloads_2))
         updateDownloadsLocationSummary()
-        args.preferenceToScrollTo?.let {
-            scrollToPreferenceWithHighlight(it)
-        }
     }
 
     private fun updateDownloadsLocationSummary() {

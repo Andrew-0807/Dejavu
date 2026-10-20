@@ -420,7 +420,7 @@ class TabStripStateTest {
                         ),
                         TabStripItem(
                             id = "2",
-                            title = "https://example2.com",
+                            title = "example2.com",
                             url = "https://example2.com",
                             isSelected = true,
                             isPrivate = false,
@@ -487,7 +487,7 @@ class TabStripStateTest {
                         ),
                         TabStripItem(
                             id = "2",
-                            title = "https://example2.com",
+                            title = "example2.com",
                             url = "https://example2.com",
                             isSelected = true,
                             isPrivate = false,

@@ -51,6 +51,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
@@ -61,8 +62,10 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.layout.positionInParent
+import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -78,6 +81,8 @@ import kotlin.math.roundToInt
 import kotlinx.coroutines.launch
 import mozilla.components.browser.state.state.ContainerState
 import mozilla.components.browser.state.state.TabSessionState
+import mozilla.components.compose.browser.toolbar.ui.AddressFieldDefaults
+import mozilla.components.compose.browser.toolbar.ui.addressFieldSurface
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.actions.CustomAction
@@ -91,7 +96,7 @@ import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.color
 import org.mozilla.fenix.dejavu.sync.workspaceIconText
 import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
-import org.mozilla.fenix.dejavu.ui.glass
+import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.workspaces.PinnedItem
 import org.mozilla.fenix.dejavu.workspaces.Workspace
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
@@ -168,6 +173,7 @@ fun DejavuHome(
     essentialsPerContainer: Boolean,
     interactor: DejavuHomeInteractor,
     modifier: Modifier = Modifier,
+    isSidebar: Boolean = false,
 ) {
     // The private workspace is an extra last page, there while private tabs are open.
     val privateIndex = state.workspaces.size.takeIf { privateTabs.isNotEmpty() }
@@ -263,12 +269,18 @@ fun DejavuHome(
         if (current != null) selection = current.togglePin(pin.id).takeIf { it.size > 0 } else interactor.onPinClick(pin)
     }
 
+    // The sidebar is laid out inside the system bars, where the window paints the theme as one gradient across the
+    // whole window (DejavuWindowTheme), so it draws its part of that gradient and runs on into the bars without a seam.
+    val root = LocalView.current.rootView
+    var windowOrigin by remember { mutableStateOf(Offset.Zero) }
+
     // Dialogs and menus take on the look of the workspace they open over.
     CompositionLocalProvider(LocalPopupTheme provides themeAt(pagerState.currentPage)) {
         // The theme is drawn behind the system bars too, with the content kept clear of them.
         Column(
             modifier = modifier
                 .fillMaxSize()
+                .then(if (isSidebar) Modifier.onPlaced { windowOrigin = it.positionInWindow() } else Modifier)
                 .background(MaterialTheme.colorScheme.surface)
                 .drawBehind {
                     val position = pagerState.currentPage + pagerState.currentPageOffsetFraction
@@ -278,14 +290,22 @@ fun DejavuHome(
                         next = themeAt(page + 1),
                         fraction = position - page,
                         grain = grain,
+                        area = if (isSidebar) {
+                            Rect(-windowOrigin, Size(root.width.toFloat(), root.height.toFloat()))
+                        } else {
+                            Rect(Offset.Zero, size)
+                        },
                     )
                 }
-                .systemBarsPadding()
-                .imePadding(),
+                // In the sidebar, the browser around it already keeps clear of the system bars and the keyboard.
+                .then(if (isSidebar) Modifier else Modifier.systemBarsPadding().imePadding()),
         ) {
             val activeSelection = selection
             if (activeSelection == null) {
-                TopBar(interactor, onSearchClick = if (onPrivatePage) newPrivateTab else interactor::onSearchClick)
+                // The sidebar has its own search field on top, and the browser has the account and settings.
+                if (!isSidebar) {
+                    TopBar(interactor, onSearchClick = if (onPrivatePage) newPrivateTab else interactor::onSearchClick)
+                }
             } else if (essentialsDrop != EssentialsDrop.NONE) {
                 EssentialsDropBar(active = essentialsDrop == EssentialsDrop.ACTIVE)
             } else {
@@ -441,25 +461,29 @@ private fun TopBar(interactor: DejavuHomeInteractor, onSearchClick: () -> Unit) 
             onClick = interactor::onAccountClick,
         )
 
+        // The home's address bar, drawn like the one above pages and the sidebar's search field.
+        val fieldColors = AddressFieldDefaults.colors().copy(
+            fill = DejavuToolbar.glass(MaterialTheme.colorScheme).surfaceContainerHighest,
+        )
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .weight(1f)
-                .height(46.dp)
-                .glass(glass, CircleShape)
+                .height(AddressFieldDefaults.Height)
+                .addressFieldSurface(fieldColors)
                 .clickable(onClick = onSearchClick)
-                .padding(horizontal = 16.dp),
+                .padding(end = AddressFieldDefaults.HorizontalPadding),
         ) {
-            Icon(
-                painter = painterResource(iconsR.drawable.mozac_ic_search_24),
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.size(20.dp),
-            )
-            Spacer(Modifier.width(10.dp))
+            Box(modifier = Modifier.size(AddressFieldDefaults.Height), contentAlignment = Alignment.Center) {
+                Icon(
+                    painter = painterResource(iconsR.drawable.mozac_ic_search_24),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
             Text(
                 text = stringResource(R.string.dejavu_search_hint),
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.bodyLarge.copy(fontSize = AddressFieldDefaults.textSize()),
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -674,8 +698,11 @@ private fun WorkspaceBar(
         }
     }
 
+    // A single workspace needs no dot: the buttons then spread evenly over the row.
+    val showsWorkspaces = workspaces.size > 1 || hasPrivate
     Row(
         verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxWidth().height(56.dp).padding(horizontal = 4.dp),
     ) {
         BarIconButton(
@@ -689,7 +716,7 @@ private fun WorkspaceBar(
             onClick = onExtensionsClick,
         )
 
-        Row(
+        if (showsWorkspaces) Row(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier

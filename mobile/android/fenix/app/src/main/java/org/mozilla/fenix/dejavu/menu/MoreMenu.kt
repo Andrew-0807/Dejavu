@@ -168,6 +168,39 @@ object MoreMenuLayout {
         }.filter { it.isNotEmpty() }
     }
 
+    /** The narrowest a menu tile gets, which keeps its 48dp button and a short label readable. */
+    private const val MIN_TILE_WIDTH_DP = 88f
+
+    /** The most columns the menu grid has, however wide it is. */
+    private const val MAX_COLUMNS = 8
+
+    /** How many tiles a row of the menu holds at [widthDp]: [MAX_PER_ROW] on phones, more when wider. */
+    fun columnsFor(widthDp: Float): Int = (widthDp / MIN_TILE_WIDTH_DP).toInt().coerceIn(MAX_PER_ROW, MAX_COLUMNS)
+
+    /**
+     * [rows] laid out [columns] tiles wide. Up to [MAX_PER_ROW] columns the user's rows stay as they are; wider, the
+     * rows between full row entries are joined in order and cut every [columns] tiles. Full row entries keep their row.
+     */
+    fun gridRows(rows: List<List<MoreMenuEntry>>, columns: Int): List<List<MoreMenuEntry>> {
+        if (columns <= MAX_PER_ROW) return rows
+        val grid = mutableListOf<List<MoreMenuEntry>>()
+        val pending = mutableListOf<MoreMenuEntry>()
+        fun flush() {
+            grid.addAll(pending.chunked(columns))
+            pending.clear()
+        }
+        rows.forEach { row ->
+            if (row.singleOrNull()?.let { isFullRow(it.key) } == true) {
+                flush()
+                grid.add(row)
+            } else {
+                pending.addAll(row)
+            }
+        }
+        flush()
+        return grid
+    }
+
     fun toJson(rows: List<List<String>>): String =
         JSONArray().apply { rows.forEach { row -> put(JSONArray(row)) } }.toString()
 
@@ -187,7 +220,7 @@ object MoreMenuLayout {
 object ActionsBarLayout {
     const val MAX_BUTTONS = 7
 
-    /** The bar a new install starts with: five buttons, Home in the middle and no Back, since the system Back does that. */
+    /** The bar a new install starts with: five buttons and Home in the middle. [shown] adds Back in front. */
     val DEFAULT: List<String> = listOf(
         MoreMenuItem.FORWARD.key,
         MoreMenuItem.SHARE.key,
@@ -221,4 +254,14 @@ object ActionsBarLayout {
     /** The entries of [keys], leaving out the ones that no longer exist. */
     fun resolve(keys: List<String>, customActions: List<CustomAction>): List<MoreMenuEntry> =
         keys.distinct().mapNotNull { entryOf(it, customActions) }.take(MAX_BUTTONS)
+
+    /**
+     * The buttons the bar shows for its [entries]. Back is always there, first unless the user placed it, as the bar
+     * is the one place with a visible way back. Home is left out when [hasHomeSidebar], as the sidebar is the home.
+     */
+    fun shown(entries: List<MoreMenuEntry>, hasHomeSidebar: Boolean): List<MoreMenuEntry> {
+        val back = MoreMenuEntry.BuiltIn(MoreMenuItem.BACK)
+        val withBack = if (back in entries) entries else listOf(back) + entries
+        return withBack.filterNot { hasHomeSidebar && it == MoreMenuEntry.Home }.take(MAX_BUTTONS)
+    }
 }
