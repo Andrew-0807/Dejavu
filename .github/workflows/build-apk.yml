@@ -16,6 +16,15 @@ jobs:
         with:
           fetch-depth: 300
 
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.mozbuild
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: dejavu-${{ runner.os }}-${{ hashFiles('**/*.gradle', '**/*.gradle.kts', '**/gradle-wrapper.properties', 'mobile/android/gradle/libs.versions.toml', 'python/mozboot/mozboot/android.py') }}
+          restore-keys: dejavu-${{ runner.os }}-
+
       - name: Write mozconfig
         run: |
           cat > mozconfig <<'CFG'
@@ -31,7 +40,7 @@ jobs:
       - name: Build debug
         run: |
           ./mach build
-          ./mach gradle :fenix:assembleDebug
+          ./mach gradle --continue :fenix:assembleDebug
 
       # The release build (R8) ran the runner out of memory after the debug build. Free the debug daemons and add swap.
       - name: Free memory for release
@@ -43,7 +52,7 @@ jobs:
           free -h
 
       - name: Build release
-        run: ./mach gradle :fenix:assembleRelease
+        run: ./mach gradle --continue :fenix:assembleRelease
 
       # Release builds are debug signed by gradle (MOZ_AUTOMATION is unset), but the runner's debug key is
       # random per run. With the DEBUG_KEYSTORE_B64 secret, re-sign both APKs with the fixed key so updates install.
@@ -70,7 +79,7 @@ jobs:
           path: objdir-frontend/gradle/build/mobile/android/fenix/app/outputs/apk/release/*arm64-v8a*.apk
 
       - name: Dejavu unit tests
-        run: ./mach gradle :fenix:testDebugUnitTest --tests 'org.mozilla.fenix.dejavu.*' --tests 'org.mozilla.fenix.browser.tabstrip.*' --tests 'org.mozilla.fenix.settings.SettingsSectionTest' --tests 'org.mozilla.fenix.settings.SettingsFragmentTest' --tests 'org.mozilla.fenix.settings.TrackingProtectionFragmentTest'
+        run: ./mach gradle --continue :fenix:testDebugUnitTest --tests 'org.mozilla.fenix.dejavu.*' --tests 'org.mozilla.fenix.browser.tabstrip.*' --tests 'org.mozilla.fenix.settings.SettingsSectionTest' --tests 'org.mozilla.fenix.settings.SettingsFragmentTest' --tests 'org.mozilla.fenix.settings.TrackingProtectionFragmentTest'
 
       - uses: actions/upload-artifact@v4
         if: always()
