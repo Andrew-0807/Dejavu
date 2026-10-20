@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.view.WindowManager
+import androidx.annotation.StringRes
 import androidx.activity.result.ActivityResultLauncher
 import androidx.biometric.BiometricManager
 import androidx.preference.Preference
@@ -31,30 +32,51 @@ import org.mozilla.fenix.settings.biometric.ext.isDeviceLockCapable
 
 /** Lets the user customize Private browsing options. */
 class PrivateBrowsingFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment {
-    private lateinit var startForResult: ActivityResultLauncher<Intent>
+    private val section = PrivateBrowsingSection(this)
 
     override fun onResume() {
         super.onResume()
         showToolbar(getString(R.string.preferences_private_browsing_options))
-
-        // If user changes their device lock status (i.e. adds or removes device lock),
-        // check the device pin status and determine if private browsing lock toggle
-        // should be shown upon resuming.
-        updatePreferences()
+        section.onResume()
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.private_browsing_preferences, rootKey)
+        section.onCreate()
+    }
+}
+
+/**
+ * The preferences of [PrivateBrowsingFragment]: the private shortcut, screenshots and the private tabs lock. The
+ * settings page shows them inline, see docs/dejavu/settings-redesign.md.
+ */
+class PrivateBrowsingSection(private val fragment: PreferenceFragmentCompat) : SettingsSection {
+    private lateinit var startForResult: ActivityResultLauncher<Intent>
+
+    private val requireComponents get() = fragment.requireComponents
+    private val activity get() = fragment.activity
+
+    private fun <T : Preference> requirePreference(@StringRes id: Int): T = fragment.requirePreference(id)
+
+    /** Registers for the PIN prompt result, so it must run while the host is created. */
+    override fun onCreate() {
         startForResult =
-            registerForActivityResult(
+            fragment.registerForActivityResult(
                 onFailure = { PrivateBrowsingLocked.authFailure.record() },
                 onSuccess = { onSuccessfulAuthenticationUsingFallbackPrompt() },
             )
         updatePreferences()
     }
 
+    override fun onResume() {
+        // If user changes their device lock status (i.e. adds or removes device lock),
+        // check the device pin status and determine if private browsing lock toggle
+        // should be shown upon resuming.
+        updatePreferences()
+    }
+
     @Suppress("CognitiveComplexMethod")
-    private fun updatePreferences() {
+    private fun updatePreferences() = with(fragment) {
         val biometricManager = BiometricManager.from(requireContext())
         val deviceCapable = biometricManager.isDeviceLockCapable()
         val userHasEnabledCapability = biometricManager.isAuthenticatorAvailable()

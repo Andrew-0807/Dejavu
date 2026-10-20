@@ -5,13 +5,11 @@
 package mozilla.components.compose.browser.toolbar
 
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -19,8 +17,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
@@ -42,10 +40,15 @@ import mozilla.components.compose.browser.toolbar.store.BrowserToolbarInteractio
 import mozilla.components.compose.browser.toolbar.store.ToolbarGravity
 import mozilla.components.compose.browser.toolbar.store.ToolbarGravity.Bottom
 import mozilla.components.compose.browser.toolbar.store.ToolbarGravity.Top
+import mozilla.components.compose.browser.toolbar.ui.AddressFieldDefaults
 import mozilla.components.compose.browser.toolbar.ui.BrowserToolbarQuery
 import mozilla.components.compose.browser.toolbar.ui.InlineAutocompleteTextField
+import mozilla.components.compose.browser.toolbar.ui.addressFieldSurface
 import mozilla.components.concept.toolbar.AutocompleteResult
 import mozilla.components.ui.icons.R as iconsR
+
+private const val SWAPPED_ICON_START_ALPHA = 0.4f
+private val TEXT_PADDING = AddressFieldDefaults.HorizontalPadding
 
 /**
  * Sub-component of the [BrowserToolbar] responsible for allowing the user to edit the current URL ("edit mode").
@@ -90,18 +93,22 @@ fun BrowserEditToolbar(
                     testTagsAsResourceId = true
                 }
         ) {
+            val focus = AddressFieldDefaults.rememberFocusProgress()
             Row(
                 modifier =
                     Modifier.fillMaxWidth()
                         .padding(all = 8.dp)
-                        .height(48.dp)
-                        .clip(shape = CircleShape)
-                        .background(color = MaterialTheme.colorScheme.surfaceContainerHighest),
+                        .height(AddressFieldDefaults.Height)
+                        .addressFieldSurface(AddressFieldDefaults.colors()) { focus.value },
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 ActionContainer(
                     actions = editActionsStart,
                     onInteraction = onInteraction,
+                    modifier =
+                        Modifier.graphicsLayer {
+                            alpha = SWAPPED_ICON_START_ALPHA + (1f - SWAPPED_ICON_START_ALPHA) * focus.value
+                        },
                 )
 
                 InlineAutocompleteTextField(
@@ -110,7 +117,12 @@ fun BrowserEditToolbar(
                     suggestion = suggestion,
                     showQueryAsPreselected = isQueryPrefilled,
                     usePrivateModeQueries = usePrivateModeQueries,
-                    modifier = Modifier.weight(1f),
+                    modifier =
+                        Modifier.weight(1f)
+                            .padding(
+                                start = if (editActionsStart.isEmpty()) TEXT_PADDING else 0.dp,
+                                end = if (editActionsEnd.isEmpty()) TEXT_PADDING else 0.dp,
+                            ),
                     onUrlEdit = onUrlEdit,
                     onUrlCommitted = onUrlCommitted,
                 )

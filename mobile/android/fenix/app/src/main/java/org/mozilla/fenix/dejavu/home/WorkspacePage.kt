@@ -339,7 +339,9 @@ internal fun WorkspacePage(
                 }
             }
 
-            item(key = KEY_DIVIDER) {
+            // The line between pinned and other tabs, only when there are pinned ones to set apart. The header still
+            // takes drops that pin.
+            if (pinned.isNotEmpty()) item(key = KEY_DIVIDER) {
                 SectionDivider(
                     showClear = otherTabs.isNotEmpty() && selection == null,
                     onClear = callbacks.onClearUnpinned,

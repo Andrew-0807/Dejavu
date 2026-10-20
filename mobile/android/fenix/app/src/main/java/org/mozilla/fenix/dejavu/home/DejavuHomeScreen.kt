@@ -197,6 +197,7 @@ fun DejavuHomeScreen(
             selectionActions = resolveSelectionActions(hiddenSelectionKeys, customActions),
             essentialsPerContainer = essentialsPerContainer,
             interactor = interactor,
+            isSidebar = isSidebar,
         )
 
         SnackbarHost(

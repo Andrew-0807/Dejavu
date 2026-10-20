@@ -96,6 +96,7 @@ import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.browser.thumbnails.BrowserThumbnails
 import mozilla.components.browser.thumbnails.facts.BrowserThumbnailsFacts
 import mozilla.components.browser.toolbar.BrowserToolbar
+import mozilla.components.compose.base.theme.layout.AcornWindowSize
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarStore
 import mozilla.components.concept.base.crash.Breadcrumb
 import mozilla.components.concept.engine.permission.SitePermissions
@@ -1593,9 +1594,17 @@ abstract class BaseBrowserFragment :
         appStore: AppStore,
         settings: org.mozilla.fenix.utils.Settings,
     ) =
-        if (customTabSessionId == null && settings.shouldShowTabStripAtTop && settings.shouldUseBottomToolbar) {
+        // Dejavu: made whenever the strip can show at the top, as resizing the window shows or hides it.
+        if (
+            customTabSessionId == null &&
+                settings.shouldUseBottomToolbar &&
+                settings.isTabStripEnabled &&
+                settings.tabStripPosition == ToolbarPosition.TOP
+        ) {
             BrowserTabStrip(context, binding.browserLayout, settings) {
-                buildTabStrip(appStore, settings)()
+                if (settings.shouldShowTabStripAtTop(AcornWindowSize.isLargeWindow())) {
+                    buildTabStrip(appStore, settings)()
+                }
             }
         } else {
             null
@@ -1691,6 +1700,7 @@ abstract class BaseBrowserFragment :
             }
             FirefoxTheme {
                 TabSidebar(
+                    activity = requireActivity() as HomeActivity,
                     navController = findNavController(),
                     onNoTabs = { findNavController().navigate(BrowserFragmentDirections.actionGlobalHome()) },
                     overlayShown = overlayShown,
@@ -2328,8 +2338,8 @@ abstract class BaseBrowserFragment :
         }
         // Like fullscreen video, so dragging the button over the hidden toolbar does not switch tabs.
         (view as? SwipeGestureLayout)?.isSwipeEnabled = false
-        // fullScreenChanged(false) shows the sidebar again on exit, with the auto-hidden one still closed.
-        binding.tabSidebar.isVisible = false
+        // The sidebar is navigation, not a bar: it stays where it is docked on large windows, as it does with the
+        // compact toolbar. Only the auto-hidden one closes, and its handle is not drawn while immersive.
         tabSidebarOverlay?.value = false
         expandBrowserView()
         showExitImmersiveButton()

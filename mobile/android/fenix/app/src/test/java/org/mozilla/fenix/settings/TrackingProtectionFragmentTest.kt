@@ -34,31 +34,31 @@ class TrackingProtectionFragmentTest {
 
         activity.supportFragmentManager.beginTransaction().add(settingsFragment, "settingsFragment").commitNow()
 
-        val customCookiesCheckBox = settingsFragment.customCookies.isChecked
+        val customCookiesCheckBox = settingsFragment.section.customCookies.isChecked
         val customCookiesCheckBoxSettings = settings.blockCookiesInCustomTrackingProtection
 
-        val customCookiesSelect = settingsFragment.customCookiesSelect.value
+        val customCookiesSelect = settingsFragment.section.customCookiesSelect.value
         val customCookiesSelectSettings = settings.blockCookiesSelectionInCustomTrackingProtection
 
-        val customTrackingContentCheckBox = settingsFragment.customTracking.isChecked
+        val customTrackingContentCheckBox = settingsFragment.section.customTracking.isChecked
         val customTrackingContentCheckBoxSettings = settings.blockTrackingContentInCustomTrackingProtection
 
-        val customTrackingContentSelect = settingsFragment.customTrackingSelect.value
+        val customTrackingContentSelect = settingsFragment.section.customTrackingSelect.value
         val customTrackingContentSelectSettings = settings.blockTrackingContentSelectionInCustomTrackingProtection
 
-        val customCryptominersCheckBox = settingsFragment.customCryptominers.isChecked
+        val customCryptominersCheckBox = settingsFragment.section.customCryptominers.isChecked
         val customCryptominersCheckBoxSettings = settings.blockCryptominersInCustomTrackingProtection
 
-        val customFingerprintersCheckBox = settingsFragment.customFingerprinters.isChecked
+        val customFingerprintersCheckBox = settingsFragment.section.customFingerprinters.isChecked
         val customFingerprintersCheckBoxSettings = settings.blockFingerprintersInCustomTrackingProtection
 
-        val customRedirectTrackersCheckBox = settingsFragment.customRedirectTrackers.isChecked
+        val customRedirectTrackersCheckBox = settingsFragment.section.customRedirectTrackers.isChecked
         val customRedirectTrackersCheckBoxSettings = settings.blockRedirectTrackersInCustomTrackingProtection
 
-        val customSuspectedFingerprinters = settingsFragment.customSuspectedFingerprinters.isChecked
+        val customSuspectedFingerprinters = settingsFragment.section.customSuspectedFingerprinters.isChecked
         val customSuspectedFingerprintersSetting = settings.blockSuspectedFingerprintersInCustomTrackingProtection
 
-        val customSuspectedFingerprintersSelect = settingsFragment.customSuspectedFingerprintersSelect.value
+        val customSuspectedFingerprintersSelect = settingsFragment.section.customSuspectedFingerprintersSelect.value
         val customSuspectedFingerprintersSelectSetting =
             settings.blockSuspectedFingerprintersSelectionInCustomTrackingProtection
 
@@ -85,11 +85,11 @@ class TrackingProtectionFragmentTest {
         activity.supportFragmentManager.beginTransaction().add(settingsFragment, "settingsFragment").commitNow()
 
         settings.strictAllowListBaselineTrackingProtection = true
-        val baselineCheckbox = settingsFragment.strictAllowListBaselineTrackingProtection
+        val baselineCheckbox = settingsFragment.section.strictAllowListBaselineTrackingProtection
 
         val result = baselineCheckbox.onPreferenceChangeListener?.onPreferenceChange(baselineCheckbox, false)
 
-        assertEquals(true, settingsFragment.alertDialog.isShowing)
+        assertEquals(true, settingsFragment.section.alertDialog.isShowing)
         assertEquals(false, result)
         assertEquals(true, settings.strictAllowListBaselineTrackingProtection)
         assertEquals(true, baselineCheckbox.isChecked)
@@ -108,7 +108,7 @@ class TrackingProtectionFragmentTest {
         // Properly attach the fragment to initialize lateinit properties
         activity.supportFragmentManager.beginTransaction().add(settingsFragment, "settingsFragment").commitNow()
 
-        val fragmentSpy = spyk(settingsFragment)
+        val fragmentSpy = spyk(settingsFragment.section)
         val dialog = mockk<AlertDialog>(relaxed = true)
         every { fragmentSpy.updateTrackingProtectionPolicy() } just Runs
 
@@ -130,7 +130,7 @@ class TrackingProtectionFragmentTest {
         // Properly attach the fragment to initialize lateinit properties
         activity.supportFragmentManager.beginTransaction().add(settingsFragment, "settingsFragment").commitNow()
 
-        val fragmentSpy = spyk(settingsFragment)
+        val fragmentSpy = spyk(settingsFragment.section)
         val dialog = mockk<AlertDialog>(relaxed = true)
         every { fragmentSpy.updateTrackingProtectionPolicy() } just Runs
 

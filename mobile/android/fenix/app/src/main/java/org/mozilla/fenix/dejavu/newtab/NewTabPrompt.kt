@@ -10,9 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.activity.compose.BackHandler
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -44,9 +41,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
@@ -54,6 +49,9 @@ import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -127,11 +125,8 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
         components.core.store.state.search.selectedOrDefaultSearchEngine(private = isPrivate)
     }
     val focus = remember { FocusRequester() }
-    val shown = remember { Animatable(0f) }
-    LaunchedEffect(Unit) {
-        focus.requestFocus()
-        shown.animateTo(1f, tween(OPEN_MS, easing = FastOutSlowInEasing))
-    }
+    // Opened from the keyboard (Ctrl+T), many times a day, so it appears at once, with no animation.
+    LaunchedEffect(Unit) { focus.requestFocus() }
     BackHandler(onBack = onClose)
 
     fun showBrowser() {
@@ -169,57 +164,19 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
     }
 
     val webProviders = remember {
-        val state = createInitialSearchFragmentState(activity, components, null, null, MetricsUtils.Source.NONE).let {
-            // A private prompt shows no history of normal tabs, and web suggestions only when allowed in private tabs.
-            if (!isPrivate) {
-                it
-            } else {
-                it.copy(
-                    showSearchTermHistory = false,
-                    showAllHistorySuggestions = false,
-                    showHistorySuggestionsForCurrentEngine = false,
-                    showRecentSearches = false,
-                    showSearchSuggestionsFromCurrentEngine =
-                        shouldShowSearchSuggestions(BrowsingMode.Private, components.settings),
-                )
-            }
-        }.copy(searchEngineSource = defaultEngine?.let { SearchEngineSource.Default(it) } ?: SearchEngineSource.None)
-        val builder = SearchSuggestionsProvidersBuilder(
-            components = components,
-            scope = ProcessLifecycleOwner.get().lifecycleScope,
-            browsingModeManager = activity.browsingModeManager,
-            includeSelectedTab = true,
-            loadUrlUseCase = object : LoadUrlUseCase {
-                override fun invoke(
-                    url: String,
-                    flags: LoadUrlFlags,
-                    additionalHeaders: Map<String, String>?,
-                    originalInput: String?,
-                ) = load(url, flags = flags)
+        webSuggestionProviders(
+            activity = activity,
+            isPrivate = isPrivate,
+            engine = defaultEngine,
+            showOpenTabs = true,
+            typedQuery = { queryOf(text, keyword).query },
+            onLoad = { url, forceSearch, engine, flags -> load(url, forceSearch, engine, flags) },
+            onSelectTab = { tabId ->
+                components.useCases.tabsUseCases.selectTab(tabId)
+                showBrowser()
+                onClose()
             },
-            searchUseCase = object : SearchUseCase {
-                // A suggestion that repeats the typed text goes through keywords like Enter does.
-                override fun invoke(searchTerms: String, searchEngine: SearchEngine?, parentSessionId: String?) {
-                    val typed = searchTerms.trim().equals(queryOf(text, keyword).query.trim(), ignoreCase = true)
-                    load(searchTerms, forceSearch = !typed, engine = searchEngine)
-                }
-            },
-            selectTabUseCase = object : SelectTabUseCase {
-                override fun invoke(tabId: String) {
-                    components.useCases.tabsUseCases.selectTab(tabId)
-                    showBrowser()
-                    onClose()
-                }
-            },
-            suggestionsStringsProvider = DefaultSuggestionsStringsProvider(
-                activity,
-                DefaultSearchEngineProvider(components.core.store),
-            ),
-            suggestionIconProvider = DefaultSuggestionIconProvider(activity),
-            onSearchEngineSuggestionSelected = {},
         )
-        val engineShortcuts = setOfNotNull(builder.searchEngineSuggestionProvider)
-        builder.getProvidersToAdd(state.toSearchProviderState()).toList() - engineShortcuts
     }
     val providers = remember(settingsOnly) {
         val settings = SettingsProvider(activity, onlySettings = settingsOnly, onPick = ::openSetting)
@@ -229,8 +186,7 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .graphicsLayer { alpha = shown.value }
-            .background(Color.Black.copy(alpha = BACKDROP_ALPHA))
+            .background(MaterialTheme.colorScheme.scrim.copy(alpha = BACKDROP_ALPHA))
             .clickable(remember { MutableInteractionSource() }, indication = null, onClick = onClose)
             .systemBarsPadding()
             .imePadding(),
@@ -241,23 +197,20 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
                 .padding(top = PROMPT_TOP, start = SIDE_PADDING, end = SIDE_PADDING)
                 .widthIn(max = PROMPT_MAX_WIDTH)
                 .fillMaxWidth()
-                .graphicsLayer {
-                    val scale = PROMPT_START_SCALE + (1f - PROMPT_START_SCALE) * shown.value
-                    scaleX = scale
-                    scaleY = scale
-                }
                 .shadow(PROMPT_ELEVATION, PromptShape)
                 .background(MaterialTheme.colorScheme.surface.copy(alpha = PROMPT_ALPHA), PromptShape)
                 .border(0.5.dp, MaterialTheme.colorScheme.outlineVariant, PromptShape)
                 .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) {},
         ) {
+            val hint = stringResource(R.string.search_hint)
             Box(modifier = Modifier.fillMaxWidth().heightIn(min = FIELD_HEIGHT).padding(horizontal = 20.dp)) {
                 if (text.isEmpty()) {
                     Text(
-                        text = stringResource(R.string.search_hint),
+                        text = hint,
                         fontSize = FIELD_TEXT_SIZE,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.align(Alignment.CenterStart),
+                        // The field itself carries the hint for screen readers.
+                        modifier = Modifier.align(Alignment.CenterStart).clearAndSetSemantics {},
                     )
                 }
                 BasicTextField(
@@ -275,6 +228,7 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
                         .align(Alignment.CenterStart)
                         .fillMaxWidth()
                         .focusRequester(focus)
+                        .semantics { contentDescription = hint }
                         .onPreviewKeyEvent {
                             if (it.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
                             when (it.key) {
@@ -299,6 +253,75 @@ private fun Prompt(activity: HomeActivity, onClose: () -> Unit) {
             }
         }
     }
+}
+
+/**
+ * The suggestion providers of the address bar for Dejavu's own search fields: history, bookmarks, search suggestions
+ * and, when [showOpenTabs], open tabs. A private field shows no history of normal tabs, and web suggestions only when
+ * allowed in private tabs.
+ *
+ * @param typedQuery What the user typed: a suggestion that repeats it goes through search keywords like Enter does.
+ * @param onLoad Loads a picked address or search, with its forced search flag, engine and load flags.
+ * @param onSelectTab Switches to a picked open tab.
+ */
+@Suppress("LongParameterList")
+internal fun webSuggestionProviders(
+    activity: HomeActivity,
+    isPrivate: Boolean,
+    engine: SearchEngine?,
+    showOpenTabs: Boolean,
+    typedQuery: () -> String,
+    onLoad: (url: String, forceSearch: Boolean, engine: SearchEngine?, flags: LoadUrlFlags) -> Unit,
+    onSelectTab: (tabId: String) -> Unit,
+): List<SuggestionProvider> {
+    val components = activity.components
+    val state = createInitialSearchFragmentState(activity, components, null, null, MetricsUtils.Source.NONE).let {
+        if (!isPrivate) {
+            it
+        } else {
+            it.copy(
+                showSearchTermHistory = false,
+                showAllHistorySuggestions = false,
+                showHistorySuggestionsForCurrentEngine = false,
+                showRecentSearches = false,
+                showSearchSuggestionsFromCurrentEngine =
+                    shouldShowSearchSuggestions(BrowsingMode.Private, components.settings),
+            )
+        }
+    }.let {
+        if (showOpenTabs) it else it.copy(showAllSessionSuggestions = false, showSessionSuggestionsForCurrentEngine = false)
+    }.copy(searchEngineSource = engine?.let { SearchEngineSource.Default(it) } ?: SearchEngineSource.None)
+    val builder = SearchSuggestionsProvidersBuilder(
+        components = components,
+        scope = ProcessLifecycleOwner.get().lifecycleScope,
+        browsingModeManager = activity.browsingModeManager,
+        includeSelectedTab = true,
+        loadUrlUseCase = object : LoadUrlUseCase {
+            override fun invoke(
+                url: String,
+                flags: LoadUrlFlags,
+                additionalHeaders: Map<String, String>?,
+                originalInput: String?,
+            ) = onLoad(url, false, null, flags)
+        },
+        searchUseCase = object : SearchUseCase {
+            override fun invoke(searchTerms: String, searchEngine: SearchEngine?, parentSessionId: String?) {
+                val typed = searchTerms.trim().equals(typedQuery().trim(), ignoreCase = true)
+                onLoad(searchTerms, !typed, searchEngine, LoadUrlFlags.none())
+            }
+        },
+        selectTabUseCase = object : SelectTabUseCase {
+            override fun invoke(tabId: String) = onSelectTab(tabId)
+        },
+        suggestionsStringsProvider = DefaultSuggestionsStringsProvider(
+            activity,
+            DefaultSearchEngineProvider(components.core.store),
+        ),
+        suggestionIconProvider = DefaultSuggestionIconProvider(activity),
+        onSearchEngineSuggestionSelected = {},
+    )
+    val engineShortcuts = setOfNotNull(builder.searchEngineSuggestionProvider)
+    return builder.getProvidersToAdd(state.toSearchProviderState()).toList() - engineShortcuts
 }
 
 /** Settings whose titles fuzzy match the text. Unless [onlySettings], only the good matches. */
@@ -358,8 +381,6 @@ private val FIELD_TEXT_SIZE = 20.sp
 private val RESULTS_MAX_HEIGHT = 420.dp
 private const val PROMPT_ALPHA = 0.93f
 private const val BACKDROP_ALPHA = 0.35f
-private const val PROMPT_START_SCALE = 0.96f
-private const val OPEN_MS = 150
 private const val MIN_AUTO_CHARS = 3
 private const val MAX_AUTO_SETTINGS = 3
 private const val MAX_ONLY_SETTINGS = 20

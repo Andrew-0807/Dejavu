@@ -6,6 +6,7 @@ package org.mozilla.fenix.settings
 
 import android.content.Context
 import android.os.Bundle
+import androidx.annotation.StringRes
 import androidx.annotation.VisibleForTesting
 import androidx.core.content.edit
 import androidx.navigation.findNavController
@@ -16,6 +17,7 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import org.mozilla.fenix.GleanMetrics.CustomizeHome
 import org.mozilla.fenix.GleanMetrics.Events
+import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.Components
 import org.mozilla.fenix.components.appstate.AppAction
@@ -57,9 +59,18 @@ class HomeSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragm
         }
     }
 
+    private val section =
+        HomeSettingsSection(
+            fragment = this,
+            settings = { fenixSettings },
+            components = { fenixComponents },
+            contentRecommendationsHelper = { contentRecommendationsHelper },
+            customizeHomeMetrics = { customizeHomeMetrics },
+        )
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.home_preferences, rootKey)
-        setupPreferences()
+        section.onCreate()
     }
 
     override fun onResume() {
@@ -69,8 +80,33 @@ class HomeSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragm
             scrollToPreferenceWithHighlight(it)
         }
     }
+}
 
-    private fun setupPreferences() {
+/**
+ * The preferences of [HomeSettingsFragment]. The settings page shows them inline, see
+ * docs/dejavu/settings-redesign.md. The lambdas let tests replace the settings and components.
+ */
+class HomeSettingsSection(
+    private val fragment: PreferenceFragmentCompat,
+    private val settings: () -> Settings = { fragment.requireContext().components.settings },
+    private val components: () -> Components = { fragment.requireContext().components },
+    private val contentRecommendationsHelper: () -> ContentRecommendationsFeatureHelper = {
+        ContentRecommendationsFeatureHelper
+    },
+    private val customizeHomeMetrics: () -> CustomizeHome = { CustomizeHome },
+) : SettingsSection {
+    private val fenixSettings get() = settings()
+    private val fenixComponents get() = components()
+    private val recommendations get() = contentRecommendationsHelper()
+    private val homeMetrics get() = customizeHomeMetrics()
+
+    private fun <T : Preference> requirePreference(@StringRes id: Int): T = fragment.requirePreference(id)
+
+    override fun onCreate() {
+        with(fragment) { setupPreferences() }
+    }
+
+    private fun PreferenceFragmentCompat.setupPreferences() {
         requirePreference<SwitchPreferenceCompat>(R.string.pref_key_show_top_sites).apply {
             isChecked = fenixSettings.showTopSitesFeature
             onPreferenceChangeListener = createMetricPreferenceChangeListener("most_visited_sites")
@@ -104,13 +140,13 @@ class HomeSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragm
         }
 
         requirePreference<SwitchPreferenceCompat>(R.string.pref_key_pocket_homescreen_recommendations).apply {
-            isVisible = contentRecommendationsHelper.isContentRecommendationsFeatureEnabled(requireContext())
+            isVisible = recommendations.isContentRecommendationsFeatureEnabled(requireContext())
             isChecked = fenixSettings.showPocketRecommendationsFeature
             onPreferenceChangeListener = createMetricPreferenceChangeListener("pocket")
         }
 
         requirePreference<CheckBoxPreference>(R.string.pref_key_pocket_sponsored_stories).apply {
-            isVisible = contentRecommendationsHelper.isPocketSponsoredStoriesFeatureEnabled(requireContext())
+            isVisible = recommendations.isPocketSponsoredStoriesFeatureEnabled(requireContext())
             isChecked = fenixSettings.showPocketSponsoredStories
             onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
                 val newBooleanValue = newValue as? Boolean ?: return@OnPreferenceChangeListener false
@@ -146,8 +182,8 @@ class HomeSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragm
                 view
                     ?.findNavController()
                     ?.navigateWithBreadcrumb(
-                        directions =
-                            HomeSettingsFragmentDirections.actionHomeSettingsFragmentToWallpaperSettingsFragment(),
+                        // Dejavu: a global action, so it also works from the settings page.
+                        directions = NavGraphDirections.actionGlobalWallpaperSettingsFragment(),
                         navigateFrom = "HomeSettingsFragment",
                         navigateTo = "ActionHomeSettingsFragmentToWallpaperSettingsFragment",
                         crashReporter = fenixComponents.analytics.crashReporter,
@@ -172,7 +208,7 @@ class HomeSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragm
         return Preference.OnPreferenceChangeListener { preference, newValue ->
             val newBooleanValue = newValue as? Boolean ?: return@OnPreferenceChangeListener false
 
-            customizeHomeMetrics.preferenceToggled.record(
+            homeMetrics.preferenceToggled.record(
                 CustomizeHome.PreferenceToggledExtra(
                     newBooleanValue,
                     metricKey,

@@ -90,7 +90,7 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit) {
     val customActions by settings.customActions.collectAsState()
     val hasHomeSidebar = isHomeSidebarShown()
     val entries = remember(barKeys, customActions, hasHomeSidebar) {
-        ActionsBarLayout.resolve(barKeys, customActions).filterNot { hasHomeSidebar && it == MoreMenuEntry.Home }
+        ActionsBarLayout.shown(ActionsBarLayout.resolve(barKeys, customActions), hasHomeSidebar)
     }
     var asking by remember { mutableStateOf<TabAction?>(null) }
     val snackbar by fenix.appStore.observeAsComposableState { it.snackbarState }

@@ -222,7 +222,12 @@ class MenuDialogFragment : BottomSheetDialogFragment() {
                             insets
                         }
                     }
-                    bottomSheet?.setBackgroundResource(R.drawable.bottom_sheet_with_top_rounded_corners)
+                    // Dejavu's menu draws its own sheet, sized and placed beside the tabs sidebar by MoreMenuSheet.
+                    if (DejavuMenu.replaces(args.accesspoint)) {
+                        bottomSheet?.background = null
+                    } else {
+                        bottomSheet?.setBackgroundResource(R.drawable.bottom_sheet_with_top_rounded_corners)
+                    }
 
                     // https://bugzilla.mozilla.org/show_bug.cgi?id=1982004
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
@@ -1143,6 +1148,8 @@ class MenuDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun calculateMenuSheetWidth(): Int {
+        // Dejavu's menu spans the window and caps its own sheet, so it can sit beside the tabs sidebar.
+        if (DejavuMenu.replaces(args.accesspoint)) return resources.displayMetrics.widthPixels
         val isLandscape = requireContext().isLandscape()
         val screenWidthPx = requireContext().resources.configuration.screenWidthDp.dpToPx(resources.displayMetrics)
         val totalHorizontalPadding = 2 * pixelSizeFor(R.dimen.browser_menu_padding)

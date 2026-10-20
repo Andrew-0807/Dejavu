@@ -105,6 +105,7 @@ enum class ShortcutAction(
     CLOSE_TAB("close_tab", R.string.dejavu_shortcut_close_tab, KeyCombo(KeyEvent.KEYCODE_W, CTRL)),
     RESTORE_TAB("restore_tab", R.string.dejavu_shortcut_restore_tab, KeyCombo(KeyEvent.KEYCODE_T, CTRL or SHIFT)),
     ADDRESS_BAR("address_bar", R.string.dejavu_shortcut_address_bar, KeyCombo(KeyEvent.KEYCODE_L, CTRL)),
+    SEARCH_FIELD("search_field", R.string.dejavu_shortcut_search_field, KeyCombo(KeyEvent.KEYCODE_K, CTRL)),
     RELOAD("reload", R.string.dejavu_shortcut_reload, KeyCombo(KeyEvent.KEYCODE_R, CTRL)),
     TAB_1("tab_1", R.string.dejavu_shortcut_tab_n, KeyCombo(KeyEvent.KEYCODE_1, CTRL), 1),
     TAB_2("tab_2", R.string.dejavu_shortcut_tab_n, KeyCombo(KeyEvent.KEYCODE_2, CTRL), 2),
@@ -120,6 +121,9 @@ enum class ShortcutAction(
 object KeyboardShortcuts {
     /** Set by the browser screen to focus its address bar. */
     var focusAddressBar: (() -> Unit)? = null
+
+    /** Set by the vertical tabs sidebar while it is shown, to focus its search field instead of the address bar. */
+    var focusSidebarSearch: (() -> Unit)? = null
 
     /** True while the remap dialog records a combo, so every key reaches it instead of running a shortcut. */
     var recording = false
@@ -195,7 +199,8 @@ object KeyboardShortcuts {
                 NewTabPrompt.show(activity)
                 true
             }
-            ShortcutAction.ADDRESS_BAR -> focusAddressBar?.invoke() != null
+            ShortcutAction.ADDRESS_BAR, ShortcutAction.SEARCH_FIELD ->
+                (focusSidebarSearch ?: focusAddressBar)?.invoke() != null
             else -> select(action.labelArg - 1)
         }
     }

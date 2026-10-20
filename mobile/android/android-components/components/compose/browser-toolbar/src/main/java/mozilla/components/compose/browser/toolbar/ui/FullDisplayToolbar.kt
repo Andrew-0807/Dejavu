@@ -4,12 +4,10 @@
 
 package mozilla.components.compose.browser.toolbar.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -110,11 +108,8 @@ internal fun FullDisplayToolbar(
                                             else TOOLBAR_PADDING_DP
                                     }.dp,
                             )
-                            .height(48.dp)
-                            .background(
-                                color = MaterialTheme.colorScheme.surfaceContainerHighest,
-                                shape = CircleShape,
-                            )
+                            .height(AddressFieldDefaults.Height)
+                            .addressFieldSurface(AddressFieldDefaults.colors())
                             .padding(
                                 start =
                                     when (pageActionsStart.isEmpty()) {

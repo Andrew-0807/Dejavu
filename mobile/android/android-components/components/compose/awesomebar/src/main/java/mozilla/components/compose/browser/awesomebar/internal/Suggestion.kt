@@ -46,6 +46,9 @@ import mozilla.components.ui.icons.R as iconsR
 // Limit bigger texts that could cause slowdowns or even crashes.
 private const val SUGGESTION_TEXT_MAX_LENGTH = 100
 
+// The hover, focus and press highlight follows this shape, like the address field's dropdown.
+private val ROW_CORNER_RADIUS = 12.dp
+
 @Composable
 internal fun Suggestion(
     suggestion: AwesomeBar.Suggestion,
@@ -57,7 +60,8 @@ internal fun Suggestion(
 ) {
     Row(
         modifier =
-            Modifier.clickable { onSuggestionClicked() }
+            Modifier.clip(RoundedCornerShape(ROW_CORNER_RADIUS))
+                .clickable { onSuggestionClicked() }
                 .defaultMinSize(minHeight = AcornTheme.layout.space.static600)
                 .testTag(AwesomeBarTestTags.SUGGESTION)
                 .padding(start = AcornTheme.layout.space.dynamic200, end = AcornTheme.layout.space.dynamic50)

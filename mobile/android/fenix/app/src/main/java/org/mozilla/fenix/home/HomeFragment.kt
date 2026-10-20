@@ -58,6 +58,7 @@ import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.compose.base.modifier.thenConditional
 import mozilla.components.compose.base.snackbar.Snackbar
 import mozilla.components.compose.base.snackbar.displaySnackbar
+import mozilla.components.compose.base.theme.layout.AcornWindowSize
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarState
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarStore
 import mozilla.components.concept.engine.utils.ABOUT_HOME_URL
@@ -119,6 +120,7 @@ import org.mozilla.fenix.dejavu.shortcuts.KeyboardShortcuts
 import org.mozilla.fenix.ext.application
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.hideToolbar
+import org.mozilla.fenix.ext.isLargeWindow
 import org.mozilla.fenix.ext.nav
 import org.mozilla.fenix.ext.recordEventInNimbus
 import org.mozilla.fenix.ext.requireComponents
@@ -617,7 +619,8 @@ class HomeFragment : Fragment(), UserInteractionHandler, OnLongPressedListener {
      */
     private fun isToolbarSwipeToSwitchTabsEnabled(): Boolean =
         with(requireComponents.settings) {
-            isSwipeToolbarToSwitchTabsEnabled && !isTabStripEnabled && enableHomepageAsNewTab
+            isSwipeToolbarToSwitchTabsEnabled && !isTabStripShown(requireContext().isLargeWindow()) &&
+                enableHomepageAsNewTab
         }
 
     @Suppress("ReturnCount")
@@ -753,7 +756,7 @@ class HomeFragment : Fragment(), UserInteractionHandler, OnLongPressedListener {
                                         toolbarView.Content()
                                     }
                                 } else {
-                                    if (settings.shouldShowTabStripAtTop) {
+                                    if (settings.shouldShowTabStripAtTop(AcornWindowSize.isLargeWindow())) {
                                         TabStrip()
                                     }
                                 }
@@ -768,7 +771,7 @@ class HomeFragment : Fragment(), UserInteractionHandler, OnLongPressedListener {
                                 if (isToolbarAtTop) {
                                     ToolbarSlot(captureToolbarBounds, { navbarBoundsInRoot = it }) {
                                         Column {
-                                            if (settings.shouldShowTabStripAtBottom) {
+                                            if (settings.shouldShowTabStripAtBottom(AcornWindowSize.isLargeWindow())) {
                                                 TabStrip()
                                             }
                                             if (settings.shouldShowTabGroupsStrip) {

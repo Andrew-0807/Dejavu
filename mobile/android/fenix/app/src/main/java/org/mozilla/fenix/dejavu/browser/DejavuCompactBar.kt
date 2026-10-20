@@ -95,6 +95,8 @@ internal fun compactBarSettle(
     return when {
         startReveal >= 1f && distance < 0f ->
             if (farUp || flingUp) CompactBarSettle.EXPAND_AND_RUN_GESTURE else CompactBarSettle.EXPAND
+        // One swipe up from the collapsed bar shows the buttons and runs the gesture, with no second swipe needed.
+        startReveal <= 0f && distance < 0f && (farUp || flingUp) && !flingDown -> CompactBarSettle.EXPAND_AND_RUN_GESTURE
         startReveal <= 0f && distance > 0f ->
             if (farDown || flingDown) CompactBarSettle.SWIPE_DOWN_COLLAPSED else CompactBarSettle.COLLAPSE
         flingUp -> CompactBarSettle.EXPAND
@@ -118,9 +120,9 @@ private val minSwipeDistance = 24.dp
 private val minFlingVelocity = 400.dp
 
 /**
- * The compact toolbar: one bar at the bottom of the screen with the address bar and a Home button beside it. Swiping it
- * up shows [buttons] above it, swiping up again runs the gesture set for "Swipe the toolbar up" (the "More" menu by
- * default), and swiping down hides the buttons. Taps on the address bar and the Home button stay taps until the finger
+ * The compact toolbar: one bar at the bottom of the screen with the address bar and a Home button beside it. A swipe up
+ * shows [buttons] above it, following the finger, and runs the gesture set for "Swipe the toolbar up" (the "More" menu
+ * by default) on release. Swiping down hides the buttons. Taps on the address bar and the Home button stay taps until the finger
  * moves past the touch slop, mostly up or down.
  *
  * @param store The store of the address bar.

@@ -6,7 +6,9 @@ package org.mozilla.fenix.settings
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.navigation.fragment.navArgs
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import mozilla.telemetry.glean.private.NoExtras
@@ -20,16 +22,8 @@ import org.mozilla.fenix.utils.view.addToRadioGroup
 
 /** Lets the user customize auto closing tabs. */
 class TabsSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment {
-    private lateinit var listRadioButton: RadioButtonPreference
-    private lateinit var gridRadioButton: RadioButtonPreference
-    private lateinit var radioManual: RadioButtonPreference
-    private lateinit var radioOneDay: RadioButtonPreference
-    private lateinit var radioOneWeek: RadioButtonPreference
-    private lateinit var radioOneMonth: RadioButtonPreference
-    private lateinit var inactiveTabs: SwitchPreferenceCompat
-    private lateinit var privacyReport: SwitchPreferenceCompat
-    private lateinit var tabGroups: SwitchPreferenceCompat
     private val args by navArgs<TabsSettingsFragmentArgs>()
+    private val section = TabsSettingsSection(this)
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.tabs_preferences, rootKey)
@@ -44,10 +38,34 @@ class TabsSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragm
         super.onResume()
         showToolbar(getString(R.string.preferences_tabs))
 
-        setupPreferences()
+        section.onResume()
         args.preferenceToScrollTo?.let {
             scrollToPreferenceWithHighlight(it)
         }
+    }
+}
+
+/**
+ * The preferences of [TabsSettingsFragment]: tab layout and closing tabs. The settings page shows them inline, see
+ * docs/dejavu/settings-redesign.md.
+ */
+class TabsSettingsSection(private val fragment: PreferenceFragmentCompat) : SettingsSection {
+    private lateinit var listRadioButton: RadioButtonPreference
+    private lateinit var gridRadioButton: RadioButtonPreference
+    private lateinit var radioManual: RadioButtonPreference
+    private lateinit var radioOneDay: RadioButtonPreference
+    private lateinit var radioOneWeek: RadioButtonPreference
+    private lateinit var radioOneMonth: RadioButtonPreference
+    private lateinit var inactiveTabs: SwitchPreferenceCompat
+    private lateinit var privacyReport: SwitchPreferenceCompat
+    private lateinit var tabGroups: SwitchPreferenceCompat
+
+    private val requireComponents get() = fragment.requireComponents
+
+    private fun <T : Preference> requirePreference(@StringRes id: Int): T = fragment.requirePreference(id)
+
+    override fun onResume() {
+        setupPreferences()
     }
 
     private fun setupPreferences() {

@@ -8,6 +8,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,11 +17,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -109,12 +112,28 @@ enum class SettingsGroup(
 
 /**
  * The settings home: a search field that opens the settings search, then every [SettingsGroup] as rounded cards.
- * [selected] is highlighted, for the two pane layout of tablets.
+ * [selected] is highlighted, for the two pane layout of wide windows, where it follows the scrolling of the settings.
  */
 @Composable
 fun SettingsHome(selected: SettingsGroup?, onSearch: (() -> Unit)?, onSelect: (SettingsGroup) -> Unit) {
     val cards = SettingsGroup.entries.groupBy { it.card }.values.toList()
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+    val listState = rememberLazyListState()
+    // Keeps the highlighted category in view when the scrolling of the settings moves it. The entries are declared in
+    // card order, so the item index of a category is its ordinal after the search field.
+    LaunchedEffect(selected) {
+        val index = (selected ?: return@LaunchedEffect).ordinal + if (onSearch != null) 1 else 0
+        val layout = listState.layoutInfo
+        val item = layout.visibleItemsInfo.firstOrNull { it.index == index }
+        val fullyVisible = item != null && item.offset >= layout.viewportStartOffset &&
+            item.offset + item.size <= layout.viewportEndOffset - layout.afterContentPadding
+        if (!fullyVisible) listState.animateScrollToItem(index)
+    }
+    // The bottom padding lets the last category scroll clear of the screen edge.
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        state = listState,
+        contentPadding = PaddingValues(bottom = 24.dp),
+    ) {
         onSearch?.let { search -> item { SearchField(search) } }
         cards.forEach { groups ->
             itemsIndexed(groups) { index, group ->
@@ -126,6 +145,10 @@ fun SettingsHome(selected: SettingsGroup?, onSearch: (() -> Unit)?, onSelect: (S
                 IconListItem(
                     label = stringResource(group.title),
                     description = stringResource(group.summary),
+                    // Summaries wrap instead of being cut, and every row is tall enough for two lines so the rows
+                    // keep one height.
+                    maxDescriptionLines = Int.MAX_VALUE,
+                    minHeight = 88.dp,
                     beforeIconPainter = painterResource(group.icon),
                     modifier = Modifier.settingsCard(index, groups.size).then(highlight),
                     onClick = { onSelect(group) },

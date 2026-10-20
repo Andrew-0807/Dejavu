@@ -605,6 +605,36 @@
             android:name="search_in_progress"
             android:defaultValue="false"
             app:argType="boolean" />
+        <!-- Dejavu: the settings page shows the tracking protection and search settings inline, so it declares the
+             actions their sections use, see docs/dejavu/settings-redesign.md. -->
+        <action
+            android:id="@+id/action_trackingProtectionFragment_to_exceptionsFragment"
+            app:destination="@id/trackingProtectionExceptionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_trackingProtectionFragment_to_trackingProtectionBlockingFragment"
+            app:destination="@id/trackingProtectionBlockingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_searchEngineFragment_to_defaultEngineFragment"
+            app:destination="@id/defaultEngineFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_searchEngineFragment_to_searchShortcutsFragment"
+            app:destination="@id/searchShortcutsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_settingsFragment_to_settingsSearchFragment"
             app:destination="@id/settingsSearchFragment"
@@ -1134,11 +1164,6 @@
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
-        <argument
-            android:name="section"
-            android:defaultValue="@null"
-            app:argType="string"
-            app:nullable="true" />
         <action
             android:id="@+id/action_customizationFragment_appIconSelectionFragment"
             app:destination="@+id/appIconSelectionFragment"
@@ -1523,34 +1548,36 @@
             android:label="@string/preferences_search">
             <action
                 android:id="@+id/action_searchEngineFragment_to_defaultEngineFragment"
-                app:destination="@+id/defaultEngineFragment" />
+                app:destination="@id/defaultEngineFragment" />
             <action
                 android:id="@+id/action_searchEngineFragment_to_searchShortcutsFragment"
-                app:destination="@+id/searchShortcutsFragment" />
-        </fragment>
-        <fragment
-            android:id="@+id/defaultEngineFragment"
-            android:name="org.mozilla.fenix.settings.search.DefaultSearchEngineFragment">
-            <action
-                android:id="@+id/action_defaultEngineFragment_to_saveSearchEngineFragment"
-                app:destination="@+id/saveSearchEngineFragment" />
-        </fragment>
-        <fragment
-            android:id="@+id/searchShortcutsFragment"
-            android:name="org.mozilla.fenix.settings.search.SearchShortcutsFragment">
-            <action
-                android:id="@+id/action_searchShortcutsFragment_to_saveSearchEngineFragment"
-                app:destination="@+id/saveSearchEngineFragment" />
-        </fragment>
-        <fragment
-            android:id="@+id/saveSearchEngineFragment"
-            android:name="org.mozilla.fenix.settings.search.SaveSearchEngineFragment">
-            <argument
-                android:name="searchEngineIdentifier"
-                app:argType="string"
-                app:nullable="true"/>
+                app:destination="@id/searchShortcutsFragment" />
         </fragment>
     </navigation>
+
+    <!-- Dejavu: outside search_engine_graph, so the settings page can open them too. -->
+    <fragment
+        android:id="@+id/defaultEngineFragment"
+        android:name="org.mozilla.fenix.settings.search.DefaultSearchEngineFragment">
+        <action
+            android:id="@+id/action_defaultEngineFragment_to_saveSearchEngineFragment"
+            app:destination="@id/saveSearchEngineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchShortcutsFragment"
+        android:name="org.mozilla.fenix.settings.search.SearchShortcutsFragment">
+        <action
+            android:id="@+id/action_searchShortcutsFragment_to_saveSearchEngineFragment"
+            app:destination="@id/saveSearchEngineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/saveSearchEngineFragment"
+        android:name="org.mozilla.fenix.settings.search.SaveSearchEngineFragment">
+        <argument
+            android:name="searchEngineIdentifier"
+            app:argType="string"
+            app:nullable="true"/>
+    </fragment>
 
     <navigation
         android:id="@+id/nimbus_experiment_graph"

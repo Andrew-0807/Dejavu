@@ -16,11 +16,23 @@ import org.mozilla.fenix.ext.showToolbar
 
 /** Lets the user customize link sharing feature. */
 class LinkSharingFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment {
+    private val section = LinkSharingSection(this)
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.link_sharing_preferences, rootKey)
+        section.onCreate()
+    }
 
-        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_link_sharing).apply {
+    override fun onResume() {
+        super.onResume()
+        showToolbar(getString(R.string.preferences_link_sharing))
+    }
+}
+
+/** The preference of [LinkSharingFragment]. The settings page shows it inline, see docs/dejavu/settings-redesign.md. */
+class LinkSharingSection(private val fragment: PreferenceFragmentCompat) : SettingsSection {
+    override fun onCreate() {
+        fragment.requirePreference<SwitchPreferenceCompat>(R.string.pref_key_link_sharing).apply {
             isChecked = context.components.settings.whatsappLinkSharingEnabled
 
             onPreferenceChangeListener =
@@ -35,20 +47,15 @@ class LinkSharingFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragme
                 }
 
             title =
-                getString(
+                fragment.getString(
                     R.string.link_sharing_toggle_body,
-                    getString(R.string.firefox),
+                    fragment.getString(R.string.firefox),
                 )
             summary =
-                getString(
+                fragment.getString(
                     R.string.link_sharing_toggle_title,
-                    getString(R.string.firefox),
+                    fragment.getString(R.string.firefox),
                 )
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        showToolbar(getString(R.string.preferences_link_sharing))
     }
 }

@@ -24,17 +24,39 @@ import org.mozilla.fenix.utils.Settings
 class AccessibilityFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment {
 
     private val args by navArgs<AccessibilityFragmentArgs>()
+    private val section = AccessibilitySection(this)
 
     override fun onResume() {
         super.onResume()
         showToolbar(getString(R.string.preferences_accessibility))
+        section.onResume()
 
+        args.preferenceToScrollTo?.let {
+            scrollToPreferenceWithHighlight(it)
+        }
+    }
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = Settings.FENIX_PREFERENCES
+        setPreferencesFromResource(R.xml.accessibility_preferences, rootKey)
+    }
+}
+
+/**
+ * The preferences of [AccessibilityFragment]. They are stored in [Settings.FENIX_PREFERENCES], so a host that keeps its
+ * preferences elsewhere gives them a data store on that file. The settings page shows them inline, see
+ * docs/dejavu/settings-redesign.md.
+ */
+class AccessibilitySection(private val fragment: PreferenceFragmentCompat) : SettingsSection {
+    override fun onResume() {
         val forceZoomPreference =
-            requirePreference<SwitchPreferenceCompat>(R.string.pref_key_accessibility_force_enable_zoom)
+            fragment.requirePreference<SwitchPreferenceCompat>(R.string.pref_key_accessibility_force_enable_zoom)
 
-        val components = requireContext().components
+        val components = fragment.requireContext().components
         val settings = components.settings
 
+        // Dejavu: the switches show the stored values, also when the host keeps its preferences in another file.
+        forceZoomPreference.isChecked = settings.forceEnableZoom
         forceZoomPreference.setOnPreferenceChangeListener<Boolean> { preference, shouldForce ->
             settings.forceEnableZoom = shouldForce
             components.core.engine.settings.forceUserScalableContent = shouldForce
@@ -43,7 +65,7 @@ class AccessibilityFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
         }
 
         val textSizePreference =
-            requirePreference<ComposeTextSizePreference>(R.string.pref_key_accessibility_font_scale)
+            fragment.requirePreference<ComposeTextSizePreference>(R.string.pref_key_accessibility_font_scale)
 
         textSizePreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
             // Bug 2044409: The `setIsSliderEnabled` call below doesn't disable this callback
@@ -63,7 +85,9 @@ class AccessibilityFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
             true
         }
 
-        val useAutoSizePreference = requirePreference<SwitchPreferenceCompat>(R.string.pref_key_accessibility_auto_size)
+        val useAutoSizePreference =
+            fragment.requirePreference<SwitchPreferenceCompat>(R.string.pref_key_accessibility_auto_size)
+        useAutoSizePreference.isChecked = settings.shouldUseAutoSize
         useAutoSizePreference.setOnPreferenceChangeListener<Boolean> { preference, useAutoSize ->
 
             // Save the new setting value
@@ -84,14 +108,5 @@ class AccessibilityFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFrag
         }
 
         textSizePreference.setIsSliderEnabled(!settings.shouldUseAutoSize)
-
-        args.preferenceToScrollTo?.let {
-            scrollToPreferenceWithHighlight(it)
-        }
-    }
-
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = Settings.FENIX_PREFERENCES
-        setPreferencesFromResource(R.xml.accessibility_preferences, rootKey)
     }
 }

@@ -10,7 +10,7 @@
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_dejavu_group_account"
         android:title="@string/dejavu_settings_group_account"
-        android:layout="@layout/preference_category_no_icon_style">
+        android:layout="@layout/dejavu_preference_category_heading">
         <androidx.preference.PreferenceCategory
             android:key="@string/pref_key_account_category"
             android:title="@string/preferences_category_account"
@@ -32,49 +32,33 @@
             android:summary="@string/preferences_sign_in_description"
             android:title="@string/preferences_sign_in"
             app:allowDividerBelow="false" />
-        <androidx.preference.Preference
-            app:iconSpaceReserved="false"
-            android:key="@string/pref_key_sync_debug"
-            android:title="@string/preferences_sync_debug"
-            app:isPreferenceVisible="false" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_dejavu_group_look"
         android:title="@string/dejavu_settings_group_look"
-        android:layout="@layout/preference_category_no_icon_style">
-        <androidx.preference.Preference
-            android:key="@string/pref_key_customize"
-            app:iconSpaceReserved="false"
-            android:title="@string/preferences_customize"
-            android:summary="@string/dejavu_settings_customize_look_summary" />
-        <androidx.preference.Preference
-            app:iconSpaceReserved="false"
-            android:key="@string/pref_key_home"
-            android:title="@string/preferences_home_2" />
-        <androidx.preference.Preference
-            android:key="@string/pref_key_accessibility"
-            app:iconSpaceReserved="false"
-            android:title="@string/preferences_accessibility" />
+        android:layout="@layout/dejavu_preference_category_heading">
         <androidx.preference.Preference
             android:key="@string/pref_key_language"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_language" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_customize"
+            android:layout="@layout/preference_category_no_icon_style" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_home"
+            android:title="@string/preferences_home_2"
+            android:layout="@layout/preference_category_no_icon_style" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_accessibility"
+            android:title="@string/preferences_accessibility"
+            android:layout="@layout/preference_category_no_icon_style" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_dejavu_group_tabs"
         android:title="@string/dejavu_settings_group_tabs"
-        android:layout="@layout/preference_category_no_icon_style">
-        <androidx.preference.Preference
-            app:iconSpaceReserved="false"
-            android:key="@string/pref_key_tabs"
-            android:title="@string/preferences_tabs" />
-        <androidx.preference.Preference
-            app:iconSpaceReserved="false"
-            android:key="@string/pref_key_dejavu_customize_tabs"
-            android:title="@string/dejavu_settings_customize_tabs"
-            android:summary="@string/dejavu_settings_customize_tabs_summary" />
+        android:layout="@layout/dejavu_preference_category_heading">
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
             app:widgetLayout="@layout/dejavu_preference_badge"
@@ -84,88 +68,74 @@
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
             app:widgetLayout="@layout/dejavu_preference_badge"
-            android:key="@string/pref_key_dejavu_tab_sleep"
-            android:title="@string/dejavu_settings_tab_sleep"
-            android:summary="@string/dejavu_settings_tab_sleep_summary" />
-        <androidx.preference.Preference
-            app:iconSpaceReserved="false"
-            app:widgetLayout="@layout/dejavu_preference_badge"
             android:key="@string/pref_key_dejavu_containers"
             android:title="@string/dejavu_settings_containers"
             android:summary="@string/dejavu_settings_containers_entry_summary" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_dejavu_customize_tabs"
+            android:layout="@layout/preference_category_no_icon_style" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_tabs"
+            android:layout="@layout/preference_category_no_icon_style" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_dejavu_tab_sleep"
+            android:title="@string/dejavu_settings_tab_sleep"
+            android:layout="@layout/preference_category_no_icon_style" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_dejavu_group_input"
         android:title="@string/dejavu_settings_group_input"
-        android:layout="@layout/preference_category_no_icon_style">
-        <androidx.preference.Preference
-            app:iconSpaceReserved="false"
-            android:key="@string/pref_key_dejavu_customize_input"
-            android:title="@string/dejavu_settings_customize_input"
-            android:summary="@string/dejavu_settings_customize_input_summary" />
+        android:layout="@layout/dejavu_preference_category_heading">
         <androidx.preference.Preference
             app:iconSpaceReserved="false"
             android:key="@string/pref_key_dejavu_shortcuts"
             android:title="@string/dejavu_settings_shortcuts"
             android:summary="@string/dejavu_settings_shortcuts_summary" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_dejavu_customize_input"
+            android:layout="@layout/preference_category_no_icon_style" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_dejavu_group_search"
         android:title="@string/dejavu_settings_group_search"
-        android:layout="@layout/preference_category_no_icon_style">
-        <androidx.preference.Preference
-            app:iconSpaceReserved="false"
-            android:key="@string/pref_key_search_settings"
-            android:title="@string/preferences_search" />
+        android:layout="@layout/dejavu_preference_category_heading">
         <org.mozilla.fenix.settings.DefaultBrowserPreference
             android:key="@string/pref_key_make_default_browser"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_set_as_default_browser" />
-        <androidx.preference.Preference
-            app:iconSpaceReserved="false"
-            app:widgetLayout="@layout/dejavu_preference_badge"
-            android:key="@string/pref_key_dejavu_external_links"
-            android:title="@string/dejavu_settings_external_links"
-            android:summary="@string/dejavu_settings_external_links_summary" />
-        <androidx.preference.Preference
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_search_settings"
+            android:layout="@layout/preference_category_no_icon_style" />
+        <androidx.preference.PreferenceCategory
             android:key="@string/pref_key_open_links_in_apps"
             android:title="@string/preferences_open_links_in_apps"
-            app:iconSpaceReserved="false" />
-        <androidx.preference.Preference
-            android:key="@string/pref_key_link_sharing"
-            app:iconSpaceReserved="false"
-            android:title="@string/preferences_link_sharing" />
+            android:layout="@layout/preference_category_no_icon_style" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_dejavu_external_links"
+            android:title="@string/dejavu_settings_external_links"
+            android:layout="@layout/preference_category_no_icon_style" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_dejavu_section_link_sharing"
+            android:title="@string/preferences_link_sharing"
+            android:layout="@layout/preference_category_no_icon_style" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_privacy_security_category"
         android:title="@string/preferences_category_privacy_security"
-        android:layout="@layout/preference_category_no_icon_style">
-        <!-- Dejavu: shown in the redesign, it holds the private tabs lock and screenshots in private tabs. -->
-        <androidx.preference.Preference
-            android:key="@string/pref_key_private_browsing"
-            app:iconSpaceReserved="false"
-            android:title="@string/preferences_private_browsing_options" />
-        <org.mozilla.fenix.settings.IPProtectionPreference
+        android:layout="@layout/dejavu_preference_category_heading">
+                <org.mozilla.fenix.settings.IPProtectionPreference
             android:key="@string/pref_key_ip_protection_settings"
             app:iconSpaceReserved="false"
             app:isPreferenceVisible="false"
             app:allowDividerAbove="false"/>
         <androidx.preference.Preference
-            android:key="@string/pref_key_https_only_settings"
-            app:iconSpaceReserved="false"
-            android:title="@string/preferences_https_only_title" />
-        <androidx.preference.Preference
             android:key="@string/pref_key_doh_settings"
             app:iconSpaceReserved="false"
             app:isPreferenceVisible="false"
             android:title="@string/preference_doh_title" />
-        <androidx.preference.Preference
-            android:key="@string/pref_key_tracking_protection_settings"
-            app:iconSpaceReserved="false"
-            android:title="@string/preference_enhanced_tracking_protection" />
         <androidx.preference.Preference
             android:key="@string/pref_key_site_permissions"
             app:iconSpaceReserved="false"
@@ -174,10 +144,6 @@
             android:key="@string/pref_key_delete_browsing_data"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_delete_browsing_data" />
-        <androidx.preference.Preference
-            android:key="@string/pref_key_delete_browsing_data_on_quit_preference"
-            app:iconSpaceReserved="false"
-            android:title="@string/preferences_delete_browsing_data_on_quit" />
         <androidx.preference.Preference
             android:key="@string/pref_key_passwords"
             app:iconSpaceReserved="false"
@@ -199,16 +165,28 @@
             android:key="@string/pref_key_data_choices"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_data_collection" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_tracking_protection_settings"
+            android:title="@string/preference_enhanced_tracking_protection"
+            android:layout="@layout/preference_category_no_icon_style" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_https_only_settings"
+            android:title="@string/preferences_https_only_title"
+            android:layout="@layout/preference_category_no_icon_style" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_private_browsing"
+            android:title="@string/preferences_private_browsing_options"
+            android:layout="@layout/preference_category_no_icon_style" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_delete_browsing_data_on_quit_preference"
+            android:title="@string/preferences_delete_browsing_data_on_quit"
+            android:layout="@layout/preference_category_no_icon_style" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_dejavu_group_downloads"
         android:title="@string/dejavu_settings_group_downloads"
-        android:layout="@layout/preference_category_no_icon_style">
-        <androidx.preference.Preference
-            android:key="@string/pref_key_downloads"
-            app:iconSpaceReserved="false"
-            android:title="@string/preferences_downloads_2" />
+        android:layout="@layout/dejavu_preference_category_heading">
         <androidx.preference.Preference
             android:key="@string/pref_key_addons"
             app:iconSpaceReserved="false"
@@ -222,12 +200,16 @@
             android:key="@string/pref_key_override_amo_collection"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_customize_extension_collection" />
+        <androidx.preference.PreferenceCategory
+            android:key="@string/pref_key_downloads"
+            android:title="@string/preferences_downloads_2"
+            android:layout="@layout/preference_category_no_icon_style" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_advanced"
         android:title="@string/preferences_category_advanced"
-        android:layout="@layout/preference_category_no_icon_style">
+        android:layout="@layout/dejavu_preference_category_heading">
         <androidx.preference.Preference
             android:key="@string/pref_key_translation"
             app:iconSpaceReserved="false"
@@ -272,6 +254,11 @@
             app:iconSpaceReserved="false"
             android:title="@string/preferences_enable_gecko_logs" />
         <androidx.preference.Preference
+            app:iconSpaceReserved="false"
+            android:key="@string/pref_key_sync_debug"
+            android:title="@string/preferences_sync_debug"
+            app:isPreferenceVisible="false" />
+        <androidx.preference.Preference
             android:key="@string/pref_key_local_network_access"
             app:iconSpaceReserved="false"
             android:title="@string/preferences_local_network_access" />
@@ -280,7 +267,7 @@
     <androidx.preference.PreferenceCategory
         android:key="@string/pref_key_dejavu_group_about"
         android:title="@string/dejavu_settings_group_about"
-        android:layout="@layout/preference_category_no_icon_style">
+        android:layout="@layout/dejavu_preference_category_heading">
         <androidx.preference.PreferenceCategory
             android:key="@string/pref_key_dejavu_top_category"
             android:title="@string/dejavu_settings_title"

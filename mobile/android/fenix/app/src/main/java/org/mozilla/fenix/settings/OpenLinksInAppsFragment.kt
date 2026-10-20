@@ -5,6 +5,7 @@
 package org.mozilla.fenix.settings
 
 import android.os.Bundle
+import androidx.annotation.StringRes
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceFragmentCompat
 import org.mozilla.fenix.R
@@ -16,30 +17,49 @@ import org.mozilla.fenix.utils.view.addToRadioGroup
 
 /** Lets the user choose how open links in apps feature behaves. */
 class OpenLinksInAppsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment {
-    private lateinit var radioAlways: RadioButtonPreference
-    private lateinit var radioAskBeforeOpening: RadioButtonPreference
-    private lateinit var radioNever: RadioButtonPreference
     private val args by navArgs<OpenLinksInAppsFragmentArgs>()
+    private val section = OpenLinksInAppsSection(this)
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.open_links_in_apps_preferences, rootKey)
-
-        radioAlways = requirePreference(R.string.pref_key_open_links_in_apps_always)
-        radioAskBeforeOpening = requirePreference(R.string.pref_key_open_links_in_apps_ask)
-        radioNever = requirePreference(R.string.pref_key_open_links_in_apps_never)
-
-        // only show the Always option in normal browsing mode
-        radioAlways.isVisible = requireComponents.settings.lastKnownMode == BrowsingMode.Normal
+        section.onCreate()
     }
 
     override fun onResume() {
         super.onResume()
         showToolbar(getString(R.string.preferences_open_links_in_apps))
 
-        setupPreferences()
+        section.onResume()
         args.preferenceToScrollTo?.let {
             scrollToPreferenceWithHighlight(it)
         }
+    }
+}
+
+/**
+ * The preferences of [OpenLinksInAppsFragment]. The settings page shows them inline, see
+ * docs/dejavu/settings-redesign.md.
+ */
+class OpenLinksInAppsSection(private val fragment: PreferenceFragmentCompat) : SettingsSection {
+    private lateinit var radioAlways: RadioButtonPreference
+    private lateinit var radioAskBeforeOpening: RadioButtonPreference
+    private lateinit var radioNever: RadioButtonPreference
+
+    private val requireComponents get() = fragment.requireComponents
+
+    private fun getString(@StringRes id: Int) = fragment.getString(id)
+
+    override fun onCreate() {
+        radioAlways = fragment.requirePreference(R.string.pref_key_open_links_in_apps_always)
+        radioAskBeforeOpening = fragment.requirePreference(R.string.pref_key_open_links_in_apps_ask)
+        radioNever = fragment.requirePreference(R.string.pref_key_open_links_in_apps_never)
+
+        // only show the Always option in normal browsing mode
+        radioAlways.isVisible = requireComponents.settings.lastKnownMode == BrowsingMode.Normal
+    }
+
+    override fun onResume() {
+        setupPreferences()
     }
 
     private fun setupPreferences() {

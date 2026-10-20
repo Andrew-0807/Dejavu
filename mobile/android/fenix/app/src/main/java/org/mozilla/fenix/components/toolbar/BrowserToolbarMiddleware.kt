@@ -810,7 +810,7 @@ class BrowserToolbarMiddleware(
      */
     private fun buildEndPageActions(): List<Action> {
         val isWideScreen = isWideScreen()
-        val tabStripEnabled = settings.isTabStripEnabled
+        val tabStripEnabled = settings.isTabStripShown(uiContext.isLargeWindow())
         val simpleShortcut = ShortcutType.fromValue(settings.activeSimpleToolbarShortcutKey)
         val translateShortcutEnabled = simpleShortcut == ShortcutType.TRANSLATE
         val shareShortcutEnabled = simpleShortcut == ShortcutType.SHARE
@@ -1056,25 +1056,32 @@ class BrowserToolbarMiddleware(
             }
         val searchTerms = browserStore.state.selectedTab?.content?.searchTerms ?: ""
 
+        val isAboutHome = url?.toString() == ABOUT_HOME_URL
+        // Dejavu shows the page title, and the address beside it or instead of it, see AddressDisplayText.
+        val title =
+            if (DejavuToolbar.enabled && url != null && !isAboutHome) {
+                DejavuToolbar.displayText(browserStore.state.selectedTab)
+            } else {
+                null
+            }
         val baseDisplayUrl = url?.let { originalUrl ->
-            if (originalUrl.toString() == ABOUT_HOME_URL) {
+            if (isAboutHome) {
                 // Default to showing the toolbar hint when the URL is ABOUT_HOME.
                 ""
             } else if (DejavuToolbar.enabled) {
-                DejavuToolbar.displayText(browserStore.state.selectedTab)
+                URLStringUtils.toDisplayUrl(originalUrl)
             } else if (searchTerms.isNotBlank()) {
                 searchTerms
             } else {
                 URLStringUtils.toDisplayUrl(originalUrl)
             }
         }
+        val cachedIndicator = uiContext.getText(R.string.browser_toolbar_cached_page_indicator)
+        val isCached = browserScreenStore.state.isShowingTabReloadCover
+        val shownTitle = if (isCached && title != null) "$cachedIndicator | $title" else title
         val displayUrl =
-            if (browserScreenStore.state.isShowingTabReloadCover && !baseDisplayUrl.isNullOrEmpty()) {
-                TextUtils.concat(
-                    uiContext.getText(R.string.browser_toolbar_cached_page_indicator),
-                    " | ",
-                    baseDisplayUrl,
-                )
+            if (isCached && title == null && !baseDisplayUrl.isNullOrEmpty()) {
+                TextUtils.concat(cachedIndicator, " | ", baseDisplayUrl)
             } else {
                 baseDisplayUrl
             }
@@ -1083,7 +1090,7 @@ class BrowserToolbarMiddleware(
             BrowserDisplayToolbarAction.PageOriginUpdated(
                 PageOrigin(
                     hint = R.string.search_hint,
-                    title = null,
+                    title = shownTitle,
                     url = displayUrl,
                     contextualMenuOptions = ContextualMenuOption.entries,
                     onClick = OriginClicked,
@@ -1595,7 +1602,7 @@ class BrowserToolbarMiddleware(
                 when {
                     summarizationFeatureSettings.canShowFeature -> ToolbarAction.Summarize
                     // The tab strip already provides a new tab button, so fall back to the default tab strip shortcut.
-                    settings.isTabStripEnabled -> ToolbarAction.Share
+                    settings.isTabStripShown(uiContext.isLargeWindow()) -> ToolbarAction.Share
                     else -> ToolbarAction.NewTab
                 }
             ShortcutType.NONE -> null

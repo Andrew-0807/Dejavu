@@ -1677,11 +1677,25 @@ class Settings(
                 ToolbarPosition.TOP
             }
 
-    val shouldShowTabStripAtTop: Boolean
-        get() = isTabStripEnabled && tabStripPosition == ToolbarPosition.TOP
+    /** Whether the tab strip shows at the top in a window that [isLargeWindow], see [isTabStripShown]. */
+    fun shouldShowTabStripAtTop(isLargeWindow: Boolean): Boolean =
+        isTabStripShown(isLargeWindow) && tabStripPosition == ToolbarPosition.TOP
 
-    val shouldShowTabStripAtBottom: Boolean
-        get() = isTabStripEnabled && tabStripPosition == ToolbarPosition.BOTTOM
+    /** Whether the tab strip shows at the bottom in a window that [isLargeWindow], see [isTabStripShown]. */
+    fun shouldShowTabStripAtBottom(isLargeWindow: Boolean): Boolean =
+        isTabStripShown(isLargeWindow) && tabStripPosition == ToolbarPosition.BOTTOM
+
+    /**
+     * Dejavu: whether the tab strip shows in a window that [isLargeWindow]. The vertical tabs sidebar replaces it only
+     * where the sidebar really shows, so small windows (split screen, phones) keep the strip.
+     */
+    fun isTabStripShown(isLargeWindow: Boolean): Boolean = isTabStripEnabled && !isTabSidebarShown(isLargeWindow)
+
+    /**
+     * Dejavu: whether the vertical tabs sidebar shows next to pages in a window that [isLargeWindow] (see
+     * `AcornWindowSize.isLargeWindow`). The one rule the sidebar and everything that makes room for it follow.
+     */
+    fun isTabSidebarShown(isLargeWindow: Boolean): Boolean = isVerticalTabsEnabled && isLargeWindow
 
     /**
      * Check each active accessibility service to see if it can perform gestures, if any can, then it is *likely* a
@@ -2286,6 +2300,10 @@ class Settings(
     /** Draws the handle that pulls out the auto-hidden sidebar. Without it the handle still works, unseen. */
     var isSidebarHandleShown by
         booleanPreference(appContext.getPreferenceKey(R.string.pref_key_dejavu_sidebar_handle), default = true)
+
+    /** Width of the vertical tabs sidebar in dp, set by dragging its edge, or 0 for the default width. */
+    var sidebarWidthDp by
+        intPreference(appContext.getPreferenceKey(R.string.pref_key_dejavu_sidebar_width), default = 0)
 
     var isDynamicToolbarEnabled by
         booleanPreference(

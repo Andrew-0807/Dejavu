@@ -235,6 +235,7 @@
     <string name="pref_key_vertical_tabs" translatable="false">pref_key_vertical_tabs</string>
     <string name="pref_key_vertical_tabs_collapsed" translatable="false">pref_key_vertical_tabs_collapsed</string>
     <string name="pref_key_vertical_tabs_auto_hide" translatable="false">pref_key_vertical_tabs_auto_hide</string>
+    <string name="pref_key_dejavu_sidebar_width" translatable="false">pref_key_dejavu_sidebar_width</string>
     <string name="pref_key_tab_strip_location" translatable="false">pref_key_tab_strip_location</string>
     <string name="pref_key_dynamic_toolbar" translatable="false">pref_key_dynamic_toolbar</string>
     <string name="pref_key_use_scroll_data_for_dynamic_toolbar" translatable="false">pref_key_use_scroll_data_for_dynamic_toolbar</string>
