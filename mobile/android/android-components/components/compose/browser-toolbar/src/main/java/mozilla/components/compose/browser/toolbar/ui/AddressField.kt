@@ -139,17 +139,18 @@ fun AddressDisplayText(
     val strong = MaterialTheme.colorScheme.onSurface
     val dim = MaterialTheme.colorScheme.onSurfaceVariant
     BoxWithConstraints(modifier = modifier) {
+        val available = maxWidth
         when {
             parts == null -> OneLine(hint, style.copy(color = dim))
             parts.title != null ->
                 Row {
                     OneLine(parts.title, style.copy(color = strong), Modifier.weight(1f, fill = false))
-                    if (maxWidth >= TITLE_WITH_DOMAIN_MIN_WIDTH && parts.domain.isNotEmpty()) {
+                    if (available >= TITLE_WITH_DOMAIN_MIN_WIDTH && parts.domain.isNotEmpty()) {
                         OneLine(parts.domain, style.copy(color = dim), Modifier.padding(start = 8.dp))
                     }
                 }
             else -> {
-                val path = parts.path.takeIf { maxWidth >= PATH_MIN_WIDTH }.orEmpty()
+                val path = parts.path.takeIf { available >= PATH_MIN_WIDTH }.orEmpty()
                 val text =
                     remember(parts.domain, path, strong, dim) {
                         buildAnnotatedString {
