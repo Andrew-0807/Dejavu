@@ -9,12 +9,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -38,6 +40,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -118,11 +121,17 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit) {
             .background(MaterialTheme.colorScheme.surface)
             .workspaceTheme(shownWorkspaceTheme()),
     ) {
+        // A hairline on the seam with the page, and the handle for swiping the menu up a little below it.
+        HorizontalDivider(
+            thickness = Dp.Hairline,
+            color = MaterialTheme.colorScheme.outlineVariant,
+            modifier = Modifier.align(Alignment.TopCenter),
+        )
         Box(
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .padding(top = 4.dp)
-                .size(width = 28.dp, height = 3.dp)
+                .padding(top = 6.dp)
+                .size(width = 32.dp, height = 4.dp)
                 .clip(CircleShape)
                 .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = HANDLE_ALPHA)),
         )
@@ -139,9 +148,15 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit) {
                 true
             },
         )
+        // On a wide page the buttons stay together in the middle instead of spreading to the edges.
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxSize().padding(horizontal = 8.dp),
+            modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxHeight()
+                .widthIn(max = BarMaxWidth)
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp),
         ) {
             buttons.forEach { BarButton(it, menuAction, Modifier.weight(1f)) }
         }
@@ -182,11 +197,14 @@ private fun BarButton(item: BarItem, a11yActions: List<CustomAccessibilityAction
                 painter = painterResource(look.icon),
                 contentDescription = null,
                 tint = if (look.active) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.size(22.dp),
+                modifier = Modifier.size(24.dp),
             )
         }
     }
 }
+
+/** The widest the row of buttons gets, so on a tablet they do not spread across the whole page. */
+private val BarMaxWidth = 560.dp
 
 /** What tapping [this] in the actions bar does: the address bar's own action where it has one. */
 private fun MoreMenuEntry.barEvent(state: MoreMenuState): BrowserToolbarEvent {

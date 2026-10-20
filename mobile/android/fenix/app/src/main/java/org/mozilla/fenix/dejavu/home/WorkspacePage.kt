@@ -15,6 +15,7 @@ import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -105,6 +106,16 @@ private const val DIMMED_ALPHA = 0.55f
 private const val RESET_SQUARE_ALPHA = 0.14f
 private val IconSquareSize = 36.dp
 private val MinTouchSize = 48.dp
+
+/** What a tab row has before its title: the container mark, the site icon square and the gaps around them. */
+private val TabRowLeadingWidth = 52.dp
+
+/** The space the split view mark beside a tab title takes. */
+private val SplitMarkWidth = 28.dp
+
+/** The narrowest a tab title gets before the row leaves out its buttons. */
+private val TabTitleMinWidth = 96.dp
+
 private const val DRAGGED_ALPHA = 0.35f
 private val INSIDE_FOLDER_RANGE = 0.25f..0.75f
 
@@ -927,88 +938,95 @@ internal fun TabRow(
         isCurrent && selection == null -> MaterialTheme.colorScheme.surfaceContainerHighest
         else -> Color.Transparent
     }
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
-            .fillMaxWidth()
-            .height(52.dp)
-            .padding(vertical = 2.dp)
-            .clip(RowShape)
-            .background(background)
-            .clickable(onClick = onClick),
-    ) {
-        Box(
+    // A narrow row keeps room for the title: the buttons that do not fit are left out, from the first one, and stay
+    // reachable through selection mode.
+    BoxWithConstraints(modifier = modifier.fillMaxWidth()) {
+        val leading = TabRowLeadingWidth + IndentPerLevel * depth + if (isSplit) SplitMarkWidth else 0.dp
+        val room = ((maxWidth - leading - TabTitleMinWidth) / MinTouchSize).toInt().coerceAtLeast(0)
+        val shownActions = actions.takeLast(room)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .padding(start = 2.dp)
-                .width(4.dp)
-                .height(26.dp)
-                .clip(RoundedCornerShape(2.dp))
-                .background(container?.color?.color ?: Color.Transparent),
-        )
-        Spacer(Modifier.width(2.dp + IndentPerLevel * depth))
-        // Like Zen, a pinned tab that left its pinned page shows its icon on a brighter square; tapping it goes back.
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.size(IconSquareSize)) {
-            val interactions = remember { MutableInteractionSource() }
-            val resetLabel = stringResource(R.string.dejavu_action_reset_pin)
-            if (onIconClick != null && selection == null) {
-                // The tap area gets the 48dp minimum without moving the square or the title.
+                .fillMaxWidth()
+                .height(52.dp)
+                .padding(vertical = 2.dp)
+                .clip(RowShape)
+                .background(background)
+                .clickable(onClick = onClick),
+        ) {
+            Box(
+                modifier = Modifier
+                    .padding(start = 2.dp)
+                    .width(4.dp)
+                    .height(26.dp)
+                    .clip(RoundedCornerShape(2.dp))
+                    .background(container?.color?.color ?: Color.Transparent),
+            )
+            Spacer(Modifier.width(2.dp + IndentPerLevel * depth))
+            // Like Zen, a pinned tab that left its pinned page shows its icon on a brighter square; tapping it goes back.
+            Box(contentAlignment = Alignment.Center, modifier = Modifier.size(IconSquareSize)) {
+                val interactions = remember { MutableInteractionSource() }
+                val resetLabel = stringResource(R.string.dejavu_action_reset_pin)
+                if (onIconClick != null && selection == null) {
+                    // The tap area gets the 48dp minimum without moving the square or the title.
+                    Box(
+                        modifier = Modifier
+                            .requiredSize(MinTouchSize)
+                            .clickable(interactionSource = interactions, indication = null, onClick = onIconClick)
+                            .semantics { contentDescription = resetLabel },
+                    )
+                }
                 Box(
+                    contentAlignment = Alignment.Center,
                     modifier = Modifier
-                        .requiredSize(MinTouchSize)
-                        .clickable(interactionSource = interactions, indication = null, onClick = onIconClick)
-                        .semantics { contentDescription = resetLabel },
+                        .size(IconSquareSize)
+                        .clip(RoundedCornerShape(10.dp))
+                        .then(
+                            if (onIconClick != null) {
+                                Modifier.background(MaterialTheme.colorScheme.onSurface.copy(alpha = RESET_SQUARE_ALPHA))
+                            } else {
+                                Modifier
+                            },
+                        )
+                        .indication(interactions, LocalIndication.current),
+                ) {
+                    // Tabs loaded in the browser are shown bright, the others dimmed.
+                    Box(modifier = Modifier.alpha(if (isAwake) 1f else DIMMED_ALPHA)) {
+                        SiteIcon(url = url, size = 20.dp)
+                    }
+                }
+            }
+            Spacer(Modifier.width(8.dp))
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyLarge,
+                color = if (isAwake) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f),
+            )
+            if (isSplit) {
+                Icon(
+                    painter = painterResource(R.drawable.dejavu_ic_split_24),
+                    contentDescription = stringResource(R.string.dejavu_split_view),
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(horizontal = 6.dp).size(16.dp),
                 )
             }
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .size(IconSquareSize)
-                    .clip(RoundedCornerShape(10.dp))
-                    .then(
-                        if (onIconClick != null) {
-                            Modifier.background(MaterialTheme.colorScheme.onSurface.copy(alpha = RESET_SQUARE_ALPHA))
-                        } else {
-                            Modifier
-                        },
-                    )
-                    .indication(interactions, LocalIndication.current),
-            ) {
-                // Tabs loaded in the browser are shown bright, the others dimmed.
-                Box(modifier = Modifier.alpha(if (isAwake) 1f else DIMMED_ALPHA)) {
-                    SiteIcon(url = url, size = 20.dp)
+            if (selection == null) {
+                shownActions.forEach { action ->
+                    IconButton(onClick = { onAction(action) }) {
+                        Icon(
+                            painter = painterResource(action.icon),
+                            contentDescription = action.label,
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.size(20.dp),
+                        )
+                    }
                 }
+            } else {
+                SelectionMark(selected = selection)
             }
-        }
-        Spacer(Modifier.width(8.dp))
-        Text(
-            text = title,
-            style = MaterialTheme.typography.bodyLarge,
-            color = if (isAwake) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.weight(1f),
-        )
-        if (isSplit) {
-            Icon(
-                painter = painterResource(R.drawable.dejavu_ic_split_24),
-                contentDescription = stringResource(R.string.dejavu_split_view),
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(horizontal = 6.dp).size(16.dp),
-            )
-        }
-        if (selection == null) {
-            actions.forEach { action ->
-                IconButton(onClick = { onAction(action) }) {
-                    Icon(
-                        painter = painterResource(action.icon),
-                        contentDescription = action.label,
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(20.dp),
-                    )
-                }
-            }
-        } else {
-            SelectionMark(selected = selection)
         }
     }
 }

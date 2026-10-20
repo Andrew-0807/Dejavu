@@ -94,6 +94,8 @@
     <string name="dejavu_account">Account</string>
     <string name="dejavu_settings">Settings</string>
     <string name="dejavu_search_hint">Search or enter address</string>
+    <!-- Hint of the sidebar search field when the sidebar is too narrow for the whole hint. -->
+    <string name="dejavu_search_tabs_short">Search tabs</string>
     <string name="dejavu_selection_exit">Exit selection</string>
     <string name="dejavu_selection_select_all">Select all</string>
     <plurals name="dejavu_selection_count">

@@ -65,7 +65,7 @@ object AddressFieldDefaults {
     val HorizontalPadding = 12.dp
 
     internal val HairlineWidth = 1.dp
-    internal val RingWidth = 2.dp
+    internal val RingWidth = 1.5.dp
     private const val HAIRLINE_ALPHA = 0.12f
     private const val TEXT_SIZE = 16f
     private const val MIN_VISIBLE_TEXT_SIZE = 13f

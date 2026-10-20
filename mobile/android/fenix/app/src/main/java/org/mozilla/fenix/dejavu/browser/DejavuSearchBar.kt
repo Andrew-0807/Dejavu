@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -21,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.graphicsLayer
@@ -28,6 +30,7 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import mozilla.components.compose.base.theme.layout.AcornWindowSize
+import org.mozilla.fenix.dejavu.home.HomeMaxWidth
 
 private const val MOVE_DURATION_MS = 280
 
@@ -95,7 +98,10 @@ fun DejavuSearchAboveKeyboard(
 @Composable
 fun DejavuSearchOverlay(fromTop: Boolean, content: @Composable () -> Unit) {
     if (AcornWindowSize.isLargeWindow()) {
-        Box(modifier = Modifier.fillMaxSize()) { content() }
+        // As wide as the home under it, which is capped on wide screens.
+        Box(contentAlignment = Alignment.TopCenter, modifier = Modifier.fillMaxSize()) {
+            Box(modifier = Modifier.widthIn(max = HomeMaxWidth)) { content() }
+        }
         return
     }
     val progress = remember { Animatable(if (fromTop && !DejavuSearchStart.isFromBottom()) 0f else 1f) }
