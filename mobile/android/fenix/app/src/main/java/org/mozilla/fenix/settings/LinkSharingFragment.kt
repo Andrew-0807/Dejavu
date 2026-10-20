@@ -47,14 +47,14 @@ class LinkSharingSection(private val fragment: PreferenceFragmentCompat) : Setti
                 }
 
             title =
-                fragment.getString(
+                this@LinkSharingSection.fragment.getString(
                     R.string.link_sharing_toggle_body,
-                    fragment.getString(R.string.firefox),
+                    this@LinkSharingSection.fragment.getString(R.string.firefox),
                 )
             summary =
-                fragment.getString(
+                this@LinkSharingSection.fragment.getString(
                     R.string.link_sharing_toggle_title,
-                    fragment.getString(R.string.firefox),
+                    this@LinkSharingSection.fragment.getString(R.string.firefox),
                 )
         }
     }
