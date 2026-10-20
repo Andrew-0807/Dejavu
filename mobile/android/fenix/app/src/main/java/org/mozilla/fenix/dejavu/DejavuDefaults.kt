@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.core.content.edit
 import androidx.work.WorkManager
+import java.io.File
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -36,7 +37,7 @@ internal object DejavuDefaults {
     // Kept from before the rename to Dejavu, so saved data still loads.
     private const val PREFS_NAME = "kaizen_settings"
     private const val KEY_VERSION = "defaults_version"
-    private const val VERSION = 8
+    private const val VERSION = 9
     private const val POCKET_STORIES_WORK_TAG = "mozilla.components.service.pocket.recommendations.refresh.work.tag"
     private const val POCKET_SPONSORED_WORK_TAG = "mozilla.components.service.pocket.sponsored.content.refresh.work.tag"
     private const val KEY_SEARCH_VERSION = "search_defaults_version"
@@ -137,6 +138,11 @@ internal object DejavuDefaults {
             if (applied < 8) {
                 turnOnSecureDns()
             }
+            if (applied < 9) {
+                useMaxSecureDns()
+                // The engine writes no crash dumps anymore; the ones older versions wrote can hold parts of pages.
+                File(context.filesDir, "minidumps").deleteRecursively()
+            }
         }
         // Last, as it starts the browser engine (StrictMode's profiler marker does), which reads settings like secure
         // DNS once, as it starts.
@@ -164,6 +170,17 @@ internal object DejavuDefaults {
             setDohSettingsMode(Engine.DohSettingsMode.INCREASED)
         }
         FIREFOX_DOH_ADDRESSES[dohProviderUrl]?.let { dohProviderUrl = it }
+    }
+
+    /**
+     * Secure DNS is at Max Protection, so it never falls back to the network's DNS on its own: when the provider cannot
+     * be reached, a warning comes first. Increased Protection, Dejavu's default before, fell back without a word, which
+     * also lost Encrypted Client Hello. Off stays off.
+     */
+    private fun Settings.useMaxSecureDns() {
+        if (getDohSettingsMode() == Engine.DohSettingsMode.INCREASED) {
+            setDohSettingsMode(Engine.DohSettingsMode.MAX)
+        }
     }
 
     /**

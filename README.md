@@ -54,7 +54,10 @@ only serves the browsers on Google's own list, which Dejavu is not on.
 **F-Droid (recommended):** Dejavu is in the ByArchitect F-Droid repository, and F-Droid keeps it up to date. In
 F-Droid, open **Repositories**, tap **+** and scan the QR code, or open
 [this link](https://fdroid.byarchitect.org/fdroid/repo?fingerprint=50941BDAC56B056A520ABFA3FC7DAAB789DEE5B83B295DA54A1961C7BC8A91C9)
-on your phone to add the repository. Then search for Dejavu.
+on your phone to add the repository. Then search for Dejavu. This is Dejavu's own repository, not F-Droid's main one:
+it offers the same APKs as the GitHub releases, which Dejavu's developer builds and signs, not builds that F-Droid
+makes from the source code. Like F-Droid does for Firefox-based browsers, it marks Dejavu with **Tracking**, as Dejavu
+connects to Mozilla's services and, unless you turn it off, to Google Safe Browsing.
 
 **APK:** download `dejavu-<version>-arm64-v8a.apk` from the
 [latest release](https://github.com/by-architect/Dejavu/releases/latest). It does not update itself, so use F-Droid

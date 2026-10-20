@@ -18,6 +18,7 @@ import mozilla.components.lib.crash.handler.CrashHandlerService
 import mozilla.components.lib.crash.store.CrashAction
 import mozilla.components.service.sync.autofill.GeckoCreditCardsAddressesStorageDelegate
 import mozilla.components.service.sync.logins.GeckoLoginStorageDelegate
+import org.mozilla.fenix.BuildConfig
 import org.mozilla.fenix.Config
 import org.mozilla.fenix.components.appstate.AppAction
 import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
@@ -108,7 +109,9 @@ object GeckoProvider {
         val safeBrowsing = context.components.settings.safeBrowsingEnabled
         val builder =
             GeckoRuntimeSettings.Builder()
-                .crashHandler(CrashHandlerService::class.java)
+                // Dejavu: without a crash handler the engine writes no crash dumps, which can hold parts of pages, as
+                // they would never be sent: Dejavu's builds do not report crashes.
+                .crashHandler(CrashHandlerService::class.java.takeIf { BuildConfig.CRASH_REPORTING })
                 .experimentDelegate(NimbusExperimentDelegate())
                 .contentBlocking(
                     policy.toContentBlockingSetting(

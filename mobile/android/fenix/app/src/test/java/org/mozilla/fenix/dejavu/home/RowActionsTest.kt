@@ -11,6 +11,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.mozilla.fenix.dejavu.actions.CustomAction
+import org.mozilla.fenix.dejavu.actions.HttpMethod
 import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.workspaces.PinKind
@@ -48,6 +50,15 @@ class RowActionsTest {
         assertEquals(listOf("sleep"), keys(rowActions(close, ActionTargets.ofPin(awakePin, awake), isPinned = true)))
         assertEquals(listOf("unpin"), keys(rowActions(close, ActionTargets.ofPin(asleepPin, asleep), isPinned = true)))
         assertEquals(listOf("unpin"), keys(rowActions(close, ActionTargets.ofPin(closedPin, null), isPinned = true)))
+    }
+
+    @Test
+    fun `a custom action is offered for normal tabs but not for private ones`() {
+        val custom = RowAction.Custom(CustomAction("id", "Save", HttpMethod.POST, "https://example.com", emptyList(), "{}"))
+        val privateTab = createTab(url = "https://private.example/", id = "private", private = true)
+
+        assertTrue(custom.appliesTo(ActionTargets(tabs = listOf(awake))))
+        assertFalse(custom.appliesTo(ActionTargets(tabs = listOf(privateTab))))
     }
 
     @Test

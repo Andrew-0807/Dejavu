@@ -1,13 +1,13 @@
 # Dejavu Privacy Policy
 
-Effective date: October 19, 2026
+Effective date: October 20, 2026
 
 Dejavu is a web browser for Android, built from Mozilla's open source Firefox code. It is an independent project,
 not made, endorsed or supported by Mozilla. This policy explains what happens to your data when you use it.
 
-**The short version: we do not collect your data.** Dejavu's developers run no servers, and the app has no analytics
-or advertising services turned on. What you do in Dejavu stays on your device, unless you use a feature that has to
-send data somewhere. Those features are listed below, and most of them are off until you turn them on.
+**The short version: we do not collect your data.** The app sends nothing to Dejavu's developers, and it has no
+analytics or advertising services turned on. What you do in Dejavu stays on your device, except for what has to go to
+other services to work. Every connection Dejavu makes is listed below, with what it sends and how to turn it off.
 
 ## What stays on your device
 
@@ -23,7 +23,10 @@ the page a closed pinned tab reopens on. Uninstalling Dejavu deletes all of it.
 Nothing. You do not need an account with us, Dejavu sends us no usage data or crash reports, and it does not use the
 advertising ID of your device.
 
-## Features that connect to other services
+## Every connection Dejavu makes
+
+Like any connection on the internet, each one shows your IP address to the service it goes to. Below is what else each
+one receives, and how to turn it off where you can.
 
 ### Websites you visit
 
@@ -31,23 +34,37 @@ When you open a website, it receives what every browser sends: your IP address, 
 it saved before and details about the browser. Enhanced Tracking Protection blocks many trackers. Each website has its
 own privacy policy.
 
+To load pages faster, Dejavu also connects ahead to sites you may open next: the site the address bar suggests while
+you type, links from other apps before they open, and links that pages mark to load ahead. Those sites see the
+connection even if you never open the page.
+
+A website you allow to use your camera or microphone can learn your device's addresses on your local network through
+WebRTC, the technology video calls use.
+
 ### Looking up website addresses (DNS over HTTPS)
 
 To open a website, Dejavu first looks up the address of its server. It does this over an encrypted connection to Quad9,
 a non-profit DNS service, so your network and internet provider cannot see or change which sites you look up. Quad9
-receives the names of the sites you look up and, like any service you connect to, your IP address. It describes how it
-handles data in the [Quad9 Privacy Policy](https://quad9.net/privacy/policy/). When Quad9 cannot be reached, Dejavu
-uses your network's DNS instead. You can pick another provider or turn this off in **Settings**, then
-**DNS over HTTPS**.
+receives the names of the sites you look up. It describes how it handles data in the
+[Quad9 Privacy Policy](https://quad9.net/privacy/policy/). Dejavu uses Max Protection: when Quad9 cannot be reached,
+it warns you before it uses your network's DNS for a site. You can pick another provider, another level or turn this
+off in **Settings**, then **DNS over HTTPS**.
+
+### Connection checks
+
+When Dejavu starts and when your network changes, Firefox's engine checks how your device is connected. It looks up
+example.org, cloudflare-dns.com and ipv4only.arpa with your network's DNS, not over Quad9, and loads
+`http://firefox-portal-detection.com/success.txt` from a Mozilla server over plain http, to see whether IPv4 and IPv6
+work. Your network and these servers can see that a Firefox-based browser is running. This cannot be turned off in
+Dejavu's settings.
 
 ### Warnings for dangerous sites
 
 Dejavu warns you about pages that Google lists as phishing, malware or unwanted software, using Google Safe
 Browsing. It regularly downloads lists of shortened fingerprints ("hashes") of dangerous addresses from Google and
 checks the pages you open against them on your device. Only when a page matches the start of a fingerprint does Dejavu
-ask Google about it, and then it sends only that start, never the address of the page. Like any connection, these
-requests show Google your IP address. Google describes how it handles data in the
-[Google Privacy Policy](https://policies.google.com/privacy).
+ask Google about it, and then it sends only that start, never the address of the page. Google describes how it handles
+data in the [Google Privacy Policy](https://policies.google.com/privacy).
 
 You can turn this off in **Settings**, under **Privacy and security**, with **Google Safe Browsing**. Dejavu then
 neither downloads Google's lists nor asks Google about pages, and no longer warns about these sites.
@@ -59,13 +76,41 @@ stays off.
 ### Search
 
 When you search from the address bar, your search goes to the search engine you chose. Search suggestions, which send
-what you type while you type, are off unless you turn them on.
+what you type while you type, are off unless you turn them on in **Settings**, then **Search**.
+
+The list of search engines, their icons and their order come from Mozilla's Remote Settings service
+(firefox.settings.services.mozilla.com), so Mozilla can change Dejavu's search engines. Dejavu also downloads from it
+the list of search engines whose result pages Firefox would measure, and Firefox's measuring scripts still read those
+result pages on your device. Dejavu sends nothing they collect. None of this can be turned off in Dejavu's settings.
+
+### Site icons
+
+For about 2,000 popular sites, Dejavu gets the site's icon from Mozilla's image server
+(prod-images.merino.prod.webservices.mozgcp.net) instead of from the site, also for synced tabs you have not opened on
+your phone. Mozilla's server receives which of these icons Dejavu asks for. Other sites' icons come from the sites
+themselves. This cannot be turned off in Dejavu's settings.
+
+### Security updates of the browser engine
+
+Dejavu is built on Firefox's engine, which downloads from Mozilla's Remote Settings service what it needs to stay
+secure: the lists of revoked website certificates, intermediate certificates and blocked add-ons, and the lists of
+trackers that Enhanced Tracking Protection blocks. These downloads are the same for everyone and carry nothing about
+you. They are described in the [Firefox Privacy Notice](https://www.mozilla.org/privacy/firefox/).
+
+For websites with an extended validation certificate, the engine also asks the company that issued the certificate
+whether it is still valid, which shows that company the site you open.
+
+### Translations
+
+When you translate a page, Dejavu downloads the language models it needs from Mozilla's Remote Settings service. The
+page is translated on your device and is not sent anywhere.
 
 ### Mozilla account and sync (optional)
 
-If you sign in with a Mozilla account, Firefox Sync keeps your bookmarks, history, passwords, open tabs and other data
-the same on your devices. Dejavu also syncs your workspaces, containers, pinned tabs, essentials and folders, so they
-match Zen Browser and Dejavu on your other devices.
+If you sign in with a Mozilla account, Firefox Sync keeps your data the same on your devices. After you sign in, Dejavu
+syncs everything your account syncs, like bookmarks, history, passwords, payment cards and open tabs, unless you turn
+it off under **Choose what to sync**. Dejavu also syncs your workspaces, containers, pinned tabs, essentials and
+folders, so they match Zen Browser and Dejavu on your other devices.
 
 Your other tabs, the ones that are not pinned, sync with Zen only while **Include unpinned tabs** is on. Like in Zen,
 it is off at first. When another device on your account already syncs these tabs, Dejavu turns it on too, so your
@@ -75,18 +120,10 @@ To tell what changed between syncs, Dejavu keeps a copy of what it last synced o
 of synced tabs included. This copy is deleted when you sign out.
 
 Synced data is stored on Mozilla's servers, encrypted with keys that only your devices have, so Mozilla cannot read
-it. Your account is handled by Mozilla, as described in the
-[Mozilla Accounts Privacy Notice](https://www.mozilla.org/privacy/mozilla-accounts/).
-
-### Telemetry, studies and crash reports
-
-Dejavu sends no telemetry, usage pings or crash reports, to us or to Mozilla. Firefox's data collection settings are
-not shown, and when Dejavu crashes it sends nothing. Dejavu does not download studies, experiments or remote changes to
-its features from Mozilla either.
-
-### Sponsored content
-
-Dejavu shows no sponsored shortcuts or sponsored stories, and does not download them.
+it. While you are signed in, Dejavu also checks your account with Mozilla at every start: it asks for the devices on
+your account, and if your account uses Firefox Relay, for your Relay details, although Dejavu offers no Relay email
+masks. Your account is handled by Mozilla, as described in the
+[Mozilla Accounts Privacy Notice](https://www.mozilla.org/privacy/mozilla-accounts/). Signing out stops all of this.
 
 ### Add-ons
 
@@ -97,11 +134,35 @@ A fresh install of Dejavu adds uBlock Origin, an open source blocker of ads and 
 works on your device and downloads the lists of what it blocks from the websites of the people who make them. You can
 turn it off or remove it in **Extensions**.
 
-### Security updates of the browser engine
+### Emoji
 
-Dejavu is built on Firefox's engine, which contacts Mozilla's services to stay secure and up to date, for example to
-download lists of revoked certificates and blocked add-ons. These services are described in the
-[Firefox Privacy Notice](https://www.mozilla.org/privacy/firefox/).
+On phones with Google Play Services, Dejavu asks Google Play Services for the font it shows emoji with, which may
+download it from Google. This cannot be turned off in Dejavu's settings.
+
+### Location
+
+When you let a website know your location, Android tells Dejavu where you are. On phones with Google Play Services,
+Android may find that through Google's network location service, which sends the Wi-Fi networks and cell towers near
+you to Google. A website gets your location only after you allow it, and you can take that back in **Settings**, then
+**Site permissions**.
+
+### Telemetry, experiments and crash reports
+
+Dejavu sends no telemetry, usage pings or crash reports, to us or to Mozilla. Firefox's data collection settings are
+not shown, and when Dejavu crashes it writes no crash report on your device and sends nothing.
+
+Dejavu downloads no studies or experiments from Mozilla. The Firefox code it is built on comes with a few of Firefox's
+experiments and gradual feature changes built in, which apply on your device at every start and send nothing.
+
+### What Dejavu does not connect to
+
+Dejavu does not look up your country or location to pick search engines, does not use push messaging services, and
+shows no sponsored shortcuts or sponsored stories, which it does not download either.
+
+Dejavu's developers run the website dejavubrowser.com and the ByArchitect F-Droid repository, but the app itself does
+not connect to them. The website loads nothing from other sites, apart from asking GitHub's API for the newest release,
+so its download button gets the newest APK. The F-Droid repository's server sees your IP address when the F-Droid app
+checks it for updates.
 
 ## Permissions
 
