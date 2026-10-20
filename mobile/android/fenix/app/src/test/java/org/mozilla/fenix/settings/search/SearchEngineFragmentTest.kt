@@ -36,6 +36,7 @@ class SearchEngineFragmentTest {
     private lateinit var preferences: SharedPreferences
     private lateinit var preferencesEditor: SharedPreferences.Editor
     private lateinit var fragment: SearchEngineFragment
+    private lateinit var section: SearchSettingsSection
 
     @Before
     fun setUp() {
@@ -54,7 +55,9 @@ class SearchEngineFragmentTest {
                 every { activity } returns mockk<HomeActivity>(relaxed = true)
             }
 
-        every { fragment.updateAllWidgets(testContext) } just Runs
+        section = spyk(SearchSettingsSection(fragment))
+
+        every { section.updateAllWidgets(testContext) } just Runs
     }
 
     @Test
@@ -66,11 +69,11 @@ class SearchEngineFragmentTest {
             }
 
         // Trigger the voice preference setup.
-        fragment.initialiseVoiceSearchPreference(voiceSearchPreference)
+        section.initialiseVoiceSearchPreference(voiceSearchPreference)
         voiceSearchPreference.callChangeListener(true)
 
         verify { preferencesEditor.putBoolean(voiceSearchPreferenceKey, true) }
-        verify { fragment.updateAllWidgets(testContext) }
+        verify { section.updateAllWidgets(testContext) }
     }
 
     @Test
@@ -88,7 +91,7 @@ class SearchEngineFragmentTest {
                 regionSearchEngines = listOf(searchEngine),
                 userSelectedSearchEngineId = "engine-1",
             )
-        every { fragment.openDefaultEngineSettings() } just Runs
+        every { section.openDefaultEngineSettings() } just Runs
 
         val defaultSearchEngineKey = testContext.getString(R.string.pref_key_default_search_engine)
         val defaultSearchEnginePreference =
@@ -98,13 +101,13 @@ class SearchEngineFragmentTest {
 
         every { fragment.findPreference<Preference>(defaultSearchEngineKey) } returns defaultSearchEnginePreference
 
-        fragment.updateDefaultSearchEnginePreference()
+        section.updateDefaultSearchEnginePreference()
 
         verify { defaultSearchEnginePreference.summary = searchEngineName }
         assertEquals(searchEngineName, defaultSearchEnginePreference.summary.toString())
 
-        fragment.onPreferenceTreeClick(defaultSearchEnginePreference)
-        verify { fragment.openDefaultEngineSettings() }
+        section.onPreferenceTreeClick(defaultSearchEnginePreference)
+        verify { section.openDefaultEngineSettings() }
     }
 
     @Test
@@ -128,7 +131,7 @@ class SearchEngineFragmentTest {
             }
         every { fragment.findPreference<Preference>(defaultSearchEngineKey) } returns defaultSearchEnginePreference
 
-        fragment.updateDefaultSearchEnginePreference()
+        section.updateDefaultSearchEnginePreference()
 
         assertEquals("Google", defaultSearchEnginePreference.summary.toString())
     }
@@ -160,7 +163,7 @@ class SearchEngineFragmentTest {
             }
         every { fragment.findPreference<Preference>(defaultSearchEngineKey) } returns defaultSearchEnginePreference
 
-        fragment.updateDefaultSearchEnginePreference()
+        section.updateDefaultSearchEnginePreference()
 
         val privateLabel = testContext.getString(R.string.preferences_category_select_private_search_engine)
         assertEquals(
@@ -191,14 +194,14 @@ class SearchEngineFragmentTest {
             }
         every { fragment.findPreference<Preference>(defaultSearchEngineKey) } returns defaultSearchEnginePreference
 
-        fragment.updateDefaultSearchEnginePreference()
+        section.updateDefaultSearchEnginePreference()
 
         assertEquals("Google", defaultSearchEnginePreference.summary.toString())
     }
 
     @Test
     fun `GIVEN pref_key_manage_search_shortcuts preference WHEN clicked THEN navigates to SearchShortcutsFragment`() {
-        every { fragment.openSearchShortcutsSettings() } just Runs
+        every { section.openSearchShortcutsSettings() } just Runs
 
         val manageShortcutsKey = testContext.getString(R.string.pref_key_manage_search_shortcuts)
         val manageShortcutsPreference =
@@ -208,8 +211,8 @@ class SearchEngineFragmentTest {
 
         every { fragment.findPreference<Preference>(manageShortcutsKey) } returns manageShortcutsPreference
 
-        fragment.onPreferenceTreeClick(manageShortcutsPreference)
-        verify { fragment.openSearchShortcutsSettings() }
+        section.onPreferenceTreeClick(manageShortcutsPreference)
+        verify { section.openSearchShortcutsSettings() }
     }
 
     @Test
@@ -217,7 +220,7 @@ class SearchEngineFragmentTest {
         every { settings.googleLensIntegrationEnabled } returns true
 
         val preference = buildGoogleLensPreference()
-        fragment.initialiseGoogleLensPreference(preference)
+        section.initialiseGoogleLensPreference(preference)
 
         assertTrue(preference.isVisible)
     }
@@ -227,7 +230,7 @@ class SearchEngineFragmentTest {
         every { settings.googleLensIntegrationEnabled } returns false
 
         val preference = buildGoogleLensPreference()
-        fragment.initialiseGoogleLensPreference(preference)
+        section.initialiseGoogleLensPreference(preference)
 
         assertFalse(preference.isVisible)
     }
@@ -237,7 +240,7 @@ class SearchEngineFragmentTest {
         every { settings.googleLensIntegrationUserEnabled } returns true
 
         val preference = buildGoogleLensPreference()
-        fragment.initialiseGoogleLensPreference(preference)
+        section.initialiseGoogleLensPreference(preference)
 
         assertTrue(preference.isChecked)
     }
@@ -247,7 +250,7 @@ class SearchEngineFragmentTest {
         every { settings.googleLensIntegrationUserEnabled } returns false
 
         val preference = buildGoogleLensPreference()
-        fragment.initialiseGoogleLensPreference(preference)
+        section.initialiseGoogleLensPreference(preference)
 
         assertFalse(preference.isChecked)
     }
@@ -255,7 +258,7 @@ class SearchEngineFragmentTest {
     @Test
     fun `WHEN the Google Lens preference is initialised THEN the availability caption is set`() {
         val preference = buildGoogleLensPreference()
-        fragment.initialiseGoogleLensPreference(preference)
+        section.initialiseGoogleLensPreference(preference)
 
         assertEquals(
             testContext.getString(R.string.preferences_google_lens_availability_caption),
@@ -267,7 +270,7 @@ class SearchEngineFragmentTest {
     fun `GIVEN an initialised Google Lens preference WHEN it is switched off THEN false is persisted`() {
         val googleLensKey = testContext.getString(R.string.pref_key_google_lens_integration_user_enabled)
         val preference = buildGoogleLensPreference()
-        fragment.initialiseGoogleLensPreference(preference)
+        section.initialiseGoogleLensPreference(preference)
 
         preference.callChangeListener(false)
 
@@ -278,7 +281,7 @@ class SearchEngineFragmentTest {
     fun `GIVEN an initialised Google Lens preference WHEN it is switched on THEN true is persisted`() {
         val googleLensKey = testContext.getString(R.string.pref_key_google_lens_integration_user_enabled)
         val preference = buildGoogleLensPreference()
-        fragment.initialiseGoogleLensPreference(preference)
+        section.initialiseGoogleLensPreference(preference)
 
         preference.callChangeListener(true)
 
@@ -288,11 +291,11 @@ class SearchEngineFragmentTest {
     @Test
     fun `GIVEN an initialised Google Lens preference WHEN it is toggled THEN the widgets are updated`() {
         val preference = buildGoogleLensPreference()
-        fragment.initialiseGoogleLensPreference(preference)
+        section.initialiseGoogleLensPreference(preference)
 
         preference.callChangeListener(false)
 
-        verify { fragment.updateAllWidgets(testContext) }
+        verify { section.updateAllWidgets(testContext) }
     }
 
     private fun buildGoogleLensPreference(): SwitchWithCaptionPreference {
@@ -304,7 +307,7 @@ class SearchEngineFragmentTest {
 
     @Test
     fun `GIVEN pref_key_learn_about_fx_suggest preference WHEN clicked THEN navigates to Fx Suggest SUMO page`() {
-        every { fragment.openLearnMoreLink() } just Runs
+        every { section.openLearnMoreLink() } just Runs
 
         val learnAboutFxSuggestKey = testContext.getString(R.string.pref_key_learn_about_fx_suggest)
         val learnAboutFxSuggestPreference =
@@ -314,7 +317,7 @@ class SearchEngineFragmentTest {
 
         every { fragment.findPreference<Preference>(learnAboutFxSuggestKey) } returns learnAboutFxSuggestPreference
 
-        fragment.onPreferenceTreeClick(learnAboutFxSuggestPreference)
-        verify { fragment.openLearnMoreLink() }
+        section.onPreferenceTreeClick(learnAboutFxSuggestPreference)
+        verify { section.openLearnMoreLink() }
     }
 }
