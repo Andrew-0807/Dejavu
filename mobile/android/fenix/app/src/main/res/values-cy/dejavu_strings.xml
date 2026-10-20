@@ -148,7 +148,7 @@
     <string name="dejavu_custom_action_body">Corff</string>
     <string name="dejavu_custom_action_variables">Newidynnau</string>
     <string name="dejavu_custom_action_variables_hint">Pwyswch newidyn i’w fewnosod yn y maes rydych chi’n ei olygu.</string>
-    <string name="dejavu_custom_action_hint">Anfonir y cais unwaith am bob tab mae’r weithred yn rhedeg arno. Dim ond ateb 2xx sy’n cyfrif fel llwyddiant; nid yw ailgyfeiriadau’n cael eu dilyn ac maen nhw’n cyfrif fel methiannau. Nid yw cwcis yn cael eu hanfon. Caiff gwerthoedd eu hamgodio URL yn yr URL a’u hamgodio JSON mewn corff JSON.</string>
+    <string name="dejavu_custom_action_hint">Anfonir y cais unwaith am bob tab mae’r weithred yn rhedeg arno. Dim ond ateb 2xx sy’n cyfrif fel llwyddiant; nid yw ailgyfeiriadau’n cael eu dilyn ac maen nhw’n cyfrif fel methiannau. Nid yw cwcis yn cael eu hanfon. Caiff gwerthoedd eu hamgodio URL yn yr URL ac mewn corff ffurflen, a\'u dianc mewn corff JSON neu XML.</string>
     <string name="dejavu_custom_action_sent">Anfonwyd: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Methwyd: cod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Methwyd: dim ateb (%1$s)</string>
@@ -366,4 +366,15 @@
     <string name="dejavu_open_non_web_pin_title">Agor y cyfeiriad hwn?</string>
     <string name="dejavu_open_non_web_pin_message">Mae\'r tab pinio hwn yn agor cyfeiriad nad yw\'n dudalen we. Efallai ei fod wedi dod o ddyfais arall ar eich cyfrif.\n\n%1$s</string>
     <string name="dejavu_open">Agor</string>
+    <string name="dejavu_about_config_warning_title">Agor about:config?</string>
+    <string name="dejavu_about_config_warning_message">Gall newid y gosodiadau hyn wanhau diogelwch a phreifatrwydd Dejavu, neu dorri gwefannau. Mae\'r gosodiadau y mae gosodiadau Dejavu ei hun yn eu rheoli, fel diogelwch rhag tracio, HTTPS-Only a DNS diogel, yn mynd yn ôl atyn nhw pan fydd Dejavu yn ailgychwyn.</string>
+    <string name="dejavu_remote_debugging_warning_title">Troi dadfygio o bell ymlaen?</string>
+    <string name="dejavu_remote_debugging_warning_message">Tra ei fod ymlaen, gall cyfrifiadur sydd wedi\'i gysylltu â\'r ffôn hwn dros USB, gyda dadfygio USB wedi\'i ganiatáu, reoli Dejavu a darllen ei ddata, fel tabiau agored, cwcis a chyfrineiriau wedi\'u cadw, heb ofyn. Trowch ef i ffwrdd pan fyddwch wedi gorffen.</string>
+    <string name="dejavu_turn_on">Troi ymlaen</string>
+    <string name="dejavu_settings_jit">JavaScript cyflym (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Yn gwneud i wefannau redeg yn gyflymach. Mae\'r rhan fwyaf o ymosodiadau ar borwyr yn mynd drwyddo, felly mae ei ddiffodd yn fwy diogel, ond mae rhai gwefannau\'n arafu. Yn dod i rym ar ôl i Dejavu ailgychwyn.</string>
+    <string name="dejavu_settings_webgl_summary">Graffeg 3D ar gyfer gemau, mapiau a rhai gwefannau. Mae ei diffodd yn rhwystro ymosodiadau drwy\'r gyrrwr graffeg ac yn ei gwneud yn anoddach i wefannau adnabod eich ffôn, ond gall y gwefannau hynny roi\'r gorau i weithio.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Does gan yr adeiliad hwn o Dejavu ddim allwedd Safe Browsing, felly nid yw\'n gallu rhybuddio am wefannau peryglus.</string>
+    <string name="dejavu_custom_action_http_warning">Mae\'r cyfeiriad hwn yn defnyddio http, felly mae\'r cais, ei benynnau a chyfeiriad y dudalen yn teithio heb eu hamgryptio. Defnyddiwch https os yw\'r gweinydd yn ei gefnogi.</string>
+    <string name="dejavu_example_notification_ntfy">Anfon y dudalen fel hysbysiad. Gall unrhyw un sy\'n gwybod enw\'r pwnc ei darllen, felly dewiswch un hir ac ar hap.</string>
 </resources>

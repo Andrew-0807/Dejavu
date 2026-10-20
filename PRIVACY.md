@@ -52,6 +52,10 @@ requests show Google your IP address. Google describes how it handles data in th
 You can turn this off in **Settings**, under **Privacy and security**, with **Google Safe Browsing**. Dejavu then
 neither downloads Google's lists nor asks Google about pages, and no longer warns about these sites.
 
+A build of Dejavu made without Dejavu's Safe Browsing key, like a build from the source code or one that F-Droid makes
+itself, makes none of these connections and has none of these warnings. Its **Google Safe Browsing** switch says so and
+stays off.
+
 ### Search
 
 When you search from the address bar, your search goes to the search engine you chose. Search suggestions, which send

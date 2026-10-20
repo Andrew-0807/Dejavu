@@ -145,7 +145,7 @@
     <string name="dejavu_custom_action_body">Pamatteksts</string>
     <string name="dejavu_custom_action_variables">Mainīgie</string>
     <string name="dejavu_custom_action_variables_hint">Pieskarieties mainīgajam, lai ievietotu to laukā, kuru rediģējat.</string>
-    <string name="dejavu_custom_action_hint">Pieprasījums tiek nosūtīts vienu reizi par katru cilni, kurai darbība tiek izpildīta. Par veiksmīgu tiek uzskatīta tikai 2xx atbilde; novirzīšanas netiek sekotas un tiek uzskatītas par neveiksmīgām. Sīkfaili netiek sūtīti. Vērtības tiek kodētas kā URL adresē un kā JSON — JSON saturā.</string>
+    <string name="dejavu_custom_action_hint">Pieprasījums tiek nosūtīts vienu reizi par katru cilni, kurai darbība tiek izpildīta. Par veiksmīgu tiek uzskatīta tikai 2xx atbilde; novirzīšanas netiek sekotas un tiek uzskatītas par neveiksmīgām. Sīkfaili netiek sūtīti. Vērtības tiek kodētas kā URL adresē un formas saturā, un aizsargātas ar atsoļa rakstzīmēm JSON vai XML saturā.</string>
     <string name="dejavu_custom_action_sent">Nosūtīts: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Neizdevās: kods %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Neizdevās: nav atbildes (%1$s)</string>
@@ -345,4 +345,15 @@
     <string name="dejavu_open_non_web_pin_title">Atvērt šo adresi?</string>
     <string name="dejavu_open_non_web_pin_message">Šī piespraustā cilne atver adresi, kas nav tīmekļa lapa. Tā var būt atnākusi no citas jūsu konta ierīces.\n\n%1$s</string>
     <string name="dejavu_open">Atvērt</string>
+    <string name="dejavu_about_config_warning_title">Atvērt about:config?</string>
+    <string name="dejavu_about_config_warning_message">Šo iestatījumu mainīšana var vājināt Dejavu drošību un privātumu vai salauzt tīmekļa vietnes. Iestatījumi, kurus vada paša Dejavu iestatījumi, piemēram, izsekošanas aizsardzība, HTTPS-Only un drošais DNS, atgriežas pie tiem, kad Dejavu tiek restartēts.</string>
+    <string name="dejavu_remote_debugging_warning_title">Ieslēgt attālināto atkļūdošanu?</string>
+    <string name="dejavu_remote_debugging_warning_message">Kamēr tā ir ieslēgta, dators, kas savienots ar šo tālruni caur USB un kam ir atļauta USB atkļūdošana, var bez jautāšanas vadīt Dejavu un lasīt tā datus, piemēram, atvērtās cilnes, sīkdatnes un saglabātās paroles. Izslēdziet to, kad esat pabeidzis.</string>
+    <string name="dejavu_turn_on">Ieslēgt</string>
+    <string name="dejavu_settings_jit">Ātrs JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Paātrina tīmekļa vietnes. Lielākā daļa uzbrukumu pārlūkiem notiek caur to, tāpēc to izslēgt ir drošāk, bet dažas vietnes kļūst lēnākas. Stājas spēkā pēc Dejavu restartēšanas.</string>
+    <string name="dejavu_settings_webgl_summary">3D grafika spēlēm, kartēm un dažām tīmekļa vietnēm. Tās izslēgšana bloķē uzbrukumus caur grafikas draiveri un apgrūtina vietnēm atpazīt jūsu tālruni, taču šīs vietnes var pārstāt darboties.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Šai Dejavu versijai nav Safe Browsing atslēgas, tāpēc tā nevar brīdināt par bīstamām vietnēm.</string>
+    <string name="dejavu_custom_action_http_warning">Šī adrese izmanto http, tāpēc pieprasījums, tā galvenes un lapas adrese tiek sūtītas nešifrētas. Izmantojiet https, ja serveris to atbalsta.</string>
+    <string name="dejavu_example_notification_ntfy">Nosūtīt lapu kā paziņojumu. Ikviens, kurš zina tēmas nosaukumu, var to izlasīt, tāpēc izvēlieties garu, nejaušu nosaukumu.</string>
 </resources>

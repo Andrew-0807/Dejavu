@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">Body</string>
     <string name="dejavu_custom_action_variables">Àwọn Variable</string>
     <string name="dejavu_custom_action_variables_hint">Tẹ variable kan láti fi sí àyè tí ìwọ ń ṣàtúnṣe.</string>
-    <string name="dejavu_custom_action_hint">A máa ń fi request ránṣẹ́ lẹ́ẹ̀kan fún táàbù kọ̀ọ̀kan tí iṣe náà bá ṣiṣẹ́ lórí rẹ̀. Ìdáhùn 2xx nìkan ni a kà sí àṣeyọrí; a kì í tẹ̀lé redirect, a sì kà á sí ìkùnà. A kì í fi cookie ránṣẹ́. A máa ń fi URL encode àwọn iye nínú URL, a sì máa ń fi JSON escape wọn nínú body JSON.</string>
+    <string name="dejavu_custom_action_hint">A máa ń fi request ránṣẹ́ lẹ́ẹ̀kan fún táàbù kọ̀ọ̀kan tí iṣe náà bá ṣiṣẹ́ lórí rẹ̀. Ìdáhùn 2xx nìkan ni a kà sí àṣeyọrí; a kì í tẹ̀lé redirect, a sì kà á sí ìkùnà. A kì í fi cookie ránṣẹ́. A máa ń fi URL encode àwọn iye nínú URL àti nínú body fọ́ọ̀mù, a sì máa ń escape wọn nínú body JSON tàbí XML.</string>
     <string name="dejavu_custom_action_sent">A ránṣẹ́: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Kùnà: code %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Kùnà: kò sí ìdáhùn (%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">Ṣé kí o ṣí àdírẹ́sì yìí?</string>
     <string name="dejavu_open_non_web_pin_message">Táàbù tí a pín yìí ń ṣí àdírẹ́sì tí kì í ṣe ojú-ìwé wẹ́ẹ̀bù. Ó lè ti wá láti ẹ̀rọ mìíràn lórí àkọọ́lẹ̀ rẹ.\n\n%1$s</string>
     <string name="dejavu_open">Ṣí i</string>
+    <string name="dejavu_about_config_warning_title">Ṣé kí o ṣí about:config?</string>
+    <string name="dejavu_about_config_warning_message">Yíyí àwọn ètò wọ̀nyí padà lè mú ààbò àti àṣírí Dejavu di aláìlágbára, tàbí ba àwọn ojú-ìwé wẹ́ẹ̀bù jẹ́. Àwọn ètò tí àwọn ètò Dejavu fúnra rẹ̀ ń darí, bí ààbò lọ́wọ́ títọpinpin, HTTPS-Only àti DNS tó ní ààbò, máa ń padà sí wọn nígbà tí Dejavu bá tún bẹ̀rẹ̀.</string>
+    <string name="dejavu_remote_debugging_warning_title">Ṣé kí o tan àtúnṣe àṣìṣe láti ọ̀nà jíjìn?</string>
+    <string name="dejavu_remote_debugging_warning_message">Nígbà tí ó bá wà ní títàn, kọ̀ǹpútà tí a so mọ́ fóònù yìí nípasẹ̀ USB, tí a fún ní àṣẹ àtúnṣe àṣìṣe USB, lè darí Dejavu kí ó sì ka dátà rẹ̀, bí àwọn táàbù tí ó ṣí, kúkì àti àwọn ọ̀rọ̀ aṣínà tí a fipamọ́, láìbéèrè. Pa á nígbà tí o bá parí.</string>
+    <string name="dejavu_turn_on">Tàn án</string>
+    <string name="dejavu_settings_jit">JavaScript yíyára (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Ó ń mú kí àwọn ojú-ìwé wẹ́ẹ̀bù yára. Ọ̀pọ̀ ìkọlù sí àwọn aṣàwákiri máa ń gba ibẹ̀ kọjá, nítorí náà pípa á ní ààbò jù, ṣùgbọ́n àwọn ojú-ìwé kan máa ń lọ́ra. Ó máa ń ṣiṣẹ́ lẹ́yìn tí Dejavu bá tún bẹ̀rẹ̀.</string>
+    <string name="dejavu_settings_webgl_summary">Àwòrán 3D fún eré, àwọn máàpù àti àwọn ojú-ìwé wẹ́ẹ̀bù kan. Pípa á ń dí àwọn ìkọlù tí ó gba awakọ̀ àwòrán kọjá, ó sì ń mú kí ó ṣòro fún àwọn ojú-ìwé láti dá fóònù rẹ mọ̀, ṣùgbọ́n àwọn ojú-ìwé náà lè dẹ́kun iṣẹ́.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ẹ̀dà Dejavu yìí kò ní kọ́kọ́rọ́ Safe Browsing, nítorí náà kò lè kìlọ̀ nípa àwọn ojú-ìwé eléwu.</string>
+    <string name="dejavu_custom_action_http_warning">Àdírẹ́sì yìí ń lo http, nítorí náà ìbéèrè náà, àwọn àkọlé rẹ̀ àti àdírẹ́sì ojú-ìwé náà ń rìn láìsí ìfipamọ́. Lo https bí sáfà náà bá ṣe àtìlẹ́yìn rẹ̀.</string>
+    <string name="dejavu_example_notification_ntfy">Fi ojú-ìwé ránṣẹ́ bí ìfitónilétí. Ẹnikẹ́ni tí ó bá mọ orúkọ kókó-ọ̀rọ̀ náà lè kà á, nítorí náà yan orúkọ gígùn, àìròtẹ́lẹ̀.</string>
 </resources>

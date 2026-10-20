@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">باڈی</string>
     <string name="dejavu_custom_action_variables">ویری ایبلز</string>
     <string name="dejavu_custom_action_variables_hint">جس فیلڈ میں ترمیم کر رہے ہیں اس میں ویری ایبل شامل کرنے کے لیے اس پر ٹیپ کریں۔</string>
-    <string name="dejavu_custom_action_hint">ریکوئسٹ ہر اس ٹیب کے لیے ایک بار بھیجی جاتی ہے جس پر ایکشن چلتا ہے۔ صرف 2xx جواب کامیابی شمار ہوتا ہے؛ ری ڈائریکٹس کی پیروی نہیں کی جاتی اور وہ ناکامی شمار ہوتے ہیں۔ کوکیز نہیں بھیجی جاتیں۔ ویلیوز URL میں URL انکوڈڈ اور JSON باڈی میں JSON ایسکیپڈ ہوتی ہیں۔</string>
+    <string name="dejavu_custom_action_hint">ریکوئسٹ ہر اس ٹیب کے لیے ایک بار بھیجی جاتی ہے جس پر ایکشن چلتا ہے۔ صرف 2xx جواب کامیابی شمار ہوتا ہے؛ ری ڈائریکٹس کی پیروی نہیں کی جاتی اور وہ ناکامی شمار ہوتے ہیں۔ کوکیز نہیں بھیجی جاتیں۔ ویلیوز URL میں اور فارم باڈی میں URL انکوڈڈ، اور JSON یا XML باڈی میں ایسکیپڈ ہوتی ہیں۔</string>
     <string name="dejavu_custom_action_sent">بھیجا گیا: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ناکام: کوڈ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ناکام: کوئی جواب نہیں (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">یہ پتہ کھولیں؟</string>
     <string name="dejavu_open_non_web_pin_message">یہ پن کیا ہوا ٹیب ایسا پتہ کھولتا ہے جو ویب صفحہ نہیں ہے۔ ہو سکتا ہے یہ آپ کے کھاتے کے کسی اور آلے سے آیا ہو۔\n\n%1$s</string>
     <string name="dejavu_open">کھولیں</string>
+    <string name="dejavu_about_config_warning_title">about:config کھولیں؟</string>
+    <string name="dejavu_about_config_warning_message">ان ترتیبات کو بدلنے سے Dejavu کی حفاظت اور رازداری کمزور ہو سکتی ہے، یا ویب سائٹیں خراب ہو سکتی ہیں۔ جن ترتیبات کو Dejavu کی اپنی ترتیبات کنٹرول کرتی ہیں، جیسے ٹریکنگ سے تحفظ، HTTPS-Only اور محفوظ DNS، وہ Dejavu کے دوبارہ شروع ہونے پر انہی پر لوٹ آتی ہیں۔</string>
+    <string name="dejavu_remote_debugging_warning_title">ریموٹ ڈی بگنگ آن کریں؟</string>
+    <string name="dejavu_remote_debugging_warning_message">جب تک یہ آن ہے، USB کے ذریعے اس فون سے جڑا اور USB ڈی بگنگ کی اجازت والا کمپیوٹر پوچھے بغیر Dejavu کو کنٹرول کر سکتا ہے اور اس کا ڈیٹا، جیسے کھلے ٹیب، کوکیز اور محفوظ پاس ورڈ، پڑھ سکتا ہے۔ کام ختم ہونے پر اسے بند کر دیں۔</string>
+    <string name="dejavu_turn_on">آن کریں</string>
+    <string name="dejavu_settings_jit">تیز JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ویب سائٹوں کو تیز چلاتا ہے۔ براؤزرز پر زیادہ تر حملے اسی کے ذریعے ہوتے ہیں، اس لیے اسے بند کرنا زیادہ محفوظ ہے، لیکن کچھ سائٹیں سست ہو جاتی ہیں۔ Dejavu کے دوبارہ شروع ہونے کے بعد لاگو ہوتا ہے۔</string>
+    <string name="dejavu_settings_webgl_summary">گیمز، نقشوں اور کچھ ویب سائٹوں کے لیے 3D گرافکس۔ اسے بند کرنے سے گرافکس ڈرائیور کے ذریعے حملے رکتے ہیں اور سائٹوں کے لیے آپ کا فون پہچاننا مشکل ہوتا ہے، لیکن وہ سائٹیں کام کرنا بند کر سکتی ہیں۔</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu کے اس بلڈ میں Safe Browsing کلید نہیں ہے، اس لیے یہ خطرناک سائٹوں کے بارے میں خبردار نہیں کر سکتا۔</string>
+    <string name="dejavu_custom_action_http_warning">یہ پتہ http استعمال کرتا ہے، اس لیے درخواست، اس کے ہیڈرز اور صفحے کا پتہ انکرپشن کے بغیر جاتے ہیں۔ اگر سرور معاونت کرتا ہے تو https استعمال کریں۔</string>
+    <string name="dejavu_example_notification_ntfy">صفحے کو اطلاع کے طور پر بھیجیں۔ موضوع کا نام جاننے والا کوئی بھی اسے پڑھ سکتا ہے، اس لیے لمبا، بے ترتیب نام چنیں۔</string>
 </resources>

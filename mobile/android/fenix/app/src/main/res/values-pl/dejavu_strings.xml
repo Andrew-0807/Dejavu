@@ -146,7 +146,7 @@
     <string name="dejavu_custom_action_body">Treść</string>
     <string name="dejavu_custom_action_variables">Zmienne</string>
     <string name="dejavu_custom_action_variables_hint">Dotknij zmiennej, aby wstawić ją do edytowanego pola.</string>
-    <string name="dejavu_custom_action_hint">Żądanie jest wysyłane raz dla każdej karty, na której wykonywana jest akcja. Tylko odpowiedź 2xx liczy się jako sukces; przekierowania nie są śledzone i liczą się jako niepowodzenia. Pliki cookie nie są wysyłane. Wartości są kodowane URL w adresie URL i escapowane JSON w treści JSON.</string>
+    <string name="dejavu_custom_action_hint">Żądanie jest wysyłane raz dla każdej karty, na której wykonywana jest akcja. Tylko odpowiedź 2xx liczy się jako sukces; przekierowania nie są śledzone i liczą się jako niepowodzenia. Pliki cookie nie są wysyłane. Wartości są kodowane URL w adresie URL i w treści formularza oraz escapowane w treści JSON lub XML.</string>
     <string name="dejavu_custom_action_sent">Wysłano: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Niepowodzenie: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Niepowodzenie: brak odpowiedzi (%1$s)</string>
@@ -352,4 +352,15 @@
     <string name="dejavu_open_non_web_pin_title">Otworzyć ten adres?</string>
     <string name="dejavu_open_non_web_pin_message">Ta przypięta karta otwiera adres, który nie jest stroną internetową. Mógł on pochodzić z innego urządzenia na Twoim koncie.\n\n%1$s</string>
     <string name="dejavu_open">Otwórz</string>
+    <string name="dejavu_about_config_warning_title">Otworzyć about:config?</string>
+    <string name="dejavu_about_config_warning_message">Zmiana tych ustawień może osłabić bezpieczeństwo i prywatność Dejavu lub zepsuć strony internetowe. Ustawienia, którymi sterują własne ustawienia Dejavu, takie jak ochrona przed śledzeniem, HTTPS-Only i bezpieczny DNS, wracają do nich po ponownym uruchomieniu Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">Włączyć zdalne debugowanie?</string>
+    <string name="dejavu_remote_debugging_warning_message">Dopóki jest włączone, komputer połączony z tym telefonem przez USB, z zezwoleniem na debugowanie USB, może bez pytania sterować Dejavu i odczytywać jego dane, takie jak otwarte karty, ciasteczka i zapisane hasła. Wyłącz je, gdy skończysz.</string>
+    <string name="dejavu_turn_on">Włącz</string>
+    <string name="dejavu_settings_jit">Szybki JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Przyspiesza działanie stron. Większość ataków na przeglądarki przechodzi przez niego, więc jego wyłączenie jest bezpieczniejsze, ale niektóre strony działają wolniej. Działa po ponownym uruchomieniu Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Grafika 3D dla gier, map i niektórych stron. Jej wyłączenie blokuje ataki przez sterownik grafiki i utrudnia stronom rozpoznanie Twojego telefonu, ale te strony mogą przestać działać.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ta wersja Dejavu nie ma klucza Safe Browsing, więc nie może ostrzegać przed niebezpiecznymi stronami.</string>
+    <string name="dejavu_custom_action_http_warning">Ten adres używa http, więc żądanie, jego nagłówki i adres strony są przesyłane bez szyfrowania. Użyj https, jeśli serwer je obsługuje.</string>
+    <string name="dejavu_example_notification_ntfy">Wysyła stronę jako powiadomienie. Każdy, kto zna nazwę tematu, może je przeczytać, więc wybierz długą, losową nazwę.</string>
 </resources>

@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Ynhâld</string>
     <string name="dejavu_custom_action_variables">Fariabelen</string>
     <string name="dejavu_custom_action_variables_hint">Tik op in fariabele om dy yn te foegjen yn it fjild dat jo bewurkje.</string>
-    <string name="dejavu_custom_action_hint">It fersyk wurdt ien kear ferstjoerd foar elk ljepblêd wêrop de aksje útfierd wurdt. Allinnich in 2xx-antwurd jildt as slagge; trochferwizingen wurde net folge en jilde as mislearre. Cookies wurde net ferstjoerd. Wearden wurde URL-kodearre yn de URL en JSON-escaped yn in JSON-ynhâld.</string>
+    <string name="dejavu_custom_action_hint">It fersyk wurdt ien kear ferstjoerd foar elk ljepblêd wêrop de aksje útfierd wurdt. Allinnich in 2xx-antwurd jildt as slagge; trochferwizingen wurde net folge en jilde as mislearre. Cookies wurde net ferstjoerd. Wearden wurde URL-kodearre yn de URL en yn in formulier-ynhâld, en escaped yn in JSON- of XML-ynhâld.</string>
     <string name="dejavu_custom_action_sent">Ferstjoerd: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Mislearre: koade %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Mislearre: gjin antwurd (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Dit adres iepenje?</string>
     <string name="dejavu_open_non_web_pin_message">Dit fêstsette ljepblêd iepenet in adres dat gjin webside is. It kin fan in oar apparaat yn jo account komme.\n\n%1$s</string>
     <string name="dejavu_open">Iepenje</string>
+    <string name="dejavu_about_config_warning_title">about:config iepenje?</string>
+    <string name="dejavu_about_config_warning_message">It wizigjen fan dizze ynstellingen kin de feiligens en privacy fan Dejavu ferswakje of websites brekke. Ynstellingen dy\'t troch de eigen ynstellingen fan Dejavu regele wurde, lykas beskerming tsjin folgjen, HTTPS-Only en feilige DNS, geane dêrnei werom as Dejavu opnij start.</string>
+    <string name="dejavu_remote_debugging_warning_title">Debuggen op ôfstân ynskeakelje?</string>
+    <string name="dejavu_remote_debugging_warning_message">Salang\'t it ynskeakele is, kin in kompjûter dy\'t fia USB mei dizze telefoan ferbûn is en USB-debuggen tastien hat, Dejavu bestjoere en de gegevens derfan lêze, lykas iepen ljepblêden, cookies en bewarre wachtwurden, sûnder te freegjen. Skeakelje it út as jo klear binne.</string>
+    <string name="dejavu_turn_on">Ynskeakelje</string>
+    <string name="dejavu_settings_jit">Flugge JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Lit websites flugger rinne. De measte oanfallen op browsers rinne derlâns, dus it útskeakeljen is feiliger, mar guon websites wurde stadiger. Jildt nei it opnij starten fan Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D-grafyk foar spultsjes, kaarten en guon websites. It útskeakeljen blokkearret oanfallen fia it grafyske stjoerprogramma en makket it dreger foar websites om jo telefoan te werkennen, mar dy websites kinne ophâlde mei wurkjen.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dizze ferzje fan Dejavu hat gjin Safe Browsing-kaai, dus kin net warskôgje foar gefaarlike websites.</string>
+    <string name="dejavu_custom_action_http_warning">Dit adres brûkt http, dus it fersyk, de headers en it adres fan de side gean net-fersifere oer. Brûk https as de server it stipet.</string>
+    <string name="dejavu_example_notification_ntfy">Stjoer de side as notifikaasje. Elkenien dy\'t de namme fan it ûnderwerp ken, kin it lêze, dus kies in lange, willekeurige namme.</string>
 </resources>

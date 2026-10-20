@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">เนื้อหา</string>
     <string name="dejavu_custom_action_variables">ตัวแปร</string>
     <string name="dejavu_custom_action_variables_hint">แตะตัวแปรเพื่อแทรกลงในช่องที่คุณกำลังแก้ไข</string>
-    <string name="dejavu_custom_action_hint">คำขอจะถูกส่งหนึ่งครั้งสำหรับทุกแท็บที่การดำเนินการนี้ทำงานด้วย เฉพาะการตอบกลับ 2xx เท่านั้นที่ถือว่าสำเร็จ การเปลี่ยนเส้นทางจะไม่ถูกติดตามและถือว่าล้มเหลว จะไม่มีการส่งคุกกี้ ค่าต่าง ๆ จะถูกเข้ารหัส URL ใน URL และ escape แบบ JSON ในเนื้อหา JSON</string>
+    <string name="dejavu_custom_action_hint">คำขอจะถูกส่งหนึ่งครั้งสำหรับทุกแท็บที่การดำเนินการนี้ทำงานด้วย เฉพาะการตอบกลับ 2xx เท่านั้นที่ถือว่าสำเร็จ การเปลี่ยนเส้นทางจะไม่ถูกติดตามและถือว่าล้มเหลว จะไม่มีการส่งคุกกี้ ค่าต่าง ๆ จะถูกเข้ารหัส URL ใน URL และในเนื้อหาแบบฟอร์ม และ escape ในเนื้อหา JSON หรือ XML</string>
     <string name="dejavu_custom_action_sent">ส่งแล้ว: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ล้มเหลว: รหัส %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ล้มเหลว: ไม่มีการตอบกลับ (%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">เปิดที่อยู่นี้หรือไม่?</string>
     <string name="dejavu_open_non_web_pin_message">แท็บที่ปักหมุดนี้จะเปิดที่อยู่ที่ไม่ใช่หน้าเว็บ ที่อยู่นี้อาจมาจากอุปกรณ์อื่นในบัญชีของคุณ\n\n%1$s</string>
     <string name="dejavu_open">เปิด</string>
+    <string name="dejavu_about_config_warning_title">เปิด about:config หรือไม่?</string>
+    <string name="dejavu_about_config_warning_message">การเปลี่ยนการตั้งค่าเหล่านี้อาจทำให้ความปลอดภัยและความเป็นส่วนตัวของ Dejavu ลดลง หรือทำให้เว็บไซต์ใช้งานไม่ได้ การตั้งค่าที่การตั้งค่าของ Dejavu เองควบคุม เช่น การป้องกันการติดตาม HTTPS-Only และ DNS ที่ปลอดภัย จะกลับไปเป็นค่าเหล่านั้นเมื่อ Dejavu เริ่มใหม่</string>
+    <string name="dejavu_remote_debugging_warning_title">เปิดการดีบักระยะไกลหรือไม่?</string>
+    <string name="dejavu_remote_debugging_warning_message">ขณะที่เปิดอยู่ คอมพิวเตอร์ที่เชื่อมต่อกับโทรศัพท์นี้ผ่าน USB และได้รับอนุญาตการดีบัก USB จะสามารถควบคุม Dejavu และอ่านข้อมูลของมัน เช่น แท็บที่เปิดอยู่ คุกกี้ และรหัสผ่านที่บันทึกไว้ ได้โดยไม่ถาม ปิดเมื่อคุณใช้งานเสร็จ</string>
+    <string name="dejavu_turn_on">เปิด</string>
+    <string name="dejavu_settings_jit">JavaScript แบบเร็ว (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ทำให้เว็บไซต์ทำงานเร็วขึ้น การโจมตีเบราว์เซอร์ส่วนใหญ่ผ่านทางนี้ การปิดจึงปลอดภัยกว่า แต่บางเว็บไซต์จะช้าลง มีผลหลังจาก Dejavu เริ่มใหม่</string>
+    <string name="dejavu_settings_webgl_summary">กราฟิก 3D สำหรับเกม แผนที่ และบางเว็บไซต์ การปิดจะบล็อกการโจมตีผ่านไดรเวอร์กราฟิก และทำให้เว็บไซต์จดจำโทรศัพท์ของคุณได้ยากขึ้น แต่เว็บไซต์เหล่านั้นอาจหยุดทำงาน</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu รุ่นนี้ไม่มีคีย์ Safe Browsing จึงไม่สามารถเตือนเกี่ยวกับเว็บไซต์อันตรายได้</string>
+    <string name="dejavu_custom_action_http_warning">ที่อยู่นี้ใช้ http คำขอ ส่วนหัวของคำขอ และที่อยู่ของหน้าจึงถูกส่งโดยไม่เข้ารหัส ใช้ https หากเซิร์ฟเวอร์รองรับ</string>
+    <string name="dejavu_example_notification_ntfy">ส่งหน้าเป็นการแจ้งเตือน ใครก็ตามที่รู้ชื่อหัวข้อสามารถอ่านได้ จึงควรเลือกชื่อที่ยาวและสุ่ม</string>
 </resources>

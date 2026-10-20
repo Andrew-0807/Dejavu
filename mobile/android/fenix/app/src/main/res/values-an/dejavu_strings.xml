@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Cuerpo</string>
     <string name="dejavu_custom_action_variables">Variables</string>
     <string name="dejavu_custom_action_variables_hint">Toca una variable ta ficar-la en o campo que yes editando.</string>
-    <string name="dejavu_custom_action_hint">A solicitut s\'invía una vegada per cada pestanya en a que s\'executa l\'acción. Nomás una resposta 2xx cuenta como exito; as redireccions no se sigue y cuentan como fallos. As cookies no s\'invían. Os valors se codifican como URL en a URL y como JSON en un cuerpo JSON.</string>
+    <string name="dejavu_custom_action_hint">A solicitut s\'invía una vegada per cada pestanya en a que s\'executa l\'acción. Nomás una resposta 2xx cuenta como exito; as redireccions no se sigue y cuentan como fallos. As cookies no s\'invían. Os valors se codifican como URL en a URL y en un cuerpo de formulario, y s\'escapan en un cuerpo JSON u XML.</string>
     <string name="dejavu_custom_action_sent">Ninviau: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Fallau: codigo %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Fallau: sin resposta (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Ubrir esta adreza?</string>
     <string name="dejavu_open_non_web_pin_message">Esta pestanya fixada ubre una adreza que no ye una pachina web. Puede vinir d\'atro dispositivo d\'a tuya cuenta.\n\n%1$s</string>
     <string name="dejavu_open">Ubrir</string>
+    <string name="dejavu_about_config_warning_title">Ubrir about:config?</string>
+    <string name="dejavu_about_config_warning_message">Cambiar istas opcions puede afeblir a seguranza y a privacidat de Dejavu, u fer que as pachinas web no funcionen. As opcions que controla a configuración d\'o mesmo Dejavu, como a protección contra o seguimiento, HTTPS-Only y o DNS seguro, tornan a ella quan Dejavu se reinicia.</string>
+    <string name="dejavu_remote_debugging_warning_title">Activar a depuración remota?</string>
+    <string name="dejavu_remote_debugging_warning_message">Mientres siga activa, un ordinador connectau a iste telefono por USB, con a depuración USB permitida, puede controlar Dejavu y leyer os suyos datos, como as pestanyas ubiertas, as cookies y as claus alzadas, sin preguntar. Desactiva-la quan remates.</string>
+    <string name="dejavu_turn_on">Activar</string>
+    <string name="dejavu_settings_jit">JavaScript rapido (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Fa que as pachinas web vayan mas rapidas. A mayoría d\'os atacos a navegadors pasan por ell, asinas que desactivar-lo ye mas seguro, pero bells puestos van mas lentos. S\'aplica dimpués de reiniciar Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Graficos 3D pa chuegos, mapas y bellas pachinas web. Desactivar-lo bloqueya atacos a traviés d\'o controlador grafico y fa que os puestos reconoixcan mas difícilment o tuyo telefono, pero ixos puestos pueden deixar de funcionar.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ista compilación de Dejavu no tiene clau de Safe Browsing, asinas que no puede advertir de puestos perillosos.</string>
+    <string name="dejavu_custom_action_http_warning">Ista adreza usa http, asinas que a solicitut, as suyas capiceras y l\'adreza d\'a pachina viachan sin cifrar. Usa https si o servidor lo suporta.</string>
+    <string name="dejavu_example_notification_ntfy">Ninvia a pachina como notificación. Qualsequiera que conoixca o nombre d\'o tema puede leyer-la, asinas que tría un nombre largo y aleatorio.</string>
 </resources>

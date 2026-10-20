@@ -211,6 +211,7 @@ import org.mozilla.fenix.customtabs.ExternalAppBrowserActivity
 import org.mozilla.fenix.databinding.FragmentBrowserBinding
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
+import org.mozilla.fenix.dejavu.browser.installAboutConfigWarning
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
 import org.mozilla.fenix.downloads.DownloadService
 import org.mozilla.fenix.downloads.RenameAndChangeLocationDialogFragment
@@ -1225,6 +1226,7 @@ abstract class BaseBrowserFragment :
         installDejavuSplitView(binding.browserLayout, binding.swipeRefresh, binding.engineView, customTabSessionId) {
             getContextMenuCandidates(context, binding.dynamicSnackbarContainer)
         }
+        installAboutConfigWarning(customTabSessionId)
 
         val isCoverEnabled = TabReloadCoverGating.isCoverEnabled(settings)
         val isScrollAwareEnabled = TabReloadCoverGating.isScrollAwareEnabled(settings)

@@ -458,14 +458,9 @@ features:
           process. "2" means "isolate high value", Android-specific setting to only isolate sites
           considered "high value".
         type: Int
-        default: 0
-    defaults:
-      - channel: nightly
-        value:
-          isolationStrategy: 2
-      - channel: developer
-        value:
-          isolationStrategy: 2
+        # Dejavu: Dejavu fetches no rollouts, so release builds isolate high value sites, like sites the user signed
+        # in to, in processes of their own, as Firefox Nightly and debug builds do.
+        default: 2
 
   suggest-shipped-domains:
     description: Feature that suggests domains from the shipped domain list.
@@ -785,7 +780,9 @@ features:
         description: >
           The channel from which CRLite filters will be installed.
         type: Option<String>
-        default: null
+        # Dejavu: every revoked certificate is caught, as in Firefox for computers, not only the priority ones of the
+        # "compat" channel Android uses.
+        default: "default"
 
   pqcrypto:
     description: Control the use of post-quantum key exchange mechanisms in TLS and HTTP/3.
@@ -1261,11 +1258,9 @@ features:
       enabled:
         description: If true, the uninstall survey shortcut is enabled and visible.
         type: Boolean
+        # Dejavu: Firefox's uninstall survey is off in every build, and Dejavu does not hold the permission it needs to
+        # uninstall the app.
         default: false
-    defaults:
-      - channel: developer
-        value:
-          enabled: true
 
   homepage-customization:
     description: Feature to enable Homepage Customization for users on Firefox on Android.

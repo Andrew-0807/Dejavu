@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Тяло</string>
     <string name="dejavu_custom_action_variables">Променливи</string>
     <string name="dejavu_custom_action_variables_hint">Докоснете променлива, за да я вмъкнете в полето, което редактирате.</string>
-    <string name="dejavu_custom_action_hint">Заявката се изпраща веднъж за всеки раздел, върху който се изпълни действието. Само отговор 2xx се брои за успех; пренасочванията не се следват и се броят за неуспех. Бисквитки не се изпращат. Стойностите се кодират като URL в адреса и се екранират за JSON в тялото на заявката.</string>
+    <string name="dejavu_custom_action_hint">Заявката се изпраща веднъж за всеки раздел, върху който се изпълни действието. Само отговор 2xx се брои за успех; пренасочванията не се следват и се броят за неуспех. Бисквитки не се изпращат. Стойностите се кодират като URL в адреса и в тялото на формуляр и се екранират в тяло JSON или XML.</string>
     <string name="dejavu_custom_action_sent">Изпратено: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Неуспешно: код %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Неуспешно: няма отговор (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Отваряне на този адрес?</string>
     <string name="dejavu_open_non_web_pin_message">Този закачен раздел отваря адрес, който не е уеб страница. Може да е дошъл от друго устройство в профила ви.\n\n%1$s</string>
     <string name="dejavu_open">Отваряне</string>
+    <string name="dejavu_about_config_warning_title">Отваряне на about:config?</string>
+    <string name="dejavu_about_config_warning_message">Промяната на тези настройки може да отслаби сигурността и поверителността на Dejavu или да повреди уебсайтове. Настройките, които собствените настройки на Dejavu управляват, като защитата от проследяване, HTTPS-Only и защитения DNS, се връщат към тях, когато Dejavu се рестартира.</string>
+    <string name="dejavu_remote_debugging_warning_title">Включване на отдалеченото отстраняване на грешки?</string>
+    <string name="dejavu_remote_debugging_warning_message">Докато е включено, компютър, свързан с този телефон чрез USB и с разрешено отстраняване на грешки през USB, може да управлява Dejavu и да чете данните му, като отворени раздели, бисквитки и запазени пароли, без да пита. Изключете го, когато приключите.</string>
+    <string name="dejavu_turn_on">Включване</string>
+    <string name="dejavu_settings_jit">Бърз JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Ускорява уебсайтовете. Повечето атаки срещу браузъри минават през него, затова изключването му е по-безопасно, но някои сайтове стават по-бавни. Влиза в сила след рестартиране на Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D графика за игри, карти и някои уебсайтове. Изключването ѝ блокира атаки през графичния драйвер и затруднява сайтовете да разпознаят телефона ви, но тези сайтове може да спрат да работят.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Тази компилация на Dejavu няма ключ за Safe Browsing, затова не може да предупреждава за опасни сайтове.</string>
+    <string name="dejavu_custom_action_http_warning">Този адрес използва http, затова заявката, заглавките ѝ и адресът на страницата се пренасят некриптирани. Използвайте https, ако сървърът го поддържа.</string>
+    <string name="dejavu_example_notification_ntfy">Изпраща страницата като известие. Всеки, който знае името на темата, може да го прочете, затова изберете дълго, случайно име.</string>
 </resources>

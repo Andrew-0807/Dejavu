@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Gövdə</string>
     <string name="dejavu_custom_action_variables">Dəyişənlər</string>
     <string name="dejavu_custom_action_variables_hint">Redaktə etdiyiniz sahəyə daxil etmək üçün dəyişənə toxunun.</string>
-    <string name="dejavu_custom_action_hint">Sorğu əməliyyatın işlədiyi hər vərəq üçün bir dəfə göndərilir. Yalnız 2xx cavabı uğurlu sayılır; yönləndirmələr izlənmir və uğursuz sayılır. Kukilər göndərilmir. Dəyərlər URL-də URL kodlaşdırılır, JSON gövdəsində isə JSON qaydasında saxlanılır.</string>
+    <string name="dejavu_custom_action_hint">Sorğu əməliyyatın işlədiyi hər vərəq üçün bir dəfə göndərilir. Yalnız 2xx cavabı uğurlu sayılır; yönləndirmələr izlənmir və uğursuz sayılır. Kukilər göndərilmir. Dəyərlər URL-də və forma gövdəsində URL kodlaşdırılır, JSON və ya XML gövdəsində isə qaçış simvolları ilə yazılır.</string>
     <string name="dejavu_custom_action_sent">Göndərildi: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Uğursuz oldu: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Uğursuz oldu: cavab yoxdur (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Bu ünvan açılsın?</string>
     <string name="dejavu_open_non_web_pin_message">Bu bərkidilmiş vərəq veb səhifə olmayan bir ünvan açır. O, hesabınızdakı başqa cihazdan gəlmiş ola bilər.\n\n%1$s</string>
     <string name="dejavu_open">Aç</string>
+    <string name="dejavu_about_config_warning_title">about:config açılsın?</string>
+    <string name="dejavu_about_config_warning_message">Bu ayarları dəyişmək Dejavu-nun təhlükəsizliyini və məxfiliyini zəiflədə və ya saytları poza bilər. Dejavu-nun öz ayarlarının idarə etdiyi ayarlar, məsələn izləmə qoruması, HTTPS-Only və təhlükəsiz DNS, Dejavu yenidən başladıqda onlara qayıdır.</string>
+    <string name="dejavu_remote_debugging_warning_title">Uzaqdan sazlama açılsın?</string>
+    <string name="dejavu_remote_debugging_warning_message">Açıq olduğu müddətdə bu telefona USB ilə qoşulmuş və USB sazlamasına icazə verilmiş kompüter Dejavu-nu idarə edə və onun məlumatlarını, məsələn açıq vərəqləri, kukiləri və saxlanılmış parolları, soruşmadan oxuya bilər. İşiniz bitəndə onu söndürün.</string>
+    <string name="dejavu_turn_on">Aç</string>
+    <string name="dejavu_settings_jit">Sürətli JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Saytların daha sürətli işləməsini təmin edir. Brauzerlərə hücumların çoxu onun üzərindən keçir, ona görə onu söndürmək daha təhlükəsizdir, amma bəzi saytlar yavaşlayır. Dejavu yenidən başladıqdan sonra tətbiq olunur.</string>
+    <string name="dejavu_settings_webgl_summary">Oyunlar, xəritələr və bəzi saytlar üçün 3D qrafika. Onu söndürmək qrafik sürücü vasitəsilə hücumları əngəlləyir və saytların telefonunuzu tanımasını çətinləşdirir, amma həmin saytlar işləməyə bilər.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu-nun bu yığımında Safe Browsing açarı yoxdur, ona görə təhlükəli saytlar barədə xəbərdarlıq edə bilmir.</string>
+    <string name="dejavu_custom_action_http_warning">Bu ünvan http istifadə edir, ona görə sorğu, onun başlıqları və səhifənin ünvanı şifrələnmədən ötürülür. Server dəstəkləyirsə, https istifadə edin.</string>
+    <string name="dejavu_example_notification_ntfy">Səhifəni bildiriş kimi göndərin. Mövzunun adını bilən hər kəs onu oxuya bilər, ona görə uzun və təsadüfi ad seçin.</string>
 </resources>

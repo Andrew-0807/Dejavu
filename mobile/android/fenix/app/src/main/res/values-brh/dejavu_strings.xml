@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">باڈی</string>
     <string name="dejavu_custom_action_variables">ویریایبلاک</string>
     <string name="dejavu_custom_action_variables_hint">نی ایڈٹ کنا فیلڈ اٹ دننا نا واسطے ویریایبل پار ٹیپ کبو۔</string>
-    <string name="dejavu_custom_action_hint">ایکشن چلنتین ہر ٹیب نا واسطے درخواست ایک بار پٹھ ہس۔ تنہا 2xx جواب کامیاب ہس؛ ری ڈائریکٹاک فالو نی ہن او ناکام ہن۔ کوکیاک نی پٹھ ہن۔ ویلیواک URL اٹ URL انکوڈ او JSON باڈی اٹ JSON ایسکیپ ہن۔</string>
+    <string name="dejavu_custom_action_hint">ایکشن چلنتین ہر ٹیب نا واسطے درخواست ایک بار پٹھ ہس۔ تنہا 2xx جواب کامیاب ہس؛ ری ڈائریکٹاک فالو نی ہن او ناکام ہن۔ کوکیاک نی پٹھ ہن۔ ویلیواک URL او فارم باڈی اٹ URL انکوڈ، او JSON یا XML باڈی اٹ ایسکیپ ہن۔</string>
     <string name="dejavu_custom_action_sent">پٹھتین: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ناکام: کوڈ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ناکام: جواب کائی نی (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">دا پتہ ملنگے؟</string>
     <string name="dejavu_open_non_web_pin_message">دا پن کروکا ٹیب اسہ ہندا پتہ ملک ہرادے ویب پنہ اف. ممکن اے کہ نا اکاؤنٹ نا اسہ پین ڈیوائس آن بسنے.\n\n%1$s</string>
     <string name="dejavu_open">ملہ</string>
+    <string name="dejavu_about_config_warning_title">about:config ملنگے؟</string>
+    <string name="dejavu_about_config_warning_message">دا سیٹنگاک بدل کننگ Dejavu نا حفاظت او پرائیویسی ءِ کمزور کرور یا ویب سائٹاک خراب کرور۔ ہرا سیٹنگاک Dejavu نا جند نا سیٹنگاک کنٹرول کیرہ، داکان ٹریکنگ آن حفاظت، HTTPS-Only او محفوظ DNS، Dejavu دوبارہ شروع مننگ آ پدا ہموفتے کائیرہ۔</string>
+    <string name="dejavu_remote_debugging_warning_title">ریموٹ ڈیبگنگ آن کیوے؟</string>
+    <string name="dejavu_remote_debugging_warning_message">ہرا وخت آن ءِ، USB نا ذریعہ دا فون اٹ جوڑ کمپیوٹر، ہرا کہ USB ڈیبگنگ نا اجازت ارے، بغیر ہرسنگ Dejavu ءِ کنٹرول کرور او ایہنا ڈیٹا، داکان کھلاؤ ٹیباک، کوکیاک او محفوظ پاسورڈاک، خوانِ کرور۔ کار ختم مننگ آ ایہن بند کر۔</string>
+    <string name="dejavu_turn_on">آن کر</string>
+    <string name="dejavu_settings_jit">تیز JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ویب سائٹاتے تیز چلیفک۔ براؤزراتے اکثر حملہ ایہنا راہ آن بریرہ، اندا خاطر ایہن بند کننگ زیات محفوظ ءِ، ولے چندی سائٹاک سست مریرہ۔ Dejavu دوبارہ شروع مننگ آن پد لاگو مرو۔</string>
+    <string name="dejavu_settings_webgl_summary">گیماک، نقشہ غاک او چندی ویب سائٹاتیکن 3D گرافکس۔ ایہن بند کننگ گرافکس ڈرائیور نا راہ آن حملہ غاتے بند کیک او سائٹاتیکن نا فون ءِ چائنگ سخت کیک، ولے ہمو سائٹاک کار بند کننگ کرور۔</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu نا دا بلڈ اٹ Safe Browsing نا کلید اَف، اندا خاطر خطرناک سائٹاتا بارو اٹ خبردار کننگ کپک۔</string>
+    <string name="dejavu_custom_action_http_warning">دا پتہ http استعمال کیک، اندا خاطر درخواست، ایہنا ہیڈراک او صفحہ نا پتہ بغیر انکرپشن کائیرہ۔ اگہ سرور https نا مدد کیک تو https استعمال کر۔</string>
+    <string name="dejavu_example_notification_ntfy">صفحہ ءِ نوٹیفکیشن نا رنگ اٹ راہی کر۔ ہر او ہرا کہ ٹاپک نا پن ءِ چائک ایہن خوانِ کرور، اندا خاطر اسہ مُرغن او بے ترتیب پن ءِ چن۔</string>
 </resources>

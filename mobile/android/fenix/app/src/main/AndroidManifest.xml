@@ -53,9 +53,9 @@
 
     <uses-permission android:name="${applicationId}.permission.PROFILER_INTERNAL" />
 
-    <!-- Needed to prompt the user directly for app uninstallation as part of an
-    'uninstall survey' experiment. This is ONLY used to uninstall the Firefox application -->
-    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" tools:node="replace" />
+    <!-- Dejavu: Firefox's uninstall survey asked for this permission to uninstall the app itself. Dejavu has no such
+    survey, so it does not hold the permission. -->
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" tools:node="remove" />
 
     <permission
         android:name="${applicationId}.permission.PROFILER_INTERNAL"
@@ -74,6 +74,7 @@
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:enableOnBackInvokedCallback="@bool/enableOnBackInvokedCallback"
+        android:memtagMode="async"
         tools:ignore="UnusedAttribute">
 
         <profileable

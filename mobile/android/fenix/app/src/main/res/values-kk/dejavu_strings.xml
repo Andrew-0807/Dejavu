@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Дене</string>
     <string name="dejavu_custom_action_variables">Айнымалылар</string>
     <string name="dejavu_custom_action_variables_hint">Өңдеп жатқан өріске қосу үшін айнымалыны түртіңіз.</string>
-    <string name="dejavu_custom_action_hint">Сұрау әрекет орындалатын әрбір бет үшін бір рет жіберіледі. Тек 2xx жауабы ғана сәтті деп есептеледі; қайта бағыттаулар орындалмайды және сәтсіз деп есептеледі. Кукилер жіберілмейді. Мәндер URL-де URL кодталады, ал JSON денесінде JSON ережесімен жазылады.</string>
+    <string name="dejavu_custom_action_hint">Сұрау әрекет орындалатын әрбір бет үшін бір рет жіберіледі. Тек 2xx жауабы ғана сәтті деп есептеледі; қайта бағыттаулар орындалмайды және сәтсіз деп есептеледі. Кукилер жіберілмейді. Мәндер URL-де және форма денесінде URL кодталады, ал JSON немесе XML денесінде экрандалады.</string>
     <string name="dejavu_custom_action_sent">Жіберілді: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Сәтсіз аяқталды: код %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Сәтсіз аяқталды: жауап жоқ (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Бұл адресті ашу керек пе?</string>
     <string name="dejavu_open_non_web_pin_message">Бұл бекітілген бет веб-парақ емес адресті ашады. Ол тіркелгіңіздегі басқа құрылғыдан келген болуы мүмкін.\n\n%1$s</string>
     <string name="dejavu_open">Ашу</string>
+    <string name="dejavu_about_config_warning_title">about:config ашу керек пе?</string>
+    <string name="dejavu_about_config_warning_message">Бұл баптауларды өзгерту Dejavu қауіпсіздігі мен жекелігін әлсіретуі немесе сайттарды бұзуы мүмкін. Dejavu-дың өз баптаулары басқаратын баптаулар, мысалы бақылаудан қорғау, HTTPS-Only және қауіпсіз DNS, Dejavu қайта іске қосылғанда соларға қайтады.</string>
+    <string name="dejavu_remote_debugging_warning_title">Қашықтан жөндеуді қосу керек пе?</string>
+    <string name="dejavu_remote_debugging_warning_message">Ол қосулы тұрғанда, осы телефонға USB арқылы қосылған және USB жөндеуге рұқсаты бар компьютер сұрамастан Dejavu-ды басқарып, оның деректерін, мысалы ашық беттерді, cookie файлдарын және сақталған парольдерді оқи алады. Жұмысыңыз біткенде оны сөндіріңіз.</string>
+    <string name="dejavu_turn_on">Қосу</string>
+    <string name="dejavu_settings_jit">Жылдам JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Сайттарды жылдамырақ жұмыс істетеді. Браузерлерге шабуылдардың көбі ол арқылы өтеді, сондықтан оны сөндіру қауіпсіздеу, бірақ кейбір сайттар баяулайды. Dejavu қайта іске қосылғаннан кейін күшіне енеді.</string>
+    <string name="dejavu_settings_webgl_summary">Ойындар, карталар және кейбір сайттар үшін 3D графика. Оны сөндіру графикалық драйвер арқылы шабуылдарды бұғаттайды және сайттарға телефоныңызды тануды қиындатады, бірақ ол сайттар жұмысын тоқтатуы мүмкін.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu-дың бұл жинағында Safe Browsing кілті жоқ, сондықтан қауіпті сайттар туралы ескерте алмайды.</string>
+    <string name="dejavu_custom_action_http_warning">Бұл адрес http қолданады, сондықтан сұраныс, оның тақырыптары және беттің адресі шифрланбай жіберіледі. Сервер қолдаса, https қолданыңыз.</string>
+    <string name="dejavu_example_notification_ntfy">Бетті хабарландыру ретінде жіберу. Тақырып атауын білетін кез келген адам оны оқи алады, сондықтан ұзын, кездейсоқ атау таңдаңыз.</string>
 </resources>

@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">ಬಾಡಿ</string>
     <string name="dejavu_custom_action_variables">ವೇರಿಯೇಬಲ್‌ಗಳು</string>
     <string name="dejavu_custom_action_variables_hint">ನೀವು ಸಂಪಾದಿಸುತ್ತಿರುವ ಕ್ಷೇತ್ರದಲ್ಲಿ ಸೇರಿಸಲು ಒಂದು ವೇರಿಯೇಬಲ್ ಅನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ.</string>
-    <string name="dejavu_custom_action_hint">ಕ್ರಿಯೆ ಚಲಿಸುವ ಪ್ರತಿ ಟ್ಯಾಬ್‌ಗೆ ವಿನಂತಿಯನ್ನು ಒಮ್ಮೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ. 2xx ಉತ್ತರ ಮಾತ್ರ ಯಶಸ್ಸು ಎಂದು ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ; ಮರುನಿರ್ದೇಶನಗಳನ್ನು ಅನುಸರಿಸುವುದಿಲ್ಲ ಮತ್ತು ವಿಫಲತೆ ಎಂದು ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ. ಕುಕೀಗಳನ್ನು ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ. ಮೌಲ್ಯಗಳನ್ನು URL ನಲ್ಲಿ URL ಎನ್‌ಕೋಡ್ ಮಾಡಲಾಗುತ್ತದೆ ಮತ್ತು JSON ಬಾಡಿಯಲ್ಲಿ JSON ಎಸ್ಕೇಪ್ ಮಾಡಲಾಗುತ್ತದೆ.</string>
+    <string name="dejavu_custom_action_hint">ಕ್ರಿಯೆ ಚಲಿಸುವ ಪ್ರತಿ ಟ್ಯಾಬ್‌ಗೆ ವಿನಂತಿಯನ್ನು ಒಮ್ಮೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ. 2xx ಉತ್ತರ ಮಾತ್ರ ಯಶಸ್ಸು ಎಂದು ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ; ಮರುನಿರ್ದೇಶನಗಳನ್ನು ಅನುಸರಿಸುವುದಿಲ್ಲ ಮತ್ತು ವಿಫಲತೆ ಎಂದು ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ. ಕುಕೀಗಳನ್ನು ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ. ಮೌಲ್ಯಗಳನ್ನು URL ನಲ್ಲಿ ಮತ್ತು ಫಾರ್ಮ್ ಬಾಡಿಯಲ್ಲಿ URL ಎನ್‌ಕೋಡ್ ಮಾಡಲಾಗುತ್ತದೆ ಮತ್ತು JSON ಅಥವಾ XML ಬಾಡಿಯಲ್ಲಿ ಎಸ್ಕೇಪ್ ಮಾಡಲಾಗುತ್ತದೆ.</string>
     <string name="dejavu_custom_action_sent">ಕಳುಹಿಸಲಾಗಿದೆ: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ವಿಫಲವಾಗಿದೆ: ಕೋಡ್ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ವಿಫಲವಾಗಿದೆ: ಉತ್ತರವಿಲ್ಲ (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">ಈ ವಿಳಾಸವನ್ನು ತೆರೆಯಬೇಕೆ?</string>
     <string name="dejavu_open_non_web_pin_message">ಈ ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್ ಜಾಲಪುಟವಲ್ಲದ ವಿಳಾಸವನ್ನು ತೆರೆಯುತ್ತದೆ. ಇದು ನಿಮ್ಮ ಖಾತೆಯ ಬೇರೆ ಸಾಧನದಿಂದ ಬಂದಿರಬಹುದು.\n\n%1$s</string>
     <string name="dejavu_open">ತೆರೆ</string>
+    <string name="dejavu_about_config_warning_title">about:config ತೆರೆಯಬೇಕೆ?</string>
+    <string name="dejavu_about_config_warning_message">ಈ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಬದಲಾಯಿಸಿದರೆ Dejavu ಸುರಕ್ಷತೆ ಮತ್ತು ಗೌಪ್ಯತೆ ದುರ್ಬಲವಾಗಬಹುದು ಅಥವಾ ಜಾಲತಾಣಗಳು ಹಾಳಾಗಬಹುದು. Dejavu ನ ಸ್ವಂತ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ನಿಯಂತ್ರಿಸುವ ಸೆಟ್ಟಿಂಗ್‌ಗಳು, ಉದಾಹರಣೆಗೆ ಟ್ರ್ಯಾಕಿಂಗ್ ರಕ್ಷಣೆ, HTTPS-Only ಮತ್ತು ಸುರಕ್ಷಿತ DNS, Dejavu ಮರುಪ್ರಾರಂಭವಾದಾಗ ಅವುಗಳಿಗೆ ಮರಳುತ್ತವೆ.</string>
+    <string name="dejavu_remote_debugging_warning_title">ರಿಮೋಟ್ ಡೀಬಗ್ಗಿಂಗ್ ಆನ್ ಮಾಡಬೇಕೆ?</string>
+    <string name="dejavu_remote_debugging_warning_message">ಅದು ಆನ್ ಆಗಿರುವವರೆಗೆ, USB ಮೂಲಕ ಈ ಫೋನ್‌ಗೆ ಸಂಪರ್ಕಗೊಂಡಿರುವ ಮತ್ತು USB ಡೀಬಗ್ಗಿಂಗ್ ಅನುಮತಿ ಇರುವ ಕಂಪ್ಯೂಟರ್ ಕೇಳದೆಯೇ Dejavu ಅನ್ನು ನಿಯಂತ್ರಿಸಬಹುದು ಮತ್ತು ಅದರ ಡೇಟಾ, ಉದಾಹರಣೆಗೆ ತೆರೆದ ಟ್ಯಾಬ್‌ಗಳು, ಕುಕೀಗಳು ಮತ್ತು ಉಳಿಸಿದ ಪಾಸ್‌ವರ್ಡ್‌ಗಳನ್ನು ಓದಬಹುದು. ಕೆಲಸ ಮುಗಿದಾಗ ಅದನ್ನು ಆಫ್ ಮಾಡಿ.</string>
+    <string name="dejavu_turn_on">ಆನ್ ಮಾಡಿ</string>
+    <string name="dejavu_settings_jit">ವೇಗದ JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ಜಾಲತಾಣಗಳನ್ನು ವೇಗವಾಗಿ ನಡೆಸುತ್ತದೆ. ಬ್ರೌಸರ್‌ಗಳ ಮೇಲಿನ ಹೆಚ್ಚಿನ ದಾಳಿಗಳು ಇದರ ಮೂಲಕ ಹೋಗುತ್ತವೆ, ಆದ್ದರಿಂದ ಇದನ್ನು ಆಫ್ ಮಾಡುವುದು ಹೆಚ್ಚು ಸುರಕ್ಷಿತ, ಆದರೆ ಕೆಲವು ತಾಣಗಳು ನಿಧಾನವಾಗುತ್ತವೆ. Dejavu ಮರುಪ್ರಾರಂಭವಾದ ನಂತರ ಅನ್ವಯವಾಗುತ್ತದೆ.</string>
+    <string name="dejavu_settings_webgl_summary">ಆಟಗಳು, ನಕ್ಷೆಗಳು ಮತ್ತು ಕೆಲವು ಜಾಲತಾಣಗಳಿಗಾಗಿ 3D ಗ್ರಾಫಿಕ್ಸ್. ಇದನ್ನು ಆಫ್ ಮಾಡಿದರೆ ಗ್ರಾಫಿಕ್ಸ್ ಡ್ರೈವರ್ ಮೂಲಕದ ದಾಳಿಗಳು ತಡೆಯಲ್ಪಡುತ್ತವೆ ಮತ್ತು ತಾಣಗಳಿಗೆ ನಿಮ್ಮ ಫೋನ್ ಗುರುತಿಸುವುದು ಕಷ್ಟವಾಗುತ್ತದೆ, ಆದರೆ ಆ ತಾಣಗಳು ಕೆಲಸ ನಿಲ್ಲಿಸಬಹುದು.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu ನ ಈ ಬಿಲ್ಡ್‌ನಲ್ಲಿ Safe Browsing ಕೀ ಇಲ್ಲ, ಆದ್ದರಿಂದ ಅಪಾಯಕಾರಿ ತಾಣಗಳ ಬಗ್ಗೆ ಎಚ್ಚರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.</string>
+    <string name="dejavu_custom_action_http_warning">ಈ ವಿಳಾಸ http ಬಳಸುತ್ತದೆ, ಆದ್ದರಿಂದ ವಿನಂತಿ, ಅದರ ಹೆಡರ್‌ಗಳು ಮತ್ತು ಪುಟದ ವಿಳಾಸ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗದೆ ಹೋಗುತ್ತವೆ. ಸರ್ವರ್ ಬೆಂಬಲಿಸಿದರೆ https ಬಳಸಿ.</string>
+    <string name="dejavu_example_notification_ntfy">ಪುಟವನ್ನು ಅಧಿಸೂಚನೆಯಾಗಿ ಕಳುಹಿಸಿ. ವಿಷಯದ ಹೆಸರು ತಿಳಿದ ಯಾರಾದರೂ ಅದನ್ನು ಓದಬಹುದು, ಆದ್ದರಿಂದ ಉದ್ದವಾದ, ಯಾದೃಚ್ಛಿಕ ಹೆಸರನ್ನು ಆರಿಸಿ.</string>
 </resources>

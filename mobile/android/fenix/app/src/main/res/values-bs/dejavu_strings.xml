@@ -145,7 +145,7 @@
     <string name="dejavu_custom_action_body">Tijelo</string>
     <string name="dejavu_custom_action_variables">Varijable</string>
     <string name="dejavu_custom_action_variables_hint">Dodirnite varijablu da je umetnete u polje koje uređujete.</string>
-    <string name="dejavu_custom_action_hint">Zahtjev se šalje jednom za svaki tab na kojem se radnja izvrši. Samo odgovor 2xx se računa kao uspjeh; preusmjeravanja se ne prate i računaju se kao neuspjeh. Kolačići se ne šalju. Vrijednosti su URL kodirane u URL-u, a JSON kodirane u JSON tijelu.</string>
+    <string name="dejavu_custom_action_hint">Zahtjev se šalje jednom za svaki tab na kojem se radnja izvrši. Samo odgovor 2xx se računa kao uspjeh; preusmjeravanja se ne prate i računaju se kao neuspjeh. Kolačići se ne šalju. Vrijednosti su URL kodirane u URL-u i u tijelu obrasca, a escapeovane u JSON ili XML tijelu.</string>
     <string name="dejavu_custom_action_sent">Poslano: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Neuspjelo: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Neuspjelo: nema odgovora (%1$s)</string>
@@ -345,4 +345,15 @@
     <string name="dejavu_open_non_web_pin_title">Otvoriti ovu adresu?</string>
     <string name="dejavu_open_non_web_pin_message">Ova zakačena kartica otvara adresu koja nije web stranica. Možda je došla s drugog uređaja na vašem računu.\n\n%1$s</string>
     <string name="dejavu_open">Otvori</string>
+    <string name="dejavu_about_config_warning_title">Otvoriti about:config?</string>
+    <string name="dejavu_about_config_warning_message">Promjena ovih postavki može oslabiti sigurnost i privatnost Dejavua ili pokvariti web stranice. Postavke kojima upravljaju Dejavuove vlastite postavke, poput zaštite od praćenja, HTTPS-Only i sigurnog DNS-a, vraćaju se na njih kada se Dejavu ponovo pokrene.</string>
+    <string name="dejavu_remote_debugging_warning_title">Uključiti daljinsko otklanjanje grešaka?</string>
+    <string name="dejavu_remote_debugging_warning_message">Dok je uključeno, računar povezan s ovim telefonom putem USB-a, s dozvoljenim USB otklanjanjem grešaka, može upravljati Dejavuom i čitati njegove podatke, poput otvorenih kartica, kolačića i sačuvanih lozinki, bez pitanja. Isključite ga kada završite.</string>
+    <string name="dejavu_turn_on">Uključi</string>
+    <string name="dejavu_settings_jit">Brzi JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Ubrzava rad web stranica. Većina napada na preglednike ide kroz njega, pa je sigurnije isključiti ga, ali neke stranice postaju sporije. Primjenjuje se nakon ponovnog pokretanja Dejavua.</string>
+    <string name="dejavu_settings_webgl_summary">3D grafika za igre, mape i neke web stranice. Isključivanje blokira napade kroz grafički drajver i otežava stranicama da prepoznaju vaš telefon, ali te stranice mogu prestati raditi.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ova verzija Dejavua nema Safe Browsing ključ, pa ne može upozoriti na opasne stranice.</string>
+    <string name="dejavu_custom_action_http_warning">Ova adresa koristi http, pa zahtjev, njegova zaglavlja i adresa stranice putuju nešifrirani. Koristite https ako ga server podržava.</string>
+    <string name="dejavu_example_notification_ntfy">Šalje stranicu kao obavještenje. Svako ko zna naziv teme može ga pročitati, pa izaberite dug, nasumičan naziv.</string>
 </resources>

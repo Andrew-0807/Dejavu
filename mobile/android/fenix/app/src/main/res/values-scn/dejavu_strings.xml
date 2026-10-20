@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Corpu</string>
     <string name="dejavu_custom_action_variables">Variàbbili</string>
     <string name="dejavu_custom_action_variables_hint">Tocca na variàbbili pi mèttila nnô campu ca stai mòdìficannu.</string>
-    <string name="dejavu_custom_action_hint">A richiesta veni mannata na vota pi ogni scheda supra â quali l\'azzioni travagghia. Sulu na risposta 2xx cunta comu successu; i rinviamenti non vènunu sicutati e cùntanu comu fallimenti. I cookie non vènunu mannati. I valuri sunnu codificati URL nnâ URL e codificati JSON nte un corpu JSON.</string>
+    <string name="dejavu_custom_action_hint">A richiesta veni mannata na vota pi ogni scheda supra â quali l\'azzioni travagghia. Sulu na risposta 2xx cunta comu successu; i rinviamenti non vènunu sicutati e cùntanu comu fallimenti. I cookie non vènunu mannati. I valuri sunnu codificati URL nnâ URL e nte un corpu di mòdulu, e scappati nte un corpu JSON o XML.</string>
     <string name="dejavu_custom_action_sent">Mannatu: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Falutu: còdici %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Falutu: nudda risposta (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Apriri st\'indirizzu?</string>
     <string name="dejavu_open_non_web_pin_message">Sta scheda fissata apri n\'indirizzu ca nun è na pàggina web. Putissi vèniri di n\'àutru dispusitivu dû to cuntu.\n\n%1$s</string>
     <string name="dejavu_open">Apri</string>
+    <string name="dejavu_about_config_warning_title">Apriri about:config?</string>
+    <string name="dejavu_about_config_warning_message">Canciari sti mpustazzioni pò ndibbulìri la sicurizza e la privatizza di Dejavu, o fari ca li siti web nun funziònanu cchiù. Li mpustazzioni ca li mpustazzioni di Dejavu stissu cuntròllanu, comu la prutizzioni contra lu tracciamentu, HTTPS-Only e lu DNS sicuru, tòrnanu a iddi quannu Dejavu s\'arriavvìa.</string>
+    <string name="dejavu_remote_debugging_warning_title">Attivari lu debug a distanza?</string>
+    <string name="dejavu_remote_debugging_warning_message">Mentri ca è attivu, un computer cullicatu a stu telèfunu pi USB, cu lu debug USB pirmittutu, pò cuntrullari Dejavu e lèggiri li so dati, comu li schedi aperti, li cookie e li password sarvati, senza addumannari. Disattivalu quannu finisci.</string>
+    <string name="dejavu_turn_on">Attiva</string>
+    <string name="dejavu_settings_jit">JavaScript vilòci (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Fa jiri cchiù vilòci li siti web. La cchiù parti di l\'attacchi contra li navicatura passa di ccà, pi chissu disattivallu è cchiù sicuru, ma quarchi situ addiventa cchiù lentu. S\'àpplica doppu ca Dejavu s\'arriavvìa.</string>
+    <string name="dejavu_settings_webgl_summary">Gràfica 3D pi jochi, mappi e quarchi situ web. Disattivalla blocca l\'attacchi pi mezzu dû driver gràficu e fa cchiù difficili ê siti arricanùsciri lu to telèfunu, ma chiddi siti ponnu nun funziunari cchiù.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Sta virsioni di Dejavu nun havi na chiavi di Safe Browsing, pi chissu nun pò avvirtiri dî siti piriculusi.</string>
+    <string name="dejavu_custom_action_http_warning">St\'indirizzu usa http, pi chissu la dumanna, li so ntistazzioni e l\'indirizzu dâ pàggina viàggianu senza cifratura. Usa https si lu server lu supporta.</string>
+    <string name="dejavu_example_notification_ntfy">Manna la pàggina comu notìfica. Cu\' è ca sapi lu nomu di l\'argumentu la pò lèggiri, pi chissu scegghi un nomu longu e a casu.</string>
 </resources>

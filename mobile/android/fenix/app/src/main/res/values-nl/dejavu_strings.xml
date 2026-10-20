@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Body</string>
     <string name="dejavu_custom_action_variables">Variabelen</string>
     <string name="dejavu_custom_action_variables_hint">Tik op een variabele om deze in te voegen in het veld dat je bewerkt.</string>
-    <string name="dejavu_custom_action_hint">Het verzoek wordt één keer verzonden voor elk tabblad waarop de actie wordt uitgevoerd. Alleen een 2xx-antwoord telt als geslaagd; omleidingen worden niet gevolgd en tellen als mislukt. Cookies worden niet verzonden. Waarden worden URL-gecodeerd in de URL en JSON-geëscaped in een JSON-body.</string>
+    <string name="dejavu_custom_action_hint">Het verzoek wordt één keer verzonden voor elk tabblad waarop de actie wordt uitgevoerd. Alleen een 2xx-antwoord telt als geslaagd; omleidingen worden niet gevolgd en tellen als mislukt. Cookies worden niet verzonden. Waarden worden URL-gecodeerd in de URL en in een formulier-body, en geëscaped in een JSON- of XML-body.</string>
     <string name="dejavu_custom_action_sent">Verzonden: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Mislukt: code %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Mislukt: geen antwoord (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Dit adres openen?</string>
     <string name="dejavu_open_non_web_pin_message">Dit vastgezette tabblad opent een adres dat geen webpagina is. Het kan afkomstig zijn van een ander apparaat in uw account.\n\n%1$s</string>
     <string name="dejavu_open">Openen</string>
+    <string name="dejavu_about_config_warning_title">about:config openen?</string>
+    <string name="dejavu_about_config_warning_message">Het wijzigen van deze instellingen kan de beveiliging en privacy van Dejavu verzwakken of websites laten haperen. Instellingen die door de eigen instellingen van Dejavu worden beheerd, zoals bescherming tegen volgen, HTTPS-Only en beveiligde DNS, gaan daarnaar terug wanneer Dejavu opnieuw start.</string>
+    <string name="dejavu_remote_debugging_warning_title">Foutopsporing op afstand inschakelen?</string>
+    <string name="dejavu_remote_debugging_warning_message">Zolang het is ingeschakeld, kan een computer die via USB met deze telefoon is verbonden en USB-foutopsporing mag gebruiken, Dejavu bedienen en de gegevens ervan lezen, zoals open tabbladen, cookies en opgeslagen wachtwoorden, zonder te vragen. Schakel het uit wanneer u klaar bent.</string>
+    <string name="dejavu_turn_on">Inschakelen</string>
+    <string name="dejavu_settings_jit">Snelle JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Laat websites sneller werken. De meeste aanvallen op browsers lopen hierlangs, dus uitschakelen is veiliger, maar sommige websites worden trager. Werkt na een herstart van Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D-graphics voor games, kaarten en sommige websites. Uitschakelen blokkeert aanvallen via het grafische stuurprogramma en maakt het voor websites moeilijker uw telefoon te herkennen, maar die websites werken dan mogelijk niet meer.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Deze versie van Dejavu heeft geen Safe Browsing-sleutel, dus kan niet waarschuwen voor gevaarlijke websites.</string>
+    <string name="dejavu_custom_action_http_warning">Dit adres gebruikt http, dus het verzoek, de headers en het adres van de pagina gaan onversleuteld over. Gebruik https als de server het ondersteunt.</string>
+    <string name="dejavu_example_notification_ntfy">Stuur de pagina als melding. Iedereen die de naam van het onderwerp kent, kan deze lezen, dus kies een lange, willekeurige naam.</string>
 </resources>

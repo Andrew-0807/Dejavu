@@ -146,7 +146,7 @@
     <string name="dejavu_custom_action_body">Turinys</string>
     <string name="dejavu_custom_action_variables">Kintamieji</string>
     <string name="dejavu_custom_action_variables_hint">Palieskite kintamąjį, kad įterptumėte jį į redaguojamą lauką.</string>
-    <string name="dejavu_custom_action_hint">Užklausa siunčiama po vieną kartą kiekvienai kortelei, kuriai vykdomas veiksmas. Sėkme laikomas tik 2xx atsakymas; nukreipimai nesekami ir laikomi nesėkme. Slapukai nesiunčiami. Reikšmės URL koduojamos adrese, o JSON turinyje – koduojamos JSON formatu.</string>
+    <string name="dejavu_custom_action_hint">Užklausa siunčiama po vieną kartą kiekvienai kortelei, kuriai vykdomas veiksmas. Sėkme laikomas tik 2xx atsakymas; nukreipimai nesekami ir laikomi nesėkme. Slapukai nesiunčiami. Reikšmės URL koduojamos adrese ir formos turinyje, o JSON arba XML turinyje – ekranuojamos.</string>
     <string name="dejavu_custom_action_sent">Išsiųsta: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Nepavyko: kodas %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Nepavyko: nėra atsakymo (%1$s)</string>
@@ -352,4 +352,15 @@
     <string name="dejavu_open_non_web_pin_title">Atverti šį adresą?</string>
     <string name="dejavu_open_non_web_pin_message">Ši prisegta kortelė atveria adresą, kuris nėra tinklalapis. Jis galėjo ateiti iš kito jūsų paskyros įrenginio.\n\n%1$s</string>
     <string name="dejavu_open">Atverti</string>
+    <string name="dejavu_about_config_warning_title">Atverti about:config?</string>
+    <string name="dejavu_about_config_warning_message">Pakeitus šias nuostatas gali susilpnėti Dejavu saugumas ir privatumas arba sugesti svetainės. Nuostatos, kurias valdo pačios Dejavu nuostatos, pvz., apsauga nuo sekimo, HTTPS-Only ir saugusis DNS, iš naujo paleidus Dejavu grįžta prie jų.</string>
+    <string name="dejavu_remote_debugging_warning_title">Įjungti nuotolinį derinimą?</string>
+    <string name="dejavu_remote_debugging_warning_message">Kol jis įjungtas, kompiuteris, prijungtas prie šio telefono per USB ir turintis leidimą USB derinimui, gali neklausdamas valdyti Dejavu ir skaityti jo duomenis, pvz., atvertas korteles, slapukus ir įrašytus slaptažodžius. Baigę jį išjunkite.</string>
+    <string name="dejavu_turn_on">Įjungti</string>
+    <string name="dejavu_settings_jit">Spartus JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Pagreitina svetainių veikimą. Dauguma atakų prieš naršykles vyksta per jį, todėl jį išjungti saugiau, bet kai kurios svetainės sulėtėja. Įsigalioja iš naujo paleidus Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D grafika žaidimams, žemėlapiams ir kai kurioms svetainėms. Ją išjungus blokuojamos atakos per grafikos tvarkyklę ir svetainėms sunkiau atpažinti jūsų telefoną, tačiau tos svetainės gali nustoti veikti.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Šioje Dejavu laidoje nėra Safe Browsing rakto, todėl ji negali įspėti apie pavojingas svetaines.</string>
+    <string name="dejavu_custom_action_http_warning">Šis adresas naudoja http, todėl užklausa, jos antraštės ir puslapio adresas keliauja nešifruoti. Naudokite https, jei serveris jį palaiko.</string>
+    <string name="dejavu_example_notification_ntfy">Siųsti puslapį kaip pranešimą. Bet kas, žinantis temos pavadinimą, gali jį perskaityti, todėl pasirinkite ilgą, atsitiktinį pavadinimą.</string>
 </resources>

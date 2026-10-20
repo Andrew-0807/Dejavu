@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Gorputza</string>
     <string name="dejavu_custom_action_variables">Aldagaiak</string>
     <string name="dejavu_custom_action_variables_hint">Sakatu aldagai bat editatzen ari zaren eremuan txertatzeko.</string>
-    <string name="dejavu_custom_action_hint">Eskaera behin bidaltzen da ekintza exekutatzen den fitxa bakoitzeko. 2xx erantzunak bakarrik hartzen dira arrakastatzat; birbideratzeak ez dira jarraitzen eta hutsegitetzat hartzen dira. Cookierik ez da bidaltzen. Balioak URL gisa kodetzen dira URLan, eta JSON gisa ihes-kodetzen dira JSON gorputzean.</string>
+    <string name="dejavu_custom_action_hint">Eskaera behin bidaltzen da ekintza exekutatzen den fitxa bakoitzeko. 2xx erantzunak bakarrik hartzen dira arrakastatzat; birbideratzeak ez dira jarraitzen eta hutsegitetzat hartzen dira. Cookierik ez da bidaltzen. Balioak URL gisa kodetzen dira URLan eta formulario-gorputz batean, eta ihes-kodetzen dira JSON edo XML gorputz batean.</string>
     <string name="dejavu_custom_action_sent">Bidalita: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Huts egin du: %1$d kodea (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Huts egin du: erantzunik ez (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Helbide hau ireki?</string>
     <string name="dejavu_open_non_web_pin_message">Finkatutako fitxa honek web orria ez den helbide bat irekitzen du. Zure kontuko beste gailu batetik etorri ahal izan da.\n\n%1$s</string>
     <string name="dejavu_open">Ireki</string>
+    <string name="dejavu_about_config_warning_title">about:config ireki?</string>
+    <string name="dejavu_about_config_warning_message">Ezarpen hauek aldatzeak Dejavuren segurtasuna eta pribatutasuna ahul ditzake, edo webguneak hautsi. Dejavuren ezarpenek kontrolatzen dituzten ezarpenak, hala nola jarraipenaren aurkako babesa, HTTPS-Only eta DNS segurua, haietara itzultzen dira Dejavu berrabiaraztean.</string>
+    <string name="dejavu_remote_debugging_warning_title">Urruneko arazketa aktibatu?</string>
+    <string name="dejavu_remote_debugging_warning_message">Aktibatuta dagoen bitartean, telefono honi USB bidez konektatutako ordenagailu batek, USB arazketa baimenduta badu, Dejavu kontrolatu eta haren datuak irakur ditzake, hala nola fitxa irekiak, cookieak eta gordetako pasahitzak, galdetu gabe. Desaktibatu amaitzen duzunean.</string>
+    <string name="dejavu_turn_on">Aktibatu</string>
+    <string name="dejavu_settings_jit">JavaScript azkarra (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Webguneak azkarrago ibiltzen ditu. Nabigatzaileen aurkako eraso gehienak handik pasatzen dira, beraz desaktibatzea seguruagoa da, baina webgune batzuk motelago ibiltzen dira. Dejavu berrabiarazi ondoren aplikatzen da.</string>
+    <string name="dejavu_settings_webgl_summary">3D grafikoak jokoetarako, mapetarako eta webgune batzuetarako. Desaktibatzeak kontrolatzaile grafikoaren bidezko erasoak blokeatzen ditu eta webguneei zure telefonoa ezagutzea zailtzen die, baina webgune horiek funtzionatzeari utz diezaiokete.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavuren konpilazio honek ez du Safe Browsing gakorik, beraz ezin du webgune arriskutsuei buruz ohartarazi.</string>
+    <string name="dejavu_custom_action_http_warning">Helbide honek http erabiltzen du, beraz eskaera, haren goiburuak eta orriaren helbidea zifratu gabe bidaiatzen dute. Erabili https zerbitzariak onartzen badu.</string>
+    <string name="dejavu_example_notification_ntfy">Bidali orria jakinarazpen gisa. Gaiaren izena dakien edonork irakur dezake, beraz aukeratu izen luze eta ausazko bat.</string>
 </resources>

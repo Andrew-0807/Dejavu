@@ -1289,10 +1289,11 @@ class Settings(
             default = false,
         )
 
+    // Dejavu: HTTPS-Only is on by default in all tabs, so pages that cannot load over https ask before using http.
     var shouldUseHttpsOnly by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_https_only),
-            default = false,
+            default = true,
         )
 
     var shouldUseHttpsOnlyInAllTabs by
@@ -3469,6 +3470,20 @@ class Settings(
     var safeBrowsingEnabled by
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_dejavu_safe_browsing),
+            default = true,
+        )
+
+    /** Dejavu: whether the JavaScript JIT compilers run. Off is safer and slower. */
+    var jitEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_jit),
+            default = true,
+        )
+
+    /** Dejavu: whether pages can draw 3D graphics with WebGL. */
+    var webGlEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_webgl),
             default = true,
         )
 }

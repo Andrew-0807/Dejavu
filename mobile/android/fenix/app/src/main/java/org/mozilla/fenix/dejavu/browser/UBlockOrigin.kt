@@ -16,6 +16,7 @@ import mozilla.components.browser.state.state.extension.WebExtensionPromptReques
 import mozilla.components.concept.engine.webextension.InstallationMethod
 import mozilla.components.concept.engine.webextension.PermissionPromptResponse
 import mozilla.components.concept.engine.webextension.WebExtension
+import mozilla.components.concept.engine.webextension.WebExtensionInstallException
 import mozilla.components.lib.state.Middleware
 import mozilla.components.lib.state.Store
 import org.mozilla.fenix.dejavu.features.wasUpdated
@@ -25,11 +26,14 @@ import org.mozilla.fenix.ext.components
  * uBlock Origin, the ad and tracker blocker, which a fresh install of Dejavu adds from addons.mozilla.org in the
  * background, allowed in private tabs too and without the add-on dialogs. When it cannot be downloaded, the next start
  * tries again. An update of Dejavu does not add it, and once it was added Dejavu never adds it again, also after the
- * user removed it.
+ * user removed it. Only the install started here goes without dialogs: the add-on must come from [URL], which only the
+ * real uBlock Origin can, also when add-on signatures are not checked.
  */
 object UBlockOrigin {
     const val ID = "uBlock0@raymondhill.net"
-    private const val URL = "https://addons.mozilla.org/android/downloads/latest/uBlock0@raymondhill.net/latest.xpi"
+
+    @VisibleForTesting
+    internal const val URL = "https://addons.mozilla.org/android/downloads/latest/uBlock0@raymondhill.net/latest.xpi"
 
     // Kept with Dejavu's other once-only defaults.
     private const val PREFS_NAME = "kaizen_settings"
@@ -46,12 +50,31 @@ object UBlockOrigin {
     @VisibleForTesting
     internal var quietUntil = 0L
 
+    /** Whether the install started here may still fail with a download error that names no add-on. */
+    @Volatile
+    @VisibleForTesting
+    internal var failureUnclaimed = false
+
+    /** Whether [extension] is the one the install started here downloads, so its prompts need no dialog. */
+    internal fun isOwnInstall(extension: WebExtension?, now: Long = SystemClock.elapsedRealtime()): Boolean =
+        now < quietUntil && extension != null && extension.id == ID && extension.getMetadata()?.downloadUrl == URL
+
     /**
-     * Whether a prompt about [extensionId] belongs to the install started here, so needs no dialog. A failed download
-     * has no extension yet, so `null` counts as this one while it installs.
+     * Whether a failed install is the one started here, so needs no dialog. A download that fails names no add-on, so
+     * one such network failure counts as this install's.
      */
-    internal fun isQuiet(extensionId: String?, now: Long = SystemClock.elapsedRealtime()): Boolean =
-        (extensionId == null || extensionId == ID) && now < quietUntil
+    internal fun claimsFailure(
+        extension: WebExtension?,
+        exception: WebExtensionInstallException,
+        now: Long = SystemClock.elapsedRealtime(),
+    ): Boolean {
+        if (extension != null) return isOwnInstall(extension, now)
+        if (now >= quietUntil || !failureUnclaimed || exception !is WebExtensionInstallException.NetworkFailure) {
+            return false
+        }
+        failureUnclaimed = false
+        return true
+    }
 
     /** Adds uBlock Origin when this install is due to get it and the add-ons the engine has, [installed], lack it. */
     fun addIfDue(context: Context, installed: List<WebExtension>) {
@@ -68,12 +91,14 @@ object UBlockOrigin {
 
     private fun install(context: Context, prefs: SharedPreferences) {
         quietUntil = SystemClock.elapsedRealtime() + QUIET_INSTALL_MS
+        failureUnclaimed = true
         val ended = { quietUntil = SystemClock.elapsedRealtime() + QUIET_AFTER_MS }
         context.components.addonManager.installAddon(
             url = URL,
             installationMethod = InstallationMethod.MANAGER,
             onSuccess = {
                 prefs.edit { putString(KEY_STATE, DONE) }
+                failureUnclaimed = false
                 ended()
             },
             onError = { ended() },
@@ -83,8 +108,8 @@ object UBlockOrigin {
 
 /**
  * Answers the prompts of the uBlock Origin install that [UBlockOrigin] starts, so no dialog shows: its permissions are
- * granted, in private tabs too, and the dialogs after it was added or could not be added are left out. Other prompts
- * pass on.
+ * granted, in private tabs too, and the dialogs after it was added or could not be added are left out. Other prompts,
+ * those of other installs of uBlock Origin included, pass on.
  */
 internal class UBlockOriginPromptMiddleware(
     private val now: () -> Long = SystemClock::elapsedRealtime,
@@ -95,13 +120,16 @@ internal class UBlockOriginPromptMiddleware(
         action: BrowserAction,
     ) {
         val request = (action as? WebExtensionAction.UpdatePromptRequestWebExtensionAction)?.promptRequest
-        val extensionId = when (request) {
-            is WebExtensionPromptRequest.AfterInstallation.Permissions.Required -> request.extension.id
-            is WebExtensionPromptRequest.AfterInstallation.PostInstallation -> request.extension.id
-            is WebExtensionPromptRequest.BeforeInstallation.InstallationFailed -> request.extension?.id
-            else -> return next(action)
+        val own = when (request) {
+            is WebExtensionPromptRequest.AfterInstallation.Permissions.Required ->
+                UBlockOrigin.isOwnInstall(request.extension, now())
+            is WebExtensionPromptRequest.AfterInstallation.PostInstallation ->
+                UBlockOrigin.isOwnInstall(request.extension, now())
+            is WebExtensionPromptRequest.BeforeInstallation.InstallationFailed ->
+                UBlockOrigin.claimsFailure(request.extension, request.exception, now())
+            else -> false
         }
-        if (!UBlockOrigin.isQuiet(extensionId, now())) return next(action)
+        if (!own) return next(action)
         if (request is WebExtensionPromptRequest.AfterInstallation.Permissions.Required) {
             request.onConfirm(PermissionPromptResponse(isPermissionsGranted = true, isPrivateModeGranted = true))
         }

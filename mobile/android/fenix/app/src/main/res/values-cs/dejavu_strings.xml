@@ -146,7 +146,7 @@
     <string name="dejavu_custom_action_body">Tělo</string>
     <string name="dejavu_custom_action_variables">Proměnné</string>
     <string name="dejavu_custom_action_variables_hint">Klepnutím na proměnnou ji vložíte do pole, které upravujete.</string>
-    <string name="dejavu_custom_action_hint">Požadavek se odešle jednou za každý panel, na který se akce použije. Za úspěch se počítá jen odpověď 2xx; přesměrování se nenásledují a počítají se jako neúspěch. Cookies se neodesílají. Hodnoty jsou v URL kódované jako URL a v těle JSON escapované jako JSON.</string>
+    <string name="dejavu_custom_action_hint">Požadavek se odešle jednou za každý panel, na který se akce použije. Za úspěch se počítá jen odpověď 2xx; přesměrování se nenásledují a počítají se jako neúspěch. Cookies se neodesílají. Hodnoty jsou v URL a v těle formuláře kódované jako URL a v těle JSON nebo XML escapované.</string>
     <string name="dejavu_custom_action_sent">Odesláno: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Selhalo: kód %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Selhalo: bez odpovědi (%1$s)</string>
@@ -352,4 +352,15 @@
     <string name="dejavu_open_non_web_pin_title">Otevřít tuto adresu?</string>
     <string name="dejavu_open_non_web_pin_message">Tento připnutý panel otevírá adresu, která není webovou stránkou. Mohla přijít z jiného zařízení ve vašem účtu.\n\n%1$s</string>
     <string name="dejavu_open">Otevřít</string>
+    <string name="dejavu_about_config_warning_title">Otevřít about:config?</string>
+    <string name="dejavu_about_config_warning_message">Změna těchto nastavení může oslabit zabezpečení a soukromí v Dejavu nebo rozbít webové stránky. Nastavení, která ovládají vlastní nastavení Dejavu, například ochrana proti sledování, HTTPS-Only a zabezpečené DNS, se k nim po restartu Dejavu vrátí.</string>
+    <string name="dejavu_remote_debugging_warning_title">Zapnout vzdálené ladění?</string>
+    <string name="dejavu_remote_debugging_warning_message">Dokud je zapnuté, může počítač připojený k tomuto telefonu přes USB s povoleným laděním přes USB ovládat Dejavu a číst jeho data, například otevřené panely, cookies a uložená hesla, aniž by se ptal. Až skončíte, vypněte ho.</string>
+    <string name="dejavu_turn_on">Zapnout</string>
+    <string name="dejavu_settings_jit">Rychlý JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Zrychluje webové stránky. Většina útoků na prohlížeče vede přes něj, takže jeho vypnutí je bezpečnější, ale některé stránky se zpomalí. Projeví se po restartu Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D grafika pro hry, mapy a některé webové stránky. Její vypnutí blokuje útoky přes grafický ovladač a ztěžuje stránkám rozpoznat váš telefon, ale tyto stránky mohou přestat fungovat.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Toto sestavení Dejavu nemá klíč Safe Browsing, takže nemůže varovat před nebezpečnými stránkami.</string>
+    <string name="dejavu_custom_action_http_warning">Tato adresa používá http, takže požadavek, jeho hlavičky i adresa stránky putují nešifrovaně. Pokud to server podporuje, použijte https.</string>
+    <string name="dejavu_example_notification_ntfy">Odešle stránku jako oznámení. Kdokoli, kdo zná název tématu, si ho může přečíst, proto zvolte dlouhý náhodný název.</string>
 </resources>

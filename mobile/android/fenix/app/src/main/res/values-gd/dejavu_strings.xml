@@ -146,7 +146,7 @@
     <string name="dejavu_custom_action_body">Corp</string>
     <string name="dejavu_custom_action_variables">Caochladairean</string>
     <string name="dejavu_custom_action_variables_hint">Brùth air caochladair gus a chur a-steach san raon a tha thu a\' deasachadh.</string>
-    <string name="dejavu_custom_action_hint">Thèid an t-iarrtas a chur aon turas airson gach taba air an ruith an gnìomh. Cha chunntar ach freagairt 2xx mar shoirbheachadh; cha lean iad ath-stiùiridhean \'s cunntar iad mar fhàilligidhean. Cha tèid briosgaidean a chur. Thèid luachan a chòdachadh mar URL san URL \'s mar JSON ann an corp JSON.</string>
+    <string name="dejavu_custom_action_hint">Thèid an t-iarrtas a chur aon turas airson gach taba air an ruith an gnìomh. Cha chunntar ach freagairt 2xx mar shoirbheachadh; cha lean iad ath-stiùiridhean \'s cunntar iad mar fhàilligidhean. Cha tèid briosgaidean a chur. Thèid luachan a chòdachadh mar URL san URL agus ann am bodhaig foirm, agus an teicheadh ann am bodhaig JSON no XML.</string>
     <string name="dejavu_custom_action_sent">Air a chur: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Dh\'fhàillig e: còd %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Dh\'fhàillig e: gun fhreagairt (%1$s)</string>
@@ -352,4 +352,15 @@
     <string name="dejavu_open_non_web_pin_title">A bheil thu airson an seòladh seo fhosgladh?</string>
     <string name="dejavu_open_non_web_pin_message">Fosglaidh an taba prìnichte seo seòladh nach e duilleag-lìn a th\' ann. Dh\'fhaoidte gun tàinig e o uidheam eile air a\' chunntas agad.\n\n%1$s</string>
     <string name="dejavu_open">Fosgail</string>
+    <string name="dejavu_about_config_warning_title">A bheil thu airson about:config fhosgladh?</string>
+    <string name="dejavu_about_config_warning_message">Ma dh\'atharraicheas tu na roghainnean seo, dh\'fhaoidte gun lagaich e tèarainteachd is prìobhaideachd Dejavu, no gum bris e làraichean-lìn. Tillidh na roghainnean a tha fo smachd roghainnean Dejavu fhèin, mar dìon o thracadh, HTTPS-Only agus DNS tèarainte, thuca nuair a thòisicheas Dejavu às ùr.</string>
+    <string name="dejavu_remote_debugging_warning_title">A bheil thu airson dì-bhugachadh cèin a chur air?</string>
+    <string name="dejavu_remote_debugging_warning_message">Fhad \'s a bhios e air, faodaidh coimpiutair a tha ceangailte ris an fhòn seo slighe USB, le dì-bhugachadh USB ceadaichte, smachd a chumail air Dejavu agus an dàta aige a leughadh, mar tabaichean fosgailte, briosgaidhean is faclan-faire air an sàbhaladh, gun fhaighneachd. Cuir dheth e nuair a bhios tu deiseil.</string>
+    <string name="dejavu_turn_on">Cuir air</string>
+    <string name="dejavu_settings_jit">JavaScript luath (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Bheir e air làraichean-lìn ruith nas luaithe. Thèid a\' mhòr-chuid de dh\'ionnsaighean air brabhsairean troimhe, mar sin tha e nas sàbhailte a chur dheth, ach fàsaidh cuid a làraichean nas slaodaiche. Bidh buaidh aige às dèidh do Dejavu tòiseachadh às ùr.</string>
+    <string name="dejavu_settings_webgl_summary">Grafaigean 3D airson geamannan, mapaichean is cuid a làraichean-lìn. Ma chuireas tu dheth e, cuiridh e bacadh air ionnsaighean tron draibhear grafaigeachd agus bidh e nas dorra do làraichean am fòn agad aithneachadh, ach dh\'fhaoidte gun sguir na làraichean sin a dh\'obair.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Chan eil iuchair Safe Browsing aig a\' chruthachadh seo de Dejavu, mar sin chan urrainn dha rabhadh a thoirt mu làraichean cunnartach.</string>
+    <string name="dejavu_custom_action_http_warning">Cleachdaidh an seòladh seo http, mar sin siubhlaidh an t-iarrtas, na bannan-cinn aige agus seòladh na duilleige gun chrioptachadh. Cleachd https ma chuireas am frithealaiche taic ris.</string>
+    <string name="dejavu_example_notification_ntfy">Cuir an duilleag mar bhrath. Faodaidh duine sam bith aig a bheil fios air ainm a\' chuspair a leughadh, mar sin tagh ainm fada air thuaiream.</string>
 </resources>

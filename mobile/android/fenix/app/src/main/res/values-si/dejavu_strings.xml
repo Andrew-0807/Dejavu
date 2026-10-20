@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">අන්තර්ගතය</string>
     <string name="dejavu_custom_action_variables">විචල්‍ය</string>
     <string name="dejavu_custom_action_variables_hint">ඔබ සංස්කරණය කරන ක්ෂේත්‍රයට ඇතුළත් කිරීමට විචල්‍යයක් තට්ටු කරන්න.</string>
-    <string name="dejavu_custom_action_hint">ක්‍රියාව ක්‍රියාත්මක වන සෑම පටිත්තක් සඳහාම ඉල්ලීම එක් වරක් යවනු ලැබේ. 2xx පිළිතුරක් පමණක් සාර්ථක ලෙස ගණන් ගැනේ; යළි-යොමු කිරීම් අනුගමනය නොකෙරෙන අතර අසාර්ථක ලෙස ගණන් ගැනේ. කුකීස් නොයවනු ලැබේ. අගයන් URL එකේ URL-කේතනය කර ඇති අතර, JSON අන්තර්ගතයක JSON ආකාරයෙන් එස්කේප් කර ඇත.</string>
+    <string name="dejavu_custom_action_hint">ක්‍රියාව ක්‍රියාත්මක වන සෑම පටිත්තක් සඳහාම ඉල්ලීම එක් වරක් යවනු ලැබේ. 2xx පිළිතුරක් පමණක් සාර්ථක ලෙස ගණන් ගැනේ; යළි-යොමු කිරීම් අනුගමනය නොකෙරෙන අතර අසාර්ථක ලෙස ගණන් ගැනේ. කුකීස් නොයවනු ලැබේ. අගයන් URL එකේ සහ පෝරම අන්තර්ගතයේ URL-කේතනය කර ඇති අතර, JSON හෝ XML අන්තර්ගතයක එස්කේප් කර ඇත.</string>
     <string name="dejavu_custom_action_sent">යවන ලදී: %1$s</string>
     <string name="dejavu_custom_action_failed_code">අසාර්ථකයි: කේතය %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">අසාර්ථකයි: පිළිතුරක් නැත (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">මෙම ලිපිනය විවෘත කරන්නද?</string>
     <string name="dejavu_open_non_web_pin_message">මෙම අමුණන ලද පටිත්ත වියමන පිටුවක් නොවන ලිපිනයක් විවෘත කරයි. එය ඔබගේ ගිණුමේ වෙනත් උපාංගයකින් පැමිණියා විය හැකිය.\n\n%1$s</string>
     <string name="dejavu_open">විවෘත කරන්න</string>
+    <string name="dejavu_about_config_warning_title">about:config විවෘත කරන්නද?</string>
+    <string name="dejavu_about_config_warning_message">මෙම සැකසුම් වෙනස් කිරීමෙන් Dejavu හි ආරක්ෂාව සහ පෞද්ගලිකත්වය දුර්වල විය හැකිය, නැතහොත් වෙබ් අඩවි බිඳ වැටිය හැකිය. ලුහුබැඳීමේ ආරක්ෂාව, HTTPS-Only සහ ආරක්ෂිත DNS වැනි Dejavu හි ම සැකසුම් පාලනය කරන සැකසුම්, Dejavu යළි ආරම්භ වූ විට ඒවාට ආපසු යයි.</string>
+    <string name="dejavu_remote_debugging_warning_title">දුරස්ථ නිදොස්කරණය සක්‍රිය කරන්නද?</string>
+    <string name="dejavu_remote_debugging_warning_message">එය සක්‍රියව ඇති තාක්, USB හරහා මෙම දුරකථනයට සම්බන්ධ වූ සහ USB නිදොස්කරණයට අවසර ඇති පරිගණකයකට නොඅසා Dejavu පාලනය කිරීමට සහ විවෘත පටිති, කුකී සහ සුරැකි මුරපද වැනි එහි දත්ත කියවීමට හැකිය. ඔබ අවසන් වූ විට එය අක්‍රිය කරන්න.</string>
+    <string name="dejavu_turn_on">සක්‍රිය කරන්න</string>
+    <string name="dejavu_settings_jit">වේගවත් JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">වෙබ් අඩවි වේගයෙන් ක්‍රියාත්මක කරයි. බ්‍රව්සර් වෙත එල්ල වන බොහෝ ප්‍රහාර එය හරහා යයි, එබැවින් එය අක්‍රිය කිරීම වඩා ආරක්ෂිතය, නමුත් සමහර අඩවි මන්දගාමී වේ. Dejavu යළි ආරම්භ වූ පසු බලපායි.</string>
+    <string name="dejavu_settings_webgl_summary">ක්‍රීඩා, සිතියම් සහ සමහර වෙබ් අඩවි සඳහා 3D ග්‍රැෆික්ස්. එය අක්‍රිය කිරීමෙන් ග්‍රැෆික්ස් ධාවකය හරහා වන ප්‍රහාර අවහිර වන අතර අඩවිවලට ඔබේ දුරකථනය හඳුනා ගැනීම අපහසු වේ, නමුත් එම අඩවි ක්‍රියා නොකිරීමට ඉඩ ඇත.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu හි මෙම නිකුතුවේ Safe Browsing යතුරක් නැත, එබැවින් අනතුරුදායක අඩවි ගැන අනතුරු ඇඟවිය නොහැක.</string>
+    <string name="dejavu_custom_action_http_warning">මෙම ලිපිනය http භාවිත කරයි, එබැවින් ඉල්ලීම, එහි ශීර්ෂ සහ පිටුවේ ලිපිනය සංකේතනයකින් තොරව යයි. සේවාදායකය සහාය දක්වයි නම් https භාවිත කරන්න.</string>
+    <string name="dejavu_example_notification_ntfy">පිටුව දැනුම්දීමක් ලෙස යවන්න. මාතෘකාවේ නම දන්නා ඕනෑම අයෙකුට එය කියවිය හැකිය, එබැවින් දිගු, අහඹු නමක් තෝරන්න.</string>
 </resources>

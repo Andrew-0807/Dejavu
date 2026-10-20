@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Tana</string>
     <string name="dejavu_custom_action_variables">O\'zgaruvchilar</string>
     <string name="dejavu_custom_action_variables_hint">Tahrirlayotgan maydonga qo\'shish uchun o\'zgaruvchiga bosing.</string>
-    <string name="dejavu_custom_action_hint">So\'rov amal ishlaydigan har bir varaq uchun bir marta yuboriladi. Faqat 2xx javobi muvaffaqiyatli hisoblanadi; yo\'naltirishlarga amal qilinmaydi va muvaffaqiyatsiz hisoblanadi. Kukilar yuborilmaydi. Qiymatlar URL-da URL kodlashtiriladi, JSON tanasida esa JSON qoidasi bilan yoziladi.</string>
+    <string name="dejavu_custom_action_hint">So\'rov amal ishlaydigan har bir varaq uchun bir marta yuboriladi. Faqat 2xx javobi muvaffaqiyatli hisoblanadi; yo\'naltirishlarga amal qilinmaydi va muvaffaqiyatsiz hisoblanadi. Kukilar yuborilmaydi. Qiymatlar URL-da va shakl tanasida URL kodlashtiriladi, JSON yoki XML tanasida esa maxsus belgilar bilan yoziladi.</string>
     <string name="dejavu_custom_action_sent">Yuborildi: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Muvaffaqiyatsiz: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Muvaffaqiyatsiz: javob yo\'q (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Bu manzil ochilsinmi?</string>
     <string name="dejavu_open_non_web_pin_message">Bu qadalgan varaq veb-sahifa boʻlmagan manzilni ochadi. U hisobingizdagi boshqa qurilmadan kelgan boʻlishi mumkin.\n\n%1$s</string>
     <string name="dejavu_open">Ochish</string>
+    <string name="dejavu_about_config_warning_title">about:config ochilsinmi?</string>
+    <string name="dejavu_about_config_warning_message">Bu sozlamalarni oʻzgartirish Dejavu xavfsizligi va maxfiyligini zaiflashtirishi yoki saytlarni buzishi mumkin. Dejavuning oʻz sozlamalari boshqaradigan sozlamalar, masalan, kuzatuvdan himoya, HTTPS-Only va xavfsiz DNS, Dejavu qayta ishga tushganda ularga qaytadi.</string>
+    <string name="dejavu_remote_debugging_warning_title">Masofaviy nosozliklarni tuzatish yoqilsinmi?</string>
+    <string name="dejavu_remote_debugging_warning_message">U yoqiq ekan, bu telefonga USB orqali ulangan va USB nosozliklarni tuzatishga ruxsat berilgan kompyuter soʻramasdan Dejavuni boshqarishi va uning maʼlumotlarini, masalan, ochiq varaqlar, cookie fayllari va saqlangan parollarni oʻqishi mumkin. Ishingiz tugagach, uni oʻchiring.</string>
+    <string name="dejavu_turn_on">Yoqish</string>
+    <string name="dejavu_settings_jit">Tez JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Saytlarni tezroq ishlatadi. Brauzerlarga hujumlarning aksariyati u orqali oʻtadi, shuning uchun uni oʻchirish xavfsizroq, lekin baʼzi saytlar sekinlashadi. Dejavu qayta ishga tushgandan keyin kuchga kiradi.</string>
+    <string name="dejavu_settings_webgl_summary">Oʻyinlar, xaritalar va baʼzi saytlar uchun 3D grafika. Uni oʻchirish grafik drayver orqali hujumlarni toʻsadi va saytlarga telefoningizni tanishni qiyinlashtiradi, lekin bu saytlar ishlamay qolishi mumkin.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavuning bu yigʻmasida Safe Browsing kaliti yoʻq, shuning uchun u xavfli saytlar haqida ogohlantira olmaydi.</string>
+    <string name="dejavu_custom_action_http_warning">Bu manzil http ishlatadi, shuning uchun soʻrov, uning sarlavhalari va sahifa manzili shifrlanmasdan yuboriladi. Server qoʻllasa, https ishlating.</string>
+    <string name="dejavu_example_notification_ntfy">Sahifani bildirishnoma sifatida yuboring. Mavzu nomini bilgan har kim uni oʻqiy oladi, shuning uchun uzun, tasodifiy nom tanlang.</string>
 </resources>

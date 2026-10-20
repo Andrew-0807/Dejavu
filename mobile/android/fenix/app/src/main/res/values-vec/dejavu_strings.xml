@@ -145,7 +145,7 @@
     <string name="dejavu_custom_action_body">Corpo</string>
     <string name="dejavu_custom_action_variables">Variàbiłi</string>
     <string name="dejavu_custom_action_variables_hint">Toca na variàbiłe par métarla intel canpo che ti sta modifegando.</string>
-    <string name="dejavu_custom_action_hint">Ła richiesta ła vien mandà na volta par onji scheda so ła qual l’asion ła core. Soło na risposta 2xx ła conta come sucesso; łe rediression no łe vien seguìe e łe conta come fracasso. I cookie no i vien mandà. I vałori i vien codifegà URL inte l’URL e scapà JSON inte un corpo JSON.</string>
+    <string name="dejavu_custom_action_hint">Ła richiesta ła vien mandà na volta par onji scheda so ła qual l’asion ła core. Soło na risposta 2xx ła conta come sucesso; łe rediression no łe vien seguìe e łe conta come fracasso. I cookie no i vien mandà. I vałori i vien codifegà URL inte l\'URL e inte un corpo de modulo, e scapà inte un corpo JSON o XML.</string>
     <string name="dejavu_custom_action_sent">Mandà: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Fracasà: còdaze %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Fracasà: nesuna risposta (%1$s)</string>
@@ -345,4 +345,15 @@
     <string name="dejavu_open_non_web_pin_title">Verzar sto indirizo?</string>
     <string name="dejavu_open_non_web_pin_message">Sta scheda fisada ła verze un indirizo che no xe na pàxena web. El podaria vegner da n\'altro dispositivo del to conto.\n\n%1$s</string>
     <string name="dejavu_open">Verzi</string>
+    <string name="dejavu_about_config_warning_title">Verzar about:config?</string>
+    <string name="dejavu_about_config_warning_message">Canbiar ste inpostasion el pol indebolir ła seguresa e ła riservatesa de Dejavu, o far che i siti web no i funsiona pì. Łe inpostasion controłàe da łe inpostasion de Dejavu stesso, come ła proteson contro el tracamento, HTTPS-Only e el DNS seguro, łe torna a quełe co Dejavu el se reavia.</string>
+    <string name="dejavu_remote_debugging_warning_title">Ativar el debug da distansa?</string>
+    <string name="dejavu_remote_debugging_warning_message">Fin che el xe ativo, un computer coeghà a sto tełefono via USB, co el debug USB parmeso, el pol controłar Dejavu e lèzar i so dati, come łe schede verte, i cookie e łe password salvàe, sensa domandar. Dexativeło co te ghè finìo.</string>
+    <string name="dejavu_turn_on">Ativa</string>
+    <string name="dejavu_settings_jit">JavaScript ràpido (JIT)</string>
+    <string name="dejavu_settings_jit_summary">El fa ndar pì ràpidi i siti web. Ła pì parte dei atachi contro i navegadori ła pasa de qua, cusì dexativarlo xe pì seguro, ma calche sito el deventa pì lento. El vałe dopo che Dejavu el se ga reavià.</string>
+    <string name="dejavu_settings_webgl_summary">Gràfega 3D par i zughi, łe mape e calche sito web. Dexativarla ła bloca i atachi tramite el driver gràfego e ła rende pì difìçiłe par i siti riconósar el to tełefono, ma queł siti i podarìa no funsionar pì.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Sta version de Dejavu no ła ga na ciave de Safe Browsing, cusì no ła pol avertir dei siti pericołozi.</string>
+    <string name="dejavu_custom_action_http_warning">Sto indirizo el dòpara http, cusì ła domanda, łe so intestasion e l\'indirizo de ła pàxena i viaxa sensa çifradura. Dòpara https se el server el lo suporta.</string>
+    <string name="dejavu_example_notification_ntfy">Manda ła pàxena come notìfega. Chiunque che sa el nome de l\'argomento el pol lèzarla, cusì sielzi un nome longo e a caxo.</string>
 </resources>

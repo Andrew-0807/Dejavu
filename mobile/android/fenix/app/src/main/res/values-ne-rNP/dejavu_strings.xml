@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">बडी</string>
     <string name="dejavu_custom_action_variables">भेरिएबलहरु</string>
     <string name="dejavu_custom_action_variables_hint">तपाईंले सम्पादन गरिरहेको फिल्डमा हाल्न भेरिएबलमा ट्याप गर्नुहोस्।</string>
-    <string name="dejavu_custom_action_hint">कार्य चलेको हरेक ट्याबका लागि अनुरोध एक पटक पठाइन्छ। 2xx जवाफलाई मात्र सफल मानिन्छ; रिडाइरेक्टहरु पछ्याइँदैन र तिनलाई असफल मानिन्छ। कुकीहरु पठाइँदैनन्। मानहरु URL मा URL इन्कोड गरिएर र JSON बडीमा JSON इस्केप गरिएर हुन्छन्।</string>
+    <string name="dejavu_custom_action_hint">कार्य चलेको हरेक ट्याबका लागि अनुरोध एक पटक पठाइन्छ। 2xx जवाफलाई मात्र सफल मानिन्छ; रिडाइरेक्टहरु पछ्याइँदैन र तिनलाई असफल मानिन्छ। कुकीहरु पठाइँदैनन्। मानहरु URL मा र फारम बडीमा URL इन्कोड गरिएर, र JSON वा XML बडीमा इस्केप गरिएर हुन्छन्।</string>
     <string name="dejavu_custom_action_sent">पठाइयो: %1$s</string>
     <string name="dejavu_custom_action_failed_code">असफल: कोड %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">असफल: कुनै जवाफ छैन (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">यो ठेगाना खोल्ने?</string>
     <string name="dejavu_open_non_web_pin_message">यो पिन गरिएको ट्याबले वेब पृष्ठ नभएको ठेगाना खोल्छ। यो तपाईंको खाताको अर्को यन्त्रबाट आएको हुन सक्छ।\n\n%1$s</string>
     <string name="dejavu_open">खोल्नुहोस्</string>
+    <string name="dejavu_about_config_warning_title">about:config खोल्ने?</string>
+    <string name="dejavu_about_config_warning_message">यी सेटिङहरू परिवर्तन गर्दा Dejavu को सुरक्षा र गोपनीयता कमजोर हुन सक्छ, वा वेबसाइटहरू बिग्रन सक्छन्। Dejavu का आफ्नै सेटिङहरूले नियन्त्रण गर्ने सेटिङहरू, जस्तै ट्र्याकिङ सुरक्षा, HTTPS-Only र सुरक्षित DNS, Dejavu पुनः सुरु हुँदा तिनैमा फर्किन्छन्।</string>
+    <string name="dejavu_remote_debugging_warning_title">रिमोट डिबगिङ सक्रिय गर्ने?</string>
+    <string name="dejavu_remote_debugging_warning_message">यो सक्रिय रहँदा, USB मार्फत यो फोनमा जोडिएको र USB डिबगिङको अनुमति भएको कम्प्युटरले नसोधी Dejavu नियन्त्रण गर्न र यसको डेटा, जस्तै खुला ट्याबहरू, कुकीहरू र सुरक्षित पासवर्डहरू, पढ्न सक्छ। काम सकिएपछि यसलाई बन्द गर्नुहोस्।</string>
+    <string name="dejavu_turn_on">सक्रिय गर्नुहोस्</string>
+    <string name="dejavu_settings_jit">छिटो JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">वेबसाइटहरू छिटो चलाउँछ। ब्राउजरमाथिका धेरैजसो आक्रमणहरू यसबाटै हुन्छन्, त्यसैले यसलाई बन्द गर्नु बढी सुरक्षित हुन्छ, तर केही साइटहरू ढिलो हुन्छन्। Dejavu पुनः सुरु भएपछि लागू हुन्छ।</string>
+    <string name="dejavu_settings_webgl_summary">खेल, नक्सा र केही वेबसाइटहरूका लागि 3D ग्राफिक्स। यसलाई बन्द गर्दा ग्राफिक्स ड्राइभरमार्फत हुने आक्रमणहरू रोकिन्छन् र साइटहरूलाई तपाईंको फोन चिन्न गाह्रो हुन्छ, तर ती साइटहरूले काम गर्न छोड्न सक्छन्।</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu को यो बिल्डमा Safe Browsing कुञ्जी छैन, त्यसैले यसले खतरनाक साइटहरूबारे चेतावनी दिन सक्दैन।</string>
+    <string name="dejavu_custom_action_http_warning">यो ठेगानाले http प्रयोग गर्छ, त्यसैले अनुरोध, यसका हेडरहरू र पृष्ठको ठेगाना इन्क्रिप्सनबिना जान्छन्। सर्भरले समर्थन गर्छ भने https प्रयोग गर्नुहोस्।</string>
+    <string name="dejavu_example_notification_ntfy">पृष्ठलाई सूचनाको रूपमा पठाउनुहोस्। विषयको नाम थाहा भएको जो कोहीले यसलाई पढ्न सक्छ, त्यसैले लामो, अनियमित नाम छान्नुहोस्।</string>
 </resources>

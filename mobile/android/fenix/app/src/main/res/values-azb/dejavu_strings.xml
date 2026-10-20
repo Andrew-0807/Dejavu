@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">گؤوده</string>
     <string name="dejavu_custom_action_variables">دَییشنلر</string>
     <string name="dejavu_custom_action_variables_hint">ویرایش اتدیگینیز ساحه‌یه داخل ائتمک اوچون بیر دَییشنه توخونون.</string>
-    <string name="dejavu_custom_action_hint">سورغو، عملیاتین ایشله‌دیگی هر تاغ اوچون بیر دفعه گؤندریلیر. یالنیز 2xx جاوابی اوغورلو ساییلیر؛ یؤنلندیرمه‌لر ایزلنمیر و اوغورسوز ساییلیر. کوکی‌لر گؤندریلمیر. دَیرلر URL-ده URL کودلاشدیریلیر، JSON گؤوده‌سینده ایسه JSON قایداسیندا یازیلیر.</string>
+    <string name="dejavu_custom_action_hint">سورغو، عملیاتین ایشله‌دیگی هر تاغ اوچون بیر دفعه گؤندریلیر. یالنیز 2xx جاوابی اوغورلو ساییلیر؛ یؤنلندیرمه‌لر ایزلنمیر و اوغورسوز ساییلیر. کوکی‌لر گؤندریلمیر. دَیرلر URL-ده و فورم گؤوده‌سینده URL کودلاشدیریلیر، JSON یا XML گؤوده‌سینده ایسه قاچیش ایشاره‌لری ایله یازیلیر.</string>
     <string name="dejavu_custom_action_sent">گؤندریلدی: %1$s</string>
     <string name="dejavu_custom_action_failed_code">اوغورسوز اولدو: کود %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">اوغورسوز اولدو: جاواب یوخدور (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">بو آدرس آچیلسین؟</string>
     <string name="dejavu_open_non_web_pin_message">بو سانجیلمیش تاغ وب صفحه اولمایان بیر آدرس آچیر. حسابینیزداکی باشقا بیر جهازدان گلمیش اولا بیلر.\n\n%1$s</string>
     <string name="dejavu_open">آچ</string>
+    <string name="dejavu_about_config_warning_title">about:config آچیلسین؟</string>
+    <string name="dejavu_about_config_warning_message">بو آیارلاری دَییشمک Dejavu-نون گوونلیگینی و گیزلیلیگینی ضعیفلده‌بیلر یا سایتلاری پوزا بیلر. Dejavu-نون اؤز آیارلارینین ایداره ائتدیگی آیارلار، مثلاً ایزلمه قوروماسی، HTTPS-Only و گوونلی DNS، Dejavu یئنیدن باشلاندیقدا اونلارا قاییدیر.</string>
+    <string name="dejavu_remote_debugging_warning_title">اوزاقدان دوزلتمه آچیلسین؟</string>
+    <string name="dejavu_remote_debugging_warning_message">آچیق اولدوقجا، بو تلفونا USB ایله باغلانمیش و USB دوزلتمه‌سینه ایجازه وئریلمیش بیر کامپیوتر Dejavu-نو ایداره ائده و اونون بیلگیلرینی، مثلاً آچیق تاغلاری، کوکیلری و ساخلانمیش رمزلری، سوروشمادان اوخویا بیلر. ایشینیز قورتاراندا اونو سؤندورون.</string>
+    <string name="dejavu_turn_on">آچ</string>
+    <string name="dejavu_settings_jit">تئز JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">سایتلارین داها تئز ایشله‌مه‌سینی ساغلار. براوزرلره هوجوملارین چوخو اونون اوستوندن کئچیر، اونا گؤره اونو سؤندورمک داها گوونلیدیر، آنجاق بعضی سایتلار یاواشلار. Dejavu یئنیدن باشلاندیقدان سونرا ایشه دوشر.</string>
+    <string name="dejavu_settings_webgl_summary">اوینلار، خریطه‌لر و بعضی سایتلار اوچون 3D گرافیک. اونو سؤندورمک گرافیک سوروجوسو اوستوندن هوجوملاری بلوکلار و سایتلارین تلفونونوزو تانیماسینی چتینلشدیرر، آنجاق او سایتلار ایشله‌مه‌یه بیلر.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu-نون بو یاپیسیندا Safe Browsing آچاری یوخدور، اونا گؤره تهلوکه‌لی سایتلار حاقیندا خبردارلیق ائده بیلمز.</string>
+    <string name="dejavu_custom_action_http_warning">بو آدرس http ایشلدیر، اونا گؤره ایستک، اونون باشلیقلاری و صفحه‌نین آدرسی شیفره‌لنمه‌دن گئدیر. سرور دستکلییرسه https ایشلدین.</string>
+    <string name="dejavu_example_notification_ntfy">صفحه‌نی بیلدیریش کیمی گؤندرین. مؤوضونون آدینی بیلن هر کس اونو اوخویا بیلر، اونا گؤره اوزون و تصادفی بیر آد سئچین.</string>
 </resources>

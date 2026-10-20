@@ -147,7 +147,7 @@
     <string name="dejavu_custom_action_body">Korf</string>
     <string name="dejavu_custom_action_variables">Argemmennoù</string>
     <string name="dejavu_custom_action_variables_hint">Pouezit war un argemmenn evit he enlakaat er vaezienn a gemmit.</string>
-    <string name="dejavu_custom_action_hint">Kaset e vez ar goulenn ur wech evit pep ivinell m’en em ra an ober warni. N’eus nemet ur respont 2xx a gont evel un taol mat; ar c’hasoù en-dro ne heulier ket hag a gont evel c’hwitadennoù. Ne vez ket kaset ar cookies. Ar gwerzhioù a vez enkodet URL en URL hag enkodet JSON en ur c’horf JSON.</string>
+    <string name="dejavu_custom_action_hint">Kaset e vez ar goulenn ur wech evit pep ivinell m’en em ra an ober warni. N’eus nemet ur respont 2xx a gont evel un taol mat; ar c’hasoù en-dro ne heulier ket hag a gont evel c’hwitadennoù. Ne vez ket kaset ar cookies. Ar gwerzhioù a vez enkodet URL en URL hag e korf ur furmskrid, hag achapet e korf JSON pe XML.</string>
     <string name="dejavu_custom_action_sent">Kaset: %1$s</string>
     <string name="dejavu_custom_action_failed_code">C’hwitet: boneg %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">C’hwitet: respont ebet (%1$s)</string>
@@ -359,4 +359,15 @@
     <string name="dejavu_open_non_web_pin_title">Digeriñ ar chomlec\'h-mañ?</string>
     <string name="dejavu_open_non_web_pin_message">An ivinell spilhennet-mañ a zigor ur chomlec\'h n\'eo ket ur bajenn web. Marteze eo deuet eus un trevnad all war ho kont.\n\n%1$s</string>
     <string name="dejavu_open">Digeriñ</string>
+    <string name="dejavu_about_config_warning_title">Digeriñ about:config?</string>
+    <string name="dejavu_about_config_warning_message">Kemmañ an arventennoù-mañ a c\'hall gwanaat surentez ha buhez prevez Dejavu, pe terriñ lec\'hiennoù. An arventennoù a vez meret gant arventennoù Dejavu e-unan, evel ar gward a-enep d\'an heuliañ, HTTPS-Only hag an DNS sur, a zistro outo pa adloc\'h Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">Gweredekaat an diveugañ a-bell?</string>
+    <string name="dejavu_remote_debugging_warning_message">Keit ha ma vez gweredekaet, un urzhiataer kennasket ouzh ar pellgomz-mañ dre USB, gant an diveugañ USB aotreet, a c\'hall merañ Dejavu ha lenn e roadennoù, evel an ivinelloù digor, an toupinoù hag ar gerioù-tremen enrollet, hep goulenn. Diweredekait anezhañ pa vo echu ganeoc\'h.</string>
+    <string name="dejavu_turn_on">Gweredekaat</string>
+    <string name="dejavu_settings_jit">JavaScript buan (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Lakaat a ra al lec\'hiennoù da vont buanoc\'h. Al lodenn vrasañ eus an argadennoù war ar merdeerioù a dremen drezañ, setu eo suroc\'h e ziweredekaat, met lec\'hiennoù zo a ya gorrekoc\'h. Efedus goude adloc\'hañ Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Kevregadoù 3D evit ar c\'hoarioù, ar c\'hartennoù ha lec\'hiennoù zo. O diweredekaat a stank an argadennoù dre ar sturier grafikel hag a ra d\'al lec\'hiennoù anaout diaesoc\'h ho pellgomz, met al lec\'hiennoù-se a c\'hallfe paouez da vont en-dro.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">N\'eus alc\'hwez Safe Browsing ebet gant ar savadur-mañ eus Dejavu, setu ne c\'hall ket kemenn diwar-benn al lec\'hiennoù dañjerus.</string>
+    <string name="dejavu_custom_action_http_warning">Ar chomlec\'h-mañ a implij http, setu e veaj ar reked, e dalbennoù ha chomlec\'h ar bajenn hep enrinegañ. Implijit https ma skor ar servijer anezhañ.</string>
+    <string name="dejavu_example_notification_ntfy">Kas ar bajenn evel ur rebuziadur. Kement den a anavez anv ar sujed a c\'hall lenn anezhañ, dibabit eta un anv hir ha dargouezhek.</string>
 </resources>

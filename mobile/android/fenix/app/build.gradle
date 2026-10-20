@@ -80,6 +80,12 @@ android {
 
         buildConfigField "String[]", "SUPPORTED_LOCALE_ARRAY", getSupportedLocales()
         buildConfigField "boolean", "IS_BENCHMARK_BUILD", "false"
+
+        // Dejavu: whether Gecko was built with a Google Safe Browsing key. Without one, like in a build from source
+        // without --with-google-safebrowsing-api-keyfile, Safe Browsing downloads no lists and warns about nothing.
+        def safeBrowsingKey = gradle.mozconfig.substs.MOZ_GOOGLE_SAFEBROWSING_API_KEY
+        def hasSafeBrowsingKey = safeBrowsingKey && safeBrowsingKey != "no-google-safebrowsing-api-key"
+        buildConfigField "boolean", "HAS_SAFE_BROWSING_KEY", hasSafeBrowsingKey ? "true" : "false"
     }
 
     def releaseTemplate = {

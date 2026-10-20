@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Sisu</string>
     <string name="dejavu_custom_action_variables">Muutujad</string>
     <string name="dejavu_custom_action_variables_hint">Puuduta muutujat, et lisada see muudetavasse väljale.</string>
-    <string name="dejavu_custom_action_hint">Päring saadetakse üks kord iga kaardi kohta, mille peal tegevus käivitatakse. Ainult 2xx vastus loetakse õnnestumiseks; ümbersuunamisi ei järgita ja need loetakse nurjumiseks. Küpsiseid ei saadeta. Väärtused kodeeritakse URL-is URL-kodeeringus ja JSON-sisus JSON-kodeeringus.</string>
+    <string name="dejavu_custom_action_hint">Päring saadetakse üks kord iga kaardi kohta, mille peal tegevus käivitatakse. Ainult 2xx vastus loetakse õnnestumiseks; ümbersuunamisi ei järgita ja need loetakse nurjumiseks. Küpsiseid ei saadeta. Väärtused kodeeritakse URL-is ja vormi sisus URL-kodeeringus ning JSON- või XML-sisus paojadadega.</string>
     <string name="dejavu_custom_action_sent">Saadetud: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Nurjus: kood %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Nurjus: vastus puudub (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Kas avada see aadress?</string>
     <string name="dejavu_open_non_web_pin_message">See kinnitatud kaart avab aadressi, mis pole veebileht. See võis tulla mõnest teisest sinu konto seadmest.\n\n%1$s</string>
     <string name="dejavu_open">Ava</string>
+    <string name="dejavu_about_config_warning_title">Kas avada about:config?</string>
+    <string name="dejavu_about_config_warning_message">Nende sätete muutmine võib nõrgendada Dejavu turvalisust ja privaatsust või rikkuda veebisaite. Sätted, mida juhivad Dejavu enda sätted, nagu jälitamisvastane kaitse, HTTPS-Only ja turvaline DNS, taastuvad Dejavu taaskäivitamisel.</string>
+    <string name="dejavu_remote_debugging_warning_title">Kas lubada kaugsilumine?</string>
+    <string name="dejavu_remote_debugging_warning_message">Kuni see on sees, saab selle telefoniga USB kaudu ühendatud arvuti, millel on USB-silumine lubatud, Dejavut juhtida ja lugeda selle andmeid, nagu avatud kaardid, küpsised ja salvestatud paroolid, ilma küsimata. Lülita see välja, kui oled lõpetanud.</string>
+    <string name="dejavu_turn_on">Lülita sisse</string>
+    <string name="dejavu_settings_jit">Kiire JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Paneb veebisaidid kiiremini tööle. Enamik brauserite vastaseid rünnakuid käib selle kaudu, seega on selle väljalülitamine turvalisem, kuid mõned saidid muutuvad aeglasemaks. Rakendub pärast Dejavu taaskäivitamist.</string>
+    <string name="dejavu_settings_webgl_summary">3D-graafika mängude, kaartide ja mõne veebisaidi jaoks. Selle väljalülitamine blokeerib rünnakud graafikadraiveri kaudu ja raskendab saitidel sinu telefoni äratundmist, kuid need saidid võivad lakata töötamast.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Sellel Dejavu versioonil pole Safe Browsingu võtit, seega ei saa see ohtlike saitide eest hoiatada.</string>
+    <string name="dejavu_custom_action_http_warning">See aadress kasutab http-d, seega liiguvad päring, selle päised ja lehe aadress krüptimata. Kasuta https-i, kui server seda toetab.</string>
+    <string name="dejavu_example_notification_ntfy">Saada leht teavitusena. Igaüks, kes teab teema nime, saab seda lugeda, seega vali pikk ja juhuslik nimi.</string>
 </resources>

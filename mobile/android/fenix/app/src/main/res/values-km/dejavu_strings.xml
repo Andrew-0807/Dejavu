@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">ខ្លឹមសារ</string>
     <string name="dejavu_custom_action_variables">អថេរ</string>
     <string name="dejavu_custom_action_variables_hint">ចុចលើអថេរមួយដើម្បីបញ្ចូលវាទៅក្នុងប្រអប់ដែលអ្នកកំពុងកែសម្រួល។</string>
-    <string name="dejavu_custom_action_hint">សំណើនេះត្រូវបានផ្ញើម្ដងសម្រាប់ផ្ទាំងនីមួយៗដែលសកម្មភាពដំណើរការលើ។ មានតែចម្លើយ 2xx ប៉ុណ្ណោះដែលរាប់ជាជោគជ័យ; ការបញ្ជូនបន្តមិនត្រូវបានដាក់តាម ហើយរាប់ជាបរាជ័យ។ ខូគីមិនត្រូវបានផ្ញើទេ។ តម្លៃត្រូវបានអ៊ិនកូដជា URL នៅក្នុង URL និងគេចពី JSON នៅក្នុងខ្លឹមសារ JSON។</string>
+    <string name="dejavu_custom_action_hint">សំណើនេះត្រូវបានផ្ញើម្ដងសម្រាប់ផ្ទាំងនីមួយៗដែលសកម្មភាពដំណើរការលើ។ មានតែចម្លើយ 2xx ប៉ុណ្ណោះដែលរាប់ជាជោគជ័យ; ការបញ្ជូនបន្តមិនត្រូវបានដាក់តាម ហើយរាប់ជាបរាជ័យ។ ខូគីមិនត្រូវបានផ្ញើទេ។ តម្លៃត្រូវបានអ៊ិនកូដជា URL នៅក្នុង URL និងក្នុងខ្លឹមសារទម្រង់ ហើយគេចពីតួអក្សរពិសេសនៅក្នុងខ្លឹមសារ JSON ឬ XML។</string>
     <string name="dejavu_custom_action_sent">បានផ្ញើ៖ %1$s</string>
     <string name="dejavu_custom_action_failed_code">បរាជ័យ៖ កូដ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">បរាជ័យ៖ គ្មានចម្លើយ (%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">បើកអាសយដ្ឋាននេះ?</string>
     <string name="dejavu_open_non_web_pin_message">ផ្ទាំងដែលបានខ្ទាស់នេះបើកអាសយដ្ឋានដែលមិនមែនជាទំព័របណ្ដាញ។ វាប្រហែលជាមកពីឧបករណ៍ផ្សេងទៀតនៅក្នុងគណនីរបស់អ្នក។\n\n%1$s</string>
     <string name="dejavu_open">បើក</string>
+    <string name="dejavu_about_config_warning_title">បើក about:config ឬ?</string>
+    <string name="dejavu_about_config_warning_message">ការផ្លាស់ប្ដូរការកំណត់ទាំងនេះអាចធ្វើឱ្យសុវត្ថិភាព និងឯកជនភាពរបស់ Dejavu ចុះខ្សោយ ឬធ្វើឱ្យគេហទំព័រខូច។ ការកំណត់ដែលការកំណត់ផ្ទាល់របស់ Dejavu គ្រប់គ្រង ដូចជាការការពារការតាមដាន HTTPS-Only និង DNS សុវត្ថិភាព នឹងត្រឡប់ទៅតម្លៃទាំងនោះវិញ នៅពេល Dejavu ចាប់ផ្ដើមឡើងវិញ។</string>
+    <string name="dejavu_remote_debugging_warning_title">បើកការបំបាត់កំហុសពីចម្ងាយឬ?</string>
+    <string name="dejavu_remote_debugging_warning_message">ពេលវាបើក កុំព្យូទ័រដែលភ្ជាប់ទៅទូរសព្ទនេះតាម USB ហើយត្រូវបានអនុញ្ញាតការបំបាត់កំហុស USB អាចគ្រប់គ្រង Dejavu និងអានទិន្នន័យរបស់វា ដូចជាផ្ទាំងដែលបើក ខូគី និងពាក្យសម្ងាត់ដែលបានរក្សាទុក ដោយមិនសួរ។ បិទវានៅពេលអ្នករួចរាល់។</string>
+    <string name="dejavu_turn_on">បើក</string>
+    <string name="dejavu_settings_jit">JavaScript លឿន (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ធ្វើឱ្យគេហទំព័រដំណើរការលឿនជាងមុន។ ការវាយប្រហារភាគច្រើនលើកម្មវិធីរុករកឆ្លងកាត់វា ដូច្នេះការបិទវាមានសុវត្ថិភាពជាង ប៉ុន្តែគេហទំព័រខ្លះយឺតជាងមុន។ មានប្រសិទ្ធភាពបន្ទាប់ពី Dejavu ចាប់ផ្ដើមឡើងវិញ។</string>
+    <string name="dejavu_settings_webgl_summary">ក្រាហ្វិក 3D សម្រាប់ហ្គេម ផែនទី និងគេហទំព័រមួយចំនួន។ ការបិទវារារាំងការវាយប្រហារតាមកម្មវិធីបញ្ជាក្រាហ្វិក ហើយធ្វើឱ្យគេហទំព័រពិបាកស្គាល់ទូរសព្ទរបស់អ្នក ប៉ុន្តែគេហទំព័រទាំងនោះអាចឈប់ដំណើរការ។</string>
+    <string name="dejavu_settings_safe_browsing_no_key">កំណែ Dejavu នេះគ្មានសោ Safe Browsing ទេ ដូច្នេះវាមិនអាចព្រមានអំពីគេហទំព័រគ្រោះថ្នាក់បានទេ។</string>
+    <string name="dejavu_custom_action_http_warning">អាសយដ្ឋាននេះប្រើ http ដូច្នេះសំណើ ក្បាលរបស់វា និងអាសយដ្ឋានទំព័រធ្វើដំណើរដោយមិនបានអ៊ិនគ្រីប។ ប្រើ https ប្រសិនបើម៉ាស៊ីនមេគាំទ្រ។</string>
+    <string name="dejavu_example_notification_ntfy">ផ្ញើទំព័រជាការជូនដំណឹង។ អ្នកណាដែលដឹងឈ្មោះប្រធានបទអាចអានវាបាន ដូច្នេះជ្រើសរើសឈ្មោះវែង និងចៃដន្យ។</string>
 </resources>

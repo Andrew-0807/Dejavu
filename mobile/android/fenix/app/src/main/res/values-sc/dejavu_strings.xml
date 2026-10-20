@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Corpus</string>
     <string name="dejavu_custom_action_variables">Variabiles</string>
     <string name="dejavu_custom_action_variables_hint">Pretziona una variàbile pro l\'inserire in su campu chi ses modifichende.</string>
-    <string name="dejavu_custom_action_hint">Sa dimanda si imbiat una borta pro dònnia ischeda in ue s\'atzione funtzionat. Isceti una risposta 2xx contat comente sutzessu; is torraduras no si sighint e contant comente faddinas. Is cookies no si imbiant. Is valores sunt codificados URL in s\'URL e codificados JSON in unu corpus JSON.</string>
+    <string name="dejavu_custom_action_hint">Sa dimanda si imbiat una borta pro dònnia ischeda in ue s\'atzione funtzionat. Isceti una risposta 2xx contat comente sutzessu; is torraduras no si sighint e contant comente faddinas. Is cookies no si imbiant. Is valores sunt codificados URL in s\'URL e in unu corpus de mòdulu, e iscapados in unu corpus JSON o XML.</string>
     <string name="dejavu_custom_action_sent">Imbiadu: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Faddìu: còdighe %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Faddìu: nissuna risposta (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Boles abèrrere custu indiritzu?</string>
     <string name="dejavu_open_non_web_pin_message">Custa ischeda fissada aberit un\'indiritzu chi no est una pàgina web. Diat pòdere bènnere dae un\'àteru dispositivu de su contu tuo.\n\n%1$s</string>
     <string name="dejavu_open">Aberi</string>
+    <string name="dejavu_about_config_warning_title">Boles abèrrere about:config?</string>
+    <string name="dejavu_about_config_warning_message">Mudare custas impostatziones podet indebilire sa seguresa e sa riservadesa de Dejavu, o fàghere chi is sitos web non funtzionent. Is impostatziones chi controllant is impostatziones de Dejavu etotu, comente sa protetzione contra a su tràmitu, HTTPS-Only e su DNS seguru, torrant a issas cando Dejavu si torrat a aviare.</string>
+    <string name="dejavu_remote_debugging_warning_title">Boles ativare su debug a distàntzia?</string>
+    <string name="dejavu_remote_debugging_warning_message">Fintzas a cando est ativu, un\'elaboradore connètidu a custu telèfonu cun USB, cun su debug USB permìtidu, podet controllare Dejavu e lèghere is datos suos, comente is ischedas abertas, is cookies e is craes sarvadas, sena preguntare. Disativa·ddu cando as acabbadu.</string>
+    <string name="dejavu_turn_on">Ativa</string>
+    <string name="dejavu_settings_jit">JavaScript lestru (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Faghet andare prus lestros is sitos web. Sa parte manna de is atacos contra a is navigadores passat pro custu, duncas disativare·ddu est prus seguru, ma calicunu situ diventat prus lentu. Bàlet a pustis de torrare a aviare Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Gràfica 3D pro giogos, mapas e calicunu situ web. Disativare·dda blocat is atacos tràmite su driver gràficu e faghet prus difìtzile a is sitos a reconnòschere su telèfonu tuo, ma cussos sitos diant pòdere non funtzionare prus.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Custa versione de Dejavu no tenet una crae de Safe Browsing, duncas non podet avisare de is sitos perigulosos.</string>
+    <string name="dejavu_custom_action_http_warning">Custu indiritzu impreat http, duncas sa rechesta, is intestatziones suas e s\'indiritzu de sa pàgina biàgiant sena tzifradura. Imprea https si su serbidore ddu suportat.</string>
+    <string name="dejavu_example_notification_ntfy">Imbia sa pàgina comente notìfica. Chie si siat connoschet su nòmine de s\'argumentu dda podet lèghere, duncas sèbera unu nòmine longu e casuale.</string>
 </resources>

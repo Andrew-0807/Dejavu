@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Dene</string>
     <string name="dejavu_custom_action_variables">Ózgeriwshiler</string>
     <string name="dejavu_custom_action_variables_hint">Óńlep atırǵan maydanǵa qosıw ushın ózgeriwshige tiyiń.</string>
-    <string name="dejavu_custom_action_hint">Sorawı áreket orınlanatuǵın hár bir bet ushın bir márte jiberiledi. Tek 2xx juwabı ǵana sátli esaplanadı; qayta jiberiwler orınlanbaydı hám sátsiz esaplanadı. Kukiler jiberilmeydi. Mánisler URL-de URL kodlastırıladı, al JSON denesinde JSON qaǵıydası menen jazıladı.</string>
+    <string name="dejavu_custom_action_hint">Sorawı áreket orınlanatuǵın hár bir bet ushın bir márte jiberiledi. Tek 2xx juwabı ǵana sátli esaplanadı; qayta jiberiwler orınlanbaydı hám sátsiz esaplanadı. Kukiler jiberilmeydi. Mánisler URL-de hám forma denesinde URL kodlastırıladı, al JSON yamasa XML denesinde arnawlı belgiler menen jazıladı.</string>
     <string name="dejavu_custom_action_sent">Jiberildi: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Sátsiz boldı: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Sátsiz boldı: juwap joq (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Bul mánzil ashılsın ba?</string>
     <string name="dejavu_open_non_web_pin_message">Bul bekitilgen bet veb-bet bolmaǵan mánzildi ashadı. Ol esabıńızdaǵı basqa qurılmadan kelgen bolıwı múmkin.\n\n%1$s</string>
     <string name="dejavu_open">Ashıw</string>
+    <string name="dejavu_about_config_warning_title">about:config ashılsın ba?</string>
+    <string name="dejavu_about_config_warning_message">Bul sazlawlardı ózgertiw Dejavu-dıń qáwipsizligi menen jekeligin álsiretiwi yamasa saytlardı buzıwı múmkin. Dejavu-dıń óz sazlawları basqaratuǵın sazlawlar, mısalı baqlawdan qorǵaw, HTTPS-Only hám qáwipsiz DNS, Dejavu qaytadan iske túskende solarǵa qaytadı.</string>
+    <string name="dejavu_remote_debugging_warning_title">Alıstan dúzetiw qosılsın ba?</string>
+    <string name="dejavu_remote_debugging_warning_message">Ol qosılǵan waqıtta, bul telefonǵa USB arqalı jalǵanǵan hám USB dúzetiwge ruqsat etilgen kompyuter sorawsız Dejavu-dı basqarıp, onıń maǵlıwmatların, mısalı ashıq betlerdi, cookie-lerdi hám saqlanǵan parollerdi oqıy aladı. Jumısıńız pitkende onı óshiriń.</string>
+    <string name="dejavu_turn_on">Qosıw</string>
+    <string name="dejavu_settings_jit">Tez JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Saytlardı tezirek isletedi. Brauzerlerge hújimlerdiń kópshiligi ol arqalı ótedi, sonlıqtan onı óshiriw qáwipsizirek, biraq ayırım saytlar ásteleydi. Dejavu qaytadan iske túskennen keyin isleydi.</string>
+    <string name="dejavu_settings_webgl_summary">Oyınlar, kartalar hám ayırım saytlar ushın 3D grafika. Onı óshiriw grafika drayveri arqalı hújimlerdi toqtatadı hám saytlarǵa telefonıńızdı tanıwdı qıyınlastıradı, biraq ol saytlar islemey qalıwı múmkin.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu-dıń bul jıynaǵında Safe Browsing gilti joq, sonlıqtan qáwipli saytlar haqqında eskerte almaydı.</string>
+    <string name="dejavu_custom_action_http_warning">Bul mánzil http paydalanadı, sonlıqtan soraw, onıń taqırıpları hám bettiń mánzili shifrlanbay jiberiledi. Server qollasa, https paydalanıń.</string>
+    <string name="dejavu_example_notification_ntfy">Betti xabarlama retinde jiberiń. Temanıń atın biletuǵın hár kim onı oqıy aladı, sonlıqtan uzın, tosınnan alınǵan at saylań.</string>
 </resources>

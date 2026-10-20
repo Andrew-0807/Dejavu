@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">உள்ளடக்கம்</string>
     <string name="dejavu_custom_action_variables">மாறிகள்</string>
     <string name="dejavu_custom_action_variables_hint">நீங்கள் திருத்தும் புலத்தில் செருக ஒரு மாறியைத் தட்டவும்.</string>
-    <string name="dejavu_custom_action_hint">செயல் இயங்கும் ஒவ்வொரு கீற்றுக்கும் கோரிக்கை ஒருமுறை அனுப்பப்படும். 2xx பதில் மட்டுமே வெற்றியாகக் கருதப்படும்; திசைமாற்றங்கள் பின்பற்றப்படாமல் தோல்வியாகக் கருதப்படும். குக்கீகள் அனுப்பப்படாது. மதிப்புகள் URL-இல் URL என்கோடு செய்யப்பட்டும், JSON உள்ளடக்கத்தில் JSON எஸ்கேப் செய்யப்பட்டும் இருக்கும்.</string>
+    <string name="dejavu_custom_action_hint">செயல் இயங்கும் ஒவ்வொரு கீற்றுக்கும் கோரிக்கை ஒருமுறை அனுப்பப்படும். 2xx பதில் மட்டுமே வெற்றியாகக் கருதப்படும்; திசைமாற்றங்கள் பின்பற்றப்படாமல் தோல்வியாகக் கருதப்படும். குக்கீகள் அனுப்பப்படாது. மதிப்புகள் URL-இலும் படிவ உள்ளடக்கத்திலும் URL என்கோடு செய்யப்பட்டும், JSON அல்லது XML உள்ளடக்கத்தில் எஸ்கேப் செய்யப்பட்டும் இருக்கும்.</string>
     <string name="dejavu_custom_action_sent">அனுப்பப்பட்டது: %1$s</string>
     <string name="dejavu_custom_action_failed_code">தோல்வி: குறியீடு %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">தோல்வி: பதில் இல்லை (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">இந்த முகவரியைத் திறக்கவா?</string>
     <string name="dejavu_open_non_web_pin_message">இந்த பொருத்தப்பட்ட கீற்று வலைப்பக்கம் அல்லாத முகவரியைத் திறக்கிறது. அது உங்கள் கணக்கின் வேறொரு சாதனத்திலிருந்து வந்திருக்கலாம்.\n\n%1$s</string>
     <string name="dejavu_open">திற</string>
+    <string name="dejavu_about_config_warning_title">about:config-ஐத் திறக்கவா?</string>
+    <string name="dejavu_about_config_warning_message">இந்த அமைப்புகளை மாற்றுவது Dejavu-வின் பாதுகாப்பையும் தனியுரிமையையும் பலவீனப்படுத்தலாம் அல்லது வலைத்தளங்களைச் சிதைக்கலாம். பின்தொடர்தல் பாதுகாப்பு, HTTPS-Only, பாதுகாப்பான DNS போன்ற Dejavu-வின் சொந்த அமைப்புகள் கட்டுப்படுத்தும் அமைப்புகள், Dejavu மீண்டும் தொடங்கும்போது அவற்றுக்கே திரும்பும்.</string>
+    <string name="dejavu_remote_debugging_warning_title">தொலைநிலை பிழைதிருத்தத்தை இயக்கவா?</string>
+    <string name="dejavu_remote_debugging_warning_message">அது இயக்கத்தில் இருக்கும்வரை, USB வழியாக இந்தத் தொலைபேசியுடன் இணைக்கப்பட்டு USB பிழைதிருத்த அனுமதி உள்ள கணினி, கேட்காமலேயே Dejavu-வைக் கட்டுப்படுத்தி, திறந்த கீற்றுகள், நினைவிகள், சேமித்த கடவுச்சொற்கள் போன்ற அதன் தரவைப் படிக்க முடியும். முடித்ததும் அதை அணைக்கவும்.</string>
+    <string name="dejavu_turn_on">இயக்கு</string>
+    <string name="dejavu_settings_jit">வேகமான JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">வலைத்தளங்களை வேகமாக இயக்குகிறது. உலாவிகள் மீதான பெரும்பாலான தாக்குதல்கள் இதன் வழியாகவே நடக்கின்றன, எனவே இதை அணைப்பது பாதுகாப்பானது, ஆனால் சில தளங்கள் மெதுவாகும். Dejavu மீண்டும் தொடங்கிய பின் செயல்படும்.</string>
+    <string name="dejavu_settings_webgl_summary">விளையாட்டுகள், வரைபடங்கள் மற்றும் சில வலைத்தளங்களுக்கான 3D வரைகலை. இதை அணைத்தால் வரைகலை இயக்கி வழியான தாக்குதல்கள் தடுக்கப்படும், தளங்கள் உங்கள் தொலைபேசியை அடையாளம் காண்பது கடினமாகும், ஆனால் அந்தத் தளங்கள் வேலை செய்வதை நிறுத்தலாம்.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu-வின் இந்தக் கட்டமைப்பில் Safe Browsing விசை இல்லை, எனவே ஆபத்தான தளங்களைப் பற்றி எச்சரிக்க முடியாது.</string>
+    <string name="dejavu_custom_action_http_warning">இந்த முகவரி http-ஐப் பயன்படுத்துகிறது, எனவே கோரிக்கை, அதன் தலைப்புகள் மற்றும் பக்கத்தின் முகவரி மறையாக்கம் இல்லாமல் செல்லும். சேவையகம் ஆதரித்தால் https-ஐப் பயன்படுத்தவும்.</string>
+    <string name="dejavu_example_notification_ntfy">பக்கத்தை அறிவிப்பாக அனுப்பவும். தலைப்பின் பெயர் தெரிந்த எவரும் அதைப் படிக்கலாம், எனவே நீளமான, சீரற்ற பெயரைத் தேர்ந்தெடுக்கவும்.</string>
 </resources>

@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Meginmál</string>
     <string name="dejavu_custom_action_variables">Breytur</string>
     <string name="dejavu_custom_action_variables_hint">Ýttu á breytu til að setja hana inn í reitinn sem þú ert að breyta.</string>
-    <string name="dejavu_custom_action_hint">Beiðnin er send einu sinni fyrir hvern flipa sem aðgerðin keyrir á. Aðeins svar með 2xx telst sem árangur; tilvísunum er ekki fylgt og þær teljast sem mistök. Vefkökur eru ekki sendar. Gildi eru vefslóðarkóðuð í vefslóðinni og JSON-afmörkuð í JSON-meginmáli.</string>
+    <string name="dejavu_custom_action_hint">Beiðnin er send einu sinni fyrir hvern flipa sem aðgerðin keyrir á. Aðeins svar með 2xx telst sem árangur; tilvísunum er ekki fylgt og þær teljast sem mistök. Vefkökur eru ekki sendar. Gildi eru vefslóðarkóðuð í vefslóðinni og í meginmáli eyðublaðs, og afmörkuð í JSON- eða XML-meginmáli.</string>
     <string name="dejavu_custom_action_sent">Sent: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Mistókst: kóði %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Mistókst: ekkert svar (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Opna þetta vistfang?</string>
     <string name="dejavu_open_non_web_pin_message">Þessi festi flipi opnar vistfang sem er ekki vefsíða. Það gæti hafa komið frá öðru tæki á aðgangnum þínum.\n\n%1$s</string>
     <string name="dejavu_open">Opna</string>
+    <string name="dejavu_about_config_warning_title">Opna about:config?</string>
+    <string name="dejavu_about_config_warning_message">Breytingar á þessum stillingum geta veikt öryggi og friðhelgi Dejavu eða brotið vefsvæði. Stillingar sem eigin stillingar Dejavu stýra, eins og rakningarvörn, HTTPS-Only og öruggt DNS, fara aftur í þær þegar Dejavu er endurræst.</string>
+    <string name="dejavu_remote_debugging_warning_title">Kveikja á fjarkembiforritun?</string>
+    <string name="dejavu_remote_debugging_warning_message">Á meðan kveikt er á henni getur tölva sem er tengd þessum síma með USB, með USB-kembiforritun leyfða, stjórnað Dejavu og lesið gögn þess, eins og opna flipa, vefkökur og vistuð lykilorð, án þess að spyrja. Slökktu á henni þegar þú ert búin(n).</string>
+    <string name="dejavu_turn_on">Kveikja</string>
+    <string name="dejavu_settings_jit">Hraðvirkt JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Lætur vefsvæði keyra hraðar. Flestar árásir á vafra fara í gegnum það, svo það er öruggara að slökkva á því, en sum vefsvæði verða hægari. Tekur gildi eftir að Dejavu er endurræst.</string>
+    <string name="dejavu_settings_webgl_summary">Þrívíddargrafík fyrir leiki, kort og sum vefsvæði. Að slökkva á henni lokar á árásir í gegnum grafíkreklann og gerir vefsvæðum erfiðara að þekkja símann þinn, en þau vefsvæði gætu hætt að virka.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Þessi útgáfa af Dejavu er ekki með Safe Browsing-lykil og getur því ekki varað við hættulegum vefsvæðum.</string>
+    <string name="dejavu_custom_action_http_warning">Þetta vistfang notar http, svo beiðnin, hausar hennar og vistfang síðunnar fara ódulrituð. Notaðu https ef þjónninn styður það.</string>
+    <string name="dejavu_example_notification_ntfy">Sendu síðuna sem tilkynningu. Hver sem þekkir heiti efnisins getur lesið hana, svo veldu langt, handahófskennt heiti.</string>
 </resources>

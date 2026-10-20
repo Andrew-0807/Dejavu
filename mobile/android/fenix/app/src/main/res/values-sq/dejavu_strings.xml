@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Lëndë</string>
     <string name="dejavu_custom_action_variables">Ndryshore</string>
     <string name="dejavu_custom_action_variables_hint">Prekni një ndryshore që ta fusni te fusha që po përpunoni.</string>
-    <string name="dejavu_custom_action_hint">Kërkesa dërgohet një herë për çdo skedë mbi të cilën kryhet veprimi. Vetëm një përgjigje 2xx llogaritet si sukses; ridrejtimet nuk ndiqen dhe llogariten si dështime. Cookie-t nuk dërgohen. Vlerat kodohen si URL në URL, dhe shpëtohen si JSON në një lëndë JSON.</string>
+    <string name="dejavu_custom_action_hint">Kërkesa dërgohet një herë për çdo skedë mbi të cilën kryhet veprimi. Vetëm një përgjigje 2xx llogaritet si sukses; ridrejtimet nuk ndiqen dhe llogariten si dështime. Cookie-t nuk dërgohen. Vlerat kodohen si URL në URL dhe në lëndën e një formulari, dhe shpëtohen në një lëndë JSON ose XML.</string>
     <string name="dejavu_custom_action_sent">U dërgua: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Dështoi: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Dështoi: pa përgjigje (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Të hapet kjo adresë?</string>
     <string name="dejavu_open_non_web_pin_message">Kjo skedë e fiksuar hap një adresë që s\'është faqe web. Mund të ketë ardhur nga një pajisje tjetër e llogarisë suaj.\n\n%1$s</string>
     <string name="dejavu_open">Hape</string>
+    <string name="dejavu_about_config_warning_title">Të hapet about:config?</string>
+    <string name="dejavu_about_config_warning_message">Ndryshimi i këtyre rregullimeve mund të dobësojë sigurinë dhe privatësinë e Dejavu-së, ose të prishë sajte. Rregullimet që kontrollohen nga vetë rregullimet e Dejavu-së, si mbrojtja nga gjurmimi, HTTPS-Only dhe DNS-ja e sigurt, kthehen te to kur Dejavu riniset.</string>
+    <string name="dejavu_remote_debugging_warning_title">Të aktivizohet diagnostikimi i largët?</string>
+    <string name="dejavu_remote_debugging_warning_message">Për sa kohë është aktiv, një kompjuter i lidhur me këtë telefon përmes USB-së, me diagnostikim USB të lejuar, mund ta kontrollojë Dejavu-në dhe t\'i lexojë të dhënat, si skedat e hapura, cookie-t dhe fjalëkalimet e ruajtura, pa pyetur. Çaktivizojeni kur të keni mbaruar.</string>
+    <string name="dejavu_turn_on">Aktivizoje</string>
+    <string name="dejavu_settings_jit">JavaScript i shpejtë (JIT)</string>
+    <string name="dejavu_settings_jit_summary">I bën sajtet të punojnë më shpejt. Shumica e sulmeve ndaj shfletuesve kalojnë përmes tij, ndaj çaktivizimi është më i sigurt, por disa sajte bëhen më të ngadalta. Hyn në fuqi pasi Dejavu riniset.</string>
+    <string name="dejavu_settings_webgl_summary">Grafikë 3D për lojëra, harta dhe disa sajte. Çaktivizimi i saj bllokon sulmet përmes përudhësit grafik dhe ua vështirëson sajteve njohjen e telefonit tuaj, por ato sajte mund të ndalin së punuari.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ky montim i Dejavu-së s\'ka kyç Safe Browsing, ndaj s\'mund të sinjalizojë sajte të rrezikshme.</string>
+    <string name="dejavu_custom_action_http_warning">Kjo adresë përdor http, ndaj kërkesa, kryet e saj dhe adresa e faqes udhëtojnë pa fshehtëzim. Përdorni https nëse shërbyesi e mbulon.</string>
+    <string name="dejavu_example_notification_ntfy">Dërgojeni faqen si njoftim. Kushdo që di emrin e temës mund ta lexojë, ndaj zgjidhni një emër të gjatë e të rastësishëm.</string>
 </resources>

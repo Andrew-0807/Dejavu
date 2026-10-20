@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Corps</string>
     <string name="dejavu_custom_action_variables">Variables</string>
     <string name="dejavu_custom_action_variables_hint">Touche une variable pour l\'insérer dans le champ que tu modifies.</string>
-    <string name="dejavu_custom_action_hint">La requête est envoyée une fois pour chaque tabbere sur laquelle l\'action agit. Seule une réponse 2xx compte comme succès ; les redirections ne sont pas suivies et comptent comme échec. Les cookies ne sont pas envoyés. Les valeurs sont encodées en URL dans l\'URL et en JSON échappé dans un corps JSON.</string>
+    <string name="dejavu_custom_action_hint">La requête est envoyée une fois pour chaque tabbere sur laquelle l\'action agit. Seule une réponse 2xx compte comme succès ; les redirections ne sont pas suivies et comptent comme échec. Les cookies ne sont pas envoyés. Les valeurs sont encodées en URL dans l\'URL et dans un corps de formulaire, et échappées dans un corps JSON ou XML.</string>
     <string name="dejavu_custom_action_sent">Envoyé : %1$s</string>
     <string name="dejavu_custom_action_failed_code">Échec : code %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Échec : pas de réponse (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Uddit ndee ñiiɓirde?</string>
     <string name="dejavu_open_non_web_pin_message">Ndee tabbere ndeenaande na uddita ñiiɓirde nde wonaa hello geese. Ina waawi iwde e kaɓirgol goɗngol e konte maa.\n\n%1$s</string>
     <string name="dejavu_open">Uddit</string>
+    <string name="dejavu_about_config_warning_title">Uddit about:config?</string>
+    <string name="dejavu_about_config_warning_message">Waylude teelte ɗee ina waawi lohdude kisal e suturo Dejavu, walla bonnde lowe geese. Teelte ɗe teelte Dejavu e hoore mum ngardii, wano reentaade rewindagol, HTTPS-Only e DNS kisnaaɗo, ina ngartoo e majje so Dejavu fuɗɗitii.</string>
+    <string name="dejavu_remote_debugging_warning_title">Hurmin ñiiɓnugol e woɗɗaare?</string>
+    <string name="dejavu_remote_debugging_warning_message">Tuma nde ɗum hurmii, ordinateer jokkondirɗo e ndee noddirgal rewrude e USB, mo ñiiɓnugol USB yamiraa, ina waawi ardaade Dejavu e tarde keɓe mum, wano tabbe udditaaɗe, kukiije e finndeeji danndaaɗi, tawa naamnaani. Ñif ɗum so a gasii.</string>
+    <string name="dejavu_turn_on">Hurmin</string>
+    <string name="dejavu_settings_jit">JavaScript yaawngo (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Ina yaawna lowe geese. Ko ɓuri heewde e yuurnde e wanngorɗe ina rewa e mayre, ɗum noon ñifde nde ɓuri kisde, kono lowe goɗɗe ina leelnoo. Ina huuɓa caggal nde Dejavu fuɗɗitii.</string>
+    <string name="dejavu_settings_webgl_summary">Natal 3D ngam fijirde, kartaaji e lowe goɗɗe. Ñifde ɗum ina haɗa yuurnde rewrude e dorowoowo natal, ina saɗtina lowe anndude noddirgal maa, kono ina waawi lowe ɗee ndartoo gollude.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ndee tafaade Dejavu alaa coktirgel Safe Browsing, ɗum noon ina waawaa reentinde e lowe bonɗe.</string>
+    <string name="dejavu_custom_action_http_warning">Ndee ñiiɓirde ina huutoroo http, ɗum noon ɗaɓɓitannde nde, ko ɗoworta e ñiiɓirde hello ina njaha tawa ɗe cifraaka. Huutoro https so sarworde ndee ina wallita ɗum.</string>
+    <string name="dejavu_example_notification_ntfy">Neldu hello ngoo wano tintinol. Kala anndo innde loowdi ndii ina waawi tarde ɗum, ɗum noon suɓo innde njuutnde, nde alaa ko ɗoworta.</string>
 </resources>

@@ -148,7 +148,7 @@
     <string name="dejavu_custom_action_body">المحتوى</string>
     <string name="dejavu_custom_action_variables">المتغيرات</string>
     <string name="dejavu_custom_action_variables_hint">اضغط على متغيّر لإدراجه في الحقل الذي تعدّله.</string>
-    <string name="dejavu_custom_action_hint">يُرسَل الطلب مرة واحدة لكل تبويب يُنفَّذ عليه الإجراء. لا يُحتسَب نجاحًا إلا رد من فئة 2xx؛ لا تُتبَع عمليات إعادة التوجيه وتُحتسَب فشلًا. لا تُرسَل ملفات تعريف الارتباط. تُرمَّز القيم بترميز URL ضمن العنوان، وبترميز JSON ضمن محتوى JSON.</string>
+    <string name="dejavu_custom_action_hint">يُرسَل الطلب مرة واحدة لكل تبويب يُنفَّذ عليه الإجراء. لا يُحتسَب نجاحًا إلا رد من فئة 2xx؛ لا تُتبَع عمليات إعادة التوجيه وتُحتسَب فشلًا. لا تُرسَل ملفات تعريف الارتباط. تُرمَّز القيم بترميز URL ضمن العنوان وضمن محتوى النماذج، وتُهرَّب ضمن محتوى JSON أو XML.</string>
     <string name="dejavu_custom_action_sent">أُرسل: %1$s</string>
     <string name="dejavu_custom_action_failed_code">فشل: الرمز %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">فشل: لا استجابة (%1$s)</string>
@@ -366,4 +366,15 @@
     <string name="dejavu_open_non_web_pin_title">أتريد فتح هذا العنوان؟</string>
     <string name="dejavu_open_non_web_pin_message">يفتح هذا اللسان المثبّت عنوانًا ليس صفحة وِب. ربما جاء من جهاز آخر على حسابك.\n\n%1$s</string>
     <string name="dejavu_open">افتح</string>
+    <string name="dejavu_about_config_warning_title">أتريد فتح about:config؟</string>
+    <string name="dejavu_about_config_warning_message">قد يؤدي تغيير هذه الإعدادات إلى إضعاف أمان Dejavu وخصوصيته، أو إلى تعطيل المواقع. الإعدادات التي تتحكم بها إعدادات Dejavu نفسه، مثل الحماية من التتبع وHTTPS-Only وDNS الآمن، تعود إليها عند إعادة تشغيل Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">أتريد تفعيل التنقيح عن بُعد؟</string>
+    <string name="dejavu_remote_debugging_warning_message">ما دام مفعّلًا، يستطيع أي حاسوب متصل بهذا الهاتف عبر USB ومسموح له بتنقيح USB أن يتحكم في Dejavu ويقرأ بياناته، مثل الألسنة المفتوحة والكعكات وكلمات السر المحفوظة، دون أن يسأل. عطّله عندما تنتهي.</string>
+    <string name="dejavu_turn_on">فعّل</string>
+    <string name="dejavu_settings_jit">JavaScript السريع (JIT)</string>
+    <string name="dejavu_settings_jit_summary">يجعل المواقع تعمل أسرع. تمر معظم الهجمات على المتصفحات عبره، لذا تعطيله أكثر أمانًا، لكن بعض المواقع تصبح أبطأ. يسري بعد إعادة تشغيل Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">رسوميات ثلاثية الأبعاد للألعاب والخرائط وبعض المواقع. تعطيلها يحجب الهجمات عبر مشغّل الرسوميات ويصعّب على المواقع التعرف على هاتفك، لكن تلك المواقع قد تتوقف عن العمل.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">لا يحتوي إصدار Dejavu هذا على مفتاح Safe Browsing، لذا لا يمكنه التحذير من المواقع الخطرة.</string>
+    <string name="dejavu_custom_action_http_warning">يستخدم هذا العنوان http، لذا ينتقل الطلب وترويساته وعنوان الصفحة دون تعمية. استخدم https إن كان الخادوم يدعمه.</string>
+    <string name="dejavu_example_notification_ntfy">أرسل الصفحة كإشعار. يستطيع أي شخص يعرف اسم الموضوع قراءته، لذا اختر اسمًا طويلًا وعشوائيًا.</string>
 </resources>

@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">အကြောင်းအရာ</string>
     <string name="dejavu_custom_action_variables">ကိန်းရှင်များ</string>
     <string name="dejavu_custom_action_variables_hint">တည်းဖြတ်နေသော ကွက်လပ်ထဲသို့ ထည့်ရန် ကိန်းရှင်တစ်ခုကို နှိပ်ပါ။</string>
-    <string name="dejavu_custom_action_hint">တောင်းဆိုချက်ကို လုပ်ဆောင်ချက် အလုပ်လုပ်သည့် တက်ဗ်တိုင်းအတွက် တစ်ကြိမ်စီ ပို့မည်။ 2xx အဖြေမှသာ အောင်မြင်သည်ဟု မှတ်ယူမည်။ ချိတ်ဆက်ပြန်ညွှန်းမှုများကို မလိုက်နာဘဲ မအောင်မြင်ဟု မှတ်ယူမည်။ ကွတ်ကီးများကို ပို့မည် မဟုတ်ပါ။ တန်ဖိုးများကို URL ထဲတွင် URL ကုဒ်နှင့် JSON body ထဲတွင် JSON escape ပြုလုပ်ပေးသည်။</string>
+    <string name="dejavu_custom_action_hint">တောင်းဆိုချက်ကို လုပ်ဆောင်ချက် အလုပ်လုပ်သည့် တက်ဗ်တိုင်းအတွက် တစ်ကြိမ်စီ ပို့မည်။ 2xx အဖြေမှသာ အောင်မြင်သည်ဟု မှတ်ယူမည်။ ချိတ်ဆက်ပြန်ညွှန်းမှုများကို မလိုက်နာဘဲ မအောင်မြင်ဟု မှတ်ယူမည်။ ကွတ်ကီးများကို ပို့မည် မဟုတ်ပါ။ တန်ဖိုးများကို URL နှင့် ပုံစံ body ထဲတွင် URL ကုဒ်ဖြင့်၊ JSON သို့မဟုတ် XML body ထဲတွင် escape ပြုလုပ်ပေးသည်။</string>
     <string name="dejavu_custom_action_sent">ပို့ပြီး- %1$s</string>
     <string name="dejavu_custom_action_failed_code">မအောင်မြင်ပါ- ကုဒ် %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">မအောင်မြင်ပါ- အဖြေ မရှိပါ (%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">ဤလိပ်စာကို ဖွင့်မလား။</string>
     <string name="dejavu_open_non_web_pin_message">ဤပင်တွဲထားသော တက်ဘ်သည် ဝဘ်စာမျက်နှာမဟုတ်သော လိပ်စာကို ဖွင့်သည်။ ၎င်းသည် သင့်အကောင့်ရှိ အခြားစက်မှ လာခြင်းဖြစ်နိုင်သည်။\n\n%1$s</string>
     <string name="dejavu_open">ဖွင့်ရန်</string>
+    <string name="dejavu_about_config_warning_title">about:config ကို ဖွင့်မလား။</string>
+    <string name="dejavu_about_config_warning_message">ဤဆက်တင်များကို ပြောင်းလဲခြင်းသည် Dejavu ၏ လုံခြုံရေးနှင့် ကိုယ်ရေးကိုယ်တာကို အားနည်းစေနိုင်သည် သို့မဟုတ် ဝဘ်ဆိုက်များကို ပျက်စီးစေနိုင်သည်။ ခြေရာခံမှုကာကွယ်ခြင်း၊ HTTPS-Only နှင့် လုံခြုံသော DNS ကဲ့သို့ Dejavu ၏ ကိုယ်ပိုင်ဆက်တင်များ ထိန်းချုပ်သော ဆက်တင်များသည် Dejavu ပြန်စသည့်အခါ ၎င်းတို့ထံ ပြန်သွားသည်။</string>
+    <string name="dejavu_remote_debugging_warning_title">အဝေးမှ အမှားရှာခြင်းကို ဖွင့်မလား။</string>
+    <string name="dejavu_remote_debugging_warning_message">ဖွင့်ထားစဉ်တွင် USB ဖြင့် ဤဖုန်းနှင့် ချိတ်ဆက်ထားပြီး USB အမှားရှာခြင်း ခွင့်ပြုထားသော ကွန်ပျူတာသည် မမေးဘဲ Dejavu ကို ထိန်းချုပ်နိုင်ပြီး ဖွင့်ထားသော တက်ဘ်များ၊ ကွတ်ကီးများနှင့် သိမ်းထားသော စကားဝှက်များကဲ့သို့ ဒေတာများကို ဖတ်နိုင်သည်။ ပြီးသည့်အခါ ပိတ်ပါ။</string>
+    <string name="dejavu_turn_on">ဖွင့်ရန်</string>
+    <string name="dejavu_settings_jit">မြန်ဆန်သော JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ဝဘ်ဆိုက်များကို ပိုမြန်စွာ အလုပ်လုပ်စေသည်။ ဘရောက်ဇာများအပေါ် တိုက်ခိုက်မှု အများစုသည် ၎င်းမှတစ်ဆင့် ဖြစ်သောကြောင့် ပိတ်ထားခြင်းက ပိုလုံခြုံသော်လည်း အချို့ဆိုက်များ နှေးသွားသည်။ Dejavu ပြန်စပြီးနောက် သက်ရောက်သည်။</string>
+    <string name="dejavu_settings_webgl_summary">ဂိမ်းများ၊ မြေပုံများနှင့် အချို့ဝဘ်ဆိုက်များအတွက် 3D ဂရပ်ဖစ်။ ပိတ်ခြင်းသည် ဂရပ်ဖစ်ဒရိုက်ဗာမှတစ်ဆင့် တိုက်ခိုက်မှုများကို ပိတ်ဆို့ပြီး ဆိုက်များအတွက် သင့်ဖုန်းကို မှတ်မိရန် ခက်ခဲစေသော်လည်း ထိုဆိုက်များ အလုပ်မလုပ်တော့နိုင်ပါ။</string>
+    <string name="dejavu_settings_safe_browsing_no_key">ဤ Dejavu တည်ဆောက်မှုတွင် Safe Browsing ကီး မရှိသောကြောင့် အန္တရာယ်ရှိသော ဆိုက်များအကြောင်း သတိမပေးနိုင်ပါ။</string>
+    <string name="dejavu_custom_action_http_warning">ဤလိပ်စာသည် http ကို သုံးသောကြောင့် တောင်းဆိုချက်၊ ၎င်း၏ header များနှင့် စာမျက်နှာလိပ်စာသည် ကုဒ်မဝှက်ဘဲ သွားသည်။ ဆာဗာက ပံ့ပိုးလျှင် https ကို သုံးပါ။</string>
+    <string name="dejavu_example_notification_ntfy">စာမျက်နှာကို အသိပေးချက်အဖြစ် ပို့ပါ။ ခေါင်းစဉ်အမည်ကို သိသူတိုင်း ဖတ်နိုင်သောကြောင့် ရှည်လျားပြီး ကျပန်းအမည်ကို ရွေးပါ။</string>
 </resources>

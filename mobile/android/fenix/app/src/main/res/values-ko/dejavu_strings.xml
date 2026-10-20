@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">본문</string>
     <string name="dejavu_custom_action_variables">변수</string>
     <string name="dejavu_custom_action_variables_hint">변수를 탭하면 편집 중인 필드에 삽입됩니다.</string>
-    <string name="dejavu_custom_action_hint">요청은 작업이 실행되는 탭마다 한 번씩 전송됩니다. 2xx 응답만 성공으로 간주하며, 리디렉션은 따라가지 않고 실패로 처리합니다. 쿠키는 전송되지 않습니다. 값은 URL에서는 URL 인코딩되고 JSON 본문에서는 JSON 이스케이프됩니다.</string>
+    <string name="dejavu_custom_action_hint">요청은 작업이 실행되는 탭마다 한 번씩 전송됩니다. 2xx 응답만 성공으로 간주하며, 리디렉션은 따라가지 않고 실패로 처리합니다. 쿠키는 전송되지 않습니다. 값은 URL과 양식 본문에서는 URL 인코딩되고 JSON 또는 XML 본문에서는 이스케이프됩니다.</string>
     <string name="dejavu_custom_action_sent">전송됨: %1$s</string>
     <string name="dejavu_custom_action_failed_code">실패: 코드 %1$d(%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">실패: 응답 없음(%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">이 주소를 여시겠습니까?</string>
     <string name="dejavu_open_non_web_pin_message">이 고정된 탭은 웹 페이지가 아닌 주소를 엽니다. 계정의 다른 기기에서 왔을 수 있습니다.\n\n%1$s</string>
     <string name="dejavu_open">열기</string>
+    <string name="dejavu_about_config_warning_title">about:config를 여시겠습니까?</string>
+    <string name="dejavu_about_config_warning_message">이 설정을 바꾸면 Dejavu의 보안과 개인 정보 보호가 약해지거나 웹사이트가 제대로 작동하지 않을 수 있습니다. 추적 방지, HTTPS-Only, 보안 DNS처럼 Dejavu 자체 설정이 관리하는 설정은 Dejavu를 다시 시작하면 그 값으로 돌아갑니다.</string>
+    <string name="dejavu_remote_debugging_warning_title">원격 디버깅을 켜시겠습니까?</string>
+    <string name="dejavu_remote_debugging_warning_message">켜져 있는 동안에는 USB로 이 휴대폰에 연결되어 USB 디버깅이 허용된 컴퓨터가 묻지 않고 Dejavu를 제어하고, 열린 탭, 쿠키, 저장된 비밀번호 같은 데이터를 읽을 수 있습니다. 작업이 끝나면 꺼 주세요.</string>
+    <string name="dejavu_turn_on">켜기</string>
+    <string name="dejavu_settings_jit">빠른 JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">웹사이트를 더 빠르게 실행합니다. 브라우저에 대한 공격 대부분이 이를 거치므로 끄는 편이 더 안전하지만 일부 사이트가 느려집니다. Dejavu를 다시 시작한 뒤 적용됩니다.</string>
+    <string name="dejavu_settings_webgl_summary">게임, 지도 및 일부 웹사이트를 위한 3D 그래픽입니다. 끄면 그래픽 드라이버를 통한 공격을 막고 사이트가 휴대폰을 알아보기 어렵게 하지만, 그런 사이트는 작동하지 않을 수 있습니다.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">이 Dejavu 빌드에는 Safe Browsing 키가 없어서 위험한 사이트를 경고할 수 없습니다.</string>
+    <string name="dejavu_custom_action_http_warning">이 주소는 http를 사용하므로 요청, 요청의 헤더, 페이지 주소가 암호화되지 않고 전송됩니다. 서버가 지원하면 https를 사용하세요.</string>
+    <string name="dejavu_example_notification_ntfy">페이지를 알림으로 보냅니다. 주제 이름을 아는 사람은 누구나 읽을 수 있으므로 길고 무작위한 이름을 고르세요.</string>
 </resources>

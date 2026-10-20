@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">本文</string>
     <string name="dejavu_custom_action_variables">変数</string>
     <string name="dejavu_custom_action_variables_hint">変数をタップすると、編集中のフィールドに挿入されます。</string>
-    <string name="dejavu_custom_action_hint">リクエストは、操作の対象となるタブごとに1回送信されます。成功と見なされるのは2xxの応答のみで、リダイレクトは追跡されず失敗として扱われます。Cookieは送信されません。値はURL内ではURLエンコード、JSON本文内ではJSONエスケープされます。</string>
+    <string name="dejavu_custom_action_hint">リクエストは、操作の対象となるタブごとに1回送信されます。成功と見なされるのは2xxの応答のみで、リダイレクトは追跡されず失敗として扱われます。Cookieは送信されません。値はURL内とフォーム本文内ではURLエンコード、JSONまたはXML本文内ではエスケープされます。</string>
     <string name="dejavu_custom_action_sent">送信済み: %1$s</string>
     <string name="dejavu_custom_action_failed_code">失敗: コード%1$d(%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">失敗: 応答なし(%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">このアドレスを開きますか？</string>
     <string name="dejavu_open_non_web_pin_message">このピン留めタブはウェブページではないアドレスを開きます。アカウントの別の端末から同期された可能性があります。\n\n%1$s</string>
     <string name="dejavu_open">開く</string>
+    <string name="dejavu_about_config_warning_title">about:config を開きますか？</string>
+    <string name="dejavu_about_config_warning_message">これらの設定を変更すると、Dejavu のセキュリティとプライバシーが弱まったり、ウェブサイトが正しく動作しなくなったりすることがあります。トラッキング防止、HTTPS-Only、セキュア DNS など、Dejavu 自身の設定が管理する設定は、Dejavu を再起動するとその値に戻ります。</string>
+    <string name="dejavu_remote_debugging_warning_title">リモートデバッグをオンにしますか？</string>
+    <string name="dejavu_remote_debugging_warning_message">オンの間は、USB でこのスマートフォンに接続され USB デバッグを許可されたコンピューターが、確認なしに Dejavu を操作し、開いているタブ、Cookie、保存したパスワードなどのデータを読み取れます。使い終わったらオフにしてください。</string>
+    <string name="dejavu_turn_on">オンにする</string>
+    <string name="dejavu_settings_jit">高速 JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ウェブサイトを高速に動作させます。ブラウザーへの攻撃の多くはこれを経由するため、オフにするほうが安全ですが、一部のサイトは遅くなります。Dejavu の再起動後に適用されます。</string>
+    <string name="dejavu_settings_webgl_summary">ゲーム、地図、一部のウェブサイト向けの 3D グラフィックス。オフにすると、グラフィックドライバーを経由する攻撃を防ぎ、サイトがスマートフォンを識別しにくくなりますが、それらのサイトが動作しなくなることがあります。</string>
+    <string name="dejavu_settings_safe_browsing_no_key">この Dejavu のビルドには Safe Browsing キーがないため、危険なサイトについて警告できません。</string>
+    <string name="dejavu_custom_action_http_warning">このアドレスは http を使用するため、リクエスト、そのヘッダー、ページのアドレスが暗号化されずに送信されます。サーバーが対応していれば https を使用してください。</string>
+    <string name="dejavu_example_notification_ntfy">ページを通知として送信します。トピック名を知っている人なら誰でも読めるため、長くランダムな名前を選んでください。</string>
 </resources>

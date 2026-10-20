@@ -8,6 +8,8 @@
     <string name="pref_key_dejavu_external_links" translatable="false">pref_key_dejavu_external_links</string>
     <string name="pref_key_dejavu_tab_sleep" translatable="false">pref_key_dejavu_tab_sleep</string>
     <string name="pref_key_dejavu_safe_browsing" translatable="false">pref_key_dejavu_safe_browsing</string>
+    <string name="pref_key_dejavu_jit" translatable="false">pref_key_dejavu_jit</string>
+    <string name="pref_key_dejavu_webgl" translatable="false">pref_key_dejavu_webgl</string>
     <!-- Name of Mozilla's browser, for texts about Mozilla's own services like Firefox Suggest. -->
     <string name="dejavu_firefox_name" translatable="false" tools:ignore="BrandUsage">Firefox</string>
 
@@ -218,7 +220,7 @@
     <string name="dejavu_custom_action_body">Body</string>
     <string name="dejavu_custom_action_variables">Variables</string>
     <string name="dejavu_custom_action_variables_hint">Tap a variable to insert it into the field you are editing.</string>
-    <string name="dejavu_custom_action_hint">The request is sent once for every tab the action runs on. Only a 2xx answer counts as success; redirects are not followed and count as failures. Cookies are not sent. Values are URL encoded in the URL and JSON escaped in a JSON body.</string>
+    <string name="dejavu_custom_action_hint">The request is sent once for every tab the action runs on. Only a 2xx answer counts as success; redirects are not followed and count as failures. Cookies are not sent. Values are URL encoded in the URL and in a form body, and escaped in a JSON or XML body.</string>
     <string name="dejavu_custom_action_sent">Sent: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Failed: code %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Failed: no answer (%1$s)</string>
@@ -474,4 +476,28 @@
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
     <!-- Summary of the Google Safe Browsing switch: its warnings need Dejavu to contact Google, which is why it can be turned off. -->
     <string name="dejavu_settings_safe_browsing_summary">Warns about phishing and malware sites. To do this, Dejavu contacts Google.</string>
+    <!-- Title of the warning shown when a tab opens about:config, Gecko's page of advanced preferences. Keep "about:config" as it is. -->
+    <string name="dejavu_about_config_warning_title">Open about:config?</string>
+    <!-- Message of the about:config warning. Its buttons are Cancel and Open. -->
+    <string name="dejavu_about_config_warning_message">Changing these settings can weaken Dejavu\'s security and privacy, or break websites. Settings that Dejavu\'s own settings control, like tracking protection, HTTPS-Only and secure DNS, go back to them when Dejavu restarts.</string>
+    <!-- Title of the warning shown before "Remote debugging via USB" is turned on. -->
+    <string name="dejavu_remote_debugging_warning_title">Turn on remote debugging?</string>
+    <!-- Message of the remote debugging warning. -->
+    <string name="dejavu_remote_debugging_warning_message">While it is on, a computer connected to this phone over USB, with USB debugging allowed, can control Dejavu and read its data, like open tabs, cookies and saved passwords, without asking. Turn it off when you are done.</string>
+    <!-- Button that confirms turning a setting on. -->
+    <string name="dejavu_turn_on">Turn on</string>
+    <!-- Switch in the privacy and security settings for JavaScript's just-in-time compilers (JIT), which make websites faster. -->
+    <string name="dejavu_settings_jit">Fast JavaScript (JIT)</string>
+    <!-- Summary of the JIT switch. -->
+    <string name="dejavu_settings_jit_summary">Makes websites run faster. Most attacks on browsers go through it, so turning it off is safer, but some sites get slower. Applies after Dejavu restarts.</string>
+    <!-- Switch in the privacy and security settings for WebGL, the 3D graphics of websites. -->
+    <string name="dejavu_settings_webgl" translatable="false">WebGL</string>
+    <!-- Summary of the WebGL switch. -->
+    <string name="dejavu_settings_webgl_summary">3D graphics for games, maps and some websites. Turning it off blocks attacks through the graphics driver and makes your phone harder for sites to recognize, but those sites may stop working.</string>
+    <!-- Summary of the Google Safe Browsing switch, turned off, in a build of Dejavu made without a Safe Browsing key, like a build from source. -->
+    <string name="dejavu_settings_safe_browsing_no_key">This build of Dejavu has no Safe Browsing key, so it cannot warn about dangerous sites.</string>
+    <!-- Warning in the custom action editor when the action's address starts with http:// instead of https://. -->
+    <string name="dejavu_custom_action_http_warning">This address uses http, so the request, its headers and the page\'s address travel unencrypted. Use https if the server supports it.</string>
+    <!-- Description of the ntfy example custom action, which sends a notification to a topic on ntfy.sh. -->
+    <string name="dejavu_example_notification_ntfy">Send the page as a notification. Anyone who knows the topic\'s name can read it, so pick a long, random one.</string>
 </resources>

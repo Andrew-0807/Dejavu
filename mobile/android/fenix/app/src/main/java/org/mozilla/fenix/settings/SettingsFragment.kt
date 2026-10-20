@@ -60,6 +60,7 @@ import mozilla.components.support.utils.ext.navigateToDefaultBrowserAppsSettings
 import mozilla.components.ui.icons.R as iconsR
 import mozilla.components.ui.widgets.withCenterAlignedButtons
 import mozilla.telemetry.glean.private.NoExtras
+import org.mozilla.fenix.BuildConfig
 import org.mozilla.fenix.Config
 import org.mozilla.fenix.FeatureFlags
 import org.mozilla.fenix.GleanMetrics.Addons
@@ -76,6 +77,7 @@ import org.mozilla.fenix.components.accounts.FenixFxAEntryPoint
 import org.mozilla.fenix.databinding.AmoCollectionOverrideDialogBinding
 import org.mozilla.fenix.dejavu.DejavuLinks
 import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
+import org.mozilla.fenix.dejavu.browser.JitAndWebGl
 import org.mozilla.fenix.dejavu.features.DejavuFeatureTourFragment
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.application
@@ -682,10 +684,27 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         }
 
         preferenceRemoteDebugging?.isVisible = true
+        // Dejavu: while remote debugging is on, a computer connected over USB controls the browser without asking, so
+        // turning it on asks first.
         preferenceRemoteDebugging?.setOnPreferenceChangeListener<Boolean> { preference, newValue ->
-            settings.preferences.edit { putBoolean(preference.key, newValue) }
-            requireComponents.core.engine.settings.remoteDebuggingEnabled = newValue
-            true
+            val save = {
+                settings.preferences.edit { putBoolean(preference.key, newValue) }
+                requireComponents.core.engine.settings.remoteDebuggingEnabled = newValue
+            }
+            if (!newValue) {
+                save()
+                return@setOnPreferenceChangeListener true
+            }
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.dejavu_remote_debugging_warning_title)
+                .setMessage(R.string.dejavu_remote_debugging_warning_message)
+                .setNegativeButton(R.string.dejavu_cancel, null)
+                .setPositiveButton(R.string.dejavu_turn_on) { _, _ ->
+                    save()
+                    (preference as? SwitchPreferenceCompat)?.isChecked = true
+                }
+                .show()
+            false
         }
 
         preferenceMakeDefaultBrowser.apply {
@@ -731,6 +750,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         setupTrackingProtectionPreference(settings)
         setupDnsOverHttpsPreference(settings)
         setupSafeBrowsingPreference(settings)
+        setupJitAndWebGlPreferences(settings)
         setupEmailMaskPreference(settings, requireComponents)
     }
 
@@ -920,13 +940,43 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         }
     }
 
-    // Dejavu: the switch turns Google Safe Browsing on or off at once, in the running engine too.
+    // Dejavu: the switch turns Google Safe Browsing on or off at once, in the running engine too. A build without a Safe
+    // Browsing key cannot warn about anything, so its switch says so and stays off.
     private fun setupSafeBrowsingPreference(settings: Settings) {
         with(requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_safe_browsing)) {
+            if (!BuildConfig.HAS_SAFE_BROWSING_KEY) {
+                isChecked = false
+                isEnabled = false
+                summary = getString(R.string.dejavu_settings_safe_browsing_no_key)
+                return
+            }
             isChecked = settings.safeBrowsingEnabled
             setOnPreferenceChangeListener<Boolean> { _, enabled ->
                 settings.safeBrowsingEnabled = enabled
                 GoogleSafeBrowsing.apply(requireComponents.core.engine, requireComponents.core.geckoRuntime, enabled)
+                true
+            }
+        }
+    }
+
+    // Dejavu: the JIT and WebGL switches change the engine at once; the JIT reaches every page after a restart.
+    private fun setupJitAndWebGlPreferences(settings: Settings) {
+        val applyToEngine = {
+            JitAndWebGl.apply(requireComponents.core.engine, settings.jitEnabled, settings.webGlEnabled)
+        }
+        with(requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_jit)) {
+            isChecked = settings.jitEnabled
+            setOnPreferenceChangeListener<Boolean> { _, enabled ->
+                settings.jitEnabled = enabled
+                applyToEngine()
+                true
+            }
+        }
+        with(requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_webgl)) {
+            isChecked = settings.webGlEnabled
+            setOnPreferenceChangeListener<Boolean> { _, enabled ->
+                settings.webGlEnabled = enabled
+                applyToEngine()
                 true
             }
         }

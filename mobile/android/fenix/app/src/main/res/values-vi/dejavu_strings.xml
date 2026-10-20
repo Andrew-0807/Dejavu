@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">Nội dung</string>
     <string name="dejavu_custom_action_variables">Biến</string>
     <string name="dejavu_custom_action_variables_hint">Nhấn vào một biến để chèn vào trường bạn đang chỉnh sửa.</string>
-    <string name="dejavu_custom_action_hint">Yêu cầu được gửi một lần cho mỗi thẻ mà thao tác chạy trên đó. Chỉ phản hồi 2xx mới được tính là thành công; chuyển hướng không được thực hiện theo và tính là thất bại. Cookie không được gửi đi. Giá trị được mã hóa URL trong URL và thoát ký tự JSON trong nội dung JSON.</string>
+    <string name="dejavu_custom_action_hint">Yêu cầu được gửi một lần cho mỗi thẻ mà thao tác chạy trên đó. Chỉ phản hồi 2xx mới được tính là thành công; chuyển hướng không được thực hiện theo và tính là thất bại. Cookie không được gửi đi. Giá trị được mã hóa URL trong URL và trong nội dung biểu mẫu, và thoát ký tự trong nội dung JSON hoặc XML.</string>
     <string name="dejavu_custom_action_sent">Đã gửi: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Thất bại: mã %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Thất bại: không có phản hồi (%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">Mở địa chỉ này?</string>
     <string name="dejavu_open_non_web_pin_message">Thẻ được ghim này mở một địa chỉ không phải trang web. Địa chỉ có thể đến từ một thiết bị khác trong tài khoản của bạn.\n\n%1$s</string>
     <string name="dejavu_open">Mở</string>
+    <string name="dejavu_about_config_warning_title">Mở about:config?</string>
+    <string name="dejavu_about_config_warning_message">Thay đổi các cài đặt này có thể làm suy yếu bảo mật và quyền riêng tư của Dejavu, hoặc làm hỏng trang web. Các cài đặt do chính cài đặt của Dejavu kiểm soát, như chống theo dõi, HTTPS-Only và DNS an toàn, sẽ trở lại giá trị đó khi Dejavu khởi động lại.</string>
+    <string name="dejavu_remote_debugging_warning_title">Bật gỡ lỗi từ xa?</string>
+    <string name="dejavu_remote_debugging_warning_message">Khi tính năng này đang bật, máy tính kết nối với điện thoại này qua USB và được phép gỡ lỗi USB có thể điều khiển Dejavu và đọc dữ liệu của nó, như thẻ đang mở, cookie và mật khẩu đã lưu, mà không hỏi. Hãy tắt khi bạn xong việc.</string>
+    <string name="dejavu_turn_on">Bật</string>
+    <string name="dejavu_settings_jit">JavaScript nhanh (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Giúp trang web chạy nhanh hơn. Hầu hết các cuộc tấn công vào trình duyệt đều đi qua nó, nên tắt nó an toàn hơn, nhưng một số trang sẽ chậm hơn. Có hiệu lực sau khi Dejavu khởi động lại.</string>
+    <string name="dejavu_settings_webgl_summary">Đồ họa 3D cho trò chơi, bản đồ và một số trang web. Tắt nó sẽ chặn các cuộc tấn công qua trình điều khiển đồ họa và khiến các trang khó nhận ra điện thoại của bạn hơn, nhưng những trang đó có thể ngừng hoạt động.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Bản dựng Dejavu này không có khóa Safe Browsing, nên không thể cảnh báo về trang web nguy hiểm.</string>
+    <string name="dejavu_custom_action_http_warning">Địa chỉ này dùng http, nên yêu cầu, các tiêu đề của nó và địa chỉ của trang được gửi đi mà không mã hóa. Dùng https nếu máy chủ hỗ trợ.</string>
+    <string name="dejavu_example_notification_ntfy">Gửi trang dưới dạng thông báo. Bất kỳ ai biết tên chủ đề đều có thể đọc được, vì vậy hãy chọn một tên dài và ngẫu nhiên.</string>
 </resources>

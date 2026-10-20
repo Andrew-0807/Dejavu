@@ -145,7 +145,7 @@
     <string name="dejavu_custom_action_body">ᱵᱟᱰᱤ</string>
     <string name="dejavu_custom_action_variables">ᱵᱷᱮᱨᱤᱭᱮᱵᱚᱞ ᱠᱚ</string>
     <string name="dejavu_custom_action_variables_hint">ᱟᱢ ᱥᱟᱯᱲᱟᱣ ᱠᱟᱛᱮ ᱢᱮᱱᱟᱜ ᱴᱷᱟᱶ ᱨᱮ ᱥᱮᱞᱮᱫᱽ ᱞᱟᱹᱜᱤᱛ ᱢᱤᱫ ᱵᱷᱮᱨᱤᱭᱮᱵᱚᱞ ᱚᱛᱟᱭ ᱢᱮ ᱾</string>
-    <string name="dejavu_custom_action_hint">ᱮᱠᱥᱚᱱ ᱪᱟᱞᱟᱣ ᱠᱟᱱ ᱢᱤᱫ ᱢᱤᱫ ᱴᱮᱵᱽ ᱞᱟᱹᱜᱤᱛ ᱢᱤᱫ ᱠᱷᱚᱱ ᱨᱤᱠᱣᱮᱥᱴ ᱠᱩᱞ ᱦᱩᱭ ᱟ ᱾ 2xx ᱡᱩᱵᱟᱹᱵ ᱠᱚᱠᱚ ᱥᱟᱯᱷᱚᱞ ᱛᱮ ᱞᱮᱠᱷᱟ ᱦᱩᱭ ᱟ; ᱨᱤᱰᱟᱭᱨᱮᱠᱴ ᱠᱚ ᱵᱟᱭ ᱛᱩᱨᱩᱭ ᱟᱭᱚᱜ ᱟ ᱟᱨ ᱵᱤᱯᱷᱚᱞ ᱛᱮ ᱞᱮᱠᱷᱟ ᱦᱩᱭ ᱟ ᱾ ᱠᱩᱠᱤ ᱠᱚ ᱵᱟᱭ ᱠᱩᱞ ᱦᱩᱭ ᱟ ᱾ ᱵᱷᱮᱞᱭᱩ ᱠᱚ URL ᱨᱮ URL ᱮᱱᱠᱳᱰ ᱟᱨ JSON ᱵᱟᱰᱤ ᱨᱮ JSON ᱮᱥᱠᱮᱯ ᱦᱩᱭ ᱟ ᱾</string>
+    <string name="dejavu_custom_action_hint">ᱮᱠᱥᱚᱱ ᱪᱟᱞᱟᱣ ᱠᱟᱱ ᱢᱤᱫ ᱢᱤᱫ ᱴᱮᱵᱽ ᱞᱟᱹᱜᱤᱛ ᱢᱤᱫ ᱠᱷᱚᱱ ᱨᱤᱠᱣᱮᱥᱴ ᱠᱩᱞ ᱦᱩᱭ ᱟ ᱾ 2xx ᱡᱩᱵᱟᱹᱵ ᱠᱚᱠᱚ ᱥᱟᱯᱷᱚᱞ ᱛᱮ ᱞᱮᱠᱷᱟ ᱦᱩᱭ ᱟ; ᱨᱤᱰᱟᱭᱨᱮᱠᱴ ᱠᱚ ᱵᱟᱭ ᱛᱩᱨᱩᱭ ᱟᱭᱚᱜ ᱟ ᱟᱨ ᱵᱤᱯᱷᱚᱞ ᱛᱮ ᱞᱮᱠᱷᱟ ᱦᱩᱭ ᱟ ᱾ ᱠᱩᱠᱤ ᱠᱚ ᱵᱟᱭ ᱠᱩᱞ ᱦᱩᱭ ᱟ ᱾ ᱵᱷᱮᱞᱭᱩ ᱠᱚ URL ᱟᱨ ᱯᱷᱚᱨᱢ ᱵᱟᱰᱤ ᱨᱮ URL ᱮᱱᱠᱳᱰ ᱟᱨ JSON ᱥᱮ XML ᱵᱟᱰᱤ ᱨᱮ ᱮᱥᱠᱮᱯ ᱦᱩᱭ ᱟ ᱾</string>
     <string name="dejavu_custom_action_sent">ᱠᱩᱞ ᱦᱩᱭ ᱟᱠᱟᱱᱟ: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ᱵᱤᱯᱷᱚᱞ: ᱠᱳᱰ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ᱵᱤᱯᱷᱚᱞ: ᱡᱩᱵᱟᱹᱵ ᱵᱟᱹᱱᱩᱜ (%1$s)</string>
@@ -345,4 +345,15 @@
     <string name="dejavu_open_non_web_pin_title">ᱱᱚᱶᱟ ᱴᱷᱤᱠᱬᱟᱹ ᱡᱷᱤᱡᱽ ᱢᱮ?</string>
     <string name="dejavu_open_non_web_pin_message">ᱱᱚᱶᱟ ᱯᱤᱱ ᱟᱠᱟᱱ ᱴᱮᱵᱽ ᱫᱚ ᱡᱟᱦᱟᱸ ᱣᱮᱵᱽ ᱥᱟᱦᱴᱟ ᱵᱟᱝ ᱠᱟᱱᱟ ᱚᱱᱟ ᱴᱷᱤᱠᱬᱟᱹ ᱡᱷᱤᱡᱽᱟ ᱾ ᱱᱚᱶᱟ ᱟᱢᱟᱜ ᱠᱷᱟᱛᱟ ᱨᱮᱭᱟᱜ ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱠᱷᱚᱱ ᱦᱤᱡᱩᱜ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾\n\n%1$s</string>
     <string name="dejavu_open">ᱡᱷᱤᱡᱽ</string>
+    <string name="dejavu_about_config_warning_title">about:config ᱡᱷᱤᱡᱽ ᱢᱮ?</string>
+    <string name="dejavu_about_config_warning_message">ᱱᱚᱶᱟ ᱥᱮᱴᱤᱝ ᱠᱚ ᱵᱚᱫᱚᱞ ᱞᱮᱠᱷᱟᱱ Dejavu ᱨᱮᱭᱟᱜ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱟᱨ ᱱᱤᱡᱮᱨᱟᱜ ᱠᱚᱢ ᱦᱩᱭ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ, ᱥᱮ ᱣᱮᱵᱽᱥᱟᱭᱤᱴ ᱠᱚ ᱵᱟᱝ ᱠᱟᱹᱢᱤᱭᱟ ᱾ Dejavu ᱟᱡᱟᱜ ᱥᱮᱴᱤᱝ ᱛᱮ ᱥᱟᱵᱟᱫ ᱥᱮᱴᱤᱝ ᱠᱚ, ᱡᱮᱞᱮᱠᱟ ᱴᱨᱮᱠᱤᱝ ᱨᱩᱠᱷᱤᱭᱟᱹ, HTTPS-Only ᱟᱨ ᱨᱩᱠᱷᱤᱭᱟᱹ DNS, Dejavu ᱫᱚᱦᱲᱟ ᱮᱦᱚᱵ ᱚᱠᱛᱮ ᱩᱱᱤ ᱠᱚ ᱛᱮ ᱨᱩᱣᱟᱹᱲᱚᱜᱼᱟ ᱾</string>
+    <string name="dejavu_remote_debugging_warning_title">ᱨᱤᱢᱳᱴ ᱰᱤᱵᱚᱜᱤᱝ ᱪᱟᱹᱞᱩ ᱢᱮ?</string>
+    <string name="dejavu_remote_debugging_warning_message">ᱱᱚᱶᱟ ᱪᱟᱹᱞᱩ ᱛᱟᱦᱮᱸ ᱚᱠᱛᱮ, USB ᱛᱮ ᱱᱚᱶᱟ ᱯᱷᱚᱱ ᱥᱟᱶ ᱡᱩᱲᱟᱹᱣ ᱟᱨ USB ᱰᱤᱵᱚᱜᱤᱝ ᱦᱩᱠᱩᱢ ᱢᱮᱱᱟᱜ ᱠᱚᱢᱯᱤᱭᱩᱴᱚᱨ ᱵᱤᱱᱟᱹ ᱠᱩᱞᱤ ᱛᱮ Dejavu ᱪᱟᱞᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱟᱨ ᱚᱱᱟ ᱨᱮᱭᱟᱜ ᱰᱟᱴᱟ, ᱡᱮᱞᱮᱠᱟ ᱡᱷᱤᱡᱽ ᱴᱮᱵᱽ, ᱠᱩᱠᱤ ᱟᱨ ᱥᱟᱧᱪᱟᱣ ᱯᱟᱥᱣᱟᱨᱰ, ᱯᱟᱲᱦᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾ ᱠᱟᱹᱢᱤ ᱪᱟᱵᱟ ᱠᱟᱛᱮ ᱵᱚᱸᱫᱚ ᱢᱮ ᱾</string>
+    <string name="dejavu_turn_on">ᱪᱟᱹᱞᱩ ᱢᱮ</string>
+    <string name="dejavu_settings_jit">ᱞᱚᱜᱚᱱ JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ᱣᱮᱵᱽᱥᱟᱭᱤᱴ ᱠᱚ ᱞᱚᱜᱚᱱ ᱪᱟᱞᱟᱣᱟᱭ ᱾ ᱵᱽᱨᱟᱣᱡᱚᱨ ᱨᱮ ᱡᱟᱹᱥᱛᱤ ᱦᱟᱢᱞᱟ ᱱᱚᱶᱟ ᱛᱮ ᱦᱩᱭᱩᱜᱼᱟ, ᱚᱱᱟᱛᱮ ᱱᱚᱶᱟ ᱵᱚᱸᱫᱚ ᱫᱚ ᱵᱮᱥ ᱨᱩᱠᱷᱤᱭᱟᱹ, ᱢᱮᱱᱠᱷᱟᱱ ᱛᱤᱱᱟᱹᱜ ᱜᱟᱱ ᱥᱟᱭᱤᱴ ᱫᱷᱤᱨᱮ ᱦᱩᱭᱩᱜᱼᱟ ᱾ Dejavu ᱫᱚᱦᱲᱟ ᱮᱦᱚᱵ ᱠᱟᱛᱮ ᱞᱟᱹᱜᱩ ᱦᱩᱭᱩᱜᱼᱟ ᱾</string>
+    <string name="dejavu_settings_webgl_summary">ᱠᱷᱮᱞ, ᱱᱚᱠᱥᱟ ᱟᱨ ᱛᱤᱱᱟᱹᱜ ᱜᱟᱱ ᱣᱮᱵᱽᱥᱟᱭᱤᱴ ᱞᱟᱹᱜᱤᱫ 3D ᱜᱨᱟᱯᱷᱤᱠᱥ ᱾ ᱱᱚᱶᱟ ᱵᱚᱸᱫᱚ ᱞᱮᱠᱷᱟᱱ ᱜᱨᱟᱯᱷᱤᱠᱥ ᱰᱨᱟᱭᱣᱟᱨ ᱛᱮ ᱦᱟᱢᱞᱟ ᱠᱚ ᱛᱟᱹᱠᱤᱡ ᱦᱩᱭᱩᱜᱼᱟ ᱟᱨ ᱥᱟᱭᱤᱴ ᱠᱚ ᱞᱟᱹᱜᱤᱫ ᱟᱢᱟᱜ ᱯᱷᱚᱱ ᱪᱤᱱᱦᱟᱹᱣ ᱠᱟᱹᱴᱤᱱ ᱦᱩᱭᱩᱜᱼᱟ, ᱢᱮᱱᱠᱷᱟᱱ ᱩᱱᱤ ᱥᱟᱭᱤᱴ ᱠᱚ ᱵᱟᱝ ᱠᱟᱹᱢᱤ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu ᱨᱮᱭᱟᱜ ᱱᱚᱶᱟ ᱵᱤᱞᱰ ᱨᱮ Safe Browsing ᱪᱟᱵᱤ ᱵᱟᱹᱱᱩᱜᱼᱟ, ᱚᱱᱟᱛᱮ ᱠᱷᱟᱛᱚᱨᱟ ᱥᱟᱭᱤᱴ ᱵᱟᱵᱚᱛ ᱦᱚᱥᱤᱭᱟᱹᱨ ᱵᱟᱝ ᱮᱢ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾</string>
+    <string name="dejavu_custom_action_http_warning">ᱱᱚᱶᱟ ᱴᱷᱤᱠᱬᱟᱹ http ᱵᱮᱵᱷᱟᱨ ᱮᱫᱟᱭ, ᱚᱱᱟᱛᱮ ᱨᱤᱠᱣᱮᱥᱴ, ᱚᱱᱟ ᱨᱮᱭᱟᱜ ᱦᱮᱰᱚᱨ ᱟᱨ ᱥᱟᱦᱴᱟ ᱨᱮᱭᱟᱜ ᱴᱷᱤᱠᱬᱟᱹ ᱮᱱᱠᱨᱤᱯᱥᱚᱱ ᱵᱤᱱᱟᱹ ᱥᱮᱱᱚᱜᱼᱟ ᱾ ᱥᱚᱨᱵᱷᱚᱨ ᱥᱟᱯᱚᱴ ᱮᱫ ᱠᱷᱟᱱ https ᱵᱮᱵᱷᱟᱨ ᱢᱮ ᱾</string>
+    <string name="dejavu_example_notification_ntfy">ᱥᱟᱦᱴᱟ ᱵᱟᱰᱟᱭ ᱠᱟᱛᱷᱟ ᱞᱮᱠᱷᱟ ᱠᱩᱞ ᱢᱮ ᱾ ᱴᱚᱯᱤᱠ ᱧᱩᱛᱩᱢ ᱵᱟᱰᱟᱭ ᱦᱚᱲ ᱪᱮᱫ ᱦᱚᱸ ᱯᱟᱲᱦᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ, ᱚᱱᱟᱛᱮ ᱡᱤᱞᱤᱧ ᱟᱨ ᱡᱟᱦᱟᱸᱱᱟᱜ ᱧᱩᱛᱩᱢ ᱵᱟᱪᱷᱟᱣ ᱢᱮ ᱾</string>
 </resources>

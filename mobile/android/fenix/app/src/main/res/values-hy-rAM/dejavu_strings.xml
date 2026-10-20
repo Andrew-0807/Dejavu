@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Բովանդակություն</string>
     <string name="dejavu_custom_action_variables">Փոփոխականներ</string>
     <string name="dejavu_custom_action_variables_hint">Հպեք փոփոխականին՝ այն ձեր խմբագրած դաշտում տեղադրելու համար.</string>
-    <string name="dejavu_custom_action_hint">Հարցումն ուղարկվում է մեկ անգամ՝ գործողության կիրառվող յուրաքանչյուր ներդիրի համար. Միայն 2xx պատասխանն է համարվում հաջողված. վերահղումները չեն կատարվում և համարվում են ձախողում. Cookie-ները չեն ուղարկվում. Արժեքները URL֊ում կոդավորվում են URL ձևաչափով, իսկ JSON մարմնում՝ JSON ձևաչափով.</string>
+    <string name="dejavu_custom_action_hint">Հարցումն ուղարկվում է մեկ անգամ՝ գործողության կիրառվող յուրաքանչյուր ներդիրի համար. Միայն 2xx պատասխանն է համարվում հաջողված. վերահղումները չեն կատարվում և համարվում են ձախողում. Cookie-ները չեն ուղարկվում. Արժեքները URL֊ում և ձևաթղթի մարմնում կոդավորվում են URL ձևաչափով, իսկ JSON կամ XML մարմնում՝ էկրանավորվում են.</string>
     <string name="dejavu_custom_action_sent">Ուղարկվեց՝ %1$s</string>
     <string name="dejavu_custom_action_failed_code">Ձախողվեց՝ կոդ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Ձախողվեց՝ պատասխան չկա (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Բացե՞լ այս հասցեն</string>
     <string name="dejavu_open_non_web_pin_message">Այս ամրացված ներդիրը բացում է հասցե, որը վեբ էջ չէ։ Այն կարող է եկած լինել ձեր հաշվի մեկ այլ սարքից։\n\n%1$s</string>
     <string name="dejavu_open">Բացել</string>
+    <string name="dejavu_about_config_warning_title">Բացե՞լ about:config-ը</string>
+    <string name="dejavu_about_config_warning_message">Այս կարգավորումների փոփոխումը կարող է թուլացնել Dejavu-ի անվտանգությունն ու գաղտնիությունը կամ խափանել կայքերը։ Կարգավորումները, որոնք կառավարում են Dejavu-ի սեփական կարգավորումները, օրինակ՝ հետագծումից պաշտպանությունը, HTTPS-Only-ն և անվտանգ DNS-ը, Dejavu-ի վերագործարկման ժամանակ վերադառնում են դրանց։</string>
+    <string name="dejavu_remote_debugging_warning_title">Միացնե՞լ հեռակա վրիպազերծումը</string>
+    <string name="dejavu_remote_debugging_warning_message">Քանի դեռ այն միացված է, USB-ով այս հեռախոսին միացված համակարգիչը, որին թույլատրված է USB վրիպազերծումը, կարող է առանց հարցնելու կառավարել Dejavu-ն և կարդալ դրա տվյալները, օրինակ՝ բաց ներդիրները, թխուկներն ու պահված գաղտնաբառերը։ Անջատեք այն, երբ ավարտեք։</string>
+    <string name="dejavu_turn_on">Միացնել</string>
+    <string name="dejavu_settings_jit">Արագ JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Կայքերն ավելի արագ է աշխատեցնում։ Դիտարկիչների վրա հարձակումների մեծ մասն անցնում է դրա միջով, ուստի այն անջատելն ավելի անվտանգ է, բայց որոշ կայքեր դանդաղում են։ Կիրառվում է Dejavu-ի վերագործարկումից հետո։</string>
+    <string name="dejavu_settings_webgl_summary">3D գրաֆիկա խաղերի, քարտեզների և որոշ կայքերի համար։ Այն անջատելն արգելափակում է գրաֆիկական դրայվերի միջոցով հարձակումները և դժվարացնում է կայքերի համար ձեր հեռախոսը ճանաչելը, բայց այդ կայքերը կարող են դադարել աշխատել։</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu-ի այս կառուցումը Safe Browsing-ի բանալի չունի, ուստի չի կարող զգուշացնել վտանգավոր կայքերի մասին։</string>
+    <string name="dejavu_custom_action_http_warning">Այս հասցեն օգտագործում է http, ուստի հարցումը, դրա գլխագրերը և էջի հասցեն փոխանցվում են առանց գաղտնագրման։ Օգտագործեք https, եթե սերվերն այն աջակցում է։</string>
+    <string name="dejavu_example_notification_ntfy">Ուղարկել էջը որպես ծանուցում։ Թեմայի անունն իմացող ցանկացած ոք կարող է կարդալ այն, ուստի ընտրեք երկար, պատահական անուն։</string>
 </resources>

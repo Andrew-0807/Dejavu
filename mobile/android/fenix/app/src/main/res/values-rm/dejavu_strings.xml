@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Corp</string>
     <string name="dejavu_custom_action_variables">Variablas</string>
     <string name="dejavu_custom_action_variables_hint">Smatgar in’variabla per l’inserir en il champ ch’i editeschas.</string>
-    <string name="dejavu_custom_action_hint">La dumonda vegn mandada ina giada per mintga tab sin il qual l’acziun vegn exequida. Mo ina resposta 2xx conta sco success; renviaments na vegnan betg suandads e contan sco malsuccess. Cookies na vegnan betg mandads. Valurs vegnan codifitgadas sco URL en l’URL e escapadas sco JSON en in corp JSON.</string>
+    <string name="dejavu_custom_action_hint">La dumonda vegn mandada ina giada per mintga tab sin il qual l’acziun vegn exequida. Mo ina resposta 2xx conta sco success; renviaments na vegnan betg suandads e contan sco malsuccess. Cookies na vegnan betg mandads. Valurs vegnan codifitgadas sco URL en l\'URL ed en in corp da formular, ed escapadas en in corp JSON u XML.</string>
     <string name="dejavu_custom_action_sent">Mandà: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Betg reussì: code %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Betg reussì: nagina resposta (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Avrir questa adressa?</string>
     <string name="dejavu_open_non_web_pin_message">Quest tab fixà avra ina adressa che n\'è betg ina pagina web. Ella po derivar d\'in auter apparat da tes conto.\n\n%1$s</string>
     <string name="dejavu_open">Avrir</string>
+    <string name="dejavu_about_config_warning_title">Avrir about:config?</string>
+    <string name="dejavu_about_config_warning_message">Midar quests parameters po indeblir la segirezza e la sfera privata da Dejavu, u far che websites na funcziunan betg pli. Ils parameters che vegnan controllads dals parameters da Dejavu sez, sco la protecziun cunter il fastizar, HTTPS-Only ed il DNS segir, turnan tar els cura che Dejavu vegn reavià.</string>
+    <string name="dejavu_remote_debugging_warning_title">Activar il debugging a distanza?</string>
+    <string name="dejavu_remote_debugging_warning_message">Uschè ditg ch\'el è activ, po in computer collià cun quest telefon via USB, cun il debugging USB permess, controllar Dejavu e leger sias datas, sco tabs averts, cookies e pleds-clav memorisads, senza dumandar. Deactivescha el cura che ti has terminà.</string>
+    <string name="dejavu_turn_on">Activar</string>
+    <string name="dejavu_settings_jit">JavaScript svelt (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Fa ir pli svelt websites. La gronda part dals attatgas cunter navigaturs passa tras el, perquai è pli segir da deactivar el, ma intginas websites daventan pli plaunas. Vala suenter avair reavià Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Grafica 3D per gieus, chartas ed intginas websites. La deactivar bloccha attatgas tras il driver grafic e renda pli difficil per las websites da renconuscher tes telefon, ma quellas websites pon chalar da funcziunar.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Questa versiun da Dejavu n\'ha nagina clav da Safe Browsing, perquai na po ella betg avertir da websites privlusas.</string>
+    <string name="dejavu_custom_action_http_warning">Questa adressa utilisescha http, perquai viagian la dumonda, ses chaus e l\'adressa da la pagina senza criptaziun. Utilisescha https sch\'il server sustegna quai.</string>
+    <string name="dejavu_example_notification_ntfy">Trametter la pagina sco notificaziun. Mintgin che enconuscha il num dal tema la po leger, perquai tscherna in num lung e casual.</string>
 </resources>

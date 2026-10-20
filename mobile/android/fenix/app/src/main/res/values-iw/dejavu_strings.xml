@@ -145,7 +145,7 @@
     <string name="dejavu_custom_action_body">תוכן</string>
     <string name="dejavu_custom_action_variables">משתנים</string>
     <string name="dejavu_custom_action_variables_hint">הקישו על משתנה כדי להוסיף אותו לשדה שאתם עורכים.</string>
-    <string name="dejavu_custom_action_hint">הבקשה נשלחת פעם אחת עבור כל לשונית שעליה פועלת הפעולה. רק תגובה מסוג 2xx נחשבת להצלחה; הפניות מחדש אינן מבוצעות ונחשבות לכישלון. עוגיות אינן נשלחות. ערכים מקודדים בקידוד URL בתוך הכתובת, ובקידוד JSON בגוף מסוג JSON.</string>
+    <string name="dejavu_custom_action_hint">הבקשה נשלחת פעם אחת עבור כל לשונית שעליה פועלת הפעולה. רק תגובה מסוג 2xx נחשבת להצלחה; הפניות מחדש אינן מבוצעות ונחשבות לכישלון. עוגיות אינן נשלחות. ערכים מקודדים בקידוד URL בתוך הכתובת ובגוף טופס, ומקבלים escape בגוף מסוג JSON או XML.</string>
     <string name="dejavu_custom_action_sent">נשלח: %1$s</string>
     <string name="dejavu_custom_action_failed_code">נכשל: קוד %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">נכשל: אין תגובה (%1$s)</string>
@@ -345,4 +345,15 @@
     <string name="dejavu_open_non_web_pin_title">לפתוח את הכתובת הזאת?</string>
     <string name="dejavu_open_non_web_pin_message">לשונית מוצמדת זו פותחת כתובת שאינה דף אינטרנט. ייתכן שהיא הגיעה ממכשיר אחר בחשבון שלך.\n\n%1$s</string>
     <string name="dejavu_open">פתיחה</string>
+    <string name="dejavu_about_config_warning_title">לפתוח את about:config?</string>
+    <string name="dejavu_about_config_warning_message">שינוי הגדרות אלה עלול להחליש את האבטחה והפרטיות של Dejavu, או לשבש אתרים. הגדרות שההגדרות של Dejavu עצמו שולטות בהן, כמו הגנה מפני מעקב, HTTPS-Only ו-DNS מאובטח, חוזרות אליהן כש-Dejavu מופעל מחדש.</string>
+    <string name="dejavu_remote_debugging_warning_title">להפעיל ניפוי שגיאות מרחוק?</string>
+    <string name="dejavu_remote_debugging_warning_message">כל עוד הוא פעיל, מחשב שמחובר לטלפון הזה ב-USB, עם הרשאה לניפוי שגיאות ב-USB, יכול לשלוט ב-Dejavu ולקרוא את הנתונים שלו, כמו לשוניות פתוחות, עוגיות וססמאות שמורות, בלי לשאול. יש לכבות אותו בסיום.</string>
+    <string name="dejavu_turn_on">הפעלה</string>
+    <string name="dejavu_settings_jit">JavaScript מהיר (JIT)</string>
+    <string name="dejavu_settings_jit_summary">מריץ אתרים מהר יותר. רוב המתקפות על דפדפנים עוברות דרכו, ולכן כיבויו בטוח יותר, אך חלק מהאתרים יהיו איטיים יותר. ייכנס לתוקף לאחר הפעלה מחדש של Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">גרפיקה בתלת־ממד למשחקים, מפות וחלק מהאתרים. כיבויה חוסם מתקפות דרך מנהל ההתקן הגרפי ומקשה על אתרים לזהות את הטלפון שלך, אך אתרים אלה עלולים להפסיק לעבוד.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">לגרסה זו של Dejavu אין מפתח Safe Browsing, ולכן היא לא יכולה להזהיר מפני אתרים מסוכנים.</string>
+    <string name="dejavu_custom_action_http_warning">הכתובת הזאת משתמשת ב-http, ולכן הבקשה, הכותרות שלה וכתובת הדף עוברות ללא הצפנה. יש להשתמש ב-https אם השרת תומך בו.</string>
+    <string name="dejavu_example_notification_ntfy">שליחת הדף כהתראה. כל מי שיודע את שם הנושא יכול לקרוא אותה, לכן כדאי לבחור שם ארוך ואקראי.</string>
 </resources>

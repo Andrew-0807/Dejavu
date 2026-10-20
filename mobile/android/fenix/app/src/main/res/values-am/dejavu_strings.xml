@@ -167,7 +167,7 @@
     <string name="dejavu_custom_action_body">አካል</string>
     <string name="dejavu_custom_action_variables">ተለዋዋጮች</string>
     <string name="dejavu_custom_action_variables_hint">በሚያርትዑት መስክ ውስጥ ለማስገባት ተለዋዋጩን ይንኩ።</string>
-    <string name="dejavu_custom_action_hint">ጥያቄው እርምጃው ለሚሰራበት ለእያንዳንዱ ትር አንድ ጊዜ ይላካል። እንደ ስኬት የሚቆጠረው የ2xx ምላሽ ብቻ ነው፤ አቅጣጫ ማዞሪያዎች አይከተሉም፣ እንደ ውድቀትም ይቆጠራሉ። ኩኪዎች አይላኩም። እሴቶች በURL ውስጥ በURL ኢንኮዲንግ፣ በJSON አካል ውስጥ ደግሞ በJSON escaping ይቀየራሉ።</string>
+    <string name="dejavu_custom_action_hint">ጥያቄው እርምጃው ለሚሰራበት ለእያንዳንዱ ትር አንድ ጊዜ ይላካል። እንደ ስኬት የሚቆጠረው የ2xx ምላሽ ብቻ ነው፤ አቅጣጫ ማዞሪያዎች አይከተሉም፣ እንደ ውድቀትም ይቆጠራሉ። ኩኪዎች አይላኩም። እሴቶች በURL ውስጥ እና በቅጽ አካል ውስጥ በURL ኢንኮዲንግ፣ በJSON ወይም XML አካል ውስጥ ደግሞ በescaping ይቀየራሉ።</string>
     <string name="dejavu_custom_action_sent">ተልኳል፦ %1$s</string>
     <string name="dejavu_custom_action_failed_code">አልተሳካም፦ ኮድ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">አልተሳካም፦ ምላሽ የለም (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">ይህን አድራሻ ልክፈት?</string>
     <string name="dejavu_open_non_web_pin_message">ይህ የተሰካ ትር የድር ገጽ ያልሆነ አድራሻ ይከፍታል። ከመለያዎ ሌላ መሣሪያ የመጣ ሊሆን ይችላል።\n\n%1$s</string>
     <string name="dejavu_open">ክፈት</string>
+    <string name="dejavu_about_config_warning_title">about:configን ልክፈት?</string>
+    <string name="dejavu_about_config_warning_message">እነዚህን ቅንብሮች መቀየር የDejavuን ደህንነት እና ግላዊነት ሊያዳክም ወይም ድር ጣቢያዎችን ሊያበላሽ ይችላል። የDejavu የራሱ ቅንብሮች የሚቆጣጠሯቸው ቅንብሮች፣ እንደ የመከታተያ ጥበቃ፣ HTTPS-Only እና ደህንነቱ የተጠበቀ DNS፣ Dejavu እንደገና ሲጀምር ወደ እነሱ ይመለሳሉ።</string>
+    <string name="dejavu_remote_debugging_warning_title">የርቀት ማረሚያን ላብራ?</string>
+    <string name="dejavu_remote_debugging_warning_message">በርቶ እያለ፣ በUSB ከዚህ ስልክ ጋር የተገናኘ እና የUSB ማረሚያ የተፈቀደለት ኮምፒውተር ሳይጠይቅ Dejavuን መቆጣጠር እና ውሂቡን፣ እንደ ክፍት ትሮች፣ ኩኪዎች እና የተቀመጡ የይለፍ ቃላት፣ ማንበብ ይችላል። ሲጨርሱ ያጥፉት።</string>
+    <string name="dejavu_turn_on">አብራ</string>
+    <string name="dejavu_settings_jit">ፈጣን JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ድር ጣቢያዎችን በፍጥነት ያስኬዳል። በአሳሾች ላይ የሚደረጉ አብዛኞቹ ጥቃቶች በእሱ በኩል ያልፋሉ፣ ስለዚህ ማጥፋቱ ይበልጥ ደህንነቱ የተጠበቀ ነው፣ ግን አንዳንድ ጣቢያዎች ይዘገያሉ። Dejavu እንደገና ከጀመረ በኋላ ተግባራዊ ይሆናል።</string>
+    <string name="dejavu_settings_webgl_summary">ለጨዋታዎች፣ ለካርታዎች እና ለአንዳንድ ድር ጣቢያዎች የ3D ግራፊክስ። ማጥፋቱ በግራፊክስ ሾፌሩ በኩል የሚመጡ ጥቃቶችን ያግዳል እና ጣቢያዎች ስልክዎን ለመለየት ያስቸግራቸዋል፣ ግን እነዚያ ጣቢያዎች መስራት ሊያቆሙ ይችላሉ።</string>
+    <string name="dejavu_settings_safe_browsing_no_key">ይህ የDejavu ግንባታ የSafe Browsing ቁልፍ የለውም፣ ስለዚህ ስለ አደገኛ ጣቢያዎች ማስጠንቀቅ አይችልም።</string>
+    <string name="dejavu_custom_action_http_warning">ይህ አድራሻ http ይጠቀማል፣ ስለዚህ ጥያቄው፣ ራስጌዎቹ እና የገጹ አድራሻ ሳይመሰጠሩ ይጓዛሉ። አገልጋዩ የሚደግፈው ከሆነ https ይጠቀሙ።</string>
+    <string name="dejavu_example_notification_ntfy">ገጹን እንደ ማሳወቂያ ይላኩ። የርዕሱን ስም የሚያውቅ ማንኛውም ሰው ሊያነበው ይችላል፣ ስለዚህ ረጅም እና በዘፈቀደ የተመረጠ ስም ይምረጡ።</string>
 </resources>

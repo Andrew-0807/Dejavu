@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">بدنه</string>
     <string name="dejavu_custom_action_variables">متغیرها</string>
     <string name="dejavu_custom_action_variables_hint">برای درج یک متغیر در فیلدی که ویرایش می‌کنید، روی آن ضربه بزنید.</string>
-    <string name="dejavu_custom_action_hint">درخواست یک بار برای هر زبانه‌ای که کنش روی آن اجرا می‌شود، ارسال می‌شود. فقط پاسخ‌های 2xx به‌عنوان موفقیت شمرده می‌شوند؛ تغییرمسیرها دنبال نمی‌شوند و شکست محسوب می‌شوند. کوکی‌ها ارسال نمی‌شوند. مقادیر در نشانی با کدگذاری URL، و در بدنهٔ JSON با کدگذاری JSON درج می‌شوند.</string>
+    <string name="dejavu_custom_action_hint">درخواست یک بار برای هر زبانه‌ای که کنش روی آن اجرا می‌شود، ارسال می‌شود. فقط پاسخ‌های 2xx به‌عنوان موفقیت شمرده می‌شوند؛ تغییرمسیرها دنبال نمی‌شوند و شکست محسوب می‌شوند. کوکی‌ها ارسال نمی‌شوند. مقادیر در نشانی و در بدنهٔ فرم با کدگذاری URL، و در بدنهٔ JSON یا XML با گریز نویسه‌ها درج می‌شوند.</string>
     <string name="dejavu_custom_action_sent">ارسال شد: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ناموفق: کد %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ناموفق: بدون پاسخ (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">این نشانی باز شود؟</string>
     <string name="dejavu_open_non_web_pin_message">این زبانهٔ سنجاق‌شده نشانی‌ای را باز می‌کند که صفحهٔ وب نیست. ممکن است از دستگاه دیگری در حسابتان آمده باشد.\n\n%1$s</string>
     <string name="dejavu_open">باز کردن</string>
+    <string name="dejavu_about_config_warning_title">about:config باز شود؟</string>
+    <string name="dejavu_about_config_warning_message">تغییر این تنظیمات می‌تواند امنیت و حریم خصوصی Dejavu را ضعیف کند یا وب‌سایت‌ها را از کار بیندازد. تنظیماتی که تنظیمات خود Dejavu کنترلشان می‌کند، مانند محافظت در برابر ردیابی، HTTPS-Only و DNS امن، با راه‌اندازی دوبارهٔ Dejavu به آن‌ها برمی‌گردند.</string>
+    <string name="dejavu_remote_debugging_warning_title">اشکال‌زدایی از راه دور روشن شود؟</string>
+    <string name="dejavu_remote_debugging_warning_message">تا وقتی روشن است، رایانه‌ای که با USB به این تلفن وصل است و اشکال‌زدایی USB برایش مجاز است، می‌تواند بدون پرسیدن Dejavu را کنترل کند و داده‌هایش را، مانند زبانه‌های باز، کوکی‌ها و گذرواژه‌های ذخیره‌شده، بخواند. وقتی کارتان تمام شد خاموشش کنید.</string>
+    <string name="dejavu_turn_on">روشن کردن</string>
+    <string name="dejavu_settings_jit">JavaScript سریع (JIT)</string>
+    <string name="dejavu_settings_jit_summary">وب‌سایت‌ها را سریع‌تر اجرا می‌کند. بیشتر حمله‌ها به مرورگرها از راه آن انجام می‌شود، پس خاموش کردنش امن‌تر است، اما برخی سایت‌ها کندتر می‌شوند. پس از راه‌اندازی دوبارهٔ Dejavu اعمال می‌شود.</string>
+    <string name="dejavu_settings_webgl_summary">گرافیک سه‌بعدی برای بازی‌ها، نقشه‌ها و برخی وب‌سایت‌ها. خاموش کردن آن حمله‌ها از راه گرداننده گرافیکی را مسدود می‌کند و شناسایی تلفن شما را برای سایت‌ها دشوارتر می‌کند، اما ممکن است آن سایت‌ها از کار بیفتند.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">این نسخهٔ Dejavu کلید Safe Browsing ندارد، پس نمی‌تواند دربارهٔ سایت‌های خطرناک هشدار دهد.</string>
+    <string name="dejavu_custom_action_http_warning">این نشانی از http استفاده می‌کند، پس درخواست، سرآیندهایش و نشانی صفحه بدون رمزگذاری منتقل می‌شوند. اگر کارساز از https پشتیبانی می‌کند، از آن استفاده کنید.</string>
+    <string name="dejavu_example_notification_ntfy">صفحه را به‌صورت اعلان بفرستید. هر کسی که نام موضوع را بداند می‌تواند آن را بخواند، پس نامی بلند و تصادفی انتخاب کنید.</string>
 </resources>

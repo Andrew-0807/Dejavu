@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Còs</string>
     <string name="dejavu_custom_action_variables">Variablas</string>
     <string name="dejavu_custom_action_variables_hint">Tocatz una variabla per l’inserir dins lo camp que sètz a modificar.</string>
-    <string name="dejavu_custom_action_hint">La demanda es mandada un còp per cada onglet sus lo qual l’accion s’executa. Sonque una responsa 2xx compta coma capitada ; las redireccions son pas seguidas e comptan coma fracasses. Los cookies son pas mandats. Las valors son encodadas en URL dins l’URL e escapadas en JSON dins un còs JSON.</string>
+    <string name="dejavu_custom_action_hint">La demanda es mandada un còp per cada onglet sus lo qual l’accion s’executa. Sonque una responsa 2xx compta coma capitada ; las redireccions son pas seguidas e comptan coma fracasses. Los cookies son pas mandats. Las valors son encodadas en URL dins l\'URL e dins un còs de formulari, e escapadas dins un còs JSON o XML.</string>
     <string name="dejavu_custom_action_sent">Mandat : %1$s</string>
     <string name="dejavu_custom_action_failed_code">Fracàs : còdi %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Fracàs : cap de responsa (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Dobrir aquesta adreça ?</string>
     <string name="dejavu_open_non_web_pin_message">Aqueste onglet penjat dobrís una adreça que es pas una pagina web. Pòt venir d\'un autre aparelh de vòstre compte.\n\n%1$s</string>
     <string name="dejavu_open">Dobrir</string>
+    <string name="dejavu_about_config_warning_title">Dobrir about:config ?</string>
+    <string name="dejavu_about_config_warning_message">Cambiar aquestes paramètres pòt afeblir la seguretat e la vida privada de Dejavu, o copar de sites web. Los paramètres que contrarotlan los paramètres de Dejavu el meteis, coma la proteccion contra lo seguiment, HTTPS-Only e lo DNS segur, tòrnan a lors valors quand Dejavu se reaviá.</string>
+    <string name="dejavu_remote_debugging_warning_title">Activar lo desbugatge a distància ?</string>
+    <string name="dejavu_remote_debugging_warning_message">Tant qu\'es activat, un ordenador connectat a aqueste telefòn per USB, amb lo desbugatge USB autorizat, pòt contrarotlar Dejavu e legir sas donadas, coma los onglets dobèrts, los cookies e los senhals enregistrats, sens demandar res. Desactivatz-lo quand avètz acabat.</string>
+    <string name="dejavu_turn_on">Activar</string>
+    <string name="dejavu_settings_jit">JavaScript rapid (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Fa anar mai rapidament los sites web. La màger part dels atacs contra los navegadors passan per el, doncas lo desactivar es mai segur, mas d\'unes sites venon mai lents. S\'aplica aprèp la reaviada de Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Grafismes 3D pels jòcs, las mapas e d\'unes sites web. Los desactivar bloca los atacs que passan pel pilòt grafic e fa que los sites reconeisson mai malaisidament vòstre telefòn, mas aqueles sites pòdon arrestar de foncionar.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Aquesta version de Dejavu a pas cap de clau Safe Browsing, doncas pòt pas avisar dels sites perilhoses.</string>
+    <string name="dejavu_custom_action_http_warning">Aquesta adreça utiliza http : la requèsta, sas entèstas e l\'adreça de la pagina viatjan sens chiframent. Utilizatz https se lo servidor o pren en carga.</string>
+    <string name="dejavu_example_notification_ntfy">Mandar la pagina coma notificacion. Qual que siá que coneis lo nom del subjècte la pòt legir, causissètz doncas un nom long e aleatòri.</string>
 </resources>

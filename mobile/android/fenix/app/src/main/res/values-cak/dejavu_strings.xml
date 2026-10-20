@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Ruch\'akulal</string>
     <string name="dejavu_custom_action_variables">Taq k\'exel</string>
     <string name="dejavu_custom_action_variables_hint">Tapitz\'a\' jun k\'exel richin natz\'aqatisaj pa ri natz\'ib\'aj wi.</string>
-    <string name="dejavu_custom_action_hint">Ri taq\'in nitaq jun mul richin chi jujunal ruwi\' akuchi\' nisamäj wi ri b\'anob\'äl. Xa jun rutzuqik 2xx nib\'an jun utz; ri redirects man ye\'okisäx ta chuqa\' nib\'an chi re k\'ayewal. Ri cookies man ye taq ta. Ri taq rejqalem ye URL encoded pa ri URL chuqa\' JSON escaped pa jun ruch\'akulal JSON.</string>
+    <string name="dejavu_custom_action_hint">Ri taq\'in nitaq jun mul richin chi jujunal ruwi\' akuchi\' nisamäj wi ri b\'anob\'äl. Xa jun rutzuqik 2xx nib\'an jun utz; ri redirects man ye\'okisäx ta chuqa\' nib\'an chi re k\'ayewal. Ri cookies man ye taq ta. Ri taq rejqalem ye URL encoded pa ri URL chuqa\' pa ruch\'akulal formulario, chuqa\' escaped pa jun ruch\'akulal JSON o XML.</string>
     <string name="dejavu_custom_action_sent">Xtaq: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Man xk\'ulwachitäj ta: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Man xk\'ulwachitäj ta: majun rutzuqik (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">¿Najäq re ochochib\'äl re\'?</string>
     <string name="dejavu_open_non_web_pin_message">Re ruwi\' re\' nujäq jun ochochib\'äl man ruxaq ajk\'amaya\'l ta. Rik\'in jub\'a\' xpe pa jun chik okisaxel richin ri rub\'i\' ataqoya\'l.\n\n%1$s</string>
     <string name="dejavu_open">Tijaq</string>
+    <string name="dejavu_about_config_warning_title">¿Najäq about:config?</string>
+    <string name="dejavu_about_config_warning_message">Toq ye\'ajäl re taq runuk\'ulem re\', yetikïr nkiyüj ri ruchajixik chuqa\' ri ichinanem richin Dejavu, o yekiyüj ri taq ruxaq k\'amaya\'l. Ri taq runuk\'ulem ye\'ichajin ri runuk\'ulem ri Dejavu, achi\'el ri ruchajixik chuwäch ojqanem, HTTPS-Only chuqa\' ri jikïl DNS, yetzolin toq nitikïr chik ri Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">¿Natzïj ri näj chojmirisanem?</string>
+    <string name="dejavu_remote_debugging_warning_message">Toq tzijon, jun kematz\'ib\' ximon rik\'in re oyonib\'äl re\' rik\'in USB, rik\'in ri chojmirisanem USB ya\'on q\'ij, nitikïr nuchajij ri Dejavu chuqa\' nusik\'ij ri taq rutzij, achi\'el ri taq ruwi\' e jaqon, ri taq cookie chuqa\' ri taq ewan tzij eyakon, man nuk\'utuj ta. Tachupu\' toq xak\'is.</string>
+    <string name="dejavu_turn_on">Titzij</string>
+    <string name="dejavu_settings_jit">Aninäq JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Ye\'aninan ri taq ruxaq k\'amaya\'l. Ri k\'ïy taq ch\'aqoj chi kij ri taq okik\'amaya\'l yeq\'ax pa ruwi\', ruma ri\' más jikïl toq nichup, xa xe chi jujun taq ruxaq más eqal yeb\'e. Nisamäj toq nitikïr chik ri Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D taq wachib\'äl richin taq etz\'anem, taq b\'ey wachib\'äl chuqa\' jujun taq ruxaq. Toq nichup, yeruq\'ät ri taq ch\'aqoj pa ruwi\' ri controlador gráfico chuqa\' k\'ayew nuk\'üt ri awoyonib\'al chikiwäch ri taq ruxaq, xa xe chi ri taq ruxaq ri\' rik\'in jub\'a\' man yesamäj ta chik.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Re rub\'anikil Dejavu re\' majun ruch\'ab\'äl Safe Browsing, ruma ri\' man nitikïr ta nuya\' rutzijol chi kij ri itzel taq ruxaq.</string>
+    <string name="dejavu_custom_action_http_warning">Re ochochib\'äl re\' nrokisaj http, ruma ri\' ri k\'utuj, ri taq ruwi\' chuqa\' ri rochochib\'al ri ruxaq yeb\'e majun ewan tzij. Tawokisaj https we ri ruk\'u\'x samaj nuk\'äm.</string>
+    <string name="dejavu_example_notification_ntfy">Tataqa\' ri ruxaq achi\'el rutzijol. Xab\'achike retaman rub\'i\' ri na\'oj nitikïr nusik\'ij, ruma ri\' tacha\' jun nïm chuqa\' xab\'achike b\'i\'aj.</string>
 </resources>

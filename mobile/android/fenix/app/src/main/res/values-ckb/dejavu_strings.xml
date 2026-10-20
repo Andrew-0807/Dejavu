@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">ناوەڕۆک</string>
     <string name="dejavu_custom_action_variables">گۆڕاوەکان</string>
     <string name="dejavu_custom_action_variables_hint">دەست لەسەر گۆڕاوێک بدە بۆ خستنیە ناو ئەو خانەیەی دەستکاری دەکەیت.</string>
-    <string name="dejavu_custom_action_hint">داواکارییەکە یەک جار بۆ هەر بازدەرێک کە کردارەکە لەسەری جێبەجێ دەبێت دەنێردرێت. تەنها وەڵامی 2xx وەک سەرکەوتوو دادەنرێت؛ ئاڕاستەکردنەوەکان بەدوادا ناکەوێت و وەک شکست دادەنرێن. کووکی نانێردرێت. بەهاکان لە URL بە شێوازی URL کۆدکراون، و لە ناوەڕۆکی JSON بە شێوازی JSON.</string>
+    <string name="dejavu_custom_action_hint">داواکارییەکە یەک جار بۆ هەر بازدەرێک کە کردارەکە لەسەری جێبەجێ دەبێت دەنێردرێت. تەنها وەڵامی 2xx وەک سەرکەوتوو دادەنرێت؛ ئاڕاستەکردنەوەکان بەدوادا ناکەوێت و وەک شکست دادەنرێن. کووکی نانێردرێت. بەهاکان لە URL و لە ناوەڕۆکی فۆرمدا بە شێوازی URL کۆدکراون، و لە ناوەڕۆکی JSON یان XMLدا دەرباز کراون.</string>
     <string name="dejavu_custom_action_sent">نێردرا: %1$s</string>
     <string name="dejavu_custom_action_failed_code">شکستی هێنا: کۆدی %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">شکستی هێنا: وەڵام نییە (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">ئەم ناونیشانە بکرێتەوە؟</string>
     <string name="dejavu_open_non_web_pin_message">ئەم بازدەرە چەسپاوە ناونیشانێک دەکاتەوە کە پەڕەی وێب نییە. لەوانەیە لە ئامێرێکی تری هەژمارەکەتەوە هاتبێت.\n\n%1$s</string>
     <string name="dejavu_open">کردنەوە</string>
+    <string name="dejavu_about_config_warning_title">about:config بکرێتەوە؟</string>
+    <string name="dejavu_about_config_warning_message">گۆڕینی ئەم ڕێکخستنانە دەتوانێت ئاسایش و تایبەتیی Dejavu لاواز بکات، یان ماڵپەڕەکان تێکبدات. ئەو ڕێکخستنانەی ڕێکخستنەکانی خودی Dejavu کۆنترۆڵیان دەکەن، وەک پاراستن لە شوێنکەوتن، HTTPS-Only و DNSی پارێزراو، کاتێک Dejavu دووبارە دەست پێدەکاتەوە دەگەڕێنەوە بۆیان.</string>
+    <string name="dejavu_remote_debugging_warning_title">هەڵەدۆزیی لە دوورەوە چالاک بکرێت؟</string>
+    <string name="dejavu_remote_debugging_warning_message">تا کاتێک چالاکە، کۆمپیوتەرێک کە بە USB بەم تەلەفۆنەوە بەستراوە و ڕێگەی هەڵەدۆزیی USBی پێدراوە، دەتوانێت بێ پرسیار Dejavu کۆنترۆڵ بکات و زانیارییەکانی بخوێنێتەوە، وەک بازدەرە کراوەکان، کووکییەکان و تێپەڕەوشە پاشەکەوتکراوەکان. کاتێک تەواو بوویت بیکوژێنەرەوە.</string>
+    <string name="dejavu_turn_on">چالاککردن</string>
+    <string name="dejavu_settings_jit">JavaScriptی خێرا (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ماڵپەڕەکان خێراتر کار پێدەکات. زۆربەی هێرشەکان بۆ سەر وێبگەڕەکان لە ڕێگەیەوە تێدەپەڕن، بۆیە کوژاندنەوەی پارێزراوترە، بەڵام هەندێک ماڵپەڕ هێواشتر دەبن. دوای دووبارە دەستپێکردنەوەی Dejavu جێبەجێ دەبێت.</string>
+    <string name="dejavu_settings_webgl_summary">گرافیکی 3D بۆ یاری، نەخشە و هەندێک ماڵپەڕ. کوژاندنەوەی هێرشەکان لە ڕێگەی درایڤەری گرافیکەوە ڕادەگرێت و ناسینەوەی تەلەفۆنەکەت بۆ ماڵپەڕەکان قورستر دەکات، بەڵام ئەو ماڵپەڕانە لەوانەیە کار نەکەن.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">ئەم وەشانەی Dejavu کلیلی Safe Browsingی نییە، بۆیە ناتوانێت ئاگادارت بکاتەوە لە ماڵپەڕە مەترسیدارەکان.</string>
+    <string name="dejavu_custom_action_http_warning">ئەم ناونیشانە http بەکاردەهێنێت، بۆیە داواکارییەکە، سەردێڕەکانی و ناونیشانی پەڕەکە بێ شفرەکردن دەگوازرێنەوە. ئەگەر ڕاژەکار پشتگیری دەکات https بەکاربهێنە.</string>
+    <string name="dejavu_example_notification_ntfy">پەڕەکە وەک ئاگادارکردنەوە بنێرە. هەر کەسێک ناوی بابەتەکە بزانێت دەتوانێت بیخوێنێتەوە، بۆیە ناوێکی درێژ و هەڕەمەکی هەڵبژێرە.</string>
 </resources>

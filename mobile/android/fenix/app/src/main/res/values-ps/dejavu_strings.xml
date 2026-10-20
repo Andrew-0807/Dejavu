@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">محتوا</string>
     <string name="dejavu_custom_action_variables">متغیرات</string>
     <string name="dejavu_custom_action_variables_hint">په هغه ساحه کې چې تاسو یې سمولو، د متغیر ننوتلو لپاره پرې کېکاږئ.</string>
-    <string name="dejavu_custom_action_hint">غوښتنه د هر ټب لپاره چې کړنه پرې پلي کېږي یو ځل لیږل کېږي. یوازې د 2xx ځواب بریالیتوب ګڼل کېږي؛ لېږدونې تعقیب نه کېږي او ناکامي ګڼل کېږي. کوکیز نه لیږدېږي. ارزښتونه په URL کې د URL په بڼه کوډ کېږي، او په JSON محتوا کې د JSON په بڼه.</string>
+    <string name="dejavu_custom_action_hint">غوښتنه د هر ټب لپاره چې کړنه پرې پلي کېږي یو ځل لیږل کېږي. یوازې د 2xx ځواب بریالیتوب ګڼل کېږي؛ لېږدونې تعقیب نه کېږي او ناکامي ګڼل کېږي. کوکیز نه لیږدېږي. ارزښتونه په URL او د فورمې په محتوا کې د URL په بڼه کوډ کېږي، او په JSON یا XML محتوا کې تېښته ورکول کېږي.</string>
     <string name="dejavu_custom_action_sent">ولېږل شو: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ناکام شو: کوډ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ناکام شو: ځواب نشته (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">دا پته پرانيزئ؟</string>
     <string name="dejavu_open_non_web_pin_message">دا پن شوی ټب داسې پته پرانيزي چې وېب پاڼه نه ده. کېدای شي ستاسې د حساب له بلې وسيلې راغلې وي.\n\n%1$s</string>
     <string name="dejavu_open">پرانيستل</string>
+    <string name="dejavu_about_config_warning_title">about:config پرانیستل شي؟</string>
+    <string name="dejavu_about_config_warning_message">د دې امستنو بدلول کېدای شي د Dejavu خوندیتوب او محرمیت کمزوری کړي، یا وېبپاڼې خرابې کړي. هغه امستنې چې د Dejavu خپلې امستنې یې کنټرولوي، لکه د تعقیب پر وړاندې ساتنه، HTTPS-Only او خوندي DNS، کله چې Dejavu بیا پیل شي هغو ته بېرته ورګرځي.</string>
+    <string name="dejavu_remote_debugging_warning_title">له لرې ستونزې لرې کول چالان شي؟</string>
+    <string name="dejavu_remote_debugging_warning_message">تر هغه چې چالان وي، هغه کمپیوټر چې د USB له لارې له دې تلیفون سره نښلول شوی او د USB ستونزې لرې کولو اجازه لري، پرته له پوښتنې Dejavu کنټرولولی او د هغه معلومات، لکه پرانیستي ټبونه، کوکيز او خوندي شوي پټنومونه، لوستلی شي. کله چې کار مو پای ته ورسېد، بند یې کړئ.</string>
+    <string name="dejavu_turn_on">چالانول</string>
+    <string name="dejavu_settings_jit">چټک JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">وېبپاڼې چټکې چلوي. پر لټوونکو ډېری بریدونه له دې لارې کېږي، نو بندول یې خوندي دي، خو ځینې پاڼې ورو کېږي. د Dejavu له بیا پیل وروسته پلي کېږي.</string>
+    <string name="dejavu_settings_webgl_summary">د لوبو، نقشو او ځینو وېبپاڼو لپاره 3D ګرافیک. بندول یې د ګرافیک چلوونکي له لارې بریدونه بندوي او پاڼو ته ستاسو د تلیفون پېژندل ستونزمن کوي، خو کېدای شي هغه پاڼې کار پرېږدي.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">د Dejavu دا نسخه د Safe Browsing کیلي نه لري، نو د خطرناکو پاڼو په اړه خبرداری نه شي ورکولی.</string>
+    <string name="dejavu_custom_action_http_warning">دا پته http کاروي، نو غوښتنه، سرلیکونه یې او د پاڼې پته پرته له کوډ کولو لېږدول کېږي. که پالنګر یې ملاتړ کوي، https وکاروئ.</string>
+    <string name="dejavu_example_notification_ntfy">پاڼه د خبرتیا په توګه ولېږئ. هر څوک چې د موضوع نوم پېژني لوستلی یې شي، نو اوږد او ناڅاپي نوم وټاکئ.</string>
 </resources>

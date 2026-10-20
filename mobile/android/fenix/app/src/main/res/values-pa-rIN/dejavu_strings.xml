@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">ਬਾਡੀ</string>
     <string name="dejavu_custom_action_variables">ਵੇਰੀਏਬਲ</string>
     <string name="dejavu_custom_action_variables_hint">ਜਿਸ ਖੇਤਰ ਨੂੰ ਤੁਸੀਂ ਸੋਧ ਰਹੇ ਹੋ ਉਸ ਵਿੱਚ ਪਾਉਣ ਲਈ ਇੱਕ ਵੇਰੀਏਬਲ ‘ਤੇ ਟੈਪ ਕਰੋ।</string>
-    <string name="dejavu_custom_action_hint">ਬੇਨਤੀ ਹਰ ਉਸ ਟੈਬ ਲਈ ਇੱਕ ਵਾਰ ਭੇਜੀ ਜਾਂਦੀ ਹੈ ਜਿਸ ‘ਤੇ ਕਾਰਵਾਈ ਚੱਲਦੀ ਹੈ। ਸਿਰਫ਼ 2xx ਜਵਾਬ ਹੀ ਸਫਲ ਮੰਨਿਆ ਜਾਂਦਾ ਹੈ; ਰੀਡਾਇਰੈਕਟਾਂ ਦੀ ਪਾਲਣਾ ਨਹੀਂ ਕੀਤੀ ਜਾਂਦੀ ਅਤੇ ਇਹ ਅਸਫਲ ਮੰਨੀਆਂ ਜਾਂਦੀਆਂ ਹਨ। ਕੂਕੀਜ਼ ਨਹੀਂ ਭੇਜੀਆਂ ਜਾਂਦੀਆਂ। ਮੁੱਲ URL ਵਿੱਚ URL ਇਨਕੋਡ ਅਤੇ JSON ਬਾਡੀ ਵਿੱਚ JSON ਇਸਕੇਪ ਕੀਤੇ ਹੁੰਦੇ ਹਨ।</string>
+    <string name="dejavu_custom_action_hint">ਬੇਨਤੀ ਹਰ ਉਸ ਟੈਬ ਲਈ ਇੱਕ ਵਾਰ ਭੇਜੀ ਜਾਂਦੀ ਹੈ ਜਿਸ ‘ਤੇ ਕਾਰਵਾਈ ਚੱਲਦੀ ਹੈ। ਸਿਰਫ਼ 2xx ਜਵਾਬ ਹੀ ਸਫਲ ਮੰਨਿਆ ਜਾਂਦਾ ਹੈ; ਰੀਡਾਇਰੈਕਟਾਂ ਦੀ ਪਾਲਣਾ ਨਹੀਂ ਕੀਤੀ ਜਾਂਦੀ ਅਤੇ ਇਹ ਅਸਫਲ ਮੰਨੀਆਂ ਜਾਂਦੀਆਂ ਹਨ। ਕੂਕੀਜ਼ ਨਹੀਂ ਭੇਜੀਆਂ ਜਾਂਦੀਆਂ। ਮੁੱਲ URL ਵਿੱਚ ਅਤੇ ਫ਼ਾਰਮ ਬਾਡੀ ਵਿੱਚ URL ਇਨਕੋਡ, ਅਤੇ JSON ਜਾਂ XML ਬਾਡੀ ਵਿੱਚ ਇਸਕੇਪ ਕੀਤੇ ਹੁੰਦੇ ਹਨ।</string>
     <string name="dejavu_custom_action_sent">ਭੇਜਿਆ: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ਅਸਫਲ: ਕੋਡ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ਅਸਫਲ: ਕੋਈ ਜਵਾਬ ਨਹੀਂ (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">ਕੀ ਇਹ ਪਤਾ ਖੋਲ੍ਹਣਾ ਹੈ?</string>
     <string name="dejavu_open_non_web_pin_message">ਇਹ ਪਿੰਨ ਕੀਤੀ ਟੈਬ ਅਜਿਹਾ ਪਤਾ ਖੋਲ੍ਹਦੀ ਹੈ ਜੋ ਵੈੱਬ ਸਫ਼ਾ ਨਹੀਂ ਹੈ। ਇਹ ਤੁਹਾਡੇ ਖਾਤੇ ਦੇ ਕਿਸੇ ਹੋਰ ਡਿਵਾਈਸ ਤੋਂ ਆਇਆ ਹੋ ਸਕਦਾ ਹੈ।\n\n%1$s</string>
     <string name="dejavu_open">ਖੋਲ੍ਹੋ</string>
+    <string name="dejavu_about_config_warning_title">ਕੀ about:config ਖੋਲ੍ਹਣਾ ਹੈ?</string>
+    <string name="dejavu_about_config_warning_message">ਇਹ ਸੈਟਿੰਗਾਂ ਬਦਲਣ ਨਾਲ Dejavu ਦੀ ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ ਕਮਜ਼ੋਰ ਹੋ ਸਕਦੀ ਹੈ, ਜਾਂ ਵੈੱਬਸਾਈਟਾਂ ਖ਼ਰਾਬ ਹੋ ਸਕਦੀਆਂ ਹਨ। Dejavu ਦੀਆਂ ਆਪਣੀਆਂ ਸੈਟਿੰਗਾਂ ਜਿਨ੍ਹਾਂ ਸੈਟਿੰਗਾਂ ਨੂੰ ਕੰਟਰੋਲ ਕਰਦੀਆਂ ਹਨ, ਜਿਵੇਂ ਟਰੈਕਿੰਗ ਸੁਰੱਖਿਆ, HTTPS-Only ਅਤੇ ਸੁਰੱਖਿਅਤ DNS, ਉਹ Dejavu ਮੁੜ ਸ਼ੁਰੂ ਹੋਣ \'ਤੇ ਉਨ੍ਹਾਂ ਵੱਲ ਵਾਪਸ ਚਲੀਆਂ ਜਾਂਦੀਆਂ ਹਨ।</string>
+    <string name="dejavu_remote_debugging_warning_title">ਕੀ ਰਿਮੋਟ ਡੀਬੱਗਿੰਗ ਚਾਲੂ ਕਰਨੀ ਹੈ?</string>
+    <string name="dejavu_remote_debugging_warning_message">ਜਦੋਂ ਤੱਕ ਇਹ ਚਾਲੂ ਹੈ, USB ਰਾਹੀਂ ਇਸ ਫ਼ੋਨ ਨਾਲ ਜੁੜਿਆ ਅਤੇ USB ਡੀਬੱਗਿੰਗ ਦੀ ਇਜਾਜ਼ਤ ਵਾਲਾ ਕੰਪਿਊਟਰ ਬਿਨਾਂ ਪੁੱਛੇ Dejavu ਨੂੰ ਕੰਟਰੋਲ ਕਰ ਸਕਦਾ ਹੈ ਅਤੇ ਇਸਦਾ ਡਾਟਾ, ਜਿਵੇਂ ਖੁੱਲ੍ਹੀਆਂ ਟੈਬਾਂ, ਕੂਕੀਜ਼ ਅਤੇ ਸੰਭਾਲੇ ਪਾਸਵਰਡ, ਪੜ੍ਹ ਸਕਦਾ ਹੈ। ਕੰਮ ਖ਼ਤਮ ਹੋਣ \'ਤੇ ਇਸਨੂੰ ਬੰਦ ਕਰੋ।</string>
+    <string name="dejavu_turn_on">ਚਾਲੂ ਕਰੋ</string>
+    <string name="dejavu_settings_jit">ਤੇਜ਼ JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ਵੈੱਬਸਾਈਟਾਂ ਨੂੰ ਤੇਜ਼ ਚਲਾਉਂਦਾ ਹੈ। ਬ੍ਰਾਊਜ਼ਰਾਂ \'ਤੇ ਜ਼ਿਆਦਾਤਰ ਹਮਲੇ ਇਸ ਰਾਹੀਂ ਹੁੰਦੇ ਹਨ, ਇਸ ਲਈ ਇਸਨੂੰ ਬੰਦ ਕਰਨਾ ਵੱਧ ਸੁਰੱਖਿਅਤ ਹੈ, ਪਰ ਕੁਝ ਸਾਈਟਾਂ ਹੌਲੀ ਹੋ ਜਾਂਦੀਆਂ ਹਨ। Dejavu ਮੁੜ ਸ਼ੁਰੂ ਹੋਣ ਤੋਂ ਬਾਅਦ ਲਾਗੂ ਹੁੰਦਾ ਹੈ।</string>
+    <string name="dejavu_settings_webgl_summary">ਗੇਮਾਂ, ਨਕਸ਼ਿਆਂ ਅਤੇ ਕੁਝ ਵੈੱਬਸਾਈਟਾਂ ਲਈ 3D ਗ੍ਰਾਫ਼ਿਕਸ। ਇਸਨੂੰ ਬੰਦ ਕਰਨ ਨਾਲ ਗ੍ਰਾਫ਼ਿਕਸ ਡਰਾਈਵਰ ਰਾਹੀਂ ਹੋਣ ਵਾਲੇ ਹਮਲੇ ਰੁਕਦੇ ਹਨ ਅਤੇ ਸਾਈਟਾਂ ਲਈ ਤੁਹਾਡਾ ਫ਼ੋਨ ਪਛਾਣਨਾ ਔਖਾ ਹੁੰਦਾ ਹੈ, ਪਰ ਉਹ ਸਾਈਟਾਂ ਕੰਮ ਕਰਨਾ ਬੰਦ ਕਰ ਸਕਦੀਆਂ ਹਨ।</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu ਦੇ ਇਸ ਬਿਲਡ ਵਿੱਚ Safe Browsing ਕੁੰਜੀ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਹ ਖ਼ਤਰਨਾਕ ਸਾਈਟਾਂ ਬਾਰੇ ਚੇਤਾਵਨੀ ਨਹੀਂ ਦੇ ਸਕਦਾ।</string>
+    <string name="dejavu_custom_action_http_warning">ਇਹ ਪਤਾ http ਵਰਤਦਾ ਹੈ, ਇਸ ਲਈ ਬੇਨਤੀ, ਇਸਦੇ ਹੈਡਰ ਅਤੇ ਸਫ਼ੇ ਦਾ ਪਤਾ ਇਨਕ੍ਰਿਪਸ਼ਨ ਤੋਂ ਬਿਨਾਂ ਜਾਂਦੇ ਹਨ। ਜੇ ਸਰਵਰ ਸਮਰਥਨ ਕਰਦਾ ਹੈ ਤਾਂ https ਵਰਤੋ।</string>
+    <string name="dejavu_example_notification_ntfy">ਸਫ਼ੇ ਨੂੰ ਸੂਚਨਾ ਵਜੋਂ ਭੇਜੋ। ਵਿਸ਼ੇ ਦਾ ਨਾਂ ਜਾਣਨ ਵਾਲਾ ਕੋਈ ਵੀ ਇਸਨੂੰ ਪੜ੍ਹ ਸਕਦਾ ਹੈ, ਇਸ ਲਈ ਲੰਮਾ, ਬੇਤਰਤੀਬ ਨਾਂ ਚੁਣੋ।</string>
 </resources>

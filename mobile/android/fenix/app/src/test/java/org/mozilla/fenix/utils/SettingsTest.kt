@@ -950,8 +950,8 @@ class SettingsTest {
     }
 
     @Test
-    fun `GIVEN unset user preferences THEN https-only is disabled`() {
-        assertFalse(settings.shouldUseHttpsOnly)
+    fun `GIVEN unset user preferences THEN https-only is enabled`() {
+        assertTrue(settings.shouldUseHttpsOnly)
     }
 
     @Test

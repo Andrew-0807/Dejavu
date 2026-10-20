@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Innehåll</string>
     <string name="dejavu_custom_action_variables">Variabler</string>
     <string name="dejavu_custom_action_variables_hint">Tryck på en variabel för att infoga den i fältet du redigerar.</string>
-    <string name="dejavu_custom_action_hint">Begäran skickas en gång för varje flik som åtgärden körs på. Bara ett 2xx-svar räknas som lyckat; omdirigeringar följs inte och räknas som misslyckade. Cookies skickas inte. Värden är URL-kodade i URL:en och JSON-eskejpade i ett JSON-innehåll.</string>
+    <string name="dejavu_custom_action_hint">Begäran skickas en gång för varje flik som åtgärden körs på. Bara ett 2xx-svar räknas som lyckat; omdirigeringar följs inte och räknas som misslyckade. Cookies skickas inte. Värden är URL-kodade i URL:en och i ett formulärinnehåll, och eskejpade i ett JSON- eller XML-innehåll.</string>
     <string name="dejavu_custom_action_sent">Skickat: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Misslyckades: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Misslyckades: inget svar (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Öppna den här adressen?</string>
     <string name="dejavu_open_non_web_pin_message">Den här fästa fliken öppnar en adress som inte är en webbsida. Den kan komma från en annan enhet på ditt konto.\n\n%1$s</string>
     <string name="dejavu_open">Öppna</string>
+    <string name="dejavu_about_config_warning_title">Öppna about:config?</string>
+    <string name="dejavu_about_config_warning_message">Att ändra de här inställningarna kan försvaga säkerheten och integriteten i Dejavu, eller göra att webbplatser slutar fungera. Inställningar som Dejavus egna inställningar styr, som spårningsskydd, HTTPS-Only och säker DNS, återgår till dem när Dejavu startas om.</string>
+    <string name="dejavu_remote_debugging_warning_title">Slå på fjärrfelsökning?</string>
+    <string name="dejavu_remote_debugging_warning_message">Så länge den är på kan en dator som är ansluten till den här telefonen via USB, med USB-felsökning tillåten, styra Dejavu och läsa dess data, som öppna flikar, kakor och sparade lösenord, utan att fråga. Stäng av den när du är klar.</string>
+    <string name="dejavu_turn_on">Slå på</string>
+    <string name="dejavu_settings_jit">Snabb JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Får webbplatser att gå snabbare. De flesta attacker mot webbläsare går via den, så det är säkrare att stänga av den, men vissa webbplatser blir långsammare. Gäller efter att Dejavu har startats om.</string>
+    <string name="dejavu_settings_webgl_summary">3D-grafik för spel, kartor och vissa webbplatser. Att stänga av den blockerar attacker via grafikdrivrutinen och gör det svårare för webbplatser att känna igen din telefon, men de webbplatserna kan sluta fungera.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Den här versionen av Dejavu har ingen Safe Browsing-nyckel, så den kan inte varna för farliga webbplatser.</string>
+    <string name="dejavu_custom_action_http_warning">Den här adressen använder http, så begäran, dess rubriker och sidans adress skickas okrypterade. Använd https om servern stöder det.</string>
+    <string name="dejavu_example_notification_ntfy">Skicka sidan som en avisering. Alla som känner till ämnets namn kan läsa den, så välj ett långt, slumpmässigt namn.</string>
 </resources>

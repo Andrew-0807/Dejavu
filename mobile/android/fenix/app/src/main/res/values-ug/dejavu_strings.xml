@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">گەۋدە</string>
     <string name="dejavu_custom_action_variables">ئۆزگەرگۈچىلەر</string>
     <string name="dejavu_custom_action_variables_hint">تەھرىرلەۋاتقان رايونغا قوشۇش ئۈچۈن ئۆزگەرگۈچىگە چېكىڭ.</string>
-    <string name="dejavu_custom_action_hint">سوئال مەشغۇلات ئىجرا بولىدىغان ھەر بەتكۈچ ئۈچۈن بىر قېتىم ئەۋەتىلىدۇ. پەقەت 2xx جاۋابىلا مۇۋەپپەقىيەتلىك ھېسابلىنىدۇ؛ يولداشلار ئىجرا قىلىنمايدۇ ۋە مەغلۇپ ھېسابلىنىدۇ. كۇكىلار ئەۋەتىلمەيدۇ. قىممەتلەر URL دا URL كودلىنىدۇ، JSON گەۋدىسىدە بولسا JSON قائىدىسى بويىچە يېزىلىدۇ.</string>
+    <string name="dejavu_custom_action_hint">سوئال مەشغۇلات ئىجرا بولىدىغان ھەر بەتكۈچ ئۈچۈن بىر قېتىم ئەۋەتىلىدۇ. پەقەت 2xx جاۋابىلا مۇۋەپپەقىيەتلىك ھېسابلىنىدۇ؛ يولداشلار ئىجرا قىلىنمايدۇ ۋە مەغلۇپ ھېسابلىنىدۇ. كۇكىلار ئەۋەتىلمەيدۇ. قىممەتلەر URL دا ۋە جەدۋەل گەۋدىسىدە URL كودلىنىدۇ، JSON ياكى XML گەۋدىسىدە بولسا ئالاھىدە بەلگىلەر بىلەن يېزىلىدۇ.</string>
     <string name="dejavu_custom_action_sent">ئەۋەتىلدى: %1$s</string>
     <string name="dejavu_custom_action_failed_code">مەغلۇپ بولدى: كود %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">مەغلۇپ بولدى: جاۋاب يوق (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">بۇ ئادرېسنى ئاچامسىز؟</string>
     <string name="dejavu_open_non_web_pin_message">بۇ مىقلانغان بەتكۈچ تور بېتى بولمىغان ئادرېسنى ئاچىدۇ. ئۇ ھېساباتىڭىزدىكى باشقا ئۈسكۈنىدىن كەلگەن بولۇشى مۇمكىن.\n\n%1$s</string>
     <string name="dejavu_open">ئاچ</string>
+    <string name="dejavu_about_config_warning_title">about:config نى ئاچامسىز؟</string>
+    <string name="dejavu_about_config_warning_message">بۇ تەڭشەكلەرنى ئۆزگەرتىش Dejavu نىڭ بىخەتەرلىكى ۋە شەخسىيىتىنى ئاجىزلاشتۇرۇشى ياكى تور بېكەتلەرنى بۇزۇشى مۇمكىن. Dejavu نىڭ ئۆز تەڭشەكلىرى باشقۇرىدىغان تەڭشەكلەر، مەسىلەن ئىز قوغلاشتىن قوغداش، HTTPS-Only ۋە بىخەتەر DNS، Dejavu قايتا قوزغالغاندا ئۇلارغا قايتىدۇ.</string>
+    <string name="dejavu_remote_debugging_warning_title">يىراقتىن سازلاشنى ئاچامسىز؟</string>
+    <string name="dejavu_remote_debugging_warning_message">ئۇ ئوچۇق تۇرغان مەزگىلدە، بۇ تېلېفونغا USB ئارقىلىق ئۇلانغان ۋە USB سازلاشقا ئىجازەت بېرىلگەن كومپيۇتېر سورىماستىن Dejavu نى باشقۇرالايدۇ ۋە ئۇنىڭ سانلىق مەلۇماتلىرىنى، مەسىلەن ئوچۇق بەتكۈچلەر، cookie لار ۋە ساقلانغان ئىم لارنى ئوقۇيالايدۇ. ئىشىڭىز تۈگىگەندە ئۇنى تاقاڭ.</string>
+    <string name="dejavu_turn_on">ئاچ</string>
+    <string name="dejavu_settings_jit">تېز JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">تور بېكەتلەرنى تېزرەك ئىجرا قىلىدۇ. توركۆرگۈلەرگە قىلىنغان ھۇجۇملارنىڭ كۆپىنچىسى ئۇ ئارقىلىق ئۆتىدۇ، شۇڭا ئۇنى تاقاش بىخەتەرراق، ئەمما بەزى بېكەتلەر ئاستىلايدۇ. Dejavu قايتا قوزغالغاندىن كېيىن كۈچكە ئىگە بولىدۇ.</string>
+    <string name="dejavu_settings_webgl_summary">ئويۇنلار، خەرىتىلەر ۋە بەزى تور بېكەتلەر ئۈچۈن 3D گرافىك. ئۇنى تاقاش گرافىك قوزغاتقۇسى ئارقىلىق قىلىنىدىغان ھۇجۇملارنى توسىدۇ ۋە بېكەتلەرنىڭ تېلېفونىڭىزنى تونۇشىنى قىيىنلاشتۇرىدۇ، ئەمما ئۇ بېكەتلەر ئىشلىمەي قېلىشى مۇمكىن.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu نىڭ بۇ نەشرىدە Safe Browsing ئاچقۇچى يوق، شۇڭا خەتەرلىك بېكەتلەر ھەققىدە ئاگاھلاندۇرالمايدۇ.</string>
+    <string name="dejavu_custom_action_http_warning">بۇ ئادرېس http ئىشلىتىدۇ، شۇڭا ئىلتىماس، ئۇنىڭ بېشى ۋە بەتنىڭ ئادرېسى شىفىرلانماي يوللىنىدۇ. مۇلازىمېتىر قوللىسا https ئىشلىتىڭ.</string>
+    <string name="dejavu_example_notification_ntfy">بەتنى ئۇقتۇرۇش سۈپىتىدە يوللاڭ. تېمىنىڭ نامىنى بىلگەن ھەر قانداق ئادەم ئۇنى ئوقۇيالايدۇ، شۇڭا ئۇزۇن، ئىختىيارىي نام تاللاڭ.</string>
 </resources>

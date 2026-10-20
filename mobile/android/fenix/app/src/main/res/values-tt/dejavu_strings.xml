@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Тән</string>
     <string name="dejavu_custom_action_variables">Үзгәрүчәннәр</string>
     <string name="dejavu_custom_action_variables_hint">Төзәтә торган кырга өстәр өчен үзгәрүчәнгә басыгыз.</string>
-    <string name="dejavu_custom_action_hint">Сорау гамәл эшли торган һәрбер таб өчен бер тапкыр җибәрелә. Фәкать 2xx җавабы гына уңышлы дип санала; юнәлтүләр үтәлми һәм уңышсыз дип санала. Кукилар җибәрелми. Кыйммәтләр URL-да URL кодлаштырыла, ә JSON тәнендә JSON кагыйдәсе белән языла.</string>
+    <string name="dejavu_custom_action_hint">Сорау гамәл эшли торган һәрбер таб өчен бер тапкыр җибәрелә. Фәкать 2xx җавабы гына уңышлы дип санала; юнәлтүләр үтәлми һәм уңышсыз дип санала. Кукилар җибәрелми. Кыйммәтләр URL-да һәм форма тәнендә URL кодлаштырыла, ә JSON яки XML тәнендә махсус билгеләр белән языла.</string>
     <string name="dejavu_custom_action_sent">Җибәрелде: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Уңышсыз: код %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Уңышсыз: җавап юк (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Бу адресны ачаргамы?</string>
     <string name="dejavu_open_non_web_pin_message">Бу беркетелгән бит веб-бит булмаган адресны ача. Ул сезнең хисап язмасындагы башка җайланмадан килгән булырга мөмкин.\n\n%1$s</string>
     <string name="dejavu_open">Ачу</string>
+    <string name="dejavu_about_config_warning_title">about:config ачаргамы?</string>
+    <string name="dejavu_about_config_warning_message">Бу көйләүләрне үзгәртү Dejavu иминлеген һәм хосусыйлыгын зәгыйфьләндерергә яки сайтларны бозарга мөмкин. Dejavu-ның үз көйләүләре идарә иткән көйләүләр, мәсәлән, күзәтүдән саклау, HTTPS-Only һәм куркынычсыз DNS, Dejavu яңадан башланганда шуларга кайта.</string>
+    <string name="dejavu_remote_debugging_warning_title">Ерактан төзәтүне кабызыргамы?</string>
+    <string name="dejavu_remote_debugging_warning_message">Ул кабызылган вакытта, бу телефонга USB аша тоташтырылган һәм USB төзәтүгә рөхсәте булган компьютер сорамыйча Dejavu белән идарә итә һәм аның мәгълүматларын, мәсәлән, ачык битләрне, cookie файлларын һәм сакланган серсүзләрне укый ала. Эшегез беткәч, аны сүндерегез.</string>
+    <string name="dejavu_turn_on">Кабызу</string>
+    <string name="dejavu_settings_jit">Тиз JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Сайтларны тизрәк эшләтә. Браузерларга һөҗүмнәрнең күбесе аның аша уза, шуңа күрә аны сүндерү куркынычсызрак, ләкин кайбер сайтлар әкренәя. Dejavu яңадан башлангач гамәлгә керә.</string>
+    <string name="dejavu_settings_webgl_summary">Уеннар, карталар һәм кайбер сайтлар өчен 3D графика. Аны сүндерү график драйвер аша һөҗүмнәрне туктата һәм сайтларга телефоныгызны тануны кыенлаштыра, ләкин ул сайтлар эшләүдән туктарга мөмкин.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu-ның бу җыелмасында Safe Browsing ачкычы юк, шуңа күрә ул куркыныч сайтлар турында кисәтә алмый.</string>
+    <string name="dejavu_custom_action_http_warning">Бу адрес http куллана, шуңа күрә сорау, аның башлыклары һәм битнең адресы шифрланмыйча җибәрелә. Сервер ярдәм итсә, https кулланыгыз.</string>
+    <string name="dejavu_example_notification_ntfy">Битне хәбәрнамә итеп җибәрегез. Теманың исемен белгән һәркем аны укый ала, шуңа күрә озын, очраклы исем сайлагыз.</string>
 </resources>

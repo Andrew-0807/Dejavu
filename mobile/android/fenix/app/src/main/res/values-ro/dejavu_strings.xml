@@ -145,7 +145,7 @@
     <string name="dejavu_custom_action_body">Corp</string>
     <string name="dejavu_custom_action_variables">Variabile</string>
     <string name="dejavu_custom_action_variables_hint">Atinge o variabilă pentru a o insera în câmpul pe care îl editezi.</string>
-    <string name="dejavu_custom_action_hint">Cererea este trimisă o dată pentru fiecare filă pe care rulează acțiunea. Doar un răspuns 2xx contează drept succes; redirecționările nu sunt urmate și contează drept eșecuri. Cookie-urile nu sunt trimise. Valorile sunt codificate URL în adresa URL și codificate JSON în corpul JSON.</string>
+    <string name="dejavu_custom_action_hint">Cererea este trimisă o dată pentru fiecare filă pe care rulează acțiunea. Doar un răspuns 2xx contează drept succes; redirecționările nu sunt urmate și contează drept eșecuri. Cookie-urile nu sunt trimise. Valorile sunt codificate URL în adresa URL și în corpul unui formular, și escapate în corpul JSON sau XML.</string>
     <string name="dejavu_custom_action_sent">Trimis: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Eșuat: cod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Eșuat: niciun răspuns (%1$s)</string>
@@ -345,4 +345,15 @@
     <string name="dejavu_open_non_web_pin_title">Deschizi această adresă?</string>
     <string name="dejavu_open_non_web_pin_message">Această filă fixată deschide o adresă care nu este o pagină web. Este posibil să provină de pe alt dispozitiv din contul tău.\n\n%1$s</string>
     <string name="dejavu_open">Deschide</string>
+    <string name="dejavu_about_config_warning_title">Deschizi about:config?</string>
+    <string name="dejavu_about_config_warning_message">Modificarea acestor setări poate slăbi securitatea și confidențialitatea Dejavu sau poate strica site-uri web. Setările controlate de setările Dejavu însuși, precum protecția împotriva urmăririi, HTTPS-Only și DNS-ul securizat, revin la ele când Dejavu repornește.</string>
+    <string name="dejavu_remote_debugging_warning_title">Activezi depanarea la distanță?</string>
+    <string name="dejavu_remote_debugging_warning_message">Cât timp este activată, un calculator conectat la acest telefon prin USB, cu depanarea USB permisă, poate controla Dejavu și îi poate citi datele, precum filele deschise, cookie-urile și parolele salvate, fără să întrebe. Dezactiveaz-o când termini.</string>
+    <string name="dejavu_turn_on">Activează</string>
+    <string name="dejavu_settings_jit">JavaScript rapid (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Face site-urile să ruleze mai repede. Majoritatea atacurilor asupra browserelor trec prin el, așa că dezactivarea lui este mai sigură, dar unele site-uri devin mai lente. Se aplică după repornirea Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Grafică 3D pentru jocuri, hărți și unele site-uri. Dezactivarea ei blochează atacurile prin driverul grafic și face mai greu pentru site-uri să-ți recunoască telefonul, dar acele site-uri pot înceta să funcționeze.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Această versiune Dejavu nu are o cheie Safe Browsing, așa că nu poate avertiza despre site-uri periculoase.</string>
+    <string name="dejavu_custom_action_http_warning">Această adresă folosește http, așa că cererea, antetele ei și adresa paginii circulă necriptate. Folosește https dacă serverul îl acceptă.</string>
+    <string name="dejavu_example_notification_ntfy">Trimite pagina ca notificare. Oricine știe numele subiectului o poate citi, așa că alege un nume lung și aleatoriu.</string>
 </resources>

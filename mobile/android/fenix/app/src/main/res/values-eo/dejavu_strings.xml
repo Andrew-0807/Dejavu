@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Enhavo</string>
     <string name="dejavu_custom_action_variables">Variabloj</string>
     <string name="dejavu_custom_action_variables_hint">Tuŝu variablon por enmeti ĝin en la kampon, kiun vi redaktas.</string>
-    <string name="dejavu_custom_action_hint">La peto estas sendata unufoje por ĉiu langeto, sur kiu la ago funkcias. Nur respondo 2xx kalkuliĝas kiel sukceso; alidirektoj ne estas sekvataj kaj kalkuliĝas kiel malsukcesoj. Kuketoj ne estas senditaj. Valoroj estas URL-kodigitaj en la URL kaj JSON-eskapitaj en JSON-enhavo.</string>
+    <string name="dejavu_custom_action_hint">La peto estas sendata unufoje por ĉiu langeto, sur kiu la ago funkcias. Nur respondo 2xx kalkuliĝas kiel sukceso; alidirektoj ne estas sekvataj kaj kalkuliĝas kiel malsukcesoj. Kuketoj ne estas senditaj. Valoroj estas URL-kodigitaj en la URL kaj en formulara enhavo, kaj eskapitaj en JSON- aŭ XML-enhavo.</string>
     <string name="dejavu_custom_action_sent">Sendite: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Malsukcesis: kodo %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Malsukcesis: neniu respondo (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Ĉu malfermi tiun ĉi adreson?</string>
     <string name="dejavu_open_non_web_pin_message">Tiu ĉi alpinglita langeto malfermas adreson, kiu ne estas retpaĝo. Ĝi eble venis el alia aparato de via konto.\n\n%1$s</string>
     <string name="dejavu_open">Malfermi</string>
+    <string name="dejavu_about_config_warning_title">Ĉu malfermi about:config?</string>
+    <string name="dejavu_about_config_warning_message">Ŝanĝi tiujn agordojn povas malfortigi la sekurecon kaj privatecon de Dejavu, aŭ rompi retejojn. La agordoj, kiujn regas la propraj agordoj de Dejavu, kiel la protekto kontraŭ spurado, HTTPS-Only kaj sekura DNS, revenas al ili kiam Dejavu rekomenciĝas.</string>
+    <string name="dejavu_remote_debugging_warning_title">Ĉu ŝalti foran sencimigon?</string>
+    <string name="dejavu_remote_debugging_warning_message">Dum ĝi estas ŝaltita, komputilo konektita al ĉi tiu telefono per USB, kun permesita USB-sencimigo, povas regi Dejavu kaj legi ĝiajn datumojn, kiel malfermitajn langetojn, kuketojn kaj konservitajn pasvortojn, sen demandi. Malŝaltu ĝin kiam vi finos.</string>
+    <string name="dejavu_turn_on">Ŝalti</string>
+    <string name="dejavu_settings_jit">Rapida JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Rapidigas retejojn. Plej multaj atakoj kontraŭ retumiloj trapasas ĝin, do malŝalti ĝin estas pli sekure, sed iuj retejoj malrapidiĝas. Efikas post rekomenco de Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D-grafikaĵoj por ludoj, mapoj kaj iuj retejoj. Malŝalti ĝin blokas atakojn tra la grafika pelilo kaj malfaciligas al retejoj rekoni vian telefonon, sed tiuj retejoj eble ĉesos funkcii.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ĉi tiu versio de Dejavu ne havas ŝlosilon de Safe Browsing, do ĝi ne povas averti pri danĝeraj retejoj.</string>
+    <string name="dejavu_custom_action_http_warning">Ĉi tiu adreso uzas http, do la peto, ĝiaj kapoj kaj la adreso de la paĝo vojaĝas sen ĉifrado. Uzu https se la servilo subtenas ĝin.</string>
+    <string name="dejavu_example_notification_ntfy">Sendi la paĝon kiel sciigon. Ĉiu, kiu konas la nomon de la temo, povas legi ĝin, do elektu longan, hazardan nomon.</string>
 </resources>

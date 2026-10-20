@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">బాడీ</string>
     <string name="dejavu_custom_action_variables">వేరియబుల్స్</string>
     <string name="dejavu_custom_action_variables_hint">మీరు సవరిస్తున్న ఫీల్డ్‌లో చేర్చడానికి ఒక వేరియబుల్‌ను నొక్కండి.</string>
-    <string name="dejavu_custom_action_hint">చర్య నడిచే ప్రతి ట్యాబుకు అభ్యర్థన ఒకసారి పంపబడుతుంది. 2xx సమాధానం మాత్రమే విజయవంతంగా పరిగణించబడుతుంది; దారిమార్పులు అనుసరించబడవు మరియు వైఫల్యాలుగా పరిగణించబడతాయి. కుకీలు పంపబడవు. విలువలు URLలో URL ఎన్‌కోడ్ చేయబడి, JSON బాడీలో JSON ఎస్కేప్ చేయబడి ఉంటాయి.</string>
+    <string name="dejavu_custom_action_hint">చర్య నడిచే ప్రతి ట్యాబుకు అభ్యర్థన ఒకసారి పంపబడుతుంది. 2xx సమాధానం మాత్రమే విజయవంతంగా పరిగణించబడుతుంది; దారిమార్పులు అనుసరించబడవు మరియు వైఫల్యాలుగా పరిగణించబడతాయి. కుకీలు పంపబడవు. విలువలు URLలో మరియు ఫారమ్ బాడీలో URL ఎన్‌కోడ్ చేయబడి, JSON లేదా XML బాడీలో ఎస్కేప్ చేయబడి ఉంటాయి.</string>
     <string name="dejavu_custom_action_sent">పంపబడింది: %1$s</string>
     <string name="dejavu_custom_action_failed_code">విఫలమైంది: కోడ్ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">విఫలమైంది: సమాధానం లేదు (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">ఈ చిరునామాను తెరవాలా?</string>
     <string name="dejavu_open_non_web_pin_message">ఈ పిన్ చేసిన ట్యాబు వెబ్ పేజీ కాని చిరునామాను తెరుస్తుంది. అది మీ ఖాతాలోని వేరే పరికరం నుండి వచ్చి ఉండవచ్చు.\n\n%1$s</string>
     <string name="dejavu_open">తెరువు</string>
+    <string name="dejavu_about_config_warning_title">about:config తెరవాలా?</string>
+    <string name="dejavu_about_config_warning_message">ఈ సెట్టింగులను మార్చడం Dejavu భద్రత మరియు గోప్యతను బలహీనపరచవచ్చు లేదా వెబ్‌సైట్లను పాడుచేయవచ్చు. ట్రాకింగ్ రక్షణ, HTTPS-Only, సురక్షిత DNS వంటి Dejavu స్వంత సెట్టింగులు నియంత్రించే సెట్టింగులు, Dejavu పునఃప్రారంభమైనప్పుడు వాటికే తిరిగి వస్తాయి.</string>
+    <string name="dejavu_remote_debugging_warning_title">రిమోట్ డీబగ్గింగ్‌ను ఆన్ చేయాలా?</string>
+    <string name="dejavu_remote_debugging_warning_message">అది ఆన్‌లో ఉన్నంతవరకు, USB ద్వారా ఈ ఫోన్‌కు కనెక్ట్ అయి USB డీబగ్గింగ్ అనుమతి ఉన్న కంప్యూటర్ అడగకుండానే Dejavu‌ను నియంత్రించి, తెరిచిన ట్యాబులు, కుకీలు, భద్రపరచిన సంకేతపదాలు వంటి దాని డేటాను చదవగలదు. పని అయిపోయాక దాన్ని ఆఫ్ చేయండి.</string>
+    <string name="dejavu_turn_on">ఆన్ చేయి</string>
+    <string name="dejavu_settings_jit">వేగవంతమైన JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">వెబ్‌సైట్లను వేగంగా నడిపిస్తుంది. బ్రౌజర్లపై చాలా దాడులు దీని ద్వారానే జరుగుతాయి, కాబట్టి దీన్ని ఆఫ్ చేయడం సురక్షితం, కానీ కొన్ని సైట్లు నెమ్మదిస్తాయి. Dejavu పునఃప్రారంభమైన తర్వాత వర్తిస్తుంది.</string>
+    <string name="dejavu_settings_webgl_summary">ఆటలు, మ్యాపులు మరియు కొన్ని వెబ్‌సైట్ల కోసం 3D గ్రాఫిక్స్. దీన్ని ఆఫ్ చేస్తే గ్రాఫిక్స్ డ్రైవర్ ద్వారా దాడులు ఆగుతాయి మరియు సైట్లకు మీ ఫోన్‌ను గుర్తించడం కష్టమవుతుంది, కానీ ఆ సైట్లు పనిచేయడం మానేయవచ్చు.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu యొక్క ఈ బిల్డ్‌లో Safe Browsing కీ లేదు, కాబట్టి ప్రమాదకరమైన సైట్ల గురించి హెచ్చరించలేదు.</string>
+    <string name="dejavu_custom_action_http_warning">ఈ చిరునామా http ఉపయోగిస్తుంది, కాబట్టి అభ్యర్థన, దాని హెడర్లు మరియు పేజీ చిరునామా ఎన్‌క్రిప్షన్ లేకుండా వెళ్తాయి. సర్వర్ మద్దతిస్తే https ఉపయోగించండి.</string>
+    <string name="dejavu_example_notification_ntfy">పేజీని నోటిఫికేషన్‌గా పంపండి. అంశం పేరు తెలిసిన ఎవరైనా దాన్ని చదవగలరు, కాబట్టి పొడవైన, యాదృచ్ఛిక పేరును ఎంచుకోండి.</string>
 </resources>

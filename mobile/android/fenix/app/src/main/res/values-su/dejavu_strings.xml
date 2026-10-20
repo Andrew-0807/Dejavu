@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">Body</string>
     <string name="dejavu_custom_action_variables">Variabel</string>
     <string name="dejavu_custom_action_variables_hint">Toél variabel pikeun ngasupkeunana kana kolom nu keur diédit.</string>
-    <string name="dejavu_custom_action_hint">Requestna dikirim sakali pikeun unggal tab nu dijalankeun ku aksina. Ngan waleran 2xx nu dianggap hasil; redirect teu dituturkeun sarta dianggap gagal. Cookie teu dikirim. Nilai-na di-URL encode dina URL jeung di-JSON escape dina body JSON.</string>
+    <string name="dejavu_custom_action_hint">Requestna dikirim sakali pikeun unggal tab nu dijalankeun ku aksina. Ngan waleran 2xx nu dianggap hasil; redirect teu dituturkeun sarta dianggap gagal. Cookie teu dikirim. Nilai-na di-URL encode dina URL jeung dina body formulir, sarta di-escape dina body JSON atawa XML.</string>
     <string name="dejavu_custom_action_sent">Dikirim: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Gagal: kode %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Gagal: teu aya waleran (%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">Buka alamat ieu?</string>
     <string name="dejavu_open_non_web_pin_message">Tab nu disematkeun ieu muka alamat nu lain kaca raramat. Bisa jadi asalna ti piranti séjén dina akun anjeun.\n\n%1$s</string>
     <string name="dejavu_open">Buka</string>
+    <string name="dejavu_about_config_warning_title">Buka about:config?</string>
+    <string name="dejavu_about_config_warning_message">Ngarobah setélan ieu bisa ngaleuleuskeun kaamanan sareng privasi Dejavu, atanapi ngarusak situs wéb. Setélan anu dikadalikeun ku setélan Dejavu sorangan, sapertos panyalindungan tina pelacakan, HTTPS-Only sareng DNS aman, balik deui ka setélan éta nalika Dejavu dimimitian deui.</string>
+    <string name="dejavu_remote_debugging_warning_title">Hurungkeun debugging jarak jauh?</string>
+    <string name="dejavu_remote_debugging_warning_message">Salila hurung, komputer anu disambungkeun ka telepon ieu ngaliwatan USB, kalayan debugging USB diidinan, tiasa ngadalikeun Dejavu sareng maca datana, sapertos tab anu dibuka, cookie sareng kecap sandi anu disimpen, tanpa naros. Pareuman upami tos réngsé.</string>
+    <string name="dejavu_turn_on">Hurungkeun</string>
+    <string name="dejavu_settings_jit">JavaScript gancang (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Ngajantenkeun situs wéb jalan langkung gancang. Kalolobaan serangan kana panyungsi ngaliwatan éta, janten mareumanana langkung aman, tapi sababaraha situs janten langkung lambat. Lumaku saatos Dejavu dimimitian deui.</string>
+    <string name="dejavu_settings_webgl_summary">Grafis 3D pikeun kaulinan, peta sareng sababaraha situs wéb. Mareumanana meungpeuk serangan ngaliwatan driver grafis sareng ngajantenkeun situs hésé mikawanoh telepon anjeun, tapi situs-situs éta tiasa eureun jalan.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Build Dejavu ieu teu gaduh konci Safe Browsing, janten teu tiasa ngingetan ngeunaan situs bahaya.</string>
+    <string name="dejavu_custom_action_http_warning">Alamat ieu nganggo http, janten pamundut, header-na sareng alamat kaca dikirim tanpa énkripsi. Anggo https upami server ngadukung.</string>
+    <string name="dejavu_example_notification_ntfy">Kirim kaca salaku béwara. Saha waé anu terang nami topikna tiasa macana, janten pilih nami anu panjang sareng acak.</string>
 </resources>

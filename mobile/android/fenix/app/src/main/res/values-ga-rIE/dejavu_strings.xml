@@ -147,7 +147,7 @@
     <string name="dejavu_custom_action_body">Corp</string>
     <string name="dejavu_custom_action_variables">Athróga</string>
     <string name="dejavu_custom_action_variables_hint">Brúigh athróg chun í a chur isteach sa réimse atá á chur in eagar agat.</string>
-    <string name="dejavu_custom_action_hint">Seoltar an t-iarratas uair amháin do gach cluaisín a ritheann an gníomh air. Ní chomhairtear ach freagra 2xx mar rath; ní leantar atreoruithe agus comhairtear iad mar theipeanna. Ní sheoltar fianáin. Déantar luachanna a ionchódú URL san URL agus a éalú JSON i gcorp JSON.</string>
+    <string name="dejavu_custom_action_hint">Seoltar an t-iarratas uair amháin do gach cluaisín a ritheann an gníomh air. Ní chomhairtear ach freagra 2xx mar rath; ní leantar atreoruithe agus comhairtear iad mar theipeanna. Ní sheoltar fianáin. Déantar luachanna a ionchódú URL san URL agus i gcorp foirme, agus a éalú i gcorp JSON nó XML.</string>
     <string name="dejavu_custom_action_sent">Seolta: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Theip: cód %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Theip: gan freagra (%1$s)</string>
@@ -359,4 +359,15 @@
     <string name="dejavu_open_non_web_pin_title">An seoladh seo a oscailt?</string>
     <string name="dejavu_open_non_web_pin_message">Osclaíonn an cluaisín greamaithe seo seoladh nach leathanach Gréasáin é. B\'fhéidir gur tháinig sé ó ghléas eile ar do chuntas.\n\n%1$s</string>
     <string name="dejavu_open">Oscail</string>
+    <string name="dejavu_about_config_warning_title">about:config a oscailt?</string>
+    <string name="dejavu_about_config_warning_message">Má athraíonn tú na socruithe seo, d\'fhéadfadh slándáil agus príobháideacht Dejavu a lagú, nó suíomhanna Gréasáin a bhriseadh. Filleann na socruithe a rialaíonn socruithe Dejavu féin, mar chosaint ar lorgaireacht, HTTPS-Only agus DNS slán, orthu nuair a atosaíonn Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">Dífhabhtú cianda a chur ar siúl?</string>
+    <string name="dejavu_remote_debugging_warning_message">Fad atá sé ar siúl, is féidir le ríomhaire atá ceangailte leis an bhfón seo trí USB, agus dífhabhtú USB ceadaithe aige, Dejavu a rialú agus a chuid sonraí a léamh, mar chluaisíní oscailte, fianáin agus focail fhaire shábháilte, gan fiafraí. Cas as é nuair a bheidh tú críochnaithe.</string>
+    <string name="dejavu_turn_on">Cuir ar siúl</string>
+    <string name="dejavu_settings_jit">JavaScript tapa (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Ritheann suíomhanna Gréasáin níos tapúla leis. Téann formhór na n-ionsaithe ar bhrabhsálaithe tríd, mar sin is sábháilte é a mhúchadh, ach éiríonn roinnt suíomhanna níos moille. Bíonn éifeacht leis tar éis do Dejavu atosú.</string>
+    <string name="dejavu_settings_webgl_summary">Grafaic 3D do chluichí, léarscáileanna agus roinnt suíomhanna Gréasáin. Má mhúchann tú é, cuirtear bac ar ionsaithe tríd an tiománaí grafaice agus bíonn sé níos deacra do shuíomhanna d\'fhón a aithint, ach d\'fhéadfadh na suíomhanna sin stopadh ag obair.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Níl eochair Safe Browsing ag an leagan seo de Dejavu, mar sin ní féidir leis rabhadh a thabhairt faoi shuíomhanna contúirteacha.</string>
+    <string name="dejavu_custom_action_http_warning">Úsáideann an seoladh seo http, mar sin taistealaíonn an t-iarratas, a cheanntásca agus seoladh an leathanaigh gan chriptiú. Úsáid https má thacaíonn an freastalaí leis.</string>
+    <string name="dejavu_example_notification_ntfy">Seol an leathanach mar fhógra. Is féidir le duine ar bith a bhfuil ainm an ábhair ar eolas aige é a léamh, mar sin roghnaigh ainm fada randamach.</string>
 </resources>

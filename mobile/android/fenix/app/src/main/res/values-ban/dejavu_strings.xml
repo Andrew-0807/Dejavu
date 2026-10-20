@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">Body</string>
     <string name="dejavu_custom_action_variables">Variabel</string>
     <string name="dejavu_custom_action_variables_hint">Tap variabel anggon celepang ka kolom ane sedeng edit ragane.</string>
-    <string name="dejavu_custom_action_hint">Requestne kakirim apesan anggon tiap tab ane kalaksanayang baan aksine. Wantah pasaut 2xx ane kaitung sukses; redirect tusing katutin lan kaitung gagal. Cookie tusing kakirim. Nilaine URL encoded di URL lan JSON escaped di body JSON.</string>
+    <string name="dejavu_custom_action_hint">Requestne kakirim apesan anggon tiap tab ane kalaksanayang baan aksine. Wantah pasaut 2xx ane kaitung sukses; redirect tusing katutin lan kaitung gagal. Cookie tusing kakirim. Nilaine URL encoded di URL lan di body formulir, lan escaped di body JSON utawi XML.</string>
     <string name="dejavu_custom_action_sent">Kakirim: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Gagal: kode %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Gagal: tusing ada pasaut (%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">Buka alamat puniki?</string>
     <string name="dejavu_open_non_web_pin_message">Tab sane kapin puniki ngungkab alamat sane nenten kaca web. Prasida rauh saking piranti lianan ring akun ragané.\n\n%1$s</string>
     <string name="dejavu_open">Buka</string>
+    <string name="dejavu_about_config_warning_title">Buka about:config?</string>
+    <string name="dejavu_about_config_warning_message">Ngubah setelan puniki prasida nguwonin kaamanan miwah privasi Dejavu, utawi ngrusak situs. Setelan sane kakontrol olih setelan Dejavu padidi, minakadi pangraksa pelacakan, HTTPS-Only miwah DNS aman, mawali ka setelan punika rikala Dejavu kawitin malih.</string>
+    <string name="dejavu_remote_debugging_warning_title">Uripang debugging jarak joh?</string>
+    <string name="dejavu_remote_debugging_warning_message">Rikala urip, komputer sane kasambungang ring telepon puniki nganggen USB, sane kaicen debugging USB, prasida ngontrol Dejavu tur ngwacen datannyane, minakadi tab sane mabukak, cookie miwah kata sandi sane kasimpen, tanpa nakenang. Mademang yening sampun puput.</string>
+    <string name="dejavu_turn_on">Uripang</string>
+    <string name="dejavu_settings_jit">JavaScript gelis (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Ngawinang situs makarya sayan gelis. Akehan serangan ring browser ngliwatin punika, nika mawinan mademang punika sayan aman, nanging wenten situs dados sayan alon. Mamargi sasampun Dejavu kawitin malih.</string>
+    <string name="dejavu_settings_webgl_summary">Grafis 3D anggen game, peta miwah makudang situs. Mademang punika nyekat serangan ngliwatin driver grafis tur ngawinang telepon ragane keweh kauningin olih situs, nanging situs-situs punika prasida ten makarya.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Build Dejavu puniki nenten madue kunci Safe Browsing, nika mawinan nenten prasida ngicen pangeling indik situs sane baya.</string>
+    <string name="dejavu_custom_action_http_warning">Alamat puniki nganggen http, nika mawinan pinunas, header-nyane miwah alamat kaca mamargi tanpa enkripsi. Anggen https yening server nyokong.</string>
+    <string name="dejavu_example_notification_ntfy">Kirim kaca dados notifikasi. Sapa sira sane uning wastan topik prasida ngwacen, nika mawinan pilih wastan sane dawa tur acak.</string>
 </resources>

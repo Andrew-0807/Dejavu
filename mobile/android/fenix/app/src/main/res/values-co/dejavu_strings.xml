@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Corpu</string>
     <string name="dejavu_custom_action_variables">Variabili</string>
     <string name="dejavu_custom_action_variables_hint">Picchia nant\'à una variabile per inserisce la in u campu chì stai à mudificà.</string>
-    <string name="dejavu_custom_action_hint">A dumanda hè mandata una volta per ogni unghjetta nant\'à quale l\'azzione hè eseguita. Solu una risposta 2xx conta cum\'è successu; i redirizzamenti ùn sò micca seguitati è contanu cum\'è fiaschi. I cookies ùn sò micca mandati. I valori sò cudificati URL in l\'URL è cudificati JSON in un corpu JSON.</string>
+    <string name="dejavu_custom_action_hint">A dumanda hè mandata una volta per ogni unghjetta nant\'à quale l\'azzione hè eseguita. Solu una risposta 2xx conta cum\'è successu; i redirizzamenti ùn sò micca seguitati è contanu cum\'è fiaschi. I cookies ùn sò micca mandati. I valori sò cudificati URL in l\'URL è in un corpu di furmulariu, è scappati in un corpu JSON o XML.</string>
     <string name="dejavu_custom_action_sent">Mandatu: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Fiascatu: codice %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Fiascatu: nisuna risposta (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Apre st\'indirizzu?</string>
     <string name="dejavu_open_non_web_pin_message">St\'unghjetta puntarulata apre un indirizzu chì ùn hè micca una pagina web. Pò esse ghjuntu da un altru apparechju di u vostru contu.\n\n%1$s</string>
     <string name="dejavu_open">Apre</string>
+    <string name="dejavu_about_config_warning_title">Apre about:config?</string>
+    <string name="dejavu_about_config_warning_message">Cambià sti parametri pò indebulisce a sicurità è a vita privata di Dejavu, o rompe i siti web. I parametri chì i parametri di Dejavu stessu cuntrollanu, cum\'è a prutezzione contr\'à u seguitu, HTTPS-Only è u DNS sicuru, ci tornanu quandu Dejavu riparte.</string>
+    <string name="dejavu_remote_debugging_warning_title">Attivà u debugging à distanza?</string>
+    <string name="dejavu_remote_debugging_warning_message">Mentre ch\'ellu hè attivu, un urdinatore cunnessu à stu telefonu per USB, cù u debugging USB permessu, pò cuntrullà Dejavu è leghje i so dati, cum\'è l\'unghjette aperte, i canistrelli è e parolle d\'intesa arregistrate, senza dumandà. Disattivatelu quandu avete finitu.</string>
+    <string name="dejavu_turn_on">Attivà</string>
+    <string name="dejavu_settings_jit">JavaScript rapidu (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Face andà più prestu i siti web. A maiò parte di l\'attacchi contr\'à i navigatori passanu per ellu, dunque disattivallu hè più sicuru, ma certi siti vanu più pianu. S\'applica dopu à a ripartenza di Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Grafica 3D per i ghjochi, e carte è certi siti web. Disattivalla blocca l\'attacchi per mezu di u driver graficu è rende più difficiule per i siti di ricunnosce u vostru telefonu, ma sti siti ponu piantà di funziunà.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Sta compilazione di Dejavu ùn hà micca chjave Safe Browsing, dunque ùn pò micca avvisà di i siti periculosi.</string>
+    <string name="dejavu_custom_action_http_warning">St\'indirizzu adopra http, dunque a dumanda, e so intestature è l\'indirizzu di a pagina viaghjanu senza cifratura. Aduprate https s\'è u servitore u sustene.</string>
+    <string name="dejavu_example_notification_ntfy">Manda a pagina cum\'è nutificazione. Chiunque cunnosce u nome di u sugettu a pò leghje, dunque sceglite un nome longu è aleatoriu.</string>
 </resources>

@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Мазмун</string>
     <string name="dejavu_custom_action_variables">Тағйирёбандаҳо</string>
     <string name="dejavu_custom_action_variables_hint">Барои дар майдони таҳриршаванда ҷой додани тағйирёбанда, ба он зер кунед.</string>
-    <string name="dejavu_custom_action_hint">Дархост барои ҳар варақае, ки амал ба он татбиқ мешавад, як маротиба фиристода мешавад. Танҳо ҷавоби 2xx ҳамчун муваффақ ҳисоб мешавад; равонсозиҳо иҷро намешаванд ва ҳамчун нокомӣ ҳисоб мешаванд. Кукиҳо фиристода намешаванд. Арзишҳо дар URL бо шакли URL рамзгузорӣ мешаванд ва дар мазмуни JSON — бо шакли JSON.</string>
+    <string name="dejavu_custom_action_hint">Дархост барои ҳар варақае, ки амал ба он татбиқ мешавад, як маротиба фиристода мешавад. Танҳо ҷавоби 2xx ҳамчун муваффақ ҳисоб мешавад; равонсозиҳо иҷро намешаванд ва ҳамчун нокомӣ ҳисоб мешаванд. Кукиҳо фиристода намешаванд. Арзишҳо дар URL ва дар мазмуни шакл бо шакли URL рамзгузорӣ мешаванд ва дар мазмуни JSON ё XML — бо аломатҳои махсус.</string>
     <string name="dejavu_custom_action_sent">Фиристода шуд: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Ноком шуд: коди %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Ноком шуд: ҷавобе нест (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Ин нишониро кушоед?</string>
     <string name="dejavu_open_non_web_pin_message">Ин варақаи васлшуда нишониеро мекушояд, ки саҳифаи сомона нест. Он метавонад аз дастгоҳи дигари ҳисоби шумо омада бошад.\n\n%1$s</string>
     <string name="dejavu_open">Кушодан</string>
+    <string name="dejavu_about_config_warning_title">about:config кушода шавад?</string>
+    <string name="dejavu_about_config_warning_message">Тағйир додани ин танзимот метавонад амният ва махфияти Dejavu-ро заиф кунад ё сомонаҳоро вайрон кунад. Танзимоте, ки танзимоти худи Dejavu идора мекунанд, ба монанди муҳофизат аз пайгирӣ, HTTPS-Only ва DNS-и бехатар, ҳангоми аз нав оғоз шудани Dejavu ба онҳо бармегарданд.</string>
+    <string name="dejavu_remote_debugging_warning_title">Ислоҳи хатоҳо аз дур фаъол карда шавад?</string>
+    <string name="dejavu_remote_debugging_warning_message">То он даме ки фаъол аст, компютере, ки тавассути USB ба ин телефон пайваст аст ва иҷозати ислоҳи хатоҳои USB дорад, метавонад бе пурсиш Dejavu-ро идора кунад ва маълумоти онро, ба монанди варақаҳои кушода, кукиҳо ва паролҳои захирашуда, хонад. Вақте ки кор тамом шуд, онро хомӯш кунед.</string>
+    <string name="dejavu_turn_on">Фаъол кардан</string>
+    <string name="dejavu_settings_jit">JavaScript-и тез (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Сомонаҳоро тезтар кор мефармояд. Аксари ҳамлаҳо ба браузерҳо тавассути он мегузаранд, бинобар ин хомӯш кардани он бехатартар аст, аммо баъзе сомонаҳо суст мешаванд. Пас аз аз нав оғоз шудани Dejavu амал мекунад.</string>
+    <string name="dejavu_settings_webgl_summary">Графикаи 3D барои бозиҳо, харитаҳо ва баъзе сомонаҳо. Хомӯш кардани он ҳамлаҳоро тавассути драйвери графикӣ манъ мекунад ва шинохтани телефони шуморо барои сомонаҳо душвортар мекунад, аммо он сомонаҳо метавонанд аз кор бимонанд.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ин сохти Dejavu калиди Safe Browsing надорад, бинобар ин дар бораи сомонаҳои хатарнок огоҳ карда наметавонад.</string>
+    <string name="dejavu_custom_action_http_warning">Ин нишонӣ http-ро истифода мебарад, бинобар ин дархост, сарлавҳаҳои он ва нишонии саҳифа бе рамзгузорӣ мегузаранд. Агар сервер дастгирӣ кунад, https-ро истифода баред.</string>
+    <string name="dejavu_example_notification_ntfy">Саҳифаро ҳамчун огоҳинома фиристед. Ҳар касе, ки номи мавзӯъро медонад, метавонад онро хонад, бинобар ин номи дароз ва тасодуфиро интихоб кунед.</string>
 </resources>

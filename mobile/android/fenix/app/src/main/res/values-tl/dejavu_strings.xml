@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Body</string>
     <string name="dejavu_custom_action_variables">Mga Variable</string>
     <string name="dejavu_custom_action_variables_hint">I-tap ang isang variable para ipasok ito sa field na ineedit mo.</string>
-    <string name="dejavu_custom_action_hint">Ipinapadala ang request nang isang beses para sa bawat tab na pinagpapatakbuhan ng aksyon. 2xx na sagot lang ang binibilang na tagumpay; hindi sinusundan ang mga redirect at binibilang itong bigo. Hindi ipinapadala ang mga cookie. Ang mga value ay URL encoded sa URL at JSON escaped sa JSON na body.</string>
+    <string name="dejavu_custom_action_hint">Ipinapadala ang request nang isang beses para sa bawat tab na pinagpapatakbuhan ng aksyon. 2xx na sagot lang ang binibilang na tagumpay; hindi sinusundan ang mga redirect at binibilang itong bigo. Hindi ipinapadala ang mga cookie. Ang mga value ay URL encoded sa URL at sa form na body, at escaped sa JSON o XML na body.</string>
     <string name="dejavu_custom_action_sent">Naipadala: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Bigo: code %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Bigo: walang sagot (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Buksan ang address na ito?</string>
     <string name="dejavu_open_non_web_pin_message">Ang naka-pin na tab na ito ay nagbubukas ng address na hindi web page. Maaaring galing ito sa ibang device sa iyong account.\n\n%1$s</string>
     <string name="dejavu_open">Buksan</string>
+    <string name="dejavu_about_config_warning_title">Buksan ang about:config?</string>
+    <string name="dejavu_about_config_warning_message">Ang pagbabago ng mga setting na ito ay maaaring magpahina sa seguridad at privacy ng Dejavu, o makasira ng mga website. Ang mga setting na kinokontrol ng sariling mga setting ng Dejavu, gaya ng proteksyon laban sa pagsubaybay, HTTPS-Only at secure na DNS, ay babalik sa mga iyon kapag nag-restart ang Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">I-on ang remote debugging?</string>
+    <string name="dejavu_remote_debugging_warning_message">Habang naka-on ito, ang isang computer na nakakonekta sa teleponong ito sa pamamagitan ng USB, na may pahintulot sa USB debugging, ay maaaring kontrolin ang Dejavu at basahin ang data nito, gaya ng mga bukas na tab, cookie at naka-save na password, nang hindi nagtatanong. I-off ito kapag tapos ka na.</string>
+    <string name="dejavu_turn_on">I-on</string>
+    <string name="dejavu_settings_jit">Mabilis na JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Pinapabilis ang pagtakbo ng mga website. Karamihan sa mga pag-atake sa mga browser ay dumaraan dito, kaya mas ligtas na i-off ito, pero bumabagal ang ilang site. Magkakabisa pagkatapos mag-restart ang Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D na graphics para sa mga laro, mapa at ilang website. Ang pag-off nito ay humaharang sa mga pag-atake sa pamamagitan ng graphics driver at nagpapahirap sa mga site na makilala ang iyong telepono, pero maaaring huminto sa paggana ang mga site na iyon.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Walang Safe Browsing key ang build na ito ng Dejavu, kaya hindi ito makapagbabala tungkol sa mga mapanganib na site.</string>
+    <string name="dejavu_custom_action_http_warning">Gumagamit ng http ang address na ito, kaya ang request, ang mga header nito at ang address ng page ay naglalakbay nang hindi naka-encrypt. Gamitin ang https kung sinusuportahan ito ng server.</string>
+    <string name="dejavu_example_notification_ntfy">Ipadala ang page bilang notification. Mababasa ito ng sinumang nakakaalam ng pangalan ng topic, kaya pumili ng mahaba at random na pangalan.</string>
 </resources>

@@ -146,7 +146,7 @@
     <string name="dejavu_custom_action_body">Wopśimjeśe</string>
     <string name="dejavu_custom_action_variables">Wariable</string>
     <string name="dejavu_custom_action_variables_hint">Tłoc na wariablu, aby ju do póla, kótarež wobźěłujoš, zasajźił.</string>
-    <string name="dejavu_custom_action_hint">Napšašowanje se jaden raz sćelo za kuždy rejtarik, na kótaremž akcija běžy. Jano wótegrono 2xx licyjo ako wuspěch; dalejpósrědnjenja se njesejźuju a licyje ako njeuspěch. Kekse se njesćelu. Gódnoty su URL-koděrowane w URL a JSON-šćitane w JSON-wopśimjeśu.</string>
+    <string name="dejavu_custom_action_hint">Napšašowanje se jaden raz sćelo za kuždy rejtarik, na kótaremž akcija běžy. Jano wótegrono 2xx licyjo ako wuspěch; dalejpósrědnjenja se njesejźuju a licyje ako njeuspěch. Kekse se njesćelu. Gódnoty su URL-koděrowane w URL a we wopśimjeśu formulara a šćitane we wopśimjeśu JSON abo XML.</string>
     <string name="dejavu_custom_action_sent">Pósłane: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Njeuspěšne: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Njeuspěšne: žedno wótegrono (%1$s)</string>
@@ -352,4 +352,15 @@
     <string name="dejavu_open_non_web_pin_title">Toś tu adresu wócyniś?</string>
     <string name="dejavu_open_non_web_pin_message">Toś ten pśipěty rejtarik wócynja adresu, kótaraž njejo webbok. Jo snaź z drugego rěda na wašom konśe pśišła.\n\n%1$s</string>
     <string name="dejavu_open">Wócyniś</string>
+    <string name="dejavu_about_config_warning_title">about:config wócyniś?</string>
+    <string name="dejavu_about_config_warning_message">Změnjenje toś tych nastajenjow móžo wěstotu a priwatnosć Dejavu wóslabiś abo websedła wobškóźiś. Nastajenja, kótarež swójske nastajenja Dejavu wóźe, ako šćit pśeśiwo slědowanjeju, HTTPS-Only a wěsty DNS, se k nim wrośe, gaž se Dejavu znowego startujo.</string>
+    <string name="dejavu_remote_debugging_warning_title">Zdalone pytanje zmólkow zašaltowaś?</string>
+    <string name="dejavu_remote_debugging_warning_message">Mjaztym až jo zašaltowane, móžo licadło, kótarež jo pśez USB z toś tym telefonom zwězane a za kótarež jo USB-pytanje zmólkow dowólone, Dejavu wóźiś a jogo daty cytaś, ako wócynjone rejtariki, cookieje a składowane gronidła, bźez pšašanja. Wótšaltujśo jo, gaž sćo gotowy.</string>
+    <string name="dejavu_turn_on">Zašaltowaś</string>
+    <string name="dejavu_settings_jit">Malsny JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Dajo websedłam malsnjej běžaś. Nejwěcej nadpadow na wobglědowaki źo pśez njen, togodla jo wěsćejše jen wótšaltowaś, ale někotare sedła budu pómałšej. Płaśi pó nowem starśe Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D-grafika za graśa, kórty a někotare websedła. Wótšaltowanje blokěrujo nadpady pśez grafikowy gónjak a póśěžujo sedłam waš telefon spóznaś, ale te sedła snaź wěcej njefunkcioněruju.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Toś ta wersija Dejavu njama kluc Safe Browsing, togodla njamóžo pśed tšachotnymi sedłami warnowaś.</string>
+    <string name="dejavu_custom_action_http_warning">Toś ta adresa wužywa http, togodla se napšašowanje, jogo głowy a adresa boka njezaklucowane pśenosuju. Wužywajśo https, jolic serwer jo pódpěra.</string>
+    <string name="dejavu_example_notification_ntfy">Sćelo bok ako powěźeńku. Kuždy, kenž zna mě temy, móžo ju cytaś, wubjeŕśo pótakem dłujke, pśipadne mě.</string>
 </resources>

@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Gövde</string>
     <string name="dejavu_custom_action_variables">Değişkenler</string>
     <string name="dejavu_custom_action_variables_hint">Düzenlediğiniz alana eklemek için bir değişkene dokunun.</string>
-    <string name="dejavu_custom_action_hint">İstek, eylemin çalıştığı her sekme için bir kez gönderilir. Yalnızca 2xx yanıtı başarılı sayılır; yönlendirmeler izlenmez ve başarısız sayılır. Çerezler gönderilmez. Değerler URL\'de URL kodlamasıyla, JSON gövdesinde JSON kaçış karakterleriyle yazılır.</string>
+    <string name="dejavu_custom_action_hint">İstek, eylemin çalıştığı her sekme için bir kez gönderilir. Yalnızca 2xx yanıtı başarılı sayılır; yönlendirmeler izlenmez ve başarısız sayılır. Çerezler gönderilmez. Değerler URL\'de ve form gövdesinde URL kodlamasıyla, JSON veya XML gövdesinde kaçış karakterleriyle yazılır.</string>
     <string name="dejavu_custom_action_sent">Gönderildi: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Başarısız: %1$d kodu (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Başarısız: yanıt yok (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Bu adres açılsın mı?</string>
     <string name="dejavu_open_non_web_pin_message">Bu sabitlenmiş sekme, web sayfası olmayan bir adresi açıyor. Hesabınızdaki başka bir cihazdan gelmiş olabilir.\n\n%1$s</string>
     <string name="dejavu_open">Aç</string>
+    <string name="dejavu_about_config_warning_title">about:config açılsın mı?</string>
+    <string name="dejavu_about_config_warning_message">Bu ayarları değiştirmek Dejavu\'nun güvenliğini ve gizliliğini zayıflatabilir ya da siteleri bozabilir. İzlenme koruması, HTTPS-Only ve güvenli DNS gibi Dejavu\'nun kendi ayarlarının yönettiği ayarlar, Dejavu yeniden başladığında o ayarlara geri döner.</string>
+    <string name="dejavu_remote_debugging_warning_title">Uzaktan hata ayıklama açılsın mı?</string>
+    <string name="dejavu_remote_debugging_warning_message">Açık olduğu sürece, bu telefona USB ile bağlı ve USB hata ayıklamasına izin verilmiş bir bilgisayar, sormadan Dejavu\'yu yönetebilir ve açık sekmeler, çerezler ve kayıtlı parolalar gibi verilerini okuyabilir. İşiniz bitince kapatın.</string>
+    <string name="dejavu_turn_on">Aç</string>
+    <string name="dejavu_settings_jit">Hızlı JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Sitelerin daha hızlı çalışmasını sağlar. Tarayıcılara yapılan saldırıların çoğu bunun üzerinden geçer, bu yüzden kapatmak daha güvenlidir ama bazı siteler yavaşlar. Dejavu yeniden başladıktan sonra geçerli olur.</string>
+    <string name="dejavu_settings_webgl_summary">Oyunlar, haritalar ve bazı siteler için 3D grafikler. Kapatmak, grafik sürücüsü üzerinden yapılan saldırıları engeller ve sitelerin telefonunuzu tanımasını zorlaştırır, ancak bu siteler çalışmayabilir.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu\'nun bu sürümünde Safe Browsing anahtarı yok, bu yüzden tehlikeli siteler hakkında uyaramaz.</string>
+    <string name="dejavu_custom_action_http_warning">Bu adres http kullanıyor, bu yüzden istek, başlıkları ve sayfanın adresi şifrelenmeden gider. Sunucu destekliyorsa https kullanın.</string>
+    <string name="dejavu_example_notification_ntfy">Sayfayı bildirim olarak gönderir. Konunun adını bilen herkes okuyabilir, bu yüzden uzun ve rastgele bir ad seçin.</string>
 </resources>

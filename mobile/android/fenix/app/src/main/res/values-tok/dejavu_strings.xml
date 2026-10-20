@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">insa</string>
     <string name="dejavu_custom_action_variables">nimi ante</string>
     <string name="dejavu_custom_action_variables_hint">o luka e nimi ante tawa pana e ona lon poki pi ante sina.</string>
-    <string name="dejavu_custom_action_hint">toki wile li tawa poki ale ni: pali li pali lon ona, wan taso. toki 2xx taso li pona; nasin sin ante li lili ala e ona, li ike. kuki li tawa ala. ijo li lon URL kepeken nasin URL, li lon insa JSON kepeken nasin JSON.</string>
+    <string name="dejavu_custom_action_hint">toki wile li tawa poki ale ni: pali li pali lon ona, wan taso. toki 2xx taso li pona; nasin sin ante li lili ala e ona, li ike. kuki li tawa ala. ijo li lon URL en insa lipu wile kepeken nasin URL, li lon insa JSON anu XML kepeken nasin awen.</string>
     <string name="dejavu_custom_action_sent">pana: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ike: nanpa %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ike: toki ala (%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">sina wile ala wile open e nimi ni?</string>
     <string name="dejavu_open_non_web_pin_message">lipu ni pi awen sewi li open e nimi ma pi lipu linluwi ala. ona li ken kama tan ilo ante pi sijelo sina.\n\n%1$s</string>
     <string name="dejavu_open">o open</string>
+    <string name="dejavu_about_config_warning_title">sina wile ala wile open e about:config?</string>
+    <string name="dejavu_about_config_warning_message">ante e nasin ni li ken lili e awen pi ilo Dejavu, anu li ken pakala e lipu linluwi. nasin ni pi lawa Dejavu, sama awen tan alasa jan en HTTPS-Only en DNS awen, li kama sama lawa ona lon tenpo ni: ilo Dejavu li open sin.</string>
+    <string name="dejavu_remote_debugging_warning_title">sina wile ala wile open e alasa pakala tan weka?</string>
+    <string name="dejavu_remote_debugging_warning_message">tenpo ale la ona li open la, ilo nanpa pi linja USB tawa ilo toki ni li ken lawa e ilo Dejavu li ken lukin e sona ona, sama lipu open en kuki en nimi len awen, li toki ala tawa sina. o pini e ona lon tenpo pini pali.</string>
+    <string name="dejavu_turn_on">o open</string>
+    <string name="dejavu_settings_jit">JavaScript wawa (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ona li pali e ni: lipu linluwi li tawa wawa. utala mute tawa ilo lukin li kama tan ona, la pini ona li awen mute, taso lipu li ken tawa lili. ona li kama lon open sin pi ilo Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">sitelen 3D tawa musi en sitelen ma en lipu linluwi mute ala. pini ona li weka e utala tan ilo pi sitelen, li pali e ni: lipu li ken ala sona pona e ilo toki sina. taso lipu ni li ken pali ala.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">ilo Dejavu ni li jo ala e nimi open pi Safe Browsing, la ona li ken ala toki pi lipu ike.</string>
+    <string name="dejavu_custom_action_http_warning">nimi ni li kepeken http, la wile en sona lawa ona en nimi lipu li tawa lon len ala. o kepeken https lon ni: ilo lawa li ken.</string>
+    <string name="dejavu_example_notification_ntfy">o pana e lipu sama sona sin. jan ale li sona e nimi pi ijo toki la ona li ken lukin, la o kepeken nimi suli pi nasin ala.</string>
 </resources>

@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Body</string>
     <string name="dejavu_custom_action_variables">Mga Variable</string>
     <string name="dejavu_custom_action_variables_hint">i-Tap ang usa ka variable aron ibutang kini sa field nga imong gi-edit.</string>
-    <string name="dejavu_custom_action_hint">Ang request ipadala kausa para sa matag tab nga girunan sa aksyon. 2xx ra nga tubag ang maihap nga malampuson; ang mga redirect dili sundon ug maihap nga pakyas. Ang mga cookie dili ipadala. Ang mga value URL encoded sa URL ug JSON escaped sa JSON nga body.</string>
+    <string name="dejavu_custom_action_hint">Ang request ipadala kausa para sa matag tab nga girunan sa aksyon. 2xx ra nga tubag ang maihap nga malampuson; ang mga redirect dili sundon ug maihap nga pakyas. Ang mga cookie dili ipadala. Ang mga value URL encoded sa URL ug sa form nga body, ug escaped sa JSON o XML nga body.</string>
     <string name="dejavu_custom_action_sent">Gipadala: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Napakyas: code %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Napakyas: walay tubag (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Ablihan kini nga adres?</string>
     <string name="dejavu_open_non_web_pin_message">Kining gi-pin nga tab nag-abli og adres nga dili web page. Basin gikan kini sa laing device sa imong account.\n\n%1$s</string>
     <string name="dejavu_open">Ablihi</string>
+    <string name="dejavu_about_config_warning_title">Ablihan ang about:config?</string>
+    <string name="dejavu_about_config_warning_message">Ang pag-usab niining mga setting mahimong makapaluya sa seguridad ug privacy sa Dejavu, o makaguba sa mga website. Ang mga setting nga kontrolado sa kaugalingong mga setting sa Dejavu, sama sa proteksyon batok sa pagsubay, HTTPS-Only ug luwas nga DNS, mobalik niini kon mag-restart ang Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">I-on ang remote debugging?</string>
+    <string name="dejavu_remote_debugging_warning_message">Samtang naka-on, ang usa ka computer nga nakonektar niining telepono pinaagi sa USB, nga gitugotan sa USB debugging, makakontrol sa Dejavu ug makabasa sa datos niini, sama sa abli nga mga tab, cookies ug gitipigan nga mga password, nga dili mangutana. I-off kini kon human ka na.</string>
+    <string name="dejavu_turn_on">I-on</string>
+    <string name="dejavu_settings_jit">Paspas nga JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Mopaspas sa mga website. Kadaghanan sa mga pag-atake sa mga browser moagi niini, mao nga mas luwas ang pag-off niini, apan ang ubang site mohinay. Molihok human mag-restart ang Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D nga graphics para sa mga dula, mapa ug pipila ka website. Ang pag-off niini mopugong sa mga pag-atake pinaagi sa graphics driver ug mopalisod sa mga site sa pag-ila sa imong telepono, apan kadtong mga site mahimong dili na molihok.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Kini nga build sa Dejavu walay Safe Browsing key, mao nga dili kini makapasidaan bahin sa peligrosong mga site.</string>
+    <string name="dejavu_custom_action_http_warning">Kini nga address naggamit og http, mao nga ang request, ang mga header niini ug ang address sa panid mobiyahe nga walay encryption. Gamita ang https kon kini suportahan sa server.</string>
+    <string name="dejavu_example_notification_ntfy">Ipadala ang panid isip notification. Bisan kinsa nga nakahibalo sa ngalan sa topic makabasa niini, mao nga pilia ang taas ug random nga ngalan.</string>
 </resources>

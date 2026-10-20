@@ -148,7 +148,7 @@
     <string name="dejavu_custom_action_body">Korf</string>
     <string name="dejavu_custom_action_variables">Chanjyansow</string>
     <string name="dejavu_custom_action_variables_hint">Gwaska chanjyans rag y worra y\'n mays esos ow chanjya.</string>
-    <string name="dejavu_custom_action_hint">An govynnadow yw dannvenys unn treveth rag pub tab may hwra an oberenn gwaya warnodho. Unnsel gorthyp 2xx a gont avel sewenhans; ny vydh redirectys holyes hag i a gont avel fyllans. Ny vydh kokis dannvenys. Valyow yw enkodyes URL y\'n URL ha dienkyes JSON yn korf JSON.</string>
+    <string name="dejavu_custom_action_hint">An govynnadow yw dannvenys unn treveth rag pub tab may hwra an oberenn gwaya warnodho. Unnsel gorthyp 2xx a gont avel sewenhans; ny vydh redirectys holyes hag i a gont avel fyllans. Ny vydh kokis dannvenys. Valyow yw enkodyes URL y\'n URL hag yn korf furvlen, ha dienkyes yn korf JSON po XML.</string>
     <string name="dejavu_custom_action_sent">Dannvenys: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Fyllys: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Fyllys: gorthyp vyth (%1$s)</string>
@@ -366,4 +366,15 @@
     <string name="dejavu_open_non_web_pin_title">Ygeri an trigva ma?</string>
     <string name="dejavu_open_non_web_pin_message">An tab pinnys ma a eger trigva nag yw folen wias. Martesen hi a dheuth a dhyvis aral war agas akont.\n\n%1$s</string>
     <string name="dejavu_open">Ygeri</string>
+    <string name="dejavu_about_config_warning_title">Ygeri about:config?</string>
+    <string name="dejavu_about_config_warning_message">Chanjya an settyansow ma a yll gwanhe diogeledh ha privetter Dejavu, po terri gwiasvaow. An settyansow a vydh rewlys gans settyansow Dejavu y honan, kepar ha difresyans erbynn holya, HTTPS-Only ha DNS diogel, a dhehwel dhedha pan dhastalleth Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">Gweythresa dibreva a-bell?</string>
+    <string name="dejavu_remote_debugging_warning_message">Hag ev gweythresys, jynn-amontya junys dhe\'n pellgowser ma der USB, gans dibreva USB alowys, a yll rewlya Dejavu ha redya y dhata, kepar ha tabow ygor, tesennow ha geryow-tremena gwithys, heb govyn. Diweythres ev pan vydh gorfennys genes.</string>
+    <string name="dejavu_turn_on">Gweythresa</string>
+    <string name="dejavu_settings_jit">JavaScript uskis (JIT)</string>
+    <string name="dejavu_settings_jit_summary">A wra dhe wiasvaow ponya uskissa. An brassa rann a assayow war beuryow a dremen dredho, ytho diogella yw y dhiweythresa, mes nebes gwiasvaow a vydh lenta. Ow tos yn nerth wosa Dejavu dhe dhastalleth.</string>
+    <string name="dejavu_settings_webgl_summary">Grafek 3D rag gwariow, mappys ha nebes gwiasvaow. Y dhiweythresa a lett assayow der an lewyer grafek hag a wra dhe wiasvaow aswonvos dha bellgowser kalessa, mes an gwiasvaow na a yll hedhi a oberi.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ny\'n jeves an drehevyans ma a Dejavu alhwedh Safe Browsing, ytho ny yll ev gwarnya a-dro dhe wiasvaow peryllus.</string>
+    <string name="dejavu_custom_action_http_warning">An trigva ma a dhevnydh http, ytho an govyn, y bennow ha trigva an folen a vyaj heb kodenna. Devnydh https mars yw skoodhys gans an servyer.</string>
+    <string name="dejavu_example_notification_ntfy">Danvon an folen avel gwarnyans. Neb a woer hanow an testen a yll hy redya, ytho dewis hanow hir ha chonsel.</string>
 </resources>

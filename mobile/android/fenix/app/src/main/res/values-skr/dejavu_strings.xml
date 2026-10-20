@@ -167,7 +167,7 @@
     <string name="dejavu_custom_action_body">باڈی</string>
     <string name="dejavu_custom_action_variables">متغیر</string>
     <string name="dejavu_custom_action_variables_hint">کہیں متغیر تے دباؤ تاں جو اوہ اوں خانے وچ آ ون٘ڄے جیندے وچ تساں تبدیلی کریندے پئے ہو۔</string>
-    <string name="dejavu_custom_action_hint">عمل جہڑیاں ٹیباں تے چلدا ہے، انہاں وچوں ہر ٹیب کیتے ارداس ہک واری بھیڄی ویندی ہے۔ صرف 2xx جواب کوں کامیابی ڳݨیا ویندا ہے؛ ریڈائریکٹ فالو کائنی کیتے ویندے تے ناکامی ڳݨے ویندے ہن۔ کوکیاں کائنی بھیڄیاں ویندیاں۔ قدراں URL وچ URL انکوڈ تے JSON باڈی وچ JSON ایسکیپ کیتیاں ویندیاں ہن۔</string>
+    <string name="dejavu_custom_action_hint">عمل جہڑیاں ٹیباں تے چلدا ہے، انہاں وچوں ہر ٹیب کیتے ارداس ہک واری بھیڄی ویندی ہے۔ صرف 2xx جواب کوں کامیابی ڳݨیا ویندا ہے؛ ریڈائریکٹ فالو کائنی کیتے ویندے تے ناکامی ڳݨے ویندے ہن۔ کوکیاں کائنی بھیڄیاں ویندیاں۔ قدراں URL تے فارم باڈی وچ URL انکوڈ، تے JSON یا XML باڈی وچ ایسکیپ کیتیاں ویندیاں ہن۔</string>
     <string name="dejavu_custom_action_sent">بھیڄیا ڳیا: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ناکام: کوڈ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ناکام: کوئی جواب کائنی (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">ایہ پتہ کھولوں؟</string>
     <string name="dejavu_open_non_web_pin_message">ایہ پن کیتی ٹیب ہک ایجھا پتہ کھولیندی ہے جیڑھا ویب ورقہ کائنی۔ ایہ تہاݙے کھاتے دے کہیں ٻئے آلے کنوں آیا تھی سڳدے۔\n\n%1$s</string>
     <string name="dejavu_open">کھولو</string>
+    <string name="dejavu_about_config_warning_title">کیا about:config کھولوں؟</string>
+    <string name="dejavu_about_config_warning_message">انہاں سیٹنگاں کوں بدلݨ نال Dejavu دی حفاظت تے پرائیویسی کمزور تھی سڳدی ہے، یا ویب سائٹاں خراب تھی سڳدیاں ہن۔ Dejavu دیاں آپݨیاں سیٹنگاں جنہاں سیٹنگاں کوں کنٹرول کریندیاں ہن، جیویں ٹریکنگ کنوں حفاظت، HTTPS-Only تے محفوظ DNS، او Dejavu دے ولا شروع تھیوݨ تے انہاں ول ولدیاں ہن۔</string>
+    <string name="dejavu_remote_debugging_warning_title">کیا ریموٹ ڈیبگنگ چالو کروں؟</string>
+    <string name="dejavu_remote_debugging_warning_message">جڈاں تئیں ایہ چالو ہے، USB راہیں ایں فون نال جُڑیا تے USB ڈیبگنگ دی اجازت آلا کمپیوٹر بغیر پچھݨ دے Dejavu کوں کنٹرول کر سڳدے تے ایں دا ڈیٹا، جیویں کھلیاں ٹیباں، کوکیاں تے سانبھے پاس ورڈ، پڑھ سڳدے۔ کم مُکݨ تے ایں کوں بند کر ڈیوو۔</string>
+    <string name="dejavu_turn_on">چالو کرو</string>
+    <string name="dejavu_settings_jit">تیز JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ویب سائٹاں کوں تیز چلیندا ہے۔ براؤزراں تے زیادہ حملے ایں دے راہیں تھیندے ہن، ایں کیتے ایں کوں بند کرݨ ودھ محفوظ ہے، پر کجھ سائٹاں ہولیاں تھی ویندیاں ہن۔ Dejavu دے ولا شروع تھیوݨ دے بعد لاگو تھیندا ہے۔</string>
+    <string name="dejavu_settings_webgl_summary">گیماں، نقشیاں تے کجھ ویب سائٹاں کیتے 3D گرافکس۔ ایں کوں بند کرݨ نال گرافکس ڈرائیور راہیں حملے رُکدے ہن تے سائٹاں کیتے تہاݙا فون سُنڄاݨݨ اوکھا تھیندا ہے، پر او سائٹاں کم کرݨ بند کر سڳدیاں ہن۔</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu دے ایں بلڈ وچ Safe Browsing کنجی کائنی، ایں کیتے ایہ خطرناک سائٹاں بارے خبردار نئیں کر سڳدا۔</string>
+    <string name="dejavu_custom_action_http_warning">ایہ پتہ http ورتیندا ہے، ایں کیتے درخواست، ایں دے ہیڈر تے صفحے دا پتہ انکرپشن دے بغیر ویندے ہن۔ جے سرور سہارا ݙیندا ہے تاں https ورتو۔</string>
+    <string name="dejavu_example_notification_ntfy">صفحے کوں نوٹیفکیشن وانگوں بھیڄو۔ موضوع دا ناں ڄاݨݨ آلا کوئی وی ایں کوں پڑھ سڳدے، ایں کیتے لمبا تے بےترتیب ناں چُݨو۔</string>
 </resources>

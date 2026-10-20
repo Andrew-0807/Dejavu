@@ -146,7 +146,7 @@
     <string name="dejavu_custom_action_body">Тіло запиту</string>
     <string name="dejavu_custom_action_variables">Змінні</string>
     <string name="dejavu_custom_action_variables_hint">Торкніться змінної, щоб вставити її в поле, яке ви редагуєте.</string>
-    <string name="dejavu_custom_action_hint">Запит надсилається один раз для кожної вкладки, на якій виконується дія. Успіхом вважається лише відповідь з кодом 2xx; переспрямування не виконуються і вважаються помилками. Файли cookie не надсилаються. Значення кодуються як URL в адресі URL і екрануються як JSON у тілі JSON.</string>
+    <string name="dejavu_custom_action_hint">Запит надсилається один раз для кожної вкладки, на якій виконується дія. Успіхом вважається лише відповідь з кодом 2xx; переспрямування не виконуються і вважаються помилками. Файли cookie не надсилаються. Значення кодуються як URL в адресі URL і в тілі форми та екрануються в тілі JSON або XML.</string>
     <string name="dejavu_custom_action_sent">Надіслано: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Помилка: код %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Помилка: немає відповіді (%1$s)</string>
@@ -352,4 +352,15 @@
     <string name="dejavu_open_non_web_pin_title">Відкрити цю адресу?</string>
     <string name="dejavu_open_non_web_pin_message">Ця закріплена вкладка відкриває адресу, яка не є вебсторінкою. Вона могла надійти з іншого пристрою вашого облікового запису.\n\n%1$s</string>
     <string name="dejavu_open">Відкрити</string>
+    <string name="dejavu_about_config_warning_title">Відкрити about:config?</string>
+    <string name="dejavu_about_config_warning_message">Зміна цих налаштувань може послабити безпеку і приватність Dejavu або порушити роботу сайтів. Налаштування, якими керують власні налаштування Dejavu, як-от захист від стеження, HTTPS-Only і захищений DNS, повертаються до них після перезапуску Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">Увімкнути віддалене налагодження?</string>
+    <string name="dejavu_remote_debugging_warning_message">Поки його ввімкнено, комп\'ютер, під\'єднаний до цього телефона через USB з дозволеним налагодженням USB, може керувати Dejavu і читати його дані, як-от відкриті вкладки, куки та збережені паролі, нічого не питаючи. Вимкніть його, коли закінчите.</string>
+    <string name="dejavu_turn_on">Увімкнути</string>
+    <string name="dejavu_settings_jit">Швидкий JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Пришвидшує роботу сайтів. Більшість атак на браузери йде через нього, тому вимкнути його безпечніше, але деякі сайти працюватимуть повільніше. Діє після перезапуску Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D-графіка для ігор, мап і деяких сайтів. Її вимкнення блокує атаки через графічний драйвер і ускладнює сайтам розпізнавання вашого телефона, але такі сайти можуть перестати працювати.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">У цій збірці Dejavu немає ключа Safe Browsing, тому вона не може попереджати про небезпечні сайти.</string>
+    <string name="dejavu_custom_action_http_warning">Ця адреса використовує http, тому запит, його заголовки та адреса сторінки передаються без шифрування. Використовуйте https, якщо сервер його підтримує.</string>
+    <string name="dejavu_example_notification_ntfy">Надсилає сторінку як сповіщення. Будь-хто, хто знає назву теми, може його прочитати, тож виберіть довгу випадкову назву.</string>
 </resources>

@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">ເນື້ອຫາ</string>
     <string name="dejavu_custom_action_variables">ຕົວແປ</string>
     <string name="dejavu_custom_action_variables_hint">ແຕະຕົວແປເພື່ອໃສ່ມັນເຂົ້າໃນຊ່ອງທີ່ທ່ານກຳລັງແກ້ໄຂ.</string>
-    <string name="dejavu_custom_action_hint">ຄຳຮ້ອງຂໍຈະຖືກສົ່ງເທື່ອດຽວສຳລັບແຕ່ລະແທັບທີ່ຄຳສັ່ງເຮັດວຽກນຳ. ມີແຕ່ຄຳຕອບ 2xx ເທົ່ານັ້ນທີ່ນັບວ່າສຳເລັດ; ການປ່ຽນເສັ້ນທາງຈະບໍ່ຖືກຕິດຕາມ ແລະ ນັບວ່າລົ້ມເຫລວ. ຄຸກກີ້ຈະບໍ່ຖືກສົ່ງ. ຄ່າຕ່າງໆຈະຖືກເຂົ້າລະຫັດ URL ໃນ URL ແລະ escape ແບບ JSON ໃນເນື້ອຫາ JSON.</string>
+    <string name="dejavu_custom_action_hint">ຄຳຮ້ອງຂໍຈະຖືກສົ່ງເທື່ອດຽວສຳລັບແຕ່ລະແທັບທີ່ຄຳສັ່ງເຮັດວຽກນຳ. ມີແຕ່ຄຳຕອບ 2xx ເທົ່ານັ້ນທີ່ນັບວ່າສຳເລັດ; ການປ່ຽນເສັ້ນທາງຈະບໍ່ຖືກຕິດຕາມ ແລະ ນັບວ່າລົ້ມເຫລວ. ຄຸກກີ້ຈະບໍ່ຖືກສົ່ງ. ຄ່າຕ່າງໆຈະຖືກເຂົ້າລະຫັດ URL ໃນ URL ແລະ ໃນເນື້ອຫາແບບຟອມ, ແລະ escape ໃນເນື້ອຫາ JSON ຫຼື XML.</string>
     <string name="dejavu_custom_action_sent">ສົ່ງແລ້ວ: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ລົ້ມເຫລວ: ລະຫັດ %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ລົ້ມເຫລວ: ບໍ່ມີຄຳຕອບ (%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">ເປີດທີ່ຢູ່ນີ້ບໍ?</string>
     <string name="dejavu_open_non_web_pin_message">ແຖບທີ່ປັກໝຸດໄວ້ນີ້ເປີດທີ່ຢູ່ທີ່ບໍ່ແມ່ນໜ້າເວັບ. ມັນອາດມາຈາກອຸປະກອນອື່ນໃນບັນຊີຂອງທ່ານ.\n\n%1$s</string>
     <string name="dejavu_open">ເປີດ</string>
+    <string name="dejavu_about_config_warning_title">ເປີດ about:config ບໍ?</string>
+    <string name="dejavu_about_config_warning_message">ການປ່ຽນການຕັ້ງຄ່າເຫຼົ່ານີ້ອາດເຮັດໃຫ້ຄວາມປອດໄພ ແລະ ຄວາມເປັນສ່ວນຕົວຂອງ Dejavu ອ່ອນລົງ ຫຼື ເຮັດໃຫ້ເວັບໄຊເສຍ. ການຕັ້ງຄ່າທີ່ການຕັ້ງຄ່າຂອງ Dejavu ເອງຄວບຄຸມ ເຊັ່ນ ການປ້ອງກັນການຕິດຕາມ, HTTPS-Only ແລະ DNS ທີ່ປອດໄພ ຈະກັບຄືນໄປຫາຄ່າເຫຼົ່ານັ້ນເມື່ອ Dejavu ເລີ່ມໃໝ່.</string>
+    <string name="dejavu_remote_debugging_warning_title">ເປີດການດີບັກທາງໄກບໍ?</string>
+    <string name="dejavu_remote_debugging_warning_message">ໃນຂະນະທີ່ເປີດຢູ່, ຄອມພິວເຕີທີ່ເຊື່ອມຕໍ່ກັບໂທລະສັບນີ້ຜ່ານ USB ແລະ ໄດ້ຮັບອະນຸຍາດການດີບັກ USB ສາມາດຄວບຄຸມ Dejavu ແລະ ອ່ານຂໍ້ມູນຂອງມັນ ເຊັ່ນ ແຖບທີ່ເປີດ, ຄຸກກີ້ ແລະ ລະຫັດຜ່ານທີ່ບັນທຶກໄວ້ ໂດຍບໍ່ຖາມ. ປິດມັນເມື່ອທ່ານເຮັດແລ້ວ.</string>
+    <string name="dejavu_turn_on">ເປີດ</string>
+    <string name="dejavu_settings_jit">JavaScript ໄວ (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ເຮັດໃຫ້ເວັບໄຊເຮັດວຽກໄວຂຶ້ນ. ການໂຈມຕີບຣາວເຊີສ່ວນໃຫຍ່ຜ່ານມັນ, ສະນັ້ນການປິດມັນປອດໄພກວ່າ, ແຕ່ບາງເວັບໄຊຈະຊ້າລົງ. ມີຜົນຫຼັງຈາກ Dejavu ເລີ່ມໃໝ່.</string>
+    <string name="dejavu_settings_webgl_summary">ກຣາບຟິກ 3D ສຳລັບເກມ, ແຜນທີ່ ແລະ ບາງເວັບໄຊ. ການປິດມັນຈະບລັອກການໂຈມຕີຜ່ານໄດເວີກຣາບຟິກ ແລະ ເຮັດໃຫ້ເວັບໄຊຈື່ໂທລະສັບຂອງທ່ານໄດ້ຍາກຂຶ້ນ, ແຕ່ເວັບໄຊເຫຼົ່ານັ້ນອາດຢຸດເຮັດວຽກ.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu ລຸ້ນນີ້ບໍ່ມີກະແຈ Safe Browsing, ສະນັ້ນມັນບໍ່ສາມາດເຕືອນກ່ຽວກັບເວັບໄຊອັນຕະລາຍໄດ້.</string>
+    <string name="dejavu_custom_action_http_warning">ທີ່ຢູ່ນີ້ໃຊ້ http, ສະນັ້ນຄຳຂໍ, ສ່ວນຫົວຂອງມັນ ແລະ ທີ່ຢູ່ຂອງໜ້າຈະຖືກສົ່ງໂດຍບໍ່ໄດ້ເຂົ້າລະຫັດ. ໃຊ້ https ຖ້າເຊີບເວີຮອງຮັບ.</string>
+    <string name="dejavu_example_notification_ntfy">ສົ່ງໜ້າເປັນການແຈ້ງເຕືອນ. ໃຜກໍຕາມທີ່ຮູ້ຊື່ຫົວຂໍ້ສາມາດອ່ານມັນໄດ້, ສະນັ້ນເລືອກຊື່ທີ່ຍາວ ແລະ ສຸ່ມ.</string>
 </resources>

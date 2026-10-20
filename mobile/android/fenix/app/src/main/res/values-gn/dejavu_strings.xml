@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Tete</string>
     <string name="dejavu_custom_action_variables">Variablekuéra</string>
     <string name="dejavu_custom_action_variables_hint">Eiporavo peteĩ variable embojuaju hağua pe haihápe reñemboheko hína.</string>
-    <string name="dejavu_custom_action_hint">Pe jerure ojeguerahauka peteĩjey tendayke peteĩteĩ pe tembiapo ojejapoháre. Peteĩ mbohovái 2xx año ojekuaa vy\'apáicha; umi redirect ndojekuaái ha ojekuaa jejavýrõ guáicha. Cookies ndojeguerahaúi. Umi valor ojejapo URL encoded pe URL-pe ha JSON escaped peteĩ tete JSON-pe.</string>
+    <string name="dejavu_custom_action_hint">Pe jerure ojeguerahauka peteĩjey tendayke peteĩteĩ pe tembiapo ojejapoháre. Peteĩ mbohovái 2xx año ojekuaa vy\'apáicha; umi redirect ndojekuaái ha ojekuaa jejavýrõ guáicha. Cookies ndojeguerahaúi. Umi valor ojejapo URL encoded pe URL-pe ha formulario tete-pe, ha escaped peteĩ tete JSON térã XML-pe.</string>
     <string name="dejavu_custom_action_sent">Ojeguerahauka: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Ndoikói: código %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Ndoikói: mbohovái\'ỹre (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">¿Embojuruja ko kundaharape?</string>
     <string name="dejavu_open_non_web_pin_message">Ko tendayke mboja\'ypyre ombojuruja kundaharape ndaha\'éiva ñandutirovetã. Ikatu ou ambue mba\'e\'okágui ne mba\'ete.\n\n%1$s</string>
     <string name="dejavu_open">Embojuruja</string>
+    <string name="dejavu_about_config_warning_title">¿Embojuruja about:config?</string>
+    <string name="dejavu_about_config_warning_message">Emoambuéramo ko ñemboheko ikatu omokangy Dejavu tekorosã ha tekoñemi, térã omomarã ñanduti renda. Umi ñemboheko Dejavu ñemboheko voi oisãmbyhýva, ha\'eháicha ñemo\'ã jehapykueho rovake, HTTPS-Only ha DNS hekorosãva, ojevy hese Dejavu oñepyrũjeývo.</string>
+    <string name="dejavu_remote_debugging_warning_title">¿Emyandy mopotĩ mombyry guive?</string>
+    <string name="dejavu_remote_debugging_warning_message">Hendypa aja, mohendahára oñembojoajúva ko pumbyrýre USB rupive, mopotĩ USB oñemoneĩva, ikatu oisãmbyhy Dejavu ha omoñe\'ẽ imba\'ekuaarã, ha\'eháicha tendayke ijurujáva, kookie ha ñe\'ẽñemi ñongatupyre, oporandu\'ỹre. Embogue opa rire.</string>
+    <string name="dejavu_turn_on">Myandy</string>
+    <string name="dejavu_settings_jit">JavaScript pya\'e (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Ombopya\'e ñanduti renda. Hetave ñembotavy kundahára rehegua ohasa hese, upévare embogue hekorosãve, katu oĩ tenda ombopyhy\'ive. Ojepuru Dejavu oñepyrũjey rire.</string>
+    <string name="dejavu_settings_webgl_summary">Ta\'anga 3D ñembosarái, mapa ha ñanduti renda ndaha\'éiva opavavépe guarã. Embogue ramo ojoko ñembotavy ohasáva ta\'anga mboguatahára rupive ha hasyve tendakuérape oikuaa hag̃ua ne pumbyry, katu umi tenda ikatu ndoikovéi.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ko Dejavu rembiapo ndoguerekói Safe Browsing ñe\'ẽñemi, upévare ndaikatúi ohechauka tenda ivaíva.</string>
+    <string name="dejavu_custom_action_http_warning">Ko kundaharape oipuru http, upévare mba\'ejerure, iñakãme ha kuatiarogue kundaharape oho ñemo\'ã\'ỹre. Eipuru https mohendahavusu oipytyvõramo.</string>
+    <string name="dejavu_example_notification_ntfy">Emondo kuatiarogue marandu ramo. Oimeraẽva oikuaáva téma réra ikatu omoñe\'ẽ, upévare eiporavo téra ipukúva ha oimeraẽva.</string>
 </resources>

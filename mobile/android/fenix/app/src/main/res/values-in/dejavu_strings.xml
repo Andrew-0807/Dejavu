@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">Isi</string>
     <string name="dejavu_custom_action_variables">Variabel</string>
     <string name="dejavu_custom_action_variables_hint">Ketuk variabel untuk menyisipkannya ke bidang yang sedang Anda sunting.</string>
-    <string name="dejavu_custom_action_hint">Permintaan dikirim satu kali untuk setiap tab tempat tindakan ini dijalankan. Hanya respons 2xx yang dihitung berhasil; pengalihan tidak akan diikuti dan dihitung sebagai gagal. Cookie tidak dikirim. Nilai di-encode URL dalam URL dan di-escape JSON dalam isi JSON.</string>
+    <string name="dejavu_custom_action_hint">Permintaan dikirim satu kali untuk setiap tab tempat tindakan ini dijalankan. Hanya respons 2xx yang dihitung berhasil; pengalihan tidak akan diikuti dan dihitung sebagai gagal. Cookie tidak dikirim. Nilai di-encode URL dalam URL dan dalam isi formulir, serta di-escape dalam isi JSON atau XML.</string>
     <string name="dejavu_custom_action_sent">Terkirim: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Gagal: kode %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Gagal: tidak ada respons (%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">Buka alamat ini?</string>
     <string name="dejavu_open_non_web_pin_message">Tab yang disematkan ini membuka alamat yang bukan halaman web. Alamat ini mungkin berasal dari perangkat lain di akun Anda.\n\n%1$s</string>
     <string name="dejavu_open">Buka</string>
+    <string name="dejavu_about_config_warning_title">Buka about:config?</string>
+    <string name="dejavu_about_config_warning_message">Mengubah pengaturan ini dapat melemahkan keamanan dan privasi Dejavu, atau merusak situs web. Pengaturan yang dikendalikan oleh pengaturan Dejavu sendiri, seperti perlindungan pelacakan, HTTPS-Only, dan DNS aman, akan kembali ke pengaturan tersebut saat Dejavu dimulai ulang.</string>
+    <string name="dejavu_remote_debugging_warning_title">Aktifkan debugging jarak jauh?</string>
+    <string name="dejavu_remote_debugging_warning_message">Selama aktif, komputer yang tersambung ke ponsel ini melalui USB, dengan debugging USB diizinkan, dapat mengendalikan Dejavu dan membaca datanya, seperti tab yang terbuka, kuki, dan kata sandi yang tersimpan, tanpa bertanya. Matikan saat Anda selesai.</string>
+    <string name="dejavu_turn_on">Aktifkan</string>
+    <string name="dejavu_settings_jit">JavaScript cepat (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Membuat situs web berjalan lebih cepat. Sebagian besar serangan terhadap browser lewat fitur ini, jadi mematikannya lebih aman, tetapi beberapa situs menjadi lebih lambat. Berlaku setelah Dejavu dimulai ulang.</string>
+    <string name="dejavu_settings_webgl_summary">Grafis 3D untuk game, peta, dan beberapa situs web. Mematikannya memblokir serangan melalui driver grafis dan menyulitkan situs mengenali ponsel Anda, tetapi situs tersebut mungkin berhenti berfungsi.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Build Dejavu ini tidak memiliki kunci Safe Browsing, jadi tidak dapat memperingatkan tentang situs berbahaya.</string>
+    <string name="dejavu_custom_action_http_warning">Alamat ini menggunakan http, jadi permintaan, header-nya, dan alamat halaman dikirim tanpa enkripsi. Gunakan https jika server mendukungnya.</string>
+    <string name="dejavu_example_notification_ntfy">Kirim halaman sebagai notifikasi. Siapa pun yang tahu nama topiknya dapat membacanya, jadi pilih nama yang panjang dan acak.</string>
 </resources>

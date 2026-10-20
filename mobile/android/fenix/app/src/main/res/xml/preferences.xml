@@ -214,6 +214,21 @@
             android:title="@string/dejavu_settings_safe_browsing"
             android:summary="@string/dejavu_settings_safe_browsing_summary" />
 
+        <!-- Dejavu: the JavaScript JIT and WebGL, which most attacks on browsers go through, can be turned off. -->
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="@string/pref_key_dejavu_jit"
+            app:iconSpaceReserved="false"
+            android:defaultValue="true"
+            android:title="@string/dejavu_settings_jit"
+            android:summary="@string/dejavu_settings_jit_summary" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="@string/pref_key_dejavu_webgl"
+            app:iconSpaceReserved="false"
+            android:defaultValue="true"
+            android:title="@string/dejavu_settings_webgl"
+            android:summary="@string/dejavu_settings_webgl_summary" />
+
         <androidx.preference.Preference
             android:key="@string/pref_key_site_permissions"
             app:iconSpaceReserved="false"

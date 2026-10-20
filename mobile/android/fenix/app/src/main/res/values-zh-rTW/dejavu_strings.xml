@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">本文</string>
     <string name="dejavu_custom_action_variables">變數</string>
     <string name="dejavu_custom_action_variables_hint">輕觸變數即可將其插入您正在編輯的欄位。</string>
-    <string name="dejavu_custom_action_hint">此操作套用的每個分頁都會傳送一次要求。只有 2xx 回應才視為成功;重新導向不會被跟隨，並視為失敗。不會傳送 Cookie。URL 中的值會進行 URL 編碼，JSON 本文中的值會進行 JSON 逸出處理。</string>
+    <string name="dejavu_custom_action_hint">此操作套用的每個分頁都會傳送一次要求。只有 2xx 回應才視為成功;重新導向不會被跟隨，並視為失敗。不會傳送 Cookie。URL 與表單本文中的值會進行 URL 編碼，JSON 或 XML 本文中的值會進行逸出處理。</string>
     <string name="dejavu_custom_action_sent">已傳送：%1$s</string>
     <string name="dejavu_custom_action_failed_code">失敗：代碼 %1$d(%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">失敗：無回應(%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">要開啟此網址嗎？</string>
     <string name="dejavu_open_non_web_pin_message">此釘選分頁開啟的網址不是網頁。它可能來自您帳號中的另一台裝置。\n\n%1$s</string>
     <string name="dejavu_open">開啟</string>
+    <string name="dejavu_about_config_warning_title">要開啟 about:config 嗎？</string>
+    <string name="dejavu_about_config_warning_message">變更這些設定可能削弱 Dejavu 的安全性與隱私，或導致網站無法正常運作。由 Dejavu 本身設定管理的設定，例如追蹤保護、HTTPS-Only 與安全 DNS，會在 Dejavu 重新啟動後回到這些設定的值。</string>
+    <string name="dejavu_remote_debugging_warning_title">要開啟遠端除錯嗎？</string>
+    <string name="dejavu_remote_debugging_warning_message">開啟期間，透過 USB 連接到此手機並獲准進行 USB 除錯的電腦，可以在不詢問的情況下控制 Dejavu，並讀取其資料，例如開啟的分頁、Cookie 與已儲存的密碼。用完後請將其關閉。</string>
+    <string name="dejavu_turn_on">開啟</string>
+    <string name="dejavu_settings_jit">快速 JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">讓網站執行得更快。針對瀏覽器的攻擊大多經由它進行，因此關閉它更安全，但部分網站會變慢。在 Dejavu 重新啟動後生效。</string>
+    <string name="dejavu_settings_webgl_summary">用於遊戲、地圖與部分網站的 3D 圖形。關閉後可阻擋透過圖形驅動程式發起的攻擊，並讓網站更難辨識您的手機，但這些網站可能無法正常運作。</string>
+    <string name="dejavu_settings_safe_browsing_no_key">此 Dejavu 版本沒有 Safe Browsing 金鑰，因此無法針對危險網站發出警告。</string>
+    <string name="dejavu_custom_action_http_warning">此網址使用 http，因此請求、其標頭與頁面網址都以未加密的方式傳輸。若伺服器支援，請使用 https。</string>
+    <string name="dejavu_example_notification_ntfy">將頁面作為通知傳送。任何知道主題名稱的人都能讀取，因此請選擇一個較長的隨機名稱。</string>
 </resources>

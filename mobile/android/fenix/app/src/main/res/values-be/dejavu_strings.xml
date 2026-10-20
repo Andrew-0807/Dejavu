@@ -146,7 +146,7 @@
     <string name="dejavu_custom_action_body">Цела</string>
     <string name="dejavu_custom_action_variables">Зменныя</string>
     <string name="dejavu_custom_action_variables_hint">Націсніце на зменную, каб уставіць яе ў поле, якое вы рэдагуеце.</string>
-    <string name="dejavu_custom_action_hint">Запыт адпраўляецца адзін раз для кожнай карткі, на якой выконваецца дзеянне. Толькі адказ 2xx лічыцца поспехам; перанакіраванні не адсочваюцца і лічацца няўдачамі. Файлы cookie не адпраўляюцца. Значэнні кадуюцца як URL у URL-адрасе і экраніруюцца як JSON у целе JSON.</string>
+    <string name="dejavu_custom_action_hint">Запыт адпраўляецца адзін раз для кожнай карткі, на якой выконваецца дзеянне. Толькі адказ 2xx лічыцца поспехам; перанакіраванні не адсочваюцца і лічацца няўдачамі. Файлы cookie не адпраўляюцца. Значэнні кадуюцца як URL у URL-адрасе і ў целе формы і экраніруюцца ў целе JSON або XML.</string>
     <string name="dejavu_custom_action_sent">Адпраўлена: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Няўдача: код %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Няўдача: няма адказу (%1$s)</string>
@@ -352,4 +352,15 @@
     <string name="dejavu_open_non_web_pin_title">Адкрыць гэты адрас?</string>
     <string name="dejavu_open_non_web_pin_message">Гэта замацаваная картка адкрывае адрас, які не з\'яўляецца вэб-старонкай. Ён мог прыйсці з іншай прылады вашага ўліковага запісу.\n\n%1$s</string>
     <string name="dejavu_open">Адкрыць</string>
+    <string name="dejavu_about_config_warning_title">Адкрыць about:config?</string>
+    <string name="dejavu_about_config_warning_message">Змена гэтых налад можа аслабіць бяспеку і прыватнасць Dejavu або парушыць працу сайтаў. Налады, якімі кіруюць уласныя налады Dejavu, напрыклад ахова ад сачэння, HTTPS-Only і бяспечны DNS, вяртаюцца да іх пасля перазапуску Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">Уключыць аддаленую адладку?</string>
+    <string name="dejavu_remote_debugging_warning_message">Пакуль яна ўключана, камп\'ютар, падлучаны да гэтага тэлефона праз USB з дазволенай адладкай па USB, можа кіраваць Dejavu і чытаць яго даныя, напрыклад адкрытыя карткі, кукі і захаваныя паролі, нічога не пытаючыся. Выключыце яе, калі скончыце.</string>
+    <string name="dejavu_turn_on">Уключыць</string>
+    <string name="dejavu_settings_jit">Хуткі JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Паскарае працу сайтаў. Большасць нападаў на браўзеры ідзе праз яго, таму выключыць яго бяспечней, але некаторыя сайты стануць павольнейшымі. Дзейнічае пасля перазапуску Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">3D-графіка для гульняў, карт і некаторых сайтаў. Яе выключэнне блакуе напады праз графічны драйвер і ўскладняе сайтам распазнаванне вашага тэлефона, але такія сайты могуць перастаць працаваць.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">У гэтай зборцы Dejavu няма ключа Safe Browsing, таму яна не можа папярэджваць пра небяспечныя сайты.</string>
+    <string name="dejavu_custom_action_http_warning">Гэты адрас выкарыстоўвае http, таму запыт, яго загалоўкі і адрас старонкі перадаюцца незашыфраванымі. Выкарыстоўвайце https, калі сервер яго падтрымлівае.</string>
+    <string name="dejavu_example_notification_ntfy">Адпраўляе старонку як апавяшчэнне. Любы, хто ведае назву тэмы, можа яго прачытаць, таму выберыце доўгую выпадковую назву.</string>
 </resources>

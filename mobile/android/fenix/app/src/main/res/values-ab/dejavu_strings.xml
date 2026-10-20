@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Аҵакы иалку</string>
     <string name="dejavu_custom_action_variables">Апеременнақәа</string>
     <string name="dejavu_custom_action_variables_hint">Апеременна шәыдыркыло аҟны идалаӡара азы, ари аҟны идырҳәыр.</string>
-    <string name="dejavu_custom_action_hint">Аҭаара абларҭа зегьы азы, аҟaҵара избакьоу, акы ишәоуп. Иахьа 2xx иҭакы гына иашьоу ауп; аиҭагылара шьаҭас иамҳәом, насгьы иашьам ауп. Иухыхьрақәа шьаны иҟам. Аҵакқәа URL аҟны URL амш ала акодла иахьоуп, JSON аҵакы иалку аҟны — JSON амш ала.</string>
+    <string name="dejavu_custom_action_hint">Аҭаара абларҭа зегьы азы, аҟaҵара избакьоу, акы ишәоуп. Иахьа 2xx иҭакы гына иашьоу ауп; аиҭагылара шьаҭас иамҳәом, насгьы иашьам ауп. Иухыхьрақәа шьаны иҟам. Аҵакқәа URL аҟны, аформа аҵакы аҟны URL амш ала акодла иахьоуп, JSON мамзар XML аҵакы аҟны — аекранирра ала.</string>
     <string name="dejavu_custom_action_sent">Ишьаны: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Иашьам: акод %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Иашьам: аҭак ыҟам (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Ари аҭыжьымҭа аарттуама?</string>
     <string name="dejavu_open_non_web_pin_message">Ари иԥхьаӡоу аҭыжь веб-даҟьа ада аҭыжьымҭа аартуеит. Уи уаккаунт аҿы егьи аиҭаныз аҟынтә иаауазар ҟалоит.\n\n%1$s</string>
     <string name="dejavu_open">Аартра</string>
+    <string name="dejavu_about_config_warning_title">about:config аартуама?</string>
+    <string name="dejavu_about_config_warning_message">Ари архиарақәа рыԥсахра Dejavu ашәарҭадаареи иара ихатәы аҭагылазаашьеи иаԥырхагахар ауеит, мамзар асаитқәа рыԥхасҭахар ауеит. Dejavu ихатә архиарақәа изанааҭу, иаҳҳәап атрекинг аҟынтә ахьчара, HTTPS-Only, ашәарҭадоу DNS, Dejavu аиҭаартра ашьҭахь ирхынҳәуеит.</string>
+    <string name="dejavu_remote_debugging_warning_title">USB ала аотладка аҿакуама?</string>
+    <string name="dejavu_remote_debugging_warning_message">Уи аҿыкызар, USB ала ари ател иадҳәалоу, USB-отладка зыԥшәу акомпиутер Dejavu анапхгара азуа, адыррақәа аԥхьар алшоит, иаҳҳәап иаартыу аҭыжьқәа, cookie, иеиқәырхоу ажәамаӡақәа, азҵаара ада. Ушнеиуа уи аҿыхтә.</string>
+    <string name="dejavu_turn_on">Аҿакра</string>
+    <string name="dejavu_settings_jit">Ирласу JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Асаитқәа ирласны иусуеит. Абраузерқәа рахь иҟоу алагалақәа реиҳарак уи ала иуеит, убри аҟынтә уи аҿыхра ишәарҭадоуп, аха асаитқәа ҟалоит ирыцҳахар. Dejavu аиҭаартра ашьҭахь иуеит.</string>
+    <string name="dejavu_settings_webgl_summary">3D-графика ахәмаррақәа, ахсаалақәа, асаитқәа хыԥхьаӡара рзы. Уи аҿыхра графикатә драивер ала алагалақәа иаанахкылоит, асаитқәа ател рзеилкаара иуадаҩхоит, аха убри асаитқәа аус ауӡар ауеит.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ари Dejavu аверсиа Safe Browsing ацаԥха амаӡам, убри аҟынтә ашәарҭатә саитқәа ирызкны иазгәанаҭаӡом.</string>
+    <string name="dejavu_custom_action_http_warning">Ари аҭыжь http ахархәоит, убри аҟынтә азҵаара, ахқәа, адаҟьа аҭыжь ашифр ада ииасуеит. Асервер https иазыҟаҵазар, https ахархәа.</string>
+    <string name="dejavu_example_notification_ntfy">Адаҟьа азгәаҭаны идәықәтәа. Атема ахьӡ здыруа зегь уи аԥхьар рылшоит, убри аҟынтә иауу, ихәхәу ахьӡ алх.</string>
 </resources>

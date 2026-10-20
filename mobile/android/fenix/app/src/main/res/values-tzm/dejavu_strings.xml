@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Agbur</string>
     <string name="dejavu_custom_action_variables">Imuttiyen</string>
     <string name="dejavu_custom_action_variables_hint">Sit ɣef umuttiy akken a t-ternuḍ ɣer urti i teẓẓergeḍ.</string>
-    <string name="dejavu_custom_action_hint">Assuter yettwazen yiwet n tikkelt i yal aseksel i deg tettedu tigawt. Kan tiririt 2xx ttwaḥsaben d lawan; imesdayen ur ttwaḍfaren ara ttwaḥsaben d urrif. Ibiskwit ur ttwaznen ara. Azalen ttwajerrden s URL deg URL, s JSON deg wagbur JSON.</string>
+    <string name="dejavu_custom_action_hint">Assuter yettwazen yiwet n tikkelt i yal aseksel i deg tettedu tigawt. Kan tiririt 2xx ttwaḥsaben d lawan; imesdayen ur ttwaḍfaren ara ttwaḥsaben d urrif. Ibiskwit ur ttwaznen ara. Azalen ttwajerrden s URL deg URL d tfekka n tferkit, ttwasellken deg tfekka JSON neɣ XML.</string>
     <string name="dejavu_custom_action_sent">Yettwazen: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Yerfed: tangalt %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Yerfed: war tiririt (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Ad tlliḍ tansa-a?</string>
     <string name="dejavu_open_non_web_pin_message">Iccer-a yettwasenṭḍen ar ilddi yat tansa ur igin tasna web. Izmer ad d-yas zeg yan wallal nniḍen deg umiḍan-nnek.\n\n%1$s</string>
     <string name="dejavu_open">Ldi</string>
+    <string name="dejavu_about_config_warning_title">Ad tlliḍ about:config?</string>
+    <string name="dejavu_about_config_warning_message">Abeddel n yiɣewwaren-a yezmer ad isseḍɛef taɣellist d tbaḍnit n Dejavu, neɣ ad yerreẓ ismal web. Iɣewwaren i ttḥekkimen yiɣewwaren n Dejavu s yiman-s, am ummesten mgal aḍfar, HTTPS-Only d DNS aɣelsan, ad d-uɣalen ɣur-sen mi ara yales Dejavu asenker.</string>
+    <string name="dejavu_remote_debugging_warning_title">Ad tremdeḍ tamseɣtayt seg yimeccaq?</string>
+    <string name="dejavu_remote_debugging_warning_message">Mi ara tili tettwarmed, aselkim yeqqnen ɣer tiliɣri-a s USB, s tmseɣtayt USB yettusirgen, yezmer ad yeḥkem deg Dejavu u ad iɣer isefka-ns, am waccaren yeldin, inagan n tuqqna d wawalen uffiren yettwaskelsen, war ma isteqsa. Sens-itt mi ara tfakkeḍ.</string>
+    <string name="dejavu_turn_on">Rmed</string>
+    <string name="dejavu_settings_jit">JavaScript arurad (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Yessazal ismal web s tɣawla. Tuget n twuḍḍiwin ɣef yiminigen ttɛeddint seg-s, ihi asens-is d aɣelsan ugar, maca kra n yismal ad ṛẓagen. Ad yettwasnes mi ara yales Dejavu asenker.</string>
+    <string name="dejavu_settings_webgl_summary">Tudlifin 3D i wurar, tikarḍiwin d kra n yismal web. Asens-is yessewḥal tiwuḍḍiwin s umenhar udlif, yerra yewɛer ɣef yismal ad ɛqlen tiliɣri-nnek, maca ismal-nni zemren ad ḥebsen ur xeddmen ara.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Lqem-a n Dejavu ur yesɛi ara tasarut n Safe Browsing, ihi ur yezmir ara ad yelɣu ɣef yismal yeččuren d lxeṭṛ.</string>
+    <string name="dejavu_custom_action_http_warning">Tansa-a tesseqdac http, ihi asuter, iqerra-s d tansa n tasna ttɛeddin war awgelhen. Seqdec https ma yella aqeddac yessefrak-it.</string>
+    <string name="dejavu_example_notification_ntfy">Azen tasna d alɣu. Win yessnen isem n usentel yezmer ad t-iɣer, ihi fren isem aɣezfan, agacuran.</string>
 </resources>

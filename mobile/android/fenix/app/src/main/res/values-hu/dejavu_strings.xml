@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Törzs</string>
     <string name="dejavu_custom_action_variables">Változók</string>
     <string name="dejavu_custom_action_variables_hint">Koppintson egy változóra, hogy beszúrja a szerkesztett mezőbe.</string>
-    <string name="dejavu_custom_action_hint">A kérés egyszer kerül elküldésre minden olyan lapnál, amelyen a művelet lefut. Csak a 2xx válasz számít sikeresnek; az átirányításokat a rendszer nem követi, és sikertelennek számítanak. Sütik nem kerülnek elküldésre. Az értékek URL-kódolással kerülnek az URL-be, és JSON-kódolással a JSON-törzsbe.</string>
+    <string name="dejavu_custom_action_hint">A kérés egyszer kerül elküldésre minden olyan lapnál, amelyen a művelet lefut. Csak a 2xx válasz számít sikeresnek; az átirányításokat a rendszer nem követi, és sikertelennek számítanak. Sütik nem kerülnek elküldésre. Az értékek URL-kódolással kerülnek az URL-be és az űrlaptörzsbe, és escape-elve a JSON- vagy XML-törzsbe.</string>
     <string name="dejavu_custom_action_sent">Elküldve: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Sikertelen: %1$d kód (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Sikertelen: nincs válasz (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Megnyitja ezt a címet?</string>
     <string name="dejavu_open_non_web_pin_message">Ez a rögzített lap olyan címet nyit meg, amely nem weboldal. Lehet, hogy a fiókja egy másik eszközéről érkezett.\n\n%1$s</string>
     <string name="dejavu_open">Megnyitás</string>
+    <string name="dejavu_about_config_warning_title">Megnyitja az about:config oldalt?</string>
+    <string name="dejavu_about_config_warning_message">Ezeknek a beállításoknak a módosítása gyengítheti a Dejavu biztonságát és adatvédelmét, vagy hibássá teheti a weboldalakat. Azok a beállítások, amelyeket a Dejavu saját beállításai irányítanak, mint a követés elleni védelem, a HTTPS-Only és a biztonságos DNS, a Dejavu újraindításakor visszaállnak azokra.</string>
+    <string name="dejavu_remote_debugging_warning_title">Bekapcsolja a távoli hibakeresést?</string>
+    <string name="dejavu_remote_debugging_warning_message">Amíg be van kapcsolva, egy USB-n keresztül ehhez a telefonhoz csatlakoztatott számítógép, amelynek engedélyezett az USB-hibakeresés, kérdezés nélkül irányíthatja a Dejavut és olvashatja az adatait, például a nyitott lapokat, a sütiket és a mentett jelszavakat. Kapcsolja ki, ha végzett.</string>
+    <string name="dejavu_turn_on">Bekapcsolás</string>
+    <string name="dejavu_settings_jit">Gyors JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Gyorsabbá teszi a weboldalakat. A böngészők elleni támadások többsége ezen keresztül történik, ezért biztonságosabb kikapcsolni, de egyes oldalak lassabbak lesznek. A Dejavu újraindítása után lép életbe.</string>
+    <string name="dejavu_settings_webgl_summary">3D grafika játékokhoz, térképekhez és egyes weboldalakhoz. Kikapcsolása blokkolja a grafikus illesztőprogramon keresztüli támadásokat, és megnehezíti, hogy az oldalak felismerjék a telefonját, de ezek az oldalak leállhatnak.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">A Dejavu ezen kiadásában nincs Safe Browsing-kulcs, ezért nem tud figyelmeztetni a veszélyes oldalakra.</string>
+    <string name="dejavu_custom_action_http_warning">Ez a cím http-t használ, ezért a kérés, a fejlécei és az oldal címe titkosítatlanul utazik. Használjon https-t, ha a kiszolgáló támogatja.</string>
+    <string name="dejavu_example_notification_ntfy">Az oldal elküldése értesítésként. Bárki, aki ismeri a téma nevét, elolvashatja, ezért válasszon hosszú, véletlenszerű nevet.</string>
 </resources>

@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">متن</string>
     <string name="dejavu_custom_action_variables">متغیرا</string>
     <string name="dejavu_custom_action_variables_hint">رو متغیر بزن تا بره اون جایی که آلشت می‌کنی بره تو.</string>
-    <string name="dejavu_custom_action_hint">درخواست بره هر بلگه‌ای که کار روش کار می‌کنه، یه بار رسۊوی می‌بۊ. فقط جواب 2xx موفق حساب می‌بۊ؛ ریدایرکت یل دنبال نمی‌بن و شکست حساب می‌بن. کوکی رسۊوی نمی‌بۊ. ارزش یل من URL به شکل URL کد می‌بن، و من متن JSON به شکل JSON.</string>
+    <string name="dejavu_custom_action_hint">درخواست بره هر بلگه‌ای که کار روش کار می‌کنه، یه بار رسۊوی می‌بۊ. فقط جواب 2xx موفق حساب می‌بۊ؛ ریدایرکت یل دنبال نمی‌بن و شکست حساب می‌بن. کوکی رسۊوی نمی‌بۊ. ارزش یل من URL و من متن فرم به شکل URL کد می‌بن، و من متن JSON یا XML گریز داده می‌بن.</string>
     <string name="dejavu_custom_action_sent">رسۊوی وابی: %1$s</string>
     <string name="dejavu_custom_action_failed_code">شکست خورد: کد %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">شکست خورد: جواب نداد (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">ای نشونی واز بوئه؟</string>
     <string name="dejavu_open_non_web_pin_message">ای بلگه سنجاق بیه نشونیی واز مئکه که بلگه وب نئ. شایت ز دسگا دیری تو حساوت اومائه.\n\n%1$s</string>
     <string name="dejavu_open">واز کردن</string>
+    <string name="dejavu_about_config_warning_title">about:config واز بوئه؟</string>
+    <string name="dejavu_about_config_warning_message">آلشت دئن ای تنظیمات ممکنه امنیت و حریم خصوصی Dejavu ن سست بکنه، یا سایتل ن خراو بکنه. تنظیماتی که تنظیمات خوت Dejavu اونه ن کنترل مئکنه، چی محافظت ز ردیابی، HTTPS-Only و DNS امن، وختی Dejavu دوواره راه بکفه وا مئگردن.</string>
+    <string name="dejavu_remote_debugging_warning_title">اشکال‌زدایی ز راه دیر روشن بوئه؟</string>
+    <string name="dejavu_remote_debugging_warning_message">تا وختی روشنه، کامپیوتری که وا USB به ای تلفن وصله و اشکال‌زدایی USB سیش اجازه دئه بیه، بی پرسیدن مئتونه Dejavu ن کنترل بکنه و داده‌یل اون ن، چی بلگه‌یل واز، کوکیل و رمزیل ذخیره بیه، بخونه. وختی کارت تموم بی خاموشش کو.</string>
+    <string name="dejavu_turn_on">روشن کردن</string>
+    <string name="dejavu_settings_jit">JavaScript تند (JIT)</string>
+    <string name="dejavu_settings_jit_summary">سایتل ن تندتر کار مئندازه. بیشتر حمله‌یل به مرورگرل ز اونجا ردّ مئبون، سی همی خاموش کردنش امن‌تره، اما بعضی سایتل کندتر مئبون. بعد ز راه افتادن دوواره Dejavu اعمال مئبوئه.</string>
+    <string name="dejavu_settings_webgl_summary">گرافیک 3D سی بازیل، نقشه‌یل و بعضی سایتل. خاموش کردنش حمله‌یل ز راه درایور گرافیکی ن بند مئکنه و شناختن تلفنت سی سایتل سخت‌تر مئکنه، اما ممکنه او سایتل کار نکنن.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">ای نسخه Dejavu کلید Safe Browsing ناره، سی همی نمی‌تونه ز سایتل خطرناک هشدار بیه.</string>
+    <string name="dejavu_custom_action_http_warning">ای نشونی ز http استفاده مئکنه، سی همی درخواست، سربرگیلش و نشونی بلگه بی رمزگذاری مئرن. ار سرور https ن پشتیبانی مئکنه، ز اون استفاده کو.</string>
+    <string name="dejavu_example_notification_ntfy">بلگه ن بی اعلان بفرس. هر کی نوم موضوع ن بدونه مئتونه بخونتش، سی همی یه نوم دراز و تصادفی ورگیر.</string>
 </resources>

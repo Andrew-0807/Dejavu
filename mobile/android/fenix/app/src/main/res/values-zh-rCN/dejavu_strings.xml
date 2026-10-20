@@ -143,7 +143,7 @@
     <string name="dejavu_custom_action_body">正文</string>
     <string name="dejavu_custom_action_variables">变量</string>
     <string name="dejavu_custom_action_variables_hint">点按变量即可将其插入您正在编辑的字段。</string>
-    <string name="dejavu_custom_action_hint">该操作作用于的每个标签页都会发送一次请求。只有 2xx 响应才算作成功;重定向不会被跟随，并计为失败。不会发送 Cookie。URL 中的值会进行 URL 编码，JSON 正文中的值会进行 JSON 转义。</string>
+    <string name="dejavu_custom_action_hint">该操作作用于的每个标签页都会发送一次请求。只有 2xx 响应才算作成功;重定向不会被跟随，并计为失败。不会发送 Cookie。URL 和表单正文中的值会进行 URL 编码，JSON 或 XML 正文中的值会进行转义。</string>
     <string name="dejavu_custom_action_sent">已发送：%1$s</string>
     <string name="dejavu_custom_action_failed_code">失败：代码 %1$d(%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">失败：无响应(%1$s)</string>
@@ -331,4 +331,15 @@
     <string name="dejavu_open_non_web_pin_title">要打开此地址吗？</string>
     <string name="dejavu_open_non_web_pin_message">此固定标签页打开的地址不是网页。它可能来自您账户中的另一台设备。\n\n%1$s</string>
     <string name="dejavu_open">打开</string>
+    <string name="dejavu_about_config_warning_title">要打开 about:config 吗？</string>
+    <string name="dejavu_about_config_warning_message">更改这些设置可能削弱 Dejavu 的安全性和隐私，或导致网站无法正常工作。由 Dejavu 自身设置管理的设置，例如跟踪保护、HTTPS-Only 和安全 DNS，会在 Dejavu 重启后恢复为这些设置中的值。</string>
+    <string name="dejavu_remote_debugging_warning_title">要开启远程调试吗？</string>
+    <string name="dejavu_remote_debugging_warning_message">开启期间，通过 USB 连接到此手机并获准进行 USB 调试的电脑可以在不询问的情况下控制 Dejavu，并读取其数据，例如打开的标签页、Cookie 和已保存的密码。用完后请将其关闭。</string>
+    <string name="dejavu_turn_on">开启</string>
+    <string name="dejavu_settings_jit">快速 JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">让网站运行得更快。针对浏览器的攻击大多经由它进行，因此关闭它更安全，但部分网站会变慢。在 Dejavu 重启后生效。</string>
+    <string name="dejavu_settings_webgl_summary">用于游戏、地图和部分网站的 3D 图形。关闭后可阻止通过图形驱动程序发起的攻击，并让网站更难识别您的手机，但这些网站可能无法正常工作。</string>
+    <string name="dejavu_settings_safe_browsing_no_key">此 Dejavu 版本没有 Safe Browsing 密钥，因此无法就危险网站发出警告。</string>
+    <string name="dejavu_custom_action_http_warning">此地址使用 http，因此请求、其标头和页面地址都以未加密的方式传输。如果服务器支持，请使用 https。</string>
+    <string name="dejavu_example_notification_ntfy">将页面作为通知发送。任何知道主题名称的人都能读取，因此请选择一个较长的随机名称。</string>
 </resources>

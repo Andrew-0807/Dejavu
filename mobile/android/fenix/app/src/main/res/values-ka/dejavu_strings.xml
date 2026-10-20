@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">შინაარსი</string>
     <string name="dejavu_custom_action_variables">ცვლადები</string>
     <string name="dejavu_custom_action_variables_hint">შეეხეთ ცვლადს, რომ ჩასვათ ის ჩასწორებად ველში.</string>
-    <string name="dejavu_custom_action_hint">მოთხოვნა იგზავნება ერთხელ თითოეული ჩანართისთვის, რომელზეც მოქმედება გაეშვება. წარმატებულად ითვლება მხოლოდ 2xx პასუხი; გადამისამართებები არ სრულდება და ითვლება ჩავარდნად. ქუქი-ფაილები არ იგზავნება. მნიშვნელობები URL-ში URL-ფორმატითაა კოდირებული, ხოლო JSON-შინაარსში — JSON-ფორმატით.</string>
+    <string name="dejavu_custom_action_hint">მოთხოვნა იგზავნება ერთხელ თითოეული ჩანართისთვის, რომელზეც მოქმედება გაეშვება. წარმატებულად ითვლება მხოლოდ 2xx პასუხი; გადამისამართებები არ სრულდება და ითვლება ჩავარდნად. ქუქი-ფაილები არ იგზავნება. მნიშვნელობები URL-სა და ფორმის შინაარსში URL-ფორმატითაა კოდირებული, ხოლო JSON-ის ან XML-ის შინაარსში — ეკრანირებული.</string>
     <string name="dejavu_custom_action_sent">გაიგზავნა: %1$s</string>
     <string name="dejavu_custom_action_failed_code">ჩავარდა: კოდი %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">ჩავარდა: პასუხი არ არის (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">გაიხსნას ეს მისამართი?</string>
     <string name="dejavu_open_non_web_pin_message">ეს მიმაგრებული ჩანართი ხსნის მისამართს, რომელიც ვებგვერდი არ არის. ის შესაძლოა თქვენი ანგარიშის სხვა მოწყობილობიდან მოვიდა.\n\n%1$s</string>
     <string name="dejavu_open">გახსნა</string>
+    <string name="dejavu_about_config_warning_title">გაიხსნას about:config?</string>
+    <string name="dejavu_about_config_warning_message">ამ პარამეტრების შეცვლამ შეიძლება დაასუსტოს Dejavu-ს უსაფრთხოება და პირადულობა ან ვებსაიტები გააფუჭოს. პარამეტრები, რომლებსაც Dejavu-ს საკუთარი პარამეტრები მართავს, მაგალითად თვალთვალისგან დაცვა, HTTPS-Only და დაცული DNS, Dejavu-ს ხელახლა გაშვებისას მათ უბრუნდება.</string>
+    <string name="dejavu_remote_debugging_warning_title">ჩაირთოს დისტანციური გამართვა?</string>
+    <string name="dejavu_remote_debugging_warning_message">სანამ ჩართულია, USB-ით ამ ტელეფონთან დაკავშირებულ კომპიუტერს, რომელსაც USB-გამართვის ნებართვა აქვს, შეუძლია უკითხავად მართოს Dejavu და წაიკითხოს მისი მონაცემები, მაგალითად გახსნილი ჩანართები, ფუნთუშები და შენახული პაროლები. დასრულების შემდეგ გამორთეთ.</string>
+    <string name="dejavu_turn_on">ჩართვა</string>
+    <string name="dejavu_settings_jit">სწრაფი JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">ვებსაიტებს უფრო სწრაფად ამუშავებს. ბრაუზერებზე შეტევების უმეტესობა მასზე გადის, ამიტომ მისი გამორთვა უფრო უსაფრთხოა, მაგრამ ზოგი საიტი ნელდება. მოქმედებს Dejavu-ს ხელახლა გაშვების შემდეგ.</string>
+    <string name="dejavu_settings_webgl_summary">3D-გრაფიკა თამაშების, რუკებისა და ზოგი ვებსაიტისთვის. მისი გამორთვა ბლოკავს შეტევებს გრაფიკული დრაივერის გავლით და საიტებს უძნელებს თქვენი ტელეფონის ამოცნობას, მაგრამ ეს საიტები შეიძლება აღარ იმუშაოს.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Dejavu-ს ამ ანაწყობს არ აქვს Safe Browsing-ის გასაღები, ამიტომ ვერ გაგაფრთხილებთ საშიში საიტების შესახებ.</string>
+    <string name="dejavu_custom_action_http_warning">ეს მისამართი იყენებს http-ს, ამიტომ მოთხოვნა, მისი თავსართები და გვერდის მისამართი დაუშიფრავად გადაიცემა. გამოიყენეთ https, თუ სერვერი მხარს უჭერს.</string>
+    <string name="dejavu_example_notification_ntfy">გვერდის გაგზავნა შეტყობინებად. თემის სახელის მცოდნე ნებისმიერს შეუძლია მისი წაკითხვა, ამიტომ აირჩიეთ გრძელი, შემთხვევითი სახელი.</string>
 </resources>

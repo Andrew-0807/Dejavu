@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Corpore</string>
     <string name="dejavu_custom_action_variables">Variabiles</string>
     <string name="dejavu_custom_action_variables_hint">Pulsa un variabile pro inserer lo in le campo que tu es rediger.</string>
-    <string name="dejavu_custom_action_hint">Le requesta es inviate un vice pro cata scheda super le qual le action functiona. Solmente un responsa 2xx conta como successo; le redirectiones non es sequite e conta como fallimentos. Cookies non es inviate. Le valores es codificate como URL in le URL e escapate como JSON in un corpore JSON.</string>
+    <string name="dejavu_custom_action_hint">Le requesta es inviate un vice pro cata scheda super le qual le action functiona. Solmente un responsa 2xx conta como successo; le redirectiones non es sequite e conta como fallimentos. Cookies non es inviate. Le valores es codificate como URL in le URL e in un corpore de formulario, e escapate in un corpore JSON o XML.</string>
     <string name="dejavu_custom_action_sent">Inviate: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Fallite: codice %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Fallite: nulle responsa (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Aperir iste adresse?</string>
     <string name="dejavu_open_non_web_pin_message">Iste scheda fixate aperi un adresse que non es un pagina web. Illo pote venir de un altere apparato de tu conto.\n\n%1$s</string>
     <string name="dejavu_open">Aperir</string>
+    <string name="dejavu_about_config_warning_title">Aperir about:config?</string>
+    <string name="dejavu_about_config_warning_message">Cambiar iste parametros pote debilitar le securitate e le confidentialitate de Dejavu, o rumper sitos web. Le parametros que le proprie parametros de Dejavu controla, como le protection contra le traciamento, HTTPS-Only e le DNS secur, retorna a illos quando Dejavu se reinitia.</string>
+    <string name="dejavu_remote_debugging_warning_title">Activar le depuration remote?</string>
+    <string name="dejavu_remote_debugging_warning_message">Durante que illo es active, un computator connectite a iste telephono per USB, con le depuration USB permittite, pote controlar Dejavu e leger su datos, como schedas aperte, cookies e contrasignos salvate, sin demandar. Disactiva lo quando tu ha finite.</string>
+    <string name="dejavu_turn_on">Activar</string>
+    <string name="dejavu_settings_jit">JavaScript rapide (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Face le sitos web functionar plus rapidemente. Le major parte del attaccos contra navigatores passa per illo, dunque disactivar lo es plus secur, ma alcun sitos deveni plus lente. Se applica post reinitiar Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Graphica 3D pro jocos, mappas e alcun sitos web. Disactivar lo bloca attaccos per le driver graphic e rende plus difficile pro le sitos recognoscer tu telephono, ma iste sitos pote cessar de functionar.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Iste version de Dejavu non ha un clave de Safe Browsing, dunque illo non pote advertir de sitos periculose.</string>
+    <string name="dejavu_custom_action_http_warning">Iste adresse usa http, dunque le requesta, su capites e le adresse del pagina viagia sin cryptation. Usa https si le servitor lo supporta.</string>
+    <string name="dejavu_example_notification_ntfy">Inviar le pagina como notification. Qualcunque persona qui cognosce le nomine del thema pote leger lo, dunque elige un nomine longe e aleatori.</string>
 </resources>

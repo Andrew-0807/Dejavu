@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Cuarp</string>
     <string name="dejavu_custom_action_variables">Variabilis</string>
     <string name="dejavu_custom_action_variables_hint">Tocje une variabile par inserîle tal cjamp che tu stâs modificant.</string>
-    <string name="dejavu_custom_action_hint">La richieste e ven inviade une volte par ogni schede che l\'azion e ju su. Dome une rispueste 2xx e conte come sucès; i indreçaments no vegnin seguîts e a contin come faliments. I cookie no vegnin inviâts. I valôrs a son codificâts URL te URL e codificâts JSON intun cuarp JSON.</string>
+    <string name="dejavu_custom_action_hint">La richieste e ven inviade une volte par ogni schede che l\'azion e ju su. Dome une rispueste 2xx e conte come sucès; i indreçaments no vegnin seguîts e a contin come faliments. I cookie no vegnin inviâts. I valôrs a son codificâts URL te URL e intun cuarp di formulari, e scjampâts intun cuarp JSON o XML.</string>
     <string name="dejavu_custom_action_sent">Inviât: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Falît: codiç %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Falît: nissune rispueste (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Vierzi cheste direzion?</string>
     <string name="dejavu_open_non_web_pin_message">Cheste schede fissade e vierç une direzion che no je une pagjine web. E podarès vignî di un altri dispositîf dal to account.\n\n%1$s</string>
     <string name="dejavu_open">Vierç</string>
+    <string name="dejavu_about_config_warning_title">Vierzi about:config?</string>
+    <string name="dejavu_about_config_warning_message">Cambiâ chestis impostazions al pues indeboli la sigurece e la riservatece di Dejavu, o fâ che i sîts web no funzionin. Lis impostazions controladis des impostazions di Dejavu stes, come la protezion cuintri il tracament, HTTPS-Only e il DNS sigûr, a tornin a lôr cuant che Dejavu al tache di gnûf.</string>
+    <string name="dejavu_remote_debugging_warning_title">Ativâ il debug di lontan?</string>
+    <string name="dejavu_remote_debugging_warning_message">Fintremai che al è atîf, un computer colegât a chest telefon midiant USB, cul debug USB permetût, al pues controlâ Dejavu e lei i siei dâts, come lis schedis viertis, i cookies e lis passwords salvadis, cence domandâ. Disativilu cuant che tu âs finît.</string>
+    <string name="dejavu_turn_on">Ative</string>
+    <string name="dejavu_settings_jit">JavaScript svelt (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Al fâs lâ plui svelts i sîts web. La plui part dai atacs cuintri i navigadôrs a passin par lui, duncje disativâlu al è plui sigûr, ma cualchi sît al devente plui lent. Si apliche dopo che Dejavu al tache di gnûf.</string>
+    <string name="dejavu_settings_webgl_summary">Grafiche 3D par zûcs, mapis e cualchi sît web. Disativâle e bloche i atacs midiant il driver grafic e e rint plui dificil pai sîts ricognossi il to telefon, ma chei sîts a puedin smeti di funzionâ.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Cheste compilazion di Dejavu no à une clâf di Safe Browsing, duncje no pues visâ dai sîts pericolôs.</string>
+    <string name="dejavu_custom_action_http_warning">Cheste direzion e dopre http, duncje la richieste, i siei intestadûrs e la direzion de pagjine a viazin cence cifradure. Dopre https se il servidôr lu supuarte.</string>
+    <string name="dejavu_example_notification_ntfy">Mande la pagjine come notifiche. Cualsisei che al cognòs il non dal argoment le pues lei, duncje sielç un non lunc e casuâl.</string>
 </resources>

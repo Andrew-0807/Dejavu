@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Sisältö</string>
     <string name="dejavu_custom_action_variables">Muuttujat</string>
     <string name="dejavu_custom_action_variables_hint">Napauta muuttujaa lisätäksesi sen muokkaamaasi kenttään.</string>
-    <string name="dejavu_custom_action_hint">Pyyntö lähetetään kerran jokaista välilehteä kohti, jolla toiminto suoritetaan. Vain 2xx-vastaus lasketaan onnistumiseksi; uudelleenohjauksia ei seurata, ja ne lasketaan epäonnistumisiksi. Evästeitä ei lähetetä. Arvot koodataan URL-muotoon URL-osoitteessa ja JSON-muotoon JSON-sisällössä.</string>
+    <string name="dejavu_custom_action_hint">Pyyntö lähetetään kerran jokaista välilehteä kohti, jolla toiminto suoritetaan. Vain 2xx-vastaus lasketaan onnistumiseksi; uudelleenohjauksia ei seurata, ja ne lasketaan epäonnistumisiksi. Evästeitä ei lähetetä. Arvot koodataan URL-muotoon URL-osoitteessa ja lomakesisällössä, ja niiden erikoismerkit koodataan JSON- tai XML-sisällössä.</string>
     <string name="dejavu_custom_action_sent">Lähetetty: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Epäonnistui: koodi %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Epäonnistui: ei vastausta (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Avataanko tämä osoite?</string>
     <string name="dejavu_open_non_web_pin_message">Tämä kiinnitetty välilehti avaa osoitteen, joka ei ole verkkosivu. Se on voinut tulla toiselta tilisi laitteelta.\n\n%1$s</string>
     <string name="dejavu_open">Avaa</string>
+    <string name="dejavu_about_config_warning_title">Avataanko about:config?</string>
+    <string name="dejavu_about_config_warning_message">Näiden asetusten muuttaminen voi heikentää Dejavun tietoturvaa ja yksityisyyttä tai rikkoa verkkosivustoja. Asetukset, joita Dejavun omat asetukset hallitsevat, kuten seurannan esto, HTTPS-Only ja suojattu DNS, palaavat niihin, kun Dejavu käynnistyy uudelleen.</string>
+    <string name="dejavu_remote_debugging_warning_title">Otetaanko etävianetsintä käyttöön?</string>
+    <string name="dejavu_remote_debugging_warning_message">Kun se on käytössä, tähän puhelimeen USB:llä yhdistetty tietokone, jolle USB-vianetsintä on sallittu, voi ohjata Dejavua ja lukea sen tietoja, kuten avoimia välilehtiä, evästeitä ja tallennettuja salasanoja, kysymättä. Poista se käytöstä, kun olet valmis.</string>
+    <string name="dejavu_turn_on">Ota käyttöön</string>
+    <string name="dejavu_settings_jit">Nopea JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Saa verkkosivustot toimimaan nopeammin. Useimmat selaimiin kohdistuvat hyökkäykset kulkevat sen kautta, joten sen poistaminen käytöstä on turvallisempaa, mutta jotkin sivustot hidastuvat. Tulee voimaan, kun Dejavu käynnistyy uudelleen.</string>
+    <string name="dejavu_settings_webgl_summary">3D-grafiikkaa peleille, kartoille ja joillekin sivustoille. Sen poistaminen käytöstä estää hyökkäykset näytönohjaimen ajurin kautta ja vaikeuttaa sivustojen mahdollisuutta tunnistaa puhelimesi, mutta ne sivustot voivat lakata toimimasta.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Tässä Dejavun versiossa ei ole Safe Browsing -avainta, joten se ei voi varoittaa vaarallisista sivustoista.</string>
+    <string name="dejavu_custom_action_http_warning">Tämä osoite käyttää http:tä, joten pyyntö, sen otsakkeet ja sivun osoite kulkevat salaamattomina. Käytä https:ää, jos palvelin tukee sitä.</string>
+    <string name="dejavu_example_notification_ntfy">Lähetä sivu ilmoituksena. Kuka tahansa aiheen nimen tietävä voi lukea sen, joten valitse pitkä, satunnainen nimi.</string>
 </resources>

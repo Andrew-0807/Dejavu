@@ -41,7 +41,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.fragment.findNavController
 import java.util.UUID
@@ -55,6 +57,7 @@ import org.mozilla.fenix.dejavu.actions.CustomActionExample
 import org.mozilla.fenix.dejavu.actions.CustomHeader
 import org.mozilla.fenix.dejavu.actions.HttpMethod
 import org.mozilla.fenix.dejavu.actions.customActionExamples
+import org.mozilla.fenix.dejavu.actions.isSecretHeader
 import org.mozilla.fenix.dejavu.ui.DejavuTextField
 
 /** Adds or edits a [CustomAction]. */
@@ -117,6 +120,8 @@ private fun CustomActionEditor(
         }
     }
     var focused by remember { mutableStateOf<EditorField>(EditorField.Url) }
+    // The header value shown in clear while it is being edited; other secret values are hidden.
+    var revealedHeader by remember { mutableStateOf<Int?>(null) }
     val scrollState = rememberScrollState()
     val scope = rememberCoroutineScope()
 
@@ -171,6 +176,13 @@ private fun CustomActionEditor(
             placeholder = "https://example.com/save?url=${ActionVariable.WEBSITE_URL.token}",
             modifier = Modifier.fillMaxWidth().onFocusChanged { if (it.isFocused) focused = EditorField.Url },
         )
+        if (trimmedUrl.startsWith("http://")) {
+            Text(
+                text = stringResource(R.string.dejavu_custom_action_http_warning),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.error,
+            )
+        }
 
         SectionLabel(R.string.dejavu_custom_action_headers)
         headers.forEachIndexed { index, header ->
@@ -183,12 +195,19 @@ private fun CustomActionEditor(
                         if (it.isFocused) focused = EditorField.HeaderName(index)
                     },
                 )
+                val hidden = isSecretHeader(header.name.text) && revealedHeader != index
                 DejavuTextField(
                     value = header.value,
                     onValueChange = { headers[index] = header.copy(value = it) },
                     label = stringResource(R.string.dejavu_custom_action_header_value),
+                    visualTransformation = if (hidden) PasswordVisualTransformation() else VisualTransformation.None,
                     modifier = Modifier.weight(1.4f).onFocusChanged {
-                        if (it.isFocused) focused = EditorField.HeaderValue(index)
+                        if (it.isFocused) {
+                            focused = EditorField.HeaderValue(index)
+                            revealedHeader = index
+                        } else if (revealedHeader == index) {
+                            revealedHeader = null
+                        }
                     },
                 )
                 IconButton(onClick = { headers.removeAt(index) }) {

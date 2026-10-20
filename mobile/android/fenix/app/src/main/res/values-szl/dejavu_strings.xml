@@ -146,7 +146,7 @@
     <string name="dejavu_custom_action_body">Treść</string>
     <string name="dejavu_custom_action_variables">Zmiynne</string>
     <string name="dejavu_custom_action_variables_hint">Stuknij zmiynno, coby jōm wsadzić do pola, kere edytujesz.</string>
-    <string name="dejavu_custom_action_hint">Zapytanie je posyłane roz na kożdo karta, na kerej akcyjo działo. Ino ôdpowiydź 2xx liczy sie za sukces; przekierowania niy sōm śledzōne i liczōm sie za niepowodzynia. Ciasteczka niy sōm posyłane. Werty sōm kodowane URL w adresie i eskejpowane JSON we treści JSON.</string>
+    <string name="dejavu_custom_action_hint">Zapytanie je posyłane roz na kożdo karta, na kerej akcyjo działo. Ino ôdpowiydź 2xx liczy sie za sukces; przekierowania niy sōm śledzōne i liczōm sie za niepowodzynia. Ciasteczka niy sōm posyłane. Werty sōm kodowane URL w adresie i we treści formularza, i eskejpowane we treści JSON abo XML.</string>
     <string name="dejavu_custom_action_sent">Posłane: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Niy szło: kod %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Niy szło: bez ôdpowiedzi (%1$s)</string>
@@ -352,4 +352,15 @@
     <string name="dejavu_open_non_web_pin_title">Ôtworzić ta adresa?</string>
     <string name="dejavu_open_non_web_pin_message">Ta przipniynto karta ôtwiyro adresa, kero niy ma stronōm internetowōm. Mogła prziś z inkszego masziny na twojim kōncie.\n\n%1$s</string>
     <string name="dejavu_open">Ôtwōrz</string>
+    <string name="dejavu_about_config_warning_title">Ôtworzić about:config?</string>
+    <string name="dejavu_about_config_warning_message">Zmiana tych nasztelowań może ôsłabić bezpieczyństwo i prywatność Dejavu abo zepsuć strōny. Nasztelowania, kerymi sterujōm włosne nasztelowania Dejavu, jak ôchrona przed śledzyniym, HTTPS-Only i bezpieczny DNS, wracajōm do nich po ponownym sztarcie Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">Załōnczyć zdalne debugowanie?</string>
+    <string name="dejavu_remote_debugging_warning_message">Póki je załōnczōne, kōmputer połōnczōny z tym telefōnym bez USB, z przizwolyniym na debugowanie USB, może bez pytanio sterować Dejavu i czytać jego dane, jak ôtwarte karty, ciasteczka i spamiyntane hasła. Wyłōncz je, jak skōńczysz.</string>
+    <string name="dejavu_turn_on">Załōncz</string>
+    <string name="dejavu_settings_jit">Gibki JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Przyśpiesza strōny. Wiynkszość atakōw na przeglōndarki idzie bez niego, tōż jego wyłōnczynie je bezpieczniejsze, ale niekere strōny idōm pomalij. Działo po ponownym sztarcie Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Grafika 3D do szpili, map i niekerych strōn. Jeji wyłōnczynie blokuje ataki bez szterownik grafiki i utrudnio strōnōm poznanie twojigo telefōnu, ale te strōny mogōm przestać fungować.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ta wersyjo Dejavu niy mo klucza Safe Browsing, tōż niy może ôstrzegać przed niebezpiecznymi strōnami.</string>
+    <string name="dejavu_custom_action_http_warning">Tyn adres używo http, tōż żōndanie, jego nagłōwki i adres strōny sōm przesyłane bez szyfrowanio. Użyj https, jak serwer to ôbsuguje.</string>
+    <string name="dejavu_example_notification_ntfy">Wysyło strōna jako powiadōmiynie. Kożdy, fto zno miano tymatu, może to przeczytać, tōż wybier dugie, losowe miano.</string>
 </resources>

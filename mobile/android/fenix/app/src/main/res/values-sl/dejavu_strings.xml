@@ -146,7 +146,7 @@
     <string name="dejavu_custom_action_body">Telo</string>
     <string name="dejavu_custom_action_variables">Spremenljivke</string>
     <string name="dejavu_custom_action_variables_hint">Dotaknite se spremenljivke, da jo vstavite v polje, ki ga urejate.</string>
-    <string name="dejavu_custom_action_hint">Zahteva se pošlje enkrat za vsak zavihek, na katerem se dejanje izvede. Kot uspeh šteje samo odgovor 2xx; preusmeritvam se ne sledi in štejejo kot neuspeh. Piškotki se ne pošiljajo. Vrednosti so URL kodirane v URL-ju, v telesu JSON pa kodirane za JSON.</string>
+    <string name="dejavu_custom_action_hint">Zahteva se pošlje enkrat za vsak zavihek, na katerem se dejanje izvede. Kot uspeh šteje samo odgovor 2xx; preusmeritvam se ne sledi in štejejo kot neuspeh. Piškotki se ne pošiljajo. Vrednosti so URL kodirane v URL-ju in v telesu obrazca, v telesu JSON ali XML pa ubežane.</string>
     <string name="dejavu_custom_action_sent">Poslano: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Neuspešno: koda %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Neuspešno: ni odgovora (%1$s)</string>
@@ -352,4 +352,15 @@
     <string name="dejavu_open_non_web_pin_title">Odprem ta naslov?</string>
     <string name="dejavu_open_non_web_pin_message">Ta pripeti zavihek odpre naslov, ki ni spletna stran. Morda je prišel z druge naprave v vašem računu.\n\n%1$s</string>
     <string name="dejavu_open">Odpri</string>
+    <string name="dejavu_about_config_warning_title">Odprem about:config?</string>
+    <string name="dejavu_about_config_warning_message">Spreminjanje teh nastavitev lahko oslabi varnost in zasebnost Dejavuja ali pokvari spletne strani. Nastavitve, ki jih upravljajo Dejavujeve lastne nastavitve, kot so zaščita pred sledenjem, HTTPS-Only in varni DNS, se ob ponovnem zagonu Dejavuja vrnejo nanje.</string>
+    <string name="dejavu_remote_debugging_warning_title">Vklopim oddaljeno razhroščevanje?</string>
+    <string name="dejavu_remote_debugging_warning_message">Dokler je vklopljeno, lahko računalnik, povezan s tem telefonom prek USB-ja, z dovoljenim razhroščevanjem USB, brez vprašanja upravlja Dejavu in bere njegove podatke, kot so odprti zavihki, piškotki in shranjena gesla. Ko končate, ga izklopite.</string>
+    <string name="dejavu_turn_on">Vklopi</string>
+    <string name="dejavu_settings_jit">Hitri JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Pospeši delovanje spletnih strani. Večina napadov na brskalnike poteka prek njega, zato je izklop varnejši, vendar nekatere strani postanejo počasnejše. Velja po ponovnem zagonu Dejavuja.</string>
+    <string name="dejavu_settings_webgl_summary">3D grafika za igre, zemljevide in nekatere spletne strani. Izklop prepreči napade prek grafičnega gonilnika in otežuje stranem prepoznavanje vašega telefona, vendar lahko te strani prenehajo delovati.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ta različica Dejavuja nima ključa Safe Browsing, zato ne more opozarjati na nevarne strani.</string>
+    <string name="dejavu_custom_action_http_warning">Ta naslov uporablja http, zato zahteva, njene glave in naslov strani potujejo nešifrirani. Uporabite https, če ga strežnik podpira.</string>
+    <string name="dejavu_example_notification_ntfy">Pošlje stran kot obvestilo. Kdorkoli pozna ime teme, ga lahko prebere, zato izberite dolgo, naključno ime.</string>
 </resources>

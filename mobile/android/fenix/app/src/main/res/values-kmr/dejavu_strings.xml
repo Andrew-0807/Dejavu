@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Naverok</string>
     <string name="dejavu_custom_action_variables">Guherbar</string>
     <string name="dejavu_custom_action_variables_hint">Ji bo têxistina wê di qada tu serrast dikî de, li guherbarekê bitikîne.</string>
-    <string name="dejavu_custom_action_hint">Daxwaz ji bo her hilpekîna ku çalakî li ser dixebite carekê tê şandin. Tenê bersiveke 2xx wek serkeftî tê hesibandin; berevajîkirin nayên şopandin û wek têkçûyî têne hesibandin. Kûkî nayên şandin. Nirx di URL de bi awayê URL têne kodkirin û di naveroka JSON de bi awayê JSON.</string>
+    <string name="dejavu_custom_action_hint">Daxwaz ji bo her hilpekîna ku çalakî li ser dixebite carekê tê şandin. Tenê bersiveke 2xx wek serkeftî tê hesibandin; berevajîkirin nayên şopandin û wek têkçûyî têne hesibandin. Kûkî nayên şandin. Nirx di URL û di naveroka formê de bi awayê URL têne kodkirin, û di naveroka JSON an XML de têne veşartin.</string>
     <string name="dejavu_custom_action_sent">Hat şandin: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Têkçû: koda %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Têkçû: bersiv tune (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Vê navnîşanê veke?</string>
     <string name="dejavu_open_non_web_pin_message">Ev hilpekîna derzîkirî navnîşaneke ku ne rûpelekî webê ye vedike. Dibe ku ji amûreke din a hesabê te hatibe.\n\n%1$s</string>
     <string name="dejavu_open">Veke</string>
+    <string name="dejavu_about_config_warning_title">about:config were vekirin?</string>
+    <string name="dejavu_about_config_warning_message">Guhertina van mîhengan dikare ewlehî û nepeniya Dejavu qels bike, an malperan xera bike. Mîhengên ku mîhengên Dejavu bi xwe kontrol dikin, wekî parastina ji şopandinê, HTTPS-Only û DNSa ewle, dema Dejavu ji nû ve dest pê dike vedigerin wan.</string>
+    <string name="dejavu_remote_debugging_warning_title">Çewtîrakirina ji dûr ve were vekirin?</string>
+    <string name="dejavu_remote_debugging_warning_message">Heta ku vekirî be, komputereke ku bi USB bi vê telefonê ve girêdayî ye û destûra çewtîrakirina USB heye, dikare bêyî pirsînê Dejavu kontrol bike û daneyên wê, wekî hilpekînên vekirî, çerez û şîfreyên tomarkirî, bixwîne. Dema ku te qedand wê bigire.</string>
+    <string name="dejavu_turn_on">Veke</string>
+    <string name="dejavu_settings_jit">JavaScripta bilez (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Malperan bileztir dixebitîne. Piraniya êrîşên li ser gerokan di ser wê re derbas dibin, ji ber vê girtina wê ewletir e, lê hin malper hêdî dibin. Piştî ku Dejavu ji nû ve dest pê bike bandor dike.</string>
+    <string name="dejavu_settings_webgl_summary">Grafîkên 3D ji bo lîstik, nexşe û hin malperan. Girtina wê êrîşên bi rêya ajokera grafîkê asteng dike û naskirina telefona te ji bo malperan dijwartir dike, lê dibe ku ew malper êdî nexebitin.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Ev avakirina Dejavu mifteya Safe Browsing tune ye, ji ber vê nikare li ser malperên xeternak hişyariyê bide.</string>
+    <string name="dejavu_custom_action_http_warning">Ev navnîşan http bi kar tîne, ji ber vê daxwaz, sernivîsên wê û navnîşana rûpelê bêyî şîfrekirinê diçin. Heke pêşkêşkar piştgirî dide, https bi kar bîne.</string>
+    <string name="dejavu_example_notification_ntfy">Rûpelê wekî agahdarî bişîne. Her kesê ku navê mijarê dizane dikare wê bixwîne, ji ber vê navekî dirêj û rasthatî hilbijêre.</string>
 </resources>

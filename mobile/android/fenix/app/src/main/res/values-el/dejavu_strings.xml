@@ -144,7 +144,7 @@
     <string name="dejavu_custom_action_body">Σώμα</string>
     <string name="dejavu_custom_action_variables">Μεταβλητές</string>
     <string name="dejavu_custom_action_variables_hint">Πατήστε μια μεταβλητή για να την εισαγάγετε στο πεδίο που επεξεργάζεστε.</string>
-    <string name="dejavu_custom_action_hint">Το αίτημα αποστέλλεται μία φορά για κάθε καρτέλα στην οποία εκτελείται η ενέργεια. Μόνο μια απάντηση 2xx μετράει ως επιτυχία· οι ανακατευθύνσεις δεν ακολουθούνται και μετράνε ως αποτυχίες. Τα cookies δεν αποστέλλονται. Οι τιμές κωδικοποιούνται σε μορφή URL μέσα στη διεύθυνση URL και σε μορφή JSON μέσα στο σώμα JSON.</string>
+    <string name="dejavu_custom_action_hint">Το αίτημα αποστέλλεται μία φορά για κάθε καρτέλα στην οποία εκτελείται η ενέργεια. Μόνο μια απάντηση 2xx μετράει ως επιτυχία· οι ανακατευθύνσεις δεν ακολουθούνται και μετράνε ως αποτυχίες. Τα cookies δεν αποστέλλονται. Οι τιμές κωδικοποιούνται σε μορφή URL μέσα στη διεύθυνση URL και σε σώμα φόρμας, και γίνεται escape σε σώμα JSON ή XML.</string>
     <string name="dejavu_custom_action_sent">Απεστάλη: %1$s</string>
     <string name="dejavu_custom_action_failed_code">Απέτυχε: κωδικός %1$d (%2$s)</string>
     <string name="dejavu_custom_action_failed_no_answer">Απέτυχε: καμία απάντηση (%1$s)</string>
@@ -338,4 +338,15 @@
     <string name="dejavu_open_non_web_pin_title">Άνοιγμα αυτής της διεύθυνσης;</string>
     <string name="dejavu_open_non_web_pin_message">Αυτή η καρφιτσωμένη καρτέλα ανοίγει μια διεύθυνση που δεν είναι ιστοσελίδα. Ίσως προέρχεται από άλλη συσκευή του λογαριασμού σας.\n\n%1$s</string>
     <string name="dejavu_open">Άνοιγμα</string>
+    <string name="dejavu_about_config_warning_title">Άνοιγμα του about:config;</string>
+    <string name="dejavu_about_config_warning_message">Η αλλαγή αυτών των ρυθμίσεων μπορεί να αποδυναμώσει την ασφάλεια και το απόρρητο του Dejavu ή να χαλάσει ιστοτόπους. Οι ρυθμίσεις που ελέγχουν οι ρυθμίσεις του ίδιου του Dejavu, όπως η προστασία από την καταγραφή, το HTTPS-Only και το ασφαλές DNS, επιστρέφουν σε αυτές όταν γίνεται επανεκκίνηση του Dejavu.</string>
+    <string name="dejavu_remote_debugging_warning_title">Ενεργοποίηση απομακρυσμένου εντοπισμού σφαλμάτων;</string>
+    <string name="dejavu_remote_debugging_warning_message">Όσο είναι ενεργός, ένας υπολογιστής συνδεδεμένος σε αυτό το τηλέφωνο μέσω USB, με επιτρεπόμενο τον εντοπισμό σφαλμάτων USB, μπορεί να ελέγχει το Dejavu και να διαβάζει τα δεδομένα του, όπως ανοιχτές καρτέλες, cookies και αποθηκευμένους κωδικούς πρόσβασης, χωρίς να ρωτήσει. Απενεργοποιήστε τον όταν τελειώσετε.</string>
+    <string name="dejavu_turn_on">Ενεργοποίηση</string>
+    <string name="dejavu_settings_jit">Γρήγορη JavaScript (JIT)</string>
+    <string name="dejavu_settings_jit_summary">Κάνει τους ιστοτόπους πιο γρήγορους. Οι περισσότερες επιθέσεις σε προγράμματα περιήγησης περνούν από αυτήν, οπότε η απενεργοποίησή της είναι ασφαλέστερη, αλλά ορισμένοι ιστότοποι γίνονται πιο αργοί. Ισχύει μετά την επανεκκίνηση του Dejavu.</string>
+    <string name="dejavu_settings_webgl_summary">Γραφικά 3D για παιχνίδια, χάρτες και ορισμένους ιστοτόπους. Η απενεργοποίησή τους μπλοκάρει επιθέσεις μέσω του προγράμματος οδήγησης γραφικών και δυσκολεύει τους ιστοτόπους να αναγνωρίσουν το τηλέφωνό σας, αλλά αυτοί οι ιστότοποι ενδέχεται να σταματήσουν να λειτουργούν.</string>
+    <string name="dejavu_settings_safe_browsing_no_key">Αυτή η έκδοση του Dejavu δεν έχει κλειδί Safe Browsing, οπότε δεν μπορεί να προειδοποιεί για επικίνδυνους ιστοτόπους.</string>
+    <string name="dejavu_custom_action_http_warning">Αυτή η διεύθυνση χρησιμοποιεί http, οπότε το αίτημα, οι κεφαλίδες του και η διεύθυνση της σελίδας ταξιδεύουν χωρίς κρυπτογράφηση. Χρησιμοποιήστε https αν το υποστηρίζει ο διακομιστής.</string>
+    <string name="dejavu_example_notification_ntfy">Στέλνει τη σελίδα ως ειδοποίηση. Όποιος ξέρει το όνομα του θέματος μπορεί να τη διαβάσει, οπότε επιλέξτε ένα μεγάλο, τυχαίο όνομα.</string>
 </resources>

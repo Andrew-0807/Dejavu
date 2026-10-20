@@ -46,7 +46,10 @@ containers and pinned tabs show up on your phone too. Sync is the only thing the
 
 <a href="https://fdroid.byarchitect.org/fdroid/repo?fingerprint=50941BDAC56B056A520ABFA3FC7DAAB789DEE5B83B295DA54A1961C7BC8A91C9"><img src="docs/readme/fdroid-qr.svg" alt="QR code that adds the ByArchitect repository to F-Droid" width="170" align="right"></a>
 
-Dejavu needs Android 8.0 or newer on a 64-bit phone, which almost every phone from recent years is.
+Dejavu needs Android 8.0 or newer on a 64-bit phone, which almost every phone from recent years is. Passkeys and
+security keys need Android 14 or newer: Dejavu signs in with them through Android's credential manager and the
+passkey app you use, like Google Password Manager, Proton Pass or Bitwarden. On older Android, Google's passkey service
+only serves the browsers on Google's own list, which Dejavu is not on.
 
 **F-Droid (recommended):** Dejavu is in the ByArchitect F-Droid repository, and F-Droid keeps it up to date. In
 F-Droid, open **Repositories**, tap **+** and scan the QR code, or open
@@ -56,6 +59,14 @@ on your phone to add the repository. Then search for Dejavu.
 **APK:** download `dejavu-<version>-arm64-v8a.apk` from the
 [latest release](https://github.com/by-architect/Dejavu/releases/latest). It does not update itself, so use F-Droid
 to get new versions.
+
+**Check a download:** APKs from GitHub and the ByArchitect F-Droid repository are signed with Dejavu's key, whose
+certificate has this SHA-256 fingerprint. Apps like [AppVerifier](https://github.com/soupslurpr/AppVerifier) compare
+it with the app on your phone, and each release lists the SHA-256 checksum of every file.
+
+```
+AD:2C:4C:E3:BD:3A:A1:30:A4:3C:6E:6F:81:4A:14:7C:91:80:EE:3F:C1:80:A1:89:54:87:06:64:F1:47:F1:4A
+```
 
 **Google Play:** in testing right now. The public release is planned for late October 2026.
 
@@ -194,8 +205,10 @@ in touch.
 
 ## Build from source
 
-This repository is a fork of Mozilla's Firefox repository, kept up to date with it, but Dejavu is developed separately
-from Mozilla. The Android app is in `mobile/android/fenix`, and Dejavu's
+This repository is a fork of Mozilla's Firefox repository, and Dejavu is developed separately from Mozilla. Its engine
+does not follow Firefox's releases yet: it is a Firefox 159 Nightly build from September 25, 2026, so fixes Mozilla
+makes in Firefox after that do not reach Dejavu until it moves to a newer Firefox. Moving to Firefox's releases, and
+then following each one, is on the [roadmap](#roadmap). The Android app is in `mobile/android/fenix`, and Dejavu's
 own code is in the `org.mozilla.fenix.dejavu` package. The steps to build it and run it on a phone are in
 [CONTRIBUTING.md](CONTRIBUTING.md#build-dejavu).
 
