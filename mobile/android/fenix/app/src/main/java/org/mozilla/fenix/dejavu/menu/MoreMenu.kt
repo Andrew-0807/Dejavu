@@ -178,15 +178,17 @@ object MoreMenuLayout {
     fun columnsFor(widthDp: Float): Int = (widthDp / MIN_TILE_WIDTH_DP).toInt().coerceIn(MAX_PER_ROW, MAX_COLUMNS)
 
     /**
-     * [rows] laid out [columns] tiles wide. Up to [MAX_PER_ROW] columns the user's rows stay as they are; wider, the
-     * rows between full row entries are joined in order and cut every [columns] tiles. Full row entries keep their row.
+     * [rows] laid out up to [columns] tiles wide. Up to [MAX_PER_ROW] columns the user's rows stay as they are; wider,
+     * the rows between full row entries are joined in order and cut into as few rows as fit [columns], evened out so
+     * the last one is not left with a tile or two. Full row entries keep their row.
      */
     fun gridRows(rows: List<List<MoreMenuEntry>>, columns: Int): List<List<MoreMenuEntry>> {
         if (columns <= MAX_PER_ROW) return rows
         val grid = mutableListOf<List<MoreMenuEntry>>()
         val pending = mutableListOf<MoreMenuEntry>()
         fun flush() {
-            grid.addAll(pending.chunked(columns))
+            val rowCount = (pending.size + columns - 1) / columns
+            if (rowCount > 0) grid.addAll(pending.chunked((pending.size + rowCount - 1) / rowCount))
             pending.clear()
         }
         rows.forEach { row ->

@@ -19,6 +19,7 @@ import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -137,6 +138,9 @@ internal const val SIDEBAR_MIN_WIDTH_DP = 200f
 internal const val SIDEBAR_MAX_WINDOW_FRACTION = 0.4f
 
 private const val OPEN_FRACTION = 0.35f
+
+/** The width the search field needs to show its whole hint, "Search tabs or enter address". */
+private val FullHintMinWidth = 220.dp
 private val openFlingVelocity = 400.dp
 
 /** The strip along the inner edge of the sidebar that shows its grab line and takes double taps. */
@@ -648,15 +652,17 @@ internal fun SidebarSearchField(
                 tint = scheme.onSurfaceVariant,
             )
         }
-        Box(
+        BoxWithConstraints(
             modifier = Modifier
                 .weight(1f)
                 .padding(end = if (value.isEmpty()) AddressFieldDefaults.HorizontalPadding else 0.dp),
             contentAlignment = Alignment.CenterStart,
         ) {
+            // The narrow sidebar has no room for the whole hint, so it gets the short one instead of a cut one.
+            val shownHint = if (maxWidth < FullHintMinWidth) stringResource(R.string.dejavu_search_tabs_short) else hint
             if (value.isEmpty()) {
                 Text(
-                    text = hint,
+                    text = shownHint,
                     style = textStyle,
                     color = scheme.onSurfaceVariant,
                     maxLines = 1,

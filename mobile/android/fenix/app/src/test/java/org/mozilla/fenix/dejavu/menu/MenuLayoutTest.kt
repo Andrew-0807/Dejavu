@@ -45,10 +45,16 @@ class MenuLayoutTest {
             listOf(first + second, extensions, last),
             MoreMenuLayout.gridRows(listOf(first, second, extensions, last), columns = 6),
         )
+        // 6 tiles 5 wide are evened out to 2 rows of 3, not 5 and 1.
         val joined = first + second
         assertEquals(
-            listOf(joined.take(5), joined.drop(5)),
+            listOf(joined.take(3), joined.drop(3)),
             MoreMenuLayout.gridRows(listOf(first, second), columns = 5),
+        )
+        val third = listOf(item(MoreMenuItem.PIN_TAB), item(MoreMenuItem.OPEN_IN_APP))
+        assertEquals(
+            listOf(first, second + third),
+            MoreMenuLayout.gridRows(listOf(first, second, third), columns = 6),
         )
     }
 }

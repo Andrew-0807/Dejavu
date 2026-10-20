@@ -37,11 +37,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -318,9 +318,16 @@ fun MoreMenu(
 ) {
     // As many columns as fit the width, so a wide sheet lays its tiles out in a grid instead of stretching them.
     BoxWithConstraints {
-        val columns = MoreMenuLayout.columnsFor(maxWidth.value)
+        val fit = MoreMenuLayout.columnsFor(maxWidth.value)
+        val grid = MoreMenuLayout.gridRows(rows, fit)
+        // Evened out rows can hold fewer tiles than fit: the tiles then share the width of the widest row.
+        val columns = if (fit > MoreMenuLayout.MAX_PER_ROW) {
+            (grid.maxOfOrNull { it.size } ?: fit).coerceIn(MoreMenuLayout.MAX_PER_ROW, fit)
+        } else {
+            fit
+        }
         Column(verticalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(vertical = 6.dp)) {
-            MoreMenuLayout.gridRows(rows, columns).forEach { row ->
+            grid.forEach { row ->
                 val single = row.singleOrNull()
                 if (single is MoreMenuEntry.BuiltIn && single.item == MoreMenuItem.EXTENSIONS) {
                     ExtensionsDrawer(
@@ -344,14 +351,18 @@ fun MoreMenu(
             }
             if (onEdit != null) {
                 Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
-                    TextButton(
+                    FilledTonalButton(
                         onClick = onEdit,
-                        colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.onSurfaceVariant),
+                        colors = ButtonDefaults.filledTonalButtonColors(
+                            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                            contentColor = MaterialTheme.colorScheme.onSurface,
+                        ),
+                        modifier = Modifier.heightIn(min = 48.dp),
                     ) {
                         Icon(
                             painter = painterResource(iconsR.drawable.mozac_ic_edit_24),
                             contentDescription = null,
-                            modifier = Modifier.size(18.dp),
+                            modifier = Modifier.size(20.dp),
                         )
                         Spacer(Modifier.width(8.dp))
                         Text(stringResource(R.string.dejavu_menu_edit))
@@ -377,9 +388,10 @@ private fun MenuTile(look: EntryLook, onClick: () -> Unit, modifier: Modifier = 
             modifier = Modifier
                 .size(48.dp)
                 .clip(RoundedCornerShape(16.dp))
+                // An entry that is on, like "Desktop site", is filled with the accent so it stands out on any theme.
                 .background(
                     if (look.active) {
-                        MaterialTheme.colorScheme.primaryContainer
+                        MaterialTheme.colorScheme.primary
                     } else {
                         MaterialTheme.colorScheme.surfaceContainerHigh
                     },
@@ -389,7 +401,7 @@ private fun MenuTile(look: EntryLook, onClick: () -> Unit, modifier: Modifier = 
                 painter = painterResource(look.icon),
                 contentDescription = null,
                 tint = if (look.active) {
-                    MaterialTheme.colorScheme.onPrimaryContainer
+                    MaterialTheme.colorScheme.onPrimary
                 } else {
                     MaterialTheme.colorScheme.onSurface
                 },

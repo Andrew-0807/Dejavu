@@ -13,6 +13,7 @@ import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -24,6 +25,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
@@ -297,8 +300,15 @@ fun DejavuHome(
                         },
                     )
                 }
-                // In the sidebar, the browser around it already keeps clear of the system bars and the keyboard.
-                .then(if (isSidebar) Modifier else Modifier.systemBarsPadding().imePadding()),
+                // In the sidebar, the browser around it already keeps clear of the system bars and the keyboard. On a wide
+                // screen the content is capped and centered, with the theme still drawn across the whole screen.
+                .then(
+                    if (isSidebar) {
+                        Modifier
+                    } else {
+                        Modifier.systemBarsPadding().imePadding().wrapContentWidth().widthIn(max = HomeMaxWidth)
+                    },
+                ),
         ) {
             val activeSelection = selection
             if (activeSelection == null) {
@@ -550,7 +560,9 @@ private fun SelectionTopBar(
             text = pluralStringResource(R.plurals.dejavu_selection_count, count, count),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.weight(1f).padding(start = 8.dp),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.weight(1f).padding(start = 4.dp),
         )
         BarIconButton(
             icon = iconsR.drawable.mozac_ic_select_all_24,
@@ -560,27 +572,48 @@ private fun SelectionTopBar(
     }
 }
 
+/**
+ * The actions for the selection, on a card that floats above the bottom of the home. In the sidebar the bottom of the
+ * window under the card is the navigation bar, so a card with a margin sits there with no seam.
+ */
 @Composable
 private fun SelectionBar(
     actions: List<RowAction>,
     onAction: (RowAction) -> Unit,
 ) {
-    Column(
+    val (destructive, others) = actions.partition { it.isDestructive }
+    BoxWithConstraints(
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceContainer)
-            .padding(horizontal = 4.dp, vertical = 6.dp),
+            .padding(8.dp)
+            .clip(RoundedCornerShape(20.dp))
+            .background(DejavuToolbar.glass(MaterialTheme.colorScheme).surfaceContainerHighest)
+            .padding(4.dp),
     ) {
-        actions.chunked(SELECTION_ACTIONS_PER_ROW).forEach { row ->
-            Row(modifier = Modifier.fillMaxWidth()) {
-                row.forEach { action ->
-                    SelectionAction(action, onAction, Modifier.weight(1f))
+        val columns = selectionColumns(others.size, maxWidth.value)
+        Column {
+            others.chunked(columns).forEach { row ->
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    row.forEach { action ->
+                        SelectionAction(action, onAction, Modifier.weight(1f))
+                    }
+                    repeat(columns - row.size) { Spacer(Modifier.weight(1f)) }
                 }
-                repeat(SELECTION_ACTIONS_PER_ROW - row.size) { Spacer(Modifier.weight(1f)) }
+            }
+            // Closing and deleting get a row of their own, so they are never left alone at the end of the grid.
+            if (destructive.isNotEmpty()) {
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    destructive.forEach { action ->
+                        DestructiveSelectionAction(action, onAction, Modifier.weight(1f))
+                    }
+                }
             }
         }
     }
 }
+
+private val RowAction.isDestructive: Boolean
+    get() = this is RowAction.BuiltIn && (this.action == TabAction.CLOSE || this.action == TabAction.DELETE)
 
 @Composable
 private fun SelectionAction(
@@ -588,8 +621,6 @@ private fun SelectionAction(
     onAction: (RowAction) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val isDestructive = action is RowAction.BuiltIn && (action.action == TabAction.CLOSE || action.action == TabAction.DELETE)
-    val color = if (isDestructive) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
@@ -600,22 +631,71 @@ private fun SelectionAction(
         Icon(
             painter = painterResource(action.icon),
             contentDescription = null,
-            tint = color,
+            tint = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.size(22.dp),
         )
         Spacer(Modifier.height(4.dp))
         Text(
             text = action.label,
             style = MaterialTheme.typography.labelSmall,
-            color = color,
+            color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Center,
-            maxLines = 3,
+            maxLines = 2,
             overflow = TextOverflow.Ellipsis,
         )
     }
 }
 
-private const val SELECTION_ACTIONS_PER_ROW = 6
+/** Close or delete, with the icon beside the label, in the last row of the selection actions. */
+@Composable
+private fun DestructiveSelectionAction(
+    action: RowAction,
+    onAction: (RowAction) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val color = MaterialTheme.colorScheme.error
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = modifier
+            .height(48.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .clickable { onAction(action) }
+            .padding(horizontal = 8.dp),
+    ) {
+        Icon(
+            painter = painterResource(action.icon),
+            contentDescription = null,
+            tint = color,
+            modifier = Modifier.size(20.dp),
+        )
+        Spacer(Modifier.width(8.dp))
+        Text(
+            text = action.label,
+            style = MaterialTheme.typography.labelLarge,
+            color = color,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+    }
+}
+
+/** The narrowest a selection action gets, which fits labels like "workspace" without breaking the word. */
+private const val SELECTION_ACTION_MIN_WIDTH_DP = 68f
+
+/** The most selection actions in a row, however wide the home is. */
+private const val SELECTION_ACTIONS_MAX_PER_ROW = 6
+
+/**
+ * How many columns the grid of [count] selection actions has in [widthDp]: as many as fit, then evened out over the
+ * rows, so the last row is not left with one or two actions.
+ */
+internal fun selectionColumns(count: Int, widthDp: Float): Int {
+    val fit = (widthDp / SELECTION_ACTION_MIN_WIDTH_DP).toInt().coerceIn(1, SELECTION_ACTIONS_MAX_PER_ROW)
+    if (count <= 0) return fit
+    val rows = (count + fit - 1) / fit
+    return (count + rows - 1) / rows
+}
 
 @Composable
 internal fun BarIconButton(
@@ -804,6 +884,9 @@ private fun WorkspaceBar(
         )
     }
 }
+
+/** The widest the full screen home gets, so on tablets it is not a phone layout stretched across the screen. */
+internal val HomeMaxWidth = 720.dp
 
 private val WorkspaceCellSize = 48.dp
 private val WorkspaceMarkSize = 36.dp
