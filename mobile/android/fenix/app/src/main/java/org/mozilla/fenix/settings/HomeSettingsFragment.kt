@@ -86,7 +86,7 @@ class HomeSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragm
  * The preferences of [HomeSettingsFragment]. The settings page shows them inline, see
  * docs/dejavu/settings-redesign.md. The lambdas let tests replace the settings and components.
  */
-class HomeSettingsSection(
+internal class HomeSettingsSection(
     private val fragment: PreferenceFragmentCompat,
     private val settings: () -> Settings = { fragment.requireContext().components.settings },
     private val components: () -> Components = { fragment.requireContext().components },
