@@ -37,8 +37,9 @@ object AboutConfigWarning {
 }
 
 /**
- * Shows [AboutConfigWarning] over the page when the shown tab opens about:config. Cancel leaves the page as Back does:
- * it goes back, or closes the tab when it has no page left. Custom tabs are left alone.
+ * Shows [AboutConfigWarning] over the page when the shown tab opens about:config, and takes it away when another tab
+ * or page is shown. Cancel leaves the page as Back does: it goes back, or closes the tab when it has no page left.
+ * Custom tabs are left alone.
  */
 fun Fragment.installAboutConfigWarning(customTabSessionId: String?) {
     if (customTabSessionId != null) return
@@ -48,9 +49,9 @@ fun Fragment.installAboutConfigWarning(customTabSessionId: String?) {
         flow.map { state -> state.selectedTab?.let { it.id to it.content.url } }
             .distinctUntilChanged()
             .collect { shown ->
+                dialog?.dismiss()
                 val (tabId, url) = shown ?: return@collect
                 if (AboutConfigWarning.accepted || !AboutConfigWarning.isAboutConfig(url)) return@collect
-                if (dialog?.isShowing == true) return@collect
                 dialog = MaterialAlertDialogBuilder(requireContext())
                     .setTitle(R.string.dejavu_about_config_warning_title)
                     .setMessage(R.string.dejavu_about_config_warning_message)

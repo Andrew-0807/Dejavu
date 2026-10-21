@@ -126,6 +126,7 @@ import org.mozilla.fenix.components.search.SearchWidgetMiddleware
 import org.mozilla.fenix.dejavu.PrivateNewTabMiddleware
 import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
 import org.mozilla.fenix.dejavu.browser.JitAndWebGl
+import org.mozilla.fenix.dejavu.browser.PdfScripts
 import org.mozilla.fenix.dejavu.dejavuBrowserMiddleware
 import org.mozilla.fenix.downloads.DownloadService
 import org.mozilla.fenix.ext.components
@@ -273,6 +274,7 @@ class Core(
                 val safeBrowsing = context.components.settings.safeBrowsingEnabled
                 it.settings.safeBrowsingPolicy = GoogleSafeBrowsing.policy(safeBrowsing)
                 with(context.components.settings) { JitAndWebGl.apply(it, jitEnabled, webGlEnabled) }
+                PdfScripts.turnOff(it)
             }
     }
 

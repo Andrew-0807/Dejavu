@@ -398,10 +398,6 @@ pref("browser.cache.memory.capacity", 16384);
 pref("image.mem.surfacecache.max_size_kb", 262144);
 pref("media.mediasource.eviction_threshold.video", 83886080);
 
-// Dejavu: PDFs open in the built-in viewer without running the scripts they carry, which most attacks through PDFs
-// need. Fillable forms still work, only their calculations and checks do not run.
-pref("pdfjs.enableScripting", false);
-
 // Dejavu: stricter TLS. Early data (0-RTT) is off, as it can be replayed, and servers must support safe
 // renegotiation.
 pref("security.tls.enable_0rtt_data", false);
