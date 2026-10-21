@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavuren konpilazio honek ez du Safe Browsing gakorik, beraz ezin du webgune arriskutsuei buruz ohartarazi.</string>
     <string name="dejavu_custom_action_http_warning">Helbide honek http erabiltzen du, beraz eskaera, haren goiburuak eta orriaren helbidea zifratu gabe bidaiatzen dute. Erabili https zerbitzariak onartzen badu.</string>
     <string name="dejavu_example_notification_ntfy">Bidali orria jakinarazpen gisa. Gaiaren izena dakien edonork irakur dezake, beraz aukeratu izen luze eta ausazko bat.</string>
+    <string name="dejavu_settings_direct_calls">Deietarako konexio zuzenak</string>
+    <string name="dejavu_settings_direct_calls_summary">Desaktibatuta, webguneetako deiak gunearen errele-zerbitzarien bidez soilik konektatzen dira, eta horrek zure IP helbidea ezkutatzen die guneei eta deitzen diezun pertsonei. Aktibatu dei bat konektatzen ez bada.</string>
+    <string name="dejavu_direct_calls_warning_title">Konexio zuzenak baimendu?</string>
+    <string name="dejavu_direct_calls_warning_message">Orduan, deitzen diezun pertsonek eta deiak egiten dituzten guneek zure IP helbidea ikus dezakete. Kamera edo mikrofonoa erabiltzeko baimena ematen diezun guneek zure sare lokaleko helbideak ere ikus ditzakete.</string>
+    <string name="dejavu_settings_network_location">Sare bidezko kokapena</string>
+    <string name="dejavu_settings_network_location_summary">Desaktibatuta, baimena ematen diezun webguneek zure kokapena GPSetik soilik lortzen dute, eta hori motela izan daiteke edo barnealdean huts egin dezake. Aktibatuta, Android-ek inguruko Wi-Fi sareetatik eta telefonia-dorreetatik ere aurki dezake.</string>
+    <string name="dejavu_network_location_warning_title">Sare bidezko kokapena erabili?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services duten telefonoetan, Android-ek zure kokapena aurkitzen du zure inguruko Wi-Fi sareak eta telefonia-dorreak Google-ri bidaliz. Webguneek zure kokapena baimena eman ondoren soilik lortzen dute oraindik ere.</string>
 </resources>

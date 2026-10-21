@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Sellel Dejavu versioonil pole Safe Browsingu võtit, seega ei saa see ohtlike saitide eest hoiatada.</string>
     <string name="dejavu_custom_action_http_warning">See aadress kasutab http-d, seega liiguvad päring, selle päised ja lehe aadress krüptimata. Kasuta https-i, kui server seda toetab.</string>
     <string name="dejavu_example_notification_ntfy">Saada leht teavitusena. Igaüks, kes teab teema nime, saab seda lugeda, seega vali pikk ja juhuslik nimi.</string>
+    <string name="dejavu_settings_direct_calls">Otseühendused kõnede jaoks</string>
+    <string name="dejavu_settings_direct_calls_summary">Väljas olles ühenduvad veebisaitide kõned ainult saidi releeserverite kaudu, mis peidab sinu IP-aadressi saitide ja inimeste eest, kellele helistad. Lülita see sisse, kui kõne ei ühendu.</string>
+    <string name="dejavu_direct_calls_warning_title">Kas lubada otseühendused?</string>
+    <string name="dejavu_direct_calls_warning_message">Inimesed, kellele helistad, ja kõnesid pidavad saidid näevad siis sinu IP-aadressi. Saidid, millel lubad kasutada kaamerat või mikrofoni, näevad ka sinu aadresse kohalikus võrgus.</string>
+    <string name="dejavu_settings_network_location">Asukoht võrgu kaudu</string>
+    <string name="dejavu_settings_network_location_summary">Väljas olles saavad veebisaidid, millele loa annad, sinu asukoha ainult GPS-ist, mis võib olla aeglane või siseruumides ebaõnnestuda. Sees olles saab Android selle leida ka lähedalasuvate WiFi-võrkude ja mobiilimastide järgi.</string>
+    <string name="dejavu_network_location_warning_title">Kas kasutada asukohta võrgu kaudu?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Servicesiga telefonides leiab Android sinu asukoha, saates Google\'ile sinu lähedal olevad WiFi-võrgud ja mobiilimastid. Veebisaidid saavad sinu asukoha endiselt alles pärast seda, kui oled neile loa andnud.</string>
 </resources>

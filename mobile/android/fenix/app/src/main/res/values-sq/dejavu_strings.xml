@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ky montim i Dejavu-së s\'ka kyç Safe Browsing, ndaj s\'mund të sinjalizojë sajte të rrezikshme.</string>
     <string name="dejavu_custom_action_http_warning">Kjo adresë përdor http, ndaj kërkesa, kryet e saj dhe adresa e faqes udhëtojnë pa fshehtëzim. Përdorni https nëse shërbyesi e mbulon.</string>
     <string name="dejavu_example_notification_ntfy">Dërgojeni faqen si njoftim. Kushdo që di emrin e temës mund ta lexojë, ndaj zgjidhni një emër të gjatë e të rastësishëm.</string>
+    <string name="dejavu_settings_direct_calls">Lidhje të drejtpërdrejta për thirrjet</string>
+    <string name="dejavu_settings_direct_calls_summary">Kur është e çaktivizuar, thirrjet në sajte lidhen vetëm përmes shërbyesve rele të sajtit, çka e fsheh adresën tuaj IP nga sajtet dhe nga njerëzit që thirrni. Aktivizojeni nëse një thirrje nuk lidhet.</string>
+    <string name="dejavu_direct_calls_warning_title">Të lejohen lidhjet e drejtpërdrejta?</string>
+    <string name="dejavu_direct_calls_warning_message">Atëherë njerëzit që thirrni dhe sajtet që bëjnë thirrje mund ta shohin adresën tuaj IP. Sajtet të cilave u lejoni të përdorin kamerën ose mikrofonin tuaj mund të shohin edhe adresat tuaja në rrjetin vendor.</string>
+    <string name="dejavu_settings_network_location">Vendndodhje nga rrjeti</string>
+    <string name="dejavu_settings_network_location_summary">Kur është e çaktivizuar, sajtet të cilave u lejoni e marrin vendndodhjen tuaj vetëm nga GPS-i, çka mund të jetë e ngadaltë ose të dështojë brenda ndërtesave. Kur është e aktivizuar, Android mund ta gjejë edhe nga rrjetet Wi-Fi dhe antenat celulare aty pranë.</string>
+    <string name="dejavu_network_location_warning_title">Të përdoret vendndodhja nga rrjeti?</string>
+    <string name="dejavu_network_location_warning_message">Në telefona me Google Play Services, Android e gjen vendndodhjen tuaj duke i dërguar Google-it rrjetet Wi-Fi dhe antenat celulare pranë jush. Sajtet e marrin ende vendndodhjen tuaj vetëm pasi t\'ua lejoni.</string>
 </resources>

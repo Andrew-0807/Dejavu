@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Den här versionen av Dejavu har ingen Safe Browsing-nyckel, så den kan inte varna för farliga webbplatser.</string>
     <string name="dejavu_custom_action_http_warning">Den här adressen använder http, så begäran, dess rubriker och sidans adress skickas okrypterade. Använd https om servern stöder det.</string>
     <string name="dejavu_example_notification_ntfy">Skicka sidan som en avisering. Alla som känner till ämnets namn kan läsa den, så välj ett långt, slumpmässigt namn.</string>
+    <string name="dejavu_settings_direct_calls">Direkta anslutningar för samtal</string>
+    <string name="dejavu_settings_direct_calls_summary">När det är av ansluter samtal på webbplatser bara via webbplatsens reläservrar, vilket döljer din IP-adress för webbplatser och för de personer du ringer. Slå på det om ett samtal inte ansluter.</string>
+    <string name="dejavu_direct_calls_warning_title">Tillåta direkta anslutningar?</string>
+    <string name="dejavu_direct_calls_warning_message">De personer du ringer och de webbplatser som hanterar samtal kan då se din IP-adress. Webbplatser som du låter använda kameran eller mikrofonen kan också se dina adresser på ditt lokala nätverk.</string>
+    <string name="dejavu_settings_network_location">Nätverksplats</string>
+    <string name="dejavu_settings_network_location_summary">När det är av får webbplatser som du ger tillåtelse din plats bara från GPS, vilket kan vara långsamt eller misslyckas inomhus. När det är på kan Android även hitta den utifrån Wi-Fi-nätverk och mobilmaster i närheten.</string>
+    <string name="dejavu_network_location_warning_title">Använda nätverksplats?</string>
+    <string name="dejavu_network_location_warning_message">På telefoner med Google Play Services hittar Android din plats genom att skicka Wi-Fi-nätverken och mobilmasterna nära dig till Google. Webbplatser får fortfarande din plats först efter att du har gett dem tillåtelse.</string>
 </resources>

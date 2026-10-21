@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Custa versione de Dejavu no tenet una crae de Safe Browsing, duncas non podet avisare de is sitos perigulosos.</string>
     <string name="dejavu_custom_action_http_warning">Custu indiritzu impreat http, duncas sa rechesta, is intestatziones suas e s\'indiritzu de sa pàgina biàgiant sena tzifradura. Imprea https si su serbidore ddu suportat.</string>
     <string name="dejavu_example_notification_ntfy">Imbia sa pàgina comente notìfica. Chie si siat connoschet su nòmine de s\'argumentu dda podet lèghere, duncas sèbera unu nòmine longu e casuale.</string>
+    <string name="dejavu_settings_direct_calls">Connessiones diretas pro sas mutidas</string>
+    <string name="dejavu_settings_direct_calls_summary">Disativadu, sas mutidas in sos sitos web si connetent isceti pro mèdiu de sos serbidores de retrasmissione de su situ, e custu cuat s\'indiritzu IP tuo a sos sitos e a sas persones chi mutis. Ativa·lu si una mutida no si connetet.</string>
+    <string name="dejavu_direct_calls_warning_title">Boles permìtere sas connessiones diretas?</string>
+    <string name="dejavu_direct_calls_warning_message">Sas persones chi mutis e sos sitos chi faghent sas mutidas ant a pòdere bìdere tando s\'indiritzu IP tuo. Sos sitos a sos cales permites de impreare sa càmera o su micròfonu tuo ant a pòdere bìdere fintzas sos indiritzos tuos in sa retza locale.</string>
+    <string name="dejavu_settings_network_location">Positzione dae sa retza</string>
+    <string name="dejavu_settings_network_location_summary">Disativadu, sos sitos web chi permites otenent sa positzione tua isceti dae su GPS, chi podet èssere lentu o non funtzionare a intro. Ativadu, Android la podet agatare fintzas dae sas retzas Wi-Fi e dae sas antennas telefònicas a curtzu.</string>
+    <string name="dejavu_network_location_warning_title">Boles impreare sa positzione dae sa retza?</string>
+    <string name="dejavu_network_location_warning_message">In sos telèfonos cun Google Play Services, Android agatat sa positzione tua imbiende a Google sas retzas Wi-Fi e sas antennas telefònicas a curtzu de tie. Sos sitos web otenent galu sa positzione tua isceti a pustis chi lu as permìtidu.</string>
 </resources>

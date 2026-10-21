@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavuning bu yigʻmasida Safe Browsing kaliti yoʻq, shuning uchun u xavfli saytlar haqida ogohlantira olmaydi.</string>
     <string name="dejavu_custom_action_http_warning">Bu manzil http ishlatadi, shuning uchun soʻrov, uning sarlavhalari va sahifa manzili shifrlanmasdan yuboriladi. Server qoʻllasa, https ishlating.</string>
     <string name="dejavu_example_notification_ntfy">Sahifani bildirishnoma sifatida yuboring. Mavzu nomini bilgan har kim uni oʻqiy oladi, shuning uchun uzun, tasodifiy nom tanlang.</string>
+    <string name="dejavu_settings_direct_calls">Qo‘ng‘iroqlar uchun to‘g‘ridan-to‘g‘ri ulanishlar</string>
+    <string name="dejavu_settings_direct_calls_summary">O‘chiq bo‘lganda, saytlardagi qo‘ng‘iroqlar faqat saytning retranslyatsiya serverlari orqali ulanadi, bu IP manzilingizni saytlardan va siz qo‘ng‘iroq qiladigan odamlardan yashiradi. Qo‘ng‘iroq ulanmasa, uni yoqing.</string>
+    <string name="dejavu_direct_calls_warning_title">To‘g‘ridan-to‘g‘ri ulanishlarga ruxsat berilsinmi?</string>
+    <string name="dejavu_direct_calls_warning_message">Shunda siz qo‘ng‘iroq qiladigan odamlar va qo‘ng‘iroqlarni amalga oshiradigan saytlar IP manzilingizni ko‘ra oladi. Kamera yoki mikrofoningizdan foydalanishga ruxsat bergan saytlar mahalliy tarmog‘ingizdagi manzillaringizni ham ko‘ra oladi.</string>
+    <string name="dejavu_settings_network_location">Tarmoq orqali joylashuv</string>
+    <string name="dejavu_settings_network_location_summary">O‘chiq bo‘lganda, siz ruxsat bergan saytlar joylashuvingizni faqat GPS’dan oladi, bu sekin bo‘lishi yoki bino ichida ishlamasligi mumkin. Yoqilganda, Android uni yaqin atrofdagi Wi-Fi tarmoqlari va mobil minoralar orqali ham topa oladi.</string>
+    <string name="dejavu_network_location_warning_title">Tarmoq orqali joylashuvdan foydalanilsinmi?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services o‘rnatilgan telefonlarda Android yaqiningizdagi Wi-Fi tarmoqlari va mobil minoralarni Google’ga yuborib, joylashuvingizni topadi. Saytlar joylashuvingizni avvalgidek faqat siz ruxsat berganingizdan keyin oladi.</string>
 </resources>

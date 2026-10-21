@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Questa build di Dejavu non ha una chiave Safe Browsing, quindi non può avvisare dei siti pericolosi.</string>
     <string name="dejavu_custom_action_http_warning">Questo indirizzo usa http, quindi la richiesta, le sue intestazioni e l\'indirizzo della pagina viaggiano senza crittografia. Usa https se il server lo supporta.</string>
     <string name="dejavu_example_notification_ntfy">Invia la pagina come notifica. Chiunque conosca il nome dell\'argomento può leggerla, quindi scegline uno lungo e casuale.</string>
+    <string name="dejavu_settings_direct_calls">Connessioni dirette per le chiamate</string>
+    <string name="dejavu_settings_direct_calls_summary">Disattivato, le chiamate nei siti web si collegano solo attraverso i server di inoltro del sito, nascondendo il tuo indirizzo IP ai siti e alle persone che chiami. Attivalo se una chiamata non si collega.</string>
+    <string name="dejavu_direct_calls_warning_title">Consentire le connessioni dirette?</string>
+    <string name="dejavu_direct_calls_warning_message">Le persone che chiami e i siti che effettuano le chiamate potranno quindi vedere il tuo indirizzo IP. I siti a cui consenti di usare la fotocamera o il microfono potranno vedere anche i tuoi indirizzi nella rete locale.</string>
+    <string name="dejavu_settings_network_location">Posizione dalla rete</string>
+    <string name="dejavu_settings_network_location_summary">Disattivato, i siti web a cui lo consenti ottengono la tua posizione solo dal GPS, che può essere lento o non funzionare al chiuso. Attivato, Android può trovarla anche dalle reti Wi-Fi e dai ripetitori cellulari vicini.</string>
+    <string name="dejavu_network_location_warning_title">Utilizzare la posizione dalla rete?</string>
+    <string name="dejavu_network_location_warning_message">Sui telefoni con Google Play Services, Android trova la tua posizione inviando a Google le reti Wi-Fi e i ripetitori cellulari vicini a te. I siti web continuano a ottenere la tua posizione solo dopo che lo hai consentito.</string>
 </resources>

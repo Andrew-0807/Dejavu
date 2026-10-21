@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu-дың бұл жинағында Safe Browsing кілті жоқ, сондықтан қауіпті сайттар туралы ескерте алмайды.</string>
     <string name="dejavu_custom_action_http_warning">Бұл адрес http қолданады, сондықтан сұраныс, оның тақырыптары және беттің адресі шифрланбай жіберіледі. Сервер қолдаса, https қолданыңыз.</string>
     <string name="dejavu_example_notification_ntfy">Бетті хабарландыру ретінде жіберу. Тақырып атауын білетін кез келген адам оны оқи алады, сондықтан ұзын, кездейсоқ атау таңдаңыз.</string>
+    <string name="dejavu_settings_direct_calls">Қоңыраулар үшін тікелей байланыстар</string>
+    <string name="dejavu_settings_direct_calls_summary">Өшірулі болғанда, сайттардағы қоңыраулар тек сайттың ретрансляция серверлері арқылы қосылады, бұл IP мекенжайыңызды сайттардан және сіз қоңырау шалатын адамдардан жасырады. Қоңырау қосылмаса, оны қосыңыз.</string>
+    <string name="dejavu_direct_calls_warning_title">Тікелей байланыстарға рұқсат беру керек пе?</string>
+    <string name="dejavu_direct_calls_warning_message">Сонда сіз қоңырау шалатын адамдар мен қоңырау шалатын сайттар IP мекенжайыңызды көре алады. Камераны немесе микрофонды пайдалануға рұқсат берген сайттар жергілікті желідегі мекенжайларыңызды да көре алады.</string>
+    <string name="dejavu_settings_network_location">Желі арқылы орналасу</string>
+    <string name="dejavu_settings_network_location_summary">Өшірулі болғанда, сіз рұқсат берген сайттар орналасуыңызды тек GPS-тен алады, бұл баяу болуы немесе ғимарат ішінде істемеуі мүмкін. Қосулы болғанда, Android оны жақын маңдағы Wi-Fi желілері мен ұялы байланыс мұнаралары арқылы да таба алады.</string>
+    <string name="dejavu_network_location_warning_title">Желі арқылы орналасуды пайдалану керек пе?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services бар телефондарда Android жақын маңдағы Wi-Fi желілері мен ұялы байланыс мұнараларын Google-ға жіберу арқылы орналасуыңызды анықтайды. Сайттар орналасуыңызды бұрынғыдай тек сіз рұқсат бергеннен кейін алады.</string>
 </resources>

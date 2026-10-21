@@ -363,4 +363,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Toto sestavení Dejavu nemá klíč Safe Browsing, takže nemůže varovat před nebezpečnými stránkami.</string>
     <string name="dejavu_custom_action_http_warning">Tato adresa používá http, takže požadavek, jeho hlavičky i adresa stránky putují nešifrovaně. Pokud to server podporuje, použijte https.</string>
     <string name="dejavu_example_notification_ntfy">Odešle stránku jako oznámení. Kdokoli, kdo zná název tématu, si ho může přečíst, proto zvolte dlouhý náhodný název.</string>
+    <string name="dejavu_settings_direct_calls">Přímá spojení pro hovory</string>
+    <string name="dejavu_settings_direct_calls_summary">Když je vypnuto, hovory na webech se spojují jen přes přenosové servery webu, což skrývá vaši IP adresu před weby i před lidmi, kterým voláte. Zapněte, pokud se hovor nespojí.</string>
+    <string name="dejavu_direct_calls_warning_title">Povolit přímá spojení?</string>
+    <string name="dejavu_direct_calls_warning_message">Lidé, kterým voláte, a weby, které hovory zprostředkovávají, pak uvidí vaši IP adresu. Weby, kterým povolíte používat kameru nebo mikrofon, uvidí i vaše adresy v místní síti.</string>
+    <string name="dejavu_settings_network_location">Poloha ze sítě</string>
+    <string name="dejavu_settings_network_location_summary">Když je vypnuto, weby, kterým to povolíte, získají vaši polohu jen z GPS, což může být pomalé nebo v budovách selhat. Když je zapnuto, Android ji může zjistit i podle okolních sítí Wi-Fi a vysílačů mobilní sítě.</string>
+    <string name="dejavu_network_location_warning_title">Používat polohu ze sítě?</string>
+    <string name="dejavu_network_location_warning_message">Na telefonech s Google Play Services zjišťuje Android vaši polohu tak, že odesílá Googlu sítě Wi-Fi a vysílače mobilní sítě ve vašem okolí. Weby i nadále získají vaši polohu, až když jim to povolíte.</string>
 </resources>

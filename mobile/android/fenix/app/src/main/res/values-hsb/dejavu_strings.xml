@@ -363,4 +363,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Tuta wersija Dejavu nima kluč Safe Browsing, tohodla njemóže před strašnymi sydłami warnować.</string>
     <string name="dejavu_custom_action_http_warning">Tuta adresa wužiwa http, tohodla so naprašowanje, jeho hłowy a adresa strony njezaklučowane přenošuja. Wužiwajće https, jeli serwer jo podpěruje.</string>
     <string name="dejavu_example_notification_ntfy">Sćele stronu jako zdźělenku. Kóždy, kiž mjeno temy znaje, móže ju čitać, wubjerće potajkim dołhe, připadne mjeno.</string>
+    <string name="dejavu_settings_direct_calls">Direktne zwiski za telefonaty</string>
+    <string name="dejavu_settings_direct_calls_summary">Hdyž je znjemóžnjene, so telefonaty na websydłach jenož přez relejowe serwery websydła zwjazuja, štož wašu IP-adresu před websydłami a před ludźimi, kotrymž zawołaće, schowa. Zmóžńće to, jeli so telefonat njezwjazuje.</string>
+    <string name="dejavu_direct_calls_warning_title">Direktne zwiski dowolić?</string>
+    <string name="dejavu_direct_calls_warning_message">Ludźo, kotrymž zawołaće, a websydła, kotrež telefonaty přewjedu, móža potom wašu IP-adresu widźeć. Websydła, kotrymž dowoliće, wašu kameru abo waš mikrofon wužiwać, móža tež waše adresy we wašej lokalnej syći widźeć.</string>
+    <string name="dejavu_settings_network_location">Městno přez syć</string>
+    <string name="dejavu_settings_network_location_summary">Hdyž je znjemóžnjene, websydła, kotrymž dowoliće, waše městno jenož z GPS dóstanu, štož móže pomałe być abo w twarjenjach njefungować. Hdyž je zmóžnjene, móže Android jo tež po bliskich syćach Wi-Fi a mobilnych antenach namakać.</string>
+    <string name="dejavu_network_location_warning_title">Městno přez syć wužiwać?</string>
+    <string name="dejavu_network_location_warning_message">Na telefonach z Google Play Services Android waše městno namaka, hdyž Google syće Wi-Fi a mobilne anteny we wašej bliskosći sćele. Websydła waše městno přeco hišće hakle dóstanu, hdyž sće jim dowolił.</string>
 </resources>

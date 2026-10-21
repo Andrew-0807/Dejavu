@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Þessi útgáfa af Dejavu er ekki með Safe Browsing-lykil og getur því ekki varað við hættulegum vefsvæðum.</string>
     <string name="dejavu_custom_action_http_warning">Þetta vistfang notar http, svo beiðnin, hausar hennar og vistfang síðunnar fara ódulrituð. Notaðu https ef þjónninn styður það.</string>
     <string name="dejavu_example_notification_ntfy">Sendu síðuna sem tilkynningu. Hver sem þekkir heiti efnisins getur lesið hana, svo veldu langt, handahófskennt heiti.</string>
+    <string name="dejavu_settings_direct_calls">Beinar tengingar fyrir símtöl</string>
+    <string name="dejavu_settings_direct_calls_summary">Þegar slökkt er á þessu tengjast símtöl á vefsvæðum aðeins í gegnum endurvarpsþjóna vefsvæðisins, sem felur IP-tölu þína fyrir vefsvæðum og fólkinu sem þú hringir í. Kveiktu á þessu ef símtal tengist ekki.</string>
+    <string name="dejavu_direct_calls_warning_title">Leyfa beinar tengingar?</string>
+    <string name="dejavu_direct_calls_warning_message">Fólkið sem þú hringir í og vefsvæðin sem sjá um símtölin geta þá séð IP-töluna þína. Vefsvæði sem þú leyfir að nota myndavélina eða hljóðnemann geta líka séð vistföngin þín á staðarnetinu.</string>
+    <string name="dejavu_settings_network_location">Staðsetning um net</string>
+    <string name="dejavu_settings_network_location_summary">Þegar slökkt er á þessu fá vefsvæði sem þú leyfir staðsetningu þína aðeins frá GPS, sem getur verið hægt eða brugðist innandyra. Þegar kveikt er á þessu getur Android líka fundið hana út frá nálægum Wi-Fi-netum og farsímasendum.</string>
+    <string name="dejavu_network_location_warning_title">Nota staðsetningu um net?</string>
+    <string name="dejavu_network_location_warning_message">Í símum með Google Play Services finnur Android staðsetningu þína með því að senda Google Wi-Fi-netin og farsímasendana nálægt þér. Vefsvæði fá samt aðeins staðsetningu þína eftir að þú leyfir þeim það.</string>
 </resources>

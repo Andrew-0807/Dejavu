@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Build Dejavu ini tidak memiliki kunci Safe Browsing, jadi tidak dapat memperingatkan tentang situs berbahaya.</string>
     <string name="dejavu_custom_action_http_warning">Alamat ini menggunakan http, jadi permintaan, header-nya, dan alamat halaman dikirim tanpa enkripsi. Gunakan https jika server mendukungnya.</string>
     <string name="dejavu_example_notification_ntfy">Kirim halaman sebagai notifikasi. Siapa pun yang tahu nama topiknya dapat membacanya, jadi pilih nama yang panjang dan acak.</string>
+    <string name="dejavu_settings_direct_calls">Koneksi langsung untuk panggilan</string>
+    <string name="dejavu_settings_direct_calls_summary">Jika nonaktif, panggilan di situs web hanya tersambung melalui server relai situs, yang menyembunyikan alamat IP Anda dari situs dan dari orang yang Anda panggil. Aktifkan jika panggilan tidak tersambung.</string>
+    <string name="dejavu_direct_calls_warning_title">Izinkan koneksi langsung?</string>
+    <string name="dejavu_direct_calls_warning_message">Orang yang Anda panggil dan situs yang melakukan panggilan kemudian dapat melihat alamat IP Anda. Situs yang Anda izinkan menggunakan kamera atau mikrofon juga dapat melihat alamat Anda di jaringan lokal.</string>
+    <string name="dejavu_settings_network_location">Lokasi jaringan</string>
+    <string name="dejavu_settings_network_location_summary">Jika nonaktif, situs web yang Anda izinkan hanya mendapatkan lokasi Anda dari GPS, yang bisa lambat atau gagal di dalam ruangan. Jika aktif, Android juga dapat menemukannya dari jaringan Wi-Fi dan menara seluler di sekitar.</string>
+    <string name="dejavu_network_location_warning_title">Gunakan lokasi jaringan?</string>
+    <string name="dejavu_network_location_warning_message">Pada ponsel dengan Google Play Services, Android menemukan lokasi Anda dengan mengirimkan jaringan Wi-Fi dan menara seluler di dekat Anda ke Google. Situs web tetap hanya mendapatkan lokasi Anda setelah Anda mengizinkannya.</string>
 </resources>

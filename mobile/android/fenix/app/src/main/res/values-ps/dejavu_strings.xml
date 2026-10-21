@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">د Dejavu دا نسخه د Safe Browsing کیلي نه لري، نو د خطرناکو پاڼو په اړه خبرداری نه شي ورکولی.</string>
     <string name="dejavu_custom_action_http_warning">دا پته http کاروي، نو غوښتنه، سرلیکونه یې او د پاڼې پته پرته له کوډ کولو لېږدول کېږي. که پالنګر یې ملاتړ کوي، https وکاروئ.</string>
     <string name="dejavu_example_notification_ntfy">پاڼه د خبرتیا په توګه ولېږئ. هر څوک چې د موضوع نوم پېژني لوستلی یې شي، نو اوږد او ناڅاپي نوم وټاکئ.</string>
+    <string name="dejavu_settings_direct_calls">د زنګونو لپاره مستقیم اتصالونه</string>
+    <string name="dejavu_settings_direct_calls_summary">کله چې بند وي، په وېبپاڼو کې زنګونه یوازې د پاڼې د رېلې سرورونو له لارې نښلي، چې ستاسو IP پته له پاڼو او هغو کسانو څخه پټوي چې تاسو ورته زنګ وهئ. که زنګ ونه نښلي، دا چالان کړئ.</string>
+    <string name="dejavu_direct_calls_warning_title">مستقیم اتصالونو ته اجازه ورکړئ؟</string>
+    <string name="dejavu_direct_calls_warning_message">بیا هغه کسان چې تاسو ورته زنګ وهئ او هغه پاڼې چې زنګونه کوي ستاسو IP پته لیدلی شي. هغه پاڼې چې تاسو ورته د خپلې کمرې یا مایکروفون کارولو اجازه ورکوئ، ستاسو په سیمه ییزه شبکه کې ستاسو پتې هم لیدلی شي.</string>
+    <string name="dejavu_settings_network_location">د شبکې له لارې ځای</string>
+    <string name="dejavu_settings_network_location_summary">کله چې بند وي، هغه وېبپاڼې چې تاسو اجازه ورکوئ ستاسو ځای یوازې له GPS څخه ترلاسه کوي، چې ښايي ورو وي یا په ودانۍ کې پاتې راشي. کله چې چالان وي، Android کولی شي دا د نږدې Wi-Fi شبکو او ګرځنده برجونو له لارې هم ومومي.</string>
+    <string name="dejavu_network_location_warning_title">د شبکې له لارې ځای وکاروئ؟</string>
+    <string name="dejavu_network_location_warning_message">په هغو تلیفونونو کې چې Google Play Services لري، Android ستاسو ځای د نږدې Wi-Fi شبکو او ګرځنده برجونو Google ته په لېږلو سره مومي. وېبپاڼې لا هم ستاسو ځای یوازې ستاسو له اجازې وروسته ترلاسه کوي.</string>
 </resources>

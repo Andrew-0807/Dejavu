@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">ای نسخه Dejavu کلید Safe Browsing ناره، سی همی نمی‌تونه ز سایتل خطرناک هشدار بیه.</string>
     <string name="dejavu_custom_action_http_warning">ای نشونی ز http استفاده مئکنه، سی همی درخواست، سربرگیلش و نشونی بلگه بی رمزگذاری مئرن. ار سرور https ن پشتیبانی مئکنه، ز اون استفاده کو.</string>
     <string name="dejavu_example_notification_ntfy">بلگه ن بی اعلان بفرس. هر کی نوم موضوع ن بدونه مئتونه بخونتش، سی همی یه نوم دراز و تصادفی ورگیر.</string>
+    <string name="dejavu_settings_direct_calls">پیوندیا یکراست سی تماسیا</string>
+    <string name="dejavu_settings_direct_calls_summary">وختی خاموشه، تماسیا د وبگاهیا تنها وا سرورون رله وبگاه وصل ابون، که نشونی IP ات ن د وبگاهیا و آدمیایی که وا وشو تماس اگری قایم اکونه. ار تماسی وصل نوابی، روشنش کو.</string>
+    <string name="dejavu_direct_calls_warning_title">پیوندیا یکراست اجازه داده بوئن؟</string>
+    <string name="dejavu_direct_calls_warning_message">اوسه آدمیایی که وا وشو تماس اگری و وبگاهیایی که تماس اگرن نشونی IP ات ن اوینن. وبگاهیایی که اجازه ایدی د دوربین یا میکروفونت کار بکشن، نشونیا ات ن د شبکه محلی تونم اوینن.</string>
+    <string name="dejavu_settings_network_location">جاگه وا شبکه</string>
+    <string name="dejavu_settings_network_location_summary">وختی خاموشه، وبگاهیایی که اجازه ایدی جاگه ات ن تنها د GPS اگرن، که شایت یواش بوئه یا د دلو خونه کار نکونه. وختی روشنه، Android اتونه وا شبکه‌یا Wi-Fi و دکلیا موبایل نزیک تونم پیداش بکونه.</string>
+    <string name="dejavu_network_location_warning_title">جاگه وا شبکه ایشتفاده بوئه؟</string>
+    <string name="dejavu_network_location_warning_message">د تلفونیایی که Google Play Services دارن، Android وا کل کردن شبکه‌یا Wi-Fi و دکلیا موبایل نزیکت سی Google، جاگه ات ن پیدا اکونه. وبگاهیا هنی تنها بعد د یه که اجازه بیدی جاگه ات ن اگرن.</string>
 </resources>

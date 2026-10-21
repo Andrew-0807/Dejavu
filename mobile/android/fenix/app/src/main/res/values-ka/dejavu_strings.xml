@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu-ს ამ ანაწყობს არ აქვს Safe Browsing-ის გასაღები, ამიტომ ვერ გაგაფრთხილებთ საშიში საიტების შესახებ.</string>
     <string name="dejavu_custom_action_http_warning">ეს მისამართი იყენებს http-ს, ამიტომ მოთხოვნა, მისი თავსართები და გვერდის მისამართი დაუშიფრავად გადაიცემა. გამოიყენეთ https, თუ სერვერი მხარს უჭერს.</string>
     <string name="dejavu_example_notification_ntfy">გვერდის გაგზავნა შეტყობინებად. თემის სახელის მცოდნე ნებისმიერს შეუძლია მისი წაკითხვა, ამიტომ აირჩიეთ გრძელი, შემთხვევითი სახელი.</string>
+    <string name="dejavu_settings_direct_calls">პირდაპირი კავშირი ზარებისთვის</string>
+    <string name="dejavu_settings_direct_calls_summary">გამორთულისას, ზარები საიტებზე მხოლოდ საიტის გადამცემი სერვერებით უკავშირდება, რაც თქვენს IP-მისამართს მალავს საიტებისა და იმ ადამიანებისგან, ვისაც ურეკავთ. ჩართეთ, თუ ზარი არ უკავშირდება.</string>
+    <string name="dejavu_direct_calls_warning_title">დაიშვას პირდაპირი კავშირი?</string>
+    <string name="dejavu_direct_calls_warning_message">ამ შემთხვევაში ადამიანები, ვისაც ურეკავთ, და ზარების განმახორციელებელი საიტები შეძლებენ თქვენი IP-მისამართის ნახვას. საიტები, რომლებსაც კამერის ან მიკროფონის გამოყენების ნებას რთავთ, ასევე შეძლებენ თქვენი მისამართების ნახვას ადგილობრივ ქსელში.</string>
+    <string name="dejavu_settings_network_location">მდებარეობა ქსელით</string>
+    <string name="dejavu_settings_network_location_summary">გამორთულისას, საიტები, რომლებსაც ნებას რთავთ, თქვენს მდებარეობას მხოლოდ GPS-იდან იღებენ, რაც შეიძლება ნელი იყოს ან შენობაში ვერ მოხერხდეს. ჩართულისას, Android-ს შეუძლია მისი დადგენა ახლომდებარე Wi-Fi ქსელებითა და მობილური ანძებითაც.</string>
+    <string name="dejavu_network_location_warning_title">გამოყენებული იყოს მდებარეობა ქსელით?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services-ის მქონე ტელეფონებზე Android თქვენს მდებარეობას ადგენს Google-ისთვის თქვენ ახლოს არსებული Wi-Fi ქსელებისა და მობილური ანძების გაგზავნით. საიტები თქვენს მდებარეობას კვლავ მხოლოდ თქვენი ნებართვის შემდეგ იღებენ.</string>
 </resources>

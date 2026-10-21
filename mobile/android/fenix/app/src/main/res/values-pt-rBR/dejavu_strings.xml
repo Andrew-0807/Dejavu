@@ -356,4 +356,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Esta versão do Dejavu não tem chave do Safe Browsing, então não pode avisar sobre sites perigosos.</string>
     <string name="dejavu_custom_action_http_warning">Este endereço usa http, então a solicitação, seus cabeçalhos e o endereço da página trafegam sem criptografia. Use https se o servidor tiver suporte.</string>
     <string name="dejavu_example_notification_ntfy">Envie a página como notificação. Qualquer pessoa que saiba o nome do tópico pode lê-la, então escolha um nome longo e aleatório.</string>
+    <string name="dejavu_settings_direct_calls">Conexões diretas para chamadas</string>
+    <string name="dejavu_settings_direct_calls_summary">Desativado, as chamadas em sites se conectam apenas pelos servidores de retransmissão do site, o que esconde seu endereço IP dos sites e das pessoas para quem você liga. Ative se uma chamada não se conectar.</string>
+    <string name="dejavu_direct_calls_warning_title">Permitir conexões diretas?</string>
+    <string name="dejavu_direct_calls_warning_message">As pessoas para quem você liga e os sites que fazem chamadas poderão então ver seu endereço IP. Sites que você permite usar sua câmera ou microfone também poderão ver seus endereços na sua rede local.</string>
+    <string name="dejavu_settings_network_location">Localização pela rede</string>
+    <string name="dejavu_settings_network_location_summary">Desativado, os sites que você permitir obtêm sua localização apenas pelo GPS, o que pode ser lento ou falhar em ambientes fechados. Ativado, o Android também pode encontrá-la pelas redes Wi-Fi e torres de celular próximas.</string>
+    <string name="dejavu_network_location_warning_title">Usar a localização pela rede?</string>
+    <string name="dejavu_network_location_warning_message">Em celulares com Google Play Services, o Android encontra sua localização enviando ao Google as redes Wi-Fi e as torres de celular perto de você. Os sites continuam obtendo sua localização somente depois que você permitir.</string>
 </resources>

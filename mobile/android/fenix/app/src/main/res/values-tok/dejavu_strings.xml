@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">ilo Dejavu ni li jo ala e nimi open pi Safe Browsing, la ona li ken ala toki pi lipu ike.</string>
     <string name="dejavu_custom_action_http_warning">nimi ni li kepeken http, la wile en sona lawa ona en nimi lipu li tawa lon len ala. o kepeken https lon ni: ilo lawa li ken.</string>
     <string name="dejavu_example_notification_ntfy">o pana e lipu sama sona sin. jan ale li sona e nimi pi ijo toki la ona li ken lukin, la o kepeken nimi suli pi nasin ala.</string>
+    <string name="dejavu_settings_direct_calls">nasin wan pi toki kalama</string>
+    <string name="dejavu_settings_direct_calls_summary">ni li pini la, toki kalama lon lipu linluwi li kepeken ilo pana pi lipu taso. tan ni, lipu en jan sina li sona ala e nanpa IP sina. toki kalama li pali ala la, o open e ni.</string>
+    <string name="dejavu_direct_calls_warning_title">sina wile ala wile e nasin wan?</string>
+    <string name="dejavu_direct_calls_warning_message">ni la, jan sina en lipu pi toki kalama li ken lukin e nanpa IP sina. lipu li ken kepeken ilo lukin anu ilo kute sina la, ona li ken lukin kin e nanpa sina lon kulupu ilo poka.</string>
+    <string name="dejavu_settings_network_location">ma tan kulupu ilo</string>
+    <string name="dejavu_settings_network_location_summary">ni li pini la, lipu linluwi li kama sona e ma sina tan ilo GPS taso. ni li ken kepeken tenpo mute anu pakala lon insa tomo. ni li open la, Android li ken kin sona e ma tan kulupu Wi-Fi en ilo toki suli poka.</string>
+    <string name="dejavu_network_location_warning_title">sina wile ala wile kepeken ma tan kulupu ilo?</string>
+    <string name="dejavu_network_location_warning_message">ilo toki li jo e Google Play Services la, Android li pana e kulupu Wi-Fi en ilo toki suli poka sina tawa Google. tan ni, ona li sona e ma sina. lipu linluwi li sona e ma sina taso la, sina ken e ni.</string>
 </resources>

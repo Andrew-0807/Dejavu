@@ -60,6 +60,7 @@ import androidx.core.content.res.ResourcesCompat;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.nio.ByteBuffer;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 import org.jetbrains.annotations.NotNull;
@@ -170,6 +171,9 @@ public class GeckoAppShell {
   private static volatile boolean locationHighAccuracyEnabled;
   private static volatile boolean locationListeningRequested = false;
   private static volatile boolean locationPaused = false;
+  // Dejavu: off, the location comes from GPS only, so Android's network location, which on phones with Google Play
+  // Services sends the Wi-Fi networks and cell towers nearby to Google, is never asked.
+  private static volatile boolean networkLocationAllowed = false;
 
   // See also HardwareUtils.LOW_MEMORY_THRESHOLD_MB.
   private static final int HIGH_MEMORY_DEVICE_THRESHOLD_MB = 768;
@@ -289,7 +293,10 @@ public class GeckoAppShell {
   @SuppressLint("MissingPermission")
   private static @Nullable Location getLastKnownLocation(final LocationManager lm) {
     Location lastKnownLocation = null;
-    final List<String> providers = lm.getAllProviders();
+    final List<String> providers =
+        networkLocationAllowed
+            ? lm.getAllProviders()
+            : Collections.singletonList(LocationManager.GPS_PROVIDER);
 
     for (final String provider : providers) {
       final Location location = lm.getLastKnownLocation(provider);
@@ -337,7 +344,7 @@ public class GeckoAppShell {
     }
 
     if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        && !lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+        && !(networkLocationAllowed && lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER))) {
       return false;
     }
 
@@ -356,7 +363,8 @@ public class GeckoAppShell {
       criteria.setAccuracy(Criteria.ACCURACY_COARSE);
     }
 
-    final String provider = lm.getBestProvider(criteria, true);
+    final String provider =
+        networkLocationAllowed ? lm.getBestProvider(criteria, true) : LocationManager.GPS_PROVIDER;
     if (provider == null) {
       return false;
     }
@@ -364,6 +372,25 @@ public class GeckoAppShell {
     final Looper l = Looper.getMainLooper();
     lm.requestLocationUpdates(provider, 100, 0.5f, sAndroidListeners, l);
     return true;
+  }
+
+  /**
+   * Dejavu: whether Android's network location may be used besides GPS. A location a page is watching switches to the
+   * new choice at once.
+   */
+  public static synchronized void setNetworkLocationAllowed(final boolean allowed) {
+    if (networkLocationAllowed == allowed) {
+      return;
+    }
+    networkLocationAllowed = allowed;
+    if (!locationListeningRequested) {
+      return;
+    }
+    final LocationManager lm = getLocationManager(getApplicationContext());
+    if (lm != null) {
+      lm.removeUpdates(sAndroidListeners);
+      updateLocationListeners();
+    }
   }
 
   public static void pauseLocation() {

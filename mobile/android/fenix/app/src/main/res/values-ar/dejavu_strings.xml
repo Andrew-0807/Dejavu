@@ -377,4 +377,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">لا يحتوي إصدار Dejavu هذا على مفتاح Safe Browsing، لذا لا يمكنه التحذير من المواقع الخطرة.</string>
     <string name="dejavu_custom_action_http_warning">يستخدم هذا العنوان http، لذا ينتقل الطلب وترويساته وعنوان الصفحة دون تعمية. استخدم https إن كان الخادوم يدعمه.</string>
     <string name="dejavu_example_notification_ntfy">أرسل الصفحة كإشعار. يستطيع أي شخص يعرف اسم الموضوع قراءته، لذا اختر اسمًا طويلًا وعشوائيًا.</string>
+    <string name="dejavu_settings_direct_calls">اتصالات مباشرة للمكالمات</string>
+    <string name="dejavu_settings_direct_calls_summary">عند إيقافه، تتصل المكالمات في المواقع عبر خوادم الترحيل الخاصة بالموقع فقط، ما يخفي عنوان IP الخاص بك عن المواقع وعن الأشخاص الذين تتصل بهم. فعّله إذا لم تتصل مكالمة.</string>
+    <string name="dejavu_direct_calls_warning_title">أتسمح بالاتصالات المباشرة؟</string>
+    <string name="dejavu_direct_calls_warning_message">سيتمكن الأشخاص الذين تتصل بهم والمواقع التي تجري المكالمات حينها من رؤية عنوان IP الخاص بك. ويمكن للمواقع التي تسمح لها باستخدام الكاميرا أو الميكروفون رؤية عناوينك على شبكتك المحلية أيضًا.</string>
+    <string name="dejavu_settings_network_location">الموقع عبر الشبكة</string>
+    <string name="dejavu_settings_network_location_summary">عند إيقافه، تحصل المواقع التي تسمح لها على موقعك من GPS فقط، وقد يكون ذلك بطيئًا أو يفشل داخل المباني. عند تفعيله، يمكن لأندرويد أن يحدده أيضًا من شبكات Wi-Fi وأبراج الاتصالات القريبة.</string>
+    <string name="dejavu_network_location_warning_title">أتستخدم الموقع عبر الشبكة؟</string>
+    <string name="dejavu_network_location_warning_message">على الهواتف التي تحتوي على Google Play Services، يحدد أندرويد موقعك بإرسال شبكات Wi-Fi وأبراج الاتصالات القريبة منك إلى Google. ولا تحصل المواقع على موقعك إلا بعد أن تسمح لها.</string>
 </resources>

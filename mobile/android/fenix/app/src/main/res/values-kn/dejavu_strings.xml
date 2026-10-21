@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu ನ ಈ ಬಿಲ್ಡ್‌ನಲ್ಲಿ Safe Browsing ಕೀ ಇಲ್ಲ, ಆದ್ದರಿಂದ ಅಪಾಯಕಾರಿ ತಾಣಗಳ ಬಗ್ಗೆ ಎಚ್ಚರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.</string>
     <string name="dejavu_custom_action_http_warning">ಈ ವಿಳಾಸ http ಬಳಸುತ್ತದೆ, ಆದ್ದರಿಂದ ವಿನಂತಿ, ಅದರ ಹೆಡರ್‌ಗಳು ಮತ್ತು ಪುಟದ ವಿಳಾಸ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಆಗದೆ ಹೋಗುತ್ತವೆ. ಸರ್ವರ್ ಬೆಂಬಲಿಸಿದರೆ https ಬಳಸಿ.</string>
     <string name="dejavu_example_notification_ntfy">ಪುಟವನ್ನು ಅಧಿಸೂಚನೆಯಾಗಿ ಕಳುಹಿಸಿ. ವಿಷಯದ ಹೆಸರು ತಿಳಿದ ಯಾರಾದರೂ ಅದನ್ನು ಓದಬಹುದು, ಆದ್ದರಿಂದ ಉದ್ದವಾದ, ಯಾದೃಚ್ಛಿಕ ಹೆಸರನ್ನು ಆರಿಸಿ.</string>
+    <string name="dejavu_settings_direct_calls">ಕರೆಗಳಿಗೆ ನೇರ ಸಂಪರ್ಕಗಳು</string>
+    <string name="dejavu_settings_direct_calls_summary">ಆಫ್ ಆಗಿದ್ದಾಗ, ವೆಬ್‌ಸೈಟ್‌ಗಳಲ್ಲಿನ ಕರೆಗಳು ಸೈಟ್‌ನ ರಿಲೇ ಸರ್ವರ್‌ಗಳ ಮೂಲಕ ಮಾತ್ರ ಸಂಪರ್ಕಗೊಳ್ಳುತ್ತವೆ, ಇದು ನಿಮ್ಮ IP ವಿಳಾಸವನ್ನು ಸೈಟ್‌ಗಳಿಂದ ಮತ್ತು ನೀವು ಕರೆ ಮಾಡುವ ಜನರಿಂದ ಮರೆಮಾಡುತ್ತದೆ. ಕರೆ ಸಂಪರ್ಕಗೊಳ್ಳದಿದ್ದರೆ ಇದನ್ನು ಆನ್ ಮಾಡಿ.</string>
+    <string name="dejavu_direct_calls_warning_title">ನೇರ ಸಂಪರ್ಕಗಳನ್ನು ಅನುಮತಿಸಬೇಕೆ?</string>
+    <string name="dejavu_direct_calls_warning_message">ನಂತರ ನೀವು ಕರೆ ಮಾಡುವ ಜನರು ಮತ್ತು ಕರೆಗಳನ್ನು ಮಾಡುವ ಸೈಟ್‌ಗಳು ನಿಮ್ಮ IP ವಿಳಾಸವನ್ನು ನೋಡಬಹುದು. ನಿಮ್ಮ ಕ್ಯಾಮರಾ ಅಥವಾ ಮೈಕ್ರೋಫೋನ್ ಬಳಸಲು ನೀವು ಅನುಮತಿಸುವ ಸೈಟ್‌ಗಳು ನಿಮ್ಮ ಸ್ಥಳೀಯ ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿರುವ ನಿಮ್ಮ ವಿಳಾಸಗಳನ್ನೂ ನೋಡಬಹುದು.</string>
+    <string name="dejavu_settings_network_location">ನೆಟ್‌ವರ್ಕ್ ಸ್ಥಳ</string>
+    <string name="dejavu_settings_network_location_summary">ಆಫ್ ಆಗಿದ್ದಾಗ, ನೀವು ಅನುಮತಿಸುವ ವೆಬ್‌ಸೈಟ್‌ಗಳು ನಿಮ್ಮ ಸ್ಥಳವನ್ನು GPS ನಿಂದ ಮಾತ್ರ ಪಡೆಯುತ್ತವೆ, ಇದು ನಿಧಾನವಾಗಿರಬಹುದು ಅಥವಾ ಒಳಾಂಗಣದಲ್ಲಿ ವಿಫಲವಾಗಬಹುದು. ಆನ್ ಆಗಿದ್ದಾಗ, Android ಹತ್ತಿರದ Wi-Fi ನೆಟ್‌ವರ್ಕ್‌ಗಳು ಮತ್ತು ಸೆಲ್ ಟವರ್‌ಗಳಿಂದಲೂ ಅದನ್ನು ಕಂಡುಹಿಡಿಯಬಹುದು.</string>
+    <string name="dejavu_network_location_warning_title">ನೆಟ್‌ವರ್ಕ್ ಸ್ಥಳವನ್ನು ಬಳಸಬೇಕೆ?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services ಇರುವ ಫೋನ್‌ಗಳಲ್ಲಿ, Android ನಿಮ್ಮ ಹತ್ತಿರದ Wi-Fi ನೆಟ್‌ವರ್ಕ್‌ಗಳು ಮತ್ತು ಸೆಲ್ ಟವರ್‌ಗಳನ್ನು Google ಗೆ ಕಳುಹಿಸುವ ಮೂಲಕ ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಕಂಡುಹಿಡಿಯುತ್ತದೆ. ವೆಬ್‌ಸೈಟ್‌ಗಳು ಈಗಲೂ ನೀವು ಅನುಮತಿಸಿದ ನಂತರವೇ ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಪಡೆಯುತ್ತವೆ.</string>
 </resources>

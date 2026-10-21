@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ĉi tiu versio de Dejavu ne havas ŝlosilon de Safe Browsing, do ĝi ne povas averti pri danĝeraj retejoj.</string>
     <string name="dejavu_custom_action_http_warning">Ĉi tiu adreso uzas http, do la peto, ĝiaj kapoj kaj la adreso de la paĝo vojaĝas sen ĉifrado. Uzu https se la servilo subtenas ĝin.</string>
     <string name="dejavu_example_notification_ntfy">Sendi la paĝon kiel sciigon. Ĉiu, kiu konas la nomon de la temo, povas legi ĝin, do elektu longan, hazardan nomon.</string>
+    <string name="dejavu_settings_direct_calls">Rektaj konektoj por vokoj</string>
+    <string name="dejavu_settings_direct_calls_summary">Malŝaltite, vokoj en retejoj konektiĝas nur per la relajsaj serviloj de la retejo, kio kaŝas vian IP-adreson antaŭ retejoj kaj antaŭ la homoj, kiujn vi vokas. Ŝaltu ĝin, se voko ne konektiĝas.</string>
+    <string name="dejavu_direct_calls_warning_title">Ĉu permesi rektajn konektojn?</string>
+    <string name="dejavu_direct_calls_warning_message">La homoj, kiujn vi vokas, kaj la retejoj, kiuj faras vokojn, tiam povos vidi vian IP-adreson. Retejoj, al kiuj vi permesas uzi vian fotilon aŭ mikrofonon, ankaŭ povos vidi viajn adresojn en via loka reto.</string>
+    <string name="dejavu_settings_network_location">Reta loko</string>
+    <string name="dejavu_settings_network_location_summary">Malŝaltite, retejoj, al kiuj vi permesas, ricevas vian lokon nur el GPS, kio povas esti malrapida aŭ malsukcesi endome. Ŝaltite, Android ankaŭ povas trovi ĝin per proksimaj Wi-Fi-retoj kaj poŝtelefonaj turoj.</string>
+    <string name="dejavu_network_location_warning_title">Ĉu uzi retan lokon?</string>
+    <string name="dejavu_network_location_warning_message">En telefonoj kun Google Play Services, Android trovas vian lokon sendante al Google la Wi-Fi-retojn kaj poŝtelefonajn turojn proksime al vi. Retejoj daŭre ricevas vian lokon nur post kiam vi permesas tion al ili.</string>
 </resources>

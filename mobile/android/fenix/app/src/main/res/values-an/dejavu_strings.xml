@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ista compilación de Dejavu no tiene clau de Safe Browsing, asinas que no puede advertir de puestos perillosos.</string>
     <string name="dejavu_custom_action_http_warning">Ista adreza usa http, asinas que a solicitut, as suyas capiceras y l\'adreza d\'a pachina viachan sin cifrar. Usa https si o servidor lo suporta.</string>
     <string name="dejavu_example_notification_ntfy">Ninvia a pachina como notificación. Qualsequiera que conoixca o nombre d\'o tema puede leyer-la, asinas que tría un nombre largo y aleatorio.</string>
+    <string name="dejavu_settings_direct_calls">Connexions directas pa las clamadas</string>
+    <string name="dejavu_settings_direct_calls_summary">Desactivau, las clamadas en os puestos web se connectan nomás a traviés d\'os servidors de retransmisión d\'o puesto, lo que amaga la tuya adreza IP d\'os puestos y d\'a chent a la quala clamas. Activa-lo si una clamada no se connecta.</string>
+    <string name="dejavu_direct_calls_warning_title">Permitir connexions directas?</string>
+    <string name="dejavu_direct_calls_warning_message">Alavez la chent a la quala clamas y os puestos que fan clamadas pueden veyer la tuya adreza IP. Os puestos a os quals permites usar a tuya camara u microfono tamién pueden veyer las tuyas adrezas en a tuya ret local.</string>
+    <string name="dejavu_settings_network_location">Ubicación por ret</string>
+    <string name="dejavu_settings_network_location_summary">Desactivau, os puestos web que permites obtienen la tuya ubicación nomás d\'o GPS, que puede estar lento u fallar dentro d\'os edificios. Activau, Android tamién la puede trobar a partir d\'as rets Wi-Fi y d\'as antenas de telefonía cercanas.</string>
+    <string name="dejavu_network_location_warning_title">Usar la ubicación por ret?</string>
+    <string name="dejavu_network_location_warning_message">En os telefonos con Google Play Services, Android troba la tuya ubicación ninviando a Google las rets Wi-Fi y las antenas de telefonía que tiens cerca. Os puestos web nomás obtienen la tuya ubicación dimpués que les la permitas.</string>
 </resources>

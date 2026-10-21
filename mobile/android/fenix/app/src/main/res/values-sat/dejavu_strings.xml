@@ -356,4 +356,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu ᱨᱮᱭᱟᱜ ᱱᱚᱶᱟ ᱵᱤᱞᱰ ᱨᱮ Safe Browsing ᱪᱟᱵᱤ ᱵᱟᱹᱱᱩᱜᱼᱟ, ᱚᱱᱟᱛᱮ ᱠᱷᱟᱛᱚᱨᱟ ᱥᱟᱭᱤᱴ ᱵᱟᱵᱚᱛ ᱦᱚᱥᱤᱭᱟᱹᱨ ᱵᱟᱝ ᱮᱢ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾</string>
     <string name="dejavu_custom_action_http_warning">ᱱᱚᱶᱟ ᱴᱷᱤᱠᱬᱟᱹ http ᱵᱮᱵᱷᱟᱨ ᱮᱫᱟᱭ, ᱚᱱᱟᱛᱮ ᱨᱤᱠᱣᱮᱥᱴ, ᱚᱱᱟ ᱨᱮᱭᱟᱜ ᱦᱮᱰᱚᱨ ᱟᱨ ᱥᱟᱦᱴᱟ ᱨᱮᱭᱟᱜ ᱴᱷᱤᱠᱬᱟᱹ ᱮᱱᱠᱨᱤᱯᱥᱚᱱ ᱵᱤᱱᱟᱹ ᱥᱮᱱᱚᱜᱼᱟ ᱾ ᱥᱚᱨᱵᱷᱚᱨ ᱥᱟᱯᱚᱴ ᱮᱫ ᱠᱷᱟᱱ https ᱵᱮᱵᱷᱟᱨ ᱢᱮ ᱾</string>
     <string name="dejavu_example_notification_ntfy">ᱥᱟᱦᱴᱟ ᱵᱟᱰᱟᱭ ᱠᱟᱛᱷᱟ ᱞᱮᱠᱷᱟ ᱠᱩᱞ ᱢᱮ ᱾ ᱴᱚᱯᱤᱠ ᱧᱩᱛᱩᱢ ᱵᱟᱰᱟᱭ ᱦᱚᱲ ᱪᱮᱫ ᱦᱚᱸ ᱯᱟᱲᱦᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ, ᱚᱱᱟᱛᱮ ᱡᱤᱞᱤᱧ ᱟᱨ ᱡᱟᱦᱟᱸᱱᱟᱜ ᱧᱩᱛᱩᱢ ᱵᱟᱪᱷᱟᱣ ᱢᱮ ᱾</string>
+    <string name="dejavu_settings_direct_calls">ᱠᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱥᱚᱡᱷᱮ ᱡᱚᱲᱟᱣ</string>
+    <string name="dejavu_settings_direct_calls_summary">ᱵᱚᱸᱫ ᱛᱟᱦᱮᱱ ᱠᱷᱟᱱ, ᱣᱮᱵᱥᱟᱭᱤᱴ ᱨᱮᱱᱟᱜ ᱠᱚᱞ ᱠᱚ ᱥᱟᱭᱤᱴ ᱨᱮᱱᱟᱜ ᱨᱤᱞᱮ ᱥᱚᱨᱵᱷᱚᱨ ᱦᱚᱛᱮᱛᱮ ᱜᱮ ᱡᱚᱲᱟᱣᱚᱜ ᱠᱟᱱᱟ, ᱚᱱᱟ ᱫᱚ ᱟᱢᱟᱜ IP ᱴᱷᱤᱠᱬᱟᱹ ᱥᱟᱭᱤᱴ ᱟᱨ ᱟᱢ ᱠᱚᱞ ᱮᱢ ᱠᱚᱨᱟᱣᱟ ᱦᱚᱲ ᱠᱷᱚᱱ ᱩᱠᱩᱭᱟᱭ᱾ ᱡᱩᱫᱤ ᱠᱚᱞ ᱵᱟᱝ ᱡᱚᱲᱟᱣᱚᱜ ᱠᱷᱟᱱ ᱮᱦᱚᱵ ᱢᱮ᱾</string>
+    <string name="dejavu_direct_calls_warning_title">ᱥᱚᱡᱷᱮ ᱡᱚᱲᱟᱣ ᱮᱞᱚᱢ ᱮᱢ ᱟ?</string>
+    <string name="dejavu_direct_calls_warning_message">ᱤᱱᱟᱹ ᱛᱟᱭᱚᱢ ᱟᱢ ᱠᱚᱞ ᱮᱢ ᱠᱚᱨᱟᱣᱟ ᱦᱚᱲ ᱟᱨ ᱠᱚᱞ ᱠᱚᱨᱟᱣᱤᱡ ᱥᱟᱭᱤᱴ ᱠᱚ ᱟᱢᱟᱜ IP ᱴᱷᱤᱠᱬᱟᱹ ᱧᱮᱞ ᱫᱟᱲᱮᱭᱟᱜ ᱠᱚᱭ᱾ ᱟᱢᱟᱜ ᱠᱮᱢᱮᱨᱟ ᱥᱮ ᱢᱟᱭᱤᱠᱨᱚᱯᱷᱚᱱ ᱵᱮᱵᱷᱟᱨ ᱞᱟᱹᱜᱤᱫ ᱮᱢ ᱮᱞᱚᱢᱟᱜ ᱥᱟᱭᱤᱴ ᱠᱚ ᱟᱢᱟᱜ ᱞᱚᱠᱟᱞ ᱱᱮᱴᱣᱟᱨᱠ ᱨᱮᱱᱟᱜ ᱴᱷᱤᱠᱬᱟᱹ ᱠᱚ ᱦᱚᱸ ᱧᱮᱞ ᱫᱟᱲᱮᱭᱟᱜ ᱠᱚᱭ᱾</string>
+    <string name="dejavu_settings_network_location">ᱱᱮᱴᱣᱟᱨᱠ ᱡᱟᱭᱜᱟ</string>
+    <string name="dejavu_settings_network_location_summary">ᱵᱚᱸᱫ ᱛᱟᱦᱮᱱ ᱠᱷᱟᱱ, ᱟᱢ ᱮᱢ ᱮᱞᱚᱢ ᱟᱠᱟᱫ ᱣᱮᱵᱥᱟᱭᱤᱴ ᱠᱚ ᱟᱢᱟᱜ ᱡᱟᱭᱜᱟ GPS ᱠᱷᱚᱱ ᱜᱮ ᱧᱟᱢᱟ ᱠᱚ, ᱚᱱᱟ ᱫᱚ ᱞᱟᱦᱟ ᱵᱟᱝ ᱥᱮ ᱚᱲᱟᱜ ᱵᱷᱤᱛᱨᱤ ᱨᱮ ᱵᱟᱝ ᱦᱩᱭ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾ ᱮᱦᱚᱵ ᱛᱟᱦᱮᱱ ᱠᱷᱟᱱ, Android ᱫᱚ ᱥᱮᱴᱮᱨ ᱨᱮᱱᱟᱜ Wi-Fi ᱱᱮᱴᱣᱟᱨᱠ ᱟᱨ ᱢᱚᱵᱟᱭᱤᱞ ᱴᱟᱣᱟᱨ ᱠᱷᱚᱱ ᱦᱚᱸ ᱯᱟᱱᱛᱮ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱭ᱾</string>
+    <string name="dejavu_network_location_warning_title">ᱱᱮᱴᱣᱟᱨᱠ ᱡᱟᱭᱜᱟ ᱵᱮᱵᱷᱟᱨ ᱮᱢ ᱟ?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services ᱢᱮᱱᱟᱜ ᱯᱷᱚᱱ ᱨᱮ, Android ᱫᱚ ᱟᱢᱟᱜ ᱥᱮᱴᱮᱨ ᱨᱮᱱᱟᱜ Wi-Fi ᱱᱮᱴᱣᱟᱨᱠ ᱟᱨ ᱢᱚᱵᱟᱭᱤᱞ ᱴᱟᱣᱟᱨ Google ᱴᱷᱮᱱ ᱵᱷᱮᱡᱟᱭ ᱛᱮ ᱟᱢᱟᱜ ᱡᱟᱭᱜᱟ ᱯᱟᱱᱛᱮᱭᱟᱭ᱾ ᱣᱮᱵᱥᱟᱭᱤᱴ ᱠᱚ ᱫᱚ ᱱᱤᱛᱚᱜ ᱦᱚᱸ ᱟᱢ ᱮᱢ ᱮᱞᱚᱢ ᱛᱟᱭᱚᱢ ᱜᱮ ᱟᱢᱟᱜ ᱡᱟᱭᱜᱟ ᱧᱟᱢᱟ ᱠᱚ᱾</string>
 </resources>

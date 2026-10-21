@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ари Dejavu аверсиа Safe Browsing ацаԥха амаӡам, убри аҟынтә ашәарҭатә саитқәа ирызкны иазгәанаҭаӡом.</string>
     <string name="dejavu_custom_action_http_warning">Ари аҭыжь http ахархәоит, убри аҟынтә азҵаара, ахқәа, адаҟьа аҭыжь ашифр ада ииасуеит. Асервер https иазыҟаҵазар, https ахархәа.</string>
     <string name="dejavu_example_notification_ntfy">Адаҟьа азгәаҭаны идәықәтәа. Атема ахьӡ здыруа зегь уи аԥхьар рылшоит, убри аҟынтә иауу, ихәхәу ахьӡ алх.</string>
+    <string name="dejavu_settings_direct_calls">Аԥхьарақәа рзы ишиашоу аидҳәаларақәа</string>
+    <string name="dejavu_settings_direct_calls_summary">Иаҿыхуп: асаитқәа рҿы аԥхьарақәа асаит аретранслиаторқәа ала мацара еидҳәалоит, убри аҟынтә уара уи IP-адрес асаитқәеи иуԥхьо ауааи рҟынтә иҵәахуп. Аԥхьара анмеидҳәалоз, уи аҿак.</string>
+    <string name="dejavu_direct_calls_warning_title">Ишиашоу аидҳәаларақәа азин ҭатәума?</string>
+    <string name="dejavu_direct_calls_warning_message">Иуԥхьо ауааи аԥхьарақәа зҟаҵо асаитқәеи уи ашьҭахь уара уи IP-адрес рбоит. Укамереи умикрофони рхы рзырхәаразы азин зыҭоу асаитқәа ухатә аҭыԥантәи асеть аҿы иҟоу уадресқәагьы рбар рылшоит.</string>
+    <string name="dejavu_settings_network_location">Асеть ала аҭыԥ</string>
+    <string name="dejavu_settings_network_location_summary">Иаҿыхуп: азин зыҭоу асаитқәа уаҟоу аҭыԥ GPS ала мацара иадырхоит, уи маҷк иаанкылар ауеит, мамзар аҩнуҵҟа иусуам. Иаҿакуп: Android иалшоит игәылоу Wi-Fi асетқәеи амобилтә еидҳәалара аштызқәеи ала иаанихарц.</string>
+    <string name="dejavu_network_location_warning_title">Асеть ала аҭыԥ ахархәарама?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services змоу ателқәа рҿы Android уаҟоу аҭыԥ иаанихоит угәылоу Wi-Fi асетқәеи амобилтә еидҳәалара аштызқәеи Google ахь адәықәҵара ала. Асаитқәа уаҟоу аҭыԥ азин анырҭаху ашьҭахь мацара иадырхоит.</string>
 </resources>

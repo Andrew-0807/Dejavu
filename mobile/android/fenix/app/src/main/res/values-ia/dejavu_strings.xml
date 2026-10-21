@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Iste version de Dejavu non ha un clave de Safe Browsing, dunque illo non pote advertir de sitos periculose.</string>
     <string name="dejavu_custom_action_http_warning">Iste adresse usa http, dunque le requesta, su capites e le adresse del pagina viagia sin cryptation. Usa https si le servitor lo supporta.</string>
     <string name="dejavu_example_notification_ntfy">Inviar le pagina como notification. Qualcunque persona qui cognosce le nomine del thema pote leger lo, dunque elige un nomine longe e aleatori.</string>
+    <string name="dejavu_settings_direct_calls">Connexiones directe pro appellos</string>
+    <string name="dejavu_settings_direct_calls_summary">Disactivate, le appellos in sitos web se connecte solmente per le servitores de relais del sito, lo que cela tu adresse IP al sitos e al personas que tu appella. Activa lo si un appello non se connecte.</string>
+    <string name="dejavu_direct_calls_warning_title">Permitter connexiones directe?</string>
+    <string name="dejavu_direct_calls_warning_message">Le personas que tu appella e le sitos que face appellos pote alora vider tu adresse IP. Le sitos a que tu permitte usar tu camera o tu microphono pote etiam vider tu adresses in tu rete local.</string>
+    <string name="dejavu_settings_network_location">Position per rete</string>
+    <string name="dejavu_settings_network_location_summary">Disactivate, le sitos web que tu permitte obtene tu position solmente per GPS, lo que pote esser lente o fallir intra edificios. Activate, Android pote etiam trovar lo per le retes Wi-Fi e le turres cellular vicin.</string>
+    <string name="dejavu_network_location_warning_title">Usar le position per rete?</string>
+    <string name="dejavu_network_location_warning_message">Sur telephonos con Google Play Services, Android trova tu position inviante a Google le retes Wi-Fi e le turres cellular proxime a te. Le sitos web obtene ancora tu position solmente post que tu les lo permitte.</string>
 </resources>

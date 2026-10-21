@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu ລຸ້ນນີ້ບໍ່ມີກະແຈ Safe Browsing, ສະນັ້ນມັນບໍ່ສາມາດເຕືອນກ່ຽວກັບເວັບໄຊອັນຕະລາຍໄດ້.</string>
     <string name="dejavu_custom_action_http_warning">ທີ່ຢູ່ນີ້ໃຊ້ http, ສະນັ້ນຄຳຂໍ, ສ່ວນຫົວຂອງມັນ ແລະ ທີ່ຢູ່ຂອງໜ້າຈະຖືກສົ່ງໂດຍບໍ່ໄດ້ເຂົ້າລະຫັດ. ໃຊ້ https ຖ້າເຊີບເວີຮອງຮັບ.</string>
     <string name="dejavu_example_notification_ntfy">ສົ່ງໜ້າເປັນການແຈ້ງເຕືອນ. ໃຜກໍຕາມທີ່ຮູ້ຊື່ຫົວຂໍ້ສາມາດອ່ານມັນໄດ້, ສະນັ້ນເລືອກຊື່ທີ່ຍາວ ແລະ ສຸ່ມ.</string>
+    <string name="dejavu_settings_direct_calls">ການເຊື່ອມຕໍ່ໂດຍກົງສຳລັບການໂທ</string>
+    <string name="dejavu_settings_direct_calls_summary">ເມື່ອປິດ, ການໂທໃນເວັບໄຊຈະເຊື່ອມຕໍ່ຜ່ານເຊີບເວີສົ່ງຕໍ່ຂອງເວັບໄຊເທົ່ານັ້ນ, ເຊິ່ງຈະເຊື່ອງທີ່ຢູ່ IP ຂອງທ່ານຈາກເວັບໄຊ ແລະ ຈາກຄົນທີ່ທ່ານໂທຫາ. ເປີດມັນຖ້າການໂທບໍ່ເຊື່ອມຕໍ່.</string>
+    <string name="dejavu_direct_calls_warning_title">ອະນຸຍາດການເຊື່ອມຕໍ່ໂດຍກົງບໍ?</string>
+    <string name="dejavu_direct_calls_warning_message">ຈາກນັ້ນຄົນທີ່ທ່ານໂທຫາ ແລະ ເວັບໄຊທີ່ໂທຈະສາມາດເຫັນທີ່ຢູ່ IP ຂອງທ່ານ. ເວັບໄຊທີ່ທ່ານອະນຸຍາດໃຫ້ໃຊ້ກ້ອງ ຫຼື ໄມໂຄຣໂຟນຂອງທ່ານກໍ່ສາມາດເຫັນທີ່ຢູ່ຂອງທ່ານໃນເຄືອຂ່າຍທ້ອງຖິ່ນໄດ້ເຊັ່ນກັນ.</string>
+    <string name="dejavu_settings_network_location">ຕຳແໜ່ງຈາກເຄືອຂ່າຍ</string>
+    <string name="dejavu_settings_network_location_summary">ເມື່ອປິດ, ເວັບໄຊທີ່ທ່ານອະນຸຍາດຈະໄດ້ຮັບຕຳແໜ່ງຂອງທ່ານຈາກ GPS ເທົ່ານັ້ນ, ເຊິ່ງອາດຈະຊ້າ ຫຼື ບໍ່ໄດ້ຜົນໃນອາຄານ. ເມື່ອເປີດ, Android ຍັງສາມາດຊອກຫາມັນຈາກເຄືອຂ່າຍ Wi-Fi ແລະ ເສົາສັນຍານມືຖືທີ່ຢູ່ໃກ້ຄຽງ.</string>
+    <string name="dejavu_network_location_warning_title">ໃຊ້ຕຳແໜ່ງຈາກເຄືອຂ່າຍບໍ?</string>
+    <string name="dejavu_network_location_warning_message">ໃນໂທລະສັບທີ່ມີ Google Play Services, Android ຊອກຫາຕຳແໜ່ງຂອງທ່ານໂດຍສົ່ງເຄືອຂ່າຍ Wi-Fi ແລະ ເສົາສັນຍານມືຖືທີ່ຢູ່ໃກ້ທ່ານໄປໃຫ້ Google. ເວັບໄຊຍັງຄົງໄດ້ຮັບຕຳແໜ່ງຂອງທ່ານຫຼັງຈາກທີ່ທ່ານອະນຸຍາດເທົ່ານັ້ນ.</string>
 </resources>

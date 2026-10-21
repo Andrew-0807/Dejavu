@@ -10,6 +10,8 @@
     <string name="pref_key_dejavu_safe_browsing" translatable="false">pref_key_dejavu_safe_browsing</string>
     <string name="pref_key_dejavu_jit" translatable="false">pref_key_dejavu_jit</string>
     <string name="pref_key_dejavu_webgl" translatable="false">pref_key_dejavu_webgl</string>
+    <string name="pref_key_dejavu_direct_calls" translatable="false">pref_key_dejavu_direct_calls</string>
+    <string name="pref_key_dejavu_network_location" translatable="false">pref_key_dejavu_network_location</string>
     <!-- Name of Mozilla's browser, for texts about Mozilla's own services like Firefox Suggest. -->
     <string name="dejavu_firefox_name" translatable="false" tools:ignore="BrandUsage">Firefox</string>
 
@@ -494,6 +496,22 @@
     <string name="dejavu_settings_webgl" translatable="false">WebGL</string>
     <!-- Summary of the WebGL switch. -->
     <string name="dejavu_settings_webgl_summary">3D graphics for games, maps and some websites. Turning it off blocks attacks through the graphics driver and makes your phone harder for sites to recognize, but those sites may stop working.</string>
+    <!-- Switch in the privacy and security settings that lets WebRTC calls (video and voice calls in websites) connect directly instead of only through the site's relay servers. -->
+    <string name="dejavu_settings_direct_calls">Direct connections for calls</string>
+    <!-- Summary of the direct connections switch. -->
+    <string name="dejavu_settings_direct_calls_summary">Off, calls in websites connect only through the site\'s relay servers, which hides your IP address from sites and from the people you call. Turn it on if a call does not connect.</string>
+    <!-- Title of the warning shown before direct connections for calls are turned on. Its buttons are Cancel and Turn on. -->
+    <string name="dejavu_direct_calls_warning_title">Allow direct connections?</string>
+    <!-- Message of the direct connections warning. -->
+    <string name="dejavu_direct_calls_warning_message">The people you call and the sites that make calls can then see your IP address. Sites you let use your camera or microphone can also see your addresses on your local network.</string>
+    <!-- Switch in the privacy and security settings that lets websites get the location from Android's network location (nearby Wi-Fi networks and cell towers) as well as from GPS. -->
+    <string name="dejavu_settings_network_location">Network location</string>
+    <!-- Summary of the network location switch. -->
+    <string name="dejavu_settings_network_location_summary">Off, websites you allow get your location from GPS only, which can be slow or fail indoors. On, Android can also find it from nearby Wi-Fi networks and cell towers.</string>
+    <!-- Title of the warning shown before network location is turned on. Its buttons are Cancel and Turn on. -->
+    <string name="dejavu_network_location_warning_title">Use network location?</string>
+    <!-- Message of the network location warning. -->
+    <string name="dejavu_network_location_warning_message">On phones with Google Play Services, Android finds your location by sending the Wi-Fi networks and cell towers near you to Google. Websites still get your location only after you allow them.</string>
     <!-- Summary of the Google Safe Browsing switch, turned off, in a build of Dejavu made without a Safe Browsing key, like a build from source. -->
     <string name="dejavu_settings_safe_browsing_no_key">This build of Dejavu has no Safe Browsing key, so it cannot warn about dangerous sites.</string>
     <!-- Warning in the custom action editor when the action's address starts with http:// instead of https://. -->

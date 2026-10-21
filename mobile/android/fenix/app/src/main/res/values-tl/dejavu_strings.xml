@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Walang Safe Browsing key ang build na ito ng Dejavu, kaya hindi ito makapagbabala tungkol sa mga mapanganib na site.</string>
     <string name="dejavu_custom_action_http_warning">Gumagamit ng http ang address na ito, kaya ang request, ang mga header nito at ang address ng page ay naglalakbay nang hindi naka-encrypt. Gamitin ang https kung sinusuportahan ito ng server.</string>
     <string name="dejavu_example_notification_ntfy">Ipadala ang page bilang notification. Mababasa ito ng sinumang nakakaalam ng pangalan ng topic, kaya pumili ng mahaba at random na pangalan.</string>
+    <string name="dejavu_settings_direct_calls">Direktang koneksyon para sa mga tawag</string>
+    <string name="dejavu_settings_direct_calls_summary">Kapag naka-off, ang mga tawag sa mga website ay kumokonekta lang sa pamamagitan ng mga relay server ng site, na nagtatago ng iyong IP address mula sa mga site at sa mga taong tinatawagan mo. I-on ito kung hindi kumokonekta ang isang tawag.</string>
+    <string name="dejavu_direct_calls_warning_title">Payagan ang direktang koneksyon?</string>
+    <string name="dejavu_direct_calls_warning_message">Makikita na ng mga taong tinatawagan mo at ng mga site na gumagawa ng tawag ang iyong IP address. Ang mga site na pinapayagan mong gumamit ng iyong camera o mikropono ay makakakita rin ng iyong mga address sa iyong lokal na network.</string>
+    <string name="dejavu_settings_network_location">Lokasyon mula sa network</string>
+    <string name="dejavu_settings_network_location_summary">Kapag naka-off, ang mga website na pinapayagan mo ay nakakakuha ng iyong lokasyon mula lang sa GPS, na maaaring mabagal o pumalya sa loob ng gusali. Kapag naka-on, mahahanap din ito ng Android mula sa mga kalapit na Wi-Fi network at cell tower.</string>
+    <string name="dejavu_network_location_warning_title">Gamitin ang lokasyon mula sa network?</string>
+    <string name="dejavu_network_location_warning_message">Sa mga teleponong may Google Play Services, hinahanap ng Android ang iyong lokasyon sa pamamagitan ng pagpapadala sa Google ng mga Wi-Fi network at cell tower na malapit sa iyo. Nakukuha pa rin ng mga website ang iyong lokasyon pagkatapos mo lang silang payagan.</string>
 </resources>

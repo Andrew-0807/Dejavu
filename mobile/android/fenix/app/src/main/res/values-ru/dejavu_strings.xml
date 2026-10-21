@@ -363,4 +363,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">В этой сборке Dejavu нет ключа Safe Browsing, поэтому она не может предупреждать об опасных сайтах.</string>
     <string name="dejavu_custom_action_http_warning">Этот адрес использует http, поэтому запрос, его заголовки и адрес страницы передаются без шифрования. Используйте https, если сервер его поддерживает.</string>
     <string name="dejavu_example_notification_ntfy">Отправляет страницу как уведомление. Любой, кто знает название темы, может его прочитать, поэтому выберите длинное случайное название.</string>
+    <string name="dejavu_settings_direct_calls">Прямые соединения для звонков</string>
+    <string name="dejavu_settings_direct_calls_summary">Если выключено, звонки на сайтах соединяются только через серверы-ретрансляторы сайта, что скрывает ваш IP-адрес от сайтов и от людей, которым вы звоните. Включите, если звонок не соединяется.</string>
+    <string name="dejavu_direct_calls_warning_title">Разрешить прямые соединения?</string>
+    <string name="dejavu_direct_calls_warning_message">Тогда люди, которым вы звоните, и сайты, через которые идут звонки, смогут видеть ваш IP-адрес. Сайты, которым вы разрешили использовать камеру или микрофон, смогут видеть и ваши адреса в локальной сети.</string>
+    <string name="dejavu_settings_network_location">Местоположение по сети</string>
+    <string name="dejavu_settings_network_location_summary">Если выключено, сайты, которым вы разрешили, получают ваше местоположение только по GPS, что может быть медленно или не работать в помещении. Если включено, Android может определить его и по ближайшим сетям Wi-Fi и вышкам сотовой связи.</string>
+    <string name="dejavu_network_location_warning_title">Использовать местоположение по сети?</string>
+    <string name="dejavu_network_location_warning_message">На телефонах с Google Play Services Android определяет ваше местоположение, отправляя в Google сведения о сетях Wi-Fi и вышках сотовой связи рядом с вами. Сайты по-прежнему получают ваше местоположение только после вашего разрешения.</string>
 </resources>

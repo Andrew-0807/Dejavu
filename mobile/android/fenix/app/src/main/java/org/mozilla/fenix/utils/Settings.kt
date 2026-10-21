@@ -1224,10 +1224,11 @@ class Settings(
             }
         }
 
+    // Dejavu: off in every build, as in the F-Droid build before.
     var whatsappLinkSharingEnabled by
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_link_sharing),
-            default = { FxNimbus.features.sentFromFirefox.value().enabled },
+            default = false,
         )
 
     var linkSharingSettingsSnackbarShown by
@@ -1314,10 +1315,11 @@ class Settings(
             default = true,
         )
 
+    // Dejavu: normal tabs tell websites not to sell or share the user's data too, as private tabs always do.
     var shouldEnableGlobalPrivacyControl by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_privacy_enable_global_privacy_control),
-            false,
+            true,
         )
 
     /**
@@ -3485,5 +3487,25 @@ class Settings(
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_dejavu_webgl),
             default = true,
+        )
+
+    /**
+     * Dejavu: whether WebRTC calls may connect directly, which shows sites and call partners the phone's IP address.
+     * Off, they connect only through the site's relay servers.
+     */
+    var directCallConnections by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_direct_calls),
+            default = false,
+        )
+
+    /**
+     * Dejavu: whether websites may get the location from Android's network location too, which on phones with Google
+     * Play Services asks Google. Off, it comes from GPS only.
+     */
+    var networkLocationEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_network_location),
+            default = false,
         )
 }

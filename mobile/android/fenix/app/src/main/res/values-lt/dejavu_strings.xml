@@ -363,4 +363,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Šioje Dejavu laidoje nėra Safe Browsing rakto, todėl ji negali įspėti apie pavojingas svetaines.</string>
     <string name="dejavu_custom_action_http_warning">Šis adresas naudoja http, todėl užklausa, jos antraštės ir puslapio adresas keliauja nešifruoti. Naudokite https, jei serveris jį palaiko.</string>
     <string name="dejavu_example_notification_ntfy">Siųsti puslapį kaip pranešimą. Bet kas, žinantis temos pavadinimą, gali jį perskaityti, todėl pasirinkite ilgą, atsitiktinį pavadinimą.</string>
+    <string name="dejavu_settings_direct_calls">Tiesioginiai ryšiai skambučiams</string>
+    <string name="dejavu_settings_direct_calls_summary">Išjungus, skambučiai svetainėse jungiami tik per svetainės perdavimo serverius, todėl jūsų IP adresas paslepiamas nuo svetainių ir žmonių, kuriems skambinate. Įjunkite, jei skambutis neprisijungia.</string>
+    <string name="dejavu_direct_calls_warning_title">Leisti tiesioginius ryšius?</string>
+    <string name="dejavu_direct_calls_warning_message">Tada žmonės, kuriems skambinate, ir skambučius vykdančios svetainės galės matyti jūsų IP adresą. Svetainės, kurioms leidžiate naudoti kamerą ar mikrofoną, galės matyti ir jūsų adresus vietiniame tinkle.</string>
+    <string name="dejavu_settings_network_location">Vieta pagal tinklą</string>
+    <string name="dejavu_settings_network_location_summary">Išjungus, svetainės, kurioms leidžiate, jūsų vietą gauna tik iš GPS, o tai gali būti lėta arba nepavykti patalpose. Įjungus, „Android“ gali ją nustatyti ir pagal netoliese esančius „Wi-Fi“ tinklus ir mobiliojo ryšio bokštus.</string>
+    <string name="dejavu_network_location_warning_title">Naudoti vietą pagal tinklą?</string>
+    <string name="dejavu_network_location_warning_message">Telefonuose su „Google Play Services“ „Android“ nustato jūsų vietą siųsdama „Google“ netoliese esančius „Wi-Fi“ tinklus ir mobiliojo ryšio bokštus. Svetainės jūsų vietą vis tiek gauna tik jums leidus.</string>
 </resources>

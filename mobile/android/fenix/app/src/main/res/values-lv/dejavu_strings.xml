@@ -356,4 +356,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Šai Dejavu versijai nav Safe Browsing atslēgas, tāpēc tā nevar brīdināt par bīstamām vietnēm.</string>
     <string name="dejavu_custom_action_http_warning">Šī adrese izmanto http, tāpēc pieprasījums, tā galvenes un lapas adrese tiek sūtītas nešifrētas. Izmantojiet https, ja serveris to atbalsta.</string>
     <string name="dejavu_example_notification_ntfy">Nosūtīt lapu kā paziņojumu. Ikviens, kurš zina tēmas nosaukumu, var to izlasīt, tāpēc izvēlieties garu, nejaušu nosaukumu.</string>
+    <string name="dejavu_settings_direct_calls">Tiešie savienojumi zvaniem</string>
+    <string name="dejavu_settings_direct_calls_summary">Kad izslēgts, zvani tīmekļa vietnēs savienojas tikai caur vietnes pārraides serveriem, kas paslēpj jūsu IP adresi no vietnēm un no cilvēkiem, kuriem zvanāt. Ieslēdziet, ja zvans nesavienojas.</string>
+    <string name="dejavu_direct_calls_warning_title">Atļaut tiešos savienojumus?</string>
+    <string name="dejavu_direct_calls_warning_message">Tad cilvēki, kuriem zvanāt, un vietnes, kas veic zvanus, varēs redzēt jūsu IP adresi. Vietnes, kurām atļaujat izmantot kameru vai mikrofonu, varēs redzēt arī jūsu adreses lokālajā tīklā.</string>
+    <string name="dejavu_settings_network_location">Atrašanās vieta no tīkla</string>
+    <string name="dejavu_settings_network_location_summary">Kad izslēgts, vietnes, kurām atļaujat, jūsu atrašanās vietu saņem tikai no GPS, kas var būt lēni vai telpās neizdoties. Kad ieslēgts, Android to var noteikt arī pēc tuvumā esošiem Wi-Fi tīkliem un mobilo sakaru torņiem.</string>
+    <string name="dejavu_network_location_warning_title">Izmantot atrašanās vietu no tīkla?</string>
+    <string name="dejavu_network_location_warning_message">Tālruņos ar Google Play Services Android nosaka jūsu atrašanās vietu, nosūtot uzņēmumam Google tuvumā esošos Wi-Fi tīklus un mobilo sakaru torņus. Vietnes joprojām saņem jūsu atrašanās vietu tikai pēc jūsu atļaujas.</string>
 </resources>

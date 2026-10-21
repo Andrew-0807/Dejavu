@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">この Dejavu のビルドには Safe Browsing キーがないため、危険なサイトについて警告できません。</string>
     <string name="dejavu_custom_action_http_warning">このアドレスは http を使用するため、リクエスト、そのヘッダー、ページのアドレスが暗号化されずに送信されます。サーバーが対応していれば https を使用してください。</string>
     <string name="dejavu_example_notification_ntfy">ページを通知として送信します。トピック名を知っている人なら誰でも読めるため、長くランダムな名前を選んでください。</string>
+    <string name="dejavu_settings_direct_calls">通話の直接接続</string>
+    <string name="dejavu_settings_direct_calls_summary">オフの場合、ウェブサイトでの通話はサイトのリレーサーバーだけを経由して接続されるため、サイトや通話相手に IP アドレスが知られません。通話がつながらないときはオンにしてください。</string>
+    <string name="dejavu_direct_calls_warning_title">直接接続を許可しますか？</string>
+    <string name="dejavu_direct_calls_warning_message">通話相手と通話を行うサイトに、あなたの IP アドレスが見えるようになります。カメラやマイクの使用を許可したサイトには、ローカルネットワーク上のアドレスも見えるようになります。</string>
+    <string name="dejavu_settings_network_location">ネットワーク位置情報</string>
+    <string name="dejavu_settings_network_location_summary">オフの場合、許可したウェブサイトは GPS からのみ位置情報を取得します。時間がかかったり、屋内では取得できなかったりすることがあります。オンにすると、Android は近くの Wi-Fi ネットワークや基地局からも位置を特定できます。</string>
+    <string name="dejavu_network_location_warning_title">ネットワーク位置情報を使用しますか？</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services を搭載したスマートフォンでは、Android は近くの Wi-Fi ネットワークと基地局の情報を Google に送信して位置を特定します。ウェブサイトが位置情報を取得できるのは、引き続きあなたが許可した後だけです。</string>
 </resources>

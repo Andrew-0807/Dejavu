@@ -363,4 +363,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ta wersja Dejavu nie ma klucza Safe Browsing, więc nie może ostrzegać przed niebezpiecznymi stronami.</string>
     <string name="dejavu_custom_action_http_warning">Ten adres używa http, więc żądanie, jego nagłówki i adres strony są przesyłane bez szyfrowania. Użyj https, jeśli serwer je obsługuje.</string>
     <string name="dejavu_example_notification_ntfy">Wysyła stronę jako powiadomienie. Każdy, kto zna nazwę tematu, może je przeczytać, więc wybierz długą, losową nazwę.</string>
+    <string name="dejavu_settings_direct_calls">Bezpośrednie połączenia dla rozmów</string>
+    <string name="dejavu_settings_direct_calls_summary">Gdy jest wyłączone, rozmowy na stronach łączą się tylko przez serwery przekazujące strony, co ukrywa Twój adres IP przed stronami i osobami, do których dzwonisz. Włącz, jeśli rozmowa się nie łączy.</string>
+    <string name="dejavu_direct_calls_warning_title">Zezwolić na bezpośrednie połączenia?</string>
+    <string name="dejavu_direct_calls_warning_message">Osoby, do których dzwonisz, i strony obsługujące rozmowy będą wtedy widzieć Twój adres IP. Strony, którym zezwolisz na używanie kamery lub mikrofonu, zobaczą też Twoje adresy w sieci lokalnej.</string>
+    <string name="dejavu_settings_network_location">Położenie z sieci</string>
+    <string name="dejavu_settings_network_location_summary">Gdy jest wyłączone, strony, którym na to zezwolisz, otrzymują Twoje położenie tylko z GPS, co może trwać długo lub nie działać w budynkach. Gdy jest włączone, Android może je ustalić także na podstawie pobliskich sieci Wi-Fi i stacji bazowych.</string>
+    <string name="dejavu_network_location_warning_title">Używać położenia z sieci?</string>
+    <string name="dejavu_network_location_warning_message">Na telefonach z Google Play Services Android ustala Twoje położenie, wysyłając do Google pobliskie sieci Wi-Fi i stacje bazowe. Strony nadal otrzymują Twoje położenie dopiero po Twojej zgodzie.</string>
 </resources>

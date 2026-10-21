@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ini nga build sang Dejavu wala sing Safe Browsing key, gani indi ini makapaandam parte sa delikado nga mga site.</string>
     <string name="dejavu_custom_action_http_warning">Ini nga address nagagamit sang http, gani ang request, ang iya mga header kag ang address sang panid nagabiyahe nga wala encryption. Gamita ang https kon ginasuportahan ini sang server.</string>
     <string name="dejavu_example_notification_ntfy">Ipadala ang panid subong notification. Bisan sin-o nga nakahibalo sang ngalan sang topic makabasa sini, gani magpili sang malaba kag random nga ngalan.</string>
+    <string name="dejavu_settings_direct_calls">Direkta nga koneksyon para sa mga tawag</string>
+    <string name="dejavu_settings_direct_calls_summary">Kon ginpatay, ang mga tawag sa mga website nagakonektar lang paagi sa relay server sang site, nga nagatago sang imo IP address sa mga site kag sa mga tawo nga imo ginatawgan. I-on ini kon ang tawag indi makonektar.</string>
+    <string name="dejavu_direct_calls_warning_title">Tugutan ang direkta nga koneksyon?</string>
+    <string name="dejavu_direct_calls_warning_message">Ang mga tawo nga imo ginatawgan kag ang mga site nga nagahimo sang tawag makakita na sang imo IP address. Ang mga site nga imo ginatugutan sa paggamit sang imo camera ukon mikropono makakita man sang imo mga address sa imo lokal nga network.</string>
+    <string name="dejavu_settings_network_location">Lokasyon paagi sa network</string>
+    <string name="dejavu_settings_network_location_summary">Kon ginpatay, ang mga website nga imo ginatugutan nagakuha sang imo lokasyon halin lang sa GPS, nga mahimo mahinay ukon indi mag-obra sa sulod sang balay. Kon gin-on, makita man ini sang Android halin sa malapit nga mga Wi-Fi network kag cell tower.</string>
+    <string name="dejavu_network_location_warning_title">Gamiton ang lokasyon paagi sa network?</string>
+    <string name="dejavu_network_location_warning_message">Sa mga telepono nga may Google Play Services, ginapangita sang Android ang imo lokasyon paagi sa pagpadala sa Google sang mga Wi-Fi network kag cell tower nga malapit sa imo. Ang mga website nagakuha gihapon sang imo lokasyon pagkatapos lang nga imo sila tugutan.</string>
 </resources>

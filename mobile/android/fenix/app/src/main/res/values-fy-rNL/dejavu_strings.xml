@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dizze ferzje fan Dejavu hat gjin Safe Browsing-kaai, dus kin net warskôgje foar gefaarlike websites.</string>
     <string name="dejavu_custom_action_http_warning">Dit adres brûkt http, dus it fersyk, de headers en it adres fan de side gean net-fersifere oer. Brûk https as de server it stipet.</string>
     <string name="dejavu_example_notification_ntfy">Stjoer de side as notifikaasje. Elkenien dy\'t de namme fan it ûnderwerp ken, kin it lêze, dus kies in lange, willekeurige namme.</string>
+    <string name="dejavu_settings_direct_calls">Direkte ferbiningen foar oproppen</string>
+    <string name="dejavu_settings_direct_calls_summary">Ut, ferbine oproppen op websites allinnich fia de relayservers fan de website, wat jo IP-adres ferberget foar websites en foar de minsken dy\'t jo skilje. Skeakelje it yn as in oprop gjin ferbining makket.</string>
+    <string name="dejavu_direct_calls_warning_title">Direkte ferbiningen tastean?</string>
+    <string name="dejavu_direct_calls_warning_message">De minsken dy\'t jo skilje en de websites dy\'t oproppen dogge, kinne dan jo IP-adres sjen. Websites dêr\'t jo tastimming oan jouwe om jo kamera of mikrofoan te brûken, kinne ek jo adressen op jo lokale netwurk sjen.</string>
+    <string name="dejavu_settings_network_location">Netwurklokaasje</string>
+    <string name="dejavu_settings_network_location_summary">Ut, krije websites dêr\'t jo tastimming oan jouwe jo lokaasje allinnich fan gps, wat traach wêze kin of binnen mislearje kin. Oan, kin Android him ek fine fia wifi-netwurken en mobile masten yn de buert.</string>
+    <string name="dejavu_network_location_warning_title">Netwurklokaasje brûke?</string>
+    <string name="dejavu_network_location_warning_message">Op telefoans mei Google Play Services fynt Android jo lokaasje troch de wifi-netwurken en mobile masten by jo yn de buert nei Google te stjoeren. Websites krije jo lokaasje noch hieltyd pas neidat jo harren tastimming jûn hawwe.</string>
 </resources>

@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Denne utgaven av Dejavu har ingen Safe Browsing-nøkkel, så den kan ikke advare mot farlige nettsteder.</string>
     <string name="dejavu_custom_action_http_warning">Denne adressen bruker http, så forespørselen, hodene og sidens adresse sendes ukryptert. Bruk https hvis serveren støtter det.</string>
     <string name="dejavu_example_notification_ntfy">Send siden som et varsel. Alle som kjenner navnet på emnet kan lese det, så velg et langt, tilfeldig navn.</string>
+    <string name="dejavu_settings_direct_calls">Direkte tilkoblinger for samtaler</string>
+    <string name="dejavu_settings_direct_calls_summary">Når den er av, kobles samtaler på nettsteder bare gjennom nettstedets reléservere, som skjuler IP-adressen din for nettsteder og for dem du ringer til. Slå den på hvis en samtale ikke kobles opp.</string>
+    <string name="dejavu_direct_calls_warning_title">Tillate direkte tilkoblinger?</string>
+    <string name="dejavu_direct_calls_warning_message">Personene du ringer til og nettstedene som gjennomfører samtaler, kan da se IP-adressen din. Nettsteder du lar bruke kameraet eller mikrofonen, kan også se adressene dine på det lokale nettverket.</string>
+    <string name="dejavu_settings_network_location">Nettverksposisjon</string>
+    <string name="dejavu_settings_network_location_summary">Når den er av, får nettsteder du gir tillatelse, posisjonen din bare fra GPS, noe som kan være tregt eller mislykkes innendørs. Når den er på, kan Android også finne den ut fra Wi-Fi-nettverk og mobilmaster i nærheten.</string>
+    <string name="dejavu_network_location_warning_title">Bruke nettverksposisjon?</string>
+    <string name="dejavu_network_location_warning_message">På telefoner med Google Play Services finner Android posisjonen din ved å sende Wi-Fi-nettverkene og mobilmastene i nærheten av deg til Google. Nettsteder får fortsatt posisjonen din bare etter at du har gitt dem tillatelse.</string>
 </resources>

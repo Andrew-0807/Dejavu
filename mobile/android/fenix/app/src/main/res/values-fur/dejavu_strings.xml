@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Cheste compilazion di Dejavu no à une clâf di Safe Browsing, duncje no pues visâ dai sîts pericolôs.</string>
     <string name="dejavu_custom_action_http_warning">Cheste direzion e dopre http, duncje la richieste, i siei intestadûrs e la direzion de pagjine a viazin cence cifradure. Dopre https se il servidôr lu supuarte.</string>
     <string name="dejavu_example_notification_ntfy">Mande la pagjine come notifiche. Cualsisei che al cognòs il non dal argoment le pues lei, duncje sielç un non lunc e casuâl.</string>
+    <string name="dejavu_settings_direct_calls">Conessions diretis pes clamadis</string>
+    <string name="dejavu_settings_direct_calls_summary">Disativât, lis clamadis tai sîts web si conetin dome traviers dai servidôrs di ritrasmission dal sît, e cussì la tô direzion IP e reste platade ai sîts e aes personis che tu clamis. Ativile se une clamade no si conet.</string>
+    <string name="dejavu_direct_calls_warning_title">Permeti lis conessions diretis?</string>
+    <string name="dejavu_direct_calls_warning_message">Lis personis che tu clamis e i sîts che a fasin lis clamadis a podaran alore viodi la tô direzion IP. I sîts che tu ur permetis di doprâ la fotocjamare o il microfon a podaran viodi ancje lis tôs direzions te tô rêt locâl.</string>
+    <string name="dejavu_settings_network_location">Posizion de rêt</string>
+    <string name="dejavu_settings_network_location_summary">Disativât, i sîts web che tu permetis a otegnin la tô posizion dome dal GPS, che al pues jessi lent o falâ tai lûcs sierâts. Ativât, Android le pues cjatâ ancje des rêts Wi-Fi e des antenis telefonichis dongje.</string>
+    <string name="dejavu_network_location_warning_title">Doprâ la posizion de rêt?</string>
+    <string name="dejavu_network_location_warning_message">Sui telefons cun Google Play Services, Android al cjate la tô posizion mandant a Google lis rêts Wi-Fi e lis antenis telefonichis che tu âs dongje. I sîts web a otegnin la tô posizion dome dopo che tu ju âs permetût.</string>
 </resources>

@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">이 Dejavu 빌드에는 Safe Browsing 키가 없어서 위험한 사이트를 경고할 수 없습니다.</string>
     <string name="dejavu_custom_action_http_warning">이 주소는 http를 사용하므로 요청, 요청의 헤더, 페이지 주소가 암호화되지 않고 전송됩니다. 서버가 지원하면 https를 사용하세요.</string>
     <string name="dejavu_example_notification_ntfy">페이지를 알림으로 보냅니다. 주제 이름을 아는 사람은 누구나 읽을 수 있으므로 길고 무작위한 이름을 고르세요.</string>
+    <string name="dejavu_settings_direct_calls">통화 직접 연결</string>
+    <string name="dejavu_settings_direct_calls_summary">끄면 웹사이트의 통화는 사이트의 릴레이 서버를 통해서만 연결되므로, 사이트와 통화 상대에게 IP 주소가 드러나지 않습니다. 통화가 연결되지 않으면 켜세요.</string>
+    <string name="dejavu_direct_calls_warning_title">직접 연결을 허용할까요?</string>
+    <string name="dejavu_direct_calls_warning_message">그러면 통화 상대와 통화를 처리하는 사이트가 내 IP 주소를 볼 수 있습니다. 카메라나 마이크 사용을 허용한 사이트는 로컬 네트워크의 주소도 볼 수 있습니다.</string>
+    <string name="dejavu_settings_network_location">네트워크 위치</string>
+    <string name="dejavu_settings_network_location_summary">끄면 허용한 웹사이트는 GPS로만 위치를 받으며, 느리거나 실내에서 실패할 수 있습니다. 켜면 Android가 주변 Wi-Fi 네트워크와 기지국으로도 위치를 찾을 수 있습니다.</string>
+    <string name="dejavu_network_location_warning_title">네트워크 위치를 사용할까요?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services가 있는 휴대폰에서 Android는 주변의 Wi-Fi 네트워크와 기지국 정보를 Google에 보내 위치를 찾습니다. 웹사이트는 여전히 내가 허용한 후에만 위치를 받습니다.</string>
 </resources>

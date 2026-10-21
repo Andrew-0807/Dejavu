@@ -377,4 +377,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Does gan yr adeiliad hwn o Dejavu ddim allwedd Safe Browsing, felly nid yw\'n gallu rhybuddio am wefannau peryglus.</string>
     <string name="dejavu_custom_action_http_warning">Mae\'r cyfeiriad hwn yn defnyddio http, felly mae\'r cais, ei benynnau a chyfeiriad y dudalen yn teithio heb eu hamgryptio. Defnyddiwch https os yw\'r gweinydd yn ei gefnogi.</string>
     <string name="dejavu_example_notification_ntfy">Anfon y dudalen fel hysbysiad. Gall unrhyw un sy\'n gwybod enw\'r pwnc ei darllen, felly dewiswch un hir ac ar hap.</string>
+    <string name="dejavu_settings_direct_calls">Cysylltiadau uniongyrchol ar gyfer galwadau</string>
+    <string name="dejavu_settings_direct_calls_summary">Pan fydd i ffwrdd, mae galwadau mewn gwefannau\'n cysylltu drwy weinyddion cyfnewid y wefan yn unig, sy\'n cuddio eich cyfeiriad IP rhag gwefannau a rhag y bobl rydych yn eu galw. Trowch ef ymlaen os nad yw galwad yn cysylltu.</string>
+    <string name="dejavu_direct_calls_warning_title">Caniatáu cysylltiadau uniongyrchol?</string>
+    <string name="dejavu_direct_calls_warning_message">Bydd y bobl rydych yn eu galw a\'r gwefannau sy\'n gwneud galwadau\'n gallu gweld eich cyfeiriad IP wedyn. Bydd gwefannau rydych yn caniatáu iddyn nhw ddefnyddio\'ch camera neu\'ch meicroffon hefyd yn gallu gweld eich cyfeiriadau ar eich rhwydwaith lleol.</string>
+    <string name="dejavu_settings_network_location">Lleoliad rhwydwaith</string>
+    <string name="dejavu_settings_network_location_summary">Pan fydd i ffwrdd, mae gwefannau rydych yn eu caniatáu\'n cael eich lleoliad o\'r GPS yn unig, a all fod yn araf neu fethu dan do. Pan fydd ymlaen, gall Android ei ganfod hefyd o rwydweithiau Wi-Fi a mastiau ffôn cyfagos.</string>
+    <string name="dejavu_network_location_warning_title">Defnyddio lleoliad rhwydwaith?</string>
+    <string name="dejavu_network_location_warning_message">Ar ffonau gyda Google Play Services, mae Android yn canfod eich lleoliad drwy anfon y rhwydweithiau Wi-Fi a\'r mastiau ffôn sy\'n agos atoch at Google. Dim ond ar ôl i chi eu caniatáu y bydd gwefannau\'n dal i gael eich lleoliad.</string>
 </resources>

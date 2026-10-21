@@ -356,4 +356,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">לגרסה זו של Dejavu אין מפתח Safe Browsing, ולכן היא לא יכולה להזהיר מפני אתרים מסוכנים.</string>
     <string name="dejavu_custom_action_http_warning">הכתובת הזאת משתמשת ב-http, ולכן הבקשה, הכותרות שלה וכתובת הדף עוברות ללא הצפנה. יש להשתמש ב-https אם השרת תומך בו.</string>
     <string name="dejavu_example_notification_ntfy">שליחת הדף כהתראה. כל מי שיודע את שם הנושא יכול לקרוא אותה, לכן כדאי לבחור שם ארוך ואקראי.</string>
+    <string name="dejavu_settings_direct_calls">חיבורים ישירים לשיחות</string>
+    <string name="dejavu_settings_direct_calls_summary">כשהאפשרות כבויה, שיחות באתרים מתחברות רק דרך שרתי הממסר של האתר, וכך כתובת ה־IP שלך מוסתרת מהאתרים ומהאנשים שאליהם מתקשרים. יש להפעיל אותה אם שיחה לא מתחברת.</string>
+    <string name="dejavu_direct_calls_warning_title">לאפשר חיבורים ישירים?</string>
+    <string name="dejavu_direct_calls_warning_message">האנשים שאליהם מתקשרים והאתרים שמבצעים שיחות יוכלו אז לראות את כתובת ה־IP שלך. אתרים שמורשים להשתמש במצלמה או במיקרופון שלך יוכלו לראות גם את הכתובות שלך ברשת המקומית.</string>
+    <string name="dejavu_settings_network_location">מיקום מהרשת</string>
+    <string name="dejavu_settings_network_location_summary">כשהאפשרות כבויה, אתרים שקיבלו הרשאה מקבלים את המיקום שלך רק מה־GPS, וזה עלול להיות איטי או להיכשל בתוך מבנים. כשהיא פעילה, Android יכול למצוא אותו גם לפי רשתות Wi-Fi ואנטנות סלולריות בסביבה.</string>
+    <string name="dejavu_network_location_warning_title">להשתמש במיקום מהרשת?</string>
+    <string name="dejavu_network_location_warning_message">בטלפונים עם Google Play Services, מערכת Android מאתרת את המיקום שלך על ידי שליחת רשתות ה־Wi-Fi והאנטנות הסלולריות שבסביבתך ל־Google. אתרים עדיין מקבלים את המיקום שלך רק אחרי שנתת להם הרשאה.</string>
 </resources>

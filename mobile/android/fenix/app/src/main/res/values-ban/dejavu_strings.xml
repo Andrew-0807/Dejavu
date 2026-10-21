@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Build Dejavu puniki nenten madue kunci Safe Browsing, nika mawinan nenten prasida ngicen pangeling indik situs sane baya.</string>
     <string name="dejavu_custom_action_http_warning">Alamat puniki nganggen http, nika mawinan pinunas, header-nyane miwah alamat kaca mamargi tanpa enkripsi. Anggen https yening server nyokong.</string>
     <string name="dejavu_example_notification_ntfy">Kirim kaca dados notifikasi. Sapa sira sane uning wastan topik prasida ngwacen, nika mawinan pilih wastan sane dawa tur acak.</string>
+    <string name="dejavu_settings_direct_calls">Sambungan langsung anggen telepon</string>
+    <string name="dejavu_settings_direct_calls_summary">Yening kamatiang, telepon ring situs web masambung wantah ngangge server relay situs punika, sane ngengkebang alamat IP ragane saking situs miwah saking anak sane katelepon. Urupang yening telepon nenten masambung.</string>
+    <string name="dejavu_direct_calls_warning_title">Kalugrahin sambungan langsung?</string>
+    <string name="dejavu_direct_calls_warning_message">Anak sane katelepon miwah situs sane ngaryanin telepon raris prasida ngantenang alamat IP ragane. Situs sane kalugrahin nganggen kamera utawi mikrofon ragane taler prasida ngantenang alamat ragane ring jaringan lokal.</string>
+    <string name="dejavu_settings_network_location">Genah saking jaringan</string>
+    <string name="dejavu_settings_network_location_summary">Yening kamatiang, situs web sane kalugrahin ngamolihang genah ragane wantah saking GPS, sane prasida adeng utawi gagal ring sajeroning wewangunan. Yening kaurupang, Android taler prasida ngrereh saking jaringan Wi-Fi miwah menara seluler sane nampek.</string>
+    <string name="dejavu_network_location_warning_title">Nganggen genah saking jaringan?</string>
+    <string name="dejavu_network_location_warning_message">Ring telepon sane madue Google Play Services, Android ngrereh genah ragane antuk ngirim jaringan Wi-Fi miwah menara seluler sane nampek ring ragane ka Google. Situs web kantun ngamolihang genah ragane wantah sasampun ragane ngalugrahin.</string>
 </resources>

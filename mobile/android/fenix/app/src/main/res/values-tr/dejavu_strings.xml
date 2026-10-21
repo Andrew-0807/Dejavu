@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu\'nun bu sürümünde Safe Browsing anahtarı yok, bu yüzden tehlikeli siteler hakkında uyaramaz.</string>
     <string name="dejavu_custom_action_http_warning">Bu adres http kullanıyor, bu yüzden istek, başlıkları ve sayfanın adresi şifrelenmeden gider. Sunucu destekliyorsa https kullanın.</string>
     <string name="dejavu_example_notification_ntfy">Sayfayı bildirim olarak gönderir. Konunun adını bilen herkes okuyabilir, bu yüzden uzun ve rastgele bir ad seçin.</string>
+    <string name="dejavu_settings_direct_calls">Aramalar için doğrudan bağlantılar</string>
+    <string name="dejavu_settings_direct_calls_summary">Kapalıyken web sitelerindeki aramalar yalnızca sitenin aktarma sunucuları üzerinden bağlanır. Bu, IP adresinizi sitelerden ve aradığınız kişilerden gizler. Bir arama bağlanmazsa açın.</string>
+    <string name="dejavu_direct_calls_warning_title">Doğrudan bağlantılara izin verilsin mi?</string>
+    <string name="dejavu_direct_calls_warning_message">Bu durumda aradığınız kişiler ve aramayı yürüten siteler IP adresinizi görebilir. Kameranızı veya mikrofonunuzu kullanmasına izin verdiğiniz siteler, yerel ağınızdaki adreslerinizi de görebilir.</string>
+    <string name="dejavu_settings_network_location">Ağ konumu</string>
+    <string name="dejavu_settings_network_location_summary">Kapalıyken izin verdiğiniz web siteleri konumunuzu yalnızca GPS\'ten alır. Bu yavaş olabilir veya kapalı alanlarda başarısız olabilir. Açıkken Android konumunuzu yakındaki Wi-Fi ağlarından ve baz istasyonlarından da bulabilir.</string>
+    <string name="dejavu_network_location_warning_title">Ağ konumu kullanılsın mı?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services bulunan telefonlarda Android, yakınınızdaki Wi-Fi ağlarını ve baz istasyonlarını Google\'a göndererek konumunuzu bulur. Web siteleri konumunuzu yine yalnızca siz izin verdikten sonra alır.</string>
 </resources>

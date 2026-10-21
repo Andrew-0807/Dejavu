@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">កំណែ Dejavu នេះគ្មានសោ Safe Browsing ទេ ដូច្នេះវាមិនអាចព្រមានអំពីគេហទំព័រគ្រោះថ្នាក់បានទេ។</string>
     <string name="dejavu_custom_action_http_warning">អាសយដ្ឋាននេះប្រើ http ដូច្នេះសំណើ ក្បាលរបស់វា និងអាសយដ្ឋានទំព័រធ្វើដំណើរដោយមិនបានអ៊ិនគ្រីប។ ប្រើ https ប្រសិនបើម៉ាស៊ីនមេគាំទ្រ។</string>
     <string name="dejavu_example_notification_ntfy">ផ្ញើទំព័រជាការជូនដំណឹង។ អ្នកណាដែលដឹងឈ្មោះប្រធានបទអាចអានវាបាន ដូច្នេះជ្រើសរើសឈ្មោះវែង និងចៃដន្យ។</string>
+    <string name="dejavu_settings_direct_calls">ការតភ្ជាប់ផ្ទាល់សម្រាប់ការហៅ</string>
+    <string name="dejavu_settings_direct_calls_summary">នៅពេលបិទ ការហៅនៅលើគេហទំព័រភ្ជាប់តែតាមរយៈម៉ាស៊ីនមេបញ្ជូនបន្តរបស់គេហទំព័រប៉ុណ្ណោះ ដែលលាក់អាសយដ្ឋាន IP របស់អ្នកពីគេហទំព័រ និងពីមនុស្សដែលអ្នកហៅ។ បើកវា ប្រសិនបើការហៅមិនភ្ជាប់។</string>
+    <string name="dejavu_direct_calls_warning_title">អនុញ្ញាតការតភ្ជាប់ផ្ទាល់ឬ?</string>
+    <string name="dejavu_direct_calls_warning_message">បន្ទាប់មក មនុស្សដែលអ្នកហៅ និងគេហទំព័រដែលធ្វើការហៅអាចមើលឃើញអាសយដ្ឋាន IP របស់អ្នក។ គេហទំព័រដែលអ្នកអនុញ្ញាតឱ្យប្រើកាមេរ៉ា ឬមីក្រូហ្វូនរបស់អ្នក ក៏អាចមើលឃើញអាសយដ្ឋានរបស់អ្នកនៅលើបណ្ដាញមូលដ្ឋានដែរ។</string>
+    <string name="dejavu_settings_network_location">ទីតាំងតាមបណ្ដាញ</string>
+    <string name="dejavu_settings_network_location_summary">នៅពេលបិទ គេហទំព័រដែលអ្នកអនុញ្ញាតទទួលបានទីតាំងរបស់អ្នកតែពី GPS ប៉ុណ្ណោះ ដែលអាចយឺត ឬបរាជ័យនៅក្នុងអគារ។ នៅពេលបើក Android ក៏អាចរកវាឃើញពីបណ្ដាញ Wi-Fi និងប៉មទូរស័ព្ទនៅក្បែរនោះដែរ។</string>
+    <string name="dejavu_network_location_warning_title">ប្រើទីតាំងតាមបណ្ដាញឬ?</string>
+    <string name="dejavu_network_location_warning_message">នៅលើទូរស័ព្ទដែលមាន Google Play Services Android ស្វែងរកទីតាំងរបស់អ្នកដោយផ្ញើបណ្ដាញ Wi-Fi និងប៉មទូរស័ព្ទនៅជិតអ្នកទៅ Google។ គេហទំព័រនៅតែទទួលបានទីតាំងរបស់អ្នកតែបន្ទាប់ពីអ្នកអនុញ្ញាតប៉ុណ្ណោះ។</string>
 </resources>

@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Sta compilazione di Dejavu ùn hà micca chjave Safe Browsing, dunque ùn pò micca avvisà di i siti periculosi.</string>
     <string name="dejavu_custom_action_http_warning">St\'indirizzu adopra http, dunque a dumanda, e so intestature è l\'indirizzu di a pagina viaghjanu senza cifratura. Aduprate https s\'è u servitore u sustene.</string>
     <string name="dejavu_example_notification_ntfy">Manda a pagina cum\'è nutificazione. Chiunque cunnosce u nome di u sugettu a pò leghje, dunque sceglite un nome longu è aleatoriu.</string>
+    <string name="dejavu_settings_direct_calls">Cunnessione diretta per e chjamate</string>
+    <string name="dejavu_settings_direct_calls_summary">Disattivatu, e chjamate in i siti web si cunnettenu solu per mezu di i servitori di ritrasmissione di u situ, ciò chì piatta u vostru indirizzu IP à i siti è à e persone chì vo chjamate. Attivatelu s\'è una chjamata ùn si cunnette.</string>
+    <string name="dejavu_direct_calls_warning_title">Permette e cunnessione diretta?</string>
+    <string name="dejavu_direct_calls_warning_message">Tandu e persone chì vo chjamate è i siti chì facenu chjamate ponu vede u vostru indirizzu IP. I siti à quelli vo permettite d\'aduprà a camera o u micrò ponu vede ancu i vostri indirizzi nant\'à a vostra reta lucale.</string>
+    <string name="dejavu_settings_network_location">Lucalizazione per reta</string>
+    <string name="dejavu_settings_network_location_summary">Disattivatu, i siti web chì vo permettite ottenenu a vostra lucalizazione solu da u GPS, chì pò esse lentu o fiascà in l\'internu. Attivatu, Android a pò ancu truvà à partesi da e rete Wi-Fi è da l\'antenne di telefunia vicine.</string>
+    <string name="dejavu_network_location_warning_title">Aduprà a lucalizazione per reta?</string>
+    <string name="dejavu_network_location_warning_message">Nant\'à i telefoni cù Google Play Services, Android trova a vostra lucalizazione mandendu à Google e rete Wi-Fi è l\'antenne di telefunia vicinu à voi. I siti web ottenenu sempre a vostra lucalizazione solu dopu chì vo l\'averete permessu.</string>
 </resources>

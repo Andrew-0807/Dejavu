@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">A Dejavu ezen kiadásában nincs Safe Browsing-kulcs, ezért nem tud figyelmeztetni a veszélyes oldalakra.</string>
     <string name="dejavu_custom_action_http_warning">Ez a cím http-t használ, ezért a kérés, a fejlécei és az oldal címe titkosítatlanul utazik. Használjon https-t, ha a kiszolgáló támogatja.</string>
     <string name="dejavu_example_notification_ntfy">Az oldal elküldése értesítésként. Bárki, aki ismeri a téma nevét, elolvashatja, ezért válasszon hosszú, véletlenszerű nevet.</string>
+    <string name="dejavu_settings_direct_calls">Közvetlen kapcsolatok hívásokhoz</string>
+    <string name="dejavu_settings_direct_calls_summary">Kikapcsolva a weboldalakon indított hívások csak az oldal továbbítókiszolgálóin keresztül kapcsolódnak, ami elrejti az IP-címét az oldalak és a hívott személyek elől. Kapcsolja be, ha egy hívás nem kapcsolódik.</string>
+    <string name="dejavu_direct_calls_warning_title">Engedélyezi a közvetlen kapcsolatokat?</string>
+    <string name="dejavu_direct_calls_warning_message">Ekkor a hívott személyek és a hívásokat bonyolító oldalak láthatják az IP-címét. Azok az oldalak, amelyeknek engedélyezi a kamera vagy a mikrofon használatát, a helyi hálózaton lévő címeit is láthatják.</string>
+    <string name="dejavu_settings_network_location">Hálózati helymeghatározás</string>
+    <string name="dejavu_settings_network_location_summary">Kikapcsolva az engedélyezett weboldalak csak a GPS-ből kapják meg a tartózkodási helyét, ami lassú lehet, vagy beltérben sikertelen. Bekapcsolva az Android a közeli Wi-Fi-hálózatok és mobiltornyok alapján is meghatározhatja.</string>
+    <string name="dejavu_network_location_warning_title">Használja a hálózati helymeghatározást?</string>
+    <string name="dejavu_network_location_warning_message">A Google Play Services szolgáltatást tartalmazó telefonokon az Android úgy határozza meg a tartózkodási helyét, hogy elküldi a Google-nek az Ön közelében lévő Wi-Fi-hálózatokat és mobiltornyokat. A weboldalak továbbra is csak az Ön engedélye után kapják meg a tartózkodási helyét.</string>
 </resources>

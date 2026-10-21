@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ev avakirina Dejavu mifteya Safe Browsing tune ye, ji ber vê nikare li ser malperên xeternak hişyariyê bide.</string>
     <string name="dejavu_custom_action_http_warning">Ev navnîşan http bi kar tîne, ji ber vê daxwaz, sernivîsên wê û navnîşana rûpelê bêyî şîfrekirinê diçin. Heke pêşkêşkar piştgirî dide, https bi kar bîne.</string>
     <string name="dejavu_example_notification_ntfy">Rûpelê wekî agahdarî bişîne. Her kesê ku navê mijarê dizane dikare wê bixwîne, ji ber vê navekî dirêj û rasthatî hilbijêre.</string>
+    <string name="dejavu_settings_direct_calls">Girêdanên rasterast ji bo bangan</string>
+    <string name="dejavu_settings_direct_calls_summary">Dema girtî be, bangên li malperan tenê bi rêya pêşkêşkarên veguhastinê yên malperê ve girê didin, ev yek navnîşana te ya IP ji malperan û ji kesên ku tu bang dikî vedişêre. Heke bangek girê nede, wê veke.</string>
+    <string name="dejavu_direct_calls_warning_title">Destûr bide girêdanên rasterast?</string>
+    <string name="dejavu_direct_calls_warning_message">Hingê kesên ku tu bang dikî û malperên ku bangan dikin dikarin navnîşana te ya IP bibînin. Malperên ku tu destûrê didî wan kamera an mîkrofona te bi kar bînin dikarin navnîşanên te yên li ser tora te ya herêmî jî bibînin.</string>
+    <string name="dejavu_settings_network_location">Cih bi rêya torê</string>
+    <string name="dejavu_settings_network_location_summary">Dema girtî be, malperên ku tu destûrê didî wan cihê te tenê ji GPSê distînin, ev dikare hêdî be an jî di hundir de bi ser nekeve. Dema vekirî be, Android dikare wê ji torên Wi-Fi û bircên mobîl ên nêzîk jî bibîne.</string>
+    <string name="dejavu_network_location_warning_title">Cih bi rêya torê bi kar bîne?</string>
+    <string name="dejavu_network_location_warning_message">Li ser telefonên bi Google Play Services, Android cihê te dibîne bi şandina torên Wi-Fi û bircên mobîl ên nêzî te ji Googleê re. Malper hîn jî tenê piştî ku tu destûrê bidî wan cihê te distînin.</string>
 </resources>

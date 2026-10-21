@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu دے ایں بلڈ وچ Safe Browsing کنجی کائنی، ایں کیتے ایہ خطرناک سائٹاں بارے خبردار نئیں کر سڳدا۔</string>
     <string name="dejavu_custom_action_http_warning">ایہ پتہ http ورتیندا ہے، ایں کیتے درخواست، ایں دے ہیڈر تے صفحے دا پتہ انکرپشن دے بغیر ویندے ہن۔ جے سرور سہارا ݙیندا ہے تاں https ورتو۔</string>
     <string name="dejavu_example_notification_ntfy">صفحے کوں نوٹیفکیشن وانگوں بھیڄو۔ موضوع دا ناں ڄاݨݨ آلا کوئی وی ایں کوں پڑھ سڳدے، ایں کیتے لمبا تے بےترتیب ناں چُݨو۔</string>
+    <string name="dejavu_settings_direct_calls">کالاں کیتے سدھے کنکشن</string>
+    <string name="dejavu_settings_direct_calls_summary">بند ہووݨ تے، ویب سائٹاں تے کالاں صرف سائٹ دے ریلے سروراں راہیں جڑدیاں ہن، جیندے نال تہاݙا IP پتہ سائٹاں تے اُنہاں لوکاں کنوں لُکیا راہندے جنہاں کوں تساں کال کریندے ہو۔ جے کال نہ جڑے تاں اینکوں چالو کرو۔</string>
+    <string name="dejavu_direct_calls_warning_title">سدھے کنکشناں دی اجازت ݙیوو؟</string>
+    <string name="dejavu_direct_calls_warning_message">وت جنہاں کوں تساں کال کریندے ہو او لوک تے کالاں کرݨ آلیاں سائٹاں تہاݙا IP پتہ ݙیکھ سڳدیاں ہن۔ جنہاں سائٹاں کوں تساں آپݨا کیمرہ یا مائیکروفون ورتݨ ݙیندے ہو، او تہاݙے مقامی نیٹ ورک تے تہاݙے پتے وی ݙیکھ سڳدیاں ہن۔</string>
+    <string name="dejavu_settings_network_location">نیٹ ورک ٹکاݨا</string>
+    <string name="dejavu_settings_network_location_summary">بند ہووݨ تے، جنہاں ویب سائٹاں کوں تساں اجازت ݙیندے ہو او تہاݙا ٹکاݨا صرف GPS کنوں گھندیاں ہن، جیہڑا ہولا تھی سڳدے یا گھر دے اندر ناکام تھی سڳدے۔ چالو ہووݨ تے، Android اینکوں نیڑے دے Wi-Fi نیٹ ورکاں تے موبائل ٹاوراں کنوں وی لبھ سڳدے۔</string>
+    <string name="dejavu_network_location_warning_title">نیٹ ورک ٹکاݨا ورتو؟</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services آلے فوناں تے، Android تہاݙے نیڑے دے Wi-Fi نیٹ ورک تے موبائل ٹاور Google کوں بھیج تے تہاݙا ٹکاݨا لبھدے۔ ویب سائٹاں کوں ہݨ وی تہاݙی اجازت دے بعد ای تہاݙا ٹکاݨا ملدے۔</string>
 </resources>

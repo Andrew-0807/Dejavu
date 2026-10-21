@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu-dıń bul jıynaǵında Safe Browsing gilti joq, sonlıqtan qáwipli saytlar haqqında eskerte almaydı.</string>
     <string name="dejavu_custom_action_http_warning">Bul mánzil http paydalanadı, sonlıqtan soraw, onıń taqırıpları hám bettiń mánzili shifrlanbay jiberiledi. Server qollasa, https paydalanıń.</string>
     <string name="dejavu_example_notification_ntfy">Betti xabarlama retinde jiberiń. Temanıń atın biletuǵın hár kim onı oqıy aladı, sonlıqtan uzın, tosınnan alınǵan at saylań.</string>
+    <string name="dejavu_settings_direct_calls">Qońırawlar ushın tikkeley baylanıslar</string>
+    <string name="dejavu_settings_direct_calls_summary">Óshirilgende, saytlardaǵı qońırawlar tek saytlıń retranslyaciya serverleri arqalı jalǵanadı, bul IP mánziliñizdi saytlardan hám siz qońıraw etetuǵın adamlardan jasıradı. Qońıraw jalǵanbasa, onı qosıń.</string>
+    <string name="dejavu_direct_calls_warning_title">Tikkeley baylanıslarǵa ruqsat berilsin be?</string>
+    <string name="dejavu_direct_calls_warning_message">Sonda siz qońıraw etetuǵın adamlar hám qońıraw etetuǵın saytlar IP mánziliñizdi kóre aladı. Kamera yamasa mikrofonıñızdı paydalanıwǵa ruqsat bergen saytlar jergilikli tarmaqtaǵı mánzilleriñizdi de kóre aladı.</string>
+    <string name="dejavu_settings_network_location">Tarmaq arqalı orın</string>
+    <string name="dejavu_settings_network_location_summary">Óshirilgende, siz ruqsat bergen saytlar orınıñızdı tek GPS-ten aladı, bul ástelik bolıwı yamasa ishki bólmelerde islemewi múmkin. Qosılǵanda, Android onı jaqın jerdegi Wi-Fi tarmaqları hám mobil minaralar arqalı da taba aladı.</string>
+    <string name="dejavu_network_location_warning_title">Tarmaq arqalı orın paydalanılsın ba?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services bar telefonlarda Android jaqınıñızdaǵı Wi-Fi tarmaqları hám mobil minaralardı Google-ǵa jiberip, orınıñızdı tabadı. Saytlar orınıñızdı burınǵıday tek siz ruqsat bergennen keyin aladı.</string>
 </resources>

@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Lqem-a n Dejavu ur yesɛi ara tasarut n Safe Browsing, ihi ur yezmir ara ad yelɣu ɣef yismal yeččuren d lxeṭṛ.</string>
     <string name="dejavu_custom_action_http_warning">Tansa-a tesseqdac http, ihi asuter, iqerra-s d tansa n usebter ttɛeddin war awgelhen. Seqdec https ma yella aqeddac yessefrak-it.</string>
     <string name="dejavu_example_notification_ntfy">Azen asebter d alɣu. Win yessnen isem n usentel yezmer ad t-iɣer, ihi fren isem aɣezfan, agacuran.</string>
+    <string name="dejavu_settings_direct_calls">Tuqqniwin tusridin i yisawalen</string>
+    <string name="dejavu_settings_direct_calls_summary">Mi ara yensa, isawalen deg yesmal web qqnen kan s yiqeddacen n usiweḍ n usmel, ayen yeffren tansa-ik IP i yesmal d yimdanen i tessawaleḍ. Rmed-it ma yella asiwel ur yeqqen ara.</string>
+    <string name="dejavu_direct_calls_warning_title">Sireg tuqqniwin tusridin?</string>
+    <string name="dejavu_direct_calls_warning_message">Imdanen i tessawaleḍ d yesmal yesseddayen isawalen zemren ad walin tansa-ik IP. Ismal i tesirgeḍ ad sqedcen takamiṛat neɣ asawaḍ-ik zemren daɣen ad walin tansiwin-ik deg uẓeṭṭa-ik adigan.</string>
+    <string name="dejavu_settings_network_location">Adig s uẓeṭṭa</string>
+    <string name="dejavu_settings_network_location_summary">Mi ara yensa, ismal web i tesirgeḍ ttawin-d adig-ik seg GPS kan, ayen izemren ad yili d aẓayan neɣ ur iteddu ara daxel n wexxam. Mi ara yermed, Android yezmer ad t-yaf daɣen s yiẓeṭṭayen Wi-Fi d tberjin n tiliɣri iqerben.</string>
+    <string name="dejavu_network_location_warning_title">Seqdec adig s uẓeṭṭa?</string>
+    <string name="dejavu_network_location_warning_message">Ɣef tiliɣriyin yesɛan Google Play Services, Android yettaf adig-ik s tuzna n yiẓeṭṭayen Wi-Fi d tberjin n tiliɣri i k-yqerben ɣer Google. Ismal web ttawin-d adig-ik kan mi ara ten-tesirgeḍ.</string>
 </resources>

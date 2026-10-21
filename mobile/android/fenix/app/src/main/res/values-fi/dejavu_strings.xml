@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Tässä Dejavun versiossa ei ole Safe Browsing -avainta, joten se ei voi varoittaa vaarallisista sivustoista.</string>
     <string name="dejavu_custom_action_http_warning">Tämä osoite käyttää http:tä, joten pyyntö, sen otsakkeet ja sivun osoite kulkevat salaamattomina. Käytä https:ää, jos palvelin tukee sitä.</string>
     <string name="dejavu_example_notification_ntfy">Lähetä sivu ilmoituksena. Kuka tahansa aiheen nimen tietävä voi lukea sen, joten valitse pitkä, satunnainen nimi.</string>
+    <string name="dejavu_settings_direct_calls">Suorat yhteydet puheluille</string>
+    <string name="dejavu_settings_direct_calls_summary">Kun tämä on pois päältä, verkkosivustojen puhelut yhdistyvät vain sivuston välityspalvelinten kautta, mikä piilottaa IP-osoitteesi sivustoilta ja ihmisiltä, joille soitat. Ota tämä käyttöön, jos puhelu ei yhdisty.</string>
+    <string name="dejavu_direct_calls_warning_title">Sallitaanko suorat yhteydet?</string>
+    <string name="dejavu_direct_calls_warning_message">Ihmiset, joille soitat, ja puheluja välittävät sivustot näkevät silloin IP-osoitteesi. Sivustot, joille sallit kameran tai mikrofonin käytön, näkevät myös osoitteesi paikallisessa verkossa.</string>
+    <string name="dejavu_settings_network_location">Verkkosijainti</string>
+    <string name="dejavu_settings_network_location_summary">Kun tämä on pois päältä, sallimasi verkkosivustot saavat sijaintisi vain GPS:stä, mikä voi olla hidasta tai epäonnistua sisätiloissa. Kun tämä on päällä, Android voi selvittää sen myös lähellä olevien Wi-Fi-verkkojen ja tukiasemien avulla.</string>
+    <string name="dejavu_network_location_warning_title">Käytetäänkö verkkosijaintia?</string>
+    <string name="dejavu_network_location_warning_message">Puhelimissa, joissa on Google Play Services, Android selvittää sijaintisi lähettämällä lähelläsi olevat Wi-Fi-verkot ja tukiasemat Googlelle. Verkkosivustot saavat sijaintisi edelleen vasta, kun olet sallinut sen.</string>
 </resources>

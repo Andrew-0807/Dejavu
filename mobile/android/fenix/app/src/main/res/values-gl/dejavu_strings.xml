@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Esta compilación de Dejavu non ten chave de Safe Browsing, así que non pode avisar de sitios perigosos.</string>
     <string name="dejavu_custom_action_http_warning">Este enderezo usa http, así que a solicitude, as súas cabeceiras e o enderezo da páxina viaxan sen cifrar. Usa https se o servidor o admite.</string>
     <string name="dejavu_example_notification_ntfy">Envía a páxina como notificación. Calquera que coñeza o nome do tema pode lela, así que escolle un longo e aleatorio.</string>
+    <string name="dejavu_settings_direct_calls">Conexións directas para as chamadas</string>
+    <string name="dejavu_settings_direct_calls_summary">Desactivado, as chamadas nos sitios web conéctanse só a través dos servidores de retransmisión do sitio, o que oculta o teu enderezo IP aos sitios e ás persoas ás que chamas. Actívao se unha chamada non se conecta.</string>
+    <string name="dejavu_direct_calls_warning_title">Permitir as conexións directas?</string>
+    <string name="dejavu_direct_calls_warning_message">Entón as persoas ás que chamas e os sitios que fan chamadas poderán ver o teu enderezo IP. Os sitios aos que permitas usar a cámara ou o micrófono tamén poderán ver os teus enderezos na túa rede local.</string>
+    <string name="dejavu_settings_network_location">Localización pola rede</string>
+    <string name="dejavu_settings_network_location_summary">Desactivado, os sitios web que permitas obteñen a túa localización só do GPS, que pode ser lento ou fallar en interiores. Activado, Android tamén pode atopala a partir das redes wifi e das antenas de telefonía próximas.</string>
+    <string name="dejavu_network_location_warning_title">Usar a localización pola rede?</string>
+    <string name="dejavu_network_location_warning_message">Nos teléfonos con Google Play Services, Android atopa a túa localización enviando a Google as redes wifi e as antenas de telefonía que tes preto. Os sitios web seguen obtendo a túa localización só despois de que llelo permitas.</string>
 </resources>

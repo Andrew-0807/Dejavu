@@ -382,4 +382,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu के इस बिल्ड में Safe Browsing कुंजी नहीं है, इसलिए यह ख़तरनाक साइटों के बारे में चेतावनी नहीं दे सकता।</string>
     <string name="dejavu_custom_action_http_warning">यह पता http का उपयोग करता है, इसलिए अनुरोध, उसके हेडर और पेज का पता बिना एन्क्रिप्शन के जाते हैं। सर्वर समर्थन करे तो https का उपयोग करें।</string>
     <string name="dejavu_example_notification_ntfy">पेज को सूचना के रूप में भेजें। जिसे भी विषय का नाम पता है वह इसे पढ़ सकता है, इसलिए लंबा, बेतरतीब नाम चुनें।</string>
+    <string name="dejavu_settings_direct_calls">कॉल के लिए सीधे कनेक्शन</string>
+    <string name="dejavu_settings_direct_calls_summary">बंद होने पर, वेबसाइटों पर कॉल केवल साइट के रिले सर्वर के ज़रिए जुड़ते हैं, जिससे आपका IP पता साइटों और उन लोगों से छिपा रहता है जिन्हें आप कॉल करते हैं। अगर कोई कॉल नहीं जुड़ता, तो इसे चालू करें।</string>
+    <string name="dejavu_direct_calls_warning_title">सीधे कनेक्शन की अनुमति दें?</string>
+    <string name="dejavu_direct_calls_warning_message">तब आप जिन लोगों को कॉल करते हैं और कॉल करने वाली साइटें आपका IP पता देख सकती हैं। जिन साइटों को आप अपना कैमरा या माइक्रोफ़ोन इस्तेमाल करने देते हैं, वे आपके लोकल नेटवर्क पर आपके पते भी देख सकती हैं।</string>
+    <string name="dejavu_settings_network_location">नेटवर्क से स्थान</string>
+    <string name="dejavu_settings_network_location_summary">बंद होने पर, जिन वेबसाइटों को आप अनुमति देते हैं वे आपका स्थान केवल GPS से पाती हैं, जो धीमा हो सकता है या घर के अंदर विफल हो सकता है। चालू होने पर, Android इसे आस-पास के Wi-Fi नेटवर्क और मोबाइल टावरों से भी पता लगा सकता है।</string>
+    <string name="dejavu_network_location_warning_title">नेटवर्क से स्थान इस्तेमाल करें?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services वाले फ़ोन पर, Android आपके आस-पास के Wi-Fi नेटवर्क और मोबाइल टावरों की जानकारी Google को भेजकर आपका स्थान पता करता है। वेबसाइटें अब भी आपकी अनुमति के बाद ही आपका स्थान पाती हैं।</string>
 </resources>

@@ -356,4 +356,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Această versiune Dejavu nu are o cheie Safe Browsing, așa că nu poate avertiza despre site-uri periculoase.</string>
     <string name="dejavu_custom_action_http_warning">Această adresă folosește http, așa că cererea, antetele ei și adresa paginii circulă necriptate. Folosește https dacă serverul îl acceptă.</string>
     <string name="dejavu_example_notification_ntfy">Trimite pagina ca notificare. Oricine știe numele subiectului o poate citi, așa că alege un nume lung și aleatoriu.</string>
+    <string name="dejavu_settings_direct_calls">Conexiuni directe pentru apeluri</string>
+    <string name="dejavu_settings_direct_calls_summary">Dezactivat, apelurile de pe site-uri se conectează doar prin serverele de retransmisie ale site-ului, ceea ce îți ascunde adresa IP de site-uri și de persoanele pe care le apelezi. Activează-l dacă un apel nu se conectează.</string>
+    <string name="dejavu_direct_calls_warning_title">Permiți conexiunile directe?</string>
+    <string name="dejavu_direct_calls_warning_message">Persoanele pe care le apelezi și site-urile care fac apeluri îți vor putea vedea atunci adresa IP. Site-urile cărora le permiți să folosească camera sau microfonul îți vor putea vedea și adresele din rețeaua locală.</string>
+    <string name="dejavu_settings_network_location">Locație din rețea</string>
+    <string name="dejavu_settings_network_location_summary">Dezactivat, site-urile cărora le permiți îți obțin locația doar din GPS, ceea ce poate fi lent sau poate eșua în interior. Activat, Android o poate găsi și pe baza rețelelor Wi-Fi și a antenelor de telefonie din apropiere.</string>
+    <string name="dejavu_network_location_warning_title">Folosești locația din rețea?</string>
+    <string name="dejavu_network_location_warning_message">Pe telefoanele cu Google Play Services, Android îți găsește locația trimițând la Google rețelele Wi-Fi și antenele de telefonie din apropierea ta. Site-urile îți obțin în continuare locația doar după ce le permiți.</string>
 </resources>

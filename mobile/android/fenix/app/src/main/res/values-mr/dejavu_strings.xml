@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu च्या या बिल्डमध्ये Safe Browsing की नाही, म्हणून ते धोकादायक साइट्सबद्दल चेतावणी देऊ शकत नाही.</string>
     <string name="dejavu_custom_action_http_warning">हा पत्ता http वापरतो, म्हणून विनंती, तिचे हेडर आणि पृष्ठाचा पत्ता एन्क्रिप्शनशिवाय जातात. सर्व्हर समर्थन करत असल्यास https वापरा.</string>
     <string name="dejavu_example_notification_ntfy">पृष्ठ सूचना म्हणून पाठवा. विषयाचे नाव माहीत असलेला कोणीही ते वाचू शकतो, म्हणून लांब, यादृच्छिक नाव निवडा.</string>
+    <string name="dejavu_settings_direct_calls">कॉलसाठी थेट जोडणी</string>
+    <string name="dejavu_settings_direct_calls_summary">बंद असताना, वेबसाइटवरील कॉल फक्त साइटच्या रिले सर्व्हरद्वारे जोडले जातात, ज्यामुळे तुमचा IP पत्ता साइट्सपासून आणि तुम्ही ज्यांना कॉल करता त्या लोकांपासून लपवला जातो. कॉल जोडला न गेल्यास ते चालू करा.</string>
+    <string name="dejavu_direct_calls_warning_title">थेट जोडणीला परवानगी द्यायची?</string>
+    <string name="dejavu_direct_calls_warning_message">मग तुम्ही ज्यांना कॉल करता ते लोक आणि कॉल करणाऱ्या साइट्स तुमचा IP पत्ता पाहू शकतात. तुम्ही ज्या साइट्सना तुमचा कॅमेरा किंवा मायक्रोफोन वापरू देता त्या तुमच्या स्थानिक नेटवर्कवरील तुमचे पत्तेही पाहू शकतात.</string>
+    <string name="dejavu_settings_network_location">नेटवर्कद्वारे स्थान</string>
+    <string name="dejavu_settings_network_location_summary">बंद असताना, तुम्ही परवानगी दिलेल्या वेबसाइट्सना तुमचे स्थान फक्त GPS वरून मिळते, जे धीमे असू शकते किंवा इमारतीच्या आत अयशस्वी होऊ शकते. चालू असताना, Android ते जवळच्या Wi-Fi नेटवर्क आणि मोबाईल टॉवरवरूनही शोधू शकते.</string>
+    <string name="dejavu_network_location_warning_title">नेटवर्कद्वारे स्थान वापरायचे?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services असलेल्या फोनवर, Android तुमच्या जवळचे Wi-Fi नेटवर्क आणि मोबाईल टॉवर Google ला पाठवून तुमचे स्थान शोधते. वेबसाइट्सना अजूनही तुम्ही परवानगी दिल्यानंतरच तुमचे स्थान मिळते.</string>
 </resources>

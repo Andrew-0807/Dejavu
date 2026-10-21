@@ -356,4 +356,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Aquesta compilació del Dejavu no té clau de Safe Browsing, de manera que no pot avisar de llocs perillosos.</string>
     <string name="dejavu_custom_action_http_warning">Aquesta adreça usa http, de manera que la sol·licitud, les seves capçaleres i l\'adreça de la pàgina viatgen sense xifrar. Useu https si el servidor l\'admet.</string>
     <string name="dejavu_example_notification_ntfy">Envia la pàgina com a notificació. Qualsevol que conegui el nom del tema la pot llegir, així que trieu-ne un de llarg i aleatori.</string>
+    <string name="dejavu_settings_direct_calls">Connexions directes per a les trucades</string>
+    <string name="dejavu_settings_direct_calls_summary">Desactivat, les trucades als llocs web es connecten només a través dels servidors de retransmissió del lloc, cosa que amaga la vostra adreça IP dels llocs i de les persones a qui truqueu. Activeu-ho si una trucada no es connecta.</string>
+    <string name="dejavu_direct_calls_warning_title">Voleu permetre les connexions directes?</string>
+    <string name="dejavu_direct_calls_warning_message">Aleshores les persones a qui truqueu i els llocs que fan trucades poden veure la vostra adreça IP. Els llocs als quals permeteu utilitzar la càmera o el micròfon també poden veure les vostres adreces a la xarxa local.</string>
+    <string name="dejavu_settings_network_location">Ubicació per xarxa</string>
+    <string name="dejavu_settings_network_location_summary">Desactivat, els llocs web que permeteu obtenen la vostra ubicació només del GPS, que pot ser lent o fallar dins d\'edificis. Activat, l\'Android també la pot trobar a partir de les xarxes Wi-Fi i les antenes de telefonia properes.</string>
+    <string name="dejavu_network_location_warning_title">Voleu utilitzar la ubicació per xarxa?</string>
+    <string name="dejavu_network_location_warning_message">En els telèfons amb Google Play Services, l\'Android troba la vostra ubicació enviant a Google les xarxes Wi-Fi i les antenes de telefonia que teniu a prop. Els llocs web continuen obtenint la vostra ubicació només després que els ho permeteu.</string>
 </resources>

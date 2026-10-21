@@ -37,7 +37,7 @@ internal object DejavuDefaults {
     // Kept from before the rename to Dejavu, so saved data still loads.
     private const val PREFS_NAME = "kaizen_settings"
     private const val KEY_VERSION = "defaults_version"
-    private const val VERSION = 9
+    private const val VERSION = 10
     private const val POCKET_STORIES_WORK_TAG = "mozilla.components.service.pocket.recommendations.refresh.work.tag"
     private const val POCKET_SPONSORED_WORK_TAG = "mozilla.components.service.pocket.sponsored.content.refresh.work.tag"
     private const val KEY_SEARCH_VERSION = "search_defaults_version"
@@ -143,6 +143,12 @@ internal object DejavuDefaults {
                 // The engine writes no crash dumps anymore; the ones older versions wrote can hold parts of pages.
                 File(context.filesDir, "minidumps").deleteRecursively()
             }
+            if (applied < 10) {
+                useStrictTrackingProtection(context)
+                // Normal tabs tell websites not to sell or share the user's data too. Earlier versions saved it as off
+                // as soon as the tracking protection settings were opened.
+                shouldEnableGlobalPrivacyControl = true
+            }
         }
         // Last, as it starts the browser engine (StrictMode's profiler marker does), which reads settings like secure
         // DNS once, as it starts.
@@ -180,6 +186,20 @@ internal object DejavuDefaults {
     private fun Settings.useMaxSecureDns() {
         if (getDohSettingsMode() == Engine.DohSettingsMode.INCREASED) {
             setDohSettingsMode(Engine.DohSettingsMode.MAX)
+        }
+    }
+
+    /**
+     * Enhanced Tracking Protection is Strict, as in IronFox: on top of Standard it blocks tracking content and
+     * fingerprinters, deletes the data of bounce trackers instead of only recording them, and protects against
+     * fingerprinting in normal tabs too. A site it breaks can be let through with the shield in the address bar.
+     * Custom stays Custom.
+     */
+    private fun Settings.useStrictTrackingProtection(context: Context) {
+        if (!useStandardTrackingProtection) return
+        preferences.edit {
+            putBoolean(context.getPreferenceKey(R.string.pref_key_tracking_protection_standard_option), false)
+            putBoolean(context.getPreferenceKey(R.string.pref_key_tracking_protection_strict_default), true)
         }
     }
 

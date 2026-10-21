@@ -21,7 +21,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import androidx.core.net.toUri
-import androidx.emoji2.text.DefaultEmojiCompatConfig
+import androidx.emoji2.bundled.BundledEmojiCompatConfig
 import androidx.emoji2.text.EmojiCompat
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.work.Configuration.Builder
@@ -37,6 +37,7 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -593,10 +594,12 @@ open class FenixApplication : Application(), Provider, ThemeProvider {
                 }
 
                 // Start Relay feature to monitor account state throughout the app lifecycle.
-                // Note: This feature monitors FxA account changes and runs regardless of user
-                // settings; UI components check settings before actually using Relay functionality.
-                logElapsedTime(logger, "Starting Relay feature integration") {
-                    components.relayFeatureIntegration.start()
+                // Dejavu: only with email masks on, as otherwise it asks Mozilla for the account's devices and Relay
+                // details at every start for nothing.
+                if (components.settings.isEmailMaskFeatureEnabled) {
+                    logElapsedTime(logger, "Starting Relay feature integration") {
+                        components.relayFeatureIntegration.start()
+                    }
                 }
             }
         }
@@ -852,7 +855,10 @@ open class FenixApplication : Application(), Provider, ThemeProvider {
             remoteSettingsService = components.remoteSettingsService.value,
             onRemoteCollectionsUpdated = ::setupRefreshingSearchEngines,
         )
-        components.remoteSettingsSyncScheduler.registerForSync()
+        // Dejavu: the search engines, their icons and their order come from the copy of Mozilla's search setup that
+        // each version of Dejavu carries, so Mozilla cannot change them remotely. Nothing else uses this sync, which
+        // earlier versions ran every two hours.
+        components.remoteSettingsSyncScheduler.unregisterForSync()
     }
 
     @VisibleForTesting
@@ -1326,15 +1332,14 @@ open class FenixApplication : Application(), Provider, ThemeProvider {
      * Initializes EmojiCompat manually on a background thread.
      *
      * By initializing manually, we avoid the startup penalty associated with the default EmojiCompat initializer's
-     * ContentProvider. [DefaultEmojiCompatConfig] is used to automatically find a compatible font provider (such as
-     * Google Play Services).
+     * ContentProvider. Dejavu: the emoji font comes with the app ([BundledEmojiCompatConfig]), so it is never asked for
+     * from Google Play Services, and emoji look the same on every phone.
      *
      * @param dispatcher The [CoroutineDispatcher] on which the initialization will occur. Defaults to [ioDispatcher].
      */
     private suspend fun initializeEmojiCompat(dispatcher: CoroutineDispatcher = ioDispatcher) {
         withContext(dispatcher) {
-            // If the device has no compatible provider (e.g. no Play Services), config will be null.
-            val config = DefaultEmojiCompatConfig.create(applicationContext) ?: return@withContext
+            val config = BundledEmojiCompatConfig(applicationContext, dispatcher.asExecutor())
 
             config.setReplaceAll(true)
 

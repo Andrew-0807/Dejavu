@@ -356,4 +356,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Sta version de Dejavu no ła ga na ciave de Safe Browsing, cusì no ła pol avertir dei siti pericołozi.</string>
     <string name="dejavu_custom_action_http_warning">Sto indirizo el dòpara http, cusì ła domanda, łe so intestasion e l\'indirizo de ła pàxena i viaxa sensa çifradura. Dòpara https se el server el lo suporta.</string>
     <string name="dejavu_example_notification_ntfy">Manda ła pàxena come notìfega. Chiunque che sa el nome de l\'argomento el pol lèzarla, cusì sielzi un nome longo e a caxo.</string>
+    <string name="dejavu_settings_direct_calls">Conesion direte par łe ciamade</string>
+    <string name="dejavu_settings_direct_calls_summary">Co el xe dezativà, łe ciamade inte i siti web łe se coneta soło par mexo dei server de ritrazmision del sito, e cusì el to indirizo IP el resta sconto ai siti e a łe persone che te ciami. Ativeło se na ciamada no ła se coneta.</string>
+    <string name="dejavu_direct_calls_warning_title">Parmétar łe conesion direte?</string>
+    <string name="dejavu_direct_calls_warning_message">Łe persone che te ciami e i siti che fa łe ciamade i podarà alora védar el to indirizo IP. I siti a cui te parmeti de doparar ła fotocamera o el micròfono i podarà védar anca i to indirizi inte ła to rede łocałe.</string>
+    <string name="dejavu_settings_network_location">Pozision da ła rede</string>
+    <string name="dejavu_settings_network_location_summary">Co el xe dezativà, i siti web che te parmeti i ciapa ła to pozision soło dal GPS, che el pol èsar lento o no funsionar al serà. Co el xe ativà, Android el pol catarla anca da łe rede Wi-Fi e da łe antene tełefòniche vizine.</string>
+    <string name="dejavu_network_location_warning_title">Doparar ła pozision da ła rede?</string>
+    <string name="dejavu_network_location_warning_message">Sui tełèfoni co Google Play Services, Android el cata ła to pozision mandando a Google łe rede Wi-Fi e łe antene tełefòniche vizine a ti. I siti web i ciapa ancora ła to pozision soło dopo che te ghe ło ga parmeso.</string>
 </resources>

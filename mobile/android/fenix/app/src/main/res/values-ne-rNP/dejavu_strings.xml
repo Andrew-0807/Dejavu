@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu को यो बिल्डमा Safe Browsing कुञ्जी छैन, त्यसैले यसले खतरनाक साइटहरूबारे चेतावनी दिन सक्दैन।</string>
     <string name="dejavu_custom_action_http_warning">यो ठेगानाले http प्रयोग गर्छ, त्यसैले अनुरोध, यसका हेडरहरू र पृष्ठको ठेगाना इन्क्रिप्सनबिना जान्छन्। सर्भरले समर्थन गर्छ भने https प्रयोग गर्नुहोस्।</string>
     <string name="dejavu_example_notification_ntfy">पृष्ठलाई सूचनाको रूपमा पठाउनुहोस्। विषयको नाम थाहा भएको जो कोहीले यसलाई पढ्न सक्छ, त्यसैले लामो, अनियमित नाम छान्नुहोस्।</string>
+    <string name="dejavu_settings_direct_calls">कलका लागि प्रत्यक्ष जडानहरू</string>
+    <string name="dejavu_settings_direct_calls_summary">बन्द हुँदा, वेबसाइटहरूमा कलहरू साइटको रिले सर्भरहरूबाट मात्र जडान हुन्छन्, जसले तपाईंको IP ठेगाना साइटहरू र तपाईंले कल गर्ने मानिसहरूबाट लुकाउँछ। कल जडान नभएमा यसलाई सक्रिय गर्नुहोस्।</string>
+    <string name="dejavu_direct_calls_warning_title">प्रत्यक्ष जडानहरूलाई अनुमति दिने?</string>
+    <string name="dejavu_direct_calls_warning_message">त्यसपछि तपाईंले कल गर्ने मानिसहरू र कल गर्ने साइटहरूले तपाईंको IP ठेगाना देख्न सक्छन्। तपाईंले क्यामेरा वा माइक्रोफोन प्रयोग गर्न दिएका साइटहरूले तपाईंको स्थानीय नेटवर्कका ठेगानाहरू पनि देख्न सक्छन्।</string>
+    <string name="dejavu_settings_network_location">नेटवर्क स्थान</string>
+    <string name="dejavu_settings_network_location_summary">बन्द हुँदा, तपाईंले अनुमति दिएका वेबसाइटहरूले तपाईंको स्थान GPS बाट मात्र पाउँछन्, जुन ढिलो हुन सक्छ वा भवनभित्र असफल हुन सक्छ। सक्रिय हुँदा, Android ले नजिकका Wi-Fi नेटवर्क र मोबाइल टावरहरूबाट पनि यसलाई पत्ता लगाउन सक्छ।</string>
+    <string name="dejavu_network_location_warning_title">नेटवर्क स्थान प्रयोग गर्ने?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services भएका फोनहरूमा, Android ले तपाईंको नजिकका Wi-Fi नेटवर्क र मोबाइल टावरहरू Google लाई पठाएर तपाईंको स्थान पत्ता लगाउँछ। वेबसाइटहरूले अझै पनि तपाईंले अनुमति दिएपछि मात्र तपाईंको स्थान पाउँछन्।</string>
 </resources>

@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavuର ଏହି ବିଲ୍ଡରେ Safe Browsing କି ନାହିଁ, ତେଣୁ ଏହା ବିପଜ୍ଜନକ ସାଇଟ ବିଷୟରେ ସତର୍କ କରିପାରିବ ନାହିଁ।</string>
     <string name="dejavu_custom_action_http_warning">ଏହି ଠିକଣା http ବ୍ୟବହାର କରେ, ତେଣୁ ଅନୁରୋଧ, ଏହାର ହେଡର ଓ ପୃଷ୍ଠାର ଠିକଣା ଏନକ୍ରିପସନ ବିନା ଯାଏ। ସର୍ଭର ସମର୍ଥନ କଲେ https ବ୍ୟବହାର କରନ୍ତୁ।</string>
     <string name="dejavu_example_notification_ntfy">ପୃଷ୍ଠାକୁ ବିଜ୍ଞପ୍ତି ଭାବେ ପଠାନ୍ତୁ। ବିଷୟର ନାମ ଜାଣିଥିବା ଯେକେହି ଏହାକୁ ପଢ଼ିପାରିବେ, ତେଣୁ ଏକ ଲମ୍ବା, ଅନିୟମିତ ନାମ ବାଛନ୍ତୁ।</string>
+    <string name="dejavu_settings_direct_calls">କଲ୍ ପାଇଁ ସିଧାସଳଖ ସଂଯୋଗ</string>
+    <string name="dejavu_settings_direct_calls_summary">ବନ୍ଦ ଥିଲେ, ୱେବସାଇଟରେ କଲ୍ କେବଳ ସାଇଟର ରିଲେ ସର୍ଭର ମାଧ୍ୟମରେ ସଂଯୁକ୍ତ ହୁଏ, ଯାହା ଆପଣଙ୍କ IP ଠିକଣାକୁ ସାଇଟ ଏବଂ ଆପଣ କଲ୍ କରୁଥିବା ଲୋକଙ୍କଠାରୁ ଲୁଚାଇ ରଖେ। କଲ୍ ସଂଯୁକ୍ତ ନହେଲେ ଏହାକୁ ଚାଲୁ କରନ୍ତୁ।</string>
+    <string name="dejavu_direct_calls_warning_title">ସିଧାସଳଖ ସଂଯୋଗକୁ ଅନୁମତି ଦେବେ କି?</string>
+    <string name="dejavu_direct_calls_warning_message">ତାପରେ ଆପଣ କଲ୍ କରୁଥିବା ଲୋକ ଏବଂ କଲ୍ କରୁଥିବା ସାଇଟ ଆପଣଙ୍କ IP ଠିକଣା ଦେଖିପାରିବେ। ଆପଣ କ୍ୟାମେରା କିମ୍ବା ମାଇକ୍ରୋଫୋନ ବ୍ୟବହାର କରିବାକୁ ଅନୁମତି ଦେଉଥିବା ସାଇଟ ଆପଣଙ୍କ ସ୍ଥାନୀୟ ନେଟୱର୍କର ଠିକଣା ମଧ୍ୟ ଦେଖିପାରିବେ।</string>
+    <string name="dejavu_settings_network_location">ନେଟୱର୍କ ଅବସ୍ଥାନ</string>
+    <string name="dejavu_settings_network_location_summary">ବନ୍ଦ ଥିଲେ, ଆପଣ ଅନୁମତି ଦେଉଥିବା ୱେବସାଇଟ ଆପଣଙ୍କ ଅବସ୍ଥାନ କେବଳ GPSରୁ ପାଆନ୍ତି, ଯାହା ଧୀର ହୋଇପାରେ କିମ୍ବା ଘର ଭିତରେ ବିଫଳ ହୋଇପାରେ। ଚାଲୁ ଥିଲେ, Android ଏହାକୁ ନିକଟସ୍ଥ Wi-Fi ନେଟୱର୍କ ଏବଂ ମୋବାଇଲ ଟାୱାରରୁ ମଧ୍ୟ ଖୋଜିପାରେ।</string>
+    <string name="dejavu_network_location_warning_title">ନେଟୱର୍କ ଅବସ୍ଥାନ ବ୍ୟବହାର କରିବେ କି?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services ଥିବା ଫୋନରେ, Android ଆପଣଙ୍କ ନିକଟସ୍ଥ Wi-Fi ନେଟୱର୍କ ଏବଂ ମୋବାଇଲ ଟାୱାରକୁ Googleକୁ ପଠାଇ ଆପଣଙ୍କ ଅବସ୍ଥାନ ଖୋଜେ। ୱେବସାଇଟ ଏବେ ବି ଆପଣ ଅନୁମତି ଦେବା ପରେ ହିଁ ଆପଣଙ୍କ ଅବସ୍ଥାନ ପାଆନ୍ତି।</string>
 </resources>

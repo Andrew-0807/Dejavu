@@ -229,6 +229,22 @@
             android:title="@string/dejavu_settings_webgl"
             android:summary="@string/dejavu_settings_webgl_summary" />
 
+        <!-- Dejavu: calls connect only through relay servers and the location comes from GPS only, unless the user
+             allows more after a warning. -->
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="@string/pref_key_dejavu_direct_calls"
+            app:iconSpaceReserved="false"
+            android:defaultValue="false"
+            android:title="@string/dejavu_settings_direct_calls"
+            android:summary="@string/dejavu_settings_direct_calls_summary" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="@string/pref_key_dejavu_network_location"
+            app:iconSpaceReserved="false"
+            android:defaultValue="false"
+            android:title="@string/dejavu_settings_network_location"
+            android:summary="@string/dejavu_settings_network_location_summary" />
+
         <androidx.preference.Preference
             android:key="@string/pref_key_site_permissions"
             app:iconSpaceReserved="false"

@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Cette version de Dejavu n\'a pas de clé Safe Browsing, elle ne peut donc pas avertir des sites dangereux.</string>
     <string name="dejavu_custom_action_http_warning">Cette adresse utilise http : la requête, ses en-têtes et l\'adresse de la page circulent sans chiffrement. Utilisez https si le serveur le prend en charge.</string>
     <string name="dejavu_example_notification_ntfy">Envoyer la page comme notification. Toute personne qui connaît le nom du sujet peut la lire, choisissez donc un nom long et aléatoire.</string>
+    <string name="dejavu_settings_direct_calls">Connexions directes pour les appels</string>
+    <string name="dejavu_settings_direct_calls_summary">Désactivé, les appels sur les sites web passent uniquement par les serveurs relais du site, ce qui masque votre adresse IP aux sites et aux personnes que vous appelez. Activez-le si un appel ne se connecte pas.</string>
+    <string name="dejavu_direct_calls_warning_title">Autoriser les connexions directes ?</string>
+    <string name="dejavu_direct_calls_warning_message">Les personnes que vous appelez et les sites qui passent les appels pourront alors voir votre adresse IP. Les sites que vous autorisez à utiliser votre caméra ou votre micro pourront aussi voir vos adresses sur votre réseau local.</string>
+    <string name="dejavu_settings_network_location">Localisation par le réseau</string>
+    <string name="dejavu_settings_network_location_summary">Désactivé, les sites web que vous autorisez obtiennent votre position uniquement par le GPS, ce qui peut être lent ou échouer à l\'intérieur. Activé, Android peut aussi la déterminer à partir des réseaux Wi-Fi et des antennes relais à proximité.</string>
+    <string name="dejavu_network_location_warning_title">Utiliser la localisation par le réseau ?</string>
+    <string name="dejavu_network_location_warning_message">Sur les téléphones dotés de Google Play Services, Android détermine votre position en envoyant à Google les réseaux Wi-Fi et les antennes relais proches de vous. Les sites web n\'obtiennent toujours votre position qu\'après votre autorisation.</string>
 </resources>

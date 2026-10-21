@@ -356,4 +356,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Esta compilación de Dejavu no tiene clave de Safe Browsing, así que no puede avisar de sitios peligrosos.</string>
     <string name="dejavu_custom_action_http_warning">Esta dirección usa http, así que la solicitud, sus cabeceras y la dirección de la página viajan sin cifrar. Usa https si el servidor lo admite.</string>
     <string name="dejavu_example_notification_ntfy">Envía la página como notificación. Cualquiera que conozca el nombre del tema puede leerla, así que elige uno largo y aleatorio.</string>
+    <string name="dejavu_settings_direct_calls">Conexiones directas para llamadas</string>
+    <string name="dejavu_settings_direct_calls_summary">Desactivado, las llamadas en los sitios web se conectan solo a través de los servidores de retransmisión del sitio, lo que oculta tu dirección IP a los sitios y a las personas a las que llamas. Actívalo si una llamada no se conecta.</string>
+    <string name="dejavu_direct_calls_warning_title">¿Permitir conexiones directas?</string>
+    <string name="dejavu_direct_calls_warning_message">Entonces las personas a las que llamas y los sitios que hacen llamadas podrán ver tu dirección IP. Los sitios a los que permitas usar tu cámara o tu micrófono también podrán ver tus direcciones en tu red local.</string>
+    <string name="dejavu_settings_network_location">Ubicación por red</string>
+    <string name="dejavu_settings_network_location_summary">Desactivado, los sitios web que permitas obtienen tu ubicación solo del GPS, que puede ser lento o fallar en interiores. Activado, Android también puede encontrarla a partir de las redes Wi-Fi y las antenas de telefonía cercanas.</string>
+    <string name="dejavu_network_location_warning_title">¿Usar la ubicación por red?</string>
+    <string name="dejavu_network_location_warning_message">En los teléfonos con Google Play Services, Android encuentra tu ubicación enviando a Google las redes Wi-Fi y las antenas de telefonía que tienes cerca. Los sitios web siguen obteniendo tu ubicación solo después de que se lo permitas.</string>
 </resources>

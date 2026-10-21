@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">ئەم وەشانەی Dejavu کلیلی Safe Browsingی نییە، بۆیە ناتوانێت ئاگادارت بکاتەوە لە ماڵپەڕە مەترسیدارەکان.</string>
     <string name="dejavu_custom_action_http_warning">ئەم ناونیشانە http بەکاردەهێنێت، بۆیە داواکارییەکە، سەردێڕەکانی و ناونیشانی پەڕەکە بێ شفرەکردن دەگوازرێنەوە. ئەگەر ڕاژەکار پشتگیری دەکات https بەکاربهێنە.</string>
     <string name="dejavu_example_notification_ntfy">پەڕەکە وەک ئاگادارکردنەوە بنێرە. هەر کەسێک ناوی بابەتەکە بزانێت دەتوانێت بیخوێنێتەوە، بۆیە ناوێکی درێژ و هەڕەمەکی هەڵبژێرە.</string>
+    <string name="dejavu_settings_direct_calls">پەیوەندیی ڕاستەوخۆ بۆ پەیوەندییە تەلەفۆنییەکان</string>
+    <string name="dejavu_settings_direct_calls_summary">کاتێک کوژاوەتەوە، پەیوەندییەکان لە ماڵپەڕەکاندا تەنها لە ڕێگەی ڕاژەکارە گواستنەوەکانی ماڵپەڕەکەوە دەبەسترێن، ئەمەش ناونیشانی IPـەکەت لە ماڵپەڕەکان و ئەو کەسانەی پەیوەندییان پێوە دەکەیت دەشارێتەوە. ئەگەر پەیوەندییەک نەبەسترا، هەڵیبکە.</string>
+    <string name="dejavu_direct_calls_warning_title">ڕێگە بە پەیوەندیی ڕاستەوخۆ دەدەیت؟</string>
+    <string name="dejavu_direct_calls_warning_message">ئەو کاتە ئەو کەسانەی پەیوەندییان پێوە دەکەیت و ئەو ماڵپەڕانەی پەیوەندی دەکەن دەتوانن ناونیشانی IPـەکەت ببینن. ئەو ماڵپەڕانەی ڕێگەیان پێ دەدەیت کامێرا یان مایکرۆفۆنەکەت بەکاربهێنن دەتوانن ناونیشانەکانت لە تۆڕی ناوخۆییشدا ببینن.</string>
+    <string name="dejavu_settings_network_location">شوێن لە ڕێگەی تۆڕەوە</string>
+    <string name="dejavu_settings_network_location_summary">کاتێک کوژاوەتەوە، ئەو ماڵپەڕانەی ڕێگەیان پێ دەدەیت شوێنەکەت تەنها لە GPS وەردەگرن، کە لەوانەیە خاو بێت یان لە ناو خانوودا کار نەکات. کاتێک هەڵکراوە، Android دەتوانێت لە تۆڕە Wi-Fiـەکان و تاوەرە مۆبایلییە نزیکەکانیشەوە بیدۆزێتەوە.</string>
+    <string name="dejavu_network_location_warning_title">شوێن لە ڕێگەی تۆڕەوە بەکاربهێنرێت؟</string>
+    <string name="dejavu_network_location_warning_message">لەو تەلەفۆنانەی Google Play Servicesـیان تێدایە، Android شوێنەکەت دەدۆزێتەوە بە ناردنی تۆڕە Wi-Fiـەکان و تاوەرە مۆبایلییە نزیکەکانت بۆ Google. ماڵپەڕەکان هێشتا تەنها دوای ئەوەی ڕێگەیان پێ دەدەیت شوێنەکەت وەردەگرن.</string>
 </resources>

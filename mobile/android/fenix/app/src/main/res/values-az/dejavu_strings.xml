@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu-nun bu yığımında Safe Browsing açarı yoxdur, ona görə təhlükəli saytlar barədə xəbərdarlıq edə bilmir.</string>
     <string name="dejavu_custom_action_http_warning">Bu ünvan http istifadə edir, ona görə sorğu, onun başlıqları və səhifənin ünvanı şifrələnmədən ötürülür. Server dəstəkləyirsə, https istifadə edin.</string>
     <string name="dejavu_example_notification_ntfy">Səhifəni bildiriş kimi göndərin. Mövzunun adını bilən hər kəs onu oxuya bilər, ona görə uzun və təsadüfi ad seçin.</string>
+    <string name="dejavu_settings_direct_calls">Zənglər üçün birbaşa bağlantılar</string>
+    <string name="dejavu_settings_direct_calls_summary">Söndürüldükdə, saytlardakı zənglər yalnız saytın ötürmə serverləri vasitəsilə qoşulur və bu, IP ünvanınızı saytlardan və zəng etdiyiniz insanlardan gizlədir. Zəng qoşulmursa, onu açın.</string>
+    <string name="dejavu_direct_calls_warning_title">Birbaşa bağlantılara icazə verilsin?</string>
+    <string name="dejavu_direct_calls_warning_message">Bundan sonra zəng etdiyiniz insanlar və zəng edən saytlar IP ünvanınızı görə bilər. Kameranızdan və ya mikrofonunuzdan istifadəyə icazə verdiyiniz saytlar yerli şəbəkənizdəki ünvanlarınızı da görə bilər.</string>
+    <string name="dejavu_settings_network_location">Şəbəkə ilə məkan</string>
+    <string name="dejavu_settings_network_location_summary">Söndürüldükdə, icazə verdiyiniz saytlar məkanınızı yalnız GPS-dən alır; bu, yavaş ola və ya qapalı yerlərdə alınmaya bilər. Açıldıqda, Android onu yaxınlıqdakı Wi-Fi şəbəkələri və mobil qüllələrdən də tapa bilər.</string>
+    <string name="dejavu_network_location_warning_title">Şəbəkə ilə məkan istifadə edilsin?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services olan telefonlarda Android yaxınlığınızdakı Wi-Fi şəbəkələrini və mobil qüllələri Google-a göndərərək məkanınızı tapır. Saytlar məkanınızı yenə də yalnız siz icazə verdikdən sonra alır.</string>
 </resources>

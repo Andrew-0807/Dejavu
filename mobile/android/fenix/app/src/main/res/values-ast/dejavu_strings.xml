@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Esta compilación de Dejavu nun tien clave de Safe Browsing, polo que nun pue avisar de sitios peligrosos.</string>
     <string name="dejavu_custom_action_http_warning">Esta direición usa http, polo que la solicitú, les sos cabeceres y la direición de la páxina viaxen ensin cifrar. Usa https si\'l sirvidor lo sofita.</string>
     <string name="dejavu_example_notification_ntfy">Unvia la páxina como avisu. Cualquiera que conoza\'l nome del tema pue lleelu, asina qu\'escueyi ún llargu y al debalu.</string>
+    <string name="dejavu_settings_direct_calls">Conexones direutes pa les llamaes</string>
+    <string name="dejavu_settings_direct_calls_summary">Desactivao, les llamaes nos sitios web conéctense namás pelos sirvidores de retresmisión del sitiu, lo qu\'anubre la to direición IP de los sitios y de la xente a la que llames. Actívalo si una llamada nun se conecta.</string>
+    <string name="dejavu_direct_calls_warning_title">¿Permitir conexones direutes?</string>
+    <string name="dejavu_direct_calls_warning_message">Darréu la xente a la que llames y los sitios que faen llamaes puen ver la to direición IP. Los sitios a los que-yos permitas usar la cámara o\'l micrófonu tamién puen ver les tos direiciones na rede llocal.</string>
+    <string name="dejavu_settings_network_location">Llocalización pela rede</string>
+    <string name="dejavu_settings_network_location_summary">Desactivao, los sitios web que permitas consiguen la to llocalización namás del GPS, que pue ser lentu o fallar dientro d\'edificios. Activao, Android tamién la pue atopar a partir de les redes Wi-Fi y les torres de telefonía cercanes.</string>
+    <string name="dejavu_network_location_warning_title">¿Usar la llocalización pela rede?</string>
+    <string name="dejavu_network_location_warning_message">Nos teléfonos con Google Play Services, Android atopa la to llocalización unviando a Google les redes Wi-Fi y les torres de telefonía que tienes cerca. Los sitios web siguen consiguiendo la to llocalización namás dempués de que-yos lo permitas.</string>
 </resources>

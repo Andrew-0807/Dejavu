@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu-ի այս կառուցումը Safe Browsing-ի բանալի չունի, ուստի չի կարող զգուշացնել վտանգավոր կայքերի մասին։</string>
     <string name="dejavu_custom_action_http_warning">Այս հասցեն օգտագործում է http, ուստի հարցումը, դրա գլխագրերը և էջի հասցեն փոխանցվում են առանց գաղտնագրման։ Օգտագործեք https, եթե սերվերն այն աջակցում է։</string>
     <string name="dejavu_example_notification_ntfy">Ուղարկել էջը որպես ծանուցում։ Թեմայի անունն իմացող ցանկացած ոք կարող է կարդալ այն, ուստի ընտրեք երկար, պատահական անուն։</string>
+    <string name="dejavu_settings_direct_calls">Ուղիղ կապեր զանգերի համար</string>
+    <string name="dejavu_settings_direct_calls_summary">Անջատված լինելիս կայքերում զանգերը միանում են միայն կայքի փոխանցման սպասարկիչներով, ինչը թաքցնում է ձեր IP հասցեն կայքերից և այն մարդկանցից, ում զանգում եք։ Միացրեք այն, եթե զանգը չի միանում։</string>
+    <string name="dejavu_direct_calls_warning_title">Թույլատրե՞լ ուղիղ կապերը</string>
+    <string name="dejavu_direct_calls_warning_message">Այդ դեպքում այն մարդիկ, ում զանգում եք, և զանգեր կատարող կայքերը կարող են տեսնել ձեր IP հասցեն։ Այն կայքերը, որոնց թույլ եք տալիս օգտագործել ձեր տեսախցիկը կամ խոսափողը, կարող են տեսնել նաև ձեր հասցեները տեղային ցանցում։</string>
+    <string name="dejavu_settings_network_location">Տեղադրություն ցանցով</string>
+    <string name="dejavu_settings_network_location_summary">Անջատված լինելիս ձեր թույլատրած կայքերը ձեր տեղադրությունը ստանում են միայն GPS-ից, ինչը կարող է դանդաղ լինել կամ չաշխատել շենքի ներսում։ Միացված լինելիս Android-ը կարող է այն գտնել նաև մոտակա Wi-Fi ցանցերով և բջջային աշտարակներով։</string>
+    <string name="dejavu_network_location_warning_title">Օգտագործե՞լ տեղադրությունը ցանցով</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services ունեցող հեռախոսներում Android-ը գտնում է ձեր տեղադրությունը՝ Google-ին ուղարկելով ձեր մոտակա Wi-Fi ցանցերն ու բջջային աշտարակները։ Կայքերը ձեր տեղադրությունը շարունակում են ստանալ միայն ձեր թույլտվությունից հետո։</string>
 </resources>

@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu ਦੇ ਇਸ ਬਿਲਡ ਵਿੱਚ Safe Browsing ਕੁੰਜੀ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਹ ਖ਼ਤਰਨਾਕ ਸਾਈਟਾਂ ਬਾਰੇ ਚੇਤਾਵਨੀ ਨਹੀਂ ਦੇ ਸਕਦਾ।</string>
     <string name="dejavu_custom_action_http_warning">ਇਹ ਪਤਾ http ਵਰਤਦਾ ਹੈ, ਇਸ ਲਈ ਬੇਨਤੀ, ਇਸਦੇ ਹੈਡਰ ਅਤੇ ਸਫ਼ੇ ਦਾ ਪਤਾ ਇਨਕ੍ਰਿਪਸ਼ਨ ਤੋਂ ਬਿਨਾਂ ਜਾਂਦੇ ਹਨ। ਜੇ ਸਰਵਰ ਸਮਰਥਨ ਕਰਦਾ ਹੈ ਤਾਂ https ਵਰਤੋ।</string>
     <string name="dejavu_example_notification_ntfy">ਸਫ਼ੇ ਨੂੰ ਸੂਚਨਾ ਵਜੋਂ ਭੇਜੋ। ਵਿਸ਼ੇ ਦਾ ਨਾਂ ਜਾਣਨ ਵਾਲਾ ਕੋਈ ਵੀ ਇਸਨੂੰ ਪੜ੍ਹ ਸਕਦਾ ਹੈ, ਇਸ ਲਈ ਲੰਮਾ, ਬੇਤਰਤੀਬ ਨਾਂ ਚੁਣੋ।</string>
+    <string name="dejavu_settings_direct_calls">ਕਾਲਾਂ ਲਈ ਸਿੱਧੇ ਕਨੈਕਸ਼ਨ</string>
+    <string name="dejavu_settings_direct_calls_summary">ਬੰਦ ਹੋਣ \'ਤੇ, ਵੈੱਬਸਾਈਟਾਂ \'ਤੇ ਕਾਲਾਂ ਸਿਰਫ਼ ਸਾਈਟ ਦੇ ਰੀਲੇ ਸਰਵਰਾਂ ਰਾਹੀਂ ਜੁੜਦੀਆਂ ਹਨ, ਜਿਸ ਨਾਲ ਤੁਹਾਡਾ IP ਪਤਾ ਸਾਈਟਾਂ ਅਤੇ ਉਹਨਾਂ ਲੋਕਾਂ ਤੋਂ ਲੁਕਿਆ ਰਹਿੰਦਾ ਹੈ ਜਿਨ੍ਹਾਂ ਨੂੰ ਤੁਸੀਂ ਕਾਲ ਕਰਦੇ ਹੋ। ਜੇ ਕਾਲ ਨਹੀਂ ਜੁੜਦੀ ਤਾਂ ਇਸਨੂੰ ਚਾਲੂ ਕਰੋ।</string>
+    <string name="dejavu_direct_calls_warning_title">ਸਿੱਧੇ ਕਨੈਕਸ਼ਨਾਂ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?</string>
+    <string name="dejavu_direct_calls_warning_message">ਫਿਰ ਤੁਸੀਂ ਜਿਨ੍ਹਾਂ ਨੂੰ ਕਾਲ ਕਰਦੇ ਹੋ ਉਹ ਲੋਕ ਅਤੇ ਕਾਲਾਂ ਕਰਨ ਵਾਲੀਆਂ ਸਾਈਟਾਂ ਤੁਹਾਡਾ IP ਪਤਾ ਦੇਖ ਸਕਦੀਆਂ ਹਨ। ਜਿਨ੍ਹਾਂ ਸਾਈਟਾਂ ਨੂੰ ਤੁਸੀਂ ਆਪਣਾ ਕੈਮਰਾ ਜਾਂ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਵਰਤਣ ਦਿੰਦੇ ਹੋ, ਉਹ ਤੁਹਾਡੇ ਸਥਾਨਕ ਨੈੱਟਵਰਕ \'ਤੇ ਤੁਹਾਡੇ ਪਤੇ ਵੀ ਦੇਖ ਸਕਦੀਆਂ ਹਨ।</string>
+    <string name="dejavu_settings_network_location">ਨੈੱਟਵਰਕ ਟਿਕਾਣਾ</string>
+    <string name="dejavu_settings_network_location_summary">ਬੰਦ ਹੋਣ \'ਤੇ, ਜਿਨ੍ਹਾਂ ਵੈੱਬਸਾਈਟਾਂ ਨੂੰ ਤੁਸੀਂ ਇਜਾਜ਼ਤ ਦਿੰਦੇ ਹੋ ਉਹ ਤੁਹਾਡਾ ਟਿਕਾਣਾ ਸਿਰਫ਼ GPS ਤੋਂ ਲੈਂਦੀਆਂ ਹਨ, ਜੋ ਹੌਲੀ ਹੋ ਸਕਦਾ ਹੈ ਜਾਂ ਘਰ ਦੇ ਅੰਦਰ ਅਸਫਲ ਹੋ ਸਕਦਾ ਹੈ। ਚਾਲੂ ਹੋਣ \'ਤੇ, Android ਇਸਨੂੰ ਨੇੜਲੇ Wi-Fi ਨੈੱਟਵਰਕਾਂ ਅਤੇ ਮੋਬਾਈਲ ਟਾਵਰਾਂ ਤੋਂ ਵੀ ਲੱਭ ਸਕਦਾ ਹੈ।</string>
+    <string name="dejavu_network_location_warning_title">ਨੈੱਟਵਰਕ ਟਿਕਾਣਾ ਵਰਤਣਾ ਹੈ?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services ਵਾਲੇ ਫ਼ੋਨਾਂ \'ਤੇ, Android ਤੁਹਾਡੇ ਨੇੜਲੇ Wi-Fi ਨੈੱਟਵਰਕ ਅਤੇ ਮੋਬਾਈਲ ਟਾਵਰ Google ਨੂੰ ਭੇਜ ਕੇ ਤੁਹਾਡਾ ਟਿਕਾਣਾ ਲੱਭਦਾ ਹੈ। ਵੈੱਬਸਾਈਟਾਂ ਨੂੰ ਹਾਲੇ ਵੀ ਤੁਹਾਡੀ ਇਜਾਜ਼ਤ ਤੋਂ ਬਾਅਦ ਹੀ ਤੁਹਾਡਾ ਟਿਕਾਣਾ ਮਿਲਦਾ ਹੈ।</string>
 </resources>

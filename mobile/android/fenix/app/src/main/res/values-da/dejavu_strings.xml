@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Denne udgave af Dejavu har ingen Safe Browsing-nøgle, så den kan ikke advare om farlige websteder.</string>
     <string name="dejavu_custom_action_http_warning">Denne adresse bruger http, så anmodningen, dens headere og sidens adresse sendes ukrypteret. Brug https, hvis serveren understøtter det.</string>
     <string name="dejavu_example_notification_ntfy">Send siden som en notifikation. Alle, der kender emnets navn, kan læse den, så vælg et langt, tilfældigt navn.</string>
+    <string name="dejavu_settings_direct_calls">Direkte forbindelser til opkald</string>
+    <string name="dejavu_settings_direct_calls_summary">Når den er slået fra, forbindes opkald på websteder kun gennem webstedets relæservere, hvilket skjuler din IP-adresse for websteder og for de personer, du ringer til. Slå den til, hvis et opkald ikke forbindes.</string>
+    <string name="dejavu_direct_calls_warning_title">Tillad direkte forbindelser?</string>
+    <string name="dejavu_direct_calls_warning_message">De personer, du ringer til, og de websteder, der foretager opkald, kan så se din IP-adresse. Websteder, du giver lov til at bruge dit kamera eller din mikrofon, kan også se dine adresser på dit lokale netværk.</string>
+    <string name="dejavu_settings_network_location">Netværksplacering</string>
+    <string name="dejavu_settings_network_location_summary">Når den er slået fra, får websteder, du giver lov, kun din placering fra GPS, hvilket kan være langsomt eller ikke virke indendørs. Når den er slået til, kan Android også finde den ud fra Wi-Fi-netværk og mobilmaster i nærheden.</string>
+    <string name="dejavu_network_location_warning_title">Brug netværksplacering?</string>
+    <string name="dejavu_network_location_warning_message">På telefoner med Google Play Services finder Android din placering ved at sende Wi-Fi-netværkene og mobilmasterne i nærheden af dig til Google. Websteder får stadig først din placering, når du har givet dem lov.</string>
 </resources>

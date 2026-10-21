@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Sta verscion de Dejavu a no l\'à unna ciave de Safe Browsing, coscì a no peu avertî di sciti periculosi.</string>
     <string name="dejavu_custom_action_http_warning">St\'indirisso o deuvia http, coscì a domanda, e seu intestaçioin e l\'indirisso da pagina viaggian sensa çifratua. Deuvia https se o server o l\'acetta.</string>
     <string name="dejavu_example_notification_ntfy">Manda a pagina comme notifica. Chiunque sacce o nomme de l\'argomento a peu lezze, coscì çerni un nomme longo e a caxo.</string>
+    <string name="dejavu_settings_direct_calls">Conescioin dirette pe-e ciammæ</string>
+    <string name="dejavu_settings_direct_calls_summary">Disativou, e ciammæ inti sciti web se conettan solo pe mezo di server de ritrasmiscion do scito, coscì o teu indirisso IP o resta ascoso a-i sciti e a-e personn-e che ti ciammi. Ativilo se unna ciammâ a no se conette.</string>
+    <string name="dejavu_direct_calls_warning_title">Permette e conescioin dirette?</string>
+    <string name="dejavu_direct_calls_warning_message">E personn-e che ti ciammi e i sciti che fan e ciammæ peuan alôa vedde o teu indirisso IP. I sciti che ti ghe permetti d\'adeuviâ a fotocamera ò o micròfono peuan vedde ascì i teu indirissi inta teu ræ locale.</string>
+    <string name="dejavu_settings_network_location">Poxiçion da-a ræ</string>
+    <string name="dejavu_settings_network_location_summary">Disativou, i sciti web che ti permetti piggian a teu poxiçion solo da-o GPS, ch\'o peu ese lento ò no fonçionâ drento. Ativou, Android o a peu trovâ ascì da-e ræ Wi-Fi e da-e antenne telefòniche vixin.</string>
+    <string name="dejavu_network_location_warning_title">Adeuviâ a poxiçion da-a ræ?</string>
+    <string name="dejavu_network_location_warning_message">Into telefoni con Google Play Services, Android o treuva a teu poxiçion mandando a Google e ræ Wi-Fi e e antenne telefòniche vixin a ti. I sciti web piggian a teu poxiçion solo dòppo che ti ghe l\'æ permisso.</string>
 </resources>

@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Build Dejavu ieu teu gaduh konci Safe Browsing, janten teu tiasa ngingetan ngeunaan situs bahaya.</string>
     <string name="dejavu_custom_action_http_warning">Alamat ieu nganggo http, janten pamundut, header-na sareng alamat kaca dikirim tanpa énkripsi. Anggo https upami server ngadukung.</string>
     <string name="dejavu_example_notification_ntfy">Kirim kaca salaku béwara. Saha waé anu terang nami topikna tiasa macana, janten pilih nami anu panjang sareng acak.</string>
+    <string name="dejavu_settings_direct_calls">Sambungan langsung pikeun telepon</string>
+    <string name="dejavu_settings_direct_calls_summary">Upami pareum, telepon dina situs wéb ngan nyambung ngaliwatan server relay situs, anu nyumputkeun alamat IP anjeun ti situs jeung ti jalma anu anjeun telepon. Hurungkeun upami telepon henteu nyambung.</string>
+    <string name="dejavu_direct_calls_warning_title">Idinan sambungan langsung?</string>
+    <string name="dejavu_direct_calls_warning_message">Jalma anu anjeun telepon jeung situs anu ngalakukeun telepon tuluy bisa ningali alamat IP anjeun. Situs anu anjeun idinan maké kaméra atawa mikropon ogé bisa ningali alamat anjeun dina jaringan lokal.</string>
+    <string name="dejavu_settings_network_location">Lokasi jaringan</string>
+    <string name="dejavu_settings_network_location_summary">Upami pareum, situs wéb anu anjeun idinan ngan meunang lokasi anjeun tina GPS, anu bisa lambat atawa gagal di jero rohangan. Upami hurung, Android ogé bisa manggihanana tina jaringan Wi-Fi jeung munara sélulér di sabudeureun.</string>
+    <string name="dejavu_network_location_warning_title">Paké lokasi jaringan?</string>
+    <string name="dejavu_network_location_warning_message">Dina telepon anu boga Google Play Services, Android manggihan lokasi anjeun ku cara ngirimkeun jaringan Wi-Fi jeung munara sélulér di deukeut anjeun ka Google. Situs wéb tetep ngan meunang lokasi anjeun sanggeus anjeun ngidinan.</string>
 </resources>

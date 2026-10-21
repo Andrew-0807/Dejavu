@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Esta compilación de Dejavu no tiene clave de Safe Browsing, así que no puede avisar de sitios peligrosos.</string>
     <string name="dejavu_custom_action_http_warning">Esta dirección usa http, así que la solicitud, sus encabezados y la dirección de la página viajan sin cifrar. Usa https si el servidor lo admite.</string>
     <string name="dejavu_example_notification_ntfy">Envía la página como notificación. Cualquiera que conozca el nombre del tema puede leerla, así que elige uno largo y aleatorio.</string>
+    <string name="dejavu_settings_direct_calls">Nupikuunsajil toj utia\'al t\'aano\'ob</string>
+    <string name="dejavu_settings_direct_calls_summary">Le ken tu\'upsa\'ak, le t\'aano\'ob ich sitio\'ob web ku nupikuunsa\'al chéen tumen u servidoresil relay le sitio, le je\'ela\' ku ta\'akik a dirección IP ti\' le sitio\'ob yéetel ti\' le máaxo\'ob ka t\'aanik. T\'aabe\' wa ma\' tu nupikuunsa\'al jump\'éel t\'aan.</string>
+    <string name="dejavu_direct_calls_warning_title">¿Ka cha\'ik nupikuunsajil toj?</string>
+    <string name="dejavu_direct_calls_warning_message">Le ken u yúuchul, le máaxo\'ob ka t\'aanik yéetel le sitio\'ob ku beetiko\'ob t\'aan ku páajtal u yilko\'ob a dirección IP. Le sitio\'ob ka cha\'ik u meyajtiko\'ob a cámara wa a micrófono ku páajtal xan u yilko\'ob a direcciones ichil a red local.</string>
+    <string name="dejavu_settings_network_location">Tu\'ux yaan tumen red</string>
+    <string name="dejavu_settings_network_location_summary">Le ken tu\'upsa\'ak, le sitio\'ob web ka cha\'iko\'ob ku k\'amiko\'ob tu\'ux yaanech chéen ti\' GPS, le je\'ela\' ku páajtal u xaantal wa ma\' u meyaj ichil naj. Le ken t\'aba\'ak, Android ku páajtal u kaxtik xan tu yo\'olal le red Wi-Fi yéetel le torre celulares naats\'o\'obo\'.</string>
+    <string name="dejavu_network_location_warning_title">¿Ka meyajtik tu\'ux yaan tumen red?</string>
+    <string name="dejavu_network_location_warning_message">Ichil le teléfonos yaan Google Play Services, Android ku kaxtik tu\'ux yaanech ken u túuxt ti\' Google le red Wi-Fi yéetel le torre celulares naats\' ti\' teech. Le sitio\'ob web chéen ku k\'amiko\'ob tu\'ux yaanech ken ts\'o\'okok a cha\'ik.</string>
 </resources>

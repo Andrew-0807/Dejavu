@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Deze versie van Dejavu heeft geen Safe Browsing-sleutel, dus kan niet waarschuwen voor gevaarlijke websites.</string>
     <string name="dejavu_custom_action_http_warning">Dit adres gebruikt http, dus het verzoek, de headers en het adres van de pagina gaan onversleuteld over. Gebruik https als de server het ondersteunt.</string>
     <string name="dejavu_example_notification_ntfy">Stuur de pagina als melding. Iedereen die de naam van het onderwerp kent, kan deze lezen, dus kies een lange, willekeurige naam.</string>
+    <string name="dejavu_settings_direct_calls">Directe verbindingen voor gesprekken</string>
+    <string name="dejavu_settings_direct_calls_summary">Uit, verbinden gesprekken op websites alleen via de relayservers van de website, waardoor je IP-adres verborgen blijft voor websites en voor de mensen die je belt. Zet het aan als een gesprek geen verbinding maakt.</string>
+    <string name="dejavu_direct_calls_warning_title">Directe verbindingen toestaan?</string>
+    <string name="dejavu_direct_calls_warning_message">De mensen die je belt en de websites die gesprekken voeren, kunnen dan je IP-adres zien. Websites die je toestemming geeft om je camera of microfoon te gebruiken, kunnen ook je adressen op je lokale netwerk zien.</string>
+    <string name="dejavu_settings_network_location">Netwerklocatie</string>
+    <string name="dejavu_settings_network_location_summary">Uit, krijgen websites die je toestemming geeft je locatie alleen via gps, wat traag kan zijn of binnen kan mislukken. Aan, kan Android hem ook vinden via wifi-netwerken en zendmasten in de buurt.</string>
+    <string name="dejavu_network_location_warning_title">Netwerklocatie gebruiken?</string>
+    <string name="dejavu_network_location_warning_message">Op telefoons met Google Play Services vindt Android je locatie door de wifi-netwerken en zendmasten bij jou in de buurt naar Google te sturen. Websites krijgen je locatie nog steeds pas nadat je ze toestemming hebt gegeven.</string>
 </resources>

@@ -17,6 +17,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.StringRes
 import androidx.annotation.VisibleForTesting
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
@@ -76,6 +77,7 @@ import org.mozilla.fenix.components.Components
 import org.mozilla.fenix.components.accounts.FenixFxAEntryPoint
 import org.mozilla.fenix.databinding.AmoCollectionOverrideDialogBinding
 import org.mozilla.fenix.dejavu.DejavuLinks
+import org.mozilla.fenix.dejavu.browser.CallsAndLocation
 import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
 import org.mozilla.fenix.dejavu.browser.JitAndWebGl
 import org.mozilla.fenix.dejavu.features.DejavuFeatureTourFragment
@@ -751,6 +753,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         setupDnsOverHttpsPreference(settings)
         setupSafeBrowsingPreference(settings)
         setupJitAndWebGlPreferences(settings)
+        setupCallsAndLocationPreferences(settings)
         setupEmailMaskPreference(settings, requireComponents)
     }
 
@@ -982,6 +985,58 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         }
     }
 
+    // Dejavu: direct connections for calls and network location show more of the user to others, so turning them on
+    // asks first. Both change the engine at once.
+    private fun setupCallsAndLocationPreferences(settings: Settings) {
+        setupSwitchThatWarnsFirst(
+            key = R.string.pref_key_dejavu_direct_calls,
+            isOn = settings.directCallConnections,
+            warningTitle = R.string.dejavu_direct_calls_warning_title,
+            warningMessage = R.string.dejavu_direct_calls_warning_message,
+        ) { enabled ->
+            settings.directCallConnections = enabled
+            CallsAndLocation.applyDirectConnections(requireComponents.core.engine, enabled)
+        }
+        setupSwitchThatWarnsFirst(
+            key = R.string.pref_key_dejavu_network_location,
+            isOn = settings.networkLocationEnabled,
+            warningTitle = R.string.dejavu_network_location_warning_title,
+            warningMessage = R.string.dejavu_network_location_warning_message,
+        ) { enabled ->
+            settings.networkLocationEnabled = enabled
+            CallsAndLocation.applyNetworkLocation(enabled)
+        }
+    }
+
+    /** Sets up the switch [key], which [save]s at once when turned off and after a warning when turned on. */
+    private fun setupSwitchThatWarnsFirst(
+        @StringRes key: Int,
+        isOn: Boolean,
+        @StringRes warningTitle: Int,
+        @StringRes warningMessage: Int,
+        save: (Boolean) -> Unit,
+    ) {
+        with(requirePreference<SwitchPreferenceCompat>(key)) {
+            isChecked = isOn
+            setOnPreferenceChangeListener<Boolean> { _, enabled ->
+                if (!enabled) {
+                    save(false)
+                    return@setOnPreferenceChangeListener true
+                }
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(warningTitle)
+                    .setMessage(warningMessage)
+                    .setNegativeButton(R.string.dejavu_cancel, null)
+                    .setPositiveButton(R.string.dejavu_turn_on) { _, _ ->
+                        save(true)
+                        isChecked = true
+                    }
+                    .show()
+                false
+            }
+        }
+    }
+
     @VisibleForTesting
     internal fun setupEmailMaskPreference(settings: Settings, components: Components) {
         findPreference<Preference>(getPreferenceKey(R.string.pref_key_email_masks))?.let {
@@ -1000,8 +1055,9 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
     @VisibleForTesting
     internal fun setLinkSharingPreference() {
+        // Dejavu: shared links never get Firefox's "Sent from Firefox" footer, so its setting is hidden.
         with(requirePreference<Preference>(R.string.pref_key_link_sharing)) {
-            isVisible = FxNimbus.features.sentFromFirefox.value().enabled
+            isVisible = false
         }
     }
 

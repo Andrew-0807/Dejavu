@@ -88,14 +88,18 @@ object GeckoProvider {
                 applicationScope = applicationScope,
             )
 
-        geckoRuntime.crashPullDelegate =
-            GeckoCrashPullDelegate(
-                dispatcher = { crashIDs ->
-                    context.components.appStore.dispatch(
-                        AppAction.CrashActionWrapper(CrashAction.CheckDeferred(crashIDs.toList()))
-                    )
-                }
-            )
+        // Dejavu: without this delegate the engine does not download Mozilla's list of crashes it wants reports of,
+        // as Dejavu's builds send no crash reports.
+        if (BuildConfig.CRASH_REPORTING) {
+            geckoRuntime.crashPullDelegate =
+                GeckoCrashPullDelegate(
+                    dispatcher = { crashIDs ->
+                        context.components.appStore.dispatch(
+                            AppAction.CrashActionWrapper(CrashAction.CheckDeferred(crashIDs.toList()))
+                        )
+                    }
+                )
+        }
 
         return geckoRuntime
     }
@@ -116,8 +120,9 @@ object GeckoProvider {
                 .contentBlocking(
                     policy.toContentBlockingSetting(
                         safeBrowsingPolicy = GoogleSafeBrowsing.policy(safeBrowsing),
-                        queryParameterStripping = false,
-                        queryParameterStrippingPrivateBrowsing = false,
+                        // Dejavu: tracking parameters are removed from the links normal and private tabs open.
+                        queryParameterStripping = true,
+                        queryParameterStrippingPrivateBrowsing = true,
                         queryParameterStrippingAllowList = "",
                         queryParameterStrippingStripList = "",
                         allowListBaselineTrackingProtection =

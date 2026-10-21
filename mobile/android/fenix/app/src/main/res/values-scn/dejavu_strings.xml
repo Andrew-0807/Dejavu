@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Sta virsioni di Dejavu nun havi na chiavi di Safe Browsing, pi chissu nun pò avvirtiri dî siti piriculusi.</string>
     <string name="dejavu_custom_action_http_warning">St\'indirizzu usa http, pi chissu la dumanna, li so ntistazzioni e l\'indirizzu dâ pàggina viàggianu senza cifratura. Usa https si lu server lu supporta.</string>
     <string name="dejavu_example_notification_ntfy">Manna la pàggina comu notìfica. Cu\' è ca sapi lu nomu di l\'argumentu la pò lèggiri, pi chissu scegghi un nomu longu e a casu.</string>
+    <string name="dejavu_settings_direct_calls">Cunnissioni diretti pî chiamati</string>
+    <string name="dejavu_settings_direct_calls_summary">Disattivatu, i chiamati ntê siti web si cunnèttinu sulu attraversu i server di ritrasmissioni dû situ, e chistu ammuccia u to nnirizzu IP ê siti e ê pirsuni ca chiami. Attìvalu si na chiamata nun si cunnetti.</string>
+    <string name="dejavu_direct_calls_warning_title">Pirmèttiri i cunnissioni diretti?</string>
+    <string name="dejavu_direct_calls_warning_message">I pirsuni ca chiami e i siti ca fannu i chiamati ponnu vìdiri tannu u to nnirizzu IP. I siti a cui pirmetti di usari a tò telecàmira o u tò micròfunu ponnu vìdiri macari i to nnirizzi ntâ to riti lucali.</string>
+    <string name="dejavu_settings_network_location">Pusizzioni dâ riti</string>
+    <string name="dejavu_settings_network_location_summary">Disattivatu, i siti web ca pirmetti ottènunu a to pusizzioni sulu dô GPS, ca pò èssiri lentu o fallìri ô chiusu. Attivatu, Android a pò truvari macari dî riti Wi-Fi e dî antenni tilifòniche vicini.</string>
+    <string name="dejavu_network_location_warning_title">Usari a pusizzioni dâ riti?</string>
+    <string name="dejavu_network_location_warning_message">Ntê telèfuni cu Google Play Services, Android trova a to pusizzioni mannannu a Google i riti Wi-Fi e l\'antenni tilifòniche vicinu a tia. I siti web ottènunu ancora a to pusizzioni sulu doppu ca ci lu pirmetti.</string>
 </resources>

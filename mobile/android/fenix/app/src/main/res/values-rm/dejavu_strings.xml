@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Questa versiun da Dejavu n\'ha nagina clav da Safe Browsing, perquai na po ella betg avertir da websites privlusas.</string>
     <string name="dejavu_custom_action_http_warning">Questa adressa utilisescha http, perquai viagian la dumonda, ses chaus e l\'adressa da la pagina senza criptaziun. Utilisescha https sch\'il server sustegna quai.</string>
     <string name="dejavu_example_notification_ntfy">Trametter la pagina sco notificaziun. Mintgin che enconuscha il num dal tema la po leger, perquai tscherna in num lung e casual.</string>
+    <string name="dejavu_settings_direct_calls">Colliaziuns directas per cloms</string>
+    <string name="dejavu_settings_direct_calls_summary">Deactivà, sa colliian cloms en websites mo via ils servers da relais da la website, quai che zuppa tia adressa IP davant las websites e davant las persunas che ti clomas. Activescha quai sch\'in clom na sa collia betg.</string>
+    <string name="dejavu_direct_calls_warning_title">Permetter colliaziuns directas?</string>
+    <string name="dejavu_direct_calls_warning_message">Las persunas che ti clomas e las websites che fan cloms pon lura vesair tia adressa IP. Websites a las qualas ti permettas dad utilisar tia camera u tes microfon pon er vesair tias adressas en tia rait locala.</string>
+    <string name="dejavu_settings_network_location">Posiziun via la rait</string>
+    <string name="dejavu_settings_network_location_summary">Deactivà, survegnan las websites che ti permettas tia posiziun mo dal GPS, quai che po esser plaun u betg funcziunar en chasa. Activà, po Android er la chattar a basa da las raits Wi-Fi e da las antennas da telefonia en la vischinanza.</string>
+    <string name="dejavu_network_location_warning_title">Utilisar la posiziun via la rait?</string>
+    <string name="dejavu_network_location_warning_message">Sin telefonins cun Google Play Services chatta Android tia posiziun cun trametter a Google las raits Wi-Fi e las antennas da telefonia en tia vischinanza. Las websites survegnan tia posiziun anc adina pir suenter che ti las has permess quai.</string>
 </resources>

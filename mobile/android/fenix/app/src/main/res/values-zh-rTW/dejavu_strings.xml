@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">此 Dejavu 版本沒有 Safe Browsing 金鑰，因此無法針對危險網站發出警告。</string>
     <string name="dejavu_custom_action_http_warning">此網址使用 http，因此請求、其標頭與頁面網址都以未加密的方式傳輸。若伺服器支援，請使用 https。</string>
     <string name="dejavu_example_notification_ntfy">將頁面作為通知傳送。任何知道主題名稱的人都能讀取，因此請選擇一個較長的隨機名稱。</string>
+    <string name="dejavu_settings_direct_calls">通話直接連線</string>
+    <string name="dejavu_settings_direct_calls_summary">關閉時，網站中的通話只會透過網站的中繼伺服器連線，讓網站和通話對象都看不到您的 IP 位址。若通話無法接通，請開啟此選項。</string>
+    <string name="dejavu_direct_calls_warning_title">要允許直接連線嗎？</string>
+    <string name="dejavu_direct_calls_warning_message">之後，通話對象和進行通話的網站就能看到您的 IP 位址。您允許使用相機或麥克風的網站，也能看到您在區域網路中的位址。</string>
+    <string name="dejavu_settings_network_location">網路位置</string>
+    <string name="dejavu_settings_network_location_summary">關閉時，您允許的網站只能從 GPS 取得您的位置，可能較慢，在室內也可能失敗。開啟時，Android 也能透過附近的 Wi-Fi 網路與基地台找出位置。</string>
+    <string name="dejavu_network_location_warning_title">要使用網路位置嗎？</string>
+    <string name="dejavu_network_location_warning_message">在裝有 Google Play Services 的手機上，Android 會將您附近的 Wi-Fi 網路與基地台資訊傳送給 Google 以找出您的位置。網站仍然只有在您允許後才能取得您的位置。</string>
 </resources>

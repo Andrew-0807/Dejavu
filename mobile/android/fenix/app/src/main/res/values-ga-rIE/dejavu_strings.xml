@@ -370,4 +370,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Níl eochair Safe Browsing ag an leagan seo de Dejavu, mar sin ní féidir leis rabhadh a thabhairt faoi shuíomhanna contúirteacha.</string>
     <string name="dejavu_custom_action_http_warning">Úsáideann an seoladh seo http, mar sin taistealaíonn an t-iarratas, a cheanntásca agus seoladh an leathanaigh gan chriptiú. Úsáid https má thacaíonn an freastalaí leis.</string>
     <string name="dejavu_example_notification_ntfy">Seol an leathanach mar fhógra. Is féidir le duine ar bith a bhfuil ainm an ábhair ar eolas aige é a léamh, mar sin roghnaigh ainm fada randamach.</string>
+    <string name="dejavu_settings_direct_calls">Naisc dhíreacha le haghaidh glaonna</string>
+    <string name="dejavu_settings_direct_calls_summary">Nuair atá sé múchta, ní cheanglaíonn glaonna ar shuímh ghréasáin ach trí fhreastalaithe athsheachadta an tsuímh, rud a cheileann do sheoladh IP ar shuímh agus ar na daoine a nglaonn tú orthu. Cas air é mura gceanglaíonn glao.</string>
+    <string name="dejavu_direct_calls_warning_title">Naisc dhíreacha a cheadú?</string>
+    <string name="dejavu_direct_calls_warning_message">Beidh na daoine a nglaonn tú orthu agus na suímh a dhéanann glaonna in ann do sheoladh IP a fheiceáil ansin. Beidh suímh a gceadaíonn tú dóibh do cheamara nó do mhicreafón a úsáid in ann do sheoltaí ar do líonra áitiúil a fheiceáil freisin.</string>
+    <string name="dejavu_settings_network_location">Suíomh ón líonra</string>
+    <string name="dejavu_settings_network_location_summary">Nuair atá sé múchta, ní fhaigheann na suímh ghréasáin a gceadaíonn tú dóibh do shuíomh ach ón GPS, rud a d\'fhéadfadh a bheith mall nó teip istigh. Nuair atá sé ar siúl, is féidir le Android é a aimsiú freisin ó líonraí Wi-Fi agus ó chrainn fón póca in aice láimhe.</string>
+    <string name="dejavu_network_location_warning_title">Suíomh ón líonra a úsáid?</string>
+    <string name="dejavu_network_location_warning_message">Ar fhóin a bhfuil Google Play Services orthu, aimsíonn Android do shuíomh trí na líonraí Wi-Fi agus na crainn fón póca in aice leat a sheoladh chuig Google. Ní fhaigheann suímh ghréasáin do shuíomh go fóill ach amháin tar éis duit cead a thabhairt dóibh.</string>
 </resources>

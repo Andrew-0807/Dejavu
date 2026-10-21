@@ -382,4 +382,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavuના આ બિલ્ડમાં Safe Browsing કી નથી, તેથી તે જોખમી સાઇટ્સ વિશે ચેતવી શકતું નથી.</string>
     <string name="dejavu_custom_action_http_warning">આ સરનામું http વાપરે છે, તેથી વિનંતી, તેના હેડર અને પેજનું સરનામું એન્ક્રિપ્શન વિના જાય છે. સર્વર સપોર્ટ કરતું હોય તો https વાપરો.</string>
     <string name="dejavu_example_notification_ntfy">પેજને સૂચના તરીકે મોકલો. વિષયનું નામ જાણનાર કોઈપણ તેને વાંચી શકે છે, તેથી લાંબું, રેન્ડમ નામ પસંદ કરો.</string>
+    <string name="dejavu_settings_direct_calls">કૉલ માટે સીધા જોડાણો</string>
+    <string name="dejavu_settings_direct_calls_summary">બંધ હોય ત્યારે, વેબસાઇટ પરના કૉલ ફક્ત સાઇટના રિલે સર્વર દ્વારા જોડાય છે, જે તમારું IP સરનામું સાઇટ અને તમે જેમને કૉલ કરો છો તે લોકોથી છુપાવે છે. જો કૉલ ન જોડાય, તો તેને ચાલુ કરો.</string>
+    <string name="dejavu_direct_calls_warning_title">સીધા જોડાણોને મંજૂરી આપીએ?</string>
+    <string name="dejavu_direct_calls_warning_message">પછી તમે જેમને કૉલ કરો છો તે લોકો અને કૉલ કરતી સાઇટ તમારું IP સરનામું જોઈ શકે છે. તમે જે સાઇટને તમારો કૅમેરા અથવા માઇક્રોફોન વાપરવા દો છો તે તમારા સ્થાનિક નેટવર્ક પરના તમારા સરનામાં પણ જોઈ શકે છે.</string>
+    <string name="dejavu_settings_network_location">નેટવર્ક સ્થાન</string>
+    <string name="dejavu_settings_network_location_summary">બંધ હોય ત્યારે, તમે મંજૂરી આપો તે વેબસાઇટ તમારું સ્થાન ફક્ત GPS થી મેળવે છે, જે ધીમું હોઈ શકે છે અથવા ઘરની અંદર નિષ્ફળ જઈ શકે છે. ચાલુ હોય ત્યારે, Android તેને નજીકના Wi-Fi નેટવર્ક અને સેલ ટાવર પરથી પણ શોધી શકે છે.</string>
+    <string name="dejavu_network_location_warning_title">નેટવર્ક સ્થાન વાપરીએ?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services ધરાવતા ફોન પર, Android તમારી નજીકના Wi-Fi નેટવર્ક અને સેલ ટાવર Google ને મોકલીને તમારું સ્થાન શોધે છે. વેબસાઇટ હજી પણ તમે મંજૂરી આપો પછી જ તમારું સ્થાન મેળવે છે.</string>
 </resources>

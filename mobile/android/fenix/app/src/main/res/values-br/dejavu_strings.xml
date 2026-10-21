@@ -370,4 +370,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">N\'eus alc\'hwez Safe Browsing ebet gant ar savadur-mañ eus Dejavu, setu ne c\'hall ket kemenn diwar-benn al lec\'hiennoù dañjerus.</string>
     <string name="dejavu_custom_action_http_warning">Ar chomlec\'h-mañ a implij http, setu e veaj ar reked, e dalbennoù ha chomlec\'h ar bajenn hep enrinegañ. Implijit https ma skor ar servijer anezhañ.</string>
     <string name="dejavu_example_notification_ntfy">Kas ar bajenn evel ur rebuziadur. Kement den a anavez anv ar sujed a c\'hall lenn anezhañ, dibabit eta un anv hir ha dargouezhek.</string>
+    <string name="dejavu_settings_direct_calls">Kennaskadennoù war-eeun evit ar galvoù</string>
+    <string name="dejavu_settings_direct_calls_summary">Pa vez lazhet, ar galvoù el lec\'hiennoù a gennask dre servijerioù erlec\'hiañ al lec\'hienn hepken, ar pezh a guzh ho chomlec\'h IP ouzh al lec\'hiennoù hag ouzh an dud a c\'halvit. Gweredekait anezhañ ma ne gennask ket ur galv.</string>
+    <string name="dejavu_direct_calls_warning_title">Aotren ar c\'hennaskadennoù war-eeun?</string>
+    <string name="dejavu_direct_calls_warning_message">An dud a c\'halvit hag al lec\'hiennoù a ra galvoù a c\'hallo gwelet ho chomlec\'h IP neuze. Al lec\'hiennoù a aotreit da implijout ho kamera pe ho mikro a c\'hallo gwelet ivez ho chomlec\'hioù war ho rouedad lec\'hel.</string>
+    <string name="dejavu_settings_network_location">Lec\'hiadur dre ar rouedad</string>
+    <string name="dejavu_settings_network_location_summary">Pa vez lazhet, al lec\'hiennoù a aotreit a gav ho lec\'hiadur dre ar GPS hepken, ar pezh a c\'hall bezañ gorrek pe c\'hwitañ e diabarzh. Pa vez gweredekaet, Android a c\'hall e gavout ivez diwar ar rouedadoù Wi-Fi hag an tourioù pellgomz tost.</string>
+    <string name="dejavu_network_location_warning_title">Implijout al lec\'hiadur dre ar rouedad?</string>
+    <string name="dejavu_network_location_warning_message">War ar pellgomzerioù gant Google Play Services, Android a gav ho lec\'hiadur en ur gas da Google ar rouedadoù Wi-Fi hag an tourioù pellgomz tost deoc\'h. Al lec\'hiennoù a gav ho lec\'hiadur hepken goude m\'ho po aotreet anezho.</string>
 </resources>

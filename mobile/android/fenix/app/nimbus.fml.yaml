@@ -1204,7 +1204,9 @@ features:
       enabled:
         description: If true, voice search is shown in the display toolbar.
         type: Boolean
-        default: false
+        # Dejavu: on, as Firefox's rollout (add-voice-search-icon-to-addressbar-rollout) turned it on before Dejavu
+        # stopped applying Firefox's experiments.
+        default: true
     defaults:
       - channel: developer
         value:

@@ -377,4 +377,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ny\'n jeves an drehevyans ma a Dejavu alhwedh Safe Browsing, ytho ny yll ev gwarnya a-dro dhe wiasvaow peryllus.</string>
     <string name="dejavu_custom_action_http_warning">An trigva ma a dhevnydh http, ytho an govyn, y bennow ha trigva an folen a vyaj heb kodenna. Devnydh https mars yw skoodhys gans an servyer.</string>
     <string name="dejavu_example_notification_ntfy">Danvon an folen avel gwarnyans. Neb a woer hanow an testen a yll hy redya, ytho dewis hanow hir ha chonsel.</string>
+    <string name="dejavu_settings_direct_calls">Kevrennow didro rag galwansow</string>
+    <string name="dejavu_settings_direct_calls_summary">Pan vo marow, galwansow yn gwiasvaow a gevren der servoryon dasdhanvon an wiasva hepken, hag yndella y kudh agas trigva IP orth gwiasvaow hag orth an dus a elwowgh. Gweythresewgh ev mar ny gevren galwans.</string>
+    <string name="dejavu_direct_calls_warning_title">Gasa kevrennow didro?</string>
+    <string name="dejavu_direct_calls_warning_message">An dus a elwowgh ha\'n gwiasvaow a wra galwansow a yll gweles agas trigva IP ena. Gwiasvaow a asowgh dhedha usya agas kamera po agas mikrofon a yll gweles ynwedh agas trigvaow war agas rosweyth leel.</string>
+    <string name="dejavu_settings_network_location">Le dre rosweyth</string>
+    <string name="dejavu_settings_network_location_summary">Pan vo marow, an gwiasvaow a asowgh a gav agas le dhyworth an GPS hepken, a yll bos lent po fyllel a-ji. Pan vo bew, Android a yll y gavos ynwedh dhyworth rosweythow Wi-Fi ha tourow pellgowser ogas.</string>
+    <string name="dejavu_network_location_warning_title">Usya le dre rosweyth?</string>
+    <string name="dejavu_network_location_warning_message">War bellgowsers gans Google Play Services, Android a gav agas le ow tanvon dhe Google an rosweythow Wi-Fi ha\'n tourow pellgowser ogas dhywgh. Gwiasvaow a gav agas le hepken wosa hwi dh\'aga gasa.</string>
 </resources>

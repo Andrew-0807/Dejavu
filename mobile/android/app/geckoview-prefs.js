@@ -406,3 +406,31 @@ pref("security.ssl.require_safe_negotiation", true);
 // Dejavu: when HTTPS-Only is turned off, HTTPS-First tries https again at every visit instead of remembering for a
 // week that a site failed it, so a network that blocked https once cannot keep the site on http.
 pref("dom.security.https_first_add_exception_on_failure", false);
+
+// Dejavu: no connection checks. Firefox's engine would look up example.org and cloudflare-dns.com with the network's
+// DNS and load firefox-portal-detection.com over plain http at every start and network change, which shows the network
+// a Firefox-based browser. Secure DNS then counts the connection as working, as it does before a check ends.
+pref("network.connectivity-service.enabled", false);
+pref("network.connectivity-service.DNSv4.domain", "");
+pref("network.connectivity-service.DNSv6.domain", "");
+pref("network.connectivity-service.DNS_HTTPS.domain", "");
+
+// Dejavu: nothing is looked up or loaded ahead for addresses the user has not opened: no DNS prefetching, no
+// prefetched links and no connections opened ahead for links or hovered addresses.
+pref("network.dns.disablePrefetch", true);
+pref("network.dns.disablePrefetchFromHTTPS", true);
+pref("network.prefetch-next", false);
+pref("network.http.speculative-parallel-limit", 0);
+
+// Dejavu: WebRTC, which video calls use, connects only through the site's relay (TURN) servers and never offers the
+// phone's own addresses, so sites and call partners learn neither its real IP address nor its local network, and it
+// stays inside a proxy when one is set. Calls on sites without relay servers connect once direct connections are
+// allowed in the privacy settings, which sets the first three back to false.
+pref("media.peerconnection.ice.relay_only", true);
+pref("media.peerconnection.ice.no_host", true);
+pref("media.peerconnection.ice.default_address_only", true);
+pref("media.peerconnection.ice.proxy_only_if_behind_proxy", true);
+
+// Dejavu: Mozilla's lists of crashes it wants reports of are not downloaded, as Dejavu writes and sends no crash
+// reports.
+pref("browser.crashReports.onDemand", false);

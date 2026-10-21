@@ -363,4 +363,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">У цій збірці Dejavu немає ключа Safe Browsing, тому вона не може попереджати про небезпечні сайти.</string>
     <string name="dejavu_custom_action_http_warning">Ця адреса використовує http, тому запит, його заголовки та адреса сторінки передаються без шифрування. Використовуйте https, якщо сервер його підтримує.</string>
     <string name="dejavu_example_notification_ntfy">Надсилає сторінку як сповіщення. Будь-хто, хто знає назву теми, може його прочитати, тож виберіть довгу випадкову назву.</string>
+    <string name="dejavu_settings_direct_calls">Прямі з\'єднання для дзвінків</string>
+    <string name="dejavu_settings_direct_calls_summary">Коли вимкнено, дзвінки на сайтах з\'єднуються лише через ретрансляційні сервери сайту, що приховує вашу IP-адресу від сайтів і від людей, яким ви телефонуєте. Увімкніть, якщо дзвінок не з\'єднується.</string>
+    <string name="dejavu_direct_calls_warning_title">Дозволити прямі з\'єднання?</string>
+    <string name="dejavu_direct_calls_warning_message">Тоді люди, яким ви телефонуєте, і сайти, через які йдуть дзвінки, зможуть бачити вашу IP-адресу. Сайти, яким ви дозволили використовувати камеру чи мікрофон, зможуть бачити й ваші адреси в локальній мережі.</string>
+    <string name="dejavu_settings_network_location">Місцезнаходження за мережею</string>
+    <string name="dejavu_settings_network_location_summary">Коли вимкнено, сайти, яким ви дозволили, отримують ваше місцезнаходження лише з GPS, що може бути повільно або не працювати в приміщенні. Коли увімкнено, Android може визначити його також за найближчими мережами Wi-Fi і вежами мобільного зв\'язку.</string>
+    <string name="dejavu_network_location_warning_title">Використовувати місцезнаходження за мережею?</string>
+    <string name="dejavu_network_location_warning_message">На телефонах із Google Play Services Android визначає ваше місцезнаходження, надсилаючи до Google відомості про мережі Wi-Fi і вежі мобільного зв\'язку поблизу вас. Сайти й надалі отримують ваше місцезнаходження лише після вашого дозволу.</string>
 </resources>

@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ndee tafaade Dejavu alaa coktirgel Safe Browsing, ɗum noon ina waawaa reentinde e lowe bonɗe.</string>
     <string name="dejavu_custom_action_http_warning">Ndee ñiiɓirde ina huutoroo http, ɗum noon ɗaɓɓitannde nde, ko ɗoworta e ñiiɓirde hello ina njaha tawa ɗe cifraaka. Huutoro https so sarworde ndee ina wallita ɗum.</string>
     <string name="dejavu_example_notification_ntfy">Neldu hello ngoo wano tintinol. Kala anndo innde loowdi ndii ina waawi tarde ɗum, ɗum noon suɓo innde njuutnde, nde alaa ko ɗoworta.</string>
+    <string name="dejavu_settings_direct_calls">Ceŋe ganndi ngam noddaali</string>
+    <string name="dejavu_settings_direct_calls_summary">So ñifaama, noddaali e lowe geese ceŋotoo tan rewrude e sarworde lelnooje lowre ndee, ɗum suuɗay ñiiɓirde maa IP e lowe ɗee e yimɓe ɓe noddataa. Hurmin ɗum so noddaango ceŋaaki.</string>
+    <string name="dejavu_direct_calls_warning_title">Yamir ceŋe ganndi?</string>
+    <string name="dejavu_direct_calls_warning_message">Yimɓe ɓe noddataa e lowe waɗooje noddaali maa ndañ ɓe yiyde ñiiɓirde maa IP. Lowe ɗe yamirɗaa huutoraade kamera maa walla mikoro maa maa ndañ ɗe yiyde kadi ñiiɓirɗe maa e laylaytol maa nokkuure.</string>
+    <string name="dejavu_settings_network_location">Nokku rewrude e laylaytol</string>
+    <string name="dejavu_settings_network_location_summary">So ñifaama, lowe geese ɗe yamirɗaa keɓata nokku maa tan e GPS, ɗum waawi leelde walla jaltaa nder suudu. So hurminaama, Android waawi yiytude ɗum kadi e laylayɗe Wi-Fi e tuure noddirɗe ɓadiiɗe.</string>
+    <string name="dejavu_network_location_warning_title">Huutoro nokku rewrude e laylaytol?</string>
+    <string name="dejavu_network_location_warning_message">E noddirɗe jogiiɗe Google Play Services, Android yiytata nokku maa naatnude laylayɗe Wi-Fi e tuure noddirɗe ɓadiiɗe ma e Google. Lowe geese keɓata nokku maa tan so a yamirii ɗe.</string>
 </resources>

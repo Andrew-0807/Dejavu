@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Aquesta version de Dejavu a pas cap de clau Safe Browsing, doncas pòt pas avisar dels sites perilhoses.</string>
     <string name="dejavu_custom_action_http_warning">Aquesta adreça utiliza http : la requèsta, sas entèstas e l\'adreça de la pagina viatjan sens chiframent. Utilizatz https se lo servidor o pren en carga.</string>
     <string name="dejavu_example_notification_ntfy">Mandar la pagina coma notificacion. Qual que siá que coneis lo nom del subjècte la pòt legir, causissètz doncas un nom long e aleatòri.</string>
+    <string name="dejavu_settings_direct_calls">Connexions dirèctas per las sonadas</string>
+    <string name="dejavu_settings_direct_calls_summary">Desactivat, las sonadas suls sites web se connectan pas que via los servidors de relai del site, çò que rescond vòstra adreça IP als sites e a las personas que sonatz. Activatz-lo se una sonada se connecta pas.</string>
+    <string name="dejavu_direct_calls_warning_title">Autorizar las connexions dirèctas ?</string>
+    <string name="dejavu_direct_calls_warning_message">Las personas que sonatz e los sites que fan las sonadas poiràn alara veire vòstra adreça IP. Los sites qu\'autorizatz a utilizar vòstra camèra o vòstre microfòn poiràn tanben veire vòstras adreças sus vòstre ret local.</string>
+    <string name="dejavu_settings_network_location">Localizacion pel ret</string>
+    <string name="dejavu_settings_network_location_summary">Desactivat, los sites web qu\'autorizatz obtenon vòstra posicion pas que pel GPS, çò que pòt èsser lent o fracassar a l\'interior. Activat, Android la pòt tanben trobar a partir dels rets Wi-Fi e de las antenas telefonicas a proximitat.</string>
+    <string name="dejavu_network_location_warning_title">Utilizar la localizacion pel ret ?</string>
+    <string name="dejavu_network_location_warning_message">Suls telefòns amb Google Play Services, Android tròba vòstra posicion en mandant a Google los rets Wi-Fi e las antenas telefonicas pròchas de vos. Los sites web obtenon totjorn vòstra posicion pas qu\'aprèp vòstra autorizacion.</string>
 </resources>

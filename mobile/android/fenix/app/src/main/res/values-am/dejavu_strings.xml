@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">ይህ የDejavu ግንባታ የSafe Browsing ቁልፍ የለውም፣ ስለዚህ ስለ አደገኛ ጣቢያዎች ማስጠንቀቅ አይችልም።</string>
     <string name="dejavu_custom_action_http_warning">ይህ አድራሻ http ይጠቀማል፣ ስለዚህ ጥያቄው፣ ራስጌዎቹ እና የገጹ አድራሻ ሳይመሰጠሩ ይጓዛሉ። አገልጋዩ የሚደግፈው ከሆነ https ይጠቀሙ።</string>
     <string name="dejavu_example_notification_ntfy">ገጹን እንደ ማሳወቂያ ይላኩ። የርዕሱን ስም የሚያውቅ ማንኛውም ሰው ሊያነበው ይችላል፣ ስለዚህ ረጅም እና በዘፈቀደ የተመረጠ ስም ይምረጡ።</string>
+    <string name="dejavu_settings_direct_calls">ለጥሪዎች ቀጥታ ግንኙነቶች</string>
+    <string name="dejavu_settings_direct_calls_summary">ሲጠፋ፣ በድር ጣቢያዎች ውስጥ ያሉ ጥሪዎች በጣቢያው ማስተላለፊያ አገልጋዮች ብቻ ይገናኛሉ፣ ይህም የአይፒ አድራሻዎን ከጣቢያዎች እና ከሚደውሉላቸው ሰዎች ይደብቃል። ጥሪ ካልተገናኘ ያብሩት።</string>
+    <string name="dejavu_direct_calls_warning_title">ቀጥታ ግንኙነቶች ይፈቀዱ?</string>
+    <string name="dejavu_direct_calls_warning_message">የሚደውሉላቸው ሰዎች እና ጥሪ የሚያደርጉ ጣቢያዎች ከዚያ የአይፒ አድራሻዎን ማየት ይችላሉ። ካሜራዎን ወይም ማይክሮፎንዎን እንዲጠቀሙ የፈቀዱላቸው ጣቢያዎች በአካባቢያዊ አውታረ መረብዎ ላይ ያሉ አድራሻዎችዎንም ማየት ይችላሉ።</string>
+    <string name="dejavu_settings_network_location">የአውታረ መረብ አካባቢ</string>
+    <string name="dejavu_settings_network_location_summary">ሲጠፋ፣ የፈቀዱላቸው ድር ጣቢያዎች አካባቢዎን ከጂፒኤስ ብቻ ያገኛሉ፣ ይህም ቀርፋፋ ሊሆን ወይም በቤት ውስጥ ላይሰራ ይችላል። ሲበራ፣ Android በአቅራቢያ ካሉ የWi-Fi አውታረ መረቦች እና የሞባይል ማማዎችም ሊያገኘው ይችላል።</string>
+    <string name="dejavu_network_location_warning_title">የአውታረ መረብ አካባቢ ይጠቀሙ?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services ባላቸው ስልኮች ላይ Android በአቅራቢያዎ ያሉትን የWi-Fi አውታረ መረቦች እና የሞባይል ማማዎች ወደ Google በመላክ አካባቢዎን ያገኛል። ድር ጣቢያዎች አሁንም አካባቢዎን የሚያገኙት ከፈቀዱላቸው በኋላ ብቻ ነው።</string>
 </resources>

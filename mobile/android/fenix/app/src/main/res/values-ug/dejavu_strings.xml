@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu نىڭ بۇ نەشرىدە Safe Browsing ئاچقۇچى يوق، شۇڭا خەتەرلىك بېكەتلەر ھەققىدە ئاگاھلاندۇرالمايدۇ.</string>
     <string name="dejavu_custom_action_http_warning">بۇ ئادرېس http ئىشلىتىدۇ، شۇڭا ئىلتىماس، ئۇنىڭ بېشى ۋە بەتنىڭ ئادرېسى شىفىرلانماي يوللىنىدۇ. مۇلازىمېتىر قوللىسا https ئىشلىتىڭ.</string>
     <string name="dejavu_example_notification_ntfy">بەتنى ئۇقتۇرۇش سۈپىتىدە يوللاڭ. تېمىنىڭ نامىنى بىلگەن ھەر قانداق ئادەم ئۇنى ئوقۇيالايدۇ، شۇڭا ئۇزۇن، ئىختىيارىي نام تاللاڭ.</string>
+    <string name="dejavu_settings_direct_calls">چاقىرىقلار ئۈچۈن بىۋاسىتە ئۇلىنىش</string>
+    <string name="dejavu_settings_direct_calls_summary">تاقالغاندا، تور بېكەتلىرىدىكى چاقىرىقلار پەقەت بېكەتنىڭ يەتكۈزگۈچ مۇلازىمېتىرلىرى ئارقىلىقلا ئۇلىنىدۇ، بۇ IP ئادرېسىڭىزنى بېكەتلەردىن ۋە سىز چاقىرىدىغان كىشىلەردىن يوشۇرىدۇ. چاقىرىق ئۇلانمىسا، ئۇنى ئېچىڭ.</string>
+    <string name="dejavu_direct_calls_warning_title">بىۋاسىتە ئۇلىنىشقا يول قويامسىز؟</string>
+    <string name="dejavu_direct_calls_warning_message">ئۇ چاغدا سىز چاقىرىدىغان كىشىلەر ۋە چاقىرىق قىلىدىغان بېكەتلەر IP ئادرېسىڭىزنى كۆرەلەيدۇ. كامېرا ياكى مىكروفونىڭىزنى ئىشلىتىشكە يول قويغان بېكەتلەر يەرلىك تورىڭىزدىكى ئادرېسلىرىڭىزنىمۇ كۆرەلەيدۇ.</string>
+    <string name="dejavu_settings_network_location">تور ئارقىلىق ئورۇن</string>
+    <string name="dejavu_settings_network_location_summary">تاقالغاندا، سىز يول قويغان تور بېكەتلىرى ئورنىڭىزنى پەقەت GPS دىنلا ئالىدۇ، بۇ ئاستا بولۇشى ياكى ئۆي ئىچىدە مەغلۇپ بولۇشى مۇمكىن. ئېچىلغاندا، Android ئۇنى يېقىن ئەتراپتىكى Wi-Fi تورلىرى ۋە يانفون مۇنارلىرى ئارقىلىقمۇ تاپالايدۇ.</string>
+    <string name="dejavu_network_location_warning_title">تور ئارقىلىق ئورۇن ئىشلىتەمسىز؟</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services بار تېلېفونلاردا، Android يېقىنىڭىزدىكى Wi-Fi تورلىرى ۋە يانفون مۇنارلىرىنى Google غا ئەۋەتىش ئارقىلىق ئورنىڭىزنى تاپىدۇ. تور بېكەتلىرى ئورنىڭىزنى يەنىلا پەقەت سىز يول قويغاندىن كېيىنلا ئالىدۇ.</string>
 </resources>

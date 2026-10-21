@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu نا دا بلڈ اٹ Safe Browsing نا کلید اَف، اندا خاطر خطرناک سائٹاتا بارو اٹ خبردار کننگ کپک۔</string>
     <string name="dejavu_custom_action_http_warning">دا پتہ http استعمال کیک، اندا خاطر درخواست، ایہنا ہیڈراک او صفحہ نا پتہ بغیر انکرپشن کائیرہ۔ اگہ سرور https نا مدد کیک تو https استعمال کر۔</string>
     <string name="dejavu_example_notification_ntfy">صفحہ ءِ نوٹیفکیشن نا رنگ اٹ راہی کر۔ ہر او ہرا کہ ٹاپک نا پن ءِ چائک ایہن خوانِ کرور، اندا خاطر اسہ مُرغن او بے ترتیب پن ءِ چن۔</string>
+    <string name="dejavu_settings_direct_calls">کالاتے کِن سیدھا کنکشن</string>
+    <string name="dejavu_settings_direct_calls_summary">بند مَس، ویب سائٹاتے ٹی کالاک سائٹ نا ریلے سروراتے آن بس جُڑرہ، دا نُما IP پتہ ءِ سائٹاتے آن او ہُراتے آن کہ نُم اوفتے کال کیرے چیر کیک. اگہ کال جُڑپک، دا ءِ چالو کبو.</string>
+    <string name="dejavu_direct_calls_warning_title">سیدھا کنکشناتے اجازت ایتنے؟</string>
+    <string name="dejavu_direct_calls_warning_message">گڑا ہُرا کہ نُم اوفتے کال کیرے او ہُرا سائٹاک کہ کال کیرہ نُما IP پتہ ءِ خنیرہ. ہُرا سائٹاتے کہ نُم کیمرہ یا مائیکروفون نا اجازت ایترے، او نُما لوکل نیٹ ورک نا پتہ غاتے ہم خنیرہ.</string>
+    <string name="dejavu_settings_network_location">نیٹ ورک آن جاگہ</string>
+    <string name="dejavu_settings_network_location_summary">بند مَس، ہُرا ویب سائٹاتے کہ نُم اجازت ایترے، او نُما جاگہ ءِ بس GPS آن ہلیرہ، دا ہیل مننگ کیک یا اُرا نا اندر کار کتویک. چالو مَس، Android دا ءِ نزیک نا Wi-Fi نیٹ ورک او موبائل ٹاوراتے آن ہم پٹنگ کیک.</string>
+    <string name="dejavu_network_location_warning_title">نیٹ ورک آن جاگہ ءِ کاریم ءَ ہتنے؟</string>
+    <string name="dejavu_network_location_warning_message">ہُرا فوناتے ٹی Google Play Services ارے، Android نُما نزیک نا Wi-Fi نیٹ ورک او موبائل ٹاوراتے Google ءِ راہی کریسا نُما جاگہ ءِ پٹیک. ویب سائٹاک ہنو ہم نُما جاگہ ءِ بس نُما اجازت آن پد ہلیرہ.</string>
 </resources>

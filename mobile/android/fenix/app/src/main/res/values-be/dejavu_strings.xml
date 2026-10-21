@@ -363,4 +363,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">У гэтай зборцы Dejavu няма ключа Safe Browsing, таму яна не можа папярэджваць пра небяспечныя сайты.</string>
     <string name="dejavu_custom_action_http_warning">Гэты адрас выкарыстоўвае http, таму запыт, яго загалоўкі і адрас старонкі перадаюцца незашыфраванымі. Выкарыстоўвайце https, калі сервер яго падтрымлівае.</string>
     <string name="dejavu_example_notification_ntfy">Адпраўляе старонку як апавяшчэнне. Любы, хто ведае назву тэмы, можа яго прачытаць, таму выберыце доўгую выпадковую назву.</string>
+    <string name="dejavu_settings_direct_calls">Прамыя злучэнні для званкоў</string>
+    <string name="dejavu_settings_direct_calls_summary">Калі выключана, званкі на сайтах злучаюцца толькі праз рэтрансляцыйныя серверы сайта, што хавае ваш IP-адрас ад сайтаў і ад людзей, якім вы тэлефануеце. Уключыце, калі званок не злучаецца.</string>
+    <string name="dejavu_direct_calls_warning_title">Дазволіць прамыя злучэнні?</string>
+    <string name="dejavu_direct_calls_warning_message">Тады людзі, якім вы тэлефануеце, і сайты, якія робяць званкі, змогуць бачыць ваш IP-адрас. Сайты, якім вы дазволілі карыстацца камерай або мікрафонам, змогуць бачыць і вашы адрасы ў лакальнай сетцы.</string>
+    <string name="dejavu_settings_network_location">Месцазнаходжанне па сетцы</string>
+    <string name="dejavu_settings_network_location_summary">Калі выключана, сайты, якім вы дазволілі, атрымліваюць ваша месцазнаходжанне толькі з GPS, што можа быць павольна або не працаваць у памяшканні. Калі ўключана, Android можа вызначыць яго і па бліжэйшых сетках Wi-Fi і вышках сотавай сувязі.</string>
+    <string name="dejavu_network_location_warning_title">Выкарыстоўваць месцазнаходжанне па сетцы?</string>
+    <string name="dejavu_network_location_warning_message">На тэлефонах з Google Play Services Android вызначае ваша месцазнаходжанне, адпраўляючы ў Google звесткі пра сеткі Wi-Fi і вышкі сотавай сувязі побач з вамі. Сайты па-ранейшаму атрымліваюць ваша месцазнаходжанне толькі пасля вашага дазволу.</string>
 </resources>

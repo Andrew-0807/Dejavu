@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu-نون بو یاپیسیندا Safe Browsing آچاری یوخدور، اونا گؤره تهلوکه‌لی سایتلار حاقیندا خبردارلیق ائده بیلمز.</string>
     <string name="dejavu_custom_action_http_warning">بو آدرس http ایشلدیر، اونا گؤره ایستک، اونون باشلیقلاری و صفحه‌نین آدرسی شیفره‌لنمه‌دن گئدیر. سرور دستکلییرسه https ایشلدین.</string>
     <string name="dejavu_example_notification_ntfy">صفحه‌نی بیلدیریش کیمی گؤندرین. مؤوضونون آدینی بیلن هر کس اونو اوخویا بیلر، اونا گؤره اوزون و تصادفی بیر آد سئچین.</string>
+    <string name="dejavu_settings_direct_calls">زنگلر اوچون دوز باغلانتیلار</string>
+    <string name="dejavu_settings_direct_calls_summary">سؤندوروله‌نده، سایتلارداکی زنگلر تکجه سایتین آراچی سرورلری ایله باغلانیر، بو دا IP آدرسینیزی سایتلاردان و زنگ ائتدیگینیز آداملاردان گیزله‌دیر. بیر زنگ باغلانماسا، اونو آچین.</string>
+    <string name="dejavu_direct_calls_warning_title">دوز باغلانتیلارا ایجازه وئریلسین؟</string>
+    <string name="dejavu_direct_calls_warning_message">سونرا زنگ ائتدیگینیز آداملار و زنگ ائدن سایتلار IP آدرسینیزی گؤره بیلرلر. کامئرانیزی یا میکروفونونوزو ایشلتمه‌یه ایجازه وئردیگینیز سایتلار یئرلی شبکه‌نیزده‌کی آدرسلرینیزی ده گؤره بیلرلر.</string>
+    <string name="dejavu_settings_network_location">شبکه ایله یئر</string>
+    <string name="dejavu_settings_network_location_summary">سؤندوروله‌نده، ایجازه وئردیگینیز سایتلار یئرینیزی تکجه GPS-دن آلیرلار، بو یاواش اولا بیلر یا ائو ایچینده ایشله‌مه‌یه بیلر. آچیلاندا، Android اونو یاخینداکی Wi-Fi شبکه‌لری و موبایل دیرکلریندن ده تاپا بیلر.</string>
+    <string name="dejavu_network_location_warning_title">شبکه ایله یئر ایشله‌دیلسین؟</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services اولان تلفونلاردا، Android یاخینینیزداکی Wi-Fi شبکه‌لرینی و موبایل دیرکلرینی Google-ا گؤندره‌رک یئرینیزی تاپیر. سایتلار یئرینیزی یئنه ده تکجه سیز ایجازه وئرندن سونرا آلیرلار.</string>
 </resources>

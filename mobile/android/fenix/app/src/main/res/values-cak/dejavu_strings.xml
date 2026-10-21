@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Re rub\'anikil Dejavu re\' majun ruch\'ab\'äl Safe Browsing, ruma ri\' man nitikïr ta nuya\' rutzijol chi kij ri itzel taq ruxaq.</string>
     <string name="dejavu_custom_action_http_warning">Re ochochib\'äl re\' nrokisaj http, ruma ri\' ri k\'utuj, ri taq ruwi\' chuqa\' ri rochochib\'al ri ruxaq yeb\'e majun ewan tzij. Tawokisaj https we ri ruk\'u\'x samaj nuk\'äm.</string>
     <string name="dejavu_example_notification_ntfy">Tataqa\' ri ruxaq achi\'el rutzijol. Xab\'achike retaman rub\'i\' ri na\'oj nitikïr nusik\'ij, ruma ri\' tacha\' jun nïm chuqa\' xab\'achike b\'i\'aj.</string>
+    <string name="dejavu_settings_direct_calls">Choj taq okem richin taq oyonïk</string>
+    <string name="dejavu_settings_direct_calls_summary">Toq chupun, ri taq oyonïk pa taq ajk\'amaya\'l ruxaq xa xe niokïk pa ri taq ruk\'u\'x samaj richin ri ruxaq, ri nuyäk ri rochochib\'al IP chuwäch ri taq ruxaq chuqa\' chuwäch ri winaqi\' ye\'ayoj. Titzij we jun oyonïk man niok ta.</string>
+    <string name="dejavu_direct_calls_warning_title">¿La niya\' q\'ij chi ke ri choj taq okem?</string>
+    <string name="dejavu_direct_calls_warning_message">K\'a ri\' ri winaqi\' ye\'ayoj chuqa\' ri taq ruxaq ri nikib\'än oyonïk yetikïr nikitz\'ët ri rochochib\'al IP. Ri taq ruxaq ri naya\' q\'ij chi ke richin nikokisaj ri kamera o mikrófono yetikïr chuqa\' nikitz\'ët ri taq awochochib\'al pa ri ak\'amab\'ey wawe\'.</string>
+    <string name="dejavu_settings_network_location">Ruk\'ojlem rik\'in k\'amab\'ey</string>
+    <string name="dejavu_settings_network_location_summary">Toq chupun, ri taq ajk\'amaya\'l ruxaq ri naya\' q\'ij chi ke nikik\'ül ri ak\'ojlem xa xe pa GPS, ri nitikïr man aninäq ta o man nisamäj ta pa ruchi\' jay. Toq tzijon, Android nitikïr nuk\'ül chuqa\' pa taq k\'amab\'ey Wi-Fi chuqa\' taq nimaq ch\'ich\' richin oyonïk ri e k\'o naqaj.</string>
+    <string name="dejavu_network_location_warning_title">¿Nawokisaj ruk\'ojlem rik\'in k\'amab\'ey?</string>
+    <string name="dejavu_network_location_warning_message">Pa taq oyonib\'äl ri k\'o Google Play Services, Android nuk\'ül ri ak\'ojlem toq nutäq chi re Google ri taq k\'amab\'ey Wi-Fi chuqa\' ri taq nimaq ch\'ich\' richin oyonïk ri e k\'o naqaj chawe. Ri taq ajk\'amaya\'l ruxaq xa xe nikik\'ül ri ak\'ojlem toq ya\'on chik q\'ij chi ke.</string>
 </resources>

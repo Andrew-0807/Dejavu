@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ẹ̀dà Dejavu yìí kò ní kọ́kọ́rọ́ Safe Browsing, nítorí náà kò lè kìlọ̀ nípa àwọn ojú-ìwé eléwu.</string>
     <string name="dejavu_custom_action_http_warning">Àdírẹ́sì yìí ń lo http, nítorí náà ìbéèrè náà, àwọn àkọlé rẹ̀ àti àdírẹ́sì ojú-ìwé náà ń rìn láìsí ìfipamọ́. Lo https bí sáfà náà bá ṣe àtìlẹ́yìn rẹ̀.</string>
     <string name="dejavu_example_notification_ntfy">Fi ojú-ìwé ránṣẹ́ bí ìfitónilétí. Ẹnikẹ́ni tí ó bá mọ orúkọ kókó-ọ̀rọ̀ náà lè kà á, nítorí náà yan orúkọ gígùn, àìròtẹ́lẹ̀.</string>
+    <string name="dejavu_settings_direct_calls">Àwọn ìsopọ̀ tààrà fún ìpè</string>
+    <string name="dejavu_settings_direct_calls_summary">Nígbà tí ó bá wà ní pípa, àwọn ìpè lórí àwọn ojú-òpó wẹ́ẹ̀bù máa ń so pọ̀ nípasẹ̀ àwọn sáfà ìfiránṣẹ́ ojú-òpó náà nìkan, èyí tí ó ń fi àdírẹ́sì IP rẹ pamọ́ fún àwọn ojú-òpó àti fún àwọn ènìyàn tí o ń pè. Tàn án tí ìpè kan kò bá so pọ̀.</string>
+    <string name="dejavu_direct_calls_warning_title">Ṣé kí o gba àwọn ìsopọ̀ tààrà láàyè?</string>
+    <string name="dejavu_direct_calls_warning_message">Nígbà náà, àwọn ènìyàn tí o ń pè àti àwọn ojú-òpó tí ń ṣe ìpè lè rí àdírẹ́sì IP rẹ. Àwọn ojú-òpó tí o gbà láàyè láti lo kámẹ́rà tàbí máíkírófóònù rẹ tún lè rí àwọn àdírẹ́sì rẹ lórí nẹ́tíwọ́ọ̀kì agbègbè rẹ.</string>
+    <string name="dejavu_settings_network_location">Ibi nípasẹ̀ nẹ́tíwọ́ọ̀kì</string>
+    <string name="dejavu_settings_network_location_summary">Nígbà tí ó bá wà ní pípa, àwọn ojú-òpó wẹ́ẹ̀bù tí o gbà láàyè máa ń gba ibi tí o wà láti GPS nìkan, èyí tí ó lè lọ́ra tàbí kí ó kùnà nínú ilé. Nígbà tí ó bá wà ní títàn, Android tún lè rí i láti àwọn nẹ́tíwọ́ọ̀kì Wi-Fi àti àwọn ilé-ìṣọ́ fóònù tí ó wà nítòsí.</string>
+    <string name="dejavu_network_location_warning_title">Ṣé kí o lo ibi nípasẹ̀ nẹ́tíwọ́ọ̀kì?</string>
+    <string name="dejavu_network_location_warning_message">Lórí àwọn fóònù tí ó ní Google Play Services, Android máa ń rí ibi tí o wà nípa fífi àwọn nẹ́tíwọ́ọ̀kì Wi-Fi àti àwọn ilé-ìṣọ́ fóònù tí ó wà nítòsí rẹ ránṣẹ́ sí Google. Àwọn ojú-òpó wẹ́ẹ̀bù ṣì máa ń gba ibi tí o wà lẹ́yìn tí o bá gbà wọ́n láàyè nìkan.</string>
 </resources>

@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu හි මෙම නිකුතුවේ Safe Browsing යතුරක් නැත, එබැවින් අනතුරුදායක අඩවි ගැන අනතුරු ඇඟවිය නොහැක.</string>
     <string name="dejavu_custom_action_http_warning">මෙම ලිපිනය http භාවිත කරයි, එබැවින් ඉල්ලීම, එහි ශීර්ෂ සහ පිටුවේ ලිපිනය සංකේතනයකින් තොරව යයි. සේවාදායකය සහාය දක්වයි නම් https භාවිත කරන්න.</string>
     <string name="dejavu_example_notification_ntfy">පිටුව දැනුම්දීමක් ලෙස යවන්න. මාතෘකාවේ නම දන්නා ඕනෑම අයෙකුට එය කියවිය හැකිය, එබැවින් දිගු, අහඹු නමක් තෝරන්න.</string>
+    <string name="dejavu_settings_direct_calls">ඇමතුම් සඳහා සෘජු සම්බන්ධතා</string>
+    <string name="dejavu_settings_direct_calls_summary">අක්‍රිය විට, වෙබ් අඩවිවල ඇමතුම් සම්බන්ධ වන්නේ අඩවියේ රිලේ සේවාදායක හරහා පමණි, එය ඔබගේ IP ලිපිනය අඩවිවලින් සහ ඔබ අමතන අයගෙන් සඟවයි. ඇමතුමක් සම්බන්ධ නොවන්නේ නම් එය සක්‍රිය කරන්න.</string>
+    <string name="dejavu_direct_calls_warning_title">සෘජු සම්බන්ධතාවලට ඉඩ දෙන්නද?</string>
+    <string name="dejavu_direct_calls_warning_message">එවිට ඔබ අමතන අයට සහ ඇමතුම් ලබා දෙන අඩවිවලට ඔබගේ IP ලිපිනය දැකිය හැක. ඔබගේ කැමරාව හෝ මයික්‍රෆෝනය භාවිතයට ඔබ ඉඩ දෙන අඩවිවලට ඔබගේ ස්ථානීය ජාලයේ ලිපිනද දැකිය හැක.</string>
+    <string name="dejavu_settings_network_location">ජාල ස්ථානය</string>
+    <string name="dejavu_settings_network_location_summary">අක්‍රිය විට, ඔබ ඉඩ දෙන වෙබ් අඩවිවලට ඔබගේ ස්ථානය ලැබෙන්නේ GPS වලින් පමණි, එය මන්දගාමී විය හැකි හෝ ගෘහස්ථව අසාර්ථක විය හැක. සක්‍රිය විට, Android හට අසල ඇති Wi-Fi ජාල සහ ජංගම කුළුණු වලින්ද එය සොයාගත හැක.</string>
+    <string name="dejavu_network_location_warning_title">ජාල ස්ථානය භාවිතා කරන්නද?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services ඇති දුරකථනවල, Android ඔබ අසල ඇති Wi-Fi ජාල සහ ජංගම කුළුණු Google වෙත යවමින් ඔබගේ ස්ථානය සොයා ගනී. වෙබ් අඩවිවලට තවමත් ඔබගේ ස්ථානය ලැබෙන්නේ ඔබ ඉඩ දුන් පසුව පමණි.</string>
 </resources>

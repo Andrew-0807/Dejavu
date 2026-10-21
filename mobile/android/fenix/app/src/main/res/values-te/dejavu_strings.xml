@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu యొక్క ఈ బిల్డ్‌లో Safe Browsing కీ లేదు, కాబట్టి ప్రమాదకరమైన సైట్ల గురించి హెచ్చరించలేదు.</string>
     <string name="dejavu_custom_action_http_warning">ఈ చిరునామా http ఉపయోగిస్తుంది, కాబట్టి అభ్యర్థన, దాని హెడర్లు మరియు పేజీ చిరునామా ఎన్‌క్రిప్షన్ లేకుండా వెళ్తాయి. సర్వర్ మద్దతిస్తే https ఉపయోగించండి.</string>
     <string name="dejavu_example_notification_ntfy">పేజీని నోటిఫికేషన్‌గా పంపండి. అంశం పేరు తెలిసిన ఎవరైనా దాన్ని చదవగలరు, కాబట్టి పొడవైన, యాదృచ్ఛిక పేరును ఎంచుకోండి.</string>
+    <string name="dejavu_settings_direct_calls">కాల్‌ల కోసం నేరుగా కనెక్షన్‌లు</string>
+    <string name="dejavu_settings_direct_calls_summary">ఆఫ్‌లో ఉన్నప్పుడు, వెబ్‌సైట్‌లలోని కాల్‌లు సైట్ రిలే సర్వర్‌ల ద్వారా మాత్రమే కనెక్ట్ అవుతాయి, ఇది మీ IP చిరునామాను సైట్‌ల నుండి మరియు మీరు కాల్ చేసే వ్యక్తుల నుండి దాచిపెడుతుంది. కాల్ కనెక్ట్ కాకపోతే దీన్ని ఆన్ చేయండి.</string>
+    <string name="dejavu_direct_calls_warning_title">నేరుగా కనెక్షన్‌లను అనుమతించాలా?</string>
+    <string name="dejavu_direct_calls_warning_message">అప్పుడు మీరు కాల్ చేసే వ్యక్తులు మరియు కాల్‌లు చేసే సైట్‌లు మీ IP చిరునామాను చూడగలవు. మీ కెమెరా లేదా మైక్రోఫోన్‌ను ఉపయోగించడానికి మీరు అనుమతించే సైట్‌లు మీ స్థానిక నెట్‌వర్క్‌లోని మీ చిరునామాలను కూడా చూడగలవు.</string>
+    <string name="dejavu_settings_network_location">నెట్‌వర్క్ స్థానం</string>
+    <string name="dejavu_settings_network_location_summary">ఆఫ్‌లో ఉన్నప్పుడు, మీరు అనుమతించే వెబ్‌సైట్‌లు మీ స్థానాన్ని GPS నుండి మాత్రమే పొందుతాయి, ఇది నెమ్మదిగా ఉండవచ్చు లేదా ఇంటి లోపల విఫలం కావచ్చు. ఆన్‌లో ఉన్నప్పుడు, సమీపంలోని Wi-Fi నెట్‌వర్క్‌లు మరియు సెల్ టవర్‌ల నుండి కూడా Android దాన్ని కనుగొనగలదు.</string>
+    <string name="dejavu_network_location_warning_title">నెట్‌వర్క్ స్థానాన్ని ఉపయోగించాలా?</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services ఉన్న ఫోన్‌లలో, మీకు సమీపంలోని Wi-Fi నెట్‌వర్క్‌లను మరియు సెల్ టవర్‌లను Googleకు పంపడం ద్వారా Android మీ స్థానాన్ని కనుగొంటుంది. మీరు అనుమతించిన తర్వాత మాత్రమే వెబ్‌సైట్‌లు ఇప్పటికీ మీ స్థానాన్ని పొందుతాయి.</string>
 </resources>

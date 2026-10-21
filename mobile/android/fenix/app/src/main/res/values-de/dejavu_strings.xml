@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Diese Version von Dejavu hat keinen Safe-Browsing-Schlüssel und kann daher nicht vor gefährlichen Websites warnen.</string>
     <string name="dejavu_custom_action_http_warning">Diese Adresse verwendet http, daher werden die Anfrage, ihre Header und die Adresse der Seite unverschlüsselt übertragen. Verwenden Sie https, wenn der Server es unterstützt.</string>
     <string name="dejavu_example_notification_ntfy">Sendet die Seite als Benachrichtigung. Jeder, der den Namen des Themas kennt, kann sie lesen, wählen Sie also einen langen, zufälligen Namen.</string>
+    <string name="dejavu_settings_direct_calls">Direkte Verbindungen für Anrufe</string>
+    <string name="dejavu_settings_direct_calls_summary">Aus, verbinden sich Anrufe auf Websites nur über die Relay-Server der Website. Das verbirgt deine IP-Adresse vor Websites und vor den Menschen, die du anrufst. Schalte es ein, wenn ein Anruf keine Verbindung herstellt.</string>
+    <string name="dejavu_direct_calls_warning_title">Direkte Verbindungen erlauben?</string>
+    <string name="dejavu_direct_calls_warning_message">Die Menschen, die du anrufst, und die Websites, über die du telefonierst, können dann deine IP-Adresse sehen. Websites, denen du Kamera oder Mikrofon erlaubst, sehen auch deine Adressen im lokalen Netzwerk.</string>
+    <string name="dejavu_settings_network_location">Standort über das Netzwerk</string>
+    <string name="dejavu_settings_network_location_summary">Aus, erhalten Websites, denen du es erlaubst, deinen Standort nur über GPS. Das kann langsam sein oder in Gebäuden scheitern. An, kann Android ihn auch über WLAN-Netzwerke und Mobilfunkmasten in der Nähe bestimmen.</string>
+    <string name="dejavu_network_location_warning_title">Standort über das Netzwerk verwenden?</string>
+    <string name="dejavu_network_location_warning_message">Auf Telefonen mit Google Play Services bestimmt Android deinen Standort, indem es die WLAN-Netzwerke und Mobilfunkmasten in deiner Nähe an Google sendet. Websites erhalten deinen Standort weiterhin erst, nachdem du es erlaubt hast.</string>
 </resources>

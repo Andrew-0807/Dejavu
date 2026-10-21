@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Kini nga build sa Dejavu walay Safe Browsing key, mao nga dili kini makapasidaan bahin sa peligrosong mga site.</string>
     <string name="dejavu_custom_action_http_warning">Kini nga address naggamit og http, mao nga ang request, ang mga header niini ug ang address sa panid mobiyahe nga walay encryption. Gamita ang https kon kini suportahan sa server.</string>
     <string name="dejavu_example_notification_ntfy">Ipadala ang panid isip notification. Bisan kinsa nga nakahibalo sa ngalan sa topic makabasa niini, mao nga pilia ang taas ug random nga ngalan.</string>
+    <string name="dejavu_settings_direct_calls">Direktang koneksyon para sa mga tawag</string>
+    <string name="dejavu_settings_direct_calls_summary">Kon gipalong, ang mga tawag sa mga website mokonektar lang pinaagi sa relay server sa site, nga motago sa imong IP address gikan sa mga site ug sa mga tawo nga imong tawagan. I-on kini kon ang tawag dili mokonektar.</string>
+    <string name="dejavu_direct_calls_warning_title">Itugot ang direktang koneksyon?</string>
+    <string name="dejavu_direct_calls_warning_message">Ang mga tawo nga imong tawagan ug ang mga site nga motawag makakita na sa imong IP address. Ang mga site nga imong gitugotan sa paggamit sa imong camera o mikropono makakita usab sa imong mga address sa imong lokal nga network.</string>
+    <string name="dejavu_settings_network_location">Lokasyon pinaagi sa network</string>
+    <string name="dejavu_settings_network_location_summary">Kon gipalong, ang mga website nga imong gitugotan makakuha sa imong lokasyon gikan lang sa GPS, nga mahimong hinay o dili molihok sulod sa balay. Kon gi-on, makita usab kini sa Android gikan sa duol nga mga Wi-Fi network ug cell tower.</string>
+    <string name="dejavu_network_location_warning_title">Gamiton ang lokasyon pinaagi sa network?</string>
+    <string name="dejavu_network_location_warning_message">Sa mga telepono nga adunay Google Play Services, makita sa Android ang imong lokasyon pinaagi sa pagpadala sa Google sa mga Wi-Fi network ug cell tower nga duol kanimo. Ang mga website makakuha gihapon sa imong lokasyon human lang nimo sila tugoti.</string>
 </resources>

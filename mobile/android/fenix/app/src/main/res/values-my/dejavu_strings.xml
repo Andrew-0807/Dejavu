@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">ဤ Dejavu တည်ဆောက်မှုတွင် Safe Browsing ကီး မရှိသောကြောင့် အန္တရာယ်ရှိသော ဆိုက်များအကြောင်း သတိမပေးနိုင်ပါ။</string>
     <string name="dejavu_custom_action_http_warning">ဤလိပ်စာသည် http ကို သုံးသောကြောင့် တောင်းဆိုချက်၊ ၎င်း၏ header များနှင့် စာမျက်နှာလိပ်စာသည် ကုဒ်မဝှက်ဘဲ သွားသည်။ ဆာဗာက ပံ့ပိုးလျှင် https ကို သုံးပါ။</string>
     <string name="dejavu_example_notification_ntfy">စာမျက်နှာကို အသိပေးချက်အဖြစ် ပို့ပါ။ ခေါင်းစဉ်အမည်ကို သိသူတိုင်း ဖတ်နိုင်သောကြောင့် ရှည်လျားပြီး ကျပန်းအမည်ကို ရွေးပါ။</string>
+    <string name="dejavu_settings_direct_calls">ခေါ်ဆိုမှုများအတွက် တိုက်ရိုက်ချိတ်ဆက်မှုများ</string>
+    <string name="dejavu_settings_direct_calls_summary">ပိတ်ထားလျှင် ဝဘ်ဆိုက်များရှိ ခေါ်ဆိုမှုများသည် ဆိုက်၏ relay ဆာဗာများမှတစ်ဆင့်သာ ချိတ်ဆက်ပြီး သင်၏ IP လိပ်စာကို ဆိုက်များနှင့် သင်ခေါ်ဆိုသူများထံမှ ဖုံးကွယ်ထားသည်။ ခေါ်ဆိုမှု မချိတ်ဆက်နိုင်လျှင် ဖွင့်ပါ။</string>
+    <string name="dejavu_direct_calls_warning_title">တိုက်ရိုက်ချိတ်ဆက်မှုများကို ခွင့်ပြုမလား။</string>
+    <string name="dejavu_direct_calls_warning_message">ထို့နောက် သင်ခေါ်ဆိုသူများနှင့် ခေါ်ဆိုမှုပြုလုပ်သည့် ဆိုက်များသည် သင်၏ IP လိပ်စာကို မြင်နိုင်မည်။ သင့်ကင်မရာ သို့မဟုတ် မိုက်ခရိုဖုန်းကို သုံးခွင့်ပြုထားသော ဆိုက်များသည် သင့်ဒေသတွင်းကွန်ရက်ရှိ လိပ်စာများကိုလည်း မြင်နိုင်မည်။</string>
+    <string name="dejavu_settings_network_location">ကွန်ရက်တည်နေရာ</string>
+    <string name="dejavu_settings_network_location_summary">ပိတ်ထားလျှင် သင်ခွင့်ပြုသော ဝဘ်ဆိုက်များသည် သင့်တည်နေရာကို GPS မှသာ ရယူပြီး နှေးနိုင်သည် သို့မဟုတ် အိမ်တွင်း၌ မအောင်မြင်နိုင်ပါ။ ဖွင့်ထားလျှင် Android သည် အနီးရှိ Wi-Fi ကွန်ရက်များနှင့် ဆဲလ်တာဝါများမှလည်း ရှာနိုင်သည်။</string>
+    <string name="dejavu_network_location_warning_title">ကွန်ရက်တည်နေရာကို သုံးမလား။</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services ပါသော ဖုန်းများတွင် Android သည် သင့်အနီးရှိ Wi-Fi ကွန်ရက်များနှင့် ဆဲလ်တာဝါများကို Google သို့ ပို့၍ သင့်တည်နေရာကို ရှာသည်။ ဝဘ်ဆိုက်များသည် သင်ခွင့်ပြုပြီးမှသာ သင့်တည်နေရာကို ဆက်လက်ရယူသည်။</string>
 </resources>

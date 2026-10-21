@@ -356,4 +356,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Esta versão do Dejavu não tem chave do Safe Browsing, por isso não pode avisar sobre sites perigosos.</string>
     <string name="dejavu_custom_action_http_warning">Este endereço usa http, por isso o pedido, os seus cabeçalhos e o endereço da página viajam sem encriptação. Use https se o servidor o suportar.</string>
     <string name="dejavu_example_notification_ntfy">Envie a página como notificação. Qualquer pessoa que saiba o nome do tópico pode lê-la, por isso escolha um nome longo e aleatório.</string>
+    <string name="dejavu_settings_direct_calls">Ligações diretas para chamadas</string>
+    <string name="dejavu_settings_direct_calls_summary">Desativado, as chamadas em sites ligam-se apenas através dos servidores de retransmissão do site, o que oculta o seu endereço IP dos sites e das pessoas para quem liga. Ative-o se uma chamada não se ligar.</string>
+    <string name="dejavu_direct_calls_warning_title">Permitir ligações diretas?</string>
+    <string name="dejavu_direct_calls_warning_message">As pessoas para quem liga e os sites que fazem chamadas poderão então ver o seu endereço IP. Os sites a que permite usar a câmara ou o microfone também poderão ver os seus endereços na rede local.</string>
+    <string name="dejavu_settings_network_location">Localização pela rede</string>
+    <string name="dejavu_settings_network_location_summary">Desativado, os sites a que dá permissão obtêm a sua localização apenas pelo GPS, o que pode ser lento ou falhar em interiores. Ativado, o Android também a pode encontrar a partir das redes Wi-Fi e das antenas de rede móvel próximas.</string>
+    <string name="dejavu_network_location_warning_title">Utilizar a localização pela rede?</string>
+    <string name="dejavu_network_location_warning_message">Em telemóveis com Google Play Services, o Android encontra a sua localização enviando à Google as redes Wi-Fi e as antenas de rede móvel perto de si. Os sites continuam a obter a sua localização apenas depois de lhes dar permissão.</string>
 </resources>

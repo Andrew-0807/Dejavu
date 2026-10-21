@@ -363,4 +363,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ta wersyjo Dejavu niy mo klucza Safe Browsing, tōż niy może ôstrzegać przed niebezpiecznymi strōnami.</string>
     <string name="dejavu_custom_action_http_warning">Tyn adres używo http, tōż żōndanie, jego nagłōwki i adres strōny sōm przesyłane bez szyfrowanio. Użyj https, jak serwer to ôbsuguje.</string>
     <string name="dejavu_example_notification_ntfy">Wysyło strōna jako powiadōmiynie. Kożdy, fto zno miano tymatu, może to przeczytać, tōż wybier dugie, losowe miano.</string>
+    <string name="dejavu_settings_direct_calls">Bezpostrzednie połōnczyni do rozmōw</string>
+    <string name="dejavu_settings_direct_calls_summary">Jak je zastawiōne, rozmowy na strōnach łōnczōm sie ino bez serwery przekazujōnce strōny, co skrywo twoja adresa IP przed strōnami i ludźmi, do kerych dzwōnisz. Załōncz, jeźli rozmowa sie niy łōnczy.</string>
+    <string name="dejavu_direct_calls_warning_title">Przizwolić na bezpostrzednie połōnczyni?</string>
+    <string name="dejavu_direct_calls_warning_message">Ludzie, do kerych dzwōnisz, i strōny, kere robiōm rozmowy, bydōm wtedy widzieć twoja adresa IP. Strōny, kerym przizwolisz używać kamery abo mikrofōnu, bydōm tyż widzieć twoje adresy we lokalnym necu.</string>
+    <string name="dejavu_settings_network_location">Położyni z necu</string>
+    <string name="dejavu_settings_network_location_summary">Jak je zastawiōne, strōny, kerym przizwolisz, dostowajōm twoje położyni ino z GPS, co może trwać dugo abo niy fungować we budynkach. Jak je załōnczōne, Android może je znojś tyż ze bliskich necōw Wi-Fi i masztōw kōmōrkowych.</string>
+    <string name="dejavu_network_location_warning_title">Używać położynio z necu?</string>
+    <string name="dejavu_network_location_warning_message">Na telefōnach z Google Play Services Android znojduje twoje położyni, posyłajōnc do Google bliske necy Wi-Fi i maszty kōmōrkowe. Strōny dalij dostowajōm twoje położyni dopiyro po twojim przizwoleniu.</string>
 </resources>

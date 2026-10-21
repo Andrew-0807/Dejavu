@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Bản dựng Dejavu này không có khóa Safe Browsing, nên không thể cảnh báo về trang web nguy hiểm.</string>
     <string name="dejavu_custom_action_http_warning">Địa chỉ này dùng http, nên yêu cầu, các tiêu đề của nó và địa chỉ của trang được gửi đi mà không mã hóa. Dùng https nếu máy chủ hỗ trợ.</string>
     <string name="dejavu_example_notification_ntfy">Gửi trang dưới dạng thông báo. Bất kỳ ai biết tên chủ đề đều có thể đọc được, vì vậy hãy chọn một tên dài và ngẫu nhiên.</string>
+    <string name="dejavu_settings_direct_calls">Kết nối trực tiếp cho cuộc gọi</string>
+    <string name="dejavu_settings_direct_calls_summary">Khi tắt, cuộc gọi trên trang web chỉ kết nối qua máy chủ chuyển tiếp của trang, giúp ẩn địa chỉ IP của bạn khỏi các trang và những người bạn gọi. Hãy bật nếu cuộc gọi không kết nối được.</string>
+    <string name="dejavu_direct_calls_warning_title">Cho phép kết nối trực tiếp?</string>
+    <string name="dejavu_direct_calls_warning_message">Khi đó, những người bạn gọi và các trang thực hiện cuộc gọi có thể thấy địa chỉ IP của bạn. Các trang bạn cho phép dùng máy ảnh hoặc micrô cũng có thể thấy địa chỉ của bạn trong mạng cục bộ.</string>
+    <string name="dejavu_settings_network_location">Vị trí qua mạng</string>
+    <string name="dejavu_settings_network_location_summary">Khi tắt, các trang web bạn cho phép chỉ lấy vị trí của bạn từ GPS, có thể chậm hoặc không được khi ở trong nhà. Khi bật, Android cũng có thể tìm vị trí từ các mạng Wi-Fi và trạm phát sóng di động ở gần.</string>
+    <string name="dejavu_network_location_warning_title">Dùng vị trí qua mạng?</string>
+    <string name="dejavu_network_location_warning_message">Trên điện thoại có Google Play Services, Android tìm vị trí của bạn bằng cách gửi các mạng Wi-Fi và trạm phát sóng di động gần bạn tới Google. Các trang web vẫn chỉ nhận được vị trí của bạn sau khi bạn cho phép.</string>
 </resources>

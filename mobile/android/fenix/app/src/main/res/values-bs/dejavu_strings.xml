@@ -356,4 +356,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Ova verzija Dejavua nema Safe Browsing ključ, pa ne može upozoriti na opasne stranice.</string>
     <string name="dejavu_custom_action_http_warning">Ova adresa koristi http, pa zahtjev, njegova zaglavlja i adresa stranice putuju nešifrirani. Koristite https ako ga server podržava.</string>
     <string name="dejavu_example_notification_ntfy">Šalje stranicu kao obavještenje. Svako ko zna naziv teme može ga pročitati, pa izaberite dug, nasumičan naziv.</string>
+    <string name="dejavu_settings_direct_calls">Direktne veze za pozive</string>
+    <string name="dejavu_settings_direct_calls_summary">Kada je isključeno, pozivi na web stranicama povezuju se samo preko relejnih servera stranice, što skriva vašu IP adresu od stranica i od ljudi koje zovete. Uključite ako se poziv ne povezuje.</string>
+    <string name="dejavu_direct_calls_warning_title">Dozvoliti direktne veze?</string>
+    <string name="dejavu_direct_calls_warning_message">Ljudi koje zovete i stranice koje uspostavljaju pozive tada mogu vidjeti vašu IP adresu. Stranice kojima dozvolite korištenje kamere ili mikrofona mogu vidjeti i vaše adrese na lokalnoj mreži.</string>
+    <string name="dejavu_settings_network_location">Lokacija putem mreže</string>
+    <string name="dejavu_settings_network_location_summary">Kada je isključeno, web stranice kojima dozvolite dobijaju vašu lokaciju samo s GPS-a, što može biti sporo ili ne raditi u zatvorenom. Kada je uključeno, Android je može pronaći i preko obližnjih Wi-Fi mreža i baznih stanica.</string>
+    <string name="dejavu_network_location_warning_title">Koristiti lokaciju putem mreže?</string>
+    <string name="dejavu_network_location_warning_message">Na telefonima s Google Play Services, Android pronalazi vašu lokaciju tako što šalje Googleu Wi-Fi mreže i bazne stanice u vašoj blizini. Web stranice i dalje dobijaju vašu lokaciju tek nakon što im dozvolite.</string>
 </resources>

@@ -621,6 +621,7 @@ dependencies {
     implementation libs.androidx.datastore
     implementation libs.androidx.datastore.preferences
     implementation libs.androidx.emoji2
+    implementation libs.androidx.emoji2.bundled
     implementation libs.androidx.exifinterface
     implementation libs.androidx.fragment
     implementation libs.androidx.fragment.compose

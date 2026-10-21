@@ -342,4 +342,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu รุ่นนี้ไม่มีคีย์ Safe Browsing จึงไม่สามารถเตือนเกี่ยวกับเว็บไซต์อันตรายได้</string>
     <string name="dejavu_custom_action_http_warning">ที่อยู่นี้ใช้ http คำขอ ส่วนหัวของคำขอ และที่อยู่ของหน้าจึงถูกส่งโดยไม่เข้ารหัส ใช้ https หากเซิร์ฟเวอร์รองรับ</string>
     <string name="dejavu_example_notification_ntfy">ส่งหน้าเป็นการแจ้งเตือน ใครก็ตามที่รู้ชื่อหัวข้อสามารถอ่านได้ จึงควรเลือกชื่อที่ยาวและสุ่ม</string>
+    <string name="dejavu_settings_direct_calls">การเชื่อมต่อโดยตรงสำหรับการโทร</string>
+    <string name="dejavu_settings_direct_calls_summary">เมื่อปิด การโทรในเว็บไซต์จะเชื่อมต่อผ่านเซิร์ฟเวอร์รีเลย์ของไซต์เท่านั้น ซึ่งจะซ่อนที่อยู่ IP ของคุณจากไซต์และจากคนที่คุณโทรหา เปิดหากการโทรเชื่อมต่อไม่ได้</string>
+    <string name="dejavu_direct_calls_warning_title">อนุญาตการเชื่อมต่อโดยตรงหรือไม่?</string>
+    <string name="dejavu_direct_calls_warning_message">จากนั้นคนที่คุณโทรหาและไซต์ที่ใช้โทรจะเห็นที่อยู่ IP ของคุณได้ ไซต์ที่คุณอนุญาตให้ใช้กล้องหรือไมโครโฟนจะเห็นที่อยู่ของคุณในเครือข่ายท้องถิ่นได้ด้วย</string>
+    <string name="dejavu_settings_network_location">ตำแหน่งจากเครือข่าย</string>
+    <string name="dejavu_settings_network_location_summary">เมื่อปิด เว็บไซต์ที่คุณอนุญาตจะได้รับตำแหน่งของคุณจาก GPS เท่านั้น ซึ่งอาจช้าหรือใช้ไม่ได้ในอาคาร เมื่อเปิด Android ยังหาตำแหน่งได้จากเครือข่าย Wi-Fi และเสาสัญญาณโทรศัพท์ที่อยู่ใกล้เคียงด้วย</string>
+    <string name="dejavu_network_location_warning_title">ใช้ตำแหน่งจากเครือข่ายหรือไม่?</string>
+    <string name="dejavu_network_location_warning_message">บนโทรศัพท์ที่มี Google Play Services Android จะหาตำแหน่งของคุณโดยส่งเครือข่าย Wi-Fi และเสาสัญญาณโทรศัพท์ที่อยู่ใกล้คุณไปให้ Google เว็บไซต์ยังคงได้รับตำแหน่งของคุณหลังจากที่คุณอนุญาตเท่านั้น</string>
 </resources>

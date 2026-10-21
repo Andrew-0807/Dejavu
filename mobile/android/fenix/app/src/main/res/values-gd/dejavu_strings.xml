@@ -363,4 +363,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Chan eil iuchair Safe Browsing aig a\' chruthachadh seo de Dejavu, mar sin chan urrainn dha rabhadh a thoirt mu làraichean cunnartach.</string>
     <string name="dejavu_custom_action_http_warning">Cleachdaidh an seòladh seo http, mar sin siubhlaidh an t-iarrtas, na bannan-cinn aige agus seòladh na duilleige gun chrioptachadh. Cleachd https ma chuireas am frithealaiche taic ris.</string>
     <string name="dejavu_example_notification_ntfy">Cuir an duilleag mar bhrath. Faodaidh duine sam bith aig a bheil fios air ainm a\' chuspair a leughadh, mar sin tagh ainm fada air thuaiream.</string>
+    <string name="dejavu_settings_direct_calls">Ceanglaichean dìreach airson ghairmean</string>
+    <string name="dejavu_settings_direct_calls_summary">Nuair a bhios e dheth, cha cheangail gairmean air làraichean-lìn ach tro fhrithealaichean sealaidheachd na làraich, rud a chleitheas an seòladh IP agad o làraichean is o na daoine ris an cuir thu fòn. Cuir air e mur an ceangail gairm.</string>
+    <string name="dejavu_direct_calls_warning_title">A bheil thu airson ceanglaichean dìreach a cheadachadh?</string>
+    <string name="dejavu_direct_calls_warning_message">Chì na daoine ris an cuir thu fòn agus na làraichean a nì gairmean an seòladh IP agad an uairsin. Chì làraichean a cheadaicheas tu dhaibh an camara no am micreofon agad a chleachdadh na seòlaidhean agad air an lìonra ionadail agad cuideachd.</string>
+    <string name="dejavu_settings_network_location">Ionad on lìonra</string>
+    <string name="dejavu_settings_network_location_summary">Nuair a bhios e dheth, chan fhaigh na làraichean-lìn a cheadaicheas tu an t-ionad agad ach on GPS, rud a dh\'fhaodadh a bhith slaodach no fàilligeadh am broinn togalaich. Nuair a bhios e air, \'s urrainn do Android a lorg cuideachd o lìonraidhean Wi-Fi is tùir fòn-làimhe faisg ort.</string>
+    <string name="dejavu_network_location_warning_title">A bheil thu airson ionad on lìonra a chleachdadh?</string>
+    <string name="dejavu_network_location_warning_message">Air fònaichean le Google Play Services, lorgaidh Android an t-ionad agad le bhith a\' cur nan lìonraidhean Wi-Fi is nan tùir fòn-làimhe faisg ort gu Google. Chan fhaigh làraichean-lìn an t-ionad agad fhathast ach às dèidh dhut cead a thoirt dhaibh.</string>
 </resources>

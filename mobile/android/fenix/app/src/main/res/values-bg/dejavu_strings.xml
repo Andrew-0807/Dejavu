@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Тази компилация на Dejavu няма ключ за Safe Browsing, затова не може да предупреждава за опасни сайтове.</string>
     <string name="dejavu_custom_action_http_warning">Този адрес използва http, затова заявката, заглавките ѝ и адресът на страницата се пренасят некриптирани. Използвайте https, ако сървърът го поддържа.</string>
     <string name="dejavu_example_notification_ntfy">Изпраща страницата като известие. Всеки, който знае името на темата, може да го прочете, затова изберете дълго, случайно име.</string>
+    <string name="dejavu_settings_direct_calls">Директни връзки за обаждания</string>
+    <string name="dejavu_settings_direct_calls_summary">Когато е изключено, обажданията в уебсайтове се свързват само през релейните сървъри на сайта, което скрива вашия IP адрес от сайтовете и от хората, на които се обаждате. Включете го, ако обаждане не се свързва.</string>
+    <string name="dejavu_direct_calls_warning_title">Разрешаване на директни връзки?</string>
+    <string name="dejavu_direct_calls_warning_message">Тогава хората, на които се обаждате, и сайтовете, които осъществяват обаждания, могат да виждат вашия IP адрес. Сайтовете, на които разрешите да използват камерата или микрофона ви, могат да виждат и адресите ви в локалната мрежа.</string>
+    <string name="dejavu_settings_network_location">Местоположение по мрежата</string>
+    <string name="dejavu_settings_network_location_summary">Когато е изключено, уебсайтовете, на които разрешите, получават местоположението ви само от GPS, което може да е бавно или да не работи на закрито. Когато е включено, Android може да го намери и по близките Wi-Fi мрежи и клетъчни кули.</string>
+    <string name="dejavu_network_location_warning_title">Използване на местоположение по мрежата?</string>
+    <string name="dejavu_network_location_warning_message">На телефони с Google Play Services Android намира местоположението ви, като изпраща до Google Wi-Fi мрежите и клетъчните кули около вас. Уебсайтовете пак получават местоположението ви само след като им разрешите.</string>
 </resources>

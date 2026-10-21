@@ -349,4 +349,12 @@
     <string name="dejavu_settings_safe_browsing_no_key">Dejavu کے اس بلڈ میں Safe Browsing کلید نہیں ہے، اس لیے یہ خطرناک سائٹوں کے بارے میں خبردار نہیں کر سکتا۔</string>
     <string name="dejavu_custom_action_http_warning">یہ پتہ http استعمال کرتا ہے، اس لیے درخواست، اس کے ہیڈرز اور صفحے کا پتہ انکرپشن کے بغیر جاتے ہیں۔ اگر سرور معاونت کرتا ہے تو https استعمال کریں۔</string>
     <string name="dejavu_example_notification_ntfy">صفحے کو اطلاع کے طور پر بھیجیں۔ موضوع کا نام جاننے والا کوئی بھی اسے پڑھ سکتا ہے، اس لیے لمبا، بے ترتیب نام چنیں۔</string>
+    <string name="dejavu_settings_direct_calls">کالز کے لیے براہ راست کنکشن</string>
+    <string name="dejavu_settings_direct_calls_summary">بند ہونے پر، ویب سائٹس پر کالز صرف سائٹ کے ریلے سرورز کے ذریعے جڑتی ہیں، جس سے آپ کا IP پتہ سائٹس اور ان لوگوں سے چھپا رہتا ہے جنہیں آپ کال کرتے ہیں۔ اگر کال نہ جڑے تو اسے آن کریں۔</string>
+    <string name="dejavu_direct_calls_warning_title">براہ راست کنکشنز کی اجازت دیں؟</string>
+    <string name="dejavu_direct_calls_warning_message">پھر جن لوگوں کو آپ کال کرتے ہیں اور کالز کرنے والی سائٹس آپ کا IP پتہ دیکھ سکتی ہیں۔ جن سائٹس کو آپ اپنا کیمرہ یا مائیکروفون استعمال کرنے دیتے ہیں وہ آپ کے مقامی نیٹ ورک پر آپ کے پتے بھی دیکھ سکتی ہیں۔</string>
+    <string name="dejavu_settings_network_location">نیٹ ورک مقام</string>
+    <string name="dejavu_settings_network_location_summary">بند ہونے پر، جن ویب سائٹس کو آپ اجازت دیتے ہیں وہ آپ کا مقام صرف GPS سے حاصل کرتی ہیں، جو سست ہو سکتا ہے یا عمارت کے اندر ناکام ہو سکتا ہے۔ آن ہونے پر، Android اسے قریبی Wi-Fi نیٹ ورکس اور موبائل ٹاورز سے بھی تلاش کر سکتا ہے۔</string>
+    <string name="dejavu_network_location_warning_title">نیٹ ورک مقام استعمال کریں؟</string>
+    <string name="dejavu_network_location_warning_message">Google Play Services والے فونز پر، Android آپ کے قریب کے Wi-Fi نیٹ ورکس اور موبائل ٹاورز Google کو بھیج کر آپ کا مقام تلاش کرتا ہے۔ ویب سائٹس کو اب بھی آپ کی اجازت کے بعد ہی آپ کا مقام ملتا ہے۔</string>
 </resources>
