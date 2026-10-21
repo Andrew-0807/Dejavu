@@ -33,6 +33,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -255,6 +257,7 @@ fun ComposeView.setDejavuHomeContent(
             LaunchedEffect(Unit) {
                 onFirstFrameDrawn()
                 TabZoom.homeShown()
+                PageGenie.homeShown()
             }
         }
     }
@@ -513,28 +516,27 @@ private class DefaultDejavuHomeInteractor(
         } else {
             NavGraphDirections.actionGlobalTurnOnSync(entrypoint = FenixFxAEntryPoint.HomeMenu)
         }
-        navController.navigate(directions)
+        openPage(PageGenie.Button.ACCOUNT, directions)
     }
 
-    override fun onSettingsClick() {
-        navController.navigate(NavGraphDirections.actionGlobalSettingsFragment())
-    }
+    override fun onSettingsClick() =
+        openPage(PageGenie.Button.SETTINGS, NavGraphDirections.actionGlobalSettingsFragment())
 
-    override fun onDownloadsClick() {
-        navController.navigate(NavGraphDirections.actionGlobalDownloadsFragment())
-    }
+    override fun onDownloadsClick() =
+        openPage(PageGenie.Button.DOWNLOADS, NavGraphDirections.actionGlobalDownloadsFragment())
 
     override fun onExtensionsClick() {
         navController.navigate(NavGraphDirections.actionGlobalMenuDialogFragment(accesspoint = MenuAccessPoint.Home))
     }
 
-    override fun onBookmarksClick() {
-        navController.navigate(NavGraphDirections.actionGlobalBookmarkFragment(BookmarkRoot.Mobile.id))
-    }
+    override fun onBookmarksClick() =
+        openPage(PageGenie.Button.BOOKMARKS, NavGraphDirections.actionGlobalBookmarkFragment(BookmarkRoot.Mobile.id))
 
-    override fun onHistoryClick() {
-        navController.navigate(NavGraphDirections.actionGlobalHistoryFragment())
-    }
+    override fun onHistoryClick() = openPage(PageGenie.Button.HISTORY, NavGraphDirections.actionGlobalHistoryFragment())
+
+    /** Opens the page of [button], which pours out of it, without the page's own way of coming in. */
+    private fun openPage(button: PageGenie.Button, directions: NavDirections) =
+        PageGenie.open(context, button) { navController.navigate(directions, NavOptions.Builder().build()) }
 
     private fun TabSessionState.toPinSource() = PinSource(id, content.url, content.title, contextId)
 }

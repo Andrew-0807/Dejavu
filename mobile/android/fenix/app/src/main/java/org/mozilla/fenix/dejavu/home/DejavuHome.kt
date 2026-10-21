@@ -677,6 +677,7 @@ private fun TopBar(interactor: DejavuHomeInteractor, onSearchClick: () -> Unit) 
             icon = iconsR.drawable.mozac_ic_avatar_circle_24,
             contentDescription = stringResource(R.string.dejavu_account),
             onClick = interactor::onAccountClick,
+            modifier = Modifier.genieButton(PageGenie.Button.ACCOUNT),
         )
 
         Row(
@@ -708,6 +709,7 @@ private fun TopBar(interactor: DejavuHomeInteractor, onSearchClick: () -> Unit) 
             icon = iconsR.drawable.mozac_ic_settings_24,
             contentDescription = stringResource(R.string.dejavu_settings),
             onClick = interactor::onSettingsClick,
+            modifier = Modifier.genieButton(PageGenie.Button.SETTINGS),
         )
     }
 }
@@ -852,8 +854,9 @@ internal fun BarIconButton(
     @DrawableRes icon: Int,
     contentDescription: String,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    IconButton(onClick = onClick) {
+    IconButton(onClick = onClick, modifier = modifier) {
         Icon(
             painter = painterResource(icon),
             contentDescription = contentDescription,
@@ -933,7 +936,11 @@ private fun WorkspaceBar(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth().height(56.dp).padding(horizontal = 4.dp),
     ) {
-        DownloadsButton(status = downloads, onClick = onDownloadsClick)
+        DownloadsButton(
+            status = downloads,
+            onClick = onDownloadsClick,
+            modifier = Modifier.genieButton(PageGenie.Button.DOWNLOADS),
+        )
         BarIconButton(
             icon = iconsR.drawable.mozac_ic_extension_24,
             contentDescription = stringResource(R.string.dejavu_extensions),
@@ -1021,11 +1028,13 @@ private fun WorkspaceBar(
             icon = iconsR.drawable.mozac_ic_bookmark_tray_24,
             contentDescription = stringResource(R.string.dejavu_bookmarks),
             onClick = onBookmarksClick,
+            modifier = Modifier.genieButton(PageGenie.Button.BOOKMARKS),
         )
         BarIconButton(
             icon = iconsR.drawable.mozac_ic_history_24,
             contentDescription = stringResource(R.string.dejavu_history),
             onClick = onHistoryClick,
+            modifier = Modifier.genieButton(PageGenie.Button.HISTORY),
         )
     }
 }

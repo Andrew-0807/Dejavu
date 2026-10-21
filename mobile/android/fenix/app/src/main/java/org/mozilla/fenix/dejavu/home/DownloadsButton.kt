@@ -121,7 +121,7 @@ private val RunningStatuses = setOf(
  * @param status The downloads, read only here so their updates redraw nothing else on the home screen.
  */
 @Composable
-internal fun DownloadsButton(status: State<DownloadsStatus>, onClick: () -> Unit) {
+internal fun DownloadsButton(status: State<DownloadsStatus>, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val current = status.value
     val finish = remember { Animatable(0f) }
     val failure = remember { Animatable(0f) }
@@ -201,7 +201,7 @@ internal fun DownloadsButton(status: State<DownloadsStatus>, onClick: () -> Unit
     val label = stringResource(R.string.dejavu_downloads)
 
     // The badge sits outside the button, whose round shape would cut it off.
-    Box {
+    Box(modifier = modifier) {
         IconButton(
             onClick = onClick,
             modifier = Modifier.semantics {
