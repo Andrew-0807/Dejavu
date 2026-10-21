@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Vue partagée</string>
     <string name="dejavu_action_unsplit">Annuler la vue partagée</string>
     <string name="dejavu_split_view">Vue partagée</string>
-    <string name="dejavu_split_show_on_top">Afficher en haut</string>
     <string name="dejavu_split_close">Fermer la vue partagée</string>
+    <string name="dejavu_split_top_and_bottom">Diviser en haut et en bas</string>
+    <string name="dejavu_split_side_by_side">Diviser côte à côte</string>
+    <string name="dejavu_split_focus">Passer à cette page</string>
     <string name="dejavu_action_reset_pin">Réinitialiser la tabbere épinglée</string>
     <string name="dejavu_action_replace_pin">Remplacer l\'URL épinglée par l\'actuelle</string>
     <string name="dejavu_action_add_to_essentials">Ajouter aux essentiels</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Envoyer chaque variable en JSON, pour n8n, Node-RED et outils similaires</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Fermer les tabbe non épinglées</string>
     <string name="dejavu_link_open_in_split_view">Ouvrir en vue partagée</string>
+    <string name="dejavu_link_open_beside_in_split_view">Ouvrir à côté en vue partagée</string>
+    <string name="dejavu_link_open_below_in_split_view">Ouvrir en dessous en vue partagée</string>
     <string name="dejavu_link_open_in_container">Ouvrir dans un conteneur</string>
     <string name="dejavu_link_open_in_workspace">Ouvrir dans un espace de travail</string>
     <string name="dejavu_link_opened_in">Ouvert dans %1$s</string>

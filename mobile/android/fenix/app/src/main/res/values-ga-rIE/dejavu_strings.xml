@@ -88,8 +88,10 @@
     <string name="dejavu_action_split_view">Amharc scoilte</string>
     <string name="dejavu_action_unsplit">Díscoilt</string>
     <string name="dejavu_split_view">Amharc scoilte</string>
-    <string name="dejavu_split_show_on_top">Taispeáin ar barr</string>
     <string name="dejavu_split_close">Dún an t-amharc scoilte</string>
+    <string name="dejavu_split_top_and_bottom">Scoilt thuas agus thíos</string>
+    <string name="dejavu_split_side_by_side">Scoilt taobh le taobh</string>
+    <string name="dejavu_split_focus">Téigh go dtí an leathanach seo</string>
     <string name="dejavu_action_reset_pin">Athshocraigh an cluaisín greamaithe</string>
     <string name="dejavu_action_replace_pin">Ionadaigh an URL greamaithe leis an gceann reatha</string>
     <string name="dejavu_action_add_to_essentials">Cuir leis na riachtanais</string>
@@ -163,6 +165,8 @@
     <string name="dejavu_example_webhook">Seol gach athróg mar JSON, le haghaidh n8n, Node-RED agus uirlisí dá samhail</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Dún cluaisíní neamhghreamaithe</string>
     <string name="dejavu_link_open_in_split_view">Oscail in amharc scoilte</string>
+    <string name="dejavu_link_open_beside_in_split_view">Oscail in aice leis in amharc scoilte</string>
+    <string name="dejavu_link_open_below_in_split_view">Oscail faoina bhun in amharc scoilte</string>
     <string name="dejavu_link_open_in_container">Oscail i gcoimeádán</string>
     <string name="dejavu_link_open_in_workspace">Oscail i spás oibre</string>
     <string name="dejavu_link_opened_in">Oscailte i %1$s</string>

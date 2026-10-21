@@ -84,8 +84,10 @@
     <string name="dejavu_action_split_view">lukin tu</string>
     <string name="dejavu_action_unsplit">lukin wan</string>
     <string name="dejavu_split_view">lukin tu</string>
-    <string name="dejavu_split_show_on_top">o lon sewi</string>
     <string name="dejavu_split_close">o pini e lukin tu</string>
+    <string name="dejavu_split_top_and_bottom">lukin tu lon sewi en anpa</string>
+    <string name="dejavu_split_side_by_side">lukin tu lon poka open en poka pini</string>
+    <string name="dejavu_split_focus">o lukin e lipu ni</string>
     <string name="dejavu_action_reset_pin">o open sin e poki awen</string>
     <string name="dejavu_action_replace_pin">o ante e URL awen tawa URL pi tenpo ni</string>
     <string name="dejavu_action_add_to_essentials">o pana e ni tawa lipu suli</string>
@@ -159,6 +161,8 @@
     <string name="dejavu_example_webhook">o pana e nimi ante ale sama JSON, tawa n8n, Node-RED, en ilo sama</string>
     <string name="dejavu_preferences_close_unpinned_tabs">o pini e poki awen ala</string>
     <string name="dejavu_link_open_in_split_view">o open lon lukin tu</string>
+    <string name="dejavu_link_open_beside_in_split_view">o open lon poka lon lukin tu</string>
+    <string name="dejavu_link_open_below_in_split_view">o open lon anpa lon lukin tu</string>
     <string name="dejavu_link_open_in_container">o open lon leko</string>
     <string name="dejavu_link_open_in_workspace">o open lon kulupu poki</string>
     <string name="dejavu_link_opened_in">open lon %1$s</string>

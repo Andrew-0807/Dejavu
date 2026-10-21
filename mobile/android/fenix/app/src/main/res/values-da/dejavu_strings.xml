@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Delt visning</string>
     <string name="dejavu_action_unsplit">Afslut delt visning</string>
     <string name="dejavu_split_view">Delt visning</string>
-    <string name="dejavu_split_show_on_top">Vis øverst</string>
     <string name="dejavu_split_close">Luk delt visning</string>
+    <string name="dejavu_split_top_and_bottom">Opdel øverst og nederst</string>
+    <string name="dejavu_split_side_by_side">Opdel side om side</string>
+    <string name="dejavu_split_focus">Skift til denne side</string>
     <string name="dejavu_action_reset_pin">Nulstil fastgjort faneblad</string>
     <string name="dejavu_action_replace_pin">Erstat fastgjort URL med nuværende</string>
     <string name="dejavu_action_add_to_essentials">Føj til Favoritter</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Send alle variabler som JSON, til n8n, Node-RED og lignende værktøjer</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Luk ikke-fastgjorte faneblade</string>
     <string name="dejavu_link_open_in_split_view">Åbn i delt visning</string>
+    <string name="dejavu_link_open_beside_in_split_view">Åbn ved siden af i delt visning</string>
+    <string name="dejavu_link_open_below_in_split_view">Åbn nedenunder i delt visning</string>
     <string name="dejavu_link_open_in_container">Åbn i beholder</string>
     <string name="dejavu_link_open_in_workspace">Åbn i arbejdsområde</string>
     <string name="dejavu_link_opened_in">Åbnet i %1$s</string>

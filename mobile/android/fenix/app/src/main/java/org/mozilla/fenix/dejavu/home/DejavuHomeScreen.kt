@@ -65,6 +65,7 @@ import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.DejavuSearchOverlay
 import org.mozilla.fenix.dejavu.browser.SearchBackdrop
 import org.mozilla.fenix.dejavu.browser.SearchPageBackdrop
+import org.mozilla.fenix.dejavu.browser.SplitSpace
 import org.mozilla.fenix.dejavu.browser.TabZoom
 import org.mozilla.fenix.dejavu.browser.blurBehindSearch
 import org.mozilla.fenix.dejavu.containers.ContainerColor
@@ -342,16 +343,35 @@ private class DefaultDejavuHomeInteractor(
     override fun onTabClick(tabId: String) = openTab(tabId)
 
     override fun onPinClick(pin: PinnedItem) {
-        val liveTabId = pin.tabId?.takeIf { store.state.findTab(it) != null }
-        if (liveTabId != null) {
-            openTab(liveTabId)
-            return
+        val tabId = tabOf(pin, select = true) ?: return
+        // The two pinned tabs of a split view synced from Zen open together, the way Zen shows them.
+        val state = repository.state.value
+        val zenSplit = state.pinnedSplitOf(pin.id)
+        if (zenSplit != null && state.splitOf(tabId) == null) {
+            val otherId = zenSplit.pinIds.firstOrNull { it != pin.id }
+            val other = state.pins.firstOrNull { it.id == otherId }
+            other?.let { tabOf(it, select = false) }?.let { otherTabId ->
+                val first = zenSplit.pinIds.first() == pin.id
+                repository.createSplit(
+                    first = if (first) tabId else otherTabId,
+                    second = if (first) otherTabId else tabId,
+                    orientation = zenSplit.orientation,
+                )
+            }
         }
-        // A pin whose tab closed opens where that tab was, like a sleeping tab wakes up.
-        val url = pin.pageUrl.takeIf { it.isNotEmpty() } ?: return
+        openTab(tabId)
+    }
+
+    /**
+     * The open tab of [pin]. A pin whose tab closed opens where that tab was, like a sleeping tab wakes up, selected
+     * when [select] is set.
+     */
+    private fun tabOf(pin: PinnedItem, select: Boolean): String? {
+        pin.tabId?.takeIf { store.state.findTab(it) != null }?.let { return it }
+        val url = pin.pageUrl.takeIf { it.isNotEmpty() } ?: return null
         val tabId = tabsUseCases.addTab(
             url = url,
-            selectTab = true,
+            selectTab = select,
             title = pin.openTitle ?: pin.title,
             contextId = TemporaryContainers.orReplacement(
                 pin.containerId,
@@ -362,7 +382,7 @@ private class DefaultDejavuHomeInteractor(
             source = SessionState.Source.Internal.None,
         )
         repository.attachPinned(pin.id, tabId)
-        openTab(tabId)
+        return tabId
     }
 
     override fun onTabAction(action: TabAction, targets: ActionTargets, workspaceId: String) =
@@ -430,7 +450,7 @@ private class DefaultDejavuHomeInteractor(
             is DropTarget.SplitWith -> {
                 val dragged = targets.tabs.singleOrNull()?.takeIf { it.id != target.tabId } ?: return
                 if (store.state.findTab(target.tabId) == null) return
-                repository.createSplit(target.tabId, dragged.id)
+                repository.createSplit(target.tabId, dragged.id, SplitSpace.preferred(SplitSpace.supported(context)))
                 store.dispatch(TabListAction.MoveTabsAction(listOf(dragged.id), target.tabId, placeAfter = true))
                 return
             }

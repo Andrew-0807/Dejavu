@@ -84,8 +84,10 @@
     <string name="dejavu_action_split_view">Split view</string>
     <string name="dejavu_action_unsplit">Batalang split view</string>
     <string name="dejavu_split_view">Split view</string>
-    <string name="dejavu_split_show_on_top">Tampilang di baduur</string>
     <string name="dejavu_split_close">Tutup split view</string>
+    <string name="dejavu_split_top_and_bottom">Bagi duur lan beten</string>
+    <string name="dejavu_split_side_by_side">Bagi kiwa lan tengen</string>
+    <string name="dejavu_split_focus">Gingsirang ka halaman puniki</string>
     <string name="dejavu_action_reset_pin">Reset tab kasemat</string>
     <string name="dejavu_action_replace_pin">Gantiang URL kasemat aji ané jani</string>
     <string name="dejavu_action_add_to_essentials">Tambahang ka Penting</string>
@@ -159,6 +161,8 @@
     <string name="dejavu_example_webhook">Kirim tiap variabel dadi JSON, anggon n8n, Node-RED, lan piranti ane patuh</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Tutup tab tusing kasemat</string>
     <string name="dejavu_link_open_in_split_view">Bukak di split view</string>
+    <string name="dejavu_link_open_beside_in_split_view">Bukak di samping ring split view</string>
+    <string name="dejavu_link_open_below_in_split_view">Bukak di beten ring split view</string>
     <string name="dejavu_link_open_in_container">Bukak di wadah</string>
     <string name="dejavu_link_open_in_workspace">Bukak di genah</string>
     <string name="dejavu_link_opened_in">Kabukak di %1$s</string>

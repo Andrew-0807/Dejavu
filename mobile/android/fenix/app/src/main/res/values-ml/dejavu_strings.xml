@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">വിഭജിത കാഴ്ച</string>
     <string name="dejavu_action_unsplit">വിഭജനം മാറ്റുക</string>
     <string name="dejavu_split_view">വിഭജിത കാഴ്ച</string>
-    <string name="dejavu_split_show_on_top">മുകളിൽ കാണിക്കുക</string>
     <string name="dejavu_split_close">വിഭജിത കാഴ്ച അടയ്ക്കുക</string>
+    <string name="dejavu_split_top_and_bottom">മുകളിലും താഴെയുമായി വിഭജിക്കുക</string>
+    <string name="dejavu_split_side_by_side">അടുത്തടുത്തായി വിഭജിക്കുക</string>
+    <string name="dejavu_split_focus">ഈ താളിലേക്ക് മാറുക</string>
     <string name="dejavu_action_reset_pin">പിൻ ചെയ്ത ടാബ് പുനഃസജ്ജമാക്കുക</string>
     <string name="dejavu_action_replace_pin">പിൻ ചെയ്ത URL നിലവിലുള്ളത് ഉപയോഗിച്ച് മാറ്റിസ്ഥാപിക്കുക</string>
     <string name="dejavu_action_add_to_essentials">പ്രധാനപ്പെട്ടവയിൽ ചേർക്കുക</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">n8n, Node-RED എന്നിവയ്ക്കും സമാന ഉപകരണങ്ങൾക്കുമായി, ഓരോ വേരിയബിളും JSON ആയി അയയ്ക്കുക</string>
     <string name="dejavu_preferences_close_unpinned_tabs">പിൻ ചെയ്യാത്ത ടാബുകൾ അടയ്ക്കുക</string>
     <string name="dejavu_link_open_in_split_view">വിഭജിത കാഴ്ചയിൽ തുറക്കുക</string>
+    <string name="dejavu_link_open_beside_in_split_view">വിഭജിത കാഴ്ചയിൽ അരികിൽ തുറക്കുക</string>
+    <string name="dejavu_link_open_below_in_split_view">വിഭജിത കാഴ്ചയിൽ താഴെ തുറക്കുക</string>
     <string name="dejavu_link_open_in_container">കണ്ടെയ്നറിൽ തുറക്കുക</string>
     <string name="dejavu_link_open_in_workspace">പണിയിടത്തിൽ തുറക്കുക</string>
     <string name="dejavu_link_opened_in">%1$s ൽ തുറന്നു</string>

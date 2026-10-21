@@ -11,11 +11,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,6 +30,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -44,6 +48,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
+import mozilla.components.browser.state.selector.findTab
 import mozilla.components.browser.state.selector.selectedTab
 import mozilla.components.browser.state.state.SecurityInfo
 import mozilla.components.browser.state.state.TabSessionState
@@ -66,6 +71,7 @@ import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
 import org.mozilla.fenix.dejavu.ui.DejavuMenuItem
 import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 
 /**
  * Dejavu's address bar while a page is shown: only its state, like Safari's. A field in the app's colors shows the
@@ -79,6 +85,12 @@ import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun DejavuTopBar(store: BrowserToolbarStore) {
+    val split = SplitScreen.shown
+    val selectedId by components.core.store.observeAsComposableState { it.selectedTabId }
+    if (split != null && selectedId in split.tabIds) {
+        DejavuSplitTopBar(store, split)
+        return
+    }
     val display by store.observeAsComposableState { it.displayState }
     val origin = display.pageOrigin
     val hint = stringResource(origin.hint)
@@ -139,6 +151,188 @@ fun DejavuTopBar(store: BrowserToolbarStore) {
                 },
                 onDismiss = { menuOpen = false },
             )
+        }
+    }
+}
+
+/**
+ * The address bar while the browser shows the two pages of [split]: both pages, the one in focus as the address bar
+ * shows a single page and the other one dimmed. Top and bottom, the pages show in two rows of a taller field, each
+ * with its title and its domain; side by side, in two fields as wide as the pages below them. Tapping the page in focus
+ * starts a search, as the address bar does; tapping the other one turns to it.
+ */
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun DejavuSplitTopBar(store: BrowserToolbarStore, split: ShownSplit) {
+    val display by store.observeAsComposableState { it.displayState }
+    val origin = display.pageOrigin
+    val hint = stringResource(origin.hint)
+    val browserStore = components.core.store
+    val tabs by browserStore.observeAsComposableState { state -> split.tabIds.mapNotNull { state.findTab(it) } }
+    val selectedId by browserStore.observeAsComposableState { it.selectedTabId }
+    val context = LocalContext.current
+    val haptic = LocalHapticFeedback.current
+    var menuOpen by remember { mutableStateOf(false) }
+    val theme = shownWorkspaceTheme()
+    val turnTo = stringResource(R.string.dejavu_split_focus)
+    val stacked = split.orientation == SplitOrientation.TOP_AND_BOTTOM
+    val shown = tabs
+
+    @Composable
+    fun Page(tab: TabSessionState, modifier: Modifier) {
+        val focused = tab.id == selectedId
+        val title = if (focused) {
+            origin.url?.toString()?.takeIf { it.isNotBlank() } ?: origin.title?.takeIf { it.isNotBlank() } ?: hint
+        } else {
+            DejavuToolbar.displayText(tab).takeUnless { it.isBlank() || tab.content.url == ABOUT_HOME_URL } ?: hint
+        }
+        val focus = { SplitScreen.focus(context, tab.id) }
+        val pageModifier = modifier
+            .alpha(if (focused) 1f else UNFOCUSED_ALPHA)
+            .semantics {
+                contentDescription = if (focused && title != hint) "$title. $hint" else title
+                role = Role.Button
+            }
+            .combinedClickable(
+                onClickLabel = if (focused) hint else turnTo,
+                onClick = { if (focused) origin.onClick?.let { store.dispatch(it) } else focus() },
+                onLongClick = {
+                    if (focused) {
+                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                        menuOpen = true
+                    } else {
+                        focus()
+                    }
+                },
+            )
+        // The page out of focus only shows its container and its site's icon; touching them turns to it first.
+        val container = containerAction(tab.id)
+        val pageActions = if (focused) display.pageActionsStart else listOfNotNull(siteInfoPreview(tab))
+        val onInteraction: (BrowserToolbarEvent) -> Unit = if (focused) ({ store.dispatch(it) }) else ({ focus() })
+        if (stacked) {
+            SplitPageRow(
+                title = title,
+                isHint = title == hint,
+                url = tab.content.url,
+                container = container,
+                pageActions = pageActions,
+                onInteraction = onInteraction,
+                modifier = pageModifier,
+            )
+        } else {
+            Box(modifier = pageModifier) {
+                AddressField(
+                    text = title,
+                    isHint = title == hint,
+                    url = tab.content.url,
+                    container = container,
+                    pageActions = pageActions,
+                    onInteraction = onInteraction,
+                    modifier = Modifier.align(Alignment.Center),
+                )
+            }
+        }
+    }
+
+    @Composable
+    fun Progress(modifier: Modifier) {
+        display.progressBarConfig?.let { config ->
+            AnimatedProgressBar(
+                progress = config.progress,
+                color = config.color,
+                trackColor = Color.Transparent,
+                modifier = modifier,
+            )
+        }
+    }
+
+    Box(modifier = Modifier.fillMaxWidth().height(if (stacked) SPLIT_TOP_BAR_HEIGHT else DEJAVU_TOP_BAR_HEIGHT)) {
+        if (stacked) {
+            Column(
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .fillMaxWidth()
+                    .padding(horizontal = ADDRESS_FIELD_SIDE_MARGIN)
+                    .clip(RoundedCornerShape(SPLIT_FIELD_RADIUS))
+                    .background(MaterialTheme.colorScheme.surfaceContainerHigh),
+            ) {
+                shown.forEachIndexed { index, tab ->
+                    if (index > 0) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(1.dp)
+                                .background(MaterialTheme.colorScheme.onSurface.copy(alpha = HAIRLINE_ALPHA)),
+                        )
+                    }
+                    Page(tab, Modifier.fillMaxWidth().height(SPLIT_ROW_HEIGHT))
+                }
+            }
+            Progress(Modifier.align(Alignment.BottomCenter))
+        } else {
+            Row(modifier = Modifier.fillMaxSize()) {
+                shown.forEachIndexed { index, tab ->
+                    val share = if (index == 0) split.fraction else 1f - split.fraction
+                    // Side by side, the page in focus shows its progress below its own field.
+                    Box(modifier = Modifier.weight(share).fillMaxHeight()) {
+                        Page(tab, Modifier.fillMaxSize())
+                        if (tab.id == selectedId) Progress(Modifier.align(Alignment.BottomCenter))
+                    }
+                }
+            }
+        }
+        CompositionLocalProvider(LocalPopupTheme provides theme) {
+            LongPressMenu(
+                expanded = menuOpen,
+                options = origin.contextualMenuOptions,
+                onPick = { option ->
+                    menuOpen = false
+                    store.dispatch(option.event)
+                },
+                onDismiss = { menuOpen = false },
+            )
+        }
+    }
+}
+
+/**
+ * A page of a split shown top and bottom, in a row of the address field: [container] at its start, then
+ * [pageActions], the page's [title] and the domain of [url] below it.
+ */
+@Composable
+private fun SplitPageRow(
+    title: String,
+    isHint: Boolean,
+    url: String,
+    container: Action?,
+    pageActions: List<Action>,
+    onInteraction: (BrowserToolbarEvent) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val domain = domainOf(url)?.takeUnless { title.contains(it, ignoreCase = true) }
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier.padding(horizontal = FIELD_PADDING)) {
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.size(SLOT_SIZE)) {
+            ActionContainer(actions = listOfNotNull(container), onInteraction = onInteraction)
+        }
+        ActionContainer(actions = pageActions, onInteraction = onInteraction)
+        Column(modifier = Modifier.weight(1f).padding(end = TITLE_END_PADDING).clearAndSetSemantics {}) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.Medium,
+                color = if (isHint) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+            domain?.let {
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
         }
     }
 }
@@ -312,6 +506,13 @@ internal fun domainOf(url: String): String? = url.toUri().host?.removePrefix("ww
 
 /** The height of Dejavu's address bar while a page is shown, below the status bar. */
 internal val DEJAVU_TOP_BAR_HEIGHT = 64.dp
+
+/** The height of the address bar showing the two pages of a split top and bottom, each in a row of its own. */
+private val SPLIT_TOP_BAR_HEIGHT = 100.dp
+private val SPLIT_ROW_HEIGHT = 42.dp
+private val SPLIT_FIELD_RADIUS = 24.dp
+private const val UNFOCUSED_ALPHA = 0.55f
+private const val HAIRLINE_ALPHA = 0.08f
 
 /** The size and place of the rounded field of the address bar, in the middle of the bar. */
 internal val ADDRESS_FIELD_HEIGHT = 48.dp

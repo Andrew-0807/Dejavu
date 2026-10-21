@@ -114,8 +114,10 @@
 
     <!-- Split view -->
     <string name="dejavu_split_view">સ્પ્લિટ વ્યૂ</string>
-    <string name="dejavu_split_show_on_top">ઉપર બતાવો</string>
     <string name="dejavu_split_close">સ્પ્લિટ વ્યૂ બંધ કરો</string>
+    <string name="dejavu_split_top_and_bottom">ઉપર અને નીચે સ્પ્લિટ કરો</string>
+    <string name="dejavu_split_side_by_side">બાજુ-બાજુમાં સ્પ્લિટ કરો</string>
+    <string name="dejavu_split_focus">આ પૃષ્ઠ પર જાઓ</string>
     <string name="dejavu_action_reset_pin">પિન કરેલી ટૅબ રીસેટ કરો</string>
     <string name="dejavu_action_replace_pin">પિન કરેલા URLને વર્તમાન સાથે બદલો</string>
     <string name="dejavu_action_add_to_essentials">એસેન્શિયલ્સમાં ઉમેરો</string>
@@ -208,6 +210,8 @@
 
     <!-- Menu of a long-pressed link -->
     <string name="dejavu_link_open_in_split_view">સ્પ્લિટ વ્યૂમાં ખોલો</string>
+    <string name="dejavu_link_open_beside_in_split_view">સ્પ્લિટ વ્યૂમાં બાજુ પર ખોલો</string>
+    <string name="dejavu_link_open_below_in_split_view">સ્પ્લિટ વ્યૂમાં નીચે ખોલો</string>
     <string name="dejavu_link_open_in_container">કન્ટેનરમાં ખોલો</string>
     <string name="dejavu_link_open_in_workspace">વર્કસ્પેસમાં ખોલો</string>
     <string name="dejavu_link_opened_in">%1$s માં ખોલ્યું</string>

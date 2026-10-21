@@ -134,8 +134,15 @@
 
     <!-- Split view -->
     <string name="dejavu_split_view">Split view</string>
-    <string name="dejavu_split_show_on_top">Show on top</string>
     <string name="dejavu_split_close">Close split view</string>
+    <!-- On screens with room for both ways of splitting, "Split view" becomes these two actions: the two pages one
+         above the other, or next to each other. The menu of the divider between the two pages offers the other way
+         with the same words. -->
+    <string name="dejavu_split_top_and_bottom">Split top and bottom</string>
+    <string name="dejavu_split_side_by_side">Split side by side</string>
+    <!-- Split view, for screen readers: tapping the address of the page out of focus turns to that page, so that the
+         bars act on it. -->
+    <string name="dejavu_split_focus">Turn to this page</string>
     <string name="dejavu_action_reset_pin">Reset pinned tab</string>
     <!-- Makes the page a pinned tab is on the address it goes back to when it is reset. -->
     <string name="dejavu_action_replace_pin">Replace pinned URL with current</string>
@@ -239,6 +246,10 @@
 
     <!-- Menu of a long-pressed link -->
     <string name="dejavu_link_open_in_split_view">Open in split view</string>
+    <!-- On screens with room for both ways of splitting, "Open in split view" becomes these two: the link's page next
+         to the page with the link, or below it. -->
+    <string name="dejavu_link_open_beside_in_split_view">Open beside in split view</string>
+    <string name="dejavu_link_open_below_in_split_view">Open below in split view</string>
     <string name="dejavu_link_open_in_container">Open in container</string>
     <string name="dejavu_link_open_in_workspace">Open in workspace</string>
     <!-- %1$s is the name of the container or workspace the link was opened in. -->

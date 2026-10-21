@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Delt vising</string>
     <string name="dejavu_action_unsplit">Avslutt delt vising</string>
     <string name="dejavu_split_view">Delt vising</string>
-    <string name="dejavu_split_show_on_top">Vis øvst</string>
     <string name="dejavu_split_close">Lat att delt vising</string>
+    <string name="dejavu_split_top_and_bottom">Del over og under</string>
+    <string name="dejavu_split_side_by_side">Del side om side</string>
+    <string name="dejavu_split_focus">Byt til denne sida</string>
     <string name="dejavu_action_reset_pin">Tilbakestill festa fane</string>
     <string name="dejavu_action_replace_pin">Byt ut festa URL med gjeldande</string>
     <string name="dejavu_action_add_to_essentials">Legg til i favorittar</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Send alle variablar som JSON, for n8n, Node-RED og liknande verktøy</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Lat att ikkje-festa faner</string>
     <string name="dejavu_link_open_in_split_view">Opne i delt vising</string>
+    <string name="dejavu_link_open_beside_in_split_view">Opne ved sida av i delt vising</string>
+    <string name="dejavu_link_open_below_in_split_view">Opne under i delt vising</string>
     <string name="dejavu_link_open_in_container">Opne i behaldar</string>
     <string name="dejavu_link_open_in_workspace">Opne i arbeidsområde</string>
     <string name="dejavu_link_opened_in">Opna i %1$s</string>

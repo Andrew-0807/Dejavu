@@ -87,8 +87,10 @@
     <string name="dejavu_action_split_view">Podzielōny widok</string>
     <string name="dejavu_action_unsplit">Zniyś podzioł</string>
     <string name="dejavu_split_view">Podzielōny widok</string>
-    <string name="dejavu_split_show_on_top">Pokoż na wiyrchu</string>
     <string name="dejavu_split_close">Zawrzij podzielōny widok</string>
+    <string name="dejavu_split_top_and_bottom">Podziel na wiyrch i spodek</string>
+    <string name="dejavu_split_side_by_side">Podziel w lewo i w prawo</string>
+    <string name="dejavu_split_focus">Idź do tyj strōny</string>
     <string name="dejavu_action_reset_pin">Zresetuj przipiynto karta</string>
     <string name="dejavu_action_replace_pin">Zastōmp przipiynty URL aktualnym</string>
     <string name="dejavu_action_add_to_essentials">Dodej do nojważniejszych</string>
@@ -162,6 +164,8 @@
     <string name="dejavu_example_webhook">Poślij kożdo zmiynno za JSON, dlo n8n, Node-RED i podobnych noczyń</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Zawrzij nieprzipiynte karty</string>
     <string name="dejavu_link_open_in_split_view">Ôdewrzij w podzielōnym widoku</string>
+    <string name="dejavu_link_open_beside_in_split_view">Ôdewrzij z boku w podzielōnym widoku</string>
+    <string name="dejavu_link_open_below_in_split_view">Ôdewrzij na spodku w podzielōnym widoku</string>
     <string name="dejavu_link_open_in_container">Ôdewrzij w kōntynerze</string>
     <string name="dejavu_link_open_in_workspace">Ôdewrzij na placu</string>
     <string name="dejavu_link_opened_in">Ôdewrzite w %1$s</string>

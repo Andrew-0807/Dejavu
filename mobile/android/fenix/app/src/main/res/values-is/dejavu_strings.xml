@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Klofin sýn</string>
     <string name="dejavu_action_unsplit">Sameina aftur</string>
     <string name="dejavu_split_view">Klofin sýn</string>
-    <string name="dejavu_split_show_on_top">Sýna efst</string>
     <string name="dejavu_split_close">Loka klofinni sýn</string>
+    <string name="dejavu_split_top_and_bottom">Skipta í efri og neðri hluta</string>
+    <string name="dejavu_split_side_by_side">Skipta hlið við hlið</string>
+    <string name="dejavu_split_focus">Skipta yfir á þessa síðu</string>
     <string name="dejavu_action_reset_pin">Endurstilla festan flipa</string>
     <string name="dejavu_action_replace_pin">Skipta festri vefslóð út fyrir núverandi</string>
     <string name="dejavu_action_add_to_essentials">Bæta við eftirlætin</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Senda allar breytur sem JSON, fyrir n8n, Node-RED og svipuð verkfæri</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Loka ófestum flipum</string>
     <string name="dejavu_link_open_in_split_view">Opna í klofinni sýn</string>
+    <string name="dejavu_link_open_beside_in_split_view">Opna við hliðina í klofinni sýn</string>
+    <string name="dejavu_link_open_below_in_split_view">Opna fyrir neðan í klofinni sýn</string>
     <string name="dejavu_link_open_in_container">Opna í hólfi</string>
     <string name="dejavu_link_open_in_workspace">Opna á vinnusvæði</string>
     <string name="dejavu_link_opened_in">Opnað í %1$s</string>

@@ -174,11 +174,20 @@ class WorkspaceRepository private constructor(context: Context) {
         )
     }
 
-    /** Shows tabs [first] and [second] together in the browser. They leave any split view they were in. */
-    fun createSplit(first: String, second: String) = mutate { state ->
-        if (first == second) return@mutate state
-        val others = state.splits.filterNot { first in it.tabIds || second in it.tabIds }
-        state.copy(splits = others + SplitView(newId(), listOf(first, second)))
+    /**
+     * Shows tabs [first] and [second] together in the browser, [first] on top or on the left as [orientation] has them.
+     * They leave any split view they were in.
+     */
+    fun createSplit(first: String, second: String, orientation: SplitOrientation = SplitOrientation.TOP_AND_BOTTOM) =
+        mutate { state ->
+            if (first == second) return@mutate state
+            val others = state.splits.filterNot { first in it.tabIds || second in it.tabIds }
+            state.copy(splits = others + SplitView(newId(), listOf(first, second), orientation))
+        }
+
+    /** Shows the split view of tab [tabId] in [orientation] from now on. */
+    fun setSplitOrientation(tabId: String, orientation: SplitOrientation) = mutate { state ->
+        state.copy(splits = state.splits.map { if (tabId in it.tabIds) it.copy(orientation = orientation) else it })
     }
 
     /** Ends the split views that any of [tabIds] is part of. */

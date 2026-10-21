@@ -50,6 +50,7 @@ import org.mozilla.fenix.dejavu.menu.MoreMenuSwipe
 import org.mozilla.fenix.dejavu.menu.PageInfoSwipe
 import org.mozilla.fenix.dejavu.menu.PanelSwipe
 import org.mozilla.fenix.dejavu.menu.runActionsBarEntry
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.requireComponents
@@ -254,11 +255,17 @@ sealed interface DejavuToolbarEvent : BrowserToolbarEvent
  *
  * @param fromBottom Whether the menu comes up from the bottom of the screen, as when swiping the actions bar.
  * @param opening What the menu shows first.
+ * @param splitWay How a tab picked for a split view shows next to the shown one.
  */
-fun NavController.openDejavuMenu(fromBottom: Boolean, opening: DejavuMenu.Opening = DejavuMenu.Opening.MENU) {
+fun NavController.openDejavuMenu(
+    fromBottom: Boolean,
+    opening: DejavuMenu.Opening = DejavuMenu.Opening.MENU,
+    splitWay: SplitOrientation? = null,
+) {
     val directions = NavGraphDirections.actionGlobalMenuDialogFragment(accesspoint = MenuAccessPoint.Browser)
     if (currentDestination?.id != R.id.browserFragment) return
-    navigate(directions.actionId, directions.arguments.apply { putAll(DejavuMenu.arguments(fromBottom, opening)) })
+    val arguments = DejavuMenu.arguments(fromBottom, opening, splitWay)
+    navigate(directions.actionId, directions.arguments.apply { putAll(arguments) })
 }
 
 /** Opens the details of the shown page, as swiping the address bar down does. */

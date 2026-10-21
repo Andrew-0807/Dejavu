@@ -87,8 +87,10 @@
     <string name="dejavu_action_split_view">Rozdelené zobrazenie</string>
     <string name="dejavu_action_unsplit">Zrušiť rozdelenie</string>
     <string name="dejavu_split_view">Rozdelené zobrazenie</string>
-    <string name="dejavu_split_show_on_top">Zobraziť navrchu</string>
     <string name="dejavu_split_close">Zavrieť rozdelené zobrazenie</string>
+    <string name="dejavu_split_top_and_bottom">Rozdeliť hore a dole</string>
+    <string name="dejavu_split_side_by_side">Rozdeliť vedľa seba</string>
+    <string name="dejavu_split_focus">Prejsť na túto stránku</string>
     <string name="dejavu_action_reset_pin">Obnoviť pripnutú kartu</string>
     <string name="dejavu_action_replace_pin">Nahradiť pripnutú adresu URL aktuálnou</string>
     <string name="dejavu_action_add_to_essentials">Pridať medzi obľúbené</string>
@@ -162,6 +164,8 @@
     <string name="dejavu_example_webhook">Odoslať každú premennú vo formáte JSON, pre n8n, Node-RED a podobné nástroje</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Zavrieť nepripnuté karty</string>
     <string name="dejavu_link_open_in_split_view">Otvoriť v rozdelenom zobrazení</string>
+    <string name="dejavu_link_open_beside_in_split_view">Otvoriť vedľa v rozdelenom zobrazení</string>
+    <string name="dejavu_link_open_below_in_split_view">Otvoriť dole v rozdelenom zobrazení</string>
     <string name="dejavu_link_open_in_container">Otvoriť v kontajneri</string>
     <string name="dejavu_link_open_in_workspace">Otvoriť v pracovnom priestore</string>
     <string name="dejavu_link_opened_in">Otvorené v %1$s</string>

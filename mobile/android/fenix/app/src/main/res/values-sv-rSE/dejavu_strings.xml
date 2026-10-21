@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Delad vy</string>
     <string name="dejavu_action_unsplit">Avsluta delad vy</string>
     <string name="dejavu_split_view">Delad vy</string>
-    <string name="dejavu_split_show_on_top">Visa överst</string>
     <string name="dejavu_split_close">Stäng delad vy</string>
+    <string name="dejavu_split_top_and_bottom">Dela överst och nederst</string>
+    <string name="dejavu_split_side_by_side">Dela sida vid sida</string>
+    <string name="dejavu_split_focus">Växla till den här sidan</string>
     <string name="dejavu_action_reset_pin">Återställ fäst flik</string>
     <string name="dejavu_action_replace_pin">Ersätt fäst URL med nuvarande</string>
     <string name="dejavu_action_add_to_essentials">Lägg till i Favoriter</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Skicka alla variabler som JSON, för n8n, Node-RED och liknande verktyg</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Stäng ej fästa flikar</string>
     <string name="dejavu_link_open_in_split_view">Öppna i delad vy</string>
+    <string name="dejavu_link_open_beside_in_split_view">Öppna bredvid i delad vy</string>
+    <string name="dejavu_link_open_below_in_split_view">Öppna nedanför i delad vy</string>
     <string name="dejavu_link_open_in_container">Öppna i behållare</string>
     <string name="dejavu_link_open_in_workspace">Öppna i arbetsyta</string>
     <string name="dejavu_link_opened_in">Öppnades i %1$s</string>

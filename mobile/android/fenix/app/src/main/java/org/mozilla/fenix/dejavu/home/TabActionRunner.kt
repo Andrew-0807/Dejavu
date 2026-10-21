@@ -25,6 +25,7 @@ import org.mozilla.fenix.dejavu.actions.ActionContext
 import org.mozilla.fenix.dejavu.actions.CustomAction
 import org.mozilla.fenix.dejavu.actions.CustomActionRunner
 import org.mozilla.fenix.dejavu.actions.TabAction
+import org.mozilla.fenix.dejavu.browser.SplitSpace
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.containers.TemporaryContainers
@@ -34,6 +35,7 @@ import org.mozilla.fenix.dejavu.workspaces.MAX_ESSENTIALS
 import org.mozilla.fenix.dejavu.workspaces.PinPlacement
 import org.mozilla.fenix.dejavu.workspaces.PinSource
 import org.mozilla.fenix.dejavu.workspaces.PinnedItem
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 
 /**
@@ -94,7 +96,9 @@ internal class TabActionRunner(
             TabAction.REMOVE_FROM_ESSENTIALS -> removeFromEssentials(targets.pins.filter { it.essential }, workspaceId)
             TabAction.UNPACK_FOLDER -> targets.folders.forEach { repository.unpackFolder(it.id) }
             TabAction.DELETE -> onDeleteItems(targets)
-            TabAction.SPLIT_VIEW -> split(targets)
+            TabAction.SPLIT_VIEW -> split(targets, SplitSpace.preferred(SplitSpace.supported(context)))
+            TabAction.SPLIT_TOP_AND_BOTTOM -> split(targets, SplitOrientation.TOP_AND_BOTTOM)
+            TabAction.SPLIT_SIDE_BY_SIDE -> split(targets, SplitOrientation.SIDE_BY_SIDE)
             TabAction.UNSPLIT -> repository.unsplit(targets.splitTabIds)
             TabAction.MOVE_TO_WORKSPACE, TabAction.MOVE_TO_FOLDER, TabAction.NEW_FOLDER, TabAction.NEW_SUBFOLDER,
             TabAction.RENAME_FOLDER, TabAction.RENAME_TAB, TabAction.CHANGE_CONTAINER,
@@ -210,9 +214,9 @@ internal class TabActionRunner(
     }
 
     /** Shows the two open tabs of [targets] together, next to each other when they are both unpinned. */
-    private fun split(targets: ActionTargets) {
+    private fun split(targets: ActionTargets, orientation: SplitOrientation) {
         val (first, second) = targets.openTabs.takeIf { it.size == 2 } ?: return
-        repository.createSplit(first.id, second.id)
+        repository.createSplit(first.id, second.id, orientation)
         if (targets.pinnedTabs.isEmpty() && targets.folderTabs.isEmpty()) {
             store.dispatch(TabListAction.MoveTabsAction(listOf(second.id), first.id, placeAfter = true))
         }

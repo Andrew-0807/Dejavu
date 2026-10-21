@@ -84,8 +84,10 @@
     <string name="dejavu_action_split_view">分割ビュー</string>
     <string name="dejavu_action_unsplit">分割を解除</string>
     <string name="dejavu_split_view">分割ビュー</string>
-    <string name="dejavu_split_show_on_top">上に表示</string>
     <string name="dejavu_split_close">分割ビューを閉じる</string>
+    <string name="dejavu_split_top_and_bottom">上下に分割</string>
+    <string name="dejavu_split_side_by_side">左右に分割</string>
+    <string name="dejavu_split_focus">このページに切り替える</string>
     <string name="dejavu_action_reset_pin">ピン留めタブをリセット</string>
     <string name="dejavu_action_replace_pin">ピン留めしたURLを現在のURLに置き換え</string>
     <string name="dejavu_action_add_to_essentials">よく使うサイトに追加</string>
@@ -159,6 +161,8 @@
     <string name="dejavu_example_webhook">n8nやNode-REDなどのツール向けに、すべての変数をJSONとして送信</string>
     <string name="dejavu_preferences_close_unpinned_tabs">未ピン留めタブを閉じる</string>
     <string name="dejavu_link_open_in_split_view">分割ビューで開く</string>
+    <string name="dejavu_link_open_beside_in_split_view">分割ビューで隣に開く</string>
+    <string name="dejavu_link_open_below_in_split_view">分割ビューで下に開く</string>
     <string name="dejavu_link_open_in_container">コンテナーで開く</string>
     <string name="dejavu_link_open_in_workspace">ワークスペースで開く</string>
     <string name="dejavu_link_opened_in">%1$sで開きました</string>

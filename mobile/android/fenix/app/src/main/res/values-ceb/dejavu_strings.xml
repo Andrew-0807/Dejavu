@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Split view</string>
     <string name="dejavu_action_unsplit">i-Unsplit</string>
     <string name="dejavu_split_view">Split view</string>
-    <string name="dejavu_split_show_on_top">Ipakita sa taas</string>
     <string name="dejavu_split_close">Isira ang split view</string>
+    <string name="dejavu_split_top_and_bottom">Bahina sa taas ug ubos</string>
+    <string name="dejavu_split_side_by_side">Bahina nga magkatapad</string>
+    <string name="dejavu_split_focus">Balhin niini nga page</string>
     <string name="dejavu_action_reset_pin">i-Reset ang naka-pin nga tab</string>
     <string name="dejavu_action_replace_pin">Ilisan ang naka-pin nga URL sa kasamtangan</string>
     <string name="dejavu_action_add_to_essentials">Idugang sa Mahinungdanon</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Ipadala ang matag variable isip JSON, para sa n8n, Node-RED, ug susamang mga tool</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Isira ang dili naka-pin nga mga tab</string>
     <string name="dejavu_link_open_in_split_view">i-Open sa split view</string>
+    <string name="dejavu_link_open_beside_in_split_view">i-Open sa tapad sa split view</string>
+    <string name="dejavu_link_open_below_in_split_view">i-Open sa ubos sa split view</string>
     <string name="dejavu_link_open_in_container">i-Open sa container</string>
     <string name="dejavu_link_open_in_workspace">i-Open sa workspace</string>
     <string name="dejavu_link_opened_in">Naabli sa %1$s</string>

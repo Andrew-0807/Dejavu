@@ -86,8 +86,10 @@
     <string name="dejavu_action_split_view">תצוגה מפוצלת</string>
     <string name="dejavu_action_unsplit">ביטול פיצול התצוגה</string>
     <string name="dejavu_split_view">תצוגה מפוצלת</string>
-    <string name="dejavu_split_show_on_top">הצגה למעלה</string>
     <string name="dejavu_split_close">סגירת התצוגה המפוצלת</string>
+    <string name="dejavu_split_top_and_bottom">פיצול למעלה ולמטה</string>
+    <string name="dejavu_split_side_by_side">פיצול זה לצד זה</string>
+    <string name="dejavu_split_focus">מעבר לדף זה</string>
     <string name="dejavu_action_reset_pin">איפוס הלשונית המוצמדת</string>
     <string name="dejavu_action_replace_pin">החלפת הכתובת המוצמדת בנוכחית</string>
     <string name="dejavu_action_add_to_essentials">הוספה למועדפים</string>
@@ -161,6 +163,8 @@
     <string name="dejavu_example_webhook">שליחת כל משתנה כ-JSON, עבור n8n, Node-RED וכלים דומים</string>
     <string name="dejavu_preferences_close_unpinned_tabs">סגירת לשוניות לא מוצמדות</string>
     <string name="dejavu_link_open_in_split_view">פתיחה בתצוגה מפוצלת</string>
+    <string name="dejavu_link_open_beside_in_split_view">פתיחה לצדו בתצוגה מפוצלת</string>
+    <string name="dejavu_link_open_below_in_split_view">פתיחה מתחתיו בתצוגה מפוצלת</string>
     <string name="dejavu_link_open_in_container">פתיחה במארז</string>
     <string name="dejavu_link_open_in_workspace">פתיחה במרחב עבודה</string>
     <string name="dejavu_link_opened_in">נפתח ב-%1$s</string>

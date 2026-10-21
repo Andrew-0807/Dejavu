@@ -125,9 +125,35 @@ data class PinnedItem(
  * Two tabs shown together in the browser, like Zen's split views. Local to this device, like tab assignments.
  *
  * @property id Stable identifier.
- * @property tabIds The two browser tabs of the split.
+ * @property tabIds The two browser tabs of the split: the one shown first, on top or on the left, then the other.
+ * @property orientation How the two tabs share the browser, when the screen has room for it.
  */
-data class SplitView(val id: String, val tabIds: List<String>)
+data class SplitView(
+    val id: String,
+    val tabIds: List<String>,
+    val orientation: SplitOrientation = SplitOrientation.TOP_AND_BOTTOM,
+)
+
+/**
+ * Two pinned tabs that Zen shows as one split view, synced from it. They show as one row, and open together as a
+ * [SplitView].
+ *
+ * @property id The id of Zen's split view.
+ * @property pinIds The two pinned tabs, the one shown first, on top or on the left, then the other.
+ * @property orientation How Zen shows them.
+ */
+data class PinnedSplit(val id: String, val pinIds: List<String>, val orientation: SplitOrientation)
+
+/** How the two tabs of a split view share the browser: one above the other, or next to each other. */
+enum class SplitOrientation(val key: String) {
+    TOP_AND_BOTTOM("top_and_bottom"),
+    SIDE_BY_SIDE("side_by_side"),
+    ;
+
+    companion object {
+        fun fromKey(key: String?): SplitOrientation? = entries.firstOrNull { it.key == key }
+    }
+}
 
 /**
  * @property workspaces Workspaces in display order. Never empty.
@@ -138,6 +164,7 @@ data class SplitView(val id: String, val tabIds: List<String>)
  * @property tabTitles Titles the user gave to tabs that are not pinned, by tab ID. Local to this device.
  * @property tabSyncIds Sync ids of open tabs that sync under another id than their own, by tab ID: the id of the pin
  *   they were the tab of, once it was unpinned, so the tab stays the same tab on other devices. Local to this device.
+ * @property pinnedSplits Pinned tabs that Zen shows as split views, as its sync last had them.
  */
 data class WorkspaceState(
     val workspaces: List<Workspace>,
@@ -147,6 +174,7 @@ data class WorkspaceState(
     val splits: List<SplitView> = emptyList(),
     val tabTitles: Map<String, String> = emptyMap(),
     val tabSyncIds: Map<String, String> = emptyMap(),
+    val pinnedSplits: List<PinnedSplit> = emptyList(),
 ) {
     val activeIndex: Int
         get() = workspaces.indexOfFirst { it.id == activeWorkspaceId }.coerceAtLeast(0)
@@ -188,6 +216,9 @@ data class WorkspaceState(
 
     /** Returns the split view tab [tabId] is part of, if any. */
     fun splitOf(tabId: String): SplitView? = splits.firstOrNull { tabId in it.tabIds }
+
+    /** Returns the split view of Zen pinned item [pinId] is part of, if any. */
+    fun pinnedSplitOf(pinId: String): PinnedSplit? = pinnedSplits.firstOrNull { pinId in it.pinIds }
 
     /** Returns the direct children of [parentId] in [workspaceId], in display order. */
     fun children(workspaceId: String, parentId: String?): List<PinnedItem> =

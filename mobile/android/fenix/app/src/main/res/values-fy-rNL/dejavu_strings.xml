@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Dûbele werjefte</string>
     <string name="dejavu_action_unsplit">Gearfoegje</string>
     <string name="dejavu_split_view">Dûbele werjefte</string>
-    <string name="dejavu_split_show_on_top">Boppe toane</string>
     <string name="dejavu_split_close">Dûbele werjefte slute</string>
+    <string name="dejavu_split_top_and_bottom">Dûbele werjefte boppe en ûnder</string>
+    <string name="dejavu_split_side_by_side">Dûbele werjefte njonken inoar</string>
+    <string name="dejavu_split_focus">Nei dizze side wikselje</string>
     <string name="dejavu_action_reset_pin">Fêstsette ljepblêd weromsette</string>
     <string name="dejavu_action_replace_pin">Fêstsette URL ferfange troch de aktuele</string>
     <string name="dejavu_action_add_to_essentials">Taheakje oan essinsjes</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Elke fariabele as JSON ferstjoere, foar n8n, Node-RED en fergelykbere ark</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Net-fêstsette ljepblêden slute</string>
     <string name="dejavu_link_open_in_split_view">Iepenje yn dûbele werjefte</string>
+    <string name="dejavu_link_open_beside_in_split_view">Iepenje dêrneist yn dûbele werjefte</string>
+    <string name="dejavu_link_open_below_in_split_view">Iepenje dêrûnder yn dûbele werjefte</string>
     <string name="dejavu_link_open_in_container">Iepenje yn kontener</string>
     <string name="dejavu_link_open_in_workspace">Iepenje yn wurkromte</string>
     <string name="dejavu_link_opened_in">Iepene yn %1$s</string>

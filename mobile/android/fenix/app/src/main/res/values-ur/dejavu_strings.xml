@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">اسپلٹ ویو</string>
     <string name="dejavu_action_unsplit">اسپلٹ ویو ختم کریں</string>
     <string name="dejavu_split_view">اسپلٹ ویو</string>
-    <string name="dejavu_split_show_on_top">اوپر دکھائیں</string>
     <string name="dejavu_split_close">اسپلٹ ویو بند کریں</string>
+    <string name="dejavu_split_top_and_bottom">اوپر نیچے تقسیم کریں</string>
+    <string name="dejavu_split_side_by_side">ساتھ ساتھ تقسیم کریں</string>
+    <string name="dejavu_split_focus">اس صفحے پر جائیں</string>
     <string name="dejavu_action_reset_pin">پن کردہ ٹیب ری سیٹ کریں</string>
     <string name="dejavu_action_replace_pin">پن کردہ URL کو موجودہ سے بدلیں</string>
     <string name="dejavu_action_add_to_essentials">اہم میں شامل کریں</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">ہر ویری ایبل کو JSON کے طور پر بھیجیں، n8n، Node-RED اور اسی طرح کے ٹولز کے لیے</string>
     <string name="dejavu_preferences_close_unpinned_tabs">ان پن شدہ ٹیبز بند کریں</string>
     <string name="dejavu_link_open_in_split_view">اسپلٹ ویو میں کھولیں</string>
+    <string name="dejavu_link_open_beside_in_split_view">اسپلٹ ویو میں ساتھ کھولیں</string>
+    <string name="dejavu_link_open_below_in_split_view">اسپلٹ ویو میں نیچے کھولیں</string>
     <string name="dejavu_link_open_in_container">کنٹینر میں کھولیں</string>
     <string name="dejavu_link_open_in_workspace">ورک اسپیس میں کھولیں</string>
     <string name="dejavu_link_opened_in">%1$s میں کھلا</string>

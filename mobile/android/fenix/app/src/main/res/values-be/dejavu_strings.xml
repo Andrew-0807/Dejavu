@@ -87,8 +87,10 @@
     <string name="dejavu_action_split_view">Падзелены выгляд</string>
     <string name="dejavu_action_unsplit">Скасаваць падзел</string>
     <string name="dejavu_split_view">Падзелены выгляд</string>
-    <string name="dejavu_split_show_on_top">Паказваць зверху</string>
     <string name="dejavu_split_close">Закрыць падзелены выгляд</string>
+    <string name="dejavu_split_top_and_bottom">Падзяліць зверху і знізу</string>
+    <string name="dejavu_split_side_by_side">Падзяліць побач</string>
+    <string name="dejavu_split_focus">Перайсці на гэту старонку</string>
     <string name="dejavu_action_reset_pin">Скінуць замацаваную картку</string>
     <string name="dejavu_action_replace_pin">Замяніць замацаваны URL бягучым</string>
     <string name="dejavu_action_add_to_essentials">Дадаць у важнае</string>
@@ -162,6 +164,8 @@
     <string name="dejavu_example_webhook">Адправіць усе зменныя як JSON, для n8n, Node-RED і падобных інструментаў</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Закрыць незамацаваныя карткі</string>
     <string name="dejavu_link_open_in_split_view">Адкрыць у падзеленым выглядзе</string>
+    <string name="dejavu_link_open_beside_in_split_view">Адкрыць побач у падзеленым выглядзе</string>
+    <string name="dejavu_link_open_below_in_split_view">Адкрыць знізу ў падзеленым выглядзе</string>
     <string name="dejavu_link_open_in_container">Адкрыць у кантэйнеры</string>
     <string name="dejavu_link_open_in_workspace">Адкрыць у прасторы</string>
     <string name="dejavu_link_opened_in">Адкрыта ў %1$s</string>

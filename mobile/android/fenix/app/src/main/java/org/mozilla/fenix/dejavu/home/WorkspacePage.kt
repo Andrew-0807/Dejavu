@@ -206,14 +206,23 @@ internal data class PinLine(val entries: List<PinnedEntry>) {
             ?: PIN_PAIR_PREFIX + entries.joinToString(PAIR_SEPARATOR) { it.item.id }
 }
 
-/** [entries] as rows, the two pinned tabs of a split view in the same folder in one row, where the first one is. */
+/**
+ * [entries] as rows, the two pinned tabs of a split view in the same folder in one row, where the first one is: a split
+ * view open here, or one synced from Zen, open or not.
+ */
 internal fun pinLines(entries: List<PinnedEntry>, state: WorkspaceState): List<PinLine> {
-    val byTabId = entries.filter { !it.item.isFolder && it.item.tabId != null }.associateBy { it.item.tabId }
+    val tabPins = entries.filter { !it.item.isFolder }
+    val byTabId = tabPins.filter { it.item.tabId != null }.associateBy { it.item.tabId }
+    val byPinId = tabPins.associateBy { it.item.id }
     val placed = mutableSetOf<String>()
     return entries.mapNotNull { entry ->
         if (!placed.add(entry.item.id)) return@mapNotNull null
-        val tabId = entry.item.tabId?.takeIf { !entry.item.isFolder }
-        val partner = tabId?.let(state::splitOf)?.tabIds?.firstOrNull { it != tabId }?.let(byTabId::get)
+        val pinId = entry.item.id.takeIf { !entry.item.isFolder }
+        val tabId = entry.item.tabId?.takeIf { pinId != null }
+        val partner = (
+            tabId?.let(state::splitOf)?.tabIds?.firstOrNull { it != tabId }?.let(byTabId::get)
+                ?: pinId?.let(state::pinnedSplitOf)?.pinIds?.firstOrNull { it != pinId }?.let(byPinId::get)
+            )
             ?.takeIf { it.item.parentId == entry.item.parentId && placed.add(it.item.id) }
         PinLine(listOfNotNull(entry, partner))
     }

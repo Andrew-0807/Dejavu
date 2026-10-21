@@ -279,6 +279,7 @@ class MenuDialogFragment : BottomSheetDialogFragment() {
                     navController = findNavController(),
                     onEdit = { findNavController().navigate(R.id.dejavu_more_menu_graph) },
                     onDismiss = ::dismiss,
+                    splitWay = DejavuMenu.splitWay(arguments),
                 )
                 return@FirefoxTheme
             }

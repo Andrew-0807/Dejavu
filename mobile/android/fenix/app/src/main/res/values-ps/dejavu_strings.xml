@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">وېشل شوی لید</string>
     <string name="dejavu_action_unsplit">وېش لغوه کول</string>
     <string name="dejavu_split_view">وېشل شوی لید</string>
-    <string name="dejavu_split_show_on_top">پورته ښودل</string>
     <string name="dejavu_split_close">وېشل شوی لید بندول</string>
+    <string name="dejavu_split_top_and_bottom">پورته او لاندې وېشل</string>
+    <string name="dejavu_split_side_by_side">څنګ په څنګ وېشل</string>
+    <string name="dejavu_split_focus">دې پاڼې ته تلل</string>
     <string name="dejavu_action_reset_pin">پین شوی ټب بیا اصلي حالت ته راوستل</string>
     <string name="dejavu_action_replace_pin">پین شوی URL په اوسني بدلول</string>
     <string name="dejavu_action_add_to_essentials">مهمو ویب پاڼو ته زیاتول</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">هر متغیر د JSON په توګه ولېږئ، د n8n، Node-RED او ورته وسیلو لپاره</string>
     <string name="dejavu_preferences_close_unpinned_tabs">نه پین شوي ټبونه بندول</string>
     <string name="dejavu_link_open_in_split_view">په وېشل شوي لید کې خلاصول</string>
+    <string name="dejavu_link_open_beside_in_split_view">په وېشل شوي لید کې څنګ ته خلاصول</string>
+    <string name="dejavu_link_open_below_in_split_view">په وېشل شوي لید کې لاندې خلاصول</string>
     <string name="dejavu_link_open_in_container">په کانتینر کې خلاصول</string>
     <string name="dejavu_link_open_in_workspace">په ساحه کې خلاصول</string>
     <string name="dejavu_link_opened_in">په %1$s کې خلاص شو</string>

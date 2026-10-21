@@ -72,6 +72,7 @@ import org.mozilla.fenix.components.menu.store.WebExtensionMenuItem
 import org.mozilla.fenix.dejavu.browser.shownWorkspaceTheme
 import org.mozilla.fenix.dejavu.browser.workspaceTheme
 import org.mozilla.fenix.dejavu.home.displayTitle
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 
 /** What the "More" menu shows about the tab it was opened for. */
 data class MoreMenuState(
@@ -90,6 +91,7 @@ data class MoreMenuState(
     val isTranslated: Boolean = false,
     val isWebPage: Boolean = false,
     val isDeviceTab: Boolean = false,
+    val splitWays: List<SplitOrientation> = emptyList(),
 )
 
 /** How an entry of the "More" menu looks for the shown tab. */
@@ -143,8 +145,15 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
         MoreMenuItem.SPLIT_VIEW -> if (state.isSplit) {
             EntryLook(stringResource(R.string.dejavu_menu_unsplit), R.drawable.dejavu_ic_unsplit_24, active = true)
         } else {
-            default.copy(enabled = !state.isPrivate)
+            // With room for one way of splitting only, the entry shows that way.
+            val icon = if (state.splitWays.singleOrNull() == SplitOrientation.SIDE_BY_SIDE) {
+                R.drawable.dejavu_ic_split_side_24
+            } else {
+                item.icon
+            }
+            default.copy(icon = icon, enabled = !state.isPrivate)
         }
+        MoreMenuItem.SPLIT_TOP_AND_BOTTOM, MoreMenuItem.SPLIT_SIDE_BY_SIDE -> default.copy(enabled = !state.isPrivate)
         MoreMenuItem.RESET_PINNED_URL, MoreMenuItem.REPLACE_PINNED_URL -> default.copy(enabled = state.isPinChanged)
         MoreMenuItem.OPEN_IN_APP -> default.copy(enabled = state.hasExternalApp)
         MoreMenuItem.TRANSLATE -> default.copy(enabled = state.canTranslate, active = state.isTranslated)

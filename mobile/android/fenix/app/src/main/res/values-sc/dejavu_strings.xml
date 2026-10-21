@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Vista partzida</string>
     <string name="dejavu_action_unsplit">Torra a unire sa vista</string>
     <string name="dejavu_split_view">Vista partzida</string>
-    <string name="dejavu_split_show_on_top">Ammustra in artu</string>
     <string name="dejavu_split_close">Serra sa vista partzida</string>
+    <string name="dejavu_split_top_and_bottom">Partzi in artu e in bàsciu</string>
+    <string name="dejavu_split_side_by_side">Partzi a manca e a dereta</string>
+    <string name="dejavu_split_focus">Passa a custa pàgina</string>
     <string name="dejavu_action_reset_pin">Riprìstina s\'ischeda fissada</string>
     <string name="dejavu_action_replace_pin">Sostitui s\'URL fissada cun cussa atuale</string>
     <string name="dejavu_action_add_to_essentials">Agiunghe a is essentziales</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Imbia dònnia variàbile comente JSON, pro n8n, Node-RED e ainas simigiantes</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Serra is ischedas non fissadas</string>
     <string name="dejavu_link_open_in_split_view">Aberi in vista partzida</string>
+    <string name="dejavu_link_open_beside_in_split_view">Aberi a costadu in vista partzida</string>
+    <string name="dejavu_link_open_below_in_split_view">Aberi asuta in vista partzida</string>
     <string name="dejavu_link_open_in_container">Aberi in un cuntenidore</string>
     <string name="dejavu_link_open_in_workspace">Aberi in un ispàtziu de traballu</string>
     <string name="dejavu_link_opened_in">Abertu in %1$s</string>

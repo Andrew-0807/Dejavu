@@ -66,6 +66,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.layout.positionInParent
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -94,8 +95,10 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.actions.CustomAction
 import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
+import org.mozilla.fenix.dejavu.actions.forSplitWays
 import org.mozilla.fenix.dejavu.actions.icon
 import org.mozilla.fenix.dejavu.actions.label
+import org.mozilla.fenix.dejavu.browser.SplitSpace
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.ContainerRecord
@@ -498,6 +501,7 @@ fun DejavuHome(
                 }
 
                 val selectionTargets = activeSelection?.let { ActionTargets.of(state, tabs, it) }
+                val splitWays = SplitSpace.supported(LocalConfiguration.current)
                 Box(
                     modifier = Modifier
                         .weight(1f)
@@ -647,7 +651,7 @@ fun DejavuHome(
                     )
                 } else if (selectionTargets != null) {
                     SelectionBar(
-                        actions = selectionActions.filter { it.appliesTo(selectionTargets) },
+                        actions = selectionActions.forSplitWays(splitWays).filter { it.appliesTo(selectionTargets) },
                         onAction = { runAction(it, selectionTargets, currentWorkspace.id) },
                     )
                 }

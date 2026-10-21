@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Տրոհված տեսք</string>
     <string name="dejavu_action_unsplit">Չեղարկել տրոհումը</string>
     <string name="dejavu_split_view">Տրոհված տեսք</string>
-    <string name="dejavu_split_show_on_top">Ցուցադրել վերևում</string>
     <string name="dejavu_split_close">Փակել տրոհված տեսքը</string>
+    <string name="dejavu_split_top_and_bottom">Տրոհել վերև և ներքև</string>
+    <string name="dejavu_split_side_by_side">Տրոհել կողք կողքի</string>
+    <string name="dejavu_split_focus">Անցնել այս էջին</string>
     <string name="dejavu_action_reset_pin">Վերականգնել ամրացված ներդիրը</string>
     <string name="dejavu_action_replace_pin">Փոխարինել ամրացված URL֊ը ընթացիկով</string>
     <string name="dejavu_action_add_to_essentials">Ավելացնել կարևոր կայքերում</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Ուղարկել բոլոր փոփոխականները որպես JSON՝ n8n, Node-RED և նմանատիպ գործիքների համար</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Փակել չամրացված ներդիրները</string>
     <string name="dejavu_link_open_in_split_view">Բացել տրոհված տեսքում</string>
+    <string name="dejavu_link_open_beside_in_split_view">Բացել կողքին տրոհված տեսքում</string>
+    <string name="dejavu_link_open_below_in_split_view">Բացել ներքևում տրոհված տեսքում</string>
     <string name="dejavu_link_open_in_container">Բացել կոնտեյներում</string>
     <string name="dejavu_link_open_in_workspace">Բացել տարածքում</string>
     <string name="dejavu_link_opened_in">Բացվեց %1$s֊ում</string>

@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Jagatud vaade</string>
     <string name="dejavu_action_unsplit">Tühista jagatud vaade</string>
     <string name="dejavu_split_view">Jagatud vaade</string>
-    <string name="dejavu_split_show_on_top">Kuva üleval</string>
     <string name="dejavu_split_close">Sulge jagatud vaade</string>
+    <string name="dejavu_split_top_and_bottom">Poolita üla- ja alaosaks</string>
+    <string name="dejavu_split_side_by_side">Poolita kõrvuti</string>
+    <string name="dejavu_split_focus">Lülitu sellele lehele</string>
     <string name="dejavu_action_reset_pin">Lähtesta kinnitatud kaart</string>
     <string name="dejavu_action_replace_pin">Asenda kinnitatud URL praegusega</string>
     <string name="dejavu_action_add_to_essentials">Lisa olulistesse</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Saada kõik muutujad JSON-ina, tööriistadele nagu n8n, Node-RED ja sarnased</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Sulge kinnitamata kaardid</string>
     <string name="dejavu_link_open_in_split_view">Ava jagatud vaates</string>
+    <string name="dejavu_link_open_beside_in_split_view">Ava kõrval jagatud vaates</string>
+    <string name="dejavu_link_open_below_in_split_view">Ava allpool jagatud vaates</string>
     <string name="dejavu_link_open_in_container">Ava konteineris</string>
     <string name="dejavu_link_open_in_workspace">Ava tööruumis</string>
     <string name="dejavu_link_opened_in">Avatud: %1$s</string>

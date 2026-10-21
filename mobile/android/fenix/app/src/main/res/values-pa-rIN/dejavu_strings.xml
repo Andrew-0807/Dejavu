@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">ਵੰਡਿਆ ਦ੍ਰਿਸ਼</string>
     <string name="dejavu_action_unsplit">ਵੰਡ ਹਟਾਓ</string>
     <string name="dejavu_split_view">ਵੰਡਿਆ ਦ੍ਰਿਸ਼</string>
-    <string name="dejavu_split_show_on_top">ਉੱਪਰ ਦਿਖਾਓ</string>
     <string name="dejavu_split_close">ਵੰਡਿਆ ਦ੍ਰਿਸ਼ ਬੰਦ ਕਰੋ</string>
+    <string name="dejavu_split_top_and_bottom">ਉੱਪਰ ਅਤੇ ਹੇਠਾਂ ਵੰਡੋ</string>
+    <string name="dejavu_split_side_by_side">ਖੱਬੇ ਅਤੇ ਸੱਜੇ ਵੰਡੋ</string>
+    <string name="dejavu_split_focus">ਇਸ ਸਫ਼ੇ ਉੱਤੇ ਜਾਓ</string>
     <string name="dejavu_action_reset_pin">ਪਿੰਨ ਕੀਤੀ ਟੈਬ ਮੁੜ-ਸੈੱਟ ਕਰੋ</string>
     <string name="dejavu_action_replace_pin">ਪਿੰਨ ਕੀਤੇ URL ਨੂੰ ਮੌਜੂਦਾ ਨਾਲ ਬਦਲੋ</string>
     <string name="dejavu_action_add_to_essentials">ਜ਼ਰੂਰੀ ਵਿੱਚ ਜੋੜੋ</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">n8n, Node-RED ਅਤੇ ਅਜਿਹੇ ਹੋਰ ਟੂਲਾਂ ਲਈ, ਹਰ ਵੇਰੀਏਬਲ ਨੂੰ JSON ਵਜੋਂ ਭੇਜੋ</string>
     <string name="dejavu_preferences_close_unpinned_tabs">ਬਿਨਾਂ ਪਿੰਨ ਕੀਤੀਆਂ ਟੈਬਾਂ ਬੰਦ ਕਰੋ</string>
     <string name="dejavu_link_open_in_split_view">ਵੰਡੇ ਦ੍ਰਿਸ਼ ਵਿੱਚ ਖੋਲ੍ਹੋ</string>
+    <string name="dejavu_link_open_beside_in_split_view">ਵੰਡੇ ਦ੍ਰਿਸ਼ ਵਿੱਚ ਨਾਲ ਵਾਲੇ ਪਾਸੇ ਖੋਲ੍ਹੋ</string>
+    <string name="dejavu_link_open_below_in_split_view">ਵੰਡੇ ਦ੍ਰਿਸ਼ ਵਿੱਚ ਹੇਠਾਂ ਖੋਲ੍ਹੋ</string>
     <string name="dejavu_link_open_in_container">ਕੰਟੇਨਰ ਵਿੱਚ ਖੋਲ੍ਹੋ</string>
     <string name="dejavu_link_open_in_workspace">ਵਰਕਸਪੇਸ ਵਿੱਚ ਖੋਲ੍ਹੋ</string>
     <string name="dejavu_link_opened_in">%1$s ਵਿੱਚ ਖੋਲ੍ਹਿਆ ਗਿਆ</string>

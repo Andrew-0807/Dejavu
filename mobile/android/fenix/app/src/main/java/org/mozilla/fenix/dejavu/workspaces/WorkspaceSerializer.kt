@@ -51,7 +51,9 @@ internal object WorkspaceSerializer {
 
         val splits = root?.optJSONArray("splits").objects().mapNotNull { item ->
             val tabIds = item.optJSONArray("tabIds")?.let { ids -> (0 until ids.length()).map { ids.getString(it) } }
-            tabIds?.takeIf { it.size == SPLIT_SIZE }?.let { SplitView(item.getString("id"), it) }
+            val orientation =
+                SplitOrientation.fromKey(item.optStringOrNull("orientation")) ?: SplitOrientation.TOP_AND_BOTTOM
+            tabIds?.takeIf { it.size == SPLIT_SIZE }?.let { SplitView(item.getString("id"), it, orientation) }
         }
 
         val tabTitles = root?.optJSONObject("tabTitles")?.let { obj ->
@@ -62,7 +64,13 @@ internal object WorkspaceSerializer {
             obj.keys().asSequence().associateWith { obj.getString(it) }
         }.orEmpty()
 
-        return WorkspaceState(workspaces, pins, activeId, assignments, splits, tabTitles, tabSyncIds)
+        val pinnedSplits = root?.optJSONArray("pinnedSplits").objects().mapNotNull { item ->
+            val pinIds = item.optJSONArray("pinIds")?.let { ids -> (0 until ids.length()).map { ids.getString(it) } }
+            val orientation = SplitOrientation.fromKey(item.optStringOrNull("orientation")) ?: return@mapNotNull null
+            pinIds?.takeIf { it.size == SPLIT_SIZE }?.let { PinnedSplit(item.getString("id"), it, orientation) }
+        }
+
+        return WorkspaceState(workspaces, pins, activeId, assignments, splits, tabTitles, tabSyncIds, pinnedSplits)
     }
 
     fun write(state: WorkspaceState): String = JSONObject().apply {
@@ -120,7 +128,25 @@ internal object WorkspaceSerializer {
             "splits",
             JSONArray().apply {
                 state.splits.forEach { split ->
-                    put(JSONObject().put("id", split.id).put("tabIds", JSONArray(split.tabIds)))
+                    put(
+                        JSONObject()
+                            .put("id", split.id)
+                            .put("tabIds", JSONArray(split.tabIds))
+                            .put("orientation", split.orientation.key),
+                    )
+                }
+            },
+        )
+        put(
+            "pinnedSplits",
+            JSONArray().apply {
+                state.pinnedSplits.forEach { split ->
+                    put(
+                        JSONObject()
+                            .put("id", split.id)
+                            .put("pinIds", JSONArray(split.pinIds))
+                            .put("orientation", split.orientation.key),
+                    )
                 }
             },
         )

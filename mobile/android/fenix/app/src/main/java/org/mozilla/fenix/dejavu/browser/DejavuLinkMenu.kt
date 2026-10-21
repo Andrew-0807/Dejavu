@@ -28,6 +28,7 @@ import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.containers.drawable
 import org.mozilla.fenix.dejavu.containers.splitTemporary
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 import org.mozilla.fenix.dejavu.workspaces.Workspace
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.ext.components
@@ -49,12 +50,26 @@ object DejavuLinkMenu {
     ): List<ContextMenuCandidate> {
         val newTab = candidates.firstOrNull { it.id == NEW_TAB_ID } ?: return candidates
         val links = LinkOpener(context, snackBarParentView, snackbarDelegate)
+        // One entry per way the screen has room to split, see SplitSpace.
+        val ways = { SplitSpace.supported(context) }
         val entries = listOf(
             ContextMenuCandidate(
                 id = "dejavu.contextmenu.open_in_split_view",
                 label = context.getString(R.string.dejavu_link_open_in_split_view),
-                showFor = newTab.showFor,
-                action = { tab, hit -> links.openInSplitView(tab, linkOf(hit)) },
+                showFor = { tab, hit -> newTab.showFor(tab, hit) && ways().size == 1 },
+                action = { tab, hit -> links.openInSplitView(tab, linkOf(hit), SplitSpace.preferred(ways())) },
+            ),
+            ContextMenuCandidate(
+                id = "dejavu.contextmenu.open_beside_in_split_view",
+                label = context.getString(R.string.dejavu_link_open_beside_in_split_view),
+                showFor = { tab, hit -> newTab.showFor(tab, hit) && ways().size > 1 },
+                action = { tab, hit -> links.openInSplitView(tab, linkOf(hit), SplitOrientation.SIDE_BY_SIDE) },
+            ),
+            ContextMenuCandidate(
+                id = "dejavu.contextmenu.open_below_in_split_view",
+                label = context.getString(R.string.dejavu_link_open_below_in_split_view),
+                showFor = { tab, hit -> newTab.showFor(tab, hit) && ways().size > 1 },
+                action = { tab, hit -> links.openInSplitView(tab, linkOf(hit), SplitOrientation.TOP_AND_BOTTOM) },
             ),
             ContextMenuCandidate(
                 id = "dejavu.contextmenu.open_in_container",
@@ -87,8 +102,8 @@ private class LinkOpener(
     private val components = context.components
     private val tabsUseCases = components.useCases.tabsUseCases
 
-    /** Opens [url] in a new tab shown next to [parent], in its container and workspace. */
-    fun openInSplitView(parent: SessionState, url: String) {
+    /** Opens [url] in a new tab shown next to [parent] the way [way] has them, in its container and workspace. */
+    fun openInSplitView(parent: SessionState, url: String, way: SplitOrientation) {
         val repository = WorkspaceRepository.peek() ?: return
         val tabId = tabsUseCases.addTab(
             url = url,
@@ -99,7 +114,7 @@ private class LinkOpener(
             textDirectiveUserActivation = true,
         )
         repository.assignTab(tabId, repository.state.value.workspaceOf(parent.id))
-        repository.createSplit(parent.id, tabId)
+        repository.createSplit(parent.id, tabId, way)
     }
 
     fun pickContainer(parent: SessionState, url: String) {

@@ -84,8 +84,10 @@
     <string name="dejavu_action_split_view">分屏视图</string>
     <string name="dejavu_action_unsplit">取消分屏</string>
     <string name="dejavu_split_view">分屏视图</string>
-    <string name="dejavu_split_show_on_top">显示在上方</string>
     <string name="dejavu_split_close">关闭分屏视图</string>
+    <string name="dejavu_split_top_and_bottom">上下分屏</string>
+    <string name="dejavu_split_side_by_side">左右分屏</string>
+    <string name="dejavu_split_focus">切换到此页面</string>
     <string name="dejavu_action_reset_pin">重置固定标签页</string>
     <string name="dejavu_action_replace_pin">将固定网址替换为当前网址</string>
     <string name="dejavu_action_add_to_essentials">添加到常用网站</string>
@@ -159,6 +161,8 @@
     <string name="dejavu_example_webhook">将所有变量以 JSON 形式发送，适用于 n8n、Node-RED 等工具</string>
     <string name="dejavu_preferences_close_unpinned_tabs">关闭未固定标签页</string>
     <string name="dejavu_link_open_in_split_view">在分屏视图中打开</string>
+    <string name="dejavu_link_open_beside_in_split_view">在旁边以分屏视图打开</string>
+    <string name="dejavu_link_open_below_in_split_view">在下方以分屏视图打开</string>
     <string name="dejavu_link_open_in_container">在容器中打开</string>
     <string name="dejavu_link_open_in_workspace">在工作区中打开</string>
     <string name="dejavu_link_opened_in">已在 %1$s 中打开</string>

@@ -23,6 +23,7 @@ import org.mozilla.fenix.dejavu.home.folderPathOf
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.workspaces.MAX_ESSENTIALS
 import org.mozilla.fenix.dejavu.workspaces.PinSource
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 
@@ -58,9 +59,12 @@ internal class DejavuTabCommands(
         return true
     }
 
-    /** Shows [tab] and [other] side by side, next to each other in the tab list when neither is pinned. */
-    fun split(workspaces: WorkspaceState, other: TabSessionState) {
-        repository.createSplit(tab.id, other.id)
+    /**
+     * Shows [tab] and [other] together, the way [way] has them, and next to each other in the tab list when neither is
+     * pinned.
+     */
+    fun split(workspaces: WorkspaceState, other: TabSessionState, way: SplitOrientation) {
+        repository.createSplit(tab.id, other.id, way)
         if (workspaces.pinOf(tab.id) == null && workspaces.pinOf(other.id) == null) {
             components.core.store.dispatch(TabListAction.MoveTabsAction(listOf(other.id), tab.id, placeAfter = true))
         }

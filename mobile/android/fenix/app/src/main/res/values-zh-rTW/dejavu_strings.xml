@@ -84,8 +84,10 @@
     <string name="dejavu_action_split_view">分割畫面</string>
     <string name="dejavu_action_unsplit">取消分割</string>
     <string name="dejavu_split_view">分割畫面</string>
-    <string name="dejavu_split_show_on_top">顯示在上方</string>
     <string name="dejavu_split_close">關閉分割畫面</string>
+    <string name="dejavu_split_top_and_bottom">上下分割</string>
+    <string name="dejavu_split_side_by_side">左右分割</string>
+    <string name="dejavu_split_focus">切換至此頁面</string>
     <string name="dejavu_action_reset_pin">重設已釘選分頁</string>
     <string name="dejavu_action_replace_pin">以目前網址取代已釘選網址</string>
     <string name="dejavu_action_add_to_essentials">新增到常用網站</string>
@@ -159,6 +161,8 @@
     <string name="dejavu_example_webhook">將所有變數以 JSON 格式傳送，適用於 n8n、Node-RED 等工具</string>
     <string name="dejavu_preferences_close_unpinned_tabs">關閉未釘選分頁</string>
     <string name="dejavu_link_open_in_split_view">在分割畫面中開啟</string>
+    <string name="dejavu_link_open_beside_in_split_view">在旁邊以分割畫面開啟</string>
+    <string name="dejavu_link_open_below_in_split_view">在下方以分割畫面開啟</string>
     <string name="dejavu_link_open_in_container">在容器中開啟</string>
     <string name="dejavu_link_open_in_workspace">在工作區中開啟</string>
     <string name="dejavu_link_opened_in">已在 %1$s 中開啟</string>

@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Бүленгән күренеш</string>
     <string name="dejavu_action_unsplit">Бүленештән баш тарту</string>
     <string name="dejavu_split_view">Бүленгән күренеш</string>
-    <string name="dejavu_split_show_on_top">Өстә күрсәтү</string>
     <string name="dejavu_split_close">Бүленгән күренешне ябу</string>
+    <string name="dejavu_split_top_and_bottom">Өсле-аслы бүлү</string>
+    <string name="dejavu_split_side_by_side">Янәшә бүлү</string>
+    <string name="dejavu_split_focus">Бу биткә күчү</string>
     <string name="dejavu_action_reset_pin">Беркетелгән табны яңадан көйләү</string>
     <string name="dejavu_action_replace_pin">Беркетелгән URL-ны хәзергесе белән алыштыру</string>
     <string name="dejavu_action_add_to_essentials">Төп сайтларга өстәү</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">n8n, Node-RED һәм шундый кораллар өчен һәрбер үзгәрүчәнне JSON итеп җибәрү</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Беркетелмәгән табларны ябу</string>
     <string name="dejavu_link_open_in_split_view">Бүленгән күренештә ачу</string>
+    <string name="dejavu_link_open_beside_in_split_view">Бүленгән күренештә янәшә ачу</string>
+    <string name="dejavu_link_open_below_in_split_view">Бүленгән күренештә аста ачу</string>
     <string name="dejavu_link_open_in_container">Контейнердә ачу</string>
     <string name="dejavu_link_open_in_workspace">Эш өлкәсендә ачу</string>
     <string name="dejavu_link_opened_in">%1$s-дә ачылды</string>

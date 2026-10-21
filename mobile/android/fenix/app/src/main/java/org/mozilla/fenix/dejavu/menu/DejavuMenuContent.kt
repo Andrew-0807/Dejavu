@@ -31,6 +31,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -50,7 +51,9 @@ import org.mozilla.fenix.components.menu.MenuAccessPoint
 import org.mozilla.fenix.components.menu.store.MenuAction
 import org.mozilla.fenix.components.menu.store.MenuStore
 import org.mozilla.fenix.dejavu.actions.TabAction
+import org.mozilla.fenix.dejavu.browser.SplitSpace
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 import org.mozilla.fenix.ext.components as contextComponents
@@ -60,6 +63,7 @@ import org.mozilla.fenix.nimbus.FxNimbus
 object DejavuMenu {
     private const val ARG_FROM_BOTTOM = "dejavu_menu_from_bottom"
     private const val ARG_OPENING = "dejavu_menu_opening"
+    private const val ARG_SPLIT_WAY = "dejavu_menu_split_way"
 
     /**
      * What the menu shows when it opens. The page's details are no part of the "More" menu, but a panel of their own
@@ -92,11 +96,18 @@ object DejavuMenu {
     fun opening(arguments: Bundle?): Opening =
         arguments?.getString(ARG_OPENING)?.let { name -> Opening.entries.firstOrNull { it.name == name } } ?: Opening.MENU
 
-    /** The arguments that open the menu dialog from the bottom of the screen or not, showing [opening] first. */
-    fun arguments(fromBottom: Boolean, opening: Opening): Bundle = Bundle().apply {
+    /**
+     * The arguments that open the menu dialog from the bottom of the screen or not, showing [opening] first; the tab
+     * picked for a split view shows next to the menu's tab the way [splitWay] has it.
+     */
+    fun arguments(fromBottom: Boolean, opening: Opening, splitWay: SplitOrientation? = null): Bundle = Bundle().apply {
         putBoolean(ARG_FROM_BOTTOM, fromBottom)
         putString(ARG_OPENING, opening.name)
+        splitWay?.let { putString(ARG_SPLIT_WAY, it.key) }
     }
+
+    /** The way a split view picked in the menu opened with [arguments] shows, if it said. */
+    fun splitWay(arguments: Bundle?): SplitOrientation? = SplitOrientation.fromKey(arguments?.getString(ARG_SPLIT_WAY))
 
     /** A dialog showing its content at the top of the screen, sliding down from the edge. */
     fun createTopSheetDialog(context: Context, onMenuKey: () -> Unit): Dialog =
@@ -197,11 +208,12 @@ fun DejavuMenuContent(
     navController: NavController,
     onEdit: () -> Unit,
     onDismiss: () -> Unit,
+    splitWay: SplitOrientation? = null,
 ) {
     if (opening == DejavuMenu.Opening.PAGE_INFO && accessPoint == MenuAccessPoint.Browser) {
         PageInfoMenu(menuStore = menuStore, navController = navController, onDismiss = onDismiss)
     } else {
-        MoreMenuContent(menuStore, accessPoint, fromTop, opening, navController, onEdit, onDismiss)
+        MoreMenuContent(menuStore, accessPoint, fromTop, opening, navController, onEdit, onDismiss, splitWay)
     }
 }
 
@@ -216,6 +228,7 @@ private fun MoreMenuContent(
     navController: NavController,
     onEdit: () -> Unit,
     onDismiss: () -> Unit,
+    splitWay: SplitOrientation?,
 ) {
     val fenix = components
     val menuState by menuStore.stateFlow.collectAsState()
@@ -255,7 +268,12 @@ private fun MoreMenuContent(
         val customActions by settings.customActions.collectAsState()
         val editHidden by settings.moreMenuEditHidden.collectAsState()
         var extensionsExpanded by remember { mutableStateOf(opening == DejavuMenu.Opening.EXTENSIONS) }
-        var pickingSplit by remember { mutableStateOf(opening == DejavuMenu.Opening.SPLIT_PICKER) }
+        // The way the tab picked for a split view shows, while picking it.
+        var pickingSplit by remember {
+            mutableStateOf(
+                if (opening == DejavuMenu.Opening.SPLIT_PICKER) splitWay ?: SplitOrientation.TOP_AND_BOTTOM else null,
+            )
+        }
         var asking by remember { mutableStateOf<TabAction?>(null) }
         val current = tab ?: return@MoreMenuSheet
         val state = moreMenuState(
@@ -272,7 +290,7 @@ private fun MoreMenuContent(
             ShownTabActionDialog(action = action, tab = current, navController = navController, onDone = close)
         }
 
-        if (pickingSplit) {
+        pickingSplit?.let { way ->
             val workspaceId = workspaces.workspaceOf(current.id)
             val candidates = fenix.core.store.state.normalTabs.filter { other ->
                 other.id != current.id &&
@@ -281,14 +299,15 @@ private fun MoreMenuContent(
             }
             SplitTabPicker(
                 tabs = candidates,
-                onPick = { other -> actions.split(workspaces, other) },
-                onBack = { pickingSplit = false },
+                onPick = { other -> actions.split(workspaces, other, way) },
+                onBack = { pickingSplit = null },
             )
             return@MoreMenuSheet
         }
 
         MoreMenu(
-            rows = remember(rowKeys, customActions) { MoreMenuLayout.resolve(rowKeys, customActions) },
+            rows = remember(rowKeys, customActions) { MoreMenuLayout.resolve(rowKeys, customActions) }
+                .map { it.forSplitWays(state.splitWays, state.isSplit) },
             state = state,
             extensions = extensions,
             extensionsExpanded = extensionsExpanded,
@@ -296,7 +315,9 @@ private fun MoreMenuContent(
             onEntryClick = { entry ->
                 when {
                     entry == MoreMenuEntry.BuiltIn(MoreMenuItem.EXTENSIONS) -> extensionsExpanded = !extensionsExpanded
-                    entry == MoreMenuEntry.BuiltIn(MoreMenuItem.SPLIT_VIEW) && !state.isSplit -> pickingSplit = true
+                    entry == MoreMenuEntry.BuiltIn(MoreMenuItem.SPLIT_VIEW) && !state.isSplit ->
+                        pickingSplit = SplitSpace.preferred(state.splitWays)
+                    entry is MoreMenuEntry.BuiltIn && entry.item.splitWay != null -> pickingSplit = entry.item.splitWay
                     entry is MoreMenuEntry.Tab && entry.action.asksFirst -> asking = entry.action
                     else -> actions.run(entry, state, workspaces)
                 }
@@ -342,6 +363,7 @@ internal fun moreMenuState(
         isWebPage = url.startsWith("http://") || url.startsWith("https://"),
         isDeviceTab = !tab.content.private &&
             workspaces.isDeviceWorkspace(pin?.workspaceId ?: workspaces.workspaceOf(tab.id)),
+        splitWays = SplitSpace.supported(LocalConfiguration.current),
     )
 }
 
@@ -419,9 +441,9 @@ private class MenuActions(
         }
     }
 
-    /** Shows the tab of the menu and [other] side by side. */
-    fun split(workspaces: WorkspaceState, other: TabSessionState) {
-        commands.split(workspaces, other)
+    /** Shows the tab of the menu and [other] together, the way [way] has them. */
+    fun split(workspaces: WorkspaceState, other: TabSessionState, way: SplitOrientation) {
+        commands.split(workspaces, other, way)
         dismiss()
     }
 

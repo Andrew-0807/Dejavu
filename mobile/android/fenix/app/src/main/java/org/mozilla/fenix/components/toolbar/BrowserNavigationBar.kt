@@ -30,7 +30,7 @@ import mozilla.components.support.utils.KeyboardState
 import mozilla.components.support.utils.keyboardAsState
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
-import org.mozilla.fenix.dejavu.menu.DejavuActionsBar
+import org.mozilla.fenix.dejavu.menu.DejavuActionsBars
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
 
@@ -145,7 +145,7 @@ class BrowserNavigationBar(
             ) {
                 FirefoxTheme {
                     if (isDejavuBar) {
-                        DejavuActionsBar(onEvent = { toolbarStore.dispatch(it) })
+                        DejavuActionsBars(onEvent = { toolbarStore.dispatch(it) })
                         return@FirefoxTheme
                     }
                     NavigationBar(

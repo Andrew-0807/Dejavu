@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">نمای تقسیم‌شده</string>
     <string name="dejavu_action_unsplit">لغو نمای تقسیم‌شده</string>
     <string name="dejavu_split_view">نمای تقسیم‌شده</string>
-    <string name="dejavu_split_show_on_top">نمایش در بالا</string>
     <string name="dejavu_split_close">بستن نمای تقسیم‌شده</string>
+    <string name="dejavu_split_top_and_bottom">تقسیم بالا و پایین</string>
+    <string name="dejavu_split_side_by_side">تقسیم کنار هم</string>
+    <string name="dejavu_split_focus">رفتن به این صفحه</string>
     <string name="dejavu_action_reset_pin">بازنشانی زبانهٔ سنجاق‌شده</string>
     <string name="dejavu_action_replace_pin">جایگزینی نشانی سنجاق‌شده با نشانی فعلی</string>
     <string name="dejavu_action_add_to_essentials">افزودن به ضروریات</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">ارسال هر متغیر به‌صورت JSON، برای ابزارهایی مثل n8n و Node-RED</string>
     <string name="dejavu_preferences_close_unpinned_tabs">بستن زبانه‌های سنجاق‌نشده</string>
     <string name="dejavu_link_open_in_split_view">باز کردن در نمای تقسیم‌شده</string>
+    <string name="dejavu_link_open_beside_in_split_view">باز کردن کنار صفحه در نمای تقسیم‌شده</string>
+    <string name="dejavu_link_open_below_in_split_view">باز کردن زیر صفحه در نمای تقسیم‌شده</string>
     <string name="dejavu_link_open_in_container">باز کردن در محفظه</string>
     <string name="dejavu_link_open_in_workspace">باز کردن در فضای کاری</string>
     <string name="dejavu_link_opened_in">در %1$s باز شد</string>

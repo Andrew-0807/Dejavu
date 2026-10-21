@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Vista divise</string>
     <string name="dejavu_action_unsplit">Reunir</string>
     <string name="dejavu_split_view">Vista divise</string>
-    <string name="dejavu_split_show_on_top">Monstrar in alto</string>
     <string name="dejavu_split_close">Clauder le vista divise</string>
+    <string name="dejavu_split_top_and_bottom">Divider in alto e in basso</string>
+    <string name="dejavu_split_side_by_side">Divider latere a latere</string>
+    <string name="dejavu_split_focus">Passar a iste pagina</string>
     <string name="dejavu_action_reset_pin">Reinitialisar scheda fixate</string>
     <string name="dejavu_action_replace_pin">Reimplaciar le URL fixate per le actual</string>
     <string name="dejavu_action_add_to_essentials">Adder al essentiales</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Inviar cata variabile como JSON, pro n8n, Node-RED e utensiles simile</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Clauder schedas non fixate</string>
     <string name="dejavu_link_open_in_split_view">Aperir in vista divise</string>
+    <string name="dejavu_link_open_beside_in_split_view">Aperir a latere in vista divise</string>
+    <string name="dejavu_link_open_below_in_split_view">Aperir infra in vista divise</string>
     <string name="dejavu_link_open_in_container">Aperir in recipiente</string>
     <string name="dejavu_link_open_in_workspace">Aperir in spatio de labor</string>
     <string name="dejavu_link_opened_in">Aperite in %1$s</string>

@@ -90,6 +90,20 @@ enum class TabAction(
         setOf(ActionPlace.SELECTION) + ShownTab,
     ),
     UNSPLIT("unsplit", R.string.dejavu_action_unsplit, R.drawable.dejavu_ic_unsplit_24, Everywhere),
+
+    // What Split view turns into on screens with room for both ways of splitting; never put by the user.
+    SPLIT_TOP_AND_BOTTOM(
+        "split_top_and_bottom",
+        R.string.dejavu_split_top_and_bottom,
+        R.drawable.dejavu_ic_split_24,
+        emptySet(),
+    ),
+    SPLIT_SIDE_BY_SIDE(
+        "split_side_by_side",
+        R.string.dejavu_split_side_by_side,
+        R.drawable.dejavu_ic_split_side_24,
+        emptySet(),
+    ),
     MOVE_TO_FOLDER(
         "move_to_folder",
         R.string.dejavu_action_move_to_folder,
@@ -165,8 +179,9 @@ enum class TabAction(
          */
         val ordered: List<TabAction> = listOf(
             UNPIN, PIN, RESET_PIN, REPLACE_PIN, ADD_TO_ESSENTIALS, REMOVE_FROM_ESSENTIALS, RENAME_TAB, SLEEP, BOOKMARK, SHARE,
-            COPY_LINK, DUPLICATE, SPLIT_VIEW, UNSPLIT, NEW_FOLDER, NEW_SUBFOLDER, RENAME_FOLDER, MOVE_TO_FOLDER,
-            MOVE_TO_WORKSPACE, CHANGE_CONTAINER, UNPACK_FOLDER, DELETE, CLOSE,
+            COPY_LINK, DUPLICATE, SPLIT_VIEW, SPLIT_TOP_AND_BOTTOM, SPLIT_SIDE_BY_SIDE, UNSPLIT, NEW_FOLDER,
+            NEW_SUBFOLDER, RENAME_FOLDER, MOVE_TO_FOLDER, MOVE_TO_WORKSPACE, CHANGE_CONTAINER, UNPACK_FOLDER, DELETE,
+            CLOSE,
         )
 
         fun fromKey(key: String): TabAction? = entries.firstOrNull { it.key == key }

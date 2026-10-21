@@ -87,8 +87,10 @@
     <string name="dejavu_action_split_view">Razdeljeni pogled</string>
     <string name="dejavu_action_unsplit">Prekliči razdelitev</string>
     <string name="dejavu_split_view">Razdeljeni pogled</string>
-    <string name="dejavu_split_show_on_top">Prikaži na vrhu</string>
     <string name="dejavu_split_close">Zapri razdeljeni pogled</string>
+    <string name="dejavu_split_top_and_bottom">Razdeli zgoraj in spodaj</string>
+    <string name="dejavu_split_side_by_side">Razdeli levo in desno</string>
+    <string name="dejavu_split_focus">Preklopi na to stran</string>
     <string name="dejavu_action_reset_pin">Ponastavi pripeti zavihek</string>
     <string name="dejavu_action_replace_pin">Zamenjaj pripeti URL s trenutnim</string>
     <string name="dejavu_action_add_to_essentials">Dodaj v Izbrano</string>
@@ -162,6 +164,8 @@
     <string name="dejavu_example_webhook">Pošlji vsako spremenljivko kot JSON, za n8n, Node-RED in podobna orodja</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Zapri nepripete zavihke</string>
     <string name="dejavu_link_open_in_split_view">Odpri v razdeljenem pogledu</string>
+    <string name="dejavu_link_open_beside_in_split_view">Odpri zraven v razdeljenem pogledu</string>
+    <string name="dejavu_link_open_below_in_split_view">Odpri spodaj v razdeljenem pogledu</string>
     <string name="dejavu_link_open_in_container">Odpri v vsebniku</string>
     <string name="dejavu_link_open_in_workspace">Odpri v delovnem prostoru</string>
     <string name="dejavu_link_opened_in">Odprto v %1$s</string>

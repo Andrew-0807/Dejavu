@@ -234,6 +234,8 @@ internal val DeviceTabActions = setOf(
     TabAction.COPY_LINK,
     TabAction.DUPLICATE,
     TabAction.SPLIT_VIEW,
+    TabAction.SPLIT_TOP_AND_BOTTOM,
+    TabAction.SPLIT_SIDE_BY_SIDE,
     TabAction.UNSPLIT,
 )
 
@@ -274,7 +276,8 @@ private fun TabAction.appliesToTargets(targets: ActionTargets): Boolean = when (
     TabAction.CHANGE_CONTAINER -> targets.tabs.isNotEmpty() || targets.allPins.isNotEmpty()
     TabAction.RENAME_TAB -> targets.folders.isEmpty() && targets.tabs.size + targets.pins.size == 1
     // Only two tabs picked themselves, not the tabs inside a folder.
-    TabAction.SPLIT_VIEW -> targets.folders.isEmpty() && targets.tabs.size + targets.pins.size == 2 && targets.openTabs.size == 2
+    TabAction.SPLIT_VIEW, TabAction.SPLIT_TOP_AND_BOTTOM, TabAction.SPLIT_SIDE_BY_SIDE ->
+        targets.folders.isEmpty() && targets.tabs.size + targets.pins.size == 2 && targets.openTabs.size == 2
     TabAction.UNSPLIT -> targets.splitTabIds.isNotEmpty()
 }
 

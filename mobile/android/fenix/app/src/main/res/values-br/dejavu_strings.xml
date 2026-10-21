@@ -88,8 +88,10 @@
     <string name="dejavu_action_split_view">Gwel rannet</string>
     <string name="dejavu_action_unsplit">Dizrannañ</string>
     <string name="dejavu_split_view">Gwel rannet</string>
-    <string name="dejavu_split_show_on_top">Diskouez a-us</string>
     <string name="dejavu_split_close">Serriñ ar gwel rannet</string>
+    <string name="dejavu_split_top_and_bottom">Rannañ a-us hag a-is</string>
+    <string name="dejavu_split_side_by_side">Rannañ kichen-ha-kichen</string>
+    <string name="dejavu_split_focus">Mont d’ar bajenn-mañ</string>
     <string name="dejavu_action_reset_pin">Adderaouekaat an ivinell spilhennet</string>
     <string name="dejavu_action_replace_pin">Erlec’hiañ an URL spilhennet gant an hini bremanel</string>
     <string name="dejavu_action_add_to_essentials">Ouzhpennañ d’an traoù pouezus</string>
@@ -163,6 +165,8 @@
     <string name="dejavu_example_webhook">Kas pep argemmenn evel JSON, evit n8n, Node-RED ha meziantoù heñvel</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Serriñ an ivinelloù dispilhennet</string>
     <string name="dejavu_link_open_in_split_view">Digeriñ e gwel rannet</string>
+    <string name="dejavu_link_open_beside_in_split_view">Digeriñ e-kichen e gwel rannet</string>
+    <string name="dejavu_link_open_below_in_split_view">Digeriñ a-is e gwel rannet</string>
     <string name="dejavu_link_open_in_container">Digeriñ en ur c’hontener</string>
     <string name="dejavu_link_open_in_workspace">Digeriñ en un egor labour</string>
     <string name="dejavu_link_opened_in">Digoret e %1$s</string>

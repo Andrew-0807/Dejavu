@@ -89,8 +89,10 @@
     <string name="dejavu_action_split_view">Golwg hollt</string>
     <string name="dejavu_action_unsplit">Dad-hollti</string>
     <string name="dejavu_split_view">Golwg hollt</string>
-    <string name="dejavu_split_show_on_top">Dangos ar y brig</string>
     <string name="dejavu_split_close">Cau’r olwg hollt</string>
+    <string name="dejavu_split_top_and_bottom">Hollti brig a gwaelod</string>
+    <string name="dejavu_split_side_by_side">Hollti ochr yn ochr</string>
+    <string name="dejavu_split_focus">Newid i’r dudalen hon</string>
     <string name="dejavu_action_reset_pin">Ailosod y tab wedi’i binio</string>
     <string name="dejavu_action_replace_pin">Amnewid yr URL wedi’i binio â’r un cyfredol</string>
     <string name="dejavu_action_add_to_essentials">Ychwanegu at yr hanfodion</string>
@@ -164,6 +166,8 @@
     <string name="dejavu_example_webhook">Anfon pob newidyn fel JSON, ar gyfer n8n, Node-RED ac offer tebyg</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Cau tabiau heb eu pinio</string>
     <string name="dejavu_link_open_in_split_view">Agor mewn golwg hollt</string>
+    <string name="dejavu_link_open_beside_in_split_view">Agor ochr yn ochr mewn golwg hollt</string>
+    <string name="dejavu_link_open_below_in_split_view">Agor islaw mewn golwg hollt</string>
     <string name="dejavu_link_open_in_container">Agor mewn cynhwysydd</string>
     <string name="dejavu_link_open_in_workspace">Agor mewn gweithle</string>
     <string name="dejavu_link_opened_in">Agorwyd yn %1$s</string>

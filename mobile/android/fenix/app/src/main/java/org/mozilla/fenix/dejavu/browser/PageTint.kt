@@ -11,7 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.Window
+import androidx.compose.runtime.snapshotFlow
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowCompat
 import androidx.core.view.children
@@ -32,6 +34,7 @@ import mozilla.components.browser.state.selector.selectedTab
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.concept.engine.EngineView
 import mozilla.components.lib.state.ext.flow
+import org.mozilla.fenix.R
 import org.mozilla.fenix.components.AppStore
 import org.mozilla.geckoview.GeckoView
 import org.mozilla.geckoview.captureTopEdge
@@ -50,7 +53,8 @@ private const val OPAQUE = 0xFF shl 24
  * Paints what shows above the page, behind Dejavu's address bar and the status bar, in the color along the page's top
  * edge, so the address bar floats over the page as in Candy instead of over a band in the app's color. The status bar's
  * icons turn dark over light pages and light over dark ones, and so does the fade behind them. While a search screen
- * covers the page, they follow the app's theme again.
+ * covers the page, they follow the app's theme again, and so does all of it while a split view shows two pages between
+ * bars that stay in place.
  *
  * @param behindPage The view whose background shows above the page.
  * @param layout The browser layout holding the fade behind the status bar.
@@ -64,18 +68,24 @@ internal class PageTint(
     private val restoreTheme: () -> Unit,
 ) {
     private var tinted: Int? = null
+    private val untinted = behindPage.background
 
     /** Follows the page of the selected tab of [browserStore] while [owner] is resumed. */
     fun start(owner: LifecycleOwner, browserStore: BrowserStore, appStore: AppStore) {
         owner.lifecycleScope.launch {
             owner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 val searches = appStore.flow().map { it.searchState.isSearchActive }.distinctUntilChanged()
-                merge(pageChanges(browserStore), pageMoves(), searches).collectLatest {
+                val splits = snapshotFlow { SplitScreen.shown?.tabIds }.distinctUntilChanged()
+                merge(pageChanges(browserStore), pageMoves(), searches, splits).collectLatest {
                     if (appStore.state.searchState.isSearchActive) {
                         restoreTheme()
                         return@collectLatest
                     }
                     val tab = browserStore.state.selectedTab ?: return@collectLatest
+                    if (SplitScreen.shown?.tabIds?.contains(tab.id) == true) {
+                        untint()
+                        return@collectLatest
+                    }
                     // A tab shown again takes its color at once, before its page is pictured.
                     rememberedColors[tab.id]?.let(::tint)
                     if (!tab.content.firstContentfulPaint || window.isFullScreen) return@collectLatest
@@ -145,6 +155,15 @@ internal class PageTint(
             layout.tintStatusBarScrim(if (isLightPage) Color.WHITE else Color.BLACK)
         }
         WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = isLightPage
+    }
+
+    private fun untint() {
+        if (tinted != null) {
+            tinted = null
+            behindPage.background = untinted
+            layout.tintStatusBarScrim(ContextCompat.getColor(layout.context, R.color.fx_mobile_surface))
+        }
+        restoreTheme()
     }
 
     private data class ShownPage(

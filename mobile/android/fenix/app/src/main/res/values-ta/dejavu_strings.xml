@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">பிரிந்த காட்சி</string>
     <string name="dejavu_action_unsplit">பிரிவை நீக்கு</string>
     <string name="dejavu_split_view">பிரிந்த காட்சி</string>
-    <string name="dejavu_split_show_on_top">மேலே காட்டு</string>
     <string name="dejavu_split_close">பிரிந்த காட்சியை மூடு</string>
+    <string name="dejavu_split_top_and_bottom">மேலும் கீழுமாகப் பிரி</string>
+    <string name="dejavu_split_side_by_side">அருகருகே பிரி</string>
+    <string name="dejavu_split_focus">இந்தப் பக்கத்திற்கு மாறு</string>
     <string name="dejavu_action_reset_pin">பொருத்தப்பட்ட கீற்றை மீட்டமை</string>
     <string name="dejavu_action_replace_pin">பொருத்தப்பட்ட URL-ஐத் தற்போதையதைக் கொண்டு மாற்று</string>
     <string name="dejavu_action_add_to_essentials">முக்கியவையில் சேர்</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">n8n, Node-RED மற்றும் இதுபோன்ற கருவிகளுக்கு, ஒவ்வொரு மாறியையும் JSON ஆக அனுப்பு</string>
     <string name="dejavu_preferences_close_unpinned_tabs">பொருத்தப்படாத கீற்றுகளை மூடு</string>
     <string name="dejavu_link_open_in_split_view">பிரிந்த காட்சியில் திற</string>
+    <string name="dejavu_link_open_beside_in_split_view">பிரிந்த காட்சியில் அருகில் திற</string>
+    <string name="dejavu_link_open_below_in_split_view">பிரிந்த காட்சியில் கீழே திற</string>
     <string name="dejavu_link_open_in_container">கொள்கலனில் திற</string>
     <string name="dejavu_link_open_in_workspace">பணியிடத்தில் திற</string>
     <string name="dejavu_link_opened_in">%1$s இல் திறக்கப்பட்டது</string>

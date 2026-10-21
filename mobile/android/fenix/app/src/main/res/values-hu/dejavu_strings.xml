@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Osztott nézet</string>
     <string name="dejavu_action_unsplit">Osztás megszüntetése</string>
     <string name="dejavu_split_view">Osztott nézet</string>
-    <string name="dejavu_split_show_on_top">Megjelenítés felül</string>
     <string name="dejavu_split_close">Osztott nézet bezárása</string>
+    <string name="dejavu_split_top_and_bottom">Osztás egymás alatt</string>
+    <string name="dejavu_split_side_by_side">Osztás egymás mellett</string>
+    <string name="dejavu_split_focus">Váltás erre az oldalra</string>
     <string name="dejavu_action_reset_pin">Kitűzött lap visszaállítása</string>
     <string name="dejavu_action_replace_pin">Kitűzött URL cseréje a jelenlegire</string>
     <string name="dejavu_action_add_to_essentials">Hozzáadás a kedvencekhez</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Minden változó küldése JSON formátumban, például n8n, Node-RED és hasonló eszközök számára</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Nem kitűzött lapok bezárása</string>
     <string name="dejavu_link_open_in_split_view">Megnyitás osztott nézetben</string>
+    <string name="dejavu_link_open_beside_in_split_view">Megnyitás mellette osztott nézetben</string>
+    <string name="dejavu_link_open_below_in_split_view">Megnyitás alatta osztott nézetben</string>
     <string name="dejavu_link_open_in_container">Megnyitás konténerben</string>
     <string name="dejavu_link_open_in_workspace">Megnyitás munkaterületen</string>
     <string name="dejavu_link_opened_in">Megnyitva itt: %1$s</string>

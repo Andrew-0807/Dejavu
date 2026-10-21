@@ -210,6 +210,7 @@ import org.mozilla.fenix.crashes.CrashContentView
 import org.mozilla.fenix.customtabs.ExternalAppBrowserActivity
 import org.mozilla.fenix.databinding.FragmentBrowserBinding
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.SplitPanes
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
 import org.mozilla.fenix.dejavu.browser.navigationBarHeight
@@ -1223,7 +1224,13 @@ abstract class BaseBrowserFragment :
             view = view,
         )
 
-        installDejavuSplitView(binding.browserLayout, binding.swipeRefresh, binding.engineView, customTabSessionId) {
+        installDejavuSplitView(
+            browserLayout = binding.browserLayout,
+            swipeRefresh = binding.swipeRefresh,
+            mainEngineView = binding.engineView,
+            customTabSessionId = customTabSessionId,
+            restoreEngineView = ::reinitializeEngineView,
+        ) {
             getContextMenuCandidates(context, binding.dynamicSnackbarContainer)
         }
 
@@ -1812,6 +1819,12 @@ abstract class BaseBrowserFragment :
         bottomToolbarHeight: Int,
     ) {
         val context = requireContext()
+
+        // Dejavu: while a split view shows, it places the page next to the other one, between bars that stay in place.
+        SplitPanes.active?.takeIf { it.ownsLayout }?.let { split ->
+            split.applyLayout()
+            return
+        }
 
         if (isToolbarDynamic(context) && webAppToolbarShouldBeVisible) {
             getEngineView().setDynamicToolbarMaxHeight(topToolbarHeight + bottomToolbarHeight)

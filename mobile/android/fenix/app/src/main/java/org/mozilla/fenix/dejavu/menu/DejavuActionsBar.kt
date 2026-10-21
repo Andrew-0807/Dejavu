@@ -60,11 +60,14 @@ import org.mozilla.fenix.components.components
 import org.mozilla.fenix.components.toolbar.DisplayActions
 import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.SplitScreen
+import org.mozilla.fenix.dejavu.browser.SplitSpace
 import org.mozilla.fenix.dejavu.browser.openDejavuMenu
 import org.mozilla.fenix.dejavu.browser.shownWorkspaceTheme
 import org.mozilla.fenix.dejavu.browser.tabOrShown
 import org.mozilla.fenix.dejavu.browser.workspaceTheme
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.ext.components as contextComponents
 import org.mozilla.fenix.ext.nav
@@ -121,7 +124,7 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit, tabId: String? = nu
             .workspaceTheme(shownWorkspaceTheme(tabId))
             .border(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = BORDER_ALPHA), BAR_SHAPE),
     ) {
-        val buttons = entries.map { entry ->
+        val buttons = entries.forSplitWays(state.splitWays, state.isSplit).map { entry ->
             BarItem(entry.look(state)) {
                 val action = (entry as? MoreMenuEntry.Tab)?.action
                 if (action?.asksFirst == true) asking = action else onEvent(entry.barEvent(state))
@@ -151,6 +154,34 @@ fun DejavuActionsBar(onEvent: (BrowserToolbarEvent) -> Unit, tabId: String? = nu
             navController = remember(view) { view.findNavController() },
             onDone = { asking = null },
         )
+    }
+}
+
+/**
+ * The actions bar below web pages: one bar, or while two pages show side by side, one below each page, as wide as it
+ * and acting on it. A button of the page out of focus turns to that page first.
+ *
+ * @param onEvent Carries out what the user tapped, on the tab in focus.
+ */
+@Composable
+fun DejavuActionsBars(onEvent: (BrowserToolbarEvent) -> Unit) {
+    val split = SplitScreen.shown
+    val selectedId by components.core.store.observeAsComposableState { it.selectedTabId }
+    if (split == null || split.orientation != SplitOrientation.SIDE_BY_SIDE || selectedId !in split.tabIds) {
+        DejavuActionsBar(onEvent = onEvent)
+        return
+    }
+    val context = LocalContext.current
+    Row(modifier = Modifier.fillMaxWidth()) {
+        split.tabIds.forEachIndexed { index, tabId ->
+            val share = if (index == 0) split.fraction else 1f - split.fraction
+            Box(modifier = Modifier.weight(share).alpha(if (tabId == selectedId) 1f else UNFOCUSED_ALPHA)) {
+                DejavuActionsBar(
+                    onEvent = { event -> SplitScreen.focus(context, tabId) { onEvent(event) } },
+                    tabId = tabId,
+                )
+            }
+        }
     }
 }
 
@@ -226,8 +257,11 @@ internal fun runActionsBarEntry(context: Context, navController: NavController, 
         MoreMenuEntry.Home, MoreMenuEntry.Search -> return
     }
     val isSplit = workspaces.splits.any { tab.id in it.tabIds }
-    if (item == MoreMenuItem.SPLIT_VIEW && !isSplit) {
-        navController.openDejavuMenu(fromBottom = true, opening = DejavuMenu.Opening.SPLIT_PICKER)
+    val splitWay = item.splitWay ?: SplitSpace.preferred(SplitSpace.supported(context)).takeIf {
+        item == MoreMenuItem.SPLIT_VIEW && !isSplit
+    }
+    if (splitWay != null) {
+        navController.openDejavuMenu(fromBottom = true, opening = DejavuMenu.Opening.SPLIT_PICKER, splitWay = splitWay)
         return
     }
     if (commands.run(item, workspaces)) return
@@ -289,3 +323,4 @@ internal val ACTIONS_BAR_BOTTOM_MARGIN = 12.dp
 private val BAR_SHAPE = RoundedCornerShape(percent = 50)
 internal const val BORDER_ALPHA = 0.14f
 private const val DISABLED_ALPHA = 0.38f
+private const val UNFOCUSED_ALPHA = 0.75f

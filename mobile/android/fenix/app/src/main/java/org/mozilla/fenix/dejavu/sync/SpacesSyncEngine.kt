@@ -171,6 +171,11 @@ internal class SpacesSyncEngine(
             sent = uploaded.succeeded.size
             data.lastModified = uploaded.lastModified ?: data.lastModified
         }
+        // Zen's split views of pinned tabs show as one row here, as the server has them now.
+        local.update { state ->
+            val splits = pinnedSplitsOf(data.server.values, state.pins)
+            (if (splits == state.pinnedSplits) state else state.copy(pinnedSplits = splits)) to Unit
+        }
         rememberTabs(current, data)
         if (!data.essentialsChecked) {
             current.separatesEssentials()?.let { separate ->

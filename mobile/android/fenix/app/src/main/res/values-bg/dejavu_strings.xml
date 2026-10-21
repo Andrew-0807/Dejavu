@@ -85,8 +85,10 @@
     <string name="dejavu_action_split_view">Разделен изглед</string>
     <string name="dejavu_action_unsplit">Отмяна на разделянето</string>
     <string name="dejavu_split_view">Разделен изглед</string>
-    <string name="dejavu_split_show_on_top">Показване отгоре</string>
     <string name="dejavu_split_close">Затваряне на разделения изглед</string>
+    <string name="dejavu_split_top_and_bottom">Разделяне отгоре и отдолу</string>
+    <string name="dejavu_split_side_by_side">Разделяне един до друг</string>
+    <string name="dejavu_split_focus">Превключване към тази страница</string>
     <string name="dejavu_action_reset_pin">Нулиране на закачен раздел</string>
     <string name="dejavu_action_replace_pin">Замяна на закачения URL адрес с текущия</string>
     <string name="dejavu_action_add_to_essentials">Добавяне към Любими</string>
@@ -160,6 +162,8 @@
     <string name="dejavu_example_webhook">Изпращане на всяка променлива като JSON, за n8n, Node-RED и подобни инструменти</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Затваряне на незакачените раздели</string>
     <string name="dejavu_link_open_in_split_view">Отваряне в разделен изглед</string>
+    <string name="dejavu_link_open_beside_in_split_view">Отваряне отстрани в разделен изглед</string>
+    <string name="dejavu_link_open_below_in_split_view">Отваряне отдолу в разделен изглед</string>
     <string name="dejavu_link_open_in_container">Отваряне в контейнер</string>
     <string name="dejavu_link_open_in_workspace">Отваряне в работно пространство</string>
     <string name="dejavu_link_opened_in">Отворено в %1$s</string>

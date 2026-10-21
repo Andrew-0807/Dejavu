@@ -97,8 +97,10 @@
     <string name="dejavu_action_split_view">Bölünmüş görünüm</string>
     <string name="dejavu_action_unsplit">Bölmeyi kaldır</string>
     <string name="dejavu_split_view">Bölünmüş görünüm</string>
-    <string name="dejavu_split_show_on_top">Üstte göster</string>
     <string name="dejavu_split_close">Bölünmüş görünümü kapat</string>
+    <string name="dejavu_split_top_and_bottom">Alt alta böl</string>
+    <string name="dejavu_split_side_by_side">Yan yana böl</string>
+    <string name="dejavu_split_focus">Bu sayfaya geç</string>
     <string name="dejavu_action_reset_pin">Sabitlenmiş sekmeyi sıfırla</string>
     <string name="dejavu_action_replace_pin">Sabitlenmiş adresi geçerli adresle değiştir</string>
     <string name="dejavu_action_add_to_essentials">Temel sekmelere ekle</string>
@@ -172,6 +174,8 @@
     <string name="dejavu_example_webhook">n8n, Node-RED ve benzeri araçlar için tüm değişkenleri JSON olarak gönder</string>
     <string name="dejavu_preferences_close_unpinned_tabs">Sabitlenmemiş sekmeleri kapat</string>
     <string name="dejavu_link_open_in_split_view">Bölünmüş görünümde aç</string>
+    <string name="dejavu_link_open_beside_in_split_view">Bölünmüş görünümde yanda aç</string>
+    <string name="dejavu_link_open_below_in_split_view">Bölünmüş görünümde altta aç</string>
     <string name="dejavu_link_open_in_container">Kapsayıcıda aç</string>
     <string name="dejavu_link_open_in_workspace">Çalışma alanında aç</string>
     <string name="dejavu_link_opened_in">%1$s içinde açıldı</string>

@@ -13,6 +13,7 @@ import org.mozilla.fenix.dejavu.actions.ActionPlace
 import org.mozilla.fenix.dejavu.actions.CustomAction
 import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 
 /**
  * A built-in item of the Dejavu "More" menu of the browser.
@@ -48,6 +49,10 @@ enum class MoreMenuItem(
     RESET_PINNED_URL("reset_pinned_url", R.string.dejavu_menu_reset_pinned_url, R.drawable.dejavu_ic_reset_pin_24),
     REPLACE_PINNED_URL("replace_pinned_url", R.string.dejavu_menu_replace_pinned_url, iconsR.drawable.mozac_ic_pin_fill_24),
     SPLIT_VIEW("split_view", R.string.dejavu_menu_split_view, R.drawable.dejavu_ic_split_24),
+
+    // What the split view entry turns into on screens with room for both ways of splitting; never put by the user.
+    SPLIT_TOP_AND_BOTTOM("split_top_and_bottom", R.string.dejavu_split_top_and_bottom, R.drawable.dejavu_ic_split_24),
+    SPLIT_SIDE_BY_SIDE("split_side_by_side", R.string.dejavu_split_side_by_side, R.drawable.dejavu_ic_split_side_24),
     SETTINGS("settings", R.string.dejavu_menu_settings, iconsR.drawable.mozac_ic_settings_24),
     ;
 
@@ -99,6 +104,8 @@ val TabAction.menuItem: MoreMenuItem?
         TabAction.RESET_PIN -> MoreMenuItem.RESET_PINNED_URL
         TabAction.REPLACE_PIN -> MoreMenuItem.REPLACE_PINNED_URL
         TabAction.SPLIT_VIEW, TabAction.UNSPLIT -> MoreMenuItem.SPLIT_VIEW
+        TabAction.SPLIT_TOP_AND_BOTTOM -> MoreMenuItem.SPLIT_TOP_AND_BOTTOM
+        TabAction.SPLIT_SIDE_BY_SIDE -> MoreMenuItem.SPLIT_SIDE_BY_SIDE
         else -> null
     }
 
@@ -138,7 +145,7 @@ object MoreMenuLayout {
 
     /** Every entry that can be put in the menu: its own items, then the tab actions, then the custom ones. */
     fun available(customActions: List<CustomAction>): List<MoreMenuEntry> =
-        MoreMenuItem.entries.map { MoreMenuEntry.BuiltIn(it) } +
+        MoreMenuItem.entries.filter { it.splitWay == null }.map { MoreMenuEntry.BuiltIn(it) } +
             TabAction.ordered.filter { it.isMenuEntry }.map { MoreMenuEntry.Tab(it) } +
             customActions.map { MoreMenuEntry.Custom(it) }
 
@@ -213,3 +220,32 @@ object ActionsBarLayout {
     fun resolve(keys: List<String>, customActions: List<CustomAction>): List<MoreMenuEntry> =
         keys.mapNotNull { entryOf(it, customActions) }.take(MAX_BUTTONS)
 }
+
+/** The way this entry splits the browser, for the entries the split view entry turns into. */
+val MoreMenuItem.splitWay: SplitOrientation?
+    get() = when (this) {
+        MoreMenuItem.SPLIT_TOP_AND_BOTTOM -> SplitOrientation.TOP_AND_BOTTOM
+        MoreMenuItem.SPLIT_SIDE_BY_SIDE -> SplitOrientation.SIDE_BY_SIDE
+        else -> null
+    }
+
+/** The entry that splits the browser this way. */
+val SplitOrientation.menuItem: MoreMenuItem
+    get() = when (this) {
+        SplitOrientation.TOP_AND_BOTTOM -> MoreMenuItem.SPLIT_TOP_AND_BOTTOM
+        SplitOrientation.SIDE_BY_SIDE -> MoreMenuItem.SPLIT_SIDE_BY_SIDE
+    }
+
+/**
+ * These entries as shown for a tab on a screen with room to split the [ways] given: the split view entry becomes one
+ * entry for each way when there is room for both, and goes away when there is room for none. A tab shown split keeps
+ * the entry, which ends the split.
+ */
+fun List<MoreMenuEntry>.forSplitWays(ways: List<SplitOrientation>, isSplit: Boolean): List<MoreMenuEntry> =
+    flatMap { entry ->
+        when {
+            entry != MoreMenuEntry.BuiltIn(MoreMenuItem.SPLIT_VIEW) || isSplit -> listOf(entry)
+            ways.size > 1 -> ways.map { MoreMenuEntry.BuiltIn(it.menuItem) }
+            else -> listOf(entry).takeIf { ways.isNotEmpty() }.orEmpty()
+        }
+    }
