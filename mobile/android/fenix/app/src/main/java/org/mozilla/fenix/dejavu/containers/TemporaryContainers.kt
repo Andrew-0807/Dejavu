@@ -30,7 +30,7 @@ object TemporaryContainers {
 
     /** Starts a new temporary container and returns its context ID. */
     fun create(store: Store<BrowserState, BrowserAction>, storage: DejavuContainerStorage): String {
-        val taken = store.state.containers.values.filter { storage.isTemporary(it.contextId) }.map { it.name }.toSet()
+        val taken = store.state.containers.values.filter { storage.showsAsTemporary(it.contextId) }.map { it.name }.toSet()
         val number = generateSequence(1) { it + 1 }.first { "$NAME_PREFIX$it" !in taken }
         val contextId = UUID.randomUUID().toString()
         storage.markTemporary(contextId)

@@ -111,7 +111,7 @@ internal fun HomeDialogs(
             val workspace = state.workspaces.firstOrNull { it.id == dialog.workspaceId }
             WorkspaceDialog(
                 workspace = workspace,
-                containers = containers.values.filterNot { it.temporary },
+                containers = containers.values.filterNot { it.showsAsTemporary },
                 onCreateContainer = interactor::onCreateContainer,
                 onSave = { name, containerId, icon, theme ->
                     interactor.onSaveWorkspace(workspace?.id, name, containerId, icon, theme)

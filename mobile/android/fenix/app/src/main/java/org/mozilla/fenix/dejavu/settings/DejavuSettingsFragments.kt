@@ -463,7 +463,7 @@ class DejavuContainersFragment : DejavuComposeFragment(R.string.dejavu_settings_
         val essentialsPerContainer by settings.essentialsPerContainer.collectAsState()
         val temporaryByDefault by settings.temporaryContainersByDefault.collectAsState()
         val records by storage.records.collectAsState()
-        val containers = records?.filterNot { it.temporary }
+        val containers = records?.filterNot { it.showsAsTemporary }
         val scope = rememberCoroutineScope()
         var editing by remember { mutableStateOf<ContainerRecord?>(null) }
         var adding by remember { mutableStateOf(false) }
@@ -667,7 +667,7 @@ class DejavuExternalLinksFragment : DejavuComposeFragment(R.string.dejavu_settin
                     text = stringResource(R.string.dejavu_external_links_container),
                     modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
                 )
-                val permanent = records.orEmpty().filterNot { it.temporary }
+                val permanent = records.orEmpty().filterNot { it.showsAsTemporary }
                 val containerRows = permanent.size + 3
                 ChoiceRow(
                     label = stringResource(R.string.dejavu_external_links_workspace_container),

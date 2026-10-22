@@ -64,7 +64,7 @@ fun dejavuBrowserMiddleware(context: Context): List<Middleware<BrowserState, Bro
         SilentlyClosedTabsMiddleware(),
         ClosedTabOriginsMiddleware(
             origins = ClosedTabOrigins.get(context),
-            isTemporary = { DejavuContainerStorage.get(context).isTemporary(it) },
+            isTemporary = { DejavuContainerStorage.get(context).showsAsTemporary(it) },
             newTemporary = { store -> TemporaryContainers.create(store, DejavuContainerStorage.get(context)) },
         ),
         ClosingPinnedTabsMiddleware(),

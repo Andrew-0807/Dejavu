@@ -87,7 +87,7 @@ private fun ContainerChips() {
     val records by storage.records.collectAsState()
     val repository = remember { WorkspaceRepository.peek() ?: WorkspaceRepository.get(context) }
     val workspace = repository.state.collectAsState().value.activeWorkspace
-    val containers = records.orEmpty().filterNot { it.temporary }
+    val containers = records.orEmpty().filterNot { it.showsAsTemporary }
     // The workspace of a device on the account only takes tabs without a container.
     val isDevice = workspace?.device != null
     var picked by remember {
