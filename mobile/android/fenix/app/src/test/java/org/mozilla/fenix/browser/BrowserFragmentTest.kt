@@ -231,6 +231,20 @@ class BrowserFragmentTest {
     }
 
     @Test
+    fun `GIVEN normal mode and no normal tab WHEN a private tab is selected THEN do not navigate`() = runTest {
+        addAndSelectTab(createTab(url = "https://mozilla.org", private = true))
+        browserFragment.observeRestoreComplete(
+            store,
+            navController,
+            coroutineContext[ContinuationInterceptor] as CoroutineDispatcher,
+        )
+        store.dispatch(RestoreCompleteAction)
+        testScheduler.advanceUntilIdle()
+
+        verify(exactly = 0) { navController.popBackStack(R.id.homeFragment, false) }
+    }
+
+    @Test
     fun `GIVEN tabs are restored WHEN there is no selected tab THEN navigate to home`() = runTest {
         store = BrowserStore(initialState = BrowserState(tabs = listOf(testTab)))
         every { context.components.core.store } returns store

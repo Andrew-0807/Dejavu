@@ -2001,7 +2001,11 @@ abstract class BaseBrowserFragment :
                 .collect { restored ->
                     if (restored) {
                         // Once tab restoration is complete, if there are no tabs to show in the browser, go home
-                        val isPrivate = requireComponents.appStore.state.mode.isPrivate
+                        // Dejavu: the tabs that count are those of the selected tab's kind. A private tab opened from
+                        // Dejavu's home, which is never private, starts while the app is still in normal mode, and
+                        // with no normal tab open (pins and essentials stay on the home) it was sent back home.
+                        val isPrivate =
+                            store.state.selectedTab?.content?.private ?: requireComponents.appStore.state.mode.isPrivate
                         val tabs = store.state.getNormalOrPrivateTabs(isPrivate)
                         if (tabs.isEmpty() || store.state.selectedTabId == null) {
                             navController.popBackStack(R.id.homeFragment, false)
