@@ -435,4 +435,5 @@
     <string name="dejavu_protection_section_security">Slándáil</string>
     <string name="dejavu_protection_links">Bain lorgaireacht de naisc</string>
     <string name="dejavu_protection_hint">Coinníonn cosaint atá ar siúl níos sábháilte thú. Insíonn gach ceann acu cad a gcosnaíonn sé thú air, agus cad a d\'fhéadfadh stopadh ag obair dá bharr.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">I Zen, oscail Socruithe, ansin Sioncrónú, agus cuir sioncrónú an bharra taoibh ar siúl.</string>
 </resources>

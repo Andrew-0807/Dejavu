@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Säkerhet</string>
     <string name="dejavu_protection_links">Ta bort spårning från länkar</string>
     <string name="dejavu_protection_hint">Ett skydd som är på gör dig säkrare. Vid varje skydd står vad det skyddar mot och vad som kan sluta fungera på grund av det.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">I Zen öppnar du Inställningar, sedan Synkronisering, och slår på synkronisering av sidofältet.</string>
 </resources>

@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Təhlükəsizlik</string>
     <string name="dejavu_protection_links">Keçidlərdən izləməni sil</string>
     <string name="dejavu_protection_hint">Açıq olan qoruma sizi daha təhlükəsiz saxlayır. Hər biri nədən qoruduğunu və onun ucbatından nəyin işləməyi dayandıra biləcəyini göstərir.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen-də Tənzimləmələri, sonra Sinxronlaşdırmanı açın və yan panel sinxronlaşdırmasını aktivləşdirin.</string>
 </resources>

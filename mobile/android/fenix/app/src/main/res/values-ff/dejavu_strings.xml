@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Kisal</string>
     <string name="dejavu_protection_links">Momtu dewindagol e jokke</string>
     <string name="dejavu_protection_hint">So ndeenka hurmii, ina ɓeydana ma kisal. Kala ndeenka ina hollira ko ndeentata ma e ko waawi darde gollude sabu mayre.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Dans Zen, ouvre Paramètres, puis Synchronisation, et active la synchronisation de la barre latérale.</string>
 </resources>

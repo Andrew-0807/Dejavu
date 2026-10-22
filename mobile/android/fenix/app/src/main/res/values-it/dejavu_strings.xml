@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Sicurezza</string>
     <string name="dejavu_protection_links">Rimuovi il tracciamento dai link</string>
     <string name="dejavu_protection_hint">Una protezione attiva aumenta la tua sicurezza. Ognuna spiega da cosa ti protegge e cosa potrebbe smettere di funzionare a causa sua.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">In Zen, apri Impostazioni, poi Sincronizzazione, e attiva la sincronizzazione della barra laterale.</string>
 </resources>

@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Sigurece</string>
     <string name="dejavu_protection_links">Gjave il tracament dai colegaments</string>
     <string name="dejavu_protection_hint">Une protezion ative ti ten plui al sigûr. Ognidune e dîs di ce che ti protêç e ce che al podarès smeti di funzionâ par colpe sô.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">In Zen, vierç Impostazions, dopo Sincronizazion, e ative la sincronizazion de sbare laterâl.</string>
 </resources>

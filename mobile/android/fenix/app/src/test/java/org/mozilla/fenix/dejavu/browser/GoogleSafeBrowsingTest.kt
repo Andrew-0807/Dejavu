@@ -28,7 +28,7 @@ class GoogleSafeBrowsingTest {
     }
 
     @Test
-    fun `turned on again, Google's lists are back and every unsafe site is blocked`() {
+    fun `turned on again, Google's lists are back, its phishing list by both its names, and every unsafe site is blocked`() {
         val settings = ContentBlocking.Settings.Builder().build()
         val malware = settings.safeBrowsingMalwareTable.toList()
         val phishing = settings.safeBrowsingPhishingTable.toList()
@@ -38,7 +38,10 @@ class GoogleSafeBrowsingTest {
 
         assertTrue(malware.any { it.startsWith("goog") })
         assertEquals(malware, settings.safeBrowsingMalwareTable.toList())
-        assertEquals(phishing, settings.safeBrowsingPhishingTable.toList())
+        assertEquals(
+            (listOf("goog-phish-proto", "googpub-phish-proto") + phishing).distinct(),
+            settings.safeBrowsingPhishingTable.toList(),
+        )
         assertArrayEquals(arrayOf(SafeBrowsingPolicy.RECOMMENDED), GoogleSafeBrowsing.policy(enabled = true))
     }
 }

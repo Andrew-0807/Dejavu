@@ -428,4 +428,5 @@
     <string name="dejavu_protection_section_security">Tèarainteachd</string>
     <string name="dejavu_protection_links">Thoir an tracadh air falbh o cheanglaichean</string>
     <string name="dejavu_protection_hint">Cumaidh dìon a tha air nas sàbhailte thu. Innsidh gach fear dè on dìon e thu agus dè dh\'fhaodadh stad ag obair air a sgàth.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Ann an Zen, fosgail Roghainnean, an uairsin Sioncronachadh, agus cuir air sioncronachadh a\' bhàr-thaoibh.</string>
 </resources>

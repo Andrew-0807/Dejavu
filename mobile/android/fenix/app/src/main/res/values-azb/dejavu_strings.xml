@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">گوونلیک</string>
     <string name="dejavu_protection_links">لینک‌لردن ایزله‌مه‌نی سیل</string>
     <string name="dejavu_protection_hint">آچیق اولان قوروما سیزی داها گوونلی ساخلاییر. هر بیری نه‌دن قورودوغونو و اونون اوزوندن نه‌یین ایشله‌مه‌یی دایاندیرا بیله‌جگینی دئییر.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen-ده تنظیم‌لری، سونرا همگام‌سازینی آچین و یان پانل همگام‌سازی‌سینی فعاللاشدیرین.</string>
 </resources>

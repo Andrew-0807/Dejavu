@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Taɣellist</string>
     <string name="dejavu_protection_links">Kkes aḍfar seg yiseɣwan</string>
     <string name="dejavu_protection_hint">Ammesten yermden ad k-yeǧǧ d aɣelsan ugar. Yal yiwen yeqqar-d mgal acu i yettḥaraz akked wayen izemren ad yeḥbes ur yeddu ara ssebba-s.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Deg Zen, ldi Iɣewwaṛen, sakin Asdukel, rnu sermed asdukel n ugalis adisan.</string>
 </resources>

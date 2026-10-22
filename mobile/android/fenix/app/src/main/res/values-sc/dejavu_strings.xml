@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Seguresa</string>
     <string name="dejavu_protection_links">Boga sa sighidura dae is ligòngios</string>
     <string name="dejavu_protection_hint">Una protetzione ativa ti mantenet prus seguru. Dònnia una narat dae ite ti amparat e ite podet non funtzionare prus a càusa sua.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">In Zen, aberi Cunfiguratzione, a pustis Sincronizatzione, e ativa sa sincronizatzione de sa barra laterale.</string>
 </resources>

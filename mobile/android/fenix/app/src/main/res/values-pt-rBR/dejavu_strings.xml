@@ -421,4 +421,5 @@
     <string name="dejavu_protection_section_security">Segurança</string>
     <string name="dejavu_protection_links">Remover rastreamento de links</string>
     <string name="dejavu_protection_hint">Uma proteção ativada deixa você mais seguro. Cada uma diz contra o que protege e o que pode parar de funcionar por causa dela.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">No Zen, abra Configurações e depois Sincronização, e ative a sincronização da barra lateral.</string>
 </resources>

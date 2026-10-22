@@ -442,4 +442,5 @@
     <string name="dejavu_protection_section_security">الأمان</string>
     <string name="dejavu_protection_links">أزِل التعقّب من الروابط</string>
     <string name="dejavu_protection_hint">الحماية المفعّلة تُبقيك أكثر أمانًا. كل حماية تقول ممّ تحميك وما الذي قد يتوقف عن العمل بسببها.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">في Zen، افتح الإعدادات ثم المزامنة، وفعّل مزامنة الشريط الجانبي.</string>
 </resources>

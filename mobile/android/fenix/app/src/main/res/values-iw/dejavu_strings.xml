@@ -421,4 +421,5 @@
     <string name="dejavu_protection_section_security">אבטחה</string>
     <string name="dejavu_protection_links">הסרת מעקב מקישורים</string>
     <string name="dejavu_protection_hint">הגנה פעילה שומרת עליך טוב יותר. כל הגנה מסבירה ממה היא מגנה ומה עלול להפסיק לעבוד בגללה.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">ב-Zen, פתחו את ההגדרות, ואז את הסנכרון, והפעילו את סנכרון סרגל הצד.</string>
 </resources>

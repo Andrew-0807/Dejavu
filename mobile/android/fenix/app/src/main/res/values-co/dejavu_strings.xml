@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Sicurità</string>
     <string name="dejavu_protection_links">Caccià u spiunagiu da i liami</string>
     <string name="dejavu_protection_hint">Una prutezzione attivata cresce a vostra sicurità. Ognuna dice da chì vi prutege è ciò chì pò cessà di funziunà per via d\'ella.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">In Zen, apre Parametri, dopu Sincrunizazione, è attivate a sincrunizazione di a barra laterale.</string>
 </resources>

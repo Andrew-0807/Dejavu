@@ -95,7 +95,11 @@ class DejavuAccountSync(private val fragment: PreferenceFragmentCompat, private 
         hint.isVisible = status.source != null
         status.source?.let {
             hint.summary = context.getString(
-                if (it == DejavuSyncSource.FIREFOX) R.string.dejavu_sync_firefox_hint else R.string.dejavu_sync_zen_hint,
+                when {
+                    it == DejavuSyncSource.FIREFOX -> R.string.dejavu_sync_firefox_hint
+                    status.normalTabs -> R.string.dejavu_sync_zen_hint_unpinned
+                    else -> R.string.dejavu_sync_zen_hint
+                },
             )
         }
         onChanged()

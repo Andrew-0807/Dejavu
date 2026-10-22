@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">सुरक्षा</string>
     <string name="dejavu_protection_links">लिङ्कहरूबाट ट्र्याकिङ हटाउनुहोस्</string>
     <string name="dejavu_protection_hint">सक्रिय रहेको सुरक्षाले तपाईंलाई अझ सुरक्षित राख्छ। प्रत्येकले यो केबाट जोगाउँछ र यसका कारण के काम गर्न छोड्न सक्छ भनी बताउँछ।</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen मा, सेटिङ्ग खोल्नुहोस्, त्यसपछि सिंक, र साइडबार सिंक खोल्नुहोस्।</string>
 </resources>

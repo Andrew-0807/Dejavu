@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Securitate</string>
     <string name="dejavu_protection_links">Remover le traciamento del ligamines</string>
     <string name="dejavu_protection_hint">Un protection active te mantene plus secur. Cata una dice contra que illo protege e lo que pote cessar de functionar a causa de illo.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">In Zen, aperi Parametros, postea Synchronisation, e activa le synchronisation del barra lateral.</string>
 </resources>

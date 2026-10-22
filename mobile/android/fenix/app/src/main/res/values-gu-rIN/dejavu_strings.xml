@@ -447,4 +447,5 @@
     <string name="dejavu_protection_section_security">સુરક્ષા</string>
     <string name="dejavu_protection_links">લિંક્સમાંથી ટ્રેકિંગ દૂર કરો</string>
     <string name="dejavu_protection_hint">ચાલુ હોય તે સુરક્ષા તમને વધુ સુરક્ષિત રાખે છે. દરેક સુરક્ષા જણાવે છે કે તે શેનાથી બચાવે છે અને તેના કારણે શું કામ કરતું બંધ થઈ શકે છે.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen માં સેટિંગ્સ, પછી સમન્વયન ખોલો અને સાઇડબાર સમન્વયન ચાલુ કરો.</string>
 </resources>

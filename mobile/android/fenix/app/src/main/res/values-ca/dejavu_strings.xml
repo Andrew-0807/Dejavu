@@ -421,4 +421,5 @@
     <string name="dejavu_protection_section_security">Seguretat</string>
     <string name="dejavu_protection_links">Elimina el seguiment dels enllaços</string>
     <string name="dejavu_protection_hint">Una protecció activada augmenta la vostra seguretat. Cadascuna explica de què us protegeix i què pot deixar de funcionar per culpa seva.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Al Zen, obriu Configuració, després Sincronització, i activeu la sincronització de la barra lateral.</string>
 </resources>

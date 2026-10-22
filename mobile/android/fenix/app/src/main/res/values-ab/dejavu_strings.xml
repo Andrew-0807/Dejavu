@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Ашәарҭадара</string>
     <string name="dejavu_protection_links">Алинкқәа рҟынтә ашьҭаԥшра аныхра</string>
     <string name="dejavu_protection_hint">Иаҿыку ахьчара еиҳа шәахьчоит. Ахьчара цыԥхьаӡа иаҳәоит иззыхьчо, насгьы уи иахҟьаны аус ауамзар ҟалоз.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen аҟны, «Архиарақәа» аартын, унтi «Асинхронизация», насгьы аҭаны панель расинхронизациа алагаз.</string>
 </resources>

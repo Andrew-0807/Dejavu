@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Seguranza</string>
     <string name="dejavu_protection_links">Quitar el rastrexu de los enllaces</string>
     <string name="dejavu_protection_hint">Una proteición activada caltiénte más seguru. Cada una diz de qué te protexe y qué pue dexar de funcionar por ella.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">En Zen, abri Configuración, dempués Sincronización, y activa la sincronización de la barra llateral.</string>
 </resources>

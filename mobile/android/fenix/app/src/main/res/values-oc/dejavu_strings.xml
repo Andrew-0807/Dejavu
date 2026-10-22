@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Seguretat</string>
     <string name="dejavu_protection_links">Levar lo seguiment dels ligams</string>
     <string name="dejavu_protection_hint">Una proteccion activada vos garda mai en seguretat. Cada una ditz de qué vos protegís e çò que pòt arrestar de foncionar a causa d\'ela.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Dins Zen, dobrissètz Paramètres, puèi Sincronizacion, e activatz la sincronizacion de la barra laterala.</string>
 </resources>

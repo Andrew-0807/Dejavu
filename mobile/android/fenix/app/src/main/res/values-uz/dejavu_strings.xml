@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Xavfsizlik</string>
     <string name="dejavu_protection_links">Havolalardan kuzatuvni olib tashlash</string>
     <string name="dejavu_protection_hint">Yoqilgan himoya sizni xavfsizroq saqlaydi. Har biri nimadan himoya qilishini va shu sababli nima ishlamay qolishi mumkinligini aytadi.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen-da Sozlamalarni, keyin Sinxronlashtirishni oching va yon panel sinxronlashini yoqing.</string>
 </resources>

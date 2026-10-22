@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Сигурност</string>
     <string name="dejavu_protection_links">Премахване на проследяването от връзките</string>
     <string name="dejavu_protection_hint">Включената защита повишава вашата безопасност. Всяка казва от какво ви пази и какво може да спре да работи заради нея.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">В Zen отворете Настройки, после Синхронизиране, и включете синхронизирането на страничния панел.</string>
 </resources>

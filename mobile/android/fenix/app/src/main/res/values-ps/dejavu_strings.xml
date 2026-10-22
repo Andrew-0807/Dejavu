@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">خوندیتوب</string>
     <string name="dejavu_protection_links">له لینکونو تعقیب لرې کول</string>
     <string name="dejavu_protection_hint">چالانه ساتنه تاسو ډېر خوندي ساتي. هره یوه وايي چې د څه پر وړاندې ساتنه کوي او د هغې له امله کېدای شي څه کار پرېږدي.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">په Zen کې، «امستنې» خلاص کړئ، بیا «همغږي کول»، او د څنګ پټې همغږي فعاله کړئ.</string>
 </resources>

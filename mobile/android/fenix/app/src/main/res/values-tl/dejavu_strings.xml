@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Seguridad</string>
     <string name="dejavu_protection_links">Alisin ang tracking sa mga link</string>
     <string name="dejavu_protection_hint">Mas ligtas ka kapag naka-on ang isang proteksyon. Sinasabi ng bawat isa kung laban saan ka nito pinoprotektahan at kung ano ang maaaring hindi gumana dahil dito.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Sa Zen, buksan ang Settings, pagkatapos ay Sync, at i-on ang sidebar sync.</string>
 </resources>

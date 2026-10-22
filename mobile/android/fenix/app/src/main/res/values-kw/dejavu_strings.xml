@@ -442,4 +442,5 @@
     <string name="dejavu_protection_section_security">Diogeledh</string>
     <string name="dejavu_protection_links">Dilea holya a-dhiworth kevrennow</string>
     <string name="dejavu_protection_hint">Difresyans gweythresys a\'gas gwith moy diogel. Pub huni a lever pyth a wra ev difres orto, ha pyth a yll hedhi a oberi awos ev.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Yn Zen, igeri Settyansow, ena Kesunyans, ha treylya yn ban kesunyans an barr-esedh.</string>
 </resources>

@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">ਸੁਰੱਖਿਆ</string>
     <string name="dejavu_protection_links">ਲਿੰਕਾਂ ਤੋਂ ਟਰੈਕਿੰਗ ਹਟਾਓ</string>
     <string name="dejavu_protection_hint">ਚਾਲੂ ਸੁਰੱਖਿਆ ਤੁਹਾਨੂੰ ਵੱਧ ਸੁਰੱਖਿਅਤ ਰੱਖਦੀ ਹੈ। ਹਰ ਇੱਕ ਦੱਸਦੀ ਹੈ ਕਿ ਇਹ ਕਿਸ ਤੋਂ ਬਚਾਉਂਦੀ ਹੈ ਅਤੇ ਇਸ ਕਾਰਨ ਕੀ ਕੰਮ ਕਰਨਾ ਬੰਦ ਕਰ ਸਕਦਾ ਹੈ।</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen ਵਿੱਚ, ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ, ਫਿਰ ਸਿੰਕ, ਅਤੇ ਸਾਈਡਬਾਰ ਸਿੰਕ ਚਾਲੂ ਕਰੋ।</string>
 </resources>

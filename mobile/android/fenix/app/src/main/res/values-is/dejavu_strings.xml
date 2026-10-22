@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Öryggi</string>
     <string name="dejavu_protection_links">Fjarlægja rakningu úr tenglum</string>
     <string name="dejavu_protection_hint">Vörn sem kveikt er á eykur öryggi þitt. Hver og ein segir gegn hverju hún ver og hvað gæti hætt að virka vegna hennar.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Í Zen skaltu opna Stillingar, svo Samstillingu, og kveikja á samstillingu hliðarstikunnar.</string>
 </resources>

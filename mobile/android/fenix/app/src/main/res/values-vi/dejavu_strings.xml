@@ -407,4 +407,5 @@
     <string name="dejavu_protection_section_security">Bảo mật</string>
     <string name="dejavu_protection_links">Xóa phần theo dõi khỏi liên kết</string>
     <string name="dejavu_protection_hint">Một tính năng bảo vệ đang bật giúp bạn an toàn hơn. Mỗi tính năng cho biết nó chống lại điều gì và những gì có thể ngừng hoạt động vì nó.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Trong Zen, mở Cài đặt, rồi vào Đồng bộ hóa, và bật đồng bộ hóa thanh bên.</string>
 </resources>

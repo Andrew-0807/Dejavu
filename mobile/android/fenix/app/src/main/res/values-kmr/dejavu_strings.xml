@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Ewlehî</string>
     <string name="dejavu_protection_links">Şopandinê ji girêdanan rake</string>
     <string name="dejavu_protection_hint">Parastineke vekirî te ewletir dike. Her yek dibêje li dijî çi diparêze û ji ber wê çi dibe ku êdî nexebite.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Di Zen de, «Sazkarî» veke, paşê «Hevdemkirin», û hevdemkirina darika kêlekê vekirî bike.</string>
 </resources>

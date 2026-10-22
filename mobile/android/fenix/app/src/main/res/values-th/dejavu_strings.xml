@@ -407,4 +407,5 @@
     <string name="dejavu_protection_section_security">ความปลอดภัย</string>
     <string name="dejavu_protection_links">ลบการติดตามออกจากลิงก์</string>
     <string name="dejavu_protection_hint">การป้องกันที่เปิดอยู่ช่วยให้คุณปลอดภัยยิ่งขึ้น แต่ละรายการจะบอกว่าป้องกันอะไร และอะไรที่อาจใช้งานไม่ได้เพราะการป้องกันนั้น</string>
+    <string name="dejavu_sync_zen_hint_unpinned">ใน Zen ให้เปิดการตั้งค่า จากนั้นไปที่การซิงค์ และเปิดใช้งานการซิงค์แถบด้านข้าง</string>
 </resources>

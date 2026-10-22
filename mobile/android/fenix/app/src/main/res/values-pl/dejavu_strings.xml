@@ -428,4 +428,5 @@
     <string name="dejavu_protection_section_security">Bezpieczeństwo</string>
     <string name="dejavu_protection_links">Usuwanie śledzenia z odnośników</string>
     <string name="dejavu_protection_hint">Włączona ochrona zwiększa Twoje bezpieczeństwo. Przy każdej jest napisane, przed czym chroni i co może przez nią przestać działać.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">W Zen otwórz Ustawienia, potem Synchronizację, i włącz synchronizację paska bocznego.</string>
 </resources>

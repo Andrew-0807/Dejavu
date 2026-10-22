@@ -574,10 +574,12 @@ object DejavuSync {
             val connected = connectedDevices(account)
             // The account's device list comes over the network a while after the app starts; until then, the account
             // still knows this device's id, without which this device would show as another phone.
-            val localDeviceId = account.deviceConstellation().state()?.currentDevice?.id ?: account.getCurrentDeviceId()
+            val currentDevice = account.deviceConstellation().state()?.currentDevice
+            val localDeviceId = currentDevice?.id ?: account.getCurrentDeviceId()
+            val localName = currentDevice?.displayName
             val refreshDevices: suspend (Set<String>) -> Set<String>? = { unknown -> refreshedDevices(account, unknown) }
             val found = if (scan) {
-                when (val result = engines.scanner.scan(auth, connected, localDeviceId, refreshDevices)) {
+                when (val result = engines.scanner.scan(auth, connected, localDeviceId, localName, refreshDevices)) {
                     ScanResult.NotSetUp -> return Outcome(DejavuSyncProblem.NOT_SET_UP)
                     is ScanResult.Found -> result.data.also { logScan(it) }
                 }
@@ -596,7 +598,7 @@ object DejavuSync {
                     problemOf(result)
                 }
                 DejavuSyncSource.FIREFOX -> {
-                    val result = engines.firefox.sync(auth, connected, localDeviceId, refreshDevices)
+                    val result = engines.firefox.sync(auth, connected, localDeviceId, localName, refreshDevices)
                     computerTabs = engines.firefox.computerTabs()
                     if (result is FirefoxSyncResult.Synced) stopForgetting(context, forgotten)
                     problemOf(result)

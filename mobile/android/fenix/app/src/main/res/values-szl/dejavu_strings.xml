@@ -428,4 +428,5 @@
     <string name="dejavu_protection_section_security">Bezpieczyństwo</string>
     <string name="dejavu_protection_links">Wyciep śledzynie z linkōw</string>
     <string name="dejavu_protection_hint">Załōnczōno ôchrōna trzimo cie bezpieczniyj. Kożdo pisze, przed czym chrōni i co skuli nij może przestać fungować.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">W Zen ôdewrzij Sztalōnki, potym Synchronizacyjo, i włōncz synchronizacyjo bocznego posku.</string>
 </resources>

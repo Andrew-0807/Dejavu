@@ -428,4 +428,5 @@
     <string name="dejavu_protection_section_security">Wěstota</string>
     <string name="dejavu_protection_links">Slědowanje z wótkazow wótwónoźeś</string>
     <string name="dejavu_protection_hint">Zašaltowany šćit wam wěcej wěstoty dawa. Kuždy groni, pśed cym šćita a co snaź dla njogo wěcej njefunkcioněrujo.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">W Zen wócyni Nastajenja, pón Synchronizacija, a zapopń synchronizaciju bócnicy.</string>
 </resources>

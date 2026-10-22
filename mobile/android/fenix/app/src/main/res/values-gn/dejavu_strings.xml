@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Tekorosã</string>
     <string name="dejavu_protection_links">Eipe\'a jehapykueho joapykuéragui</string>
     <string name="dejavu_protection_hint">Ñemo\'ã hendýva nde mo\'ãve. Peteĩteĩ he\'i mba\'égui nde mo\'ã ha mba\'épa ikatu ndoikovéi hese.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen-pe, embojuruja Ñemboheko, upéi Sincronizar, ha emyendy pe sidebar sincronización.</string>
 </resources>

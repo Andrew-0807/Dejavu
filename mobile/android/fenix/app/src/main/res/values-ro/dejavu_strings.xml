@@ -421,4 +421,5 @@
     <string name="dejavu_protection_section_security">Securitate</string>
     <string name="dejavu_protection_links">Elimină urmărirea din linkuri</string>
     <string name="dejavu_protection_hint">O protecție activată te ține mai în siguranță. Fiecare spune de ce te apără și ce poate să nu mai funcționeze din cauza ei.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">În Zen, deschide Setări, apoi Sincronizare, și activează sincronizarea barei laterale.</string>
 </resources>

@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">ආරක්ෂාව</string>
     <string name="dejavu_protection_links">සබැඳිවලින් ලුහුබැඳීම ඉවත් කරන්න</string>
     <string name="dejavu_protection_hint">සක්‍රිය රැකවරණයක් ඔබව වඩාත් ආරක්ෂිතව තබයි. එක් එක් රැකවරණය එය ආරක්ෂා කරන්නේ කුමකින්ද සහ එය නිසා ක්‍රියා නොකළ හැක්කේ කුමක්ද යන්න පවසයි.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen හි, සැකසුම් විවෘත කර, පසුව Sync තෝරා, පැති තීරු සමමුහුර්තකරණය ක්‍රියාත්මක කරන්න.</string>
 </resources>

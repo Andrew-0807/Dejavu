@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Sicurizza</string>
     <string name="dejavu_protection_links">Leva u trazzamentu dî lijami</string>
     <string name="dejavu_protection_hint">Na prutizzioni attiva ti teni cchiù sicuru. Ognuna dici di chi cosa ti prutegi e chi cosa pò smèttiri di funziunari pi causa sò.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Nta Zen, grapi Mpustazzioni, doppu Sincronizzazzioni, e attiva a sincronizzazzioni dâ barra laterali.</string>
 </resources>

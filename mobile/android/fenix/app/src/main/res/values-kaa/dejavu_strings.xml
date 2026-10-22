@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Qáwipsizlik</string>
     <string name="dejavu_protection_links">Siltemelerden baqlawdı alıp taslaw</string>
     <string name="dejavu_protection_hint">Qosılǵan qorǵaw sizdi qáwipsizirek etedi. Hár biri neden qorǵaytuǵının hám onıń sebebinen neniń islemey qalıwı múmkin ekenin aytadı.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen-de Sazlawlardı, soń Sinxronlastırıwdı ashıń hám yan panel sinxronlastırıwın qosıń.</string>
 </resources>

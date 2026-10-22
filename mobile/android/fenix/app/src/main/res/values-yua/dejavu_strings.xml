@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Seguridad</string>
     <string name="dejavu_protection_links">Quitar el rastreo de los enlaces</string>
     <string name="dejavu_protection_hint">Jump\'éel kanáantaj activado ku kanáantikech maas ma\'alob. Cada jump\'éel ku ya\'alik ba\'ax ku bloqueartik yéetel ba\'ax je\'el u xu\'ulul u meyaj tu yo\'olal.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">En Zen, abre Configuración, luego Sincronización, y activa la sincronización de la barra lateral.</string>
 </resources>

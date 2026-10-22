@@ -407,4 +407,5 @@
     <string name="dejavu_protection_section_security">セキュリティ</string>
     <string name="dejavu_protection_links">リンクからトラッキングを削除する</string>
     <string name="dejavu_protection_hint">保護機能をオンにすると、より安全になります。それぞれの説明に、何から守るか、そのせいで何が動かなくなる可能性があるかが書かれています。</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zenで「設定」を開き、「同期」でサイドバーの同期をオンにしてください。</string>
 </resources>

@@ -407,4 +407,5 @@
     <string name="dejavu_protection_section_security">Keamanan</string>
     <string name="dejavu_protection_links">Hapus pelacakan dari tautan</string>
     <string name="dejavu_protection_hint">Perlindungan yang aktif membuat Anda lebih aman. Masing-masing menjelaskan apa yang dicegahnya dan apa yang mungkin berhenti berfungsi karenanya.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Di Zen, buka Pengaturan, lalu Sinkronisasi, dan aktifkan sinkronisasi sidebar.</string>
 </resources>

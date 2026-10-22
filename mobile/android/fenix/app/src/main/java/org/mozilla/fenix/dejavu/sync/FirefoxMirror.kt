@@ -161,6 +161,9 @@ internal class FirefoxMirror(
      * again, unless [shownHere], the tabs shown during this run of the app, has them: those can only be gone because
      * the user closed them. The [forgotten] tabs, removed all at once, are forgotten in any case. The ones seen for the
      * first time are confirmed. Nothing is looked at while the browser has not restored its tabs.
+     *
+     * Firefox closes every tab showing an address it is asked to close, so the address of a tab closed here is not sent
+     * while another tab of that computer still shows it here: closing one of two same tabs would close both there.
      */
     fun findClosedHere(
         state: WorkspaceState,
@@ -173,21 +176,24 @@ internal class FirefoxMirror(
         var marked = 0
         var changed = false
         val updated = devices.map { device ->
-            device.copy(
-                tabs = device.tabs.mapNotNull { tab ->
-                    when {
-                        tab.closedHere || (!tab.isPin && !normalTabs) -> tab
-                        tab.id in present -> if (tab.confirmed) tab else tab.copy(confirmed = true).also { changed = true }
-                        tab.id in forgotten || (!tab.confirmed && tab.id !in shownHere) -> null.also { changed = true }
-                        else -> {
-                            marked++
-                            changed = true
-                            device.fxaDeviceId?.let { commands.getOrPut(it) { mutableListOf() } += tab.url }
-                            tab.copy(closedHere = true)
-                        }
+            val closedNow = ArrayList<String>()
+            val tabs = device.tabs.mapNotNull { tab ->
+                when {
+                    tab.closedHere || (!tab.isPin && !normalTabs) -> tab
+                    tab.id in present -> if (tab.confirmed) tab else tab.copy(confirmed = true).also { changed = true }
+                    tab.id in forgotten || (!tab.confirmed && tab.id !in shownHere) -> null.also { changed = true }
+                    else -> {
+                        marked++
+                        changed = true
+                        closedNow += tab.url
+                        tab.copy(closedHere = true)
                     }
-                },
-            )
+                }
+            }
+            val stillShown = tabs.filter { !it.closedHere && it.id in present }.mapTo(HashSet()) { it.url }
+            val toClose = closedNow.distinct().filterNot { it in stillShown }
+            if (toClose.isNotEmpty()) device.fxaDeviceId?.let { commands.getOrPut(it) { mutableListOf() } += toClose }
+            device.copy(tabs = tabs)
         }
         return ClosedHere(updated, commands, marked, changed)
     }

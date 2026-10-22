@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">ئاسایش</string>
     <string name="dejavu_protection_links">شوێنکەوتن لە بەستەرەکان لاببە</string>
     <string name="dejavu_protection_hint">پاراستنێکی چالاک زیاتر پارێزراوت دەکات. هەر یەکێکیان دەڵێت لە چی دەتپارێزێت و چی لەوانەیە بەهۆیەوە کار نەکات.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">لە Zen دا، «ڕێکخستنەکان» بکەرەوە، پاشان «هاوکاتکردن»، و هاوکاتکردنی لاتەنیشت چالاک بکە.</string>
 </resources>

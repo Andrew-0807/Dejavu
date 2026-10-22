@@ -447,4 +447,5 @@
     <string name="dejavu_protection_section_security">सुरक्षा</string>
     <string name="dejavu_protection_links">लिंक से ट्रैकिंग हटाएँ</string>
     <string name="dejavu_protection_hint">चालू सुरक्षा आपको ज़्यादा सुरक्षित रखती है। हर सुरक्षा बताती है कि वह किससे बचाती है और उसकी वजह से क्या काम करना बंद कर सकता है।</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen में सेटिंग और फिर सिंक खोलें, और साइडबार सिंक चालू करें।</string>
 </resources>

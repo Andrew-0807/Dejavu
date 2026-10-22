@@ -119,7 +119,9 @@ internal class FakeSyncServer(syncKey: String) : SyncHttp {
                 records.entries
                     .filter { newer == null || isNewerTimestamp(format(it.value.modified), newer) }
                     .sortedBy { it.value.modified }
-                    .forEach { (id, bso) -> items.put(JSONObject().put("id", id).put("payload", bso.payload)) }
+                    .forEach { (id, bso) ->
+                        items.put(JSONObject().put("id", id).put("modified", bso.modified / 100.0).put("payload", bso.payload))
+                    }
                 SyncResponse(200, mapOf("X-Last-Modified" to format(modified(collection))), items.toString())
             }
             path == "storage/$COLLECTION" && method == "POST" -> {

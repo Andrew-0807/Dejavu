@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Biztonság</string>
     <string name="dejavu_protection_links">Nyomkövetés eltávolítása a hivatkozásokból</string>
     <string name="dejavu_protection_hint">A bekapcsolt védelem nagyobb biztonságot ad. Mindegyik megmondja, mi ellen véd, és mi állhat le miatta.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">A Zenben nyissa meg a Beállításokat, majd a Szinkronizálást, és kapcsolja be az oldalsó sáv szinkronizálását.</string>
 </resources>

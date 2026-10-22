@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Хәвефсезлек</string>
     <string name="dejavu_protection_links">Сылтамалардан күзәтүне бетерү</string>
     <string name="dejavu_protection_hint">Кабызылган саклау сезне куркынычсызрак итә. Һәрберсе нәрсәдән саклаганын һәм аның аркасында нәрсә эшләмәскә мөмкин икәнен әйтә.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen-дә Көйләүләрне, аннары Синхронлаштыруны ачыгыз һәм як панель синхронлаштыруын кабызыгыз.</string>
 </resources>

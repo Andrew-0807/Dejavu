@@ -44,6 +44,7 @@ import org.mozilla.fenix.dejavu.containers.ContainerRemoval
 import org.mozilla.fenix.dejavu.containers.NoContainerIcon
 import org.mozilla.fenix.dejavu.containers.color
 import org.mozilla.fenix.dejavu.containers.drawable
+import org.mozilla.fenix.dejavu.ui.DejavuButtonGap
 import org.mozilla.fenix.dejavu.ui.DejavuButtonStyle
 import org.mozilla.fenix.dejavu.ui.DejavuDialog
 import org.mozilla.fenix.dejavu.ui.DejavuDialogButton
@@ -76,7 +77,7 @@ fun ContainerEditorDialog(
                     onClick = onDelete,
                     style = DejavuButtonStyle.DangerText,
                 )
-                Spacer(Modifier.weight(1f))
+                DejavuButtonGap()
             }
             DejavuDialogButton(text = stringResource(R.string.dejavu_cancel), onClick = onDismiss)
             DejavuDialogButton(

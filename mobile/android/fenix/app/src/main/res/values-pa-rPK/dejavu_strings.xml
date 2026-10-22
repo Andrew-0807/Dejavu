@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">حفاظت</string>
     <string name="dejavu_protection_links">لنکاں توں ٹریکنگ ہٹاؤ</string>
     <string name="dejavu_protection_hint">چالو حفاظت تہانوں ہور محفوظ رکھدی اے۔ ہر اک دسدی اے کہ ایہہ کس توں بچاندی اے تے ایہدی وجہ توں کیہ کم کرنا بند کر سکدا اے۔</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen وچ، سیٹنگاں کھولھو، فیر Sync، تے سائیڈبار سنک آن کرو۔</string>
 </resources>

@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">امنیت</string>
     <string name="dejavu_protection_links">حذف ردیابی از پیوندها</string>
     <string name="dejavu_protection_hint">محافظتی که روشن است شما را امن‌تر نگه می‌دارد. هر کدام می‌گوید شما را در برابر چه چیزی محافظت می‌کند و چه چیزی ممکن است به خاطر آن از کار بیفتد.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">در Zen، تنظیمات و سپس همگام‌سازی را باز کنید و همگام‌سازی نوارکناری را روشن کنید.</string>
 </resources>

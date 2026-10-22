@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Segurtasuna</string>
     <string name="dejavu_protection_links">Kendu jarraipena esteketatik</string>
     <string name="dejavu_protection_hint">Aktibatuta dagoen babes batek seguruago mantentzen zaitu. Bakoitzak esaten du zeren aurka babesten duen eta haren ondorioz zerk utz diezaiokeen funtzionatzeari.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zenen, ireki Ezarpenak, ondoren Sinkronizazioa, eta aktibatu albo-barraren sinkronizazioa.</string>
 </resources>

@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Sekureco</string>
     <string name="dejavu_protection_links">Forigi spuradon el ligiloj</string>
     <string name="dejavu_protection_hint">Ŝaltita protekto tenas vin pli sekura. Ĉiu diras, kontraŭ kio ĝi gardas vin kaj kio povas ĉesi funkcii pro ĝi.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">En Zen, malfermu Agordojn, poste Sinkronigon, kaj ŝaltu sinkronigon de la flanka breto.</string>
 </resources>

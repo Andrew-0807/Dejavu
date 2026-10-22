@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Անվտանգություն</string>
     <string name="dejavu_protection_links">Հեռացնել հետագծումը հղումներից</string>
     <string name="dejavu_protection_hint">Միացված պաշտպանությունը ձեզ ավելի ապահով է պահում։ Յուրաքանչյուրը նշում է, թե ինչից է պաշտպանում և ինչը կարող է դրա պատճառով դադարել աշխատել։</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen֊ում բացեք «Կարգավորումներ», ապա «Համաժամացում» և միացրեք կողային վահանակի համաժամացումը.</string>
 </resources>

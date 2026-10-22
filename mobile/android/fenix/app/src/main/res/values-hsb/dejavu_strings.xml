@@ -428,4 +428,5 @@
     <string name="dejavu_protection_section_security">Wěstota</string>
     <string name="dejavu_protection_links">Slědowanje z wotkazow wotstronić</string>
     <string name="dejavu_protection_hint">Zmóžnjeny škit wašu wěstotu powyšuje. Kóždy praji, před čim škita a što móže jeho dla hižo njefungować.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">W Zen wočini Nastajenja, potom Synchronizacija, a zapinaj synchronizaciju bóčnicy.</string>
 </resources>

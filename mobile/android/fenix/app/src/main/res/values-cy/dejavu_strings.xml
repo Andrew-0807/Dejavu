@@ -442,4 +442,5 @@
     <string name="dejavu_protection_section_security">Diogelwch</string>
     <string name="dejavu_protection_links">Tynnu tracio o ddolenni</string>
     <string name="dejavu_protection_hint">Mae diogelwch sydd ymlaen yn eich cadw\'n fwy diogel. Mae pob un yn dweud rhag beth mae\'n eich diogelu a beth all roi\'r gorau i weithio o\'i herwydd.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Yn Zen, agorwch Gosodiadau, yna Sync, a throwch cydweddu’r bar ochr ymlaen.</string>
 </resources>

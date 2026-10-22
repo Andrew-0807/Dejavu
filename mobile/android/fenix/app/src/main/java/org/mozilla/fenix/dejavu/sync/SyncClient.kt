@@ -102,6 +102,9 @@ internal class SyncClock(private val now: () -> Long = System::currentTimeMillis
 
     fun serverSeconds(): Long = (now() + offset) / MILLIS
 
+    /** The server time, in seconds, of the time [millis] of this device. */
+    fun serverSecondsAt(millis: Long): Double = (millis + offset) / MILLIS.toDouble()
+
     /** Updates the offset from a server time header, in decimal seconds. */
     fun update(serverSeconds: String?) {
         serverSeconds?.toDoubleOrNull()?.let { offset = (it * MILLIS).toLong() - now() }

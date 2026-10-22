@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Қауіпсіздік</string>
     <string name="dejavu_protection_links">Сілтемелерден бақылауды алып тастау</string>
     <string name="dejavu_protection_hint">Қосулы қорғаныс сізді қауіпсізірек етеді. Әрқайсысы неден қорғайтынын және оның салдарынан не жұмыс істемей қалуы мүмкін екенін айтады.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen-де Баптауларды, содан кейін Синхрондауды ашыңыз және бүйірлік тақта синхрондауын қосыңыз.</string>
 </resources>

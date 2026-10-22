@@ -428,4 +428,5 @@
     <string name="dejavu_protection_section_security">Безопасность</string>
     <string name="dejavu_protection_links">Удалять отслеживание из ссылок</string>
     <string name="dejavu_protection_hint">Включённая защита повышает вашу безопасность. Для каждой указано, от чего она защищает и что из-за неё может перестать работать.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">В Zen откройте «Настройки», затем «Синхронизация», и включите синхронизацию боковой панели.</string>
 </resources>

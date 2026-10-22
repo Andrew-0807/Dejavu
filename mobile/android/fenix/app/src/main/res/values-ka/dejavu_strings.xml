@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">უსაფრთხოება</string>
     <string name="dejavu_protection_links">ბმულებიდან თვალთვალის მოცილება</string>
     <string name="dejavu_protection_hint">ჩართული დაცვა უფრო მეტად გიცავთ. თითოეულთან წერია, რისგან იცავს და რამ შეიძლება შეწყვიტოს მუშაობა მის გამო.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen-ში გახსენით „პარამეტრები“, შემდეგ „სინქრონიზაცია“ და ჩართეთ გვერდითი პანელის სინქრონიზაცია.</string>
 </resources>

@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">ସୁରକ୍ଷା</string>
     <string name="dejavu_protection_links">ଲିଙ୍କରୁ ଟ୍ରାକିଂ ହଟାନ୍ତୁ</string>
     <string name="dejavu_protection_hint">ଚାଲୁ ଥିବା ସୁରକ୍ଷା ଆପଣଙ୍କୁ ଅଧିକ ସୁରକ୍ଷିତ ରଖେ। ପ୍ରତ୍ୟେକଟି କହେ ଯେ ଏହା କେଉଁଥିରୁ ରକ୍ଷା କରେ ଏବଂ ଏହା ଯୋଗୁଁ କ\'ଣ କାମ କରିବା ବନ୍ଦ କରିପାରେ।</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen ରେ, ସେଟିଂସମୂହ ଖୋଲନ୍ତୁ, ତାପରେ ସିଙ୍କ, ଏବଂ ସାଇଡବାର ସିଙ୍କ ଅନ୍ କରନ୍ତୁ।</string>
 </resources>

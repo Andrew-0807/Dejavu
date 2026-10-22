@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Sicherheit</string>
     <string name="dejavu_protection_links">Tracking aus Links entfernen</string>
     <string name="dejavu_protection_hint">Ein aktivierter Schutz macht dich sicherer. Bei jedem steht, wovor er schützt und was deswegen vielleicht nicht mehr funktioniert.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Öffne in Zen die Einstellungen, dann Sync, und aktiviere die Synchronisierung der Seitenleiste.</string>
 </resources>

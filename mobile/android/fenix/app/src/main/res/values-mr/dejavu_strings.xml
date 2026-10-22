@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">सुरक्षा</string>
     <string name="dejavu_protection_links">लिंकमधून ट्रॅकिंग काढा</string>
     <string name="dejavu_protection_hint">सुरू असलेले संरक्षण तुम्हाला अधिक सुरक्षित ठेवते. प्रत्येक संरक्षण ते कशापासून वाचवते आणि त्यामुळे काय काम करणे थांबवू शकते, हे सांगते.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen मध्ये, सेटिंग उघडा, नंतर सिंक, आणि साइडबार सिंक सुरू करा.</string>
 </resources>

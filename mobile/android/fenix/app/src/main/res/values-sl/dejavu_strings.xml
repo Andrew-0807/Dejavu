@@ -428,4 +428,5 @@
     <string name="dejavu_protection_section_security">Varnost</string>
     <string name="dejavu_protection_links">Odstrani sledenje iz povezav</string>
     <string name="dejavu_protection_hint">Vklopljena zaščita vas bolje varuje. Pri vsaki piše, pred čim vas ščiti in kaj lahko zaradi nje preneha delovati.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">V Zenu odprite Nastavitve, nato Sinhronizacija, in vklopite sinhronizacijo stranske vrstice.</string>
 </resources>

@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">பாதுகாப்பு</string>
     <string name="dejavu_protection_links">இணைப்புகளிலிருந்து பின்தொடர்தலை அகற்று</string>
     <string name="dejavu_protection_hint">இயக்கத்தில் உள்ள பாதுகாப்பு உங்களை மேலும் பாதுகாப்பாக வைத்திருக்கும். ஒவ்வொன்றும் எதிலிருந்து காக்கிறது, அதனால் எது வேலை செய்யாமல் போகலாம் என்பதைச் சொல்லும்.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen-இல், அமைவுகளைத் திறந்து, பிறகு ஒத்திசைவைத் திறந்து, பக்கப்பட்டி ஒத்திசைவை இயக்கவும்.</string>
 </resources>

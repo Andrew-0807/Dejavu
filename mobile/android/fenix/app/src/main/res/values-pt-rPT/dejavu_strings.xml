@@ -421,4 +421,5 @@
     <string name="dejavu_protection_section_security">Segurança</string>
     <string name="dejavu_protection_links">Remover a monitorização das ligações</string>
     <string name="dejavu_protection_hint">Uma proteção ativada aumenta a sua segurança. Cada uma indica contra o que protege e o que pode deixar de funcionar por causa dela.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">No Zen, abre Definições e depois Sincronização, e ativa a sincronização da barra lateral.</string>
 </resources>

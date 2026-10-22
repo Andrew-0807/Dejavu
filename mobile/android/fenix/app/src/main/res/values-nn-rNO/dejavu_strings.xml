@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Tryggleik</string>
     <string name="dejavu_protection_links">Fjern sporing frå lenker</string>
     <string name="dejavu_protection_hint">Eit vern som er på, gjer deg tryggare. Kvart vern seier kva det vernar mot og kva som kan slutte å verke på grunn av det.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Opne Innstillingar i Zen, deretter Synkronisering, og slå på synkronisering av sidestolpen.</string>
 </resources>

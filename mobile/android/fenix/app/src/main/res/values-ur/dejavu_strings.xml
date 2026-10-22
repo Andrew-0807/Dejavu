@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">سلامتی</string>
     <string name="dejavu_protection_links">روابط سے ٹریکنگ ہٹائیں</string>
     <string name="dejavu_protection_hint">جو تحفظ آن ہو وہ آپ کو زیادہ محفوظ رکھتا ہے۔ ہر ایک بتاتا ہے کہ وہ کس چیز سے بچاتا ہے اور اس کی وجہ سے کیا کام کرنا چھوڑ سکتا ہے۔</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen میں، سیٹنگز کھولیں، پھر سنک، اور سائیڈ بار ہم وقت سازی کو آن کریں۔</string>
 </resources>

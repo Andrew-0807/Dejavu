@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">Seguessa</string>
     <string name="dejavu_protection_links">Leva o traciamento da-i ligammi</string>
     <string name="dejavu_protection_hint">Unna proteçion ativa a te mantegne ciù seguo. Ògnunn-a a dixe da cöse a te protezze e cöse o peu no fonçionâ ciù pe caxon sò.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Inte Zen, arvi Inpostaçioin, poi Sincronizzaçion, e attivi a sincronizzaçion de a barra laterale.</string>
 </resources>

@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">بىخەتەرلىك</string>
     <string name="dejavu_protection_links">ئۇلانمىلاردىكى ئىز قوغلاشنى چىقىرىۋېتىدۇ</string>
     <string name="dejavu_protection_hint">ئوچۇق تۇرغان قوغداش سىزنى تېخىمۇ بىخەتەر قىلىدۇ. ھەر بىرى نېمىدىن قوغدايدىغانلىقىنى ۋە ئۇنىڭ سەۋەبىدىن نېمىلەرنىڭ ئىشلىمەي قېلىشى مۇمكىنلىكىنى ئېيتىدۇ.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zen دا تەڭشەكنى، ئاندىن قەدەمداشلاشنى ئېچىڭ ۋە يان پانېل قەدەمداشلىشىنى ئېچىڭ.</string>
 </resources>

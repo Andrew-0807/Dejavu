@@ -428,4 +428,5 @@
     <string name="dejavu_protection_section_security">Бяспека</string>
     <string name="dejavu_protection_links">Выдаляць сачэнне са спасылак</string>
     <string name="dejavu_protection_hint">Уключаная ахова робіць вас больш бяспечнымі. Кожная паказвае, ад чаго яна абараняе і што можа перастаць працаваць праз яе.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">У Zen адкрыйце Налады, затым Сінхранізацыю, і ўключыце сінхранізацыю бакавой панэлі.</string>
 </resources>

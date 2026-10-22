@@ -20,6 +20,8 @@ import org.mozilla.fenix.dejavu.sync.ZenRecords.SPACE_PERSONAL
 import org.mozilla.fenix.dejavu.sync.ZenRecords.SPACE_WORK
 import org.mozilla.fenix.dejavu.sync.ZenRecords.SPLIT
 import org.mozilla.fenix.dejavu.sync.ZenRecords.SUBFOLDER
+import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_ESSENTIAL
+import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_ESSENTIAL_CONTAINER
 import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_IN_FOLDER
 import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_IN_SUBFOLDER
 import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_NORMAL
@@ -214,6 +216,81 @@ class SpacesNormalTabsTest {
         assertEquals("pin-1", result.state.syncIdOf("tab-9"))
         assertEquals(SPACE_PERSONAL, result.state.assignments["tab-9"])
         assertTrue(result.tabOps.isEmpty())
+    }
+
+    @Test
+    fun `without unpinned tabs, a tab unpinned here and still open is held, not deleted, like in Zen`() {
+        val server = ZenRecords.desktop().associateBy { it.id }
+        val synced = desktop(normalTabs = false).state
+        val unpinned = synced.copy(
+            pins = synced.pins.filterNot { it.id == TAB_PINNED },
+            assignments = synced.assignments + ("tab-9" to SPACE_PERSONAL),
+            tabSyncIds = mapOf("tab-9" to TAB_PINNED),
+        )
+
+        fun changes(state: WorkspaceState, tabs: List<LocalTab>?) =
+            SpacesProjector(LocalSpaces(state, containers, normalTabs = false, tabs = tabs), server)
+                .project()
+                .changesAgainst(server)
+                .associateBy { it.id }
+
+        assertTrue(changes(unpinned, listOf(tab("tab-9"))).isEmpty())
+        assertTrue(changes(unpinned, tabs = null).isEmpty())
+        val closed = unpinned.copy(assignments = unpinned.assignments - "tab-9", tabSyncIds = emptyMap())
+        assertTrue(changes(closed, tabs = emptyList()).getValue(TAB_PINNED).deleted)
+    }
+
+    @Test
+    fun `a tab Zen unpinned without syncing unpinned tabs is unpinned here, and nothing goes back`() {
+        val records = ZenRecords.desktop()
+        val server = records.associateBy { it.id }
+        val synced = desktop(normalTabs = false).state
+        val withTab = synced.copy(pins = synced.pins.map { if (it.id == TAB_PINNED) it.copy(tabId = "tab-9") else it })
+        val space = server.getValue(SPACE_PERSONAL).let { record ->
+            SpacesRecord.of(
+                record.id,
+                RecordKind.SPACE,
+                SyncJson.copy(record.data!!).put("children", JSONArray(listOf(FOLDER, SPLIT, TAB_NORMAL))),
+            )
+        }
+
+        val open = apply(withTab, listOf(space), listOf(tab("tab-9")), normalTabs = false, server = server)
+
+        assertNull(open.state.pins.firstOrNull { it.id == TAB_PINNED })
+        assertEquals(TAB_PINNED, open.state.syncIdOf("tab-9"))
+        assertTrue(open.tabOps.isEmpty())
+        val after = server + (space.id to space)
+        val changes = SpacesProjector(LocalSpaces(open.state, containers, tabs = listOf(tab("tab-9"))), after)
+            .project()
+            .changesAgainst(after)
+        assertTrue(changes.isEmpty())
+
+        val closed = apply(synced, listOf(space), tabs = emptyList(), normalTabs = false, server = server)
+        assertEquals(
+            listOf(TabOp.Open(TAB_PINNED, "https://example.com/", "Title of https://example.com/", null, SPACE_PERSONAL)),
+            closed.tabOps,
+        )
+        assertEquals(SPACE_PERSONAL, closed.state.assignments[TAB_PINNED])
+        val waiting = apply(synced, listOf(space), tabs = null, normalTabs = false, server = server)
+        assertEquals(listOf(SPACE_PERSONAL), waiting.failed.map { it.id })
+        assertTrue(waiting.state.pins.any { it.id == TAB_PINNED })
+    }
+
+    @Test
+    fun `a pinned tab another record moves or deletes is not taken as unpinned`() {
+        val server = ZenRecords.desktop().associateBy { it.id }
+        val synced = desktop(normalTabs = false).state
+        val space = ZenRecords.space(SPACE_PERSONAL, "Personal", listOf(FOLDER, SPLIT, TAB_NORMAL))
+        val moved = ZenRecords.tab(TAB_PINNED, "https://example.com/", SPACE_PERSONAL, folder = FOLDER)
+
+        val result = apply(synced, listOf(space, moved), tabs = emptyList(), normalTabs = false, server = server)
+
+        assertEquals(FOLDER, result.state.pins.single { it.id == TAB_PINNED }.parentId)
+        assertTrue(result.tabOps.isEmpty())
+        val essentials = ZenRecords.layout(listOf(SPACE_PERSONAL, SPACE_WORK), mapOf("default" to listOf(TAB_ESSENTIAL)))
+        val removed = apply(synced, listOf(essentials), tabs = emptyList(), normalTabs = false, server = server)
+        assertNull(removed.state.pins.firstOrNull { it.id == TAB_ESSENTIAL_CONTAINER })
+        assertEquals(TAB_ESSENTIAL_CONTAINER, (removed.tabOps.single() as TabOp.Open).id)
     }
 
     /** Zen's desktop with its unpinned tab kept in the folder, between the folder's pinned tab and its subfolder. */

@@ -103,6 +103,36 @@ class FirefoxRecordsTest {
     }
 
     @Test
+    fun `old records Firefox hides are left out, like a reinstalled phone's`() {
+        val day = 24 * 60 * 60.0
+        val now = 100 * day
+        val record = TabsRecord.fromCleartext("x", tabsRecord("x", listOf(tab("https://example.com/"))))
+        val newPhone = ClientRecord("new", "Phone", "mobile", null, "fxa-new", modified = now - day)
+        val oldPhone = ClientRecord("old", "Phone", "mobile", null, "fxa-old", modified = now - 8 * day)
+        val idlePhone = ClientRecord("idle", "Other phone", "mobile", null, "fxa-idle", modified = now - 30 * day)
+        val laptop = ClientRecord("laptop", "Laptop", "desktop", "Firefox", "fxa-laptop", modified = now - 2 * day)
+        val laptopAgain =
+            ClientRecord("again", "Laptop again", "desktop", "Firefox", "fxa-laptop", modified = now - 3 * day)
+        val leftOver = ClientRecord("mine", "This phone", "mobile", null, "fxa-gone", modified = now - 9 * day)
+        val clients = listOf(newPhone, oldPhone, idlePhone, laptop, laptopAgain, leftOver)
+        val tabs = clients.associate { it.id to record }
+
+        val computers = firefoxComputers(
+            clients,
+            tabs,
+            connected = null,
+            localDeviceId = "fxa-this",
+            localName = "This phone",
+            now = now,
+        )
+
+        assertEquals(listOf("Laptop", "Other phone", "Phone"), computers.map { it.name })
+        assertEquals("new", computers.single { it.name == "Phone" }.client.id)
+        val withoutTimes = firefoxComputers(clients.map { it.copy(modified = null) }, tabs, connected = null)
+        assertEquals(5, withoutTimes.size)
+    }
+
+    @Test
     fun `computers with the same name are numbered in a lasting order`() {
         val record = TabsRecord.fromCleartext("x", tabsRecord("x", listOf(tab("https://example.com/"))))
         val clients = listOf("b", "c", "a").map { ClientRecord(it, "Laptop", "desktop", "Firefox", null) } +

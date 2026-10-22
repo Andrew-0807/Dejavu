@@ -414,4 +414,5 @@
     <string name="dejavu_protection_section_security">భద్రత</string>
     <string name="dejavu_protection_links">లింకుల నుండి ట్రాకింగ్‌ను తీసివేయి</string>
     <string name="dejavu_protection_hint">ఆన్‌లో ఉన్న రక్షణ మిమ్మల్ని మరింత సురక్షితంగా ఉంచుతుంది. ప్రతి ఒక్కటీ దేని నుండి కాపాడుతుందో, దాని వల్ల ఏది పనిచేయకపోవచ్చో చెబుతుంది.</string>
+    <string name="dejavu_sync_zen_hint_unpinned">Zenలో, అమరికలు తెరిచి, తర్వాత సింక్‌ను తెరిచి, సైడ్‌బార్ సింక్‌ను ఆన్ చేయండి.</string>
 </resources>
