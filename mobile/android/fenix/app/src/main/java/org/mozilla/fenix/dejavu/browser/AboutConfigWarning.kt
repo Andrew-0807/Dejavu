@@ -19,9 +19,10 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.ext.requireComponents
 
 /**
- * The warning shown before about:config is used: its preferences can weaken Dejavu's security and privacy, and the
- * ones Dejavu's own settings control go back to those settings when Dejavu restarts. After the user went on once, it
- * is not shown again until Dejavu restarts.
+ * The warning shown before about:config is used: its preferences can weaken Dejavu's security and privacy. The ones
+ * behind Dejavu's tracking protection stay as changed there, and the protection shows it is managed there (see
+ * [Protection]); the others Dejavu's own settings control go back to those settings when Dejavu restarts. After the
+ * user went on once, it is not shown again until Dejavu restarts.
  */
 object AboutConfigWarning {
     @Volatile

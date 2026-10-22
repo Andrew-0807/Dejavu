@@ -22,8 +22,10 @@ import org.mozilla.fenix.BuildConfig
 import org.mozilla.fenix.Config
 import org.mozilla.fenix.components.appstate.AppAction
 import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
+import org.mozilla.fenix.dejavu.browser.Protection
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.nimbus.FxNimbus
+import org.mozilla.gecko.GeckoAppShell
 import org.mozilla.geckoview.GeckoRuntime
 import org.mozilla.geckoview.GeckoRuntimeSettings
 
@@ -72,6 +74,9 @@ object GeckoProvider {
             runtimeSettings.fontSizeFactor = fontSize
         }
 
+        // Dejavu: what about:config changes in the prefs behind the tracking protection settings stays, and those
+        // settings show it is managed there.
+        GeckoAppShell.setKeptUserPrefs(Protection.allPrefs)
         val geckoRuntime = GeckoRuntime.create(context, runtimeSettings)
 
         geckoRuntime.autocompleteStorageDelegate =
@@ -120,15 +125,16 @@ object GeckoProvider {
                 .contentBlocking(
                     policy.toContentBlockingSetting(
                         safeBrowsingPolicy = GoogleSafeBrowsing.policy(safeBrowsing),
-                        // Dejavu: tracking parameters are removed from the links normal and private tabs open.
-                        queryParameterStripping = true,
-                        queryParameterStrippingPrivateBrowsing = true,
+                        // Dejavu: tracking parameters are removed from the links normal and private tabs open,
+                        // unless the tracking protection settings say otherwise.
+                        queryParameterStripping = context.components.settings.stripLinkTracking,
+                        queryParameterStrippingPrivateBrowsing = context.components.settings.stripLinkTracking,
                         queryParameterStrippingAllowList = "",
                         queryParameterStrippingStripList = "",
-                        allowListBaselineTrackingProtection =
-                            context.components.settings.strictAllowListBaselineTrackingProtection,
-                        allowListConvenienceTrackingProtection =
-                            context.components.settings.strictAllowListConvenienceTrackingProtection,
+                        // Dejavu: as the policy says from the start, not only once the engine applies it.
+                        bounceTrackingProtectionMode = policy.bounceTrackingProtectionMode,
+                        allowListBaselineTrackingProtection = policy.allowListBaselineTrackingProtection,
+                        allowListConvenienceTrackingProtection = policy.allowListConvenienceTrackingProtection,
                         safeBrowsingGlobalCacheEnabled = Config.channel.isNightlyOrDebug && safeBrowsing,
                         safeBrowsingRealTimeEnabled = Config.channel.isNightlyOrDebug && safeBrowsing,
                         safeBrowsingRealTimeSimulationEnabled = Config.channel.isNightlyOrDebug && safeBrowsing,

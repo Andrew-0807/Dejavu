@@ -12,6 +12,8 @@
     <string name="pref_key_dejavu_webgl" translatable="false">pref_key_dejavu_webgl</string>
     <string name="pref_key_dejavu_direct_calls" translatable="false">pref_key_dejavu_direct_calls</string>
     <string name="pref_key_dejavu_network_location" translatable="false">pref_key_dejavu_network_location</string>
+    <string name="pref_key_dejavu_strip_link_tracking" translatable="false">pref_key_dejavu_strip_link_tracking</string>
+    <string name="pref_key_dejavu_tracking_protection" translatable="false">pref_key_dejavu_tracking_protection</string>
     <!-- Name of Mozilla's browser, for texts about Mozilla's own services like Firefox Suggest. -->
     <string name="dejavu_firefox_name" translatable="false" tools:ignore="BrandUsage">Firefox</string>
 
@@ -474,46 +476,160 @@
     <!-- Feature tour title: long-pressing a link offers to open it in split view, below the page. -->
     <string name="dejavu_feature_split_view">Hold a link to open it in split view</string>
 
-    <!-- Switch in the privacy settings for Google Safe Browsing, which warns about phishing and malware sites. -->
+    <!-- Switch in the tracking protection settings for Google Safe Browsing, which warns about phishing and malware sites. -->
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
-    <!-- Summary of the Google Safe Browsing switch: its warnings need Dejavu to contact Google, which is why it can be turned off. -->
-    <string name="dejavu_settings_safe_browsing_summary">Warns about phishing and malware sites. To do this, Dejavu contacts Google.</string>
     <!-- Title of the warning shown when a tab opens about:config, Gecko's page of advanced preferences. Keep "about:config" as it is. -->
     <string name="dejavu_about_config_warning_title">Open about:config?</string>
     <!-- Message of the about:config warning. Its buttons are Cancel and Open. -->
-    <string name="dejavu_about_config_warning_message">Changing these settings can weaken Dejavu\'s security and privacy, or break websites. Settings that Dejavu\'s own settings control, like tracking protection, HTTPS-Only and secure DNS, go back to them when Dejavu restarts.</string>
+    <string name="dejavu_about_config_warning_message">Changing these settings can weaken Dejavu\'s security and privacy, or break websites. If you change one behind Dejavu\'s tracking protection, it is managed here until you reset it. Others that Dejavu\'s settings control go back to them when Dejavu restarts.</string>
     <!-- Title of the warning shown before "Remote debugging via USB" is turned on. -->
     <string name="dejavu_remote_debugging_warning_title">Turn on remote debugging?</string>
     <!-- Message of the remote debugging warning. -->
     <string name="dejavu_remote_debugging_warning_message">While it is on, a computer connected to this phone over USB, with USB debugging allowed, can control Dejavu and read its data, like open tabs, cookies and saved passwords, without asking. Turn it off when you are done.</string>
     <!-- Button that confirms turning a setting on. -->
     <string name="dejavu_turn_on">Turn on</string>
-    <!-- Switch in the privacy and security settings for JavaScript's just-in-time compilers (JIT), which make websites faster. -->
-    <string name="dejavu_settings_jit">Fast JavaScript (JIT)</string>
-    <!-- Summary of the JIT switch. -->
-    <string name="dejavu_settings_jit_summary">Makes websites run faster. Most attacks on browsers go through it, so turning it off is safer, but some sites get slower. Applies after Dejavu restarts.</string>
-    <!-- Switch in the privacy and security settings for WebGL, the 3D graphics of websites. -->
-    <string name="dejavu_settings_webgl" translatable="false">WebGL</string>
-    <!-- Summary of the WebGL switch. -->
-    <string name="dejavu_settings_webgl_summary">3D graphics for games, maps and some websites. Turning it off blocks attacks through the graphics driver and makes your phone harder for sites to recognize, but those sites may stop working.</string>
-    <!-- Switch in the privacy and security settings that lets WebRTC calls (video and voice calls in websites) connect directly instead of only through the site's relay servers. -->
-    <string name="dejavu_settings_direct_calls">Direct connections for calls</string>
-    <!-- Summary of the direct connections switch. -->
-    <string name="dejavu_settings_direct_calls_summary">Off, calls in websites connect only through the site\'s relay servers, which hides your IP address from sites and from the people you call. Turn it on if a call does not connect.</string>
-    <!-- Title of the warning shown before direct connections for calls are turned on. Its buttons are Cancel and Turn on. -->
+    <!-- Title of the warning shown before "Block direct call connections" is turned off, which lets calls in websites connect directly. Its buttons are Cancel and Turn off. -->
     <string name="dejavu_direct_calls_warning_title">Allow direct connections?</string>
     <!-- Message of the direct connections warning. -->
     <string name="dejavu_direct_calls_warning_message">The people you call and the sites that make calls can then see your IP address. Sites you let use your camera or microphone can also see your addresses on your local network.</string>
-    <!-- Switch in the privacy and security settings that lets websites get the location from Android's network location (nearby Wi-Fi networks and cell towers) as well as from GPS. -->
-    <string name="dejavu_settings_network_location">Network location</string>
-    <!-- Summary of the network location switch. -->
-    <string name="dejavu_settings_network_location_summary">Off, websites you allow get your location from GPS only, which can be slow or fail indoors. On, Android can also find it from nearby Wi-Fi networks and cell towers.</string>
-    <!-- Title of the warning shown before network location is turned on. Its buttons are Cancel and Turn on. -->
+    <!-- Title of the warning shown before "Location from GPS only" is turned off, which lets Android find the location from nearby Wi-Fi networks and cell towers too. Its buttons are Cancel and Turn off. -->
     <string name="dejavu_network_location_warning_title">Use network location?</string>
     <!-- Message of the network location warning. -->
     <string name="dejavu_network_location_warning_message">On phones with Google Play Services, Android finds your location by sending the Wi-Fi networks and cell towers near you to Google. Websites still get your location only after you allow them.</string>
-    <!-- Summary of the Google Safe Browsing switch, turned off, in a build of Dejavu made without a Safe Browsing key, like a build from source. -->
+    <!-- Text under the Google Safe Browsing switch, turned off, in a build of Dejavu made without a Safe Browsing key, like a build from source. -->
     <string name="dejavu_settings_safe_browsing_no_key">This build of Dejavu has no Safe Browsing key, so it cannot warn about dangerous sites.</string>
+    <!-- Tracking protection: Dejavu's own screen with every privacy and security protection, one per row. A switch that is on protects; the text under it says what it protects from and what may stop working. -->
+    <!-- Row in Settings, under Privacy and security, that opens the tracking protection settings, and the title of that screen. -->
+    <string name="dejavu_settings_tracking_protection">Tracking protection</string>
+    <!-- Text under the tracking protection row in Settings. -->
+    <string name="dejavu_settings_tracking_protection_summary">Trackers, fingerprinting, secure connections and more</string>
+    <!-- Text at the top of the tracking protection settings. -->
+    <string name="dejavu_protection_hint">A protection that is on keeps you safer. Each one says what it guards against and what may stop working because of it.</string>
+    <!-- Heading of the tracking protection settings over HTTPS-Only Mode and DNS over HTTPS. -->
+    <string name="dejavu_protection_section_connections">Connections</string>
+    <!-- Heading of the tracking protection settings over the protections against trackers. -->
+    <string name="dejavu_protection_section_trackers">Trackers</string>
+    <!-- Heading of the tracking protection settings over Google Safe Browsing, the JavaScript JIT and WebGL. -->
+    <string name="dejavu_protection_section_security">Security</string>
+    <!-- Heading of the tracking protection settings over the protections for calls in websites and for the location. -->
+    <string name="dejavu_protection_section_calls_location">Calls and location</string>
+    <!-- Heading of the tracking protection settings over site settings and data collection. -->
+    <string name="dejavu_protection_section_sites">Sites and data</string>
+    <!-- Text in place of a protection's switch or choice when one of its settings was changed in about:config, Gecko's page of advanced preferences, where it can be reset. Keep "about:config" as it is. -->
+    <string name="dejavu_protection_managed">You changed this in about:config, so it is managed there. Reset it in about:config to change it here.</string>
+    <!-- Choice of "Fix site issues": both the fixes for major and for minor site issues are on. -->
+    <string name="dejavu_protection_fixes_all">All fixes</string>
+    <!-- Choice of "Fix site issues": only the fixes for major site issues are on. -->
+    <string name="dejavu_protection_fixes_major">Major fixes only</string>
+    <!-- Text under HTTPS-Only Mode when it is on in all tabs. -->
+    <string name="dejavu_protection_https_only_all">Pages open only over secure connections, which no one on your network can read or change. Dejavu asks before opening a page that has no secure version.</string>
+    <!-- Text under HTTPS-Only Mode when it is on in private tabs only. -->
+    <string name="dejavu_protection_https_only_private">Private tabs open pages only over secure connections. In other tabs, someone on your network could read or change pages that are not secure.</string>
+    <!-- Text under HTTPS-Only Mode when it is off. -->
+    <string name="dejavu_protection_https_only_off">Turn on so pages open only over secure connections, which no one on your network can read or change.</string>
+    <!-- Text under DNS over HTTPS when it is on. %1$s is the name of the secure DNS provider, like Quad9, or its address. -->
+    <string name="dejavu_protection_doh_on">Dejavu looks up sites through %1$s over an encrypted connection, so your network and internet provider cannot see which sites you visit.</string>
+    <!-- Text under DNS over HTTPS when it is off. -->
+    <string name="dejavu_protection_doh_off">Turn on so your network and internet provider cannot see which sites you visit.</string>
+    <!-- Switch under DNS over HTTPS that never lets Dejavu fall back to the network's own DNS without a warning (Firefox's Max Protection). -->
+    <string name="dejavu_protection_doh_strict">Only use secure DNS</string>
+    <!-- Text under "Only use secure DNS" when it is on. %1$s is the name of the secure DNS provider, like Quad9, or its address. -->
+    <string name="dejavu_protection_doh_strict_on">If %1$s cannot be reached, Dejavu warns you before it uses your network\'s DNS, which can see the sites you visit.</string>
+    <!-- Text under "Only use secure DNS" when it is off. -->
+    <string name="dejavu_protection_doh_strict_off">Turn on so Dejavu warns you before it falls back to your network\'s DNS, which can see the sites you visit.</string>
+    <!-- Choice of tracking content: in which tabs ads, videos and other content that track people are blocked. -->
+    <string name="dejavu_protection_tracking_content">Block tracking content</string>
+    <!-- Text under "Block tracking content" when it is on in all tabs. -->
+    <string name="dejavu_protection_tracking_content_all">Some pages may miss parts, like embedded videos or comments, but the ads and trackers in them cannot follow you.</string>
+    <!-- Text under "Block tracking content" when it is on in private tabs only. -->
+    <string name="dejavu_protection_tracking_content_private">Only private tabs block ads, videos and other content that track you.</string>
+    <!-- Text under "Block tracking content" when it is off. -->
+    <string name="dejavu_protection_tracking_content_off">Turn on so ads, videos and other content that track you do not load.</string>
+    <!-- Switch that blocks all cookies from other sites than the one shown. -->
+    <string name="dejavu_protection_cookies">Block cross-site cookies</string>
+    <!-- Text under "Block cross-site cookies" when it is on. -->
+    <string name="dejavu_protection_cookies_on">Sign-ins and payments that go through another site may not work, but no site can use cookies to follow you to other sites.</string>
+    <!-- Text under "Block cross-site cookies" when it is off: each site's cookies are still kept apart (Total Cookie Protection). -->
+    <string name="dejavu_protection_cookies_off">Each site already keeps its cookies to itself. Turn on to block cookies from other sites entirely.</string>
+    <!-- Switch that blocks scripts that mine cryptocurrency on the phone. -->
+    <string name="dejavu_protection_cryptominers">Block cryptominers</string>
+    <!-- Text under "Block cryptominers" when it is on. -->
+    <string name="dejavu_protection_cryptominers_on">Sites cannot secretly use your phone to mine cryptocurrency and drain its battery. Nothing stops working.</string>
+    <!-- Text under "Block cryptominers" when it is off. -->
+    <string name="dejavu_protection_cryptominers_off">Turn on so sites cannot secretly use your phone to mine cryptocurrency and drain its battery.</string>
+    <!-- Switch that blocks the scripts of companies known for fingerprinting, recognizing a phone from its settings. -->
+    <string name="dejavu_protection_fingerprinters">Block known fingerprinters</string>
+    <!-- Text under "Block known fingerprinters" when it is on. -->
+    <string name="dejavu_protection_fingerprinters_on">Companies known for it cannot recognize your phone from its settings. Nothing stops working.</string>
+    <!-- Text under "Block known fingerprinters" when it is off. -->
+    <string name="dejavu_protection_fingerprinters_off">Turn on so companies known for it cannot recognize your phone from its settings.</string>
+    <!-- Choice of in which tabs pages are shown less about the phone, so that suspected fingerprinters cannot recognize it. -->
+    <string name="dejavu_protection_suspected">Block suspected fingerprinters</string>
+    <!-- Text under "Block suspected fingerprinters" when it is on in all tabs. -->
+    <string name="dejavu_protection_suspected_all">Pages see less about your phone, like its screen and fonts, so they cannot recognize it. A few sites, like drawing or map tools, may act oddly.</string>
+    <!-- Text under "Block suspected fingerprinters" when it is on in private tabs only. -->
+    <string name="dejavu_protection_suspected_private">Private tabs show pages less about your phone, like its screen and fonts. Other tabs show more, so every site works.</string>
+    <!-- Text under "Block suspected fingerprinters" when it is off. -->
+    <string name="dejavu_protection_suspected_off">Turn on so pages see less about your phone, like its screen and fonts, and cannot recognize it.</string>
+    <!-- Switch that deletes the cookies of redirect trackers: sites that links pass through on the way to the site they lead to. -->
+    <string name="dejavu_protection_redirect">Clear redirect trackers</string>
+    <!-- Text under "Clear redirect trackers" when it is on. -->
+    <string name="dejavu_protection_redirect_on">Dejavu deletes the cookies of trackers that links send you through on the way to a site. Nothing stops working.</string>
+    <!-- Text under "Clear redirect trackers" when it is off. -->
+    <string name="dejavu_protection_redirect_off">Turn on to delete the cookies of trackers that links send you through on the way to a site.</string>
+    <!-- Switch that removes tracking parameters from the addresses of links. -->
+    <string name="dejavu_protection_links">Remove tracking from links</string>
+    <!-- Text under "Remove tracking from links" when it is on. Keep "fbclid" as it is: it is a part of addresses that Facebook adds. -->
+    <string name="dejavu_protection_links_on">The tracking parts that sites add to links, like fbclid, are removed before the page opens. Nothing stops working.</string>
+    <!-- Text under "Remove tracking from links" when it is off. Keep "fbclid" as it is. -->
+    <string name="dejavu_protection_links_off">Turn on to remove the tracking parts that sites add to links, like fbclid, before the page opens.</string>
+    <!-- Text under "Tell websites not to share & sell data" (Global Privacy Control) when it is on. -->
+    <string name="dejavu_protection_gpc_on">Sites are told not to sell or share your data, and the law makes some of them listen. Nothing stops working.</string>
+    <!-- Text under "Tell websites not to share & sell data" (Global Privacy Control) when it is off. -->
+    <string name="dejavu_protection_gpc_off">Turn on to tell sites not to sell or share your data.</string>
+    <!-- Text under "Fix site issues" when all fixes are on: the few trackers that sites need to work are let through. -->
+    <string name="dejavu_protection_fixes_all_summary">Dejavu lets through the few trackers that sites need to work, so sites do not break.</string>
+    <!-- Text under "Fix site issues" when only the fixes for major site issues are on. -->
+    <string name="dejavu_protection_fixes_major_summary">Dejavu lets through only the trackers that sites cannot work without. Some sites may lose small things, like a video.</string>
+    <!-- Text under "Fix site issues" when the fixes are off. -->
+    <string name="dejavu_protection_fixes_off_summary">Every tracker is blocked, even the ones sites need to work, so some sites may break.</string>
+    <!-- Text under Exceptions in the tracking protection settings, which lists the sites where tracking protection was turned off. -->
+    <string name="dejavu_protection_exceptions_summary">Sites where you turned tracking protection off.</string>
+    <!-- Text under the Google Safe Browsing switch when it is on. -->
+    <string name="dejavu_protection_safe_browsing_on">Dejavu warns you before sites that spread malware or steal passwords. To check them, it sends Google short, scrambled pieces of some addresses.</string>
+    <!-- Text under the Google Safe Browsing switch when it is off. -->
+    <string name="dejavu_protection_safe_browsing_off">Turn on to be warned before sites that spread malware or steal passwords. Dejavu then checks addresses with Google.</string>
+    <!-- Switch that turns off JavaScript's just-in-time compilers (JIT), which make websites faster. Keep "JavaScript" and "JIT" as they are. -->
+    <string name="dejavu_protection_jit">Block fast JavaScript (JIT)</string>
+    <!-- Text under "Block fast JavaScript (JIT)" when it is on. -->
+    <string name="dejavu_protection_jit_on">Sites run slower, but many attacks on browsers stop working. Takes full effect after Dejavu restarts.</string>
+    <!-- Text under "Block fast JavaScript (JIT)" when it is off. -->
+    <string name="dejavu_protection_jit_off">Turn on to stop many attacks on browsers. Sites would run slower.</string>
+    <!-- Switch that turns off WebGL, the 3D graphics of websites. Keep "WebGL" as it is. -->
+    <string name="dejavu_protection_webgl">Block WebGL</string>
+    <!-- Text under "Block WebGL" when it is on. -->
+    <string name="dejavu_protection_webgl_on">3D maps, games and some sites do not work, but sites cannot use your graphics chip to attack or recognize your phone.</string>
+    <!-- Text under "Block WebGL" when it is off. -->
+    <string name="dejavu_protection_webgl_off">Turn on so sites cannot use your graphics chip to attack or recognize your phone. 3D maps and games would stop working.</string>
+    <!-- Switch that lets video and voice calls in websites connect only through the site's relay servers, never directly. -->
+    <string name="dejavu_protection_direct_calls">Block direct call connections</string>
+    <!-- Text under "Block direct call connections" when it is on. -->
+    <string name="dejavu_protection_direct_calls_on">Calls on some sites may not connect, but sites and the people you call cannot see your IP address.</string>
+    <!-- Text under "Block direct call connections" when it is off. -->
+    <string name="dejavu_protection_direct_calls_off">Turn on so sites and the people you call cannot see your IP address.</string>
+    <!-- Switch that lets websites get the location from GPS only, not from Android's network location (nearby Wi-Fi networks and cell towers). -->
+    <string name="dejavu_protection_gps_only">Location from GPS only</string>
+    <!-- Text under "Location from GPS only" when it is on. -->
+    <string name="dejavu_protection_gps_only_on">Finding your location may be slow or fail indoors, but Google does not learn where you are from the Wi-Fi networks around you.</string>
+    <!-- Text under "Location from GPS only" when it is off. -->
+    <string name="dejavu_protection_gps_only_off">Turn on so sites get your location from GPS only, without Google learning about the Wi-Fi networks around you.</string>
+    <!-- Text under "Data collection" in the tracking protection settings: Dejavu has no data collection to turn on. -->
+    <string name="dejavu_protection_data_collection">Off. Dejavu collects no usage data and sends no crash reports.</string>
+    <!-- Text under "Site settings" in the tracking protection settings, which opens the permissions of each site. -->
+    <string name="dejavu_protection_site_settings">Choose for each site what it may use, like your camera or location.</string>
+    <!-- Button that confirms turning a protection off. -->
+    <string name="dejavu_turn_off">Turn off</string>
+
     <!-- Warning in the custom action editor when the action's address starts with http:// instead of https://. -->
     <string name="dejavu_custom_action_http_warning">This address uses http, so the request, its headers and the page\'s address travel unencrypted. Use https if the server supports it.</string>
     <!-- Description of the ntfy example custom action, which sends a notification to a topic on ntfy.sh. -->

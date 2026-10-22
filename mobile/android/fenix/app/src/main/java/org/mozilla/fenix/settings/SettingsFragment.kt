@@ -17,7 +17,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.StringRes
 import androidx.annotation.VisibleForTesting
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
@@ -43,7 +42,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
-import mozilla.components.concept.engine.Engine
 import mozilla.components.concept.sync.AccountObserver
 import mozilla.components.concept.sync.AuthType
 import mozilla.components.concept.sync.OAuthAccount
@@ -61,7 +59,6 @@ import mozilla.components.support.utils.ext.navigateToDefaultBrowserAppsSettings
 import mozilla.components.ui.icons.R as iconsR
 import mozilla.components.ui.widgets.withCenterAlignedButtons
 import mozilla.telemetry.glean.private.NoExtras
-import org.mozilla.fenix.BuildConfig
 import org.mozilla.fenix.Config
 import org.mozilla.fenix.FeatureFlags
 import org.mozilla.fenix.GleanMetrics.Addons
@@ -77,9 +74,6 @@ import org.mozilla.fenix.components.Components
 import org.mozilla.fenix.components.accounts.FenixFxAEntryPoint
 import org.mozilla.fenix.databinding.AmoCollectionOverrideDialogBinding
 import org.mozilla.fenix.dejavu.DejavuLinks
-import org.mozilla.fenix.dejavu.browser.CallsAndLocation
-import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
-import org.mozilla.fenix.dejavu.browser.JitAndWebGl
 import org.mozilla.fenix.dejavu.features.DejavuFeatureTourFragment
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.application
@@ -457,6 +451,10 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                     ActionOnlyNavDirections(R.id.dejavu_external_links_graph)
                 }
 
+                resources.getString(R.string.pref_key_dejavu_tracking_protection) -> {
+                    ActionOnlyNavDirections(R.id.dejavu_tracking_protection_graph)
+                }
+
                 resources.getString(R.string.pref_key_customize) -> {
                     SettingsFragmentDirections.actionSettingsFragmentToCustomizationFragment()
                 }
@@ -750,10 +748,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         setupSearchPreference(components.core.store.state.search.selectedOrDefaultSearchEngine?.name)
         setupHomepagePreference(settings)
         setupTrackingProtectionPreference(settings)
-        setupDnsOverHttpsPreference(settings)
-        setupSafeBrowsingPreference(settings)
-        setupJitAndWebGlPreferences(settings)
-        setupCallsAndLocationPreferences(settings)
         setupEmailMaskPreference(settings, requireComponents)
     }
 
@@ -927,113 +921,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                     settings.useCustomTrackingProtection -> getString(R.string.tracking_protection_custom)
                     else -> null
                 }
-        }
-    }
-
-    private fun setupDnsOverHttpsPreference(settings: Settings) {
-        with(requirePreference<Preference>(R.string.pref_key_doh_settings)) {
-            isVisible = settings.showDohEntryPoint
-            summary =
-                when (settings.getDohSettingsMode()) {
-                    Engine.DohSettingsMode.DEFAULT -> getString(R.string.preference_doh_default_protection)
-                    Engine.DohSettingsMode.OFF -> getString(R.string.preference_doh_off)
-                    Engine.DohSettingsMode.INCREASED -> getString(R.string.preference_doh_increased_protection)
-                    Engine.DohSettingsMode.MAX -> getString(R.string.preference_doh_max_protection)
-                }
-        }
-    }
-
-    // Dejavu: the switch turns Google Safe Browsing on or off at once, in the running engine too. A build without a Safe
-    // Browsing key cannot warn about anything, so its switch says so and stays off.
-    private fun setupSafeBrowsingPreference(settings: Settings) {
-        with(requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_safe_browsing)) {
-            if (!BuildConfig.HAS_SAFE_BROWSING_KEY) {
-                isChecked = false
-                isEnabled = false
-                summary = getString(R.string.dejavu_settings_safe_browsing_no_key)
-                return
-            }
-            isChecked = settings.safeBrowsingEnabled
-            setOnPreferenceChangeListener<Boolean> { _, enabled ->
-                settings.safeBrowsingEnabled = enabled
-                GoogleSafeBrowsing.apply(requireComponents.core.engine, requireComponents.core.geckoRuntime, enabled)
-                true
-            }
-        }
-    }
-
-    // Dejavu: the JIT and WebGL switches change the engine at once; the JIT reaches every page after a restart.
-    private fun setupJitAndWebGlPreferences(settings: Settings) {
-        val applyToEngine = {
-            JitAndWebGl.apply(requireComponents.core.engine, settings.jitEnabled, settings.webGlEnabled)
-        }
-        with(requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_jit)) {
-            isChecked = settings.jitEnabled
-            setOnPreferenceChangeListener<Boolean> { _, enabled ->
-                settings.jitEnabled = enabled
-                applyToEngine()
-                true
-            }
-        }
-        with(requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_webgl)) {
-            isChecked = settings.webGlEnabled
-            setOnPreferenceChangeListener<Boolean> { _, enabled ->
-                settings.webGlEnabled = enabled
-                applyToEngine()
-                true
-            }
-        }
-    }
-
-    // Dejavu: direct connections for calls and network location show more of the user to others, so turning them on
-    // asks first. Both change the engine at once.
-    private fun setupCallsAndLocationPreferences(settings: Settings) {
-        setupSwitchThatWarnsFirst(
-            key = R.string.pref_key_dejavu_direct_calls,
-            isOn = settings.directCallConnections,
-            warningTitle = R.string.dejavu_direct_calls_warning_title,
-            warningMessage = R.string.dejavu_direct_calls_warning_message,
-        ) { enabled ->
-            settings.directCallConnections = enabled
-            CallsAndLocation.applyDirectConnections(requireComponents.core.engine, enabled)
-        }
-        setupSwitchThatWarnsFirst(
-            key = R.string.pref_key_dejavu_network_location,
-            isOn = settings.networkLocationEnabled,
-            warningTitle = R.string.dejavu_network_location_warning_title,
-            warningMessage = R.string.dejavu_network_location_warning_message,
-        ) { enabled ->
-            settings.networkLocationEnabled = enabled
-            CallsAndLocation.applyNetworkLocation(enabled)
-        }
-    }
-
-    /** Sets up the switch [key], which [save]s at once when turned off and after a warning when turned on. */
-    private fun setupSwitchThatWarnsFirst(
-        @StringRes key: Int,
-        isOn: Boolean,
-        @StringRes warningTitle: Int,
-        @StringRes warningMessage: Int,
-        save: (Boolean) -> Unit,
-    ) {
-        with(requirePreference<SwitchPreferenceCompat>(key)) {
-            isChecked = isOn
-            setOnPreferenceChangeListener<Boolean> { _, enabled ->
-                if (!enabled) {
-                    save(false)
-                    return@setOnPreferenceChangeListener true
-                }
-                MaterialAlertDialogBuilder(requireContext())
-                    .setTitle(warningTitle)
-                    .setMessage(warningMessage)
-                    .setNegativeButton(R.string.dejavu_cancel, null)
-                    .setPositiveButton(R.string.dejavu_turn_on) { _, _ ->
-                        save(true)
-                        isChecked = true
-                    }
-                    .show()
-                false
-            }
         }
     }
 

@@ -6,6 +6,7 @@ package org.mozilla.fenix.components
 
 import android.content.res.Resources
 import androidx.annotation.VisibleForTesting
+import mozilla.components.concept.engine.EngineSession.BounceTrackingProtectionMode
 import mozilla.components.concept.engine.EngineSession.TrackingProtectionPolicy
 import mozilla.components.concept.engine.EngineSession.TrackingProtectionPolicy.CookiePolicy
 import mozilla.components.concept.engine.EngineSession.TrackingProtectionPolicyForSessionTypes
@@ -55,6 +56,13 @@ class TrackingProtectionPolicyFactory(
                 cookiePolicy = getCustomCookiePolicy(),
                 trackingCategories = getCustomTrackingCategories(),
                 cookiePurging = getCustomCookiePurgingPolicy(),
+                // Dejavu: blocking redirect trackers also deletes the data bounce trackers left, as Strict does.
+                bounceTrackingProtectionMode =
+                    if (getCustomCookiePurgingPolicy()) {
+                        BounceTrackingProtectionMode.ENABLED
+                    } else {
+                        BounceTrackingProtectionMode.ENABLED_DRY_RUN
+                    },
                 strictSocialTrackingProtection = settings.blockTrackingContentInCustomTrackingProtection,
                 allowListBaselineTrackingProtection = getAllowBaselineTrackingProtection(),
                 allowListConvenienceTrackingProtection = getAllowConvenienceTrackingProtection(),
@@ -96,6 +104,14 @@ class TrackingProtectionPolicyFactory(
 
         if (settings.blockTrackingContentInCustomTrackingProtection) {
             categories.add(TrackingProtectionPolicy.TrackingCategory.SCRIPTS_AND_SUB_RESOURCES)
+            // Dejavu: in every tab, the trackers in emails opened in webmail too, as Strict does. Private tabs always
+            // block them.
+            val privateTabsOnly =
+                settings.blockTrackingContentSelectionInCustomTrackingProtection ==
+                    resources.getString(R.string.private_string)
+            if (!privateTabsOnly) {
+                categories.add(TrackingProtectionPolicy.TrackingCategory.EMAIL)
+            }
         }
 
         if (settings.blockFingerprintersInCustomTrackingProtection) {

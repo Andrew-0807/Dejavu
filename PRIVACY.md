@@ -33,18 +33,20 @@ one receives, and how to turn it off where you can.
 When you open a website, it receives what every browser sends: your IP address, the address of the page, the cookies
 it saved before and details about the browser. Each website has its own privacy policy.
 
-Enhanced Tracking Protection is set to Strict. It blocks trackers, tracking content and known fingerprinters, makes
-your phone harder for sites to recognize, deletes the data of trackers that send you through their sites on the way to
-another one, and removes tracking parameters from the links you open. Dejavu also tells websites that you do not want
-your data sold or shared (Global Privacy Control). If a site does not work, you can turn protection off for that site
-with the shield in the address bar.
+Dejavu's tracking protection blocks trackers, tracking content, email trackers, cryptominers and known fingerprinters in
+every tab, keeps each site's cookies apart from the others, deletes the data of trackers that send you through their
+sites on the way to another one, and removes tracking parameters from the links you open. In private tabs it also makes
+your phone harder for sites to recognize. Dejavu also tells websites that you do not want your data sold or shared
+(Global Privacy Control). You can change each of these in **Settings**, under **Privacy and security**, then **Tracking
+protection**, and if a site does not work, you can turn protection off for that site with the shield in the address bar.
 
 Dejavu connects only to the sites you open. It does not connect ahead to the site the address bar suggests while you
 type, to links from other apps before they open, or to links that pages mark to load ahead.
 
 Calls in websites, which use WebRTC, connect only through the site's relay servers, so neither the site nor the people
 you call learn your IP address or your addresses on your local network. If a call does not connect, you can turn on
-**Direct connections for calls** in **Settings**, under **Privacy and security**. The people you call and the sites that
+**Block direct call connections** off in **Settings**, under **Privacy and security**, then **Tracking protection**.
+The people you call and the sites that
 make calls can then see your IP address, and sites you let use your camera or microphone also your addresses on your
 local network.
 
@@ -54,8 +56,9 @@ To open a website, Dejavu first looks up the address of its server. It does this
 a non-profit DNS service, so your network and internet provider cannot see or change which sites you look up. Quad9
 receives the names of the sites you look up. It describes how it handles data in the
 [Quad9 Privacy Policy](https://quad9.net/privacy/policy/). Dejavu uses Max Protection: when Quad9 cannot be reached,
-it warns you before it uses your network's DNS for a site. You can pick another provider, another level or turn this
-off in **Settings**, then **DNS over HTTPS**.
+it warns you before it uses your network's DNS for a site. You can pick another provider, let Dejavu fall back to your
+network's DNS without a warning, or turn this off in **Settings**, under **Privacy and security**, then **Tracking
+protection**.
 
 ### Warnings for dangerous sites
 
@@ -65,7 +68,8 @@ checks the pages you open against them on your device. Only when a page matches 
 ask Google about it, and then it sends only that start, never the address of the page. Google describes how it handles
 data in the [Google Privacy Policy](https://policies.google.com/privacy).
 
-You can turn this off in **Settings**, under **Privacy and security**, with **Google Safe Browsing**. Dejavu then
+You can turn this off in **Settings**, under **Privacy and security**, then **Tracking protection**, with **Google Safe
+Browsing**. Dejavu then
 neither downloads Google's lists nor asks Google about pages, and no longer warns about these sites.
 
 A build of Dejavu made without Dejavu's Safe Browsing key, like a build from the source code or one that F-Droid makes
@@ -132,9 +136,9 @@ turn it off or remove it in **Extensions**.
 
 When you let a website know your location, Dejavu gets it from your phone's GPS only. It does not use Android's network
 location, which on phones with Google Play Services sends the Wi-Fi networks and cell towers near you to Google. If GPS
-is too slow or does not work indoors, you can turn on **Network location** in **Settings**, under **Privacy and
-security**, and Android may then ask Google. A website gets your location only after you allow it, and you can take
-that back in **Settings**, then **Site permissions**.
+is too slow or does not work indoors, you can turn **Location from GPS only** off in **Settings**, under **Privacy and
+security**, then **Tracking protection**, and Android may then ask Google. A website gets your location only after you
+allow it, and you can take that back in **Site settings** on the same screen.
 
 ### Telemetry, experiments and crash reports
 

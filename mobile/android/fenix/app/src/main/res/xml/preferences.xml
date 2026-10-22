@@ -184,6 +184,14 @@
             app:isPreferenceVisible="false"
             android:title="@string/preferences_private_browsing_options" />
 
+        <!-- Dejavu: every protection on one screen of Dejavu's own, in place of Firefox's tracking protection, HTTPS-Only
+             and secure DNS screens and of Dejavu's switches that were here. Site settings open from it. -->
+        <androidx.preference.Preference
+            android:key="@string/pref_key_dejavu_tracking_protection"
+            app:iconSpaceReserved="false"
+            android:title="@string/dejavu_settings_tracking_protection"
+            android:summary="@string/dejavu_settings_tracking_protection_summary" />
+
         <org.mozilla.fenix.settings.IPProtectionPreference
             android:key="@string/pref_key_ip_protection_settings"
             app:iconSpaceReserved="false"
@@ -193,6 +201,7 @@
         <androidx.preference.Preference
             android:key="@string/pref_key_https_only_settings"
             app:iconSpaceReserved="false"
+            app:isPreferenceVisible="false"
             android:title="@string/preferences_https_only_title" />
 
         <androidx.preference.Preference
@@ -204,50 +213,13 @@
         <androidx.preference.Preference
             android:key="@string/pref_key_tracking_protection_settings"
             app:iconSpaceReserved="false"
+            app:isPreferenceVisible="false"
             android:title="@string/preference_enhanced_tracking_protection" />
-
-        <!-- Dejavu: Google Safe Browsing can be turned off, so Dejavu does not contact Google for it. -->
-        <androidx.preference.SwitchPreferenceCompat
-            android:key="@string/pref_key_dejavu_safe_browsing"
-            app:iconSpaceReserved="false"
-            android:defaultValue="true"
-            android:title="@string/dejavu_settings_safe_browsing"
-            android:summary="@string/dejavu_settings_safe_browsing_summary" />
-
-        <!-- Dejavu: the JavaScript JIT and WebGL, which most attacks on browsers go through, can be turned off. -->
-        <androidx.preference.SwitchPreferenceCompat
-            android:key="@string/pref_key_dejavu_jit"
-            app:iconSpaceReserved="false"
-            android:defaultValue="true"
-            android:title="@string/dejavu_settings_jit"
-            android:summary="@string/dejavu_settings_jit_summary" />
-
-        <androidx.preference.SwitchPreferenceCompat
-            android:key="@string/pref_key_dejavu_webgl"
-            app:iconSpaceReserved="false"
-            android:defaultValue="true"
-            android:title="@string/dejavu_settings_webgl"
-            android:summary="@string/dejavu_settings_webgl_summary" />
-
-        <!-- Dejavu: calls connect only through relay servers and the location comes from GPS only, unless the user
-             allows more after a warning. -->
-        <androidx.preference.SwitchPreferenceCompat
-            android:key="@string/pref_key_dejavu_direct_calls"
-            app:iconSpaceReserved="false"
-            android:defaultValue="false"
-            android:title="@string/dejavu_settings_direct_calls"
-            android:summary="@string/dejavu_settings_direct_calls_summary" />
-
-        <androidx.preference.SwitchPreferenceCompat
-            android:key="@string/pref_key_dejavu_network_location"
-            app:iconSpaceReserved="false"
-            android:defaultValue="false"
-            android:title="@string/dejavu_settings_network_location"
-            android:summary="@string/dejavu_settings_network_location_summary" />
 
         <androidx.preference.Preference
             android:key="@string/pref_key_site_permissions"
             app:iconSpaceReserved="false"
+            app:isPreferenceVisible="false"
             android:title="@string/preferences_site_settings" />
 
         <androidx.preference.Preference

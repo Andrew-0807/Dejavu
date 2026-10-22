@@ -194,7 +194,7 @@ class HomeDeepLinkIntentProcessorTest {
     fun `process settings_tracking_protection deep link`() {
         assertTrue(processorHome.process(testIntent("settings_tracking_protection"), navController, out, settings))
 
-        verify { navController.navigate(NavGraphDirections.actionGlobalTrackingProtectionFragment()) }
+        verify { navController.navigate(NavGraphDirections.actionGlobalDejavuTrackingProtection()) }
         verify { out wasNot Called }
     }
 

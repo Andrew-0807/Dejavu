@@ -3508,4 +3508,11 @@ class Settings(
             key = appContext.getPreferenceKey(R.string.pref_key_dejavu_network_location),
             default = false,
         )
+
+    /** Dejavu: whether the tracking parts that sites add to links, like fbclid, are removed before a page opens. */
+    var stripLinkTracking by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_strip_link_tracking),
+            default = true,
+        )
 }

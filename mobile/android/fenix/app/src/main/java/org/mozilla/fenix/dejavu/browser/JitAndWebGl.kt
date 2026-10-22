@@ -18,14 +18,14 @@ object JitAndWebGl {
     private val logger = Logger("JitAndWebGl")
 
     // Read when a page's process starts, so a change reaches every page once Dejavu restarts.
-    private val JIT_PREFS = listOf(
+    internal val JIT_PREFS = listOf(
         "javascript.options.baselinejit",
         "javascript.options.ion",
         "javascript.options.jithints",
         "javascript.options.native_regexp",
         "javascript.options.wasm_optimizingjit",
     )
-    private const val WEBGL_DISABLED = "webgl.disabled"
+    internal const val WEBGL_DISABLED = "webgl.disabled"
 
     /** The engine defaults for the JIT on or off as [jit] says, and WebGL as [webGl] says. */
     internal fun prefs(jit: Boolean, webGl: Boolean): List<SetBrowserPreference<Boolean>> =

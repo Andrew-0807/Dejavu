@@ -29,14 +29,12 @@ import org.mozilla.fenix.settings.trustpanel.store.TrustPanelStore
  * [TrustPanelStore].
  *
  * @param navController [NavController] used for navigation.
- * @param privacySecurityPrefKey Preference key used to scroll to the Privacy and security category within settings.
  * @param appStore [AppStore] used to access the current browsing mode.
  * @param tabsUseCases [TabsUseCases] used to add tabs.
  * @param scope [CoroutineScope] used to launch coroutines.
  */
 class TrustPanelNavigationMiddleware(
     private val navController: NavController,
-    private val privacySecurityPrefKey: String,
     private val appStore: AppStore,
     private val tabsUseCases: TabsUseCases,
     private val scope: CoroutineScope = CoroutineScope(Dispatchers.Main),
@@ -52,12 +50,11 @@ class TrustPanelNavigationMiddleware(
 
         scope.launch {
             when (action) {
+                // Dejavu: its own tracking protection settings, in place of Firefox's.
                 is TrustPanelAction.Navigate.PrivacySecuritySettings ->
                     navController.nav(
                         R.id.trustPanelFragment,
-                        TrustPanelFragmentDirections.actionGlobalTrackingProtectionFragment(
-                            preferenceToScrollTo = privacySecurityPrefKey
-                        ),
+                        TrustPanelFragmentDirections.actionGlobalDejavuTrackingProtection(),
                     )
 
                 is TrustPanelAction.Navigate.ManagePhoneFeature ->

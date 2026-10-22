@@ -369,7 +369,7 @@ class DefaultFenixSettingsIndexer(
                 PreferenceFileInformation.SearchSettingsPreferences,
                 PreferenceFileInformation.SiteSettingsPreferences,
                 PreferenceFileInformation.TabsPreferences,
-                PreferenceFileInformation.TrackingProtectionPreferences,
+                // Dejavu: Firefox's tracking protection settings are hidden behind Dejavu's own.
                 PreferenceFileInformation.SaveLoginsPreferences,
             )
 

@@ -24,6 +24,7 @@ import mozilla.components.concept.engine.Engine
 import mozilla.components.feature.search.ext.createSearchEngine
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.ADDITIONAL_BUNDLED_SEARCH_ENGINE_IDS
+import org.mozilla.fenix.dejavu.browser.ProtectionSettings
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getPreferenceKey
 import org.mozilla.fenix.onboarding.FenixOnboarding
@@ -37,7 +38,7 @@ internal object DejavuDefaults {
     // Kept from before the rename to Dejavu, so saved data still loads.
     private const val PREFS_NAME = "kaizen_settings"
     private const val KEY_VERSION = "defaults_version"
-    private const val VERSION = 10
+    private const val VERSION = 11
     private const val POCKET_STORIES_WORK_TAG = "mozilla.components.service.pocket.recommendations.refresh.work.tag"
     private const val POCKET_SPONSORED_WORK_TAG = "mozilla.components.service.pocket.sponsored.content.refresh.work.tag"
     private const val KEY_SEARCH_VERSION = "search_defaults_version"
@@ -148,6 +149,11 @@ internal object DejavuDefaults {
                 // Normal tabs tell websites not to sell or share the user's data too. Earlier versions saved it as off
                 // as soon as the tracking protection settings were opened.
                 shouldEnableGlobalPrivacyControl = true
+            }
+            if (applied < 11) {
+                // Dejavu's tracking protection settings show each protection on its own, kept in Firefox's custom
+                // level.
+                ProtectionSettings(context, this).takeOverTrackingProtection()
             }
         }
         // Last, as it starts the browser engine (StrictMode's profiler marker does), which reads settings like secure

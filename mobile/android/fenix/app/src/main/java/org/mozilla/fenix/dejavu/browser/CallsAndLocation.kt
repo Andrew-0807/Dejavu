@@ -21,7 +21,7 @@ object CallsAndLocation {
     private val logger = Logger("CallsAndLocation")
 
     // Read when a call starts its connection, so a change reaches the next call.
-    private val RELAY_ONLY_PREFS = listOf(
+    internal val RELAY_ONLY_PREFS = listOf(
         "media.peerconnection.ice.relay_only",
         "media.peerconnection.ice.no_host",
         "media.peerconnection.ice.default_address_only",
