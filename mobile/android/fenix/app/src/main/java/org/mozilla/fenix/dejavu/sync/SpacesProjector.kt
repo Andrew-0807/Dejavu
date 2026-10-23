@@ -15,12 +15,16 @@ import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
  *
  * @property normalTabs Whether tabs that are not pinned are synced too, like Zen's "Include unpinned tabs".
  * @property tabs The open tabs that are not private, or `null` while the browser has not restored them yet.
+ * @property forgotten Ids that tabs which are gone synced under, removed all at once rather than closed by the user,
+ *   like by Delete browsing data. Sync forgets them instead of closing them on the other devices, see
+ *   [DejavuSync.forgetTabs].
  */
 internal data class LocalSpaces(
     val state: WorkspaceState,
     val containers: List<ContainerRecord>,
     val normalTabs: Boolean = false,
     val tabs: List<LocalTab>? = null,
+    val forgotten: Set<String> = emptySet(),
 )
 
 /**
@@ -93,7 +97,11 @@ internal class SpacesProjector(
     private val splitMembers = LinkedHashMap<String, List<String>>()
     private val projectedPins = HashSet<String>()
     private val normalTabsBySpace = LinkedHashMap<String, MutableList<String>>()
+    private val normalTabsByFolder = LinkedHashMap<String, MutableList<String>>()
     private val closedTabs = HashSet<String>()
+
+    /** Pinned tabs unpinned here and still open, held while tabs that are not pinned are not synced. */
+    private val unpinnedHere = HashSet<String>()
 
     /** Tabs of Zen's split views that are not pinned; Dejavu keeps those splits as they are, in place of their tabs. */
     private val normalSplitMembers: Set<String> = server.values
@@ -155,7 +163,7 @@ internal class SpacesProjector(
             if (previous == null) {
                 data.put("icon", "").put("hasStaticIcon", false).put("defaultContainer", false)
             }
-            data.putNullable("containerGuid", guidOf(pin.containerId))
+            data.putNullable("containerGuid", containerGuidOf(pin.containerId, previous))
                 .put("essential", pin.essential)
                 .put("pinned", true)
                 .putNullable("workspaceUuid", if (pin.essential) null else pin.workspaceId)
@@ -167,14 +175,25 @@ internal class SpacesProjector(
     /**
      * Open tabs that are not pinned, like Zen's "Include unpinned tabs": each is a tab record that is not pinned, in its
      * workspace's children after the pinned items. A tab's address and title go out only when they changed here since
-     * the last sync, so a page loaded on two devices is not sent back and forth. Without them, and before the browser
-     * restored its tabs, the server's unpinned tabs are held. Those that never were open here are held too; the engine
-     * opens them.
+     * the last sync, so a page loaded on two devices is not sent back and forth. Zen has no temporary containers, so a
+     * tab in one goes out without a container and keeps it here. Zen keeps unpinned tabs in folders too, which Dejavu
+     * shows among the unpinned tabs: such a tab goes out in its folder while it stays in that workspace and the folder
+     * stays. Without them, and before the browser restored its tabs, the server's unpinned tabs are held, and so are
+     * the pinned tabs unpinned here whose tabs are still open, like Zen does: deleting them would close those tabs on
+     * the other devices. Those that never were open here are held too; the engine opens them. So are the ones
+     * [LocalSpaces.forgotten], which the engine opens again later.
      */
     private fun projectNormalTabs() {
         val tabs = local.tabs?.takeIf { local.normalTabs }
         if (tabs == null) {
             server.values.filter { it.isNormalTab }.forEach { held += it.id }
+            val pinnedTabs = state.pins.mapNotNull { it.tabId }.toSet()
+            val openTabs = local.tabs?.map { it.id } ?: state.assignments.keys
+            val open = openTabs.filterNot { it in pinnedTabs }.map { state.syncIdOf(it) }.toSet() + local.forgotten
+            server.values
+                .filter { it.kind == RecordKind.TAB && it.isSynced && it.id !in pinsById && it.id in open }
+                .forEach { unpinnedHere += it.id }
+            held += unpinnedHere
             return
         }
         val pinnedTabs = state.pins.mapNotNull { it.tabId }.toSet()
@@ -182,8 +201,7 @@ internal class SpacesProjector(
             if (tab.id in pinnedTabs) continue
             val syncId = state.syncIdOf(tab.id)
             val workspaceId = state.workspaceOf(tab.id)
-            val inSyncedContainer = tab.contextId == null || tab.contextId in containerIds
-            if (!isSyncableUrl(tab.url) || workspaceId !in workspaceIds || !inSyncedContainer) {
+            if (!isSyncableUrl(tab.url) || workspaceId !in workspaceIds) {
                 held += syncId
                 continue
             }
@@ -193,19 +211,42 @@ internal class SpacesProjector(
                 data.put("url", tab.url).put("title", tab.title)
             }
             if (previous == null) data.put("icon", "").put("hasStaticIcon", false).put("defaultContainer", false)
-            data.putNullable("containerGuid", guidOf(tab.contextId))
+            val folderId = folderOfNormalTab(previous, workspaceId)
+            data.putNullable("containerGuid", containerGuidOf(tab.contextId, previous))
                 .put("essential", false)
                 .put("pinned", false)
                 .put("workspaceUuid", workspaceId)
-                .put("folderId", JSONObject.NULL)
+                .putNullable("folderId", folderId)
                 .putNullable("staticLabel", state.tabTitles[tab.id])
             records[syncId] = SpacesRecord.of(syncId, RecordKind.TAB, data)
-            normalTabsBySpace.getOrPut(workspaceId) { mutableListOf() } += syncId
+            if (folderId != null) {
+                normalTabsByFolder.getOrPut(folderId) { mutableListOf() } += syncId
+            } else {
+                normalTabsBySpace.getOrPut(workspaceId) { mutableListOf() } += syncId
+            }
         }
         for (record in server.values) {
             if (!record.isNormalTab || record.id in records || record.id in held) continue
-            if (record.id in seen) closedTabs += record.id else held += record.id
+            if (record.id in seen && record.id !in local.forgotten) closedTabs += record.id else held += record.id
         }
+    }
+
+    /**
+     * The folder Zen keeps the unpinned tab [previous] in, while the tab stays in [workspaceId] and the folder does too:
+     * a folder here in that workspace, or one Dejavu does not have and is not deleting.
+     */
+    private fun folderOfNormalTab(previous: JSONObject?, workspaceId: String): String? {
+        if (previous == null || previous.opt("pinned") != false || previous.string("workspaceUuid") != workspaceId) {
+            return null
+        }
+        val folderId = previous.string("folderId") ?: return null
+        val folder = pinsById[folderId]
+        val stays = if (folder != null) {
+            folder.isFolder && folder.workspaceId == workspaceId
+        } else {
+            folderId in held || !isGone(folderId)
+        }
+        return folderId.takeIf { stays }
     }
 
     /**
@@ -223,7 +264,8 @@ internal class SpacesProjector(
 
     /**
      * Dejavu has no pinned split views, so the server's are kept as long as their tabs stay together, and follow them
-     * when they move. A split whose tabs were separated or unpinned here is deleted, like Zen does.
+     * when they move. A split whose tabs were separated or unpinned here is deleted, like Zen does, unless its unpinned
+     * tabs are held.
      */
     private fun projectSplits() {
         for (split in server.values) {
@@ -234,7 +276,7 @@ internal class SpacesProjector(
             when {
                 members.size < 2 -> held += split.id
                 pins.any { it == null } -> {
-                    if (members.any { pinsById[it] == null && !isGone(it) }) held += split.id
+                    if (members.any { it in unpinnedHere || (pinsById[it] == null && !isGone(it)) }) held += split.id
                 }
                 pins.any { it!!.isFolder || it.id !in projectedPins } -> held += split.id
                 pins.map { Triple(it!!.essential, it.workspaceId, parentOf(it)) }.distinct().size == 1 -> {
@@ -275,7 +317,7 @@ internal class SpacesProjector(
             if (previous == null || ZenThemes.toDejavu(previous.opt("theme")) != workspace.theme) {
                 data.put("theme", ZenThemes.fromDejavu(workspace.theme, previous?.opt("theme")))
             }
-            data.putNullable("containerGuid", guidOf(workspace.containerId))
+            data.putNullable("containerGuid", containerGuidOf(workspace.containerId, previous))
                 .put("children", JSONArray(children(workspace.id, null, previous?.strings("children"))))
             records[workspace.id] = SpacesRecord.of(workspace.id, RecordKind.SPACE, data)
         }
@@ -320,7 +362,10 @@ internal class SpacesProjector(
             val split = server[id]?.takeIf { it.kind == RecordKind.SPLIT && it.isSynced && id !in records && id !in held }
             split?.data?.strings("tabs") ?: listOf(id)
         }
-        return mergeOrder(siblings, expanded, ::isOpaque)
+        // Unpinned tabs Zen keeps in this folder stay where Zen has them; one missing from its order goes last.
+        val unpinned = parentId?.let { normalTabsByFolder[it] }.orEmpty().filterNot { it in normalSplitMembers }.toSet()
+        val order = mergeOrder(siblings, expanded) { it in unpinned || isOpaque(it) }
+        return order + unpinned.filterNot { it in order }
     }
 
     /**
@@ -342,6 +387,13 @@ internal class SpacesProjector(
         pin.parentId?.takeIf { id -> pinsById[id]?.let { it.isFolder && it.workspaceId == pin.workspaceId } == true }
 
     private fun guidOf(contextId: String?): String? = contextId?.takeIf { it in containerIds }
+
+    /**
+     * The container a record names: the permanent one [contextId] is, or else the one [previous] names when that was
+     * removed on the server, which nothing here could join, so the record stays as it was.
+     */
+    private fun containerGuidOf(contextId: String?, previous: JSONObject?): String? =
+        guidOf(contextId) ?: previous?.string("containerGuid")?.takeIf { server[it]?.deleted == true }
 
     private fun previous(id: String, kind: String): JSONObject? =
         server[id]?.takeIf { !it.deleted && it.kind == kind }?.data

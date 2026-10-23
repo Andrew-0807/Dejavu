@@ -98,19 +98,20 @@ internal class FirefoxTabsEngine(
 
     /**
      * Syncs. [connected] are the ids of the account's other devices when they are known, so that devices that left the
-     * account are not shown anymore, and [localDeviceId] is this device's, which is never shown. [refreshDevices] asks
-     * the account for its devices again, for devices not among them.
+     * account are not shown anymore, and [localDeviceId] is this device's, which is never shown, like old records with
+     * its name [localName]. [refreshDevices] asks the account for its devices again, for devices not among them.
      */
     suspend fun sync(
         auth: SyncAuth,
         connected: Set<String>?,
         localDeviceId: String? = null,
+        localName: String? = null,
         refreshDevices: suspend (unknown: Set<String>) -> Set<String>? = { null },
     ): FirefoxSyncResult {
         val data = store.load()
         closeTabsClosedHere(data)
         sendTabsOpenedHere(data)
-        return tokens.retryingOnce { run(auth, connected, localDeviceId, refreshDevices, data) }
+        return tokens.retryingOnce { run(auth, connected, localDeviceId, localName, refreshDevices, data) }
     }
 
     /**
@@ -152,7 +153,7 @@ internal class FirefoxTabsEngine(
         if (data.devices.isEmpty() || data.sendingSince == 0L) return
         val current = local.read()
         val opened = mirror(current).findOpenedHere(current.state, data.devices, data.sent, data.sendingSince)
-        if (opened.toSend.isEmpty() && opened.gone.isEmpty()) return
+        if (opened.toSend.isEmpty() && opened.gone.isEmpty() && opened.forgotten.isEmpty()) return
         val deviceIds = data.devices.associate { it.clientId to it.fxaDeviceId }
         opened.gone.groupBy { it.clientId }.forEach { (clientId, tabs) ->
             val deviceId = deviceIds[clientId] ?: return@forEach
@@ -160,7 +161,7 @@ internal class FirefoxTabsEngine(
             runCatching { local.closeRemoteTabs(deviceId, tabs.map { it.url }) }
                 .onFailure { log("Could not ask to close tabs: $it") }
         }
-        val sent = (data.sent - opened.gone.toSet()).toMutableList()
+        val sent = (data.sent - (opened.gone + opened.forgotten).toSet()).toMutableList()
         var count = 0
         for ((tab, title) in opened.toSend) {
             val deviceId = deviceIds[tab.clientId] ?: continue
@@ -181,6 +182,7 @@ internal class FirefoxTabsEngine(
         auth: SyncAuth,
         connected: Set<String>?,
         localDeviceId: String?,
+        localName: String?,
         refreshDevices: suspend (unknown: Set<String>) -> Set<String>?,
         data: FirefoxSyncData,
     ): FirefoxSyncResult {
@@ -208,8 +210,13 @@ internal class FirefoxTabsEngine(
             log("Downloaded the open tabs of ${data.tabs.size} devices")
         }
         val clientsModified = timestampOf(info.opt(CLIENTS))
-        if (clientsModified != data.clientsModified) {
-            data.clients = if (clientsModified == null) emptyMap() else client.downloadAll(CLIENTS, keys.of(CLIENTS))
+        // Records kept by an earlier version lack the time they were written, which tells an old device record apart.
+        if (clientsModified != data.clientsModified || data.clients.values.any { !it.has(SERVER_MODIFIED) }) {
+            data.clients = if (clientsModified == null) {
+                emptyMap()
+            } else {
+                client.downloadAll(CLIENTS, keys.of(CLIENTS), stampModified = true)
+            }
             data.clientsModified = clientsModified
         }
 
@@ -219,6 +226,8 @@ internal class FirefoxTabsEngine(
             tabs = data.tabs.mapValues { (id, cleartext) -> TabsRecord.fromCleartext(id, cleartext) },
             connected = devicesFor(clients, connected, localDeviceId, refreshDevices),
             localDeviceId = localDeviceId,
+            localName = localName,
+            now = clock.serverSeconds().toDouble(),
         )
         val current = local.read()
         val mirror = mirror(current)
@@ -247,11 +256,13 @@ internal class FirefoxTabsEngine(
         return FirefoxSyncResult.Synced(computers.map { it.name })
     }
 
+    // Every tab of a computer shows: Include unpinned tabs is a setting of syncing with Zen.
     private fun mirror(current: LocalSpaces) = FirefoxMirror(
         now = clock.millis(),
-        normalTabs = current.normalTabs,
+        normalTabs = true,
         tabs = current.tabs?.associateBy { it.id },
         unnamedGroup = local.unnamedGroup,
+        forgotten = current.forgotten,
     )
 
     private companion object {

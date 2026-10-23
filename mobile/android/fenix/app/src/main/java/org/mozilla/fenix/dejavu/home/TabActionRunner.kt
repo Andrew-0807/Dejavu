@@ -20,6 +20,7 @@ import mozilla.components.concept.engine.prompt.ShareData
 import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.Components
+import org.mozilla.fenix.dejavu.SilentlyClosedTabs
 import org.mozilla.fenix.dejavu.actions.ActionContext
 import org.mozilla.fenix.dejavu.actions.CustomAction
 import org.mozilla.fenix.dejavu.actions.CustomActionRunner
@@ -85,6 +86,9 @@ internal class TabActionRunner(
                     pin.url?.let { components.useCases.sessionUseCases.loadUrl(it, tab.id) }
                 }
                 repository.forgetOpenPages(targets.closedChangedPins.map { it.id }.toSet())
+            }
+            TabAction.REPLACE_PIN -> targets.changedPins.forEach { (pin, tab) ->
+                repository.replacePinUrl(pin.id, tab.content.url, tab.content.title)
             }
             TabAction.ADD_TO_ESSENTIALS -> addToEssentials(targets)
             TabAction.REMOVE_FROM_ESSENTIALS -> removeFromEssentials(targets.pins.filter { it.essential }, workspaceId)
@@ -158,7 +162,8 @@ internal class TabActionRunner(
 
     /**
      * Moves [tabs] into [workspaceId], the workspace of a device on the account, which only holds tabs that are not in a
-     * container. They open there again without one, which sends them to the device, and the tabs they come from close.
+     * container. They open there again without one, which sends them to the device, and the tabs they come from close
+     * without going to the recently closed tabs: they moved.
      */
     private fun moveToDeviceWorkspace(tabs: List<TabSessionState>, workspaceId: String) {
         val selectedTabId = store.state.selectedTabId
@@ -177,6 +182,7 @@ internal class TabActionRunner(
             if (selected) shown = newTabId
         }
         shown?.let { tabsUseCases.selectTab(it) }
+        tabs.forEach { SilentlyClosedTabs.add(it.id) }
         closeTabs(tabs.map { it.id })
     }
 
@@ -222,7 +228,7 @@ internal class TabActionRunner(
                     selectTab = false,
                     startLoading = false,
                     title = pin.openTitle ?: pin.title,
-                    contextId = pin.containerId,
+                    contextId = pinContainer(pin),
                     source = SessionState.Source.Internal.None,
                 ).also { repository.attachPinned(pin.id, it) }
             }
@@ -281,11 +287,19 @@ internal class TabActionRunner(
                 url = url,
                 selectTab = false,
                 title = pin.openTitle ?: pin.title,
-                contextId = pin.containerId,
+                contextId = pinContainer(pin),
                 source = SessionState.Source.Internal.None,
             )
         }
     }
+
+    /** The container [pin] opens in: its own, or a new temporary one or none when it was removed. */
+    private fun pinContainer(pin: PinnedItem): String? = TemporaryContainers.orReplacement(
+        pin.containerId,
+        store,
+        containerStorage,
+        settings.temporaryContainersByDefault.value,
+    )
 
     /** The values of the custom action variables for every target. */
     private fun actionContexts(targets: ActionTargets): List<ActionContext> {
@@ -294,7 +308,7 @@ internal class TabActionRunner(
         val date = SimpleDateFormat(ISO_DATE_PATTERN, Locale.US).format(Date())
         fun workspaceName(id: String) = state.workspaces.firstOrNull { it.id == id }?.name.orEmpty()
 
-        val tabContexts = targets.tabs.map { tab ->
+        val tabContexts = targets.tabs.filterNot { it.content.private }.map { tab ->
             ActionContext(
                 url = tab.content.url,
                 title = tab.content.title,

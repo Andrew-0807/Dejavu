@@ -22,16 +22,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -43,7 +42,6 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
@@ -69,14 +67,13 @@ import mozilla.components.concept.engine.EngineView
 import mozilla.components.concept.toolbar.ScrollableToolbar
 import mozilla.components.feature.contextmenu.ContextMenuCandidate
 import mozilla.components.feature.contextmenu.ContextMenuFeature
+import mozilla.components.lib.publicsuffixlist.PublicSuffixList
 import mozilla.components.lib.state.Middleware
 import mozilla.components.lib.state.Store
 import mozilla.components.lib.state.ext.flowScoped
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.Components
-import org.mozilla.fenix.compose.Favicon
-import org.mozilla.fenix.dejavu.home.titleOf
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 import org.mozilla.fenix.ext.requireComponents
@@ -111,12 +108,12 @@ fun Fragment.installDejavuSplitView(
     )
 }
 
-/** The tab shown in the split pane. */
+/** The tab shown in the split pane, with its page's address and how safe the connection to it is. */
 private data class PaneTarget(
     val tabId: String,
     val engineSession: EngineSession?,
-    val title: String,
     val url: String,
+    val security: SiteSecurity,
 )
 
 /**
@@ -184,7 +181,7 @@ internal class SplitPaneFeature(
         if (selected.content.private || selected.content.fullScreen) return null
         val partnerId = workspaces.splitOf(selected.id)?.tabIds?.firstOrNull { it != selected.id } ?: return null
         val partner = state.findTab(partnerId)?.takeIf { !it.content.private } ?: return null
-        return PaneTarget(partner.id, partner.engineState.engineSession, workspaces.titleOf(partner), partner.content.url)
+        return PaneTarget(partner.id, partner.engineState.engineSession, partner.content.url, SiteSecurity.of(partner))
     }
 
     private fun update(next: PaneTarget?) {
@@ -250,8 +247,9 @@ internal class SplitPaneFeature(
                 FirefoxTheme {
                     target?.let { current ->
                         SplitPaneBar(
-                            title = current.title,
                             url = current.url,
+                            security = current.security,
+                            publicSuffixList = components.publicSuffixList,
                             onShowOnTop = { components.useCases.tabsUseCases.selectTab(current.tabId) },
                             onClose = { repository.unsplit(setOf(current.tabId)) },
                             onDragTo = ::resizeTo,
@@ -396,21 +394,25 @@ private fun View.findGeckoView(): GeckoView? = when (this) {
 }
 
 /**
- * The bar of the split pane: tapping it shows its tab on top, dragging it resizes the pane. The bar moves with the
- * finger, so the drag is followed in window coordinates.
+ * The bar of the split pane: like the address bar, it shows how safe the connection is and the site of the page at
+ * [url], never the page's title, so a page in the pane cannot pass for another site. Tapping it shows its tab on top,
+ * with the whole address in the address bar, and dragging it resizes the pane. The bar moves with the finger, so the
+ * drag is followed in window coordinates.
  *
  * @param onDragTo Called with where the top of the bar should be, in window coordinates.
  */
 @Composable
 private fun SplitPaneBar(
-    title: String,
     url: String,
+    security: SiteSecurity,
+    publicSuffixList: PublicSuffixList,
     onShowOnTop: () -> Unit,
     onClose: () -> Unit,
     onDragTo: (Float) -> Unit,
 ) {
     var coordinates by remember { mutableStateOf<LayoutCoordinates?>(null) }
     var grabOffset by remember { mutableFloatStateOf(0f) }
+    val site by produceState<CharSequence>(siteOf(url), url) { value = siteLabel(url, publicSuffixList) }
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -439,16 +441,16 @@ private fun SplitPaneBar(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth().height(44.dp).padding(start = 14.dp),
         ) {
-            Favicon(url = url, size = 16.dp, shape = CircleShape)
-            Spacer(Modifier.width(10.dp))
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurface,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.weight(1f),
+            Icon(
+                painter = painterResource(security.icon),
+                contentDescription = security.label?.let { stringResource(it) },
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(16.dp),
             )
+            Spacer(Modifier.width(10.dp))
+            Box(modifier = Modifier.weight(1f)) {
+                SiteText(site = site, style = MaterialTheme.typography.bodyMedium)
+            }
             IconButton(onClick = onShowOnTop) {
                 Icon(
                     painter = painterResource(iconsR.drawable.mozac_ic_chevron_up_24),

@@ -16,6 +16,7 @@ import org.mozilla.fenix.dejavu.workspaces.SyncedDevice
  * @property type "desktop", "mobile" or "tablet".
  * @property application The browser's short name, like "Firefox", "Zen" or "LibreWolf". Only desktop browsers write it.
  * @property fxaDeviceId The device's id in the Mozilla account, which commands like closing tabs are sent to.
+ * @property modified When the device last wrote the record, in server seconds, or `null` when not known.
  */
 internal data class ClientRecord(
     val id: String,
@@ -23,6 +24,7 @@ internal data class ClientRecord(
     val type: String?,
     val application: String?,
     val fxaDeviceId: String?,
+    val modified: Double? = null,
 ) {
     val isDesktop: Boolean
         get() = type == DESKTOP
@@ -59,6 +61,7 @@ internal data class ClientRecord(
             type = cleartext.string("type"),
             application = cleartext.string("application"),
             fxaDeviceId = cleartext.string("fxaDeviceId"),
+            modified = cleartext.optDouble(SERVER_MODIFIED).takeUnless { it.isNaN() },
         )
     }
 }
@@ -185,17 +188,23 @@ internal class FirefoxComputer(val client: ClientRecord, val record: TabsRecord,
 
 /**
  * The devices among [clients] whose open tabs Dejavu shows, Firefox on computers and phones, with their open tabs from
- * [tabs], in the order of their names. Zen, this device ([localDeviceId] is its id in the account) and devices that left
- * the account ([connected], when known, has the account's devices) are left out.
+ * [tabs], in the order of their names. Zen, this device ([localDeviceId] is its id in the account), devices that left
+ * the account ([connected], when known, has the account's devices) and the old records Firefox hides too (see
+ * [staleClients]) are left out.
  */
 internal fun firefoxComputers(
     clients: Collection<ClientRecord>,
     tabs: Map<String, TabsRecord>,
     connected: Set<String>?,
     localDeviceId: String? = null,
+    localName: String? = null,
+    now: Double? = null,
 ): List<FirefoxComputer> {
+    val stale = staleClients(clients, now, localDeviceId, localName)
     val computers = clients
-        .filter { it.deviceKind != null && !it.isLocal(localDeviceId) && it.isConnected(connected) }
+        .filter {
+            it.deviceKind != null && !it.isLocal(localDeviceId) && it.isConnected(connected) && it.id !in stale
+        }
         .mapNotNull { client -> tabs[client.id]?.let { FirefoxComputer(client, it) } }
         .sortedWith(compareBy({ it.name.lowercase() }, { it.client.id }))
     val named = HashMap<String, Int>()
@@ -205,6 +214,35 @@ internal fun firefoxComputers(
         if (number == 1) computer else FirefoxComputer(computer.client, computer.record, number)
     }
 }
+
+/**
+ * Ids of the [clients] records that Firefox hides as stale, as its clients engine does: an older record of a device
+ * whose account id a newer record or this device ([localDeviceId]) has, and a record that has not changed for a week
+ * while a newer one or this device ([localName]) has the same name, like the record a phone left behind when its app
+ * was reinstalled. [now] is the time in server seconds; without it, or without a record's time, the age is not looked
+ * at.
+ */
+internal fun staleClients(
+    clients: Collection<ClientRecord>,
+    now: Double?,
+    localDeviceId: String?,
+    localName: String?,
+): Set<String> {
+    val stale = HashSet<String>()
+    val deviceIds = HashSet<String>().apply { localDeviceId?.let { add(it) } }
+    val names = HashSet<String>().apply { localName?.takeIf { it.isNotBlank() }?.let { add(it) } }
+    for (client in clients.filterNot { it.isLocal(localDeviceId) }.sortedByDescending { it.modified ?: 0.0 }) {
+        val age = if (now != null && client.modified != null) now - client.modified else null
+        when {
+            client.fxaDeviceId != null && !deviceIds.add(client.fxaDeviceId) -> stale += client.id
+            client.name in names && age != null && age > STALE_CLIENT_AGE_SECONDS -> stale += client.id
+        }
+        names += client.name
+    }
+    return stale
+}
+
+private const val STALE_CLIENT_AGE_SECONDS = 7 * 24 * 60 * 60
 
 /** Whether the device is still in the account, as far as [connected], the ids of the account's devices, tells. */
 internal fun ClientRecord.isConnected(connected: Set<String>?): Boolean =

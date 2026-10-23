@@ -33,6 +33,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.lang.ref.WeakReference
@@ -41,7 +42,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
-import mozilla.components.concept.engine.Engine
 import mozilla.components.concept.sync.AccountObserver
 import mozilla.components.concept.sync.AuthType
 import mozilla.components.concept.sync.OAuthAccount
@@ -451,6 +451,10 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                     ActionOnlyNavDirections(R.id.dejavu_external_links_graph)
                 }
 
+                resources.getString(R.string.pref_key_dejavu_tracking_protection) -> {
+                    ActionOnlyNavDirections(R.id.dejavu_tracking_protection_graph)
+                }
+
                 resources.getString(R.string.pref_key_customize) -> {
                     SettingsFragmentDirections.actionSettingsFragmentToCustomizationFragment()
                 }
@@ -680,10 +684,27 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         }
 
         preferenceRemoteDebugging?.isVisible = true
+        // Dejavu: while remote debugging is on, a computer connected over USB controls the browser without asking, so
+        // turning it on asks first.
         preferenceRemoteDebugging?.setOnPreferenceChangeListener<Boolean> { preference, newValue ->
-            settings.preferences.edit { putBoolean(preference.key, newValue) }
-            requireComponents.core.engine.settings.remoteDebuggingEnabled = newValue
-            true
+            val save = {
+                settings.preferences.edit { putBoolean(preference.key, newValue) }
+                requireComponents.core.engine.settings.remoteDebuggingEnabled = newValue
+            }
+            if (!newValue) {
+                save()
+                return@setOnPreferenceChangeListener true
+            }
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.dejavu_remote_debugging_warning_title)
+                .setMessage(R.string.dejavu_remote_debugging_warning_message)
+                .setNegativeButton(R.string.dejavu_cancel, null)
+                .setPositiveButton(R.string.dejavu_turn_on) { _, _ ->
+                    save()
+                    (preference as? SwitchPreferenceCompat)?.isChecked = true
+                }
+                .show()
+            false
         }
 
         preferenceMakeDefaultBrowser.apply {
@@ -727,8 +748,17 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         setupSearchPreference(components.core.store.state.search.selectedOrDefaultSearchEngine?.name)
         setupHomepagePreference(settings)
         setupTrackingProtectionPreference(settings)
-        setupDnsOverHttpsPreference(settings)
         setupEmailMaskPreference(settings, requireComponents)
+        setupAutofillPreferences(settings)
+    }
+
+    private fun setupAutofillPreferences(settings: Settings) {
+        if (settings.isAutofillSupported) {
+            return
+        }
+
+        requirePreference<Preference>(R.string.pref_key_passwords).isVisible = false
+        requirePreference<Preference>(R.string.pref_key_credit_cards).isVisible = false
     }
 
     private val setToDefaultPromptRequestLauncher: ActivityResultLauncher<Intent> =
@@ -904,19 +934,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         }
     }
 
-    private fun setupDnsOverHttpsPreference(settings: Settings) {
-        with(requirePreference<Preference>(R.string.pref_key_doh_settings)) {
-            isVisible = settings.showDohEntryPoint
-            summary =
-                when (settings.getDohSettingsMode()) {
-                    Engine.DohSettingsMode.DEFAULT -> getString(R.string.preference_doh_default_protection)
-                    Engine.DohSettingsMode.OFF -> getString(R.string.preference_doh_off)
-                    Engine.DohSettingsMode.INCREASED -> getString(R.string.preference_doh_increased_protection)
-                    Engine.DohSettingsMode.MAX -> getString(R.string.preference_doh_max_protection)
-                }
-        }
-    }
-
     @VisibleForTesting
     internal fun setupEmailMaskPreference(settings: Settings, components: Components) {
         findPreference<Preference>(getPreferenceKey(R.string.pref_key_email_masks))?.let {
@@ -935,8 +952,9 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
     @VisibleForTesting
     internal fun setLinkSharingPreference() {
+        // Dejavu: shared links never get Firefox's "Sent from Firefox" footer, so its setting is hidden.
         with(requirePreference<Preference>(R.string.pref_key_link_sharing)) {
-            isVisible = FxNimbus.features.sentFromFirefox.value().enabled
+            isVisible = false
         }
     }
 

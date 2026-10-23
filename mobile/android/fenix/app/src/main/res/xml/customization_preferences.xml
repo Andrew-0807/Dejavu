@@ -73,6 +73,12 @@
             android:key="@string/pref_key_dejavu_more_menu"
             android:title="@string/dejavu_settings_more_menu"
             android:summary="@string/dejavu_settings_more_menu_summary" />
+        <androidx.preference.SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="@string/pref_key_dejavu_more_menu_hide_edit"
+            android:persistent="false"
+            android:title="@string/dejavu_more_menu_hide_edit"
+            android:summary="@string/dejavu_more_menu_hide_edit_summary" />
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory

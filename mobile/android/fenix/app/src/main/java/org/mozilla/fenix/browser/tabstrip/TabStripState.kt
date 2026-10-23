@@ -9,6 +9,9 @@ import mozilla.components.browser.state.selector.getNormalOrPrivateTabs
 import mozilla.components.browser.state.selector.selectedTab
 import mozilla.components.browser.state.state.BrowserState
 import mozilla.components.browser.state.state.TabSessionState
+import org.mozilla.fenix.dejavu.browser.SiblingTab
+import org.mozilla.fenix.dejavu.browser.siblingTabs
+import org.mozilla.fenix.dejavu.home.pageUrl
 
 private const val MAX_TABS_WITH_CLOSE_BUTTON_VISIBLE = 7
 
@@ -48,6 +51,8 @@ data class TabStripState(
  * @property isPrivate Whether or not the tab is private.
  * @property isSelected Whether or not the tab is selected.
  * @property isCloseButtonVisible Whether or not the close button is visible.
+ * @property isAsleep Dejavu: whether the tab's page is not loaded, like a sleeping tab or a pinned tab whose tab is
+ *   closed, which shows faded.
  */
 data class TabStripItem(
     val id: String,
@@ -57,6 +62,7 @@ data class TabStripItem(
     val isPrivate: Boolean,
     val isSelected: Boolean,
     val isCloseButtonVisible: Boolean = true,
+    val isAsleep: Boolean = false,
 )
 
 /**
@@ -68,12 +74,15 @@ data class TabStripItem(
  * @param isPossiblyPrivateMode Whether or not the browser is in private mode.
  * @param addTab Invoked when conditions are met for adding a new normal browsing mode tab.
  * @param closeTab Invoked when close tab is clicked.
+ * @param siblings Dejavu: the tabs of the place the selected tab is in, see [siblingTabs], shown instead of every tab
+ *   that is not private.
  */
 internal fun BrowserState.toTabStripState(
     isSelectDisabled: Boolean,
     isPossiblyPrivateMode: Boolean,
     addTab: () -> Unit,
     closeTab: (isPrivate: Boolean, numberOfTabs: Int) -> Unit,
+    siblings: List<SiblingTab>? = null,
 ): TabStripState {
     val isPrivateMode =
         if (isSelectDisabled) {
@@ -83,16 +92,18 @@ internal fun BrowserState.toTabStripState(
         }
 
     val tabs = getNormalOrPrivateTabs(private = isPrivateMode)
-
-    return TabStripState(
-        tabs =
-            tabs.map {
+    val items =
+        siblings?.takeUnless { isPrivateMode }?.toTabStripItems(isSelectDisabled, selectedTabId)
+            ?: tabs.map {
                 it.toTabStripItem(
                     isSelectDisabled = isSelectDisabled,
                     selectedTabId = selectedTabId,
                     showCloseButtonOnUnselectedTabs = tabs.size <= MAX_TABS_WITH_CLOSE_BUTTON_VISIBLE,
                 )
-            },
+            }
+
+    return TabStripState(
+        tabs = items,
         isPrivateMode = isPrivateMode,
         tabCounterMenuItems =
             mapToMenuItems(
@@ -100,10 +111,30 @@ internal fun BrowserState.toTabStripState(
                 isPrivateMode = isPrivateMode,
                 addTab = addTab,
                 closeTab = closeTab,
-                numberOfTabs = tabs.size,
+                numberOfTabs = items.size,
             ),
     )
 }
+
+/**
+ * Dejavu: the tab bar's items for [this], the tabs of the selected tab's place. Pinned tabs and essentials have no
+ * close button, as the pins stay.
+ */
+private fun List<SiblingTab>.toTabStripItems(isSelectDisabled: Boolean, selectedTabId: String?): List<TabStripItem> =
+    map { sibling ->
+        val tab = (sibling as? SiblingTab.Open)?.tab
+        val isSelected = !isSelectDisabled && tab != null && tab.id == selectedTabId
+        TabStripItem(
+            id = sibling.key,
+            title = sibling.title,
+            url = tab?.content?.url ?: sibling.pin?.pageUrl.orEmpty(),
+            icon = tab?.content?.icon,
+            isPrivate = false,
+            isSelected = isSelected,
+            isCloseButtonVisible = sibling.pin == null && (size <= MAX_TABS_WITH_CLOSE_BUTTON_VISIBLE || isSelected),
+            isAsleep = !sibling.isAwake && !isSelected,
+        )
+    }
 
 private fun mapToMenuItems(
     isSelectEnabled: Boolean,

@@ -53,9 +53,9 @@
 
     <uses-permission android:name="${applicationId}.permission.PROFILER_INTERNAL" />
 
-    <!-- Needed to prompt the user directly for app uninstallation as part of an
-    'uninstall survey' experiment. This is ONLY used to uninstall the Firefox application -->
-    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" tools:node="replace" />
+    <!-- Dejavu: Firefox's uninstall survey asked for this permission to uninstall the app itself. Dejavu has no such
+    survey, so it does not hold the permission. -->
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" tools:node="remove" />
 
     <permission
         android:name="${applicationId}.permission.PROFILER_INTERNAL"
@@ -74,6 +74,7 @@
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:enableOnBackInvokedCallback="@bool/enableOnBackInvokedCallback"
+        android:memtagMode="async"
         tools:ignore="UnusedAttribute">
 
         <profileable
@@ -574,6 +575,23 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.APP_BROWSER"/>
                 <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <!--
+              Verified App Links for Firefox Accounts pairing. The /pair QR code encodes an https URL
+              so the native camera app can hand off to Firefox without an Activity chooser. The host
+              serves /.well-known/assetlinks.json with the release, beta and nightly signing fingerprints.
+              This filter must stay above the scheme-only http/https filter: Android keeps only the
+              first matching filter per activity, and a scheme-only match marks the app as a generic
+              browser that is excluded from App Links resolution.
+            -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" />
+                <data android:host="accounts.firefox.com" />
+                <data android:pathPrefix="/pair" />
             </intent-filter>
 
             <intent-filter>

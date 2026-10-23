@@ -18,10 +18,14 @@ import mozilla.components.lib.crash.handler.CrashHandlerService
 import mozilla.components.lib.crash.store.CrashAction
 import mozilla.components.service.sync.autofill.GeckoCreditCardsAddressesStorageDelegate
 import mozilla.components.service.sync.logins.GeckoLoginStorageDelegate
+import org.mozilla.fenix.BuildConfig
 import org.mozilla.fenix.Config
 import org.mozilla.fenix.components.appstate.AppAction
+import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
+import org.mozilla.fenix.dejavu.browser.Protection
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.nimbus.FxNimbus
+import org.mozilla.gecko.GeckoAppShell
 import org.mozilla.geckoview.GeckoRuntime
 import org.mozilla.geckoview.GeckoRuntimeSettings
 
@@ -70,6 +74,9 @@ object GeckoProvider {
             runtimeSettings.fontSizeFactor = fontSize
         }
 
+        // Dejavu: what about:config changes in the prefs behind the tracking protection settings stays, and those
+        // settings show it is managed there.
+        GeckoAppShell.setKeptUserPrefs(Protection.allPrefs)
         val geckoRuntime = GeckoRuntime.create(context, runtimeSettings)
 
         geckoRuntime.autocompleteStorageDelegate =
@@ -86,14 +93,18 @@ object GeckoProvider {
                 applicationScope = applicationScope,
             )
 
-        geckoRuntime.crashPullDelegate =
-            GeckoCrashPullDelegate(
-                dispatcher = { crashIDs ->
-                    context.components.appStore.dispatch(
-                        AppAction.CrashActionWrapper(CrashAction.CheckDeferred(crashIDs.toList()))
-                    )
-                }
-            )
+        // Dejavu: without this delegate the engine does not download Mozilla's list of crashes it wants reports of,
+        // as Dejavu's builds send no crash reports.
+        if (BuildConfig.CRASH_REPORTING) {
+            geckoRuntime.crashPullDelegate =
+                GeckoCrashPullDelegate(
+                    dispatcher = { crashIDs ->
+                        context.components.appStore.dispatch(
+                            AppAction.CrashActionWrapper(CrashAction.CheckDeferred(crashIDs.toList()))
+                        )
+                    }
+                )
+        }
 
         return geckoRuntime
     }
@@ -103,32 +114,40 @@ object GeckoProvider {
         context: Context,
         policy: TrackingProtectionPolicy,
     ): GeckoRuntimeSettings {
+        // Dejavu: Safe Browsing follows the privacy settings from the moment the engine starts.
+        val safeBrowsing = context.components.settings.safeBrowsingEnabled
         val builder =
             GeckoRuntimeSettings.Builder()
-                .crashHandler(CrashHandlerService::class.java)
+                // Dejavu: without a crash handler the engine writes no crash dumps, which can hold parts of pages, as
+                // they would never be sent: Dejavu's builds do not report crashes.
+                .crashHandler(CrashHandlerService::class.java.takeIf { BuildConfig.CRASH_REPORTING })
                 .experimentDelegate(NimbusExperimentDelegate())
                 .contentBlocking(
                     policy.toContentBlockingSetting(
-                        queryParameterStripping = false,
-                        queryParameterStrippingPrivateBrowsing = false,
+                        safeBrowsingPolicy = GoogleSafeBrowsing.policy(safeBrowsing),
+                        // Dejavu: tracking parameters are removed from the links normal and private tabs open,
+                        // unless the tracking protection settings say otherwise.
+                        queryParameterStripping = context.components.settings.stripLinkTracking,
+                        queryParameterStrippingPrivateBrowsing = context.components.settings.stripLinkTracking,
                         queryParameterStrippingAllowList = "",
                         queryParameterStrippingStripList = "",
-                        allowListBaselineTrackingProtection =
-                            context.components.settings.strictAllowListBaselineTrackingProtection,
-                        allowListConvenienceTrackingProtection =
-                            context.components.settings.strictAllowListConvenienceTrackingProtection,
-                        safeBrowsingGlobalCacheEnabled = Config.channel.isNightlyOrDebug,
-                        safeBrowsingRealTimeEnabled = Config.channel.isNightlyOrDebug,
-                        safeBrowsingRealTimeSimulationEnabled = Config.channel.isNightlyOrDebug,
+                        // Dejavu: as the policy says from the start, not only once the engine applies it.
+                        bounceTrackingProtectionMode = policy.bounceTrackingProtectionMode,
+                        allowListBaselineTrackingProtection = policy.allowListBaselineTrackingProtection,
+                        allowListConvenienceTrackingProtection = policy.allowListConvenienceTrackingProtection,
+                        safeBrowsingGlobalCacheEnabled = Config.channel.isNightlyOrDebug && safeBrowsing,
+                        safeBrowsingRealTimeEnabled = Config.channel.isNightlyOrDebug && safeBrowsing,
+                        safeBrowsingRealTimeSimulationEnabled = Config.channel.isNightlyOrDebug && safeBrowsing,
                         safeBrowsingRealTimeSimulationHitProbability = 5,
                         safeBrowsingRealTimeSimulationCacheTTLSec = 300,
                         safeBrowsingRealTimeSimulationNegativeCacheEnabled = false,
                         safeBrowsingRealTimeSimulationNegativeCacheTTLSec = 300,
-                    )
+                    ).also { GoogleSafeBrowsing.applyLists(it, safeBrowsing) }
                 )
                 .consoleOutput(context.components.settings.enableGeckoLogs)
                 .debugLogging(Config.channel.isDebug || context.components.settings.enableGeckoLogs)
-                .aboutConfigEnabled(Config.channel.isBeta || Config.channel.isNightlyOrDebug)
+                // Dejavu: about:config opens in release builds too, as it does in Firefox Beta and Nightly.
+                .aboutConfigEnabled(true)
                 .extensionsProcessEnabled(true)
                 .extensionsWebAPIEnabled(true)
                 .translationsOfferPopup(context.components.settings.offerTranslation)

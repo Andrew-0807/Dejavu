@@ -81,6 +81,25 @@ data class ContainerRecord(
 ) {
     val state: ContainerState
         get() = ContainerState(contextId, name, color.acColor, icon)
+
+    /**
+     * Whether it is shown and offered as a temporary container: one of Dejavu's own ([temporary]), or one that Firefox's
+     * Temporary Containers add-on made in Zen, named like "tmp4". Zen's sync like any container and Zen removes them,
+     * so only Dejavu's own are kept out of sync and destroyed here once unused.
+     */
+    val showsAsTemporary: Boolean
+        get() = temporary || TEMPORARY_NAME.matches(name)
+}
+
+private val TEMPORARY_NAME = Regex("tmp\\d+")
+
+/**
+ * These containers as the lists offering them show them: the permanent ones in their order, then the temporary ones at
+ * the bottom, tmp2 before tmp10.
+ */
+fun Collection<ContainerRecord>.splitTemporary(): Pair<List<ContainerRecord>, List<ContainerRecord>> {
+    val (temporary, permanent) = partition { it.showsAsTemporary }
+    return permanent to temporary.sortedWith(compareBy({ it.name.length }, { it.name }))
 }
 
 /**
@@ -137,6 +156,10 @@ class DejavuContainerStorage private constructor(private val context: Context) :
     /** Whether [contextId] is a temporary container. Containers not read from disk yet count as permanent. */
     fun isTemporary(contextId: String): Boolean =
         contextId in pendingTemporary || _records.value?.any { it.contextId == contextId && it.temporary } == true
+
+    /** Whether [contextId] is shown as a temporary container, see [ContainerRecord.showsAsTemporary]. */
+    fun showsAsTemporary(contextId: String): Boolean =
+        isTemporary(contextId) || _records.value?.any { it.contextId == contextId && it.showsAsTemporary } == true
 
     override suspend fun removeContainer(container: ContainerState) = mutate { list ->
         list.filterNot { it.contextId == container.contextId }

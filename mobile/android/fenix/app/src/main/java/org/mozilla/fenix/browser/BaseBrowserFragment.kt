@@ -56,7 +56,6 @@ import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import mozilla.components.browser.state.action.ContentAction
 import mozilla.components.browser.state.action.SystemPermissionRequestAction
 import mozilla.components.browser.state.selector.findCustomTab
@@ -211,7 +210,9 @@ import org.mozilla.fenix.customtabs.ExternalAppBrowserActivity
 import org.mozilla.fenix.databinding.FragmentBrowserBinding
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
+import org.mozilla.fenix.dejavu.browser.installAboutConfigWarning
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
+import org.mozilla.fenix.dejavu.browser.restoreDejavuRotationAfterFullscreen
 import org.mozilla.fenix.downloads.DownloadService
 import org.mozilla.fenix.downloads.RenameAndChangeLocationDialogFragment
 import org.mozilla.fenix.downloads.dialog.createDownloadAppDialog
@@ -297,6 +298,10 @@ abstract class BaseBrowserFragment :
     private var _findInPageLauncher: (() -> Unit)? = null
     private val findInPageLauncher: () -> Unit
         get() = _findInPageLauncher!!
+
+    @Suppress("VariableNaming") private var _readerMenuController: DefaultReaderModeController? = null
+    protected val readerMenuController: DefaultReaderModeController
+        get() = _readerMenuController!!
 
     protected val readerViewFeature = ViewBoundFeatureWrapper<ReaderViewFeature>()
     protected val thumbnailsFeature = ViewBoundFeatureWrapper<BrowserThumbnails>()
@@ -532,7 +537,7 @@ abstract class BaseBrowserFragment :
                 putExtra(HomeActivity.OPEN_TO_BROWSER, true)
             }
 
-        val readerMenuController =
+        _readerMenuController =
             DefaultReaderModeController(
                 readerViewFeature,
                 binding.readerViewControlsBar,
@@ -1125,28 +1130,28 @@ abstract class BaseBrowserFragment :
                                 requireComponents.emailMasksRepository.dismissCfr()
                             }
 
-                            override suspend fun onEmailMaskClick(generatedFor: String) =
-                                withContext(Dispatchers.IO) {
-                                    EmailMask.promptClicked.record()
+                            override suspend fun onEmailMaskClick(generatedFor: String): String? {
 
-                                    val relay = requireComponents.relayFeatureIntegration
-                                    // For this phase, we'll also use the generatedFor value for the description.
-                                    val created = relay.getOrCreateNewMask(generatedFor, generatedFor)
+                                EmailMask.promptClicked.record()
 
-                                    if (created == null) {
-                                        // Record failure telemetry
-                                        EmailMask.getOrCreateFailed.record()
-                                        // Log failure
-                                        val errorMessage = getString(R.string.email_masks_error_retrieving_masks)
+                                val relay = requireComponents.relayFeatureIntegration
+                                // For this phase, we'll also use the generatedFor value for the description.
+                                val created = relay.getOrCreateNewMask(generatedFor, generatedFor)
 
-                                        appStore.dispatch(AppAction.SnackbarAction.ShowSnackbar(errorMessage))
-                                        return@withContext null
-                                    }
+                                if (created == null) {
+                                    // Record failure telemetry
+                                    EmailMask.getOrCreateFailed.record()
+                                    // Log failure
+                                    val errorMessage = getString(R.string.email_masks_error_retrieving_masks)
 
-                                    EmailMask.autofillSuccess.record()
-
-                                    created.fullAddress
+                                    appStore.dispatch(AppAction.SnackbarAction.ShowSnackbar(errorMessage))
+                                    return null
                                 }
+
+                                EmailMask.autofillSuccess.record()
+
+                                return created.fullAddress
+                            }
                         },
                     isEmailMaskFeatureEnabled = { context.components.settings.isEmailMaskFeatureEnabled },
                     isSuggestEmailMaskEnabled = { requireComponents.emailMasksRepository.isSuggestionEnabled() },
@@ -1225,6 +1230,7 @@ abstract class BaseBrowserFragment :
         installDejavuSplitView(binding.browserLayout, binding.swipeRefresh, binding.engineView, customTabSessionId) {
             getContextMenuCandidates(context, binding.dynamicSnackbarContainer)
         }
+        installAboutConfigWarning(customTabSessionId)
 
         val isCoverEnabled = TabReloadCoverGating.isCoverEnabled(settings)
         val isScrollAwareEnabled = TabReloadCoverGating.isScrollAwareEnabled(settings)
@@ -1998,7 +2004,11 @@ abstract class BaseBrowserFragment :
                 .collect { restored ->
                     if (restored) {
                         // Once tab restoration is complete, if there are no tabs to show in the browser, go home
-                        val isPrivate = requireComponents.appStore.state.mode.isPrivate
+                        // Dejavu: the tabs that count are those of the selected tab's kind. A private tab opened from
+                        // Dejavu's home, which is never private, starts while the app is still in normal mode, and
+                        // with no normal tab open (pins and essentials stay on the home) it was sent back home.
+                        val isPrivate =
+                            store.state.selectedTab?.content?.private ?: requireComponents.appStore.state.mode.isPrivate
                         val tabs = store.state.getNormalOrPrivateTabs(isPrivate)
                         if (tabs.isEmpty() || store.state.selectedTabId == null) {
                             navController.popBackStack(R.id.homeFragment, false)
@@ -2330,6 +2340,7 @@ abstract class BaseBrowserFragment :
                 }
             }
             collapseBrowserView()
+            restoreDejavuRotationAfterFullscreen()
         }
 
         binding.swipeRefresh.isEnabled = shouldPullToRefreshBeEnabled(inFullScreen)
@@ -2434,6 +2445,7 @@ abstract class BaseBrowserFragment :
         emailMaskBar = null
 
         _findInPageLauncher = null
+        _readerMenuController = null
 
         _bottomToolbarContainerView = null
         _browserToolbar = null

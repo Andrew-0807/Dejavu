@@ -65,6 +65,8 @@ class HomeDeepLinkIntentProcessorTest {
                 showAddSearchWidgetPrompt = ::showAddSearchWidgetPrompt,
                 shareUseCases = shareUseCases,
             )
+
+        every { settings.isAutofillSupported } returns true
     }
 
     @Test
@@ -191,10 +193,20 @@ class HomeDeepLinkIntentProcessorTest {
     }
 
     @Test
+    fun `do not process settings_logins deep link when autofill is unsupported`() {
+        every { settings.isAutofillSupported } returns false
+
+        assertTrue(processorHome.process(testIntent("settings_logins"), navController, out, settings))
+
+        verify(exactly = 0) { navController.navigate(NavGraphDirections.actionGlobalSavedLoginsAuthFragment()) }
+        verify { out wasNot Called }
+    }
+
+    @Test
     fun `process settings_tracking_protection deep link`() {
         assertTrue(processorHome.process(testIntent("settings_tracking_protection"), navController, out, settings))
 
-        verify { navController.navigate(NavGraphDirections.actionGlobalTrackingProtectionFragment()) }
+        verify { navController.navigate(NavGraphDirections.actionGlobalDejavuTrackingProtection()) }
         verify { out wasNot Called }
     }
 

@@ -16,6 +16,7 @@ import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.sync.workspaceIconText
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
+import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.library.history.History
 import org.mozilla.fenix.library.history.HistoryDataSource
 import org.mozilla.fenix.library.history.positionWithOffset
@@ -48,13 +49,16 @@ class HistoryHeaders(private val headers: Map<History, Header>) {
 object DejavuHistory {
     /**
      * The pages to list, in the grouping chosen in the settings. [onHeaders] gets the headers to show, or `null` to show
-     * days, before the first pages load.
+     * days, before the first pages load. History lists them again after pages were deleted from it, so what Dejavu
+     * keeps of those pages is forgotten too.
      */
     fun dataSource(
         context: Context,
         provider: PagedHistoryProvider,
         onHeaders: (HistoryHeaders?) -> Unit,
     ): PagingSource<Int, History> {
+        val history = context.components.core.historyStorage
+        VisitOrigins.get(context).forgetUnvisited { urls -> history.getVisited(urls) }
         val grouping = DejavuSettings.peek()?.historyGrouping ?: HistoryGrouping.DATE
         if (grouping == HistoryGrouping.DATE) {
             onHeaders(null)

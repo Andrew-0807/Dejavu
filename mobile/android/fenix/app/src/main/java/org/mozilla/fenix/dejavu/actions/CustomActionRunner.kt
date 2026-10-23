@@ -6,6 +6,7 @@ package org.mozilla.fenix.dejavu.actions
 
 import android.content.Context
 import android.net.Uri
+import java.net.URLEncoder
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -61,12 +62,9 @@ class CustomActionRunner(private val client: Client) {
         val headers = action.headers.filter { it.name.isNotBlank() }.map { header ->
             Header(header.name.trim(), renderTemplate(header.value, context) { it.replace(LINE_BREAKS, " ") })
         }
-        val isJson = headers.any { it.name.equals("Content-Type", ignoreCase = true) && "json" in it.value.lowercase() }
+        val contentType = headers.firstOrNull { it.name.equals("Content-Type", ignoreCase = true) }?.value
         val body = if (action.method.hasBody && action.body.isNotEmpty()) {
-            val rendered = renderTemplate(action.body, context) { value ->
-                if (isJson) JSONObject.quote(value).removeSurrounding("\"") else value
-            }
-            Request.Body.fromString(rendered)
+            Request.Body.fromString(renderTemplate(action.body, context) { encodeBodyValue(it, contentType) })
         } else {
             null
         }
@@ -86,10 +84,32 @@ class CustomActionRunner(private val client: Client) {
         return client.fetch(request).use { it.status }
     }
 
-    private companion object {
-        val SUCCESS_STATUSES = 200..299
-        val LINE_BREAKS = Regex("[\\r\\n]+")
-        const val CONNECT_TIMEOUT_SECONDS = 15L
-        const val READ_TIMEOUT_SECONDS = 30L
+    companion object {
+        /**
+         * [value] as it goes into a body of [contentType], so a page's title or address cannot add fields or markup:
+         * escaped in JSON and XML, URL encoded in a form, and as it is in any other body.
+         */
+        internal fun encodeBodyValue(value: String, contentType: String?): String {
+            val type = contentType?.lowercase().orEmpty()
+            return when {
+                "json" in type -> JSONObject.quote(value).removeSurrounding("\"")
+                "x-www-form-urlencoded" in type -> URLEncoder.encode(value, Charsets.UTF_8.name())
+                "xml" in type -> XML_ESCAPES.entries.fold(value) { text, (char, escape) -> text.replace(char, escape) }
+                else -> value
+            }
+        }
+
+        // The ampersand goes first, so the escapes added after it are not escaped again.
+        private val XML_ESCAPES = linkedMapOf(
+            "&" to "&amp;",
+            "<" to "&lt;",
+            ">" to "&gt;",
+            "\"" to "&quot;",
+            "'" to "&apos;",
+        )
+        private val SUCCESS_STATUSES = 200..299
+        private val LINE_BREAKS = Regex("[\\r\\n]+")
+        private const val CONNECT_TIMEOUT_SECONDS = 15L
+        private const val READ_TIMEOUT_SECONDS = 30L
     }
 }

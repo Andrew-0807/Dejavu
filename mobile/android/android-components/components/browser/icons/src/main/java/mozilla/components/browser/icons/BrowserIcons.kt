@@ -51,7 +51,6 @@ import mozilla.components.browser.icons.pipeline.IconResourceComparator
 import mozilla.components.browser.icons.preparer.DiskIconPreparer
 import mozilla.components.browser.icons.preparer.IconPreprarer
 import mozilla.components.browser.icons.preparer.MemoryIconPreparer
-import mozilla.components.browser.icons.preparer.MerinoManifestIconPreparer
 import mozilla.components.browser.icons.processor.DiskIconProcessor
 import mozilla.components.browser.icons.processor.IconProcessor
 import mozilla.components.browser.icons.processor.MemoryIconProcessor
@@ -64,7 +63,6 @@ import mozilla.components.concept.engine.Engine
 import mozilla.components.concept.engine.webextension.WebExtension
 import mozilla.components.concept.fetch.Client
 import mozilla.components.lib.state.ext.flowScoped
-import mozilla.components.service.merino.manifest.MerinoManifestProvider
 import mozilla.components.support.base.log.logger.Logger
 import mozilla.components.support.base.utils.NamedThreadFactory
 import mozilla.components.support.images.CancelOnDetach
@@ -91,8 +89,9 @@ internal val sharedDiskCache = IconDiskCache()
  * @param httpClient The [Client] used to fetch icons over the network.
  * @param generator The [IconGenerator] to generate an icon if no icon could be loaded.
  * @param memoryInfoProvider Used to check available memory when deciding whether to cache icons.
- * @param manifestProvider An instance of [MerinoManifestProvider] used to look up website metadata for loading an icon.
- * @param preparers List of [IconPreprarer] instances that enrich an [IconRequest] before loading.
+ * @param preparers List of [IconPreprarer] instances that enrich an [IconRequest] before loading. Dejavu leaves out
+ *   the Merino manifest's icons, which all come from Mozilla's image server, so that server never learns which
+ *   popular sites are in the tabs, pins and synced tabs; icons come from the sites themselves.
  * @param loaders List of [IconLoader] instances used to load icons.
  * @param decoders List of [ImageDecoder] instances to use when decoding a loaded icon into a [Bitmap].
  * @param processors List of [IconProcessor] instances that run after an icon is loaded.
@@ -103,10 +102,8 @@ class BrowserIcons(
     httpClient: Client,
     private val generator: IconGenerator = DefaultIconGenerator(),
     private val memoryInfoProvider: MemoryInfoProvider = DefaultMemoryInfoProvider(context),
-    manifestProvider: MerinoManifestProvider = MerinoManifestProvider(context.assets),
     private val preparers: List<IconPreprarer> =
         listOf(
-            MerinoManifestIconPreparer(manifestProvider = manifestProvider),
             MemoryIconPreparer(sharedMemoryCache),
             DiskIconPreparer(sharedDiskCache),
         ),

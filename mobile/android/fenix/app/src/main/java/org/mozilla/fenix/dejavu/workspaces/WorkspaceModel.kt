@@ -27,7 +27,14 @@ data class Workspace(
     val createdAt: Long,
     val updatedAt: Long,
     val device: SyncedDevice? = null,
-)
+) {
+    /**
+     * Whether it looks like the workspace a fresh Dejavu starts with, named [defaultName]: without an icon or a
+     * container, and with the gold theme or none.
+     */
+    fun isLikeNew(defaultName: String): Boolean =
+        name == defaultName && icon == null && containerId == null && (theme == null || theme == WorkspaceTheme.Gold)
+}
 
 /** A kind of device on the Mozilla account whose open tabs a workspace shows, see [Workspace.device]. */
 enum class SyncedDevice(val key: String) {
@@ -138,6 +145,9 @@ data class SplitView(val id: String, val tabIds: List<String>)
  * @property tabTitles Titles the user gave to tabs that are not pinned, by tab ID. Local to this device.
  * @property tabSyncIds Sync ids of open tabs that sync under another id than their own, by tab ID: the id of the pin
  *   they were the tab of, once it was unpinned, so the tab stays the same tab on other devices. Local to this device.
+ * @property openedByPages Open tabs that a page opened by itself, like a pop-up, rather than the user. They stay on
+ *   this device and are never sent to a Firefox computer, until the user moves them to a workspace. Local to this
+ *   device.
  */
 data class WorkspaceState(
     val workspaces: List<Workspace>,
@@ -147,6 +157,7 @@ data class WorkspaceState(
     val splits: List<SplitView> = emptyList(),
     val tabTitles: Map<String, String> = emptyMap(),
     val tabSyncIds: Map<String, String> = emptyMap(),
+    val openedByPages: Set<String> = emptySet(),
 ) {
     val activeIndex: Int
         get() = workspaces.indexOfFirst { it.id == activeWorkspaceId }.coerceAtLeast(0)
@@ -210,6 +221,15 @@ data class WorkspaceState(
         if (folderId in seen) return 0
         val children = pins.filter { it.parentId == folderId && it.isFolder }
         return 1 + (children.maxOfOrNull { folderHeight(it.id, seen + folderId) } ?: 0)
+    }
+
+    /** Returns the IDs of the folders [itemId] is nested in, from its own folder up. */
+    fun ancestorIds(itemId: String): Set<String> {
+        val byId = pins.associateBy { it.id }
+        val result = LinkedHashSet<String>()
+        var parent = byId[itemId]?.parentId
+        while (parent != null && result.add(parent)) parent = byId[parent]?.parentId
+        return result
     }
 
     /** Returns the IDs of every item nested below [folderId]. */

@@ -23,6 +23,7 @@ import org.mozilla.fenix.dejavu.sync.ZenRecords.SPACE_WORK
 import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_ESSENTIAL
 import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_ESSENTIAL_CONTAINER
 import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_PINNED
+import org.mozilla.fenix.dejavu.sync.ZenRecords.TAB_RENAMED
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 import org.robolectric.RobolectricTestRunner
 
@@ -48,7 +49,14 @@ class SpacesSyncEngineTest {
         engine = newEngine()
     }
 
-    private fun newEngine() = SpacesSyncEngine(server, SpacesSyncStore(File(folder.root, "spaces.json")), local)
+    private fun newEngine(clock: SyncClock = SyncClock()) =
+        SpacesSyncEngine(server, SpacesSyncStore(File(folder.root, "spaces.json")), local, clock)
+
+    private fun renameHere(id: String, name: String, at: Long) {
+        local.state = local.state.copy(
+            workspaces = local.state.workspaces.map { if (it.id == id) it.copy(name = name, updatedAt = at) else it },
+        )
+    }
 
     @Test
     fun `pulling Zen's spaces sends nothing back`() = runTest {
@@ -56,7 +64,7 @@ class SpacesSyncEngineTest {
 
         val result = engine.sync(auth)
 
-        assertEquals(SpacesSyncResult.Synced(received = 16, sent = 0, pending = 0), result)
+        assertEquals(SpacesSyncResult.Synced(received = 16, sent = 0, pending = 0, unpinnedTabs = true), result)
         assertEquals(emptyList<List<String>>(), server.uploads)
         assertEquals(listOf(SPACE_PERSONAL, SPACE_WORK), local.state.workspaces.map { it.id })
         assertEquals(setOf(CONTAINER, "builtin-2"), local.containers.map { it.contextId }.toSet())
@@ -69,7 +77,7 @@ class SpacesSyncEngineTest {
         engine.sync(auth)
         server.requests.clear()
 
-        assertEquals(SpacesSyncResult.Synced(received = 0, sent = 0, pending = 0), engine.sync(auth))
+        assertEquals(SpacesSyncResult.Synced(received = 0, sent = 0, pending = 0, unpinnedTabs = true), engine.sync(auth))
 
         assertEquals(
             listOf("GET info/collections", "GET info/configuration", "GET storage/meta/global", "GET storage/crypto/keys"),
@@ -101,9 +109,36 @@ class SpacesSyncEngineTest {
 
         val result = engine.sync(auth)
 
-        assertEquals(SpacesSyncResult.Synced(received = 1, sent = 0, pending = 0), result)
+        assertEquals(SpacesSyncResult.Synced(received = 1, sent = 0, pending = 0, unpinnedTabs = true), result)
         assertEquals("https://example.com/moved", local.state.pins.single { it.id == TAB_PINNED }.url)
         assertEquals(emptyList<List<String>>(), server.uploads)
+    }
+
+    @Test
+    fun `a change made here and one made in Zen are both kept, and the newer of two renames wins`() = runTest {
+        val device = 1_000_000L
+        engine = newEngine(SyncClock { device })
+        server.upload(ZenRecords.desktop())
+        engine.sync(auth)
+        val work = { name: String ->
+            ZenRecords.space(SPACE_WORK, name, listOf(TAB_RENAMED), icon = ZenRecords.STAR_ICON, containerGuid = "builtin-2")
+        }
+        server.upload(listOf(work("Zen name")))
+        renameHere(SPACE_WORK, "Phone name", at = device + 60_000)
+
+        engine.sync(auth)
+
+        val renamed = local.state.workspaces.single { it.id == SPACE_WORK }
+        assertEquals("Phone name" to ZenRecords.STAR_ICON, renamed.name to renamed.icon)
+        val uploaded = server.record(SPACE_WORK)!!.data!!
+        assertEquals("Phone name" to ZenRecords.STAR_ICON, uploaded.string("name") to uploaded.string("icon"))
+
+        server.upload(listOf(work("Zen again")))
+        renameHere(SPACE_WORK, "Older phone name", at = device - 60_000)
+        engine.sync(auth)
+
+        assertEquals("Zen again", local.state.workspaces.single { it.id == SPACE_WORK }.name)
+        assertEquals("Zen again", server.record(SPACE_WORK)!!.data!!.string("name"))
     }
 
     @Test

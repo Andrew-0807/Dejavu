@@ -9,11 +9,27 @@ import android.os.Handler
 import android.os.Looper
 import androidx.core.content.edit
 import androidx.work.WorkManager
+import java.io.File
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import mozilla.components.browser.icons.IconRequest
+import mozilla.components.browser.icons.generator.DefaultIconGenerator
+import mozilla.components.browser.state.action.SearchAction
+import mozilla.components.browser.state.state.availableSearchEngines
+import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
+import mozilla.components.browser.state.store.BrowserStore
+import mozilla.components.concept.engine.Engine
+import mozilla.components.feature.search.ext.createSearchEngine
 import org.mozilla.fenix.R
+import org.mozilla.fenix.components.ADDITIONAL_BUNDLED_SEARCH_ENGINE_IDS
+import org.mozilla.fenix.dejavu.browser.ProtectionSettings
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getPreferenceKey
 import org.mozilla.fenix.onboarding.FenixOnboarding
 import org.mozilla.fenix.settings.ShortcutType
+import org.mozilla.fenix.utils.Settings
 
 /**
  * Fenix preferences Dejavu changes once, so the user can still change them back in Fenix's settings.
@@ -22,9 +38,26 @@ internal object DejavuDefaults {
     // Kept from before the rename to Dejavu, so saved data still loads.
     private const val PREFS_NAME = "kaizen_settings"
     private const val KEY_VERSION = "defaults_version"
-    private const val VERSION = 7
+    private const val VERSION = 11
     private const val POCKET_STORIES_WORK_TAG = "mozilla.components.service.pocket.recommendations.refresh.work.tag"
     private const val POCKET_SPONSORED_WORK_TAG = "mozilla.components.service.pocket.sponsored.content.refresh.work.tag"
+    private const val KEY_SEARCH_VERSION = "search_defaults_version"
+    private const val SEARCH_VERSION = 1
+
+    // The search engines shown above the address bar from the start; the others are turned on in the search settings.
+    private val SHORTCUT_ENGINE_IDS = setOf("google", "ddg", "youtube")
+
+    // Addresses of secure DNS that Cloudflare and NextDNS run for Firefox, and their own public ones.
+    private val FIREFOX_DOH_ADDRESSES = mapOf(
+        "https://mozilla.cloudflare-dns.com/dns-query" to "https://cloudflare-dns.com/dns-query",
+        "https://firefox.dns.nextdns.io/" to "https://dns.nextdns.io/",
+    )
+
+    // Site searches Dejavu adds to the search engines, as a name, a search URL and the site whose letter is their icon.
+    private val ADDED_ENGINES = listOf(
+        Triple("GitHub", "https://github.com/search?q={searchTerms}", "https://github.com"),
+        Triple("Stack Overflow", "https://stackoverflow.com/search?q={searchTerms}", "https://stackoverflow.com"),
+    )
 
     /**
      * Applies the defaults the first time this Dejavu version runs. Runs before telemetry and experiments start, so
@@ -86,8 +119,8 @@ internal object DejavuDefaults {
                 }
             }
             if (applied < 6) {
-                // Dejavu starts on its own home screen, without Firefox's onboarding or its Terms of Use prompt.
-                FenixOnboarding(context).finish()
+                // Dejavu starts on its own home screen, without Firefox's onboarding (marked done below) or its Terms
+                // of Use prompt.
                 isTermsOfUsePromptEnabled = false
             }
             if (applied < 7) {
@@ -103,7 +136,29 @@ internal object DejavuDefaults {
                 isEmailMaskSuggestionEnabled = false
                 stopStoryDownloads = true
             }
+            if (applied < 8) {
+                turnOnSecureDns()
+            }
+            if (applied < 9) {
+                useMaxSecureDns()
+                // The engine writes no crash dumps anymore; the ones older versions wrote can hold parts of pages.
+                File(context.filesDir, "minidumps").deleteRecursively()
+            }
+            if (applied < 10) {
+                useStrictTrackingProtection(context)
+                // Normal tabs tell websites not to sell or share the user's data too. Earlier versions saved it as off
+                // as soon as the tracking protection settings were opened.
+                shouldEnableGlobalPrivacyControl = true
+            }
+            if (applied < 11) {
+                // Dejavu's tracking protection settings show each protection on its own, kept in Firefox's custom
+                // level.
+                ProtectionSettings(context, this).takeOverTrackingProtection()
+            }
         }
+        // Last, as it starts the browser engine (StrictMode's profiler marker does), which reads settings like secure
+        // DNS once, as it starts.
+        if (applied < 6) FenixOnboarding(context).finish()
         prefs.edit { putInt(KEY_VERSION, VERSION) }
         if (stopStoryDownloads) {
             // Downloads scheduled by an earlier version keep running until they are cancelled. The first use of
@@ -114,6 +169,78 @@ internal object DejavuDefaults {
                     cancelAllWorkByTag(POCKET_SPONSORED_WORK_TAG)
                 }
             }
+        }
+    }
+
+    /**
+     * Secure DNS (DNS over HTTPS) is on, through Quad9 unless another provider was picked. Default Protection left it
+     * off in Dejavu and is gone, so it becomes Increased Protection, which falls back to the network's DNS when the
+     * provider cannot be reached.
+     */
+    private fun Settings.turnOnSecureDns() {
+        if (getDohSettingsMode() == Engine.DohSettingsMode.DEFAULT) {
+            setDohSettingsMode(Engine.DohSettingsMode.INCREASED)
+        }
+        FIREFOX_DOH_ADDRESSES[dohProviderUrl]?.let { dohProviderUrl = it }
+    }
+
+    /**
+     * Secure DNS is at Max Protection, so it never falls back to the network's DNS on its own: when the provider cannot
+     * be reached, a warning comes first. Increased Protection, Dejavu's default before, fell back without a word, which
+     * also lost Encrypted Client Hello. Off stays off.
+     */
+    private fun Settings.useMaxSecureDns() {
+        if (getDohSettingsMode() == Engine.DohSettingsMode.INCREASED) {
+            setDohSettingsMode(Engine.DohSettingsMode.MAX)
+        }
+    }
+
+    /**
+     * Enhanced Tracking Protection is Strict, as in IronFox: on top of Standard it blocks tracking content and
+     * fingerprinters, deletes the data of bounce trackers instead of only recording them, and protects against
+     * fingerprinting in normal tabs too. A site it breaks can be let through with the shield in the address bar.
+     * Custom stays Custom.
+     */
+    private fun Settings.useStrictTrackingProtection(context: Context) {
+        if (!useStandardTrackingProtection) return
+        preferences.edit {
+            putBoolean(context.getPreferenceKey(R.string.pref_key_tracking_protection_standard_option), false)
+            putBoolean(context.getPreferenceKey(R.string.pref_key_tracking_protection_strict_default), true)
+        }
+    }
+
+    /**
+     * Picks the search engines shown above the address bar once they have loaded: Google, DuckDuckGo, YouTube and the
+     * default one are on, the others off. GitHub and Stack Overflow join the search engines, off. Someone who already
+     * picked their shortcuts keeps them and only gets the added ones. Their icon is the site's letter, so nothing is
+     * downloaded for them.
+     */
+    fun applySearchShortcutsOnce(context: Context, store: BrowserStore, scope: CoroutineScope) {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        if (prefs.getInt(KEY_SEARCH_VERSION, 0) >= SEARCH_VERSION) return
+        scope.launch(Dispatchers.Main) {
+            val search = store.stateFlow.first { it.search.complete }.search
+            val disabled = search.disabledSearchEngineIds.toSet()
+            if (disabled == ADDITIONAL_BUNDLED_SEARCH_ENGINE_IDS.toSet()) {
+                val shown = SHORTCUT_ENGINE_IDS + setOfNotNull(search.selectedOrDefaultSearchEngine?.id)
+                val engines = search.regionSearchEngines + search.additionalSearchEngines +
+                    search.availableSearchEngines + search.customSearchEngines
+                engines.map { it.id }.distinct().forEach { id ->
+                    val enabled = id in shown
+                    val wasOff = id in disabled
+                    if (enabled == wasOff) {
+                        store.dispatch(SearchAction.UpdateDisabledSearchEngineIdsAction(id, isEnabled = enabled))
+                    }
+                }
+            }
+            val existing = search.customSearchEngines.flatMap { it.resultUrls }.toSet()
+            ADDED_ENGINES.filter { (_, url, _) -> url !in existing }.forEach { (name, url, site) ->
+                val icon = DefaultIconGenerator().generate(context, IconRequest(site)).bitmap
+                val engine = createSearchEngine(name, url, icon)
+                context.components.useCases.searchUseCases.addSearchEngine(engine)
+                store.dispatch(SearchAction.UpdateDisabledSearchEngineIdsAction(engine.id, isEnabled = false))
+            }
+            prefs.edit { putInt(KEY_SEARCH_VERSION, SEARCH_VERSION) }
         }
     }
 }

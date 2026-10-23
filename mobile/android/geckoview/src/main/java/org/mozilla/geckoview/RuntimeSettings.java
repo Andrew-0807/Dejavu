@@ -13,7 +13,9 @@ import androidx.collection.ArrayMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Set;
 import org.mozilla.gecko.EventDispatcher;
+import org.mozilla.gecko.GeckoAppShell;
 import org.mozilla.gecko.util.GeckoBundle;
 
 /**
@@ -352,11 +354,16 @@ public abstract class RuntimeSettings implements Parcelable {
    */
   /* package */ void commitResetPrefs() {
     final ArrayList<String> names = new ArrayList<String>();
+    final Set<String> kept = GeckoAppShell.getKeptUserPrefs();
     forAllPrefs(
         pref -> {
           // Do not reset prefs that don't have a default value
           // and are not set.
           if (!pref.hasDefault() && !pref.isSet()) {
+            return;
+          }
+          // Dejavu: what about:config changed in these stays, see GeckoAppShell.setKeptUserPrefs.
+          if (kept.contains(pref.name)) {
             return;
           }
           names.add(pref.name);

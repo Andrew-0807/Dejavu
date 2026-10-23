@@ -14,6 +14,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mozilla.components.browser.state.action.BrowserAction
 import mozilla.components.browser.state.action.ContentAction
+import mozilla.components.browser.state.action.EngineAction
 import mozilla.components.browser.state.selector.findTab
 import mozilla.components.browser.state.state.BrowserState
 import mozilla.components.lib.state.Middleware
@@ -29,8 +30,8 @@ data class VisitOrigin(val workspaceId: String, val folderId: String?)
 
 /**
  * Remembers, for the pages visited lately, the workspace and folder they were opened in, so History can group them.
- * History itself only knows addresses. Kept in a small file, the [MAX_PAGES] latest pages only. Private tabs are
- * never remembered.
+ * History itself only knows addresses. Kept in a small file, the [MAX_PAGES] latest pages only, and only while history
+ * has them, see [forgetUnvisited]. Private tabs are never remembered.
  */
 class VisitOrigins private constructor(private val file: File) {
     // In access order, so the least recently visited page is the first to go.
@@ -50,6 +51,23 @@ class VisitOrigins private constructor(private val file: File) {
     fun record(url: String, origin: VisitOrigin) {
         val changed = synchronized(origins) { origins.put(url, origin) != origin }
         if (changed) scheduleSave()
+    }
+
+    /**
+     * Forgets the pages history no longer has, like after the user deleted them, in the background. [isVisited] tells
+     * for each page of a list whether history has it.
+     */
+    fun forgetUnvisited(isVisited: suspend (List<String>) -> List<Boolean>) {
+        scope.launch {
+            load()
+            val urls = synchronized(origins) { origins.keys.toList() }
+            if (urls.isEmpty()) return@launch
+            val visited = runCatching { isVisited(urls) }.getOrNull()?.takeIf { it.size == urls.size } ?: return@launch
+            val gone = urls.filterIndexed { index, _ -> !visited[index] }
+            if (gone.isEmpty()) return@launch
+            synchronized(origins) { gone.forEach { origins.remove(it) } }
+            scheduleSave()
+        }
     }
 
     /** Reads the file, keeping what was recorded before it was read as the newer. */
@@ -112,14 +130,28 @@ class VisitOrigins private constructor(private val file: File) {
     }
 }
 
-/** Records in [VisitOrigins] the workspace and folder of each page a normal tab goes to. */
-internal class VisitOriginsMiddleware(private val origins: VisitOrigins) : Middleware<BrowserState, BrowserAction> {
+/**
+ * Records in [VisitOrigins] the workspace and folder of each page a normal tab goes to. Once history is deleted, it
+ * forgets the pages history no longer has, as [isVisited] tells, and the pages closed pinned tabs would reopen on.
+ */
+internal class VisitOriginsMiddleware(
+    private val origins: VisitOrigins,
+    private val isVisited: suspend (List<String>) -> List<Boolean>,
+) : Middleware<BrowserState, BrowserAction> {
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
     override fun invoke(
         store: Store<BrowserState, BrowserAction>,
         next: (BrowserAction) -> Unit,
         action: BrowserAction,
     ) {
         next(action)
+        if (action is EngineAction.PurgeHistoryAction) {
+            origins.forgetUnvisited(isVisited)
+            val repository = WorkspaceRepository.peek() ?: return
+            scope.launch { repository.forgetUnvisitedOpenPages(isVisited) }
+            return
+        }
         if (action !is ContentAction.UpdateUrlAction) return
         val tab = store.state.findTab(action.sessionId)?.takeUnless { it.content.private } ?: return
         if (!action.url.startsWith("http")) return

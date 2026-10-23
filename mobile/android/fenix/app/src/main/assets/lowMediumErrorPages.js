@@ -55,6 +55,7 @@ function injectValues(queryMap) {
     // On the "HTTPS-Only" error page "Try again" doesn't make sense since reloading the page
     // will just show an error page again.
     tryAgainButton.style.display = "none";
+    document.body.classList.add("httpsOnly");
   } else {
     continueHttpButton.style.display = "none";
     backFromHttpButton.style.display = "none";

@@ -65,6 +65,8 @@ import mozilla.components.feature.app.links.RedirectDialogFragment
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.menu.compose.ExpandableMenuItemAnimation
+import org.mozilla.fenix.dejavu.ui.DejavuButtonRow
+import org.mozilla.fenix.dejavu.ui.DejavuFittedText
 import org.mozilla.fenix.ext.runIfFragmentIsAttached
 import org.mozilla.fenix.theme.FirefoxTheme
 
@@ -451,25 +453,21 @@ private fun AppLinkActionButtons(
     onConfirm: () -> Unit,
     onCancel: () -> Unit,
 ) {
-    Row(
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp).fillMaxWidth(),
-        horizontalArrangement = Arrangement.End,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
+    DejavuButtonRow(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp).fillMaxWidth()) {
         TextButton(onClick = onCancel) {
-            Text(
+            DejavuFittedText(
                 text = stringResource(R.string.applinks_prompt_negative_button, appName),
                 style = FirefoxTheme.typography.button,
                 color = MaterialTheme.colorScheme.secondary,
             )
         }
 
-        Spacer(modifier = Modifier.size(8.dp))
-
-        FilledButton(
-            text = stringResource(AppLinksR.string.mozac_feature_applinks_confirm_dialog_confirm_2),
-            onClick = onConfirm,
-        )
+        FilledButton(onClick = onConfirm, containerColor = MaterialTheme.colorScheme.tertiary) {
+            DejavuFittedText(
+                text = stringResource(AppLinksR.string.mozac_feature_applinks_confirm_dialog_confirm_2),
+                style = FirefoxTheme.typography.button,
+            )
+        }
     }
 }
 

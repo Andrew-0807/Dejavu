@@ -6,10 +6,14 @@ package org.mozilla.fenix.dejavu.settings
 
 import android.content.Context
 import mozilla.components.support.test.robolectric.testContext
+import org.json.JSONArray
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mozilla.fenix.dejavu.actions.CustomAction
+import org.mozilla.fenix.dejavu.actions.HttpMethod
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
@@ -33,5 +37,20 @@ class DejavuSettingsTest {
         settings.setEssentialsPerContainerFromSync(true)
         assertFalse(settings.essentialsPerContainer.value)
         assertFalse(newSettings().essentialsPerContainer.value)
+    }
+
+    @Test
+    fun `custom actions an older Dejavu saved in plain text still load, and saved ones load again`() {
+        val action = CustomAction("a", "Karakeep", HttpMethod.POST, "https://example.com", emptyList(), "{}")
+        testContext.getSharedPreferences("kaizen_settings", Context.MODE_PRIVATE).edit()
+            .putString("custom_actions", JSONArray().put(action.toJson()).toString())
+            .commit()
+
+        val settings = newSettings()
+        assertEquals(listOf(action), settings.customActions.value)
+
+        val renamed = action.copy(name = "Linkwarden")
+        settings.saveCustomAction(renamed)
+        assertEquals(listOf(renamed), newSettings().customActions.value)
     }
 }

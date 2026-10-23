@@ -38,11 +38,13 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.SwipeGestureListener
 import org.mozilla.fenix.browser.TabPreview
 import org.mozilla.fenix.components.toolbar.gestures.ToolbarHorizontalGesturesHandler.Companion.GESTURE_FINISH_PERCENT
+import org.mozilla.fenix.dejavu.browser.DejavuTabStrip
+import org.mozilla.fenix.dejavu.browser.SiblingTab
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.maxActiveTime
 
 /** Handles intercepting touch events on the toolbar for swipe gestures and executes the necessary animations. */
-@Suppress("LargeClass", "TooManyFunctions", "LongParameterList")
+@Suppress("LargeClass", "TooManyFunctions")
 class ToolbarHorizontalGesturesHandler(
     private val activity: Activity,
     private val contentLayout: View,
@@ -61,7 +63,8 @@ class ToolbarHorizontalGesturesHandler(
     }
 
     private sealed class Destination {
-        data class Tab(val tab: TabSessionState) : Destination()
+        // Dejavu: [sibling] is the tab of Dejavu's to show, which may be a pinned tab whose tab is closed.
+        data class Tab(val tab: TabSessionState, val sibling: SiblingTab? = null) : Destination()
 
         object None : Destination()
     }
@@ -167,7 +170,7 @@ class ToolbarHorizontalGesturesHandler(
     ) {
         val destination = getDestination()
         if (destination is Destination.Tab && isGestureComplete(velocityX)) {
-            animateToNextTab(destination.tab)
+            animateToNextTab(destination)
         } else {
             animateCanceledGesture(velocityX)
         }
@@ -177,6 +180,8 @@ class ToolbarHorizontalGesturesHandler(
     private fun getDestination(): Destination {
         val isLtr = activity.resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_LTR
         val currentTab = store.state.selectedTab ?: return Destination.None
+        // Dejavu: through the tabs of the shown tab's place, the sleeping ones too, see siblingTabs.
+        DejavuTabStrip.siblings(activity)?.let { return siblingDestination(it, currentTab, isLtr) }
         val tabs =
             store.state.getNormalOrPrivateTabs(currentTab.content.private).filter {
                 it.isActive(maxActiveTime)
@@ -209,6 +214,23 @@ class ToolbarHorizontalGesturesHandler(
                 Destination.None
             }
         }
+    }
+
+    /** The tab of [siblings], the tabs of the place [currentTab] is in, next to it in the gesture's direction. */
+    private fun siblingDestination(
+        siblings: List<SiblingTab>,
+        currentTab: TabSessionState,
+        isLtr: Boolean,
+    ): Destination {
+        val currentIndex = siblings.indexOfFirst { it.key == currentTab.id }
+        if (currentIndex == -1) return Destination.None
+        val forward = (gestureDirection == GestureDirection.RIGHT_TO_LEFT) == isLtr
+        val sibling = siblings.getOrNull(if (forward) currentIndex + 1 else currentIndex - 1) ?: return Destination.None
+        val tab = when (sibling) {
+            is SiblingTab.Open -> sibling.tab
+            is SiblingTab.Closed -> sibling.standIn()
+        }
+        return Destination.Tab(tab, sibling)
     }
 
     private fun preparePreview(destination: Destination) {
@@ -267,7 +289,8 @@ class ToolbarHorizontalGesturesHandler(
         }
     }
 
-    private fun animateToNextTab(tab: TabSessionState) {
+    private fun animateToNextTab(destination: Destination.Tab) {
+        val tab = destination.tab
         val browserFinalXCoordinate: Float =
             when (gestureDirection) {
                 GestureDirection.RIGHT_TO_LEFT -> -windowWidth.toFloat() - previewOffset
@@ -279,7 +302,9 @@ class ToolbarHorizontalGesturesHandler(
             .apply {
                 doOnEnd {
                     contentLayout.translationX = 0f
-                    selectTabUseCase(tab.id)
+                    // Dejavu: a pinned tab whose tab is closed opens.
+                    val sibling = destination.sibling
+                    if (sibling != null) DejavuTabStrip.show(activity, sibling) else selectTabUseCase(tab.id)
                     onTabSwitched.invoke(tab)
 
                     // Fade out the tab preview to prevent flickering

@@ -39,17 +39,12 @@ enum class MoreMenuItem(
     DOWNLOADS("downloads", R.string.dejavu_menu_downloads, iconsR.drawable.mozac_ic_download_24),
     HISTORY("history", R.string.dejavu_menu_history, iconsR.drawable.mozac_ic_history_24),
     TRANSLATE("translate", R.string.dejavu_menu_translate, iconsR.drawable.mozac_ic_translate_24),
-    REPORT_BROKEN_SITE("report_broken_site", R.string.dejavu_menu_report_broken_site, iconsR.drawable.mozac_ic_lightbulb_24),
     PIN_TAB("pin_tab", R.string.dejavu_menu_pin_tab, iconsR.drawable.mozac_ic_pin_24),
     ESSENTIAL_TAB("essential_tab", R.string.dejavu_menu_essential_tab, iconsR.drawable.mozac_ic_grid_add_24),
     SAVE_AS_PDF("save_as_pdf", R.string.dejavu_menu_save_as_pdf, iconsR.drawable.mozac_ic_save_file_24),
     PRINT("print", R.string.dejavu_menu_print, iconsR.drawable.mozac_ic_print_24),
     OPEN_IN_APP("open_in_app", R.string.dejavu_menu_open_in_app, iconsR.drawable.mozac_ic_external_link_24),
-    RESET_PINNED_URL(
-        "reset_pinned_url",
-        R.string.dejavu_menu_reset_pinned_url,
-        iconsR.drawable.mozac_ic_arrow_counter_clockwise_24,
-    ),
+    RESET_PINNED_URL("reset_pinned_url", R.string.dejavu_menu_reset_pinned_url, R.drawable.dejavu_ic_reset_pin_24),
     REPLACE_PINNED_URL("replace_pinned_url", R.string.dejavu_menu_replace_pinned_url, iconsR.drawable.mozac_ic_pin_fill_24),
     SPLIT_VIEW("split_view", R.string.dejavu_menu_split_view, R.drawable.dejavu_ic_split_24),
     SETTINGS("settings", R.string.dejavu_menu_settings, iconsR.drawable.mozac_ic_settings_24),
@@ -101,6 +96,7 @@ val TabAction.menuItem: MoreMenuItem?
         TabAction.PIN, TabAction.UNPIN -> MoreMenuItem.PIN_TAB
         TabAction.ADD_TO_ESSENTIALS, TabAction.REMOVE_FROM_ESSENTIALS -> MoreMenuItem.ESSENTIAL_TAB
         TabAction.RESET_PIN -> MoreMenuItem.RESET_PINNED_URL
+        TabAction.REPLACE_PIN -> MoreMenuItem.REPLACE_PINNED_URL
         TabAction.SPLIT_VIEW, TabAction.UNSPLIT -> MoreMenuItem.SPLIT_VIEW
         else -> null
     }
@@ -150,17 +146,14 @@ object MoreMenuLayout {
         normalized(rows).map { row -> row.mapNotNull { entryOf(it, customActions) } }.filter { it.isNotEmpty() }
 
     /**
-     * [rows] without duplicates or empty rows, with full row entries on rows of their own and at most [MAX_PER_ROW]
-     * entries per row.
+     * [rows] without empty rows, with full row entries on rows of their own and at most [MAX_PER_ROW] entries per row.
+     * An entry can be in the menu more than once.
      */
-    fun normalized(rows: List<List<String>>): List<List<String>> {
-        val seen = mutableSetOf<String>()
-        return rows.flatMap { row ->
-            val keys = row.filter { seen.add(it) }
-            val (full, others) = keys.partition(::isFullRow)
+    fun normalized(rows: List<List<String>>): List<List<String>> =
+        rows.flatMap { row ->
+            val (full, others) = row.partition(::isFullRow)
             full.map { listOf(it) } + others.chunked(MAX_PER_ROW)
         }.filter { it.isNotEmpty() }
-    }
 
     fun toJson(rows: List<List<String>>): String =
         JSONArray().apply { rows.forEach { row -> put(JSONArray(row)) } }.toString()
@@ -176,10 +169,10 @@ object MoreMenuLayout {
 
 /**
  * The buttons of the actions bar below pages, as keys of [MoreMenuEntry]s. Home and Search are buttons like the others,
- * so they can be moved or removed too.
+ * so they can be moved or removed too. A button can be in the bar more than once.
  */
 object ActionsBarLayout {
-    const val MAX_BUTTONS = 7
+    const val MAX_BUTTONS = 5
 
     /** The bar a new install starts with: five buttons, Home in the middle and no Back, since the system Back does that. */
     val DEFAULT: List<String> = listOf(
@@ -208,11 +201,14 @@ object ActionsBarLayout {
         else -> MoreMenuLayout.entryOf(key, customActions)
     }
 
+    /** Whether the entry with [key] can only be in the bar, not in the menu: Home and Search. */
+    fun isBarOnly(key: String): Boolean = key == MoreMenuEntry.Home.key || key == MoreMenuEntry.Search.key
+
     /** Every entry that can be put in the bar. */
     fun available(customActions: List<CustomAction>): List<MoreMenuEntry> =
         listOf(MoreMenuEntry.Home, MoreMenuEntry.Search) + MoreMenuLayout.available(customActions)
 
     /** The entries of [keys], leaving out the ones that no longer exist. */
     fun resolve(keys: List<String>, customActions: List<CustomAction>): List<MoreMenuEntry> =
-        keys.distinct().mapNotNull { entryOf(it, customActions) }.take(MAX_BUTTONS)
+        keys.mapNotNull { entryOf(it, customActions) }.take(MAX_BUTTONS)
 }

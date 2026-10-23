@@ -125,7 +125,7 @@ enum class DejavuFeature(
     ZEN_SYNC(
         R.string.dejavu_feature_zen_sync,
         R.raw.dejavu_feature_zen_sync,
-        listOf(R.string.preferences_account_settings, R.string.dejavu_settings_sync),
+        listOf(R.string.preferences_account_settings, R.string.dejavu_sync_source),
         iconsR.drawable.mozac_ic_avatar_circle_24,
     ),
     FOLDERS(R.string.dejavu_feature_folders, R.raw.dejavu_feature_folders),
@@ -135,7 +135,7 @@ enum class DejavuFeature(
     FIREFOX_SYNC(
         R.string.dejavu_feature_firefox_sync,
         R.raw.dejavu_feature_firefox_sync,
-        listOf(R.string.preferences_account_settings, R.string.dejavu_settings_sync),
+        listOf(R.string.preferences_account_settings, R.string.dejavu_sync_source),
         iconsR.drawable.mozac_ic_avatar_circle_24,
     ),
 }
@@ -246,8 +246,6 @@ fun FeatureTourCard(
     val scope = rememberCoroutineScope()
     val isLast = pagerState.currentPage == pages.lastIndex
     val chapter = pages.getOrNull(pagerState.currentPage)?.first ?: 0
-    val inChapter = pagerState.currentPage - starts[chapter]
-    val chapterSize = chapters.getOrNull(chapter)?.features?.size ?: 0
     val animationHeight = (LocalConfiguration.current.screenHeightDp * ANIMATION_SHARE).dp.coerceAtMost(MAX_ANIMATION)
     fun goTo(page: Int) = scope.launch { pagerState.animateScrollToPage(page) }
 
@@ -282,7 +280,7 @@ fun FeatureTourCard(
             }
             Spacer(Modifier.width(8.dp))
             Text(
-                text = stringResource(R.string.dejavu_features_page, inChapter + 1, chapterSize),
+                text = stringResource(R.string.dejavu_features_page, pagerState.currentPage + 1, pages.size),
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -294,7 +292,8 @@ fun FeatureTourCard(
                 animationHeight = animationHeight,
             )
         }
-        PageDots(count = chapterSize, current = inChapter)
+        // Every page of the tour, the other chapters' too, so that a tour opened on one chapter shows there is more.
+        PageDots(count = pages.size, current = pagerState.currentPage)
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
             verticalAlignment = Alignment.CenterVertically,

@@ -21,14 +21,13 @@ import androidx.compose.ui.graphics.lerp
 import kotlin.random.Random
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
 
-/** Gradients offered when editing a workspace, each a list of ARGB colors. */
+/** Gradients offered when editing a workspace, each a list of ARGB colors. Private browsing's purple is left out. */
 internal val themePresets: List<List<Int>> = listOf(WorkspaceTheme.Gold.colors) + listOf(
     listOf(0xFFFF7E5F, 0xFFFEB47B),
     listOf(0xFFF857A6, 0xFFFF5858),
     listOf(0xFFF12711, 0xFFF5AF19),
     listOf(0xFFFFB88C, 0xFFDE6262),
     listOf(0xFFA18CD1, 0xFFFBC2EB),
-    listOf(0xFF8E2DE2, 0xFF4A00E0),
     listOf(0xFF2193B0, 0xFF6DD5ED),
     listOf(0xFF89F7FE, 0xFF66A6FF),
     listOf(0xFF11998E, 0xFF38EF7D),
@@ -38,9 +37,12 @@ internal val themePresets: List<List<Int>> = listOf(WorkspaceTheme.Gold.colors) 
     listOf(0xFF141E30, 0xFF243B55),
 ).map { colors -> colors.map { it.toInt() } }
 
-/** Emojis offered as workspace icons, written as code points; any other one can be typed. */
+/**
+ * Emojis offered as workspace icons, written as code points; any other one can be typed. Computers and phones are left
+ * out: they mark the workspaces of the devices on the account.
+ */
 internal val iconSuggestions: List<String> = listOf(
-    intArrayOf(0x1F3E0), intArrayOf(0x1F4BC), intArrayOf(0x1F393), intArrayOf(0x1F4BB), intArrayOf(0x1F3AE),
+    intArrayOf(0x1F3E0), intArrayOf(0x1F4BC), intArrayOf(0x1F393), intArrayOf(0x1F3AE),
     intArrayOf(0x1F3B5), intArrayOf(0x1F3AC), intArrayOf(0x1F4DA), intArrayOf(0x1F6D2), intArrayOf(0x2708, 0xFE0F),
     intArrayOf(0x1F354), intArrayOf(0x2615), intArrayOf(0x2764, 0xFE0F), intArrayOf(0x2B50), intArrayOf(0x1F525),
     intArrayOf(0x1F331), intArrayOf(0x1F319), intArrayOf(0x2600, 0xFE0F), intArrayOf(0x1F3A8), intArrayOf(0x1F4F7),

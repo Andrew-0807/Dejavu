@@ -36,38 +36,19 @@
             android:title="@string/preferences_sync_now"
             app:iconSpaceReserved="false" />
 
-    </PreferenceCategory>
-
-    <!-- Dejavu: syncing workspaces with Firefox or Zen, see DejavuAccountSync. -->
-    <PreferenceCategory
-        android:key="@string/pref_key_dejavu_sync_category"
-        android:layout="@layout/preference_category_with_summary_no_icon_style"
-        android:title="@string/dejavu_settings_sync">
-
-        <org.mozilla.fenix.settings.account.AccountSettingsSwitchPreference
-            android:key="@string/pref_key_dejavu_sync_enabled"
-            android:persistent="false"
-            android:title="@string/dejavu_sync_enabled"
-            app:icon="@drawable/mozac_ic_sync_tabs_24" />
-
+        <!-- Dejavu: which browser workspaces sync with, see DejavuAccountSync. -->
         <Preference
             android:key="@string/pref_key_dejavu_sync_source"
             android:persistent="false"
             android:title="@string/dejavu_sync_source"
-            app:icon="@drawable/mozac_ic_device_desktop_24" />
-
-        <org.mozilla.fenix.settings.account.AccountSettingsSwitchPreference
-            android:key="@string/pref_key_dejavu_sync_normal_tabs"
-            android:persistent="false"
-            android:title="@string/dejavu_sync_normal_tabs"
-            app:icon="@drawable/mozac_ic_tab_tray_24" />
+            app:iconSpaceReserved="false" />
 
         <Preference
             android:key="@string/pref_key_dejavu_sync_turn_on"
             android:persistent="false"
             android:title="@string/dejavu_sync_turn_on"
             android:visible="false"
-            app:icon="@drawable/mozac_ic_sync_24" />
+            app:iconSpaceReserved="false" />
 
         <Preference
             android:key="@string/pref_key_dejavu_sync_hint"
@@ -81,6 +62,20 @@
         android:key="@string/preferences_sync_category"
         android:layout="@layout/preference_category_with_summary_no_icon_style"
         android:title="@string/preferences_sync_category">
+
+        <!-- Dejavu: Zen's spaces sync, see DejavuAccountSync. -->
+        <org.mozilla.fenix.settings.account.AccountSettingsSwitchPreference
+            android:key="@string/pref_key_dejavu_sync_enabled"
+            android:persistent="false"
+            android:title="@string/dejavu_sync_enabled"
+            app:icon="@drawable/mozac_ic_sync_tabs_24" />
+
+        <org.mozilla.fenix.settings.account.AccountSettingsSwitchPreference
+            android:key="@string/pref_key_dejavu_sync_normal_tabs"
+            android:persistent="false"
+            android:title="@string/dejavu_sync_normal_tabs"
+            android:summary="@string/dejavu_sync_normal_tabs_summary"
+            app:icon="@drawable/mozac_ic_tab_tray_24" />
 
         <org.mozilla.fenix.settings.account.AccountSettingsSwitchPreference
             android:defaultValue="true"

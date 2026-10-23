@@ -23,8 +23,10 @@ import mozilla.components.ui.widgets.SnackbarDelegate
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.NewTabContainerChoice
 import org.mozilla.fenix.dejavu.containers.ContainerPick
+import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.containers.drawable
+import org.mozilla.fenix.dejavu.containers.splitTemporary
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.workspaces.Workspace
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
@@ -101,18 +103,28 @@ private class LinkOpener(
     }
 
     fun pickContainer(parent: SessionState, url: String) {
-        val containers = DejavuContainerStorage.get(context).records.value.orEmpty()
-        val (temporary, permanent) = containers.partition { it.temporary }
-        val choices = listOf<Choice<ContainerPick>>(
-            Choice(context.getString(R.string.dejavu_workspace_no_container), tinted(R.drawable.dejavu_ic_no_container_24), ContainerPick.NoContainer),
-            Choice(
-                context.getString(R.string.dejavu_new_temporary_container),
-                tinted(R.drawable.dejavu_ic_temporary_container_24),
-                ContainerPick.Temporary,
-            ),
-        ) + (permanent + temporary.sortedWith(compareBy({ it.name.length }, { it.name }))).map { record ->
+        val (permanent, temporary) = DejavuContainerStorage.get(context).records.value.orEmpty().splitTemporary()
+        fun containerChoice(record: ContainerRecord): Choice<ContainerPick> {
             val drawable = icon(record.icon.drawable)?.apply { setTint(record.color.argb.toInt()) }
-            Choice<ContainerPick>(record.name, drawable, ContainerPick.Container(record.contextId))
+            return Choice(record.name, drawable, ContainerPick.Container(record.contextId))
+        }
+        val choices = buildList<Choice<ContainerPick>> {
+            add(
+                Choice(
+                    context.getString(R.string.dejavu_workspace_no_container),
+                    tinted(R.drawable.dejavu_ic_no_container_24),
+                    ContainerPick.NoContainer,
+                ),
+            )
+            permanent.forEach { add(containerChoice(it)) }
+            add(
+                Choice(
+                    context.getString(R.string.dejavu_new_temporary_container),
+                    tinted(R.drawable.dejavu_ic_temporary_container_24),
+                    ContainerPick.Temporary,
+                ),
+            )
+            temporary.forEach { add(containerChoice(it)) }
         }
         showPicker(R.string.dejavu_link_open_in_container, choices) { choice ->
             val repository = WorkspaceRepository.peek() ?: return@showPicker

@@ -11,4 +11,9 @@ object DejavuLinks {
     const val ISSUES = "$SOURCE_CODE/issues"
     const val PRIVACY_POLICY = "$SOURCE_CODE/blob/main/PRIVACY.md"
     const val BUY_ME_A_COFFEE = "https://buymeacoffee.com/ByArchitect"
+
+    /** The Google Play release's package. Every build rates that one, as no other build has a Play listing. */
+    const val PLAY_STORE_ID = "com.byarchitect.dejavu"
+    const val PLAY_STORE_APP_LISTING = "market://details?id=$PLAY_STORE_ID"
+    const val PLAY_STORE_WEB_LISTING = "https://play.google.com/store/apps/details?id=$PLAY_STORE_ID"
 }

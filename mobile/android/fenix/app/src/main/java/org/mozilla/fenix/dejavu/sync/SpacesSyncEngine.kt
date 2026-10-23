@@ -28,7 +28,10 @@ internal interface SpacesLocalData {
     /** Creates container [contextId], or updates its name, color and icon. */
     suspend fun saveContainer(contextId: String, name: String, color: ContainerColor, icon: ContainerState.Icon)
 
-    /** Deletes container [contextId]; its tabs move out of it. */
+    /**
+     * Deletes container [contextId], which another device deleted: its open tabs close, as they did there, and its
+     * pinned tabs stay, without the container.
+     */
     suspend fun removeContainer(contextId: String)
 
     fun builtinName(container: BuiltinContainer): String
@@ -42,8 +45,16 @@ internal interface SpacesLocalData {
 
 /** How a sync ended when it did not throw. */
 internal sealed interface SpacesSyncResult {
-    /** Synced; counts of records received, sent and still waiting to apply. */
-    data class Synced(val received: Int, val sent: Int, val pending: Int) : SpacesSyncResult
+    /**
+     * Synced; counts of records received, sent and still waiting to apply, and whether the server has tabs that are
+     * not pinned, which only a device that syncs them puts there.
+     */
+    data class Synced(
+        val received: Int,
+        val sent: Int,
+        val pending: Int,
+        val unpinnedTabs: Boolean = false,
+    ) : SpacesSyncResult
 
     /** Firefox Sync has not set up this account's storage yet; Firefox's own sync does it. */
     data object NotSetUp : SpacesSyncResult
@@ -64,8 +75,9 @@ internal sealed interface SpacesSyncResult {
  * essentials, folders and their order.
  *
  * Like Zen, it never tracks individual changes. It compares what Dejavu's data maps to ([SpacesProjector]) with the
- * server's copy of each record, and uploads the difference. Incoming records always apply first, and a record Dejavu
- * applied maps back to itself, so a sync never sends back what it just received.
+ * server's copy of each record, and uploads the difference. Incoming records apply first, keeping the changes made here
+ * that they would undo ([keepLocalChanges]), and a record Dejavu applied maps back to itself, so a sync never sends
+ * back what it just received, only the changes it kept.
  */
 internal class SpacesSyncEngine(
     private val http: SyncHttp,
@@ -140,16 +152,21 @@ internal class SpacesSyncEngine(
         }
         var collectionModified = data.lastModified
         val incoming = LinkedHashMap<String, SpacesRecord>()
+        val incomingTimes = HashMap<String, Double>()
         if (serverModified != null && (data.lastModified == null || isNewerTimestamp(serverModified, data.lastModified))) {
-            collectionModified = download(client, keys, data.lastModified, incoming) ?: serverModified
+            collectionModified = download(client, keys, data.lastModified, incoming, incomingTimes) ?: serverModified
         }
         log("Downloaded ${incoming.size} records")
 
         val batch = LinkedHashMap<String, SpacesRecord>()
         data.failed.values.forEach { batch[it.id] = it }
-        unopenedTabs(local.read(), data).forEach { batch[it.id] = it }
+        val beforeApplying = local.read()
+        data.seen.keys.removeAll(beforeApplying.forgotten)
+        unopenedTabs(beforeApplying, data).forEach { batch[it.id] = it }
         batch.putAll(incoming)
-        if (batch.isNotEmpty()) applyIncoming(batch.values.toList(), data)
+        if (batch.isNotEmpty()) {
+            applyIncoming(batch.values.toList(), data, keptHere(batch.values, beforeApplying, data, incomingTimes))
+        }
         data.lastModified = collectionModified
         store.save(data)
 
@@ -181,7 +198,12 @@ internal class SpacesSyncEngine(
         }
         data.lastSynced = clock.millis()
         store.save(data)
-        return SpacesSyncResult.Synced(received = incoming.size, sent = sent, pending = data.failed.size)
+        return SpacesSyncResult.Synced(
+            received = incoming.size,
+            sent = sent,
+            pending = data.failed.size,
+            unpinnedTabs = data.server.values.any { it.isNormalTab },
+        )
     }
 
     /**
@@ -268,12 +290,16 @@ internal class SpacesSyncEngine(
         return bundle
     }
 
-    /** Downloads the records changed since [since] into [into] and returns the collection's server time. */
+    /**
+     * Downloads the records changed since [since] into [into], with the server time each was written at into [times],
+     * and returns the collection's server time.
+     */
     private fun download(
         client: StorageClient,
         keys: KeyBundle,
         since: String?,
         into: MutableMap<String, SpacesRecord>,
+        times: MutableMap<String, Double>,
     ): String? {
         var modified: String? = null
         var offset: String? = null
@@ -301,7 +327,12 @@ internal class SpacesSyncEngine(
                     cleartext.string("id")?.let { check(it == id) { "Record id mismatch" } }
                     SpacesRecord.fromCleartext(id, cleartext)
                 }.getOrNull()
-                if (record == null) skipped++ else into[id] = record
+                if (record == null) {
+                    skipped++
+                } else {
+                    into[id] = record
+                    bso.optDouble("modified").takeUnless { it.isNaN() }?.let { times[id] = it }
+                }
             }
             offset = response.header("X-Weave-Next-Offset")
         } while (offset != null)
@@ -310,13 +341,45 @@ internal class SpacesSyncEngine(
     }
 
     /**
-     * Applies [records]: containers first, including Firefox's default containers the records use, then everything
-     * else, then deleted containers once nothing relies on them.
+     * The records to apply in place of some of [records], by id: those that keep changes made here, see
+     * [keepLocalChanges]. [times] has the server time of the downloaded records.
      */
-    private suspend fun applyIncoming(records: List<SpacesRecord>, data: SpacesSyncData) {
+    private fun keptHere(
+        records: Collection<SpacesRecord>,
+        current: LocalSpaces,
+        data: SpacesSyncData,
+        times: Map<String, Double>,
+    ): Map<String, SpacesRecord> {
+        val projected = SpacesProjector(current, data.server, data.seen).project().records
+        val changedAt = HashMap<String, Long>()
+        current.containers.forEach { changedAt[it.contextId] = it.updatedAt }
+        current.state.workspaces.forEach { changedAt[it.id] = it.updatedAt }
+        current.state.pins.forEach { changedAt[it.id] = it.updatedAt }
+        val kept = LinkedHashMap<String, SpacesRecord>()
+        for (record in records) {
+            val localTime = changedAt[record.id]?.let(clock::serverSecondsAt)
+            val merged = keepLocalChanges(record, data.server[record.id], projected[record.id], times[record.id], localTime)
+            if (merged !== record) kept[record.id] = merged
+        }
+        if (kept.isNotEmpty()) log("Keeping changes made here in ${kept.keys.joinToString()}")
+        return kept
+    }
+
+    /**
+     * Applies [records]: containers first, including Firefox's default containers the records use, then everything
+     * else, then deleted containers once nothing relies on them. The records of [keptHere] are applied in place of
+     * theirs, which the server keeps.
+     */
+    private suspend fun applyIncoming(
+        records: List<SpacesRecord>,
+        data: SpacesSyncData,
+        keptHere: Map<String, SpacesRecord> = emptyMap(),
+    ) {
+        val received = records.associateBy { it.id }
+        val toApply = records.map { keptHere[it.id] ?: it }
         val before = local.read()
         val localContainers = before.containers.filterNot { it.temporary }.associateBy { it.contextId }
-        val (containerRecords, others) = records.partition { record ->
+        val (containerRecords, others) = toApply.partition { record ->
             record.kind == RecordKind.CONTAINER ||
                 (record.deleted && (record.id in localContainers || data.server[record.id]?.kind == RecordKind.CONTAINER))
         }
@@ -329,6 +392,8 @@ internal class SpacesSyncEngine(
         }
         addBuiltinContainers(others)
         val containerIds = local.read().containers.filterNot { it.temporary }.map { it.contextId }.toSet()
+        val removedContainers = data.server.values.filter { it.deleted }.map { it.id }.toSet() +
+            containerRecords.filter { it.deleted }.map { it.id }
 
         val applier = SpacesApplier(
             server = data.server.toMap(),
@@ -338,6 +403,7 @@ internal class SpacesSyncEngine(
             now = clock.millis(),
             normalTabs = before.normalTabs,
             tabs = before.tabs?.associateBy { it.id },
+            removedContainers = removedContainers,
         )
         val result = local.update { state -> applier.apply(state, others).let { it.state to it } }
         applied += result.applied
@@ -356,11 +422,11 @@ internal class SpacesSyncEngine(
         }
 
         applied.forEach {
-            data.server[it.id] = it
+            data.server[it.id] = received[it.id] ?: it
             data.failed.remove(it.id)
         }
-        failed.forEach { data.failed[it.id] = it }
-        records.filter { it !in applied && it !in failed }.forEach { data.failed.remove(it.id) }
+        failed.forEach { data.failed[it.id] = received[it.id] ?: it }
+        toApply.filter { it !in applied && it !in failed }.forEach { data.failed.remove(it.id) }
         log("Applied ${applied.size} records, ${failed.size} waiting for records they need")
     }
 

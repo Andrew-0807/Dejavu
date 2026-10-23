@@ -22,6 +22,7 @@ import java.security.InvalidParameterException
 import java.util.concurrent.TimeUnit.MILLISECONDS
 import mozilla.components.concept.engine.Engine
 import mozilla.components.concept.engine.Engine.HttpsOnlyMode
+import mozilla.components.feature.automotive.isAndroidAutomotiveAvailable
 import mozilla.components.feature.sitepermissions.SitePermissionsRules
 import mozilla.components.feature.sitepermissions.SitePermissionsRules.Action
 import mozilla.components.feature.sitepermissions.SitePermissionsRules.AutoplayAction
@@ -168,8 +169,11 @@ class Settings(
         /** DoH is disabled, corresponds to TRR_MODE_DISABLED (5) from GeckoView */
         private const val DOH_SETTINGS_OFF = 5
 
-        /** Bug 1946867 - Currently "hardcoded" to the DoH TRR URI of Cloudflare */
-        private const val CLOUDFLARE_URI = "https://mozilla.cloudflare-dns.com/dns-query"
+        /**
+         * Bug 1946867 - Currently "hardcoded". Dejavu: Quad9's own address, not one that a provider runs for Firefox
+         * under Mozilla's agreements.
+         */
+        private const val QUAD9_URI = "https://dns.quad9.net/dns-query"
     }
 
     private val logger = Logger("Settings")
@@ -523,6 +527,12 @@ class Settings(
     var isUserSkyflagAttributed by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_is_user_skyflag_attributed),
+            default = false,
+        )
+
+    var isUserQuoraAttributed by
+        booleanPreference(
+            appContext.getPreferenceKey(R.string.pref_key_is_user_quora_attributed),
             default = false,
         )
 
@@ -1221,10 +1231,11 @@ class Settings(
             }
         }
 
+    // Dejavu: off in every build, as in the F-Droid build before.
     var whatsappLinkSharingEnabled by
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_link_sharing),
-            default = { FxNimbus.features.sentFromFirefox.value().enabled },
+            default = false,
         )
 
     var linkSharingSettingsSnackbarShown by
@@ -1286,10 +1297,11 @@ class Settings(
             default = false,
         )
 
+    // Dejavu: HTTPS-Only is on by default in all tabs, so pages that cannot load over https ask before using http.
     var shouldUseHttpsOnly by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_https_only),
-            default = false,
+            default = true,
         )
 
     var shouldUseHttpsOnlyInAllTabs by
@@ -1310,10 +1322,11 @@ class Settings(
             default = true,
         )
 
+    // Dejavu: normal tabs tell websites not to sell or share the user's data too, as private tabs always do.
     var shouldEnableGlobalPrivacyControl by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_privacy_enable_global_privacy_control),
-            false,
+            true,
         )
 
     /**
@@ -1526,6 +1539,25 @@ class Settings(
             }
 
             field = value
+        }
+
+    /**
+     * The state of the OS power saving (battery saver) mode the last time it was observed, or `null` if it has never
+     * been observed. Persisted so that a change made while the app process was not running is still detected the next
+     * time the app starts.
+     */
+    var lastKnownPowerSaveMode: Boolean?
+        get() {
+            val key = appContext.getPreferenceKey(R.string.pref_key_last_known_power_save_mode)
+
+            return if (preferences.contains(key)) preferences.getBoolean(key, false) else null
+        }
+        set(value) {
+            val key = appContext.getPreferenceKey(R.string.pref_key_last_known_power_save_mode)
+
+            preferences.edit {
+                if (value == null) remove(key) else putBoolean(key, value)
+            }
         }
 
     var shouldDeleteBrowsingDataOnQuit by
@@ -1958,16 +1990,23 @@ class Settings(
             default = true,
         )
 
+    /**
+     * Whether this device supports the application's own autofill and password management. Both are disabled on Android
+     * Automotive OS for now until we meet specific Google requirements around protecting passwords and credit card
+     * information in cars.
+     */
+    val isAutofillSupported: Boolean by lazy { !appContext.isAndroidAutomotiveAvailable() }
+
     var shouldPromptToSaveLogins by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_save_logins),
-            default = true,
+            default = { isAutofillSupported },
         )
 
     var shouldAutofillLogins by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_autofill_logins),
-            default = true,
+            default = { isAutofillSupported },
         )
 
     /**
@@ -2323,7 +2362,7 @@ class Settings(
     var shouldAutofillCreditCardDetails by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_credit_cards_save_and_autofill_cards),
-            default = true,
+            default = { isAutofillSupported },
         )
 
     /**
@@ -2334,7 +2373,7 @@ class Settings(
     var shouldAutofillAddressDetails by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_addresses_save_and_autofill_addresses),
-            default = true,
+            default = { isAutofillSupported },
         )
 
     /** Indicates if the Contile functionality should be visible. */
@@ -2449,6 +2488,10 @@ class Settings(
             key = appContext.getPreferenceKey(R.string.pref_key_continuous_onboarding_day_seven_completed_timestamp),
             default = -1L,
         )
+
+    /** Indicates if continuous onboarding has been completed, meaning its final day-7 stage has finished. */
+    val continuousOnboardingCompleted: Boolean
+        get() = seventhDayOnboardingCompletedTimestamp != -1L
 
     /** Indicates if the marketing onboarding card should be shown to the user. */
     var shouldShowMarketingOnboarding by
@@ -2592,13 +2635,6 @@ class Settings(
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_enable_ads_client_for_stories),
             default = { FxNimbus.features.adsClientForStories.value().enabled },
-        )
-
-    /** Indicates if Add Shortcuts improvement is enabled. */
-    var enableAddShortcutsImprovement by
-        booleanPreference(
-            key = appContext.getPreferenceKey(R.string.pref_key_enable_add_shortcuts_improvement),
-            default = { FxNimbus.features.addShortcutsImprovement.value().enabled },
         )
 
     /** Indicates if more shortcuts should be shown. */
@@ -2881,17 +2917,6 @@ class Settings(
         get() = FxNimbus.features.ipProtection.value().enabled || isIPProtectionEnabled
 
     /**
-     * Persists IPProtection locations state set through Secret Settings.
-     *
-     * `true` makes the IPProtection location UI elements interactable.
-     */
-    var isIPProtectionLocationsEnabled by
-        booleanPreference(
-            key = appContext.getPreferenceKey(R.string.pref_key_enable_ip_protection_locations),
-            default = Config.channel.isDebug,
-        )
-
-    /**
      * Tracks how many times the summarize menu item has been shown. Used to control highlight/badge visibility for
      * feature discovery.
      */
@@ -2975,14 +3000,11 @@ class Settings(
             default = false,
         )
 
-    /**
-     * Feature flag that indicates if the "Check Archived Version" button is shown on eligible error pages. Off by
-     * default; the toggle is only exposed via secret settings on Nightly.
-     */
+    /** Feature flag that indicates if the "Check Archived Version" button is shown on eligible error pages. */
     var isWaybackMachineEnabled by
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_enable_wayback_machine),
-            default = false,
+            default = { FxNimbus.features.waybackMachine.value().enabled },
         )
 
     /** Indicates if the Set as default Browser prompt should be displayed to the user. */
@@ -2990,6 +3012,8 @@ class Settings(
         nimbusFeature: DefaultBrowserPrompt = FxNimbus.features.defaultBrowserPrompt.value()
     ): Boolean {
         if (!nimbusFeature.enabled) return false
+
+        if (continuousOnboardingFeatureEnabled && !continuousOnboardingCompleted) return false
 
         val now = currentTimeMillis()
 
@@ -3108,12 +3132,12 @@ class Settings(
 
     /**
      * Stores the URI of the default DoH provider. Bug 1946867 - Currently "hardcoded" to
-     * "https://mozilla.cloudflare-dns.com/dns-query"
+     * "https://dns.quad9.net/dns-query"
      */
     val dohDefaultProviderUrl by
         stringPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_doh_default_provider_uri),
-            default = CLOUDFLARE_URI,
+            default = QUAD9_URI,
         )
 
     /** Stores a set of domains that are excluded from using DNS over HTTPS. */
@@ -3309,7 +3333,7 @@ class Settings(
     var nativeShareSheetEnabled by
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_native_share_sheet),
-            default = { FxNimbus.features.nativeShareSheet.value().enabled },
+            default = true,
         )
 
     var googleLensIntegrationEnabled by
@@ -3461,4 +3485,91 @@ class Settings(
             key = appContext.getPreferenceKey(R.string.pref_key_enable_account_settings_new_ui),
             default = { true },
         )
+
+    /** Dejavu: whether Google Safe Browsing warns about dangerous sites. Off, Dejavu does not contact Google for it. */
+    var safeBrowsingEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_safe_browsing),
+            default = true,
+        )
+
+    /** Dejavu: whether the JavaScript JIT compilers run. Off is safer and slower. */
+    var jitEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_jit),
+            default = true,
+        )
+
+    /** Dejavu: whether pages can draw 3D graphics with WebGL. */
+    var webGlEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_webgl),
+            default = true,
+        )
+
+    /**
+     * Dejavu: whether WebRTC calls may connect directly, which shows sites and call partners the phone's IP address.
+     * Off, they connect only through the site's relay servers.
+     */
+    var directCallConnections by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_direct_calls),
+            default = false,
+        )
+
+    /**
+     * Dejavu: whether websites may get the location from Android's network location too, which on phones with Google
+     * Play Services asks Google. Off, it comes from GPS only.
+     */
+    var networkLocationEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_network_location),
+            default = false,
+        )
+
+    /** Dejavu: whether the tracking parts that sites add to links, like fbclid, are removed before a page opens. */
+    var stripLinkTracking by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_strip_link_tracking),
+            default = true,
+        )
+
+    private var powerSavingModeAutoPreference by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_power_saving_mode_auto_enabled),
+            default = false,
+        )
+
+    private var powerSavingModeManuallyPreference by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_power_saving_mode_manually_enabled),
+            default = false,
+        )
+
+    /**
+     * Indicates if Power Saving Mode should turn on automatically whenever the OS reports that power save (battery
+     * saver) mode is active. Mutually exclusive with [powerSavingModeManuallyEnabled], which is turned off whenever
+     * this is turned on.
+     */
+    var powerSavingModeAutoEnabled: Boolean
+        get() = powerSavingModeAutoPreference
+        set(value) {
+            powerSavingModeAutoPreference = value
+            if (value) {
+                powerSavingModeManuallyPreference = false
+            }
+        }
+
+    /**
+     * Indicates if Power Saving Mode is enabled manually, regardless of the OS power save (battery saver) mode.
+     * Mutually exclusive with [powerSavingModeAutoEnabled], which is turned off whenever this is turned on.
+     */
+    var powerSavingModeManuallyEnabled: Boolean
+        get() = powerSavingModeManuallyPreference
+        set(value) {
+            powerSavingModeManuallyPreference = value
+            if (value) {
+                powerSavingModeAutoPreference = false
+            }
+        }
 }

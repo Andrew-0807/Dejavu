@@ -193,6 +193,41 @@ class FirefoxMirrorTest {
     }
 
     @Test
+    fun `closing one of two same tabs here sends nothing, as Firefox would close both, and closing the other does`() {
+        val first = sync(tabsRecord("Laptop", listOf(tab(NEWS, index = 1), tab(NEWS, index = 2))))
+        val confirmed = confirm(first)
+        val (one, other) = confirmed.single().tabs.map { it.id }
+
+        val oneClosed = mirror(first.tabs().filterNot { it.id == one }).findClosedHere(first.state, confirmed)
+
+        assertEquals(1, oneClosed.marked)
+        assertTrue(oneClosed.commands.isEmpty())
+        val bothClosed = mirror(first.tabs().filterNot { it.id == one || it.id == other })
+            .findClosedHere(first.state, oneClosed.devices)
+        assertEquals(mapOf(LAPTOP_DEVICE to listOf(NEWS)), bothClosed.commands)
+    }
+
+    @Test
+    fun `a pinned tab unpinned here stays an unpinned tab while Firefox leaves it as it was`() {
+        val first = sync(FirefoxFixtures.laptopTabs())
+        val mailId = idOf(first, MAIL)
+        val unpinnedTab = LocalTab("tab-7", MAIL, "Mail", null, awake = false)
+        val state = first.state.copy(
+            pins = first.state.pins.filterNot { it.id == mailId },
+            assignments = first.state.assignments + ("tab-7" to workspaceId),
+            tabSyncIds = mapOf("tab-7" to mailId),
+        )
+        val tabs = first.tabs() + unpinnedTab
+
+        val again = sync(FirefoxFixtures.laptopTabs(), state, confirm(first), tabs)
+
+        assertTrue(again.state.pins.none { it.id == mailId })
+        assertEquals(workspaceId, again.state.assignments["tab-7"])
+        assertTrue(again.ops.isEmpty())
+        assertEquals(0, mirror(tabs).findClosedHere(again.state, again.devices).marked)
+    }
+
+    @Test
     fun `a tab gone before it was ever seen here is shown again rather than closed in Firefox`() {
         val first = sync(FirefoxFixtures.laptopTabs())
         val lost = first.state.copy(pins = first.state.pins.filterNot { it.url == MAIL })

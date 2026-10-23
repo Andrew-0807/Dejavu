@@ -22,8 +22,8 @@ class DefaultDohSettingsProviderTest {
     private val settings =
         DefaultSettings(
             dohSettingsMode = Engine.DohSettingsMode.INCREASED,
-            dohProviderUrl = DefaultDohSettingsProvider.nextDnsUri,
-            dohDefaultProviderUrl = DefaultDohSettingsProvider.cloudflareUri,
+            dohProviderUrl = DefaultDohSettingsProvider.mullvadUri,
+            dohDefaultProviderUrl = DefaultDohSettingsProvider.quad9Uri,
             dohExceptionsList = listOf("example.com", "example2.com", "example3.com"),
         )
     private val fakeEngine = FakeEngine(expectedSettings = settings)
@@ -38,8 +38,8 @@ class DefaultDohSettingsProviderTest {
                 settings = appSettings,
             )
         every { appSettings.getDohSettingsMode() } returns Engine.DohSettingsMode.INCREASED
-        every { appSettings.dohProviderUrl } returns DefaultDohSettingsProvider.nextDnsUri
-        every { appSettings.dohDefaultProviderUrl } returns DefaultDohSettingsProvider.cloudflareUri
+        every { appSettings.dohProviderUrl } returns DefaultDohSettingsProvider.mullvadUri
+        every { appSettings.dohDefaultProviderUrl } returns DefaultDohSettingsProvider.quad9Uri
         every { appSettings.dohExceptionsList } returns
             setOf(
                 "example.com",
@@ -56,6 +56,43 @@ class DefaultDohSettingsProviderTest {
         // Verify that the default is what is available in the settings
         val defaultProvider = providers.filterIsInstance<Provider.BuiltIn>().find { it.default }
         assertEquals(settings.dohDefaultProviderUrl, defaultProvider?.url)
+    }
+
+    @Test
+    fun `WHEN getProtectionLevels is called, Default protection is not offered`() {
+        assertEquals(
+            listOf(ProtectionLevel.Increased, ProtectionLevel.Max, ProtectionLevel.Off),
+            settingsProvider.getProtectionLevels(),
+        )
+    }
+
+    @Test
+    fun `WHEN getDefaultProviders is called, Quad9, Mullvad and Cloudflare come before the custom provider`() {
+        val providers = settingsProvider.getDefaultProviders()
+
+        assertEquals(
+            listOf(
+                DefaultDohSettingsProvider.quad9Uri,
+                DefaultDohSettingsProvider.mullvadUri,
+                DefaultDohSettingsProvider.cloudflareUri,
+            ),
+            providers.filterIsInstance<Provider.BuiltIn>().map { it.url },
+        )
+        assertTrue(providers.last() is Provider.Custom)
+    }
+
+    @Test
+    fun `WHEN no provider was picked, getSelectedProvider returns the default provider`() {
+        every { appSettings.dohProviderUrl } returns ""
+
+        assertEquals(DefaultDohSettingsProvider.quad9Uri, settingsProvider.getSelectedProvider()?.url)
+    }
+
+    @Test
+    fun `WHEN the picked provider is not a built-in one, getSelectedProvider returns the custom provider`() {
+        every { appSettings.dohProviderUrl } returns "https://dns.example/dns-query"
+
+        assertTrue(settingsProvider.getSelectedProvider() is Provider.Custom)
     }
 
     @Test

@@ -1,0 +1,235 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+package org.mozilla.fenix.dejavu.browser
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.painter.BitmapPainter
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import mozilla.components.browser.state.search.SearchEngine
+import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
+import mozilla.components.lib.state.ext.observeAsComposableState
+import mozilla.components.ui.icons.R as iconsR
+import org.mozilla.fenix.R
+import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchEngineSelected
+import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchStarted
+import org.mozilla.fenix.components.components
+import org.mozilla.fenix.dejavu.NewTabContainerChoice
+import org.mozilla.fenix.dejavu.containers.ContainerIcon
+import org.mozilla.fenix.dejavu.containers.ContainerPick
+import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
+import org.mozilla.fenix.dejavu.containers.TemporaryContainerIcon
+import org.mozilla.fenix.dejavu.settings.DejavuSettings
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
+import org.mozilla.fenix.search.ext.searchEngineShortcuts
+
+/** Where a new tab opens, as the chips above the address bar offer it. */
+private sealed interface TabPlace {
+    data class Container(val contextId: String) : TabPlace
+    data object Temporary : TabPlace
+    data object Private : TabPlace
+}
+
+/**
+ * The chips above the address bar while searching. For a search that opens a new tab ([newTab]), the first line has the
+ * containers it can open in, a new temporary container and a private tab, with the workspace's own choice picked:
+ * its default container, a temporary container when every new tab gets one, or nothing. Below are the search engines,
+ * the one searched with picked. They take the place of the search engine button of the address bar.
+ */
+@Composable
+fun DejavuSearchChips(newTab: Boolean, modifier: Modifier = Modifier) {
+    Column(modifier = modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surface).padding(vertical = 4.dp)) {
+        if (newTab) ContainerChips()
+        EngineChips()
+    }
+}
+
+@Composable
+private fun ContainerChips() {
+    val context = LocalContext.current
+    val storage = remember { DejavuContainerStorage.get(context) }
+    val records by storage.records.collectAsState()
+    val repository = remember { WorkspaceRepository.peek() ?: WorkspaceRepository.get(context) }
+    val workspace = repository.state.collectAsState().value.activeWorkspace
+    val containers = records.orEmpty().filterNot { it.showsAsTemporary }
+    // The workspace of a device on the account only takes tabs without a container.
+    val isDevice = workspace?.device != null
+    var picked by remember {
+        val choice = NewTabContainerChoice.peek()
+        val default = when {
+            workspace == null || isDevice -> null
+            containers.any { it.contextId == workspace.containerId } -> TabPlace.Container(checkNotNull(workspace.containerId))
+            DejavuSettings.peek()?.temporaryContainersByDefault?.value == true -> TabPlace.Temporary
+            else -> null
+        }
+        mutableStateOf(
+            when {
+                choice == null -> default
+                choice.private -> TabPlace.Private
+                choice.pick is ContainerPick.Container -> TabPlace.Container(choice.pick.contextId)
+                choice.pick == ContainerPick.Temporary -> TabPlace.Temporary
+                else -> null
+            },
+        )
+    }
+
+    fun pick(place: TabPlace) {
+        val next = place.takeUnless { it == picked }
+        picked = next
+        when (next) {
+            null -> NewTabContainerChoice.set(ContainerPick.NoContainer)
+            is TabPlace.Container -> NewTabContainerChoice.set(ContainerPick.Container(next.contextId))
+            TabPlace.Temporary -> NewTabContainerChoice.set(ContainerPick.Temporary)
+            TabPlace.Private -> NewTabContainerChoice.setPrivate()
+        }
+    }
+
+    ChipRow {
+        if (!isDevice) {
+            containers.forEach { container ->
+                val place = TabPlace.Container(container.contextId)
+                SearchChip(label = container.name, selected = picked == place, onClick = { pick(place) }) {
+                    ContainerIcon(container, size = CHIP_ICON)
+                }
+            }
+            SearchChip(
+                label = stringResource(R.string.dejavu_search_chip_temporary),
+                selected = picked == TabPlace.Temporary,
+                onClick = { pick(TabPlace.Temporary) },
+            ) {
+                TemporaryContainerIcon(size = CHIP_ICON)
+            }
+        }
+        SearchChip(
+            label = stringResource(R.string.dejavu_private_workspace),
+            selected = picked == TabPlace.Private,
+            onClick = { pick(TabPlace.Private) },
+        ) {
+            Icon(
+                painter = painterResource(iconsR.drawable.mozac_ic_private_mode_24),
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(CHIP_ICON),
+            )
+        }
+    }
+}
+
+@Composable
+private fun EngineChips() {
+    val fenix = components
+    val isPrivate = fenix.appStore.state.mode.isPrivate
+    val engines by fenix.core.store.observeAsComposableState { it.search.searchEngineShortcuts }
+    val defaultEngine by fenix.core.store.observeAsComposableState { it.search.selectedOrDefaultSearchEngine(isPrivate) }
+    val chosen by fenix.appStore.observeAsComposableState { it.searchState.selectedSearchEngine?.searchEngine }
+    val current = chosen ?: defaultEngine
+    // Like the search engine menu: the search engines first, then searching the bookmarks, tabs and history.
+    val (general, local) = engines.partition { it.type != SearchEngine.Type.APPLICATION }
+    ChipRow {
+        (general + local).forEach { engine ->
+            SearchChip(
+                label = engine.name,
+                selected = engine.id == current?.id,
+                onClick = {
+                    // The same as picking it from the search engine menu.
+                    fenix.appStore.dispatch(SearchEngineSelected(engine, true))
+                    fenix.appStore.dispatch(
+                        SearchStarted(
+                            tabId = fenix.appStore.state.searchState.sourceTabId,
+                            source = fenix.appStore.state.searchState.searchAccessPoint,
+                        ),
+                    )
+                },
+            ) {
+                val painter = remember(engine.id) { BitmapPainter(engine.icon.asImageBitmap()) }
+                if (engine.type == SearchEngine.Type.APPLICATION) {
+                    Icon(
+                        painter = painter,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(CHIP_ICON),
+                    )
+                } else {
+                    Image(painter = painter, contentDescription = null, modifier = Modifier.size(CHIP_ICON))
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ChipRow(content: @Composable RowScope.() -> Unit) {
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState())
+            .padding(horizontal = 12.dp, vertical = 4.dp),
+        content = content,
+    )
+}
+
+@Composable
+private fun SearchChip(label: String, selected: Boolean, onClick: () -> Unit, leading: @Composable () -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .height(36.dp)
+            .clip(CircleShape)
+            .background(
+                if (selected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh,
+            )
+            .border(1.dp, if (selected) MaterialTheme.colorScheme.primary else Color.Transparent, CircleShape)
+            .selectable(selected = selected, role = Role.RadioButton, onClick = onClick)
+            .padding(horizontal = 12.dp),
+    ) {
+        leading()
+        Spacer(Modifier.width(6.dp))
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelLarge,
+            color = if (selected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+    }
+}
+
+private val CHIP_ICON = 18.dp

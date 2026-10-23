@@ -10,11 +10,8 @@ import androidx.annotation.VisibleForTesting
 import androidx.core.content.ContextCompat
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import mozilla.components.browser.domains.autocomplete.BaseDomainAutocompleteProvider
 import mozilla.components.browser.domains.autocomplete.ShippedDomainsProvider
 import mozilla.components.browser.engine.gecko.GeckoEngine
@@ -65,14 +62,10 @@ import mozilla.components.feature.recentlyclosed.RecentlyClosedTabsStorage
 import mozilla.components.feature.search.SearchApplicationName
 import mozilla.components.feature.search.SearchDeviceType
 import mozilla.components.feature.search.SearchUpdateChannel
-import mozilla.components.feature.search.middleware.AdsTelemetryMiddleware
 import mozilla.components.feature.search.middleware.SearchExtraParams
 import mozilla.components.feature.search.middleware.SearchMiddleware
 import mozilla.components.feature.search.region.RegionMiddleware
 import mozilla.components.feature.search.storage.SearchEngineSelectorConfig
-import mozilla.components.feature.search.telemetry.SerpTelemetryRepository
-import mozilla.components.feature.search.telemetry.ads.AdsTelemetry
-import mozilla.components.feature.search.telemetry.incontent.InContentTelemetry
 import mozilla.components.feature.session.HistoryDelegate
 import mozilla.components.feature.session.middleware.LastAccessMiddleware
 import mozilla.components.feature.session.middleware.undo.UndoMiddleware
@@ -123,6 +116,12 @@ import org.mozilla.fenix.browser.desktopmode.DesktopModeMiddleware
 import org.mozilla.fenix.components.search.ApplicationSearchMiddleware
 import org.mozilla.fenix.components.search.SearchMigration
 import org.mozilla.fenix.components.search.SearchWidgetMiddleware
+import org.mozilla.fenix.dejavu.PrivateNewTabMiddleware
+import org.mozilla.fenix.dejavu.browser.CallsAndLocation
+import org.mozilla.fenix.dejavu.browser.GoogleSafeBrowsing
+import org.mozilla.fenix.dejavu.browser.JitAndWebGl
+import org.mozilla.fenix.dejavu.browser.PdfScripts
+import org.mozilla.fenix.dejavu.browser.SearchTelemetryExtensions
 import org.mozilla.fenix.dejavu.dejavuBrowserMiddleware
 import org.mozilla.fenix.downloads.DownloadService
 import org.mozilla.fenix.ext.components
@@ -131,6 +130,8 @@ import org.mozilla.fenix.gecko.GeckoProvider
 import org.mozilla.fenix.historymetadata.DefaultHistoryMetadataService
 import org.mozilla.fenix.historymetadata.HistoryMetadataMiddleware
 import org.mozilla.fenix.historymetadata.HistoryMetadataService
+import org.mozilla.fenix.home.blocklist.BlocklistHandler
+import org.mozilla.fenix.home.topsites.FenixDefaultTopSitesProvider
 import org.mozilla.fenix.longfox.LongFoxFeature
 import org.mozilla.fenix.media.MediaSessionService
 import org.mozilla.fenix.nimbus.BaselineFpp
@@ -266,6 +267,15 @@ class Core(
             )
             .also {
                 WebCompatFeature.install(it)
+                // Dejavu: the engine turns Safe Browsing on as it starts, so it follows the privacy settings again.
+                val safeBrowsing = context.components.settings.safeBrowsingEnabled
+                it.settings.safeBrowsingPolicy = GoogleSafeBrowsing.policy(safeBrowsing)
+                with(context.components.settings) {
+                    JitAndWebGl.apply(it, jitEnabled, webGlEnabled)
+                    CallsAndLocation.applyDirectConnections(it, directCallConnections)
+                    CallsAndLocation.applyNetworkLocation(networkLocationEnabled)
+                }
+                PdfScripts.turnOff(it)
             }
     }
 
@@ -338,6 +348,7 @@ class Core(
 
         val middlewareList =
             listOf(
+                PrivateNewTabMiddleware(),
                 ProfileMarkerMiddleware(markerName = "BrowserStore", profiler = engine.profiler),
                 LogMiddleware(tag = "BrowserStore", shouldIncludeDetailedData = { Config.channel.isDebug }),
                 LastAccessMiddleware(),
@@ -374,7 +385,6 @@ class Core(
                 ),
                 RecordingDevicesMiddleware(context, context.components.notificationsDelegate),
                 PromptMiddleware(),
-                AdsTelemetryMiddleware(adsTelemetry),
                 LastMediaAccessMiddleware(),
                 HistoryMetadataMiddleware(historyMetadataService),
                 ProtectionsDashboardMiddleware(protectionsStorage),
@@ -420,20 +430,9 @@ class Core(
                 // Install the "icons" WebExtension to automatically load icons for every visited website.
                 icons.install(engine, this)
 
-                CoroutineScope(Dispatchers.Main).launch {
-                    val providerList =
-                        withContext(Dispatchers.IO) {
-                            SerpTelemetryRepository(
-                                    collectionName = COLLECTION_NAME,
-                                    remoteSettingsService = context.components.remoteSettingsService.value,
-                                )
-                                .updateProviderList()
-                        }
-                    // Install the "ads" WebExtension to get the links in an partner page.
-                    adsTelemetry.install(engine, this@apply, providerList)
-                    // Install the "cookies" WebExtension and tracks user interaction with SERPs.
-                    searchTelemetry.install(engine, this@apply, providerList)
-                }
+                // Dejavu: Firefox's search telemetry ("ads" and "cookies" extensions) is not installed, as Dejavu
+                // sends no telemetry: search result pages are not read for it and its list is not downloaded.
+                SearchTelemetryExtensions.uninstall(engine)
 
                 WebNotificationFeature(
                     context,
@@ -490,20 +489,11 @@ class Core(
         BrowserIcons(
             context = context,
             httpClient = client,
-            manifestProvider = merinoManifestProvider,
         )
     }
 
     val metrics by lazyMonitored {
         context.components.analytics.metrics
-    }
-
-    val adsTelemetry by lazyMonitored {
-        AdsTelemetry()
-    }
-
-    val searchTelemetry by lazyMonitored {
-        InContentTelemetry()
     }
 
     /** Shortcut component for managing shortcuts on the device home screen. */
@@ -588,6 +578,16 @@ class Core(
     val thumbnailStorage by lazyMonitored { ThumbnailStorage(context) }
 
     val pinnedSiteStorage by lazyMonitored { PinnedSiteStorage(context) }
+
+    /** A provider for default top sites that are bundled with the applications. */
+    val defaultTopSitesProvider by lazyMonitored {
+        FenixDefaultTopSitesProvider(
+            browserStore = store,
+            resources = context.resources,
+            crashReporter = context.components.analytics.crashReporter,
+            blocklistHandler = BlocklistHandler(context.components.settings),
+        )
+    }
 
     @Suppress("MagicNumber")
     val pocketStoriesConfig by lazyMonitored {
@@ -758,8 +758,6 @@ class Core(
         // Maximum number of suggestions returned from shortcut search engine.
         const val METADATA_SHORTCUT_SUGGESTION_LIMIT = 20
 
-        // collection name to fetch from server for SERP telemetry
-        const val COLLECTION_NAME = "search-telemetry-v2"
         internal const val REMOTE_PROD_ENDPOINT_URL = "https://firefox.settings.services.mozilla.com"
         internal const val REMOTE_STAGE_ENDPOINT_URL = "https://firefox.settings.services.allizom.org"
         internal const val REMOTE_DEV_ENDPOINT_URL = "https://remote-settings-dev.allizom.org"

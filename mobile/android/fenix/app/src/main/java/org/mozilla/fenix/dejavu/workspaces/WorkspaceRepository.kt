@@ -113,6 +113,25 @@ class WorkspaceRepository private constructor(context: Context) {
         )
     }
 
+    /**
+     * Removes every workspace with its pinned tabs and folders, and the essentials, leaving the one empty workspace a
+     * fresh Dejavu starts with. The workspaces of devices on the account stay as they are, since sync adds and removes
+     * them. Saved at once.
+     */
+    fun startFresh() = mutate(saveNow = true) { state ->
+        val fresh = WorkspaceSerializer.read(null, defaultName, now())
+        val devices = state.workspaces.filter { it.device != null }
+        val deviceIds = devices.map { it.id }.toSet()
+        val assignments = state.assignments.filterValues { it in deviceIds }
+        fresh.copy(
+            workspaces = fresh.workspaces + devices,
+            pins = state.pins.filter { it.workspaceId in deviceIds },
+            assignments = assignments,
+            splits = state.splits.filter { split -> split.tabIds.all { it in assignments } },
+            openedByPages = state.openedByPages.filter { it in assignments }.toSet(),
+        )
+    }
+
     /** Points every workspace and pinned tab using container [oldId] to [newId], or to no container. */
     fun replaceContainer(oldId: String, newId: String?) = mutate { state ->
         val now = now()
@@ -158,6 +177,9 @@ class WorkspaceRepository private constructor(context: Context) {
         if (state.workspaces.none { it.id == workspaceId }) state else state.copy(assignments = state.assignments + (tabId to workspaceId))
     }
 
+    /** Marks tab [tabId] as opened by a page rather than the user, see [WorkspaceState.openedByPages]. */
+    fun markOpenedByPage(tabId: String) = mutate { state -> state.copy(openedByPages = state.openedByPages + tabId) }
+
     /** Hands the workspace, pin and split view of tab [oldTabId] over to [newTabId], which replaces it. */
     fun replaceTab(oldTabId: String, newTabId: String) = mutate { state ->
         val workspaceId = state.assignments[oldTabId] ?: state.pinOf(oldTabId)?.workspaceId
@@ -169,6 +191,7 @@ class WorkspaceRepository private constructor(context: Context) {
             },
             tabTitles = state.tabTitles[oldTabId]?.let { state.tabTitles - oldTabId + (newTabId to it) } ?: state.tabTitles,
             tabSyncIds = state.tabSyncIds - oldTabId,
+            openedByPages = state.openedByPages.map { if (it == oldTabId) newTabId else it }.toSet(),
         )
     }
 
@@ -407,6 +430,17 @@ class WorkspaceRepository private constructor(context: Context) {
         state.copy(pins = state.pins.map { if (it.id in pinIds) it.copy(openUrl = null, openTitle = null) else it })
     }
 
+    /**
+     * Lets the closed pinned tabs whose page history no longer has, like after the user deleted it, open on their
+     * pinned address again. [isVisited] tells for each page of a list whether history has it.
+     */
+    suspend fun forgetUnvisitedOpenPages(isVisited: suspend (List<String>) -> List<Boolean>) {
+        val pins = state.value.pins.filter { it.openUrl != null }
+        if (pins.isEmpty()) return
+        val visited = runCatching { isVisited(pins.mapNotNull { it.openUrl }) }.getOrNull() ?: return
+        forgetOpenPages(pins.filterIndexed { index, _ -> visited.getOrNull(index) != true }.mapTo(HashSet()) { it.id })
+    }
+
     /** Gives unpinned tab [tabId] the title [name], or shows its page title again when [name] is blank. */
     fun renameTab(tabId: String, name: String) = mutate { state ->
         state.copy(tabTitles = if (name.isBlank()) state.tabTitles - tabId else state.tabTitles + (tabId to name.trim()))
@@ -470,24 +504,31 @@ class WorkspaceRepository private constructor(context: Context) {
         )
     }
 
-    /** Moves unpinned tabs and pinned items (with everything inside folders) to another workspace. */
-    fun moveToWorkspace(tabIds: Set<String>, itemIds: Set<String>, workspaceId: String) = mutate { state ->
-        if (state.workspaces.none { it.id == workspaceId }) return@mutate state
-        val nested = itemIds.flatMap { state.descendantIds(it) }.toSet()
-        val movedPins = itemIds + nested
-        val movedTabs = tabIds + state.pins.filter { it.id in movedPins }.mapNotNull { it.tabId }
-        val now = now()
-        state.copy(
-            pins = state.pins.map { pin ->
+    /**
+     * Moves unpinned tabs and pinned items (with everything inside folders) to another workspace, the pinned items to
+     * the top level of its pinned section, where they come in the list of pinned items. Tabs a page opened become the
+     * user's once moved.
+     */
+    fun moveToWorkspace(tabIds: Set<String>, itemIds: Set<String>, workspaceId: String) =
+        mutate { state ->
+            if (state.workspaces.none { it.id == workspaceId }) return@mutate state
+            val nested = itemIds.flatMap { state.descendantIds(it) }.toSet()
+            val movedPins = itemIds + nested
+            val movedTabs = tabIds + state.pins.filter { it.id in movedPins }.mapNotNull { it.tabId }
+            val now = now()
+            val pins = state.pins.map { pin ->
                 when (pin.id) {
                     in itemIds -> pin.copy(workspaceId = workspaceId, parentId = null, essential = false, updatedAt = now)
                     in nested -> pin.copy(workspaceId = workspaceId, updatedAt = now)
                     else -> pin
                 }
-            },
-            assignments = state.assignments + movedTabs.associateWith { workspaceId },
-        )
-    }
+            }
+            state.copy(
+                pins = pins,
+                assignments = state.assignments + movedTabs.associateWith { workspaceId },
+                openedByPages = state.openedByPages - movedTabs.toSet(),
+            )
+        }
 
     /**
      * Assigns tabs that have no workspace yet to the active workspace, and forgets tabs that no longer exist once
@@ -511,7 +552,15 @@ class WorkspaceRepository private constructor(context: Context) {
         val splits = if (restoreComplete) state.splits.filter { split -> split.tabIds.all { it in tabIds } } else state.splits
         val tabTitles = if (restoreComplete) state.tabTitles.filterKeys { it in tabIds } else state.tabTitles
         val tabSyncIds = if (restoreComplete) state.tabSyncIds.filterKeys { it in tabIds } else state.tabSyncIds
-        return state.copy(pins = pins, assignments = kept + added, splits = splits, tabTitles = tabTitles, tabSyncIds = tabSyncIds)
+        val openedByPages = if (restoreComplete) state.openedByPages.intersect(tabIds) else state.openedByPages
+        return state.copy(
+            pins = pins,
+            assignments = kept + added,
+            splits = splits,
+            tabTitles = tabTitles,
+            tabSyncIds = tabSyncIds,
+            openedByPages = openedByPages,
+        )
     }
 
     private fun WorkspaceState.withPins(sources: List<PinSource>, parentId: String?): WorkspaceState {

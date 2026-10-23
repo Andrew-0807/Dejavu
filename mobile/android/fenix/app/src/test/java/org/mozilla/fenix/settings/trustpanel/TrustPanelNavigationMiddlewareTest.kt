@@ -39,16 +39,13 @@ class TrustPanelNavigationMiddlewareTest {
     @Test
     fun `WHEN navigate to privacy security settings action is dispatched THEN navigate to privacy and security settings`() =
         runTest {
-            val privacySecurityPrefKey = "pref_key_privacy_security_category"
-            val store = createStore(privacySecurityPrefKey = privacySecurityPrefKey, scope = this)
+            val store = createStore(scope = this)
             store.dispatch(TrustPanelAction.Navigate.PrivacySecuritySettings)
             testScheduler.advanceUntilIdle()
 
             verify {
                 navController.navigate(
-                    TrustPanelFragmentDirections.actionGlobalTrackingProtectionFragment(
-                        preferenceToScrollTo = privacySecurityPrefKey
-                    ),
+                    TrustPanelFragmentDirections.actionGlobalDejavuTrackingProtection(),
                     null,
                 )
             }
@@ -150,7 +147,6 @@ class TrustPanelNavigationMiddlewareTest {
 
     private fun createStore(
         trustPanelState: TrustPanelState = TrustPanelState(),
-        privacySecurityPrefKey: String = "",
         scope: CoroutineScope,
     ) =
         TrustPanelStore(
@@ -159,7 +155,6 @@ class TrustPanelNavigationMiddlewareTest {
                 listOf(
                     TrustPanelNavigationMiddleware(
                         navController = navController,
-                        privacySecurityPrefKey = privacySecurityPrefKey,
                         appStore = appStore,
                         tabsUseCases = tabsUseCases,
                         scope = scope,

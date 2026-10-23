@@ -154,6 +154,50 @@ class FirefoxTabsEngineTest {
     }
 
     @Test
+    fun `tabs removed all at once come back from their computer instead of being closed there`() = runTest {
+        engine.sync(auth, connected = null, localDeviceId = PHONE)
+        engine.sync(auth, connected = null, localDeviceId = PHONE)
+        local.forgotten = local.tabs!!.map { it.id }.toSet()
+        local.tabs = emptyList()
+        assertFalse(engine.hasLocalChanges())
+
+        engine.sync(auth, connected = null, localDeviceId = PHONE)
+
+        assertTrue(local.closeCommands.isEmpty())
+        assertEquals(listOf(FirefoxFixtures.NEWS), local.tabs!!.map { it.url })
+    }
+
+    @Test
+    fun `a sent tab removed here all at once stays open on its computer, and comes back from there`() = runTest {
+        engine.sync(auth, connected = null, localDeviceId = PHONE)
+        openHere("opened-here", OPENED)
+        engine.sync(auth, connected = null, localDeviceId = PHONE)
+        local.tabs = local.tabs!!.filterNot { it.id == "opened-here" }
+        local.forgotten = setOf("opened-here")
+        assertFalse(engine.hasLocalChanges())
+
+        engine.sync(auth, connected = null, localDeviceId = PHONE)
+        server.put("tabs", LAPTOP, laptopTabsWith(OPENED))
+        engine.sync(auth, connected = null, localDeviceId = PHONE)
+
+        assertTrue(local.closeCommands.isEmpty())
+        assertEquals(1, local.tabs!!.count { it.url == OPENED })
+    }
+
+    @Test
+    fun `a tab a page opened in the workspace of a computer stays here, as one of this device's tabs`() = runTest {
+        engine.sync(auth, connected = null, localDeviceId = PHONE)
+        openHere("pop-up", OPENED)
+        local.state = local.state.copy(openedByPages = setOf("pop-up"))
+        assertFalse(engine.hasLocalChanges())
+
+        engine.sync(auth, connected = null, localDeviceId = PHONE)
+
+        assertTrue(local.sentTabs.isEmpty())
+        assertFalse(engine.computerTabs().has(local.state, "pop-up", System.currentTimeMillis()))
+    }
+
+    @Test
     fun `a tab opened here in the workspace of a computer opens there and becomes its tab once it shows it`() = runTest {
         engine.sync(auth, connected = null, localDeviceId = PHONE)
         openHere("opened-here", OPENED)
@@ -318,7 +362,10 @@ internal class FakeFirefoxLocal(
     /** The close commands sent, by device. */
     val closeCommands = mutableListOf<Pair<String, List<String>>>()
 
-    override suspend fun read() = LocalSpaces(state, emptyList(), normalTabs, tabs)
+    /** Ids of the tabs removed all at once, which sync forgets. */
+    var forgotten: Set<String> = emptySet()
+
+    override suspend fun read() = LocalSpaces(state, emptyList(), normalTabs, tabs, forgotten)
 
     override fun <T> update(transform: (WorkspaceState) -> Pair<WorkspaceState, T>): T {
         val (updated, result) = transform(state)

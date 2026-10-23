@@ -104,7 +104,9 @@ internal data class EntryLook(
 internal fun MoreMenuEntry.look(state: MoreMenuState): EntryLook = when (this) {
     is MoreMenuEntry.BuiltIn -> item.look(state)
     is MoreMenuEntry.Tab -> EntryLook(stringResource(action.label), action.icon, enabled = action.canRunOnShownTab(state))
-    is MoreMenuEntry.Custom -> EntryLook(action.name, iconsR.drawable.mozac_ic_lightning_24, enabled = state.isWebPage)
+    // A custom action sends the page to a server, so it does not run on a private tab, like pinning and moving it.
+    is MoreMenuEntry.Custom ->
+        EntryLook(action.name, iconsR.drawable.mozac_ic_lightning_24, enabled = state.isWebPage && !state.isPrivate)
     MoreMenuEntry.Home -> EntryLook(stringResource(R.string.dejavu_actions_bar_home), iconsR.drawable.mozac_ic_home_24)
     MoreMenuEntry.Search -> EntryLook(stringResource(R.string.dejavu_actions_bar_search), iconsR.drawable.mozac_ic_search_24)
 }
@@ -129,10 +131,11 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
             default.copy(enabled = state.isWebPage)
         }
         MoreMenuItem.DESKTOP_SITE -> default.copy(active = state.isDesktopMode)
+        // A pinned tab of a device can still be unpinned here, which leaves it pinned on the device.
         MoreMenuItem.PIN_TAB -> if (state.isPinned) {
             EntryLook(stringResource(R.string.dejavu_menu_unpin_tab), iconsR.drawable.mozac_ic_pin_slash_24, active = true)
         } else {
-            default.copy(enabled = !state.isPrivate && state.isWebPage)
+            default.copy(enabled = !state.isPrivate && state.isWebPage && !state.isDeviceTab)
         }
         MoreMenuItem.ESSENTIAL_TAB -> if (state.isEssential) {
             EntryLook(stringResource(R.string.dejavu_menu_remove_essential), iconsR.drawable.mozac_ic_tab_ungroup_24, active = true)
@@ -147,8 +150,7 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
         MoreMenuItem.RESET_PINNED_URL, MoreMenuItem.REPLACE_PINNED_URL -> default.copy(enabled = state.isPinChanged)
         MoreMenuItem.OPEN_IN_APP -> default.copy(enabled = state.hasExternalApp)
         MoreMenuItem.TRANSLATE -> default.copy(enabled = state.canTranslate, active = state.isTranslated)
-        MoreMenuItem.SHARE, MoreMenuItem.FIND_IN_PAGE, MoreMenuItem.REPORT_BROKEN_SITE, MoreMenuItem.SAVE_AS_PDF,
-        MoreMenuItem.PRINT,
+        MoreMenuItem.SHARE, MoreMenuItem.FIND_IN_PAGE, MoreMenuItem.SAVE_AS_PDF, MoreMenuItem.PRINT,
         -> default.copy(enabled = state.isWebPage)
         MoreMenuItem.EXTENSIONS, MoreMenuItem.PASSWORDS, MoreMenuItem.BOOKMARKS, MoreMenuItem.DOWNLOADS,
         MoreMenuItem.HISTORY, MoreMenuItem.SETTINGS,
@@ -158,7 +160,6 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
 
 /** The entries of the "More" menu that do nothing for a tab of a device on the account. */
 private val DeviceLockedItems = setOf(
-    MoreMenuItem.PIN_TAB,
     MoreMenuItem.ESSENTIAL_TAB,
     MoreMenuItem.RESET_PINNED_URL,
     MoreMenuItem.REPLACE_PINNED_URL,

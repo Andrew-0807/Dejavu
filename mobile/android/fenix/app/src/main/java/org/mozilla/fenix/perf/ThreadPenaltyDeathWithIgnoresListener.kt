@@ -19,6 +19,7 @@ private const val ACTIVITY_MANAGER_SERVICE_CLASS = "com.android.server.am.Activi
 private const val IN_MEMORY_DEX_CLASS_LOADER_CLASS = "dalvik.system.InMemoryDexClassLoader"
 private const val MIUI_MULTI_LANG_HELPER_CLASS = "miui.util.font.MultiLangHelper"
 private const val PLATFORM_PREFERENCE_CLASS = "androidx.preference.Preference"
+private const val SHARED_PREFERENCES_EDITOR_CLASS = "android.app.SharedPreferencesImpl\$EditorImpl"
 
 /**
  * A [StrictMode.OnThreadViolationListener] that recreates [StrictMode.ThreadPolicy.Builder.penaltyDeath] but will
@@ -58,7 +59,8 @@ class ThreadPenaltyDeathWithIgnoresListener(
             isXiaomiMultiLangHelperViolation(violation) ||
             isFinishAttachApplication(violation) ||
             containsInMemoryDexClassLoader(violation) ||
-            isInflatingPlatformPreference(violation)
+            isInflatingPlatformPreference(violation) ||
+            isSamsungSharedPreferencesApply(violation)
 
     private fun isSamsungIdsController(violation: Violation): Boolean {
         // See https://bugzilla.mozilla.org/show_bug.cgi?id=1806469
@@ -120,6 +122,14 @@ class ThreadPenaltyDeathWithIgnoresListener(
     private fun isXiaomiMultiLangHelperViolation(violation: Violation): Boolean {
         return manufacturerChecker.isXiaomi() &&
             violation.stackTrace.any { it.className == MIUI_MULTI_LANG_HELPER_CLASS }
+    }
+
+    private fun isSamsungSharedPreferencesApply(violation: Violation): Boolean {
+        // Samsung's SharedPreferences look for a file on disk in apply(), which is meant to be called on the main
+        // thread, so every preference saved there would stop debug builds on Samsung phones.
+        return manufacturerChecker.isSamsung() && violation.stackTrace.any {
+            it.className == SHARED_PREFERENCES_EDITOR_CLASS && it.methodName == "isSpeg"
+        }
     }
 
     private fun isInflatingPlatformPreference(violation: Violation): Boolean {

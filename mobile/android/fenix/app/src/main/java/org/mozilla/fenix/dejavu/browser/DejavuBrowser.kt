@@ -5,9 +5,11 @@
 package org.mozilla.fenix.dejavu.browser
 
 import android.content.Context
+import android.content.pm.ActivityInfo
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.compose.material3.ColorScheme
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import mozilla.components.browser.state.selector.findTab
@@ -35,10 +37,12 @@ import org.mozilla.fenix.components.menu.MenuAccessPoint
 import org.mozilla.fenix.components.toolbar.PageOriginInteractions
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
+import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.containers.TemporaryContainers
 import org.mozilla.fenix.dejavu.containers.drawable
 import org.mozilla.fenix.dejavu.containers.reopenInContainer
+import org.mozilla.fenix.dejavu.containers.splitTemporary
 import org.mozilla.fenix.dejavu.home.displayTitle
 import org.mozilla.fenix.dejavu.home.titleOf
 import org.mozilla.fenix.dejavu.menu.DejavuMenu
@@ -143,10 +147,14 @@ object DejavuToolbar {
 
     private fun containerMenu(context: Context, current: String): List<BrowserToolbarMenuItem> {
         val others = DejavuContainerStorage.get(context).records.value.orEmpty().filter { it.contextId != current }
-        val (temporary, permanent) = others.partition { it.temporary }
-        val containers = permanent + temporary.sortedWith(compareBy({ it.name.length }, { it.name }))
+        val (permanent, temporary) = others.splitTemporary()
         fun button(icon: Icon, text: String, pick: ContainerPick) =
             BrowserToolbarMenuButton(icon, StringText(text), StringContentDescription(text), ContainerPicked(pick.key))
+        fun containerButtons(records: List<ContainerRecord>) = records.mapNotNull { record ->
+            val drawable = tintedIcon(context, record.icon, record.color) ?: return@mapNotNull null
+            val pick = ContainerPick.Container(record.contextId)
+            button(Icon.DrawableIcon(drawable, shouldTint = false), record.name, pick)
+        }
         return buildList {
             add(
                 button(
@@ -155,6 +163,9 @@ object DejavuToolbar {
                     ContainerPick.NoContainer,
                 ),
             )
+            if (permanent.isNotEmpty()) add(BrowserToolbarMenuDivider)
+            addAll(containerButtons(permanent))
+            add(BrowserToolbarMenuDivider)
             add(
                 button(
                     Icon.DrawableResIcon(R.drawable.dejavu_ic_temporary_container_24),
@@ -162,11 +173,7 @@ object DejavuToolbar {
                     ContainerPick.Temporary,
                 ),
             )
-            if (containers.isNotEmpty()) add(BrowserToolbarMenuDivider)
-            containers.forEach { record ->
-                val drawable = tintedIcon(context, record.icon, record.color) ?: return@forEach
-                add(button(Icon.DrawableIcon(drawable, shouldTint = false), record.name, ContainerPick.Container(record.contextId)))
-            }
+            addAll(containerButtons(temporary))
         }
     }
 
@@ -188,6 +195,16 @@ fun Fragment.handleDejavuBackPressed(customTabSessionId: String?): Boolean {
 
     closeShownTab(requireComponents, findNavController(), tab)
     return true
+}
+
+/**
+ * Gives the screen its usual rotation back when a page leaves fullscreen while this browser screen is stopped, as when
+ * the app goes to the background during a sideways video. The features that turn the screen back stop with the browser
+ * screen and miss it, so the app could stay sideways (issue #185).
+ */
+fun Fragment.restoreDejavuRotationAfterFullscreen() {
+    if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) return
+    activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 }
 
 /** Closes [tab], the shown one, then shows the tab it was opened from, or the home screen when that one is gone too. */

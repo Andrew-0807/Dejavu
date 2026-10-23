@@ -2,6 +2,8 @@ import com.android.build.api.variant.FilterConfiguration
 
 import java.time.format.DateTimeFormatter
 
+import org.mozilla.conventions.WriteRuntimeDependencies
+
 import static org.mozilla.conventions.BuildConfigKt.getBuildId
 
 plugins {
@@ -90,6 +92,12 @@ android {
 
         buildConfigField "String[]", "SUPPORTED_LOCALE_ARRAY", getSupportedLocales()
         buildConfigField "boolean", "IS_BENCHMARK_BUILD", "false"
+
+        // Dejavu: whether Gecko was built with a Google Safe Browsing key. Without one, like in a build from source
+        // without --with-google-safebrowsing-api-keyfile, Safe Browsing downloads no lists and warns about nothing.
+        def safeBrowsingKey = gradle.mozconfig.substs.MOZ_GOOGLE_SAFEBROWSING_API_KEY
+        def hasSafeBrowsingKey = safeBrowsingKey && safeBrowsingKey != "no-google-safebrowsing-api-key"
+        buildConfigField "boolean", "HAS_SAFE_BROWSING_KEY", hasSafeBrowsingKey ? "true" : "false"
     }
 
     def releaseTemplate = {
@@ -225,6 +233,19 @@ android {
         androidTest {
             resources.srcDirs += ['src/androidTest/resources']
             assets.srcDirs += files("$projectDir/schemas".toString())
+        }
+        // Web extensions that only the UI tests install.
+        // WebExtensionController.ensureBuiltIn resolves resource://android/assets
+        // against the app's asset manager, so these have to be packaged in the app under test
+        // rather than the test apk.
+        // Added to the debug and other test builds, so they never reach a shipping build.
+        debug {
+            assets.srcDirs += ['src/androidTest/appAssets']
+        }
+        if (project.hasProperty("testBuildType")) {
+            named(project.property("testBuildType")) {
+                assets.srcDirs += ['src/androidTest/appAssets']
+            }
         }
         if (project.hasProperty('baselineProfilePath')) {
             main {
@@ -364,6 +385,16 @@ androidComponents {
             variant.outputs.each { output ->
                 output.versionName.set(versionName)
             }
+        }
+    }
+}
+
+androidComponents {
+    onVariants(selector().all()) { variant ->
+        tasks.register("writeRuntimeDependencies${variant.name.capitalize()}", WriteRuntimeDependencies) {
+            classpath(configurations.named("${variant.name}RuntimeClasspath"))
+            versionName = variant.outputs.first().versionName
+            outputFile = layout.buildDirectory.file("sbom/${variant.name}-runtime-dependencies.json")
         }
     }
 }
@@ -647,6 +678,7 @@ dependencies {
     implementation libs.androidx.datastore
     implementation libs.androidx.datastore.preferences
     implementation libs.androidx.emoji2
+    implementation libs.androidx.emoji2.bundled
     implementation libs.androidx.exifinterface
     implementation libs.androidx.fragment
     implementation libs.androidx.fragment.compose
@@ -734,7 +766,6 @@ dependencies {
     androidTestImplementation libs.kotlin.test
     androidTestImplementation libs.androidx.room.testing
     androidTestImplementation libs.leakcanary.instrumentation
-    androidTestImplementation libs.mockk.android
     androidTestImplementation libs.mockwebserver
     androidTestImplementation libs.okhttp
     androidTestRuntimeOnly libs.okio

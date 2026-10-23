@@ -44,6 +44,8 @@ import mozilla.components.browser.state.state.ContainerState
 import mozilla.components.browser.state.state.SessionState
 import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.lib.state.ext.observeAsComposableState
+import mozilla.components.support.ktx.kotlin.isUrl
+import mozilla.components.support.ktx.kotlin.toNormalizedUrl
 import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
@@ -64,6 +66,7 @@ import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.features.FeatureTour
 import org.mozilla.fenix.dejavu.features.FeatureTourDialog
 import org.mozilla.fenix.dejavu.features.wasUpdated
+import org.mozilla.fenix.dejavu.openClosedPin
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.settings.resolveRowActions
 import org.mozilla.fenix.dejavu.settings.resolveSelectionActions
@@ -134,6 +137,8 @@ fun ComposeView.setDejavuHomeContent(
             val allPrivateTabs by fenix.core.store.observeAsComposableState { it.privateTabs }
             val isPrivateLocked by fenix.appStore.observeAsComposableState { it.isPrivateScreenLocked }
             val selectedTabId by fenix.core.store.observeAsComposableState { it.selectedTabId }
+            val hasClosedTab by fenix.core.store.observeAsComposableState { it.hasClosedTab }
+            val hasClipboardLink = rememberClipboardHasLink()
             val restoreComplete by fenix.core.store.observeAsComposableState { it.restoreComplete }
             val isSearchActive by fenix.appStore.observeAsComposableState { it.searchState.isSearchActive }
 
@@ -165,6 +170,8 @@ fun ComposeView.setDejavuHomeContent(
                     tabs = tabs,
                     privateTabs = if (isPrivateLocked) emptyList() else allPrivateTabs,
                     selectedTabId = selectedTabId,
+                    hasClosedTab = hasClosedTab,
+                    hasClipboardLink = hasClipboardLink,
                     containers = containers,
                     pinnedRowActions = resolveRowActions(pinnedKeys, ActionPlace.PINNED_ROWS, customActions),
                     unpinnedRowActions = resolveRowActions(unpinnedKeys, ActionPlace.UNPINNED_ROWS, customActions),
@@ -214,7 +221,9 @@ fun ComposeView.setDejavuHomeContent(
                 CompositionLocalProvider(LocalPopupTheme provides workspaceState.activeWorkspace?.theme) {
                     SyncSourceDialog(
                         status = syncStatus,
-                        onChoose = { DejavuSync.chooseSource(context, it) },
+                        workspaces = workspaceState,
+                        tabs = tabs,
+                        onChoose = { source, start -> DejavuSync.chooseSource(context, source, start) },
                         onDismiss = { DejavuSync.putOffSourceChoice(context) },
                     )
                 }
@@ -258,6 +267,7 @@ private class DefaultDejavuHomeInteractor(
         notify = { message -> scope.launch { snackbar.showSnackbar(message) } },
         openTab = openTab,
     ),
+    private val reopener: ClosedTabReopener = ClosedTabReopener(context, components, repository, scope),
 ) : DejavuHomeInteractor {
     private val tabsUseCases = components.useCases.tabsUseCases
     private val store = components.core.store
@@ -296,17 +306,7 @@ private class DefaultDejavuHomeInteractor(
             openTab(liveTabId)
             return
         }
-        // A pin whose tab closed opens where that tab was, like a sleeping tab wakes up.
-        val url = pin.pageUrl.takeIf { it.isNotEmpty() } ?: return
-        val tabId = tabsUseCases.addTab(
-            url = url,
-            selectTab = true,
-            title = pin.openTitle ?: pin.title,
-            contextId = pin.containerId,
-            source = SessionState.Source.Internal.None,
-        )
-        repository.attachPinned(pin.id, tabId)
-        openTab(tabId)
+        openClosedPin(context, pin, onOpened = openTab)?.let(openTab)
     }
 
     override fun onTabAction(action: TabAction, targets: ActionTargets, workspaceId: String) =
@@ -329,6 +329,22 @@ private class DefaultDejavuHomeInteractor(
     override fun onMoveToWorkspace(targets: ActionTargets, workspaceId: String) =
         runner.onMoveToWorkspace(targets, workspaceId)
 
+    override fun onReopenClosedTab(): String? = reopener.reopen()
+
+    override fun onOpenClipboardLink(workspaceId: String) {
+        // The button is off while the clipboard holds no link.
+        val url = components.clipboardHandler.extractURL()?.takeIf { it.isUrl() }?.toNormalizedUrl() ?: return
+        // Like the tabs opened by hand, it opens in the workspace's container, except in the workspace of a device on the
+        // account, which only holds tabs without one.
+        val toDevice = repository.state.value.isDeviceWorkspace(workspaceId)
+        val tabId = tabsUseCases.addTab(
+            url = url,
+            source = if (toDevice) SessionState.Source.Internal.None else SessionState.Source.Internal.UserEntered,
+        )
+        repository.assignTab(tabId, workspaceId)
+        openTab(tabId)
+    }
+
     override fun onChangeContainer(targets: ActionTargets, pick: ContainerPick) = runner.onChangeContainer(targets, pick)
 
     override fun onManageContainers() = runner.onManageContainers()
@@ -338,6 +354,15 @@ private class DefaultDejavuHomeInteractor(
         // The workspace of a device on the account follows the device, which takes nothing dragged here.
         if (state.isDeviceWorkspace(workspaceId)) return
         val targets = ActionTargets.of(state, store.state.normalTabs, selection)
+        // Dragged here from another workspace: the items come over first, then land where they were dropped.
+        val from = targets.workspaceIn(state)
+        if (target != DropTarget.Essentials && from != null && from != workspaceId) {
+            repository.moveToWorkspace(
+                tabIds = targets.tabs.map { it.id }.toSet(),
+                itemIds = targets.itemIds,
+                workspaceId = workspaceId,
+            )
+        }
         val placement = when (target) {
             is DropTarget.IntoFolder -> PinPlacement.Into(target.folderId)
             is DropTarget.NextToPin -> PinPlacement.Next(target.pinId, target.after)
@@ -346,9 +371,17 @@ private class DefaultDejavuHomeInteractor(
                 runner.addToEssentials(targets)
                 return
             }
+            is DropTarget.SplitWith -> {
+                val dragged = targets.tabs.singleOrNull()?.takeIf { it.id != target.tabId } ?: return
+                if (store.state.findTab(target.tabId) == null) return
+                repository.createSplit(target.tabId, dragged.id)
+                store.dispatch(TabListAction.MoveTabsAction(listOf(dragged.id), target.tabId, placeAfter = true))
+                return
+            }
             is DropTarget.NextToTab, DropTarget.UnpinnedStart -> null
         }
         if (placement != null) {
+            unsplitLeaving(state, (targets.tabs + targets.pinnedTabs).map { it.id }, targets.openTabs.map { it.id })
             repository.placePins(workspaceId, targets.itemIds, targets.tabs.map { it.toPinSource() }, placement)
             return
         }
@@ -356,6 +389,7 @@ private class DefaultDejavuHomeInteractor(
 
         // Unpinning: open pinned tabs become normal tabs, closed ones are reopened without loading.
         val moving = targets.tabs.map { it.id } + targets.pinnedTabs.map { it.id } + runner.reopenClosed(targets.pins)
+        unsplitLeaving(state, moving, moving)
         repository.unpin(targets.pins.map { it.id }.toSet())
         repository.moveToWorkspace(tabIds = moving.toSet(), itemIds = emptySet(), workspaceId = workspaceId)
         val others = store.state.normalTabs.filter {
@@ -368,6 +402,15 @@ private class DefaultDejavuHomeInteractor(
         if (anchor != null && moving.isNotEmpty()) {
             store.dispatch(TabListAction.MoveTabsAction(moving, anchor, after))
         }
+    }
+
+    /**
+     * Like in Zen, a tab dragged away from the tab it is split with leaves the split view: those of [dragged] whose
+     * partner is not among [moving], which also holds the tabs inside dragged folders.
+     */
+    private fun unsplitLeaving(state: WorkspaceState, dragged: List<String>, moving: List<String>) {
+        val leaving = dragged.filter { id -> state.splitOf(id)?.tabIds?.any { it != id && it !in moving } == true }
+        if (leaving.isNotEmpty()) repository.unsplit(leaving.toSet())
     }
 
     override fun onMoveEssential(pinId: String, index: Int) =

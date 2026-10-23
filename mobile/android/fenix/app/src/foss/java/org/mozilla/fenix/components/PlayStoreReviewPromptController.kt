@@ -5,8 +5,11 @@
 package org.mozilla.fenix.components
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
 import androidx.annotation.VisibleForTesting
+import androidx.core.net.toUri
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -16,6 +19,7 @@ import org.mozilla.fenix.components.ReviewPromptAttemptResult.Displayed
 import org.mozilla.fenix.components.ReviewPromptAttemptResult.Error
 import org.mozilla.fenix.components.ReviewPromptAttemptResult.NotDisplayed
 import org.mozilla.fenix.components.ReviewPromptAttemptResult.Unknown
+import org.mozilla.fenix.dejavu.DejavuLinks
 
 val logger = Logger("PlayStoreReviewPromptController")
 
@@ -23,7 +27,7 @@ val logger = Logger("PlayStoreReviewPromptController")
  * The F-Droid build's stand-in for the Play Store In-App Review API.
  *
  * Google Play's review library is not free software, so it is not part of this build. Every entry point keeps the
- * shape the rest of the app expects and reports that no prompt was shown.
+ * shape the rest of the app expects: no review prompt is shown, and Rate on Google Play opens the listing.
  */
 class PlayStoreReviewPromptController(
     @Suppress("UNUSED_PARAMETER") numberOfAppLaunches: () -> Int,
@@ -35,12 +39,25 @@ class PlayStoreReviewPromptController(
         return NotDisplayed
     }
 
-    /** Does nothing: this build is not installed from the Play Store, so it has no listing to open. */
+    /**
+     * Opens Dejavu's Google Play listing in the Play Store app, or on the Play Store website in a new tab when the app
+     * is not installed. It needs no Google library: it is a plain link to the listing of the Google Play release.
+     */
     fun tryLaunchPlayStoreReview(
-        @Suppress("UNUSED_PARAMETER") activity: Activity,
-        @Suppress("UNUSED_PARAMETER") openInNewTab: (url: String) -> Unit,
+        activity: Activity,
+        openInNewTab: (url: String) -> Unit,
     ) {
-        logger.info("No Play Store listing to open in this build.")
+        val listing = Intent(Intent.ACTION_VIEW, DejavuLinks.PLAY_STORE_APP_LISTING.toUri()).setPackage(PLAY_STORE_APP)
+        try {
+            activity.startActivity(listing)
+        } catch (e: ActivityNotFoundException) {
+            logger.info("No Play Store app, opening the listing on the website: $e")
+            openInNewTab(DejavuLinks.PLAY_STORE_WEB_LISTING)
+        }
+    }
+
+    private companion object {
+        const val PLAY_STORE_APP = "com.android.vending"
     }
 }
 

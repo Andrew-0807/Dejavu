@@ -354,7 +354,10 @@ class BrowserToolbarMiddleware(
                 navController.nav(
                     R.id.browserFragment,
                     when (settings.isMenuCustomizationEnabled) {
-                        true -> BrowserFragmentDirections.actionBrowserFragmentToMenuFragment()
+                        true ->
+                            BrowserFragmentDirections.actionBrowserFragmentToMenuFragment(
+                                accessPoint = MenuAccessPoint.Browser
+                            )
                         else ->
                             BrowserFragmentDirections.actionGlobalMenuDialogFragment(
                                 accesspoint = MenuAccessPoint.Browser

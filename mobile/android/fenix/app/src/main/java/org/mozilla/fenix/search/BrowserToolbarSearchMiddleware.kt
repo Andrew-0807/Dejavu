@@ -99,6 +99,7 @@ import org.mozilla.fenix.components.metrics.MetricsUtils
 import org.mozilla.fenix.components.search.BOOKMARKS_SEARCH_ENGINE_ID
 import org.mozilla.fenix.components.search.HISTORY_SEARCH_ENGINE_ID
 import org.mozilla.fenix.components.search.TABS_SEARCH_ENGINE_ID
+import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.ext.isGoogleSearchEngine
 import org.mozilla.fenix.ext.toolbarHintRes
 import org.mozilla.fenix.search.EditPageEndActionsInteractions.ClearSearchClicked
@@ -153,7 +154,6 @@ internal sealed class EditPageEndActionsInteractions : BrowserToolbarEvent {
  * @param scope [CoroutineScope] used for running long running operations in background.
  * @param autocompleteDispatcher [CoroutineContext] used for querying autocomplete suggestions.
  */
-@Suppress("LongParameterList")
 class BrowserToolbarSearchMiddleware(
     private val uiContext: Context,
     private val appStore: AppStore,
@@ -411,7 +411,8 @@ class BrowserToolbarSearchMiddleware(
             )
         store.dispatch(
             SearchActionsStartUpdated(
-                when (searchSelector == null) {
+                // Dejavu picks the search engine with the chips above the address bar instead.
+                when (searchSelector == null || DejavuToolbar.enabled) {
                     true -> emptyList()
                     else -> listOf(searchSelector)
                 }

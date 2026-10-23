@@ -25,14 +25,44 @@ data class Selection(
 
     fun toggleTab(id: String) = copy(tabIds = tabIds.toggle(id))
 
-    fun togglePin(id: String) = copy(pinIds = pinIds.toggle(id))
+    /** Picks pinned tab [id], or leaves it out together with the folders it is in, which are no longer whole. */
+    fun togglePin(id: String, state: WorkspaceState): Selection = if (id in pinIds) {
+        copy(pinIds = pinIds - id, folderIds = folderIds - state.ancestorIds(id))
+    } else {
+        copy(pinIds = pinIds + id)
+    }
 
-    fun toggleFolder(id: String) = copy(folderIds = folderIds.toggle(id))
+    /**
+     * Picks folder [id] with everything inside it, its subfolders and their tabs included, or leaves all of that out
+     * together with the folders it is in, which are no longer whole.
+     */
+    fun toggleFolder(id: String, state: WorkspaceState): Selection {
+        val inside = state.descendantIds(id)
+        val (subfolders, tabs) = state.pins.filter { it.id in inside }.partition { it.isFolder }
+        val wholeFolder = subfolders.map { it.id }.toSet() + id
+        val folderTabs = tabs.map { it.id }.toSet()
+        return if (id in folderIds) {
+            copy(pinIds = pinIds - folderTabs, folderIds = folderIds - wholeFolder - state.ancestorIds(id))
+        } else {
+            copy(pinIds = pinIds + folderTabs, folderIds = folderIds + wholeFolder)
+        }
+    }
+
+    /** How many items are picked, leaving out those inside a picked folder, which go wherever it goes. */
+    fun topLevelCount(state: WorkspaceState): Int {
+        val inside = folderIds.flatMap { state.descendantIds(it) }.toSet()
+        return tabIds.size + (pinIds - inside).size + (folderIds - inside).size
+    }
 
     operator fun plus(other: Selection) =
         Selection(tabIds + other.tabIds, pinIds + other.pinIds, folderIds + other.folderIds)
 
     private fun Set<String>.toggle(id: String) = if (id in this) this - id else this + id
+
+    companion object {
+        /** Folder [id] picked with everything inside it. */
+        fun ofFolder(id: String, state: WorkspaceState): Selection = Selection().toggleFolder(id, state)
+    }
 }
 
 /**
@@ -48,7 +78,8 @@ data class Selection(
  * @property splitTabIds Open tabs among the targets that are part of a split view.
  * @property restricted Whether the targets are in the workspace of a device on the account, which follows that device:
  *   their tabs can be opened and closed, and closing one, pinned or not, closes it on the device too, but nothing the
- *   device would not take, like pinning, folders, names, essentials or containers.
+ *   device would not take, like pinning, folders, names, essentials or containers. Unpinning only changes how Dejavu
+ *   shows a tab, which stays pinned on the device.
  */
 data class ActionTargets(
     val tabs: List<TabSessionState> = emptyList(),
@@ -160,20 +191,17 @@ val TabSessionState.isAwake: Boolean
 val TabSessionState.displayTitle: String
     get() = pageLabel(content.title, content.url)
 
-/** The page's [title], like browsers show on tabs, or its address when the page has no title. */
+/**
+ * The page's [title], like browsers show on tabs, or its address when the page has no title or its title is its own
+ * address. Any other title is shown as the page wrote it, never made to look like an address.
+ */
 fun pageLabel(title: String?, url: String): String {
     val text = title?.trim().orEmpty()
-    return when {
-        text.isEmpty() -> displayUrl(url)
-        text.isWebAddress() -> displayUrl(text)
-        else -> text
-    }
+    return if (text.isEmpty() || isSamePage(text, url)) displayUrl(url) else text
 }
 
 /** [url] without its scheme and "www.", the way Firefox shows addresses. */
 fun displayUrl(url: String): String = URLStringUtils.toDisplayUrl(url).toString()
-
-private fun String.isWebAddress() = startsWith("http://") || startsWith("https://")
 
 /** The title shown for open tab [tab]: the one the user gave it, or its page's. */
 fun WorkspaceState.titleOf(tab: TabSessionState): String =
@@ -197,6 +225,7 @@ val PinnedItem.pageUrl: String
 internal val DeviceTabActions = setOf(
     TabAction.CLOSE,
     TabAction.SLEEP,
+    TabAction.UNPIN,
     TabAction.BOOKMARK,
     TabAction.SHARE,
     TabAction.COPY_LINK,
@@ -212,6 +241,10 @@ internal val DeviceTabActions = setOf(
 fun Workspace.canTake(targets: ActionTargets): Boolean =
     device == null || (targets.allPins.isEmpty() && targets.folders.isEmpty())
 
+/** The workspace [this] are in, or `null` when they are only essentials, which every workspace shows. */
+fun ActionTargets.workspaceIn(state: WorkspaceState): String? =
+    tabs.firstOrNull()?.let { state.workspaceOf(it.id) } ?: (pins + folders).firstNotNullOfOrNull { it.workspaceId }
+
 /** Whether [this] action can do anything for [targets]. Actions on folders reach every tab inside them. */
 fun TabAction.appliesTo(targets: ActionTargets): Boolean =
     (!targets.restricted || this in DeviceTabActions) && appliesToTargets(targets)
@@ -226,6 +259,7 @@ private fun TabAction.appliesToTargets(targets: ActionTargets): Boolean = when (
     TabAction.BOOKMARK, TabAction.SHARE, TabAction.COPY_LINK -> targets.links.any { it.first.isNotBlank() }
     TabAction.DUPLICATE -> targets.tabs.isNotEmpty() || targets.allPins.isNotEmpty()
     TabAction.RESET_PIN -> targets.changedPins.isNotEmpty() || targets.closedChangedPins.isNotEmpty()
+    TabAction.REPLACE_PIN -> targets.changedPins.isNotEmpty()
     TabAction.ADD_TO_ESSENTIALS -> targets.tabs.isNotEmpty() || targets.allPins.any { !it.essential }
     TabAction.REMOVE_FROM_ESSENTIALS -> targets.pins.any { it.essential }
     TabAction.NEW_FOLDER -> !targets.isEmpty() && !targets.isSingleFolder
@@ -236,21 +270,22 @@ private fun TabAction.appliesToTargets(targets: ActionTargets): Boolean = when (
     TabAction.MOVE_TO_FOLDER, TabAction.MOVE_TO_WORKSPACE -> !targets.isEmpty()
     TabAction.CHANGE_CONTAINER -> targets.tabs.isNotEmpty() || targets.allPins.isNotEmpty()
     TabAction.RENAME_TAB -> targets.folders.isEmpty() && targets.tabs.size + targets.pins.size == 1
-    TabAction.SPLIT_VIEW -> targets.openTabs.size == 2
+    // Only two tabs picked themselves, not the tabs inside a folder.
+    TabAction.SPLIT_VIEW -> targets.folders.isEmpty() && targets.tabs.size + targets.pins.size == 2 && targets.openTabs.size == 2
     TabAction.UNSPLIT -> targets.splitTabIds.isNotEmpty()
 }
 
 /** Whether [this] action can do anything for [targets]. */
 fun RowAction.appliesTo(targets: ActionTargets): Boolean = when (this) {
     is RowAction.BuiltIn -> action.appliesTo(targets)
-    is RowAction.Custom -> targets.links.any { it.first.isNotBlank() }
+    // A custom action sends pages to a server, so it is not offered for private tabs.
+    is RowAction.Custom -> targets.tabs.none { it.content.private } && targets.links.any { it.first.isNotBlank() }
 }
 
 /**
  * The buttons of one row: the user's choice, without the actions that do nothing for it. Closing cannot take away a
  * pinned tab or a folder, so on their rows Close puts their tabs to sleep, and once a pinned tab sleeps or is closed,
- * Close unpins it. In the workspace of a device, Close closes a pinned tab, like on the device. [isPinned] is for the
- * rows of pinned tabs and folders.
+ * Close unpins it, in the workspace of a device too. [isPinned] is for the rows of pinned tabs and folders.
  */
 fun rowActions(configured: List<RowAction>, targets: ActionTargets, isPinned: Boolean): List<RowAction> =
     configured
@@ -262,7 +297,6 @@ private val CloseAction = RowAction.BuiltIn(TabAction.CLOSE)
 
 /** What Close does on the row of a pinned tab or a folder: sleep while a tab is awake, then unpin a pinned tab. */
 private fun pinnedClose(targets: ActionTargets): RowAction? = when {
-    targets.restricted && targets.folders.isEmpty() -> CloseAction
     targets.awakeTabs.isNotEmpty() -> RowAction.BuiltIn(TabAction.SLEEP)
     targets.folders.isEmpty() -> RowAction.BuiltIn(TabAction.UNPIN)
     else -> null
@@ -286,6 +320,9 @@ sealed interface DropTarget {
 
     /** Next to an unpinned tab. */
     data class NextToTab(val tabId: String, val after: Boolean) : DropTarget
+
+    /** Onto an unpinned tab, which the one dragged tab joins in a split view, on the same row. */
+    data class SplitWith(val tabId: String) : DropTarget
 
     /** At the start of the unpinned tabs, right below New Tab. */
     data object UnpinnedStart : DropTarget

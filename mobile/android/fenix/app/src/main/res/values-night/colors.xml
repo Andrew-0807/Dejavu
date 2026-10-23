@@ -8,7 +8,7 @@
     <color name="fx_mobile_on_primary">@color/dejavuGold20</color>
     <color name="fx_mobile_primary_container">@color/dejavuGold30</color>
     <color name="fx_mobile_on_primary_container">@color/dejavuGold90</color>
-    <color name="fx_mobile_primary_inverse">@color/dejavuGold45</color>
+    <color name="fx_mobile_primary_inverse">@color/dejavuGold80</color>
     <color name="fx_mobile_secondary">@color/dejavuSand80</color>
     <color name="fx_mobile_on_secondary">@color/dejavuSand20</color>
     <color name="fx_mobile_secondary_container">@color/dejavuSand30</color>
@@ -23,8 +23,8 @@
     <color name="fx_mobile_on_surface">@color/dejavuPaper</color>
     <color name="fx_mobile_surface_variant">@color/dejavuWarm65</color>
     <color name="fx_mobile_on_surface_variant">@color/dejavuPaperA70</color>
-    <color name="fx_mobile_surface_inverse">@color/dejavuWarm30</color>
-    <color name="fx_mobile_on_surface_inverse">@color/dejavuWarm80</color>
+    <color name="fx_mobile_surface_inverse">@android:color/black</color>
+    <color name="fx_mobile_on_surface_inverse">@color/dejavuPaper</color>
     <color name="fx_mobile_error">@color/novaRed30</color>
     <color name="fx_mobile_on_error">@color/dejavuWarm80</color>
     <color name="fx_mobile_error_container">@color/novaRed70</color>
