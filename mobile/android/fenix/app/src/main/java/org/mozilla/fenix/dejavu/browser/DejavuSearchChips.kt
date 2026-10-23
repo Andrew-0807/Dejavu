@@ -92,7 +92,7 @@ fun DejavuSearchChips(newTab: Boolean, modifier: Modifier = Modifier) {
 private fun placeOf(tab: TabSessionState, records: List<ContainerRecord>): TabPlace? {
     if (tab.content.private) return TabPlace.Private
     val contextId = tab.contextId ?: return null
-    val isTemporary = records.any { it.contextId == contextId && it.temporary }
+    val isTemporary = records.any { it.contextId == contextId && it.showsAsTemporary }
     return if (isTemporary) TabPlace.Temporary else TabPlace.Container(contextId)
 }
 
@@ -104,7 +104,7 @@ private fun ContainerChips(editedTab: TabSessionState?) {
     val records by storage.records.collectAsState()
     val repository = remember { WorkspaceRepository.peek() ?: WorkspaceRepository.get(context) }
     val workspace = repository.state.collectAsState().value.activeWorkspace
-    val containers = records.orEmpty().filterNot { it.temporary }
+    val containers = records.orEmpty().filterNot { it.showsAsTemporary }
     // The workspace of a device on the account only takes tabs without a container.
     val isDevice = workspace?.device != null
     val editedPlace = remember(editedTab) { editedTab?.let { placeOf(it, records.orEmpty()) } }

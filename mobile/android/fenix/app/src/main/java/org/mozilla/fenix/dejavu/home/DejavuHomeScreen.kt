@@ -71,10 +71,10 @@ import org.mozilla.fenix.dejavu.browser.blurBehindSearch
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
-import org.mozilla.fenix.dejavu.containers.TemporaryContainers
 import org.mozilla.fenix.dejavu.features.FeatureTour
 import org.mozilla.fenix.dejavu.features.FeatureTourDialog
 import org.mozilla.fenix.dejavu.features.wasUpdated
+import org.mozilla.fenix.dejavu.openClosedPin
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.settings.resolveRowActions
 import org.mozilla.fenix.dejavu.settings.resolveSelectionActions
@@ -249,7 +249,9 @@ fun ComposeView.setDejavuHomeContent(
                 CompositionLocalProvider(LocalPopupTheme provides workspaceState.activeWorkspace?.theme) {
                     SyncSourceDialog(
                         status = syncStatus,
-                        onChoose = { DejavuSync.chooseSource(context, it) },
+                        workspaces = workspaceState,
+                        tabs = tabs,
+                        onChoose = { source, start -> DejavuSync.chooseSource(context, source, start) },
                         onDismiss = { DejavuSync.putOffSourceChoice(context) },
                     )
                 }
@@ -343,46 +345,38 @@ private class DefaultDejavuHomeInteractor(
     override fun onTabClick(tabId: String) = openTab(tabId)
 
     override fun onPinClick(pin: PinnedItem) {
-        val tabId = tabOf(pin, select = true) ?: return
+        tabOf(pin, select = true) { showPin(pin, it) }?.let { showPin(pin, it) }
+    }
+
+    /** Shows [tabId], the tab of [pin]. */
+    private fun showPin(pin: PinnedItem, tabId: String) {
         // The two pinned tabs of a split view synced from Zen open together, the way Zen shows them.
         val state = repository.state.value
         val zenSplit = state.pinnedSplitOf(pin.id)
         if (zenSplit != null && state.splitOf(tabId) == null) {
             val otherId = zenSplit.pinIds.firstOrNull { it != pin.id }
             val other = state.pins.firstOrNull { it.id == otherId }
-            other?.let { tabOf(it, select = false) }?.let { otherTabId ->
-                val first = zenSplit.pinIds.first() == pin.id
+            val first = zenSplit.pinIds.first() == pin.id
+            val split: (String) -> Unit = { otherTabId ->
                 repository.createSplit(
                     first = if (first) tabId else otherTabId,
                     second = if (first) otherTabId else tabId,
                     orientation = zenSplit.orientation,
                 )
             }
+            other?.let { tabOf(it, select = false, onOpened = split) }?.let(split)
         }
         openTab(tabId)
     }
 
     /**
      * The open tab of [pin]. A pin whose tab closed opens where that tab was, like a sleeping tab wakes up, selected
-     * when [select] is set.
+     * when [select] is set. One whose address is not a web page first asks the user, see [openClosedPin]: then `null`
+     * is returned, and [onOpened] gets the tab once the user agrees.
      */
-    private fun tabOf(pin: PinnedItem, select: Boolean): String? {
+    private fun tabOf(pin: PinnedItem, select: Boolean, onOpened: (String) -> Unit = {}): String? {
         pin.tabId?.takeIf { store.state.findTab(it) != null }?.let { return it }
-        val url = pin.pageUrl.takeIf { it.isNotEmpty() } ?: return null
-        val tabId = tabsUseCases.addTab(
-            url = url,
-            selectTab = select,
-            title = pin.openTitle ?: pin.title,
-            contextId = TemporaryContainers.orReplacement(
-                pin.containerId,
-                store,
-                containerStorage,
-                settings.temporaryContainersByDefault.value,
-            ),
-            source = SessionState.Source.Internal.None,
-        )
-        repository.attachPinned(pin.id, tabId)
-        return tabId
+        return openClosedPin(context, pin, select, onOpened)
     }
 
     override fun onTabAction(action: TabAction, targets: ActionTargets, workspaceId: String) =

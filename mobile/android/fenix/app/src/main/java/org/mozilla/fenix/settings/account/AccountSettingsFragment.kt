@@ -204,8 +204,8 @@ class AccountSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFr
 
         setupPreferenceListeners()
         // Dejavu: the account page also syncs workspaces with Firefox or Zen.
-        if (findPreference<Preference>(getString(R.string.pref_key_dejavu_sync_category)) != null) {
-            DejavuAccountSync(this).bind()
+        if (findPreference<Preference>(getString(R.string.pref_key_dejavu_sync_source)) != null) {
+            DejavuAccountSync(this, onChanged = ::updateSyncedDataSectionDescription).bind()
         }
     }
 
@@ -360,7 +360,9 @@ class AccountSettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFr
                 .filterNot { it.needsPinWarning && !areCredentialsSyncable }
                 .any {
                     syncEnginesStatus.getOrElse(it.engine) { false }
-                }
+                } ||
+                // Dejavu: Zen's workspaces are among what is synced.
+                DejavuSync.status.value.syncsZen
 
         requirePreference<PreferenceCategory>(R.string.preferences_sync_category).summary =
             if (isAnyEngineEnabled || syncEnginesStatus.isEmpty()) {

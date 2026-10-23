@@ -191,20 +191,17 @@ val TabSessionState.isAwake: Boolean
 val TabSessionState.displayTitle: String
     get() = pageLabel(content.title, content.url)
 
-/** The page's [title], like browsers show on tabs, or its address when the page has no title. */
+/**
+ * The page's [title], like browsers show on tabs, or its address when the page has no title or its title is its own
+ * address. Any other title is shown as the page wrote it, never made to look like an address.
+ */
 fun pageLabel(title: String?, url: String): String {
     val text = title?.trim().orEmpty()
-    return when {
-        text.isEmpty() -> displayUrl(url)
-        text.isWebAddress() -> displayUrl(text)
-        else -> text
-    }
+    return if (text.isEmpty() || isSamePage(text, url)) displayUrl(url) else text
 }
 
 /** [url] without its scheme and "www.", the way Firefox shows addresses. */
 fun displayUrl(url: String): String = URLStringUtils.toDisplayUrl(url).toString()
-
-private fun String.isWebAddress() = startsWith("http://") || startsWith("https://")
 
 /** The title shown for open tab [tab]: the one the user gave it, or its page's. */
 fun WorkspaceState.titleOf(tab: TabSessionState): String =
@@ -284,7 +281,8 @@ private fun TabAction.appliesToTargets(targets: ActionTargets): Boolean = when (
 /** Whether [this] action can do anything for [targets]. */
 fun RowAction.appliesTo(targets: ActionTargets): Boolean = when (this) {
     is RowAction.BuiltIn -> action.appliesTo(targets)
-    is RowAction.Custom -> targets.links.any { it.first.isNotBlank() }
+    // A custom action sends pages to a server, so it is not offered for private tabs.
+    is RowAction.Custom -> targets.tabs.none { it.content.private } && targets.links.any { it.first.isNotBlank() }
 }
 
 /**

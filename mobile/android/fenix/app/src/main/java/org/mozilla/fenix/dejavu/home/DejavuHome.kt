@@ -38,6 +38,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateMapOf
@@ -229,6 +230,16 @@ fun DejavuHome(
     var pagesWidth by remember { mutableIntStateOf(0) }
     var revealTabId by remember { mutableStateOf<String?>(null) }
     val onPrivatePage = privateIndex != null && pagerState.currentPage == privateIndex
+    // While any of the private workspace shows, even halfway through a swipe.
+    val privatePageShown by remember(privateIndex) {
+        derivedStateOf {
+            privateIndex != null && (
+                pagerState.currentPage == privateIndex ||
+                    pagerState.layoutInfo.visiblePagesInfo.any { it.index == privateIndex }
+                )
+        }
+    }
+    SecureWindowWhile(privatePageShown)
     val currentWorkspace = state.workspaces.getOrNull(pagerState.currentPage) ?: state.workspaces.last()
     val tabsById = remember(tabs) { tabs.associateBy { it.id } }
     // The workspace of a device on the account shows what the device has, which has no essentials.

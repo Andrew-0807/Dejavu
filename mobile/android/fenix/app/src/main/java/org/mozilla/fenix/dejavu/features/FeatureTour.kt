@@ -125,7 +125,7 @@ enum class DejavuFeature(
     ZEN_SYNC(
         R.string.dejavu_feature_zen_sync,
         R.raw.dejavu_feature_zen_sync,
-        listOf(R.string.preferences_account_settings, R.string.dejavu_settings_sync),
+        listOf(R.string.preferences_account_settings, R.string.dejavu_sync_source),
         iconsR.drawable.mozac_ic_avatar_circle_24,
     ),
     FOLDERS(R.string.dejavu_feature_folders, R.raw.dejavu_feature_folders),
@@ -135,7 +135,7 @@ enum class DejavuFeature(
     FIREFOX_SYNC(
         R.string.dejavu_feature_firefox_sync,
         R.raw.dejavu_feature_firefox_sync,
-        listOf(R.string.preferences_account_settings, R.string.dejavu_settings_sync),
+        listOf(R.string.preferences_account_settings, R.string.dejavu_sync_source),
         iconsR.drawable.mozac_ic_avatar_circle_24,
     ),
 }

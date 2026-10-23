@@ -23,5 +23,20 @@ are not sure where a problem belongs, report it here and we will help.
 
 ## Supported versions
 
-Security fixes are made for the latest version of Dejavu on Google Play. Fixes that Mozilla makes in Firefox's engine
-reach Dejavu when it is updated to a newer Firefox.
+Security fixes are made for the latest Dejavu release, on GitHub and in the ByArchitect F-Droid repository.
+
+Dejavu's engine does not follow Firefox's releases yet. It is a Firefox 159 Nightly build from September 25, 2026, so
+fixes that Mozilla makes in Firefox's engine after that do not reach Dejavu until it moves to a newer Firefox. Moving
+to Firefox's releases, and then following each one, is on the
+[roadmap](https://github.com/users/by-architect/projects/1).
+
+## Check a download
+
+APKs from GitHub and the ByArchitect F-Droid repository are signed with Dejavu's key. Its certificate has this SHA-256
+fingerprint, which apps like [AppVerifier](https://github.com/soupslurpr/AppVerifier) compare with the installed app:
+
+```
+AD:2C:4C:E3:BD:3A:A1:30:A4:3C:6E:6F:81:4A:14:7C:91:80:EE:3F:C1:80:A1:89:54:87:06:64:F1:47:F1:4A
+```
+
+Each release also lists the SHA-256 checksum of every file it offers.

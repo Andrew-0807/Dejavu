@@ -63,6 +63,12 @@ internal class DohSettingsFragment : Fragment(), SystemInsetsPaddedFragment {
         FirefoxTheme {
             DohSettingsNavHost(
                 buildStore = buildStore,
+                // Dejavu: the tracking protection settings open the list of exceptions on its own.
+                startDestination = if (arguments?.getBoolean(START_ON_EXCEPTIONS) == true) {
+                    DohSettingsDestinations.EXCEPTIONS_LIST
+                } else {
+                    DohSettingsDestinations.ROOT
+                },
                 onUpdateToolbar = { titleResId ->
                     safeShowToolbar(titleResId)
                 },
@@ -79,6 +85,13 @@ internal class DohSettingsFragment : Fragment(), SystemInsetsPaddedFragment {
 
     override fun onResume() {
         super.onResume()
-        showToolbar(getString(R.string.preference_doh_title))
+        // Dejavu: the list of exceptions keeps its own title when it was opened on its own.
+        val onExceptions = arguments?.getBoolean(START_ON_EXCEPTIONS) == true
+        showToolbar(getString(if (onExceptions) R.string.preference_doh_exceptions else R.string.preference_doh_title))
+    }
+
+    companion object {
+        /** Dejavu: the argument that opens the list of exceptions instead of the secure DNS settings. */
+        const val START_ON_EXCEPTIONS = "dejavu_start_on_exceptions"
     }
 }

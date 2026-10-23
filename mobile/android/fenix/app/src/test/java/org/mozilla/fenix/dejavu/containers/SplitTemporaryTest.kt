@@ -27,4 +27,21 @@ class SplitTemporaryTest {
         assertEquals(listOf("Work", "Bank"), permanent.map { it.name })
         assertEquals(listOf("tmp1", "tmp2", "tmp10"), temporary.map { it.name })
     }
+
+    @Test
+    fun `temporary containers synced from Zen count as temporary, other names stay permanent`() {
+        val records = listOf(
+            container("tmp23"),
+            container("Work"),
+            container("tmp"),
+            container("tmp5x"),
+            container("tmp4", temporary = true),
+        )
+
+        val (permanent, temporary) = records.splitTemporary()
+
+        assertEquals(listOf("Work", "tmp", "tmp5x"), permanent.map { it.name })
+        assertEquals(listOf("tmp4", "tmp23"), temporary.map { it.name })
+        assertEquals(listOf(true, false), listOf(records[0].showsAsTemporary, records[0].temporary))
+    }
 }

@@ -9,6 +9,7 @@ import androidx.core.content.edit
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import mozilla.components.lib.dataprotect.SecureAbove22Preferences
 import org.json.JSONArray
 import org.mozilla.fenix.dejavu.actions.ActionPlace
 import org.mozilla.fenix.dejavu.actions.CustomAction
@@ -24,6 +25,10 @@ import org.mozilla.fenix.dejavu.menu.MoreMenuLayout
  */
 class DejavuSettings private constructor(context: Context) {
     private val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
+    // Custom actions can hold API tokens in their headers and addresses, so they are encrypted with the Android
+    // Keystore. Where the Keystore fails, they stay in the plain preferences rather than being lost.
+    private val secrets by lazy { SecureAbove22Preferences(context, SECRETS_NAME) }
 
     private val _customActions = MutableStateFlow(readCustomActions())
     private val _pinnedRowKeys = MutableStateFlow(readKeys(KEY_PINNED_ROW_ACTIONS, DEFAULT_PINNED_ROW_ACTIONS))
@@ -247,15 +252,25 @@ class DejavuSettings private constructor(context: Context) {
         return initial
     }
 
+    /** The saved custom actions. Ones an older Dejavu saved in plain text move to the encrypted storage. */
     private fun readCustomActions(): List<CustomAction> {
-        val array = prefs.getString(KEY_CUSTOM_ACTIONS, null)?.let { runCatching { JSONArray(it) }.getOrNull() }
-            ?: return emptyList()
+        val saved = runCatching { secrets.getString(KEY_CUSTOM_ACTIONS) }.getOrNull()
+            ?: prefs.getString(KEY_CUSTOM_ACTIONS, null)?.also { saveCustomActions(it) }
+        val array = saved?.let { runCatching { JSONArray(it) }.getOrNull() } ?: return emptyList()
         return (0 until array.length()).mapNotNull { CustomAction.fromJson(array.getJSONObject(it)) }
     }
 
-    private fun writeCustomActions() {
-        val array = JSONArray().apply { _customActions.value.forEach { put(it.toJson()) } }
-        prefs.edit { putString(KEY_CUSTOM_ACTIONS, array.toString()) }
+    private fun writeCustomActions() =
+        saveCustomActions(JSONArray().apply { _customActions.value.forEach { put(it.toJson()) } }.toString())
+
+    private fun saveCustomActions(json: String) {
+        if (runCatching { secrets.putString(KEY_CUSTOM_ACTIONS, json) }.isSuccess) {
+            prefs.edit { remove(KEY_CUSTOM_ACTIONS) }
+        } else {
+            // An older encrypted copy would hide this one when they are read.
+            runCatching { secrets.remove(KEY_CUSTOM_ACTIONS) }
+            prefs.edit { putString(KEY_CUSTOM_ACTIONS, json) }
+        }
     }
 
     companion object {
@@ -267,6 +282,7 @@ class DejavuSettings private constructor(context: Context) {
 
         // Kept from before the rename to Dejavu, so saved data still loads.
         private const val PREFS_NAME = "kaizen_settings"
+        private const val SECRETS_NAME = "dejavu_secrets"
         private const val KEY_PINNED_ROW_ACTIONS = "pinned_row_actions"
         private const val KEY_UNPINNED_ROW_ACTIONS = "unpinned_row_actions"
         private const val KEY_FOLDER_ROW_ACTIONS = "folder_row_actions"

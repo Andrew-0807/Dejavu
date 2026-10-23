@@ -243,7 +243,8 @@ features:
       enabled:
         type: Boolean
         description: If true, the import bookmarks feature will be enabled.
-        default: false
+        # Dejavu: release builds can import bookmarks from a file too.
+        default: true
     defaults:
       - channel: developer
         value:
@@ -457,14 +458,9 @@ features:
           process. "2" means "isolate high value", Android-specific setting to only isolate sites
           considered "high value".
         type: Int
-        default: 0
-    defaults:
-      - channel: nightly
-        value:
-          isolationStrategy: 2
-      - channel: developer
-        value:
-          isolationStrategy: 2
+        # Dejavu: Dejavu fetches no rollouts, so release builds isolate high value sites, like sites the user signed
+        # in to, in processes of their own, as Firefox Nightly and debug builds do.
+        default: 2
 
   suggest-shipped-domains:
     description: Feature that suggests domains from the shipped domain list.
@@ -726,7 +722,9 @@ features:
       bannedPortList:
         description: A comma-separated list of ports that Firefox will refuse to connect to. These ports will be appended to nsIOService gBadPortList
         type: String
-        default: ""
+        # Dejavu: Dejavu fetches no rollouts, so it ships the list of Firefox's release rollout
+        # fenix-release-140-port-blocking. Check it again with each engine update.
+        default: "29009, 29010, 30102, 30103, 12387, 12388, 12580, 12581, 12582, 12583, 12584, 12585, 12586, 12587, 12588, 12589, 12590, 12591"
 
   networking-happy-eyeballs:
     description: "Networking (Necko) Happy Eyeballs V3 configuration"
@@ -782,7 +780,9 @@ features:
         description: >
           The channel from which CRLite filters will be installed.
         type: Option<String>
-        default: null
+        # Dejavu: every revoked certificate is caught, as in Firefox for computers, not only the priority ones of the
+        # "compat" channel Android uses.
+        default: "default"
 
   pqcrypto:
     description: Control the use of post-quantum key exchange mechanisms in TLS and HTTP/3.
@@ -982,7 +982,8 @@ features:
         description: >
           Whether or not to block LNA requests
         type: Boolean
-        default: false
+        # Dejavu: on like in Firefox's release rollout local-network-access-android-release-rollout-155.
+        default: true
       block-trackers:
         description: >
           Whether or not to block trackers
@@ -992,7 +993,8 @@ features:
         description: >
           Whether or not to turn on local network / device access blocking
         type: Boolean
-        default: false
+        # Dejavu: on like in Firefox's release rollout local-network-access-android-release-rollout-155.
+        default: true
       block-insecure-contexts:
         description: >
           Whether or not LNA requests coming from insecure contexts should be
@@ -1202,7 +1204,9 @@ features:
       enabled:
         description: If true, voice search is shown in the display toolbar.
         type: Boolean
-        default: false
+        # Dejavu: on, as Firefox's rollout (add-voice-search-icon-to-addressbar-rollout) turned it on before Dejavu
+        # stopped applying Firefox's experiments.
+        default: true
     defaults:
       - channel: developer
         value:
@@ -1256,11 +1260,9 @@ features:
       enabled:
         description: If true, the uninstall survey shortcut is enabled and visible.
         type: Boolean
+        # Dejavu: Firefox's uninstall survey is off in every build, and Dejavu does not hold the permission it needs to
+        # uninstall the app.
         default: false
-    defaults:
-      - channel: developer
-        value:
-          enabled: true
 
   homepage-customization:
     description: Feature to enable Homepage Customization for users on Firefox on Android.

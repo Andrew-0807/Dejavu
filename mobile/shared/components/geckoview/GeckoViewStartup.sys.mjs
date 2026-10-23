@@ -13,6 +13,9 @@ ChromeUtils.defineESModuleGetters(lazy, {
   EventDispatcher: "resource://gre/modules/Messaging.sys.mjs",
   PdfJs: "resource://pdf.js/PdfJs.sys.mjs",
   GeckoViewPreferences: "resource://gre/modules/GeckoViewPreferences.sys.mjs",
+  RemoteSecuritySettings:
+    "resource://gre/modules/psm/RemoteSecuritySettings.sys.mjs",
+  RemoteSettings: "resource://services-settings/remote-settings.sys.mjs",
 });
 
 const { debug, warn } = GeckoViewUtils.initLogging("Startup");
@@ -153,6 +156,37 @@ export class GeckoViewStartup {
         null,
         "network:local-network-permission-result",
         granted ? "granted" : "denied"
+      );
+    }
+  }
+
+  /**
+   * Dejavu: Remote Settings only syncs the security collections (CRLite,
+   * OneCRL, intermediates) whose clients exist when it polls, and geckoview.js
+   * makes them with the first window, which Dejavu may not open before a poll:
+   * it often starts on its home screen or in the background. They are made
+   * after every start instead, and when their data is older than a poll
+   * interval while the poll timer is not due, as after a poll that failed
+   * offline or ran without them, a poll makes up for it.
+   */
+  #keepSecurityStateFresh() {
+    lazy.RemoteSecuritySettings.init();
+    const now = Math.round(Date.now() / 1000);
+    const interval = Services.prefs.getIntPref(
+      "services.settings.poll_interval",
+      86400
+    );
+    const lastPoll = Services.prefs.getIntPref(
+      "app.update.lastUpdateTime.services-settings-poll-changes",
+      0
+    );
+    const lastSync = Services.prefs.getIntPref(
+      "services.settings.security-state.cert-revocations.last_check",
+      0
+    );
+    if (now - lastPoll < interval && now - lastSync >= interval) {
+      lazy.RemoteSettings.pollChanges({ trigger: "timer" }).catch(
+        e => warn`Remote Settings poll failed: ${e}`
       );
     }
   }
@@ -382,6 +416,8 @@ export class GeckoViewStartup {
           this,
           "network:request-local-network-permission"
         );
+
+        InitLater(() => this.#keepSecurityStateFresh());
 
         Services.obs.notifyObservers(null, "geckoview-startup-complete");
         break;

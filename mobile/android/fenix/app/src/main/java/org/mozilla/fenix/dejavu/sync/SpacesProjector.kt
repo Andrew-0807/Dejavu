@@ -15,12 +15,16 @@ import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
  *
  * @property normalTabs Whether tabs that are not pinned are synced too, like Zen's "Include unpinned tabs".
  * @property tabs The open tabs that are not private, or `null` while the browser has not restored them yet.
+ * @property forgotten Ids that tabs which are gone synced under, removed all at once rather than closed by the user,
+ *   like by Delete browsing data. Sync forgets them instead of closing them on the other devices, see
+ *   [DejavuSync.forgetTabs].
  */
 internal data class LocalSpaces(
     val state: WorkspaceState,
     val containers: List<ContainerRecord>,
     val normalTabs: Boolean = false,
     val tabs: List<LocalTab>? = null,
+    val forgotten: Set<String> = emptySet(),
 )
 
 /**
@@ -95,6 +99,9 @@ internal class SpacesProjector(
     private val normalTabsBySpace = LinkedHashMap<String, MutableList<String>>()
     private val normalTabsByFolder = LinkedHashMap<String, MutableList<String>>()
     private val closedTabs = HashSet<String>()
+
+    /** Pinned tabs unpinned here and still open, held while tabs that are not pinned are not synced. */
+    private val unpinnedHere = HashSet<String>()
 
     /** Tabs of Zen's split views that are not pinned; Dejavu keeps those splits as they are, in place of their tabs. */
     private val normalSplitMembers: Set<String> = server.values
@@ -171,13 +178,22 @@ internal class SpacesProjector(
      * the last sync, so a page loaded on two devices is not sent back and forth. Zen has no temporary containers, so a
      * tab in one goes out without a container and keeps it here. Zen keeps unpinned tabs in folders too, which Dejavu
      * shows among the unpinned tabs: such a tab goes out in its folder while it stays in that workspace and the folder
-     * stays. Without them, and before the browser restored its tabs, the server's unpinned tabs are held. Those that
-     * never were open here are held too; the engine opens them.
+     * stays. Without them, and before the browser restored its tabs, the server's unpinned tabs are held, and so are
+     * the pinned tabs unpinned here whose tabs are still open, like Zen does: deleting them would close those tabs on
+     * the other devices. Those that never were open here are held too; the engine opens them. So are the ones
+     * [LocalSpaces.forgotten], which the engine opens again later.
      */
     private fun projectNormalTabs() {
         val tabs = local.tabs?.takeIf { local.normalTabs }
         if (tabs == null) {
             server.values.filter { it.isNormalTab }.forEach { held += it.id }
+            val pinnedTabs = state.pins.mapNotNull { it.tabId }.toSet()
+            val openTabs = local.tabs?.map { it.id } ?: state.assignments.keys
+            val open = openTabs.filterNot { it in pinnedTabs }.map { state.syncIdOf(it) }.toSet() + local.forgotten
+            server.values
+                .filter { it.kind == RecordKind.TAB && it.isSynced && it.id !in pinsById && it.id in open }
+                .forEach { unpinnedHere += it.id }
+            held += unpinnedHere
             return
         }
         val pinnedTabs = state.pins.mapNotNull { it.tabId }.toSet()
@@ -211,7 +227,7 @@ internal class SpacesProjector(
         }
         for (record in server.values) {
             if (!record.isNormalTab || record.id in records || record.id in held) continue
-            if (record.id in seen) closedTabs += record.id else held += record.id
+            if (record.id in seen && record.id !in local.forgotten) closedTabs += record.id else held += record.id
         }
     }
 
@@ -248,7 +264,8 @@ internal class SpacesProjector(
 
     /**
      * Dejavu has no pinned split views, so the server's are kept as long as their tabs stay together, and follow them
-     * when they move. A split whose tabs were separated or unpinned here is deleted, like Zen does.
+     * when they move. A split whose tabs were separated or unpinned here is deleted, like Zen does, unless its unpinned
+     * tabs are held.
      */
     private fun projectSplits() {
         for (split in server.values) {
@@ -259,7 +276,7 @@ internal class SpacesProjector(
             when {
                 members.size < 2 -> held += split.id
                 pins.any { it == null } -> {
-                    if (members.any { pinsById[it] == null && !isGone(it) }) held += split.id
+                    if (members.any { it in unpinnedHere || (pinsById[it] == null && !isGone(it)) }) held += split.id
                 }
                 pins.any { it!!.isFolder || it.id !in projectedPins } -> held += split.id
                 pins.map { Triple(it!!.essential, it.workspaceId, parentOf(it)) }.distinct().size == 1 -> {

@@ -20,6 +20,12 @@ sealed interface ContainerRemoval {
 
     /** Reopen its tabs in [contextId], or without a container when it is `null`. */
     data class MoveTabs(val contextId: String?) : ContainerRemoval
+
+    /**
+     * Close its open tabs and keep its pinned tabs, which open without a container from then on: for a container that
+     * another device deleted, which closed the tabs there, like Zen does, and syncs again the tabs it keeps.
+     */
+    data object FollowSync : ContainerRemoval
 }
 
 /**
@@ -39,11 +45,12 @@ class ContainerRemover(
             ContainerRemoval.CloseTabs -> {
                 repository?.removePinsOf(record.contextId, tabs.map { it.id }.toSet())
                 repository?.replaceContainer(record.contextId, null)
-                if (tabs.isNotEmpty()) {
-                    // Selecting an about:home tab would leave the current screen, see AboutHomeBinding.
-                    val aboutHomeTabIds = store.state.tabs.filter { it.content.url == ABOUT_HOME_URL }.map { it.id }.toSet()
-                    tabsUseCases.removeTabs(tabs.map { it.id }, aboutHomeTabIds)
-                }
+                close(tabs)
+            }
+            ContainerRemoval.FollowSync -> {
+                repository?.replaceContainer(record.contextId, null)
+                tabs.forEach { SilentlyClosedTabs.add(it.id) }
+                close(tabs)
             }
             is ContainerRemoval.MoveTabs -> {
                 val selectedTabId = store.state.selectedTabId
@@ -56,6 +63,13 @@ class ContainerRemover(
         }
         components.core.geckoRuntime.storageController.clearDataForSessionContext(record.contextId)
         store.dispatch(ContainerAction.RemoveContainerAction(record.contextId))
+    }
+
+    private fun close(tabs: List<TabSessionState>) {
+        if (tabs.isEmpty()) return
+        // Selecting an about:home tab would leave the current screen, see AboutHomeBinding.
+        val aboutHomeTabIds = store.state.tabs.filter { it.content.url == ABOUT_HOME_URL }.map { it.id }.toSet()
+        tabsUseCases.removeTabs(tabs.map { it.id }, aboutHomeTabIds)
     }
 }
 

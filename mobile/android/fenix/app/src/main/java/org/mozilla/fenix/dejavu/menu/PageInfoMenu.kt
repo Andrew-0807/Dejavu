@@ -184,7 +184,7 @@ private fun containerOf(
     containers: Map<String, ContainerState>,
 ): PageContainer {
     records.firstOrNull { it.contextId == contextId }?.let { record ->
-        return PageContainer(record.name, record.color, record.icon, record.temporary)
+        return PageContainer(record.name, record.color, record.icon, record.showsAsTemporary)
     }
     val known = containers[contextId]
     return PageContainer(

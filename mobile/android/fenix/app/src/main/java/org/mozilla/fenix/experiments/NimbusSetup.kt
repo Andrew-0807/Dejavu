@@ -17,7 +17,6 @@ import org.mozilla.experiments.nimbus.internal.GeckoPrefHandler
 import org.mozilla.experiments.nimbus.internal.NimbusException
 import org.mozilla.experiments.nimbus.internal.NimbusServerSettings
 import org.mozilla.fenix.BuildConfig
-import org.mozilla.fenix.R
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.messaging.CustomAttributeProvider
 import org.mozilla.fenix.nimbus.FxNimbus
@@ -89,7 +88,8 @@ fun createNimbus(
         .apply {
             url = urlString
             errorReporter = context::reportError
-            initialExperiments = R.raw.initial_experiments
+            // Dejavu: Firefox's file of experiments and rollouts (res/raw/initial_experiments.json) is not applied.
+            // Without a server Nimbus applied it at every start, so Mozilla's experiments ran in Dejavu.
             timeoutLoadingExperiment = TIME_OUT_LOADING_EXPERIMENT_FROM_DISK_MS
             sharedPreferences = settings.preferences
             isFirstRun = isAppFirstRun
@@ -103,6 +103,10 @@ fun createNimbus(
         .build(appInfo, serverSettings)
         .also { nimbusApi ->
             nimbusApi.recordIsReady(FxNimbus.features.nimbusIsReady.value().eventCount)
+            // Dejavu: takes part in no experiments or rollouts, which also ends the ones that earlier versions applied
+            // from that file. Both run in the background.
+            nimbusApi.experimentParticipation = false
+            nimbusApi.rolloutParticipation = false
         }
 }
 

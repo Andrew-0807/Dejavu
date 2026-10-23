@@ -122,7 +122,7 @@ internal fun HomeDialogs(
             WorkspaceDialog(
                 workspace = workspace,
                 wallpaper = workspace?.let { wallpapers[it.id] },
-                containers = containers.values.filterNot { it.temporary },
+                containers = containers.values.filterNot { it.showsAsTemporary },
                 onCreateContainer = interactor::onCreateContainer,
                 onImportWallpaper = interactor::onImportWallpaper,
                 onDiscardWallpaper = interactor::onDiscardWallpaper,

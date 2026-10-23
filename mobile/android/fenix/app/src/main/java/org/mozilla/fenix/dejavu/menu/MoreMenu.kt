@@ -40,7 +40,6 @@ enum class MoreMenuItem(
     DOWNLOADS("downloads", R.string.dejavu_menu_downloads, iconsR.drawable.mozac_ic_download_24),
     HISTORY("history", R.string.dejavu_menu_history, iconsR.drawable.mozac_ic_history_24),
     TRANSLATE("translate", R.string.dejavu_menu_translate, iconsR.drawable.mozac_ic_translate_24),
-    REPORT_BROKEN_SITE("report_broken_site", R.string.dejavu_menu_report_broken_site, iconsR.drawable.mozac_ic_lightbulb_24),
     PIN_TAB("pin_tab", R.string.dejavu_menu_pin_tab, iconsR.drawable.mozac_ic_pin_24),
     ESSENTIAL_TAB("essential_tab", R.string.dejavu_menu_essential_tab, iconsR.drawable.mozac_ic_grid_add_24),
     SAVE_AS_PDF("save_as_pdf", R.string.dejavu_menu_save_as_pdf, iconsR.drawable.mozac_ic_save_file_24),

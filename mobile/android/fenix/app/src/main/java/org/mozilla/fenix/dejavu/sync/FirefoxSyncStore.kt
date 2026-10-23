@@ -58,12 +58,15 @@ internal class FirefoxSyncData(
 
 /**
  * The tabs here that are tabs of Firefox computers, which the other devices see on them, not on this one: the tabs in
- * [workspaces] that sync under [ids], the computers' tabs and the ones sent to them, or that were opened there since
- * [since], which are sent to their computer.
+ * [workspaces] that sync under [ids], the computers' tabs and the ones sent to them, or that the user opened there
+ * since [since], which are sent to their computer. Tabs a page opened there stay this device's.
  */
 internal class ComputerTabs(val workspaces: Set<String>, val ids: Set<String>, val since: Long) {
     fun has(state: WorkspaceState, tabId: String, createdAt: Long): Boolean =
-        state.workspaceOf(tabId) in workspaces && (state.syncIdOf(tabId) in ids || (since > 0 && createdAt >= since))
+        state.workspaceOf(tabId) in workspaces && (
+            state.syncIdOf(tabId) in ids ||
+                (since > 0 && createdAt >= since && tabId !in state.openedByPages)
+            )
 
     companion object {
         val NONE = ComputerTabs(emptySet(), emptySet(), 0L)

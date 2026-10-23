@@ -106,7 +106,9 @@ internal data class EntryLook(
 internal fun MoreMenuEntry.look(state: MoreMenuState): EntryLook = when (this) {
     is MoreMenuEntry.BuiltIn -> item.look(state)
     is MoreMenuEntry.Tab -> EntryLook(stringResource(action.label), action.icon, enabled = action.canRunOnShownTab(state))
-    is MoreMenuEntry.Custom -> EntryLook(action.name, iconsR.drawable.mozac_ic_lightning_24, enabled = state.isWebPage)
+    // A custom action sends the page to a server, so it does not run on a private tab, like pinning and moving it.
+    is MoreMenuEntry.Custom ->
+        EntryLook(action.name, iconsR.drawable.mozac_ic_lightning_24, enabled = state.isWebPage && !state.isPrivate)
     MoreMenuEntry.Home -> EntryLook(stringResource(R.string.dejavu_actions_bar_home), iconsR.drawable.mozac_ic_home_24)
     MoreMenuEntry.Search -> EntryLook(stringResource(R.string.dejavu_actions_bar_search), iconsR.drawable.mozac_ic_search_24)
 }
@@ -157,8 +159,7 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
         MoreMenuItem.RESET_PINNED_URL, MoreMenuItem.REPLACE_PINNED_URL -> default.copy(enabled = state.isPinChanged)
         MoreMenuItem.OPEN_IN_APP -> default.copy(enabled = state.hasExternalApp)
         MoreMenuItem.TRANSLATE -> default.copy(enabled = state.canTranslate, active = state.isTranslated)
-        MoreMenuItem.SHARE, MoreMenuItem.FIND_IN_PAGE, MoreMenuItem.REPORT_BROKEN_SITE, MoreMenuItem.SAVE_AS_PDF,
-        MoreMenuItem.PRINT,
+        MoreMenuItem.SHARE, MoreMenuItem.FIND_IN_PAGE, MoreMenuItem.SAVE_AS_PDF, MoreMenuItem.PRINT,
         -> default.copy(enabled = state.isWebPage)
         MoreMenuItem.EXTENSIONS, MoreMenuItem.PASSWORDS, MoreMenuItem.BOOKMARKS, MoreMenuItem.DOWNLOADS,
         MoreMenuItem.HISTORY, MoreMenuItem.SETTINGS,

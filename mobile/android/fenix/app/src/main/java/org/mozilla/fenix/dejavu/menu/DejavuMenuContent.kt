@@ -42,6 +42,7 @@ import androidx.navigation.NavController
 import mozilla.components.browser.state.selector.normalTabs
 import mozilla.components.browser.state.selector.selectedTab
 import mozilla.components.browser.state.state.TabSessionState
+import mozilla.components.feature.addons.Addon
 import mozilla.components.lib.state.ext.observeAsComposableState
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
@@ -50,6 +51,7 @@ import org.mozilla.fenix.components.components
 import org.mozilla.fenix.components.menu.MenuAccessPoint
 import org.mozilla.fenix.components.menu.store.MenuAction
 import org.mozilla.fenix.components.menu.store.MenuStore
+import org.mozilla.fenix.components.menu.store.WebExtensionMenuItem
 import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.SplitSpace
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
@@ -239,6 +241,7 @@ private fun MoreMenuContent(
         val closer = LocalMenuCloser.current
         val close: () -> Unit = if (closer == null) onDismiss else ({ closer.close() })
         if (accessPoint == MenuAccessPoint.Home) {
+            val hasTab by fenix.core.store.observeAsComposableState { it.selectedTab != null }
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp),
@@ -255,7 +258,15 @@ private fun MoreMenuContent(
                     color = MaterialTheme.colorScheme.onSurface,
                 )
             }
-            ExtensionList(extensions = extensions, onManage = manageExtensions)
+            ExtensionList(
+                extensions =
+                    if (hasTab) {
+                        extensions
+                    } else {
+                        extensions.openingAddonPages(menuState.extensionMenuState.availableAddons, menuStore)
+                    },
+                onManage = manageExtensions,
+            )
             return@MoreMenuSheet
         }
 
@@ -326,6 +337,21 @@ private fun MoreMenuContent(
             onEdit = onEdit.takeUnless { editHidden },
         )
     }
+}
+
+/**
+ * The buttons of the extensions while no tab is open. They have no page to work on, so each opens the extension's page
+ * among the installed [addons] instead, or the list of extensions while those are still loading.
+ */
+internal fun List<WebExtensionMenuItem>.openingAddonPages(addons: List<Addon>, menuStore: MenuStore) = map { item ->
+    item.copy(
+        onClick = {
+            val addon = addons.firstOrNull { it.id == item.id }
+            menuStore.dispatch(
+                addon?.let { MenuAction.Navigate.InstalledAddonDetails(it) } ?: MenuAction.Navigate.ManageExtensions
+            )
+        }
+    )
 }
 
 /** What the "More" menu and the actions bar show about [tab]. */
@@ -434,7 +460,6 @@ private class MenuActions(
             MoreMenuItem.DOWNLOADS -> dispatch(MenuAction.Navigate.Downloads)
             MoreMenuItem.HISTORY -> dispatch(MenuAction.Navigate.History)
             MoreMenuItem.TRANSLATE -> dispatch(MenuAction.Navigate.Translate)
-            MoreMenuItem.REPORT_BROKEN_SITE -> dispatch(MenuAction.Navigate.WebCompatReporter)
             MoreMenuItem.OPEN_IN_APP -> dispatch(MenuAction.OpenInApp)
             MoreMenuItem.SETTINGS -> dispatch(MenuAction.Navigate.Settings)
             else -> Unit

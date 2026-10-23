@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.dejavu.home
 
+import android.view.WindowManager
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,20 +22,24 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import mozilla.components.browser.state.state.TabSessionState
+import mozilla.components.support.utils.ext.getActivityWindow
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.tabZoomTarget
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
+import org.mozilla.fenix.ext.components
 
 /** Key of the private workspace page. Workspace IDs are braced UUIDs, so it cannot clash with one. */
 internal const val PRIVATE_PAGE_KEY = "private"
@@ -45,6 +50,28 @@ internal val privateWorkspaceTheme = WorkspaceTheme(
     opacity = 0.35f,
     texture = 0.2f,
 )
+
+/**
+ * Keeps the window out of screenshots, screen recordings and the recent apps view while [secure], like Fenix keeps its
+ * list of private tabs, unless the user allows screenshots in private browsing. It only ever clears what it set.
+ */
+@Composable
+internal fun SecureWindowWhile(secure: Boolean) {
+    val context = LocalContext.current
+    LaunchedEffect(secure) {
+        val window = context.getActivityWindow() ?: return@LaunchedEffect
+        if (secure && !context.components.settings.shouldSecureModeBeOverridden) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+            windowSecuredHere = true
+        } else if (windowSecuredHere) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+            windowSecuredHere = false
+        }
+    }
+}
+
+/** Whether [SecureWindowWhile] set the window's secure flag, which it clears once nothing private shows anymore. */
+private var windowSecuredHere = false
 
 /**
  * The private tabs, shown as a workspace of their own while any are open. It cannot hold pinned tabs, folders or
@@ -138,6 +165,8 @@ internal fun PrivateWorkspacePage(
                 actions = listOf(close),
                 onAction = { onCloseTab(tab) },
                 onClick = { onTabClick(tab) },
+                isPrivate = true,
+                icon = tab.content.icon,
                 modifier = Modifier.tabZoomTarget(tab.id),
             )
         }

@@ -14,29 +14,36 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.ComposeView
+import androidx.core.text.buildSpannedString
+import androidx.core.text.color
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.preference.Preference
-import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.TwoStatePreference
+import com.google.android.material.R as materialR
 import kotlinx.coroutines.launch
+import mozilla.components.browser.state.selector.normalTabs
+import mozilla.components.lib.state.ext.observeAsComposableState
+import mozilla.components.support.ktx.android.content.getColorFromAttr
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.settings.workspaceRepository
 import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
+import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.settings.requirePreference
 import org.mozilla.fenix.theme.FirefoxTheme
 
 /**
- * The section of the account page that syncs workspaces with Firefox or Zen: whether they sync, with which browser and
- * how the last sync went, and whether unpinned tabs sync too. Choosing the browser opens [SyncSourceDialog].
+ * The parts of the account page that sync workspaces with Firefox or Zen. Under Sync: which browser workspaces sync
+ * with and how the last sync went. Among what to sync: whether workspaces sync with Zen, and their unpinned tabs too,
+ * both marked Zen and off while workspaces sync with Firefox, whose tabs always show. Choosing the browser opens
+ * [SyncSourceDialog]. [onChanged] runs whenever the state of workspace sync shows anew.
  */
-class DejavuAccountSync(private val fragment: PreferenceFragmentCompat) {
+class DejavuAccountSync(private val fragment: PreferenceFragmentCompat, private val onChanged: () -> Unit = {}) {
     private val context
         get() = fragment.requireContext()
 
-    private val category = fragment.requirePreference<PreferenceCategory>(R.string.pref_key_dejavu_sync_category)
     private val enabled = fragment.requirePreference<TwoStatePreference>(R.string.pref_key_dejavu_sync_enabled)
     private val source = fragment.requirePreference<Preference>(R.string.pref_key_dejavu_sync_source)
     private val normalTabs = fragment.requirePreference<TwoStatePreference>(R.string.pref_key_dejavu_sync_normal_tabs)
@@ -44,7 +51,9 @@ class DejavuAccountSync(private val fragment: PreferenceFragmentCompat) {
     private val hint = fragment.requirePreference<Preference>(R.string.pref_key_dejavu_sync_hint)
 
     fun bind() {
-        listOf(enabled, source, normalTabs, turnOn).forEach { preference ->
+        val zenSettings = mapOf(enabled to R.string.dejavu_sync_enabled, normalTabs to R.string.dejavu_sync_normal_tabs)
+        zenSettings.forEach { (preference, title) ->
+            preference.title = zenSetting(context.getString(title))
             preference.icon = preference.icon?.mutate()?.apply {
                 setTintList(AppCompatResources.getColorStateList(context, R.color.state_list_text_color))
             }
@@ -75,33 +84,32 @@ class DejavuAccountSync(private val fragment: PreferenceFragmentCompat) {
     }
 
     private fun show(status: DejavuSyncStatus) {
-        category.summary = context.getString(
-            when (status.source) {
-                DejavuSyncSource.ZEN -> R.string.dejavu_sync_hint
-                DejavuSyncSource.FIREFOX -> R.string.dejavu_sync_firefox_about
-                null -> R.string.dejavu_sync_choose_about
-            },
-        )
+        val withFirefox = status.source == DejavuSyncSource.FIREFOX
         enabled.isChecked = status.enabled
-        source.summary = syncSummary(context, status)
-        source.isEnabled = status.enabled
+        enabled.isEnabled = !withFirefox
         normalTabs.isChecked = status.normalTabs
-        normalTabs.isEnabled = status.enabled
-        normalTabs.summary = context.getString(
-            if (status.source == DejavuSyncSource.FIREFOX) {
-                R.string.dejavu_sync_normal_tabs_firefox_summary
-            } else {
-                R.string.dejavu_sync_normal_tabs_summary
-            },
-        )
-        turnOn.isVisible = status.enabled && status.source == DejavuSyncSource.ZEN &&
-            status.problem == DejavuSyncProblem.NOT_TURNED_ON
+        normalTabs.isEnabled = status.enabled && !withFirefox
+        source.summary = syncSummary(context, status)
+        turnOn.isVisible = status.syncsZen && status.problem == DejavuSyncProblem.NOT_TURNED_ON
         turnOn.isEnabled = !status.syncing
         hint.isVisible = status.source != null
         status.source?.let {
             hint.summary = context.getString(
-                if (it == DejavuSyncSource.FIREFOX) R.string.dejavu_sync_firefox_hint else R.string.dejavu_sync_zen_hint,
+                when {
+                    it == DejavuSyncSource.FIREFOX -> R.string.dejavu_sync_firefox_hint
+                    status.normalTabs -> R.string.dejavu_sync_zen_hint_unpinned
+                    else -> R.string.dejavu_sync_zen_hint
+                },
             )
+        }
+        onChanged()
+    }
+
+    /** [title] of a setting of syncing with Zen, followed by "Zen" in the color of secondary text. */
+    private fun zenSetting(title: String): CharSequence = buildSpannedString {
+        append(title).append("  ")
+        color(context.getColorFromAttr(materialR.attr.colorOnSurfaceVariant)) {
+            append(context.getString(R.string.dejavu_sync_source_zen))
         }
     }
 
@@ -117,12 +125,15 @@ class DejavuAccountSync(private val fragment: PreferenceFragmentCompat) {
             FirefoxTheme {
                 val repository = remember { fragment.workspaceRepository() }
                 val workspaces by repository.state.collectAsState()
+                val tabs by context.components.core.store.observeAsComposableState { it.normalTabs }
                 val status by DejavuSync.status.collectAsState()
                 CompositionLocalProvider(LocalPopupTheme provides workspaces.activeWorkspace?.theme) {
                     SyncSourceDialog(
                         status = status,
-                        onChoose = {
-                            DejavuSync.chooseSource(context, it)
+                        workspaces = workspaces,
+                        tabs = tabs,
+                        onChoose = { source, start ->
+                            DejavuSync.chooseSource(context, source, start)
                             close()
                         },
                         onDismiss = ::close,
@@ -140,7 +151,7 @@ private fun syncSummary(context: Context, status: DejavuSyncStatus): String =
 private fun statusText(context: Context, status: DejavuSyncStatus): String {
     val problem = status.problem
     return when {
-        !status.enabled -> context.getString(R.string.dejavu_sync_off)
+        !status.isOn -> context.getString(R.string.dejavu_sync_off)
         status.syncing -> context.getString(R.string.dejavu_sync_syncing)
         problem != null -> context.getString(problemText(problem))
         status.source == null -> context.getString(R.string.dejavu_sync_problem_choose)

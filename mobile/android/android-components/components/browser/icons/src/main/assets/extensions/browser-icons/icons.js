@@ -74,9 +74,62 @@ collect_meta_property_icons(icons, "og:image:secure_url");
 collect_meta_name_icons(icons, "twitter:image");
 collect_meta_name_icons(icons, "msapplication-TileImage");
 
-let message = {
-  url: document.location.href,
-  icons,
-};
+const PAGE_ICON_SIZE = 256;
+const PAGE_ICON_TIMEOUT_MS = 5000;
 
-browser.runtime.sendNativeMessage("MozacBrowserIcons", message);
+/**
+ * Loads an icon of a page opened over http the way the page loads its own images, so the exception the user gave the
+ * page from HTTPS-Only Mode applies to it, and returns it drawn as a PNG data URL, or null. The app never downloads it
+ * over http then, nor decodes anything the network sent.
+ */
+function drawPageIcon(href) {
+  return new Promise(resolve => {
+    const image = new Image();
+    const timeout = setTimeout(() => resolve(null), PAGE_ICON_TIMEOUT_MS);
+    image.onload = () => {
+      clearTimeout(timeout);
+      try {
+        const width = image.naturalWidth || PAGE_ICON_SIZE;
+        const height = image.naturalHeight || PAGE_ICON_SIZE;
+        const scale = Math.min(1, PAGE_ICON_SIZE / Math.max(width, height));
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.max(1, Math.round(width * scale));
+        canvas.height = Math.max(1, Math.round(height * scale));
+        canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL("image/png"));
+      } catch (e) {
+        resolve(null);
+      }
+    };
+    image.onerror = () => {
+      clearTimeout(timeout);
+      resolve(null);
+    };
+    image.src = href;
+  });
+}
+
+async function pageIcons() {
+  if (document.location.protocol !== "http:") {
+    return icons;
+  }
+  const drawn = await Promise.all(
+    icons.map(async icon => {
+      if (!icon.href || !icon.href.startsWith("http:")) {
+        return icon;
+      }
+      const href = await drawPageIcon(icon.href);
+      return href ? { ...icon, href, mimeType: "image/png" } : null;
+    })
+  );
+  return drawn.filter(icon => icon);
+}
+
+pageIcons().then(found => {
+  let message = {
+    url: document.location.href,
+    icons: found,
+  };
+
+  browser.runtime.sendNativeMessage("MozacBrowserIcons", message);
+});

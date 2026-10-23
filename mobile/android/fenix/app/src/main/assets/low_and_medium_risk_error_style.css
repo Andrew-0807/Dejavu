@@ -103,6 +103,14 @@
   justify-content: center;
 }
 
+/* The HTTPS-Only page has two buttons under a long text. On a short screen its picture makes room for them, so that
+   both show above the bottom toolbar without scrolling. */
+@media (max-height: 760px) {
+  .httpsOnly #imageContainer {
+    display: none;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #15141a;

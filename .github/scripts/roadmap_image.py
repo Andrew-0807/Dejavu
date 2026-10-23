@@ -3,6 +3,9 @@
 
 Writes the image to standard output. Needs a token that can read the project in the GH_TOKEN environment variable.
 Each column of the board becomes a column of the image, with its cards and their Progress tag, in the board's order.
+Anyone can open an issue, which the Roadmap workflow puts in the Bugs or Features column, so the titles of other
+people's issues there are not drawn: such a card shows only its number. Cards in every other column were placed by the
+maintainer.
 """
 import json
 import os
@@ -12,6 +15,8 @@ from datetime import datetime, timezone
 from html import escape
 
 OWNER = "by-architect"
+# What a card in a column the Roadmap workflow fills shows instead of the title of someone else's issue.
+OPEN_COLUMNS = {"Bugs": "Bug report", "Features": "Feature request"}
 PROJECT_NUMBER = 1
 COLUMN_FIELD = "Status"
 PROGRESS_FIELD = "Progress"
@@ -49,8 +54,8 @@ query($owner: String!, $number: Int!, $after: String) {
             }
           }
           content {
-            ... on Issue { number title }
-            ... on PullRequest { number title }
+            ... on Issue { number title author { login } }
+            ... on PullRequest { number title author { login } }
             ... on DraftIssue { title }
           }
         }
@@ -74,6 +79,14 @@ def graphql(variables):
     return result["data"]["user"]["projectV2"]
 
 
+def shown_title(column, content):
+    """The title a card shows: its own, unless someone else's issue sits in a column anyone can add to."""
+    author = (content.get("author") or {}).get("login")
+    if column in OPEN_COLUMNS and content.get("number") and author != OWNER:
+        return OPEN_COLUMNS[column]
+    return content["title"]
+
+
 def read_board():
     """Returns the board's columns in order, each with its cards as (number, title, progress)."""
     after = None
@@ -92,7 +105,7 @@ def read_board():
             column = values.get(COLUMN_FIELD)
             content = item.get("content") or {}
             if column in columns and content.get("title"):
-                columns[column].append((content.get("number"), content["title"], values.get(PROGRESS_FIELD)))
+                columns[column].append((content.get("number"), shown_title(column, content), values.get(PROGRESS_FIELD)))
         page = project["items"]["pageInfo"]
         if not page["hasNextPage"]:
             return columns

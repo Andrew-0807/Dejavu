@@ -27,7 +27,14 @@ data class Workspace(
     val createdAt: Long,
     val updatedAt: Long,
     val device: SyncedDevice? = null,
-)
+) {
+    /**
+     * Whether it looks like the workspace a fresh Dejavu starts with, named [defaultName]: without an icon or a
+     * container, and with the gold theme or none.
+     */
+    fun isLikeNew(defaultName: String): Boolean =
+        name == defaultName && icon == null && containerId == null && (theme == null || theme == WorkspaceTheme.Gold)
+}
 
 /** A kind of device on the Mozilla account whose open tabs a workspace shows, see [Workspace.device]. */
 enum class SyncedDevice(val key: String) {
@@ -165,6 +172,9 @@ enum class SplitOrientation(val key: String) {
  * @property tabSyncIds Sync ids of open tabs that sync under another id than their own, by tab ID: the id of the pin
  *   they were the tab of, once it was unpinned, so the tab stays the same tab on other devices. Local to this device.
  * @property pinnedSplits Pinned tabs that Zen shows as split views, as its sync last had them.
+ * @property openedByPages Open tabs that a page opened by itself, like a pop-up, rather than the user. They stay on
+ *   this device and are never sent to a Firefox computer, until the user moves them to a workspace. Local to this
+ *   device.
  */
 data class WorkspaceState(
     val workspaces: List<Workspace>,
@@ -175,6 +185,7 @@ data class WorkspaceState(
     val tabTitles: Map<String, String> = emptyMap(),
     val tabSyncIds: Map<String, String> = emptyMap(),
     val pinnedSplits: List<PinnedSplit> = emptyList(),
+    val openedByPages: Set<String> = emptySet(),
 ) {
     val activeIndex: Int
         get() = workspaces.indexOfFirst { it.id == activeWorkspaceId }.coerceAtLeast(0)

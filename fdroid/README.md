@@ -112,6 +112,15 @@ recipe points at that tag with version 2.0.1 (2016210001).
 - **Building this repository directly does not pass the scanner.** It found 3,627 problems: Windows import libraries
   in `third_party/rust`, test binaries, WebAssembly and archives. That is what the srclib route avoids.
 - **Firefox 159 wants exactly NDK r30** (`30.0.16248370`); configure stops on any other.
+- **Glean and Application Services still want NDK r29** (`29.0.14206865`, their `ndkVersion`). With r30 alone Glean
+  fails with "NDK is not installed". The recipe's `ndk:` takes one version only (fdroiddata's schema rejects a list,
+  whatever the docs say), so it stays r30 and dejavubuild's `build.sh` installs r29 with `sdkmanager 'ndk;...'`.
+- **The LLVM srclib has to follow the NDK.** bindgen in Gecko's Rust build reads NDK headers through the libclang
+  built from it. fennecbuild's LLVM (r530567, from NDK r28) still worked with r29, but NDK r30's C++ headers use
+  `__builtin_clzg`, so Gecko failed with "Unable to generate bindings". The recipe now builds NDK r30's LLVM
+  (clang-r574158c), as its MaintainerNotes explain.
+- **GitLab keeps only 4 MB of a job's log** unless the runner's `output_limit` is raised; the LLVM and WASI SDK builds
+  fill that, and the real error is lost. mjolnir's runner has `output_limit = 51200`.
 - **Firefox 159's `build.gradle` has a second `include "..."`** (`include "**/*.kt"` for the SafeArgs workaround), so
   fennecbuild's ABI `sed` has to be limited to the line that lists the ABIs.
 - **`mach bootstrap` does not run on NixOS** ("Bootstrap support for this Linux distro not yet available"). Local

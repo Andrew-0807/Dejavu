@@ -4,7 +4,8 @@
 
 <p align="center">
   <strong>Your tabs, right where you left them.</strong><br>
-  An independent Android browser with workspaces, containers and split view.
+  An independent Android browser with workspaces, containers and split view.<br>
+  <a href="https://dejavubrowser.com"><strong>dejavubrowser.com</strong></a>
 </p>
 
 <p align="center">
@@ -18,8 +19,9 @@
 
 Dejavu is a browser that adapts to you. Send any tab to your own apps with one tap, edit every button in the menu,
 choose where links from other apps open, and keep work, study and personal browsing apart in workspaces and
-containers. Your workspaces, containers and pinned tabs sync with Zen Browser on your computer. It runs on the Gecko
-engine, supports add-ons and tracking protection, and it is private by default.
+containers. Your workspaces, containers and pinned tabs sync with Zen Browser on your computer, or follow Firefox on
+all your computers and phones. It runs on the Gecko engine, supports add-ons and tracking protection, and it is
+private by default.
 
 Open Dejavu and everything is where you left it, on every device. That feeling of having been here before is where
 the name comes from.
@@ -44,16 +46,30 @@ containers and pinned tabs show up on your phone too. Sync is the only thing the
 
 <a href="https://fdroid.byarchitect.org/fdroid/repo?fingerprint=50941BDAC56B056A520ABFA3FC7DAAB789DEE5B83B295DA54A1961C7BC8A91C9"><img src="docs/readme/fdroid-qr.svg" alt="QR code that adds the ByArchitect repository to F-Droid" width="170" align="right"></a>
 
-Dejavu needs Android 8.0 or newer on a 64-bit phone, which almost every phone from recent years is.
+Dejavu needs Android 8.0 or newer on a 64-bit phone, which almost every phone from recent years is. Passkeys and
+security keys need Android 14 or newer: Dejavu signs in with them through Android's credential manager and the
+passkey app you use, like Google Password Manager, Proton Pass or Bitwarden. On older Android, Google's passkey service
+only serves the browsers on Google's own list, which Dejavu is not on.
 
 **F-Droid (recommended):** Dejavu is in the ByArchitect F-Droid repository, and F-Droid keeps it up to date. In
 F-Droid, open **Repositories**, tap **+** and scan the QR code, or open
 [this link](https://fdroid.byarchitect.org/fdroid/repo?fingerprint=50941BDAC56B056A520ABFA3FC7DAAB789DEE5B83B295DA54A1961C7BC8A91C9)
-on your phone to add the repository. Then search for Dejavu.
+on your phone to add the repository. Then search for Dejavu. This is Dejavu's own repository, not F-Droid's main one:
+it offers the same APKs as the GitHub releases, which Dejavu's developer builds and signs, not builds that F-Droid
+makes from the source code. Like F-Droid does for Firefox-based browsers, it marks Dejavu with **Tracking**, as Dejavu
+connects to Mozilla's services and, unless you turn it off, to Google Safe Browsing.
 
 **APK:** download `dejavu-<version>-arm64-v8a.apk` from the
 [latest release](https://github.com/by-architect/Dejavu/releases/latest). It does not update itself, so use F-Droid
 to get new versions.
+
+**Check a download:** APKs from GitHub and the ByArchitect F-Droid repository are signed with Dejavu's key, whose
+certificate has this SHA-256 fingerprint. Apps like [AppVerifier](https://github.com/soupslurpr/AppVerifier) compare
+it with the app on your phone, and each release lists the SHA-256 checksum of every file.
+
+```
+AD:2C:4C:E3:BD:3A:A1:30:A4:3C:6E:6F:81:4A:14:7C:91:80:EE:3F:C1:80:A1:89:54:87:06:64:F1:47:F1:4A
+```
 
 **Google Play:** in testing right now. The public release is planned for late October 2026.
 
@@ -127,15 +143,18 @@ last, or a private tab. Back takes you straight back to the app you came from.
 
 1. Sign in to the same Mozilla account in Zen on your computer and in Dejavu.
 2. In Zen, open **Settings**, then **Sync**, and turn on sidebar sync.
-3. In Dejavu, tap the account button at the top left, open **Sync with Firefox or Zen**, choose **Zen** and turn on
-   **Sync workspaces**.
-4. To sync the tabs that are not pinned as well, turn on **Include unpinned tabs** in both Dejavu and Zen.
+3. In Dejavu, tap the account button at the top left, tap **Sync with** and choose **Zen**. If Dejavu already has
+   workspaces or tabs, choose **Merge** to keep them, or **Start fresh** to replace them with what Zen has.
+4. Under **Choose what to sync**, keep **Sync workspaces** on. To sync the tabs that are not pinned as well, turn on
+   **Include unpinned tabs** in Zen. It is off in Dejavu at first, like in Zen, and Dejavu turns it on once it finds
+   tabs that are not pinned in what Zen syncs, unless you turned it off yourself.
 
 ### Set up sync with Firefox
 
 1. Sign in to the same Mozilla account in Firefox and in Dejavu.
 2. In Firefox, open **Settings**, then **Sync**, and keep **Open tabs** on.
-3. In Dejavu, tap the account button at the top left, open **Sync with Firefox or Zen** and choose **Firefox**.
+3. In Dejavu, tap the account button at the top left, tap **Sync with** and choose **Firefox**. If Dejavu already has
+   workspaces or tabs, choose **Merge** to keep them, or **Start fresh** to see only what Firefox has open.
 4. Each computer and phone with Firefox gets its own workspace: pinned tabs stay pinned and tab groups become folders in
    their colors. Open or close a tab there, and Firefox does the same.
 
@@ -189,8 +208,10 @@ in touch.
 
 ## Build from source
 
-This repository is a fork of Mozilla's Firefox repository, kept up to date with it, but Dejavu is developed separately
-from Mozilla. The Android app is in `mobile/android/fenix`, and Dejavu's
+This repository is a fork of Mozilla's Firefox repository, and Dejavu is developed separately from Mozilla. Its engine
+does not follow Firefox's releases yet: it is a Firefox 159 Nightly build from September 25, 2026, so fixes Mozilla
+makes in Firefox after that do not reach Dejavu until it moves to a newer Firefox. Moving to Firefox's releases, and
+then following each one, is on the [roadmap](#roadmap). The Android app is in `mobile/android/fenix`, and Dejavu's
 own code is in the `org.mozilla.fenix.dejavu` package. The steps to build it and run it on a phone are in
 [CONTRIBUTING.md](CONTRIBUTING.md#build-dejavu).
 

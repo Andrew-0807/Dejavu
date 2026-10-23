@@ -110,13 +110,13 @@ val customActionExamples: List<CustomActionExample> = listOf(
     ),
     CustomActionExample(
         name = "ntfy",
-        description = R.string.dejavu_example_notification,
+        description = R.string.dejavu_example_notification_ntfy,
         method = HttpMethod.POST,
         url = "https://ntfy.sh/",
         headers = listOf(json),
         body = """
             {
-              "topic": "YOUR_TOPIC",
+              "topic": "YOUR_LONG_RANDOM_TOPIC",
               "title": "$pageTitle",
               "message": "$pageUrl",
               "click": "$pageUrl"

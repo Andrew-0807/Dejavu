@@ -212,9 +212,11 @@ import org.mozilla.fenix.databinding.FragmentBrowserBinding
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
 import org.mozilla.fenix.dejavu.browser.SplitPanes
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
+import org.mozilla.fenix.dejavu.browser.installAboutConfigWarning
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
 import org.mozilla.fenix.dejavu.browser.navigationBarHeight
 import org.mozilla.fenix.dejavu.browser.padForNavigationBar
+import org.mozilla.fenix.dejavu.browser.restoreDejavuRotationAfterFullscreen
 import org.mozilla.fenix.dejavu.browser.statusBarHeight
 import org.mozilla.fenix.downloads.DownloadService
 import org.mozilla.fenix.downloads.RenameAndChangeLocationDialogFragment
@@ -1233,6 +1235,7 @@ abstract class BaseBrowserFragment :
         ) {
             getContextMenuCandidates(context, binding.dynamicSnackbarContainer)
         }
+        installAboutConfigWarning(customTabSessionId)
 
         val isCoverEnabled = TabReloadCoverGating.isCoverEnabled(settings)
         val isScrollAwareEnabled = TabReloadCoverGating.isScrollAwareEnabled(settings)
@@ -2012,7 +2015,11 @@ abstract class BaseBrowserFragment :
                 .collect { restored ->
                     if (restored) {
                         // Once tab restoration is complete, if there are no tabs to show in the browser, go home
-                        val isPrivate = requireComponents.appStore.state.mode.isPrivate
+                        // Dejavu: the tabs that count are those of the selected tab's kind. A private tab opened from
+                        // Dejavu's home, which is never private, starts while the app is still in normal mode, and
+                        // with no normal tab open (pins and essentials stay on the home) it was sent back home.
+                        val isPrivate =
+                            store.state.selectedTab?.content?.private ?: requireComponents.appStore.state.mode.isPrivate
                         val tabs = store.state.getNormalOrPrivateTabs(isPrivate)
                         if (tabs.isEmpty() || store.state.selectedTabId == null) {
                             navController.popBackStack(R.id.homeFragment, false)
@@ -2363,6 +2370,7 @@ abstract class BaseBrowserFragment :
                 }
             }
             collapseBrowserView()
+            restoreDejavuRotationAfterFullscreen()
         }
 
         binding.swipeRefresh.isEnabled = shouldPullToRefreshBeEnabled(inFullScreen)

@@ -71,6 +71,7 @@ internal class DejavuTabCommands(
     }
 
     fun runCustomAction(action: CustomAction, workspaces: WorkspaceState) {
+        if (tab.content.private) return
         val pin = workspaces.pinOf(tab.id)
         val workspaceId = pin?.workspaceId ?: workspaces.workspaceOf(tab.id)
         val container = tab.contextId?.let { id ->

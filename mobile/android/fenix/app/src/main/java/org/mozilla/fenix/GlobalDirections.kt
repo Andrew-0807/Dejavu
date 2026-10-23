@@ -63,9 +63,10 @@ enum class GlobalDirections(val navDirections: NavDirections, val destinationId:
         NavGraphDirections.actionGlobalSavedLoginsAuthFragment(),
         R.id.saveLoginSettingFragment,
     ),
+    // Dejavu: its own tracking protection settings, in place of Firefox's.
     SettingsTrackingProtection(
-        NavGraphDirections.actionGlobalTrackingProtectionFragment(),
-        R.id.trackingProtectionFragment,
+        NavGraphDirections.actionGlobalDejavuTrackingProtection(),
+        R.id.dejavuTrackingProtectionFragment,
     ),
     WallpaperSettings(
         NavGraphDirections.actionGlobalWallpaperSettingsFragment(),

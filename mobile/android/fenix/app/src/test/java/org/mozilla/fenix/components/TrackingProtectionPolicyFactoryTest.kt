@@ -787,6 +787,8 @@ class TrackingProtectionPolicyFactoryTest {
             TrackingProtectionPolicy.TrackingCategory.SOCIAL,
             TrackingProtectionPolicy.TrackingCategory.MOZILLA_SOCIAL,
             TrackingProtectionPolicy.TrackingCategory.SCRIPTS_AND_SUB_RESOURCES,
+            // Dejavu: blocking tracking content in all tabs blocks email trackers too, as Strict does.
+            TrackingProtectionPolicy.TrackingCategory.EMAIL,
             TrackingProtectionPolicy.TrackingCategory.FINGERPRINTING,
             TrackingProtectionPolicy.TrackingCategory.CRYPTOMINING,
         )

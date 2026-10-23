@@ -70,7 +70,21 @@ internal object WorkspaceSerializer {
             pinIds?.takeIf { it.size == SPLIT_SIZE }?.let { PinnedSplit(item.getString("id"), it, orientation) }
         }
 
-        return WorkspaceState(workspaces, pins, activeId, assignments, splits, tabTitles, tabSyncIds, pinnedSplits)
+        val openedByPages = root?.optJSONArray("openedByPages")?.let { ids ->
+            (0 until ids.length()).mapNotNull { ids.optString(it).ifEmpty { null } }.toSet()
+        }.orEmpty()
+
+        return WorkspaceState(
+            workspaces,
+            pins,
+            activeId,
+            assignments,
+            splits,
+            tabTitles,
+            tabSyncIds,
+            pinnedSplits,
+            openedByPages,
+        )
     }
 
     fun write(state: WorkspaceState): String = JSONObject().apply {
@@ -124,6 +138,7 @@ internal object WorkspaceSerializer {
         put("assignments", JSONObject(state.assignments))
         put("tabTitles", JSONObject(state.tabTitles))
         put("tabSyncIds", JSONObject(state.tabSyncIds))
+        put("openedByPages", JSONArray(state.openedByPages))
         put(
             "splits",
             JSONArray().apply {

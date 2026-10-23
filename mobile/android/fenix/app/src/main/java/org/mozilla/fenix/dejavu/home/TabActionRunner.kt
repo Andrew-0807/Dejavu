@@ -312,7 +312,7 @@ internal class TabActionRunner(
         val date = SimpleDateFormat(ISO_DATE_PATTERN, Locale.US).format(Date())
         fun workspaceName(id: String) = state.workspaces.firstOrNull { it.id == id }?.name.orEmpty()
 
-        val tabContexts = targets.tabs.map { tab ->
+        val tabContexts = targets.tabs.filterNot { it.content.private }.map { tab ->
             ActionContext(
                 url = tab.content.url,
                 title = tab.content.title,

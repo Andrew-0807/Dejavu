@@ -24,6 +24,11 @@ enum class HttpMethod(val method: Request.Method, val hasBody: Boolean) {
 /** A request header of a [CustomAction]. Both parts may contain [ActionVariable] placeholders. */
 data class CustomHeader(val name: String, val value: String)
 
+/** Whether a header named [name] carries a secret, like a token or a key, so the editor hides its value. */
+fun isSecretHeader(name: String): Boolean = SECRET_HEADER_PARTS.any { it in name.lowercase() }
+
+private val SECRET_HEADER_PARTS = listOf("auth", "token", "key", "secret", "password", "cookie", "session")
+
 /**
  * A user defined tab action that sends an HTTP request for every tab it runs on, like a `curl` command.
  *
@@ -32,7 +37,7 @@ data class CustomHeader(val name: String, val value: String)
  * @property method HTTP method.
  * @property url Request URL. May contain [ActionVariable] placeholders, which are URL encoded.
  * @property headers Request headers.
- * @property body Request body for methods that have one. Placeholders are JSON escaped when the Content-Type is JSON.
+ * @property body Request body for methods that have one. Placeholders are escaped or encoded for its Content-Type.
  */
 data class CustomAction(
     val id: String,

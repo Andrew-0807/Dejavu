@@ -73,8 +73,13 @@ internal fun StorageClient.collectionKeys(syncKeys: KeyBundle): CollectionKeys? 
 
 /**
  * Downloads every record of [collection] and decrypts it with [keys], by id. Records that cannot be read are left out.
+ * With [stampModified], each record also gets the time the server last changed it, in seconds, as [SERVER_MODIFIED].
  */
-internal fun StorageClient.downloadAll(collection: String, keys: KeyBundle): Map<String, JSONObject> {
+internal fun StorageClient.downloadAll(
+    collection: String,
+    keys: KeyBundle,
+    stampModified: Boolean = false,
+): Map<String, JSONObject> {
     val records = LinkedHashMap<String, JSONObject>()
     var modified: String? = null
     var offset: String? = null
@@ -98,12 +103,18 @@ internal fun StorageClient.downloadAll(collection: String, keys: KeyBundle): Map
             runCatching { JSONObject(keys.decrypt(JSONObject(bso.getString("payload")))) }
                 .getOrNull()
                 ?.takeIf { it.string("id").let { inner -> inner == null || inner == id } }
-                ?.let { records[id] = it }
+                ?.let { record ->
+                    if (stampModified && bso.has("modified")) record.put(SERVER_MODIFIED, bso.optDouble("modified"))
+                    records[id] = record
+                }
         }
         offset = response.header("X-Weave-Next-Offset")
     } while (offset != null)
     return records
 }
+
+/** Key Dejavu adds to a downloaded record for the time the server last changed it; no browser writes it. */
+internal const val SERVER_MODIFIED = "dejavuServerModified"
 
 private const val STORAGE_VERSION = 5
 private const val PAGE_SIZE = 1000

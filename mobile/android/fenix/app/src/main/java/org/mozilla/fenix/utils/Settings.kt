@@ -168,8 +168,11 @@ class Settings(
         /** DoH is disabled, corresponds to TRR_MODE_DISABLED (5) from GeckoView */
         private const val DOH_SETTINGS_OFF = 5
 
-        /** Bug 1946867 - Currently "hardcoded" to the DoH TRR URI of Cloudflare */
-        private const val CLOUDFLARE_URI = "https://mozilla.cloudflare-dns.com/dns-query"
+        /**
+         * Bug 1946867 - Currently "hardcoded". Dejavu: Quad9's own address, not one that a provider runs for Firefox
+         * under Mozilla's agreements.
+         */
+        private const val QUAD9_URI = "https://dns.quad9.net/dns-query"
     }
 
     private val logger = Logger("Settings")
@@ -1221,10 +1224,11 @@ class Settings(
             }
         }
 
+    // Dejavu: off in every build, as in the F-Droid build before.
     var whatsappLinkSharingEnabled by
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_link_sharing),
-            default = { FxNimbus.features.sentFromFirefox.value().enabled },
+            default = false,
         )
 
     var linkSharingSettingsSnackbarShown by
@@ -1286,10 +1290,11 @@ class Settings(
             default = false,
         )
 
+    // Dejavu: HTTPS-Only is on by default in all tabs, so pages that cannot load over https ask before using http.
     var shouldUseHttpsOnly by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_https_only),
-            default = false,
+            default = true,
         )
 
     var shouldUseHttpsOnlyInAllTabs by
@@ -1310,10 +1315,11 @@ class Settings(
             default = true,
         )
 
+    // Dejavu: normal tabs tell websites not to sell or share the user's data too, as private tabs always do.
     var shouldEnableGlobalPrivacyControl by
         booleanPreference(
             appContext.getPreferenceKey(R.string.pref_key_privacy_enable_global_privacy_control),
-            false,
+            true,
         )
 
     /**
@@ -3108,12 +3114,12 @@ class Settings(
 
     /**
      * Stores the URI of the default DoH provider. Bug 1946867 - Currently "hardcoded" to
-     * "https://mozilla.cloudflare-dns.com/dns-query"
+     * "https://dns.quad9.net/dns-query"
      */
     val dohDefaultProviderUrl by
         stringPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_doh_default_provider_uri),
-            default = CLOUDFLARE_URI,
+            default = QUAD9_URI,
         )
 
     /** Stores a set of domains that are excluded from using DNS over HTTPS. */
@@ -3460,5 +3466,53 @@ class Settings(
         booleanPreference(
             key = appContext.getPreferenceKey(R.string.pref_key_enable_account_settings_new_ui),
             default = { true },
+        )
+
+    /** Dejavu: whether Google Safe Browsing warns about dangerous sites. Off, Dejavu does not contact Google for it. */
+    var safeBrowsingEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_safe_browsing),
+            default = true,
+        )
+
+    /** Dejavu: whether the JavaScript JIT compilers run. Off is safer and slower. */
+    var jitEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_jit),
+            default = true,
+        )
+
+    /** Dejavu: whether pages can draw 3D graphics with WebGL. */
+    var webGlEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_webgl),
+            default = true,
+        )
+
+    /**
+     * Dejavu: whether WebRTC calls may connect directly, which shows sites and call partners the phone's IP address.
+     * Off, they connect only through the site's relay servers.
+     */
+    var directCallConnections by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_direct_calls),
+            default = false,
+        )
+
+    /**
+     * Dejavu: whether websites may get the location from Android's network location too, which on phones with Google
+     * Play Services asks Google. Off, it comes from GPS only.
+     */
+    var networkLocationEnabled by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_network_location),
+            default = false,
+        )
+
+    /** Dejavu: whether the tracking parts that sites add to links, like fbclid, are removed before a page opens. */
+    var stripLinkTracking by
+        booleanPreference(
+            key = appContext.getPreferenceKey(R.string.pref_key_dejavu_strip_link_tracking),
+            default = true,
         )
 }

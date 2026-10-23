@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 
 /**
@@ -77,6 +78,7 @@ fun DejavuTextField(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     suffix: String? = null,
     isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     TextField(
@@ -89,6 +91,7 @@ fun DejavuTextField(
         suffix = suffix?.let { { Text(it, color = MaterialTheme.colorScheme.onSurfaceVariant) } },
         isError = isError,
         keyboardOptions = keyboardOptions,
+        visualTransformation = visualTransformation,
         singleLine = singleLine,
         minLines = minLines,
         interactionSource = interactionSource,

@@ -10,13 +10,11 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -26,6 +24,7 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -52,9 +51,14 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -127,14 +131,14 @@ enum class DejavuButtonStyle { Primary, Tonal, Danger, DangerText }
 
 /**
  * A dialog in Dejavu's look: [title], with [icon] in a gold circle before it, then [content], which scrolls when it
- * is too tall, and [buttons], laid out from the end. Buttons are usually [DejavuDialogButton]s; a weighted spacer
- * pushes the ones before it to the start.
+ * is too tall, and [buttons], laid out from the end by [DejavuButtonRow]. Buttons are usually [DejavuDialogButton]s;
+ * a [DejavuButtonGap] pushes the ones before it to the start.
  */
 @Composable
 fun DejavuDialog(
     title: String,
     onDismissRequest: () -> Unit,
-    buttons: @Composable RowScope.() -> Unit,
+    buttons: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     @DrawableRes icon: Int? = null,
     content: @Composable ColumnScope.() -> Unit,
@@ -153,7 +157,7 @@ fun DejavuDialog(
 @Composable
 fun DejavuDialogCard(
     title: String,
-    buttons: @Composable RowScope.() -> Unit,
+    buttons: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     @DrawableRes icon: Int? = null,
     content: @Composable ColumnScope.() -> Unit,
@@ -207,13 +211,81 @@ fun DejavuDialogCard(
                 content()
             }
         }
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth().padding(top = 24.dp),
-            content = buttons,
-        )
+        DejavuButtonRow(modifier = Modifier.fillMaxWidth().padding(top = 24.dp), content = buttons)
     }
+}
+
+/**
+ * Buttons in a row from the end, 8dp apart. When they do not fit, each gets room in proportion to its text, whose
+ * [DejavuFittedText] gets smaller to fit; when the texts would get too small, every button goes on a line of its own,
+ * the last one on top. [padding] is the room a button takes besides its text.
+ */
+@Composable
+fun DejavuButtonRow(
+    modifier: Modifier = Modifier,
+    padding: Dp = BUTTON_PADDING * 2,
+    content: @Composable () -> Unit,
+) {
+    Layout(content = content, modifier = modifier) { measurables, constraints ->
+        val spacing = BUTTON_SPACING.roundToPx()
+        val fixed = padding.roundToPx()
+        val gap = measurables.indexOfFirst { it.layoutId == BUTTON_GAP }
+        val buttons = measurables.filterIndexed { index, _ -> index != gap }
+        val natural = buttons.map { it.maxIntrinsicWidth(Constraints.Infinity) }
+        val room = constraints.maxWidth - spacing * (buttons.size - 1).coerceAtLeast(0)
+        val texts = (natural.sum() - fixed * buttons.size).coerceAtLeast(1)
+        val scale = ((room - fixed * buttons.size).toFloat() / texts).coerceAtMost(1f)
+        if (scale >= MIN_ROW_SCALE) {
+            val placeables = buttons.mapIndexed { index, button ->
+                val width = if (scale < 1f) fixed + ((natural[index] - fixed) * scale).toInt() else natural[index]
+                button.measure(Constraints(maxWidth = width.coerceIn(0, constraints.maxWidth)))
+            }
+            val height = placeables.maxOfOrNull { it.height } ?: 0
+            layout(constraints.maxWidth, height) {
+                val leading = if (gap < 0) 0 else gap
+                var x = 0
+                placeables.take(leading).forEach {
+                    it.placeRelative(x, (height - it.height) / 2)
+                    x += it.width + spacing
+                }
+                x = constraints.maxWidth
+                placeables.drop(leading).asReversed().forEach {
+                    x -= it.width
+                    it.placeRelative(x, (height - it.height) / 2)
+                    x -= spacing
+                }
+            }
+        } else {
+            val placeables = buttons.map { it.measure(Constraints(maxWidth = constraints.maxWidth)) }.asReversed()
+            val height = placeables.sumOf { it.height } + spacing * (placeables.size - 1).coerceAtLeast(0)
+            layout(constraints.maxWidth, height) {
+                var y = 0
+                placeables.forEach {
+                    it.placeRelative(constraints.maxWidth - it.width, y)
+                    y += it.height + spacing
+                }
+            }
+        }
+    }
+}
+
+/** Space in a [DejavuButtonRow] that pushes the buttons before it to the start. */
+@Composable
+fun DejavuButtonGap() {
+    Spacer(Modifier.layoutId(BUTTON_GAP))
+}
+
+/** [text] on one line of a button, getting smaller when it is too long for the button, and cut off only after that. */
+@Composable
+fun DejavuFittedText(text: String, style: TextStyle, color: Color = Color.Unspecified) {
+    Text(
+        text = text,
+        color = color,
+        style = style,
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
+        autoSize = TextAutoSize.StepBased(minFontSize = style.fontSize * MIN_TEXT_SCALE, maxFontSize = style.fontSize),
+    )
 }
 
 /** Lets the keyboard shrink the dialog, so its buttons stay above it while typing. */
@@ -252,7 +324,7 @@ fun DejavuDialogButton(
         elevation = null,
         contentPadding = PaddingValues(horizontal = BUTTON_PADDING, vertical = 10.dp),
     ) {
-        Text(text = text, style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        DejavuFittedText(text = text, style = MaterialTheme.typography.labelLarge)
     }
 }
 
@@ -332,4 +404,12 @@ private val DIALOG_PADDING = 24.dp
 private val DIALOG_SHADOW = 12.dp
 private val MENU_SHADOW = 8.dp
 private val BUTTON_PADDING = 18.dp
+private val BUTTON_SPACING = 8.dp
+private const val BUTTON_GAP = "gap"
+
+/** How much smaller than its style a button's text can get. */
+private const val MIN_TEXT_SCALE = 0.75f
+
+/** How much smaller the texts of buttons in a row get before the buttons go on lines of their own. */
+private const val MIN_ROW_SCALE = 0.8f
 private val ITEM_INSET = 6.dp
