@@ -47,7 +47,9 @@ class SettingsSearchProviderRegistrationTest {
     private val intentionallyNotIndexed =
         setOf<PreferenceFileInformation>(
             // Debug-only screen, indexed on its own by SecretSettingsSearchFragment.
-            PreferenceFileInformation.SecretSettingsPreferences
+            PreferenceFileInformation.SecretSettingsPreferences,
+            // Dejavu: Firefox's tracking protection settings are hidden behind Dejavu's own.
+            PreferenceFileInformation.TrackingProtectionPreferences,
         )
 
     /**
