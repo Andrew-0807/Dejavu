@@ -344,6 +344,20 @@ androidComponents {
                 output.versionName.set(versionName)
                 output.versionCode.set(versionCodeOverride)
             }
+        } else if (buildType == 'debug') {
+            // Dejavu: debug builds show Dejavu's version with -debug after it, not the 1.0.<year><week> Fenix gives
+            // them: -PdejavuVersion (scripts/build-apk-debug.sh passes the last release's), else the newest v<version>
+            // tag.
+            def dejavuVersion = gradle.startParameter.projectProperties["dejavuVersion"] ?:
+                    providers.exec {
+                        commandLine "git", "-C", projectDir.path, "tag", "--list", "v[0-9]*", "--sort=-v:refname"
+                        ignoreExitValue = true
+                    }.standardOutput.asText.get().readLines().find { it ==~ /v\d+(\.\d+)+/ }?.substring(1)
+            if (dejavuVersion) {
+                variant.outputs.each { output ->
+                    output.versionName.set("${dejavuVersion}-debug")
+                }
+            }
         } else if (gradle.hasProperty("localProperties.branchBuild.fenix.version")) {
             def versionName = gradle.getProperty("localProperties.branchBuild.fenix.version")
             project.logger.debug("versionName override: $versionName")
