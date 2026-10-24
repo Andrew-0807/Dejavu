@@ -166,6 +166,18 @@ last, or a private tab. Back takes you straight back to the app you came from.
 4. Each computer and phone with Firefox gets its own workspace: pinned tabs stay pinned and tab groups become folders in
    their colors. Open or close a tab there, and Firefox does the same.
 
+## Community
+
+Dejavu has a chat room on [Matrix](https://matrix.org), an open and free chat network. Come say hello, ask a question,
+share your setup or ideas, and hear about new releases first.
+
+<p>
+  <a href="https://matrix.to/#/#dejavu-browser:matrix.org"><img alt="Join the chat on Matrix: #dejavu-browser:matrix.org" src="https://img.shields.io/badge/Join%20the%20chat-%23dejavu--browser%3Amatrix.org-556B4F?style=for-the-badge&logo=matrix&logoColor=white"></a>
+</p>
+
+Open [#dejavu-browser:matrix.org](https://matrix.to/#/#dejavu-browser:matrix.org) in Element or any other Matrix app.
+For bugs and feature requests, please open an issue as explained below, so nothing gets lost in the chat.
+
 ## Report a bug or request a feature
 
 Feedback goes through [GitHub issues](https://github.com/by-architect/Dejavu/issues). When you
@@ -188,8 +200,7 @@ Pull requests are welcome too. Start the title with the kind of change, `[FIX]`,
 
 ## Contact
 
-To ask a question or chat with other Dejavu users, join
-[#dejavu-browser:matrix.org](https://matrix.to/#/#dejavu-browser:matrix.org) on Matrix.
+Questions and chat go to the [Matrix room](#community).
 
 For sponsorship, designs, icon packs, themes, or anything that is not a bug report or a feature request, email
 [byarchitect@disroot.org](mailto:byarchitect@disroot.org).
