@@ -11,7 +11,7 @@
 <p align="center">
   <a href="#download"><img alt="F-Droid: ByArchitect repository" src="https://img.shields.io/badge/F--Droid-ByArchitect%20repository-556B4F?logo=fdroid&logoColor=white"></a>
   <a href="https://play.google.com/store/apps/details?id=com.byarchitect.dejavu"><img alt="Google Play" src="https://img.shields.io/badge/Google%20Play-Dejavu-F2B84B?logo=googleplay&logoColor=white"></a>
-  <a href="#download"><img alt="iOS: in development" src="https://img.shields.io/badge/iOS-in%20development-5A452A?logo=apple&logoColor=white"></a>
+  <a href="#download"><img alt="iOS: help wanted" src="https://img.shields.io/badge/iOS-help%20wanted-5A452A?logo=apple&logoColor=white"></a>
   <a href="LICENSE"><img alt="License: MPL 2.0" src="https://img.shields.io/badge/license-MPL%202.0-5A452A"></a>
   <a href="https://matrix.to/#/#dejavu-browser:matrix.org"><img alt="Matrix: #dejavu-browser:matrix.org" src="https://img.shields.io/badge/Matrix-%23dejavu--browser-556B4F?logo=matrix&logoColor=white"></a>
   <a href="https://github.com/by-architect/Dejavu/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/by-architect/Dejavu?color=F2B84B"></a>
@@ -81,7 +81,9 @@ AD:2C:4C:E3:BD:3A:A1:30:A4:3C:6E:6F:81:4A:14:7C:91:80:EE:3F:C1:80:A1:89:54:87:06
 **Google Play:** get Dejavu from [Google Play](https://play.google.com/store/apps/details?id=com.byarchitect.dejavu). Google signs the Play version with its own key, so
 switching between Play and F-Droid or the APK means uninstalling first.
 
-**iOS:** We are working on an iOS app. News about it will be shared here.
+**iOS:** There is no iOS app yet, and none is planned for now. Dejavu is a one-person project, and an iOS version
+needs more hands. If you are an iOS developer who would like to help, or want to sponsor it, email
+[byarchitect@disroot.org](mailto:byarchitect@disroot.org) or say hello in the [Matrix room](#community).
 
 ## Roadmap
 
@@ -215,6 +217,7 @@ Dejavu is open to contributions of every kind, and we would especially love help
 - **Translations:** corrections for Dejavu's own texts in your language.
 - **Code:** bug fixes and new features.
 - **Testing:** try Dejavu on your phone or tablet and tell us what breaks.
+- **iOS:** help to build an iOS version of Dejavu. It is not planned yet because it needs more hands.
 
 Send designs, icon packs and themes to [byarchitect@disroot.org](mailto:byarchitect@disroot.org), or open a pull
 request. [CONTRIBUTING.md](CONTRIBUTING.md) explains how each of these works and how to build Dejavu.
