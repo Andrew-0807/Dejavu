@@ -17,9 +17,9 @@ RepoType: git
 Repo: https://gitlab.com/by-architect/dejavubuild.git
 
 Builds:
-  - versionName: 2.0.1
-    versionCode: 2016210001
-    commit: b205a55f127904458d9e2d239ce83fe98ca3b9d6
+  - versionName: 2.3.4
+    versionCode: 2016210304
+    commit: a6892b2ec076b029b485308d3329dbf24b0c6e3c
     timeout: 36000
     sudo:
       - echo "deb https://deb.debian.org/debian bookworm main" > /etc/apt/sources.list.d/bookworm.list
@@ -32,8 +32,8 @@ Builds:
     output: 
       ../srclib/MozFennec/obj/gradle/build/mobile/android/fenix/app/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
-      - MozFennec@FIREFOX-ANDROID_159_0b1_BUILD1
-      - MozAppServices@v159.0
+      - MozFennec@FIREFOX-ANDROID_159_0_BUILD1
+      - MozAppServices@v159.0.1
       - MozGlean@v70.2.1
       - MozGleanAS@v70.0.0
       - wasi-sdk@wasi-sdk-20
@@ -46,8 +46,9 @@ Builds:
 
 MaintainerNotes: |-
   Built like Fennec F-Droid: the Repo is dejavubuild, a fork of relan's fennecbuild, and Firefox comes in as the
-  MozFennec srclib at a FIREFOX-ANDROID tag. 2.0.1 uses 159.0b1 because Dejavu was already based on Firefox 159
-  Nightly; builds move to FIREFOX-ANDROID_*_RELEASE tags from 159.0 (2026-10-27). prebuild.sh applies dejavu.patch
+  MozFennec srclib at a FIREFOX-ANDROID tag. 2.3.4 uses FIREFOX-ANDROID_159_0_BUILD1, the 159.0 release build, as
+  Mozilla's FIREFOX-ANDROID_159_0_RELEASE tag is not out yet (159.0 ships 2026-10-27); later builds use the
+  FIREFOX-ANDROID_*_RELEASE tags. prebuild.sh applies dejavu.patch
   (Dejavu's changes to that Firefox, generated from the Dejavu repository) and copies dejavu-overlay (Dejavu's
   pictures) before fennecbuild's own patches. Application Services, Glean, WASI SDK and LLVM are built from source as in Fennec.
 
@@ -56,8 +57,8 @@ MaintainerNotes: |-
   Google libraries out of the version catalog. UnifiedPush and Fennec's search engine overlay are not used, so there
   is nothing to scanignore.
 
-  Version code scheme: 2016190000 + major * 10000 + minor * 100 + patch of the Dejavu version, so 2.0.1 is
-  2016210001. arm64-v8a only.
+  Version code scheme: 2016190000 + major * 10000 + minor * 100 + patch of the Dejavu version, so 2.3.4 is
+  2016210304. arm64-v8a only.
 
   MozAppServices, Glean versions:
   grep 'VERSION =' build/srclib/MozFennec/mobile/android/android-components/plugins/dependencies/src/main/java/ApplicationServices.kt
@@ -77,5 +78,5 @@ MaintainerNotes: |-
 
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 2.0.1
-CurrentVersionCode: 2016210001
+CurrentVersion: 2.3.4
+CurrentVersionCode: 2016210304

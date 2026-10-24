@@ -13,6 +13,7 @@
   <a href="https://play.google.com/store/apps/details?id=com.byarchitect.dejavu"><img alt="Google Play" src="https://img.shields.io/badge/Google%20Play-Dejavu-F2B84B?logo=googleplay&logoColor=white"></a>
   <a href="#download"><img alt="iOS: in development" src="https://img.shields.io/badge/iOS-in%20development-5A452A?logo=apple&logoColor=white"></a>
   <a href="LICENSE"><img alt="License: MPL 2.0" src="https://img.shields.io/badge/license-MPL%202.0-5A452A"></a>
+  <a href="https://matrix.to/#/#dejavu-browser:matrix.org"><img alt="Matrix: #dejavu-browser:matrix.org" src="https://img.shields.io/badge/Matrix-%23dejavu--browser-556B4F?logo=matrix&logoColor=white"></a>
   <a href="https://github.com/by-architect/Dejavu/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/by-architect/Dejavu?color=F2B84B"></a>
   <a href="https://buymeacoffee.com/ByArchitect"><img alt="Buy me a coffee" src="https://img.shields.io/badge/Buy%20me%20a%20coffee-F2B84B?logo=buymeacoffee&logoColor=white"></a>
 </p>
@@ -186,6 +187,9 @@ Pull requests are welcome too. Start the title with the kind of change, `[FIX]`,
 `[TRANSLATION]` or `[DOCS]`, and link the issue it solves. [CONTRIBUTING.md](CONTRIBUTING.md) has the details.
 
 ## Contact
+
+To ask a question or chat with other Dejavu users, join
+[#dejavu-browser:matrix.org](https://matrix.to/#/#dejavu-browser:matrix.org) on Matrix.
 
 For sponsorship, designs, icon packs, themes, or anything that is not a bug report or a feature request, email
 [byarchitect@disroot.org](mailto:byarchitect@disroot.org).
