@@ -102,6 +102,7 @@ import org.mozilla.fenix.components.menu.store.NavigationEvent
 import org.mozilla.fenix.components.menu.store.SummarizationMenuState
 import org.mozilla.fenix.components.menu.store.TranslationInfo
 import org.mozilla.fenix.components.menu.store.WebExtensionMenuItem
+import org.mozilla.fenix.dejavu.history.VisitOrigins
 import org.mozilla.fenix.dejavu.menu.DejavuMenu
 import org.mozilla.fenix.dejavu.menu.DejavuMenuContent
 import org.mozilla.fenix.ext.canGoBackInHistoryOrToStories
@@ -176,6 +177,8 @@ class MenuDialogFragment : BottomSheetDialogFragment() {
                 ),
             engine = requireComponents.core.engine,
             settings = requireComponents.settings,
+            // Dejavu: also forget the workspaces of the visited pages.
+            onHistoryDeleted = VisitOrigins.get(requireContext())::clear,
         )
     }
 

@@ -111,6 +111,7 @@ import org.mozilla.fenix.components.share.ShareSheetChooserAction
 import org.mozilla.fenix.components.share.ShareSource
 import org.mozilla.fenix.databinding.FragmentHistoryBinding
 import org.mozilla.fenix.dejavu.history.DejavuHistory
+import org.mozilla.fenix.dejavu.history.VisitOrigins
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getRootView
@@ -694,15 +695,19 @@ class HistoryFragment :
         items: Set<History>,
     ) {
         historyStore.dispatch(HistoryFragmentAction.EnterDeletionMode)
+        val visitOrigins = VisitOrigins.get(requireContext())
 
         withContext(IO) {
             for (item in items) {
                 when (item) {
                     is History.Regular -> {
                         historyStorage.deleteVisitsFor(item.url)
+                        // Dejavu: also forget the workspace of the deleted page.
+                        visitOrigins.forget(listOf(item.url))
                     }
                     is History.Group -> {
                         historyProvider.deleteMetadataSearchGroup(item)
+                        visitOrigins.forget(item.items.map { it.url })
                         withContext(Dispatchers.Main) {
                             browserStore.dispatch(
                                 HistoryMetadataAction.DisbandSearchGroupAction(searchTerm = item.title)
@@ -724,6 +729,7 @@ class HistoryFragment :
 
         val browserStore = requireComponents.core.store
         val historyStorage = requireContext().components.core.historyStorage
+        val visitOrigins = VisitOrigins.get(requireContext())
         lifecycleScope.launch {
             if (selectedTimeFrame == null) {
                 historyStorage.deleteEverything()
@@ -734,6 +740,8 @@ class HistoryFragment :
                     endTime = longRange.last,
                 )
             }
+            // Dejavu: forget the workspaces of visited pages too. They have no visit times, so all of them go.
+            visitOrigins.clear()
             browserStore.dispatch(RecentlyClosedAction.RemoveAllClosedTabAction)
             browserStore.dispatch(EngineAction.PurgeHistoryAction)
 

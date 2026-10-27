@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import mozilla.components.browser.state.action.BrowserAction
 import mozilla.components.browser.state.action.ContentAction
@@ -52,12 +53,38 @@ class VisitOrigins private constructor(private val file: File) {
         if (changed) scheduleSave()
     }
 
+    /** Forgets [urls], whose history was deleted. Reads the file first, so they are not read back later. */
+    fun forget(urls: Collection<String>) {
+        load()
+        val changed = synchronized(origins) { urls.count { origins.remove(it) != null } > 0 }
+        if (changed) scheduleSave()
+    }
+
+    /** Forgets every page and deletes the file, for when history is deleted. */
+    fun clear() {
+        synchronized(origins) {
+            origins.clear()
+            // Nothing saved before is wanted any more, so the file must not be read back.
+            loaded = true
+        }
+        saving?.cancel()
+        scope.launch {
+            synchronized(file) {
+                runCatching {
+                    file.delete()
+                    temporaryFile().delete()
+                }
+            }
+        }
+    }
+
     /** Reads the file, keeping what was recorded before it was read as the newer. */
     fun load() {
         if (loaded) return
         val saved = runCatching { JSONObject(file.readText()) }.getOrNull()
         synchronized(origins) {
-            if (saved != null) {
+            // A clear() while the file was read makes what it held unwanted.
+            if (saved != null && !loaded) {
                 val newer = LinkedHashMap(origins)
                 origins.clear()
                 saved.optJSONArray(KEY_PAGES)?.let { pages ->
@@ -74,6 +101,8 @@ class VisitOrigins private constructor(private val file: File) {
         }
     }
 
+    private fun temporaryFile() = File(file.parentFile, file.name + ".tmp")
+
     private fun scheduleSave() {
         saving?.cancel()
         saving = scope.launch {
@@ -85,10 +114,14 @@ class VisitOrigins private constructor(private val file: File) {
                     pages.put(JSONArray().put(url).put(origin.workspaceId).put(origin.folderId.orEmpty()))
                 }
             }
-            runCatching {
-                val temporary = File(file.parentFile, file.name + ".tmp")
-                temporary.writeText(JSONObject().put(KEY_PAGES, pages).toString())
-                temporary.renameTo(file)
+            synchronized(file) {
+                // A clear() since the pages were read cancels this, so they are not written back after it.
+                if (!isActive) return@launch
+                runCatching {
+                    val temporary = temporaryFile()
+                    temporary.writeText(JSONObject().put(KEY_PAGES, pages).toString())
+                    temporary.renameTo(file)
+                }
             }
         }
     }

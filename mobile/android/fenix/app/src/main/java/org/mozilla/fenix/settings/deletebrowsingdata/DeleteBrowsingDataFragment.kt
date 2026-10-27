@@ -25,6 +25,7 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.compose.snackbar.Snackbar
 import org.mozilla.fenix.compose.snackbar.SnackbarState
 import org.mozilla.fenix.databinding.FragmentDeleteBrowsingDataBinding
+import org.mozilla.fenix.dejavu.history.VisitOrigins
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.runIfFragmentIsAttached
@@ -69,6 +70,8 @@ class DeleteBrowsingDataFragment : Fragment(R.layout.fragment_delete_browsing_da
                 engine = requireComponents.core.engine,
                 settings = requireComponents.settings,
                 coroutineContext = requireActivity().lifecycleScope.coroutineContext,
+                // Dejavu: also forget the workspaces of the visited pages.
+                onHistoryDeleted = VisitOrigins.get(requireContext())::clear,
             )
         settings = requireComponents.settings
 

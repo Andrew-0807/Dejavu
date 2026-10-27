@@ -79,6 +79,7 @@ interface DeleteBrowsingDataController {
  * @param engine The browser engine instance responsible for handling low-level data.
  * @param settings The application settings provider, used to determine which data to clear on quit.
  * @param coroutineContext The coroutine context on which deletion operations are performed.
+ * @param onHistoryDeleted Called after browsing history is deleted, to delete what Dejavu keeps about it.
  */
 class DefaultDeleteBrowsingDataController(
     private val deleteDataUseCases: DeleteDataUseCases,
@@ -87,6 +88,7 @@ class DefaultDeleteBrowsingDataController(
     private val engine: Engine,
     private val settings: Settings,
     private val coroutineContext: CoroutineContext = Dispatchers.Main,
+    private val onHistoryDeleted: () -> Unit = {},
 ) : DeleteBrowsingDataController {
 
     /**
@@ -134,6 +136,7 @@ class DefaultDeleteBrowsingDataController(
 
     override suspend fun deleteBrowsingHistory() {
         dataStorage.history.deleteEverything()
+        onHistoryDeleted()
         stores.browserStore.dispatch(EngineAction.PurgeHistoryAction)
         stores.browserStore.dispatch(RecentlyClosedAction.RemoveAllClosedTabAction)
         withContext(coroutineContext) {

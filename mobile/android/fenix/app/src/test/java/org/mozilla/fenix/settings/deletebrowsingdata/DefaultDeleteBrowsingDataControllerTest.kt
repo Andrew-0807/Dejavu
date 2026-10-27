@@ -116,6 +116,26 @@ class DefaultDeleteBrowsingDataControllerTest {
         }
 
     @Test
+    fun `deleteBrowsingHistory also deletes what Dejavu keeps about history`() =
+        runTest(testDispatcher) {
+            var historyDeleted = false
+            val controller = DefaultDeleteBrowsingDataController(
+                deleteDataUseCases =
+                    DefaultDeleteBrowsingDataController.DeleteDataUseCases(removeAllTabs, removeAllDownloads),
+                dataStorage = DefaultDeleteBrowsingDataController.DataStorage(historyStorage, permissionStorage),
+                stores = DefaultDeleteBrowsingDataController.Stores(appStore, store),
+                engine = engine,
+                settings = settings,
+                coroutineContext = testDispatcher,
+                onHistoryDeleted = { historyDeleted = true },
+            )
+
+            controller.deleteBrowsingHistory()
+
+            assertTrue(historyDeleted)
+        }
+
+    @Test
     fun deleteCookiesAndSiteData() =
         runTest(testDispatcher) {
             controller.deleteCookiesAndSiteData()
