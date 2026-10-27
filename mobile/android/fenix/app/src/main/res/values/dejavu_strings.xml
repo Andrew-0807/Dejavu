@@ -6,6 +6,9 @@
     <string name="pref_key_dejavu_tab_actions" translatable="false">pref_key_dejavu_tab_actions</string>
     <string name="pref_key_dejavu_containers" translatable="false">pref_key_dejavu_containers</string>
     <string name="pref_key_dejavu_external_links" translatable="false">pref_key_dejavu_external_links</string>
+    <string name="pref_key_dejavu_engine_keywords" translatable="false">pref_key_dejavu_engine_keywords</string>
+    <string name="pref_key_dejavu_bookmark_keywords" translatable="false">pref_key_dejavu_bookmark_keywords</string>
+    <string name="pref_key_dejavu_bookmark_keyword_urls" translatable="false">pref_key_dejavu_bookmark_keyword_urls</string>
     <string name="pref_key_dejavu_tab_sleep" translatable="false">pref_key_dejavu_tab_sleep</string>
     <!-- Name of Mozilla's browser, for texts about Mozilla's own services like Firefox Suggest. -->
     <string name="dejavu_firefox_name" translatable="false" tools:ignore="BrandUsage">Firefox</string>
@@ -451,4 +454,8 @@
     <string name="dejavu_feature_workspace_order">Drag workspaces to reorder them</string>
     <!-- Feature tour title: long-pressing a link offers to open it in split view, below the page. -->
     <string name="dejavu_feature_split_view">Hold a link to open it in split view</string>
+    <!-- Label of the field and menu item where a short word is set that searches a search engine or opens a bookmark when typed before a search. -->
+    <string name="dejavu_search_keyword">Keyword</string>
+    <!-- Shown when a keyword is already used. %1$s is the keyword. -->
+    <string name="dejavu_search_keyword_taken">\"%1$s\" is already used by another keyword.</string>
 </resources>
