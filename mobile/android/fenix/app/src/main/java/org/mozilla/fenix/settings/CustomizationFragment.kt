@@ -472,6 +472,11 @@ open class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPadde
             isChecked = context.components.settings.isSwipeToolbarToShowTabsEnabled
             onPreferenceChangeListener = SharedPreferenceUpdater()
         }
+        // Dejavu: the switch of mouse support.
+        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_mouse_support).apply {
+            isChecked = context.components.settings.isMouseSupportEnabled
+            onPreferenceChangeListener = SharedPreferenceUpdater()
+        }
         requirePreference<SwitchPreferenceCompat>(R.string.pref_key_shake_gesture_enabled).apply {
             isVisible = context.components.settings.shakeToSummarizeFeatureFlagEnabled && isSummarizationEnabled
             isChecked = isSummarizationGestureEnabled
