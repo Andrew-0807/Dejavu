@@ -562,7 +562,7 @@ internal fun WorkspacePage(
                         isCurrent = line.tabs.any { it.id == selectedTabId },
                         modifier = rowModifier,
                     )
-                    return@items
+                    return@itemsIndexed
                 }
                 val targets = ActionTargets(
                     tabs = listOf(tab),
