@@ -28,10 +28,11 @@ Open Dejavu and everything is where you left it, on every device. That feeling o
 the name comes from.
 
 <p align="center">
-  <img src="docs/readme/dejavu-home.jpg" alt="The home screen with essentials and the Main workspace" width="200">
-  <img src="docs/readme/dejavu-workspaces.jpg" alt="A workspace with its tabs" width="200">
-  <img src="docs/readme/dejavu-menu.jpg" alt="The More menu below a page" width="200">
-  <img src="docs/readme/dejavu-split-view.jpg" alt="A page previewed in split view" width="200">
+  <img src="docs/readme/dejavu-home.jpg" alt="The home screen with essentials and the Work workspace" width="160">
+  <img src="docs/readme/dejavu-menu.jpg" alt="The menu over a page, with its buttons and extensions" width="160">
+  <img src="docs/readme/dejavu-history.jpg" alt="The History page" width="160">
+  <img src="docs/readme/dejavu-downloads.jpg" alt="The Downloads page" width="160">
+  <img src="docs/readme/dejavu-sign-in.jpg" alt="Signing in to sync with a camera" width="160">
 </p>
 
 ## An independent browser
@@ -109,7 +110,7 @@ Dejavu is made of small things that save you time every day.
 
 ### Send any tab to your apps
 
-<img src="docs/readme/dejavu-custom-action.jpg" alt="A custom action that saves the page to Karakeep" width="260" align="right">
+<img src="docs/readme/dejavu-custom-action.jpg" alt="Ready-made custom actions for Karakeep, Linkwarden, ntfy, Home Assistant and more" width="260" align="right">
 
 Turn any web service into a button. A custom action sends the page you are on, or every tab you selected, to an app
 or server you choose: save it to your read-later app, post it in a chat, send it to your phone as a notification or
