@@ -62,6 +62,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
@@ -73,6 +74,7 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.roundToIntRect
+import androidx.compose.ui.unit.toRect
 import androidx.compose.ui.util.lerp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupPositionProvider
@@ -82,6 +84,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.currentStateAsState
 import kotlin.math.PI
 import kotlin.math.cos
+import kotlin.math.max
 import kotlin.math.min
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
@@ -128,7 +131,8 @@ internal fun Modifier.tipTarget(
 /**
  * Shows the tips of [screen] while [allowed], once the screen has kept still for a moment: the bubble of the first tip
  * due whose place is in view, and when [drawsTargets], the ring and the finger over its place, drawn across [modifier],
- * which then covers the screen. Touches go through to the screen; one outside the bubble closes it.
+ * which then covers the screen. Touches go through to the screen; one outside the bubble closes it. A menu or a dialog
+ * over the screen takes the window's focus, and hides the tip until it closes.
  */
 @Composable
 internal fun TipHost(
@@ -144,7 +148,8 @@ internal fun TipHost(
     val enabled by settings.tipsEnabled.collectAsState()
     val seen by settings.seenTips.collectAsState()
     val lifecycle by LocalLifecycleOwner.current.lifecycle.currentStateAsState()
-    val active = allowed && enabled && lifecycle.isAtLeast(Lifecycle.State.RESUMED)
+    val focused = LocalWindowInfo.current.isWindowFocused
+    val active = allowed && enabled && focused && lifecycle.isAtLeast(Lifecycle.State.RESUMED)
     val latestSeen by rememberUpdatedState(seen)
     LaunchedEffect(screen, active) {
         Tips.hide(screen)
@@ -162,6 +167,7 @@ internal fun TipHost(
 
     val tip = Tips.shown?.takeIf { it.screen == screen }
     val target = tip?.let(Tips::targetOf)
+    val placement = remember(tip) { BubblePlacement() }
     if (drawsTargets) {
         val clock = tipClock(tip.takeIf { target != null })
         val ink = MaterialTheme.colorScheme.onSurface
@@ -175,7 +181,8 @@ internal fun TipHost(
                     val time = clock.value
                     val place = target?.takeUnless { it.drawsItself } ?: return@drawWithContent
                     val screenArea = Rect(Offset.Zero, size)
-                    drawTip(place.bounds.translate(-origin), place.gesture, place.at, time, ink, screenArea)
+                    val bubble = placement.bounds.takeUnless { it.isEmpty }?.toRect()?.translate(-origin) ?: Rect.Zero
+                    drawTip(place.bounds.translate(-origin), place.gesture, place.at, time, ink, screenArea, bubble)
                 },
         )
     }
@@ -184,6 +191,7 @@ internal fun TipHost(
             TipBubble(
                 text = stringResource(target.text),
                 place = target.bounds,
+                placement = placement,
                 onGotIt = { Tips.done(tip) },
                 onHide = { Tips.setEnabled(settings, false) },
                 onTouchedElsewhere = { readable -> if (readable) Tips.done(tip) else Tips.putOff(tip) },
@@ -205,19 +213,19 @@ private fun tipClock(tip: Tip?): State<Long> = produceState(0L, tip) {
 
 /**
  * The bubble of a tip saying [text], next to its [place] in the window: below it, or above it without room below, its
- * arrow pointing at it. It grows out of its arrow. [onTouchedElsewhere] learns of a touch outside it, which closes it,
- * and whether the bubble showed long enough to be read.
+ * arrow pointing at it, as it tells [placement]. It grows out of its arrow. [onTouchedElsewhere] learns of a touch
+ * outside it, which closes it, and whether the bubble showed long enough to be read.
  */
 @Composable
 private fun TipBubble(
     text: String,
     place: Rect,
+    placement: BubblePlacement,
     onGotIt: () -> Unit,
     onHide: () -> Unit,
     onTouchedElsewhere: (readable: Boolean) -> Unit,
 ) {
     val density = LocalDensity.current
-    val placement = remember { BubblePlacement() }
     val shownAt = remember { SystemClock.uptimeMillis() }
     val top = WindowInsets.statusBars.getTop(density)
     val position = with(density) {
@@ -285,10 +293,14 @@ private fun TipBubble(
     }
 }
 
-/** Where the bubble of a tip went: below its place or above it, with its arrow [arrowX] from its left edge. */
+/**
+ * Where the bubble of a tip went: below its place or above it, with its arrow [arrowX] from its left edge, and its
+ * [bounds] in the window.
+ */
 private class BubblePlacement {
     var below by mutableStateOf(true)
     var arrowX by mutableFloatStateOf(0f)
+    var bounds by mutableStateOf(IntRect.Zero)
 }
 
 /**
@@ -312,9 +324,11 @@ private data class BubblePosition(
         val below = place.bottom + gap + height <= windowSize.height - margin || place.top - gap - height < top + margin
         val x = (place.center.x - popupContentSize.width / 2)
             .coerceIn(margin, (windowSize.width - margin - popupContentSize.width).coerceAtLeast(margin))
+        val y = if (below) place.bottom + gap else place.top - gap - height
         placement.below = below
         placement.arrowX = (place.center.x - x).toFloat()
-        return IntOffset(x, if (below) place.bottom + gap else place.top - gap - height)
+        placement.bounds = IntRect(IntOffset(x, y), popupContentSize)
+        return IntOffset(x, y)
     }
 }
 
@@ -368,7 +382,8 @@ private val TipGesture.round: FingerRound
 /**
  * Draws the breathing ring around a tip's [place], [ringGap] outside it with corners of [ringCorner], and the ghost
  * finger doing [gesture] on it, [time] milliseconds after the tip showed, in [ink]. The finger touches the place [at]
- * across it; a swipe over the page and a drag to the top go by the [screen]'s area.
+ * across it; a swipe over the page and a drag to the top go by the [screen]'s area, a swipe over the page clear of the
+ * tip's [bubble].
  */
 @Suppress("LongParameterList")
 private fun DrawScope.drawTip(
@@ -378,6 +393,7 @@ private fun DrawScope.drawTip(
     time: Long,
     ink: Color,
     screen: Rect,
+    bubble: Rect = Rect.Zero,
     ringGap: Float = RING_GAP.toPx(),
     ringCorner: Float = RING_CORNER.toPx(),
 ) {
@@ -402,16 +418,22 @@ private fun DrawScope.drawTip(
     )
     val played = time - FINGER_DELAY_MS
     if (played < 0) return
-    val start = fingerStart(place, gesture, at, screen)
+    val start = fingerStart(place, gesture, at, screen, bubble)
     val end = fingerEnd(start, gesture, screen)
     drawFinger(gesture.round, (played % gesture.round.length).toInt(), start, end, ink)
 }
 
-/** Where the finger touches down: [at] across [place], or over the page beside it for a swipe over the page. */
-private fun DrawScope.fingerStart(place: Rect, gesture: TipGesture, at: Float, screen: Rect): Offset {
+/**
+ * Where the finger touches down: [at] across [place], or for a swipe over the page, over the page beside it, past the
+ * [bubble] when that lies on the same side.
+ */
+private fun DrawScope.fingerStart(place: Rect, gesture: TipGesture, at: Float, screen: Rect, bubble: Rect): Offset {
     if (gesture !is TipGesture.Swipe || !gesture.overPage) return Offset(place.left + place.width * at, place.center.y)
     val away = OVER_PAGE.toPx()
-    val y = if (place.center.y > screen.center.y) place.top - away else place.bottom + away
+    val clear = BUBBLE_CLEARANCE.toPx()
+    val above = place.center.y > screen.center.y
+    var y = if (above) place.top - away else place.bottom + away
+    if (!bubble.isEmpty) y = if (above) min(y, bubble.top - clear) else max(y, bubble.bottom + clear)
     return Offset(screen.center.x - gesture.dx.toPx() / 2, y)
 }
 
@@ -525,6 +547,7 @@ private val HOLD_RING_GAP = 6.dp
 private val HOLD_RING_WIDTH = 2.5.dp
 private val TRAIL_WIDTH = 3.dp
 private val OVER_PAGE = 140.dp
+private val BUBBLE_CLEARANCE = 44.dp
 private val TOP_DROP = 88.dp
 private const val LANDING_SCALE = 1.3f
 private const val PRESSED_SCALE = 0.82f

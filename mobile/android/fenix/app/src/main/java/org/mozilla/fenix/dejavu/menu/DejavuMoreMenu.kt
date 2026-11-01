@@ -69,6 +69,7 @@ import org.mozilla.fenix.dejavu.browser.navigationBarRoomPadding
 import org.mozilla.fenix.dejavu.browser.shownPopupTheme
 import org.mozilla.fenix.dejavu.browser.statusBarRoomPadding
 import org.mozilla.fenix.dejavu.browser.workspaceTheme
+import org.mozilla.fenix.dejavu.discover.NewThing
 import org.mozilla.fenix.dejavu.discover.isNewAmong
 import org.mozilla.fenix.dejavu.discover.newDot
 import org.mozilla.fenix.dejavu.discover.rememberUnseenNewThings
@@ -361,10 +362,13 @@ fun MoreMenu(
                     onClick = onEdit,
                     colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.onSurfaceVariant),
                 ) {
+                    // The new buttons for the menu wait in its settings.
                     Icon(
                         painter = painterResource(iconsR.drawable.mozac_ic_edit_24),
                         contentDescription = null,
-                        modifier = Modifier.size(18.dp),
+                        modifier = Modifier
+                            .size(18.dp)
+                            .newDot(NewThing.CLEAR_DATA_ENTRIES in unseen, inset = EDIT_DOT_INSET),
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(stringResource(R.string.dejavu_menu_edit))
@@ -627,6 +631,7 @@ fun SplitTabPicker(
     }
 }
 
+private val EDIT_DOT_INSET = 1.dp
 private const val HANDLE_ALPHA = 0.4f
 private const val DISABLED_ALPHA = 0.38f
 private const val DIVIDER_ALPHA = 0.5f

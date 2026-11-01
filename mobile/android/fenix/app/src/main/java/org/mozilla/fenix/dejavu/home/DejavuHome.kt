@@ -12,6 +12,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.interaction.DragInteraction
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -317,11 +318,16 @@ fun DejavuHome(
         }
     }
 
-    // Turning to another workspace is what the tip about the workspaces tells.
-    val firstSettledPage = remember { pagerState.settledPage }
+    // Swiping to another workspace is what the tip about the workspaces tells, unlike being taken to one, as to a
+    // workspace just made.
+    var swiped by remember { mutableStateOf(false) }
+    LaunchedEffect(pagerState) {
+        pagerState.interactionSource.interactions.collect { if (it is DragInteraction.Start) swiped = true }
+    }
     LaunchedEffect(pagerState.settledPage) {
         state.workspaces.getOrNull(pagerState.settledPage)?.let { interactor.onWorkspaceSelected(it.id) }
-        if (pagerState.settledPage != firstSettledPage) Tips.done(Tip.WORKSPACES)
+        if (swiped) Tips.done(Tip.WORKSPACES)
+        swiped = false
     }
 
     // Follows workspace changes made elsewhere, without leaving the private workspace the home opened on.

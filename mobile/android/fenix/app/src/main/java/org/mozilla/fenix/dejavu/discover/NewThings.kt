@@ -27,8 +27,13 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.preference.Preference
 import kotlin.math.roundToInt
+import kotlinx.coroutines.launch
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.menu.MoreMenuEntry
 import org.mozilla.fenix.dejavu.menu.MoreMenuItem
@@ -60,6 +65,18 @@ internal object NewThings {
 
     /** Shows the orange dot after the title of [preference] while [thing] is new, the way to it or the thing itself. */
     fun mark(preference: Preference, thing: NewThing) = preference.showNewDot(isNew(preference.context, thing))
+
+    /**
+     * Shows the orange dot after the title of [preference] while [thing] is new, and takes it away as soon as the user
+     * looked at it, also on a screen further on that closes only after [owner] showed again.
+     */
+    fun follow(preference: Preference, thing: NewThing, owner: LifecycleOwner) {
+        owner.lifecycleScope.launch {
+            owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                settings(preference.context).seenNewThings.collect { preference.showNewDot(thing.key !in it) }
+            }
+        }
+    }
 
     private fun settings(context: Context): DejavuSettings =
         context.components.strictMode.allowViolation(StrictMode::allowThreadDiskReads) { DejavuSettings.get(context) }
