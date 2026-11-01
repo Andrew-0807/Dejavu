@@ -20,10 +20,6 @@ import mozilla.components.feature.ipprotection.store.IPProtectionStore
 import mozilla.components.feature.ipprotection.store.state.EligibilityStatus
 import mozilla.components.feature.ipprotection.store.state.IPProtectionState
 import mozilla.components.service.fxa.manager.FxaAccountManager
-import mozilla.components.service.fxrelay.eligibility.Eligible
-import mozilla.components.service.fxrelay.eligibility.Ineligible
-import mozilla.components.service.fxrelay.eligibility.RelayEligibilityStore
-import mozilla.components.service.fxrelay.eligibility.RelayState
 import mozilla.components.support.test.robolectric.testContext
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -93,7 +89,7 @@ class SettingsFragmentTest {
 
     @OptIn(ExperimentalCoroutinesApi::class) // advanceUntilIdle
     @Test
-    fun `Install add-on from file pref is visible if debug menu active and feature is enabled`() = runTest {
+    fun `Install add-on from file pref is always visible`() = runTest {
         val settingsFragment = SettingsFragment()
         val activity = Robolectric.buildActivity(FragmentActivity::class.java).create().get()
 
@@ -106,14 +102,10 @@ class SettingsFragmentTest {
                 settingsFragment.getPreferenceKey(R.string.pref_key_install_local_addon)
             )
 
-        settingsFragment.setupInstallAddonFromFilePreference(mockk(relaxed = true))
-        assertNotNull(preference)
-        assertFalse(preference.isVisible)
-
         val settings: Settings = mockk(relaxed = true)
-
-        every { settings.showSecretDebugMenuThisSession } returns true
+        every { settings.showSecretDebugMenuThisSession } returns false
         settingsFragment.setupInstallAddonFromFilePreference(settings)
+        assertNotNull(preference)
         assertTrue(preference.isVisible)
     }
 
@@ -211,48 +203,6 @@ class SettingsFragmentTest {
         settingsFragment.setupNotificationPreference(true)
 
         assertEquals(summary, notificationPreference.summary)
-    }
-
-    @Test
-    fun `GIVEN the opening screen setting is set to homepage after four hours THEN set the appropriate summary to homepage preference`() {
-        val homepagePreference = settingsFragment.requirePreference<Preference>(R.string.pref_key_home)
-        every { testContext.components.settings.alwaysOpenTheHomepageWhenOpeningTheApp } returns false
-        every { testContext.components.settings.openHomepageAfterFourHoursOfInactivity } returns true
-        every { testContext.components.settings.alwaysOpenTheLastTabWhenOpeningTheApp } returns false
-        assertTrue(homepagePreference.summary.isNullOrEmpty())
-        val summary = testContext.getString(R.string.opening_screen_after_four_hours_of_inactivity_summary)
-
-        settingsFragment.setupHomepagePreference(testContext.components.settings)
-
-        assertEquals(summary, homepagePreference.summary)
-    }
-
-    @Test
-    fun `GIVEN the opening screen setting is set to last tab THEN set the appropriate summary to homepage preference`() {
-        val homepagePreference = settingsFragment.requirePreference<Preference>(R.string.pref_key_home)
-        every { testContext.components.settings.alwaysOpenTheHomepageWhenOpeningTheApp } returns false
-        every { testContext.components.settings.openHomepageAfterFourHoursOfInactivity } returns false
-        every { testContext.components.settings.alwaysOpenTheLastTabWhenOpeningTheApp } returns true
-        assertTrue(homepagePreference.summary.isNullOrEmpty())
-        val summary = testContext.getString(R.string.opening_screen_last_tab_summary)
-
-        settingsFragment.setupHomepagePreference(testContext.components.settings)
-
-        assertEquals(summary, homepagePreference.summary)
-    }
-
-    @Test
-    fun `GIVEN the opening screen setting is set to homepage THEN set the appropriate summary to homepage preference`() {
-        val homepagePreference = settingsFragment.requirePreference<Preference>(R.string.pref_key_home)
-        every { testContext.components.settings.alwaysOpenTheHomepageWhenOpeningTheApp } returns true
-        every { testContext.components.settings.openHomepageAfterFourHoursOfInactivity } returns false
-        every { testContext.components.settings.alwaysOpenTheLastTabWhenOpeningTheApp } returns false
-        assertTrue(homepagePreference.summary.isNullOrEmpty())
-        val summary = testContext.getString(R.string.opening_screen_homepage_summary)
-
-        settingsFragment.setupHomepagePreference(testContext.components.settings)
-
-        assertEquals(summary, homepagePreference.summary)
     }
 
     @Test
@@ -395,54 +345,6 @@ class SettingsFragmentTest {
         settingsFragment.onStop()
 
         verify { accountManager.unregister(settingsFragment.accountObserver) }
-    }
-
-    @Test
-    fun `GIVEN email mask feature is available for the user WHEN relay eligibility is Eligible THEN preference is visible`() {
-        val preference = settingsFragment.requirePreference<Preference>(R.string.pref_key_email_masks)
-        every { testContext.components.settings.isEmailMaskFeatureEnabled } returns true
-        every { testContext.components.relayEligibilityStore } returns
-            RelayEligibilityStore(RelayState(Eligible.Premium))
-
-        settingsFragment.setupEmailMaskPreference(testContext.components.settings, testContext.components)
-
-        assertTrue(preference.isVisible)
-    }
-
-    @Test
-    fun `GIVEN email mask feature is available for the user WHEN relay eligibility is Ineligible THEN preference is hidden`() {
-        val preference = settingsFragment.requirePreference<Preference>(R.string.pref_key_email_masks)
-        every { testContext.components.settings.isEmailMaskFeatureEnabled } returns true
-        every { testContext.components.relayEligibilityStore } returns
-            RelayEligibilityStore(RelayState(Ineligible.FirefoxAccountNotLoggedIn))
-
-        settingsFragment.setupEmailMaskPreference(testContext.components.settings, testContext.components)
-
-        assertFalse(preference.isVisible)
-    }
-
-    @Test
-    fun `GIVEN email mask feature is not available for the user WHEN relay eligibility is Eligible THEN preference is hidden`() {
-        val preference = settingsFragment.requirePreference<Preference>(R.string.pref_key_email_masks)
-        every { testContext.components.settings.isEmailMaskFeatureEnabled } returns false
-        every { testContext.components.relayEligibilityStore } returns
-            RelayEligibilityStore(RelayState(Eligible.Premium))
-
-        settingsFragment.setupEmailMaskPreference(testContext.components.settings, testContext.components)
-
-        assertFalse(preference.isVisible)
-    }
-
-    @Test
-    fun `GIVEN email mask feature is not available for the user WHEN relay eligibility is Ineligible THEN preference is hidden`() {
-        val preference = settingsFragment.requirePreference<Preference>(R.string.pref_key_email_masks)
-        every { testContext.components.settings.isEmailMaskFeatureEnabled } returns false
-        every { testContext.components.relayEligibilityStore } returns
-            RelayEligibilityStore(RelayState(Ineligible.FirefoxAccountNotLoggedIn))
-
-        settingsFragment.setupEmailMaskPreference(testContext.components.settings, testContext.components)
-
-        assertFalse(preference.isVisible)
     }
 
     @OptIn(ExperimentalAndroidComponentsApi::class)

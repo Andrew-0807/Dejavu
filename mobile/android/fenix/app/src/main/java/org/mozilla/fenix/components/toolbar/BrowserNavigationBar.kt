@@ -29,8 +29,8 @@ import mozilla.components.compose.browser.toolbar.store.ToolbarGravity.Top
 import mozilla.components.support.utils.KeyboardState
 import mozilla.components.support.utils.keyboardAsState
 import org.mozilla.fenix.R
+import org.mozilla.fenix.dejavu.browser.DejavuBottomBar
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
-import org.mozilla.fenix.dejavu.menu.DejavuActionsBar
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
 
@@ -69,7 +69,12 @@ class BrowserNavigationBar(
                 }
 
                 FirefoxTheme {
-                    Column(modifier = Modifier.background(MaterialTheme.colorScheme.surface)) {
+                    // Dejavu's actions bar floats over the page, so the space around it is left clear.
+                    val isDejavuBar = DejavuToolbar.enabled && customTabSessionId == null
+                    Column(
+                        modifier =
+                            if (isDejavuBar) Modifier else Modifier.background(MaterialTheme.colorScheme.surface),
+                    ) {
                         if (shouldShowTabStrip) {
                             tabStripContent().invoke()
                         }
@@ -122,7 +127,7 @@ class BrowserNavigationBar(
                 false
             }
 
-        // Dejavu's actions bar holds all the buttons, so it shows in every window size and orientation.
+        // Dejavu's actions bar, or its address bar below pages, shows in every window size and orientation.
         val isDejavuBar = DejavuToolbar.enabled && customTabSessionId == null
         if (isDejavuBar || uiState.displayState.navigationActions.isNotEmpty()) {
             AnimatedVisibility(
@@ -140,7 +145,7 @@ class BrowserNavigationBar(
             ) {
                 FirefoxTheme {
                     if (isDejavuBar) {
-                        DejavuActionsBar(onEvent = { toolbarStore.dispatch(it) })
+                        DejavuBottomBar(store = toolbarStore, onEvent = { toolbarStore.dispatch(it) })
                         return@FirefoxTheme
                     }
                     NavigationBar(

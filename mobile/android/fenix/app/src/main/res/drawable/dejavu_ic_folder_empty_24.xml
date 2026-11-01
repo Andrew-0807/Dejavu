@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<!-- A folder like mozac_ic_folder_24, drawn as a dashed outline, for a folder with nothing inside. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF000000"
+        android:strokeWidth="1.75"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M12.598,20.125L11.402,20.125M8.167,20.125L6.97,20.125M3.851,19.606L3.109,18.682M2.875,15.481L2.875,14.285M2.875,11.05L2.875,9.853M2.888,6.619L3.286,5.502M6.136,4.375L7.332,4.375M10.223,5.335L10.977,6.264M13.918,7.125L15.114,7.125M18.349,7.125L19.525,7.293M21.125,9.853L21.125,11.05M21.125,14.285L21.125,15.481M20.891,18.682L20.149,19.606M17.03,20.125L15.833,20.125" />
+</vector>

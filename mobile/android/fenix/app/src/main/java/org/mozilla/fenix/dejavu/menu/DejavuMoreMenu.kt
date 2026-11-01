@@ -19,16 +19,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -69,9 +65,19 @@ import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.menu.store.WebExtensionMenuItem
-import org.mozilla.fenix.dejavu.browser.shownWorkspaceTheme
+import org.mozilla.fenix.dejavu.browser.navigationBarRoomPadding
+import org.mozilla.fenix.dejavu.browser.shownPopupTheme
+import org.mozilla.fenix.dejavu.browser.statusBarRoomPadding
 import org.mozilla.fenix.dejavu.browser.workspaceTheme
+import org.mozilla.fenix.dejavu.discover.NewThing
+import org.mozilla.fenix.dejavu.discover.isNewAmong
+import org.mozilla.fenix.dejavu.discover.newDot
+import org.mozilla.fenix.dejavu.discover.rememberUnseenNewThings
 import org.mozilla.fenix.dejavu.home.displayTitle
+import org.mozilla.fenix.dejavu.ui.TapIcon
+import org.mozilla.fenix.dejavu.ui.WordFittedText
+import org.mozilla.fenix.dejavu.ui.rememberIconTaps
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 
 /** What the "More" menu shows about the tab it was opened for. */
 data class MoreMenuState(
@@ -88,8 +94,12 @@ data class MoreMenuState(
     val hasExternalApp: Boolean = false,
     val canTranslate: Boolean = false,
     val isTranslated: Boolean = false,
+    val isReaderable: Boolean = false,
+    val isInReaderView: Boolean = false,
     val isWebPage: Boolean = false,
+    val isPdf: Boolean = false,
     val isDeviceTab: Boolean = false,
+    val splitWays: List<SplitOrientation> = emptyList(),
 )
 
 /** How an entry of the "More" menu looks for the shown tab. */
@@ -107,8 +117,9 @@ internal fun MoreMenuEntry.look(state: MoreMenuState): EntryLook = when (this) {
     // A custom action sends the page to a server, so it does not run on a private tab, like pinning and moving it.
     is MoreMenuEntry.Custom ->
         EntryLook(action.name, iconsR.drawable.mozac_ic_lightning_24, enabled = state.isWebPage && !state.isPrivate)
-    MoreMenuEntry.Home -> EntryLook(stringResource(R.string.dejavu_actions_bar_home), iconsR.drawable.mozac_ic_home_24)
-    MoreMenuEntry.Search -> EntryLook(stringResource(R.string.dejavu_actions_bar_search), iconsR.drawable.mozac_ic_search_24)
+    MoreMenuEntry.Home -> EntryLook(stringResource(R.string.dejavu_actions_bar_home), R.drawable.dejavu_ic_home_24)
+    MoreMenuEntry.Search ->
+        EntryLook(stringResource(R.string.dejavu_actions_bar_search), R.drawable.dejavu_ic_search_24)
 }
 
 @Composable
@@ -126,11 +137,20 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
             default
         }
         MoreMenuItem.BOOKMARK_PAGE -> if (state.isBookmarked) {
-            EntryLook(stringResource(R.string.dejavu_menu_edit_bookmark), iconsR.drawable.mozac_ic_bookmark_fill_24, active = true)
+            val label = stringResource(R.string.dejavu_menu_edit_bookmark)
+            EntryLook(label, R.drawable.dejavu_ic_bookmarked_24, active = true)
         } else {
             default.copy(enabled = state.isWebPage)
         }
         MoreMenuItem.DESKTOP_SITE -> default.copy(active = state.isDesktopMode)
+        MoreMenuItem.READER_VIEW -> if (state.isInReaderView) {
+            val label = stringResource(R.string.dejavu_menu_close_reader_view)
+            EntryLook(label, iconsR.drawable.mozac_ic_reader_view_fill_24, active = true)
+        } else {
+            // Firefox offers it only on pages its check takes for articles; Dejavu lets every web page try, as the
+            // check leaves out pages like Wikipedia's main page, and a page with nothing to show stays as it is.
+            default.copy(enabled = state.isReaderable || (state.isWebPage && !state.isPdf))
+        }
         // A pinned tab of a device can still be unpinned here, which leaves it pinned on the device.
         MoreMenuItem.PIN_TAB -> if (state.isPinned) {
             EntryLook(stringResource(R.string.dejavu_menu_unpin_tab), iconsR.drawable.mozac_ic_pin_slash_24, active = true)
@@ -145,15 +165,25 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
         MoreMenuItem.SPLIT_VIEW -> if (state.isSplit) {
             EntryLook(stringResource(R.string.dejavu_menu_unsplit), R.drawable.dejavu_ic_unsplit_24, active = true)
         } else {
-            default.copy(enabled = !state.isPrivate)
+            // With room for one way of splitting only, the entry shows that way.
+            val icon = if (state.splitWays.singleOrNull() == SplitOrientation.SIDE_BY_SIDE) {
+                R.drawable.dejavu_ic_split_side_24
+            } else {
+                item.icon
+            }
+            default.copy(icon = icon, enabled = !state.isPrivate)
         }
+        MoreMenuItem.SPLIT_TOP_AND_BOTTOM, MoreMenuItem.SPLIT_SIDE_BY_SIDE -> default.copy(enabled = !state.isPrivate)
         MoreMenuItem.RESET_PINNED_URL, MoreMenuItem.REPLACE_PINNED_URL -> default.copy(enabled = state.isPinChanged)
         MoreMenuItem.OPEN_IN_APP -> default.copy(enabled = state.hasExternalApp)
         MoreMenuItem.TRANSLATE -> default.copy(enabled = state.canTranslate, active = state.isTranslated)
         MoreMenuItem.SHARE, MoreMenuItem.FIND_IN_PAGE, MoreMenuItem.SAVE_AS_PDF, MoreMenuItem.PRINT,
         -> default.copy(enabled = state.isWebPage)
-        MoreMenuItem.EXTENSIONS, MoreMenuItem.PASSWORDS, MoreMenuItem.BOOKMARKS, MoreMenuItem.DOWNLOADS,
-        MoreMenuItem.HISTORY, MoreMenuItem.SETTINGS,
+        // Reader view and the PDF viewer are the browser's own pages, which the page saver cannot read.
+        MoreMenuItem.SAVE_PAGE -> default.copy(enabled = state.isWebPage && !state.isInReaderView && !state.isPdf)
+        MoreMenuItem.NEW_TAB, MoreMenuItem.EXTENSIONS, MoreMenuItem.PASSWORDS, MoreMenuItem.BOOKMARKS,
+        MoreMenuItem.DOWNLOADS, MoreMenuItem.HISTORY, MoreMenuItem.SETTINGS, MoreMenuItem.CLEAR_DATA,
+        MoreMenuItem.CLEAR_DATA_AND_QUIT,
         -> default
     }
 }
@@ -169,13 +199,20 @@ private val DeviceLockedItems = setOf(
  * The surface of the "More" menu: a sheet that comes down from the top when the address bar is at the top, and up
  * from the bottom otherwise. A sheet at the top can be swiped up to close it; one at the bottom is closed by its
  * bottom sheet dialog.
+ *
+ * @param floating Shows the menu as a panel growing out of the actions bar instead, see [FloatingMoreMenu].
  */
 @Composable
 fun MoreMenuSheet(
     fromTop: Boolean,
     onDismiss: () -> Unit,
+    floating: Boolean = false,
     content: @Composable ColumnScope.() -> Unit,
 ) {
+    if (floating) {
+        FloatingMoreMenu(onDismiss = onDismiss, content = content)
+        return
+    }
     val corner = 28.dp
     val shape = if (fromTop) {
         RoundedCornerShape(bottomStart = corner, bottomEnd = corner)
@@ -194,8 +231,8 @@ fun MoreMenuSheet(
             .graphicsLayer { translationY = shownOffset }
             .clip(shape)
             .background(MaterialTheme.colorScheme.surface)
-            .workspaceTheme(shownWorkspaceTheme())
-            .windowInsetsPadding(if (fromTop) WindowInsets.statusBars else WindowInsets.navigationBars)
+            .workspaceTheme(shownPopupTheme())
+            .then(if (fromTop) Modifier.statusBarRoomPadding() else Modifier.navigationBarRoomPadding())
             .nestedScroll(if (fromTop) swipeUp else bottomSheetScroll),
     ) {
         if (!fromTop) SheetHandle()
@@ -294,6 +331,7 @@ fun MoreMenu(
     onManageExtensions: () -> Unit,
     onEdit: (() -> Unit)? = null,
 ) {
+    val unseen = rememberUnseenNewThings()
     Column(verticalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(vertical = 6.dp)) {
         rows.forEach { row ->
             val single = row.singleOrNull()
@@ -311,6 +349,7 @@ fun MoreMenu(
                             look = entry.look(state),
                             onClick = { onEntryClick(entry) },
                             modifier = Modifier.weight(1f),
+                            isNew = entry.isNewAmong(unseen),
                         )
                     }
                     repeat(MoreMenuLayout.MAX_PER_ROW - row.size) { Spacer(Modifier.weight(1f)) }
@@ -323,10 +362,13 @@ fun MoreMenu(
                     onClick = onEdit,
                     colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.onSurfaceVariant),
                 ) {
+                    // The new buttons for the menu wait in its settings.
                     Icon(
                         painter = painterResource(iconsR.drawable.mozac_ic_edit_24),
                         contentDescription = null,
-                        modifier = Modifier.size(18.dp),
+                        modifier = Modifier
+                            .size(18.dp)
+                            .newDot(NewThing.CLEAR_DATA_ENTRIES in unseen, inset = EDIT_DOT_INSET),
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(stringResource(R.string.dejavu_menu_edit))
@@ -337,7 +379,7 @@ fun MoreMenu(
 }
 
 @Composable
-private fun MenuTile(look: EntryLook, onClick: () -> Unit, modifier: Modifier = Modifier) {
+private fun MenuTile(look: EntryLook, onClick: () -> Unit, modifier: Modifier = Modifier, isNew: Boolean = false) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
@@ -350,6 +392,7 @@ private fun MenuTile(look: EntryLook, onClick: () -> Unit, modifier: Modifier = 
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .size(48.dp)
+                .newDot(isNew)
                 .clip(RoundedCornerShape(16.dp))
                 .background(
                     if (look.active) {
@@ -371,13 +414,11 @@ private fun MenuTile(look: EntryLook, onClick: () -> Unit, modifier: Modifier = 
             )
         }
         Spacer(Modifier.height(6.dp))
-        Text(
+        WordFittedText(
             text = look.label,
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Center,
-            maxLines = 2,
-            overflow = TextOverflow.Ellipsis,
         )
     }
 }
@@ -391,6 +432,7 @@ fun ExtensionsDrawer(
     onManage: () -> Unit,
 ) {
     val chevronRotation by animateFloatAsState(targetValue = if (expanded) HALF_TURN else 0f, label = "ExtensionsChevron")
+    val taps = rememberIconTaps()
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -402,14 +444,13 @@ fun ExtensionsDrawer(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable(onClick = if (extensions.isEmpty()) onManage else onToggle)
+                .clickable {
+                    taps.tap()
+                    if (extensions.isEmpty()) onManage() else onToggle()
+                }
                 .padding(horizontal = 16.dp, vertical = 12.dp),
         ) {
-            Icon(
-                painter = painterResource(iconsR.drawable.mozac_ic_extension_24),
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurface,
-            )
+            TapIcon(icon = R.drawable.dejavu_ic_extensions_24, taps = taps, tint = MaterialTheme.colorScheme.onSurface)
             Spacer(Modifier.width(14.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
@@ -459,7 +500,7 @@ fun ExtensionList(extensions: List<WebExtensionMenuItem>, onManage: () -> Unit) 
                 .padding(horizontal = 16.dp, vertical = 14.dp),
         ) {
             Icon(
-                painter = painterResource(iconsR.drawable.mozac_ic_settings_24),
+                painter = painterResource(R.drawable.dejavu_ic_settings_24),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(20.dp),
@@ -491,7 +532,7 @@ private fun ExtensionRow(extension: WebExtensionMenuItem) {
             Image(bitmap = icon.asImageBitmap(), contentDescription = null, modifier = Modifier.size(24.dp))
         } else {
             Icon(
-                painter = painterResource(iconsR.drawable.mozac_ic_extension_24),
+                painter = painterResource(R.drawable.dejavu_ic_extensions_24),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(24.dp),
@@ -590,6 +631,7 @@ fun SplitTabPicker(
     }
 }
 
+private val EDIT_DOT_INSET = 1.dp
 private const val HANDLE_ALPHA = 0.4f
 private const val DISABLED_ALPHA = 0.38f
 private const val DIVIDER_ALPHA = 0.5f

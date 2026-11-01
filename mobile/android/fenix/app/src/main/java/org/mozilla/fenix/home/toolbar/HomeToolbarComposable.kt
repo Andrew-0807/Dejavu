@@ -55,6 +55,8 @@ import org.mozilla.fenix.components.appstate.VoiceSearchAction.VoiceInputRequest
 import org.mozilla.fenix.components.metrics.MetricsUtils
 import org.mozilla.fenix.dejavu.browser.DejavuSearchChips
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.NewTabSearch
+import org.mozilla.fenix.dejavu.browser.isSearchScreenSeeThrough
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.utils.Settings
 import org.mozilla.fenix.wallpapers.WallpaperTheme
@@ -123,12 +125,7 @@ internal class HomeToolbarComposable(
         val wallpaperTextColor = WallpaperTheme.onWallpaper.takeIf { isUniversalEdgeToEdge && hasWallpaperBackground }
 
         BackInvokedHandler(isSearching) {
-            val sourceTabId = appStore.state.searchState.sourceTabId
-            if (sourceTabId != null) {
-                navController.navigate(R.id.browserFragment)
-            }
-            appStore.dispatch(SearchEnded)
-            browserStore.dispatch(AwesomeBarAction.EngagementFinished(abandoned = true))
+            abandonSearch()
         }
 
         FirefoxTheme {
@@ -148,6 +145,16 @@ internal class HomeToolbarComposable(
                 ToolbarContent(wallpaperTextColor = wallpaperTextColor)
             }
         }
+    }
+
+    /** Ends the search without opening anything, going back to the tab it was started from, if any. */
+    private fun abandonSearch() {
+        val sourceTabId = appStore.state.searchState.sourceTabId
+        if (sourceTabId != null) {
+            navController.navigate(R.id.browserFragment)
+        }
+        appStore.dispatch(SearchEnded)
+        browserStore.dispatch(AwesomeBarAction.EngagementFinished(abandoned = true))
     }
 
     @Composable
@@ -176,7 +183,7 @@ internal class HomeToolbarComposable(
                 Column(
                     modifier =
                         Modifier.weight(1f).fillMaxWidth().pointerInput(Unit) {
-                            detectTapGestures(onTap = { appStore.dispatch(SearchEnded) })
+                            detectTapGestures(onTap = { abandonSearch() })
                         }
                 ) {
                     searchSuggestionsContent(Modifier.weight(1f))
@@ -187,7 +194,8 @@ internal class HomeToolbarComposable(
 
             // Dejavu: where the new tab opens and which search engine it searches with, above the address bar.
             if (DejavuToolbar.enabled) {
-                DejavuSearchChips(newTab = appStore.state.searchState.sourceTabId == null)
+                val sourceTabId = appStore.state.searchState.sourceTabId
+                DejavuSearchChips(newTab = sourceTabId == null || NewTabSearch.isFor(sourceTabId))
             }
 
             if (shouldShowTabStrip) {
@@ -235,6 +243,8 @@ internal class HomeToolbarComposable(
                 BrowserToolbar(
                     store = toolbarStore,
                     browserActionsColor = wallpaperTextColor,
+                    // Dejavu: the workspaces show blurred around the search field too.
+                    seeThroughWhileEditing = isSearchScreenSeeThrough,
                 )
             }
         }
@@ -288,7 +298,9 @@ internal class HomeToolbarComposable(
     private fun handleTypedSearchRequest() {
         handleStartingSearch(directToSearchConfig)
 
-        if (directToSearchConfig.sessionId != null && !settings.showAddressBarInFocusMode) {
+        if (directToSearchConfig.sessionId != null && !settings.showAddressBarInFocusMode &&
+            !NewTabSearch.isFor(directToSearchConfig.sessionId)
+        ) {
             browserStore.state.findTab(directToSearchConfig.sessionId)?.let {
                 toolbarStore.dispatch(
                     SearchQueryUpdated(

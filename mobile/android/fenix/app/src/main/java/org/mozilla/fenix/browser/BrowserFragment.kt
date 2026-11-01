@@ -48,6 +48,7 @@ import mozilla.components.support.base.feature.UserInteractionHandler
 import mozilla.components.support.base.feature.ViewBoundFeatureWrapper
 import mozilla.components.support.ktx.kotlin.isContentUrl
 import org.mozilla.fenix.GleanMetrics.Translations
+import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.readermode.PowerSavingModeReaderViewBinding
 import org.mozilla.fenix.browser.store.BrowserScreenAction.ReaderModeStatusUpdated
@@ -68,9 +69,15 @@ import org.mozilla.fenix.compose.snackbar.Snackbar
 import org.mozilla.fenix.compose.snackbar.SnackbarState
 import org.mozilla.fenix.dejavu.browser.DejavuLinkMenu
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
-import org.mozilla.fenix.dejavu.browser.DejavuWindowTheme
+import org.mozilla.fenix.dejavu.browser.PagePictures
+import org.mozilla.fenix.dejavu.browser.PageTint
+import org.mozilla.fenix.dejavu.browser.addStatusBarScrim
+import org.mozilla.fenix.dejavu.browser.hideSystemBarsOverPages
+import org.mozilla.fenix.dejavu.browser.moreMenuSwipe
 import org.mozilla.fenix.dejavu.browser.openDejavuMenu
-import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
+import org.mozilla.fenix.dejavu.browser.padForNavigationBar
+import org.mozilla.fenix.dejavu.browser.padForSystemBarsAtSides
+import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.ext.application
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getRectWithScreenLocation
@@ -96,9 +103,8 @@ import org.mozilla.fenix.utils.Settings
 
 /** Fragment used for browsing the web within the main app. */
 @Suppress("TooManyFunctions", "LargeClass")
-class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemInsetsPaddedFragment {
+class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler {
     private val windowFeature = ViewBoundFeatureWrapper<WindowFeature>()
-    private val dejavuWindowTheme = ViewBoundFeatureWrapper<DejavuWindowTheme>()
     private val openInAppOnboardingObserver = ViewBoundFeatureWrapper<OpenInAppOnboardingObserver>()
     private val translationsBinding = ViewBoundFeatureWrapper<TranslationsBinding>()
     private val translationsBannerIntegration = ViewBoundFeatureWrapper<TranslationsBannerIntegration>()
@@ -170,6 +176,27 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
         val components = context.components
         val settings = components.settings
 
+        // Pages run from edge to edge, behind the status bar and the navigation bar. The fragment's own view listens
+        // for the keyboard, so the padding goes on the layout inside it.
+        val window = requireActivity().window
+        binding.browserWindow.padForSystemBarsAtSides(window, onBarsChanged = ::reinitializeEngineView)
+        binding.browserLayout.addStatusBarScrim(above = binding.tabReloadCover, window = window)
+        // The status bar and the navigation bar hide over pages when the user chose so in Customize.
+        val systemBarsHidden =
+            components.strictMode.allowViolation(StrictMode::allowThreadDiskReads) {
+                DejavuSettings.get(context).systemBarsHidden
+            }
+        hideSystemBarsOverPages(binding.engineView, systemBarsHidden)
+        binding.readerViewControlsBar.padForNavigationBar()
+        PagePictures.attach(binding.engineView)
+        PageTint(
+            window = window,
+            engineView = binding.engineView,
+            behindPage = binding.browserWindow,
+            layout = binding.browserLayout,
+            restoreTheme = { (activity as? HomeActivity)?.let { it.themeManager.applyStatusBarTheme(it) } },
+        ).start(viewLifecycleOwner, components.core.store, components.appStore)
+
         setupToolbarSwipeBehavior(settings, components)
 
         initBrowserToolbarComposableUpdates(view)
@@ -190,12 +217,6 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
                     store = components.core.store,
                     tabsUseCases = components.useCases.tabsUseCases,
                 ),
-            owner = this,
-            view = view,
-        )
-
-        dejavuWindowTheme.set(
-            feature = DejavuWindowTheme(requireActivity()),
             owner = this,
             view = view,
         )
@@ -251,9 +272,13 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler, SystemIns
                     navBarLayout = browserNavigationBar?.layout,
                     toolbarPosition = settings.toolbarPosition,
                     navController = findNavController(),
+                    // The bar the layout of the bars opens the menu on, swiped up at the bottom of the screen or down
+                    // at the top; swiping the address bar at the top does nothing next to the actions bar.
                     onSwipe = { fromNavBar: Boolean ->
-                        findNavController().openDejavuMenu(fromBottom = fromNavBar)
+                        if (fromNavBar) findNavController().openDejavuMenu(fromBar = true)
                     }.takeIf { DejavuToolbar.enabled },
+                    menuSwipe = findNavController().moreMenuSwipe(down = false).takeIf { DejavuToolbar.enabled },
+                    downSwipe = findNavController().moreMenuSwipe(down = true).takeIf { DejavuToolbar.enabled },
                 )
             )
         }

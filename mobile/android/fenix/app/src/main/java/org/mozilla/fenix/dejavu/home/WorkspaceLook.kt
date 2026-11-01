@@ -85,10 +85,6 @@ internal fun rememberGrainBrush(): ShaderBrush = remember {
     ShaderBrush(ImageShader(grainBitmap.asImageBitmap(), TileMode.Repeated, TileMode.Repeated))
 }
 
-/** The colors of the theme's gradient, from its top left to its bottom right, at the theme's opacity. */
-internal fun WorkspaceTheme.gradientColors(): List<Color> =
-    (0 until GRADIENT_STOPS).map { stop -> colorAt(stop).copy(alpha = opacity) }
-
 /** A diagonal gradient of [colors] at [opacity]. */
 internal fun themeBrush(colors: List<Color>, opacity: Float): Brush =
     if (colors.size == 1) {

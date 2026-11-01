@@ -116,9 +116,33 @@ class ThreadPenaltyDeathWithIgnoresListenerTest {
     }
 
     @Test
+    fun `GIVEN we're on a Samsung WHEN saving a preference checks for a file THEN it will be ignored and logged`() {
+        every { mockManufacturerChecker.isSamsung() } returns true
+
+        stackTrace = samsungPreferenceApplyStackTrace
+        listener.onThreadViolation(violation)
+
+        verify { logger.debug("Ignoring StrictMode ThreadPolicy violation", violation) }
+    }
+
+    @Test(expected = RuntimeException::class)
+    fun `GIVEN we're not on a Samsung WHEN saving a preference checks for a file THEN we throw an exception`() {
+        every { mockManufacturerChecker.isSamsung() } returns false
+
+        stackTrace = samsungPreferenceApplyStackTrace
+        listener.onThreadViolation(violation)
+    }
+
+    @Test
     fun `WHEN violation is null THEN we don't throw an exception`() {
         listener.onThreadViolation(null)
     }
+
+    private val samsungPreferenceApplyStackTrace = arrayOf(
+        StackTraceElement("java.io.File", "exists", "File.java", 829),
+        StackTraceElement("android.app.SharedPreferencesImpl\$EditorImpl", "isSpeg", "SharedPreferencesImpl.java", 505),
+        StackTraceElement("android.app.SharedPreferencesImpl\$EditorImpl", "apply", "SharedPreferencesImpl.java", 517),
+    )
 
     private fun getIdsControllerStackTrace() = StackTraces.getStackTraceFromLogcat("IdsControllerLogcat.txt")
 

@@ -36,6 +36,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.getSystemService
 import androidx.core.text.HtmlCompat
 import androidx.core.view.OnApplyWindowInsetsListener
+import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -209,10 +210,16 @@ import org.mozilla.fenix.crashes.CrashContentView
 import org.mozilla.fenix.customtabs.ExternalAppBrowserActivity
 import org.mozilla.fenix.databinding.FragmentBrowserBinding
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.SplitPanes
+import org.mozilla.fenix.dejavu.browser.barsLayout
+import org.mozilla.fenix.dejavu.browser.exitFullScreenKeepingBarsHidden
 import org.mozilla.fenix.dejavu.browser.handleDejavuBackPressed
 import org.mozilla.fenix.dejavu.browser.installAboutConfigWarning
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
+import org.mozilla.fenix.dejavu.browser.padForNavigationBar
 import org.mozilla.fenix.dejavu.browser.restoreDejavuRotationAfterFullscreen
+import org.mozilla.fenix.dejavu.browser.shownNavigationBarHeight
+import org.mozilla.fenix.dejavu.browser.statusBarHeight
 import org.mozilla.fenix.downloads.DownloadService
 import org.mozilla.fenix.downloads.RenameAndChangeLocationDialogFragment
 import org.mozilla.fenix.downloads.dialog.createDownloadAppDialog
@@ -564,9 +571,7 @@ abstract class BaseBrowserFragment :
                     browserLayout = getSwipeRefreshLayout(),
                     engineView = getEngineView(),
                     toolbar = browserToolbar,
-                    topToolbarHeight = {
-                        getTopToolbarHeight(includeTabStripIfAvailable = customTabSessionId == null)
-                    },
+                    topToolbarHeight = ::topToolbarHeightAbovePage,
                     onToolbarsReset = ::collapseBrowserView,
                 ),
             owner = this,
@@ -1227,7 +1232,13 @@ abstract class BaseBrowserFragment :
             view = view,
         )
 
-        installDejavuSplitView(binding.browserLayout, binding.swipeRefresh, binding.engineView, customTabSessionId) {
+        installDejavuSplitView(
+            browserLayout = binding.browserLayout,
+            swipeRefresh = binding.swipeRefresh,
+            mainEngineView = binding.engineView,
+            customTabSessionId = customTabSessionId,
+            restoreEngineView = ::reinitializeEngineView,
+        ) {
             getContextMenuCandidates(context, binding.dynamicSnackbarContainer)
         }
         installAboutConfigWarning(customTabSessionId)
@@ -1483,7 +1494,7 @@ abstract class BaseBrowserFragment :
         )
 
         initializeEngineView(
-            topToolbarHeight = getTopToolbarHeight(includeTabStripIfAvailable = customTabSessionId == null),
+            topToolbarHeight = topToolbarHeightAbovePage(),
             bottomToolbarHeight = bottomToolbarHeight,
         )
 
@@ -1818,6 +1829,12 @@ abstract class BaseBrowserFragment :
     ) {
         val context = requireContext()
 
+        // Dejavu: while a split view shows, it places the page next to the other one, between bars that stay in place.
+        SplitPanes.active?.takeIf { it.ownsLayout }?.let { split ->
+            split.applyLayout()
+            return
+        }
+
         if (isToolbarDynamic(context) && webAppToolbarShouldBeVisible) {
             getEngineView().setDynamicToolbarMaxHeight(topToolbarHeight + bottomToolbarHeight)
 
@@ -2127,8 +2144,8 @@ abstract class BaseBrowserFragment :
         return findInPageIntegration.onBackPressed() ||
             fullScreenFeature.onBackPressed() ||
             promptsFeature.onBackPressed() ||
-            sessionFeature.onBackPressed() ||
             handleDejavuBackPressed(customTabSessionId) ||
+            sessionFeature.onBackPressed() ||
             lastTabFeature.onBackPressed()
     }
 
@@ -2241,7 +2258,7 @@ abstract class BaseBrowserFragment :
         // Avoid any change for scenarios where the toolbar is not shown
         if (fullScreenFeature.get()?.isFullScreen == true) return 0 to 0
 
-        val topToolbarHeight = getTopToolbarHeight(includeTabStripIfAvailable = customTabSessionId == null)
+        val topToolbarHeight = topToolbarHeightAbovePage()
         val bottomToolbarHeight =
             getBottomToolbarHeight(
                 includeTabStripIfAvailable = customTabSessionId == null,
@@ -2250,6 +2267,28 @@ abstract class BaseBrowserFragment :
             )
 
         return topToolbarHeight to bottomToolbarHeight
+    }
+
+    /**
+     * The height the top toolbar takes above the page. Dejavu's address bar keeps below the status bar, which pages
+     * run up behind once the address bar scrolls away, so it takes the status bar's height too. Below pages, the
+     * address bar leaves only the status bar's room above them.
+     */
+    private fun topToolbarHeightAbovePage(): Int {
+        val toolbarHeight = getTopToolbarHeight(includeTabStripIfAvailable = customTabSessionId == null)
+        val isDejavuBar = DejavuToolbar.enabled && customTabSessionId == null && toolbarHeight > 0
+        if (!isDejavuBar) return toolbarHeight
+        val statusBar = view?.statusBarHeight ?: 0
+        return if (requireContext().barsLayout.addressBarAtBottom) statusBar else toolbarHeight + statusBar
+    }
+
+    /**
+     * The keyboard's height left out of [keyboardHeight] for the navigation bar under it. Dejavu's browser runs behind
+     * the navigation bar instead of above it, so the space kept for a shown keyboard takes that height too.
+     */
+    private fun navigationBarUnderKeyboard(view: View, keyboardHeight: Int): Int {
+        val isDejavuBrowser = DejavuToolbar.enabled && customTabSessionId == null
+        return if (isDejavuBrowser && keyboardHeight > 0) view.shownNavigationBarHeight else 0
     }
 
     /** Updates the site permissions rules based on user settings. */
@@ -2328,9 +2367,12 @@ abstract class BaseBrowserFragment :
 
             MediaState.fullscreen.record(NoExtras())
         } else {
-            activity.exitImmersiveMode(
-                unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
-            )
+            // Dejavu: the system bars hidden over pages stay hidden, also on tab switches, which come here too.
+            activity.exitFullScreenKeepingBarsHidden {
+                activity.exitImmersiveMode(
+                    unregisterOnApplyWindowInsetsListener = binding.engineView::removeWindowInsetsListener
+                )
+            }
 
             (view as? SwipeGestureLayout)?.isSwipeEnabled = true
             (activity as? HomeActivity)?.let { homeActivity ->
@@ -2411,7 +2453,7 @@ abstract class BaseBrowserFragment :
     internal fun reinitializeEngineView() {
         val isFullscreen = fullScreenFeature.get()?.isFullScreen == true
         val shouldToolbarsBeHidden = isFullscreen || !webAppToolbarShouldBeVisible
-        val topToolbarHeight = getTopToolbarHeight(includeTabStripIfAvailable = customTabSessionId == null)
+        val topToolbarHeight = topToolbarHeightAbovePage()
         val bottomToolbarHeight =
             getBottomToolbarHeight(
                 includeTabStripIfAvailable = customTabSessionId == null,
@@ -2560,9 +2602,16 @@ abstract class BaseBrowserFragment :
     }
 
     private fun launchFindInPageFeature(view: View, store: BrowserStore) {
+        val findInPageHeight = requireComponents.settings.getBrowserToolbarHeight(requireContext())
         if (findInPageIntegration.get() == null) {
             val findInPageBar =
-                view.findViewById(R.id.findInPageView) ?: (binding.findInPageViewStub.inflate() as FindInPageBar)
+                view.findViewById(R.id.findInPageView)
+                    ?: (binding.findInPageViewStub.inflate() as FindInPageBar).also { bar ->
+                        // Pages run behind the navigation bar in Dejavu's browser, so the bar keeps above it.
+                        if (DejavuToolbar.enabled && customTabSessionId == null) {
+                            bar.padForNavigationBar(contentHeight = findInPageHeight)
+                        }
+                    }
             findInPageIntegration.set(
                 feature =
                     FindInPageIntegration(
@@ -2571,7 +2620,7 @@ abstract class BaseBrowserFragment :
                         sessionId = customTabSessionId,
                         view = findInPageBar,
                         engineView = binding.engineView,
-                        findInPageHeight = requireComponents.settings.getBrowserToolbarHeight(requireContext()),
+                        findInPageHeight = findInPageHeight,
                         toolbarsHideCallback = {
                             expandBrowserView()
                         },
@@ -2585,6 +2634,10 @@ abstract class BaseBrowserFragment :
             )
         }
         findInPageIntegration.withFeature { it.launch() }
+        // Dejavu: launching gives the bar the height of its content again, without the room it keeps below it.
+        if (DejavuToolbar.enabled && customTabSessionId == null) {
+            view.findViewById<View>(R.id.findInPageView)?.let(ViewCompat::requestApplyInsets)
+        }
     }
 
     @Suppress("CognitiveComplexMethod")
@@ -2642,7 +2695,8 @@ abstract class BaseBrowserFragment :
                     },
                     onIMEAnimationFinished = { isKeyboardShowingUp, keyboardHeight ->
                         if (isKeyboardShowingUp || keyboardHeight == 0) {
-                            (view.layoutParams as? ViewGroup.MarginLayoutParams)?.bottomMargin = keyboardHeight
+                            (view.layoutParams as? ViewGroup.MarginLayoutParams)?.bottomMargin =
+                                keyboardHeight + navigationBarUnderKeyboard(view, keyboardHeight)
                             view.requestLayout()
                         }
                     },

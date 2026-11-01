@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.dejavu.home
 
+import android.net.Uri
 import androidx.activity.compose.BackHandler
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.ScrollState
@@ -11,6 +12,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.interaction.DragInteraction
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,6 +38,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -45,6 +49,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -63,6 +69,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.layout.positionInParent
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -81,7 +88,9 @@ import androidx.compose.ui.unit.sp
 import kotlin.math.floor
 import kotlin.math.roundToInt
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
 import mozilla.components.browser.state.state.ContainerState
 import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.ui.icons.R as iconsR
@@ -89,19 +98,36 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.actions.CustomAction
 import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
+import org.mozilla.fenix.dejavu.actions.forSplitWays
 import org.mozilla.fenix.dejavu.actions.icon
 import org.mozilla.fenix.dejavu.actions.label
+import org.mozilla.fenix.dejavu.browser.ClearData
+import org.mozilla.fenix.dejavu.browser.SplitSpace
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.color
+import org.mozilla.fenix.dejavu.discover.Tip
+import org.mozilla.fenix.dejavu.discover.TipGesture
+import org.mozilla.fenix.dejavu.discover.TipHost
+import org.mozilla.fenix.dejavu.discover.TipScreen
+import org.mozilla.fenix.dejavu.discover.Tips
+import org.mozilla.fenix.dejavu.discover.newDot
+import org.mozilla.fenix.dejavu.discover.rememberUnseenNewThings
+import org.mozilla.fenix.dejavu.discover.tipTarget
 import org.mozilla.fenix.dejavu.sync.workspaceIconText
 import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
+import org.mozilla.fenix.dejavu.ui.TapIcon
 import org.mozilla.fenix.dejavu.ui.glass
+import org.mozilla.fenix.dejavu.ui.popupThemeOf
+import org.mozilla.fenix.dejavu.ui.rememberIconTaps
 import org.mozilla.fenix.dejavu.workspaces.PinnedItem
+import org.mozilla.fenix.dejavu.workspaces.WallpaperArt
 import org.mozilla.fenix.dejavu.workspaces.Workspace
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceWallpaper
+import org.mozilla.fenix.settings.deletebrowsingdata.DeleteBrowsingDataOnQuitType
 
 /**
  * User actions on the Dejavu home screen that leave the screen's own UI state.
@@ -109,7 +135,26 @@ import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
 @Suppress("TooManyFunctions")
 interface DejavuHomeInteractor : TabEditor {
     fun onWorkspaceSelected(workspaceId: String)
-    fun onSaveWorkspace(workspaceId: String?, name: String, containerId: String?, icon: String?, theme: WorkspaceTheme?)
+
+    /** Saves workspace [workspaceId], or a new workspace when it is `null`, with its [wallpaper] on this device. */
+    @Suppress("LongParameterList")
+    fun onSaveWorkspace(
+        workspaceId: String?,
+        name: String,
+        containerId: String?,
+        icon: String?,
+        theme: WorkspaceTheme?,
+        wallpaper: WorkspaceWallpaper?,
+    )
+
+    /** Draws [art] into a wallpaper with the colors taken from it; `null` when it cannot be kept. */
+    suspend fun onDrawWallpaper(art: WallpaperArt): WorkspaceWallpaper?
+
+    /** Copies the picture at [uri] into a wallpaper with the colors taken from it; `null` when it cannot be read. */
+    suspend fun onImportWallpaper(uri: Uri): WorkspaceWallpaper?
+
+    /** Deletes picture [file], copied for a wallpaper that was not saved. */
+    fun onDiscardWallpaper(file: String)
 
     /** Creates a container and returns its id, so that a workspace can use it right away. */
     fun onCreateContainer(name: String, color: ContainerColor, icon: ContainerState.Icon): String
@@ -140,6 +185,12 @@ interface DejavuHomeInteractor : TabEditor {
 
     /** Closes the unpinned tabs of [workspaceId], with a way to undo. */
     fun onClearUnpinned(workspaceId: String)
+
+    /**
+     * Deletes the data chosen for Clear data, see [ClearData], then quits Dejavu when [quit], or opens its settings when
+     * nothing is chosen. Returns the kinds of data being deleted.
+     */
+    fun onClearData(quit: Boolean): Set<DeleteBrowsingDataOnQuitType>
     fun onToggleFolder(folderId: String)
     fun onSearchClick()
 
@@ -166,7 +217,11 @@ interface DejavuHomeInteractor : TabEditor {
  * selection mode; keeping the finger down and moving drags the selection, also to other workspaces: resting the finger
  * on the strip that shows at a side of the page turns to the workspace on that side, see [SelectionDrag].
  * [hasClosedTab] tells whether a closed tab is left to reopen, and [hasClipboardLink] whether the clipboard holds a
- * link to open.
+ * link to open. [wallpapers] are the pictures workspaces show under their theme, by workspace id. The search bar, with
+ * the account and settings buttons, shows on top and the workspace bar at the bottom, or the other way round when
+ * [searchAtBottom]; selecting keeps its bars where they are, the selection on top and its actions at the bottom.
+ * [hasDataToClear] tells whether the data chosen for Clear data has anything to delete, which shows the Clear button.
+ * Tips about gestures nothing shows point them out while [tipsAllowed], when nothing else needs the user's attention.
  */
 @Suppress("LongMethod", "LongParameterList", "CognitiveComplexMethod", "CyclomaticComplexMethod")
 @Composable
@@ -183,8 +238,13 @@ fun DejavuHome(
     folderRowActions: List<RowAction>,
     selectionActions: List<RowAction>,
     essentialsPerContainer: Boolean,
+    wallpapers: Map<String, WorkspaceWallpaper>,
+    downloads: State<DownloadsStatus>,
     interactor: DejavuHomeInteractor,
     modifier: Modifier = Modifier,
+    searchAtBottom: Boolean = false,
+    hasDataToClear: Boolean = false,
+    tipsAllowed: Boolean = false,
 ) {
     // The private workspace is an extra last page, there while private tabs are open.
     val privateIndex = state.workspaces.size.takeIf { privateTabs.isNotEmpty() }
@@ -197,8 +257,13 @@ fun DejavuHome(
     var drag by remember { mutableStateOf<SelectionDrag?>(null) }
     // The pages composed now, which tell where dragged items would land on them.
     val dragAreas = remember { mutableMapOf<String, PageDragArea>() }
+    // The dragged rows, lifted off their page into a stack of cards under the finger.
+    val dragStack = remember { DragStackState(scope) }
     var pagesWidth by remember { mutableIntStateOf(0) }
     var revealTabId by remember { mutableStateOf<String?>(null) }
+    val pour = remember { DataPour() }
+    // Clear data asked for on a page, which closed to here: the page shown carries it out.
+    val askedClear by ClearData.asked.collectAsState()
     val onPrivatePage = privateIndex != null && pagerState.currentPage == privateIndex
     // While any of the private workspace shows, even halfway through a swipe.
     val privatePageShown by remember(privateIndex) {
@@ -212,6 +277,7 @@ fun DejavuHome(
     SecureWindowWhile(privatePageShown)
     val currentWorkspace = state.workspaces.getOrNull(pagerState.currentPage) ?: state.workspaces.last()
     val tabsById = remember(tabs) { tabs.associateBy { it.id } }
+    val openTabIds = tabsById.keys
     // The workspace of a device on the account shows what the device has, which has no essentials.
     val essentials = if (onPrivatePage || currentWorkspace.device != null) {
         emptyList()
@@ -223,6 +289,26 @@ fun DejavuHome(
     fun themeAt(page: Int): WorkspaceTheme? =
         if (page == privateIndex) privateWorkspaceTheme else state.workspaces.getOrNull(page)?.theme
 
+    fun wallpaperAt(page: Int): WorkspaceWallpaper? =
+        if (page == privateIndex) null else state.workspaces.getOrNull(page)?.let { wallpapers[it.id] }
+
+    // Private browsing keeps its own colors.
+    fun popupThemeAt(page: Int): WorkspaceTheme? =
+        if (page == privateIndex) privateWorkspaceTheme else popupThemeOf(wallpaperAt(page))
+
+    // A wallpaper takes the place of its workspace's gradient, whose colors were taken from it.
+    fun gradientAt(page: Int): WorkspaceTheme? = themeAt(page).takeIf { wallpaperAt(page) == null }
+
+    // Wallpapers show sharp under a veil of their own colors, which keeps the text over them easy to read.
+    val surface = MaterialTheme.colorScheme.surface
+    val onSurface = MaterialTheme.colorScheme.onSurface
+    val veils = remember(wallpapers, surface, onSurface) {
+        wallpapers.mapValues { (_, wallpaper) -> veilOf(wallpaper, surface, onSurface) }
+    }
+
+    fun veilAt(page: Int): Veil? =
+        if (page == privateIndex) null else state.workspaces.getOrNull(page)?.let { veils[it.id] }
+
     // Like Zen, there is only one private workspace: asking for a private tab elsewhere leads to it once it exists.
     val newPrivateTab: () -> Unit = {
         if (privateIndex != null && !onPrivatePage) {
@@ -232,8 +318,16 @@ fun DejavuHome(
         }
     }
 
+    // Swiping to another workspace is what the tip about the workspaces tells, unlike being taken to one, as to a
+    // workspace just made.
+    var swiped by remember { mutableStateOf(false) }
+    LaunchedEffect(pagerState) {
+        pagerState.interactionSource.interactions.collect { if (it is DragInteraction.Start) swiped = true }
+    }
     LaunchedEffect(pagerState.settledPage) {
         state.workspaces.getOrNull(pagerState.settledPage)?.let { interactor.onWorkspaceSelected(it.id) }
+        if (swiped) Tips.done(Tip.WORKSPACES)
+        swiped = false
     }
 
     // Follows workspace changes made elsewhere, without leaving the private workspace the home opened on.
@@ -295,22 +389,32 @@ fun DejavuHome(
         )
     }
 
-    // Lets go of the dragged items. They land where the finger points; otherwise nothing moves, and the pages turn back
-    // to the workspace they are in.
+    // Lets go of the dragged items. They land where the finger points, and their cards spread out onto the rows they
+    // moved to; otherwise nothing moves, the cards fly back to their rows and the pages turn back to the workspace they
+    // are in.
     fun endDrag(drop: Boolean) {
         val current = drag ?: return
         drag = null
         val over = current.over
         val target = current.target
         if (drop && current.moved && over != null && target != null && !current.blocked) {
+            val before = latestState
+            val fallback = dragAreas[over]?.dropFallback(target)
             if (over != current.from && latestState.isDeviceWorkspace(over)) {
                 latestInteractor.onMoveToWorkspace(ActionTargets.of(latestState, latestTabs, current.selection), over)
             } else {
                 latestInteractor.onDrop(over, current.selection, target)
             }
+            tipsDoneBy(target, current.selection).forEach(Tips::done)
             selection = null
+            dragStack.release(drop = true, fallback = fallback) { cards ->
+                withTimeoutOrNull(LANDING_WAIT_MS) { snapshotFlow { latestState }.first { it !== before } }
+                repeat(LAYOUT_FRAMES) { withFrameNanos { } }
+                dragAreas[over]?.landings(cards).orEmpty()
+            }
             return
         }
+        dragStack.release(drop = false, fallback = null) { cards -> dragAreas[current.from]?.rowRects(cards).orEmpty() }
         val home = latestState.workspaces.indexOfFirst { it.id == current.from }
         if (home >= 0 && home != pagerState.currentPage) scope.launch { pagerState.animateScrollToPage(home) }
     }
@@ -364,6 +468,7 @@ fun DejavuHome(
     BackHandler(enabled = selection != null) { selection = null }
 
     fun runAction(action: RowAction, targets: ActionTargets, workspaceId: String) {
+        (action as? RowAction.BuiltIn)?.action?.let(::tipOf)?.let(Tips::done)
         when (action) {
             is RowAction.Custom -> interactor.onCustomAction(action.action, targets)
             is RowAction.BuiltIn -> when (action.action) {
@@ -390,6 +495,24 @@ fun DejavuHome(
         selection = null
     }
 
+    // The data Clear data deletes pours out of History, for the pages and what they leave behind, and Downloads.
+    fun clearData(quit: Boolean) {
+        val types = interactor.onClearData(quit)
+        val buttons = listOfNotNull(
+            PageGenie.Button.HISTORY.takeIf {
+                types.any { it == DeleteBrowsingDataOnQuitType.HISTORY || it in ClearData.SiteData }
+            },
+            PageGenie.Button.DOWNLOADS.takeIf { DeleteBrowsingDataOnQuitType.DOWNLOADS in types },
+        )
+        if (buttons.isNotEmpty()) scope.launch { pour.play(buttons) }
+    }
+
+    // The private page has no Clear button, so the data asked for there goes without pouring.
+    LaunchedEffect(askedClear, onPrivatePage) {
+        val request = askedClear ?: return@LaunchedEffect
+        if (onPrivatePage && ClearData.claim(request)) clearData(request.quit)
+    }
+
     fun onPinClick(pin: PinnedItem) {
         val current = selection
         if (current != null) {
@@ -399,220 +522,263 @@ fun DejavuHome(
         }
     }
 
-    // Dialogs and menus take on the look of the workspace they open over.
-    CompositionLocalProvider(LocalPopupTheme provides themeAt(pagerState.currentPage)) {
-        // The theme is drawn behind the system bars too, with the content kept clear of them.
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.surface)
-                .drawBehind {
-                    val position = pagerState.currentPage + pagerState.currentPageOffsetFraction
-                    val page = floor(position).toInt()
-                    drawWorkspaceTheme(
-                        theme = themeAt(page),
-                        next = themeAt(page + 1),
-                        fraction = position - page,
-                        grain = grain,
-                    )
-                }
-                .systemBarsPadding()
-                .imePadding(),
-        ) {
-            val activeSelection = selection
-            if (activeSelection == null) {
-                TopBar(interactor, onSearchClick = if (onPrivatePage) newPrivateTab else interactor::onSearchClick)
-            } else if (essentialsDrop != EssentialsDrop.NONE) {
-                EssentialsDropBar(active = essentialsDrop == EssentialsDrop.ACTIVE)
-            } else {
-                SelectionTopBar(
-                    count = activeSelection.size,
-                    onClose = { selection = null },
-                    onSelectAll = {
-                        selection = Selection(
-                            tabIds = tabs
-                                .filter {
-                                    state.workspaceOf(it.id) == currentWorkspace.id && state.pinOf(it.id) == null
-                                }
-                                .map { it.id }.toSet(),
-                            pinIds = state.pins.filter { it.workspaceId == currentWorkspace.id && !it.isFolder }
-                                .map { it.id }.toSet(),
-                        )
-                    },
-                )
-            }
-
-            if (essentials.isNotEmpty()) {
-                EssentialsGrid(
-                    essentials = essentials,
-                    tabsById = tabsById,
-                    selectedTabId = selectedTabId,
-                    containers = containers,
-                    selection = activeSelection,
-                    isDropTarget = essentialsDrop == EssentialsDrop.ACTIVE,
-                    onClick = ::onPinClick,
-                    onStartDrag = { pin -> selection = (selection ?: Selection()) + Selection(pinIds = setOf(pin.id)) },
-                    onMove = { pinId, index ->
-                        interactor.onMoveEssential(pinId, index)
-                        selection = null
-                    },
-                    modifier = Modifier.padding(bottom = 4.dp),
-                )
-            }
-
-            val selectionTargets = activeSelection?.let { ActionTargets.of(state, tabs, it) }
+    // Dialogs and menus take on the colors of the wallpaper of the workspace they open over.
+    CompositionLocalProvider(LocalPopupTheme provides popupThemeAt(pagerState.currentPage)) {
+        // The wallpapers and the theme are drawn behind the system bars too, with the content kept clear of them.
+        Box(modifier = modifier.fillMaxSize().background(surface)) {
+            if (wallpapers.isNotEmpty()) WallpaperLayers(pagerState, ::wallpaperAt)
+            // The theme over the plain background, or the veil over a wallpaper.
             Box(
                 modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
-                    .onSizeChanged { pagesWidth = it.width }
-                    // The drag lives above the pages, so it goes on while they turn to another workspace.
-                    .pointerInput(isRtl, stripWidth, touchSlop) {
-                        detectDragGesturesAfterLongPress(
-                            onDragStart = { offset ->
-                                val workspace = latestState.workspaces.getOrNull(pagerState.currentPage)
-                                val atEnd = if (isRtl) offset.x < size.width / 2f else offset.x >= size.width / 2f
-                                drag = workspace?.let { dragAreas[it.id] }?.start(offset, atEnd)
-                                if (drag != null) haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                            },
-                            onDrag = { change, amount ->
-                                val current = drag ?: return@detectDragGesturesAfterLongPress
-                                change.consume()
-                                drag = aim(current, current.pointer + amount)
-                            },
-                            onDragEnd = { endDrag(drop = true) },
-                            onDragCancel = { endDrag(drop = false) },
+                    .fillMaxSize()
+                    .graphicsLayer { alpha = coverAt(pagerState.position) { veilAt(it)?.alpha ?: 1f } }
+                    .drawBehind {
+                        val position = pagerState.position
+                        val page = floor(position).toInt()
+                        val veil = veilAt(page)
+                        val nextVeil = veilAt(page + 1)
+                        if (veil != null || nextVeil != null) {
+                            val plain = listOf(surface)
+                            drawVeil(veil?.colors ?: plain, nextVeil?.colors ?: plain, position - page)
+                        }
+                        drawWorkspaceTheme(
+                            theme = gradientAt(page),
+                            next = gradientAt(page + 1),
+                            fraction = position - page,
+                            grain = grain,
                         )
                     },
-            ) {
-                HorizontalPager(
-                    state = pagerState,
-                    userScrollEnabled = activeSelection == null,
-                    modifier = Modifier.fillMaxSize(),
-                    key = { state.workspaces.getOrNull(it)?.id ?: PRIVATE_PAGE_KEY },
-                ) { page ->
-                    if (page == privateIndex) {
-                        PrivateWorkspacePage(
-                            tabs = privateTabs,
-                            selectedTabId = selectedTabId,
-                            onTabClick = { interactor.onTabClick(it.id) },
-                            onCloseTab = { interactor.onCloseTab(it.id) },
-                            onNewTab = interactor::onNewPrivateTab,
-                            onCloseAll = interactor::onClosePrivateTabs,
-                        )
-                        return@HorizontalPager
-                    }
-                    val workspace = state.workspaces[page]
-                    WorkspacePage(
-                        state = state,
-                        workspace = workspace,
-                        tabs = tabs.filter { state.workspaceOf(it.id) == workspace.id },
+            )
+            Column(modifier = Modifier.fillMaxSize().systemBarsPadding().imePadding()) {
+                val activeSelection = selection
+                val searchBar: @Composable () -> Unit = {
+                    TopBar(interactor, onSearchClick = if (onPrivatePage) newPrivateTab else interactor::onSearchClick)
+                }
+                val workspaceBar: @Composable () -> Unit = {
+                    WorkspaceBar(
+                        workspaces = state.workspaces,
+                        containers = containers,
+                        activeIndex = pagerState.currentPage,
+                        hasPrivate = privateIndex != null,
+                        onDotClick = { index ->
+                            interactor.onWorkspaceSelected(state.workspaces[index].id)
+                            scope.launch { pagerState.animateScrollToPage(index) }
+                        },
+                        onPrivateClick = { privateIndex?.let { scope.launch { pagerState.animateScrollToPage(it) } } },
+                        onMove = { workspaceId, index ->
+                            Tips.done(Tip.WORKSPACES)
+                            interactor.onMoveWorkspace(workspaceId, index)
+                        },
+                        downloads = downloads,
+                        onDownloadsClick = interactor::onDownloadsClick,
+                        onExtensionsClick = interactor::onExtensionsClick,
+                        onBookmarksClick = interactor::onBookmarksClick,
+                        onHistoryClick = interactor::onHistoryClick,
+                    )
+                }
+                if (activeSelection == null) {
+                    if (searchAtBottom) workspaceBar() else searchBar()
+                } else if (essentialsDrop != EssentialsDrop.NONE) {
+                    EssentialsDropBar(active = essentialsDrop == EssentialsDrop.ACTIVE)
+                } else {
+                    SelectionTopBar(
+                        count = activeSelection.size,
+                        onClose = { selection = null },
+                        onSelectAll = {
+                            selection = Selection(
+                                tabIds = tabs
+                                    .filter {
+                                        state.workspaceOf(it.id) == currentWorkspace.id && state.pinOf(it.id) == null
+                                    }
+                                    .map { it.id }.toSet(),
+                                pinIds = state.pins.filter { it.workspaceId == currentWorkspace.id && !it.isFolder }
+                                    .map { it.id }.toSet(),
+                            )
+                        },
+                    )
+                }
+
+                if (essentials.isNotEmpty()) {
+                    EssentialsGrid(
+                        essentials = essentials,
+                        tabsById = tabsById,
                         selectedTabId = selectedTabId,
                         containers = containers,
-                        pinnedRowActions = pinnedRowActions,
-                        unpinnedRowActions = unpinnedRowActions,
-                        folderRowActions = folderRowActions,
                         selection = activeSelection,
-                        drag = drag,
-                        dragAreas = dragAreas,
-                        callbacks = WorkspacePageCallbacks(
-                            onTabClick = { tab ->
-                                val current = selection
-                                if (current != null) selection = current.toggleTab(tab.id).takeIf { it.size > 0 } else interactor.onTabClick(tab.id)
-                            },
-                            onPinClick = ::onPinClick,
-                            onStartDrag = { picked ->
-                                val started = (selection ?: Selection()) + picked
-                                selection = started
-                                started
-                            },
-                            onRowAction = { action, targets -> runAction(action, targets, workspace.id) },
-                            onFolderClick = { folder ->
-                                val current = selection
-                                if (current != null) {
-                                    selection = current.toggleFolder(folder.id, state).takeIf { it.size > 0 }
-                                } else {
-                                    interactor.onToggleFolder(folder.id)
-                                }
-                            },
-                            onNewFolder = { dialog = HomeDialog.NewFolder(workspace.id, parentId = null) },
-                            onNewWorkspace = { dialog = HomeDialog.EditWorkspace(null) },
-                            onEditWorkspace = { dialog = HomeDialog.EditWorkspace(workspace.id) },
-                            onDeleteWorkspace = { dialog = HomeDialog.DeleteWorkspace(workspace.id) },
-                            onMoveWorkspace = { delta -> interactor.onMoveWorkspace(workspace.id, page + delta) },
-                            onNewTabClick = interactor::onSearchClick,
-                            onNewTabInContainer = interactor::onNewTabInContainer,
-                            onNewPrivateTab = newPrivateTab,
-                            onManageContainers = interactor::onManageContainers,
-                            onClearUnpinned = { interactor.onClearUnpinned(workspace.id) },
-                            onReopenClosedTab = { revealTabId = interactor.onReopenClosedTab() },
-                            onOpenClipboard = { interactor.onOpenClipboardLink(workspace.id) },
-                            onRevealed = { revealTabId = null },
-                        ),
-                        canDeleteWorkspace = state.workspaces.size > 1,
-                        canMoveLeft = page > 0,
-                        canMoveRight = page < state.workspaces.size - 1,
-                        hasClosedTab = hasClosedTab,
-                        hasClipboardLink = hasClipboardLink,
-                        revealTabId = revealTabId,
+                        isDropTarget = essentialsDrop == EssentialsDrop.ACTIVE,
+                        onClick = ::onPinClick,
+                        onStartDrag = { pin ->
+                            Tips.done(Tip.ESSENTIAL_HOLD)
+                            selection = (selection ?: Selection()) + Selection(pinIds = setOf(pin.id))
+                        },
+                        onMove = { pinId, index ->
+                            interactor.onMoveEssential(pinId, index)
+                            selection = null
+                        },
+                        modifier = Modifier.padding(bottom = 4.dp),
                     )
                 }
 
-                val dragging = drag?.takeIf { it.moved }
-                if (dragging != null && dragging.canLeave && !onPrivatePage) {
-                    val page = pagerState.currentPage
-                    state.workspaces.getOrNull(page - 1)?.let { previous ->
-                        SideStrip(
-                            workspace = previous,
-                            container = previous.containerId?.let { containers[it] },
-                            active = dragging.side == -1,
-                            atEnd = false,
-                            modifier = Modifier.align(Alignment.CenterStart),
+                val selectionTargets = activeSelection?.let { ActionTargets.of(state, tabs, it) }
+                val splitWays = SplitSpace.supported(LocalConfiguration.current)
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .onSizeChanged { pagesWidth = it.width }
+                        // The drag lives above the pages, so it goes on while they turn to another workspace.
+                        .pointerInput(isRtl, stripWidth, touchSlop) {
+                            detectDragGesturesAfterLongPress(
+                                onDragStart = { offset ->
+                                    val workspace = latestState.workspaces.getOrNull(pagerState.currentPage)
+                                    val atEnd = if (isRtl) offset.x < size.width / 2f else offset.x >= size.width / 2f
+                                    val area = workspace?.let { dragAreas[it.id] }
+                                    val started = area?.start(offset, atEnd)
+                                    drag = started
+                                    if (area != null && started != null) {
+                                        haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                        area.lift(dragStack, started, offset)
+                                    }
+                                },
+                                onDrag = { change, amount ->
+                                    val current = drag ?: return@detectDragGesturesAfterLongPress
+                                    change.consume()
+                                    drag = aim(current, current.pointer + amount)
+                                    dragStack.anchor = current.pointer + amount
+                                },
+                                onDragEnd = { endDrag(drop = true) },
+                                onDragCancel = { endDrag(drop = false) },
+                            )
+                        },
+                ) {
+                    HorizontalPager(
+                        state = pagerState,
+                        userScrollEnabled = activeSelection == null,
+                        modifier = Modifier.fillMaxSize(),
+                        key = { state.workspaces.getOrNull(it)?.id ?: PRIVATE_PAGE_KEY },
+                    ) { page ->
+                        if (page == privateIndex) {
+                            PrivateWorkspacePage(
+                                tabs = privateTabs,
+                                selectedTabId = selectedTabId,
+                                onTabClick = { interactor.onTabClick(it.id) },
+                                onCloseTab = { interactor.onCloseTab(it.id) },
+                                onNewTab = interactor::onNewPrivateTab,
+                                onCloseAll = interactor::onClosePrivateTabs,
+                            )
+                            return@HorizontalPager
+                        }
+                        val workspace = state.workspaces[page]
+                        WorkspacePage(
+                            state = state,
+                            workspace = workspace,
+                            tabs = tabs.filter { state.workspaceOf(it.id) == workspace.id },
+                            selectedTabId = selectedTabId,
+                            containers = containers,
+                            pinnedRowActions = pinnedRowActions,
+                            unpinnedRowActions = unpinnedRowActions,
+                            folderRowActions = folderRowActions,
+                            selection = activeSelection,
+                            drag = drag,
+                            dragAreas = dragAreas,
+                            dragStack = dragStack,
+                            callbacks = WorkspacePageCallbacks(
+                                onTabClick = { tab ->
+                                    val current = selection
+                                    if (current != null) selection = current.toggleTab(tab.id).takeIf { it.size > 0 } else interactor.onTabClick(tab.id)
+                                },
+                                onPinClick = ::onPinClick,
+                                onStartDrag = { picked ->
+                                    val started = (selection ?: Selection()) + picked
+                                    selection = started
+                                    started
+                                },
+                                onRowAction = { action, targets -> runAction(action, targets, workspace.id) },
+                                onFolderClick = { folder ->
+                                    val current = selection
+                                    if (current != null) {
+                                        selection = current.toggleFolder(folder.id, state).takeIf { it.size > 0 }
+                                    } else {
+                                        interactor.onToggleFolder(folder.id)
+                                    }
+                                },
+                                onNewFolder = {
+                                    Tips.done(Tip.FOLDER)
+                                    dialog = HomeDialog.NewFolder(workspace.id, parentId = null)
+                                },
+                                onNewWorkspace = { dialog = HomeDialog.EditWorkspace(null) },
+                                onEditWorkspace = {
+                                    Tips.done(Tip.WORKSPACE_NAME)
+                                    dialog = HomeDialog.EditWorkspace(workspace.id)
+                                },
+                                onDeleteWorkspace = { dialog = HomeDialog.DeleteWorkspace(workspace.id) },
+                                onMoveWorkspace = { delta -> interactor.onMoveWorkspace(workspace.id, page + delta) },
+                                onNewTabClick = interactor::onSearchClick,
+                                onNewTabInContainer = interactor::onNewTabInContainer,
+                                onNewPrivateTab = newPrivateTab,
+                                onManageContainers = interactor::onManageContainers,
+                                onClearUnpinned = { interactor.onClearUnpinned(workspace.id) },
+                                onClearData = ::clearData,
+                                onReopenClosedTab = { revealTabId = interactor.onReopenClosedTab() },
+                                onOpenClipboard = { interactor.onOpenClipboardLink(workspace.id) },
+                                onRevealed = { revealTabId = null },
+                            ),
+                            canDeleteWorkspace = state.workspaces.size > 1,
+                            canMoveLeft = page > 0,
+                            canMoveRight = page < state.workspaces.size - 1,
+                            hasClosedTab = hasClosedTab,
+                            hasClipboardLink = hasClipboardLink,
+                            revealTabId = revealTabId,
+                            openTabIds = openTabIds,
+                            hasDataToClear = hasDataToClear,
+                            dataPour = pour.takeIf { page == pagerState.currentPage },
+                            askedClear = askedClear.takeIf { page == pagerState.currentPage },
                         )
                     }
-                    state.workspaces.getOrNull(page + 1)?.let { next ->
-                        SideStrip(
-                            workspace = next,
-                            container = next.containerId?.let { containers[it] },
-                            active = dragging.side == 1,
-                            atEnd = true,
-                            modifier = Modifier.align(Alignment.CenterEnd),
-                        )
+
+                    val dragging = drag?.takeIf { it.moved }
+                    if (dragging != null && dragging.canLeave && !onPrivatePage) {
+                        val page = pagerState.currentPage
+                        state.workspaces.getOrNull(page - 1)?.let { previous ->
+                            SideStrip(
+                                workspace = previous,
+                                container = previous.containerId?.let { containers[it] },
+                                active = dragging.side == -1,
+                                atEnd = false,
+                                modifier = Modifier.align(Alignment.CenterStart),
+                            )
+                        }
+                        state.workspaces.getOrNull(page + 1)?.let { next ->
+                            SideStrip(
+                                workspace = next,
+                                container = next.containerId?.let { containers[it] },
+                                active = dragging.side == 1,
+                                atEnd = true,
+                                modifier = Modifier.align(Alignment.CenterEnd),
+                            )
+                        }
                     }
+                    if (dragStack.cards.isNotEmpty()) DragStack(dragStack, blocked = dragging?.blocked == true)
                 }
-                if (dragging != null) {
-                    DragGhost(
-                        label = dragging.label,
-                        isFolder = dragging.isFolder,
-                        pointer = dragging.pointer,
-                        blocked = dragging.blocked,
+
+                if (activeSelection == null) {
+                    if (searchAtBottom) searchBar() else workspaceBar()
+                } else if (selectionTargets != null) {
+                    SelectionBar(
+                        actions = selectionActions.forSplitWays(splitWays).filter { it.appliesTo(selectionTargets) },
+                        onAction = { runAction(it, selectionTargets, currentWorkspace.id) },
                     )
                 }
             }
-
-            if (activeSelection == null) {
-                WorkspaceBar(
-                    workspaces = state.workspaces,
-                    containers = containers,
-                    activeIndex = pagerState.currentPage,
-                    hasPrivate = privateIndex != null,
-                    onDotClick = { index ->
-                        interactor.onWorkspaceSelected(state.workspaces[index].id)
-                        scope.launch { pagerState.animateScrollToPage(index) }
-                    },
-                    onPrivateClick = { privateIndex?.let { scope.launch { pagerState.animateScrollToPage(it) } } },
-                    onMove = interactor::onMoveWorkspace,
-                    onDownloadsClick = interactor::onDownloadsClick,
-                    onExtensionsClick = interactor::onExtensionsClick,
-                    onBookmarksClick = interactor::onBookmarksClick,
-                    onHistoryClick = interactor::onHistoryClick,
-                )
-            } else if (selectionTargets != null) {
-                SelectionBar(
-                    actions = selectionActions.filter { it.appliesTo(selectionTargets) },
-                    onAction = { runAction(it, selectionTargets, currentWorkspace.id) },
-                )
-            }
+            DataPourOverlay(pour, Modifier.fillMaxSize())
+            // Tips point at their places from above everything, once the screen is still and nothing else is going on.
+            TipHost(
+                screen = TipScreen.HOME,
+                allowed = tipsAllowed && selection == null && dialog == null && drag == null &&
+                    !pagerState.isScrollInProgress && !onPrivatePage && currentWorkspace.device == null,
+                modifier = Modifier.fillMaxSize(),
+                drawsTargets = true,
+            )
         }
 
         dialog?.let { current ->
@@ -620,6 +786,7 @@ fun DejavuHome(
                 dialog = current,
                 state = state,
                 containers = containers,
+                wallpapers = wallpapers,
                 interactor = interactor,
                 onDismiss = { dialog = null },
             )
@@ -634,9 +801,10 @@ private fun TopBar(interactor: DejavuHomeInteractor, onSearchClick: () -> Unit) 
         modifier = Modifier.fillMaxWidth().height(64.dp).padding(horizontal = 4.dp),
     ) {
         BarIconButton(
-            icon = iconsR.drawable.mozac_ic_avatar_circle_24,
+            icon = R.drawable.dejavu_ic_profile_24,
             contentDescription = stringResource(R.string.dejavu_account),
             onClick = interactor::onAccountClick,
+            modifier = Modifier.genieButton(PageGenie.Button.ACCOUNT),
         )
 
         Row(
@@ -649,7 +817,7 @@ private fun TopBar(interactor: DejavuHomeInteractor, onSearchClick: () -> Unit) 
                 .padding(horizontal = 16.dp),
         ) {
             Icon(
-                painter = painterResource(iconsR.drawable.mozac_ic_search_24),
+                painter = painterResource(R.drawable.dejavu_ic_search_24),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(20.dp),
@@ -665,9 +833,12 @@ private fun TopBar(interactor: DejavuHomeInteractor, onSearchClick: () -> Unit) 
         }
 
         BarIconButton(
-            icon = iconsR.drawable.mozac_ic_settings_24,
+            icon = R.drawable.dejavu_ic_settings_24,
             contentDescription = stringResource(R.string.dejavu_settings),
             onClick = interactor::onSettingsClick,
+            modifier = Modifier
+                .genieButton(PageGenie.Button.SETTINGS)
+                .newDot(rememberUnseenNewThings().isNotEmpty(), inset = SETTINGS_DOT_INSET),
         )
     }
 }
@@ -800,6 +971,10 @@ private val AutoScrollEdge = 64.dp
 private const val AUTO_SCROLL_STEP = 14f
 private const val AUTO_SCROLL_FRAME_MS = 16L
 
+// After a drop, how long the drag stack waits for the rows to move, and frames for the page to lay them out.
+private const val LANDING_WAIT_MS = 300L
+private const val LAYOUT_FRAMES = 2
+
 // How long a reopened tab may take to come back before the home stops waiting to scroll to it.
 private const val REVEAL_TIMEOUT_MS = 3000L
 
@@ -808,8 +983,9 @@ internal fun BarIconButton(
     @DrawableRes icon: Int,
     contentDescription: String,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    IconButton(onClick = onClick) {
+    IconButton(onClick = onClick, modifier = modifier) {
         Icon(
             painter = painterResource(icon),
             contentDescription = contentDescription,
@@ -841,6 +1017,7 @@ private fun WorkspaceBar(
     onDotClick: (Int) -> Unit,
     onPrivateClick: () -> Unit,
     onMove: (workspaceId: String, index: Int) -> Unit,
+    downloads: State<DownloadsStatus>,
     onDownloadsClick: () -> Unit,
     onExtensionsClick: () -> Unit,
     onBookmarksClick: () -> Unit,
@@ -888,13 +1065,13 @@ private fun WorkspaceBar(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth().height(56.dp).padding(horizontal = 4.dp),
     ) {
-        BarIconButton(
-            icon = iconsR.drawable.mozac_ic_download_24,
-            contentDescription = stringResource(R.string.dejavu_downloads),
+        DownloadsButton(
+            status = downloads,
             onClick = onDownloadsClick,
+            modifier = Modifier.genieButton(PageGenie.Button.DOWNLOADS),
         )
         BarIconButton(
-            icon = iconsR.drawable.mozac_ic_extension_24,
+            icon = R.drawable.dejavu_ic_extensions_24,
             contentDescription = stringResource(R.string.dejavu_extensions),
             onClick = onExtensionsClick,
         )
@@ -905,6 +1082,11 @@ private fun WorkspaceBar(
             modifier = Modifier
                 .weight(1f)
                 .padding(horizontal = 8.dp)
+                .tipTarget(
+                    Tip.WORKSPACES,
+                    TipGesture.Swipe(dx = WORKSPACE_SWIPE, overPage = true),
+                    enabled = workspaces.size > 1,
+                )
                 .fadingEdges(scrollState)
                 .horizontalScroll(scrollState)
                 .pointerInput(cellWidth) {
@@ -949,12 +1131,16 @@ private fun WorkspaceBar(
                 )
             }
             if (hasPrivate) {
+                val privateTaps = rememberIconTaps()
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
                         .size(WorkspaceCellSize)
                         .clip(CircleShape)
-                        .clickable(onClickLabel = stringResource(R.string.dejavu_private_workspace), onClick = onPrivateClick),
+                        .clickable(onClickLabel = stringResource(R.string.dejavu_private_workspace)) {
+                            privateTaps.tap()
+                            onPrivateClick()
+                        },
                 ) {
                     Box(
                         contentAlignment = Alignment.Center,
@@ -965,8 +1151,9 @@ private fun WorkspaceBar(
                                 if (isPrivateActive) MaterialTheme.colorScheme.surfaceContainerHighest else Color.Transparent,
                             ),
                     ) {
-                        Icon(
-                            painter = painterResource(iconsR.drawable.mozac_ic_private_mode_24),
+                        TapIcon(
+                            icon = R.drawable.dejavu_ic_private_tab_24,
+                            taps = privateTaps,
                             contentDescription = stringResource(R.string.dejavu_private_workspace),
                             tint = MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier.size(18.dp).alpha(if (isPrivateActive) 1f else INACTIVE_ICON_ALPHA),
@@ -977,14 +1164,16 @@ private fun WorkspaceBar(
         }
 
         BarIconButton(
-            icon = iconsR.drawable.mozac_ic_bookmark_tray_24,
+            icon = R.drawable.dejavu_ic_bookmarks_24,
             contentDescription = stringResource(R.string.dejavu_bookmarks),
             onClick = onBookmarksClick,
+            modifier = Modifier.genieButton(PageGenie.Button.BOOKMARKS),
         )
         BarIconButton(
-            icon = iconsR.drawable.mozac_ic_history_24,
+            icon = R.drawable.dejavu_ic_history_24,
             contentDescription = stringResource(R.string.dejavu_history),
             onClick = onHistoryClick,
+            modifier = Modifier.genieButton(PageGenie.Button.HISTORY),
         )
     }
 }
@@ -994,6 +1183,10 @@ private val WorkspaceMarkSize = 36.dp
 private val FadingEdgeWidth = 20.dp
 private const val INACTIVE_WORKSPACE_ALPHA = 0.45f
 private const val INACTIVE_ICON_ALPHA = 0.55f
+
+// How far the finger of the tip about the workspaces swipes over the page, and where the settings button has its dot.
+private val WORKSPACE_SWIPE = (-120).dp
+private val SETTINGS_DOT_INSET = 12.dp
 
 /** A workspace in the workspace bar: its icon, or a dot in its container's color. */
 @Suppress("LongParameterList")
@@ -1044,6 +1237,25 @@ private fun WorkspaceDot(
             }
         }
     }
+}
+
+/** The tips that tell of what a drop of [selection] on [target] did. */
+private fun tipsDoneBy(target: DropTarget, selection: Selection): List<Tip> = when (target) {
+    DropTarget.Essentials -> listOf(Tip.ESSENTIAL_ADD)
+    is DropTarget.SplitWith -> listOf(Tip.SPLIT)
+    is DropTarget.IntoFolder -> listOf(Tip.FOLDER, Tip.PIN)
+    is DropTarget.NextToPin, is DropTarget.PinnedEdge -> listOf(Tip.PIN)
+    is DropTarget.NextToTab, DropTarget.UnpinnedStart -> listOfNotNull(Tip.PIN.takeIf { selection.pinIds.isNotEmpty() })
+}
+
+/** The tip that tells of a gesture doing what [action] does, if any. */
+private fun tipOf(action: TabAction): Tip? = when (action) {
+    TabAction.PIN, TabAction.UNPIN -> Tip.PIN
+    TabAction.NEW_FOLDER, TabAction.MOVE_TO_FOLDER -> Tip.FOLDER
+    TabAction.ADD_TO_ESSENTIALS -> Tip.ESSENTIAL_ADD
+    TabAction.REMOVE_FROM_ESSENTIALS -> Tip.ESSENTIAL_HOLD
+    TabAction.SPLIT_VIEW, TabAction.SPLIT_TOP_AND_BOTTOM, TabAction.SPLIT_SIDE_BY_SIDE -> Tip.SPLIT
+    else -> null
 }
 
 /** Fades a horizontally scrolling row out on the sides it can still scroll to. */

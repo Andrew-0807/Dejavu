@@ -62,6 +62,7 @@ import org.mozilla.fenix.dejavu.containers.TemporaryContainers
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
+import org.mozilla.fenix.dejavu.workspaces.withoutStarters
 import org.mozilla.fenix.ext.components
 
 /** Why workspace sync is not working, as shown in its settings. */
@@ -407,8 +408,11 @@ object DejavuSync {
             computerTabs = ComputerTabs.NONE
         }
         // What Dejavu knew of Zen's records from an earlier time would make the first sync delete there what is gone
-        // here, so it starts over.
-        if (source == DejavuSyncSource.ZEN) engine?.reset()
+        // here, so it starts over. The examples a fresh install started with are not sent there as they came.
+        if (source == DejavuSyncSource.ZEN) {
+            engine?.reset()
+            local?.dropStarters()
+        }
         if (start == SyncStart.FRESH) {
             logger.info("Starting fresh: removing this device's workspaces and tabs")
             runCatching { local?.startFresh() }.onFailure { logger.warn("Could not start fresh", it) }
@@ -788,6 +792,9 @@ private class DejavuSpacesData(private val context: Context) : SpacesLocalData, 
         )
     }
 
+    /** Removes the examples a fresh install started with that are still as they came, see [withoutStarters]. */
+    fun dropStarters() = repository.dropStarters()
+
     /**
      * Closes the open tabs and removes the workspaces with their pinned tabs and folders, and the essentials, see
      * [WorkspaceRepository.startFresh]. Private tabs stay, and so do the workspaces and tabs of devices on the account,
@@ -896,14 +903,7 @@ private class DejavuSpacesData(private val context: Context) : SpacesLocalData, 
     override fun useEssentialsPerContainer(enabled: Boolean) =
         DejavuSettings.get(context).setEssentialsPerContainerFromSync(enabled)
 
-    override fun builtinName(container: BuiltinContainer): String = context.getString(
-        when (container) {
-            BuiltinContainer.PERSONAL -> R.string.dejavu_container_personal
-            BuiltinContainer.WORK -> R.string.dejavu_container_work
-            BuiltinContainer.BANKING -> R.string.dejavu_container_banking
-            BuiltinContainer.SHOPPING -> R.string.dejavu_container_shopping
-        },
-    )
+    override fun builtinName(container: BuiltinContainer): String = context.getString(container.label)
 
     private companion object {
         const val CLOSE_TIMEOUT_MS = 5_000L

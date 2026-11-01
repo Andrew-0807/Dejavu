@@ -43,6 +43,10 @@ sealed interface PinPlacement {
 @Suppress("TooManyFunctions")
 class WorkspaceRepository private constructor(context: Context) {
     private val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
+    /** Whether workspaces saved by an earlier start were found, unlike on a fresh install or after clearing data. */
+    val foundSavedState = prefs.contains(KEY_STATE)
+
     private val defaultName = context.getString(R.string.dejavu_workspace_default_name)
     private val _state = MutableStateFlow(
         WorkspaceSerializer.read(prefs.getString(KEY_STATE, null), defaultName, System.currentTimeMillis()),
@@ -50,23 +54,46 @@ class WorkspaceRepository private constructor(context: Context) {
 
     val state: StateFlow<WorkspaceState> = _state.asStateFlow()
 
+    /** Saves the workspaces as they are, so that the ones a fresh Dejavu starts with keep their ids. */
+    fun save() = prefs.edit { putString(KEY_STATE, WorkspaceSerializer.write(_state.value)) }
+
+    /**
+     * Gives a fresh install the examples it starts with, see [StarterWorkspaces]: the Work workspace named [workName],
+     * and in Home the folder [folderName] with its pinned tabs, and the essentials. Only once, and only while Home is
+     * the one workspace, untouched and without pinned tabs. Saved at once.
+     */
+    fun giveStarters(workName: String, folderName: String) {
+        if (prefs.getBoolean(KEY_STARTERS_GIVEN, false)) return
+        prefs.edit { putBoolean(KEY_STARTERS_GIVEN, true) }
+        val now = now()
+        mutate(saveNow = true) { state ->
+            val home = state.workspaces.singleOrNull()?.takeIf { it.isLikeNew(defaultName) && state.pins.isEmpty() }
+            if (home == null) state else StarterWorkspaces.around(state, home, workName, folderName, now)
+        }
+    }
+
+    /** Removes the examples a fresh install started with that are still as they came, see [withoutStarters]. */
+    fun dropStarters() = mutate(saveNow = true) { it.withoutStarters() }
+
     fun selectWorkspace(id: String) = mutate { state ->
         if (state.workspaces.none { it.id == id }) state else state.copy(activeWorkspaceId = id)
     }
 
-    fun addWorkspace(name: String, containerId: String?, icon: String?, theme: WorkspaceTheme?) = mutate { state ->
-        val now = now()
-        val workspace = Workspace(
-            id = WorkspaceSerializer.newWorkspaceId(),
-            name = name.trim().ifEmpty { defaultName },
-            containerId = containerId,
-            icon = icon,
-            theme = theme,
-            createdAt = now,
-            updatedAt = now,
-        )
-        state.copy(workspaces = state.workspaces + workspace, activeWorkspaceId = workspace.id)
-    }
+    /** Adds a workspace and shows it; returns its id. */
+    fun addWorkspace(name: String, containerId: String?, icon: String?, theme: WorkspaceTheme?): String =
+        update { state ->
+            val now = now()
+            val workspace = Workspace(
+                id = WorkspaceSerializer.newWorkspaceId(),
+                name = name.trim().ifEmpty { defaultName },
+                containerId = containerId,
+                icon = icon,
+                theme = theme,
+                createdAt = now,
+                updatedAt = now,
+            )
+            state.copy(workspaces = state.workspaces + workspace, activeWorkspaceId = workspace.id) to workspace.id
+        }
 
     /** Changes workspace [id]. The workspace of a device on the account only takes [theme]: the rest is the device's. */
     fun updateWorkspace(id: String, name: String, containerId: String?, icon: String?, theme: WorkspaceTheme?) =
@@ -195,11 +222,20 @@ class WorkspaceRepository private constructor(context: Context) {
         )
     }
 
-    /** Shows tabs [first] and [second] together in the browser. They leave any split view they were in. */
-    fun createSplit(first: String, second: String) = mutate { state ->
-        if (first == second) return@mutate state
-        val others = state.splits.filterNot { first in it.tabIds || second in it.tabIds }
-        state.copy(splits = others + SplitView(newId(), listOf(first, second)))
+    /**
+     * Shows tabs [first] and [second] together in the browser, [first] on top or on the left as [orientation] has them.
+     * They leave any split view they were in.
+     */
+    fun createSplit(first: String, second: String, orientation: SplitOrientation = SplitOrientation.TOP_AND_BOTTOM) =
+        mutate { state ->
+            if (first == second) return@mutate state
+            val others = state.splits.filterNot { first in it.tabIds || second in it.tabIds }
+            state.copy(splits = others + SplitView(newId(), listOf(first, second), orientation))
+        }
+
+    /** Shows the split view of tab [tabId] in [orientation] from now on. */
+    fun setSplitOrientation(tabId: String, orientation: SplitOrientation) = mutate { state ->
+        state.copy(splits = state.splits.map { if (tabId in it.tabIds) it.copy(orientation = orientation) else it })
     }
 
     /** Ends the split views that any of [tabIds] is part of. */
@@ -383,7 +419,9 @@ class WorkspaceRepository private constructor(context: Context) {
                 pin
             } else {
                 changed = true
-                pin.copy(title = title, updatedAt = now())
+                // An example a fresh install started with stays as it came, see withoutStarters.
+                val asItCame = pin.id in state.starters && pin.updatedAt == pin.createdAt
+                pin.copy(title = title, updatedAt = if (asItCame) pin.updatedAt else now())
             }
         }
         if (changed) state.copy(pins = pins) else state
@@ -675,6 +713,7 @@ class WorkspaceRepository private constructor(context: Context) {
         // Kept from before the rename to Dejavu, so saved data still loads.
         private const val PREFS_NAME = "kaizen_workspaces"
         private const val KEY_STATE = "state"
+        private const val KEY_STARTERS_GIVEN = "starters_given"
 
         @Volatile
         private var instance: WorkspaceRepository? = null

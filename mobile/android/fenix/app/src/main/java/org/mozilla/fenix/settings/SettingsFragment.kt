@@ -49,7 +49,6 @@ import mozilla.components.concept.sync.Profile
 import mozilla.components.feature.addons.ui.AddonFilePicker
 import mozilla.components.feature.ipprotection.store.IPProtectionStore
 import mozilla.components.feature.ipprotection.store.state.isEligible
-import mozilla.components.service.fxrelay.eligibility.Eligible
 import mozilla.components.support.base.feature.ViewBoundFeatureWrapper
 import mozilla.components.support.ktx.android.view.showKeyboard
 import mozilla.components.support.utils.BuildManufacturerChecker
@@ -66,7 +65,6 @@ import org.mozilla.fenix.GleanMetrics.Events
 import org.mozilla.fenix.GleanMetrics.Settings as SettingsMetrics
 import org.mozilla.fenix.GleanMetrics.SettingsSearch
 import org.mozilla.fenix.GleanMetrics.TrackingProtection
-import org.mozilla.fenix.GleanMetrics.Translations
 import org.mozilla.fenix.GleanMetrics.Vpn
 import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.R
@@ -74,7 +72,11 @@ import org.mozilla.fenix.components.Components
 import org.mozilla.fenix.components.accounts.FenixFxAEntryPoint
 import org.mozilla.fenix.databinding.AmoCollectionOverrideDialogBinding
 import org.mozilla.fenix.dejavu.DejavuLinks
+import org.mozilla.fenix.dejavu.discover.NewThing
+import org.mozilla.fenix.dejavu.discover.NewThings
+import org.mozilla.fenix.dejavu.discover.Tips
 import org.mozilla.fenix.dejavu.features.DejavuFeatureTourFragment
+import org.mozilla.fenix.dejavu.settings.slideTo
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.application
 import org.mozilla.fenix.ext.components
@@ -207,16 +209,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
             }
         }
 
-        findPreference<Preference>(getPreferenceKey(R.string.pref_key_translation))?.isVisible =
-            FxNimbus.features.translations.value().globalSettingsEnabled &&
-                components.core.store.state.translationEngine.isEngineSupported == true
-
-        findPreference<Preference>(getPreferenceKey(R.string.pref_key_page_summaries))?.isVisible =
-            components.settings.shakeToSummarizeFeatureFlagEnabled
-
-        findPreference<Preference>(getPreferenceKey(R.string.pref_key_ai_controls))?.isVisible =
-            requireComponents.settings.aiControlsFeatureFlagEnabled
-
         // Dejavu: Firefox Labs tries Mozilla's experimental Firefox features, which Dejavu does not offer. Dejavu
         // sends no data to Mozilla and takes no remote changes from it, so data collection and remote improvements are
         // hidden too.
@@ -235,6 +227,8 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         // Dejavu: the maker's name is not translated.
         findPreference<Preference>(getString(R.string.pref_key_dejavu_author))?.title =
             getString(R.string.dejavu_settings_author, getString(R.string.dejavu_author_name))
+        // Dejavu: the switch of the tips about gestures nothing on the screen shows.
+        findPreference<SwitchPreferenceCompat>(getString(R.string.pref_key_dejavu_tips))?.let(Tips::bindSwitch)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -348,20 +342,9 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
             } else {
                 getString(R.string.delete_browsing_data_quit_off)
             }
-
-        val tabSettingsPreference = requirePreference<Preference>(R.string.pref_key_tabs)
-        tabSettingsPreference.summary = settings.getTabTimeoutString()
-
-        val autofillPreference = requirePreference<Preference>(R.string.pref_key_credit_cards)
-        autofillPreference.title =
-            if (settings.addressFeature) {
-                getString(R.string.preferences_autofill)
-            } else {
-                getString(R.string.preferences_credit_cards_2)
-            }
-
-        val openLinksInAppsSettingsPreference = requirePreference<Preference>(R.string.pref_key_open_links_in_apps)
-        openLinksInAppsSettingsPreference.summary = settings.getOpenLinksInAppsString()
+        // Dejavu: orange dots lead to what the new version brought, see NewThings.
+        NewThings.mark(deleteBrowsingDataPreference, NewThing.CLEAR_DATA_CHOICES)
+        NewThings.mark(requirePreference<Preference>(R.string.pref_key_customize), NewThing.CLEAR_DATA_ENTRIES)
 
         setupPreferences(settings)
 
@@ -387,7 +370,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
         val directions: NavDirections? =
             when (preference.key) {
-                // Dejavu: what each version brought, who makes Dejavu, and a way to support it.
+                // Dejavu: what each version brought, who makes Dejavu, its chat room, and a way to support it.
                 resources.getString(R.string.pref_key_dejavu_whats_new) -> {
                     DejavuFeatureTourFragment().show(parentFragmentManager, DejavuFeatureTourFragment.TAG)
                     null
@@ -395,6 +378,11 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
                 resources.getString(R.string.pref_key_dejavu_author) -> {
                     openDejavuPage(DejavuLinks.SOURCE_CODE)
+                    null
+                }
+
+                resources.getString(R.string.pref_key_dejavu_matrix) -> {
+                    openDejavuPage(DejavuLinks.MATRIX)
                     null
                 }
 
@@ -427,28 +415,15 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                     SettingsFragmentDirections.actionSettingsFragmentToSearchEngineFragment()
                 }
 
-                resources.getString(R.string.pref_key_tabs) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToTabsSettingsFragment()
+                // Dejavu: the tabs, the homepage, where links open, the tab actions, passwords and language moved to
+                // DejavuTabsWorkspacesFragment, Customize and DejavuPasswordsLanguageFragment, which open the screens
+                // they opened here.
+                resources.getString(R.string.pref_key_dejavu_tabs_workspaces) -> {
+                    ActionOnlyNavDirections(R.id.dejavu_tabs_workspaces_graph)
                 }
 
-                resources.getString(R.string.pref_key_home) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToHomeSettingsFragment()
-                }
-
-                resources.getString(R.string.pref_key_dejavu_tab_actions) -> {
-                    ActionOnlyNavDirections(R.id.dejavu_tab_actions_graph)
-                }
-
-                resources.getString(R.string.pref_key_dejavu_tab_sleep) -> {
-                    ActionOnlyNavDirections(R.id.dejavu_tab_sleep_graph)
-                }
-
-                resources.getString(R.string.pref_key_dejavu_containers) -> {
-                    ActionOnlyNavDirections(R.id.dejavu_containers_graph)
-                }
-
-                resources.getString(R.string.pref_key_dejavu_external_links) -> {
-                    ActionOnlyNavDirections(R.id.dejavu_external_links_graph)
+                resources.getString(R.string.pref_key_dejavu_passwords_language) -> {
+                    ActionOnlyNavDirections(R.id.dejavu_passwords_language_graph)
                 }
 
                 resources.getString(R.string.pref_key_dejavu_tracking_protection) -> {
@@ -457,41 +432,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
                 resources.getString(R.string.pref_key_customize) -> {
                     SettingsFragmentDirections.actionSettingsFragmentToCustomizationFragment()
-                }
-
-                resources.getString(R.string.pref_key_passwords) -> {
-                    SettingsMetrics.passwords.record()
-                    SettingsFragmentDirections.actionSettingsFragmentToSavedLoginsAuthFragment()
-                }
-
-                resources.getString(R.string.pref_key_email_masks) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToEmailMasksSettingsFragment()
-                }
-
-                resources.getString(R.string.pref_key_credit_cards) -> {
-                    SettingsMetrics.autofill.record()
-                    SettingsFragmentDirections.actionSettingsFragmentToAutofillSettingFragment()
-                }
-
-                resources.getString(R.string.pref_key_accessibility) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToAccessibilityFragment()
-                }
-
-                resources.getString(R.string.pref_key_language) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToLocaleSettingsFragment()
-                }
-
-                resources.getString(R.string.pref_key_translation) -> {
-                    Translations.action.record(Translations.ActionExtra("global_settings_from_preferences"))
-                    SettingsFragmentDirections.actionSettingsFragmentToTranslationsSettingsFragment()
-                }
-
-                resources.getString(R.string.pref_key_page_summaries) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToPageSummariesSettingsFragment()
-                }
-
-                resources.getString(R.string.pref_key_ai_controls) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToAiControlsFragment()
                 }
 
                 // Privacy and security preferences
@@ -551,7 +491,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
                     SettingsFragmentDirections.actionSettingsFragmentToAddonsFragment()
                 }
 
-                // Only displayed when secret settings are enabled
                 resources.getString(R.string.pref_key_install_local_addon) -> {
                     addonFilePicker.launch()
                     null
@@ -610,10 +549,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
 
                 resources.getString(R.string.pref_key_remote_improvements) -> {
                     SettingsFragmentDirections.actionSettingsFragmentToRemoteImprovementsFragment()
-                }
-
-                resources.getString(R.string.pref_key_open_links_in_apps) -> {
-                    SettingsFragmentDirections.actionSettingsFragmentToOpenLinksInAppsFragment()
                 }
 
                 resources.getString(R.string.pref_key_downloads) -> {
@@ -746,19 +681,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
             requirePreference<Preference>(R.string.pref_key_local_network_access).isVisible = false
         }
         setupSearchPreference(components.core.store.state.search.selectedOrDefaultSearchEngine?.name)
-        setupHomepagePreference(settings)
         setupTrackingProtectionPreference(settings)
-        setupEmailMaskPreference(settings, requireComponents)
-        setupAutofillPreferences(settings)
-    }
-
-    private fun setupAutofillPreferences(settings: Settings) {
-        if (settings.isAutofillSupported) {
-            return
-        }
-
-        requirePreference<Preference>(R.string.pref_key_passwords).isVisible = false
-        requirePreference<Preference>(R.string.pref_key_credit_cards).isVisible = false
     }
 
     private val setToDefaultPromptRequestLauncher: ActivityResultLauncher<Intent> =
@@ -787,7 +710,12 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
     private fun navigateFromSettings(directions: NavDirections) {
         view?.findNavController()?.let { navController ->
             if (navController.currentDestination?.id == R.id.settingsFragment) {
-                navController.navigate(directions)
+                // Dejavu: its own screens slide in from the side too, as Firefox's screens do.
+                if (directions is ActionOnlyNavDirections) {
+                    navController.slideTo(directions.actionId, directions.arguments)
+                } else {
+                    navController.navigate(directions)
+                }
             }
         }
     }
@@ -895,25 +823,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
     }
 
     @VisibleForTesting
-    internal fun setupHomepagePreference(settings: Settings) {
-        with(requirePreference<Preference>(R.string.pref_key_home)) {
-            summary =
-                when {
-                    settings.alwaysOpenTheHomepageWhenOpeningTheApp ->
-                        getString(R.string.opening_screen_homepage_summary)
-
-                    settings.openHomepageAfterFourHoursOfInactivity ->
-                        getString(R.string.opening_screen_after_four_hours_of_inactivity_summary)
-
-                    settings.alwaysOpenTheLastTabWhenOpeningTheApp ->
-                        getString(R.string.opening_screen_last_tab_summary)
-
-                    else -> null
-                }
-        }
-    }
-
-    @VisibleForTesting
     internal fun setupSearchPreference(selectedOrDefaultSearchEngineName: String?) {
         with(requirePreference<Preference>(R.string.pref_key_search_settings)) {
             summary = selectedOrDefaultSearchEngineName
@@ -935,18 +844,10 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
     }
 
     @VisibleForTesting
-    internal fun setupEmailMaskPreference(settings: Settings, components: Components) {
-        findPreference<Preference>(getPreferenceKey(R.string.pref_key_email_masks))?.let {
-            it.isVisible =
-                settings.isEmailMaskFeatureEnabled &&
-                    components.relayEligibilityStore.state.eligibilityState is Eligible
-        }
-    }
-
-    @VisibleForTesting
     internal fun setupInstallAddonFromFilePreference(settings: Settings) {
         with(requirePreference<Preference>(R.string.pref_key_install_local_addon)) {
-            isVisible = settings.showSecretDebugMenuThisSession
+            // Dejavu: extensions can always be installed from a file, not only with the secret settings on.
+            isVisible = true
         }
     }
 

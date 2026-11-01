@@ -7,6 +7,7 @@ package org.mozilla.fenix.dejavu.browser
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -43,9 +44,10 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import mozilla.components.browser.state.search.SearchEngine
+import mozilla.components.browser.state.selector.findTab
+import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
 import mozilla.components.lib.state.ext.observeAsComposableState
-import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchEngineSelected
 import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchStarted
@@ -53,9 +55,13 @@ import org.mozilla.fenix.components.components
 import org.mozilla.fenix.dejavu.NewTabContainerChoice
 import org.mozilla.fenix.dejavu.containers.ContainerIcon
 import org.mozilla.fenix.dejavu.containers.ContainerPick
+import org.mozilla.fenix.dejavu.containers.ContainerRecord
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.containers.TemporaryContainerIcon
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
+import org.mozilla.fenix.dejavu.ui.IconTaps
+import org.mozilla.fenix.dejavu.ui.TapIcon
+import org.mozilla.fenix.dejavu.ui.rememberIconTaps
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.search.ext.searchEngineShortcuts
 
@@ -67,21 +73,35 @@ private sealed interface TabPlace {
 }
 
 /**
- * The chips above the address bar while searching. For a search that opens a new tab ([newTab]), the first line has the
- * containers it can open in, a new temporary container and a private tab, with the workspace's own choice picked:
- * its default container, a temporary container when every new tab gets one, or nothing. Below are the search engines,
- * the one searched with picked. They take the place of the search engine button of the address bar.
+ * The chips above the address bar while searching. The first line has the containers the search can open in, a new
+ * temporary container and a private tab. For a search that opens a new tab ([newTab]) the workspace's own choice is
+ * picked: its default container, a temporary container when every new tab gets one, or nothing. A search from a shown
+ * tab starts on the tab's own place, and picking another one opens the search in a new tab there. Below are the search
+ * engines, the one searched with picked. They take the place of the search engine button of the address bar.
  */
 @Composable
 fun DejavuSearchChips(newTab: Boolean, modifier: Modifier = Modifier) {
-    Column(modifier = modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surface).padding(vertical = 4.dp)) {
-        if (newTab) ContainerChips()
+    val fenix = components
+    val editedTab = remember(newTab) {
+        if (newTab) null else fenix.appStore.state.searchState.sourceTabId?.let { fenix.core.store.state.findTab(it) }
+    }
+    Column(modifier = modifier.fillMaxWidth().background(searchScreenBackground()).padding(vertical = 4.dp)) {
+        ContainerChips(editedTab)
         EngineChips()
     }
 }
 
+/** Where [tab] is, as the chips show it: in one of the containers, in a temporary one, private, or nowhere. */
+private fun placeOf(tab: TabSessionState, records: List<ContainerRecord>): TabPlace? {
+    if (tab.content.private) return TabPlace.Private
+    val contextId = tab.contextId ?: return null
+    val isTemporary = records.any { it.contextId == contextId && it.showsAsTemporary }
+    return if (isTemporary) TabPlace.Temporary else TabPlace.Container(contextId)
+}
+
+/** The places a search can open in; with an [editedTab], the place of that tab is picked to start with. */
 @Composable
-private fun ContainerChips() {
+private fun ContainerChips(editedTab: TabSessionState?) {
     val context = LocalContext.current
     val storage = remember { DejavuContainerStorage.get(context) }
     val records by storage.records.collectAsState()
@@ -90,7 +110,13 @@ private fun ContainerChips() {
     val containers = records.orEmpty().filterNot { it.showsAsTemporary }
     // The workspace of a device on the account only takes tabs without a container.
     val isDevice = workspace?.device != null
+    val editedPlace = remember(editedTab) { editedTab?.let { placeOf(it, records.orEmpty()) } }
     var picked by remember {
+        if (editedTab != null) {
+            // An earlier choice must not move this search to a new tab.
+            NewTabContainerChoice.clear()
+            return@remember mutableStateOf(editedPlace)
+        }
         val choice = NewTabContainerChoice.peek()
         val default = when {
             workspace == null || isDevice -> null
@@ -112,11 +138,13 @@ private fun ContainerChips() {
     fun pick(place: TabPlace) {
         val next = place.takeUnless { it == picked }
         picked = next
-        when (next) {
-            null -> NewTabContainerChoice.set(ContainerPick.NoContainer)
-            is TabPlace.Container -> NewTabContainerChoice.set(ContainerPick.Container(next.contextId))
-            TabPlace.Temporary -> NewTabContainerChoice.set(ContainerPick.Temporary)
-            TabPlace.Private -> NewTabContainerChoice.setPrivate()
+        when {
+            // Back on the edited tab's own place, the search stays in that tab.
+            editedTab != null && next == editedPlace -> NewTabContainerChoice.clear()
+            next == null -> NewTabContainerChoice.set(ContainerPick.NoContainer)
+            next is TabPlace.Container -> NewTabContainerChoice.set(ContainerPick.Container(next.contextId))
+            next == TabPlace.Temporary -> NewTabContainerChoice.set(ContainerPick.Temporary)
+            next == TabPlace.Private -> NewTabContainerChoice.setPrivate()
         }
     }
 
@@ -132,18 +160,18 @@ private fun ContainerChips() {
                 label = stringResource(R.string.dejavu_search_chip_temporary),
                 selected = picked == TabPlace.Temporary,
                 onClick = { pick(TabPlace.Temporary) },
-            ) {
-                TemporaryContainerIcon(size = CHIP_ICON)
+            ) { taps ->
+                TemporaryContainerIcon(size = CHIP_ICON, taps = taps)
             }
         }
         SearchChip(
             label = stringResource(R.string.dejavu_private_workspace),
             selected = picked == TabPlace.Private,
             onClick = { pick(TabPlace.Private) },
-        ) {
-            Icon(
-                painter = painterResource(iconsR.drawable.mozac_ic_private_mode_24),
-                contentDescription = null,
+        ) { taps ->
+            TapIcon(
+                icon = R.drawable.dejavu_ic_private_tab_24,
+                taps = taps,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(CHIP_ICON),
             )
@@ -193,6 +221,57 @@ private fun EngineChips() {
     }
 }
 
+/**
+ * The chip that fills [link], the link in the clipboard, into the address bar with [onClick], on a line of its own
+ * above the other chips. It shows the link's domain after its name.
+ */
+@Composable
+fun DejavuClipboardChip(link: String?, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    val domain = link?.let(::domainOf)
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(searchScreenBackground())
+            .padding(horizontal = 12.dp, vertical = 4.dp),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .height(36.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+                .clickable(role = Role.Button, onClick = onClick)
+                .padding(horizontal = 12.dp),
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.dejavu_ic_clipboard_24),
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(CHIP_ICON),
+            )
+            Spacer(Modifier.width(6.dp))
+            Text(
+                text = stringResource(R.string.awesomebar_clipboard_title),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurface,
+                maxLines = 1,
+            )
+            domain?.let {
+                Spacer(Modifier.width(6.dp))
+                // A long domain gives way to the label.
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f, fill = false),
+                )
+            }
+        }
+    }
+}
+
 @Composable
 private fun ChipRow(content: @Composable RowScope.() -> Unit) {
     Row(
@@ -207,7 +286,13 @@ private fun ChipRow(content: @Composable RowScope.() -> Unit) {
 }
 
 @Composable
-private fun SearchChip(label: String, selected: Boolean, onClick: () -> Unit, leading: @Composable () -> Unit) {
+private fun SearchChip(
+    label: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    leading: @Composable (IconTaps) -> Unit,
+) {
+    val taps = rememberIconTaps()
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -217,10 +302,13 @@ private fun SearchChip(label: String, selected: Boolean, onClick: () -> Unit, le
                 if (selected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh,
             )
             .border(1.dp, if (selected) MaterialTheme.colorScheme.primary else Color.Transparent, CircleShape)
-            .selectable(selected = selected, role = Role.RadioButton, onClick = onClick)
+            .selectable(selected = selected, role = Role.RadioButton) {
+                taps.tap()
+                onClick()
+            }
             .padding(horizontal = 12.dp),
     ) {
-        leading()
+        leading(taps)
         Spacer(Modifier.width(6.dp))
         Text(
             text = label,

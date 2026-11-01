@@ -99,7 +99,9 @@ import org.mozilla.fenix.components.metrics.MetricsUtils
 import org.mozilla.fenix.components.search.BOOKMARKS_SEARCH_ENGINE_ID
 import org.mozilla.fenix.components.search.HISTORY_SEARCH_ENGINE_ID
 import org.mozilla.fenix.components.search.TABS_SEARCH_ENGINE_ID
+import org.mozilla.fenix.dejavu.NewTabContainerChoice
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.NewTabSearch
 import org.mozilla.fenix.ext.isGoogleSearchEngine
 import org.mozilla.fenix.ext.toolbarHintRes
 import org.mozilla.fenix.search.EditPageEndActionsInteractions.ClearSearchClicked
@@ -342,9 +344,11 @@ class BrowserToolbarSearchMiddleware(
             if (settings.enableHomepageAsNewTab) {
                 false
             } else {
-                // Create a new tab if the source for where the search originated is not available.
+                // Create a new tab if the source for where the search originated is not available, or when another
+                // place than the source tab's own was picked for the search with Dejavu's chips.
                 appStore.state.searchState.sourceTabId?.run {
-                    browserStore.state.findTab(this) == null
+                    browserStore.state.findTab(this) == null || NewTabContainerChoice.peek() != null ||
+                        NewTabSearch.isFor(this)
                 } ?: true
             }
 
@@ -468,13 +472,11 @@ class BrowserToolbarSearchMiddleware(
                 store.dispatch(
                     BrowserEditToolbarAction.AutocompleteSuggestionUpdated(
                         withContext(autocompleteDispatcher) {
+                            // Dejavu opens no connection ahead to the address the autocomplete only guessed.
                             fetchAutocomplete(
-                                    buildAutocompleteProvidersList(reconcileSelectedEngine()),
-                                    store.state.editState.query.current,
-                                )
-                                ?.also {
-                                    components.core.engine.speculativeConnect(it.url)
-                                }
+                                buildAutocompleteProvidersList(reconcileSelectedEngine()),
+                                store.state.editState.query.current,
+                            )
                         }
                     )
                 )
@@ -606,7 +608,9 @@ class BrowserToolbarSearchMiddleware(
                                 if (settings.enableHomepageAsNewTab) {
                                     false
                                 } else {
-                                    appStore.state.searchState.sourceTabId == null
+                                    appStore.state.searchState.sourceTabId.let {
+                                        it == null || NewTabSearch.isFor(it)
+                                    }
                                 },
                             flags = EngineSession.LoadUrlFlags.external(),
                             private = browsingModeManager.mode.isPrivate,

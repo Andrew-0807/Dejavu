@@ -15,6 +15,7 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.os.StrictMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,18 +41,23 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -69,21 +75,23 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
+import androidx.core.content.edit
 import androidx.fragment.app.DialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
-import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.settings.workspaceRepository
 import org.mozilla.fenix.dejavu.ui.DejavuButtonStyle
 import org.mozilla.fenix.dejavu.ui.DejavuDialogButton
 import org.mozilla.fenix.dejavu.ui.DejavuPopup
 import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
+import org.mozilla.fenix.dejavu.ui.WordFittedText
 import org.mozilla.fenix.dejavu.ui.popupGlow
+import org.mozilla.fenix.dejavu.ui.workspacePopupTheme
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
+import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.theme.FirefoxTheme
 
 /**
@@ -92,19 +100,20 @@ import org.mozilla.fenix.theme.FirefoxTheme
  *
  * @property title What the feature does, in a few words.
  * @property animation The phone showing the feature, an animated WebP.
- * @property where The steps to the feature's settings, or nothing when it has none.
+ * @property where The steps to the feature's settings, or nothing when it has none. The settings gear in front stands
+ *   for the first step, Settings, which is left out so long paths fit.
  * @property whereIcon The icon in front of [where].
  */
 enum class DejavuFeature(
     @param:StringRes val title: Int,
     @param:RawRes val animation: Int,
     val where: List<Int> = emptyList(),
-    @param:DrawableRes val whereIcon: Int = iconsR.drawable.mozac_ic_settings_24,
+    @param:DrawableRes val whereIcon: Int = R.drawable.dejavu_ic_settings_24,
 ) {
     SLEEP(
         R.string.dejavu_feature_sleep,
         R.raw.dejavu_feature_sleep,
-        listOf(R.string.dejavu_settings, R.string.dejavu_settings_tab_sleep),
+        listOf(R.string.dejavu_settings_tabs_workspaces, R.string.dejavu_settings_tab_sleep),
     ),
     THEMES(
         R.string.dejavu_feature_themes,
@@ -115,18 +124,18 @@ enum class DejavuFeature(
     SWIPE_MENU(
         R.string.dejavu_feature_swipe_menu,
         R.raw.dejavu_feature_swipe_menu,
-        listOf(R.string.dejavu_settings, R.string.dejavu_settings_more_menu),
+        listOf(R.string.preferences_customize, R.string.dejavu_settings_more_menu),
     ),
     ACTIONS(
         R.string.dejavu_feature_actions,
         R.raw.dejavu_feature_actions,
-        listOf(R.string.dejavu_settings, R.string.dejavu_settings_tab_actions),
+        listOf(R.string.preferences_customize, R.string.dejavu_settings_tab_actions),
     ),
     ZEN_SYNC(
         R.string.dejavu_feature_zen_sync,
         R.raw.dejavu_feature_zen_sync,
         listOf(R.string.preferences_account_settings, R.string.dejavu_sync_source),
-        iconsR.drawable.mozac_ic_avatar_circle_24,
+        R.drawable.dejavu_ic_profile_24,
     ),
     FOLDERS(R.string.dejavu_feature_folders, R.raw.dejavu_feature_folders),
     DRAG(R.string.dejavu_feature_drag, R.raw.dejavu_feature_drag),
@@ -136,70 +145,64 @@ enum class DejavuFeature(
         R.string.dejavu_feature_firefox_sync,
         R.raw.dejavu_feature_firefox_sync,
         listOf(R.string.preferences_account_settings, R.string.dejavu_sync_source),
-        iconsR.drawable.mozac_ic_avatar_circle_24,
+        R.drawable.dejavu_ic_profile_24,
+    ),
+    TAB_ZOOM(R.string.dejavu_feature_tab_zoom, R.raw.dejavu_feature_tab_zoom),
+    BAR_LAYOUTS(
+        R.string.dejavu_feature_bar_layouts,
+        R.raw.dejavu_feature_bar_layouts,
+        listOf(R.string.preferences_customize, R.string.dejavu_settings_bars_2),
+    ),
+    WALLPAPER(
+        R.string.dejavu_feature_wallpaper,
+        R.raw.dejavu_feature_wallpaper,
+        listOf(R.string.dejavu_workspace_menu, R.string.dejavu_workspace_edit),
+        iconsR.drawable.mozac_ic_ellipsis_vertical_24,
+    ),
+    SAVE_PAGE(
+        R.string.dejavu_feature_save_page,
+        R.raw.dejavu_feature_save_page,
+        listOf(R.string.preferences_customize, R.string.dejavu_settings_more_menu),
     ),
 }
 
 /**
- * A part of the tour, with its chip at the top: the basics, or what one version of Dejavu brought.
+ * What one version of Dejavu brought, a part of the tour with its chip at the top.
  *
- * @property version The version, like "2.0", or `null` for the basics.
+ * @property version The version, like "2.0".
  * @property features The features it shows, in order.
  */
-data class TourChapter(val version: String?, val features: List<DejavuFeature>)
+data class TourChapter(val version: String, val features: List<DejavuFeature>)
 
-/**
- * The tour of Dejavu's features. A fresh install shows the basics, then what the newest version brought; an update
- * shows what every version brought since the one the user saw last. What's new in the settings shows all of it.
- */
+/** The tour of what each version of Dejavu brought, which only What's new in the settings shows. */
 object FeatureTour {
-    /** The version of the basics, raised when they change. 1 is the tour of Dejavu 1.6. */
-    const val VERSION = 1
-
-    /** The basics, which a fresh install starts with. */
-    val Basics = TourChapter(
-        version = null,
-        features = listOf(
-            DejavuFeature.SLEEP,
-            DejavuFeature.THEMES,
-            DejavuFeature.SWIPE_MENU,
-            DejavuFeature.ACTIONS,
-            DejavuFeature.ZEN_SYNC,
-            DejavuFeature.FOLDERS,
-            DejavuFeature.DRAG,
-            DejavuFeature.WORKSPACE_ORDER,
-            DejavuFeature.SPLIT_VIEW,
-        ),
-    )
-
     /** What each version brought, oldest first. A version with something to show adds its chapter at the end. */
     val Releases = listOf(
+        TourChapter(
+            version = "1.0",
+            features = listOf(
+                DejavuFeature.THEMES,
+                DejavuFeature.SWIPE_MENU,
+                DejavuFeature.ACTIONS,
+                DejavuFeature.ZEN_SYNC,
+                DejavuFeature.FOLDERS,
+                DejavuFeature.DRAG,
+                DejavuFeature.WORKSPACE_ORDER,
+                DejavuFeature.SPLIT_VIEW,
+            ),
+        ),
+        TourChapter(version = "1.6", features = listOf(DejavuFeature.SLEEP)),
         TourChapter(version = "2.0", features = listOf(DejavuFeature.FIREFOX_SYNC)),
+        TourChapter(
+            version = "3.0",
+            features = listOf(
+                DejavuFeature.TAB_ZOOM,
+                DejavuFeature.BAR_LAYOUTS,
+                DejavuFeature.WALLPAPER,
+                DejavuFeature.SAVE_PAGE,
+            ),
+        ),
     )
-
-    /** Every chapter, as What's new in the settings shows them. */
-    val All: List<TourChapter>
-        get() = listOf(Basics) + Releases
-
-    /**
-     * The chapters to show when Dejavu starts, none when there is nothing new. [updated] tells an update apart from a
-     * fresh install. Versions before 2.0 did not keep which version was seen: their users saw the basics when they had
-     * 1.6, or came from an older version, so they see every version since.
-     */
-    fun dueChapters(settings: DejavuSettings, updated: Boolean): List<TourChapter> {
-        val seen = settings.whatsNewSeen
-        return when {
-            seen != null -> Releases.filter { compareVersions(it.version.orEmpty(), seen) > 0 }
-            updated || settings.featureTourSeen >= VERSION -> Releases
-            else -> listOf(Basics) + Releases.takeLast(1)
-        }
-    }
-
-    /** Remembers that everything up to the newest version was shown, also when it was skipped. */
-    fun markSeen(settings: DejavuSettings) {
-        settings.featureTourSeen = VERSION
-        Releases.lastOrNull()?.version?.let { settings.whatsNewSeen = it }
-    }
 
     /** Compares versions like "2.0" and "1.10" part by part, a missing part counting as 0. */
     fun compareVersions(a: String, b: String): Int {
@@ -213,23 +216,48 @@ object FeatureTour {
     }
 }
 
-/** Whether Dejavu was updated rather than installed fresh, as the system tells from the times it keeps. */
-fun Context.wasUpdated(): Boolean = runCatching {
-    val info = packageManager.getPackageInfo(packageName, 0)
-    info.lastUpdateTime - info.firstInstallTime > UPDATE_MARGIN_MS
-}.getOrDefault(false)
+/**
+ * Whether Dejavu was updated since its data began, rather than installed fresh. Clearing its data in the system's
+ * settings begins it again, so the start after that is a fresh one too, although the system's install times tell an
+ * update.
+ */
+fun Context.wasUpdated(): Boolean = DataStart.wasUpdated(this)
 
-/** The tour as a dialog, over the screen it opens on, showing [chapters]. */
-@Composable
-fun FeatureTourDialog(chapters: List<TourChapter>, onDismiss: () -> Unit) {
-    Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
-        FeatureTourCard(chapters = chapters, onDone = onDismiss)
+/** When Dejavu's data began, kept as the time of the app's last update then, see [wasUpdated]. */
+private object DataStart {
+    private const val PREFS_NAME = "dejavu_data_start"
+    private const val KEY_UPDATE_TIME = "update_time"
+    private const val NONE = -1L
+
+    @Volatile
+    private var updated: Boolean? = null
+
+    fun wasUpdated(context: Context): Boolean = updated ?: synchronized(this) {
+        updated ?: decide(context).also { updated = it }
     }
+
+    private fun decide(context: Context): Boolean = runCatching {
+        val info = context.packageManager.getPackageInfo(context.packageName, 0)
+        context.components.strictMode.allowViolation(StrictMode::allowThreadDiskReads) {
+            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            val began = prefs.getLong(KEY_UPDATE_TIME, NONE)
+            when {
+                began != NONE -> info.lastUpdateTime - began > UPDATE_MARGIN_MS
+                // Data from a Dejavu older than this record, which the install times tell about.
+                WorkspaceRepository.get(context).foundSavedState ->
+                    info.lastUpdateTime - info.firstInstallTime > UPDATE_MARGIN_MS
+                else -> {
+                    prefs.edit { putLong(KEY_UPDATE_TIME, info.lastUpdateTime) }
+                    false
+                }
+            }
+        }
+    }.getOrDefault(false)
 }
 
 /**
  * The tour, one feature a page: the title, where to find it, and the phone showing it. The chips at the top name the
- * [chapters], the basics and the versions, and go to them; it opens on chapter [startChapter]. Swiping or Next goes on,
+ * versions of the [chapters] and go to them; it opens on chapter [startChapter]. Swiping or Next goes on,
  * from one chapter to the next; Skip goes to the next chapter, and on the last one it ends the tour with [onDone], like
  * Done.
  */
@@ -272,7 +300,7 @@ fun FeatureTourCard(
             ) {
                 chapters.forEachIndexed { index, item ->
                     ChapterChip(
-                        label = item.version ?: stringResource(R.string.dejavu_features_title),
+                        label = item.version,
                         selected = index == chapter,
                         onClick = { goTo(starts[index]) },
                     )
@@ -314,15 +342,26 @@ fun FeatureTourCard(
     }
 }
 
-/** The chip of a chapter of the tour: the basics or a version, filled for the chapter shown. */
+/**
+ * The chip of a chapter of the tour, its version, filled for the chapter shown, which the row of chips
+ * scrolls to when they do not all fit.
+ */
 @Composable
 private fun ChapterChip(label: String, selected: Boolean, onClick: () -> Unit) {
+    val requester = remember { BringIntoViewRequester() }
+    LaunchedEffect(selected) {
+        if (selected) {
+            withFrameNanos { }
+            requester.bringIntoView()
+        }
+    }
     Text(
         text = label,
         style = MaterialTheme.typography.labelLarge,
         color = if (selected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
         maxLines = 1,
         modifier = Modifier
+            .bringIntoViewRequester(requester)
             .clip(CircleShape)
             .background(
                 if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceContainerHighest,
@@ -338,14 +377,19 @@ private fun FeaturePage(feature: DejavuFeature, playing: Boolean, animationHeigh
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
     ) {
+        val titleStyle = MaterialTheme.typography.titleLarge
         Text(
             text = stringResource(feature.title),
-            style = MaterialTheme.typography.titleLarge,
+            style = titleStyle,
             color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Center,
             minLines = 2,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
+            autoSize = TextAutoSize.StepBased(
+                minFontSize = titleStyle.fontSize * MIN_TEXT_SCALE,
+                maxFontSize = titleStyle.fontSize,
+            ),
         )
         // Pages without settings keep the same room, so the phone stays in place while swiping.
         Box(contentAlignment = Alignment.Center, modifier = Modifier.height(WHERE_HEIGHT).padding(top = 8.dp)) {
@@ -378,12 +422,11 @@ private fun WherePill(feature: DejavuFeature) {
             modifier = Modifier.size(16.dp),
         )
         Spacer(Modifier.width(6.dp))
-        Text(
+        WordFittedText(
             text = steps.joinToString(separator),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Center,
         )
     }
 }
@@ -454,8 +497,8 @@ private fun decodeAnimation(context: Context, @RawRes animation: Int): Drawable?
 }.getOrNull()
 
 /**
- * What's new, opened from the settings and from About: the whole tour, over the settings, in the colors of the
- * workspace shown on the home screen.
+ * What's new, opened from the settings: the whole tour, over the settings, in the colors of the workspace shown on the
+ * home screen.
  */
 class DejavuFeatureTourFragment : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -470,10 +513,11 @@ class DejavuFeatureTourFragment : DialogFragment() {
                 FirefoxTheme {
                     val repository = remember { workspaceRepository() }
                     val workspaces by repository.state.collectAsState()
-                    CompositionLocalProvider(LocalPopupTheme provides workspaces.activeWorkspace?.theme) {
+                    val popupTheme = workspacePopupTheme(workspaces.activeWorkspaceId)
+                    CompositionLocalProvider(LocalPopupTheme provides popupTheme) {
                         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxWidth()) {
                             // Every chapter, opened on what the newest version brought.
-                            val chapters = FeatureTour.All
+                            val chapters = FeatureTour.Releases
                             FeatureTourCard(chapters = chapters, onDone = { dismiss() }, startChapter = chapters.lastIndex)
                         }
                     }
@@ -500,5 +544,8 @@ private const val ANIMATION_SHARE = 0.48f
 private const val DOT_ALPHA = 0.3f
 private val MAX_ANIMATION = 440.dp
 private val MAX_WIDTH = 480.dp
-private val WHERE_HEIGHT = 40.dp
+private val WHERE_HEIGHT = 56.dp
+
+// How small a title gets before it is cut off, as a share of its size.
+private const val MIN_TEXT_SCALE = 0.75f
 private const val UPDATE_MARGIN_MS = 60_000L

@@ -8,6 +8,7 @@ import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import mozilla.components.ui.icons.R as iconsR
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 
 /** An action that can run on tabs: one of Dejavu's [TabAction]s or a [CustomAction] the user defined. */
 sealed interface RowAction {
@@ -59,4 +60,23 @@ val RowAction.label: String
     @Composable get() = when (this) {
         is RowAction.BuiltIn -> stringResource(action.label)
         is RowAction.Custom -> action.name
+    }
+
+/**
+ * These actions as shown on a screen with room to split the [ways] given: Split view becomes one action for each way
+ * when there is room for both, and goes away when there is room for none.
+ */
+fun List<RowAction>.forSplitWays(ways: List<SplitOrientation>): List<RowAction> = flatMap { action ->
+    when {
+        action != RowAction.BuiltIn(TabAction.SPLIT_VIEW) -> listOf(action)
+        ways.size > 1 -> ways.map { RowAction.BuiltIn(it.tabAction) }
+        else -> listOf(action).takeIf { ways.isNotEmpty() }.orEmpty()
+    }
+}
+
+/** The action that splits the browser this way. */
+val SplitOrientation.tabAction: TabAction
+    get() = when (this) {
+        SplitOrientation.TOP_AND_BOTTOM -> TabAction.SPLIT_TOP_AND_BOTTOM
+        SplitOrientation.SIDE_BY_SIDE -> TabAction.SPLIT_SIDE_BY_SIDE
     }

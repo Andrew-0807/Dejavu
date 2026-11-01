@@ -34,23 +34,29 @@ fun dejavuKeepsTab(context: Context): (RecoverableTab) -> Boolean {
 
 /**
  * Opens pinned tab [pin], whose tab is closed, where that tab was, like a sleeping tab wakes up: on the page it closed
- * on, in its container, and shows it. Returns the new tab's id, or `null` for a pin without an address.
+ * on, in its container, and shows it when [select] is set. Returns the new tab's id, or `null` for a pin without an
+ * address.
  *
  * A pinned tab or essential whose address is not a web page, which sync may have brought from another device, first
  * shows that address and opens only once the user agrees. Then `null` is returned, and [onOpened] gets the new tab's id.
  */
-fun openClosedPin(context: Context, pin: PinnedItem, onOpened: (String) -> Unit = {}): String? {
+fun openClosedPin(
+    context: Context,
+    pin: PinnedItem,
+    select: Boolean = true,
+    onOpened: (String) -> Unit = {},
+): String? {
     val url = pin.pageUrl.takeIf { it.isNotEmpty() } ?: return null
     if (!url.startsWith("https://") && !url.startsWith("http://")) {
         MaterialAlertDialogBuilder(context)
             .setTitle(R.string.dejavu_open_non_web_pin_title)
             .setMessage(context.getString(R.string.dejavu_open_non_web_pin_message, url.shortened()))
             .setNegativeButton(R.string.dejavu_cancel, null)
-            .setPositiveButton(R.string.dejavu_open) { _, _ -> onOpened(openPin(context, pin, url)) }
+            .setPositiveButton(R.string.dejavu_open) { _, _ -> onOpened(openPin(context, pin, url, select)) }
             .show()
         return null
     }
-    return openPin(context, pin, url)
+    return openPin(context, pin, url, select)
 }
 
 /** The start of a long address, enough to tell what it opens, like a data: page or an app's intent. */
@@ -58,12 +64,12 @@ private fun String.shortened(): String = if (length > MAX_SHOWN_ADDRESS) take(MA
 
 private const val MAX_SHOWN_ADDRESS = 200
 
-private fun openPin(context: Context, pin: PinnedItem, url: String): String {
+private fun openPin(context: Context, pin: PinnedItem, url: String, select: Boolean): String {
     val components = context.components
     val store = components.core.store
     val tabId = components.useCases.tabsUseCases.addTab(
         url = url,
-        selectTab = true,
+        selectTab = select,
         title = pin.openTitle ?: pin.title,
         contextId = TemporaryContainers.orReplacement(
             pin.containerId,

@@ -17,6 +17,22 @@
         <item name="android:windowExitAnimation">@anim/dejavu_top_sheet_exit</item>
     </style>
 
+    <!-- A dialog over the whole screen that draws its own dimming and moves in by itself, used by the "More" menu
+       - that grows out of the actions bar. -->
+    <style name="DejavuFloatingMenuDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@style/DejavuNoWindowAnimation</item>
+    </style>
+
+    <style name="DejavuNoWindowAnimation">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+
     <!-- Dialogs made of views, web page prompts included, in Dejavu's look like DejavuDialog: the title at the start
        - and pill shaped buttons, the main one in gold. -->
     <style name="DejavuAlertDialogTheme" parent="BaseDialogStyle">

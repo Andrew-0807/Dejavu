@@ -24,7 +24,7 @@ import org.mozilla.fenix.GleanMetrics.Events
 import org.mozilla.fenix.R
 import org.mozilla.fenix.databinding.FragmentAboutBinding
 import org.mozilla.fenix.dejavu.DejavuLinks
-import org.mozilla.fenix.dejavu.features.DejavuFeatureTourFragment
+import org.mozilla.fenix.dejavu.welcome.Welcome
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.openToBrowser
@@ -76,7 +76,8 @@ class AboutFragment(private val toastHandler: ToastHandler = DefaultToastHandler
             )
         }
 
-        setupDebugMenu(binding.wordmark, view.context.components.settings, lifecycle)
+        // Dejavu: the view's lifecycle, so the logo's view is not kept while About waits behind another screen.
+        setupDebugMenu(binding.wordmark, view.context.components.settings, viewLifecycleOwner.lifecycle)
 
         populateAboutHeader()
         aboutPageAdapter?.submitList(populateAboutList())
@@ -196,7 +197,7 @@ class AboutFragment(private val toastHandler: ToastHandler = DefaultToastHandler
         val context = requireContext()
 
         return listOf(
-            AboutPageItem(AboutItem.FeatureTour, getString(R.string.dejavu_features_title)),
+            AboutPageItem(AboutItem.Welcome, getString(R.string.dejavu_welcome_setup)),
             AboutPageItem(
                 AboutItem.ExternalLink(
                     WHATS_NEW,
@@ -278,9 +279,7 @@ class AboutFragment(private val toastHandler: ToastHandler = DefaultToastHandler
                 val navController = findNavController()
                 navController.navigate(R.id.action_aboutFragment_to_crashListFragment)
             }
-            is AboutItem.FeatureTour -> {
-                DejavuFeatureTourFragment().show(parentFragmentManager, DejavuFeatureTourFragment.TAG)
-            }
+            is AboutItem.Welcome -> Welcome.open(findNavController())
         }
     }
 

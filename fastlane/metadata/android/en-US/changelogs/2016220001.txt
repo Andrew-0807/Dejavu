@@ -1,0 +1,56 @@
+- Essentials of a row that is not full spread evenly over the line
+- Split view is offered only when exactly two tabs are selected
+- Drop a tab on another tab to split them, and split tabs share one row like in Zen
+- No empty strip under Default download location in Download settings
+- What's new counts every page of the tour, not only the chapter shown
+- Room between the workspace icons and the buttons next to them on the home screen
+- Reset to pinned URL gets its own icon, so it no longer looks like Reload
+- New action: Replace pinned URL with current
+- Black snackbars and tooltips in the dark themes
+- Private browsing's purple is no longer among the workspace themes
+- The computer icon is no longer offered for workspaces
+- Split pinned tabs share one row in the pinned section too
+- Temporary containers come last in every container list
+- Close puts a pinned tab of a Firefox device's workspace to sleep, then unpins it
+- Drag buttons into the rows of the More menu, on a screen split in two
+- The actions bar is the top line of the More menu editor, and Reset is an icon at the top
+- Release notes for Dejavu 2.1.0
+- Reopen closed tabs in their own workspace, open the link in the clipboard, and move selected tabs between workspaces with arrows
+- The clipboard button is off while the clipboard holds no link
+- Chips above the address bar pick the container and the search engine of a new tab
+- Search bar text keeps off the left edge and stays above the keyboard, and Settings shows the Account section before signing in
+- Drag tabs to other workspaces through strips at the sides, fewer search shortcuts by default, and a tidier Account section
+- Tabs in a temporary container sync with Zen too, without the container
+- Release notes for Dejavu 2.3.0, and tests and lint tidied for the release
+- Unpinned tabs that Zen keeps in folders stay in their folders when Dejavu syncs
+- Synced tabs and spaces whose container was removed show up, in a temporary container or none
+- Holding dragged tabs gathers them into a stack of cards under the finger
+- Pages show without workspace-colored bars, with the actions bar floating as a rounded bar in the workspace color
+- [FEATURE] A solid centered address bar floating over the page, and search screens that blur what is behind them
+- [FEATURE] Tabs zoom between their row on the home screen and their page
+- [FEATURE] Swiping the bottom bar up opens the menu as a floating panel that follows the finger
+- [FEATURE] The downloads button on the home screen shows downloads in progress with an animated ring
+- [FEATURE] Themed download prompt, a custom color for workspace themes, and no handle on the actions bar
+- [FEATURE] Workspaces can use a wallpaper instead of colors, and Zen gets colors taken from the picture
+- [FEATURE] Swiping the address bar down opens the page's details as a panel that follows the finger
+- [FEATURE] Empty folders show a dashed folder icon, and essentials fill even rows
+- [FEATURE] Opening a tab brings the address bar and actions bar in from the top and bottom as the page grows
+- [FEATURE] The address bar and actions bar slide in and out with the page when opening a tab and going home
+- [FEATURE] Pages opened from the home screen pour out of their button like a genie and go back into it
+- [FEATURE] Split view picks top and bottom or side by side by screen size, with compact bars on phones
+- [FEATURE] A switch in Customize hides the status bar and the navigation bar while a page shows, from pull request #186
+- [FEATURE] Customize lets the address bar sit on top or at the bottom without the actions bar, with a button on each side
+- [FEATURE] Reader view in the More menu, bookmarks export to a file, and Firefox Sync's limits explained in the workspace dialog
+- [FEATURE] New tab and Save page entries for the More menu, the actions bar and the address bar buttons
+- [FEATURE] Shield at the right end of the address bar, Zen's four default containers on a fresh install, and the 3.0 chapter of the tour
+- [FEATURE] Holding a recent search offers to delete it or clear search history, and importing bookmarks shows a Dejavu dialog
+- [FEATURE] Customize can put the home screen's search bar at the bottom, with the workspace bar on top
+- [FEATURE] New two-tone icons across Dejavu's buttons, and the ones that stay on screen move a little when tapped
+- [FEATURE] Home screen tabs pour into and out of their buttons, wallpapers get a colored veil instead of blur, and loading shows in the domain's colors
+- [FEATURE] The navigation bar shows what is behind it, search screens blur behind their address bar too, and settings show what they opened over blurred
+- [FEATURE] Settings are grouped: tabs, workspaces and containers under General, and bars, passwords and language under Customize
+- [FEATURE] Welcome pages on first start, and at most six tabs stay awake by default
+- [FEATURE] Neutral colors instead of yellow, see-through pages, gold wallpaper on first start and in the workspace dialog, and a Matrix chat entry
+- [FEATURE] New default menu, Clear data actions, welcome pages for 2.x updates, Home and Work examples on first start, and popups in the wallpaper's colors
+- [FEATURE] Tips point out hidden gestures right where they work, and orange dots lead to what 3.0 brought
+- [FEATURE] The bottom bar starts with New tab instead of Forward, What's new in Settings shows every feature under its version, and the tour no longer opens by itself

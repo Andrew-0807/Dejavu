@@ -5,6 +5,7 @@
 package org.mozilla.fenix.dejavu.home
 
 import android.graphics.Bitmap
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -15,9 +16,11 @@ import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,8 +32,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListItemInfo
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -40,10 +45,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -56,16 +61,24 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.lerp
+import kotlin.math.abs
 import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
@@ -73,6 +86,9 @@ import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.actions.icon
 import org.mozilla.fenix.dejavu.actions.label
+import org.mozilla.fenix.dejavu.browser.ClearData
+import org.mozilla.fenix.dejavu.browser.SplitSpace
+import org.mozilla.fenix.dejavu.browser.tabZoomTarget
 import org.mozilla.fenix.dejavu.containers.ContainerIcon
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.ContainerRecord
@@ -80,17 +96,25 @@ import org.mozilla.fenix.dejavu.containers.NoContainerIcon
 import org.mozilla.fenix.dejavu.containers.TemporaryContainerIcon
 import org.mozilla.fenix.dejavu.containers.color
 import org.mozilla.fenix.dejavu.containers.splitTemporary
+import org.mozilla.fenix.dejavu.discover.Tip
+import org.mozilla.fenix.dejavu.discover.TipGesture
+import org.mozilla.fenix.dejavu.discover.Tips
+import org.mozilla.fenix.dejavu.discover.tipTarget
 import org.mozilla.fenix.dejavu.sync.workspaceIconText
 import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
 import org.mozilla.fenix.dejavu.ui.DejavuMenuDivider
 import org.mozilla.fenix.dejavu.ui.DejavuMenuItem
 import org.mozilla.fenix.dejavu.ui.DejavuMenuLabel
+import org.mozilla.fenix.dejavu.ui.TapIcon
+import org.mozilla.fenix.dejavu.ui.rememberIconTaps
 import org.mozilla.fenix.dejavu.workspaces.PinnedItem
 import org.mozilla.fenix.dejavu.workspaces.Workspace
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 
 private val RowShape = RoundedCornerShape(16.dp)
 private val IndentPerLevel = 18.dp
+private val ListPadding = 8.dp
+private val RowPadding = 2.dp
 private const val DIMMED_ALPHA = 0.55f
 private const val RESET_SQUARE_ALPHA = 0.14f
 private val IconSquareSize = 36.dp
@@ -98,6 +122,16 @@ private val MinTouchSize = 48.dp
 private const val DRAGGED_ALPHA = 0.35f
 private val INSIDE_FOLDER_RANGE = 0.25f..0.75f
 private val SPLIT_RANGE = 0.3f..0.7f
+
+// Where the finger of a tip touches a row, how far it drags a tab to pin it, and onto the row above.
+private const val ROW_TOUCH = 0.35f
+private val PIN_DRAG = (-110).dp
+private val ROW_DRAG = (-52).dp
+
+// Where the icon starts in a row, as the drag stack lifts it off.
+private val TabIconStart = 8.dp
+private val PairIconStart = 10.dp
+private val FolderIconStart = 26.dp
 
 private const val KEY_HEADER = "header"
 private const val KEY_DIVIDER = "divider"
@@ -130,6 +164,11 @@ data class WorkspacePageCallbacks(
     val onNewPrivateTab: () -> Unit,
     val onManageContainers: () -> Unit,
     val onClearUnpinned: () -> Unit,
+    /**
+     * Deletes the data chosen for Clear data, from holding Clear, tapping it with no unpinned tabs, or a page asking for
+     * it, then quits Dejavu when `quit`.
+     */
+    val onClearData: (quit: Boolean) -> Unit,
     val onReopenClosedTab: () -> Unit,
     val onOpenClipboard: () -> Unit,
     /** The row of the tab to reveal is in view. */
@@ -147,7 +186,25 @@ private data class PageContent(
     val state: WorkspaceState,
     val otherTabs: List<TabSessionState>,
     val workspace: Workspace,
+    val pinLines: List<PinLine>,
+    val lines: List<TabLine>,
+    val lineKeys: Map<String, String>,
+    val tabsById: Map<String, TabSessionState>,
+    val containers: Map<String, ContainerRecord>,
 )
+
+/**
+ * Where the list sits in the page, in pixels: [left] from the start of the page and [width] wide. Rows have
+ * [rowPadding] above and below them.
+ */
+private class ListFrame(val left: Float, val width: Float, val rowPadding: Float) {
+    fun rowRect(info: LazyListItemInfo) =
+        Rect(left, info.offset + rowPadding, left + width, info.offset + info.size - rowPadding)
+
+    /** The row with [key] in the page, while it is in view. */
+    fun rowRect(listState: LazyListState, key: String): Rect? =
+        listState.layoutInfo.visibleItemsInfo.firstOrNull { it.key == key }?.let(::rowRect)
+}
 
 /** A row of tabs that are not pinned: one tab, or the two tabs of a split view side by side, like in Zen. */
 private data class TabLine(val tabs: List<TabSessionState>) {
@@ -173,14 +230,23 @@ internal data class PinLine(val entries: List<PinnedEntry>) {
             ?: PIN_PAIR_PREFIX + entries.joinToString(PAIR_SEPARATOR) { it.item.id }
 }
 
-/** [entries] as rows, the two pinned tabs of a split view in the same folder in one row, where the first one is. */
+/**
+ * [entries] as rows, the two pinned tabs of a split view in the same folder in one row, where the first one is: a split
+ * view open here, or one synced from Zen, open or not.
+ */
 internal fun pinLines(entries: List<PinnedEntry>, state: WorkspaceState): List<PinLine> {
-    val byTabId = entries.filter { !it.item.isFolder && it.item.tabId != null }.associateBy { it.item.tabId }
+    val tabPins = entries.filter { !it.item.isFolder }
+    val byTabId = tabPins.filter { it.item.tabId != null }.associateBy { it.item.tabId }
+    val byPinId = tabPins.associateBy { it.item.id }
     val placed = mutableSetOf<String>()
     return entries.mapNotNull { entry ->
         if (!placed.add(entry.item.id)) return@mapNotNull null
-        val tabId = entry.item.tabId?.takeIf { !entry.item.isFolder }
-        val partner = tabId?.let(state::splitOf)?.tabIds?.firstOrNull { it != tabId }?.let(byTabId::get)
+        val pinId = entry.item.id.takeIf { !entry.item.isFolder }
+        val tabId = entry.item.tabId?.takeIf { pinId != null }
+        val partner = (
+            tabId?.let(state::splitOf)?.tabIds?.firstOrNull { it != tabId }?.let(byTabId::get)
+                ?: pinId?.let(state::pinnedSplitOf)?.pinIds?.firstOrNull { it != pinId }?.let(byPinId::get)
+            )
             ?.takeIf { it.item.parentId == entry.item.parentId && placed.add(it.item.id) }
         PinLine(listOfNotNull(entry, partner))
     }
@@ -200,6 +266,7 @@ internal fun WorkspacePage(
     selection: Selection?,
     drag: SelectionDrag?,
     dragAreas: MutableMap<String, PageDragArea>,
+    dragStack: DragStackState,
     callbacks: WorkspacePageCallbacks,
     canDeleteWorkspace: Boolean,
     canMoveLeft: Boolean,
@@ -207,6 +274,10 @@ internal fun WorkspacePage(
     hasClosedTab: Boolean = false,
     hasClipboardLink: Boolean = false,
     revealTabId: String? = null,
+    openTabIds: Set<String> = emptySet(),
+    hasDataToClear: Boolean = false,
+    dataPour: DataPour? = null,
+    askedClear: ClearData.Request? = null,
 ) {
     val tabsById = tabs.associateBy { it.id }
     val awakeTabIds = tabs.filter { it.isAwake }.map { it.id }.toSet()
@@ -217,19 +288,48 @@ internal fun WorkspacePage(
     val otherTabs = tabs.filterNot { it.id in pinnedTabIds }
     val splitTabIds = state.splits.flatMap { it.tabIds }.toSet()
     val lines = tabLines(otherTabs, state)
+    // The tip about split views points at the second tab, to drop onto the first one, while no tabs are split.
+    val showsSplitTip = SplitSpace.supported(LocalConfiguration.current).isNotEmpty() && splitTabIds.isEmpty() &&
+        lines.firstOrNull()?.tabs?.size == 1
     // The key of the row each pinned item and tab shows on, for the ones sharing a row with a split view partner.
     val lineKeys = pinLines.flatMap { line -> line.entries.map { PIN_PREFIX + it.item.id to line.key } }.toMap() +
         lines.flatMap { line -> line.tabs.map { TAB_PREFIX + it.id to line.key } }
 
+    // Rows come and go and move between the pinned and the other tabs in motions of their own, see RowMotions.
+    val motions = rememberRowMotions()
+    val rowTabs = pinLines.associate { line ->
+        line.key to line.entries.mapNotNullTo(mutableSetOf()) { entry -> entry.item.tabId?.takeIf { it in tabsById } }
+    } + lines.associate { line -> line.key to line.tabs.mapTo(mutableSetOf()) { it.id } }
+    val plan = motions.plan(rowTabs, openTabIds, revealTabId)
+    // The cards of a drag land on the rows their tabs moved to by themselves.
+    val flights = drag == null && !dragStack.landing
+    SideEffect { motions.start(plan, flights) }
+    val placement = motions.placementSpec(plan)
+
+    // Clear data asked for on a page, which closed to here, pours into Clear as holding it does.
+    LaunchedEffect(askedClear) {
+        val request = askedClear ?: return@LaunchedEffect
+        if (ClearData.claim(request)) {
+            motions.clearTapped()
+            callbacks.onClearData(request.quit)
+        }
+    }
+
     val listState = rememberLazyListState()
-    val content by rememberUpdatedState(PageContent(state, otherTabs, workspace))
+    val pageContent = PageContent(state, otherTabs, workspace, pinLines, lines, lineKeys, tabsById, containers)
+    val content by rememberUpdatedState(pageContent)
     val latestCallbacks by rememberUpdatedState(callbacks)
+    val density = LocalDensity.current
     val isDragging = drag != null
     // A row also sees the finger lifting after a long press as a tap; while a long press or drag is in progress
     // (drag != null) row taps are ignored so the long press only selects.
 
-    // The home screen follows the finger and asks the page under it where dragged items would land.
-    val dragArea = remember(listState) {
+    // The home screen follows the finger and asks the page under it where dragged items would land, and where the
+    // rows the drag stack lifts off and lands on are.
+    val dragArea = remember(listState, density) {
+        fun frame() = with(density) {
+            ListFrame(ListPadding.toPx(), listState.layoutInfo.viewportSize.width.toFloat(), RowPadding.toPx())
+        }
         object : PageDragArea {
             override fun start(offset: Offset, atEnd: Boolean): SelectionDrag? =
                 itemKeyAt(listState, offset.y)?.let { startDrag(it, offset, atEnd, content, latestCallbacks) }
@@ -240,6 +340,20 @@ internal fun WorkspacePage(
 
             override val height: Int
                 get() = listState.layoutInfo.viewportSize.height
+
+            override fun lift(stack: DragStackState, drag: SelectionDrag, press: Offset) {
+                val key = itemKeyAt(listState, press.y) ?: return
+                stack.liftRows(key, press, drag.selection, content, listState, frame(), density)
+            }
+
+            override fun rowRects(cards: List<StackCard>): Map<String, Rect> =
+                cards.mapNotNull { card -> frame().rowRect(listState, card.key)?.let { card.key to it } }.toMap()
+
+            override fun landings(cards: List<StackCard>): Map<String, Rect> =
+                cards.landingsAfterDrop(content, listState, frame())
+
+            override fun dropFallback(target: DropTarget): Offset? =
+                dropFallback(target, content.lineKeys, listState, frame())
         }
     }
     DisposableEffect(workspace.id, dragArea) {
@@ -262,11 +376,25 @@ internal fun WorkspacePage(
     }
 
     val dropLines = drag?.takeIf { it.moved && it.over == workspace.id }?.target?.let { dropLinesFor(it, lineKeys) }
-    val draggedKeys = drag?.takeIf { it.from == workspace.id }?.let { current ->
-        val folderIds = current.selection.folderIds
-        current.selection.tabIds.map { TAB_PREFIX + it } +
-            (current.selection.pinIds + folderIds + folderIds.flatMap { state.descendantIds(it) }).map { PIN_PREFIX + it }
-    }.orEmpty().map { lineKeys[it] ?: it }.toSet()
+    val draggedKeys = drag?.takeIf { it.from == workspace.id }?.let { draggedRowKeys(it.selection, state, lineKeys) }
+        .orEmpty()
+    // The cards landing after a drop by the rows of their items, wherever those rows are before and after they move.
+    val landingCards = if (dragStack.landing) {
+        dragStack.cards.mapNotNull { card -> rowKeyAfterDrop(card.card, pageContent)?.let { it to card } }.toMap()
+    } else {
+        emptyMap()
+    }
+
+    // Dragged rows dim as their cards lift off and light up again as they come back, and the rows dropped cards land
+    // on show as they arrive. Read while drawing, so the animation does not recompose the rows.
+    fun Modifier.rowAlpha(key: String) = graphicsLayer {
+        val landing = landingCards[key]
+        alpha = when {
+            landing != null -> 1f - landing.lift.value.coerceIn(0f, 1f)
+            key in draggedKeys || key in dragStack.returningKeys -> lerp(1f, DRAGGED_ALPHA, dragStack.liftOf(key))
+            else -> 1f
+        }
+    }
     val lineColor = MaterialTheme.colorScheme.primary
     val insideColor = MaterialTheme.colorScheme.primaryContainer
 
@@ -276,7 +404,7 @@ internal fun WorkspacePage(
             userScrollEnabled = !isDragging,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = ListPadding),
         ) {
             item(key = KEY_HEADER) {
                 WorkspaceHeader(
@@ -296,15 +424,20 @@ internal fun WorkspacePage(
                     onEdit = callbacks.onEditWorkspace,
                     onDelete = callbacks.onDeleteWorkspace,
                     onMove = callbacks.onMoveWorkspace,
-                    modifier = Modifier.dropLine(dropLines?.of(KEY_HEADER), lineColor, insideColor),
+                    reopenButton = Modifier.motionButton(motions, MotionButton.REOPEN),
+                    modifier = Modifier
+                        .animateItem(fadeInSpec = null, placementSpec = placement, fadeOutSpec = null)
+                        .dropLine(dropLines?.of(KEY_HEADER), lineColor, insideColor),
                 )
             }
 
             items(pinLines, key = { it.key }) { line ->
                 val key = line.key
                 val rowModifier = Modifier
+                    .animateItem(fadeInSpec = null, placementSpec = placement, fadeOutSpec = null)
+                    .motionRow(motions, key)
                     .dropLine(dropLines?.of(key), lineColor, insideColor)
-                    .alpha(if (key in draggedKeys) DRAGGED_ALPHA else 1f)
+                    .rowAlpha(key)
                 val entry = line.entries.first()
                 val item = entry.item
                 if (line.entries.size > 1) {
@@ -363,16 +496,29 @@ internal fun WorkspacePage(
                         onAction = { callbacks.onRowAction(it, targets) },
                         onClick = { if (drag == null) callbacks.onPinClick(item) },
                         onIconClick = resetPin?.let { action -> { if (drag == null) callbacks.onRowAction(action, targets) } },
-                        modifier = rowModifier,
+                        modifier = rowModifier.tabZoomTarget(tab?.id),
                     )
                 }
             }
 
             item(key = KEY_DIVIDER) {
+                // The cleared tabs and data pour into the Clear button, which stays until they are in.
+                val clearing = plan.clear || motions.isClearing || dataPour?.isPouring == true
                 SectionDivider(
-                    showClear = otherTabs.isNotEmpty() && selection == null,
-                    onClear = callbacks.onClearUnpinned,
-                    modifier = Modifier.dropLine(dropLines?.of(KEY_DIVIDER), lineColor, insideColor),
+                    showClear = (otherTabs.isNotEmpty() || hasDataToClear || clearing) && selection == null,
+                    onClear = {
+                        motions.clearTapped()
+                        if (otherTabs.isNotEmpty()) callbacks.onClearUnpinned() else callbacks.onClearData(false)
+                    },
+                    onClearData = {
+                        Tips.done(Tip.CLEAR)
+                        motions.clearTapped()
+                        callbacks.onClearData(false)
+                    },
+                    clearButton = Modifier.motionButton(motions, MotionButton.CLEAR).dataPourTarget(dataPour),
+                    modifier = Modifier
+                        .animateItem(fadeInSpec = null, placementSpec = placement, fadeOutSpec = null)
+                        .dropLine(dropLines?.of(KEY_DIVIDER), lineColor, insideColor),
                 )
             }
 
@@ -385,13 +531,21 @@ internal fun WorkspacePage(
                     onNewTabInContainer = callbacks.onNewTabInContainer,
                     onNewPrivateTab = callbacks.onNewPrivateTab,
                     onManageContainers = callbacks.onManageContainers,
-                    modifier = Modifier.dropLine(dropLines?.of(KEY_NEW_TAB), lineColor, insideColor),
+                    modifier = Modifier
+                        .animateItem(fadeInSpec = null, placementSpec = placement, fadeOutSpec = null)
+                        .dropLine(dropLines?.of(KEY_NEW_TAB), lineColor, insideColor)
+                        .tipTarget(Tip.NEW_TAB, TipGesture.Hold, enabled = selection == null, at = ROW_TOUCH),
                 )
             }
 
-            items(lines, key = { it.key }) { line ->
+            itemsIndexed(lines, key = { _, line -> line.key }) { index, line ->
                 val key = line.key
                 val tab = line.tabs.first()
+                val rowModifier = Modifier
+                    .animateItem(fadeInSpec = null, placementSpec = placement, fadeOutSpec = null)
+                    .motionRow(motions, key)
+                    .dropLine(dropLines?.of(key), lineColor, insideColor)
+                    .rowAlpha(key)
                 if (line.tabs.size > 1) {
                     TabPairRow(
                         halves = line.tabs.map { half ->
@@ -406,11 +560,9 @@ internal fun WorkspacePage(
                         },
                         depth = 0,
                         isCurrent = line.tabs.any { it.id == selectedTabId },
-                        modifier = Modifier
-                            .dropLine(dropLines?.of(key), lineColor, insideColor)
-                            .alpha(if (key in draggedKeys) DRAGGED_ALPHA else 1f),
+                        modifier = rowModifier,
                     )
-                    return@items
+                    return@itemsIndexed
                 }
                 val targets = ActionTargets(
                     tabs = listOf(tab),
@@ -429,12 +581,20 @@ internal fun WorkspacePage(
                     actions = rowActions(unpinnedRowActions, targets, isPinned = false),
                     onAction = { callbacks.onRowAction(it, targets) },
                     onClick = { if (drag == null) callbacks.onTabClick(tab) },
-                    modifier = Modifier
-                        .dropLine(dropLines?.of(key), lineColor, insideColor)
-                        .alpha(if (key in draggedKeys) DRAGGED_ALPHA else 1f),
+                    modifier = rowModifier
+                        .tabZoomTarget(tab.id)
+                        .tipTarget(Tip.PIN, TipGesture.Drag(dy = PIN_DRAG), enabled = index == 0, at = ROW_TOUCH)
+                        .tipTarget(Tip.ESSENTIAL_ADD, TipGesture.Drag(toTop = true), index == 0, ROW_TOUCH)
+                        .tipTarget(
+                            Tip.SPLIT,
+                            TipGesture.Drag(dy = ROW_DRAG),
+                            enabled = index == 1 && showsSplitTip,
+                            at = ROW_TOUCH,
+                        ),
                 )
             }
         }
+        RowMotionsOverlay(motions, modifier = Modifier.matchParentSize().padding(horizontal = ListPadding))
     }
 }
 
@@ -451,31 +611,21 @@ private fun startDrag(
     callbacks: WorkspacePageCallbacks,
 ): SelectionDrag? {
     fun pick(ids: String) = ids.split(PAIR_SEPARATOR).let { if (it.size > 1 && atEnd) it[1] else it[0] }
-    val picked: Selection
-    val title: String
-    val isFolder: Boolean
-    when {
+    val picked = when {
         key.startsWith(PIN_PREFIX) || key.startsWith(PIN_PAIR_PREFIX) -> {
             val id = pick(key.removePrefix(PIN_PREFIX).removePrefix(PIN_PAIR_PREFIX))
             val pin = content.state.pins.firstOrNull { it.id == id } ?: return null
-            picked = if (pin.isFolder) Selection.ofFolder(pin.id, content.state) else Selection(pinIds = setOf(pin.id))
-            title = pin.title
-            isFolder = pin.isFolder
+            if (pin.isFolder) Selection.ofFolder(pin.id, content.state) else Selection(pinIds = setOf(pin.id))
         }
         key.startsWith(TAB_PREFIX) || key.startsWith(PAIR_PREFIX) -> {
             val id = pick(key.removePrefix(TAB_PREFIX).removePrefix(PAIR_PREFIX))
             val tab = content.otherTabs.firstOrNull { it.id == id } ?: return null
-            picked = Selection(tabIds = setOf(tab.id))
-            title = tab.displayTitle
-            isFolder = false
+            Selection(tabIds = setOf(tab.id))
         }
         else -> return null
     }
-    val dragged = callbacks.onStartDrag(picked)
     return SelectionDrag(
-        selection = dragged,
-        label = dragLabel(title, dragged.topLevelCount(content.state)),
-        isFolder = isFolder,
+        selection = callbacks.onStartDrag(picked),
         from = content.workspace.id,
         // The tabs of a device's workspace follow the device, so they stay in it.
         canLeave = content.workspace.device == null,
@@ -484,7 +634,126 @@ private fun startDrag(
     )
 }
 
-private fun dragLabel(title: String, count: Int): String = if (count > 1) "$title  +${count - 1}" else title
+/** Keys of the rows showing [selection], folders with everything inside them. */
+private fun draggedRowKeys(selection: Selection, state: WorkspaceState, lineKeys: Map<String, String>): Set<String> {
+    val folderIds = selection.folderIds
+    val keys = selection.tabIds.map { TAB_PREFIX + it } +
+        (selection.pinIds + folderIds + folderIds.flatMap { state.descendantIds(it) }).map { PIN_PREFIX + it }
+    return keys.map { lineKeys[it] ?: it }.toSet()
+}
+
+/**
+ * Lifts the rows of [selection] that are in view off the list into the stack, from a long press at [press] in the
+ * page: the long-pressed row [heldKey] on top, with the rows nearest to it above and below.
+ */
+@Suppress("LongParameterList")
+private fun DragStackState.liftRows(
+    heldKey: String,
+    press: Offset,
+    selection: Selection,
+    content: PageContent,
+    listState: LazyListState,
+    frame: ListFrame,
+    density: Density,
+) {
+    val keys = draggedRowKeys(selection, content.state, content.lineKeys)
+    val rows = listState.layoutInfo.visibleItemsInfo.mapNotNull { info ->
+        (info.key as? String)?.takeIf { it in keys }?.let { it to info }
+    }
+    val heldIndex = rows.indexOfFirst { (key, _) -> key == heldKey }
+    if (heldIndex < 0) return
+    val lifted = rows.mapIndexedNotNull { index, (key, info) ->
+        val rank = index - heldIndex
+        if (abs(rank) > MAX_STACK_DEPTH) return@mapIndexedNotNull null
+        stackCard(key, rank, content)?.let { LiftedCard(it, frame.rowRect(info)) }
+    }
+    val geometry = density.stackGeometry(frame.left, frame.width, press, frame.rowRect(rows[heldIndex].second))
+    lift(lifted, selection.topLevelCount(content.state), press, geometry)
+}
+
+/** How the row with [key] looks lifted into the drag stack, [rank] rows from the long-pressed one. */
+private fun stackCard(key: String, rank: Int, content: PageContent): StackCard? {
+    val pinLine = content.pinLines.firstOrNull { it.key == key }
+    if (pinLine != null) return pinStackCard(pinLine, rank, content)
+    val line = content.lines.firstOrNull { it.key == key } ?: return null
+    val tab = line.tabs.first()
+    return StackCard(
+        key = key,
+        rank = rank,
+        title = content.state.titleOf(tab),
+        url = tab.content.url,
+        stripe = tab.contextId?.let { content.containers[it] }?.color?.color,
+        iconStart = if (line.tabs.size > 1) PairIconStart else TabIconStart,
+        brightTitle = tab.isAwake,
+        tabId = tab.id,
+        pinId = null,
+    )
+}
+
+/** How a row of the pinned section looks lifted into the drag stack, [rank] rows from the long-pressed one. */
+private fun pinStackCard(line: PinLine, rank: Int, content: PageContent): StackCard {
+    val entry = line.entries.first()
+    val pin = entry.item
+    val indent = IndentPerLevel * entry.depth
+    val tab = pin.tabId?.takeIf { !pin.isFolder }?.let { content.tabsById[it] }
+    val containerId = (tab?.contextId ?: pin.containerId).takeIf { !pin.isFolder }
+    return StackCard(
+        key = line.key,
+        rank = rank,
+        title = if (pin.isFolder) pin.title else pin.label(tab),
+        url = if (pin.isFolder) null else tab?.content?.url ?: pin.pageUrl,
+        stripe = containerId?.let { content.containers[it] }?.color?.color,
+        iconStart = indent + when {
+            pin.isFolder -> FolderIconStart
+            line.entries.size > 1 -> PairIconStart
+            else -> TabIconStart
+        },
+        brightTitle = pin.isFolder || tab?.isAwake == true,
+        tabId = pin.tabId,
+        pinId = pin.id,
+    )
+}
+
+/** The rows [this] cards show on after a drop, where they are in view. */
+private fun List<StackCard>.landingsAfterDrop(
+    content: PageContent,
+    listState: LazyListState,
+    frame: ListFrame,
+): Map<String, Rect> = mapNotNull { card ->
+    rowKeyAfterDrop(card, content)?.let { frame.rowRect(listState, it) }?.let { card.key to it }
+}.toMap()
+
+/** Key of the row [card] shows on after a drop: the row of its pinned tab or folder, or else of its tab. */
+private fun rowKeyAfterDrop(card: StackCard, content: PageContent): String? {
+    val pins = content.state.pins
+    val pin = card.pinId?.let { id -> pins.firstOrNull { it.id == id } }
+        ?: card.tabId?.let { id -> pins.firstOrNull { it.tabId == id && !it.isFolder } }
+    val key = when {
+        pin != null && pin.workspaceId == content.workspace.id -> PIN_PREFIX + pin.id
+        content.otherTabs.any { it.id == card.tabId } -> TAB_PREFIX + card.tabId
+        else -> return null
+    }
+    return content.lineKeys[key] ?: key
+}
+
+/**
+ * Where the cards of a drop on [target] head when their rows are not in view: into the line showing the drop, or up
+ * into the essentials.
+ */
+private fun dropFallback(
+    target: DropTarget,
+    lineKeys: Map<String, String>,
+    listState: LazyListState,
+    frame: ListFrame,
+): Offset? {
+    val lines = dropLinesFor(target, lineKeys) ?: return Offset(frame.left + frame.width / 2, 0f)
+    val row = frame.rowRect(listState, lines.key) ?: return null
+    return when (lines.line) {
+        DropLine.TOP -> Offset(row.center.x, row.top)
+        DropLine.BOTTOM -> Offset(row.center.x, row.bottom)
+        DropLine.INSIDE -> row.center
+    }
+}
 
 /**
  * Scrolls as little as it takes to show the row at [index] whole. A row below the ones in view comes in at the bottom,
@@ -619,30 +888,54 @@ private fun Modifier.dropLine(line: DropLine?, lineColor: Color, insideColor: Co
         }
     }
 
-/** The line between pinned and unpinned tabs, with Zen's "Clear" button for the unpinned ones. */
+/**
+ * The line between pinned and unpinned tabs, with Zen's "Clear" button for the unpinned ones, which [clearButton] is
+ * given to. Holding it runs [onClearData] instead.
+ */
 @Composable
 private fun SectionDivider(
     showClear: Boolean,
     onClear: () -> Unit,
+    onClearData: () -> Unit,
+    clearButton: Modifier,
     modifier: Modifier = Modifier,
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier.fillMaxWidth().height(44.dp).padding(start = 12.dp),
     ) {
-        HorizontalDivider(modifier = Modifier.weight(1f), color = MaterialTheme.colorScheme.outlineVariant)
+        // The line has the color of New Tab below it.
+        HorizontalDivider(modifier = Modifier.weight(1f), color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (showClear) {
-            TextButton(
-                onClick = onClear,
-                colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.onSurfaceVariant),
+            // A text button that can be held too.
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+                modifier = clearButton
+                    .tipTarget(Tip.CLEAR, TipGesture.Hold)
+                    .defaultMinSize(minWidth = ButtonDefaults.MinWidth, minHeight = ButtonDefaults.MinHeight)
+                    .clip(CircleShape)
+                    .combinedClickable(
+                        role = Role.Button,
+                        onLongClickLabel = stringResource(R.string.dejavu_menu_clear_data),
+                        onLongClick = onClearData,
+                        onClick = onClear,
+                    )
+                    .padding(ButtonDefaults.TextButtonContentPadding),
             ) {
+                val color = MaterialTheme.colorScheme.onSurfaceVariant
                 Icon(
                     painter = painterResource(iconsR.drawable.mozac_ic_chevron_down_16),
                     contentDescription = null,
+                    tint = color,
                     modifier = Modifier.size(14.dp),
                 )
                 Spacer(Modifier.width(4.dp))
-                Text(stringResource(R.string.dejavu_clear_unpinned), style = MaterialTheme.typography.labelLarge)
+                Text(
+                    text = stringResource(R.string.dejavu_clear_unpinned),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = color,
+                )
             }
         } else {
             Spacer(Modifier.width(12.dp))
@@ -667,18 +960,29 @@ private fun NewTabRow(
     modifier: Modifier = Modifier,
 ) {
     var menuOpen by remember { mutableStateOf(false) }
+    val taps = rememberIconTaps()
     Box(modifier = modifier) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RowShape)
-                .combinedClickable(enabled = enabled, onClick = onClick, onLongClick = { menuOpen = true })
+                .combinedClickable(
+                    enabled = enabled,
+                    onClick = {
+                        taps.tap()
+                        onClick()
+                    },
+                    onLongClick = {
+                        Tips.done(Tip.NEW_TAB)
+                        menuOpen = true
+                    },
+                )
                 .padding(horizontal = 12.dp, vertical = 14.dp),
         ) {
-            Icon(
-                painter = painterResource(iconsR.drawable.mozac_ic_plus_24),
-                contentDescription = null,
+            TapIcon(
+                icon = R.drawable.dejavu_ic_new_tab_24,
+                taps = taps,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(20.dp).padding(start = 3.dp),
             )
@@ -708,7 +1012,7 @@ private fun NewTabRow(
                 text = stringResource(R.string.dejavu_new_private_tab),
                 leadingIcon = {
                     Icon(
-                        painter = painterResource(iconsR.drawable.mozac_ic_private_mode_24),
+                        painter = painterResource(R.drawable.dejavu_ic_private_tab_24),
                         contentDescription = null,
                         modifier = Modifier.size(20.dp),
                     )
@@ -763,6 +1067,7 @@ private fun NewTabRow(
  * Workspace name with its default container and icon on the left; tapping the name edits the workspace. On the right,
  * opening the link in the clipboard while [canOpenClipboard] and reopening the tab closed last while
  * [canReopenClosedTab], which [tabButtonsEnabled] allows outside selection mode, then a new folder and the workspace menu.
+ * [reopenButton] is given to the button that reopens closed tabs.
  */
 @Suppress("LongParameterList", "LongMethod")
 @Composable
@@ -783,6 +1088,7 @@ private fun WorkspaceHeader(
     onEdit: () -> Unit,
     onDelete: () -> Unit,
     onMove: (delta: Int) -> Unit,
+    reopenButton: Modifier,
     modifier: Modifier = Modifier,
 ) {
     var menuOpen by remember { mutableStateOf(false) }
@@ -798,38 +1104,50 @@ private fun WorkspaceHeader(
                 .clickable(onClick = onEdit)
                 .padding(horizontal = 12.dp, vertical = 8.dp),
         ) {
-            if (container != null) {
-                ContainerIcon(container, size = 18.dp)
-                Spacer(Modifier.width(8.dp))
+            // The tip about editing the workspace rings what shows of it, not the whole tappable room.
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.tipTarget(Tip.WORKSPACE_NAME, TipGesture.Tap, enabled = !isDevice),
+            ) {
+                if (container != null) {
+                    ContainerIcon(container, size = 18.dp)
+                    Spacer(Modifier.width(8.dp))
+                }
+                workspaceIconText(workspace.icon)?.let { icon ->
+                    Text(text = icon, style = MaterialTheme.typography.titleSmall)
+                    Spacer(Modifier.width(6.dp))
+                }
+                Text(
+                    text = workspace.name,
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = container?.color?.color ?: MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
             }
-            workspaceIconText(workspace.icon)?.let { icon ->
-                Text(text = icon, style = MaterialTheme.typography.titleSmall)
-                Spacer(Modifier.width(6.dp))
-            }
-            Text(
-                text = workspace.name,
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = FontWeight.Bold,
-                color = container?.color?.color ?: MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
         }
         SmallIconButton(
-            icon = iconsR.drawable.mozac_ic_clipboard_24,
+            icon = R.drawable.dejavu_ic_clipboard_24,
             description = R.string.dejavu_open_clipboard_link,
             enabled = tabButtonsEnabled && canOpenClipboard,
             onClick = onOpenClipboard,
         )
         SmallIconButton(
-            icon = iconsR.drawable.mozac_ic_arrow_counter_clockwise_24,
+            icon = R.drawable.dejavu_ic_reopen_tab_24,
             description = R.string.dejavu_reopen_closed_tab,
             enabled = tabButtonsEnabled && canReopenClosedTab,
             onClick = onReopenClosedTab,
+            modifier = reopenButton,
         )
         // The workspace of a device on the account cannot have folders of its own, nor be deleted: sync handles it.
         if (!isDevice) {
-            SmallIconButton(iconsR.drawable.mozac_ic_folder_add_24, R.string.dejavu_action_new_folder, onClick = onNewFolder)
+            SmallIconButton(
+                icon = R.drawable.dejavu_ic_create_folder_24,
+                description = R.string.dejavu_action_new_folder,
+                modifier = Modifier.tipTarget(Tip.FOLDER, TipGesture.Tap),
+                onClick = onNewFolder,
+            )
         }
         Box {
             SmallIconButton(iconsR.drawable.mozac_ic_ellipsis_vertical_24, R.string.dejavu_workspace_menu) {
@@ -912,10 +1230,16 @@ private fun WorkspaceState.openTabsIn(folderId: String, awakeTabIds: Set<String>
     return pins.count { it.id in inside && it.tabId != null && it.tabId in awakeTabIds }
 }
 
+/** The icon of a folder: the outline of a folder, dashed when nothing is inside. */
+@DrawableRes
+internal fun folderIcon(isEmpty: Boolean): Int =
+    if (isEmpty) R.drawable.dejavu_ic_folder_empty_24 else iconsR.drawable.mozac_ic_folder_24
+
 /**
  * A folder of the pinned section. Tapping it folds it, or selects it in selection mode. A closed folder shows
  * [openTabCount], the number of awake tabs hidden inside it, next to its icon. The buttons of [actions] act on
- * everything inside the folder; without any, a closed folder shows how many items it holds instead.
+ * everything inside the folder; without any, a closed folder shows how many items it holds instead. An empty folder has
+ * a dashed icon.
  */
 @Suppress("LongMethod", "LongParameterList")
 @Composable
@@ -951,7 +1275,7 @@ private fun FolderRow(
         )
         Spacer(Modifier.width(6.dp))
         Icon(
-            painter = painterResource(iconsR.drawable.mozac_ic_folder_24),
+            painter = painterResource(folderIcon(isEmpty = childCount == 0)),
             contentDescription = null,
             tint = groupColor(folder.color) ?: MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(20.dp),
@@ -990,16 +1314,7 @@ private fun FolderRow(
         if (selection != null) {
             SelectionMark(selected = selection)
         } else if (actions.isNotEmpty()) {
-            actions.forEach { action ->
-                IconButton(onClick = { onAction(action) }) {
-                    Icon(
-                        painter = painterResource(action.icon),
-                        contentDescription = action.label,
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(20.dp),
-                    )
-                }
-            }
+            actions.forEach { action -> RowActionButton(action, onAction) }
         } else if (folder.collapsed && childCount > 0) {
             Text(
                 text = childCount.toString(),
@@ -1109,16 +1424,7 @@ internal fun TabRow(
             )
         }
         if (selection == null) {
-            actions.forEach { action ->
-                IconButton(onClick = { onAction(action) }) {
-                    Icon(
-                        painter = painterResource(action.icon),
-                        contentDescription = action.label,
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(20.dp),
-                    )
-                }
-            }
+            actions.forEach { action -> RowActionButton(action, onAction) }
         } else {
             SelectionMark(selected = selection)
         }
@@ -1278,11 +1584,46 @@ private fun SelectionMark(selected: Boolean) {
     }
 }
 
+/** A button of a row: [action], which [onAction] carries out on what the row stands for. */
 @Composable
-private fun SmallIconButton(icon: Int, @StringRes description: Int, enabled: Boolean = true, onClick: () -> Unit) {
-    IconButton(onClick = onClick, enabled = enabled) {
-        Icon(
-            painter = painterResource(icon),
+private fun RowActionButton(action: RowAction, onAction: (RowAction) -> Unit) {
+    val taps = rememberIconTaps()
+    IconButton(
+        onClick = {
+            taps.tap()
+            onAction(action)
+        },
+    ) {
+        TapIcon(
+            icon = action.icon,
+            taps = taps,
+            contentDescription = action.label,
+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.size(20.dp),
+        )
+    }
+}
+
+@Composable
+private fun SmallIconButton(
+    icon: Int,
+    @StringRes description: Int,
+    enabled: Boolean = true,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+) {
+    val taps = rememberIconTaps()
+    IconButton(
+        onClick = {
+            taps.tap()
+            onClick()
+        },
+        enabled = enabled,
+        modifier = modifier,
+    ) {
+        TapIcon(
+            icon = icon,
+            taps = taps,
             contentDescription = stringResource(description),
             tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = if (enabled) 1f else DISABLED_ALPHA),
             modifier = Modifier.size(20.dp),

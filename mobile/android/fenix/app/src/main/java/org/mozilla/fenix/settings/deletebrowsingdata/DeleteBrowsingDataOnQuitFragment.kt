@@ -10,6 +10,9 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import org.mozilla.fenix.R
+import org.mozilla.fenix.dejavu.browser.ClearData
+import org.mozilla.fenix.dejavu.discover.NewThing
+import org.mozilla.fenix.dejavu.discover.NewThings
 import org.mozilla.fenix.e2e.SystemInsetsPaddedFragment
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.showToolbar
@@ -36,6 +39,9 @@ class DeleteBrowsingDataOnQuitFragment : PreferenceFragmentCompat(), SystemInset
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.delete_browsing_data_quit_preferences, rootKey)
+        if (savedInstanceState == null && arguments?.getBoolean(ClearData.SHOW_CHOICES) == true) {
+            scrollToPreference(getString(R.string.pref_key_dejavu_clear_data))
+        }
     }
 
     override fun onResume() {
@@ -72,6 +78,24 @@ class DeleteBrowsingDataOnQuitFragment : PreferenceFragmentCompat(), SystemInset
         checkboxes.forEach { (_, pref) ->
             pref.onPreferenceChangeListener = checkboxUpdater
         }
+
+        // Dejavu: what Clear data deletes, kept where Firefox keeps the choices above.
+        val chosen = ClearData.chosen(requireContext())
+        ClearData.keys(requireContext()).forEach { key ->
+            findPreference<CheckBoxPreference>(key)?.apply {
+                isChecked = ClearData.typeOf(requireContext(), key) in chosen
+                onPreferenceChangeListener = SharedPreferenceUpdater()
+            }
+        }
+        findPreference<Preference>(getString(R.string.pref_key_dejavu_clear_data))?.let {
+            NewThings.mark(it, NewThing.CLEAR_DATA_CHOICES)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Dejavu: what Clear data deletes keeps its orange dot until this screen was shown once.
+        NewThings.seen(requireContext(), NewThing.CLEAR_DATA_CHOICES)
     }
 
     private fun setAllCheckboxes(newValue: Boolean) {

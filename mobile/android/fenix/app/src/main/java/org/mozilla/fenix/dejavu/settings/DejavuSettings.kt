@@ -15,9 +15,11 @@ import org.mozilla.fenix.dejavu.actions.ActionPlace
 import org.mozilla.fenix.dejavu.actions.CustomAction
 import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
+import org.mozilla.fenix.dejavu.browser.BarsLayout
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.history.HistoryGrouping
 import org.mozilla.fenix.dejavu.menu.ActionsBarLayout
+import org.mozilla.fenix.dejavu.menu.AddressBarButtons
 import org.mozilla.fenix.dejavu.menu.MoreMenuLayout
 
 /**
@@ -46,11 +48,20 @@ class DejavuSettings private constructor(context: Context) {
         MoreMenuLayout.normalized(MoreMenuLayout.fromJson(prefs.getString(KEY_MORE_MENU_ROWS, null)) ?: MoreMenuLayout.DEFAULT),
     )
     private val _moreMenuEditHidden = MutableStateFlow(prefs.getBoolean(KEY_MORE_MENU_EDIT_HIDDEN, false))
+    private val _systemBarsHidden = MutableStateFlow(prefs.getBoolean(KEY_SYSTEM_BARS_HIDDEN, false))
+    private val _barsLayout = MutableStateFlow(BarsLayout.fromKey(prefs.getString(KEY_BARS_LAYOUT, null)))
+    private val _homeSearchAtBottom = MutableStateFlow(prefs.getBoolean(KEY_HOME_SEARCH_AT_BOTTOM, false))
+    private val _addressBarButtons = MutableStateFlow(readAddressBarButtons())
     private val _actionsBarKeys = MutableStateFlow(readActionsBar())
     private val _tabSleepMinutes = MutableStateFlow(prefs.getInt(KEY_TAB_SLEEP_MINUTES, DEFAULT_TAB_SLEEP_MINUTES))
+    private val _awakeTabLimit = MutableStateFlow(prefs.getInt(KEY_AWAKE_TAB_LIMIT, DEFAULT_AWAKE_TAB_LIMIT))
+    private val _welcomeSeen = MutableStateFlow(prefs.getBoolean(KEY_WELCOME_SEEN, false))
     private val _hiddenSelectionKeys = MutableStateFlow(
         prefs.getString(KEY_HIDDEN_SELECTION_ACTIONS, null)?.split(",")?.filter { it.isNotBlank() }?.toSet().orEmpty(),
     )
+    private val _tipsEnabled = MutableStateFlow(prefs.getBoolean(KEY_TIPS_ENABLED, true))
+    private val _seenTips = MutableStateFlow(readSet(KEY_SEEN_TIPS))
+    private val _seenNewThings = MutableStateFlow(readSet(KEY_SEEN_NEW_THINGS))
 
     /** Actions the user defined, in creation order. */
     val customActions: StateFlow<List<CustomAction>> = _customActions.asStateFlow()
@@ -82,6 +93,24 @@ class DejavuSettings private constructor(context: Context) {
     /** Whether the "More" menu hides its button that opens the menu's settings. */
     val moreMenuEditHidden: StateFlow<Boolean> = _moreMenuEditHidden.asStateFlow()
 
+    /** Whether the status bar and the navigation bar are hidden while a page shows. */
+    val systemBarsHidden: StateFlow<Boolean> = _systemBarsHidden.asStateFlow()
+
+    /** Where the bars show around pages, and so where the "More" menu opens from. */
+    val barsLayout: StateFlow<BarsLayout> = _barsLayout.asStateFlow()
+
+    /**
+     * Whether the home screen shows its search bar, with the account and settings buttons, at the bottom, and the bar of
+     * the workspaces and the downloads, extensions, bookmarks and history buttons at the top, the other way round.
+     */
+    val homeSearchAtBottom: StateFlow<Boolean> = _homeSearchAtBottom.asStateFlow()
+
+    /**
+     * The buttons beside the address bar the user chose, which every layout of the bars shows, or `null` before they
+     * chose any, while each layout shows the ones of [AddressBarButtons.defaultFor] it, see [addressBarButtonsIn].
+     */
+    val addressBarButtons: StateFlow<AddressBarButtons?> = _addressBarButtons.asStateFlow()
+
     /** Buttons of the actions bar below pages, as keys of its entries. See [ActionsBarLayout]. */
     val actionsBarKeys: StateFlow<List<String>> = _actionsBarKeys.asStateFlow()
 
@@ -96,15 +125,59 @@ class DejavuSettings private constructor(context: Context) {
         prefs.edit { putInt(KEY_TAB_SLEEP_MINUTES, minutes) }
     }
 
-    /** The version of the feature tour the user has seen, 0 for none. */
-    var featureTourSeen: Int
-        get() = prefs.getInt(KEY_FEATURE_TOUR_SEEN, 0)
-        set(value) = prefs.edit { putInt(KEY_FEATURE_TOUR_SEEN, value) }
+    /**
+     * The most tabs awake at once, or 0 for no limit: when one more wakes up, the one used longest ago goes to sleep.
+     */
+    val awakeTabLimit: StateFlow<Int> = _awakeTabLimit.asStateFlow()
 
-    /** The newest version whose changes the tour showed, like "2.0", or `null` before Dejavu 2.0 showed any. */
+    fun setAwakeTabLimit(limit: Int) {
+        _awakeTabLimit.value = limit
+        prefs.edit { putInt(KEY_AWAKE_TAB_LIMIT, limit) }
+    }
+
+    /** Whether the welcome pages were shown, or are not due, as Dejavu was updated from a version that had them. */
+    val welcomeSeen: StateFlow<Boolean> = _welcomeSeen.asStateFlow()
+
+    fun setWelcomeSeen(seen: Boolean) {
+        _welcomeSeen.value = seen
+        prefs.edit { putBoolean(KEY_WELCOME_SEEN, seen) }
+    }
+
+    /** Whether tips point out gestures nothing on the screen shows, see [org.mozilla.fenix.dejavu.discover.Tips]. */
+    val tipsEnabled: StateFlow<Boolean> = _tipsEnabled.asStateFlow()
+
+    /** Keys of the tips that were shown and closed, or whose gesture the user made. */
+    val seenTips: StateFlow<Set<String>> = _seenTips.asStateFlow()
+
+    /** Keys of the new things the user looked at, see [org.mozilla.fenix.dejavu.discover.NewThing]. */
+    val seenNewThings: StateFlow<Set<String>> = _seenNewThings.asStateFlow()
+
+    /** Turns the tips on or off; turned on, every tip shows again. */
+    fun setTipsEnabled(enabled: Boolean) {
+        _tipsEnabled.value = enabled
+        if (enabled) _seenTips.value = emptySet()
+        prefs.edit {
+            putBoolean(KEY_TIPS_ENABLED, enabled)
+            if (enabled) remove(KEY_SEEN_TIPS)
+        }
+    }
+
+    fun markTipSeen(key: String) = addKey(_seenTips, KEY_SEEN_TIPS, key)
+
+    fun markNewThingSeen(key: String) = addKey(_seenNewThings, KEY_SEEN_NEW_THINGS, key)
+
+    /**
+     * The newest version whose changes the tour of Dejavu 2.0 to 3.0 showed when it started, like "2.0", or `null`
+     * without one. The welcome pages tell an update from an older version by it.
+     */
     var whatsNewSeen: String?
         get() = prefs.getString(KEY_WHATS_NEW_SEEN, null)
         set(value) = prefs.edit { putString(KEY_WHATS_NEW_SEEN, value) }
+
+    /** When Clear data last deleted the data pages leave behind, like cookies, in milliseconds, or 0. */
+    var clearedDataAt: Long
+        get() = prefs.getLong(KEY_CLEARED_DATA_AT, 0L)
+        set(value) = prefs.edit { putLong(KEY_CLEARED_DATA_AT, value) }
 
     /** How History lists pages. */
     var historyGrouping: HistoryGrouping
@@ -172,6 +245,43 @@ class DejavuSettings private constructor(context: Context) {
         prefs.edit { putBoolean(KEY_MORE_MENU_EDIT_HIDDEN, hidden) }
     }
 
+    fun setSystemBarsHidden(hidden: Boolean) {
+        _systemBarsHidden.value = hidden
+        prefs.edit { putBoolean(KEY_SYSTEM_BARS_HIDDEN, hidden) }
+    }
+
+    fun setBarsLayout(layout: BarsLayout) {
+        _barsLayout.value = layout
+        prefs.edit { putString(KEY_BARS_LAYOUT, layout.key) }
+    }
+
+    fun setHomeSearchAtBottom(atBottom: Boolean) {
+        _homeSearchAtBottom.value = atBottom
+        prefs.edit { putBoolean(KEY_HOME_SEARCH_AT_BOTTOM, atBottom) }
+    }
+
+    /** The buttons beside the address bar in [layout]: the ones the user chose, or else the ones it starts with. */
+    fun addressBarButtonsIn(layout: BarsLayout): AddressBarButtons =
+        _addressBarButtons.value ?: AddressBarButtons.defaultFor(layout)
+
+    /** Sets the buttons beside the address bar, which every layout of the bars shows from then on. */
+    fun setAddressBarButtons(buttons: AddressBarButtons) {
+        _addressBarButtons.value = buttons
+        prefs.edit {
+            putString(KEY_ADDRESS_BAR_START, buttons.start.orEmpty())
+            putString(KEY_ADDRESS_BAR_END, buttons.end.orEmpty())
+        }
+    }
+
+    /** Lets every layout of the bars show the buttons beside the address bar it starts with again. */
+    fun resetAddressBarButtons() {
+        _addressBarButtons.value = null
+        prefs.edit {
+            remove(KEY_ADDRESS_BAR_START)
+            remove(KEY_ADDRESS_BAR_END)
+        }
+    }
+
     fun resetMoreMenu() {
         _moreMenuRows.value = MoreMenuLayout.DEFAULT
         prefs.edit { remove(KEY_MORE_MENU_ROWS) }
@@ -236,17 +346,44 @@ class DejavuSettings private constructor(context: Context) {
         setSelectionAction(key, enabled = true)
         removeFromMoreMenu(key)
         removeFromActionsBar(key)
+        _addressBarButtons.value?.let { buttons ->
+            val kept = AddressBarButtons(buttons.start.takeUnless { it == key }, buttons.end.takeUnless { it == key })
+            if (kept != buttons) setAddressBarButtons(kept)
+        }
     }
 
     private fun readKeys(key: String, default: List<TabAction>): List<String> =
         prefs.getString(key, null)?.split(",")?.filter { it.isNotBlank() } ?: default.map { it.key }
 
+    private fun readSet(key: String): Set<String> =
+        prefs.getString(key, null)?.split(",")?.filter { it.isNotBlank() }?.toSet().orEmpty()
+
+    private fun addKey(flow: MutableStateFlow<Set<String>>, prefKey: String, key: String) {
+        if (key in flow.value) return
+        flow.value += key
+        prefs.edit { putString(prefKey, flow.value.joinToString(",")) }
+    }
+
+    private fun readAddressBarButtons(): AddressBarButtons? {
+        if (!prefs.contains(KEY_ADDRESS_BAR_START) && !prefs.contains(KEY_ADDRESS_BAR_END)) return null
+        return AddressBarButtons(
+            start = prefs.getString(KEY_ADDRESS_BAR_START, null)?.takeIf { it.isNotBlank() },
+            end = prefs.getString(KEY_ADDRESS_BAR_END, null)?.takeIf { it.isNotBlank() },
+        )
+    }
+
     /**
      * The saved actions bar. Before it could be changed on its own, the bar showed the first row of the menu, so that
-     * is what it starts as, saved right away so that later changes to the menu leave it alone.
+     * is what it starts as, saved right away so that later changes to the menu leave it alone. A bar still as an older
+     * Dejavu started it becomes today's, see [ActionsBarLayout.upgraded].
      */
     private fun readActionsBar(): List<String> {
-        prefs.getString(KEY_ACTIONS_BAR, null)?.let { saved -> return saved.split(",").filter { it.isNotBlank() } }
+        prefs.getString(KEY_ACTIONS_BAR, null)?.let { saved ->
+            val keys = saved.split(",").filter { it.isNotBlank() }
+            val upgraded = ActionsBarLayout.upgraded(keys)
+            if (upgraded != keys) prefs.edit { putString(KEY_ACTIONS_BAR, upgraded.joinToString(",")) }
+            return upgraded
+        }
         val initial = ActionsBarLayout.fromMenu(_moreMenuRows.value)
         prefs.edit { putString(KEY_ACTIONS_BAR, initial.joinToString(",")) }
         return initial
@@ -280,6 +417,12 @@ class DejavuSettings private constructor(context: Context) {
         /** How long a tab stays awake by default after it was last looked at. */
         const val DEFAULT_TAB_SLEEP_MINUTES = 20
 
+        /**
+         * How many tabs stay awake at once by default. On a 4 GB phone each awake tab took about 65 MB, so six keep
+         * Dejavu near 900 MB with more than 1 GB left for the keyboard and other apps, while 40 took 2.8 GB (#240).
+         */
+        const val DEFAULT_AWAKE_TAB_LIMIT = 6
+
         // Kept from before the rename to Dejavu, so saved data still loads.
         private const val PREFS_NAME = "kaizen_settings"
         private const val SECRETS_NAME = "dejavu_secrets"
@@ -295,11 +438,21 @@ class DejavuSettings private constructor(context: Context) {
         private const val KEY_EXTERNAL_LINK_CONTAINER = "external_link_container"
         private const val KEY_MORE_MENU_ROWS = "more_menu_rows"
         private const val KEY_MORE_MENU_EDIT_HIDDEN = "more_menu_edit_hidden"
+        private const val KEY_SYSTEM_BARS_HIDDEN = "system_bars_hidden"
+        private const val KEY_BARS_LAYOUT = "bars_layout"
+        private const val KEY_HOME_SEARCH_AT_BOTTOM = "home_search_at_bottom"
+        private const val KEY_ADDRESS_BAR_START = "address_bar_start"
+        private const val KEY_ADDRESS_BAR_END = "address_bar_end"
         private const val KEY_ACTIONS_BAR = "actions_bar"
         private const val KEY_HISTORY_GROUPING = "history_grouping"
         private const val KEY_TAB_SLEEP_MINUTES = "tab_sleep_minutes"
-        private const val KEY_FEATURE_TOUR_SEEN = "feature_tour_seen"
+        private const val KEY_AWAKE_TAB_LIMIT = "awake_tab_limit"
+        private const val KEY_WELCOME_SEEN = "welcome_seen"
+        private const val KEY_CLEARED_DATA_AT = "cleared_data_at"
         private const val KEY_WHATS_NEW_SEEN = "whats_new_seen"
+        private const val KEY_TIPS_ENABLED = "tips_enabled"
+        private const val KEY_SEEN_TIPS = "seen_tips"
+        private const val KEY_SEEN_NEW_THINGS = "seen_new_things"
         private val DEFAULT_PINNED_ROW_ACTIONS = listOf(TabAction.CLOSE)
         private val DEFAULT_UNPINNED_ROW_ACTIONS = listOf(TabAction.PIN, TabAction.CLOSE)
         private val DEFAULT_FOLDER_ROW_ACTIONS = listOf(TabAction.SLEEP)

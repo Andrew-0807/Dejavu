@@ -58,7 +58,12 @@ fun DejavuTextField(
     )
 }
 
-/** A [DejavuTextField] for a [TextFieldValue], for fields that also need the selection, like inserting at the cursor. */
+/**
+ * A [DejavuTextField] for a [TextFieldValue], for fields that also need the selection, like inserting at the cursor.
+ *
+ * @param suffix Text after the typed text that cannot be edited, like a file's extension.
+ * @param isError Whether the typed text is wrong, which turns the edge red.
+ */
 @Suppress("LongParameterList")
 @Composable
 fun DejavuTextField(
@@ -71,16 +76,20 @@ fun DejavuTextField(
     minLines: Int = 1,
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    suffix: String? = null,
+    isError: Boolean = false,
     visualTransformation: VisualTransformation = VisualTransformation.None,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     TextField(
         value = value,
         onValueChange = onValueChange,
-        modifier = modifier.fieldEdge(interactionSource),
+        modifier = modifier.fieldEdge(interactionSource, isError),
         textStyle = textStyle,
         label = label?.let { { Text(it) } },
         placeholder = placeholder?.let { { Text(it) } },
+        suffix = suffix?.let { { Text(it, color = MaterialTheme.colorScheme.onSurfaceVariant) } },
+        isError = isError,
         keyboardOptions = keyboardOptions,
         visualTransformation = visualTransformation,
         singleLine = singleLine,
@@ -92,13 +101,17 @@ fun DejavuTextField(
 }
 
 @Composable
-private fun Modifier.fieldEdge(interactionSource: InteractionSource): Modifier {
+private fun Modifier.fieldEdge(interactionSource: InteractionSource, isError: Boolean = false): Modifier {
     val focused by interactionSource.collectIsFocusedAsState()
     val color by animateColorAsState(
-        targetValue = if (focused) MaterialTheme.colorScheme.primary else DejavuPopup.edgeColor,
+        targetValue = when {
+            isError -> MaterialTheme.colorScheme.error
+            focused -> MaterialTheme.colorScheme.primary
+            else -> DejavuPopup.edgeColor
+        },
         label = "fieldEdge",
     )
-    return border(if (focused) FOCUSED_EDGE else 1.dp, color, FieldShape)
+    return border(if (focused || isError) FOCUSED_EDGE else 1.dp, color, FieldShape)
 }
 
 @Composable

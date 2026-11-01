@@ -19,6 +19,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -35,10 +36,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.NavController
 import mozilla.components.browser.state.action.AwesomeBarAction
+import mozilla.components.browser.state.selector.findTab
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.compose.base.theme.layout.AcornWindowSize
 import mozilla.components.compose.browser.awesomebar.AwesomeBar
+import mozilla.components.compose.browser.awesomebar.AwesomeBarDefaults
 import mozilla.components.compose.browser.awesomebar.AwesomeBarOrientation
+import mozilla.components.compose.browser.awesomebar.internal.CurrentTabData
 import mozilla.components.compose.browser.awesomebar.internal.CurrentTabDetailsInteractions.CopyClicked
 import mozilla.components.compose.browser.awesomebar.internal.CurrentTabDetailsInteractions.DetailsClicked
 import mozilla.components.compose.browser.awesomebar.internal.CurrentTabDetailsInteractions.EditClicked
@@ -56,6 +60,12 @@ import org.mozilla.fenix.components.AppStore
 import org.mozilla.fenix.components.Components
 import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchEnded
 import org.mozilla.fenix.components.metrics.MetricsUtils
+import org.mozilla.fenix.dejavu.browser.DejavuClipboardChip
+import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.NewTabSearch
+import org.mozilla.fenix.dejavu.browser.RecentSearchMenu
+import org.mozilla.fenix.dejavu.browser.RecentSearchMenuDialog
+import org.mozilla.fenix.dejavu.browser.searchScreenBackground
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getRootView
 import org.mozilla.fenix.home.toolbar.edgeToEdgeClipboardBarBackground
@@ -178,20 +188,7 @@ class AwesomeBarComposable(
         }
 
         if (isSearchActive && shouldShowClipboardBar && orientation == AwesomeBarOrientation.TOP) {
-            val url = components.clipboardHandler.extractURL()
-
-            ClipboardSuggestionBar(
-                modifier = Modifier.awesomeBarContentWidth(showCurrentTabData),
-                shouldUseBottomToolbar = components.settings.shouldUseBottomToolbar,
-                backgroundColor = clipboardBarBackground,
-                onClick = {
-                    url?.let {
-                        toolbarStore.dispatch(
-                            SearchQueryUpdated(query = BrowserToolbarQuery(url), isQueryPrefilled = true)
-                        )
-                    }
-                },
-            )
+            ClipboardBar(Modifier.awesomeBarContentWidth(showCurrentTabData), clipboardBarBackground)
         }
 
         if (isSearchActive) {
@@ -224,7 +221,7 @@ class AwesomeBarComposable(
             if (state.shouldShowSearchSuggestions) {
                 Box(
                     modifier =
-                        modifier.background(MaterialTheme.colorScheme.surface).fillMaxSize().pointerInput(
+                        modifier.background(searchScreenBackground()).fillMaxSize().pointerInput(
                             WindowInsets.isImeVisible
                         ) {
                             detectTapGestures(
@@ -233,6 +230,10 @@ class AwesomeBarComposable(
                                 },
                                 onTap = {
                                     focusManager.clearFocus()
+                                    // Dejavu: a search started from a page goes back to it, as Back does.
+                                    val isFromPage = appStore.state.searchState.sourceTabId != null &&
+                                        navController.currentDestination?.id == R.id.homeFragment
+                                    if (isFromPage) navController.navigate(R.id.browserFragment)
                                     appStore.dispatch(SearchEnded)
                                 },
                             )
@@ -240,8 +241,9 @@ class AwesomeBarComposable(
                 ) {
                     val currentTabDetailsToShow =
                         remember(state.query.isBlank()) {
-                            when (state.query.isBlank() && showCurrentTabData) {
-                                true -> state.currentTabData
+                            val forNewTab = NewTabSearch.isFor(appStore.state.searchState.sourceTabId)
+                            when (state.query.isBlank() && showCurrentTabData && !forNewTab) {
+                                true -> state.currentTabData ?: sourceTabData()
                                 else -> null
                             }
                         }
@@ -261,6 +263,9 @@ class AwesomeBarComposable(
                         AwesomeBar(
                             text = state.query,
                             currentTabData = currentTabDetailsToShow,
+                            colors = AwesomeBarDefaults.colors(
+                                background = searchScreenBackground(opaque = MaterialTheme.colorScheme.background),
+                            ),
                             providers = state.searchSuggestionsProviders,
                             hiddenSuggestions = state.hiddenSuggestions,
                             orientation = orientation,
@@ -286,7 +291,9 @@ class AwesomeBarComposable(
                             },
                             onScroll = { view.hideKeyboard() },
                             profiler = components.core.engine.profiler,
+                            refreshKey = RecentSearchMenu.changes.collectAsState().value,
                         )
+                        RecentSearchMenuDialog()
                     }
                 }
             } else if (showScrimWhenNoSuggestions) {
@@ -310,21 +317,30 @@ class AwesomeBarComposable(
         }
 
         if (isSearchActive && shouldShowClipboardBar && orientation == AwesomeBarOrientation.BOTTOM) {
-            val url = components.clipboardHandler.extractURL()
-
-            ClipboardSuggestionBar(
-                modifier = Modifier.awesomeBarContentWidth(showCurrentTabData),
-                shouldUseBottomToolbar = components.settings.shouldUseBottomToolbar,
-                backgroundColor = clipboardBarBackground,
-                onClick = {
-                    url?.let {
-                        toolbarStore.dispatch(
-                            SearchQueryUpdated(query = BrowserToolbarQuery(url), isQueryPrefilled = true)
-                        )
-                    }
-                },
-            )
+            ClipboardBar(Modifier.awesomeBarContentWidth(showCurrentTabData), clipboardBarBackground)
         }
+    }
+
+    /** The suggestion to fill the link in the clipboard into the address bar. */
+    @Composable
+    private fun ClipboardBar(modifier: Modifier, backgroundColor: Color) {
+        val url = components.clipboardHandler.extractURL()
+        val fill = {
+            url?.let {
+                toolbarStore.dispatch(SearchQueryUpdated(query = BrowserToolbarQuery(url), isQueryPrefilled = true))
+            }
+        }
+        // Dejavu: a chip on a line of its own, like the chips below it.
+        if (DejavuToolbar.enabled) {
+            DejavuClipboardChip(link = url, onClick = { fill() }, modifier = modifier)
+            return
+        }
+        ClipboardSuggestionBar(
+            modifier = modifier,
+            shouldUseBottomToolbar = components.settings.shouldUseBottomToolbar,
+            backgroundColor = backgroundColor,
+            onClick = { fill() },
+        )
     }
 
     private fun initializeSearchStore() =
@@ -371,4 +387,14 @@ class AwesomeBarComposable(
                     ),
             )
         }
+
+    /**
+     * Dejavu: the details of the tab a search in the browser was started from, shown like those of a search started
+     * from the address bar of a page, which is shown on the home screen.
+     */
+    private fun sourceTabData(): CurrentTabData? {
+        if (!DejavuToolbar.enabled) return null
+        val tab = appStore.state.searchState.sourceTabId?.let { browserStore.state.findTab(it) } ?: return null
+        return CurrentTabData(title = tab.content.title, url = tab.content.url, icon = tab.content.icon)
+    }
 }

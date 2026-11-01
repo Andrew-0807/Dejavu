@@ -67,8 +67,8 @@ enum class TabAction(
         Everywhere - ActionPlace.UNPINNED_ROWS,
     ),
     SLEEP("sleep", R.string.dejavu_action_sleep, R.drawable.dejavu_ic_sleep_24, Everywhere),
-    BOOKMARK("bookmark", R.string.dejavu_action_bookmark, iconsR.drawable.mozac_ic_bookmark_24, Everywhere),
-    SHARE("share", R.string.dejavu_action_share, iconsR.drawable.mozac_ic_share_android_24, Everywhere),
+    BOOKMARK("bookmark", R.string.dejavu_action_bookmark, R.drawable.dejavu_ic_bookmark_add_24, Everywhere),
+    SHARE("share", R.string.dejavu_action_share, R.drawable.dejavu_ic_share_24, Everywhere),
     COPY_LINK("copy_link", R.string.dejavu_action_copy_link, iconsR.drawable.mozac_ic_link_24, Everywhere),
     DUPLICATE("duplicate", R.string.dejavu_action_duplicate, iconsR.drawable.mozac_ic_copy_24, Everywhere),
     MOVE_TO_WORKSPACE(
@@ -90,6 +90,20 @@ enum class TabAction(
         setOf(ActionPlace.SELECTION) + ShownTab,
     ),
     UNSPLIT("unsplit", R.string.dejavu_action_unsplit, R.drawable.dejavu_ic_unsplit_24, Everywhere),
+
+    // What Split view turns into on screens with room for both ways of splitting; never put by the user.
+    SPLIT_TOP_AND_BOTTOM(
+        "split_top_and_bottom",
+        R.string.dejavu_split_top_and_bottom,
+        R.drawable.dejavu_ic_split_24,
+        emptySet(),
+    ),
+    SPLIT_SIDE_BY_SIDE(
+        "split_side_by_side",
+        R.string.dejavu_split_side_by_side,
+        R.drawable.dejavu_ic_split_side_24,
+        emptySet(),
+    ),
     MOVE_TO_FOLDER(
         "move_to_folder",
         R.string.dejavu_action_move_to_folder,
@@ -99,7 +113,7 @@ enum class TabAction(
     NEW_FOLDER(
         "new_folder",
         R.string.dejavu_action_new_folder,
-        iconsR.drawable.mozac_ic_folder_add_24,
+        R.drawable.dejavu_ic_create_folder_24,
         Everywhere - ActionPlace.FOLDER_ROWS,
     ),
     RESET_PIN(
@@ -129,7 +143,7 @@ enum class TabAction(
     NEW_SUBFOLDER(
         "new_subfolder",
         R.string.dejavu_folder_new_subfolder,
-        iconsR.drawable.mozac_ic_folder_add_24,
+        R.drawable.dejavu_ic_create_folder_24,
         setOf(ActionPlace.FOLDER_ROWS, ActionPlace.SELECTION),
     ),
     RENAME_FOLDER(
@@ -165,8 +179,9 @@ enum class TabAction(
          */
         val ordered: List<TabAction> = listOf(
             UNPIN, PIN, RESET_PIN, REPLACE_PIN, ADD_TO_ESSENTIALS, REMOVE_FROM_ESSENTIALS, RENAME_TAB, SLEEP, BOOKMARK, SHARE,
-            COPY_LINK, DUPLICATE, SPLIT_VIEW, UNSPLIT, NEW_FOLDER, NEW_SUBFOLDER, RENAME_FOLDER, MOVE_TO_FOLDER,
-            MOVE_TO_WORKSPACE, CHANGE_CONTAINER, UNPACK_FOLDER, DELETE, CLOSE,
+            COPY_LINK, DUPLICATE, SPLIT_VIEW, SPLIT_TOP_AND_BOTTOM, SPLIT_SIDE_BY_SIDE, UNSPLIT, NEW_FOLDER,
+            NEW_SUBFOLDER, RENAME_FOLDER, MOVE_TO_FOLDER, MOVE_TO_WORKSPACE, CHANGE_CONTAINER, UNPACK_FOLDER, DELETE,
+            CLOSE,
         )
 
         fun fromKey(key: String): TabAction? = entries.firstOrNull { it.key == key }

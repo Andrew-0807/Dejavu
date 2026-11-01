@@ -56,11 +56,11 @@ class ThreadPenaltyDeathWithIgnoresListener(
         isSamsungLgEdmStorageProviderStartupViolation(violation) ||
             containsInstrumentedHooksClass(violation) ||
             isSamsungIdsController(violation) ||
+            isSamsungSharedPreferencesApply(violation) ||
             isXiaomiMultiLangHelperViolation(violation) ||
             isFinishAttachApplication(violation) ||
             containsInMemoryDexClassLoader(violation) ||
-            isInflatingPlatformPreference(violation) ||
-            isSamsungSharedPreferencesApply(violation)
+            isInflatingPlatformPreference(violation)
 
     private fun isSamsungIdsController(violation: Violation): Boolean {
         // See https://bugzilla.mozilla.org/show_bug.cgi?id=1806469
@@ -68,6 +68,15 @@ class ThreadPenaltyDeathWithIgnoresListener(
         // IdsController doesn't appear in Android code search so we match against it.
         // https://cs.android.com/search?q=IdsController
         return manufacturerChecker.isSamsung() && violation.stackTrace.any { it.className == IDS_CONTROLLER_CLASS }
+    }
+
+    private fun isSamsungSharedPreferencesApply(violation: Violation): Boolean {
+        // Samsung's Android 13 adds a check to SharedPreferences.Editor.apply() that looks for a file on disk, so every
+        // preference saved on the main thread is a DiskReadViolation; it crashes debug builds at startup on a Galaxy
+        // S20+. isSpeg is not in Android's own code, so we match against it.
+        return manufacturerChecker.isSamsung() && violation.stackTrace.any {
+            it.className == SHARED_PREFERENCES_EDITOR_CLASS && it.methodName == "isSpeg"
+        }
     }
 
     private fun isSamsungLgEdmStorageProviderStartupViolation(violation: Violation): Boolean {
@@ -122,14 +131,6 @@ class ThreadPenaltyDeathWithIgnoresListener(
     private fun isXiaomiMultiLangHelperViolation(violation: Violation): Boolean {
         return manufacturerChecker.isXiaomi() &&
             violation.stackTrace.any { it.className == MIUI_MULTI_LANG_HELPER_CLASS }
-    }
-
-    private fun isSamsungSharedPreferencesApply(violation: Violation): Boolean {
-        // Samsung's SharedPreferences look for a file on disk in apply(), which is meant to be called on the main
-        // thread, so every preference saved there would stop debug builds on Samsung phones.
-        return manufacturerChecker.isSamsung() && violation.stackTrace.any {
-            it.className == SHARED_PREFERENCES_EDITOR_CLASS && it.methodName == "isSpeg"
-        }
     }
 
     private fun isInflatingPlatformPreference(violation: Violation): Boolean {

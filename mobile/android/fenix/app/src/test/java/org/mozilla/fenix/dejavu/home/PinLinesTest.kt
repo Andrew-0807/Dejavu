@@ -8,6 +8,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.mozilla.fenix.dejavu.workspaces.PinKind
 import org.mozilla.fenix.dejavu.workspaces.PinnedItem
+import org.mozilla.fenix.dejavu.workspaces.PinnedSplit
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 import org.mozilla.fenix.dejavu.workspaces.SplitView
 import org.mozilla.fenix.dejavu.workspaces.Workspace
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
@@ -26,13 +28,18 @@ class PinLinesTest {
             updatedAt = 1L,
         )
 
-    private fun rows(pins: List<PinnedItem>, vararg splits: Pair<String, String>): List<List<String>> {
+    private fun rows(
+        pins: List<PinnedItem>,
+        vararg splits: Pair<String, String>,
+        zenSplits: List<PinnedSplit> = emptyList(),
+    ): List<List<String>> {
         val state = WorkspaceState(
             workspaces = listOf(Workspace(id = "workspace", name = "Workspace", createdAt = 1L, updatedAt = 1L)),
             pins = pins,
             activeWorkspaceId = "workspace",
             assignments = emptyMap(),
             splits = splits.mapIndexed { index, (first, second) -> SplitView("split$index", listOf(first, second)) },
+            pinnedSplits = zenSplits,
         )
         return pinLines(state.pinnedTree("workspace"), state).map { line -> line.entries.map { it.item.id } }
     }
@@ -42,6 +49,14 @@ class PinLinesTest {
         val pins = listOf(pin("a"), pin("x"), pin("b"), pin("c"))
 
         assertEquals(listOf(listOf("a", "b"), listOf("x"), listOf("c")), rows(pins, "tab-b" to "tab-a"))
+    }
+
+    @Test
+    fun `the pinned tabs of a split view synced from Zen share one row, even while their tabs are closed`() {
+        val pins = listOf(pin("a", tabId = null), pin("x"), pin("b", tabId = null))
+        val zen = PinnedSplit("zen", listOf("b", "a"), SplitOrientation.SIDE_BY_SIDE)
+
+        assertEquals(listOf(listOf("a", "b"), listOf("x")), rows(pins, zenSplits = listOf(zen)))
     }
 
     @Test

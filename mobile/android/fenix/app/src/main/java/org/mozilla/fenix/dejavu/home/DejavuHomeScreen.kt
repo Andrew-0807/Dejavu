@@ -5,6 +5,7 @@
 package org.mozilla.fenix.dejavu.home
 
 import android.content.Context
+import android.net.Uri
 import android.os.StrictMode
 import java.util.UUID
 import androidx.compose.foundation.background
@@ -23,6 +24,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -30,8 +32,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -59,12 +64,17 @@ import org.mozilla.fenix.dejavu.NewTabContainerChoice
 import org.mozilla.fenix.dejavu.actions.ActionPlace
 import org.mozilla.fenix.dejavu.actions.CustomAction
 import org.mozilla.fenix.dejavu.actions.TabAction
+import org.mozilla.fenix.dejavu.browser.ClearData
 import org.mozilla.fenix.dejavu.browser.DejavuSearchOverlay
+import org.mozilla.fenix.dejavu.browser.DejavuSearchStart
+import org.mozilla.fenix.dejavu.browser.SearchBackdrop
+import org.mozilla.fenix.dejavu.browser.SearchPageBackdrop
+import org.mozilla.fenix.dejavu.browser.SplitSpace
+import org.mozilla.fenix.dejavu.browser.TabZoom
+import org.mozilla.fenix.dejavu.browser.blurBehindSearch
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
-import org.mozilla.fenix.dejavu.features.FeatureTour
-import org.mozilla.fenix.dejavu.features.FeatureTourDialog
 import org.mozilla.fenix.dejavu.features.wasUpdated
 import org.mozilla.fenix.dejavu.openClosedPin
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
@@ -73,12 +83,18 @@ import org.mozilla.fenix.dejavu.settings.resolveSelectionActions
 import org.mozilla.fenix.dejavu.sync.DejavuSync
 import org.mozilla.fenix.dejavu.sync.SyncSourceDialog
 import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
+import org.mozilla.fenix.dejavu.ui.workspacePopupTheme
+import org.mozilla.fenix.dejavu.welcome.Welcome
 import org.mozilla.fenix.dejavu.workspaces.PinPlacement
 import org.mozilla.fenix.dejavu.workspaces.PinSource
 import org.mozilla.fenix.dejavu.workspaces.PinnedItem
+import org.mozilla.fenix.dejavu.workspaces.WallpaperArt
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceWallpaper
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceWallpapers
+import org.mozilla.fenix.settings.deletebrowsingdata.DeleteBrowsingDataOnQuitType
 import org.mozilla.fenix.theme.FirefoxTheme
 
 /**
@@ -108,8 +124,11 @@ fun ComposeView.setDejavuHomeContent(
             val repository = remember { fenix.readOnMainThread { WorkspaceRepository.get(context) } }
             val settings = remember { fenix.readOnMainThread { DejavuSettings.get(context) } }
             val containerStorage = remember { DejavuContainerStorage.get(context) }
+            val wallpaperStore = remember { fenix.readOnMainThread { WorkspaceWallpapers.get(context) } }
             val scope = rememberCoroutineScope()
             val snackbarHostState = remember { SnackbarHostState() }
+            // Counts the times Clear data deleted data, to look again at what is left to delete.
+            var dataCleared by remember { mutableIntStateOf(0) }
             val interactor = remember {
                 DefaultDejavuHomeInteractor(
                     context = context,
@@ -117,26 +136,33 @@ fun ComposeView.setDejavuHomeContent(
                     repository = repository,
                     settings = settings,
                     containerStorage = containerStorage,
+                    wallpapers = wallpaperStore,
                     navController = navController,
                     scope = scope,
                     snackbar = snackbarHostState,
                     openTab = onOpenTab,
+                    onDataCleared = { dataCleared++ },
                 )
             }
+            val hasDataToClear = rememberHasDataToClear(dataCleared)
 
             val workspaceState by repository.state.collectAsState()
+            val wallpapers by wallpaperStore.wallpapers.collectAsState()
             val customActions by settings.customActions.collectAsState()
             val pinnedKeys by settings.pinnedRowKeys.collectAsState()
             val unpinnedKeys by settings.unpinnedRowKeys.collectAsState()
             val folderKeys by settings.folderRowKeys.collectAsState()
             val hiddenSelectionKeys by settings.hiddenSelectionKeys.collectAsState()
             val essentialsPerContainer by settings.essentialsPerContainer.collectAsState()
+            val searchAtBottom by settings.homeSearchAtBottom.collectAsState()
             val containerRecords by containerStorage.records.collectAsState()
             val containers = remember(containerRecords) { containerRecords.orEmpty().associateBy { it.contextId } }
             val tabs by fenix.core.store.observeAsComposableState { it.normalTabs }
             val allPrivateTabs by fenix.core.store.observeAsComposableState { it.privateTabs }
             val isPrivateLocked by fenix.appStore.observeAsComposableState { it.isPrivateScreenLocked }
             val selectedTabId by fenix.core.store.observeAsComposableState { it.selectedTabId }
+            // Read only by the downloads button, so download progress redraws nothing else.
+            val downloads = fenix.core.store.observeAsComposableState { it.downloadsStatus() }
             val hasClosedTab by fenix.core.store.observeAsComposableState { it.hasClosedTab }
             val hasClipboardLink = rememberClipboardHasLink()
             val restoreComplete by fenix.core.store.observeAsComposableState { it.restoreComplete }
@@ -164,8 +190,22 @@ fun ComposeView.setDejavuHomeContent(
                 repository.refreshPinTitles(tabs.associate { it.id to (it.content.url to it.content.title) })
             }
 
+            // A search opened over a page shows the page blurred behind it, else the workspaces blur behind it.
+            val searchedPage by SearchBackdrop.page.collectAsState()
+            val showsPage = remember(searchedPage) {
+                searchedPage?.tabId?.let { it == fenix.appStore.state.searchState.sourceTabId } == true
+            }
+
+            // A fresh install, and an update from a Dejavu without them, shows the welcome pages first.
+            val updated = remember { context.wasUpdated() }
+            val welcomeSeen by settings.welcomeSeen.collectAsState()
+            val welcomeDue = Welcome.isDue(welcomeSeen, updated, settings.whatsNewSeen)
+            // Once Dejavu found what the account syncs from Firefox and Zen, it asks which one workspaces follow.
+            val syncStatus by DejavuSync.status.collectAsState()
+
             Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)) {
                 DejavuHome(
+                    modifier = Modifier.blurBehindSearch(active = isSearchActive && !showsPage),
                     state = workspaceState,
                     tabs = tabs,
                     privateTabs = if (isPrivateLocked) emptyList() else allPrivateTabs,
@@ -178,8 +218,17 @@ fun ComposeView.setDejavuHomeContent(
                     folderRowActions = resolveRowActions(folderKeys, ActionPlace.FOLDER_ROWS, customActions),
                     selectionActions = resolveSelectionActions(hiddenSelectionKeys, customActions),
                     essentialsPerContainer = essentialsPerContainer,
+                    wallpapers = wallpapers,
+                    downloads = downloads,
                     interactor = interactor,
+                    searchAtBottom = searchAtBottom,
+                    hasDataToClear = hasDataToClear,
+                    tipsAllowed = !welcomeDue && !syncStatus.askSource && !isSearchActive,
                 )
+
+                if (showsPage) {
+                    SearchPageBackdrop(active = isSearchActive, modifier = Modifier.fillMaxSize())
+                }
 
                 SnackbarHost(
                     hostState = snackbarHostState,
@@ -201,24 +250,23 @@ fun ComposeView.setDejavuHomeContent(
                 }
             }
 
-            val dueChapters = remember { FeatureTour.dueChapters(settings, updated = context.wasUpdated()) }
-            var showTour by remember { mutableStateOf(dueChapters.isNotEmpty()) }
-            if (showTour) {
-                CompositionLocalProvider(LocalPopupTheme provides workspaceState.activeWorkspace?.theme) {
-                    FeatureTourDialog(
-                        chapters = dueChapters,
-                        onDismiss = {
-                            FeatureTour.markSeen(settings)
-                            showTour = false
-                        },
-                    )
+            LaunchedEffect(Unit) {
+                if (Welcome.isDue(settings.welcomeSeen.value, updated, settings.whatsNewSeen)) {
+                    if (!updated) Welcome.giveFirstLook(context, repository, wallpaperStore)
+                    Welcome.openAtStart(navController)
+                } else if (!settings.welcomeSeen.value) {
+                    settings.setWelcomeSeen(true)
                 }
             }
+            // The examples show their sites' icons before their pages were opened, fetched once the start is over.
+            LaunchedEffect(Unit) {
+                delay(STARTER_ICONS_DELAY_MS)
+                Welcome.loadStarterIcons(context, repository)
+            }
 
-            // Once Dejavu found what the account syncs from Firefox and Zen, it asks which one workspaces follow.
-            val syncStatus by DejavuSync.status.collectAsState()
-            if (!showTour && syncStatus.askSource) {
-                CompositionLocalProvider(LocalPopupTheme provides workspaceState.activeWorkspace?.theme) {
+            val popupTheme = workspacePopupTheme(workspaceState.activeWorkspaceId)
+            if (syncStatus.askSource) {
+                CompositionLocalProvider(LocalPopupTheme provides popupTheme) {
                     SyncSourceDialog(
                         status = syncStatus,
                         workspaces = workspaceState,
@@ -231,9 +279,29 @@ fun ComposeView.setDejavuHomeContent(
 
             LaunchedEffect(Unit) {
                 onFirstFrameDrawn()
+                TabZoom.homeShown()
+                PageGenie.homeShown()
             }
         }
     }
+}
+
+/**
+ * Whether the data chosen for Clear data has anything to delete, see [ClearData.hasData]: looked at again as tabs,
+ * recently closed tabs and downloads come and go, and after Clear data deleted data, which [cleared] counts.
+ */
+@Composable
+private fun rememberHasDataToClear(cleared: Int): Boolean {
+    val context = LocalContext.current
+    val store = components.core.store
+    val chosen = remember(cleared) { ClearData.chosen(context) }
+    val clearedAt = remember(cleared) { DejavuSettings.get(context).clearedDataAt }
+    val tabs by store.observeAsComposableState { it.tabs.size }
+    val closedTabs by store.observeAsComposableState { it.closedTabs.size }
+    val downloads by store.observeAsComposableState { it.downloads.size }
+    var lastVisit by remember { mutableStateOf<Long?>(null) }
+    LaunchedEffect(chosen, cleared, tabs) { lastVisit = ClearData.lastVisit(context) }
+    return ClearData.hasData(chosen, tabs, closedTabs, downloads, lastVisit, clearedAt)
 }
 
 /**
@@ -241,6 +309,7 @@ fun ComposeView.setDejavuHomeContent(
  * search to pick it up, short enough that an abandoned search does not leak it into a later one.
  */
 private const val SEARCH_ABANDON_GRACE_MS = 1500L
+private const val STARTER_ICONS_DELAY_MS = 2_000L
 
 private fun <T> Components.readOnMainThread(block: () -> T): T =
     strictMode.allowViolation(StrictMode::allowThreadDiskReads, block)
@@ -256,6 +325,8 @@ private class DefaultDejavuHomeInteractor(
     private val snackbar: SnackbarHostState,
     private val openTab: (String) -> Unit,
     private val containerStorage: DejavuContainerStorage,
+    private val wallpapers: WorkspaceWallpapers,
+    private val onDataCleared: () -> Unit,
     private val runner: TabActionRunner = TabActionRunner(
         context = context,
         components = components,
@@ -280,13 +351,28 @@ private class DefaultDejavuHomeInteractor(
         containerId: String?,
         icon: String?,
         theme: WorkspaceTheme?,
+        wallpaper: WorkspaceWallpaper?,
     ) {
-        if (workspaceId == null) {
+        val savedId = if (workspaceId == null) {
             repository.addWorkspace(name, containerId, icon, theme)
         } else {
             repository.updateWorkspace(workspaceId, name, containerId, icon, theme)
+            workspaceId
         }
+        wallpapers.set(savedId, wallpaper)
     }
+
+    override suspend fun onDrawWallpaper(art: WallpaperArt): WorkspaceWallpaper? {
+        val screen = context.resources.displayMetrics
+        return wallpapers.importArt(art, screen.widthPixels, screen.heightPixels)
+    }
+
+    override suspend fun onImportWallpaper(uri: Uri): WorkspaceWallpaper? {
+        val screen = context.resources.displayMetrics
+        return wallpapers.importPicture(uri, screen.widthPixels, screen.heightPixels)
+    }
+
+    override fun onDiscardWallpaper(file: String) = wallpapers.discard(file)
 
     override fun onCreateContainer(name: String, color: ContainerColor, icon: ContainerState.Icon): String {
         val contextId = UUID.randomUUID().toString()
@@ -294,19 +380,48 @@ private class DefaultDejavuHomeInteractor(
         return contextId
     }
 
-    override fun onDeleteWorkspace(workspaceId: String) = repository.deleteWorkspace(workspaceId)
+    override fun onDeleteWorkspace(workspaceId: String) {
+        repository.deleteWorkspace(workspaceId)
+        if (repository.state.value.workspaces.none { it.id == workspaceId }) wallpapers.set(workspaceId, null)
+    }
 
     override fun onMoveWorkspace(workspaceId: String, index: Int) = repository.moveWorkspace(workspaceId, index)
 
     override fun onTabClick(tabId: String) = openTab(tabId)
 
     override fun onPinClick(pin: PinnedItem) {
-        val liveTabId = pin.tabId?.takeIf { store.state.findTab(it) != null }
-        if (liveTabId != null) {
-            openTab(liveTabId)
-            return
+        tabOf(pin, select = true) { showPin(pin, it) }?.let { showPin(pin, it) }
+    }
+
+    /** Shows [tabId], the tab of [pin]. */
+    private fun showPin(pin: PinnedItem, tabId: String) {
+        // The two pinned tabs of a split view synced from Zen open together, the way Zen shows them.
+        val state = repository.state.value
+        val zenSplit = state.pinnedSplitOf(pin.id)
+        if (zenSplit != null && state.splitOf(tabId) == null) {
+            val otherId = zenSplit.pinIds.firstOrNull { it != pin.id }
+            val other = state.pins.firstOrNull { it.id == otherId }
+            val first = zenSplit.pinIds.first() == pin.id
+            val split: (String) -> Unit = { otherTabId ->
+                repository.createSplit(
+                    first = if (first) tabId else otherTabId,
+                    second = if (first) otherTabId else tabId,
+                    orientation = zenSplit.orientation,
+                )
+            }
+            other?.let { tabOf(it, select = false, onOpened = split) }?.let(split)
         }
-        openClosedPin(context, pin, onOpened = openTab)?.let(openTab)
+        openTab(tabId)
+    }
+
+    /**
+     * The open tab of [pin]. A pin whose tab closed opens where that tab was, like a sleeping tab wakes up, selected
+     * when [select] is set. One whose address is not a web page first asks the user, see [openClosedPin]: then `null`
+     * is returned, and [onOpened] gets the tab once the user agrees.
+     */
+    private fun tabOf(pin: PinnedItem, select: Boolean, onOpened: (String) -> Unit = {}): String? {
+        pin.tabId?.takeIf { store.state.findTab(it) != null }?.let { return it }
+        return openClosedPin(context, pin, select, onOpened)
     }
 
     override fun onTabAction(action: TabAction, targets: ActionTargets, workspaceId: String) =
@@ -374,7 +489,7 @@ private class DefaultDejavuHomeInteractor(
             is DropTarget.SplitWith -> {
                 val dragged = targets.tabs.singleOrNull()?.takeIf { it.id != target.tabId } ?: return
                 if (store.state.findTab(target.tabId) == null) return
-                repository.createSplit(target.tabId, dragged.id)
+                repository.createSplit(target.tabId, dragged.id, SplitSpace.preferred(SplitSpace.supported(context)))
                 store.dispatch(TabListAction.MoveTabsAction(listOf(dragged.id), target.tabId, placeAfter = true))
                 return
             }
@@ -416,6 +531,9 @@ private class DefaultDejavuHomeInteractor(
     override fun onMoveEssential(pinId: String, index: Int) =
         repository.moveEssential(pinId, index, settings.essentialsPerContainer.value)
 
+    override fun onClearData(quit: Boolean): Set<DeleteBrowsingDataOnQuitType> =
+        ClearData.run(context, showChoices = { ClearData.showChoices(navController) }, quit, onDataCleared)
+
     override fun onClearUnpinned(workspaceId: String) {
         val state = repository.state.value
         val tabIds = store.state.normalTabs
@@ -437,11 +555,17 @@ private class DefaultDejavuHomeInteractor(
 
     override fun onSearchClick() {
         NewTabContainerChoice.clear()
-        components.appStore.dispatch(SearchStarted())
+        startSearch()
     }
 
     override fun onNewPrivateTab() {
         NewTabContainerChoice.setPrivate()
+        startSearch()
+    }
+
+    /** Opens the search screen, right where it is when the search bar is at the bottom of the home screen. */
+    private fun startSearch() {
+        if (settings.homeSearchAtBottom.value) DejavuSearchStart.fromBottom()
         components.appStore.dispatch(SearchStarted())
     }
 
@@ -451,7 +575,7 @@ private class DefaultDejavuHomeInteractor(
 
     override fun onNewTabInContainer(pick: ContainerPick) {
         NewTabContainerChoice.set(pick)
-        components.appStore.dispatch(SearchStarted())
+        startSearch()
     }
 
     override fun onAccountClick() {
@@ -460,28 +584,27 @@ private class DefaultDejavuHomeInteractor(
         } else {
             NavGraphDirections.actionGlobalTurnOnSync(entrypoint = FenixFxAEntryPoint.HomeMenu)
         }
-        navController.navigate(directions)
+        openPage(PageGenie.Button.ACCOUNT, directions)
     }
 
-    override fun onSettingsClick() {
-        navController.navigate(NavGraphDirections.actionGlobalSettingsFragment())
-    }
+    override fun onSettingsClick() =
+        openPage(PageGenie.Button.SETTINGS, NavGraphDirections.actionGlobalSettingsFragment())
 
-    override fun onDownloadsClick() {
-        navController.navigate(NavGraphDirections.actionGlobalDownloadsFragment())
-    }
+    override fun onDownloadsClick() =
+        openPage(PageGenie.Button.DOWNLOADS, NavGraphDirections.actionGlobalDownloadsFragment())
 
     override fun onExtensionsClick() {
         navController.navigate(NavGraphDirections.actionGlobalMenuDialogFragment(accesspoint = MenuAccessPoint.Home))
     }
 
-    override fun onBookmarksClick() {
-        navController.navigate(NavGraphDirections.actionGlobalBookmarkFragment(BookmarkRoot.Mobile.id))
-    }
+    override fun onBookmarksClick() =
+        openPage(PageGenie.Button.BOOKMARKS, NavGraphDirections.actionGlobalBookmarkFragment(BookmarkRoot.Mobile.id))
 
-    override fun onHistoryClick() {
-        navController.navigate(NavGraphDirections.actionGlobalHistoryFragment())
-    }
+    override fun onHistoryClick() = openPage(PageGenie.Button.HISTORY, NavGraphDirections.actionGlobalHistoryFragment())
+
+    /** Opens the page of [button], which pours out of it, without the page's own way of coming in. */
+    private fun openPage(button: PageGenie.Button, directions: NavDirections) =
+        PageGenie.open(context, button) { navController.navigate(directions, NavOptions.Builder().build()) }
 
     private fun TabSessionState.toPinSource() = PinSource(id, content.url, content.title, contextId)
 }

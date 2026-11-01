@@ -6,6 +6,7 @@ package org.mozilla.fenix.dejavu.menu
 
 import android.content.Context
 import android.widget.Toast
+import androidx.navigation.NavController
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -13,16 +14,25 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import mozilla.components.browser.state.action.TabListAction
 import mozilla.components.browser.state.state.TabSessionState
+import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.Components
+import org.mozilla.fenix.components.appstate.AppAction.ReaderViewAction.ReaderViewDismissed
+import org.mozilla.fenix.components.appstate.AppAction.ReaderViewAction.ReaderViewStarted
+import org.mozilla.fenix.dejavu.NewTabContainerChoice
 import org.mozilla.fenix.dejavu.actions.ActionContext
 import org.mozilla.fenix.dejavu.actions.CustomAction
 import org.mozilla.fenix.dejavu.actions.CustomActionRunner
+import org.mozilla.fenix.dejavu.browser.DejavuSearchStart
+import org.mozilla.fenix.dejavu.browser.NewTabSearch
+import org.mozilla.fenix.dejavu.browser.SavePage
+import org.mozilla.fenix.dejavu.browser.SearchBackdrop
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
 import org.mozilla.fenix.dejavu.home.folderPathOf
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.workspaces.MAX_ESSENTIALS
 import org.mozilla.fenix.dejavu.workspaces.PinSource
+import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 
@@ -45,6 +55,7 @@ internal class DejavuTabCommands(
     fun run(item: MoreMenuItem, workspaces: WorkspaceState): Boolean {
         val pin = workspaces.pinOf(tab.id)
         when (item) {
+            MoreMenuItem.SAVE_PAGE -> SavePage.save(appContext, tab)
             MoreMenuItem.SAVE_AS_PDF -> sessionUseCases.saveToPdf(tab.id)
             MoreMenuItem.PRINT -> sessionUseCases.printContent(tab.id)
             MoreMenuItem.PIN_TAB ->
@@ -53,14 +64,19 @@ internal class DejavuTabCommands(
             MoreMenuItem.RESET_PINNED_URL -> pin?.url?.let { sessionUseCases.loadUrl(it, tab.id) }
             MoreMenuItem.REPLACE_PINNED_URL -> pin?.let { repository.replacePinUrl(it.id, tab.content.url, tab.content.title) }
             MoreMenuItem.SPLIT_VIEW -> repository.unsplit(setOf(tab.id))
+            MoreMenuItem.READER_VIEW ->
+                components.appStore.dispatch(if (tab.readerState.active) ReaderViewDismissed else ReaderViewStarted)
             else -> return false
         }
         return true
     }
 
-    /** Shows [tab] and [other] side by side, next to each other in the tab list when neither is pinned. */
-    fun split(workspaces: WorkspaceState, other: TabSessionState) {
-        repository.createSplit(tab.id, other.id)
+    /**
+     * Shows [tab] and [other] together, the way [way] has them, and next to each other in the tab list when neither is
+     * pinned.
+     */
+    fun split(workspaces: WorkspaceState, other: TabSessionState, way: SplitOrientation) {
+        repository.createSplit(tab.id, other.id, way)
         if (workspaces.pinOf(tab.id) == null && workspaces.pinOf(other.id) == null) {
             components.core.store.dispatch(TabListAction.MoveTabsAction(listOf(other.id), tab.id, placeAfter = true))
         }
@@ -109,5 +125,25 @@ internal class DejavuTabCommands(
 
     private companion object {
         const val ISO_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssXXX"
+    }
+}
+
+/**
+ * Opens the home screen with the address bar ready for a new tab, which is private when [tab], the shown tab, is:
+ * what the user enters there opens in the new tab.
+ */
+internal fun openNewTab(navController: NavController, tab: TabSessionState) {
+    if (tab.content.private) NewTabContainerChoice.setPrivate() else NewTabContainerChoice.clear()
+    if (navController.currentDestination?.id != R.id.browserFragment) {
+        NewTabSearch.clear()
+        navController.navigate(NavGraphDirections.actionGlobalHome(focusOnAddressBar = true))
+        return
+    }
+    NewTabSearch.start(tab.id)
+    if (DejavuSettings.get(navController.context).barsLayout.value.addressBarAtBottom) DejavuSearchStart.fromBottom()
+    SearchBackdrop.capturePage(tab.id) {
+        navController.navigate(
+            NavGraphDirections.actionGlobalHome(focusOnAddressBar = true, sessionToStartSearchFor = tab.id),
+        )
     }
 }
