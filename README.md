@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="#download"><img alt="F-Droid: ByArchitect repository" src="https://img.shields.io/badge/F--Droid-ByArchitect%20repository-556B4F?logo=fdroid&logoColor=white"></a>
+  <a href="https://f-droid.org/packages/com.byarchitect.dejavu/"><img alt="F-Droid" src="https://img.shields.io/f-droid/v/com.byarchitect.dejavu?color=556B4F&logo=fdroid&logoColor=white"></a>
   <a href="https://play.google.com/store/apps/details?id=com.byarchitect.dejavu"><img alt="Google Play" src="https://img.shields.io/badge/Google%20Play-Dejavu-F2B84B?logo=googleplay&logoColor=white"></a>
   <a href="#download"><img alt="iOS: help wanted" src="https://img.shields.io/badge/iOS-help%20wanted-5A452A?logo=apple&logoColor=white"></a>
   <a href="LICENSE"><img alt="License: MPL 2.0" src="https://img.shields.io/badge/license-MPL%202.0-5A452A"></a>
@@ -48,9 +48,11 @@ containers and pinned tabs show up on your phone too. Sync is the only thing the
 <a href="https://fdroid.byarchitect.org/fdroid/repo?fingerprint=50941BDAC56B056A520ABFA3FC7DAAB789DEE5B83B295DA54A1961C7BC8A91C9"><img src="docs/readme/fdroid-qr.svg" alt="QR code that adds the ByArchitect repository to F-Droid" width="170" align="right"></a>
 
 <p>
+  <a href="https://f-droid.org/packages/com.byarchitect.dejavu/"><img alt="Get it on F-Droid" src="docs/readme/badge-fdroid.png" height="80"></a>
   <a href="https://play.google.com/store/apps/details?id=com.byarchitect.dejavu"><img alt="Get it on Google Play" src="docs/readme/badge-google-play.png" height="80"></a>
   <a href="https://fdroid.byarchitect.org/fdroid/repo?fingerprint=50941BDAC56B056A520ABFA3FC7DAAB789DEE5B83B295DA54A1961C7BC8A91C9"><img alt="Get it from the ByArchitect F-Droid repository" src="docs/readme/badge-fdroid-byarchitect.png" height="80"></a>
   <a href="https://github.com/by-architect/Dejavu/releases/latest"><img alt="Get it on GitHub" src="docs/readme/badge-github.png" height="80"></a>
+  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/by-architect/Dejavu"><img alt="Get it on Obtainium" src="docs/readme/badge-obtainium.png" height="80"></a>
 </p>
 
 Dejavu needs Android 8.0 or newer on a 64-bit phone, which almost every phone from recent years is. Passkeys and
@@ -58,17 +60,26 @@ security keys need Android 14 or newer: Dejavu signs in with them through Androi
 passkey app you use, like Google Password Manager, Proton Pass or Bitwarden. On older Android, Google's passkey service
 only serves the browsers on Google's own list, which Dejavu is not on.
 
-**F-Droid (recommended):** Dejavu is in the ByArchitect F-Droid repository, and F-Droid keeps it up to date. In
+**F-Droid (recommended):** Dejavu is in [F-Droid's main repository](https://f-droid.org/packages/com.byarchitect.dejavu/): search for it in F-Droid, install it,
+and F-Droid keeps it up to date. F-Droid builds it from Dejavu's source code and signs it with its own key. Like
+F-Droid does for Firefox-based browsers, it marks Dejavu with **Tracking**, as Dejavu connects to Mozilla's services
+and, unless you turn it off, to Google Safe Browsing.
+
+**ByArchitect F-Droid repository:** to get new versions a few days sooner, add Dejavu's own repository instead. In
 F-Droid, open **Repositories**, tap **+** and scan the QR code, or open
 [this link](https://fdroid.byarchitect.org/fdroid/repo?fingerprint=50941BDAC56B056A520ABFA3FC7DAAB789DEE5B83B295DA54A1961C7BC8A91C9)
-on your phone to add the repository. Then search for Dejavu. This is Dejavu's own repository, not F-Droid's main one:
-it offers the same APKs as the GitHub releases, which Dejavu's developer builds and signs, not builds that F-Droid
-makes from the source code. Like F-Droid does for Firefox-based browsers, it marks Dejavu with **Tracking**, as Dejavu
-connects to Mozilla's services and, unless you turn it off, to Google Safe Browsing.
+on your phone, then search for Dejavu. It offers the same APKs as the GitHub releases, which Dejavu's developer builds
+and signs. F-Droid's main repository and this one sign Dejavu with different keys, so switching between them means
+uninstalling first.
 
 **APK:** download `dejavu-v<version>-arm64-v8a.apk` from the
 [latest release](https://github.com/by-architect/Dejavu/releases/latest). It does not update itself, so use F-Droid
-to get new versions.
+or Obtainium to get new versions.
+
+**Obtainium:** [Obtainium](https://github.com/ImranR98/Obtainium) installs new versions straight from Dejavu's GitHub
+releases. With Obtainium installed, open [this link](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/by-architect/Dejavu) on your phone, or
+add `https://github.com/by-architect/Dejavu` in Obtainium yourself. If it asks which file to use, pick the one ending
+in `arm64-v8a.apk`.
 
 **Check a download:** APKs from GitHub and the ByArchitect F-Droid repository are signed with Dejavu's key, whose
 certificate has this SHA-256 fingerprint. Apps like [AppVerifier](https://github.com/soupslurpr/AppVerifier) compare
