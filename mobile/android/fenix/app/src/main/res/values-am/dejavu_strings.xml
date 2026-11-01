@@ -273,7 +273,6 @@
     <string name="dejavu_sync_normal_tabs">ያልተሰኩ ትሮችን አካትት</string>
     <string name="dejavu_sync_normal_tabs_summary">እንዲሁም እያንዳንዱ የስራ ቦታ ውስጥ ያሉ ሌሎች ትሮችን ያመሳስላል፤ የተሰኩ ትሮችን እና አቃፊዎችን ብቻ ሳይሆን። የራሱ «ያልተሰኩ ትሮችን አካትት» የሚለው አማራጭ በሚበራበት ጊዜ Zen እነሱን ያመሳስላል።</string>
     <string name="dejavu_settings_close_pinned_hint">በተሰኩ ትሮች እና አቃፊዎች ላይ፣ ስኩዎቹ ስለሚቆዩ «ዝጋ» ክፍት ትሮችን ያስተኛል። የተሰካ ትር አስቀድሞ ሲተኛ «ዝጋ» ይነቅለዋል።</string>
-    <string name="dejavu_features_title">Dejavuን ያስሱ</string>
     <string name="dejavu_features_page">%1$d ከ%2$d</string>
     <string name="dejavu_features_next">ቀጣይ</string>
     <string name="dejavu_features_skip">ዝለል</string>

@@ -280,7 +280,6 @@
     <string name="dejavu_reopen_closed_tab">Поново отвори затворени језичак</string>
     <string name="dejavu_search_chip_temporary">Привремени</string>
     <string name="dejavu_settings_close_pinned_hint">На закаченим језичцима и фасциклама дугме Затвори успављује отворене језичке, јер закачени језичци остају. Ако закачени језичак већ спава, дугме Затвори ће га откачити.</string>
-    <string name="dejavu_features_title">Откријте Dejavu</string>
     <string name="dejavu_features_page">%1$d од %2$d</string>
     <string name="dejavu_features_next">Даље</string>
     <string name="dejavu_features_skip">Прескочи</string>

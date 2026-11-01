@@ -280,7 +280,6 @@
     <string name="dejavu_reopen_closed_tab">Ponovo otvori zatvoreni tab</string>
     <string name="dejavu_search_chip_temporary">Privremeni</string>
     <string name="dejavu_settings_close_pinned_hint">Na prikvačenim tabovima i folderima „Zatvori“ uspavljuje otvorene tabove, jer prikvačeni ostaju. Kad prikvačeni tab već spava, „Zatvori“ ga otkvači.</string>
-    <string name="dejavu_features_title">Otkrijte Dejavu</string>
     <string name="dejavu_features_page">%1$d od %2$d</string>
     <string name="dejavu_features_next">Dalje</string>
     <string name="dejavu_features_skip">Preskoči</string>

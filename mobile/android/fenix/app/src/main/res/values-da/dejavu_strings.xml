@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Genåbn lukket faneblad</string>
     <string name="dejavu_search_chip_temporary">Midlertidig</string>
     <string name="dejavu_settings_close_pinned_hint">På fastgjorte faneblade og mapper sætter Luk de åbne faneblade i dvale, da de fastgjorte bliver. Når et fastgjort faneblad allerede er i dvale, frigør Luk det.</string>
-    <string name="dejavu_features_title">Opdag Dejavu</string>
     <string name="dejavu_features_page">%1$d af %2$d</string>
     <string name="dejavu_features_next">Næste</string>
     <string name="dejavu_features_skip">Spring over</string>

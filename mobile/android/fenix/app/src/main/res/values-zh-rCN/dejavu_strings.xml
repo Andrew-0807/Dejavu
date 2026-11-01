@@ -266,7 +266,6 @@
     <string name="dejavu_reopen_closed_tab">重新打开关闭的标签页</string>
     <string name="dejavu_search_chip_temporary">临时</string>
     <string name="dejavu_settings_close_pinned_hint">在固定标签页和文件夹上，“关闭”会让已打开的标签页休眠，因为固定标签页会保留。固定标签页休眠后，“关闭”会将其取消固定。</string>
-    <string name="dejavu_features_title">探索 Dejavu</string>
     <string name="dejavu_features_page">%1$d/%2$d</string>
     <string name="dejavu_features_next">下一步</string>
     <string name="dejavu_features_skip">跳过</string>

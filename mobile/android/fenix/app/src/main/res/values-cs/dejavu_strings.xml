@@ -287,7 +287,6 @@
     <string name="dejavu_reopen_closed_tab">Obnovit zavřený panel</string>
     <string name="dejavu_search_chip_temporary">Dočasný</string>
     <string name="dejavu_settings_close_pinned_hint">U připnutých panelů a složek tlačítko „Zavřít“ uspí otevřené panely, protože připnutí zůstává. Když už připnutý panel spí, „Zavřít“ ho odepne.</string>
-    <string name="dejavu_features_title">Objevte Dejavu</string>
     <string name="dejavu_features_page">%1$d z %2$d</string>
     <string name="dejavu_features_next">Další</string>
     <string name="dejavu_features_skip">Přeskočit</string>

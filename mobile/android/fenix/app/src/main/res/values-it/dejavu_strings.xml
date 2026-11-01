@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Riapri scheda chiusa</string>
     <string name="dejavu_search_chip_temporary">Temporaneo</string>
     <string name="dejavu_settings_close_pinned_hint">Sulle schede bloccate e sulle cartelle, «Chiudi» sospende le schede aperte, perché restano bloccate. Quando una scheda bloccata è già sospesa, «Chiudi» la sblocca.</string>
-    <string name="dejavu_features_title">Scopri Dejavu</string>
     <string name="dejavu_features_page">%1$d di %2$d</string>
     <string name="dejavu_features_next">Avanti</string>
     <string name="dejavu_features_skip">Salta</string>

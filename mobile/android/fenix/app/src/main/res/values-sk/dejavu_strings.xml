@@ -287,7 +287,6 @@
     <string name="dejavu_reopen_closed_tab">Znovu otvoriť zatvorenú kartu</string>
     <string name="dejavu_search_chip_temporary">Dočasný</string>
     <string name="dejavu_settings_close_pinned_hint">Na pripnutých kartách a priečinkoch tlačidlo Zavrieť uspí otvorené karty, pretože pripnuté karty zostávajú. Keď pripnutá karta už spí, tlačidlo Zavrieť ju odopne.</string>
-    <string name="dejavu_features_title">Objavte Dejavu</string>
     <string name="dejavu_features_page">%1$d z %2$d</string>
     <string name="dejavu_features_next">Ďalej</string>
     <string name="dejavu_features_skip">Preskočiť</string>

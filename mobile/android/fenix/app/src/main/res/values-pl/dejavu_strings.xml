@@ -287,7 +287,6 @@
     <string name="dejavu_reopen_closed_tab">Przywróć zamkniętą kartę</string>
     <string name="dejavu_search_chip_temporary">Tymczasowy</string>
     <string name="dejavu_settings_close_pinned_hint">Na przypiętych kartach i folderach „Zamknij” usypia otwarte karty, ponieważ przypięcia pozostają. Gdy przypięta karta jest już uśpiona, „Zamknij” ją odpina.</string>
-    <string name="dejavu_features_title">Odkryj Dejavu</string>
     <string name="dejavu_features_page">%1$d z %2$d</string>
     <string name="dejavu_features_next">Dalej</string>
     <string name="dejavu_features_skip">Pomiń</string>

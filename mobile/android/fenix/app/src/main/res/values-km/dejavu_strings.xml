@@ -266,7 +266,6 @@
     <string name="dejavu_reopen_closed_tab">បើកផ្ទាំងដែលបានបិទឡើងវិញ</string>
     <string name="dejavu_search_chip_temporary">បណ្ដោះអាសន្ន</string>
     <string name="dejavu_settings_close_pinned_hint">នៅលើផ្ទាំងបានខ្ទាស់ និងថត “បិទ” ធ្វើឲ្យផ្ទាំងដែលកំពុងបើកដេក ព្រោះការខ្ទាស់នៅដដែល។ នៅពេលផ្ទាំងបានខ្ទាស់មួយកំពុងដេក “បិទ” នឹងដកខ្ទាស់វា។</string>
-    <string name="dejavu_features_title">ស្វែងយល់ពី Dejavu</string>
     <string name="dejavu_features_page">%1$d នៃ %2$d</string>
     <string name="dejavu_features_next">បន្ទាប់</string>
     <string name="dejavu_features_skip">រំលង</string>

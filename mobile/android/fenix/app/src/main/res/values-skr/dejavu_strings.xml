@@ -273,7 +273,6 @@
     <string name="dejavu_sync_normal_tabs">پن نہ تھیاں ٹیباں شامل کرو</string>
     <string name="dejavu_sync_normal_tabs_summary">ایہ ہر ورک سپیس دیاں ٻیاں ٹیباں کوں وی ہم وقت کریندا ہے، صرف پن تھیاں ٹیباں تے فولڈر نہ۔ جڈاں ایندا پنہنجا پن نہ تھیاں ٹیباں شامل کرو آپشن آن ہووے، تاں Zen انہاں کوں ہم وقت کریندا ہے۔</string>
     <string name="dejavu_settings_close_pinned_hint">پن تھیاں ٹیباں تے فولڈراں اُتے “بند کرو” کھلیاں ٹیباں کوں سُلا ݙیندا ہے، کیوں جو پن تھیاں ٹیباں رہندیاں ہن۔ ڄݙݨ کوئی پن تھئی ٹیب سم ونڄے، تاں “بند کرو” اونکوں اݨ پن کر ݙیندا ہے۔</string>
-    <string name="dejavu_features_title">Dejavu کوں ڄاݨو</string>
     <string name="dejavu_features_page">%2$d وچوں %1$d</string>
     <string name="dejavu_features_next">اڳلا</string>
     <string name="dejavu_features_skip">چھوڑو</string>

@@ -280,7 +280,6 @@
     <string name="dejavu_reopen_closed_tab">Atjaunot aizvērto cilni</string>
     <string name="dejavu_search_chip_temporary">Pagaidu</string>
     <string name="dejavu_settings_close_pinned_hint">Piespraustu cilņu un mapju rindās „Aizvērt” iemidzina atvērtās cilnes, jo piespraustās cilnes paliek. Kad piesprausta cilne ir iemidzināta, „Aizvērt” to atsprauž.</string>
-    <string name="dejavu_features_title">Iepazīstiet Dejavu</string>
     <string name="dejavu_features_page">%1$d no %2$d</string>
     <string name="dejavu_features_next">Tālāk</string>
     <string name="dejavu_features_skip">Izlaist</string>

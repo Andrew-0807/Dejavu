@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">باز کردن دوبارهٔ زبانهٔ بسته‌شده</string>
     <string name="dejavu_search_chip_temporary">موقت</string>
     <string name="dejavu_settings_close_pinned_hint">در زبانه‌های سنجاق‌شده و پوشه‌ها، «بستن» زبانه‌های باز را می‌خواباند، چون سنجاق‌شده باقی می‌مانند. وقتی یک زبانهٔ سنجاق‌شده خوابیده باشد، «بستن» سنجاق آن را برمی‌دارد.</string>
-    <string name="dejavu_features_title">آشنایی با Dejavu</string>
     <string name="dejavu_features_page">%1$d از %2$d</string>
     <string name="dejavu_features_next">بعدی</string>
     <string name="dejavu_features_skip">رد شدن</string>

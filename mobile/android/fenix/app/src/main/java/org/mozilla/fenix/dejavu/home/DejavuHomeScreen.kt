@@ -75,8 +75,6 @@ import org.mozilla.fenix.dejavu.browser.blurBehindSearch
 import org.mozilla.fenix.dejavu.containers.ContainerColor
 import org.mozilla.fenix.dejavu.containers.ContainerPick
 import org.mozilla.fenix.dejavu.containers.DejavuContainerStorage
-import org.mozilla.fenix.dejavu.features.FeatureTour
-import org.mozilla.fenix.dejavu.features.FeatureTourDialog
 import org.mozilla.fenix.dejavu.features.wasUpdated
 import org.mozilla.fenix.dejavu.openClosedPin
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
@@ -198,12 +196,10 @@ fun ComposeView.setDejavuHomeContent(
                 searchedPage?.tabId?.let { it == fenix.appStore.state.searchState.sourceTabId } == true
             }
 
-            // A fresh install, and an update from a Dejavu without them, shows the welcome pages first, then the tour.
+            // A fresh install, and an update from a Dejavu without them, shows the welcome pages first.
             val updated = remember { context.wasUpdated() }
             val welcomeSeen by settings.welcomeSeen.collectAsState()
             val welcomeDue = Welcome.isDue(welcomeSeen, updated, settings.whatsNewSeen)
-            val dueChapters = remember(welcomeDue) { FeatureTour.dueChapters(settings, updated = updated) }
-            var showTour by remember(dueChapters) { mutableStateOf(dueChapters.isNotEmpty()) }
             // Once Dejavu found what the account syncs from Firefox and Zen, it asks which one workspaces follow.
             val syncStatus by DejavuSync.status.collectAsState()
 
@@ -227,7 +223,7 @@ fun ComposeView.setDejavuHomeContent(
                     interactor = interactor,
                     searchAtBottom = searchAtBottom,
                     hasDataToClear = hasDataToClear,
-                    tipsAllowed = !welcomeDue && !showTour && !syncStatus.askSource && !isSearchActive,
+                    tipsAllowed = !welcomeDue && !syncStatus.askSource && !isSearchActive,
                 )
 
                 if (showsPage) {
@@ -269,19 +265,7 @@ fun ComposeView.setDejavuHomeContent(
             }
 
             val popupTheme = workspacePopupTheme(workspaceState.activeWorkspaceId)
-            if (showTour && !welcomeDue) {
-                CompositionLocalProvider(LocalPopupTheme provides popupTheme) {
-                    FeatureTourDialog(
-                        chapters = dueChapters,
-                        onDismiss = {
-                            FeatureTour.markSeen(settings)
-                            showTour = false
-                        },
-                    )
-                }
-            }
-
-            if (!showTour && syncStatus.askSource) {
+            if (syncStatus.askSource) {
                 CompositionLocalProvider(LocalPopupTheme provides popupTheme) {
                     SyncSourceDialog(
                         status = syncStatus,

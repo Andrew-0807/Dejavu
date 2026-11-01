@@ -605,9 +605,7 @@
     <string name="dejavu_tab_sleep_limit_hint">When one more tab wakes up, the tab you used longest ago goes to sleep.</string>
     <!-- Text of the screen shown after Dejavu crashed while starting. %1$s is the name of the app. -->
     <string name="dejavu_startup_crash_body">There was a problem opening %1$s. Reopen it to keep browsing.</string>
-    <!-- Feature tour: shown once when Dejavu starts, and from About. Each page shows one feature with a short animation. -->
-    <!-- Title over the feature tour, also the About entry that opens it again. -->
-    <string name="dejavu_features_title">Discover Dejavu</string>
+    <!-- Feature tour: What's new in the settings. Each page shows one feature with a short animation, under the version that brought it. -->
     <!-- Feature tour: which page is shown. %1$d is the page, %2$d is how many pages there are. -->
     <string name="dejavu_features_page">%1$d of %2$d</string>
     <!-- Feature tour: button that shows the next feature. -->
@@ -641,7 +639,7 @@
     <!-- Feature tour title, in the chapter of Dejavu 3.0: Save page in the More menu saves the page as one file that opens without internet. -->
     <string name="dejavu_feature_save_page">Save pages to read without internet</string>
 
-    <!-- Welcome pages: shown once when a fresh install of Dejavu starts, before the feature tour, and again from About. Each page makes one choice, kept at once. Their Back, Next and Skip buttons use dejavu_back, dejavu_features_next and dejavu_features_skip. -->
+    <!-- Welcome pages: shown once when a fresh install of Dejavu starts, and again from About. Each page makes one choice, kept at once. Their Back, Next and Skip buttons use dejavu_back, dejavu_features_next and dejavu_features_skip. -->
     <!-- About entry that opens the welcome pages again. -->
     <string name="dejavu_welcome_setup">Set up Dejavu</string>
     <!-- Button of the first welcome page that goes on to the choices. -->

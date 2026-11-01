@@ -166,12 +166,10 @@ class DejavuSettings private constructor(context: Context) {
 
     fun markNewThingSeen(key: String) = addKey(_seenNewThings, KEY_SEEN_NEW_THINGS, key)
 
-    /** The version of the feature tour the user has seen, 0 for none. */
-    var featureTourSeen: Int
-        get() = prefs.getInt(KEY_FEATURE_TOUR_SEEN, 0)
-        set(value) = prefs.edit { putInt(KEY_FEATURE_TOUR_SEEN, value) }
-
-    /** The newest version whose changes the tour showed, like "2.0", or `null` before Dejavu 2.0 showed any. */
+    /**
+     * The newest version whose changes the tour of Dejavu 2.0 to 3.0 showed when it started, like "2.0", or `null`
+     * without one. The welcome pages tell an update from an older version by it.
+     */
     var whatsNewSeen: String?
         get() = prefs.getString(KEY_WHATS_NEW_SEEN, null)
         set(value) = prefs.edit { putString(KEY_WHATS_NEW_SEEN, value) }
@@ -376,10 +374,16 @@ class DejavuSettings private constructor(context: Context) {
 
     /**
      * The saved actions bar. Before it could be changed on its own, the bar showed the first row of the menu, so that
-     * is what it starts as, saved right away so that later changes to the menu leave it alone.
+     * is what it starts as, saved right away so that later changes to the menu leave it alone. A bar still as an older
+     * Dejavu started it becomes today's, see [ActionsBarLayout.upgraded].
      */
     private fun readActionsBar(): List<String> {
-        prefs.getString(KEY_ACTIONS_BAR, null)?.let { saved -> return saved.split(",").filter { it.isNotBlank() } }
+        prefs.getString(KEY_ACTIONS_BAR, null)?.let { saved ->
+            val keys = saved.split(",").filter { it.isNotBlank() }
+            val upgraded = ActionsBarLayout.upgraded(keys)
+            if (upgraded != keys) prefs.edit { putString(KEY_ACTIONS_BAR, upgraded.joinToString(",")) }
+            return upgraded
+        }
         val initial = ActionsBarLayout.fromMenu(_moreMenuRows.value)
         prefs.edit { putString(KEY_ACTIONS_BAR, initial.joinToString(",")) }
         return initial
@@ -445,7 +449,6 @@ class DejavuSettings private constructor(context: Context) {
         private const val KEY_AWAKE_TAB_LIMIT = "awake_tab_limit"
         private const val KEY_WELCOME_SEEN = "welcome_seen"
         private const val KEY_CLEARED_DATA_AT = "cleared_data_at"
-        private const val KEY_FEATURE_TOUR_SEEN = "feature_tour_seen"
         private const val KEY_WHATS_NEW_SEEN = "whats_new_seen"
         private const val KEY_TIPS_ENABLED = "tips_enabled"
         private const val KEY_SEEN_TIPS = "seen_tips"

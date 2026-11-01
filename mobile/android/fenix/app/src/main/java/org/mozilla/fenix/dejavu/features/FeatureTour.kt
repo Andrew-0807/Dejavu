@@ -75,8 +75,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.core.content.edit
 import androidx.fragment.app.DialogFragment
 import kotlinx.coroutines.Dispatchers
@@ -84,7 +82,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
-import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.settings.workspaceRepository
 import org.mozilla.fenix.dejavu.ui.DejavuButtonStyle
 import org.mozilla.fenix.dejavu.ui.DejavuDialogButton
@@ -170,39 +167,31 @@ enum class DejavuFeature(
 }
 
 /**
- * A part of the tour, with its chip at the top: the basics, or what one version of Dejavu brought.
+ * What one version of Dejavu brought, a part of the tour with its chip at the top.
  *
- * @property version The version, like "2.0", or `null` for the basics.
+ * @property version The version, like "2.0".
  * @property features The features it shows, in order.
  */
-data class TourChapter(val version: String?, val features: List<DejavuFeature>)
+data class TourChapter(val version: String, val features: List<DejavuFeature>)
 
-/**
- * The tour of Dejavu's features. A fresh install shows the basics, then what the newest version brought; an update
- * shows what every version brought since the one the user saw last. What's new in the settings shows all of it.
- */
+/** The tour of what each version of Dejavu brought, which only What's new in the settings shows. */
 object FeatureTour {
-    /** The version of the basics, raised when they change. 1 is the tour of Dejavu 1.6. */
-    const val VERSION = 1
-
-    /** The basics, which a fresh install starts with. */
-    val Basics = TourChapter(
-        version = null,
-        features = listOf(
-            DejavuFeature.SLEEP,
-            DejavuFeature.THEMES,
-            DejavuFeature.SWIPE_MENU,
-            DejavuFeature.ACTIONS,
-            DejavuFeature.ZEN_SYNC,
-            DejavuFeature.FOLDERS,
-            DejavuFeature.DRAG,
-            DejavuFeature.WORKSPACE_ORDER,
-            DejavuFeature.SPLIT_VIEW,
-        ),
-    )
-
     /** What each version brought, oldest first. A version with something to show adds its chapter at the end. */
     val Releases = listOf(
+        TourChapter(
+            version = "1.0",
+            features = listOf(
+                DejavuFeature.THEMES,
+                DejavuFeature.SWIPE_MENU,
+                DejavuFeature.ACTIONS,
+                DejavuFeature.ZEN_SYNC,
+                DejavuFeature.FOLDERS,
+                DejavuFeature.DRAG,
+                DejavuFeature.WORKSPACE_ORDER,
+                DejavuFeature.SPLIT_VIEW,
+            ),
+        ),
+        TourChapter(version = "1.6", features = listOf(DejavuFeature.SLEEP)),
         TourChapter(version = "2.0", features = listOf(DejavuFeature.FIREFOX_SYNC)),
         TourChapter(
             version = "3.0",
@@ -214,37 +203,6 @@ object FeatureTour {
             ),
         ),
     )
-
-    /** Every chapter, as What's new in the settings shows them. */
-    val All: List<TourChapter>
-        get() = listOf(Basics) + Releases
-
-    /**
-     * The chapters to show when Dejavu starts, none when there is nothing new. [updated] tells an update apart from a
-     * fresh install, which shows the basics until they were seen, also when the welcome pages left out what the
-     * versions brought, see [skipReleases]. Versions before 2.0 did not keep which version was seen: their users saw
-     * the basics when they had 1.6, or came from an older version, so they see every version since.
-     */
-    fun dueChapters(settings: DejavuSettings, updated: Boolean): List<TourChapter> {
-        val seen = settings.whatsNewSeen
-        val basics = listOf(Basics).takeIf { !updated && settings.featureTourSeen < VERSION }.orEmpty()
-        return when {
-            seen != null -> basics + Releases.filter { compareVersions(it.version.orEmpty(), seen) > 0 }
-            updated || settings.featureTourSeen >= VERSION -> Releases
-            else -> basics + Releases.takeLast(1)
-        }
-    }
-
-    /** Remembers that everything up to the newest version was shown, also when it was skipped. */
-    fun markSeen(settings: DejavuSettings) {
-        settings.featureTourSeen = VERSION
-        skipReleases(settings)
-    }
-
-    /** Leaves out what the versions up to the newest one brought, for someone who saw the welcome pages instead. */
-    fun skipReleases(settings: DejavuSettings) {
-        Releases.lastOrNull()?.version?.let { settings.whatsNewSeen = it }
-    }
 
     /** Compares versions like "2.0" and "1.10" part by part, a missing part counting as 0. */
     fun compareVersions(a: String, b: String): Int {
@@ -297,17 +255,9 @@ private object DataStart {
     }.getOrDefault(false)
 }
 
-/** The tour as a dialog, over the screen it opens on, showing [chapters]. */
-@Composable
-fun FeatureTourDialog(chapters: List<TourChapter>, onDismiss: () -> Unit) {
-    Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
-        FeatureTourCard(chapters = chapters, onDone = onDismiss)
-    }
-}
-
 /**
  * The tour, one feature a page: the title, where to find it, and the phone showing it. The chips at the top name the
- * [chapters], the basics and the versions, and go to them; it opens on chapter [startChapter]. Swiping or Next goes on,
+ * versions of the [chapters] and go to them; it opens on chapter [startChapter]. Swiping or Next goes on,
  * from one chapter to the next; Skip goes to the next chapter, and on the last one it ends the tour with [onDone], like
  * Done.
  */
@@ -350,7 +300,7 @@ fun FeatureTourCard(
             ) {
                 chapters.forEachIndexed { index, item ->
                     ChapterChip(
-                        label = item.version ?: stringResource(R.string.dejavu_features_title),
+                        label = item.version,
                         selected = index == chapter,
                         onClick = { goTo(starts[index]) },
                     )
@@ -393,7 +343,7 @@ fun FeatureTourCard(
 }
 
 /**
- * The chip of a chapter of the tour: the basics or a version, filled for the chapter shown, which the row of chips
+ * The chip of a chapter of the tour, its version, filled for the chapter shown, which the row of chips
  * scrolls to when they do not all fit.
  */
 @Composable
@@ -547,8 +497,8 @@ private fun decodeAnimation(context: Context, @RawRes animation: Int): Drawable?
 }.getOrNull()
 
 /**
- * What's new, opened from the settings and from About: the whole tour, over the settings, in the colors of the
- * workspace shown on the home screen.
+ * What's new, opened from the settings: the whole tour, over the settings, in the colors of the workspace shown on the
+ * home screen.
  */
 class DejavuFeatureTourFragment : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -567,7 +517,7 @@ class DejavuFeatureTourFragment : DialogFragment() {
                     CompositionLocalProvider(LocalPopupTheme provides popupTheme) {
                         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxWidth()) {
                             // Every chapter, opened on what the newest version brought.
-                            val chapters = FeatureTour.All
+                            val chapters = FeatureTour.Releases
                             FeatureTourCard(chapters = chapters, onDone = { dismiss() }, startChapter = chapters.lastIndex)
                         }
                     }

@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Bezárt lap újranyitása</string>
     <string name="dejavu_search_chip_temporary">Ideiglenes</string>
     <string name="dejavu_settings_close_pinned_hint">A kitűzött lapokon és mappákon a Bezárás elaltatja a nyitott lapokat, mivel azok kitűzve maradnak. Ha egy kitűzött lap már alszik, a Bezárás megszünteti a kitűzését.</string>
-    <string name="dejavu_features_title">Fedezze fel a Dejavut</string>
     <string name="dejavu_features_page">%1$d/%2$d</string>
     <string name="dejavu_features_next">Tovább</string>
     <string name="dejavu_features_skip">Kihagyás</string>

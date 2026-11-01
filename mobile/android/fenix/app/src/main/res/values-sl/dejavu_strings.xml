@@ -287,7 +287,6 @@
     <string name="dejavu_reopen_closed_tab">Ponovno odpri zaprti zavihek</string>
     <string name="dejavu_search_chip_temporary">Začasni</string>
     <string name="dejavu_settings_close_pinned_hint">Na pripetih zavihkih in mapah gumb Zapri uspava odprte zavihke, saj pripeti zavihki ostanejo. Ko pripeti zavihek že spi, ga gumb Zapri odpne.</string>
-    <string name="dejavu_features_title">Odkrijte Dejavu</string>
     <string name="dejavu_features_page">%1$d od %2$d</string>
     <string name="dejavu_features_next">Naprej</string>
     <string name="dejavu_features_skip">Preskoči</string>

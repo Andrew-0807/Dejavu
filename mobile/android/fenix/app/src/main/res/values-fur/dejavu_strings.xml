@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Torne a vierzi la schede sierade</string>
     <string name="dejavu_search_chip_temporary">Temporani</string>
     <string name="dejavu_settings_close_pinned_hint">Su lis schedis fissadis e su lis cartelis, Siere al met a durmî lis schedis vierzudis, parcè che a restin fissadis. Cuant che une schede fissade e je za indurmidide, Siere al le sfisse.</string>
-    <string name="dejavu_features_title">Scuvierç Dejavu</string>
     <string name="dejavu_features_page">%1$d di %2$d</string>
     <string name="dejavu_features_next">Indenant</string>
     <string name="dejavu_features_skip">Salte</string>

@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Sluten ljepblêd opnij iepenje</string>
     <string name="dejavu_search_chip_temporary">Tydlik</string>
     <string name="dejavu_settings_close_pinned_hint">Op fêstsette ljepblêden en mappen set ‘Slute’ de iepen ljepblêden yn sliepstân, omdat se fêstset bliuwe. As in fêstset ljepblêd al sliept, makket ‘Slute’ it los.</string>
-    <string name="dejavu_features_title">Untdek Dejavu</string>
     <string name="dejavu_features_page">%1$d fan %2$d</string>
     <string name="dejavu_features_next">Folgjende</string>
     <string name="dejavu_features_skip">Oerslaan</string>

@@ -306,7 +306,6 @@
     <string name="dejavu_sync_normal_tabs">আনপিন করা ট্যাব অন্তর্ভুক্ত করুন</string>
     <string name="dejavu_sync_normal_tabs_summary">এটি প্রতিটি ওয়ার্কস্পেসের অন্যান্য ট্যাবও Sync করে, শুধু পিন করা ট্যাব ও ফোল্ডার নয়। নিজস্ব আনপিন করা ট্যাব অন্তর্ভুক্ত করুন অপশন চালু থাকলে Zen সেগুলো Sync করে।</string>
     <string name="dejavu_settings_close_pinned_hint">পিন করা ট্যাব ও ফোল্ডারে “বন্ধ করুন” খোলা ট্যাবগুলোকে স্লিপ মোডে রাখে, কারণ পিনগুলো থেকে যায়। পিন করা ট্যাব আগেই স্লিপ মোডে থাকলে “বন্ধ করুন” সেটিকে আনপিন করে।</string>
-    <string name="dejavu_features_title">Dejavu ঘুরে দেখুন</string>
     <string name="dejavu_features_page">%2$d-এর মধ্যে %1$d</string>
     <string name="dejavu_features_next">পরবর্তী</string>
     <string name="dejavu_features_skip">এড়িয়ে যান</string>

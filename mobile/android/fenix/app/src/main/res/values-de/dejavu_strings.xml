@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Geschlossenen Tab wieder öffnen</string>
     <string name="dejavu_search_chip_temporary">Temporär</string>
     <string name="dejavu_settings_close_pinned_hint">Bei angehefteten Tabs und Ordnern legt „Schließen“ die offenen Tabs schlafen, da sie angeheftet bleiben. Schläft ein angehefteter Tab bereits, löst „Schließen“ ihn.</string>
-    <string name="dejavu_features_title">Dejavu entdecken</string>
     <string name="dejavu_features_page">%1$d von %2$d</string>
     <string name="dejavu_features_next">Weiter</string>
     <string name="dejavu_features_skip">Überspringen</string>

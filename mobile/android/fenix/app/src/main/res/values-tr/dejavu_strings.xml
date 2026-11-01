@@ -290,7 +290,6 @@
     <string name="dejavu_reopen_closed_tab">Kapatılan sekmeyi yeniden aç</string>
     <string name="dejavu_search_chip_temporary">Geçici</string>
     <string name="dejavu_settings_close_pinned_hint">Sabitlenmiş sekmelerde ve klasörlerde Kapat düğmesi açık sekmeleri uyutur, çünkü sabitlenmiş sekmeler yerinde kalır. Sabitlenmiş bir sekme zaten uyuyorsa Kapat sabitlemesini kaldırır.</string>
-    <string name="dejavu_features_title">Dejavu\'yu keşfedin</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>
     <string name="dejavu_features_next">İleri</string>
     <string name="dejavu_features_skip">Atla</string>

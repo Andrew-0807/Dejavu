@@ -266,7 +266,6 @@
     <string name="dejavu_reopen_closed_tab">Buka kembali tab yang ditutup</string>
     <string name="dejavu_search_chip_temporary">Sementara</string>
     <string name="dejavu_settings_close_pinned_hint">Pada tab yang disemat dan folder, Tutup menidurkan tab yang terbuka, karena tab tersebut tetap disemat. Setelah tab yang disemat tidur, Tutup akan melepas sematannya.</string>
-    <string name="dejavu_features_title">Kenali Dejavu</string>
     <string name="dejavu_features_page">%1$d dari %2$d</string>
     <string name="dejavu_features_next">Berikutnya</string>
     <string name="dejavu_features_skip">Lewati</string>

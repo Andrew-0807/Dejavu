@@ -266,7 +266,6 @@
     <string name="dejavu_reopen_closed_tab">ເປີດແທັບທີ່ປິດແລ້ວຄືນໃຫມ່</string>
     <string name="dejavu_search_chip_temporary">ຊົ່ວຄາວ</string>
     <string name="dejavu_settings_close_pinned_hint">ໃນແທັບທີ່ປັກໄວ້ ແລະ ໂຟນເດີ, “ປິດ” ຈະໃຫ້ແທັບທີ່ເປີດຢູ່ພັກ ເພາະການປັກຍັງຄົງຢູ່. ເມື່ອແທັບທີ່ປັກໄວ້ພັກແລ້ວ, “ປິດ” ຈະເອົາປັກອອກ.</string>
-    <string name="dejavu_features_title">ຄົ້ນພົບ Dejavu</string>
     <string name="dejavu_features_page">%1$d ຈາກ %2$d</string>
     <string name="dejavu_features_next">ຕໍ່ໄປ</string>
     <string name="dejavu_features_skip">ຂ້າມ</string>

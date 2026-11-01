@@ -280,7 +280,6 @@
     <string name="dejavu_reopen_closed_tab">Redeschide fila închisă</string>
     <string name="dejavu_search_chip_temporary">Temporar</string>
     <string name="dejavu_settings_close_pinned_hint">La filele fixate și la foldere, „Închide” hibernează filele deschise, deoarece fixările rămân. Când o filă fixată este deja în hibernare, „Închide” îi anulează fixarea.</string>
-    <string name="dejavu_features_title">Descoperă Dejavu</string>
     <string name="dejavu_features_page">%1$d din %2$d</string>
     <string name="dejavu_features_next">Înainte</string>
     <string name="dejavu_features_skip">Omite</string>

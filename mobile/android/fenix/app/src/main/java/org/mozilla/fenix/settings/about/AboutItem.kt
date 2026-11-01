@@ -11,9 +11,6 @@ sealed class AboutItem {
 
     object Crashes : AboutItem()
 
-    /** Dejavu: the tour of Dejavu's features. */
-    object FeatureTour : AboutItem()
-
     /** Dejavu: the welcome pages a fresh install starts with. */
     object Welcome : AboutItem()
 }

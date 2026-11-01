@@ -202,14 +202,23 @@ object MoreMenuLayout {
 object ActionsBarLayout {
     const val MAX_BUTTONS = 5
 
-    /** The bar a new install starts with: five buttons, Home in the middle and no Back, since the system Back does that. */
+    /**
+     * The bar a new install starts with: five buttons, New tab first and Home in the middle, and no Back, since the
+     * system Back does that.
+     */
     val DEFAULT: List<String> = listOf(
-        MoreMenuItem.FORWARD.key,
+        MoreMenuItem.NEW_TAB.key,
         MoreMenuItem.SHARE.key,
         MoreMenuEntry.Home.key,
         MoreMenuItem.REFRESH.key,
         MoreMenuEntry.Search.key,
     )
+
+    /** The bar Dejavu 2.1 to 3.0 started with, which had Forward where New tab is now. */
+    private val OLD_DEFAULT = listOf(MoreMenuItem.FORWARD.key) + DEFAULT.drop(1)
+
+    /** The [saved] bar, or [DEFAULT] when it is the bar an older Dejavu started with, which the user never changed. */
+    fun upgraded(saved: List<String>): List<String> = if (saved == OLD_DEFAULT) DEFAULT else saved
 
     /** The first rows the menu's default had before: with Back, then with Reader view in its place. */
     private val OLD_FIRST_ROWS = listOf(MoreMenuItem.BACK, MoreMenuItem.READER_VIEW).map { first ->

@@ -4,63 +4,24 @@
 
 package org.mozilla.fenix.dejavu.features
 
-import android.content.Context
-import mozilla.components.support.test.robolectric.testContext
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mozilla.fenix.dejavu.settings.DejavuSettings
-import org.robolectric.RobolectricTestRunner
 
-@RunWith(RobolectricTestRunner::class)
 class FeatureTourTest {
-    private val newest = FeatureTour.Releases.last()
-
-    private fun newSettings(): DejavuSettings =
-        DejavuSettings::class.java.getDeclaredConstructor(Context::class.java)
-            .apply { isAccessible = true }
-            .newInstance(testContext)
-
     @Test
-    fun `a fresh install shows the basics, then what the newest version brought`() {
-        val settings = newSettings()
+    fun `every feature shows once, under the version that brought it`() {
+        val features = FeatureTour.Releases.flatMap { it.features }
 
-        assertEquals(listOf(FeatureTour.Basics, newest), FeatureTour.dueChapters(settings, updated = false))
+        assertEquals(DejavuFeature.entries.toSet(), features.toSet())
+        assertEquals(features.size, features.toSet().size)
     }
 
     @Test
-    fun `an update from a version before 2_0 shows every version since, without the basics`() {
-        val fromOld = newSettings()
-        assertEquals(FeatureTour.Releases, FeatureTour.dueChapters(fromOld, updated = true))
-
-        // Dejavu 1.6 showed the basics, so its users get the versions since even when the update looks fresh.
-        val from16 = newSettings().apply { featureTourSeen = FeatureTour.VERSION }
-        assertEquals(FeatureTour.Releases, FeatureTour.dueChapters(from16, updated = false))
-    }
-
-    @Test
-    fun `once seen, only later versions show`() {
-        val settings = newSettings()
-        FeatureTour.markSeen(settings)
-
-        assertEquals(newest.version, settings.whatsNewSeen)
-        assertTrue(FeatureTour.dueChapters(settings, updated = true).isEmpty())
-        settings.whatsNewSeen = "1.9"
-        val since19 = FeatureTour.Releases.filter { FeatureTour.compareVersions(it.version!!, "1.9") > 0 }
-        assertEquals(since19, FeatureTour.dueChapters(settings, updated = true))
-    }
-
-    @Test
-    fun `after the welcome pages, a fresh install sees only the basics and an update nothing`() {
-        val fresh = newSettings().apply { FeatureTour.skipReleases(this) }
-        assertEquals(listOf(FeatureTour.Basics), FeatureTour.dueChapters(fresh, updated = false))
-
-        val from2 = newSettings().apply { whatsNewSeen = "2.0" }
-        FeatureTour.skipReleases(from2)
-        assertTrue(FeatureTour.dueChapters(from2, updated = true).isEmpty())
-        FeatureTour.markSeen(fresh)
-        assertTrue(FeatureTour.dueChapters(fresh, updated = false).isEmpty())
+    fun `the versions go from the oldest to the newest`() {
+        FeatureTour.Releases.zipWithNext().forEach { (older, newer) ->
+            assertTrue(FeatureTour.compareVersions(older.version, newer.version) < 0)
+        }
     }
 
     @Test

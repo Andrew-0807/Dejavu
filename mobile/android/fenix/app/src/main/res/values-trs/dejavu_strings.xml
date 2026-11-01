@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Reabrir rakïj ñanj cerrada</string>
     <string name="dejavu_search_chip_temporary">Temporal</string>
     <string name="dejavu_settings_close_pinned_hint">En las pestañas fijadas y las carpetas, “Nārán” duerme las pestañas abiertas, porque las fijadas se quedan. Cuando una pestaña fijada ya está dormida, “Nārán” le quita el fijado.</string>
-    <string name="dejavu_features_title">Descubre Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>
     <string name="dejavu_features_next">Ne\' ñāan</string>
     <string name="dejavu_features_skip">Sī gi\'hiaj guendât</string>

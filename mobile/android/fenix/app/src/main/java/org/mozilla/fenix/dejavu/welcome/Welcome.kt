@@ -34,9 +34,8 @@ import org.mozilla.fenix.ext.hideToolbar
 import org.mozilla.fenix.theme.FirefoxTheme
 
 /**
- * The welcome pages a fresh install of Dejavu starts with, apart from the feature tour, which follows them: a few
- * choices to set Dejavu up, each kept as soon as it is made. An update from a Dejavu without them shows them once, with
- * the choices made before. About opens them again.
+ * The welcome pages a fresh install of Dejavu starts with: a few choices to set Dejavu up, each kept as soon as it is
+ * made. An update from a Dejavu without them shows them once, with the choices made before. About opens them again.
  */
 object Welcome {
     /** The version of Dejavu the welcome pages came with. */
@@ -153,13 +152,9 @@ class DejavuWelcomeFragment : Fragment() {
         outState.putInt(KEY_PAGE, page)
     }
 
-    /**
-     * Leaves the welcome pages, for the account's sign-in when [signIn]. Whoever saw them is not shown what the
-     * versions of Dejavu brought.
-     */
+    /** Leaves the welcome pages, for the account's sign-in when [signIn]. */
     private fun finish(signIn: Boolean) {
         val settings = dejavuSettings()
-        if (!settings.welcomeSeen.value) FeatureTour.skipReleases(settings)
         settings.setWelcomeSeen(true)
         val navController = findNavController()
         navController.popBackStack(R.id.dejavu_welcome_graph, true)

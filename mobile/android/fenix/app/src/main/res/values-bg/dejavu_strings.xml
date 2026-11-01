@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Повторно отваряне на затворен раздел</string>
     <string name="dejavu_search_chip_temporary">Временен</string>
     <string name="dejavu_settings_close_pinned_hint">При закачените раздели и папките „Затваряне“ приспива отворените раздели, тъй като закачването остава. Щом закачен раздел вече спи, „Затваряне“ го откача.</string>
-    <string name="dejavu_features_title">Открийте Dejavu</string>
     <string name="dejavu_features_page">%1$d от %2$d</string>
     <string name="dejavu_features_next">Напред</string>
     <string name="dejavu_features_skip">Пропускане</string>

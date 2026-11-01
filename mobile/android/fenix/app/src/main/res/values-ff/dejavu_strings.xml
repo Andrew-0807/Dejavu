@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Uddit kadi tabbere uddaande</string>
     <string name="dejavu_search_chip_temporary">Temporaire</string>
     <string name="dejavu_settings_close_pinned_hint">Sur les tabbe épinglées et les dossiers, « Uddu » met en veille les tabbe ouvertes, car elles restent épinglées. Une fois qu\'une tabbere épinglée est en veille, « Uddu » la désépingle.</string>
-    <string name="dejavu_features_title">Découvrir Dejavu</string>
     <string name="dejavu_features_page">%1$d sur %2$d</string>
     <string name="dejavu_features_next">Yeeso</string>
     <string name="dejavu_features_skip">Passer</string>

@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Opna aftur lokaðan flipa</string>
     <string name="dejavu_search_chip_temporary">Tímabundið</string>
     <string name="dejavu_settings_close_pinned_hint">Á festum flipum og möppum svæfir „Loka“ opnu flipana, því þeir haldast festir. Þegar festur flipi er svæfður losar „Loka“ hann.</string>
-    <string name="dejavu_features_title">Kynntu þér Dejavu</string>
     <string name="dejavu_features_page">%1$d af %2$d</string>
     <string name="dejavu_features_next">Áfram</string>
     <string name="dejavu_features_skip">Sleppa</string>

@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Tornar a ubrir a pestanya zarrada</string>
     <string name="dejavu_search_chip_temporary">Temporal</string>
     <string name="dejavu_settings_close_pinned_hint">En as pestanyas fixadas y as carpetas, «Zarrar» fa dormir as pestanyas ubiertas, porque as fixadas se quedan. Quan una pestanya fixada ya dorme, «Zarrar» la desfixa.</string>
-    <string name="dejavu_features_title">Descubre Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>
     <string name="dejavu_features_next">Siguient</string>
     <string name="dejavu_features_skip">Blincar</string>

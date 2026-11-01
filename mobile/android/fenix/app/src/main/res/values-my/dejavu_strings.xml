@@ -266,7 +266,6 @@
     <string name="dejavu_reopen_closed_tab">ပိတ်ခဲ့သော တက်ဗ်ကို ပြန်ဖွင့်ရန်</string>
     <string name="dejavu_search_chip_temporary">ယာယီ</string>
     <string name="dejavu_settings_close_pinned_hint">ပင်ထိုးထားသော တက်ဗ်များနှင့် ဖိုင်တွဲများတွင် ပင်များ ဆက်ရှိနေသောကြောင့် “ပိတ်ရန်” သည် ပွင့်နေသော တက်ဗ်များကို အိပ်စေသည်။ ပင်ထိုးထားသော တက်ဗ်တစ်ခု အိပ်နေပြီဆိုလျှင် “ပိတ်ရန်” သည် ၎င်းကို ပင်ထုတ်သည်။</string>
-    <string name="dejavu_features_title">Dejavu ကို စူးစမ်းပါ</string>
     <string name="dejavu_features_page">%2$d ထဲမှ %1$d</string>
     <string name="dejavu_features_next">နောက်တစ်ခု</string>
     <string name="dejavu_features_skip">ကျော်ရန်</string>

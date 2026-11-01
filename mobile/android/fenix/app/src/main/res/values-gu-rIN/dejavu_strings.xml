@@ -306,7 +306,6 @@
     <string name="dejavu_sync_normal_tabs">પિન ન કરેલી ટૅબ્સનો સમાવેશ કરો</string>
     <string name="dejavu_sync_normal_tabs_summary">તે દરેક વર્કસ્પેસની અન્ય ટૅબ્સને પણ સમન્વયિત કરે છે, ફક્ત પિન કરેલી ટૅબ્સ અને ફોલ્ડર્સને જ નહીં. જ્યારે તેનો પોતાનો પિન ન કરેલી ટૅબ્સનો સમાવેશ કરો વિકલ્પ ચાલુ હોય, ત્યારે Zen તેમને સમન્વયિત કરે છે.</string>
     <string name="dejavu_settings_close_pinned_hint">પિન કરેલી ટૅબ્સ અને ફોલ્ડર્સ પર, “બંધ કરો” ખુલ્લી ટૅબ્સને સ્લીપ મોડમાં મૂકે છે, કારણ કે તે પિન કરેલી જ રહે છે. પિન કરેલી ટૅબ સ્લીપ મોડમાં હોય ત્યારે, “બંધ કરો” તેને અનપિન કરે છે.</string>
-    <string name="dejavu_features_title">Dejavu ને જાણો</string>
     <string name="dejavu_features_page">%2$d માંથી %1$d</string>
     <string name="dejavu_features_next">આગળ</string>
     <string name="dejavu_features_skip">છોડો</string>

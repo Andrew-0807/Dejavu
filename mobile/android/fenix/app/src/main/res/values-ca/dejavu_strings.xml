@@ -280,7 +280,6 @@
     <string name="dejavu_reopen_closed_tab">Torna a obrir la pestanya tancada</string>
     <string name="dejavu_search_chip_temporary">Temporal</string>
     <string name="dejavu_settings_close_pinned_hint">En les pestanyes fixades i les carpetes, «Tanca» adorm les pestanyes obertes, ja que les fixacions es mantenen. Quan una pestanya fixada ja dorm, «Tanca» la desfixa.</string>
-    <string name="dejavu_features_title">Descobriu el Dejavu</string>
     <string name="dejavu_features_page">%1$d de %2$d</string>
     <string name="dejavu_features_next">Següent</string>
     <string name="dejavu_features_skip">Omet</string>

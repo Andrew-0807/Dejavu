@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Жабылған бетті қайта ашу</string>
     <string name="dejavu_search_chip_temporary">Уақытша</string>
     <string name="dejavu_settings_close_pinned_hint">Бекітілген беттер мен қалталарда «Жабу» ашық беттерді ұйықтатады, өйткені бекітулер сақталады. Бекітілген бет ұйықтап тұрса, «Жабу» оны бекітуден шығарады.</string>
-    <string name="dejavu_features_title">Dejavu-мен танысу</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>
     <string name="dejavu_features_next">Келесі</string>
     <string name="dejavu_features_skip">Аттап кету</string>

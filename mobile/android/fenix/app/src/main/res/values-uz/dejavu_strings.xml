@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Yopilgan varaqni qayta ochish</string>
     <string name="dejavu_search_chip_temporary">Vaqtinchalik</string>
     <string name="dejavu_settings_close_pinned_hint">Mahkamlangan varaqlar va jildlarda «Yopish» ochiq varaqlarni uxlatadi, chunki mahkamlangan varaqlar o\'z joyida qoladi. Mahkamlangan varaq uxlab qolgach, «Yopish» uning mahkamlashini bekor qiladi.</string>
-    <string name="dejavu_features_title">Dejavu bilan tanishing</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>
     <string name="dejavu_features_next">Keyingi</string>
     <string name="dejavu_features_skip">O\'tkazib yuborish</string>

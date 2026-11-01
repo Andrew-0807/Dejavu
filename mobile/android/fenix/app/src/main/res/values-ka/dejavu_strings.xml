@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">დახურული ჩანართის ხელახლა გახსნა</string>
     <string name="dejavu_search_chip_temporary">დროებითი</string>
     <string name="dejavu_settings_close_pinned_hint">მიმაგრებულ ჩანართებსა და საქაღალდეებზე „დახურვა“ გახსნილ ჩანართებს აძინებს, რადგან ისინი მიმაგრებული რჩება. როცა მიმაგრებულ ჩანართს უკვე სძინავს, „დახურვა“ მის მიმაგრებას მოხსნის.</string>
-    <string name="dejavu_features_title">გაიცანით Dejavu</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>
     <string name="dejavu_features_next">შემდეგი</string>
     <string name="dejavu_features_skip">გამოტოვება</string>

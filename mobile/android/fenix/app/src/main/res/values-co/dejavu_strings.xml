@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Riapre l\'unghjetta chjosa</string>
     <string name="dejavu_search_chip_temporary">Timpurariu</string>
     <string name="dejavu_settings_close_pinned_hint">Nant\'à l\'unghjette fissate è i cartulari, «Chjode» addurmenta l\'unghjette aperte, chì e fissazioni fermanu. Quandu un\'unghjetta fissata dorme digià, «Chjode» a disfissa.</string>
-    <string name="dejavu_features_title">Scopre Dejavu</string>
     <string name="dejavu_features_page">%1$d nant\'à %2$d</string>
     <string name="dejavu_features_next">Seguente</string>
     <string name="dejavu_features_skip">Saltà</string>

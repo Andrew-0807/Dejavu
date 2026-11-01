@@ -273,7 +273,6 @@
     <string name="dejavu_reopen_closed_tab">Ava suletud kaart uuesti</string>
     <string name="dejavu_search_chip_temporary">Ajutine</string>
     <string name="dejavu_settings_close_pinned_hint">Kinnitatud kaartidel ja kaustadel uinutab „Sulge” avatud kaardid, sest need jäävad kinnitatuks. Kui kinnitatud kaart on juba uinunud, eemaldab „Sulge” selle kinnituse.</string>
-    <string name="dejavu_features_title">Avasta Dejavu</string>
     <string name="dejavu_features_page">%1$d / %2$d</string>
     <string name="dejavu_features_next">Edasi</string>
     <string name="dejavu_features_skip">Jäta vahele</string>
