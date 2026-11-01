@@ -43,6 +43,10 @@ sealed interface PinPlacement {
 @Suppress("TooManyFunctions")
 class WorkspaceRepository private constructor(context: Context) {
     private val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
+    /** Whether workspaces saved by an earlier start were found, unlike on a fresh install or after clearing data. */
+    val foundSavedState = prefs.contains(KEY_STATE)
+
     private val defaultName = context.getString(R.string.dejavu_workspace_default_name)
     private val _state = MutableStateFlow(
         WorkspaceSerializer.read(prefs.getString(KEY_STATE, null), defaultName, System.currentTimeMillis()),

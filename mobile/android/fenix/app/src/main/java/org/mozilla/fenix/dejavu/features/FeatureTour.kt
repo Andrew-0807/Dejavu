@@ -15,6 +15,7 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.os.StrictMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -76,6 +77,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.core.content.edit
 import androidx.fragment.app.DialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -91,6 +93,8 @@ import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
 import org.mozilla.fenix.dejavu.ui.WordFittedText
 import org.mozilla.fenix.dejavu.ui.popupGlow
 import org.mozilla.fenix.dejavu.ui.workspacePopupTheme
+import org.mozilla.fenix.dejavu.workspaces.WorkspaceRepository
+import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.theme.FirefoxTheme
 
 /**
@@ -254,11 +258,44 @@ object FeatureTour {
     }
 }
 
-/** Whether Dejavu was updated rather than installed fresh, as the system tells from the times it keeps. */
-fun Context.wasUpdated(): Boolean = runCatching {
-    val info = packageManager.getPackageInfo(packageName, 0)
-    info.lastUpdateTime - info.firstInstallTime > UPDATE_MARGIN_MS
-}.getOrDefault(false)
+/**
+ * Whether Dejavu was updated since its data began, rather than installed fresh. Clearing its data in the system's
+ * settings begins it again, so the start after that is a fresh one too, although the system's install times tell an
+ * update.
+ */
+fun Context.wasUpdated(): Boolean = DataStart.wasUpdated(this)
+
+/** When Dejavu's data began, kept as the time of the app's last update then, see [wasUpdated]. */
+private object DataStart {
+    private const val PREFS_NAME = "dejavu_data_start"
+    private const val KEY_UPDATE_TIME = "update_time"
+    private const val NONE = -1L
+
+    @Volatile
+    private var updated: Boolean? = null
+
+    fun wasUpdated(context: Context): Boolean = updated ?: synchronized(this) {
+        updated ?: decide(context).also { updated = it }
+    }
+
+    private fun decide(context: Context): Boolean = runCatching {
+        val info = context.packageManager.getPackageInfo(context.packageName, 0)
+        context.components.strictMode.allowViolation(StrictMode::allowThreadDiskReads) {
+            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            val began = prefs.getLong(KEY_UPDATE_TIME, NONE)
+            when {
+                began != NONE -> info.lastUpdateTime - began > UPDATE_MARGIN_MS
+                // Data from a Dejavu older than this record, which the install times tell about.
+                WorkspaceRepository.get(context).foundSavedState ->
+                    info.lastUpdateTime - info.firstInstallTime > UPDATE_MARGIN_MS
+                else -> {
+                    prefs.edit { putLong(KEY_UPDATE_TIME, info.lastUpdateTime) }
+                    false
+                }
+            }
+        }
+    }.getOrDefault(false)
+}
 
 /** The tour as a dialog, over the screen it opens on, showing [chapters]. */
 @Composable
