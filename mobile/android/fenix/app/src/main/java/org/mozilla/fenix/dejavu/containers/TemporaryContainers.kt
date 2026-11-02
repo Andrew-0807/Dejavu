@@ -10,7 +10,6 @@ import android.os.Looper
 import java.util.UUID
 import mozilla.components.browser.state.action.BrowserAction
 import mozilla.components.browser.state.action.ContainerAction
-import mozilla.components.browser.state.action.RecentlyClosedAction
 import mozilla.components.browser.state.action.RestoreCompleteAction
 import mozilla.components.browser.state.action.TabListAction
 import mozilla.components.browser.state.action.UndoAction
@@ -71,8 +70,8 @@ object TemporaryContainers {
 
 /**
  * Destroys temporary containers once no tab uses them: a while after their last tab is closed, so that the close can
- * still be undone, and at startup for the ones left without tabs. A recently closed tab keeps its container until it
- * leaves that list, so restoring it never points at a destroyed container.
+ * still be undone, and at startup for the ones left without tabs. A closed tab brought back later, from the recently
+ * closed tabs, opens in a new temporary container instead of the destroyed one.
  */
 internal class TemporaryContainerMiddleware(private val context: Context) : Middleware<BrowserState, BrowserAction> {
     private val handler = Handler(Looper.getMainLooper())
@@ -84,20 +83,40 @@ internal class TemporaryContainerMiddleware(private val context: Context) : Midd
         next: (BrowserAction) -> Unit,
         action: BrowserAction,
     ) {
-        next(action)
+        next(if (action is TabListAction.RestoreAction) withLiveContainers(store, action) else action)
         val removesTabs = action is TabListAction.RemoveTabAction ||
             action is TabListAction.RemoveTabsAction ||
             action is TabListAction.RemoveAllTabsAction ||
             action == TabListAction.RemoveAllNormalTabsAction ||
             action == TabListAction.RemoveAllPrivateTabsAction ||
             action is UndoAction.ClearRecoverableTabs ||
-            (action is RecentlyClosedAction && action !is RecentlyClosedAction.AddClosedTabsAction) ||
             action == RestoreCompleteAction
         if (removesTabs) {
             this.store = store
             handler.removeCallbacks(check)
             handler.postDelayed(check, GRACE_MS)
         }
+    }
+
+    /**
+     * [action] with each tab whose container was removed, like a temporary container destroyed with its cookies after
+     * the tab closed, in a new temporary container: a destroyed one never comes back. Tabs that shared a container
+     * share the new one.
+     */
+    private fun withLiveContainers(
+        store: Store<BrowserState, BrowserAction>,
+        action: TabListAction.RestoreAction,
+    ): TabListAction.RestoreAction {
+        val storage = DejavuContainerStorage.get(context)
+        val live = mutableMapOf<String, String>()
+        val tabs = action.tabs.map { tab ->
+            val contextId = tab.state.contextId ?: return@map tab
+            val liveId = live.getOrPut(contextId) {
+                TemporaryContainers.orReplacement(contextId, store, storage, temporaryByDefault = true) ?: contextId
+            }
+            if (liveId == contextId) tab else tab.copy(state = tab.state.copy(contextId = liveId))
+        }
+        return if (tabs == action.tabs) action else action.copy(tabs = tabs)
     }
 
     private fun destroyUnused(store: Store<BrowserState, BrowserAction>) {
@@ -113,11 +132,13 @@ internal class TemporaryContainerMiddleware(private val context: Context) : Midd
     }
 
     internal companion object {
-        /** The containers of open tabs, of tabs undo can bring back and of recently closed tabs. */
+        /**
+         * The containers of open tabs and of tabs undo can bring back. Recently closed tabs keep none: a temporary
+         * container and its cookies are deleted when its last tab closes, as Settings says.
+         */
         fun usedContextIds(state: BrowserState): Set<String> =
             (state.tabs + state.customTabs).mapNotNull { it.contextId }.toSet() +
-                state.undoHistory.tabs.mapNotNull { it.state.contextId } +
-                state.closedTabs.mapNotNull { it.contextId }
+                state.undoHistory.tabs.mapNotNull { it.state.contextId }
 
         /** Longer than the time a closed tab can be brought back with undo. */
         private const val GRACE_MS = 20_000L
