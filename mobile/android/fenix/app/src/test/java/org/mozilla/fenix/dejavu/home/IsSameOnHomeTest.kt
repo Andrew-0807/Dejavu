@@ -4,6 +4,7 @@
 
 package org.mozilla.fenix.dejavu.home
 
+import android.graphics.Bitmap
 import io.mockk.mockk
 import mozilla.components.browser.state.state.createTab
 import org.junit.Assert.assertFalse
@@ -27,6 +28,13 @@ class IsSameOnHomeTest {
         val renamed = first.copy(content = first.content.copy(title = "Renamed"))
 
         assertFalse(isSameOnHome(tabs, listOf(renamed, second)))
+    }
+
+    @Test
+    fun `an icon that arrived counts`() {
+        val withIcon = first.copy(content = first.content.copy(icon = mockk<Bitmap>()))
+
+        assertFalse(isSameOnHome(tabs, listOf(withIcon, second)))
     }
 
     @Test
