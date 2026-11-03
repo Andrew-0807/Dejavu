@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Ændr sidepanelets størrelse. Dobbelttryk for at nulstille bredden</string>
     <string name="dejavu_engine_chip_remove">Stop søgning med %1$s</string>
     <string name="dejavu_sidebar_look_reset">Nulstil til standard</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Fastgør-knapper på faneblade</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Faneblade kan stadig fastgøres ved at trække dem ind blandt de fastgjorte</string>
 </resources>

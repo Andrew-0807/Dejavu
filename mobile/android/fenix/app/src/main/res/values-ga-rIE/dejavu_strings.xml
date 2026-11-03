@@ -594,4 +594,6 @@
     <string name="dejavu_sidebar_resize">Athraigh méid an bharra taoibh. Tapáil faoi dhó chun a leithead a athshocrú</string>
     <string name="dejavu_engine_chip_remove">Stop de chuardach le %1$s</string>
     <string name="dejavu_sidebar_look_reset">Athshocraigh go réamhshocrú</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Cnaipí pionnála ar chluaisíní</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Is féidir cluaisíní a phionnáil fós trína dtarraingt chuig na cluaisíní pionnáilte</string>
 </resources>

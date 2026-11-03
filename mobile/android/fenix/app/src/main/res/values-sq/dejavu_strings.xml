@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Ndrysho madhësinë e shiritit anësor. Prek dy herë për të rivendosur gjerësinë</string>
     <string name="dejavu_engine_chip_remove">Ndalo kërkimin me %1$s</string>
     <string name="dejavu_sidebar_look_reset">Riktheje te parazgjedhja</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Butona fiksimi në skeda</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Skedat mund të fiksohen ende duke i tërhequr te skedat e fiksuara</string>
 </resources>

@@ -562,4 +562,6 @@
     <string name="dejavu_sidebar_resize">ปรับขนาดแถบข้าง แตะสองครั้งเพื่อรีเซ็ตความกว้าง</string>
     <string name="dejavu_engine_chip_remove">หยุดค้นหาด้วย %1$s</string>
     <string name="dejavu_sidebar_look_reset">รีเซ็ตเป็นค่าเริ่มต้น</string>
+    <string name="dejavu_sidebar_look_pin_buttons">ปุ่มปักหมุดบนแท็บ</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">ยังปักหมุดแท็บได้โดยลากไปไว้ที่แท็บที่ปักหมุด</string>
 </resources>

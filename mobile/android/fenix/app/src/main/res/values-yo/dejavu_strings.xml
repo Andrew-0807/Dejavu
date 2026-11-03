@@ -562,4 +562,6 @@
     <string name="dejavu_sidebar_resize">Yí ìwọ̀n ọpá ẹ̀gbẹ́ padà. Tẹ̀ lẹ́ẹ̀mejì láti tún ìbú ṣe</string>
     <string name="dejavu_engine_chip_remove">Dá wíwá dúró pẹ̀lú %1$s</string>
     <string name="dejavu_sidebar_look_reset">Bẹ̀rẹ̀ padà sí àkọ́kọ́</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Àwọn bọ́tìnnì pinni lórí táàbù</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">A ṣì lè pinni táàbù nípa fífà wọ́n sí àwọn táàbù tí a pinni</string>
 </resources>

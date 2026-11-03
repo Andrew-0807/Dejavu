@@ -578,4 +578,6 @@
     <string name="dejavu_sidebar_resize">Redimensionează bara laterală. Atinge de două ori pentru a reseta lățimea</string>
     <string name="dejavu_engine_chip_remove">Nu mai căuta cu %1$s</string>
     <string name="dejavu_sidebar_look_reset">Resetează la implicit</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Butoane de fixare pe file</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Filele pot fi fixate în continuare trăgându-le printre filele fixate</string>
 </resources>

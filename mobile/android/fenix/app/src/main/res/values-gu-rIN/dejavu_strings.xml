@@ -603,4 +603,6 @@
     <string name="dejavu_sidebar_resize">સાઇડબારનું કદ બદલો. પહોળાઈ રીસેટ કરવા બે વાર ટૅપ કરો</string>
     <string name="dejavu_engine_chip_remove">%1$s સાથે શોધવાનું બંધ કરો</string>
     <string name="dejavu_sidebar_look_reset">મૂળભૂત પર રીસેટ કરો</string>
+    <string name="dejavu_sidebar_look_pin_buttons">ટૅબ પર પિન બટન</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">ટૅબને પિન કરેલાં ટૅબમાં ખેંચીને હજી પણ પિન કરી શકાય છે</string>
 </resources>

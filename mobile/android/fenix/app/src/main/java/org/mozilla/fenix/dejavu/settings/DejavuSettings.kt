@@ -51,6 +51,7 @@ class DejavuSettings private constructor(context: Context) {
             putBoolean(KEY_LOOK_WORKSPACE_HEADER, look.showWorkspaceHeader)
             putBoolean(KEY_LOOK_PAGE_CONTROLS, look.showPageControls)
             putBoolean(KEY_LOOK_BOTTOM_BAR, look.showBottomBar)
+            putBoolean(KEY_LOOK_PIN_BUTTONS, look.showPinButtons)
             putString(KEY_LOOK_HIDDEN_BAR_BUTTONS, look.hiddenBarButtons.joinToString(",") { it.key })
         }
     }
@@ -73,6 +74,7 @@ class DejavuSettings private constructor(context: Context) {
             showWorkspaceHeader = prefs.getBoolean(KEY_LOOK_WORKSPACE_HEADER, default.showWorkspaceHeader),
             showPageControls = prefs.getBoolean(KEY_LOOK_PAGE_CONTROLS, default.showPageControls),
             showBottomBar = prefs.getBoolean(KEY_LOOK_BOTTOM_BAR, default.showBottomBar),
+            showPinButtons = prefs.getBoolean(KEY_LOOK_PIN_BUTTONS, default.showPinButtons),
             hiddenBarButtons = BarButton.entries.filter { it.key in hidden }.toSet(),
         )
     }
@@ -459,6 +461,7 @@ class DejavuSettings private constructor(context: Context) {
         private const val KEY_LOOK_PAGE_CONTROLS = "look_page_controls"
         private const val KEY_LOOK_BOTTOM_BAR = "look_bottom_bar"
         private const val KEY_LOOK_HIDDEN_BAR_BUTTONS = "look_hidden_bar_buttons"
+        private const val KEY_LOOK_PIN_BUTTONS = "look_pin_buttons"
         private val LOOK_KEYS = listOf(
             KEY_LOOK_ROW_HEIGHT,
             KEY_LOOK_SITE_ICON_SIZE,
@@ -468,6 +471,7 @@ class DejavuSettings private constructor(context: Context) {
             KEY_LOOK_PAGE_CONTROLS,
             KEY_LOOK_BOTTOM_BAR,
             KEY_LOOK_HIDDEN_BAR_BUTTONS,
+            KEY_LOOK_PIN_BUTTONS,
         )
 
         /** The most buttons a tab row can show next to its title. */
@@ -559,6 +563,8 @@ data class SidebarLook(
     val showPageControls: Boolean = true,
     val showBottomBar: Boolean = true,
     val hiddenBarButtons: Set<BarButton> = emptySet(),
+    // The pin and unpin buttons of the tab rows; tabs can still be dragged between the pinned and the other tabs.
+    val showPinButtons: Boolean = true,
 ) {
     /** This look with every part shown, for the docked full screen home, which only takes the sizes. */
     fun sizesOnly(): SidebarLook = SidebarLook(rowHeight = rowHeight, siteIconSize = siteIconSize, barIconSize = barIconSize)

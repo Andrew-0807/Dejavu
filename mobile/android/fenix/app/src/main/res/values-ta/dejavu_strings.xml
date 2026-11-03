@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">பக்கப்பட்டியின் அளவை மாற்று. அகலத்தை மீட்டமைக்க இருமுறை தட்டவும்</string>
     <string name="dejavu_engine_chip_remove">%1$s மூலம் தேடுவதை நிறுத்து</string>
     <string name="dejavu_sidebar_look_reset">முன்னிருப்புக்கு மீட்டமை</string>
+    <string name="dejavu_sidebar_look_pin_buttons">கீற்றுகளில் பொருத்து பொத்தான்கள்</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">பொருத்திய கீற்றுகளுக்கு இழுத்து இன்னும் கீற்றுகளைப் பொருத்தலாம்</string>
 </resources>

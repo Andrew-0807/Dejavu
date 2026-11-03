@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Muda sa mannària de sa barra laterale. Toca duas voltas pro torrare a imbiare sa largària</string>
     <string name="dejavu_engine_chip_remove">Firma sa chirca cun %1$s</string>
     <string name="dejavu_sidebar_look_reset">Riprìstina is valores predefinidos</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Butones pro apicare in sas ischedas</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Sas ischedas si podent ancora apicare tragende·las a sas ischedas apicadas</string>
 </resources>

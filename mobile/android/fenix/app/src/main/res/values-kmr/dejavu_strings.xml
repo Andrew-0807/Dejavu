@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Mezinahiya kêşeya alî biguherîne. Ji bo vegerandina firehiyê du caran bikirtîne</string>
     <string name="dejavu_engine_chip_remove">Lêgerîna bi %1$s raweste</string>
     <string name="dejavu_sidebar_look_reset">Vegere rewşa bingehîn</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Bişkokên derzîkirinê li ser hilpekînan</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Hilpekîn hê jî dikarin werin derzîkirin bi kişandina wan bo hilpekînên derzîkirî</string>
 </resources>

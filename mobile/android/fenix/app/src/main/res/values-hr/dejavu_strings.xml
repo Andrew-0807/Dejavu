@@ -578,4 +578,6 @@
     <string name="dejavu_sidebar_resize">Promijeni veličinu bočne trake. Dvaput dodirnite za vraćanje širine</string>
     <string name="dejavu_engine_chip_remove">Prestani pretraživati s %1$s</string>
     <string name="dejavu_sidebar_look_reset">Vrati na zadano</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Gumbi za prikvačivanje na karticama</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Kartice se i dalje mogu prikvačiti povlačenjem među prikvačene kartice</string>
 </resources>

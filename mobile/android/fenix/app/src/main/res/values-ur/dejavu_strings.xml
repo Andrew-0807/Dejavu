@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">سائیڈ بار کا سائز تبدیل کریں۔ چوڑائی ری سیٹ کرنے کے لیے دو بار تھپتھپائیں</string>
     <string name="dejavu_engine_chip_remove">%1$s سے تلاش بند کریں</string>
     <string name="dejavu_sidebar_look_reset">ڈیفالٹ پر ری سیٹ کریں</string>
+    <string name="dejavu_sidebar_look_pin_buttons">ٹیبز پر پن بٹن</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">ٹیبز کو پن کردہ ٹیبز میں گھسیٹ کر اب بھی پن کیا جا سکتا ہے</string>
 </resources>

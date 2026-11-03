@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Wayla mawnugol gaañgal bannde. Dillu ɗuuɗal ɗiɗi ngam hesɗitugo njaajeendi</string>
     <string name="dejavu_engine_chip_remove">Ñaaɓu ɗaɓɓutugo e %1$s</string>
     <string name="dejavu_sidebar_look_reset">Réinitialiser</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Butoŋe tummbingol e tabbe</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Tabbe ina mbaawi tummbeede haa jooni so ɗe ndaasaama to tabbe tummbaaɗe</string>
 </resources>

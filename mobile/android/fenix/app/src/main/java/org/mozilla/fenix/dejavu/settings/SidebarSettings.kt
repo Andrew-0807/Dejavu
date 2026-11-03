@@ -126,6 +126,15 @@ class DejavuSidebarLookFragment : DejavuComposeFragment(R.string.dejavu_settings
                 modifier = Modifier.settingsCard(index = 3, count = PARTS),
                 onClick = { update { copy(showBottomBar = it) } },
             )
+            SwitchListItem(
+                label = stringResource(R.string.dejavu_sidebar_look_pin_buttons),
+                description = stringResource(R.string.dejavu_sidebar_look_pin_buttons_summary),
+                maxDescriptionLines = 3,
+                checked = look.showPinButtons,
+                showSwitchAfter = true,
+                modifier = Modifier.settingsCard(index = 4, count = PARTS),
+                onClick = { update { copy(showPinButtons = it) } },
+            )
             SettingsHeader(stringResource(R.string.dejavu_sidebar_look_bar_buttons))
             BarButton.entries.forEachIndexed { index, button ->
                 SwitchListItem(
@@ -152,7 +161,7 @@ class DejavuSidebarLookFragment : DejavuComposeFragment(R.string.dejavu_settings
     }
 }
 
-private const val PARTS = 4
+private const val PARTS = 5
 private const val SIZE_SLIDERS = 3
 
 private val BarButton.label: Int

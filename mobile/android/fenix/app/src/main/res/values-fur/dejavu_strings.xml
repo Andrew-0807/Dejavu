@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Cambie la dimension de sbare laterâl. Toche dôs voltis par tornâ a meti la largjece</string>
     <string name="dejavu_engine_chip_remove">Fâs di cirî cun %1$s</string>
     <string name="dejavu_sidebar_look_reset">Ripristine i valôrs predefinîts</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botons di fissâ su lis schedis</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Lis schedis si puedin ancjemò fissâ strissinantlis tes schedis fissadis</string>
 </resources>

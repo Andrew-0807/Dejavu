@@ -942,6 +942,8 @@
     <string name="dejavu_sidebar_look_page_controls_summary">Back, forward and reload above the field. When hidden, the menu button sits next to the field.</string>
     <!-- Switch: shows the bar at the bottom of the sidebar, with the workspace dots. -->
     <string name="dejavu_sidebar_look_bottom_bar">Bottom bar</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Pin buttons on tabs</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Tabs can still be pinned by dragging them into the pinned tabs</string>
     <!-- Heading of the switches that show or hide the buttons of the bottom bar. -->
     <string name="dejavu_sidebar_look_bar_buttons">Bottom bar buttons</string>
     <!-- Button: puts every setting of the sidebar look back to its default. -->

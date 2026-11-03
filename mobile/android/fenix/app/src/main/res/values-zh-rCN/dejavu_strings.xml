@@ -562,4 +562,6 @@
     <string name="dejavu_sidebar_resize">调整侧边栏大小。双击可重置宽度</string>
     <string name="dejavu_engine_chip_remove">停止使用 %1$s 搜索</string>
     <string name="dejavu_sidebar_look_reset">恢复默认</string>
+    <string name="dejavu_sidebar_look_pin_buttons">标签页上的固定按钮</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">仍可将标签页拖到已固定的标签页中来固定它</string>
 </resources>

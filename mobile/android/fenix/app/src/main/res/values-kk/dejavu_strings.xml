@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Бүйір панелінің өлшемін өзгерту. Енін қалпына келтіру үшін екі рет түртіңіз</string>
     <string name="dejavu_engine_chip_remove">%1$s арқылы іздеуді тоқтату</string>
     <string name="dejavu_sidebar_look_reset">Әдепкіге қалпына келтіру</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Беттердегі бекіту батырмалары</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Беттерді бекітілген беттерге сүйреп әлі де бекітуге болады</string>
 </resources>

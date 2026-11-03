@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Beddel tiddi n ufeggag adisan. Sit snat n tikkal i tuɣalin n tehri</string>
     <string name="dejavu_engine_chip_remove">Seḥbes anadi s %1$s</string>
     <string name="dejavu_sidebar_look_reset">Err ɣer wamek yella</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Tiqeffalin n usenteḍ ɣef yiccaren</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Iccaren zemren mazal ad ttwasenṭḍen s uzuɣer-nsen ɣer yiccaren yettwasenṭḍen</string>
 </resources>

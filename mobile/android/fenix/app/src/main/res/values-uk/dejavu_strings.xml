@@ -586,4 +586,6 @@
     <string name="dejavu_sidebar_resize">Змінити розмір бічної панелі. Двічі торкніться, щоб скинути ширину</string>
     <string name="dejavu_engine_chip_remove">Більше не шукати в %1$s</string>
     <string name="dejavu_sidebar_look_reset">Скинути до типових</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Кнопки закріплення на вкладках</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Вкладки все ще можна закріпити, перетягнувши їх до закріплених</string>
 </resources>

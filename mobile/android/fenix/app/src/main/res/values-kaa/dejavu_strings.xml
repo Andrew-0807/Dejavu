@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Jan panel ólshemin ózgertiw. Enin qayta ornatıw ushın eki márte basıń</string>
     <string name="dejavu_engine_chip_remove">%1$s menen izlewdi toqtatıw</string>
     <string name="dejavu_sidebar_look_reset">Ádepkige qayta ornatıw</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Betlerde bekitiw túymeleri</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Betlerdi bekitilgen betlerge súyrep áli de bekitiwge boladı</string>
 </resources>

@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Ändra sidofältets storlek. Dubbeltryck för att återställa bredden</string>
     <string name="dejavu_engine_chip_remove">Sluta söka med %1$s</string>
     <string name="dejavu_sidebar_look_reset">Återställ till standard</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Fäst-knappar på flikar</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Flikar kan fortfarande fästas genom att dra dem till de fästa flikarna</string>
 </resources>

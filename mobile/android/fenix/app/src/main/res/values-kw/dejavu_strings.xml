@@ -602,4 +602,6 @@
     <string name="dejavu_sidebar_resize">Chanjya myns an bar tenewen. Gwrewgh tochya diwweyth rag dasrya an efander</string>
     <string name="dejavu_engine_chip_remove">Hedhi whilas gans %1$s</string>
     <string name="dejavu_sidebar_look_reset">Daswul dhe\'n standard</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botonyow pinna war dabow</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Hwath y hyllir pinna tabow orth aga tenna dhe\'n tabow pinnys</string>
 </resources>

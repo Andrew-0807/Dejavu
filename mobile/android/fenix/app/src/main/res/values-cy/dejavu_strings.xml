@@ -602,4 +602,6 @@
     <string name="dejavu_sidebar_resize">Newid maint y bar ochr. Tapiwch ddwywaith i ailosod ei led</string>
     <string name="dejavu_engine_chip_remove">Rhoi\'r gorau i chwilio gyda %1$s</string>
     <string name="dejavu_sidebar_look_reset">Ailosod i’r diofyn</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botymau pinio ar dabiau</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Mae modd pinio tabiau o hyd drwy eu llusgo i\'r tabiau wedi\'u pinio</string>
 </resources>

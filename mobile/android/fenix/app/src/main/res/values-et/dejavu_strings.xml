@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Muuda külgriba suurust. Topeltpuudutus lähtestab laiuse</string>
     <string name="dejavu_engine_chip_remove">Lõpeta otsimine: %1$s</string>
     <string name="dejavu_sidebar_look_reset">Lähtesta vaikeseadetele</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Kinnitusnupud kaartidel</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Kaarte saab endiselt kinnitada, lohistades need kinnitatud kaartide juurde</string>
 </resources>

@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">साइडबारको आकार बदल्नुहोस्। चौडाइ रिसेट गर्न दुई पटक ट्याप गर्नुहोस्</string>
     <string name="dejavu_engine_chip_remove">%1$s सँग खोज्न रोक्नुहोस्</string>
     <string name="dejavu_sidebar_look_reset">पूर्वनिर्धारितमा रिसेट गर्नुहोस्</string>
+    <string name="dejavu_sidebar_look_pin_buttons">ट्याबमा पिन बटनहरू</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">ट्याबहरूलाई पिन गरिएका ट्याबमा तानेर अझै पिन गर्न सकिन्छ</string>
 </resources>

@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Փոխել կողագոտու չափը։ Կրկնակի հպեք՝ լայնությունը վերականգնելու համար</string>
     <string name="dejavu_engine_chip_remove">Դադարեցնել որոնումը %1$s-ով</string>
     <string name="dejavu_sidebar_look_reset">Վերականգնել կանխադրվածը</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Ամրացման կոճակներ ներդիրներին</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Ներդիրները դեռ կարելի է ամրացնել՝ քաշելով ամրացված ներդիրների մեջ</string>
 </resources>

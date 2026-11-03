@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Андозаи навори паҳлӯро тағйир диҳед. Барои барқарор кардани паҳно ду маротиба зер кунед</string>
     <string name="dejavu_engine_chip_remove">Ҷустуҷӯро бо %1$s қатъ кардан</string>
     <string name="dejavu_sidebar_look_reset">Баргардонидан ба ҳолати пешфарз</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Тугмаҳои мустаҳкамкунӣ дар варақаҳо</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Варақаҳоро ҳоло ҳам бо кашидан ба варақаҳои мустаҳкам мустаҳкам кардан мумкин аст</string>
 </resources>

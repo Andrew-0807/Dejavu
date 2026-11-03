@@ -586,4 +586,6 @@
     <string name="dejavu_sidebar_resize">Wulkosć bóčneje lajsty změnić. Dwójce kliknyć, zo by so šěrokosć wróćo stajiła</string>
     <string name="dejavu_engine_chip_remove">Pytanje z %1$s skónčić</string>
     <string name="dejavu_sidebar_look_reset">Na standard wróćo stajić</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Tłóčatka připjenjenja na rajtarkach</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Rajtarki dadźa so dale připjeć, hdyž so k připjatym rajtarkam ćahnu</string>
 </resources>

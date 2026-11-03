@@ -562,4 +562,6 @@
     <string name="dejavu_sidebar_resize">調整側邊欄大小。連點兩下可重設寬度</string>
     <string name="dejavu_engine_chip_remove">停止使用 %1$s 搜尋</string>
     <string name="dejavu_sidebar_look_reset">還原為預設值</string>
+    <string name="dejavu_sidebar_look_pin_buttons">分頁上的釘選按鈕</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">仍可將分頁拖到已釘選的分頁中來釘選</string>
 </resources>

@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Baguhin ang laki ng sidebar. I-double tap para i-reset ang lapad</string>
     <string name="dejavu_engine_chip_remove">Itigil ang paghahanap gamit ang %1$s</string>
     <string name="dejavu_sidebar_look_reset">I-reset sa default</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Mga button ng pag-pin sa mga tab</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Puwede pa ring i-pin ang mga tab sa pag-drag sa kanila papunta sa mga naka-pin na tab</string>
 </resources>

@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">የጎን አሞሌውን መጠን ቀይር። ስፋቱን ለማስጀመር ሁለት ጊዜ ንካ</string>
     <string name="dejavu_engine_chip_remove">በ%1$s መፈለግ አቁም</string>
     <string name="dejavu_sidebar_look_reset">ወደ ነባሪ መልስ</string>
+    <string name="dejavu_sidebar_look_pin_buttons">በትሮች ላይ የመሰካት አዝራሮች</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">ትሮችን ወደ የተሰኩ ትሮች በመጎተት አሁንም መሰካት ይቻላል</string>
 </resources>

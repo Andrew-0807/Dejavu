@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Kenar çubuğunu yeniden boyutlandır. Genişliği sıfırlamak için çift dokunun</string>
     <string name="dejavu_engine_chip_remove">%1$s ile aramayı bırak</string>
     <string name="dejavu_sidebar_look_reset">Varsayılana sıfırla</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Sekmelerde sabitleme düğmeleri</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Sekmeler sabitlenmiş sekmelere sürüklenerek yine de sabitlenebilir</string>
 </resources>

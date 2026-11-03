@@ -75,6 +75,7 @@ import org.mozilla.fenix.components.menu.MenuAccessPoint
 import org.mozilla.fenix.dejavu.NewTabContainerChoice
 import org.mozilla.fenix.dejavu.actions.ActionPlace
 import org.mozilla.fenix.dejavu.actions.CustomAction
+import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.ClearData
 import org.mozilla.fenix.dejavu.browser.DejavuSearchOverlay
@@ -253,6 +254,9 @@ fun DejavuHomeScreen(
         hadNoTab = restoreComplete && id == null
     }
 
+    // The parts that can be hidden are only hidden in the sidebar, the sizes apply to the docked home too.
+    val look = if (docked) sidebarLook else sidebarLook.sizesOnly()
+
     // A fresh install, and an update from a Dejavu without them, shows the welcome pages first.
     val updated = remember { context.wasUpdated() }
     val welcomeSeen by settings.welcomeSeen.collectAsState()
@@ -271,11 +275,12 @@ fun DejavuHomeScreen(
             hasClipboardLink = hasClipboardLink,
             containers = containers,
             // Remembered, so that the workspace pages can skip recomposing when nothing they show changed.
-            pinnedRowActions = remember(pinnedKeys, customActions) {
-                resolveRowActions(pinnedKeys, ActionPlace.PINNED_ROWS, customActions)
+            pinnedRowActions = remember(pinnedKeys, customActions, look.showPinButtons) {
+                resolveRowActions(pinnedKeys, ActionPlace.PINNED_ROWS, customActions).withPinButtons(look.showPinButtons)
             },
-            unpinnedRowActions = remember(unpinnedKeys, customActions) {
+            unpinnedRowActions = remember(unpinnedKeys, customActions, look.showPinButtons) {
                 resolveRowActions(unpinnedKeys, ActionPlace.UNPINNED_ROWS, customActions)
+                    .withPinButtons(look.showPinButtons)
             },
             folderRowActions = remember(folderKeys, customActions) {
                 resolveRowActions(folderKeys, ActionPlace.FOLDER_ROWS, customActions)
@@ -292,8 +297,7 @@ fun DejavuHomeScreen(
             tipsAllowed = !isSidebar && !welcomeDue && !syncStatus.askSource && !isSearchActive,
             isSidebar = isSidebar,
             dockedWidth = sidebarWidth?.minus(DockedGutter),
-            // The parts that can be hidden are only hidden in the sidebar, the sizes apply to the docked home too.
-            look = if (docked) sidebarLook else sidebarLook.sizesOnly(),
+            look = look,
         )
 
         if (sidebarWidth != null) {
@@ -400,6 +404,10 @@ private fun rememberHasDataToClear(cleared: Int): Boolean {
  */
 private const val SEARCH_ABANDON_GRACE_MS = 1500L
 private const val STARTER_ICONS_DELAY_MS = 2_000L
+
+/** These row actions, without pinning and unpinning unless [shown]. */
+private fun List<RowAction>.withPinButtons(shown: Boolean): List<RowAction> =
+    if (shown) this else filterNot { it.key == TabAction.PIN.key || it.key == TabAction.UNPIN.key }
 
 private fun <T> Components.readOnMainThread(block: () -> T): T =
     strictMode.allowViolation(StrictMode::allowThreadDiskReads, block)

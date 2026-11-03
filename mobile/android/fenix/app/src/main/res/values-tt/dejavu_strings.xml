@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Ян панель зурлыгын үзгәртү. Киңлекне кайтару өчен ике тапкыр басыгыз</string>
     <string name="dejavu_engine_chip_remove">%1$s белән эзләүне туктату</string>
     <string name="dejavu_sidebar_look_reset">Гадәттәгегә кире кайтару</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Табларда беркетү төймәләре</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Табларны беркетелгән табларга тартып әле дә беркетергә була</string>
 </resources>

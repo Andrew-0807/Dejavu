@@ -586,4 +586,6 @@
     <string name="dejavu_sidebar_resize">Zmień rozmiar panelu bocznego. Dotknij dwukrotnie, aby przywrócić szerokość</string>
     <string name="dejavu_engine_chip_remove">Przestań szukać w %1$s</string>
     <string name="dejavu_sidebar_look_reset">Przywróć domyślne</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Przyciski przypinania na kartach</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Karty nadal można przypiąć, przeciągając je do przypiętych kart</string>
 </resources>

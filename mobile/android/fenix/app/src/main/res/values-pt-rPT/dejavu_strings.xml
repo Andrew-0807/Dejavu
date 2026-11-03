@@ -578,4 +578,6 @@
     <string name="dejavu_sidebar_resize">Redimensionar barra lateral. Toque duas vezes para repor a largura</string>
     <string name="dejavu_engine_chip_remove">Parar de pesquisar com %1$s</string>
     <string name="dejavu_sidebar_look_reset">Repor predefinições</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botões de fixar nos separadores</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Os separadores ainda podem ser fixados arrastando-os para os separadores fixados</string>
 </resources>

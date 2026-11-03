@@ -578,4 +578,6 @@
     <string name="dejavu_sidebar_resize">Промени величину бочне траке. Двапут додирните за враћање ширине</string>
     <string name="dejavu_engine_chip_remove">Престани претраживати са %1$s</string>
     <string name="dejavu_sidebar_look_reset">Врати на подразумевано</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Дугмад за качење на језичцима</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Језичци се и даље могу закачити превлачењем међу закачене језичке</string>
 </resources>

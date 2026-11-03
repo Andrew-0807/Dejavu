@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Kexik u tamaño le barra lateral. Ka\'ap\'éel tak utia\'al restablecer u anchoil</string>
     <string name="dejavu_engine_chip_remove">Cha\'ik kaxant yéetel %1$s</string>
     <string name="dejavu_sidebar_look_reset">Restablecer</string>
+    <string name="dejavu_sidebar_look_pin_buttons">U botonil ch\'ak ti\' pestaña</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Je\'el u páajtal u ch\'a\'ak pestaña ken a jaal ti\' u pestañail ch\'a\'akbil</string>
 </resources>

@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Größe der Seitenleiste ändern. Doppeltippen setzt die Breite zurück</string>
     <string name="dejavu_engine_chip_remove">Nicht mehr mit %1$s suchen</string>
     <string name="dejavu_sidebar_look_reset">Auf Standard zurücksetzen</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Anheften-Schaltflächen an Tabs</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Tabs lassen sich weiterhin anheften, indem man sie zu den angehefteten Tabs zieht</string>
 </resources>

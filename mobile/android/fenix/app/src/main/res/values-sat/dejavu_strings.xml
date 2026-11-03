@@ -578,4 +578,6 @@
     <string name="dejavu_sidebar_resize">ᱥᱟᱭᱰᱵᱟᱨ ᱢᱟᱯ ᱵᱚᱫᱚᱞ</string>
     <string name="dejavu_engine_chip_remove">%1$s ᱥᱟᱶ ᱥᱮᱸᱫᱽᱨᱟ ᱵᱚᱞᱚᱝ</string>
     <string name="dejavu_sidebar_look_reset">ᱰᱤᱯᱷᱚᱞᱴ ᱛᱮ ᱨᱤᱥᱮᱴ ᱢᱮ</string>
+    <string name="dejavu_sidebar_look_pin_buttons">ᱴᱮᱵᱽ ᱨᱮ ᱯᱤᱱ ᱵᱩᱛᱟᱹᱢ</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">ᱴᱮᱵᱽ ᱠᱚ ᱯᱤᱱ ᱟᱠᱟᱱ ᱴᱮᱵᱽ ᱛᱮ ᱚᱨ ᱠᱟᱛᱮ ᱱᱤᱛ ᱦᱚᱸ ᱯᱤᱱ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ</string>
 </resources>

@@ -562,4 +562,6 @@
     <string name="dejavu_sidebar_resize">o ante e suli pi lipu poka. o pilin tu la, suli open li kama sin</string>
     <string name="dejavu_engine_chip_remove">o pini alasa kepeken %1$s</string>
     <string name="dejavu_sidebar_look_reset">o open sin e nasin nanpa wan</string>
+    <string name="dejavu_sidebar_look_pin_buttons">nena awen lon poki</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">sina ken awen e poki kepeken tawa ona lon poki awen</string>
 </resources>

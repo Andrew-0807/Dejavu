@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Emoambue tendayke kyta tuichakue. Eity mokõi jey emoĩ jey hag̃ua puku</string>
     <string name="dejavu_engine_chip_remove">Eheja jeheka %1$s ndive</string>
     <string name="dejavu_sidebar_look_reset">Mbojevy ijypyguápe</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Votõ mboja\'ápe tendayképe</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Tendayke ikatu gueteri oñemboja ojerekóvo tendayke mbojapyrépe</string>
 </resources>

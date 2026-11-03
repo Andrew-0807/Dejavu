@@ -586,4 +586,6 @@
     <string name="dejavu_sidebar_resize">Wjelikosć bocneje rědki změniś. Dwójcy pótusyś, aby se šyrokosć slědk stajiła</string>
     <string name="dejavu_engine_chip_remove">Pytanje z %1$s skóńcyś</string>
     <string name="dejavu_sidebar_look_reset">Na standard slědk stajiś</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Tłocaški pśipěśowanja na rejtarikach</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Rejtariki daju se dalej pśipěśowaś, gaž se k pśipěśonym rejtarikam śěgnu</string>
 </resources>

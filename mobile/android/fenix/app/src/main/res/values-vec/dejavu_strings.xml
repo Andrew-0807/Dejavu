@@ -578,4 +578,6 @@
     <string name="dejavu_sidebar_resize">Canbia ła grandesa de ła bara laterałe. Toca do volte par resetar ła largheza</string>
     <string name="dejavu_engine_chip_remove">Ferma ła ricerca con %1$s</string>
     <string name="dejavu_sidebar_look_reset">Reprìstina el predefinìo</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botoni par fisar so łe schede</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Łe schede łe se pol ancora fisar strasinàndołe tra łe schede fisàe</string>
 </resources>

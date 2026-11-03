@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Cancia la grannizza di la barra laterali. Tocca dui voti pi rimèttiri la larghizza</string>
     <string name="dejavu_engine_chip_remove">Ferma la ricerca cu %1$s</string>
     <string name="dejavu_sidebar_look_reset">Ripristina i valuri predefinuti</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Buttuna pi appizzari ê schedi</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">I schedi si ponnu ancora appizzari strascinànnuli ntê schedi appizzati</string>
 </resources>

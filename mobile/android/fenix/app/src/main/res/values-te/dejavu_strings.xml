@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">సైడ్‌బార్ పరిమాణం మార్చండి. వెడల్పును రీసెట్ చేయడానికి రెండుసార్లు తట్టండి</string>
     <string name="dejavu_engine_chip_remove">%1$sతో వెతకడం ఆపు</string>
     <string name="dejavu_sidebar_look_reset">డిఫాల్ట్‌కు రీసెట్ చేయి</string>
+    <string name="dejavu_sidebar_look_pin_buttons">ట్యాబ్‌లపై పిన్ బటన్‌లు</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">ట్యాబ్‌లను పిన్ చేసిన ట్యాబ్‌లలోకి లాగి ఇప్పటికీ పిన్ చేయవచ్చు</string>
 </resources>

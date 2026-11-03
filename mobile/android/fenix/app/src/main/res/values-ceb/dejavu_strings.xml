@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Usba ang gidak-on sa sidebar. I-double tap aron i-reset ang gilapdon</string>
     <string name="dejavu_engine_chip_remove">Undanga ang pagpangita gamit ang %1$s</string>
     <string name="dejavu_sidebar_look_reset">i-Reset sa default</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Mga buton sa pag-pin sa mga tab</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Ma-pin gihapon ang mga tab pinaagi sa pagguyod niini ngadto sa mga na-pin nga tab</string>
 </resources>

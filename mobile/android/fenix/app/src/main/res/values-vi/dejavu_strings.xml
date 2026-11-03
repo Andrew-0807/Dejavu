@@ -562,4 +562,6 @@
     <string name="dejavu_sidebar_resize">Đổi kích thước thanh bên. Chạm đúp để đặt lại chiều rộng</string>
     <string name="dejavu_engine_chip_remove">Dừng tìm kiếm bằng %1$s</string>
     <string name="dejavu_sidebar_look_reset">Đặt lại về mặc định</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Nút ghim trên thẻ</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Vẫn có thể ghim thẻ bằng cách kéo chúng vào các thẻ đã ghim</string>
 </resources>

@@ -586,4 +586,6 @@
     <string name="dejavu_sidebar_resize">Zmiyń srogość sajtowego panelu. Tknij dwa razy, coby przywrōcić szyrokość</string>
     <string name="dejavu_engine_chip_remove">Przestōń szukać w %1$s</string>
     <string name="dejavu_sidebar_look_reset">Zresetuj do wychodnych</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Knefle przipinanio na kartach</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Karty idzie dalij przipiōńć, ciōngnōnc je ku przipiyntym kartōm</string>
 </resources>

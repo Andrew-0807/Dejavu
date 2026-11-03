@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Αλλαγή μεγέθους πλαϊνής γραμμής. Διπλό πάτημα για επαναφορά του πλάτους</string>
     <string name="dejavu_engine_chip_remove">Διακοπή αναζήτησης με %1$s</string>
     <string name="dejavu_sidebar_look_reset">Επαναφορά στις προεπιλογές</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Κουμπιά καρφιτσώματος στις καρτέλες</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Οι καρτέλες μπορούν ακόμα να καρφιτσωθούν σύροντάς τες στις καρφιτσωμένες</string>
 </resources>

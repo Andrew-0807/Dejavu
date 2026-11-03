@@ -578,4 +578,6 @@
     <string name="dejavu_sidebar_resize">Canvia la mida de la barra lateral. Toca dues vegades per restablir-ne l\'amplada</string>
     <string name="dejavu_engine_chip_remove">Deixa de cercar amb %1$s</string>
     <string name="dejavu_sidebar_look_reset">Restableix als valors per defecte</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botons de fixar a les pestanyes</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Les pestanyes encara es poden fixar arrossegant-les a les pestanyes fixades</string>
 </resources>

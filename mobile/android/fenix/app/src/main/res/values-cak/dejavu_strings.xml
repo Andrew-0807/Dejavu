@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Tijal runimal ruchi\'aj. Tiq\'ab\'aj kaqän richin natzolin chik runimal</string>
     <string name="dejavu_engine_chip_remove">Tiq\'at kanoxïk rik\'in %1$s</string>
     <string name="dejavu_sidebar_look_reset">Titzolin pa ruyonil</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Taq pitz\'b\'äl richin niyak chi kij ri taq ruwi\'</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Ri taq ruwi\' kan yetikïr na niyak toq yejur pa ri taq ruwi\' yakon</string>
 </resources>

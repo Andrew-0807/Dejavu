@@ -562,4 +562,6 @@
     <string name="dejavu_sidebar_resize">サイドバーのサイズを変更。ダブルタップで幅をリセット</string>
     <string name="dejavu_engine_chip_remove">%1$s での検索をやめる</string>
     <string name="dejavu_sidebar_look_reset">既定値に戻す</string>
+    <string name="dejavu_sidebar_look_pin_buttons">タブのピン留めボタン</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">タブはピン留めしたタブの場所へドラッグしてもピン留めできます</string>
 </resources>

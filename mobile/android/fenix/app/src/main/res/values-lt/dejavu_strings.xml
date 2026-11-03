@@ -586,4 +586,6 @@
     <string name="dejavu_sidebar_resize">Keisti šoninės juostos dydį. Dukart palieskite, kad atstatytumėte plotį</string>
     <string name="dejavu_engine_chip_remove">Nebeieškoti naudojant %1$s</string>
     <string name="dejavu_sidebar_look_reset">Atstatyti numatytuosius</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Įsegimo mygtukai kortelėse</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Korteles vis tiek galima įsegti nutempus jas prie įsegtų kortelių</string>
 </resources>

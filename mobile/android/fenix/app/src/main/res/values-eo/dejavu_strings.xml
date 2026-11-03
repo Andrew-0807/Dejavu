@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Ŝanĝi la grandecon de la flanka breto. Duoble tuŝetu por restarigi ĝian larĝon</string>
     <string name="dejavu_engine_chip_remove">Ĉesi serĉi per %1$s</string>
     <string name="dejavu_sidebar_look_reset">Restarigi al defaŭlto</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Alpinglaj butonoj sur langetoj</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Langetoj ankoraŭ alpingleblas per ŝovo al la alpinglitaj langetoj</string>
 </resources>

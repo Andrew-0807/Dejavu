@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Cambiar la talha de la barra laterala. Tocar dos còps per reïnicializar la largor</string>
     <string name="dejavu_engine_chip_remove">Arrestar de cercar amb %1$s</string>
     <string name="dejavu_sidebar_look_reset">Reïnicializar per defaut</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botons d’espinglar suls onglets</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Los onglets se pòdon encara espinglar en los fasent lisar cap als onglets espinglats</string>
 </resources>

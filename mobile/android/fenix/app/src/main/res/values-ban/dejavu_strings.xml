@@ -562,4 +562,6 @@
     <string name="dejavu_sidebar_resize">Ubah ukuran bilah samping. Ketuk kaping kalih ngawit malih lébar</string>
     <string name="dejavu_engine_chip_remove">Sudang ngalih nganggén %1$s</string>
     <string name="dejavu_sidebar_look_reset">Reset ka utama</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Tombol pin ring tab</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Tab kantun prasida kapin antuk ngedeng ka tab sane kapin</string>
 </resources>

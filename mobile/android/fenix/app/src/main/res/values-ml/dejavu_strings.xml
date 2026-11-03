@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">സൈഡ്ബാറിന്റെ വലുപ്പം മാറ്റുക. വീതി പുനഃസജ്ജമാക്കാൻ രണ്ടുതവണ ടാപ്പ് ചെയ്യുക</string>
     <string name="dejavu_engine_chip_remove">%1$s ഉപയോഗിച്ച് തിരയുന്നത് നിർത്തുക</string>
     <string name="dejavu_sidebar_look_reset">സ്ഥിരമായതിലേക്ക് പുനഃസജ്ജമാക്കുക</string>
+    <string name="dejavu_sidebar_look_pin_buttons">ടാബുകളിൽ പിൻ ബട്ടണുകൾ</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">പിൻ ചെയ്ത ടാബുകളിലേക്ക് വലിച്ചിട്ട് ഇപ്പോഴും ടാബുകൾ പിൻ ചെയ്യാം</string>
 </resources>

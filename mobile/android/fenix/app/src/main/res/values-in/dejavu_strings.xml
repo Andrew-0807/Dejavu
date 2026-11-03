@@ -562,4 +562,6 @@
     <string name="dejavu_sidebar_resize">Ubah ukuran bilah samping. Ketuk dua kali untuk mengatur ulang lebarnya</string>
     <string name="dejavu_engine_chip_remove">Berhenti mencari dengan %1$s</string>
     <string name="dejavu_sidebar_look_reset">Atur ulang ke default</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Tombol sematkan pada tab</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Tab masih bisa disematkan dengan menyeretnya ke tab yang disematkan</string>
 </resources>

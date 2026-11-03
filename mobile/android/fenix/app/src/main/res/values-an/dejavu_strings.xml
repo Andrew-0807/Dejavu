@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Cambiar o tamanyo d\'a barra lateral. Toca dos vegadas ta restablir l\'amplaria</string>
     <string name="dejavu_engine_chip_remove">Deixar de mirar con %1$s</string>
     <string name="dejavu_sidebar_look_reset">Restaurar predeterminaus</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botons de fixar en as pestanyas</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">As pestanyas se pueden fixar encara arrocegando-las t\'as pestanyas fixadas</string>
 </resources>

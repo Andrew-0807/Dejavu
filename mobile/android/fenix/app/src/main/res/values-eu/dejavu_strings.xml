@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Aldatu alboko barraren tamaina. Sakatu birritan zabalera berrezartzeko</string>
     <string name="dejavu_engine_chip_remove">Utzi %1$s erabilita bilatzeari</string>
     <string name="dejavu_sidebar_look_reset">Berrezarri lehenetsira</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Ainguratzeko botoiak fitxetan</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Fitxak ainguratutako fitxetara arrastatuta aingura daitezke oraindik</string>
 </resources>

@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Cambiar o tamaño da barra lateral. Toca dúas veces para restablecer o ancho</string>
     <string name="dejavu_engine_chip_remove">Deixar de buscar con %1$s</string>
     <string name="dejavu_sidebar_look_reset">Restabelecer os valores predeterminados</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botóns de fixar nas lapelas</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">As lapelas aínda se poden fixar arrastrándoas ás lapelas fixadas</string>
 </resources>

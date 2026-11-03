@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">يان تاقاقنىڭ چوڭلۇقىنى ئۆزگەرتىش. كەڭلىكنى ئەسلىگە كەلتۈرۈش ئۈچۈن ئىككى قېتىم چېكىڭ</string>
     <string name="dejavu_engine_chip_remove">%1$s بىلەن ئىزدەشنى توختات</string>
     <string name="dejavu_sidebar_look_reset">كۆڭۈلدىكىگە قايتۇر</string>
+    <string name="dejavu_sidebar_look_pin_buttons">بەتكۈچلەردىكى مىقلاش كۇنۇپكىلىرى</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">بەتكۈچلەرنى مىقلانغان بەتكۈچلەرگە سۆرەپ يەنىلا مىقلىغىلى بولىدۇ</string>
 </resources>

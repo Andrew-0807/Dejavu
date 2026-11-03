@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">ಪಕ್ಕದ ಪಟ್ಟಿಯ ಗಾತ್ರ ಬದಲಿಸಿ. ಅಗಲ ಮರುಹೊಂದಿಸಲು ಎರಡು ಬಾರಿ ಟ್ಯಾಪ್ ಮಾಡಿ</string>
     <string name="dejavu_engine_chip_remove">%1$s ಜೊತೆ ಹುಡುಕುವುದನ್ನು ನಿಲ್ಲಿಸಿ</string>
     <string name="dejavu_sidebar_look_reset">ಡೀಫಾಲ್ಟ್‌ಗೆ ಮರುಹೊಂದಿಸು</string>
+    <string name="dejavu_sidebar_look_pin_buttons">ಟ್ಯಾಬ್‌ಗಳಲ್ಲಿ ಪಿನ್ ಬಟನ್‌ಗಳು</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">ಟ್ಯಾಬ್‌ಗಳನ್ನು ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್‌ಗಳಿಗೆ ಎಳೆದು ಈಗಲೂ ಪಿನ್ ಮಾಡಬಹುದು</string>
 </resources>

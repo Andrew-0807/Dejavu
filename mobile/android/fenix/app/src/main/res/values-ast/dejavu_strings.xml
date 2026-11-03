@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Camudar el tamañu de la barra llateral. Toca dos vegaes pa reafitar l\'anchor</string>
     <string name="dejavu_engine_chip_remove">Dexar de guetar con %1$s</string>
     <string name="dejavu_sidebar_look_reset">Restaurar los valores predeterminaos</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botones de fixar nes llingüetes</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Les llingüetes entá se puen fixar arrastrándoles a les llingüetes fixaes</string>
 </resources>

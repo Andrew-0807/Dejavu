@@ -70,6 +70,7 @@ import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
@@ -83,7 +84,9 @@ import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.layout.LayoutCoordinates
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onPlaced
+import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -105,6 +108,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
 import kotlin.math.abs
 import kotlin.math.hypot
@@ -136,6 +140,7 @@ import org.mozilla.fenix.dejavu.home.TabRow
 import org.mozilla.fenix.dejavu.home.displayTitle
 import org.mozilla.fenix.dejavu.home.isAwake
 import org.mozilla.fenix.dejavu.menu.BORDER_ALPHA
+import org.mozilla.fenix.dejavu.menu.SidebarMenuAnchor
 import org.mozilla.fenix.dejavu.menu.readOnMainThread
 import org.mozilla.fenix.dejavu.search.EngineChip
 import org.mozilla.fenix.dejavu.search.EngineShortcutProvider
@@ -315,8 +320,9 @@ fun TabSidebar(
             val placement = remember { arrayOfNulls<LayoutCoordinates>(1) }
             Box(
                 modifier = Modifier
-                    // Mirrored in RTL, so the closed sidebar sits past the start edge there too.
-                    .offset { IntOffset((pulled - widthPx).roundToInt(), 0) }
+                    // Mirrored in RTL, so the closed sidebar sits past the start edge there too. A docked sidebar never
+                    // slides, so it stays on the screen edge even in the frame where its width changed.
+                    .offset { IntOffset(if (overlayShown == null) 0 else (pulled - widthPx).roundToInt(), 0) }
                     .onPlaced { placement[0] = it }
                     .resizeEdge(
                         isRtl = isRtl,
@@ -325,6 +331,8 @@ fun TabSidebar(
                         onResize = { width ->
                             resizing = true
                             wishedWidth = width
+                            // In the same frame as the width, else a fast drag shows the sidebar off the screen edge.
+                            if (isShown) pulled = with(density) { sidebarWidthDp(width, windowWidth).dp.toPx() }
                         },
                         onResizeEnd = {
                             resizing = false
@@ -458,6 +466,9 @@ private fun ResizeGrip(active: Boolean, onReset: () -> Unit, modifier: Modifier 
 }
 
 private const val GRIP_REST_ALPHA = 0.18f
+
+/** How much of the search field shows over a workspace gradient, the same as the menu tiles beside the sidebar. */
+private const val SIDEBAR_FIELD_ALPHA = 0.55f
 private const val GRIP_ACTIVE_ALPHA = 0.7f
 
 /**
@@ -554,10 +565,11 @@ private fun SidebarContent(
     val providers = if (listedEngines != null) engineProviders else webProviders
 
     // Opaque, as the auto-hidden sidebar slides over the page. Drawn like the bars, so it matches them when docked.
+    val theme = shownSidebarTheme()
     Column(
         modifier = modifier
             .background(MaterialTheme.colorScheme.surface)
-            .workspaceTheme(shownSidebarTheme())
+            .workspaceTheme(theme)
             // The sidebar runs behind the system bars, like pages do, so its buttons keep below the status bar while
             // it shows and none while it is hidden. A bar swiped in for a moment brings it back.
             .windowInsetsPadding(WindowInsets.statusBars)
@@ -589,6 +601,8 @@ private fun SidebarContent(
                     focus.requestFocus()
                 },
                 loading = loading == true,
+                // See-through on a workspace gradient, like the tiles of the menu opened from the sidebar.
+                fillAlpha = if (theme != null) SIDEBAR_FIELD_ALPHA else 1f,
                 onMoveSelection = { down ->
                     focusManager.moveFocus(if (down) FocusDirection.Down else FocusDirection.Up)
                 },
@@ -746,8 +760,20 @@ private fun PageControls(navController: NavController, browserStore: BrowserStor
 /** Opens the "More" menu of the shown page. */
 @Composable
 private fun MenuButton(navController: NavController) {
-    ControlButton(iconsR.drawable.mozac_ic_ellipsis_vertical_24, stringResource(R.string.content_description_menu)) {
-        navController.openDejavuMenu(fromBar = false)
+    // Dejavu: beside a page, the menu is a compact panel under this button, which tells where it is.
+    // Dejavu: no button, no anchor.
+    DisposableEffect(Unit) { onDispose { SidebarMenuAnchor.bounds = null } }
+    Box(
+        modifier = Modifier.onGloballyPositioned {
+            // Dejavu: tells the menu where the button is.
+            SidebarMenuAnchor.bounds = Rect(it.positionOnScreen(), it.size.toSize())
+        },
+    ) {
+        ControlButton(iconsR.drawable.mozac_ic_ellipsis_vertical_24, stringResource(R.string.content_description_menu)) {
+            // Dejavu: docked, the menu is a compact panel under this button.
+            val docked = TabSidebarLayout.occupiedWidth > 0.dp
+            navController.openDejavuMenu(fromBar = false, anchored = docked)
+        }
     }
 }
 
@@ -781,6 +807,7 @@ private fun shownHost(url: String): String? =
  * @param onSubmit Enter or the keyboard's Go, with whether it opens a new tab (Shift+Enter).
  * @param onClear Esc: empties the field and leaves it.
  * @param onClearText The clear button: empties the field and keeps editing, as the address bar's does.
+ * @param fillAlpha How opaque the field is drawn, below 1 so a gradient behind it shows through.
  * @param loading Whether the shown page loads, which runs colors through the letters of [restText], as the address
  *   bar's do, see loadingColors.
  * @param onMoveSelection Up or down arrow, true for down, to move through the results.
@@ -801,6 +828,7 @@ internal fun SidebarSearchField(
     onMoveSelection: (down: Boolean) -> Unit,
     onClearText: () -> Unit = onClear,
     loading: Boolean = false,
+    fillAlpha: Float = 1f,
     restText: String? = null,
     editText: String? = null,
     engine: SearchEngine? = null,
@@ -831,7 +859,7 @@ internal fun SidebarSearchField(
             .height(FieldHeight)
             .onFocusChanged { focused = it.hasFocus }
             .clip(CircleShape)
-            .background(scheme.surfaceContainerHigh)
+            .background(scheme.surfaceContainerHigh.copy(alpha = fillAlpha))
             .border(
                 width = if (focused) 2.dp else 1.dp,
                 color = if (focused) scheme.primary else scheme.onSurface.copy(alpha = BORDER_ALPHA),

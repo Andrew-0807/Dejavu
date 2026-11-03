@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Промяна на размера на страничната лента. Докоснете двукратно за връщане на ширината</string>
     <string name="dejavu_engine_chip_remove">Край на търсенето с %1$s</string>
     <string name="dejavu_sidebar_look_reset">Връщане по подразбиране</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Бутони за закачане на разделите</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Разделите все още могат да се закачат, като се плъзнат при закачените</string>
 </resources>

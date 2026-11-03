@@ -570,4 +570,6 @@
     <string name="dejavu_sidebar_resize">Nasama ndɨchi barra lateral</string>
     <string name="dejavu_engine_chip_remove">Kuvi ña̱ kakuu kɨ̱ʼa̱ %1$s</string>
     <string name="dejavu_sidebar_look_reset">Restablecer</string>
+    <string name="dejavu_sidebar_look_pin_buttons">Botón ña chi\'in pestaña</string>
+    <string name="dejavu_sidebar_look_pin_buttons_summary">Kuu chi\'in pestaña tá tava ña nu pestaña ña chi\'in</string>
 </resources>
