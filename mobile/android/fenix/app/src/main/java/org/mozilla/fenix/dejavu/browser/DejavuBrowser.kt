@@ -74,7 +74,7 @@ object DejavuToolbar {
         surfaceContainerHighest = scheme.onSurface.copy(alpha = GLASS_FIELD_ALPHA),
     )
 
-    private const val GLASS_BAR_ALPHA = 0.84f
+    internal const val GLASS_BAR_ALPHA = 0.84f
     private const val GLASS_FIELD_ALPHA = 0.09f
 
     /**

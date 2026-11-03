@@ -29,6 +29,7 @@ import kotlinx.coroutines.launch
 import mozilla.components.concept.engine.EngineView
 
 private const val HIDE_AGAIN_LISTENER = "dejavu_system_bars"
+private const val STATUS_BAR_LISTENER = "dejavu_status_bar"
 
 /** Whether [hideSystemBarsOverPages] keeps the status bar and the navigation bar hidden right now. */
 private var hiddenOverPages = false
@@ -68,6 +69,17 @@ fun Fragment.hideSystemBarsOverPages(engineView: EngineView, hidden: StateFlow<B
                 }
             }
         }
+    }
+}
+
+/** Calls [onChange] when the status bar shows or hides over [engineView], so what keeps below it can follow. */
+fun Fragment.onStatusBarChange(engineView: EngineView, onChange: () -> Unit) {
+    var height = -1
+    engineView.addWindowInsetsListener(STATUS_BAR_LISTENER) { _, insets ->
+        val now = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+        if (height >= 0 && now != height) view?.post(onChange)
+        height = now
+        insets
     }
 }
 
