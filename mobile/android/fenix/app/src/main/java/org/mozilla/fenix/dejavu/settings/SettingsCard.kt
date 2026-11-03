@@ -35,5 +35,5 @@ fun Modifier.settingsCard(index: Int, count: Int): Modifier {
     val bottom = if (last) OuterRadius else InnerRadius
     return padding(start = 16.dp, end = 16.dp, top = if (first) 0.dp else 2.dp, bottom = if (last) 8.dp else 0.dp)
         .clip(RoundedCornerShape(topStart = top, topEnd = top, bottomStart = bottom, bottomEnd = bottom))
-        .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = SETTINGS_CARD_ALPHA))
+        .background(MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = SETTINGS_CARD_ALPHA))
 }

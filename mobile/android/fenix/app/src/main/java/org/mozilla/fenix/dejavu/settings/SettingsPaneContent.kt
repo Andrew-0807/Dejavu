@@ -82,7 +82,7 @@ internal fun SettingsPaneContent(
                         onClick = { onSelect(category) },
                         // See-through like the cards beside it, over the backdrop of the page.
                         colors = NavigationDrawerItemDefaults.colors(
-                            selectedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+                            selectedContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest
                                 .copy(alpha = SETTINGS_CARD_ALPHA),
                             unselectedContainerColor = Color.Transparent,
                         ),
@@ -122,6 +122,7 @@ internal fun SettingsPaneContent(
 @Composable
 private fun SearchField(query: String, onChange: (String) -> Unit) {
     var focused by remember { mutableStateOf(false) }
+    val fill = MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = SETTINGS_CARD_ALPHA)
     TextField(
         value = query,
         onValueChange = onChange,
@@ -143,8 +144,8 @@ private fun SearchField(query: String, onChange: (String) -> Unit) {
         colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
-            focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = SETTINGS_CARD_ALPHA),
-            unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = SETTINGS_CARD_ALPHA),
+            focusedContainerColor = fill,
+            unfocusedContainerColor = fill,
         ),
         modifier = Modifier
             .fillMaxWidth()

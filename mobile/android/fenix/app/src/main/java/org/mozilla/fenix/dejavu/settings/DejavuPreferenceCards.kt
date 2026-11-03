@@ -47,7 +47,7 @@ private class CardDecoration(context: Context) : RecyclerView.ItemDecoration() {
     private val innerRadius = INNER_RADIUS_DP * density
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         // See-through like the cards of the Compose screens, see SETTINGS_CARD_ALPHA.
-        color = MaterialColors.getColor(context, materialR.attr.colorSurfaceContainerHigh, 0)
+        color = MaterialColors.getColor(context, materialR.attr.colorSurfaceContainerHighest, 0)
         alpha = (SETTINGS_CARD_ALPHA * OPAQUE).toInt()
     }
     private val rect = RectF()
