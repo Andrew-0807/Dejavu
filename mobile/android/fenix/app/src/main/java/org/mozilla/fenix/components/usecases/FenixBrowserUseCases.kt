@@ -37,6 +37,9 @@ class FenixBrowserUseCases(
     private val profiler: Profiler?,
     private val keywordResolver: (String) -> Pair<SearchEngine?, String>? = { null },
 ) {
+    /** Dejavu: the engine (null to open a URL) and the text for typed "keyword text", or null without a keyword. */
+    fun resolveKeyword(input: String): Pair<SearchEngine?, String>? = keywordResolver(input)
+
     /**
      * Loads a URL or performs a search depending on the value of [searchTermOrURL].
      *
