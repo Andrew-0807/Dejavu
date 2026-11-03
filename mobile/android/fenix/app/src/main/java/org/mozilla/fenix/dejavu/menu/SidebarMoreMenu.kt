@@ -6,6 +6,7 @@ package org.mozilla.fenix.dejavu.menu
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -235,7 +236,7 @@ private class AnchoredPanel(private val scope: CoroutineScope, private val onClo
         isClosing = true
         motion?.cancel()
         motion = scope.launch {
-            settled.animateTo(0f, CLOSE_SPRING)
+            settled.animateTo(0f, ANCHORED_CLOSE_SPRING)
             hasShrunk = true
             after()
         }
@@ -253,6 +254,22 @@ private val MENU_GAP = 4.dp
 private val MENU_CORNER = 24.dp
 private val MENU_ELEVATION = 8.dp
 
-/** How small the menu starts out of its button, as a share of its size, and how far it is open when it is all there. */
-private const val MENU_START_SCALE = 0.8f
+/**
+ * How small the menu starts out of its button, as a share of its size. It is a small panel next to its button, so it
+ * only needs to start a little short of its size: a deeper start reads as a zoom, not as a menu that opens.
+ */
+private const val MENU_START_SCALE = 0.94f
+
+/**
+ * The spring that shrinks the menu back, stiffer than [CLOSE_SPRING] of the floating menu so it leaves faster than it
+ * came in (about 150 ms against about 200 ms): a menu that is dismissed is no longer wanted. It stays critically
+ * damped, so a close that interrupts the opening turns around smoothly, from the speed it had, without a wobble.
+ */
+private val ANCHORED_CLOSE_SPRING = spring<Float>(
+    dampingRatio = 1f,
+    stiffness = 900f,
+    visibilityThreshold = VISIBILITY_THRESHOLD,
+)
+
+/** How far open the menu is when its fade is done: it is all there well before it stops moving. */
 private const val MENU_FADE = 0.4f
