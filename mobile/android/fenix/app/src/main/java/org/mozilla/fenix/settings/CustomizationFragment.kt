@@ -150,6 +150,7 @@ open class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPadde
         setupBarsCategory()
         setupHomeSearchCategory()
         setupSystemBarsSwitch()
+        setupMatchPageColorSwitch()
 
         // if tab strip is enabled, swipe toolbar to switch tabs should not be enabled so the
         // preference is not shown
@@ -358,6 +359,18 @@ open class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPadde
             isChecked = dejavuSettings.systemBarsHidden.value
             onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
                 dejavuSettings.setSystemBarsHidden(newValue == true)
+                true
+            }
+        }
+    }
+
+    /** Tints the bars with the color of the page, which Dejavu's own settings keep. */
+    private fun setupMatchPageColorSwitch() {
+        val dejavuSettings = dejavuSettings()
+        requirePreference<SwitchPreferenceCompat>(R.string.pref_key_dejavu_match_page_color).apply {
+            isChecked = dejavuSettings.matchPageColor.value
+            onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
+                dejavuSettings.setMatchPageColor(newValue == true)
                 true
             }
         }
