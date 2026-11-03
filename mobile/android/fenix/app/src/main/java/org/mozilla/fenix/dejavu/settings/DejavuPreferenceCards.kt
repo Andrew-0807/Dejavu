@@ -46,7 +46,9 @@ private class CardDecoration(context: Context) : RecyclerView.ItemDecoration() {
     private val outerRadius = OUTER_RADIUS_DP * density
     private val innerRadius = INNER_RADIUS_DP * density
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        // See-through like the cards of the Compose screens, see SETTINGS_CARD_ALPHA.
         color = MaterialColors.getColor(context, materialR.attr.colorSurfaceContainerHigh, 0)
+        alpha = (SETTINGS_CARD_ALPHA * OPAQUE).toInt()
     }
     private val rect = RectF()
     private val path = Path()
@@ -87,7 +89,7 @@ private class CardDecoration(context: Context) : RecyclerView.ItemDecoration() {
                 floatArrayOf(top, top, top, top, bottom, bottom, bottom, bottom),
                 Path.Direction.CW,
             )
-            paint.alpha = (child.alpha * OPAQUE).toInt()
+            paint.alpha = (child.alpha * SETTINGS_CARD_ALPHA * OPAQUE).toInt()
             canvas.drawPath(path, paint)
         }
     }
