@@ -18,7 +18,8 @@ private val InnerRadius = 6.dp
 
 /**
  * Draws the setting at [index] of a group of [count] settings as part of one rounded card, the way
- * [DejavuPreferenceCards] shows the settings screens of Firefox.
+ * [DejavuPreferenceCards] shows the settings screens of Firefox. On a wide window the screen holding the cards is kept
+ * to [SettingsLayout.MAX_CONTENT_WIDTH_DP] and centered by [DejavuComposeFragment], so the cards are at most that wide.
  */
 @Composable
 fun Modifier.settingsCard(index: Int, count: Int): Modifier {
