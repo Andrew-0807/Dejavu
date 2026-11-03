@@ -270,16 +270,18 @@ sealed interface DejavuToolbarEvent : BrowserToolbarEvent
  *   down from the top of the screen.
  * @param opening What the menu shows first.
  * @param splitWay How a tab picked for a split view shows next to the shown one.
+ * @param anchored Whether the menu is the compact panel under the docked sidebar's button.
  */
 fun NavController.openDejavuMenu(
     fromBar: Boolean,
     opening: DejavuMenu.Opening = DejavuMenu.Opening.MENU,
     splitWay: SplitOrientation? = null,
+    anchored: Boolean = false,
 ) {
     val directions = NavGraphDirections.actionGlobalMenuDialogFragment(accesspoint = MenuAccessPoint.Browser)
     if (currentDestination?.id != R.id.browserFragment) return
     if (opening == DejavuMenu.Opening.MENU) Tips.done(Tip.PAGE_MENU)
-    val arguments = DejavuMenu.arguments(fromBar, opening, splitWay)
+    val arguments = DejavuMenu.arguments(fromBar, opening, splitWay, anchored)
     navigate(directions.actionId, directions.arguments.apply { putAll(arguments) })
 }
 

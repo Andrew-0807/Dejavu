@@ -204,14 +204,22 @@ private val DeviceLockedItems = setOf(
  * bottom sheet dialog.
  *
  * @param floating Shows the menu as a panel growing out of the actions bar instead, see [FloatingMoreMenu].
+ * @param anchored Shows the menu as a compact panel under the docked sidebar's button instead, see
+ *   [AnchoredMoreMenu].
  */
 @Composable
 fun MoreMenuSheet(
     fromTop: Boolean,
     onDismiss: () -> Unit,
     floating: Boolean = false,
+    anchored: Boolean = false,
     content: @Composable ColumnScope.() -> Unit,
 ) {
+    // Dejavu: beside the docked sidebar, the menu is a small panel under its button, see [AnchoredMoreMenu].
+    if (anchored) {
+        AnchoredMoreMenu(onDismiss = onDismiss, content = content)
+        return
+    }
     if (floating) {
         FloatingMoreMenu(onDismiss = onDismiss, content = content)
         return
@@ -330,6 +338,7 @@ private fun SheetHandle(modifier: Modifier = Modifier) {
  * @param onEdit Opens the settings of the menu, from a button below the rows; without it there is no such button.
  * @param onCustomizeReaderView Opens Firefox's settings of reader view, from a row under the row with the reader view
  * entry, or above all rows when the menu has no such entry; without it there is no such row.
+ * @param columns How many tiles a row has room for, fewer in the compact menu of the docked sidebar.
  */
 @Suppress("LongParameterList")
 @Composable
@@ -343,6 +352,7 @@ fun MoreMenu(
     onManageExtensions: () -> Unit,
     onEdit: (() -> Unit)? = null,
     onCustomizeReaderView: (() -> Unit)? = null,
+    columns: Int = MoreMenuLayout.MAX_PER_ROW,
 ) {
     val unseen = rememberUnseenNewThings()
     val readerViewRow = rows.indexOfFirst { row -> MoreMenuEntry.BuiltIn(MoreMenuItem.READER_VIEW) in row }
@@ -367,7 +377,7 @@ fun MoreMenu(
                             isNew = entry.isNewAmong(unseen),
                         )
                     }
-                    repeat(MoreMenuLayout.MAX_PER_ROW - row.size) { Spacer(Modifier.weight(1f)) }
+                    repeat((columns - row.size).coerceAtLeast(0)) { Spacer(Modifier.weight(1f)) }
                 }
             }
             if (onCustomizeReaderView != null && index == readerViewRow) CustomizeReaderViewRow(onCustomizeReaderView)
@@ -681,5 +691,5 @@ private const val DIVIDER_ALPHA = 0.5f
 private const val HALF_TURN = 180f
 
 /** How opaque the tiles and the extensions row are: less than 1 beside the docked sidebar. */
-private val LocalTileAlpha = compositionLocalOf { 1f }
-private const val SIDEBAR_TILE_ALPHA = 0.55f
+internal val LocalTileAlpha = compositionLocalOf { 1f }
+internal const val SIDEBAR_TILE_ALPHA = 0.55f
