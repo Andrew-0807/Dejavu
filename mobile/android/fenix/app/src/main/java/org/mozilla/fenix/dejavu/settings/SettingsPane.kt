@@ -18,7 +18,6 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.navOptions
 import kotlinx.coroutines.launch
 import org.mozilla.fenix.R
 import org.mozilla.fenix.settings.settingssearch.SettingsIndexer
@@ -49,7 +48,11 @@ class SettingsPane(
     private val density = activity.resources.displayMetrics.density
     private val paneWidth = (SettingsLayout.PANE_WIDTH_DP * density).toInt()
     private val selected = mutableStateOf(SettingsCategory.entries.first())
-    private val pages = SettingsCategoryPages(::isWide)
+    private val pages = SettingsCategoryPages(::isWide, ::chosenFor)
+
+    // The category picked in the list, and the entry of Settings it was picked on. Settings stays where it is while
+    // the category changes, so the screen never passes through the one below it.
+    private var chosen: Pair<String, SettingsCategory>? = null
     private var pane: ComposeView? = null
 
     /** Starts to follow the navigation and the size of the window. Call it once, when the activity is created. */
@@ -86,7 +89,8 @@ class SettingsPane(
 
     private fun steps(): List<Step> = navController.currentBackStack.value.asReversed().map { entry ->
         val ids = generateSequence(entry.destination) { it.parent }.map { it.id }.toList()
-        Step(ids, categoryName(entry.arguments))
+        val picked = chosen?.takeIf { it.first == entry.id }?.second
+        Step(ids, picked?.name ?: categoryName(entry.arguments))
     }
 
     private fun categoryName(arguments: Bundle?): String = categoryOf(arguments, activity::getString).name
@@ -138,13 +142,32 @@ class SettingsPane(
         SettingsCategories.categoryOfScreen(item.preferenceFileInformation.fragmentId)
             ?: SettingsCategories.categoryOfKey(item.preferenceKey, activity::getString)
 
-    /** Shows the settings of [category] on the main Settings screen, which starts over. */
+    private fun settingsEntry() = runCatching { navController.getBackStackEntry(R.id.settingsFragment) }.getOrNull()
+
+    private fun chosenFor(): SettingsCategory? {
+        val entry = settingsEntry() ?: return null
+        return chosen?.takeIf { it.first == entry.id }?.second
+    }
+
+    /**
+     * Shows the settings of [category] on the main Settings screen. The screen stays and only changes what it shows,
+     * so nothing is navigated away from, shown in between or animated.
+     */
     private fun select(category: SettingsCategory) {
-        navController.navigate(
-            R.id.settingsFragment,
-            Bundle().apply { putString(ARG_CATEGORY, category.name) },
-            navOptions { popUpTo(R.id.settingsFragment) { inclusive = true } },
-        )
+        val entry = settingsEntry()
+        if (entry == null) {
+            navController.navigate(
+                R.id.settingsFragment,
+                Bundle().apply { putString(ARG_CATEGORY, category.name) },
+            )
+            return
+        }
+        chosen = entry.id to category
+        // Screens opened below Settings from the category go; Settings itself stays.
+        navController.popBackStack(R.id.settingsFragment, false)
+        selected.value = category
+        pages.reload()
+        refresh()
     }
 
     private fun open(item: SettingsSearchItem) = SettingsSearch.open(navController, item, activity::getString)

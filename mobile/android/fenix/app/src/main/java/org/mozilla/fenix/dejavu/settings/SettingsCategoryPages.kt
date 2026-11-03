@@ -25,7 +25,10 @@ import org.mozilla.fenix.settings.SettingsFragment
  *
  * @param isWide Whether the window is wide enough to show the categories beside the settings.
  */
-internal class SettingsCategoryPages(private val isWide: () -> Boolean) : FragmentManager.FragmentLifecycleCallbacks() {
+internal class SettingsCategoryPages(
+    private val isWide: () -> Boolean,
+    private val chosen: () -> SettingsCategory? = { null },
+) : FragmentManager.FragmentLifecycleCallbacks() {
     /** What a page changed on its screen, so it can be put back when the window gets narrow. */
     private class Page {
         val hidden = mutableSetOf<Preference>()
@@ -61,8 +64,19 @@ internal class SettingsCategoryPages(private val isWide: () -> Boolean) : Fragme
     /** Shows or puts back the page of every main Settings screen there is, after the window changed its width. */
     fun update() = pages.keys.toList().forEach(::show)
 
+    /** Makes the pages again for the category that was picked, and names the screen after it. */
+    fun reload() {
+        pages.keys.toList().forEach { fragment ->
+            pages[fragment]?.let { page -> fragment.preferenceScreen?.let { restore(it, page) } }
+            show(fragment)
+            if (isWide()) {
+                (fragment.activity as? AppCompatActivity)?.title = fragment.getString(categoryOf(fragment).title)
+            }
+        }
+    }
+
     private fun categoryOf(fragment: SettingsFragment): SettingsCategory =
-        SettingsPane.categoryOf(fragment.arguments, fragment::getString)
+        chosen() ?: SettingsPane.categoryOf(fragment.arguments, fragment::getString)
 
     private fun show(fragment: SettingsFragment) {
         val screen = fragment.preferenceScreen ?: return
