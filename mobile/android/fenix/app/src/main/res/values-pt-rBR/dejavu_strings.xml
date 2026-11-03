@@ -330,7 +330,6 @@
     <string name="dejavu_feature_firefox_sync">Acompanhe o Firefox nos seus computadores e celulares</string>
     <string name="dejavu_settings_whats_new">Novidades</string>
     <string name="dejavu_settings_whats_new_summary">O que cada versão trouxe e um tour pelo Dejavu</string>
-    <string name="dejavu_settings_author">Criado por %1$s</string>
     <string name="dejavu_settings_coffee">Me pague um café</string>
     <string name="dejavu_settings_coffee_summary">O Dejavu não tem anúncios. Se você gosta dele, um café o ajuda a crescer.</string>
     <string name="dejavu_settings_safe_browsing">Navegação segura do Google</string>
@@ -551,4 +550,5 @@
     <string name="dejavu_settings_tips">Dicas</string>
     <string name="dejavu_settings_tips_summary">Mostrar dicas sobre gestos ocultos, como manter “Nova aba” pressionado</string>
     <string name="dejavu_new">Novidade</string>
+    <string name="dejavu_menu_customize_reader_view">Personalizar modo de leitura</string>
 </resources>

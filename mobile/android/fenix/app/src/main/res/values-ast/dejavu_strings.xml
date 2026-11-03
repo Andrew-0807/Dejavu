@@ -323,7 +323,6 @@
     <string name="dejavu_feature_firefox_sync">Sigui Firefox nos tos ordenadores y teléfonos</string>
     <string name="dejavu_settings_whats_new">Novedaes</string>
     <string name="dejavu_settings_whats_new_summary">Lo que traxo cada versión y una visita guiada por Dejavu</string>
-    <string name="dejavu_settings_author">Creáu por %1$s</string>
     <string name="dejavu_settings_coffee">Cómprame un café</string>
     <string name="dejavu_settings_coffee_summary">Dejavu nun tien anuncios. Si te presta, un café ayúdalu a medrar.</string>
     <string name="dejavu_settings_safe_browsing">Navegación segura de Google</string>
@@ -543,4 +542,5 @@
     <string name="dejavu_settings_tips">Conseyos</string>
     <string name="dejavu_settings_tips_summary">Amosar conseyos sobre xestos anubríos, como caltener primíu «Llingüeta nueva»</string>
     <string name="dejavu_new">Nuevu</string>
+    <string name="dejavu_menu_customize_reader_view">Personalizar la vista de llector</string>
 </resources>

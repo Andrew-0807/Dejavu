@@ -316,7 +316,6 @@
     <string name="dejavu_feature_firefox_sync">သင့်ကွန်ပျူတာနှင့် ဖုန်းများရှိ Firefox ကို လိုက်ကြည့်ပါ</string>
     <string name="dejavu_settings_whats_new">ဘာအသစ်ထွက်လဲ</string>
     <string name="dejavu_settings_whats_new_summary">ဗားရှင်းတစ်ခုစီတွင် ပါလာသည့်အရာများနှင့် Dejavu ကို လှည့်လည်ကြည့်ရှုခြင်း</string>
-    <string name="dejavu_settings_author">%1$s မှ ဖန်တီးသည်</string>
     <string name="dejavu_settings_coffee">ကျွန်ုပ်ကို ကော်ဖီတစ်ခွက် တိုက်ပါ</string>
     <string name="dejavu_settings_coffee_summary">Dejavu တွင် ကြော်ငြာများ မရှိပါ။ သင်နှစ်သက်ပါက ကော်ဖီတစ်ခွက်က ၎င်းကို ကြီးထွားလာစေရန် ကူညီပေးသည်။</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
@@ -535,4 +534,5 @@
     <string name="dejavu_settings_tips">အကြံပြုချက်များ</string>
     <string name="dejavu_settings_tips_summary">“တက်ဗ် အသစ်” ကို ဖိထားခြင်းကဲ့သို့ ဝှက်ထားသော လက်ဟန်အမူအရာများအကြောင်း အကြံပြုချက်များ ပြသရန်</string>
     <string name="dejavu_new">အသစ်</string>
+    <string name="dejavu_menu_customize_reader_view">စာဖတ်သူ မြင်ကွင်းကို စိတ်ကြိုက်လုပ်ပါ</string>
 </resources>

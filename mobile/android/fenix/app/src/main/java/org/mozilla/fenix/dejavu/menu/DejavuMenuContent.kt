@@ -337,6 +337,7 @@ private fun MoreMenuContent(
             },
             onManageExtensions = manageExtensions,
             onEdit = onEdit.takeUnless { editHidden },
+            onCustomizeReaderView = if (state.isInReaderView) actions::customizeReaderView else null,
         )
     }
 }
@@ -500,6 +501,9 @@ private class MenuActions(
         commands.split(workspaces, other, way)
         dismiss()
     }
+
+    /** Shows Firefox's settings of reader view at the bottom of the page: its font, text size and colors. */
+    fun customizeReaderView() = dispatch(MenuAction.CustomizeReaderView)
 
     /** Hands [action] to Fenix's menu, which closes the menu once done; a floating menu shrinks away first. */
     private fun dispatch(action: MenuAction) {

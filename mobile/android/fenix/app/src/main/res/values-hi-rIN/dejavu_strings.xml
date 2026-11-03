@@ -356,7 +356,6 @@
     <string name="dejavu_feature_firefox_sync">अपने कंप्यूटर और फ़ोन पर Firefox को फ़ॉलो करें</string>
     <string name="dejavu_settings_whats_new">क्या नया है</string>
     <string name="dejavu_settings_whats_new_summary">हर वर्शन में क्या आया, और Dejavu का टूर</string>
-    <string name="dejavu_settings_author">%1$s द्वारा बनाया गया</string>
     <string name="dejavu_settings_coffee">मुझे एक कॉफ़ी पिलाएं</string>
     <string name="dejavu_settings_coffee_summary">Dejavu में कोई विज्ञापन नहीं है। अगर आपको यह पसंद है, तो एक कॉफ़ी इसे आगे बढ़ने में मदद करती है।</string>
     <string name="dejavu_settings_safe_browsing">Google सुरक्षित ब्राउज़िंग</string>
@@ -576,4 +575,5 @@
     <string name="dejavu_settings_tips">टिप्स</string>
     <string name="dejavu_settings_tips_summary">छिपे हुए जेस्चर के बारे में टिप्स दिखाएं, जैसे “नया टैब” को दबाकर रखना</string>
     <string name="dejavu_new">नया</string>
+    <string name="dejavu_menu_customize_reader_view">रीडर व्यू को कस्टमाइज़ करें</string>
 </resources>

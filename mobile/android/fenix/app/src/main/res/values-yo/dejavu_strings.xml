@@ -316,7 +316,6 @@
     <string name="dejavu_feature_firefox_sync">Tẹ̀lé Firefox lórí àwọn kọ̀mpútà àti fóònù rẹ</string>
     <string name="dejavu_settings_whats_new">Kíni ó jẹ́ tuntun</string>
     <string name="dejavu_settings_whats_new_summary">Ohun tí ẹ̀yà kọ̀ọ̀kan mú wá, àti ìfihàn Dejavu</string>
-    <string name="dejavu_settings_author">Ṣíṣẹ̀dá láti ọwọ́ %1$s</string>
     <string name="dejavu_settings_coffee">Ra kọfí fún mi</string>
     <string name="dejavu_settings_coffee_summary">Dejavu kò ní ìpolówó. Tí o bá gbádùn rẹ̀, kọfí kan ń ràn án lọ́wọ́ láti dàgbà.</string>
     <string name="dejavu_settings_safe_browsing">Google Safe Browsing</string>
@@ -535,4 +534,5 @@
     <string name="dejavu_settings_tips">Àwọn ìmọ̀ràn</string>
     <string name="dejavu_settings_tips_summary">Fi àwọn ìmọ̀ràn hàn nípa àwọn ìfarajúwèé tó farasin, bí dídi bọ́tìnnì Táàbù Tuntun mú</string>
     <string name="dejavu_new">Tuntun</string>
+    <string name="dejavu_menu_customize_reader_view">Sọ èrò olùkà di ti ara ẹni</string>
 </resources>

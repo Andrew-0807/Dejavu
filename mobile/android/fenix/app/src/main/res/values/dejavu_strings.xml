@@ -182,7 +182,7 @@
     <string name="dejavu_settings_title">Dejavu</string>
     <!-- About page. %1$s is the name of the app. -->
     <string name="dejavu_about_content">%1$s is an independent browser built from Mozilla’s open source Firefox and GeckoView code. It is not made, endorsed or supported by Mozilla. Firefox is a trademark of the Mozilla Foundation in the U.S. and other countries.</string>
-    <!-- About screen link to Dejavu's source code, which takes the place of Firefox's "Know your rights" page. -->
+    <!-- Link to Dejavu's source code, at the top of Settings and on the About screen, where it takes the place of Firefox's "Know your rights" page. -->
     <string name="dejavu_about_source_code">Source code</string>
     <string name="dejavu_settings_tab_actions">Tab actions</string>
     <string name="dejavu_settings_tab_actions_entry_summary">One list of actions, and where each one shows</string>
@@ -317,6 +317,8 @@
     <!-- Shows the page as Firefox's Reader view, plain text without ads and clutter. Same words as dejavu_page_info_reader_view. -->
     <string name="dejavu_menu_reader_view">Reader view</string>
     <string name="dejavu_menu_close_reader_view">Close reader view</string>
+    <!-- A row of the More menu while the page is in reader view: opens Firefox's reader view settings, for its font, text size and colors. -->
+    <string name="dejavu_menu_customize_reader_view">Customize reader view</string>
     <!-- Opens the home screen with the address bar ready, so what the user types opens in a new tab. -->
     <string name="dejavu_menu_new_tab">New tab</string>
     <string name="dejavu_menu_extensions">Extensions</string>
@@ -535,9 +537,6 @@
     <!-- Settings, at the top: opens what each version of Dejavu brought, and the tour of its features. -->
     <string name="dejavu_settings_whats_new">What’s new</string>
     <string name="dejavu_settings_whats_new_summary">What each version brought, and a tour of Dejavu</string>
-    <!-- Settings, at the top: who makes Dejavu, with "Source code" under it. %1$s is the maker's name, The Architect. -->
-    <string name="dejavu_settings_author">Created by %1$s</string>
-    <string name="dejavu_author_name" translatable="false">The Architect</string>
     <!-- Settings, at the top: opens the maker's page on Buy Me a Coffee, a site for small donations. -->
     <string name="dejavu_settings_coffee">Buy me a coffee</string>
     <string name="dejavu_settings_coffee_summary">Dejavu has no ads. If you enjoy it, a coffee helps it grow.</string>
@@ -548,7 +547,7 @@
     <string name="pref_key_dejavu_matrix" translatable="false">pref_key_dejavu_matrix</string>
     <string name="pref_key_dejavu_whats_new" translatable="false">pref_key_dejavu_whats_new</string>
     <string name="pref_key_dejavu_tips" translatable="false">pref_key_dejavu_tips</string>
-    <string name="pref_key_dejavu_author" translatable="false">pref_key_dejavu_author</string>
+    <string name="pref_key_dejavu_source_code" translatable="false">pref_key_dejavu_source_code</string>
     <string name="pref_key_dejavu_coffee" translatable="false">pref_key_dejavu_coffee</string>
     <!-- Edit workspace dialog: title of the note that says what Firefox Sync leaves out of workspaces, shown while workspaces sync with Firefox (not Zen). -->
     <string name="dejavu_workspace_firefox_limits">Limited by Firefox Sync</string>

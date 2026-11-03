@@ -323,7 +323,6 @@
     <string name="dejavu_feature_firefox_sync">तुमच्या संगणकांवरील आणि फोनवरील Firefox चा मागोवा घ्या</string>
     <string name="dejavu_settings_whats_new">नवीन काय आहे</string>
     <string name="dejavu_settings_whats_new_summary">प्रत्येक आवृत्तीने काय आणले, आणि Dejavu चा फेरफटका</string>
-    <string name="dejavu_settings_author">%1$s यांनी तयार केले</string>
     <string name="dejavu_settings_coffee">मला एक कॉफी घेऊन द्या</string>
     <string name="dejavu_settings_coffee_summary">Dejavu मध्ये जाहिराती नाहीत. तुम्हाला ते आवडत असल्यास, एक कॉफी त्याला वाढण्यास मदत करते.</string>
     <string name="dejavu_settings_safe_browsing">Google सुरक्षित ब्राउझिंग</string>
@@ -543,4 +542,5 @@
     <string name="dejavu_settings_tips">टिपा</string>
     <string name="dejavu_settings_tips_summary">“नवीन टॅब” दाबून धरण्यासारख्या लपलेल्या जेश्चरविषयी टिपा दाखवा</string>
     <string name="dejavu_new">नवीन</string>
+    <string name="dejavu_menu_customize_reader_view">वाचक मोड स्वेच्छेनुरूप करा</string>
 </resources>
