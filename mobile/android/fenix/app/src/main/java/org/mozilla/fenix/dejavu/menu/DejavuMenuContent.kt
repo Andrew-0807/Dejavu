@@ -57,6 +57,7 @@ import org.mozilla.fenix.components.menu.store.WebExtensionMenuItem
 import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.ClearData
 import org.mozilla.fenix.dejavu.browser.SplitSpace
+import org.mozilla.fenix.dejavu.browser.keepSystemBarsHiddenOverPages
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 import org.mozilla.fenix.dejavu.settings.PageBackdrop
 import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
@@ -186,6 +187,7 @@ object DejavuMenu {
             @Suppress("DEPRECATION")
             own.navigationBarColor = android.graphics.Color.TRANSPARENT
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) own.isNavigationBarContrastEnforced = false
+            keepSystemBarsHiddenOverPages(own)
             val behind = WindowCompat.getInsetsController(activityWindow, activityWindow.decorView)
             WindowCompat.getInsetsController(own, own.decorView).apply {
                 isAppearanceLightStatusBars = behind.isAppearanceLightStatusBars

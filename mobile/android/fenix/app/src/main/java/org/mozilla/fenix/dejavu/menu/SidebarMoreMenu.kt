@@ -4,6 +4,8 @@
 
 package org.mozilla.fenix.dejavu.menu
 
+import androidx.activity.compose.BackHandler
+import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -28,12 +30,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.TransformOrigin
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionOnScreen
@@ -43,6 +48,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import kotlin.math.roundToInt
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.tabstrip.TabSidebarLayout
 import org.mozilla.fenix.dejavu.browser.shownMenuTheme
@@ -108,14 +117,20 @@ fun compactRows(rows: List<List<MoreMenuEntry>>, shown: Set<MoreMenuItem>, colum
 /**
  * The "More" menu opened from the docked sidebar: a small panel right under the sidebar's button, in the see-through
  * look of the sidebar. It does not dim the page, and a tap outside it closes it, as Back does. It scrolls when the
- * screen is not tall enough.
+ * screen is not tall enough. It grows out of the button's corner with the springs of the floating menu, and shrinks
+ * back into it before [onDismiss] removes it.
  *
- * @param onDismiss Closes the menu.
+ * @param onDismiss Removes the menu, once it shrank back into the button.
  * @param content The menu's tiles.
  */
 @Composable
 internal fun AnchoredMoreMenu(onDismiss: () -> Unit, content: @Composable ColumnScope.() -> Unit) {
     val anchor = SidebarMenuAnchor.bounds
+    val scope = rememberCoroutineScope()
+    val panel = remember { AnchoredPanel(scope, onDismiss) }
+    LaunchedEffect(panel) { panel.open() }
+    // Back, and actions done with their work, close the menu through here; see DejavuMenu.closeFloating.
+    BackHandler(onBack = panel::remove)
     // Without a sidebar to grow out of, as after the app was restored, there is nothing to attach the menu to.
     if (anchor == null) {
         LaunchedEffect(Unit) { onDismiss() }
@@ -135,7 +150,7 @@ internal fun AnchoredMoreMenu(onDismiss: () -> Unit, content: @Composable Column
                 interactionSource = null,
                 indication = null,
                 onClickLabel = stringResource(R.string.browser_close_main_menu_handlebar_content_description),
-                onClick = onDismiss,
+                onClick = panel::close,
             ),
     ) {
         val width = TabSidebarLayout.occupiedWidth.coerceIn(MENU_MIN_WIDTH, MENU_MAX_WIDTH)
@@ -154,6 +169,13 @@ internal fun AnchoredMoreMenu(onDismiss: () -> Unit, content: @Composable Column
                 .offset { IntOffset(x.roundToInt(), y.roundToInt()) }
                 .width(width)
                 .heightIn(max = room.coerceAtLeast(MENU_MIN_HEIGHT))
+                .graphicsLayer {
+                    val scale = MENU_START_SCALE + (1f - MENU_START_SCALE) * panel.progress
+                    scaleX = scale
+                    scaleY = scale
+                    alpha = smoothstep(panel.progress / MENU_FADE)
+                    transformOrigin = TransformOrigin(1f, 0f)
+                }
                 .shadow(MENU_ELEVATION, shape)
                 .clip(shape)
                 .background(MaterialTheme.colorScheme.surface)
@@ -162,7 +184,7 @@ internal fun AnchoredMoreMenu(onDismiss: () -> Unit, content: @Composable Column
                 // Taps on the menu itself, between its tiles, must not reach the closing area behind it.
                 .pointerInput(Unit) { detectTapGestures { } },
         ) {
-            CompositionLocalProvider(LocalTileAlpha provides tileAlpha) {
+            CompositionLocalProvider(LocalTileAlpha provides tileAlpha, LocalMenuCloser provides panel) {
                 Column(
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
@@ -170,6 +192,52 @@ internal fun AnchoredMoreMenu(onDismiss: () -> Unit, content: @Composable Column
                     content = content,
                 )
             }
+        }
+    }
+}
+
+/**
+ * How far the compact menu is open and what moves it: the spring that grows it out of its button and the one that
+ * shrinks it back, the same as the floating menu's.
+ */
+private class AnchoredPanel(private val scope: CoroutineScope, private val onClosed: () -> Unit) : MenuCloser {
+    private val settled = Animatable(0f, visibilityThreshold = VISIBILITY_THRESHOLD)
+    private var motion: Job? = null
+    private var isClosing = false
+    private var hasShrunk = false
+
+    /** How far the menu is open, from 0 at the size of its button to 1 at its full size. */
+    val progress: Float
+        get() = settled.value
+
+    fun open() {
+        motion = scope.launch { settled.animateTo(1f, OPEN_SPRING) }
+    }
+
+    override fun close(then: () -> Unit) = shrinkAway {
+        then()
+        onClosed()
+    }
+
+    override fun closeBy(action: () -> Unit) = shrinkAway {
+        action()
+        delay(REMOVAL_TIMEOUT_MS)
+        onClosed()
+    }
+
+    /** Removes the menu when asked to: right away once it shrank away, after shrinking it otherwise. */
+    fun remove() {
+        if (hasShrunk) onClosed() else close()
+    }
+
+    private fun shrinkAway(after: suspend () -> Unit) {
+        if (isClosing) return
+        isClosing = true
+        motion?.cancel()
+        motion = scope.launch {
+            settled.animateTo(0f, CLOSE_SPRING)
+            hasShrunk = true
+            after()
         }
     }
 }
@@ -184,3 +252,7 @@ private val MENU_MARGIN = 8.dp
 private val MENU_GAP = 4.dp
 private val MENU_CORNER = 24.dp
 private val MENU_ELEVATION = 8.dp
+
+/** How small the menu starts out of its button, as a share of its size, and how far it is open when it is all there. */
+private const val MENU_START_SCALE = 0.8f
+private const val MENU_FADE = 0.4f

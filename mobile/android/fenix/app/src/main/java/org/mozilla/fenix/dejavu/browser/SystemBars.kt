@@ -103,6 +103,14 @@ fun Modifier.navigationBarRoomPadding(): Modifier = composed {
     windowInsetsPadding(WindowInsets.navigationBars)
 }
 
+/**
+ * Keeps the bars hidden in [dialogWindow], the window of a dialog over the browser screen, while they are hidden over
+ * pages. A window of its own brings the bars back otherwise, as soon as it takes the focus from the screen.
+ */
+fun keepSystemBarsHiddenOverPages(dialogWindow: Window) {
+    if (hiddenOverPages) dialogWindow.hideSystemBars()
+}
+
 private fun Window.hideSystemBars() = WindowCompat.getInsetsController(this, decorView).run {
     systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
     hide(WindowInsetsCompat.Type.systemBars())
