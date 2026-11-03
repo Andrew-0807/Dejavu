@@ -4,6 +4,11 @@
 
 package org.mozilla.fenix.dejavu.settings
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -43,6 +48,15 @@ import org.mozilla.fenix.settings.settingssearch.SettingsSearchItem
 
 private val SearchShape = RoundedCornerShape(28.dp)
 
+/** How long the search field takes to turn its hairline into the focus ring and back. Short, as it answers a tap. */
+private const val FOCUS_RING_MS = 120
+
+/** How long the list of categories and the found settings take to swap. A fade only, so typing never waits for it. */
+private const val SWAP_MS = 100
+
+/** What the list shows below the search field. */
+private enum class ListMode { CATEGORIES, RESULTS, NO_RESULTS }
+
 /**
  * The list of categories beside the settings: a search field on top and the categories below it, or the settings the
  * search finds while something is typed.
@@ -63,8 +77,15 @@ internal fun SettingsPaneContent(
 ) {
     val hairline = MaterialTheme.colorScheme.onSurface.copy(alpha = BORDER_ALPHA)
     var query by rememberSaveable { mutableStateOf("") }
-    var results by remember { mutableStateOf(emptyList<SettingsSearchItem>()) }
-    LaunchedEffect(query) { results = if (query.isBlank()) emptyList() else search(query) }
+    var results by remember { mutableStateOf("" to emptyList<SettingsSearchItem>()) }
+    LaunchedEffect(query) { results = query to if (query.isBlank()) emptyList() else search(query) }
+    val found = results.second
+    // "No results" is only true once the search of this query is done, not while the one before it is still shown.
+    val mode = when {
+        query.isBlank() -> ListMode.CATEGORIES
+        found.isEmpty() && results.first == query -> ListMode.NO_RESULTS
+        else -> ListMode.RESULTS
+    }
 
     Column(
         Modifier
@@ -72,46 +93,59 @@ internal fun SettingsPaneContent(
             .navigationBarsPadding(),
     ) {
         SearchField(query, onChange = { query = it })
-        if (query.isBlank()) {
-            LazyColumn(Modifier.padding(horizontal = 12.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                items(SettingsCategory.entries) { category ->
-                    NavigationDrawerItem(
-                        label = { Text(stringResource(category.title)) },
-                        icon = { Icon(painterResource(category.icon), contentDescription = null) },
-                        selected = category == selected,
-                        onClick = { onSelect(category) },
-                        // See-through like the cards beside it, over the backdrop of the page.
-                        colors = NavigationDrawerItemDefaults.colors(
-                            selectedContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest
-                                .copy(alpha = SETTINGS_CARD_ALPHA),
-                            unselectedContainerColor = Color.Transparent,
-                        ),
-                        modifier = if (category == selected) Modifier.border(1.dp, hairline, SearchShape) else Modifier,
-                    )
-                }
-            }
-        } else if (results.isEmpty()) {
-            Text(
-                text = stringResource(R.string.settings_search_no_results_title),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(16.dp),
-            )
-        } else {
-            LazyColumn {
-                items(results, key = { it.preferenceKey }) { item ->
-                    Column(
-                        Modifier
-                            .fillMaxWidth()
-                            .clickable { onOpen(item) }
-                            .padding(horizontal = 24.dp, vertical = 10.dp),
-                    ) {
-                        Text(item.title, style = MaterialTheme.typography.bodyLarge)
-                        Text(
-                            text = stringResource(categoryOf(item).title),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        Crossfade(mode, animationSpec = tween(SWAP_MS, easing = FastOutSlowInEasing), label = "settingsList") { shown ->
+            when (shown) {
+                ListMode.CATEGORIES -> LazyColumn(
+                    Modifier.padding(horizontal = 12.dp),
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
+                ) {
+                    items(SettingsCategory.entries) { category ->
+                        NavigationDrawerItem(
+                            label = { Text(stringResource(category.title)) },
+                            icon = { Icon(painterResource(category.icon), contentDescription = null) },
+                            selected = category == selected,
+                            onClick = { onSelect(category) },
+                            // See-through like the cards beside it, over the backdrop of the page. The selection
+                            // moves at once: picking a category is frequent, and the settings change with it.
+                            colors = NavigationDrawerItemDefaults.colors(
+                                selectedContainerColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                                    .copy(alpha = SETTINGS_CARD_ALPHA),
+                                unselectedContainerColor = Color.Transparent,
+                            ),
+                            modifier = if (category == selected) {
+                                Modifier.border(1.dp, hairline, SearchShape)
+                            } else {
+                                Modifier
+                            },
                         )
+                    }
+                }
+                ListMode.NO_RESULTS -> Text(
+                    text = stringResource(R.string.settings_search_no_results_title),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(16.dp),
+                )
+                ListMode.RESULTS -> LazyColumn {
+                    items(found, key = { it.preferenceKey }) { item ->
+                        Column(
+                            Modifier
+                                .fillMaxWidth()
+                                .clickable { onOpen(item) }
+                                .padding(horizontal = 24.dp, vertical = 10.dp),
+                        ) {
+                            // There is no surface here to give the text its color, which would leave it black.
+                            Text(
+                                text = item.title,
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = MaterialTheme.colorScheme.onSurface,
+                            )
+                            Text(
+                                text = stringResource(categoryOf(item).title),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
                     }
                 }
             }
@@ -123,6 +157,19 @@ internal fun SettingsPaneContent(
 private fun SearchField(query: String, onChange: (String) -> Unit) {
     var focused by remember { mutableStateOf(false) }
     val fill = MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = SETTINGS_CARD_ALPHA)
+    // The ring eases in rather than snapping, so a tap on the field reads as a response. Compose scales the tween
+    // with the system animator scale, so it is skipped when animations are off.
+    val ringSpec = tween<Color>(FOCUS_RING_MS, easing = FastOutSlowInEasing)
+    val ringColor by animateColorAsState(
+        if (focused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(alpha = BORDER_ALPHA),
+        ringSpec,
+        label = "searchRingColor",
+    )
+    val ringWidth by animateDpAsState(
+        if (focused) 2.dp else 1.dp,
+        tween(FOCUS_RING_MS, easing = FastOutSlowInEasing),
+        label = "searchRingWidth",
+    )
     TextField(
         value = query,
         onValueChange = onChange,
@@ -151,11 +198,6 @@ private fun SearchField(query: String, onChange: (String) -> Unit) {
             .fillMaxWidth()
             .padding(12.dp)
             .onFocusChanged { focused = it.hasFocus }
-            .border(
-                width = if (focused) 2.dp else 1.dp,
-                color = if (focused) MaterialTheme.colorScheme.primary
-                else MaterialTheme.colorScheme.onSurface.copy(alpha = BORDER_ALPHA),
-                shape = SearchShape,
-            ),
+            .border(width = ringWidth, color = ringColor, shape = SearchShape),
     )
 }

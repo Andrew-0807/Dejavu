@@ -35,6 +35,10 @@ internal class SettingsCategoryPages(
         val titles = mutableMapOf<PreferenceGroup, CharSequence?>()
         var shortcuts: PreferenceCategory? = null
         var working = false
+
+        /** The animator the list had before the page switched it off, put back with the page. */
+        var animator: RecyclerView.ItemAnimator? = null
+        var animatorOff = false
     }
 
     private val pages = WeakHashMap<SettingsFragment, Page>()
@@ -84,7 +88,12 @@ internal class SettingsCategoryPages(
         if (page.working || fragment.context == null) return
         page.working = true
         try {
-            if (isWide()) filter(fragment, screen, page) else restore(screen, page)
+            if (isWide()) {
+                filter(fragment, screen, page)
+            } else {
+                restore(screen, page)
+                unmute(fragment, page)
+            }
         } finally {
             page.working = false
         }
@@ -92,6 +101,7 @@ internal class SettingsCategoryPages(
 
     private fun filter(fragment: SettingsFragment, screen: PreferenceGroup, page: Page) {
         val category = categoryOf(fragment)
+        mute(fragment, page)
         // A setting Firefox showed again after the page hid it is the page's to hide again.
         page.hidden.removeAll { it.isVisible }
         if (page.shortcuts == null) page.shortcuts = addShortcuts(fragment, screen, category)
@@ -123,6 +133,25 @@ internal class SettingsCategoryPages(
             }
         }
         return shown
+    }
+
+    /**
+     * Switching a category hides and shows whole lists of settings, which the animator of the list would fade and
+     * slide one by one. Picking a category is frequent, so the settings change at once instead.
+     */
+    private fun mute(fragment: SettingsFragment, page: Page) {
+        val list = fragment.listView ?: return
+        if (page.animatorOff) return
+        page.animator = list.itemAnimator
+        page.animatorOff = true
+        list.itemAnimator = null
+    }
+
+    private fun unmute(fragment: SettingsFragment, page: Page) {
+        if (!page.animatorOff) return
+        fragment.listView?.itemAnimator = page.animator
+        page.animator = null
+        page.animatorOff = false
     }
 
     private fun restore(screen: PreferenceGroup, page: Page) {
