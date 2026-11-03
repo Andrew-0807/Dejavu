@@ -543,4 +543,6 @@
     <string name="dejavu_settings_tips_summary">Näytä vinkkejä piilotetuista eleistä, kuten Uusi välilehti -painikkeen pitkästä painalluksesta</string>
     <string name="dejavu_new">Uutta</string>
     <string name="dejavu_menu_customize_reader_view">Mukauta lukunäkymää</string>
+    <string name="dejavu_preference_mouse_support">Hiiren tuki</string>
+    <string name="dejavu_preference_mouse_support_summary">Keskipainikkeen napsautus avaa linkin taustavälilehteen, ja hiiren pitäminen linkin päällä näyttää sen osoitteen. Välilehden napsautus keskipainikkeella sulkee sen.</string>
 </resources>

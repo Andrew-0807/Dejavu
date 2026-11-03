@@ -559,4 +559,6 @@
     <string name="dejavu_settings_tips_summary">Pokazki wó schowanych gestach pokazaś, na pś. dłujke tłocenje na „Nowy rejtarik“</string>
     <string name="dejavu_new">Nowy</string>
     <string name="dejavu_menu_customize_reader_view">Cytański naglěd pśiměriś</string>
+    <string name="dejavu_preference_mouse_support">Pódpěra myški</string>
+    <string name="dejavu_preference_mouse_support_summary">Srjejźne kliknjenje wócynja wótkaz w slězynowem rejtariku, a gaž myšku nad wótkazom źaržyśo, se jogo adresa pokazujo. Srjejźne kliknjenje na rejtarik jen zacynja.</string>
 </resources>

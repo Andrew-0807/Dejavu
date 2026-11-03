@@ -535,4 +535,6 @@
     <string name="dejavu_settings_tips_summary">Hiển thị mẹo về các cử chỉ ẩn, như nhấn giữ “Thẻ mới”</string>
     <string name="dejavu_new">Mới</string>
     <string name="dejavu_menu_customize_reader_view">Tùy chỉnh chế độ đọc sách</string>
+    <string name="dejavu_preference_mouse_support">Hỗ trợ chuột</string>
+    <string name="dejavu_preference_mouse_support_summary">Nhấp chuột giữa sẽ mở liên kết trong một thẻ nền, và di chuột lên liên kết sẽ hiển thị địa chỉ của nó. Nhấp chuột giữa vào một thẻ sẽ đóng thẻ đó.</string>
 </resources>

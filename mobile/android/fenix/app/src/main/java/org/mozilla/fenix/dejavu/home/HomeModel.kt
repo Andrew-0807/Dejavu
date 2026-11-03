@@ -324,6 +324,14 @@ private fun pinnedClose(targets: ActionTargets): RowAction? = when {
     else -> null
 }
 
+/**
+ * What a middle-click does on a row: what its Close button does, except unpinning, which a stray click should not do.
+ * So it closes the tab of an unpinned row, puts the tab of a pinned one to sleep, and does nothing otherwise.
+ */
+fun middleClickAction(targets: ActionTargets, isPinned: Boolean): RowAction? =
+    rowActions(listOf(CloseAction), targets, isPinned)
+        .firstOrNull { (it as? RowAction.BuiltIn)?.action != TabAction.UNPIN }
+
 /** Folder that a new folder grouping [targets] goes in: their common parent, while it can hold one more level. */
 fun WorkspaceState.newFolderParent(targets: ActionTargets): String? =
     (targets.pins + targets.folders).map { it.parentId }.distinct().singleOrNull()

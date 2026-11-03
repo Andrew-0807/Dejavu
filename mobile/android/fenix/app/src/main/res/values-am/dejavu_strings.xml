@@ -543,4 +543,6 @@
     <string name="dejavu_settings_tips_summary">ስለተደበቁ የእጅ ምልክቶች ጠቃሚ ምክሮችን አሳይ፣ ለምሳሌ «አዲስ ትር»ን ተጭኖ መያዝ</string>
     <string name="dejavu_new">አዲስ</string>
     <string name="dejavu_menu_customize_reader_view">የአንባቢ እይታን አብጅ</string>
+    <string name="dejavu_preference_mouse_support">የመዳፊት ድጋፍ</string>
+    <string name="dejavu_preference_mouse_support_summary">በመሃል ቁልፍ ጠቅ ማድረግ አገናኝን በጀርባ ትር ውስጥ ይከፍታል፣ በአገናኝ ላይ ማንዣበብ ደግሞ አድራሻውን ያሳያል። በትር ላይ በመሃል ቁልፍ ጠቅ ማድረግ ትሩን ይዘጋል።</string>
 </resources>

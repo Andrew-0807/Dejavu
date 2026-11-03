@@ -39,6 +39,7 @@ import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
+import org.mozilla.fenix.dejavu.browser.closeOnMiddleClick
 import org.mozilla.fenix.dejavu.browser.tabZoomTarget
 import org.mozilla.fenix.dejavu.ui.TapIcon
 import org.mozilla.fenix.dejavu.ui.rememberIconTaps
@@ -194,7 +195,8 @@ internal fun PrivateWorkspacePage(
                     modifier = Modifier
                         .animateItem(fadeInSpec = null, placementSpec = placement, fadeOutSpec = null)
                         .motionRow(motions, tab.id)
-                        .tabZoomTarget(tab.id),
+                        .tabZoomTarget(tab.id)
+                        .closeOnMiddleClick { onCloseTab(tab) },
                 )
             }
         }

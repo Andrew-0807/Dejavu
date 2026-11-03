@@ -535,4 +535,6 @@
     <string name="dejavu_settings_tips_summary">Fi àwọn ìmọ̀ràn hàn nípa àwọn ìfarajúwèé tó farasin, bí dídi bọ́tìnnì Táàbù Tuntun mú</string>
     <string name="dejavu_new">Tuntun</string>
     <string name="dejavu_menu_customize_reader_view">Sọ èrò olùkà di ti ara ẹni</string>
+    <string name="dejavu_preference_mouse_support">Àtìlẹ́yìn máòsì</string>
+    <string name="dejavu_preference_mouse_support_summary">Títẹ bọ́tìnnì àárín yóò ṣí ìjápọ̀ nínú táàbù ẹ̀yìn, àti gbígbé máòsì lé orí ìjápọ̀ yóò fi àdírẹ́sì rẹ̀ hàn. Títẹ bọ́tìnnì àárín lórí táàbù yóò tì í.</string>
 </resources>

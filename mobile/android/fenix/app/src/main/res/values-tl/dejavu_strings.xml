@@ -543,4 +543,6 @@
     <string name="dejavu_settings_tips_summary">Ipakita ang mga tip tungkol sa mga nakatagong gesture, tulad ng pagpindot nang matagal sa “Bagong Tab”</string>
     <string name="dejavu_new">Bago</string>
     <string name="dejavu_menu_customize_reader_view">Ipasadya ang reader view</string>
+    <string name="dejavu_preference_mouse_support">Suporta sa mouse</string>
+    <string name="dejavu_preference_mouse_support_summary">Binubuksan ng middle-click ang link sa isang background tab, at ipinapakita ng pag-hover sa link ang address nito. Isinasara ng middle-click sa isang tab ang tab.</string>
 </resources>

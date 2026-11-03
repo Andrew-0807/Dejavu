@@ -559,4 +559,6 @@
     <string name="dejavu_settings_tips_summary">Rodyti patarimus apie paslėptus gestus, pavyzdžiui, mygtuko „Nauja kortelė“ palaikymą</string>
     <string name="dejavu_new">Nauja</string>
     <string name="dejavu_menu_customize_reader_view">Tinkinti skaitymo rodinį</string>
+    <string name="dejavu_preference_mouse_support">Pelės palaikymas</string>
+    <string name="dejavu_preference_mouse_support_summary">Spustelėjus viduriniu mygtuku, saitas atveriamas fono kortelėje, o užvedus pelę ant saito rodomas jo adresas. Spustelėjus viduriniu mygtuku kortelę, ji uždaroma.</string>
 </resources>

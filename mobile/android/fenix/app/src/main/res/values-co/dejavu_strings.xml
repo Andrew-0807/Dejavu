@@ -543,4 +543,6 @@
     <string name="dejavu_settings_tips_summary">Affissà cunsiglii nant\'à e mosse piatte, cum\'è tene appughjatu Nova unghjetta</string>
     <string name="dejavu_new">Novu</string>
     <string name="dejavu_menu_customize_reader_view">Persunalizà u modu di lettura</string>
+    <string name="dejavu_preference_mouse_support">Supportu di u topu</string>
+    <string name="dejavu_preference_mouse_support_summary">Un cliccu cù u buttone di u mezu apre un liame in un\'unghjetta in fondu, è passà nantu à un liame ne mostra l\'indirizzu. Un cliccu cù u buttone di u mezu nant\'à un\'unghjetta a chjode.</string>
 </resources>

@@ -38,18 +38,20 @@ const hover = (url) => {
     send({ type: "hover", url });
   }
 };
-document.addEventListener("pointerover", (e) => e.pointerType === "mouse" && hover(linkOf(e)), true);
+// Only events the user made count: a page can make up a middle-click, or a mouse moving over a link, to open tabs or to
+// show an address of its choice, but it cannot mark them as trusted.
+const listen = (type, listener) => document.addEventListener(type, (e) => e.isTrusted && listener(e), true);
+listen("pointerover", (e) => e.pointerType === "mouse" && hover(linkOf(e)));
 // Leaving a link for anything outside a link, or for outside the page, hides the address.
-document.addEventListener(
-  "pointerout",
-  (e) => e.pointerType === "mouse" && hover(e.relatedTarget ? linkIn(ancestors(e.relatedTarget)) : ""),
-  true,
-);
-document.addEventListener("mousedown", (e) => e.button === 1 && linkOf(e) && e.preventDefault(), true);
-document.addEventListener("auxclick", (e) => {
+listen("pointerout", (e) => e.pointerType === "mouse" && hover(e.relatedTarget ? linkIn(ancestors(e.relatedTarget)) : ""));
+listen("mousedown", (e) => e.button === 1 && linkOf(e) && e.preventDefault());
+listen("auxclick", (e) => {
   const url = e.button === 1 ? linkOf(e) : "";
   if (url) {
     e.preventDefault();
     send({ type: "open", url });
   }
-}, true);
+});
+// A page that goes away under a mouse that stays put gets no pointerout, so its address would stay.
+window.addEventListener("pagehide", () => hover(""));
+document.addEventListener("visibilitychange", () => document.hidden && hover(""));

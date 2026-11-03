@@ -551,4 +551,6 @@
     <string name="dejavu_settings_tips_summary">Prikaži savjete o skrivenim gestama, poput zadržavanja „Nova kartica“</string>
     <string name="dejavu_new">Novo</string>
     <string name="dejavu_menu_customize_reader_view">Prilagodi prikaz čitača</string>
+    <string name="dejavu_preference_mouse_support">Podrška za miš</string>
+    <string name="dejavu_preference_mouse_support_summary">Klik srednjom tipkom otvara poveznicu u kartici u pozadini, a prelazak mišem preko poveznice prikazuje njezinu adresu. Klik srednjom tipkom na karticu zatvara je.</string>
 </resources>
