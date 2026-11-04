@@ -575,4 +575,6 @@
     <string name="dejavu_settings_tips_summary">Dangos awgrymiadau am ystumiau cudd, fel dal Tab newydd</string>
     <string name="dejavu_new">Newydd</string>
     <string name="dejavu_menu_customize_reader_view">Cyfaddasu’r golwg darllenydd</string>
+    <string name="dejavu_preference_mouse_support">Cefnogaeth llygoden</string>
+    <string name="dejavu_preference_mouse_support_summary">Mae clicio\'r botwm canol yn agor dolen mewn tab cefndir, ac mae hofran dros ddolen yn dangos ei chyfeiriad. Mae clicio\'r botwm canol ar dab yn ei gau.</string>
 </resources>

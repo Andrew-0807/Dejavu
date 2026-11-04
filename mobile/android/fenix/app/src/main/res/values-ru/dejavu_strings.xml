@@ -559,4 +559,6 @@
     <string name="dejavu_settings_tips_summary">Показывать советы о скрытых жестах, например об удержании кнопки «Новая вкладка»</string>
     <string name="dejavu_new">Новое</string>
     <string name="dejavu_menu_customize_reader_view">Настроить вид для чтения</string>
+    <string name="dejavu_preference_mouse_support">Поддержка мыши</string>
+    <string name="dejavu_preference_mouse_support_summary">Щелчок средней кнопкой открывает ссылку в фоновой вкладке, а наведение на ссылку показывает её адрес. Щелчок средней кнопкой по вкладке закрывает её.</string>
 </resources>

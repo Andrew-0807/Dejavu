@@ -543,4 +543,6 @@
     <string name="dejavu_settings_tips_summary">“ಹೊಸ ಟ್ಯಾಬ್” ಅನ್ನು ಒತ್ತಿ ಹಿಡಿಯುವಂತಹ ಮರೆಯಾದ ಸನ್ನೆಗಳ ಬಗ್ಗೆ ಸಲಹೆಗಳನ್ನು ತೋರಿಸು</string>
     <string name="dejavu_new">ಹೊಸದು</string>
     <string name="dejavu_menu_customize_reader_view">ಓದುಗರ ನೋಟವನ್ನು ಅಗತ್ಯಾನುಗುಣಗೊಳಿಸಿ</string>
+    <string name="dejavu_preference_mouse_support">ಮೌಸ್ ಬೆಂಬಲ</string>
+    <string name="dejavu_preference_mouse_support_summary">ಮಧ್ಯದ ಬಟನ್ ಕ್ಲಿಕ್ ಕೊಂಡಿಯನ್ನು ಹಿನ್ನೆಲೆ ಟ್ಯಾಬ್‌ನಲ್ಲಿ ತೆರೆಯುತ್ತದೆ, ಮತ್ತು ಕೊಂಡಿಯ ಮೇಲೆ ಪಾಯಿಂಟರ್ ಇರಿಸಿದರೆ ಅದರ ವಿಳಾಸ ಕಾಣಿಸುತ್ತದೆ. ಟ್ಯಾಬ್ ಮೇಲೆ ಮಧ್ಯದ ಬಟನ್ ಕ್ಲಿಕ್ ಅದನ್ನು ಮುಚ್ಚುತ್ತದೆ.</string>
 </resources>

@@ -535,4 +535,6 @@
     <string name="dejavu_settings_tips_summary">Edengang tips indik gestur ane kaengkebang, minakadi nekek “Tab Anyar”</string>
     <string name="dejavu_new">Anyar</string>
     <string name="dejavu_menu_customize_reader_view">Setel tampilan pamaca</string>
+    <string name="dejavu_preference_mouse_support">Dukungan mouse</string>
+    <string name="dejavu_preference_mouse_support_summary">Klik tengah ngungkabang link ring tab latar, tur ngenahang mouse ring link ngedengang alamatnyane. Klik tengah ring tab nutup tab punika.</string>
 </resources>

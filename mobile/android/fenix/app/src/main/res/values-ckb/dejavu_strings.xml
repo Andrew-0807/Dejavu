@@ -543,4 +543,6 @@
     <string name="dejavu_settings_tips_summary">پیشاندانی ئامۆژگاری دەربارەی جوڵاندنە شاراوەکان، وەک ڕاگرتنی «بازدەری نوێ»</string>
     <string name="dejavu_new">نوێ</string>
     <string name="dejavu_menu_customize_reader_view">شێوازی دۆخی خوێندنەوە دەستکاریبکە</string>
+    <string name="dejavu_preference_mouse_support">پشتگیری مشک</string>
+    <string name="dejavu_preference_mouse_support_summary">کرتەی ناوەڕاست بەستەرێک لە بازدەرێکی پاشبنەمادا دەکاتەوە، و ڕاگرتنی مشک لەسەر بەستەر ناونیشانەکەی پیشان دەدات. کرتەی ناوەڕاست لەسەر بازدەرێک دایدەخات.</string>
 </resources>

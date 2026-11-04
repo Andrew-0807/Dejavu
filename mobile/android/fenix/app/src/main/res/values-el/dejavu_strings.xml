@@ -543,4 +543,6 @@
     <string name="dejavu_settings_tips_summary">Εμφάνιση συμβουλών για κρυφές χειρονομίες, όπως το παρατεταμένο πάτημα του «Νέα καρτέλα»</string>
     <string name="dejavu_new">Νέο</string>
     <string name="dejavu_menu_customize_reader_view">Προσαρμογή προβολής ανάγνωσης</string>
+    <string name="dejavu_preference_mouse_support">Υποστήριξη ποντικιού</string>
+    <string name="dejavu_preference_mouse_support_summary">Το μεσαίο κλικ ανοίγει έναν σύνδεσμο σε καρτέλα στο παρασκήνιο και η τοποθέτηση του δείκτη σε σύνδεσμο εμφανίζει τη διεύθυνσή του. Το μεσαίο κλικ σε καρτέλα την κλείνει.</string>
 </resources>

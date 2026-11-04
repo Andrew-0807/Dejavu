@@ -543,4 +543,6 @@
     <string name="dejavu_settings_tips_summary">Sken iwellihen ɣef yisillifen yeffren, am tuṭṭfa n «Iccer amaynut» s uḍad</string>
     <string name="dejavu_new">Amaynut</string>
     <string name="dejavu_menu_customize_reader_view">Sagen timeẓri n tɣuri</string>
+    <string name="dejavu_preference_mouse_support">Tallalt n tɣerdayt</string>
+    <string name="dejavu_preference_mouse_support_summary">Asiti s tqeffalt n tlemmast yeldi aseɣwen deg yiccer deg ugilal, ma d aɛeddi n tɣerdayt ɣef useɣwen yesskan-d tansa-ines. Asiti s tqeffalt n tlemmast ɣef yiccer ad t-isekkeṛ.</string>
 </resources>

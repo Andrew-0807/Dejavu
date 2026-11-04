@@ -559,4 +559,6 @@
     <string name="dejavu_settings_tips_summary">Паказваць парады пра схаваныя жэсты, напрыклад утрыманне кнопкі «Новая картка»</string>
     <string name="dejavu_new">Новае</string>
     <string name="dejavu_menu_customize_reader_view">Уладкаваць рэжым чытання</string>
+    <string name="dejavu_preference_mouse_support">Падтрымка мышы</string>
+    <string name="dejavu_preference_mouse_support_summary">Націсканне сярэдняй кнопкай адкрывае спасылку ў фонавай картцы, а навядзенне на спасылку паказвае яе адрас. Націсканне сярэдняй кнопкай на картцы закрывае яе.</string>
 </resources>

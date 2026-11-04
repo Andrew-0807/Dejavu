@@ -543,4 +543,6 @@
     <string name="dejavu_settings_tips_summary">Mostre sugjeriments sui mots platâts, come tignî fracât Gnove schede</string>
     <string name="dejavu_new">Gnûf</string>
     <string name="dejavu_menu_customize_reader_view">Personalize viodude di leture</string>
+    <string name="dejavu_preference_mouse_support">Supuart pe surie</string>
+    <string name="dejavu_preference_mouse_support_summary">Un clic di mieç al vierç un colegament intune schede in sotfont, e passâ parsore di un colegament al mostre la sô direzion. Un clic di mieç parsore di une schede le siere.</string>
 </resources>
