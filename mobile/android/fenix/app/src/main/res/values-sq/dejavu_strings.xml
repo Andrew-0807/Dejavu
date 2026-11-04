@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Shfaq ndihmëza mbi gjeste të fshehura, si mbajtja shtypur e “Skedë e re”</string>
     <string name="dejavu_new">E re</string>
     <string name="dejavu_menu_customize_reader_view">Përshtate pamjen lexues</string>
+    <string name="dejavu_remote_debugging_summary">Çaktivizohet sërish kur Dejavu riniset</string>
 </resources>

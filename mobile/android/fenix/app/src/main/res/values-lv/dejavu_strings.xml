@@ -551,4 +551,5 @@
     <string name="dejavu_settings_tips_summary">Rādīt padomus par slēptiem žestiem, piemēram, pogas Jauna cilne turēšanu</string>
     <string name="dejavu_new">Jaunums</string>
     <string name="dejavu_menu_customize_reader_view">Pielāgot lasītāja režīmu</string>
+    <string name="dejavu_remote_debugging_summary">Atkal izslēdzas, kad Dejavu tiek restartēts</string>
 </resources>

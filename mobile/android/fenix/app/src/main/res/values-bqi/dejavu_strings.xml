@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">نشون دادن نکته یل سی اشاره یل قایم، مثل نگه داشتن «بلگه نۊ»</string>
     <string name="dejavu_new">نۊ</string>
     <string name="dejavu_menu_customize_reader_view">سفارشی کردن نما خۊندنی</string>
+    <string name="dejavu_remote_debugging_summary">وختی Dejavu دوواره راه بکفه، خاموش مئبوئه</string>
 </resources>

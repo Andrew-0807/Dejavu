@@ -551,4 +551,5 @@
     <string name="dejavu_settings_tips_summary">Afișează sfaturi despre gesturile ascunse, cum ar fi ținerea apăsată pe „Filă nouă”</string>
     <string name="dejavu_new">Nou</string>
     <string name="dejavu_menu_customize_reader_view">Personalizează modul de lectură</string>
+    <string name="dejavu_remote_debugging_summary">Se dezactivează din nou când Dejavu repornește</string>
 </resources>

@@ -242,6 +242,7 @@
         <androidx.preference.SwitchPreferenceCompat
             android:key="@string/pref_key_remote_debugging"
             android:title="@string/preferences_remote_debugging"
+            android:summary="@string/dejavu_remote_debugging_summary"
             app:iconSpaceReserved="false"
             android:defaultValue="false" />
 

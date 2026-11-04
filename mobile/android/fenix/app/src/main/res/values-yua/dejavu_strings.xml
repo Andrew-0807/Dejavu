@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Mostrar consejos sobre gestos ocultos, como mantener presionado Pestaña túumben</string>
     <string name="dejavu_new">Túumben</string>
     <string name="dejavu_menu_customize_reader_view">Personalizar vista de lectura</string>
+    <string name="dejavu_remote_debugging_summary">Ku desactivarta\'al tu ka\'atéen ken ka\'a káajak Dejavu</string>
 </resources>

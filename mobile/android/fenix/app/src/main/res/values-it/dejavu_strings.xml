@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Mostra suggerimenti sui gesti nascosti, come tenere premuto «Nuova scheda»</string>
     <string name="dejavu_new">Novità</string>
     <string name="dejavu_menu_customize_reader_view">Personalizza modalità lettura</string>
+    <string name="dejavu_remote_debugging_summary">Si disattiva di nuovo al riavvio di Dejavu</string>
 </resources>

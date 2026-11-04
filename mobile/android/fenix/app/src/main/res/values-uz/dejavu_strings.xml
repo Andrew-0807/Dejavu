@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Yashirin ishoralar haqida maslahatlarni ko\'rsatish, masalan, “Yangi varaq” tugmasini bosib turish</string>
     <string name="dejavu_new">Yangi</string>
     <string name="dejavu_menu_customize_reader_view">Oʻqish rejimini moslash</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu qayta ishga tushganda yana oʻchadi</string>
 </resources>

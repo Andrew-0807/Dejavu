@@ -575,4 +575,5 @@
     <string name="dejavu_settings_tips_summary">Diskwedhes kussulyow a-dro dhe wayansow kudh, kepar ha synsy “Tab Nowyth”</string>
     <string name="dejavu_new">Nowydh</string>
     <string name="dejavu_menu_customize_reader_view">Chanjya an gwel redya</string>
+    <string name="dejavu_remote_debugging_summary">Diweythresys yw arta pan dhastalleth Dejavu</string>
 </resources>

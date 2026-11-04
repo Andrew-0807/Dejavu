@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">“പുതിയ ടാബ്” അമർത്തിപ്പിടിക്കുന്നത് പോലുള്ള മറഞ്ഞിരിക്കുന്ന ആംഗ്യങ്ങളെക്കുറിച്ചുള്ള നുറുങ്ങുകൾ കാണിക്കുക</string>
     <string name="dejavu_new">പുതിയത്</string>
     <string name="dejavu_menu_customize_reader_view">വായനയ്ക്കുള്ള കാഴ്ച ഇഷ്ടാനുസൃതമാക്കുക</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu പുനരാരംഭിക്കുമ്പോൾ വീണ്ടും ഓഫാകും</string>
 </resources>

@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Tips tonen over verborgen bewegingen, zoals “Nieuw tabblad” ingedrukt houden</string>
     <string name="dejavu_new">Nieuw</string>
     <string name="dejavu_menu_customize_reader_view">Lezerweergave aanpassen</string>
+    <string name="dejavu_remote_debugging_summary">Wordt weer uitgeschakeld wanneer Dejavu opnieuw start</string>
 </resources>

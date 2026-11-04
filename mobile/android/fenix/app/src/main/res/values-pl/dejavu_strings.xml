@@ -559,4 +559,5 @@
     <string name="dejavu_settings_tips_summary">Wyświetlaj wskazówki o ukrytych gestach, takich jak przytrzymanie przycisku „Nowa karta”</string>
     <string name="dejavu_new">Nowe</string>
     <string name="dejavu_menu_customize_reader_view">Dostosuj widok poprawionej czytelności</string>
+    <string name="dejavu_remote_debugging_summary">Wyłącza się znowu po ponownym uruchomieniu Dejavu</string>
 </resources>

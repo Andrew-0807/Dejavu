@@ -715,6 +715,8 @@
     <string name="dejavu_remote_debugging_warning_title">Turn on remote debugging?</string>
     <!-- Message of the remote debugging warning. -->
     <string name="dejavu_remote_debugging_warning_message">While it is on, a computer connected to this phone over USB, with USB debugging allowed, can control Dejavu and read its data, like open tabs, cookies and saved passwords, without asking. Turn it off when you are done.</string>
+    <!-- Under the Remote debugging via USB switch in Settings: it turns itself off each time the app starts. -->
+    <string name="dejavu_remote_debugging_summary">Turns off again when Dejavu restarts</string>
     <!-- Button that confirms turning a setting on. -->
     <string name="dejavu_turn_on">Turn on</string>
     <!-- Title of the warning shown before "Block direct call connections" is turned off, which lets calls in websites connect directly. Its buttons are Cancel and Turn off. -->

@@ -575,4 +575,5 @@
     <string name="dejavu_settings_tips_summary">عرض نصائح عن الإيماءات المخفية، مثل الضغط مطولًا على «تبويب جديد»</string>
     <string name="dejavu_new">جديد</string>
     <string name="dejavu_menu_customize_reader_view">خصّص منظور القارئ</string>
+    <string name="dejavu_remote_debugging_summary">يتعطّل مجددًا عند إعادة تشغيل Dejavu</string>
 </resources>

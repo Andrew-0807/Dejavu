@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Amostrar consellos sobre cenyos amagaus, como mantener pretau «Nueva pestanya»</string>
     <string name="dejavu_new">Nuevo</string>
     <string name="dejavu_menu_customize_reader_view">Personalizar la vista de lectura</string>
+    <string name="dejavu_remote_debugging_summary">Se torna a desactivar quan Dejavu se reinicia</string>
 </resources>

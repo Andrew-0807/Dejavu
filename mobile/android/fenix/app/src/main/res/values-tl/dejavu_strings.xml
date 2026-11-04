@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Ipakita ang mga tip tungkol sa mga nakatagong gesture, tulad ng pagpindot nang matagal sa “Bagong Tab”</string>
     <string name="dejavu_new">Bago</string>
     <string name="dejavu_menu_customize_reader_view">Ipasadya ang reader view</string>
+    <string name="dejavu_remote_debugging_summary">Mag-o-off ulit kapag nag-restart ang Dejavu</string>
 </resources>

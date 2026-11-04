@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Sýna ábendingar um faldar bendingar, eins og að halda „Nýr flipi“ niðri</string>
     <string name="dejavu_new">Nýtt</string>
     <string name="dejavu_menu_customize_reader_view">Sérsníða lesham</string>
+    <string name="dejavu_remote_debugging_summary">Slokknar aftur þegar Dejavu er endurræst</string>
 </resources>

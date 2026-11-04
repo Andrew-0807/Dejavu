@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">لُکے ہوئے اشاریاں بارے مشورے وکھاؤ، جویں “نویں ٹیب کھولھو” نوں دبا کے رکھݨا</string>
     <string name="dejavu_new">نواں</string>
     <string name="dejavu_menu_customize_reader_view">پڑھن جھلک نوں من پسند بݨاؤ</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu دے مڑ شروع ہون اُتے ایہہ فیر بند ہو جاندی اے</string>
 </resources>

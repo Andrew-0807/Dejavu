@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Tips oer ferstoppe bewegingen toane, lykas ‘Nij ljepblêd’ yndrukt hâlde</string>
     <string name="dejavu_new">Nij</string>
     <string name="dejavu_menu_customize_reader_view">Lêzerwerjefte oanpasse</string>
+    <string name="dejavu_remote_debugging_summary">Skeakelet wer út as Dejavu opnij start</string>
 </resources>

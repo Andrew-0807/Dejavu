@@ -559,4 +559,5 @@
     <string name="dejavu_settings_tips_summary">Zobraziť tipy o skrytých gestách, ako je podržanie tlačidla Nová karta</string>
     <string name="dejavu_new">Novinka</string>
     <string name="dejavu_menu_customize_reader_view">Prispôsobiť zobrazenie Čítačka</string>
+    <string name="dejavu_remote_debugging_summary">Po reštarte Dejavu sa opäť vypne</string>
 </resources>

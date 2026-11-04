@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Иҵәахыу анапқәа ирызку ацхыраарақәа аарԥшра, иаҳҳәап, «Абларҭа ҿыц» аанкылара</string>
     <string name="dejavu_new">Иҿыцу</string>
     <string name="dejavu_menu_customize_reader_view">Аԥхьара аԥшра рхиатәуп</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu аиҭаартра ашьҭахь еиҭах иаҿыхуеит</string>
 </resources>

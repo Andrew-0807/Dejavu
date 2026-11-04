@@ -74,6 +74,11 @@ internal fun SecureWindowWhile(secure: Boolean) {
     }
 }
 
+private const val PRIVATE_LIST_KEY = "private"
+
+// Rows before the first tab: the header, the divider and New Tab.
+private const val FIRST_PRIVATE_TAB_INDEX = 3
+
 /** Whether [SecureWindowWhile] set the window's secure flag, which it clears once nothing private shows anymore. */
 private var windowSecuredHere = false
 
@@ -100,8 +105,13 @@ internal fun PrivateWorkspacePage(
     )
     SideEffect { motions.start(plan, flights = false) }
     val placement = motions.placementSpec(plan)
+    val listState = rememberHomeListState(PRIVATE_LIST_KEY)
+    LaunchedEffect(Unit) {
+        val index = tabs.indexOfFirst { it.id == selectedTabId }.takeIf { it >= 0 } ?: return@LaunchedEffect
+        listState.revealWhenShown(FIRST_PRIVATE_TAB_INDEX + index)
+    }
     Box(modifier = Modifier.fillMaxSize()) {
-        LazyColumn(modifier = Modifier.fillMaxSize().padding(horizontal = 8.dp)) {
+        LazyColumn(state = listState, modifier = Modifier.fillMaxSize().padding(horizontal = 8.dp)) {
             item(key = "header") {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,

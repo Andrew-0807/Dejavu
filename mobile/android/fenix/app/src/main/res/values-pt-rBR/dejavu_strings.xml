@@ -551,4 +551,5 @@
     <string name="dejavu_settings_tips_summary">Mostrar dicas sobre gestos ocultos, como manter “Nova aba” pressionado</string>
     <string name="dejavu_new">Novidade</string>
     <string name="dejavu_menu_customize_reader_view">Personalizar modo de leitura</string>
+    <string name="dejavu_remote_debugging_summary">É desativada de novo quando o Dejavu é reiniciado</string>
 </resources>

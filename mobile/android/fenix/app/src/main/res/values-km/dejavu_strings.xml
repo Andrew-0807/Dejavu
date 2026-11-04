@@ -535,4 +535,5 @@
     <string name="dejavu_settings_tips_summary">បង្ហាញគន្លឹះអំពីកាយវិការដែលលាក់ ដូចជាការចុចប៊ូតុង ផ្ទាំងថ្មី ឱ្យជាប់</string>
     <string name="dejavu_new">ថ្មី</string>
     <string name="dejavu_menu_customize_reader_view">ប្ដូរតាមបំណងទិដ្ឋភាពអ្នកអាន</string>
+    <string name="dejavu_remote_debugging_summary">បិទវិញ នៅពេល Dejavu ចាប់ផ្ដើមឡើងវិញ</string>
 </resources>

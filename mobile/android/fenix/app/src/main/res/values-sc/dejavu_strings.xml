@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Ammustra cussìgios subra de is gestos cuados, comente mantènnere pretzionadu “Ischeda noa”</string>
     <string name="dejavu_new">Nou</string>
     <string name="dejavu_menu_customize_reader_view">Personaliza sa visualizatzione de letura</string>
+    <string name="dejavu_remote_debugging_summary">Si disativat torra cando Dejavu si torrat a aviare</string>
 </resources>

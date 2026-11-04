@@ -576,4 +576,5 @@
     <string name="dejavu_settings_tips_summary">লুকানো জেসচার নিয়ে টিপস দেখান, যেমন “নতুন ট্যাব” চেপে ধরা</string>
     <string name="dejavu_new">নতুন</string>
     <string name="dejavu_menu_customize_reader_view">পাঠক দর্শন কাস্টমাইজ করুন</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu আবার চালু হলে এটি নিজে থেকেই বন্ধ হয়ে যায়</string>
 </resources>

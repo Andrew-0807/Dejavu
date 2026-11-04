@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Ipakita ang mga tip bahin sa tinagong mga gesture, sama sa pagpugong sa “Bag-o nga Tab”</string>
     <string name="dejavu_new">Bag-o</string>
     <string name="dejavu_menu_customize_reader_view">i-Customize ang reader view</string>
+    <string name="dejavu_remote_debugging_summary">Mo-off na usab kon mag-restart ang Dejavu</string>
 </resources>

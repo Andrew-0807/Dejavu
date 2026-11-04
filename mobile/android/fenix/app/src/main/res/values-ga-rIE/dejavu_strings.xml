@@ -567,4 +567,5 @@
     <string name="dejavu_settings_tips_summary">Taispeáin leideanna faoi ghothaí folaithe, mar shampla “Cluaisín nua” a choinneáil brúite</string>
     <string name="dejavu_new">Nua</string>
     <string name="dejavu_menu_customize_reader_view">Saincheap an t-amharc léitheoireachta</string>
+    <string name="dejavu_remote_debugging_summary">Casann sé as arís nuair a atosaíonn Dejavu</string>
 </resources>

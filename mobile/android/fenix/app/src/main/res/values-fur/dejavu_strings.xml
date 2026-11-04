@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Mostre sugjeriments sui mots platâts, come tignî fracât Gnove schede</string>
     <string name="dejavu_new">Gnûf</string>
     <string name="dejavu_menu_customize_reader_view">Personalize viodude di leture</string>
+    <string name="dejavu_remote_debugging_summary">Si torne a disativâ cuant che Dejavu al tache di gnûf</string>
 </resources>

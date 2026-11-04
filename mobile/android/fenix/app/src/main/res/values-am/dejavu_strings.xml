@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">ስለተደበቁ የእጅ ምልክቶች ጠቃሚ ምክሮችን አሳይ፣ ለምሳሌ «አዲስ ትር»ን ተጭኖ መያዝ</string>
     <string name="dejavu_new">አዲስ</string>
     <string name="dejavu_menu_customize_reader_view">የአንባቢ እይታን አብጅ</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu እንደገና ሲጀምር ተመልሶ ይጠፋል</string>
 </resources>

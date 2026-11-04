@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Monstrar consilios sur gestos celate, como tener pressate ‘Nove scheda’</string>
     <string name="dejavu_new">Nove</string>
     <string name="dejavu_menu_customize_reader_view">Personalisar le vista de lectura</string>
+    <string name="dejavu_remote_debugging_summary">Se disactiva de novo quando Dejavu se reinitia</string>
 </resources>

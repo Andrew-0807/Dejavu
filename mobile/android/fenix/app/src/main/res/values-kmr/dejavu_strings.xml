@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Şîretên li ser hereketên tiliyan ên veşartî nîşan bide, wekî bi dirêjahî tikandina li «Hilpekîna nû»</string>
     <string name="dejavu_new">Nû</string>
     <string name="dejavu_menu_customize_reader_view">Moda xwînerê taybet bike</string>
+    <string name="dejavu_remote_debugging_summary">Dema Dejavu ji nû ve dest pê dike dîsa tê girtin</string>
 </resources>

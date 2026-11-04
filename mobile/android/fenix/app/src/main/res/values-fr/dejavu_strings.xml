@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Afficher des astuces sur les mouvements cachés, comme maintenir « Nouvel onglet » appuyé</string>
     <string name="dejavu_new">Nouveau</string>
     <string name="dejavu_menu_customize_reader_view">Personnaliser le mode lecture</string>
+    <string name="dejavu_remote_debugging_summary">Se désactive à nouveau au redémarrage de Dejavu</string>
 </resources>

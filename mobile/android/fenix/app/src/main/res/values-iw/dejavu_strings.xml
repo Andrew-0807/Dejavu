@@ -551,4 +551,5 @@
     <string name="dejavu_settings_tips_summary">הצגת טיפים על מחוות נסתרות, כמו לחיצה ארוכה על ״לשונית חדשה״</string>
     <string name="dejavu_new">חדש</string>
     <string name="dejavu_menu_customize_reader_view">התאמה אישית של תצוגת קריאה</string>
+    <string name="dejavu_remote_debugging_summary">נכבה שוב כש-Dejavu מופעל מחדש</string>
 </resources>

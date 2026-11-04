@@ -551,4 +551,5 @@
     <string name="dejavu_settings_tips_summary">Prikaži savjete o skrivenim gestovima, poput zadržavanja dugmeta Novi tab</string>
     <string name="dejavu_new">Novo</string>
     <string name="dejavu_menu_customize_reader_view">Prilagodi prikaz za čitanje</string>
+    <string name="dejavu_remote_debugging_summary">Opet se isključuje kada se Dejavu ponovo pokrene</string>
 </resources>

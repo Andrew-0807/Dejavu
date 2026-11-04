@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">«Жаңа бет» түймесін басып тұру сияқты жасырын ым қимылдары туралы кеңестерді көрсету</string>
     <string name="dejavu_new">Жаңа</string>
     <string name="dejavu_menu_customize_reader_view">Оқу режимін баптау</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu қайта іске қосылғанда қайтадан сөнеді</string>
 </resources>

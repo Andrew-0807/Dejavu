@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">پوشیدہ اشاروں کے بارے میں تجاویز دکھائیں، جیسے ”نیا ٹیب“ کو دبا کر رکھنا</string>
     <string name="dejavu_new">نیا</string>
     <string name="dejavu_menu_customize_reader_view">ریڈر ویو کی تخصیص کریں</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu کے دوبارہ شروع ہونے پر یہ پھر سے بند ہو جاتی ہے</string>
 </resources>

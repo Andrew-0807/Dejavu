@@ -535,4 +535,5 @@
     <string name="dejavu_settings_tips_summary">显示有关隐藏手势的提示，例如长按“新建标签页”</string>
     <string name="dejavu_new">新</string>
     <string name="dejavu_menu_customize_reader_view">定制阅读模式</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu 重启后会再次关闭</string>
 </resources>

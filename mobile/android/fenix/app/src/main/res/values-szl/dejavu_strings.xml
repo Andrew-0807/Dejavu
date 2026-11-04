@@ -559,4 +559,5 @@
     <string name="dejavu_settings_tips_summary">Pokazuj porady ô skrytych gestach, jak przitrzimanie „Nowo karta”</string>
     <string name="dejavu_new">Nowe</string>
     <string name="dejavu_menu_customize_reader_view">Przipasuj wyglōnd do czytanio</string>
+    <string name="dejavu_remote_debugging_summary">Wyłōnczo sie zaś po ponownym sztarcie Dejavu</string>
 </resources>

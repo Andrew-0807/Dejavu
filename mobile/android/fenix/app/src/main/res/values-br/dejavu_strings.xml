@@ -567,4 +567,5 @@
     <string name="dejavu_settings_tips_summary">Diskouez alioù diwar-benn ar jestroù kuzh, evel derc’hel war “Ivinell nevez”</string>
     <string name="dejavu_new">Nevez</string>
     <string name="dejavu_menu_customize_reader_view">Personelaat ar mod lenn</string>
+    <string name="dejavu_remote_debugging_summary">Diweredekaet e vez en-dro pa adloc’h Dejavu</string>
 </resources>

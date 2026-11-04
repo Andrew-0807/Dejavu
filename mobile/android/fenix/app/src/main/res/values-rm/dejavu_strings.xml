@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Mussar cussegls davart gests zuppads, sco tegnair smatgà Nov tab</string>
     <string name="dejavu_new">Nov</string>
     <string name="dejavu_menu_customize_reader_view">Persunalisar la vista da lectura</string>
+    <string name="dejavu_remote_debugging_summary">Vegn deactivà puspè cura che Dejavu vegn reavià</string>
 </resources>

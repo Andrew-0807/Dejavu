@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Vis tips om skjulte bevægelser, som at holde Nyt faneblad nede</string>
     <string name="dejavu_new">Ny</string>
     <string name="dejavu_menu_customize_reader_view">Tilpas læsevisning</string>
+    <string name="dejavu_remote_debugging_summary">Slås fra igen, når Dejavu genstarter</string>
 </resources>

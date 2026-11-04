@@ -12,7 +12,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -36,7 +35,6 @@ import androidx.compose.foundation.lazy.LazyListItemInfo
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
@@ -317,7 +315,7 @@ internal fun WorkspacePage(
         }
     }
 
-    val listState = rememberLazyListState()
+    val listState = rememberHomeListState(workspace.id)
     val pageContent = PageContent(state, otherTabs, workspace, pinLines, lines, lineKeys, tabsById, containers)
     val content by rememberUpdatedState(pageContent)
     val latestCallbacks by rememberUpdatedState(callbacks)
@@ -363,16 +361,24 @@ internal fun WorkspacePage(
         onDispose { if (dragAreas[workspace.id] === dragArea) dragAreas.remove(workspace.id) }
     }
 
-    // Scrolls to a reopened tab once it is back in this workspace, unless its row is already in view.
-    LaunchedEffect(revealTabId, pinLines, lines) {
-        val tabId = revealTabId ?: return@LaunchedEffect
+    fun rowIndexOf(tabId: String): Int? {
         val pinIndex = pinLines.indexOfFirst { line -> line.entries.any { it.item.tabId == tabId } }
         val tabIndex = lines.indexOfFirst { line -> line.tabs.any { it.id == tabId } }
-        val index = when {
+        return when {
             pinIndex >= 0 -> 1 + pinIndex
             tabIndex >= 0 -> pinLines.size + FIRST_TAB_OFFSET + tabIndex
-            else -> return@LaunchedEffect
+            else -> null
         }
+    }
+
+    // The tab the home screen was opened from is in view as it shows, wherever the list was left.
+    LaunchedEffect(workspace.id) {
+        selectedTabId?.let(::rowIndexOf)?.let { listState.revealWhenShown(it) }
+    }
+
+    // Scrolls to a reopened tab once it is back in this workspace, unless its row is already in view.
+    LaunchedEffect(revealTabId, pinLines, lines) {
+        val index = revealTabId?.let(::rowIndexOf) ?: return@LaunchedEffect
         listState.reveal(index)
         latestCallbacks.onRevealed()
     }
@@ -754,25 +760,6 @@ private fun dropFallback(
         DropLine.TOP -> Offset(row.center.x, row.top)
         DropLine.BOTTOM -> Offset(row.center.x, row.bottom)
         DropLine.INSIDE -> row.center
-    }
-}
-
-/**
- * Scrolls as little as it takes to show the row at [index] whole. A row below the ones in view comes in at the bottom,
- * so the rows above it, the header with its buttons first, stay in view as far as they can.
- */
-private suspend fun LazyListState.reveal(index: Int) {
-    val layout = layoutInfo
-    val visible = layout.visibleItemsInfo
-    val first = visible.firstOrNull() ?: return
-    val last = visible.last()
-    val row = visible.firstOrNull { it.index == index }
-    val end = layout.viewportEndOffset
-    when {
-        row != null && row.offset < layout.viewportStartOffset -> animateScrollToItem(index)
-        row != null -> if (row.offset + row.size > end) animateScrollBy((row.offset + row.size - end).toFloat())
-        index < first.index -> animateScrollToItem(index)
-        else -> animateScrollBy((last.offset + last.size - end + (index - last.index) * last.size).toFloat())
     }
 }
 

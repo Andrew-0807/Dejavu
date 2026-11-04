@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Εμφάνιση συμβουλών για κρυφές χειρονομίες, όπως το παρατεταμένο πάτημα του «Νέα καρτέλα»</string>
     <string name="dejavu_new">Νέο</string>
     <string name="dejavu_menu_customize_reader_view">Προσαρμογή προβολής ανάγνωσης</string>
+    <string name="dejavu_remote_debugging_summary">Απενεργοποιείται ξανά όταν γίνεται επανεκκίνηση του Dejavu</string>
 </resources>

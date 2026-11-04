@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Yeni sekme\'ye basılı tutmak gibi gizli parmak hareketleriyle ilgili ipuçlarını göster</string>
     <string name="dejavu_new">Yeni</string>
     <string name="dejavu_menu_customize_reader_view">Okuyucu görünümünü özelleştir</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu yeniden başladığında tekrar kapanır</string>
 </resources>

@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Mostra conseggi in scî gesti ascoxi, comme tegnî sciaccou “Neuvo feuggio”</string>
     <string name="dejavu_new">Neuvo</string>
     <string name="dejavu_menu_customize_reader_view">Personalizza modalitæ letua</string>
+    <string name="dejavu_remote_debugging_summary">O se dizativa torna quande Dejavu o se reavvia</string>
 </resources>

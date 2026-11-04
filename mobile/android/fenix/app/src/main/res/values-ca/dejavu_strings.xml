@@ -551,4 +551,5 @@
     <string name="dejavu_settings_tips_summary">Mostra consells sobre gestos ocults, com ara mantenir premut «Pestanya nova»</string>
     <string name="dejavu_new">Nou</string>
     <string name="dejavu_menu_customize_reader_view">Personalitza la vista de lectura</string>
+    <string name="dejavu_remote_debugging_summary">Es torna a desactivar quan el Dejavu es reinicia</string>
 </resources>

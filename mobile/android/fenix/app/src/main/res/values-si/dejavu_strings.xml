@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">“නව පටිත්ත” තද කර අල්ලාගෙන සිටීම වැනි සැඟවුණු අභින පිළිබඳ ඉඟි පෙන්වන්න</string>
     <string name="dejavu_new">නව</string>
     <string name="dejavu_menu_customize_reader_view">කියවීමේ දැක්ම රිසිකරණය කරන්න</string>
+    <string name="dejavu_remote_debugging_summary">Dejavu යළි ආරම්භ වූ විට එය නැවත අක්‍රිය වේ</string>
 </resources>

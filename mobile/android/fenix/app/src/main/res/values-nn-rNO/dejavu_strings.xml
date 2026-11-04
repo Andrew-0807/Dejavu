@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Vis tips om skjulte rørsler, som å halde inne knappen Ny fane</string>
     <string name="dejavu_new">Ny</string>
     <string name="dejavu_menu_customize_reader_view">Tilpass lesevising</string>
+    <string name="dejavu_remote_debugging_summary">Blir slått av igjen når Dejavu startar på nytt</string>
 </resources>

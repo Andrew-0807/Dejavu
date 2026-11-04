@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">د پټو اشارو په اړه لارښوونې ښودل، لکه د «نوی ټب» نیول</string>
     <string name="dejavu_new">نوی</string>
     <string name="dejavu_menu_customize_reader_view">د لوستونکي لید دودیزول</string>
+    <string name="dejavu_remote_debugging_summary">کله چې Dejavu بیا پیل شي، بېرته بندېږي</string>
 </resources>

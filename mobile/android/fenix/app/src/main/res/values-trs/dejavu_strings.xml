@@ -543,4 +543,5 @@
     <string name="dejavu_settings_tips_summary">Mostrar consejos sobre gestos ocultos, como mantener presionado “Rakïj ñanj nakàa”</string>
     <string name="dejavu_new">Nakàa</string>
     <string name="dejavu_menu_customize_reader_view">Nāgi’hiaj da’ Nānùn man guendâ Gāhiāt</string>
+    <string name="dejavu_remote_debugging_summary">Se desactiva de nuevo cuando Dejavu se reinicia</string>
 </resources>
