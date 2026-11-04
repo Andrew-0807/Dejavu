@@ -575,10 +575,7 @@
     <string name="dejavu_settings_tips_summary">Diskwedhes kussulyow a-dro dhe wayansow kudh, kepar ha synsy “Tab Nowyth”</string>
     <string name="dejavu_new">Nowydh</string>
     <string name="dejavu_menu_customize_reader_view">Chanjya an gwel redya</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Diweythresys yw arta pan dhastalleth Dejavu</string>
-=======
     <string name="dejavu_preference_mouse_support">Skoodhyans logosen</string>
     <string name="dejavu_preference_mouse_support_summary">Klyk kres a eger kevren yn tab kilva, ha gortos a-ugh kevren a dhiskwedh hy thrigva. Klyk kres war dab a\'n serr.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

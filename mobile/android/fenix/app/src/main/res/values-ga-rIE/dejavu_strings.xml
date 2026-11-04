@@ -567,10 +567,7 @@
     <string name="dejavu_settings_tips_summary">Taispeáin leideanna faoi ghothaí folaithe, mar shampla “Cluaisín nua” a choinneáil brúite</string>
     <string name="dejavu_new">Nua</string>
     <string name="dejavu_menu_customize_reader_view">Saincheap an t-amharc léitheoireachta</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Casann sé as arís nuair a atosaíonn Dejavu</string>
-=======
     <string name="dejavu_preference_mouse_support">Tacaíocht luiche</string>
     <string name="dejavu_preference_mouse_support_summary">Osclaíonn cliceáil lárnach nasc i gcluaisín sa chúlra, agus taispeánann foluain os cionn naisc a sheoladh. Dúnann cliceáil lárnach ar chluaisín é.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

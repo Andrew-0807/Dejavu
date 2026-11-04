@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">«Жаңа бет» түймесін басып тұру сияқты жасырын ым қимылдары туралы кеңестерді көрсету</string>
     <string name="dejavu_new">Жаңа</string>
     <string name="dejavu_menu_customize_reader_view">Оқу режимін баптау</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu қайта іске қосылғанда қайтадан сөнеді</string>
-=======
     <string name="dejavu_preference_mouse_support">Тінтуірді қолдау</string>
     <string name="dejavu_preference_mouse_support_summary">Ортаңғы батырмамен шерту сілтемені фондық бетте ашады, ал сілтеменің үстіне апару оның адресін көрсетеді. Бетте ортаңғы батырмамен шерту оны жабады.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

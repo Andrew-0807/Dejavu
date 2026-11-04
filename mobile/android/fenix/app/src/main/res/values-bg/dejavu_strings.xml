@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">Показване на съвети за скрити жестове, като задържане на „Нов раздел“</string>
     <string name="dejavu_new">Нов</string>
     <string name="dejavu_menu_customize_reader_view">Приспособяване на изгледа за четене</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Изключва се отново, когато Dejavu се рестартира</string>
-=======
     <string name="dejavu_preference_mouse_support">Поддръжка на мишка</string>
     <string name="dejavu_preference_mouse_support_summary">Щракването със средния бутон отваря връзката във фонов раздел, а посочването на връзка показва адреса ѝ. Щракването със средния бутон върху раздел го затваря.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

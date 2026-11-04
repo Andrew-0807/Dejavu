@@ -535,10 +535,7 @@
     <string name="dejavu_settings_tips_summary">Pintonkeun tips ngeunaan réngkak nu nyumput, saperti nahan “Tab Anyar”</string>
     <string name="dejavu_new">Anyar</string>
     <string name="dejavu_menu_customize_reader_view">Robah panémbong pamaca</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Pareum deui nalika Dejavu dimimitian deui</string>
-=======
     <string name="dejavu_preference_mouse_support">Pangrojong beurit</string>
     <string name="dejavu_preference_mouse_support_summary">Klik tengah muka tutumbu dina tab tukang, sarta nempatkeun beurit dina tutumbu némbongkeun alamatna. Klik tengah dina tab nutup tab éta.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

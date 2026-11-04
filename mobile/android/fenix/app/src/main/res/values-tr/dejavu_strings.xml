@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">Yeni sekme\'ye basılı tutmak gibi gizli parmak hareketleriyle ilgili ipuçlarını göster</string>
     <string name="dejavu_new">Yeni</string>
     <string name="dejavu_menu_customize_reader_view">Okuyucu görünümünü özelleştir</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu yeniden başladığında tekrar kapanır</string>
-=======
     <string name="dejavu_preference_mouse_support">Fare desteği</string>
     <string name="dejavu_preference_mouse_support_summary">Orta tıklama bir bağlantıyı arka plandaki bir sekmede açar, bir bağlantının üzerine gelmek ise adresini gösterir. Bir sekmeye orta tıklama onu kapatır.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

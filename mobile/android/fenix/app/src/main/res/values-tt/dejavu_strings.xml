@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">Яшерен ишарәләр турында киңәшләр күрсәтү, мәсәлән, Яңа таб төймәсенә басып тору</string>
     <string name="dejavu_new">Яңа</string>
     <string name="dejavu_menu_customize_reader_view">Уку режимын көйләү</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu яңадан башланганда кабат сүнә</string>
-=======
     <string name="dejavu_preference_mouse_support">Тычкан ярдәме</string>
     <string name="dejavu_preference_mouse_support_summary">Урта төймә белән чирту сылтаманы фон табында ача, ә сылтама өстенә тычканны китерү аның адресын күрсәтә. Табка урта төймә белән чирту аны ябады.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

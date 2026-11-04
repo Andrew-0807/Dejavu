@@ -559,10 +559,7 @@
     <string name="dejavu_settings_tips_summary">Zobrazovat tipy ke skrytým gestům, například podržení tlačítka „Nový panel“</string>
     <string name="dejavu_new">Novinka</string>
     <string name="dejavu_menu_customize_reader_view">Přizpůsobit zobrazení čtečky</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Po restartu Dejavu se opět vypne</string>
-=======
     <string name="dejavu_preference_mouse_support">Podpora myši</string>
     <string name="dejavu_preference_mouse_support_summary">Kliknutí prostředním tlačítkem otevře odkaz v panelu na pozadí a najetí myší na odkaz zobrazí jeho adresu. Kliknutí prostředním tlačítkem na panel jej zavře.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">Montri konsilojn pri kaŝitaj gestoj, ekzemple teni “Nova langeto”</string>
     <string name="dejavu_new">Nova</string>
     <string name="dejavu_menu_customize_reader_view">Personecigi la legilan vidon</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Malŝaltiĝas denove kiam Dejavu rekomenciĝas</string>
-=======
     <string name="dejavu_preference_mouse_support">Subteno de muso</string>
     <string name="dejavu_preference_mouse_support_summary">Meza alklako malfermas ligilon en fona langeto, kaj ŝvebigi la muson super ligilo montras ĝian adreson. Meza alklako sur langeto fermas ĝin.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

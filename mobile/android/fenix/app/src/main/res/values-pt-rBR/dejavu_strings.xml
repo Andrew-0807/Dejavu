@@ -551,10 +551,7 @@
     <string name="dejavu_settings_tips_summary">Mostrar dicas sobre gestos ocultos, como manter “Nova aba” pressionado</string>
     <string name="dejavu_new">Novidade</string>
     <string name="dejavu_menu_customize_reader_view">Personalizar modo de leitura</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">É desativada de novo quando o Dejavu é reiniciado</string>
-=======
     <string name="dejavu_preference_mouse_support">Suporte a mouse</string>
     <string name="dejavu_preference_mouse_support_summary">Um clique com o botão do meio abre um link em uma aba em segundo plano, e passar o mouse sobre um link mostra o endereço dele. Um clique com o botão do meio em uma aba a fecha.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

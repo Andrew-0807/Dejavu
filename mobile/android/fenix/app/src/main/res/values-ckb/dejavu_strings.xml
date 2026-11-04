@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">پیشاندانی ئامۆژگاری دەربارەی جوڵاندنە شاراوەکان، وەک ڕاگرتنی «بازدەری نوێ»</string>
     <string name="dejavu_new">نوێ</string>
     <string name="dejavu_menu_customize_reader_view">شێوازی دۆخی خوێندنەوە دەستکاریبکە</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">کاتێک Dejavu دووبارە دەست پێدەکاتەوە دەکوژێتەوە</string>
-=======
     <string name="dejavu_preference_mouse_support">پشتگیری مشک</string>
     <string name="dejavu_preference_mouse_support_summary">کرتەی ناوەڕاست بەستەرێک لە بازدەرێکی پاشبنەمادا دەکاتەوە، و ڕاگرتنی مشک لەسەر بەستەر ناونیشانەکەی پیشان دەدات. کرتەی ناوەڕاست لەسەر بازدەرێک دایدەخات.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

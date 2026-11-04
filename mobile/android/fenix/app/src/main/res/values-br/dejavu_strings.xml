@@ -567,10 +567,7 @@
     <string name="dejavu_settings_tips_summary">Diskouez alioù diwar-benn ar jestroù kuzh, evel derc’hel war “Ivinell nevez”</string>
     <string name="dejavu_new">Nevez</string>
     <string name="dejavu_menu_customize_reader_view">Personelaat ar mod lenn</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Diweredekaet e vez en-dro pa adloc’h Dejavu</string>
-=======
     <string name="dejavu_preference_mouse_support">Skor al logodenn</string>
     <string name="dejavu_preference_mouse_support_summary">Ur c\'hlik kreiz a zigor ul liamm en un ivinell e drekleur, ha tremen a-us d\'ul liamm a ziskouez e chomlec\'h. Ur c\'hlik kreiz war un ivinell a serr anezhi.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">Amosar conseyos sobre xestos anubríos, como caltener primíu «Llingüeta nueva»</string>
     <string name="dejavu_new">Nuevu</string>
     <string name="dejavu_menu_customize_reader_view">Personalizar la vista de llector</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Desactívase de nuevu cuando Dejavu se reanicia</string>
-=======
     <string name="dejavu_preference_mouse_support">Sofitu pal mur</string>
     <string name="dejavu_preference_mouse_support_summary">Un clic col botón central abre un enllaz nuna llingüeta en segundu planu, y pasar penriba d\'un enllaz amuesa la so direición. Un clic col botón central nuna llingüeta péchala.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

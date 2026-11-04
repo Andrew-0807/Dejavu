@@ -576,10 +576,7 @@
     <string name="dejavu_settings_tips_summary">छिपे हुए जेस्चर के बारे में टिप्स दिखाएं, जैसे “नया टैब” को दबाकर रखना</string>
     <string name="dejavu_new">नया</string>
     <string name="dejavu_menu_customize_reader_view">रीडर व्यू को कस्टमाइज़ करें</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu के फिर से शुरू होने पर यह फिर से बंद हो जाता है</string>
-=======
     <string name="dejavu_preference_mouse_support">माउस समर्थन</string>
     <string name="dejavu_preference_mouse_support_summary">बीच वाले बटन से क्लिक करने पर लिंक पृष्ठभूमि टैब में खुलता है, और लिंक पर पॉइंटर रखने से उसका पता दिखता है। टैब पर बीच वाले बटन से क्लिक करने पर वह बंद हो जाता है।</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

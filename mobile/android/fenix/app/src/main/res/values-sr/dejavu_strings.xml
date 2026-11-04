@@ -551,10 +551,7 @@
     <string name="dejavu_settings_tips_summary">Прикажи савете о скривеним гестовима, као што је задржавање дугмета „Нови језичак“</string>
     <string name="dejavu_new">Ново</string>
     <string name="dejavu_menu_customize_reader_view">Прилагоди приказ читача</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Опет се искључује када се Dejavu поново покрене</string>
-=======
     <string name="dejavu_preference_mouse_support">Подршка за миша</string>
     <string name="dejavu_preference_mouse_support_summary">Клик средњим тастером отвара везу у језичку у позадини, а прелазак мишем преко везе приказује њену адресу. Клик средњим тастером на језичак га затвара.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

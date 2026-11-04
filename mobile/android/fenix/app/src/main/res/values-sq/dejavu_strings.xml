@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">Shfaq ndihmëza mbi gjeste të fshehura, si mbajtja shtypur e “Skedë e re”</string>
     <string name="dejavu_new">E re</string>
     <string name="dejavu_menu_customize_reader_view">Përshtate pamjen lexues</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Çaktivizohet sërish kur Dejavu riniset</string>
-=======
     <string name="dejavu_preference_mouse_support">Mbulim për miun</string>
     <string name="dejavu_preference_mouse_support_summary">Klikimi me butonin e mesit hap një lidhje në një skedë në prapaskenë, dhe kalimi i miut sipër një lidhjeje shfaq adresën e saj. Klikimi me butonin e mesit mbi një skedë e mbyll atë.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">Şîretên li ser hereketên tiliyan ên veşartî nîşan bide, wekî bi dirêjahî tikandina li «Hilpekîna nû»</string>
     <string name="dejavu_new">Nû</string>
     <string name="dejavu_menu_customize_reader_view">Moda xwînerê taybet bike</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dema Dejavu ji nû ve dest pê dike dîsa tê girtin</string>
-=======
     <string name="dejavu_preference_mouse_support">Piştgiriya mişkê</string>
     <string name="dejavu_preference_mouse_support_summary">Bi bişkoka navîn tikandin girêdanekê di hilpekîneke paşxanê de vedike, û ragirtina mişkê li ser girêdanê navnîşana wê nîşan dide. Bi bişkoka navîn tikandin li ser hilpekînekê wê digire.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

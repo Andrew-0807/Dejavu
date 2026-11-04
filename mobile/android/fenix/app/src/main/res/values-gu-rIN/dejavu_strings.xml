@@ -576,10 +576,7 @@
     <string name="dejavu_settings_tips_summary">છુપાયેલા હાવભાવ વિશે ટિપ્સ બતાવો, જેમ કે “નવી ટૅબ” દબાવી રાખવી</string>
     <string name="dejavu_new">નવું</string>
     <string name="dejavu_menu_customize_reader_view">વાંચકો જુઓ કસ્ટમાઇઝ કરો</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu ફરી શરૂ થાય ત્યારે તે ફરી બંધ થઈ જાય છે</string>
-=======
     <string name="dejavu_preference_mouse_support">માઉસ સપોર્ટ</string>
     <string name="dejavu_preference_mouse_support_summary">મધ્ય બટનથી ક્લિક કરવાથી લિંક પૃષ્ઠભૂમિ ટૅબમાં ખૂલે છે, અને લિંક પર પોઇન્ટર રાખવાથી તેનું સરનામું દેખાય છે. ટૅબ પર મધ્ય બટનથી ક્લિક કરવાથી તે બંધ થાય છે.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

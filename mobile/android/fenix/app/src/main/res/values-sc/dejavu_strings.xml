@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">Ammustra cussìgios subra de is gestos cuados, comente mantènnere pretzionadu “Ischeda noa”</string>
     <string name="dejavu_new">Nou</string>
     <string name="dejavu_menu_customize_reader_view">Personaliza sa visualizatzione de letura</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Si disativat torra cando Dejavu si torrat a aviare</string>
-=======
     <string name="dejavu_preference_mouse_support">Supportu de su sòrighe</string>
     <string name="dejavu_preference_mouse_support_summary">Unu clic cun su butone de mesu aberit unu ligòngiu in un\'ischeda in segundu pranu, e passende subra de unu ligòngiu nde mustrat s\'indiritzu. Unu clic cun su butone de mesu subra de un\'ischeda la serrat.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

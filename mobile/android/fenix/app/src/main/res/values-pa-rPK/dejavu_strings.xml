@@ -543,10 +543,7 @@
     <string name="dejavu_settings_tips_summary">لُکے ہوئے اشاریاں بارے مشورے وکھاؤ، جویں “نویں ٹیب کھولھو” نوں دبا کے رکھݨا</string>
     <string name="dejavu_new">نواں</string>
     <string name="dejavu_menu_customize_reader_view">پڑھن جھلک نوں من پسند بݨاؤ</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu دے مڑ شروع ہون اُتے ایہہ فیر بند ہو جاندی اے</string>
-=======
     <string name="dejavu_preference_mouse_support">ماؤس دی سہولت</string>
     <string name="dejavu_preference_mouse_support_summary">وچکارلے بٹن نال کلک کرن نال لنک پچھوکڑ والی ٹیب وچ کھلدا اے، تے لنک اتے ماؤس رکھن نال اوہدا پتہ وکھائی دیندا اے۔ ٹیب اتے وچکارلے بٹن نال کلک کرن نال اوہ بند ہو جاندی اے۔</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

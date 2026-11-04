@@ -551,10 +551,7 @@
     <string name="dejavu_settings_tips_summary">Mostra consegi so i gesti sconti, come tegner strucà Nova scheda</string>
     <string name="dejavu_new">Novo</string>
     <string name="dejavu_menu_customize_reader_view">Personalixa ła modalità ƚetura</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Se dexativa danovo co Dejavu el se reavia</string>
-=======
     <string name="dejavu_preference_mouse_support">Suporto par el sorze</string>
     <string name="dejavu_preference_mouse_support_summary">Un clic col boton de mezo el verze un colegamento inte na scheda in sfondo, e passar sora un colegamento el ghe mostra l\'indirizo. Un clic col boton de mezo sora na scheda la sara.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

@@ -559,10 +559,7 @@
     <string name="dejavu_settings_tips_summary">Zobraziť tipy o skrytých gestách, ako je podržanie tlačidla Nová karta</string>
     <string name="dejavu_new">Novinka</string>
     <string name="dejavu_menu_customize_reader_view">Prispôsobiť zobrazenie Čítačka</string>
-<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Po reštarte Dejavu sa opäť vypne</string>
-=======
     <string name="dejavu_preference_mouse_support">Podpora myši</string>
     <string name="dejavu_preference_mouse_support_summary">Kliknutie stredným tlačidlom otvorí odkaz na karte na pozadí a umiestnenie kurzora na odkaz zobrazí jeho adresu. Kliknutie stredným tlačidlom na kartu ju zatvorí.</string>
->>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>
