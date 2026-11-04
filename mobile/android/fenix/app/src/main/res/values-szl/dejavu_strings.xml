@@ -559,5 +559,10 @@
     <string name="dejavu_settings_tips_summary">Pokazuj porady ô skrytych gestach, jak przitrzimanie „Nowo karta”</string>
     <string name="dejavu_new">Nowe</string>
     <string name="dejavu_menu_customize_reader_view">Przipasuj wyglōnd do czytanio</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Wyłōnczo sie zaś po ponownym sztarcie Dejavu</string>
+=======
+    <string name="dejavu_preference_mouse_support">Spiyranie mysze</string>
+    <string name="dejavu_preference_mouse_support_summary">Klikniyncie postrzodkowym knefliym ôtwiyro link we karcie w tle, a najechanie na link pokazuje jego adresa. Klikniyncie postrzodkowym knefliym na karcie zamyko ja.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

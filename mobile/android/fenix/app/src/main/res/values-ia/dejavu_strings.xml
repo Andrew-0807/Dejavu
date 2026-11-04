@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Monstrar consilios sur gestos celate, como tener pressate ‘Nove scheda’</string>
     <string name="dejavu_new">Nove</string>
     <string name="dejavu_menu_customize_reader_view">Personalisar le vista de lectura</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Se disactiva de novo quando Dejavu se reinitia</string>
+=======
+    <string name="dejavu_preference_mouse_support">Supporto del mus</string>
+    <string name="dejavu_preference_mouse_support_summary">Un clic central aperi un ligamine in un scheda in secunde plano, e passar super un ligamine monstra su adresse. Un clic central super un scheda lo claude.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

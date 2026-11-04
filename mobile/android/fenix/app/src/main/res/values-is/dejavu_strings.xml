@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Sýna ábendingar um faldar bendingar, eins og að halda „Nýr flipi“ niðri</string>
     <string name="dejavu_new">Nýtt</string>
     <string name="dejavu_menu_customize_reader_view">Sérsníða lesham</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Slokknar aftur þegar Dejavu er endurræst</string>
+=======
+    <string name="dejavu_preference_mouse_support">Músarstuðningur</string>
+    <string name="dejavu_preference_mouse_support_summary">Miðsmellur opnar tengil í bakgrunnsflipa og þegar bendli er haldið yfir tengli sést vistfang hans. Miðsmellur á flipa lokar honum.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

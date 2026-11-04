@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">புதிய கீற்று பொத்தானை அழுத்திப் பிடிப்பது போன்ற மறைந்திருக்கும் சைகைகள் பற்றிய உதவிக்குறிப்புகளைக் காட்டு</string>
     <string name="dejavu_new">புதியது</string>
     <string name="dejavu_menu_customize_reader_view">வாசிப்பு தோற்றத்தைத் தனிப்பயனாக்கு</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu மீண்டும் தொடங்கும்போது மறுபடியும் அணைந்துவிடும்</string>
+=======
+    <string name="dejavu_preference_mouse_support">சுட்டி ஆதரவு</string>
+    <string name="dejavu_preference_mouse_support_summary">நடுப் பொத்தானைச் சொடுக்கினால் இணைப்பு பின்னணிக் கீற்றில் திறக்கும், இணைப்பின் மேல் சுட்டியை வைத்தால் அதன் முகவரி காட்டப்படும். கீற்றின் மேல் நடுப் பொத்தானைச் சொடுக்கினால் அது மூடப்படும்.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

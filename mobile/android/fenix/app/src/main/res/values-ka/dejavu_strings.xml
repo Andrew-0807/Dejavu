@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">რჩევების ჩვენება ფარული ჟესტების შესახებ, მაგალითად „ახალი ჩანართი“ ღილაკზე ხანგრძლივად შეხება</string>
     <string name="dejavu_new">სიახლე</string>
     <string name="dejavu_menu_customize_reader_view">კითხვის რეჟიმის მორგება</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu-ს ხელახლა გაშვებისას ისევ გამოირთვება</string>
+=======
+    <string name="dejavu_preference_mouse_support">თაგვის მხარდაჭერა</string>
+    <string name="dejavu_preference_mouse_support_summary">შუა ღილაკით დაწკაპება ბმულს ფონურ ჩანართში ხსნის, ხოლო ბმულზე მაჩვენებლის მიტანა მის მისამართს აჩვენებს. ჩანართზე შუა ღილაკით დაწკაპება მას ხურავს.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

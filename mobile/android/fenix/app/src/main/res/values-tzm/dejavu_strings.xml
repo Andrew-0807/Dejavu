@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Sken-d iwellihen ɣef yisillifen yeffren, am tuṭṭfa deg “Aseksel amaynu”</string>
     <string name="dejavu_new">Amaynu</string>
     <string name="dejavu_menu_customize_reader_view">Sagen tamuɣli n tɣuri</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Ad yensu tikkelt-nniḍen mi ara yales Dejavu asenker</string>
+=======
+    <string name="dejavu_preference_mouse_support">Tallalt n uɣerda</string>
+    <string name="dejavu_preference_mouse_support_summary">Asiti s tqeffalt n wammas iṛẓem aseɣwen deg useksel deg ugilal, ar tasdawt n uɣerda f useɣwen tessken-d tansa nnes. Asiti s tqeffalt n wammas f useksel ad t-isekkeṛ.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

@@ -535,5 +535,10 @@
     <string name="dejavu_settings_tips_summary">แสดงเคล็ดลับเกี่ยวกับท่าทางที่ซ่อนอยู่ เช่น การกด “แท็บใหม่” ค้างไว้</string>
     <string name="dejavu_new">ใหม่</string>
     <string name="dejavu_menu_customize_reader_view">ปรับแต่งมุมมองผู้อ่าน</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">ปิดอีกครั้งเมื่อ Dejavu เริ่มใหม่</string>
+=======
+    <string name="dejavu_preference_mouse_support">การรองรับเมาส์</string>
+    <string name="dejavu_preference_mouse_support_summary">การคลิกปุ่มกลางจะเปิดลิงก์ในแท็บเบื้องหลัง และการวางเมาส์เหนือลิงก์จะแสดงที่อยู่ของลิงก์ การคลิกปุ่มกลางที่แท็บจะปิดแท็บนั้น</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

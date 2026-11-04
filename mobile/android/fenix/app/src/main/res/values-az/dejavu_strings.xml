@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Gizli jestlər haqqında məsləhətlər göstər, məsələn, Yeni vərəq düyməsini basıb saxlamaq</string>
     <string name="dejavu_new">Yeni</string>
     <string name="dejavu_menu_customize_reader_view">Oxuyucu görünüşünü fərdiləşdir</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu yenidən başladıqda yenə sönür</string>
+=======
+    <string name="dejavu_preference_mouse_support">Siçan dəstəyi</string>
+    <string name="dejavu_preference_mouse_support_summary">Orta düymə ilə klik keçidi arxa planda yeni vərəqdə açır, keçidin üzərinə gəlmək isə onun ünvanını göstərir. Vərəqin üzərində orta düymə ilə klik onu bağlayır.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

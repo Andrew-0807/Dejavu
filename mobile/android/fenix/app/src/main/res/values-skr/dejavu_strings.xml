@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">لُکے ہوئے اشاریاں بارے مشورے ݙکھاؤ، جیویں نویں ٹیب بٹݨ کوں دبا تے رکھݨ</string>
     <string name="dejavu_new">نواں</string>
     <string name="dejavu_menu_customize_reader_view">من پسند قاری نظارہ بݨاو</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu دے ولا شروع تھیوݨ تے ایہ ولا بند تھی ویندی اے</string>
+=======
+    <string name="dejavu_preference_mouse_support">ماؤس دی سہولت</string>
+    <string name="dejavu_preference_mouse_support_summary">وچلے بٹݨ نال کلک کرݨ نال لنک پچھلی ٹیب وچ کھلدا ہے، تے لنک اُتے ماؤس رکھݨ نال اوندا پتہ ݙکھدا ہے۔ ٹیب اُتے وچلے بٹݨ نال کلک کرݨ نال او بند تھی ویندی ہے۔</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

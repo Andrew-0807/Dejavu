@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">د پټو اشارو په اړه لارښوونې ښودل، لکه د «نوی ټب» نیول</string>
     <string name="dejavu_new">نوی</string>
     <string name="dejavu_menu_customize_reader_view">د لوستونکي لید دودیزول</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">کله چې Dejavu بیا پیل شي، بېرته بندېږي</string>
+=======
+    <string name="dejavu_preference_mouse_support">د موږک ملاتړ</string>
+    <string name="dejavu_preference_mouse_support_summary">د منځني تڼۍ کلیک یوه تړنه په شالید ټب کې پرانیزي، او په تړنه باندې د موږک ساتل یې پته ښيي. په ټب باندې د منځنې تڼۍ کلیک هغه تړي.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

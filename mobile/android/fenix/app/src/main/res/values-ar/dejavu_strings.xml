@@ -575,5 +575,10 @@
     <string name="dejavu_settings_tips_summary">عرض نصائح عن الإيماءات المخفية، مثل الضغط مطولًا على «تبويب جديد»</string>
     <string name="dejavu_new">جديد</string>
     <string name="dejavu_menu_customize_reader_view">خصّص منظور القارئ</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">يتعطّل مجددًا عند إعادة تشغيل Dejavu</string>
+=======
+    <string name="dejavu_preference_mouse_support">دعم الفأرة</string>
+    <string name="dejavu_preference_mouse_support_summary">النقر بالزر الأوسط يفتح الرابط في تبويب في الخلفية، والمرور فوق الرابط يعرض عنوانه. النقر بالزر الأوسط على تبويب يغلقه.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

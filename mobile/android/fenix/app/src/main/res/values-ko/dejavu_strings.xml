@@ -535,5 +535,10 @@
     <string name="dejavu_settings_tips_summary">\'새 탭\' 길게 누르기 등 숨겨진 제스처에 대한 팁 표시</string>
     <string name="dejavu_new">신규</string>
     <string name="dejavu_menu_customize_reader_view">읽기 모드 사용자 지정</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu를 다시 시작하면 다시 꺼집니다</string>
+=======
+    <string name="dejavu_preference_mouse_support">마우스 지원</string>
+    <string name="dejavu_preference_mouse_support_summary">가운데 버튼으로 클릭하면 링크가 백그라운드 탭에서 열리고, 링크 위에 마우스를 올리면 주소가 표시됩니다. 탭을 가운데 버튼으로 클릭하면 그 탭이 닫힙니다.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

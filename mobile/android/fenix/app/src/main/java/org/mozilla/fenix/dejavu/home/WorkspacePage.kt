@@ -86,6 +86,7 @@ import org.mozilla.fenix.dejavu.actions.icon
 import org.mozilla.fenix.dejavu.actions.label
 import org.mozilla.fenix.dejavu.browser.ClearData
 import org.mozilla.fenix.dejavu.browser.SplitSpace
+import org.mozilla.fenix.dejavu.browser.closeOnMiddleClick
 import org.mozilla.fenix.dejavu.browser.tabZoomTarget
 import org.mozilla.fenix.dejavu.containers.ContainerIcon
 import org.mozilla.fenix.dejavu.containers.ContainerPick
@@ -406,6 +407,12 @@ internal fun WorkspacePage(
     val lineColor = MaterialTheme.colorScheme.primary
     val insideColor = MaterialTheme.colorScheme.primaryContainer
 
+    // A middle-click on a row does what its Close button does, but not while rows are being picked or dragged.
+    fun middleClick(targets: ActionTargets, isPinned: Boolean): (() -> Unit)? =
+        middleClickAction(targets, isPinned)
+            ?.takeIf { selection == null && drag == null }
+            ?.let { action -> { callbacks.onRowAction(action, targets) } }
+
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(
             state = listState,
@@ -462,6 +469,7 @@ internal fun WorkspacePage(
                                 isAwake = tab?.isAwake == true,
                                 picked = selection?.let { pin.id in it.pinIds },
                                 onClick = { if (drag == null) callbacks.onPinClick(pin) },
+                                onMiddleClick = middleClick(targets, isPinned = true),
                                 onIconClick = resetPin?.let { action ->
                                     { if (drag == null) callbacks.onRowAction(action, targets) }
                                 },
@@ -484,7 +492,7 @@ internal fun WorkspacePage(
                         actions = rowActions(folderRowActions, targets, isPinned = true),
                         onAction = { callbacks.onRowAction(it, targets) },
                         onClick = { if (drag == null) callbacks.onFolderClick(item) },
-                        modifier = rowModifier,
+                        modifier = rowModifier.closeOnMiddleClick(null),
                     )
                 } else {
                     val tab = item.tabId?.let { tabsById[it] }
@@ -504,7 +512,9 @@ internal fun WorkspacePage(
                         onAction = { callbacks.onRowAction(it, targets) },
                         onClick = { if (drag == null) callbacks.onPinClick(item) },
                         onIconClick = resetPin?.let { action -> { if (drag == null) callbacks.onRowAction(action, targets) } },
-                        modifier = rowModifier.tabZoomTarget(tab?.id),
+                        modifier = rowModifier
+                            .tabZoomTarget(tab?.id)
+                            .closeOnMiddleClick(middleClick(targets, isPinned = true)),
                     )
                 }
             }
@@ -564,6 +574,10 @@ internal fun WorkspacePage(
                                 isAwake = half.isAwake,
                                 picked = selection?.let { half.id in it.tabIds },
                                 onClick = { if (drag == null) callbacks.onTabClick(half) },
+                                onMiddleClick = middleClick(
+                                    ActionTargets(tabs = listOf(half), restricted = isDevice),
+                                    isPinned = false,
+                                ),
                             )
                         },
                         depth = 0,
@@ -591,6 +605,7 @@ internal fun WorkspacePage(
                     onClick = { if (drag == null) callbacks.onTabClick(tab) },
                     modifier = rowModifier
                         .tabZoomTarget(tab.id)
+                        .closeOnMiddleClick(middleClick(targets, isPinned = false))
                         .tipTarget(Tip.PIN, TipGesture.Drag(dy = PIN_DRAG), enabled = index == 0, at = ROW_TOUCH)
                         .tipTarget(Tip.ESSENTIAL_ADD, TipGesture.Drag(toTop = true), index == 0, ROW_TOUCH)
                         .tipTarget(
@@ -1424,6 +1439,7 @@ internal fun TabRow(
  * One of the two tabs of a [TabPairRow].
  *
  * @property picked Whether the tab is picked in selection mode, or `null` outside selection mode.
+ * @property onMiddleClick What a middle-click does to the tab, or `null` for nothing.
  * @property onIconClick Takes a pinned tab that left its pinned page back to it, shown with a brighter icon square.
  */
 private data class PairHalf(
@@ -1433,6 +1449,7 @@ private data class PairHalf(
     val isAwake: Boolean,
     val picked: Boolean?,
     val onClick: () -> Unit,
+    val onMiddleClick: (() -> Unit)? = null,
     val onIconClick: (() -> Unit)? = null,
 )
 
@@ -1479,6 +1496,7 @@ private fun TabPairRow(
                     .fillMaxHeight()
                     .clip(RowShape)
                     .background(if (picked == true) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent)
+                    .closeOnMiddleClick(half.onMiddleClick)
                     .clickable(onClick = half.onClick),
             ) {
                 Box(

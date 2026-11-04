@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Amosar consellos sobre xestos agochados, como manter premido «Nova lapela»</string>
     <string name="dejavu_new">Novo</string>
     <string name="dejavu_menu_customize_reader_view">Personalizar a vista de lectura</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Desactívase de novo cando Dejavu se reinicia</string>
+=======
+    <string name="dejavu_preference_mouse_support">Compatibilidade co rato</string>
+    <string name="dejavu_preference_mouse_support_summary">Un clic co botón central abre unha ligazón nunha lapela en segundo plano, e pasar o rato por riba dunha ligazón amosa o seu enderezo. Un clic co botón central nunha lapela péchaa.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

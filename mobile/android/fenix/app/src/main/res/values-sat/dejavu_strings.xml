@@ -551,5 +551,10 @@
     <string name="dejavu_settings_tips_summary">“ᱱᱟᱶᱟ ᱴᱮᱵᱽ” ᱚᱛᱟ ᱫᱚᱦᱚ ᱞᱮᱠᱟᱱ ᱩᱠᱩ ᱪᱤᱱᱦᱟᱹ ᱠᱚ ᱵᱟᱵᱚᱛ ᱥᱩᱡᱷᱟᱹᱣ ᱠᱚ ᱩᱫᱩᱜ ᱢᱮ</string>
     <string name="dejavu_new">ᱱᱟᱶᱟ</string>
     <string name="dejavu_menu_customize_reader_view">ᱨᱤᱰᱚᱨ ᱵᱷᱭᱩ ᱠᱚᱥᱴᱚᱢᱟᱭᱤᱡᱽ ᱢᱮ</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu ᱫᱚᱦᱲᱟ ᱮᱦᱚᱵ ᱚᱠᱛᱮ ᱫᱚᱦᱲᱟ ᱵᱚᱸᱫᱚ ᱦᱩᱭᱩᱜᱼᱟ</string>
+=======
+    <string name="dejavu_preference_mouse_support">ᱢᱟᱣᱩᱥ ᱜᱚᱲᱚ</string>
+    <string name="dejavu_preference_mouse_support_summary">ᱛᱟᱞᱟ ᱵᱩᱴᱟᱹᱢ ᱚᱛᱟ ᱠᱟᱛᱮ ᱞᱤᱝᱠ ᱯᱟᱪᱷᱚᱞ ᱴᱮᱵᱽ ᱨᱮ ᱡᱷᱤᱡᱽᱚᱜᱼᱟ, ᱟᱨ ᱞᱤᱝᱠ ᱪᱮᱛᱟᱱ ᱨᱮ ᱢᱟᱣᱩᱥ ᱫᱚᱦᱚ ᱠᱟᱛᱮ ᱚᱱᱟᱨ ᱴᱷᱤᱠᱬᱟᱹ ᱩᱫᱩᱜᱚᱜᱼᱟ ᱾ ᱴᱮᱵᱽ ᱨᱮ ᱛᱟᱞᱟ ᱵᱩᱴᱟᱹᱢ ᱚᱛᱟ ᱞᱮᱱ ᱥᱟᱶ ᱚᱱᱟ ᱵᱚᱱᱚᱫ ᱠᱟᱱᱟ ᱾</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Vis tips om skjulte bevegelser, som å holde inne «Ny fane»</string>
     <string name="dejavu_new">Ny</string>
     <string name="dejavu_menu_customize_reader_view">Tilpass lesevisning</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Slås av igjen når Dejavu startes på nytt</string>
+=======
+    <string name="dejavu_preference_mouse_support">Musstøtte</string>
+    <string name="dejavu_preference_mouse_support_summary">Et klikk med midtknappen åpner en lenke i en bakgrunnsfane, og når du holder pekeren over en lenke, vises adressen. Et klikk med midtknappen på en fane lukker den.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

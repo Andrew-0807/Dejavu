@@ -535,5 +535,10 @@
     <string name="dejavu_settings_tips_summary">បង្ហាញគន្លឹះអំពីកាយវិការដែលលាក់ ដូចជាការចុចប៊ូតុង ផ្ទាំងថ្មី ឱ្យជាប់</string>
     <string name="dejavu_new">ថ្មី</string>
     <string name="dejavu_menu_customize_reader_view">ប្ដូរតាមបំណងទិដ្ឋភាពអ្នកអាន</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">បិទវិញ នៅពេល Dejavu ចាប់ផ្ដើមឡើងវិញ</string>
+=======
+    <string name="dejavu_preference_mouse_support">ការគាំទ្រកណ្ដុរ</string>
+    <string name="dejavu_preference_mouse_support_summary">ការចុចប៊ូតុងកណ្ដាលបើកតំណក្នុងផ្ទាំងផ្ទៃខាងក្រោយ ហើយការដាក់ទស្សន៍ទ្រនិចលើតំណបង្ហាញអាសយដ្ឋានរបស់វា។ ការចុចប៊ូតុងកណ្ដាលលើផ្ទាំងនឹងបិទផ្ទាំងនោះ។</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

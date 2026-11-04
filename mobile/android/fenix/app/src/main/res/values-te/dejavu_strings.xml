@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">కొత్త ట్యాబు బటన్‌ను నొక్కిపట్టుకోవడం వంటి దాగి ఉన్న సైగల గురించి చిట్కాలను చూపించు</string>
     <string name="dejavu_new">కొత్తది</string>
     <string name="dejavu_menu_customize_reader_view">చదివే వీక్షణను అభిమతీకరించు</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Dejavu పునఃప్రారంభమైనప్పుడు మళ్లీ ఆఫ్ అవుతుంది</string>
+=======
+    <string name="dejavu_preference_mouse_support">మౌస్ మద్దతు</string>
+    <string name="dejavu_preference_mouse_support_summary">మధ్య బటన్‌తో క్లిక్ చేస్తే లంకె నేపథ్య ట్యాబులో తెరుచుకుంటుంది, లంకెపై పాయింటర్ ఉంచితే దాని చిరునామా కనిపిస్తుంది. ట్యాబుపై మధ్య బటన్‌తో క్లిక్ చేస్తే అది మూసుకుంటుంది.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

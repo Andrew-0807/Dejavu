@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Tips tonen over verborgen bewegingen, zoals “Nieuw tabblad” ingedrukt houden</string>
     <string name="dejavu_new">Nieuw</string>
     <string name="dejavu_menu_customize_reader_view">Lezerweergave aanpassen</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Wordt weer uitgeschakeld wanneer Dejavu opnieuw start</string>
+=======
+    <string name="dejavu_preference_mouse_support">Muisondersteuning</string>
+    <string name="dejavu_preference_mouse_support_summary">Een middelklik opent een koppeling in een tabblad op de achtergrond, en met de muis boven een koppeling hangen toont het adres. Een middelklik op een tabblad sluit het.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Amostrar consellos sobre cenyos amagaus, como mantener pretau «Nueva pestanya»</string>
     <string name="dejavu_new">Nuevo</string>
     <string name="dejavu_menu_customize_reader_view">Personalizar la vista de lectura</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Se torna a desactivar quan Dejavu se reinicia</string>
+=======
+    <string name="dejavu_preference_mouse_support">Suporte de churi</string>
+    <string name="dejavu_preference_mouse_support_summary">Un clic central ubre un vinclo en una pestanya de fondo, y pasar por denzima d\'un vinclo amuestra la suya adreza. Un clic central en una pestanya la zarra.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

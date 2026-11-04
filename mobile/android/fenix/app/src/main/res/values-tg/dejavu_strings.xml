@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Нишон додани маслиҳатҳо дар бораи ишораҳои пинҳон, масалан, пахш карда нигоҳ доштани «Варақаи нав»</string>
     <string name="dejavu_new">Нав</string>
     <string name="dejavu_menu_customize_reader_view">Фармоишдиҳии намоиши хониш</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Ҳангоми аз нав оғоз шудани Dejavu боз хомӯш мешавад</string>
+=======
+    <string name="dejavu_preference_mouse_support">Дастгирии муш</string>
+    <string name="dejavu_preference_mouse_support_summary">Зеркунӣ бо тугмаи миёна пайвандро дар варақаи пасзамина мекушояд, ва нигоҳ доштани муш болои пайванд нишонии онро нишон медиҳад. Зеркунӣ бо тугмаи миёна болои варақа онро мебандад.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

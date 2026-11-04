@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Mostra suggerimenti sui gesti nascosti, come tenere premuto «Nuova scheda»</string>
     <string name="dejavu_new">Novità</string>
     <string name="dejavu_menu_customize_reader_view">Personalizza modalità lettura</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Si disattiva di nuovo al riavvio di Dejavu</string>
+=======
+    <string name="dejavu_preference_mouse_support">Supporto per il mouse</string>
+    <string name="dejavu_preference_mouse_support_summary">Un clic con il tasto centrale apre un link in una scheda in background, e passare sopra un link ne mostra l\'indirizzo. Un clic con il tasto centrale su una scheda la chiude.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

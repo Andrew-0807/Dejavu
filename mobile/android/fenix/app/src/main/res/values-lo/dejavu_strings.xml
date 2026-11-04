@@ -535,5 +535,10 @@
     <string name="dejavu_settings_tips_summary">ສະແດງຄຳແນະນຳກ່ຽວກັບທ່າທາງທີ່ເຊື່ອງໄວ້ ເຊັ່ນ: ການກົດ “ແທັບໃຫມ່” ຄ້າງໄວ້</string>
     <string name="dejavu_new">ໃຫມ່</string>
     <string name="dejavu_menu_customize_reader_view">ປັບແຕ່ງມຸມມອງຜູ້ອ່ານ</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">ປິດອີກຄັ້ງເມື່ອ Dejavu ເລີ່ມໃໝ່</string>
+=======
+    <string name="dejavu_preference_mouse_support">ຮອງຮັບເມົ້າ</string>
+    <string name="dejavu_preference_mouse_support_summary">ການຄລິກປຸ່ມກາງຈະເປີດລິ້ງໃນແທັບເບື້ອງຫຼັງ, ແລະ ການວາງເມົ້າເທິງລິ້ງຈະສະແດງທີ່ຢູ່ຂອງມັນ. ການຄລິກປຸ່ມກາງໃສ່ແທັບຈະປິດແທັບນັ້ນ.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>

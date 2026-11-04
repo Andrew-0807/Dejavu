@@ -543,5 +543,10 @@
     <string name="dejavu_settings_tips_summary">Afichar de conselhs suls gèstes amagats, coma téner quichat Onglet novèl</string>
     <string name="dejavu_new">Novèl</string>
     <string name="dejavu_menu_customize_reader_view">Personalizar la vista de lectura</string>
+<<<<<<< HEAD
     <string name="dejavu_remote_debugging_summary">Se desactiva tornamai quand Dejavu se reaviá</string>
+=======
+    <string name="dejavu_preference_mouse_support">Presa en carga de la mirga</string>
+    <string name="dejavu_preference_mouse_support_summary">Un clic del mitan dobrís un ligam dins un onglet en rèireplan, e passar sus un ligam aficha son adreça. Un clic del mitan sus un onglet lo barra.</string>
+>>>>>>> a0e2668e4ebfab82727cfcb263486ee340b0a17b
 </resources>
