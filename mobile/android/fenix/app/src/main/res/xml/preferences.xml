@@ -30,6 +30,7 @@
         <androidx.preference.Preference
             android:icon="@drawable/dejavu_ic_code_24"
             android:key="@string/pref_key_dejavu_source_code"
+            android:layout="@layout/dejavu_preference_source_code"
             android:title="@string/dejavu_about_source_code"
             app:widgetLayout="@layout/preference_widget_external_link" />
 
