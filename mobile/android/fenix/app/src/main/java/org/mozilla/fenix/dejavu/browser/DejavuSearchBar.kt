@@ -210,7 +210,13 @@ fun DejavuFloatingSearch(
     BoxWithConstraints(
         modifier = Modifier.fillMaxSize().pointerInput(Unit) { detectTapGestures(onTap = { onDismiss() }) },
     ) {
-        val topRoom = (maxHeight * FLOATING_TOP_FRACTION).coerceIn(FLOATING_MIN_TOP, FLOATING_MAX_TOP)
+        // With little height, as with a keyboard up on a tablet held sideways, the pill moves up so the card below
+        // it keeps room for more rows.
+        val topRoom = if (maxHeight < FLOATING_TIGHT_HEIGHT) {
+            FLOATING_MIN_TOP
+        } else {
+            (maxHeight * FLOATING_TOP_FRACTION).coerceIn(FLOATING_MIN_TOP, FLOATING_MAX_TOP)
+        }
         Column(
             modifier = Modifier
                 .align(Alignment.TopCenter)
@@ -255,6 +261,9 @@ fun DejavuFloatingSearch(
             ) {
                 toolbar()
             }
+            // "@" and letters that match no engine have nothing to suggest, so no empty card shows below the pill.
+            val noEngine = matches == null && query.startsWith('@') && !query.contains(' ')
+            if (noEngine) return@Column
             Spacer(modifier = Modifier.height(FLOATING_GAP))
             Box(
                 modifier = Modifier
@@ -286,6 +295,7 @@ private const val FLOATING_CARD_ALPHA = 0.92f
 private const val FLOATING_TOP_FRACTION = 0.18f
 private val FLOATING_MIN_TOP = 16.dp
 private val FLOATING_MAX_TOP = 160.dp
+private val FLOATING_TIGHT_HEIGHT = 560.dp
 private val FLOATING_MAX_WIDTH = 720.dp
 private val FLOATING_SIDE_ROOM = 24.dp
 private val FLOATING_GAP = 8.dp
