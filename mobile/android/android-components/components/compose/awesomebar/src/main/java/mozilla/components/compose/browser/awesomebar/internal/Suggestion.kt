@@ -119,6 +119,7 @@ private fun SuggestionTitleAndDescription(
                 },
             color = colors.title,
             fontSize = 15.sp,
+            // Dejavu: one line where the AwesomeBar is narrow, see LocalSuggestionTitleMaxLines.
             maxLines = LocalSuggestionTitleMaxLines.current,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.width(IntrinsicSize.Max).padding(start = 2.dp, end = 8.dp),
