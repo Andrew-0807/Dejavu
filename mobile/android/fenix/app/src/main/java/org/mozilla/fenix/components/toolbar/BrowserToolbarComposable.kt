@@ -33,11 +33,13 @@ import mozilla.components.browser.state.state.ExternalAppType
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.compose.base.utils.BackInvokedHandler
 import mozilla.components.compose.browser.toolbar.BrowserToolbar
+import mozilla.components.compose.browser.toolbar.store.BrowserEditToolbarAction.SearchQueryUpdated
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarAction.ToolbarGravityUpdated
 import mozilla.components.compose.browser.toolbar.store.BrowserToolbarStore
 import mozilla.components.compose.browser.toolbar.store.ToolbarGravity
 import mozilla.components.compose.browser.toolbar.store.ToolbarGravity.Bottom
 import mozilla.components.compose.browser.toolbar.store.ToolbarGravity.Top
+import mozilla.components.compose.browser.toolbar.ui.BrowserToolbarQuery
 import mozilla.components.concept.engine.EngineView
 import mozilla.components.concept.toolbar.ScrollableToolbar
 import mozilla.components.feature.toolbar.ToolbarBehaviorController
@@ -186,7 +188,13 @@ class BrowserToolbarComposable(
                                     Box(modifier = if (isDejavuBar) Modifier.statusBarRoomPadding() else Modifier) {
                                         // Dejavu: on tablets the search floats in the middle of the screen instead.
                                         if (isDejavuBar && isSearching && isFloatingSearch()) {
+                                            val query = toolbarStore
+                                                .observeAsComposableState { it.editState.query.current }.value
                                             DejavuFloatingSearch(
+                                                query = query,
+                                                onQueryChange = {
+                                                    toolbarStore.dispatch(SearchQueryUpdated(BrowserToolbarQuery(it)))
+                                                },
                                                 onDismiss = {
                                                     appStore.dispatch(SearchEnded)
                                                     browserStore.dispatch(

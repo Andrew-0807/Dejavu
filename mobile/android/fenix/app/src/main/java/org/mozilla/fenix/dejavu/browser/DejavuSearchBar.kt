@@ -39,11 +39,14 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import mozilla.components.browser.state.search.SearchEngine
+import org.mozilla.fenix.components.components
 import org.mozilla.fenix.ext.WIDE_SCREEN_WIDTH_DP
 
 private const val MOVE_DURATION_MS = 280
@@ -160,16 +163,23 @@ fun FloatingSearchScrim(modifier: Modifier) {
 
 /**
  * The search on wide screens: the address bar as a pill floating in the middle of the screen, with where the search
- * opens above it and the suggestions in a rounded card below it, over what lies behind, as in Zen. A tap beside them
- * ends the search.
+ * opens above it, in a strip as wide as the pill that scrolls sideways, and the suggestions in a rounded card below
+ * it, over what lies behind, as in Zen. A tap beside them ends the search. "@" and some letters of an engine's name
+ * list the engines that match in place of the suggestions, to pick with the keyboard: the arrows or Tab move through
+ * them, Enter or a space picks one, which empties the field for the search.
  *
+ * @param query What the address bar holds.
+ * @param onQueryChange Replaces what the address bar holds.
  * @param onDismiss Ends the search, for a tap beside the pill and the suggestions.
  * @param chips Where the search opens and which engine it searches with.
  * @param toolbar The address bar, drawn see-through so the pill shows around its field.
  * @param suggestions The search suggestions.
  */
+@Suppress("LongMethod", "LongParameterList")
 @Composable
 fun DejavuFloatingSearch(
+    query: String,
+    onQueryChange: (String) -> Unit,
     onDismiss: () -> Unit,
     chips: @Composable () -> Unit,
     toolbar: @Composable () -> Unit,
@@ -178,11 +188,25 @@ fun DejavuFloatingSearch(
     val shown = remember { Animatable(0f) }
     LaunchedEffect(Unit) { shown.animateTo(1f, tween(FLOAT_IN_MS, easing = FastOutSlowInEasing)) }
     val colors = MaterialTheme.colorScheme
-    val cardColor = if (isSearchScreenSeeThrough) {
-        colors.surfaceContainerHigh.copy(alpha = FLOATING_CARD_ALPHA)
-    } else {
-        colors.surfaceContainerHigh
+    val seeThrough = isSearchScreenSeeThrough
+    val cardColor = colors.surfaceContainerHigh.copy(alpha = if (seeThrough) FLOATING_CARD_ALPHA else 1f)
+    val stripColor = colors.surfaceContainer.copy(alpha = if (seeThrough) FLOATING_CARD_ALPHA else 1f)
+
+    val appStore = components.appStore
+    val engines = rememberAtEngines()
+    val matches = remember(query, engines) { enginesMatching(query, engines) }
+    var highlighted by remember(matches) { mutableIntStateOf(0) }
+    fun pick(engine: SearchEngine) {
+        selectSearchEngine(appStore, engine)
+        onQueryChange("")
     }
+    // A space after "@name" picks the best match, as Enter does.
+    LaunchedEffect(query, engines) {
+        if (query.startsWith('@') && query.endsWith(' ') && query.count { it == ' ' } == 1) {
+            enginesMatching(query.trimEnd(), engines)?.firstOrNull()?.let { pick(it.engine) }
+        }
+    }
+
     BoxWithConstraints(
         modifier = Modifier.fillMaxSize().pointerInput(Unit) { detectTapGestures(onTap = { onDismiss() }) },
     ) {
@@ -199,10 +223,29 @@ fun DejavuFloatingSearch(
                     scaleX = scale
                     scaleY = scale
                     transformOrigin = TransformOrigin(0.5f, 0f)
+                }
+                // Seen before the address bar's field, so the keys move through the engines instead of its text.
+                .onPreviewKeyEvent { event ->
+                    val listed = matches ?: return@onPreviewKeyEvent false
+                    handleEngineKey(
+                        event = event,
+                        count = listed.size,
+                        highlighted = highlighted.coerceAtMost(listed.lastIndex),
+                        onHighlight = { highlighted = it },
+                        onPick = { pick(listed[highlighted.coerceAtMost(listed.lastIndex)].engine) },
+                    )
                 },
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            chips()
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(FLOATING_CARD_RADIUS))
+                    .background(stripColor),
+            ) {
+                chips()
+            }
+            Spacer(modifier = Modifier.height(FLOATING_GAP))
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -221,7 +264,16 @@ fun DejavuFloatingSearch(
                     .clip(RoundedCornerShape(FLOATING_CARD_RADIUS))
                     .background(cardColor),
             ) {
-                suggestions(Modifier.fillMaxSize())
+                if (matches != null) {
+                    EngineList(
+                        matches = matches,
+                        highlighted = highlighted.coerceAtMost(matches.lastIndex),
+                        onPick = ::pick,
+                        modifier = Modifier.fillMaxWidth().padding(bottom = FLOATING_GAP),
+                    )
+                } else {
+                    suggestions(Modifier.fillMaxSize())
+                }
             }
         }
     }

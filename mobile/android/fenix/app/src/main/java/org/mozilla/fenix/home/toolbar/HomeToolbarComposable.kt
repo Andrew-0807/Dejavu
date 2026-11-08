@@ -181,7 +181,10 @@ internal class HomeToolbarComposable(
                     }
             ) {
                 val sourceTabId = appStore.state.searchState.sourceTabId
+                val query = toolbarStore.observeAsComposableState { it.editState.query.current }.value
                 DejavuFloatingSearch(
+                    query = query,
+                    onQueryChange = { toolbarStore.dispatch(SearchQueryUpdated(BrowserToolbarQuery(it))) },
                     onDismiss = ::abandonSearch,
                     chips = { DejavuSearchChips(newTab = sourceTabId == null || NewTabSearch.isFor(sourceTabId)) },
                     toolbar = {
