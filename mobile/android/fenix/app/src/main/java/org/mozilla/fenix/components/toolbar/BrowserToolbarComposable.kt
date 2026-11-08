@@ -55,11 +55,14 @@ import org.mozilla.fenix.components.appstate.AppAction.SearchAction.SearchEnded
 import org.mozilla.fenix.components.toolbar.ToolbarPosition.BOTTOM
 import org.mozilla.fenix.components.toolbar.ToolbarPosition.TOP
 import org.mozilla.fenix.dejavu.browser.DejavuAddressBar
+import org.mozilla.fenix.dejavu.browser.DejavuFloatingSearch
 import org.mozilla.fenix.dejavu.browser.DejavuSearchAboveKeyboard
 import org.mozilla.fenix.dejavu.browser.DejavuSearchChips
 import org.mozilla.fenix.dejavu.browser.DejavuToolbar
+import org.mozilla.fenix.dejavu.browser.FloatingSearchScrim
 import org.mozilla.fenix.dejavu.browser.SearchPageBackdrop
 import org.mozilla.fenix.dejavu.browser.currentBarsLayout
+import org.mozilla.fenix.dejavu.browser.isFloatingSearch
 import org.mozilla.fenix.dejavu.browser.isSearchScreenSeeThrough
 import org.mozilla.fenix.dejavu.browser.statusBarRoomPadding
 import org.mozilla.fenix.theme.FirefoxTheme
@@ -175,11 +178,34 @@ class BrowserToolbarComposable(
                                 // below the status bar, also while it is hidden; while searching the page shows
                                 // blurred behind everything.
                                 Box {
-                                    if (isDejavuBar) {
+                                    if (isDejavuBar && isSearching && isFloatingSearch()) {
+                                        FloatingSearchScrim(modifier = Modifier.matchParentSize())
+                                    } else if (isDejavuBar) {
                                         SearchPageBackdrop(active = isSearching, modifier = Modifier.matchParentSize())
                                     }
                                     Box(modifier = if (isDejavuBar) Modifier.statusBarRoomPadding() else Modifier) {
-                                        DejavuSearchAboveKeyboard(
+                                        // Dejavu: on tablets the search floats in the middle of the screen instead.
+                                        if (isDejavuBar && isSearching && isFloatingSearch()) {
+                                            DejavuFloatingSearch(
+                                                onDismiss = {
+                                                    appStore.dispatch(SearchEnded)
+                                                    browserStore.dispatch(
+                                                        AwesomeBarAction.EngagementFinished(abandoned = true),
+                                                    )
+                                                },
+                                                chips = { DejavuSearchChips(newTab = false) },
+                                                toolbar = {
+                                                    BrowserToolbar(
+                                                        store = toolbarStore,
+                                                        cfr = toolbarCFR,
+                                                        useMinimalBottomToolbarWhenEnteringText =
+                                                            settings.shouldUseMinimalBottomToolbarWhenEnteringText,
+                                                        seeThroughWhileEditing = true,
+                                                    )
+                                                },
+                                                suggestions = searchSuggestionsContent,
+                                            )
+                                        } else DejavuSearchAboveKeyboard(
                                             enabled = isDejavuBar,
                                             isSearching = isSearching,
                                             fromTop = isDejavuBarOnTop,
