@@ -131,6 +131,7 @@ import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.components
+import org.mozilla.fenix.dejavu.browser.closeOnMiddleClick
 import org.mozilla.fenix.dejavu.browser.loadingColors
 import org.mozilla.fenix.dejavu.browser.openDejavuMenu
 import org.mozilla.fenix.dejavu.browser.shownSidebarTheme
@@ -669,6 +670,8 @@ private fun SidebarContent(
                             actions = emptyList(),
                             onAction = {},
                             onClick = { openTab(tab.id) },
+                            // A middle-click closes the tab, as on the tab rows and the tab strip.
+                            modifier = Modifier.closeOnMiddleClick { tabsUseCases.removeTab(tab.id) },
                             look = look,
                         )
                     }
