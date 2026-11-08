@@ -183,10 +183,11 @@ internal class PageTint(
             clearedTo = colors.side
             geckoView()?.let { view ->
                 // The view's own white shows where its surface is not as big as the view yet, the engine's fill where
-                // it has not painted its bigger surface yet.
+                // it has not painted its bigger surface yet. Only the fill changes: covering the view, as
+                // coverUntilFirstPaint does, would hide a page that already painted until the next one loads.
                 if (untintedEngine == null) untintedEngine = view.background
                 view.setBackgroundColor(colors.side)
-                view.coverUntilFirstPaint(colors.side)
+                view.session?.compositorController?.clearColor = colors.side
             }
         }
         WindowCompat.getInsetsController(window, window.decorView).apply {
@@ -207,7 +208,8 @@ internal class PageTint(
                 view.background = untintedEngine
                 untintedEngine = null
                 val night = view.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-                view.coverUntilFirstPaint(if (night == Configuration.UI_MODE_NIGHT_YES) DARK_CLEAR else Color.WHITE)
+                view.session?.compositorController?.clearColor =
+                    if (night == Configuration.UI_MODE_NIGHT_YES) DARK_CLEAR else Color.WHITE
             }
         }
         restoreTheme()
