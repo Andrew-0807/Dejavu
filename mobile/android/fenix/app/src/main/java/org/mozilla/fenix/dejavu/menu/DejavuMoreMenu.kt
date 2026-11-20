@@ -54,7 +54,6 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
@@ -76,6 +75,7 @@ import org.mozilla.fenix.dejavu.discover.rememberUnseenNewThings
 import org.mozilla.fenix.dejavu.home.displayTitle
 import org.mozilla.fenix.dejavu.ui.TapIcon
 import org.mozilla.fenix.dejavu.ui.WordFittedText
+import org.mozilla.fenix.dejavu.ui.iconPainter
 import org.mozilla.fenix.dejavu.ui.rememberIconTaps
 import org.mozilla.fenix.dejavu.workspaces.SplitOrientation
 
@@ -100,6 +100,8 @@ data class MoreMenuState(
     val isWebPage: Boolean = false,
     val isPdf: Boolean = false,
     val isDeviceTab: Boolean = false,
+    val isFullScreen: Boolean = false,
+    val allowsScreenshots: Boolean = false,
     val splitWays: List<SplitOrientation> = emptyList(),
 )
 
@@ -144,6 +146,12 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
             default.copy(enabled = state.isWebPage)
         }
         MoreMenuItem.DESKTOP_SITE -> default.copy(active = state.isDesktopMode)
+        MoreMenuItem.FULL_SCREEN -> if (state.isFullScreen) {
+            val label = stringResource(R.string.dejavu_menu_exit_full_screen)
+            EntryLook(label, R.drawable.dejavu_ic_full_screen_exit_24, active = true)
+        } else {
+            default
+        }
         MoreMenuItem.READER_VIEW -> if (state.isInReaderView) {
             val label = stringResource(R.string.dejavu_menu_close_reader_view)
             EntryLook(label, iconsR.drawable.mozac_ic_reader_view_fill_24, active = true)
@@ -183,6 +191,7 @@ private fun MoreMenuItem.look(state: MoreMenuState): EntryLook {
         -> default.copy(enabled = state.isWebPage)
         // Reader view and the PDF viewer are the browser's own pages, which the page saver cannot read.
         MoreMenuItem.SAVE_PAGE -> default.copy(enabled = state.isWebPage && !state.isInReaderView && !state.isPdf)
+        MoreMenuItem.SCREENSHOT -> default.copy(enabled = state.isWebPage && state.allowsScreenshots)
         MoreMenuItem.NEW_TAB, MoreMenuItem.EXTENSIONS, MoreMenuItem.PASSWORDS, MoreMenuItem.BOOKMARKS,
         MoreMenuItem.DOWNLOADS, MoreMenuItem.HISTORY, MoreMenuItem.SETTINGS, MoreMenuItem.CLEAR_DATA,
         MoreMenuItem.CLEAR_DATA_AND_QUIT,
@@ -372,11 +381,11 @@ fun MoreMenu(
                 ) {
                     // The new buttons for the menu wait in its settings.
                     Icon(
-                        painter = painterResource(iconsR.drawable.mozac_ic_edit_24),
+                        painter = iconPainter(iconsR.drawable.mozac_ic_edit_24),
                         contentDescription = null,
                         modifier = Modifier
                             .size(18.dp)
-                            .newDot(NewThing.CLEAR_DATA_ENTRIES in unseen, inset = EDIT_DOT_INSET),
+                            .newDot(NewThing.MENU_BUTTONS.any { it in unseen }, inset = EDIT_DOT_INSET),
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(stringResource(R.string.dejavu_menu_edit))
@@ -411,7 +420,7 @@ private fun MenuTile(look: EntryLook, onClick: () -> Unit, modifier: Modifier = 
                 ),
         ) {
             Icon(
-                painter = painterResource(look.icon),
+                painter = iconPainter(look.icon),
                 contentDescription = null,
                 tint = if (look.active) {
                     MaterialTheme.colorScheme.onPrimaryContainer
@@ -445,7 +454,7 @@ private fun CustomizeReaderViewRow(onClick: () -> Unit) {
             .padding(horizontal = 16.dp, vertical = 14.dp),
     ) {
         Icon(
-            painter = painterResource(iconsR.drawable.mozac_ic_reader_view_customize_24),
+            painter = iconPainter(iconsR.drawable.mozac_ic_reader_view_customize_24),
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onSurface,
         )
@@ -507,7 +516,7 @@ fun ExtensionsDrawer(
             }
             if (extensions.isNotEmpty()) {
                 Icon(
-                    painter = painterResource(iconsR.drawable.mozac_ic_chevron_down_24),
+                    painter = iconPainter(iconsR.drawable.mozac_ic_chevron_down_24),
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.rotate(chevronRotation),
@@ -535,7 +544,7 @@ fun ExtensionList(extensions: List<WebExtensionMenuItem>, onManage: () -> Unit) 
                 .padding(horizontal = 16.dp, vertical = 14.dp),
         ) {
             Icon(
-                painter = painterResource(R.drawable.dejavu_ic_settings_24),
+                painter = iconPainter(R.drawable.dejavu_ic_settings_24),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(20.dp),
@@ -567,7 +576,7 @@ private fun ExtensionRow(extension: WebExtensionMenuItem) {
             Image(bitmap = icon.asImageBitmap(), contentDescription = null, modifier = Modifier.size(24.dp))
         } else {
             Icon(
-                painter = painterResource(R.drawable.dejavu_ic_extensions_24),
+                painter = iconPainter(R.drawable.dejavu_ic_extensions_24),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(24.dp),
@@ -614,7 +623,7 @@ fun SplitTabPicker(
                 .padding(horizontal = 12.dp, vertical = 12.dp),
         ) {
             Icon(
-                painter = painterResource(iconsR.drawable.mozac_ic_back_24),
+                painter = iconPainter(iconsR.drawable.mozac_ic_back_24),
                 contentDescription = stringResource(R.string.dejavu_menu_back),
                 tint = MaterialTheme.colorScheme.onSurface,
             )
@@ -647,7 +656,7 @@ fun SplitTabPicker(
                     Image(bitmap = icon.asImageBitmap(), contentDescription = null, modifier = Modifier.size(24.dp))
                 } else {
                     Icon(
-                        painter = painterResource(iconsR.drawable.mozac_ic_globe_24),
+                        painter = iconPainter(iconsR.drawable.mozac_ic_globe_24),
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.size(24.dp),

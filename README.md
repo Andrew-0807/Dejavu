@@ -248,7 +248,9 @@ optional features, like sync, share with Mozilla and your search engine.
 ## License
 
 Dejavu is licensed under the [Mozilla Public License 2.0](LICENSE), like Firefox. Some third-party parts of the code
-have their own licenses, listed in [toolkit/content/license.html](toolkit/content/license.html).
+have their own licenses, listed in [toolkit/content/license.html](toolkit/content/license.html). The Rounded icons are
+Google's [Material Symbols](https://github.com/google/material-design-icons), under the
+[Apache License 2.0](toolkit/content/licenses/apache.txt).
 
 Dejavu is an independent project, not made or endorsed by Mozilla or the Zen Browser team. Firefox is a trademark of
 the Mozilla Foundation, and this repository grants no rights to Mozilla's trademarks.
