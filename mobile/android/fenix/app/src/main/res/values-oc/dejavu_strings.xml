@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Dos tons</string>
     <string name="dejavu_icons_firefox">Classicas</string>
     <string name="dejavu_icons_rounded">Arredondidas</string>
+    <string name="dejavu_settings_app_icon">Icòna d’aplicacion</string>
+    <string name="dejavu_app_icon_yellow">Jauna</string>
+    <string name="dejavu_app_icon_blue">Blava</string>
+    <string name="dejavu_app_icon_classic">Classica</string>
+    <string name="dejavu_app_icon_change_title">Cambiar l’icòna d’aplicacion ?</string>
+    <string name="dejavu_app_icon_change_message">%1$s se pòt tampar. Tornatz-lo dobrir a partir de sa novèla icòna.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Los sites e los acorchis qu’avètz aponduts a l’ecran d’acuèlh seràn suprimits. %1$s se pòt tampar. Tornatz-lo dobrir a partir de sa novèla icòna.</string>
+    <string name="dejavu_app_icon_change">Cambiar l’icòna</string>
+    <string name="dejavu_app_icon_change_failed">Impossible de cambiar l’icòna d’aplicacion. Suprimissètz los sites e los acorchis qu’avètz aponduts a l’ecran d’acuèlh e tornatz ensajar.</string>
     <string name="dejavu_settings_essentials">Essencials</string>
     <string name="dejavu_settings_essentials_summary">Amagar totes o qualques-uns sus aqueste telefòn</string>
     <string name="dejavu_essentials_hint">Los essencials qu’amagatz aicí demòran dins Zen e sus vòstres autres periferics, e tornan quand los afichatz tornamai.</string>

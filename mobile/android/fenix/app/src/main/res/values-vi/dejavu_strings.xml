@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">Hai tông màu</string>
     <string name="dejavu_icons_firefox">Cổ điển</string>
     <string name="dejavu_icons_rounded">Bo tròn</string>
+    <string name="dejavu_settings_app_icon">Biểu tượng ứng dụng</string>
+    <string name="dejavu_app_icon_yellow">Vàng</string>
+    <string name="dejavu_app_icon_blue">Xanh dương</string>
+    <string name="dejavu_app_icon_classic">Cổ điển</string>
+    <string name="dejavu_app_icon_change_title">Thay đổi biểu tượng ứng dụng?</string>
+    <string name="dejavu_app_icon_change_message">%1$s có thể sẽ đóng lại. Nhấn vào biểu tượng mới để mở lại.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Các trang web và lối tắt bạn đã thêm vào màn hình chính sẽ bị xóa. %1$s có thể sẽ đóng lại. Nhấn vào biểu tượng mới để mở lại.</string>
+    <string name="dejavu_app_icon_change">Thay đổi biểu tượng</string>
+    <string name="dejavu_app_icon_change_failed">Không thể thay đổi biểu tượng ứng dụng. Hãy xóa các trang web và lối tắt bạn đã thêm vào màn hình chính rồi thử lại.</string>
     <string name="dejavu_settings_essentials">Trang thiết yếu</string>
     <string name="dejavu_settings_essentials_summary">Ẩn tất cả hoặc một số trang trên điện thoại này</string>
     <string name="dejavu_essentials_hint">Các trang thiết yếu bạn ẩn ở đây vẫn còn trong Zen và trên các thiết bị khác của bạn, và sẽ quay lại khi bạn hiển thị chúng lần nữa.</string>

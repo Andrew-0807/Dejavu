@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">ଦୁଇ ରଙ୍ଗ</string>
     <string name="dejavu_icons_firefox">କ୍ଲାସିକ୍</string>
     <string name="dejavu_icons_rounded">ଗୋଲାକାର</string>
+    <string name="dejavu_settings_app_icon">ଆପ୍ ଆଇକନ୍</string>
+    <string name="dejavu_app_icon_yellow">ହଳଦିଆ</string>
+    <string name="dejavu_app_icon_blue">ନୀଳ</string>
+    <string name="dejavu_app_icon_classic">କ୍ଲାସିକ୍</string>
+    <string name="dejavu_app_icon_change_title">ଆପ୍ ଆଇକନ୍ ବଦଳାଇବେ?</string>
+    <string name="dejavu_app_icon_change_message">%1$s ବନ୍ଦ ହୋଇପାରେ। ଏହାର ନୂଆ ଆଇକନ୍‌ରୁ ଏହାକୁ ପୁଣି ଖୋଲନ୍ତୁ।</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ଆପଣ ହୋମ୍ ସ୍କ୍ରିନ୍‌ରେ ଯୋଡ଼ିଥିବା ସାଇଟ୍ ଏବଂ ସର୍ଟକଟ୍ ହଟାଯିବ। %1$s ବନ୍ଦ ହୋଇପାରେ। ଏହାର ନୂଆ ଆଇକନ୍‌ରୁ ଏହାକୁ ପୁଣି ଖୋଲନ୍ତୁ।</string>
+    <string name="dejavu_app_icon_change">ଆଇକନ୍ ବଦଳାନ୍ତୁ</string>
+    <string name="dejavu_app_icon_change_failed">ଆପ୍ ଆଇକନ୍ ବଦଳାଇହେଲା ନାହିଁ। ଆପଣ ହୋମ୍ ସ୍କ୍ରିନ୍‌ରେ ଯୋଡ଼ିଥିବା ସାଇଟ୍ ଏବଂ ସର୍ଟକଟ୍ ହଟାଇ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।</string>
     <string name="dejavu_settings_essentials">ଆବଶ୍ୟକୀୟ</string>
     <string name="dejavu_settings_essentials_summary">ଏହି ଫୋନ୍‌ରେ ସବୁ କିମ୍ବା କିଛି ଲୁଚାନ୍ତୁ</string>
     <string name="dejavu_essentials_hint">ଆପଣ ଏଠାରେ ଲୁଚାଉଥିବା ଆବଶ୍ୟକୀୟ Zen ରେ ଏବଂ ଆପଣଙ୍କ ଅନ୍ୟ ଡିଭାଇସରେ ରହେ, ଏବଂ ଆପଣ ସେଗୁଡ଼ିକୁ ପୁଣି ଦେଖାଇଲେ ଫେରି ଆସେ।</string>

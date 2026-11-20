@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Dukoloraj</string>
     <string name="dejavu_icons_firefox">Klasikaj</string>
     <string name="dejavu_icons_rounded">Rondigitaj</string>
+    <string name="dejavu_settings_app_icon">Emblemo de apo</string>
+    <string name="dejavu_app_icon_yellow">Flava</string>
+    <string name="dejavu_app_icon_blue">Blua</string>
+    <string name="dejavu_app_icon_classic">Klasika</string>
+    <string name="dejavu_app_icon_change_title">Ĉu ŝanĝi la emblemon de la apo?</string>
+    <string name="dejavu_app_icon_change_message">%1$s povus fermiĝi. Remalfermu ĝin per ĝia nova emblemo.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">La retejoj kaj ŝparvojoj, kiujn vi aldonis al via hejmekrano, estos forigitaj. %1$s povus fermiĝi. Remalfermu ĝin per ĝia nova emblemo.</string>
+    <string name="dejavu_app_icon_change">Ŝanĝi emblemon</string>
+    <string name="dejavu_app_icon_change_failed">Ne eblis ŝanĝi la emblemon de la apo. Forigu la retejojn kaj ŝparvojojn, kiujn vi aldonis al via hejmekrano, kaj provu denove.</string>
     <string name="dejavu_settings_essentials">Esencaĵoj</string>
     <string name="dejavu_settings_essentials_summary">Kaŝi ĉiujn aŭ kelkajn el ili sur ĉi tiu telefono</string>
     <string name="dejavu_essentials_hint">Esencaĵoj, kiujn vi kaŝas ĉi tie, restas en Zen kaj sur viaj aliaj aparatoj, kaj revenas, kiam vi denove montros ilin.</string>

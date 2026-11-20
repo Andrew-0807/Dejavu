@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">دوو ڕەنگ</string>
     <string name="dejavu_icons_firefox">کلاسیک</string>
     <string name="dejavu_icons_rounded">خڕ</string>
+    <string name="dejavu_settings_app_icon">ئایکۆنی بەرنامە</string>
+    <string name="dejavu_app_icon_yellow">زەرد</string>
+    <string name="dejavu_app_icon_blue">شین</string>
+    <string name="dejavu_app_icon_classic">کلاسیک</string>
+    <string name="dejavu_app_icon_change_title">ئایکۆنی بەرنامە بگۆڕدرێت؟</string>
+    <string name="dejavu_app_icon_change_message">لەوانەیە %1$s دابخرێت. لە ئایکۆنە نوێیەکەیەوە دووبارە بیکەرەوە.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ئەو ماڵپەڕ و قەدبڕانەی زیادت کردوون بۆ شاشەی سەرەکی لادەبرێن. لەوانەیە %1$s دابخرێت. لە ئایکۆنە نوێیەکەیەوە دووبارە بیکەرەوە.</string>
+    <string name="dejavu_app_icon_change">گۆڕینی ئایکۆن</string>
+    <string name="dejavu_app_icon_change_failed">نەتوانرا ئایکۆنی بەرنامە بگۆڕدرێت. ئەو ماڵپەڕ و قەدبڕانەی زیادت کردوون بۆ شاشەی سەرەکی لاببە و دووبارە هەوڵ بدەرەوە.</string>
     <string name="dejavu_settings_essentials">ماڵپەڕە گرنگەکان</string>
     <string name="dejavu_settings_essentials_summary">شاردنەوەی هەموویان یان هەندێکیان لەسەر ئەم مۆبایلە</string>
     <string name="dejavu_essentials_hint">ئەو ماڵپەڕە گرنگانەی لێرە دەیانشاریتەوە لە Zen و ئامێرەکانی ترتدا دەمێننەوە، و کاتێک دووبارە پیشانیان دەدەیتەوە دەگەڕێنەوە.</string>

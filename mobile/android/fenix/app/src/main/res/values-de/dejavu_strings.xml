@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Zweifarbig</string>
     <string name="dejavu_icons_firefox">Klassisch</string>
     <string name="dejavu_icons_rounded">Abgerundet</string>
+    <string name="dejavu_settings_app_icon">App-Symbol</string>
+    <string name="dejavu_app_icon_yellow">Gelb</string>
+    <string name="dejavu_app_icon_blue">Blau</string>
+    <string name="dejavu_app_icon_classic">Klassisch</string>
+    <string name="dejavu_app_icon_change_title">App-Symbol ändern?</string>
+    <string name="dejavu_app_icon_change_message">%1$s wird möglicherweise geschlossen. Öffne die App über das neue Symbol erneut.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Die Websites und Verknüpfungen, die du zum Startbildschirm hinzugefügt hast, werden entfernt. %1$s wird möglicherweise geschlossen. Öffne die App über das neue Symbol erneut.</string>
+    <string name="dejavu_app_icon_change">Symbol ändern</string>
+    <string name="dejavu_app_icon_change_failed">Das App-Symbol konnte nicht geändert werden. Entferne die Websites und Verknüpfungen, die du zum Startbildschirm hinzugefügt hast, und versuche es erneut.</string>
     <string name="dejavu_settings_essentials">Favoriten</string>
     <string name="dejavu_settings_essentials_summary">Alle oder einige davon auf diesem Telefon ausblenden</string>
     <string name="dejavu_essentials_hint">Favoriten, die du hier ausblendest, bleiben in Zen und auf deinen anderen Geräten erhalten und kommen zurück, wenn du sie wieder einblendest.</string>

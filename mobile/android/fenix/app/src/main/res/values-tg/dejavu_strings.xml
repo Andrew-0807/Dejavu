@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Дуранга</string>
     <string name="dejavu_icons_firefox">Классикӣ</string>
     <string name="dejavu_icons_rounded">Мудаввар</string>
+    <string name="dejavu_settings_app_icon">Нишонаи барнома</string>
+    <string name="dejavu_app_icon_yellow">Зард</string>
+    <string name="dejavu_app_icon_blue">Кабуд</string>
+    <string name="dejavu_app_icon_classic">Классикӣ</string>
+    <string name="dejavu_app_icon_change_title">Нишонаи барномаро иваз мекунед?</string>
+    <string name="dejavu_app_icon_change_message">%1$s метавонад пӯшида шавад. Онро тавассути нишонаи наваш аз нав кушоед.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Сомонаҳо ва миёнбурҳое, ки шумо ба экрани асосӣ илова кардед, тоза карда мешаванд. %1$s метавонад пӯшида шавад. Онро тавассути нишонаи наваш аз нав кушоед.</string>
+    <string name="dejavu_app_icon_change">Иваз кардани нишона</string>
+    <string name="dejavu_app_icon_change_failed">Нишонаи барнома иваз карда нашуд. Сомонаҳо ва миёнбурҳоеро, ки шумо ба экрани асосӣ илова кардед, тоза кунед ва аз нав кӯшиш кунед.</string>
     <string name="dejavu_settings_essentials">Сомонаҳои муҳим</string>
     <string name="dejavu_settings_essentials_summary">Пинҳон кардани ҳама ё баъзеи онҳо дар ин телефон</string>
     <string name="dejavu_essentials_hint">Сомонаҳои муҳиме, ки дар ин ҷо пинҳон мекунед, дар Zen ва дар дастгоҳҳои дигари шумо боқӣ мемонанд ва вақте ки онҳоро аз нав нишон медиҳед, бармегарданд.</string>

@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">दोन छटा</string>
     <string name="dejavu_icons_firefox">क्लासिक</string>
     <string name="dejavu_icons_rounded">गोलाकार</string>
+    <string name="dejavu_settings_app_icon">अ‍ॅप चिन्ह</string>
+    <string name="dejavu_app_icon_yellow">पिवळे</string>
+    <string name="dejavu_app_icon_blue">निळे</string>
+    <string name="dejavu_app_icon_classic">क्लासिक</string>
+    <string name="dejavu_app_icon_change_title">अ‍ॅपचे चिन्ह बदलायचे?</string>
+    <string name="dejavu_app_icon_change_message">%1$s बंद होऊ शकते. ते पुन्हा उघडण्यासाठी नवीन चिन्हावर टॅप करा.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">तुम्ही मुख्य पटलावर जोडलेल्या साइट आणि शॉर्टकट काढले जातील. %1$s बंद होऊ शकते. ते पुन्हा उघडण्यासाठी नवीन चिन्हावर टॅप करा.</string>
+    <string name="dejavu_app_icon_change">चिन्ह बदला</string>
+    <string name="dejavu_app_icon_change_failed">अ‍ॅपचे चिन्ह बदलता आले नाही. तुम्ही मुख्य पटलावर जोडलेल्या साइट आणि शॉर्टकट काढा आणि पुन्हा प्रयत्न करा.</string>
     <string name="dejavu_settings_essentials">आवश्यक</string>
     <string name="dejavu_settings_essentials_summary">या फोनवर सर्व किंवा काही लपवा</string>
     <string name="dejavu_essentials_hint">तुम्ही इथे लपवलेले आवश्यक Zen मध्ये आणि तुमच्या इतर डिव्हाइसवर राहतात, आणि ते पुन्हा दाखवल्यावर परत येतात.</string>

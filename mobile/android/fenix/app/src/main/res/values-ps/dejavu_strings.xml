@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">دوه رنګه</string>
     <string name="dejavu_icons_firefox">کلاسیک</string>
     <string name="dejavu_icons_rounded">ګرد</string>
+    <string name="dejavu_settings_app_icon">د ایپ آیکون</string>
+    <string name="dejavu_app_icon_yellow">ژیړ</string>
+    <string name="dejavu_app_icon_blue">آبي</string>
+    <string name="dejavu_app_icon_classic">کلاسیک</string>
+    <string name="dejavu_app_icon_change_title">د ایپ آیکون بدل کړئ؟</string>
+    <string name="dejavu_app_icon_change_message">%1$s ښايي بند شي. له نوي آیکون څخه یې بیا خلاص کړئ.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">هغه سایټونه او شارټکټونه چې تاسو خپلې کور پردې ته اضافه کړي، لرې کېږي. %1$s ښايي بند شي. له نوي آیکون څخه یې بیا خلاص کړئ.</string>
+    <string name="dejavu_app_icon_change">آیکون بدلول</string>
+    <string name="dejavu_app_icon_change_failed">د ایپ آیکون بدل نه شو. هغه سایټونه او شارټکټونه چې تاسو خپلې کور پردې ته اضافه کړي لرې کړئ او بیا هڅه وکړئ.</string>
     <string name="dejavu_settings_essentials">مهمې ویب پاڼې</string>
     <string name="dejavu_settings_essentials_summary">په دې تلیفون کې ټولې یا ځینې یې پټې کړئ</string>
     <string name="dejavu_essentials_hint">هغه مهمې ویب پاڼې چې تاسو یې دلته پټوئ، په Zen او ستاسو په نورو وسیلو کې پاتې کېږي، او کله چې یې بیا وښیئ بېرته راځي.</string>

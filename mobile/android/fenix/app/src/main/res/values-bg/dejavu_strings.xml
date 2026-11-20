@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Двуцветни</string>
     <string name="dejavu_icons_firefox">Класически</string>
     <string name="dejavu_icons_rounded">Заоблени</string>
+    <string name="dejavu_settings_app_icon">Иконка на приложението</string>
+    <string name="dejavu_app_icon_yellow">Жълта</string>
+    <string name="dejavu_app_icon_blue">Синя</string>
+    <string name="dejavu_app_icon_classic">Класическа</string>
+    <string name="dejavu_app_icon_change_title">Промяна на иконката на приложението?</string>
+    <string name="dejavu_app_icon_change_message">%1$s може да се затвори. Отворете го отново от новата му иконка.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Сайтовете и преките пътища, които сте добавили на началния екран, ще бъдат премахнати. %1$s може да се затвори. Отворете го отново от новата му иконка.</string>
+    <string name="dejavu_app_icon_change">Промяна на иконката</string>
+    <string name="dejavu_app_icon_change_failed">Иконката на приложението не можа да бъде променена. Премахнете сайтовете и преките пътища, които сте добавили на началния екран, и опитайте отново.</string>
     <string name="dejavu_settings_essentials">Любими</string>
     <string name="dejavu_settings_essentials_summary">Скриване на всички или някои от тях на този телефон</string>
     <string name="dejavu_essentials_hint">Любимите, които скриете тук, остават в Zen и на другите ви устройства и се връщат, когато ги покажете отново.</string>

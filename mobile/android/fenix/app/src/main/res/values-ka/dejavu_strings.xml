@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">ორფეროვანი</string>
     <string name="dejavu_icons_firefox">კლასიკური</string>
     <string name="dejavu_icons_rounded">მომრგვალებული</string>
+    <string name="dejavu_settings_app_icon">აპის ხატულა</string>
+    <string name="dejavu_app_icon_yellow">ყვითელი</string>
+    <string name="dejavu_app_icon_blue">ლურჯი</string>
+    <string name="dejavu_app_icon_classic">კლასიკური</string>
+    <string name="dejavu_app_icon_change_title">შეიცვალოს აპის ხატულა?</string>
+    <string name="dejavu_app_icon_change_message">%1$s შეიძლება დაიხუროს. ხელახლა გახსენით მისი ახალი ხატულიდან.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">თქვენ მიერ მთავარ ეკრანზე დამატებული საიტები და მალსახმობები წაიშლება. %1$s შეიძლება დაიხუროს. ხელახლა გახსენით მისი ახალი ხატულიდან.</string>
+    <string name="dejavu_app_icon_change">ხატულას შეცვლა</string>
+    <string name="dejavu_app_icon_change_failed">აპის ხატულა ვერ შეიცვალა. მოაცილეთ თქვენ მიერ მთავარ ეკრანზე დამატებული საიტები და მალსახმობები და ხელახლა სცადეთ.</string>
     <string name="dejavu_settings_essentials">საჭირო საიტები</string>
     <string name="dejavu_settings_essentials_summary">ყველას ან ზოგიერთის დამალვა ამ ტელეფონზე</string>
     <string name="dejavu_essentials_hint">აქ დამალული საჭირო საიტები Zen-ში და თქვენს სხვა მოწყობილობებზე რჩება და ბრუნდება, როცა მათ ხელახლა აჩვენებთ.</string>

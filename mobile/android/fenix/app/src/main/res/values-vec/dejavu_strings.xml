@@ -609,6 +609,15 @@
     <string name="dejavu_icons_dejavu">A do toni</string>
     <string name="dejavu_icons_firefox">Clàsiche</string>
     <string name="dejavu_icons_rounded">Tonde</string>
+    <string name="dejavu_settings_app_icon">Icona de l’app</string>
+    <string name="dejavu_app_icon_yellow">Zała</string>
+    <string name="dejavu_app_icon_blue">Blu</string>
+    <string name="dejavu_app_icon_classic">Clàsica</string>
+    <string name="dejavu_app_icon_change_title">Canbiar l’icona de l’app?</string>
+    <string name="dejavu_app_icon_change_message">%1$s el podaria sararse. Verxiło da novo da ła so icona nova.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">I siti e łe scorciatoie che te ghe giontà a ła schermata principaƚe i vegnarà cavà via. %1$s el podaria sararse. Verxiło da novo da ła so icona nova.</string>
+    <string name="dejavu_app_icon_change">Canbia icona</string>
+    <string name="dejavu_app_icon_change_failed">No xe stà posibiłe canbiar l’icona de l’app. Cava via i siti e łe scorciatoie che te ghe giontà a ła schermata principaƚe e prova torna.</string>
     <string name="dejavu_settings_essentials">Essensiałi</string>
     <string name="dejavu_settings_essentials_summary">Sconde tuti o soło calchedun so sto tełèfono</string>
     <string name="dejavu_essentials_hint">I essensiałi che te scondi qua i resta in Zen e so i to altri dispoxitivi, e i torna co te i mostri de novo.</string>

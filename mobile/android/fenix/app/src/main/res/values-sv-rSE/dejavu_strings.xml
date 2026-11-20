@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Tvåfärgade</string>
     <string name="dejavu_icons_firefox">Klassiska</string>
     <string name="dejavu_icons_rounded">Rundade</string>
+    <string name="dejavu_settings_app_icon">Appikon</string>
+    <string name="dejavu_app_icon_yellow">Gul</string>
+    <string name="dejavu_app_icon_blue">Blå</string>
+    <string name="dejavu_app_icon_classic">Klassisk</string>
+    <string name="dejavu_app_icon_change_title">Ändra appikon?</string>
+    <string name="dejavu_app_icon_change_message">%1$s kan stängas. Öppna appen igen från den nya ikonen.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Webbplatser och genvägar som du har lagt till på startskärmen tas bort. %1$s kan stängas. Öppna appen igen från den nya ikonen.</string>
+    <string name="dejavu_app_icon_change">Ändra ikon</string>
+    <string name="dejavu_app_icon_change_failed">Det gick inte att ändra appikonen. Ta bort webbplatserna och genvägarna som du har lagt till på startskärmen och försök igen.</string>
     <string name="dejavu_settings_essentials">Favoriter</string>
     <string name="dejavu_settings_essentials_summary">Dölj alla eller några av dem på den här telefonen</string>
     <string name="dejavu_essentials_hint">Favoriter som du döljer här finns kvar i Zen och på dina andra enheter, och kommer tillbaka när du visar dem igen.</string>

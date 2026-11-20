@@ -633,6 +633,15 @@
     <string name="dejavu_icons_dejavu">Deuliw</string>
     <string name="dejavu_icons_firefox">Clasurol</string>
     <string name="dejavu_icons_rounded">Crwn</string>
+    <string name="dejavu_settings_app_icon">Eicon ap</string>
+    <string name="dejavu_app_icon_yellow">Melyn</string>
+    <string name="dejavu_app_icon_blue">Glas</string>
+    <string name="dejavu_app_icon_classic">Clasurol</string>
+    <string name="dejavu_app_icon_change_title">Newid eicon yr ap?</string>
+    <string name="dejavu_app_icon_change_message">Gall %1$s gau. Agorwch ef eto o’i eicon newydd.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Bydd y gwefannau a’r llwybrau byr rydych chi wedi’u hychwanegu i’ch sgrin Cartref yn cael eu tynnu. Gall %1$s gau. Agorwch ef eto o’i eicon newydd.</string>
+    <string name="dejavu_app_icon_change">Newid eicon</string>
+    <string name="dejavu_app_icon_change_failed">Methu newid eicon yr ap. Tynnwch y gwefannau a’r llwybrau byr rydych chi wedi’u hychwanegu i’ch sgrin Cartref a cheisiwch eto.</string>
     <string name="dejavu_settings_essentials">Hanfodion</string>
     <string name="dejavu_settings_essentials_summary">Cuddio pob un neu rai ohonyn nhw ar y ffôn hwn</string>
     <string name="dejavu_essentials_hint">Mae hanfodion rydych chi’n eu cuddio yma yn aros yn Zen ac ar eich dyfeisiau eraill, ac maen nhw’n dod yn ôl pan fyddwch chi’n eu dangos eto.</string>

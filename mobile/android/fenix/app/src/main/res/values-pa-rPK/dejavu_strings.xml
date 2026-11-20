@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">دو رنگا</string>
     <string name="dejavu_icons_firefox">کلاسیکی</string>
     <string name="dejavu_icons_rounded">گول</string>
+    <string name="dejavu_settings_app_icon">ایپ آئیکن</string>
+    <string name="dejavu_app_icon_yellow">پیلا</string>
+    <string name="dejavu_app_icon_blue">نیلا</string>
+    <string name="dejavu_app_icon_classic">کلاسیکی</string>
+    <string name="dejavu_app_icon_change_title">کیہ ایپ آئیکن بدلنا اے؟</string>
+    <string name="dejavu_app_icon_change_message">%1$s بند ہو سکدا اے۔ ایہنوں ایہدے نویں آئیکن توں دوبارہ کھولو۔</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">تسیں اپنی مکھ سکرین تے جیہڑیاں سائٹاں تے شارٹ کٹ جوڑے سن، اوہ ہٹا دتے جان گے۔ %1$s بند ہو سکدا اے۔ ایہنوں ایہدے نویں آئیکن توں دوبارہ کھولو۔</string>
+    <string name="dejavu_app_icon_change">آئیکن بدلو</string>
+    <string name="dejavu_app_icon_change_failed">ایپ آئیکن نہیں بدلیا جا سکیا۔ اپنی مکھ سکرین تے جوڑیاں سائٹاں تے شارٹ کٹ ہٹاؤ تے دوبارہ کوشش کرو۔</string>
     <string name="dejavu_settings_essentials">ضروری چیزاں</string>
     <string name="dejavu_settings_essentials_summary">ایس فون تے ساریاں یا کجھ لکاؤ</string>
     <string name="dejavu_essentials_hint">جیہڑیاں ضروری چیزاں تسیں ایتھے لکاندے او، اوہ Zen وچ تے تہاڈے دوجے ڈیوائساں تے رہندیاں نيں، تے جدوں تسیں اوہناں نوں فیر وکھاندے او تاں واپس آ جاندیاں نيں۔</string>

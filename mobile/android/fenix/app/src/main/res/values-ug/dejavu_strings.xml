@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">قوش رەڭلىك</string>
     <string name="dejavu_icons_firefox">ئەنئەنىۋى</string>
     <string name="dejavu_icons_rounded">يۇمىلاق</string>
+    <string name="dejavu_settings_app_icon">ئەپ سىنبەلگىسى</string>
+    <string name="dejavu_app_icon_yellow">سېرىق</string>
+    <string name="dejavu_app_icon_blue">كۆك</string>
+    <string name="dejavu_app_icon_classic">ئەنئەنىۋى</string>
+    <string name="dejavu_app_icon_change_title">ئەپ سىنبەلگىسىنى ئۆزگەرتەمدۇ؟</string>
+    <string name="dejavu_app_icon_change_message">%1$s يېپىلىشى مۇمكىن. ئۇنى يېڭى سىنبەلگىسىدىن قايتا ئېچىڭ.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">سىز باش ئېكرانغا قوشقان تور بېكەت ۋە تېزلەتمىلەر چىقىرىۋېتىلىدۇ. %1$s يېپىلىشى مۇمكىن. ئۇنى يېڭى سىنبەلگىسىدىن قايتا ئېچىڭ.</string>
+    <string name="dejavu_app_icon_change">سىنبەلگە ئۆزگەرت</string>
+    <string name="dejavu_app_icon_change_failed">ئەپ سىنبەلگىسىنى ئۆزگەرتەلمىدى. سىز باش ئېكرانغا قوشقان تور بېكەت ۋە تېزلەتمىلەرنى چىقىرىۋېتىپ ئاندىن قايتا سىناڭ.</string>
     <string name="dejavu_settings_essentials">مۇھىملار</string>
     <string name="dejavu_settings_essentials_summary">بۇ تېلېفوندا ھەممىسىنى ياكى بەزىلىرىنى يوشۇر</string>
     <string name="dejavu_essentials_hint">بۇ يەردە يوشۇرغان مۇھىملار Zen دا ۋە باشقا ئۈسكۈنىلىرىڭىزدە قالىدۇ، ئۇلارنى قايتا كۆرسەتكەندە قايتىپ كېلىدۇ.</string>

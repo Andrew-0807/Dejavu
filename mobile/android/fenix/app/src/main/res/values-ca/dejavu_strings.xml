@@ -609,6 +609,15 @@
     <string name="dejavu_icons_dejavu">Dos tons</string>
     <string name="dejavu_icons_firefox">Clàssiques</string>
     <string name="dejavu_icons_rounded">Arrodonides</string>
+    <string name="dejavu_settings_app_icon">Icona d’aplicació</string>
+    <string name="dejavu_app_icon_yellow">Groc</string>
+    <string name="dejavu_app_icon_blue">Blau</string>
+    <string name="dejavu_app_icon_classic">Clàssica</string>
+    <string name="dejavu_app_icon_change_title">Voleu canviar la icona de l’aplicació?</string>
+    <string name="dejavu_app_icon_change_message">És possible que el %1$s es tanqui. Torneu-lo a obrir des de la icona nova.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">S’eliminaran els llocs web i les dreceres que hàgiu afegit a la pantalla d’inici. És possible que el %1$s es tanqui. Torneu-lo a obrir des de la icona nova.</string>
+    <string name="dejavu_app_icon_change">Canvia la icona</string>
+    <string name="dejavu_app_icon_change_failed">No s’ha pogut canviar la icona de l’aplicació. Elimineu els llocs web i les dreceres que hàgiu afegit a la pantalla d’inici i torneu-ho a provar.</string>
     <string name="dejavu_settings_essentials">Essencials</string>
     <string name="dejavu_settings_essentials_summary">Amaga\'ls tots o només alguns en aquest telèfon</string>
     <string name="dejavu_essentials_hint">Els essencials que amagueu aquí es queden al Zen i als vostres altres dispositius, i tornen quan els torneu a mostrar.</string>

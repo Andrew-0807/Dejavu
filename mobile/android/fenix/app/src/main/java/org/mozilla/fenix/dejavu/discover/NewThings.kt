@@ -48,6 +48,9 @@ import org.mozilla.fenix.ext.components
  * @property key Stable identifier used to remember that the user looked at it.
  */
 internal enum class NewThing(val key: String) {
+    /** The app icons, in Customize. */
+    APP_ICON("app_icon"),
+
     /** The accent color, in Customize. */
     ACCENT_COLOR("accent_color"),
 
@@ -69,7 +72,7 @@ internal enum class NewThing(val key: String) {
 
     companion object {
         /** The new things found in Customize. */
-        val CUSTOMIZE = setOf(ACCENT_COLOR, ICON_STYLE, ANIMATIONS, FULL_SCREEN)
+        val CUSTOMIZE = setOf(APP_ICON, ACCENT_COLOR, ICON_STYLE, ANIMATIONS, FULL_SCREEN)
     }
 }
 

@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">A dui toni</string>
     <string name="dejavu_icons_firefox">Clàssicu</string>
     <string name="dejavu_icons_rounded">Arrutunnatu</string>
+    <string name="dejavu_settings_app_icon">Cona di l’app</string>
+    <string name="dejavu_app_icon_yellow">Giarnu</string>
+    <string name="dejavu_app_icon_blue">Blu</string>
+    <string name="dejavu_app_icon_classic">Clàssicu</string>
+    <string name="dejavu_app_icon_change_title">Vo’ canciari a cona di l’app?</string>
+    <string name="dejavu_app_icon_change_message">%1$s si putissi chiùjiri. Ràpilu arrè dâ so cona nova.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">I siti e l’accurzi chi juncisti â to schirmata mastra vennu livati. %1$s si putissi chiùjiri. Ràpilu arrè dâ so cona nova.</string>
+    <string name="dejavu_app_icon_change">Cancia cona</string>
+    <string name="dejavu_app_icon_change_failed">Nun potti canciari a cona di l’app. Leva i siti e l’accurzi chi juncisti â to schirmata mastra e prova arrè.</string>
     <string name="dejavu_settings_essentials">Essenziali</string>
     <string name="dejavu_settings_essentials_summary">Ammucciali tutti o sulu arcuni supra stu tilèfunu</string>
     <string name="dejavu_essentials_hint">I essenziali ca ammucci ccà restanu nta Zen e nta l\'àutri dispusitivi tò, e tòrnanu quannu l\'ammustri arrè.</string>

@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">రెండు ఛాయలు</string>
     <string name="dejavu_icons_firefox">క్లాసిక్</string>
     <string name="dejavu_icons_rounded">గుండ్రనివి</string>
+    <string name="dejavu_settings_app_icon">అనువర్తన చిహ్నం</string>
+    <string name="dejavu_app_icon_yellow">పసుపు</string>
+    <string name="dejavu_app_icon_blue">నీలం</string>
+    <string name="dejavu_app_icon_classic">క్లాసిక్</string>
+    <string name="dejavu_app_icon_change_title">అనువర్తన చిహ్నాన్ని మార్చాలా?</string>
+    <string name="dejavu_app_icon_change_message">%1$s మూసుకుపోవచ్చు. దాని కొత్త చిహ్నం నుండి దాన్ని మళ్లీ తెరవండి.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">మీ ముంగిలి తెరకు మీరు చేర్చిన సైట్లు, సత్వరమార్గాలు తీసివేయబడతాయి. %1$s మూసుకుపోవచ్చు. దాని కొత్త చిహ్నం నుండి దాన్ని మళ్లీ తెరవండి.</string>
+    <string name="dejavu_app_icon_change">చిహ్నాన్ని మార్చు</string>
+    <string name="dejavu_app_icon_change_failed">అనువర్తన చిహ్నాన్ని మార్చలేకపోయింది. మీ ముంగిలి తెరకు మీరు చేర్చిన సైట్లను, సత్వరమార్గాలను తీసివేసి మళ్లీ ప్రయత్నించండి.</string>
     <string name="dejavu_settings_essentials">ముఖ్యమైనవి</string>
     <string name="dejavu_settings_essentials_summary">ఈ ఫోనులో అన్నిటినీ లేదా కొన్నిటిని మాత్రమే దాచు</string>
     <string name="dejavu_essentials_hint">ఇక్కడ మీరు దాచే ముఖ్యమైనవి Zenలో మరియు మీ ఇతర పరికరాల్లో అలాగే ఉంటాయి, మీరు వాటిని మళ్లీ చూపించినప్పుడు తిరిగి వస్తాయి.</string>

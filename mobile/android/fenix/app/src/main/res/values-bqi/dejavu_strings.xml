@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">دو رنگ</string>
     <string name="dejavu_icons_firefox">کلاسیک</string>
     <string name="dejavu_icons_rounded">گرد</string>
+    <string name="dejavu_settings_app_icon">آیکون برنومه</string>
+    <string name="dejavu_app_icon_yellow">هیل</string>
+    <string name="dejavu_app_icon_blue">کوۊ</string>
+    <string name="dejavu_app_icon_classic">کلاسیک</string>
+    <string name="dejavu_app_icon_change_title">آیکون برنومه آلشت بۊ؟</string>
+    <string name="dejavu_app_icon_change_message">گاشڌ %1$s بسته بۊ. سی گۊشیڌن دووارته، ری آیکون نۊ بزنین.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">آلشت آیکون، وبگه یل وو ره نهنگایی ک من بلگه هووه ای خوتووݩ زفت کردین پاک اکونه. گاشڌ %1$s بسته بۊ. سی گۊشیڌن دووارته، ری آیکون نۊ بزنین.</string>
+    <string name="dejavu_app_icon_change">آلشت آیکون</string>
+    <string name="dejavu_app_icon_change_failed">آلشت آیکون برنومه مووفق نبی. وبگه یل وو ره نهنگایی ک من بلگه هووه ای خوتووݩ زفت کردین ن پاک کۊنین وو ز نۊ قپ ریت کۊنین.</string>
     <string name="dejavu_settings_essentials">سایت یل مهم</string>
     <string name="dejavu_settings_essentials_summary">قایم کردن همه یا چن تاشون رو ای گوشی</string>
     <string name="dejavu_essentials_hint">سایت یل مهمی که اینه قایم می‌کنی، من Zen و رو دستگاه یل دیه‌ت می‌مونن، و وختی دوواره نشونشون بدی، ورمی‌گردن.</string>

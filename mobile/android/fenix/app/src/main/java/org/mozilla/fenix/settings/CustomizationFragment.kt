@@ -102,6 +102,9 @@ open class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPadde
         findPreference<Preference>(getString(R.string.pref_key_dejavu_icon_style))?.parent?.let {
             NewThings.mark(it, NewThing.ICON_STYLE)
         }
+        findPreference<Preference>(getString(R.string.pref_key_dejavu_app_icon))?.parent?.let {
+            NewThings.mark(it, NewThing.APP_ICON)
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
@@ -141,7 +144,7 @@ open class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPadde
         super.onPause()
         // Dejavu: what is new on this screen was shown once it is left.
         if (!showsBars) {
-            listOf(NewThing.ACCENT_COLOR, NewThing.ICON_STYLE, NewThing.ANIMATIONS).forEach {
+            listOf(NewThing.APP_ICON, NewThing.ACCENT_COLOR, NewThing.ICON_STYLE, NewThing.ANIMATIONS).forEach {
                 NewThings.seen(requireContext(), it)
             }
         }

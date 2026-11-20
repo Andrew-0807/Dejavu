@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Kaksisävyinen</string>
     <string name="dejavu_icons_firefox">Klassinen</string>
     <string name="dejavu_icons_rounded">Pyöristetty</string>
+    <string name="dejavu_settings_app_icon">Sovelluskuvake</string>
+    <string name="dejavu_app_icon_yellow">Keltainen</string>
+    <string name="dejavu_app_icon_blue">Sininen</string>
+    <string name="dejavu_app_icon_classic">Klassinen</string>
+    <string name="dejavu_app_icon_change_title">Vaihdetaanko sovelluksen kuvake?</string>
+    <string name="dejavu_app_icon_change_message">%1$s saattaa sulkeutua. Avaa uudelleen napauttamalla uutta kuvaketta.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Aloitusnäyttöön lisäämäsi sivustot ja pikakuvakkeet poistetaan. %1$s saattaa sulkeutua. Avaa uudelleen napauttamalla uutta kuvaketta.</string>
+    <string name="dejavu_app_icon_change">Vaihda kuvake</string>
+    <string name="dejavu_app_icon_change_failed">Sovelluskuvakkeen vaihtaminen epäonnistui. Poista aloitusnäyttöön lisäämäsi sivustot ja pikakuvakkeet ja yritä uudelleen.</string>
     <string name="dejavu_settings_essentials">Suosikit</string>
     <string name="dejavu_settings_essentials_summary">Piilota kaikki tai osa niistä tässä puhelimessa</string>
     <string name="dejavu_essentials_hint">Tässä piilottamasi suosikit säilyvät Zenissä ja muilla laitteillasi, ja ne palaavat, kun näytät ne taas.</string>

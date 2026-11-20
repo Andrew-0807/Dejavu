@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Deux tons</string>
     <string name="dejavu_icons_firefox">Classique</string>
     <string name="dejavu_icons_rounded">Arrondi</string>
+    <string name="dejavu_settings_app_icon">Icône jaaɓnirgal</string>
+    <string name="dejavu_app_icon_yellow">Oolo</string>
+    <string name="dejavu_app_icon_blue">Bulaajo</string>
+    <string name="dejavu_app_icon_classic">Gaadanteejo</string>
+    <string name="dejavu_app_icon_change_title">Waylu icône jaaɓnirgal?</string>
+    <string name="dejavu_app_icon_change_message">%1$s ina waawi uddeede. Uddit ɗum kadi rewrude e icône mum hesere.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Lowe e codorɗe ɗe ɓeydɗaa e hello jaɓɓorgo maa ina momtee. %1$s ina waawi uddeede. Uddit ɗum kadi rewrude e icône mum hesere.</string>
+    <string name="dejavu_app_icon_change">Waylu icône</string>
+    <string name="dejavu_app_icon_change_failed">Horiima waylude icône jaaɓnirgal. Momtu lowe e codorɗe ɗe ɓeydɗaa e hello jaɓɓorgo maa. Eto kadi.</string>
     <string name="dejavu_settings_essentials">Essentiels</string>
     <string name="dejavu_settings_essentials_summary">Masquer tout ou partie des essentiels sur ce téléphone</string>
     <string name="dejavu_essentials_hint">Les essentiels que tu masques ici restent dans Zen et sur tes autres appareils, et reviennent quand tu les affiches à nouveau.</string>

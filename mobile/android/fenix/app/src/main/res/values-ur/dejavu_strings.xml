@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">دو رنگی</string>
     <string name="dejavu_icons_firefox">کلاسیکی</string>
     <string name="dejavu_icons_rounded">گول</string>
+    <string name="dejavu_settings_app_icon">ایپ آئیکن</string>
+    <string name="dejavu_app_icon_yellow">پیلا</string>
+    <string name="dejavu_app_icon_blue">نیلا</string>
+    <string name="dejavu_app_icon_classic">کلاسیکی</string>
+    <string name="dejavu_app_icon_change_title">ایپ آئیکن تبدیل کریں؟</string>
+    <string name="dejavu_app_icon_change_message">%1$s بند ہو سکتا ہے۔ اسے اس کے نئے آئیکن سے دوبارہ کھولیں۔</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">آپ نے اپنی ہوم اسکرین پر جو سائٹس اور شارٹکٹس شامل کیے تھے، وہ ہٹا دیے جائیں گے۔ %1$s بند ہو سکتا ہے۔ اسے اس کے نئے آئیکن سے دوبارہ کھولیں۔</string>
+    <string name="dejavu_app_icon_change">آئیکن تبدیل کریں</string>
+    <string name="dejavu_app_icon_change_failed">ایپ آئیکن تبدیل نہیں ہو سکا۔ اپنی ہوم اسکرین پر شامل کی گئی سائٹس اور شارٹکٹس ہٹائیں اور دوبارہ کوشش کریں۔</string>
     <string name="dejavu_settings_essentials">اہم</string>
     <string name="dejavu_settings_essentials_summary">اس فون پر ان میں سے سب یا کچھ کو چھپائیں</string>
     <string name="dejavu_essentials_hint">یہاں چھپائے گئے اہم Zen میں اور آپ کے دوسرے آلات پر موجود رہتے ہیں، اور جب آپ انہیں دوبارہ دکھاتے ہیں تو واپس آ جاتے ہیں۔</string>

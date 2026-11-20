@@ -617,6 +617,15 @@
     <string name="dejavu_icons_dejavu">Двотонові</string>
     <string name="dejavu_icons_firefox">Класичні</string>
     <string name="dejavu_icons_rounded">Заокруглені</string>
+    <string name="dejavu_settings_app_icon">Піктограма програми</string>
+    <string name="dejavu_app_icon_yellow">Жовта</string>
+    <string name="dejavu_app_icon_blue">Блакитна</string>
+    <string name="dejavu_app_icon_classic">Класична</string>
+    <string name="dejavu_app_icon_change_title">Змінити піктограму програми?</string>
+    <string name="dejavu_app_icon_change_message">%1$s може закритися. Торкніться нової піктограми, щоб відкрити знову.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Сайти та ярлики, які ви додали на головний екран, буде вилучено. %1$s може закритися. Торкніться нової піктограми, щоб відкрити знову.</string>
+    <string name="dejavu_app_icon_change">Змінити піктограму</string>
+    <string name="dejavu_app_icon_change_failed">Не вдалося змінити піктограму програми. Вилучіть сайти та ярлики, які ви додали на головний екран, і повторіть спробу.</string>
     <string name="dejavu_settings_essentials">Обране</string>
     <string name="dejavu_settings_essentials_summary">Приховати всі або деякі з них на цьому телефоні</string>
     <string name="dejavu_essentials_hint">Вкладки з обраного, які ви тут приховуєте, залишаються в Zen і на інших ваших пристроях та повертаються, коли ви знову їх показуєте.</string>

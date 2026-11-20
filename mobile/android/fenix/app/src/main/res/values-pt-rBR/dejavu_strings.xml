@@ -609,6 +609,15 @@
     <string name="dejavu_icons_dejavu">Dois tons</string>
     <string name="dejavu_icons_firefox">Clássicos</string>
     <string name="dejavu_icons_rounded">Arredondados</string>
+    <string name="dejavu_settings_app_icon">Ícone do aplicativo</string>
+    <string name="dejavu_app_icon_yellow">Amarelo</string>
+    <string name="dejavu_app_icon_blue">Azul</string>
+    <string name="dejavu_app_icon_classic">Clássico</string>
+    <string name="dejavu_app_icon_change_title">Mudar o ícone do aplicativo?</string>
+    <string name="dejavu_app_icon_change_message">O %1$s pode fechar. Toque no novo ícone para reabrir.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Os sites e atalhos que você adicionou à tela principal serão removidos. O %1$s pode fechar. Toque no novo ícone para reabrir.</string>
+    <string name="dejavu_app_icon_change">Mudar ícone</string>
+    <string name="dejavu_app_icon_change_failed">Não foi possível mudar o ícone do aplicativo. Remova os sites e atalhos que você adicionou à tela principal e tente novamente.</string>
     <string name="dejavu_settings_essentials">Essenciais</string>
     <string name="dejavu_settings_essentials_summary">Oculte todos ou alguns deles neste celular</string>
     <string name="dejavu_essentials_hint">Os essenciais que você ocultar aqui continuam no Zen e nos seus outros dispositivos, e voltam quando você os mostrar de novo.</string>

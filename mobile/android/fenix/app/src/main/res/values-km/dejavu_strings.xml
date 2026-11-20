@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">ពីរពណ៌</string>
     <string name="dejavu_icons_firefox">បុរាណ</string>
     <string name="dejavu_icons_rounded">មូល</string>
+    <string name="dejavu_settings_app_icon">អាយខនកម្មវិធី</string>
+    <string name="dejavu_app_icon_yellow">ពណ៌លឿង</string>
+    <string name="dejavu_app_icon_blue">ពណ៌ខៀវ</string>
+    <string name="dejavu_app_icon_classic">បុរាណ</string>
+    <string name="dejavu_app_icon_change_title">ផ្លាស់ប្តូរអាយខនកម្មវិធីឬ?</string>
+    <string name="dejavu_app_icon_change_message">%1$s អាចនឹងបិទ។ សូមបើកវាម្ដងទៀតពីអាយខនថ្មីរបស់វា។</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">គេហទំព័រ និងផ្លូវកាត់ដែលអ្នកបានបន្ថែមទៅអេក្រង់ដើម នឹងត្រូវបានដកចេញ។ %1$s អាចនឹងបិទ។ សូមបើកវាម្ដងទៀតពីអាយខនថ្មីរបស់វា។</string>
+    <string name="dejavu_app_icon_change">ប្ដូរអាយខន</string>
+    <string name="dejavu_app_icon_change_failed">មិនអាចប្ដូរអាយខនកម្មវិធីបានទេ។ សូមដកគេហទំព័រ និងផ្លូវកាត់ដែលអ្នកបានបន្ថែមទៅអេក្រង់ដើមចេញ ហើយព្យាយាមម្ដងទៀត។</string>
     <string name="dejavu_settings_essentials">សំខាន់ៗ</string>
     <string name="dejavu_settings_essentials_summary">លាក់ទាំងអស់ ឬមួយចំនួននៅលើទូរស័ព្ទនេះ</string>
     <string name="dejavu_essentials_hint">សំខាន់ៗដែលអ្នកលាក់នៅទីនេះ នៅតែមាននៅក្នុង Zen និងនៅលើឧបករណ៍ផ្សេងទៀតរបស់អ្នក ហើយនឹងត្រឡប់មកវិញ នៅពេលអ្នកបង្ហាញវាម្ដងទៀត។</string>

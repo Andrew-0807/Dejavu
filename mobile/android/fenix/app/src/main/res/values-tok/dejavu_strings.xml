@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">kule tu</string>
     <string name="dejavu_icons_firefox">sin ala</string>
     <string name="dejavu_icons_rounded">sike</string>
+    <string name="dejavu_settings_app_icon">sitelen lili pi ilo ni</string>
+    <string name="dejavu_app_icon_yellow">jelo</string>
+    <string name="dejavu_app_icon_blue">laso</string>
+    <string name="dejavu_app_icon_classic">sin ala</string>
+    <string name="dejavu_app_icon_change_title">sina wile ante e sitelen lili pi ilo ni anu seme?</string>
+    <string name="dejavu_app_icon_change_message">ken la %1$s li pini. o open sin e ona kepeken sitelen lili sin ona.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">lipu en nasin lili ale ni li kama weka: sina pana e ona tawa lipu lawa ilo. ken la %1$s li pini. o open sin e ona kepeken sitelen lili sin ona.</string>
+    <string name="dejavu_app_icon_change">o ante e sitelen lili</string>
+    <string name="dejavu_app_icon_change_failed">pakala la mi ken ala ante e sitelen lili pi ilo ni. o weka e lipu e nasin lili ale ni: sina pana e ona tawa lipu lawa ilo. o sin.</string>
     <string name="dejavu_settings_essentials">lipu suli</string>
     <string name="dejavu_settings_essentials_summary">o len e ona ale anu wan ona lon ilo kalama ni</string>
     <string name="dejavu_essentials_hint">sina len e lipu suli lon ni la ona li awen lon Zen en lon ilo ante sina. sina pana lukin sin e ona la ona li kama sin.</string>

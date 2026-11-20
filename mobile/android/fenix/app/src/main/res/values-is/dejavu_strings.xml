@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Tvítóna</string>
     <string name="dejavu_icons_firefox">Klassískt</string>
     <string name="dejavu_icons_rounded">Rúnnað</string>
+    <string name="dejavu_settings_app_icon">Forritstákn</string>
+    <string name="dejavu_app_icon_yellow">Gult</string>
+    <string name="dejavu_app_icon_blue">Blátt</string>
+    <string name="dejavu_app_icon_classic">Klassískt</string>
+    <string name="dejavu_app_icon_change_title">Skipta um forritstákn?</string>
+    <string name="dejavu_app_icon_change_message">%1$s gæti lokað. Opnaðu það aftur með nýja tákninu.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Síðurnar og flýtileiðirnar sem þú bættir við heimaskjáinn verða fjarlægðar. %1$s gæti lokað. Opnaðu það aftur með nýja tákninu.</string>
+    <string name="dejavu_app_icon_change">Skipta um tákn</string>
+    <string name="dejavu_app_icon_change_failed">Ekki tókst að skipta um forritstákn. Fjarlægðu síðurnar og flýtileiðirnar sem þú bættir við heimaskjáinn og reyndu aftur.</string>
     <string name="dejavu_settings_essentials">Eftirlæti</string>
     <string name="dejavu_settings_essentials_summary">Fela öll eða sum á þessum síma</string>
     <string name="dejavu_essentials_hint">Eftirlæti sem þú felur hér haldast í Zen og á hinum tækjunum þínum og koma aftur þegar þú sýnir þau á ný.</string>

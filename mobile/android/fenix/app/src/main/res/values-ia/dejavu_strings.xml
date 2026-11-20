@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Bicolor</string>
     <string name="dejavu_icons_firefox">Classic</string>
     <string name="dejavu_icons_rounded">Rotunde</string>
+    <string name="dejavu_settings_app_icon">Icone del application</string>
+    <string name="dejavu_app_icon_yellow">Jalne</string>
+    <string name="dejavu_app_icon_blue">Blau</string>
+    <string name="dejavu_app_icon_classic">Classic</string>
+    <string name="dejavu_app_icon_change_title">Cambiar icone del application?</string>
+    <string name="dejavu_app_icon_change_message">%1$s pote clauder se. Reaperi lo per su nove icone.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Le sitos e accessos directe que tu ha addite a tu pagina initial essera removite. %1$s pote clauder se. Reaperi lo per su nove icone.</string>
+    <string name="dejavu_app_icon_change">Cambiar icone</string>
+    <string name="dejavu_app_icon_change_failed">Impossibile cambiar le icone del application. Remove le sitos e accessos directe que tu ha addite a tu pagina initial e retenta.</string>
     <string name="dejavu_settings_essentials">Essentiales</string>
     <string name="dejavu_settings_essentials_summary">Celar totes o alcunes super iste telephono</string>
     <string name="dejavu_essentials_hint">Le essentiales que tu cela hic resta in Zen e super tu altere apparatos, e retorna quando tu los monstra de novo.</string>

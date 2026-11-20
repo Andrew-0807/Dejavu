@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Dous tons</string>
     <string name="dejavu_icons_firefox">Clásico</string>
     <string name="dejavu_icons_rounded">Redondeado</string>
+    <string name="dejavu_settings_app_icon">Icona da aplicación</string>
+    <string name="dejavu_app_icon_yellow">Amarela</string>
+    <string name="dejavu_app_icon_blue">Azul</string>
+    <string name="dejavu_app_icon_classic">Clásica</string>
+    <string name="dejavu_app_icon_change_title">Cambiar a icona da aplicación?</string>
+    <string name="dejavu_app_icon_change_message">%1$s pode pecharse. Volve abrilo desde a súa nova icona.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Eliminaranse os sitios e atallos que engadiches á túa pantalla de inicio. %1$s pode pecharse. Volve abrilo desde a súa nova icona.</string>
+    <string name="dejavu_app_icon_change">Cambiar a icona</string>
+    <string name="dejavu_app_icon_change_failed">Non se puido cambiar a icona da aplicación. Elimina os sitios e atallos que engadiches á túa pantalla de inicio e téntao de novo.</string>
     <string name="dejavu_settings_essentials">Esenciais</string>
     <string name="dejavu_settings_essentials_summary">Agochar todos ou algúns neste teléfono</string>
     <string name="dejavu_essentials_hint">Os esenciais que agoches aquí quedan en Zen e nos teus outros dispositivos, e volven cando os amoses de novo.</string>

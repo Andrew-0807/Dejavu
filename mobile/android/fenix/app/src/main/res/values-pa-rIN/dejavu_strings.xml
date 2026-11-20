@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">ਦੋ ਸ਼ੇਡ</string>
     <string name="dejavu_icons_firefox">ਕਲਾਸਿਕ</string>
     <string name="dejavu_icons_rounded">ਗੋਲ</string>
+    <string name="dejavu_settings_app_icon">ਐਪ ਆਈਕਾਨ</string>
+    <string name="dejavu_app_icon_yellow">ਪੀਲਾ</string>
+    <string name="dejavu_app_icon_blue">ਨੀਲਾ</string>
+    <string name="dejavu_app_icon_classic">ਕਲਾਸਿਕ</string>
+    <string name="dejavu_app_icon_change_title">ਐਪ ਦੇ ਆਈਕਾਨ ਨੂੰ ਬਦਲਣਾ ਹੈ?</string>
+    <string name="dejavu_app_icon_change_message">%1$s ਨੂੰ ਬੰਦ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਮੁੜ ਖੋਲ੍ਹਣ ਲਈ ਆਪਣੇ ਨਵੇਂ ਆਈਕਾਨ ਨੂੰ ਛੂਹੋ।</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ਤੁਹਾਡੇ ਵਲੋਂ ਮੁੱਖ ਸਕਰੀਨ ਉੱਤੇ ਜੋੜੀਆਂ ਸਾਈਟਾਂ ਅਤੇ ਸ਼ਾਰਟਕੱਟਾਂ ਨੂੰ ਹਟਾਇਆ ਜਾਵੇਗਾ। %1$s ਨੂੰ ਬੰਦ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਮੁੜ ਖੋਲ੍ਹਣ ਲਈ ਆਪਣੇ ਨਵੇਂ ਆਈਕਾਨ ਨੂੰ ਛੂਹੋ।</string>
+    <string name="dejavu_app_icon_change">ਆਈਕਾਨ ਨੂੰ ਬਦਲੋ</string>
+    <string name="dejavu_app_icon_change_failed">ਐਪ ਦਾ ਆਈਕਾਨ ਬਦਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਤੁਹਾਡੇ ਵਲੋਂ ਮੁੱਖ ਸਕਰੀਨ ਉੱਤੇ ਜੋੜੀਆਂ ਸਾਈਟਾਂ ਅਤੇ ਸ਼ਾਰਟਕੱਟਾਂ ਨੂੰ ਹਟਾ ਕੇ ਫੇਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ।</string>
     <string name="dejavu_settings_essentials">ਜ਼ਰੂਰੀ</string>
     <string name="dejavu_settings_essentials_summary">ਇਸ ਫ਼ੋਨ ‘ਤੇ ਸਾਰੀਆਂ ਜਾਂ ਕੁਝ ਲੁਕਾਓ</string>
     <string name="dejavu_essentials_hint">ਜਿਹੜੀਆਂ ਜ਼ਰੂਰੀ ਤੁਸੀਂ ਇੱਥੇ ਲੁਕਾਉਂਦੇ ਹੋ, ਉਹ Zen ਵਿੱਚ ਅਤੇ ਤੁਹਾਡੇ ਹੋਰ ਡਿਵਾਈਸਾਂ ‘ਤੇ ਰਹਿੰਦੀਆਂ ਹਨ, ਅਤੇ ਜਦੋਂ ਤੁਸੀਂ ਉਨ੍ਹਾਂ ਨੂੰ ਮੁੜ ਦਿਖਾਉਂਦੇ ਹੋ ਤਾਂ ਵਾਪਸ ਆ ਜਾਂਦੀਆਂ ਹਨ।</string>

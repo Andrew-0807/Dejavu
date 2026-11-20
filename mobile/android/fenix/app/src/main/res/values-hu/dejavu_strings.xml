@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Kéttónusú</string>
     <string name="dejavu_icons_firefox">Klasszikus</string>
     <string name="dejavu_icons_rounded">Lekerekített</string>
+    <string name="dejavu_settings_app_icon">Alkalmazásikon</string>
+    <string name="dejavu_app_icon_yellow">Sárga</string>
+    <string name="dejavu_app_icon_blue">Kék</string>
+    <string name="dejavu_app_icon_classic">Klasszikus</string>
+    <string name="dejavu_app_icon_change_title">Lecseréli az alkalmazásikont?</string>
+    <string name="dejavu_app_icon_change_message">A %1$s bezáródhat. Nyissa meg újra az új ikonjáról.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">A kezdőképernyőhöz hozzáadott webhelyek és indítóikonok törlődnek. A %1$s bezáródhat. Nyissa meg újra az új ikonjáról.</string>
+    <string name="dejavu_app_icon_change">Ikon módosítása</string>
+    <string name="dejavu_app_icon_change_failed">Nem sikerült az alkalmazásikon módosítása. Távolítsa el a kezdőképernyőhöz hozzáadott webhelyeket és indítóikonokat, és próbálja újra.</string>
     <string name="dejavu_settings_essentials">Kedvencek</string>
     <string name="dejavu_settings_essentials_summary">Az összes vagy csak néhány elrejtése ezen a telefonon</string>
     <string name="dejavu_essentials_hint">Az itt elrejtett kedvencek megmaradnak a Zenben és a többi eszközén, és visszatérnek, amikor újra megjeleníti őket.</string>

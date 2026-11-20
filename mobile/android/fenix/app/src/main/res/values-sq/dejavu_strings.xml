@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Dyngjyrëshe</string>
     <string name="dejavu_icons_firefox">Klasike</string>
     <string name="dejavu_icons_rounded">Të rrumbullakëta</string>
+    <string name="dejavu_settings_app_icon">Ikonë aplikacioni</string>
+    <string name="dejavu_app_icon_yellow">E verdhë</string>
+    <string name="dejavu_app_icon_blue">Blu</string>
+    <string name="dejavu_app_icon_classic">Klasike</string>
+    <string name="dejavu_app_icon_change_title">Të ndërrohet ikonë aplikacioni?</string>
+    <string name="dejavu_app_icon_change_message">%1$s mund të mbyllet. Që ta rihapni, prekni ikonën e re.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Sajtet dhe shkurtoret që keni shtuar te skena e Kreut do të hiqen. %1$s mund të mbyllet. Që ta rihapni, prekni ikonën e re.</string>
+    <string name="dejavu_app_icon_change">Ndryshoni ikonë</string>
+    <string name="dejavu_app_icon_change_failed">S’u ndryshua dot ikona e aplikacionit. Hiqni sajtet dhe shkurtoret që keni shtuar te skena e Kreut dhe riprovoni.</string>
     <string name="dejavu_settings_essentials">Thelbësore</string>
     <string name="dejavu_settings_essentials_summary">Fshihi krejt, ose vetëm disa prej tyre, në këtë telefon</string>
     <string name="dejavu_essentials_hint">Thelbësoret që fshihni këtu mbeten në Zen dhe në pajisjet tuaja të tjera, dhe rikthehen kur i shfaqni sërish.</string>

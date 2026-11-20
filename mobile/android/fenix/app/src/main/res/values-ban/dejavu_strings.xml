@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">Dwiwarna</string>
     <string name="dejavu_icons_firefox">Klasik</string>
     <string name="dejavu_icons_rounded">Bunter</string>
+    <string name="dejavu_settings_app_icon">Ikon aplikasi</string>
+    <string name="dejavu_app_icon_yellow">Kuning</string>
+    <string name="dejavu_app_icon_blue">Biru</string>
+    <string name="dejavu_app_icon_classic">Klasik</string>
+    <string name="dejavu_app_icon_change_title">Ganti ikon aplikasi?</string>
+    <string name="dejavu_app_icon_change_message">%1$s mirib lakar matutup. Bukak buin uli ikonne ane anyar.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Situs lan pintasan ane suba tambahang ragane ka layar utama lakar kailangang. %1$s mirib lakar matutup. Bukak buin uli ikonne ane anyar.</string>
+    <string name="dejavu_app_icon_change">Ganti ikon</string>
+    <string name="dejavu_app_icon_change_failed">Ikon aplikasi tusing nyidang kaganti. Ilangang situs lan pintasan ane suba tambahang ragane ka layar utama, lantas coba buin.</string>
     <string name="dejavu_settings_essentials">Penting</string>
     <string name="dejavu_settings_essentials_summary">Engkebang makejang wiadin akudang di ponsel ené</string>
     <string name="dejavu_essentials_hint">Penting ane engkebang ragane dini tetep ada di Zen lan di piranti ragane ane lenan, tur lakar mawali yening ragane ngedengang malih.</string>

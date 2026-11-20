@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">နှစ်ရောင်</string>
     <string name="dejavu_icons_firefox">ဂန္ထဝင်</string>
     <string name="dejavu_icons_rounded">အဝိုင်း</string>
+    <string name="dejavu_settings_app_icon">အက်ပ်အိုင်ကွန်</string>
+    <string name="dejavu_app_icon_yellow">အဝါ</string>
+    <string name="dejavu_app_icon_blue">အပြာ</string>
+    <string name="dejavu_app_icon_classic">ဂန္ထဝင်</string>
+    <string name="dejavu_app_icon_change_title">အက်ပ်အိုင်ကွန်ကို ပြောင်းမလား။</string>
+    <string name="dejavu_app_icon_change_message">%1$s ပိတ်သွားနိုင်သည်။ ၎င်း၏ အိုင်ကွန်အသစ်မှ ပြန်ဖွင့်ပါ။</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">သင့်ပင်မစခရင်သို့ ထည့်ထားသော ဆိုက်များနှင့် ဖြတ်လမ်းများကို ဖယ်ရှားပါမည်။ %1$s ပိတ်သွားနိုင်သည်။ ၎င်း၏ အိုင်ကွန်အသစ်မှ ပြန်ဖွင့်ပါ။</string>
+    <string name="dejavu_app_icon_change">အိုင်ကွန် ပြောင်းရန်</string>
+    <string name="dejavu_app_icon_change_failed">အက်ပ်အိုင်ကွန်ကို ပြောင်း၍ မရပါ။ သင့်ပင်မစခရင်သို့ ထည့်ထားသော ဆိုက်များနှင့် ဖြတ်လမ်းများကို ဖယ်ရှားပြီး ထပ်စမ်းကြည့်ပါ။</string>
     <string name="dejavu_settings_essentials">မရှိမဖြစ်များ</string>
     <string name="dejavu_settings_essentials_summary">ဤဖုန်းတွင် အားလုံး သို့မဟုတ် အချို့ကို ဖျောက်ပါ</string>
     <string name="dejavu_essentials_hint">ဤနေရာတွင် သင်ဖျောက်ထားသော မရှိမဖြစ်များသည် Zen နှင့် သင့်အခြားစက်များတွင် ဆက်ရှိနေပြီး ၎င်းတို့ကို ထပ်ပြသသောအခါ ပြန်ပေါ်လာမည်။</string>

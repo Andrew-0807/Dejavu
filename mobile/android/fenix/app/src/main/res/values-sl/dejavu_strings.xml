@@ -617,6 +617,15 @@
     <string name="dejavu_icons_dejavu">Dvotonske</string>
     <string name="dejavu_icons_firefox">Klasične</string>
     <string name="dejavu_icons_rounded">Zaobljene</string>
+    <string name="dejavu_settings_app_icon">Ikona aplikacije</string>
+    <string name="dejavu_app_icon_yellow">Rumena</string>
+    <string name="dejavu_app_icon_blue">Modra</string>
+    <string name="dejavu_app_icon_classic">Klasična</string>
+    <string name="dejavu_app_icon_change_title">Spremenim ikono aplikacije?</string>
+    <string name="dejavu_app_icon_change_message">Aplikacija %1$s se bo morda zaprla. Znova jo odprite z novo ikono.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Strani in bližnjice, ki ste jih dodali na domači zaslon, bodo odstranjene. Aplikacija %1$s se bo morda zaprla. Znova jo odprite z novo ikono.</string>
+    <string name="dejavu_app_icon_change">Spremeni ikono</string>
+    <string name="dejavu_app_icon_change_failed">Ikone aplikacije ni bilo mogoče spremeniti. Odstranite strani in bližnjice, ki ste jih dodali na domači zaslon, in poskusite znova.</string>
     <string name="dejavu_settings_essentials">Izbrano</string>
     <string name="dejavu_settings_essentials_summary">Skrij vse ali le nekatere na tem telefonu</string>
     <string name="dejavu_essentials_hint">Zavihki v Izbranem, ki jih tukaj skrijete, ostanejo v Zenu in na vaših drugih napravah ter se vrnejo, ko jih znova prikažete.</string>

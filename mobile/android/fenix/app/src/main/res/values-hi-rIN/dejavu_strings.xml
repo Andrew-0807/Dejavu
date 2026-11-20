@@ -634,6 +634,15 @@
     <string name="dejavu_icons_dejavu">टू-टोन</string>
     <string name="dejavu_icons_firefox">क्लासिक</string>
     <string name="dejavu_icons_rounded">गोल</string>
+    <string name="dejavu_settings_app_icon">ऐप आइकन</string>
+    <string name="dejavu_app_icon_yellow">यैलो</string>
+    <string name="dejavu_app_icon_blue">ब्लू</string>
+    <string name="dejavu_app_icon_classic">क्लासिक</string>
+    <string name="dejavu_app_icon_change_title">ऐप आइकन बदलें?</string>
+    <string name="dejavu_app_icon_change_message">%1$s बंद हो सकता है। इसे इसके नए आइकन से फिर से खोलें।</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">आपने होम स्क्रीन पर जो साइटें और शॉर्टकट जोड़े हैं, वे हट जाएंगे। %1$s बंद हो सकता है। इसे इसके नए आइकन से फिर से खोलें।</string>
+    <string name="dejavu_app_icon_change">आइकन बदलें</string>
+    <string name="dejavu_app_icon_change_failed">ऐप आइकन नहीं बदला जा सका। आपने होम स्क्रीन पर जो साइटें और शॉर्टकट जोड़े हैं, उन्हें हटाकर फिर से कोशिश करें।</string>
     <string name="dejavu_settings_essentials">एसेंशियल्स</string>
     <string name="dejavu_settings_essentials_summary">इस फ़ोन पर सभी या कुछ एसेंशियल्स छिपाएं</string>
     <string name="dejavu_essentials_hint">यहां छिपाए गए एसेंशियल्स Zen में और आपके दूसरे डिवाइस पर बने रहते हैं, और फिर से दिखाने पर वापस आ जाते हैं।</string>

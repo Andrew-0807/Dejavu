@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Tofarga</string>
     <string name="dejavu_icons_firefox">Klassisk</string>
     <string name="dejavu_icons_rounded">Avrunda</string>
+    <string name="dejavu_settings_app_icon">App-ikon</string>
+    <string name="dejavu_app_icon_yellow">Gul</string>
+    <string name="dejavu_app_icon_blue">Blå</string>
+    <string name="dejavu_app_icon_classic">Klassisk</string>
+    <string name="dejavu_app_icon_change_title">Endre app-ikon?</string>
+    <string name="dejavu_app_icon_change_message">%1$s kan latast att. Opne det på nytt frå det nye ikonet.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Nettstadane og snarvegane du har lagt til på startskjermen, vert fjerna. %1$s kan latast att. Opne det på nytt frå det nye ikonet.</string>
+    <string name="dejavu_app_icon_change">Endre ikon</string>
+    <string name="dejavu_app_icon_change_failed">Klarte ikkje å endre app-ikonet. Fjern nettstadane og snarvegane du har lagt til på startskjermen, og prøv igjen.</string>
     <string name="dejavu_settings_essentials">Favorittar</string>
     <string name="dejavu_settings_essentials_summary">Gøym alle eller nokre av dei på denne telefonen</string>
     <string name="dejavu_essentials_hint">Favorittar du gøymer her, vert verande i Zen og på dei andre einingane dine, og kjem tilbake når du viser dei igjen.</string>

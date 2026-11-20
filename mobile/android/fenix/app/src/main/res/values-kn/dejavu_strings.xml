@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">ಎರಡು ಛಾಯೆ</string>
     <string name="dejavu_icons_firefox">ಕ್ಲಾಸಿಕ್</string>
     <string name="dejavu_icons_rounded">ದುಂಡಾದ</string>
+    <string name="dejavu_settings_app_icon">ಅನ್ವಯಿಕ ಚಿಹ್ನೆ</string>
+    <string name="dejavu_app_icon_yellow">ಹಳದಿ</string>
+    <string name="dejavu_app_icon_blue">ನೀಲಿ</string>
+    <string name="dejavu_app_icon_classic">ಕ್ಲಾಸಿಕ್</string>
+    <string name="dejavu_app_icon_change_title">ಅನ್ವಯಿಕ ಚಿಹ್ನೆಯನ್ನು ಬದಲಾಯಿಸುವುದೇ?</string>
+    <string name="dejavu_app_icon_change_message">%1$s ಮುಚ್ಚಿಕೊಳ್ಳಬಹುದು. ಅದರ ಹೊಸ ಚಿಹ್ನೆಯಿಂದ ಅದನ್ನು ಮತ್ತೆ ತೆರೆಯಿರಿ.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ನಿಮ್ಮ ಮುಖಪುಟ ಪರದೆಗೆ ನೀವು ಸೇರಿಸಿದ ಸೈಟ್‌ಗಳು ಮತ್ತು ಶಾರ್ಟ್‌ಕಟ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ. %1$s ಮುಚ್ಚಿಕೊಳ್ಳಬಹುದು. ಅದರ ಹೊಸ ಚಿಹ್ನೆಯಿಂದ ಅದನ್ನು ಮತ್ತೆ ತೆರೆಯಿರಿ.</string>
+    <string name="dejavu_app_icon_change">ಚಿಹ್ನೆ ಬದಲಾಯಿಸು</string>
+    <string name="dejavu_app_icon_change_failed">ಅನ್ವಯಿಕ ಚಿಹ್ನೆಯನ್ನು ಬದಲಾಯಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಮುಖಪುಟ ಪರದೆಗೆ ನೀವು ಸೇರಿಸಿದ ಸೈಟ್‌ಗಳು ಮತ್ತು ಶಾರ್ಟ್‌ಕಟ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
     <string name="dejavu_settings_essentials">ಅಗತ್ಯವಾದವು</string>
     <string name="dejavu_settings_essentials_summary">ಈ ಫೋನ್‌ನಲ್ಲಿ ಎಲ್ಲವನ್ನೂ ಅಥವಾ ಕೆಲವನ್ನು ಮರೆಮಾಡಿ</string>
     <string name="dejavu_essentials_hint">ನೀವು ಇಲ್ಲಿ ಮರೆಮಾಡುವ ಅಗತ್ಯವಾದವು Zen ನಲ್ಲಿ ಮತ್ತು ನಿಮ್ಮ ಇತರ ಸಾಧನಗಳಲ್ಲಿ ಉಳಿಯುತ್ತವೆ, ಮತ್ತು ನೀವು ಅವುಗಳನ್ನು ಮತ್ತೆ ತೋರಿಸಿದಾಗ ಹಿಂತಿರುಗುತ್ತವೆ.</string>

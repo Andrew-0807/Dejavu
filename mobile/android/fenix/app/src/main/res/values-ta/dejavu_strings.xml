@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">இருநிறம்</string>
     <string name="dejavu_icons_firefox">கிளாசிக்</string>
     <string name="dejavu_icons_rounded">வட்டமானவை</string>
+    <string name="dejavu_settings_app_icon">செயலி சின்னம்</string>
+    <string name="dejavu_app_icon_yellow">மஞ்சள்</string>
+    <string name="dejavu_app_icon_blue">நீலம்</string>
+    <string name="dejavu_app_icon_classic">கிளாசிக்</string>
+    <string name="dejavu_app_icon_change_title">செயலி சின்னத்தை மாற்றவா?</string>
+    <string name="dejavu_app_icon_change_message">%1$s மூடப்படலாம். அதன் புதிய சின்னத்திலிருந்து அதை மீண்டும் திறக்கவும்.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">உங்கள் முகப்புத் திரையில் நீங்கள் சேர்த்த தளங்களும் குறுக்குவழிகளும் அகற்றப்படும். %1$s மூடப்படலாம். அதன் புதிய சின்னத்திலிருந்து அதை மீண்டும் திறக்கவும்.</string>
+    <string name="dejavu_app_icon_change">சின்னத்தை மாற்று</string>
+    <string name="dejavu_app_icon_change_failed">செயலி சின்னத்தை மாற்ற முடியவில்லை. உங்கள் முகப்புத் திரையில் நீங்கள் சேர்த்த தளங்களையும் குறுக்குவழிகளையும் அகற்றிவிட்டு மீண்டும் முயற்சிக்கவும்.</string>
     <string name="dejavu_settings_essentials">முக்கியவை</string>
     <string name="dejavu_settings_essentials_summary">இந்தக் கைப்பேசியில் எல்லாவற்றையும் அல்லது சிலவற்றை மட்டும் மறை</string>
     <string name="dejavu_essentials_hint">இங்கே நீங்கள் மறைக்கும் முக்கியவை Zen-இலும் உங்கள் மற்ற சாதனங்களிலும் அப்படியே இருக்கும், மீண்டும் காட்டும்போது திரும்ப வரும்.</string>

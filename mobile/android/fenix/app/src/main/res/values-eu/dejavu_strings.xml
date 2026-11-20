@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Bi tonukoa</string>
     <string name="dejavu_icons_firefox">Klasikoa</string>
     <string name="dejavu_icons_rounded">Biribildua</string>
+    <string name="dejavu_settings_app_icon">Aplikazioaren ikonoa</string>
+    <string name="dejavu_app_icon_yellow">Horia</string>
+    <string name="dejavu_app_icon_blue">Urdina</string>
+    <string name="dejavu_app_icon_classic">Klasikoa</string>
+    <string name="dejavu_app_icon_change_title">Aldatu aplikazio-ikonoa?</string>
+    <string name="dejavu_app_icon_change_message">%1$s itxi liteke. Ireki berriro bere ikono berritik.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Hasierako pantailan gehitu dituzun gune eta lasterbideak kendu egingo dira. %1$s itxi liteke. Ireki berriro bere ikono berritik.</string>
+    <string name="dejavu_app_icon_change">Aldatu ikonoa</string>
+    <string name="dejavu_app_icon_change_failed">Ezin da aplikazioaren ikonoa aldatu. Kendu hasierako pantailan gehitu dituzun gune eta lasterbideak eta saiatu berriro.</string>
     <string name="dejavu_settings_essentials">Funtsezkoak</string>
     <string name="dejavu_settings_essentials_summary">Ezkutatu guztiak edo batzuk telefono honetan</string>
     <string name="dejavu_essentials_hint">Hemen ezkutatzen dituzun funtsezkoak Zenen eta zure beste gailuetan geratzen dira, eta berriro erakusten dituzunean itzultzen dira.</string>

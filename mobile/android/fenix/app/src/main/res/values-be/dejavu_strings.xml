@@ -617,6 +617,15 @@
     <string name="dejavu_icons_dejavu">Двухколерныя</string>
     <string name="dejavu_icons_firefox">Класічныя</string>
     <string name="dejavu_icons_rounded">Акругленыя</string>
+    <string name="dejavu_settings_app_icon">Іконка праграмы</string>
+    <string name="dejavu_app_icon_yellow">Жоўтая</string>
+    <string name="dejavu_app_icon_blue">Блакітная</string>
+    <string name="dejavu_app_icon_classic">Класічная</string>
+    <string name="dejavu_app_icon_change_title">Змяніць значок праграмы?</string>
+    <string name="dejavu_app_icon_change_message">%1$s можа закрыцца. Каб адкрыць зноў, націсніце на новы значок.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Сайты і ярлыкі, якія вы дадалі на хатні экран, будуць выдалены. %1$s можа закрыцца. Каб адкрыць зноў, націсніце на новы значок.</string>
+    <string name="dejavu_app_icon_change">Змяніць значок</string>
+    <string name="dejavu_app_icon_change_failed">Не ўдалося змяніць значок праграмы. Выдаліце сайты і ярлыкі, якія вы дадалі на хатні экран, і паспрабуйце зноў.</string>
     <string name="dejavu_settings_essentials">Важнае</string>
     <string name="dejavu_settings_essentials_summary">Схаваць усё ці частку на гэтым тэлефоне</string>
     <string name="dejavu_essentials_hint">Важнае, якое вы схаваеце тут, застаецца ў Zen і на іншых вашых прыладах і вернецца, калі вы зноў яго пакажаце.</string>

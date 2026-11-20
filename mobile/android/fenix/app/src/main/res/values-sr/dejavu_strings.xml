@@ -609,6 +609,15 @@
     <string name="dejavu_icons_dejavu">Двотонске</string>
     <string name="dejavu_icons_firefox">Класичне</string>
     <string name="dejavu_icons_rounded">Заобљене</string>
+    <string name="dejavu_settings_app_icon">Иконица апликације</string>
+    <string name="dejavu_app_icon_yellow">Жута</string>
+    <string name="dejavu_app_icon_blue">Плава</string>
+    <string name="dejavu_app_icon_classic">Класична</string>
+    <string name="dejavu_app_icon_change_title">Променити иконицу апликације?</string>
+    <string name="dejavu_app_icon_change_message">%1$s се може затворити. Поново га отворите преко његове нове иконице.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Странице и пречице које сте додали на почетни екран биће уклоњене. %1$s се може затворити. Поново га отворите преко његове нове иконице.</string>
+    <string name="dejavu_app_icon_change">Промени иконицу</string>
+    <string name="dejavu_app_icon_change_failed">Нисмо могли да променимо иконицу апликације. Уклоните странице и пречице које сте додали на почетни екран и покушајте поново.</string>
     <string name="dejavu_settings_essentials">Фаворити</string>
     <string name="dejavu_settings_essentials_summary">Сакриј све или само неке на овом телефону</string>
     <string name="dejavu_essentials_hint">Фаворити које овде сакријете остају у Zen-у и на вашим другим уређајима и враћају се када их поново прикажете.</string>

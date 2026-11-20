@@ -633,6 +633,15 @@
     <string name="dejavu_icons_dejavu">Dew liw</string>
     <string name="dejavu_icons_firefox">Klassek</string>
     <string name="dejavu_icons_rounded">Krenn</string>
+    <string name="dejavu_settings_app_icon">Ikon an app</string>
+    <string name="dejavu_app_icon_yellow">Melyn</string>
+    <string name="dejavu_app_icon_blue">Glas</string>
+    <string name="dejavu_app_icon_classic">Klassek</string>
+    <string name="dejavu_app_icon_change_title">Chanjya ikon an app?</string>
+    <string name="dejavu_app_icon_change_message">%1$s a allsa degea. Igeri ev arta dhiworth y ikon nowydh.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">An gwiasvaow ha\'n skochfordhow a geworrsys dhe\'th skrin tre a vydh removyes. %1$s a allsa degea. Igeri ev arta dhiworth y ikon nowydh.</string>
+    <string name="dejavu_app_icon_change">Chanjya ikon</string>
+    <string name="dejavu_app_icon_change_failed">Ny yllys chanjya ikon an app. Remov an gwiasvaow ha\'n skochfordhow a geworrsys dhe\'th skrin tre hag assay arta.</string>
     <string name="dejavu_settings_essentials">Pythow Poesek</string>
     <string name="dejavu_settings_essentials_summary">Kudha oll anedha po ran anedha war an pellgowser ma</string>
     <string name="dejavu_essentials_hint">An Pythow Poesek a gudhydh omma a drig yn Zen ha war dha jynnow erel, hag a dhehwel pan wrylli aga diskwedhes arta.</string>

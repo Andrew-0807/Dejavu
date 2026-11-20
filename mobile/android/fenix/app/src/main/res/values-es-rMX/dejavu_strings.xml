@@ -609,6 +609,15 @@
     <string name="dejavu_icons_dejavu">Dos tonos</string>
     <string name="dejavu_icons_firefox">Clásico</string>
     <string name="dejavu_icons_rounded">Redondeado</string>
+    <string name="dejavu_settings_app_icon">Icono de la aplicación</string>
+    <string name="dejavu_app_icon_yellow">Amarillo</string>
+    <string name="dejavu_app_icon_blue">Azul</string>
+    <string name="dejavu_app_icon_classic">Clásico</string>
+    <string name="dejavu_app_icon_change_title">¿Cambiar el icono de la aplicación?</string>
+    <string name="dejavu_app_icon_change_message">Es posible que %1$s se cierre. Vuelve a abrirlo desde su nuevo icono.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Se eliminarán los sitios y accesos directos que agregaste a tu pantalla de inicio. Es posible que %1$s se cierre. Vuelve a abrirlo desde su nuevo icono.</string>
+    <string name="dejavu_app_icon_change">Cambiar icono</string>
+    <string name="dejavu_app_icon_change_failed">No se pudo cambiar el icono de la aplicación. Elimina los sitios y accesos directos que agregaste a tu pantalla de inicio e intenta nuevamente.</string>
     <string name="dejavu_settings_essentials">Esenciales</string>
     <string name="dejavu_settings_essentials_summary">Ocultar todos o algunos en este teléfono</string>
     <string name="dejavu_essentials_hint">Los esenciales que ocultes aquí se quedan en Zen y en tus otros dispositivos, y vuelven cuando los muestres de nuevo.</string>

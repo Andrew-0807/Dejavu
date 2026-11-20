@@ -609,6 +609,15 @@
     <string name="dejavu_icons_dejavu">Dvobojne</string>
     <string name="dejavu_icons_firefox">Klasične</string>
     <string name="dejavu_icons_rounded">Zaobljene</string>
+    <string name="dejavu_settings_app_icon">Ikona aplikacije</string>
+    <string name="dejavu_app_icon_yellow">Žuta</string>
+    <string name="dejavu_app_icon_blue">Plava</string>
+    <string name="dejavu_app_icon_classic">Klasična</string>
+    <string name="dejavu_app_icon_change_title">Promijeniti ikonu aplikacije?</string>
+    <string name="dejavu_app_icon_change_message">Aplikacija %1$s se može zatvoriti. Otvorite je ponovo pomoću nove ikone.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Stranice i prečice koje ste dodali na početni ekran bit će uklonjene. Aplikacija %1$s se može zatvoriti. Otvorite je ponovo pomoću nove ikone.</string>
+    <string name="dejavu_app_icon_change">Promijeni ikonu</string>
+    <string name="dejavu_app_icon_change_failed">Nije moguće promijeniti ikonu aplikacije. Uklonite stranice i prečice koje ste dodali na početni ekran i pokušajte ponovo.</string>
     <string name="dejavu_settings_essentials">Favoriti</string>
     <string name="dejavu_settings_essentials_summary">Sakrij sve ili samo neke na ovom telefonu</string>
     <string name="dejavu_essentials_hint">Favoriti koje ovdje sakrijete ostaju u Zenu i na vašim ostalim uređajima, a vraćaju se kada ih ponovo prikažete.</string>
