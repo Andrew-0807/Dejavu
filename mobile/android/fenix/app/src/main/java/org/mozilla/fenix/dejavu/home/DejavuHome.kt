@@ -98,6 +98,7 @@ import mozilla.components.browser.state.state.ContainerState
 import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
+import org.mozilla.fenix.components.appstate.AppAction.PrivateBrowsingLockAction
 import org.mozilla.fenix.dejavu.actions.CustomAction
 import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
@@ -137,6 +138,7 @@ import org.mozilla.fenix.dejavu.workspaces.WorkspaceLock
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceState
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceTheme
 import org.mozilla.fenix.dejavu.workspaces.WorkspaceWallpaper
+import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.settings.deletebrowsingdata.DeleteBrowsingDataOnQuitType
 import org.mozilla.fenix.theme.getThemeProvider
 
@@ -404,6 +406,14 @@ fun DejavuHome(
     var shownKey by remember { mutableStateOf<String?>(null) }
     LaunchedEffect(settledKey) {
         shownKey?.takeIf { it != settledKey }?.let(WorkspaceLock::left)
+        // Turning to another workspace leaves the private tabs blurred, or locked while their lock is on.
+        if (shownKey == PRIVATE_PAGE_KEY && settledKey != PRIVATE_PAGE_KEY && privateTabs.isNotEmpty()) {
+            WorkspaceLock.hidePrivate()
+            val fenix = context.components
+            if (fenix.settings.privateBrowsingModeLocked) {
+                fenix.appStore.dispatch(PrivateBrowsingLockAction.UpdatePrivateBrowsingLock(isLocked = true))
+            }
+        }
         shownKey = settledKey
     }
     // The private tabs locking again, as when coming home from one of them, asks again.

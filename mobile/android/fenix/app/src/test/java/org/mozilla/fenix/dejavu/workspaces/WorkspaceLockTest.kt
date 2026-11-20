@@ -58,6 +58,15 @@ class WorkspaceLockTest {
     }
 
     @Test
+    fun `turning to another workspace hides the private tabs too, without locking the workspaces`() {
+        WorkspaceLock.privateTabsHide = { true }
+        WorkspaceLock.unlock("bank")
+        WorkspaceLock.hidePrivate()
+        assertTrue(WorkspaceLock.privateHidden.value)
+        assertFalse(WorkspaceLock.hides(state.workspaces[1]))
+    }
+
+    @Test
     fun `private tabs stay as they are when none are open or Firefox's lock of private tabs locks them`() {
         WorkspaceLock.privateTabsHide = { false }
         WorkspaceLock.lockAll()

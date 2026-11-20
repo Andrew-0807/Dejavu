@@ -70,8 +70,8 @@ object WorkspaceLock {
 
     /**
      * Whether the private tabs show blurred until the user shows them again, which asks for nothing: they hide when the
-     * unlocked workspaces lock, after Dejavu was left, while Firefox's lock of private tabs is off. With it on, they
-     * lock instead.
+     * unlocked workspaces lock, after Dejavu was left, and as the user turns to another workspace, while Firefox's lock
+     * of private tabs is off. With it on, they lock instead.
      */
     val privateHidden: StateFlow<Boolean> = _privateHidden.asStateFlow()
 
@@ -117,6 +117,11 @@ object WorkspaceLock {
     fun lockAll() {
         _unlocked.value = emptySet()
         asked.clear()
+        hidePrivate()
+    }
+
+    /** Hides the private tabs, see [privateHidden], when some are open and Firefox's lock of private tabs is off. */
+    fun hidePrivate() {
         if (privateTabsHide()) _privateHidden.value = true
     }
 
