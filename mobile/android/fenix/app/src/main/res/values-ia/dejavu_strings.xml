@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Le essentiales que tu cela hic resta in Zen e super tu altere apparatos, e retorna quando tu los monstra de novo.</string>
     <string name="dejavu_essentials_show">Monstrar le essentiales</string>
     <string name="dejavu_essentials_none">Nulle essentiales ancora. Trahe un scheda al summitate del schermo initial pro facer lo un essential.</string>
+    <string name="dejavu_unlock_use_screen_lock">Usar le blocada de schermo</string>
+    <string name="dejavu_private_hidden">Le schedas private es celate</string>
+    <string name="dejavu_private_show">Monstrar</string>
 </resources>

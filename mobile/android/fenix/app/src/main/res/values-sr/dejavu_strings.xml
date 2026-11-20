@@ -614,4 +614,7 @@
     <string name="dejavu_essentials_hint">Фаворити које овде сакријете остају у Zen-у и на вашим другим уређајима и враћају се када их поново прикажете.</string>
     <string name="dejavu_essentials_show">Прикажи Фаворите</string>
     <string name="dejavu_essentials_none">Још нема Фаворита. Превуците језичак на врх почетног екрана да бисте га додали у Фаворите.</string>
+    <string name="dejavu_unlock_use_screen_lock">Користи закључавање екрана</string>
+    <string name="dejavu_private_hidden">Приватни језичци су скривени</string>
+    <string name="dejavu_private_show">Прикажи</string>
 </resources>

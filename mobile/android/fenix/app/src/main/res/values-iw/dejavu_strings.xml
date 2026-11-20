@@ -614,4 +614,7 @@
     <string name="dejavu_essentials_hint">מועדפים שתסתירו כאן נשארים ב-Zen ובמכשירים האחרים שלכם, וחוזרים כשתציגו אותם שוב.</string>
     <string name="dejavu_essentials_show">הצגת מועדפים</string>
     <string name="dejavu_essentials_none">אין עדיין מועדפים. גררו לשונית לראש מסך הבית כדי להפוך אותה למועדף.</string>
+    <string name="dejavu_unlock_use_screen_lock">שימוש בנעילת מסך</string>
+    <string name="dejavu_private_hidden">הלשוניות הפרטיות מוסתרות</string>
+    <string name="dejavu_private_show">הצגה</string>
 </resources>

@@ -598,4 +598,7 @@
     <string name="dejavu_essentials_hint">在此隐藏的常用网站仍会保留在 Zen 和您的其他设备上，再次显示时会重新出现。</string>
     <string name="dejavu_essentials_show">显示常用网站</string>
     <string name="dejavu_essentials_none">还没有常用网站。将标签页拖到主页顶部即可添加到常用网站。</string>
+    <string name="dejavu_unlock_use_screen_lock">使用屏幕锁</string>
+    <string name="dejavu_private_hidden">隐私标签页已隐藏</string>
+    <string name="dejavu_private_show">显示</string>
 </resources>

@@ -622,4 +622,7 @@
     <string name="dejavu_essentials_hint">Ulubione, które tu ukryjesz, pozostają w Zen i na innych urządzeniach, a gdy znów je pokażesz, wrócą.</string>
     <string name="dejavu_essentials_show">Pokazuj ulubione</string>
     <string name="dejavu_essentials_none">Nie ma jeszcze ulubionych. Przeciągnij kartę na górę ekranu głównego, aby dodać ją do ulubionych.</string>
+    <string name="dejavu_unlock_use_screen_lock">Użyj blokady ekranu</string>
+    <string name="dejavu_private_hidden">Karty prywatne są ukryte</string>
+    <string name="dejavu_private_show">Pokaż</string>
 </resources>

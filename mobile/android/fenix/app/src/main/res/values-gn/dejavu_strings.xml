@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Umi iporãvéva remokañýva ko\'ápe opyta Zen-pe ha ambue ne mba\'e\'okakuérape, ha ou jey rehechaukajeývo chupekuéra.</string>
     <string name="dejavu_essentials_show">Ehechauka umi iporãvéva</string>
     <string name="dejavu_essentials_none">Ndaipóri gueteri iporãvéva. Emosyryry peteĩ tendayke pantalla ñepyrũgua yvate gotyo ejapo hag̃ua chugui iporãvéva.</string>
+    <string name="dejavu_unlock_use_screen_lock">Eiporu mba’erechaha jokoha</string>
+    <string name="dejavu_private_hidden">Tendayke ñemigua oñeñomi</string>
+    <string name="dejavu_private_show">Ehechauka</string>
 </resources>

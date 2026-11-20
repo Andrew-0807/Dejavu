@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Favorittar du gøymer her, vert verande i Zen og på dei andre einingane dine, og kjem tilbake når du viser dei igjen.</string>
     <string name="dejavu_essentials_show">Vis favorittar</string>
     <string name="dejavu_essentials_none">Ingen favorittar enno. Dra ei fane til toppen av startskjermen for å gjere ho til ein favoritt.</string>
+    <string name="dejavu_unlock_use_screen_lock">Bruk skjermlås</string>
+    <string name="dejavu_private_hidden">Private faner er gøymde</string>
+    <string name="dejavu_private_show">Vis</string>
 </resources>

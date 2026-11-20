@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Favoritter du skjuler her, blir værende i Zen og på de andre enhetene dine, og kommer tilbake når du viser dem igjen.</string>
     <string name="dejavu_essentials_show">Vis favoritter</string>
     <string name="dejavu_essentials_none">Ingen favoritter ennå. Dra en fane til toppen av startskjermen for å gjøre den til en favoritt.</string>
+    <string name="dejavu_unlock_use_screen_lock">Bruk skjermlås</string>
+    <string name="dejavu_private_hidden">Private faner er skjult</string>
+    <string name="dejavu_private_show">Vis</string>
 </resources>

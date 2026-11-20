@@ -622,4 +622,7 @@
     <string name="dejavu_essentials_hint">Fanaidh na feumalachdan a dh\'fhalaicheas tu an-seo ann an Zen agus air na h-uidheaman eile agad, agus tillidh iad nuair a sheallas tu iad a-rithist.</string>
     <string name="dejavu_essentials_show">Seall na feumalachdan</string>
     <string name="dejavu_essentials_none">Chan eil feumalachd ann fhathast. Slaod taba gu bàrr na sgrìn-dachaigh gus feumalachd a dhèanamh dheth.</string>
+    <string name="dejavu_unlock_use_screen_lock">Cleachd glas na sgrìn</string>
+    <string name="dejavu_private_hidden">Tha na tabaichean prìobhaideach falaichte</string>
+    <string name="dejavu_private_show">Seall</string>
 </resources>

@@ -598,4 +598,7 @@
     <string name="dejavu_essentials_hint">Penting nu disumputkeun di dieu tetep aya di Zen jeung di parangkat séjén anjeun, sarta bakal balik deui lamun dipintonkeun deui.</string>
     <string name="dejavu_essentials_show">Pintonkeun Penting</string>
     <string name="dejavu_essentials_none">Can aya Penting. Sered tab ka pangluhurna layar utama pikeun nambahkeunana kana Penting.</string>
+    <string name="dejavu_unlock_use_screen_lock">Paké konci layar</string>
+    <string name="dejavu_private_hidden">Tab nyamuni disumputkeun</string>
+    <string name="dejavu_private_show">Pintonkeun</string>
 </resources>

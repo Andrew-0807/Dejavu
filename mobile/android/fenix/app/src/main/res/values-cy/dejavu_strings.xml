@@ -638,4 +638,7 @@
     <string name="dejavu_essentials_hint">Mae hanfodion rydych chi’n eu cuddio yma yn aros yn Zen ac ar eich dyfeisiau eraill, ac maen nhw’n dod yn ôl pan fyddwch chi’n eu dangos eto.</string>
     <string name="dejavu_essentials_show">Dangos hanfodion</string>
     <string name="dejavu_essentials_none">Dim hanfodion eto. Llusgwch dab i frig y sgrin gartref i’w ychwanegu at yr hanfodion.</string>
+    <string name="dejavu_unlock_use_screen_lock">Defnyddio clo sgrin</string>
+    <string name="dejavu_private_hidden">Mae tabiau preifat wedi’u cuddio</string>
+    <string name="dejavu_private_show">Dangos</string>
 </resources>

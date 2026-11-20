@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Is essentziales chi cuas inoghe abarrant in Zen e in is àteros dispositivos tuos, e torrant cando los ammustras de nou.</string>
     <string name="dejavu_essentials_show">Ammustra is essentziales</string>
     <string name="dejavu_essentials_none">Ancora nissunu essentziale. Trìsina un\'ischeda a sa parte de susu de s\'ischermu printzipale pro nde fàghere un\'essentziale.</string>
+    <string name="dejavu_unlock_use_screen_lock">Imprea su blocu de s’ischermu</string>
+    <string name="dejavu_private_hidden">Is ischedas privadas sunt cuadas</string>
+    <string name="dejavu_private_show">Ammustra</string>
 </resources>

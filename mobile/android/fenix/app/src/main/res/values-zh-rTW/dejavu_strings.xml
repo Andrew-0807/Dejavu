@@ -598,4 +598,7 @@
     <string name="dejavu_essentials_hint">在此隱藏的常用網站仍會保留在 Zen 和您的其他裝置上，再次顯示時就會回來。</string>
     <string name="dejavu_essentials_show">顯示常用網站</string>
     <string name="dejavu_essentials_none">還沒有常用網站。將分頁拖曳到主頁最上方，即可新增到常用網站。</string>
+    <string name="dejavu_unlock_use_screen_lock">使用螢幕鎖定</string>
+    <string name="dejavu_private_hidden">隱私分頁已隱藏</string>
+    <string name="dejavu_private_show">顯示</string>
 </resources>

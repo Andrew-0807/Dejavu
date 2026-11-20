@@ -614,4 +614,7 @@
     <string name="dejavu_essentials_hint">Els essencials que amagueu aquí es queden al Zen i als vostres altres dispositius, i tornen quan els torneu a mostrar.</string>
     <string name="dejavu_essentials_show">Mostra els essencials</string>
     <string name="dejavu_essentials_none">Encara no hi ha cap essencial. Arrossegueu una pestanya a dalt de tot de la pantalla d\'inici per afegir-la als essencials.</string>
+    <string name="dejavu_unlock_use_screen_lock">Utilitza el bloqueig de pantalla</string>
+    <string name="dejavu_private_hidden">Les pestanyes privades estan amagades</string>
+    <string name="dejavu_private_show">Mostra</string>
 </resources>

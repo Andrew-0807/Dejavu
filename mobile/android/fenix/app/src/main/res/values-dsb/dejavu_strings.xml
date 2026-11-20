@@ -622,4 +622,7 @@
     <string name="dejavu_essentials_hint">Nejwažnjejše, kótarež how schowajoš, wóstanu w Zen a na twójich drugich rědach a pśidu slědk, gaž je zasej pokažoš.</string>
     <string name="dejavu_essentials_show">Nejwažnjejše pokazaś</string>
     <string name="dejavu_essentials_none">Hyšći njejsu žedne nejwažnjejše. Śěgni rejtarik na startowej wobrazowce górjej, aby jen k nejwažnjejšym pśidał.</string>
+    <string name="dejavu_unlock_use_screen_lock">Zawěru wobrazowki wužywaś</string>
+    <string name="dejavu_private_hidden">Priwatne rejtariki su schowane</string>
+    <string name="dejavu_private_show">Pokazaś</string>
 </resources>

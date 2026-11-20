@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Τα αγαπημένα που αποκρύπτετε εδώ παραμένουν στο Zen και στις άλλες συσκευές σας και επιστρέφουν όταν τα εμφανίσετε ξανά.</string>
     <string name="dejavu_essentials_show">Εμφάνιση αγαπημένων</string>
     <string name="dejavu_essentials_none">Δεν υπάρχουν ακόμα αγαπημένα. Σύρετε μια καρτέλα στην κορυφή της αρχικής οθόνης για να την προσθέσετε στα αγαπημένα.</string>
+    <string name="dejavu_unlock_use_screen_lock">Χρήση κλειδώματος οθόνης</string>
+    <string name="dejavu_private_hidden">Οι ιδιωτικές καρτέλες είναι κρυφές</string>
+    <string name="dejavu_private_show">Εμφάνιση</string>
 </resources>

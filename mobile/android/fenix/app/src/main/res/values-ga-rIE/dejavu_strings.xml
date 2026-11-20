@@ -630,4 +630,7 @@
     <string name="dejavu_essentials_hint">Fanann na riachtanais a fholaíonn tú anseo i Zen agus ar do ghléasanna eile, agus tagann siad ar ais nuair a thaispeánann tú iad arís.</string>
     <string name="dejavu_essentials_show">Taispeáin na riachtanais</string>
     <string name="dejavu_essentials_none">Níl aon riachtanas ann fós. Tarraing cluaisín go barr an leathanaigh bhaile chun riachtanas a dhéanamh de.</string>
+    <string name="dejavu_unlock_use_screen_lock">Úsáid glas an scáileáin</string>
+    <string name="dejavu_private_hidden">Tá na cluaisíní príobháideacha i bhfolach</string>
+    <string name="dejavu_private_show">Taispeáin</string>
 </resources>

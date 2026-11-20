@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">तपाईंले यहाँ लुकाएका आवश्यक Zen मा र तपाईंका अन्य उपकरणहरुमा रहिरहन्छन्, र फेरि देखाउँदा फर्केर आउँछन्।</string>
     <string name="dejavu_essentials_show">आवश्यक देखाउनुहोस्</string>
     <string name="dejavu_essentials_none">अहिलेसम्म कुनै आवश्यक छैन। ट्याबलाई आवश्यक बनाउन यसलाई गृह स्क्रिनको माथिल्लो भागमा तान्नुहोस्।</string>
+    <string name="dejavu_unlock_use_screen_lock">स्क्रिन लक प्रयोग गर्नुहोस्</string>
+    <string name="dejavu_private_hidden">निजी ट्याबहरू लुकाइएका छन्</string>
+    <string name="dejavu_private_show">देखाउनुहोस्</string>
 </resources>

@@ -622,4 +622,7 @@
     <string name="dejavu_essentials_hint">Obľúbené, ktoré tu skryjete, zostanú v Zene a na vašich ďalších zariadeniach a vrátia sa, keď ich znova zobrazíte.</string>
     <string name="dejavu_essentials_show">Zobraziť obľúbené</string>
     <string name="dejavu_essentials_none">Zatiaľ nemáte žiadne obľúbené. Potiahnutím karty úplne hore na domovskej stránke ju pridáte medzi obľúbené.</string>
+    <string name="dejavu_unlock_use_screen_lock">Použiť zámku obrazovky</string>
+    <string name="dejavu_private_hidden">Súkromné karty sú skryté</string>
+    <string name="dejavu_private_show">Zobraziť</string>
 </resources>

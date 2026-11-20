@@ -598,4 +598,7 @@
     <string name="dejavu_essentials_hint">ສິ່ງສຳຄັນທີ່ທ່ານເຊື່ອງຢູ່ບ່ອນນີ້ ຍັງຄົງຢູ່ໃນ Zen ແລະ ໃນອຸປະກອນອື່ນໆຂອງທ່ານ, ແລະ ຈະກັບຄືນມາເມື່ອທ່ານສະແດງມັນອີກຄັ້ງ.</string>
     <string name="dejavu_essentials_show">ສະແດງສິ່ງສຳຄັນ</string>
     <string name="dejavu_essentials_none">ຍັງບໍ່ມີສິ່ງສຳຄັນເທື່ອ. ລາກແທັບໄປທາງເທິງຂອງໜ້າຈໍຫຼັກ ເພື່ອເຮັດໃຫ້ມັນເປັນສິ່ງສຳຄັນ.</string>
+    <string name="dejavu_unlock_use_screen_lock">ໃຊ້ການລັອກໜ້າຈໍ</string>
+    <string name="dejavu_private_hidden">ແທັບສ່ວນຕົວຖືກເຊື່ອງໄວ້</string>
+    <string name="dejavu_private_show">ສະແດງ</string>
 </resources>

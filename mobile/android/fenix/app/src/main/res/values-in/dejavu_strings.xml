@@ -598,4 +598,7 @@
     <string name="dejavu_essentials_hint">Situs penting yang Anda sembunyikan di sini tetap ada di Zen dan di perangkat Anda yang lain, dan muncul kembali saat Anda menampilkannya lagi.</string>
     <string name="dejavu_essentials_show">Tampilkan situs penting</string>
     <string name="dejavu_essentials_none">Belum ada situs penting. Seret tab ke bagian atas beranda untuk menjadikannya situs penting.</string>
+    <string name="dejavu_unlock_use_screen_lock">Gunakan kunci layar</string>
+    <string name="dejavu_private_hidden">Tab pribadi disembunyikan</string>
+    <string name="dejavu_private_show">Tampilkan</string>
 </resources>

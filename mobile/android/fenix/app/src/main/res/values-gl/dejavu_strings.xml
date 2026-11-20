@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Os esenciais que agoches aquí quedan en Zen e nos teus outros dispositivos, e volven cando os amoses de novo.</string>
     <string name="dejavu_essentials_show">Amosar os esenciais</string>
     <string name="dejavu_essentials_none">Aínda non hai esenciais. Arrastra unha lapela á parte superior da páxina de inicio para convertela nun esencial.</string>
+    <string name="dejavu_unlock_use_screen_lock">Usar o bloqueo de pantalla</string>
+    <string name="dejavu_private_hidden">As lapelas privadas están ocultas</string>
+    <string name="dejavu_private_show">Amosar</string>
 </resources>

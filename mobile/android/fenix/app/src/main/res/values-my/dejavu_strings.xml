@@ -598,4 +598,7 @@
     <string name="dejavu_essentials_hint">ဤနေရာတွင် သင်ဖျောက်ထားသော မရှိမဖြစ်များသည် Zen နှင့် သင့်အခြားစက်များတွင် ဆက်ရှိနေပြီး ၎င်းတို့ကို ထပ်ပြသသောအခါ ပြန်ပေါ်လာမည်။</string>
     <string name="dejavu_essentials_show">မရှိမဖြစ်များ ပြသရန်</string>
     <string name="dejavu_essentials_none">မရှိမဖြစ်များ မရှိသေးပါ။ တက်ဗ်တစ်ခုကို မရှိမဖြစ် ဖြစ်စေရန် ပင်မစခရင်၏ အပေါ်ဆုံးသို့ ဆွဲပါ။</string>
+    <string name="dejavu_unlock_use_screen_lock">မျက်နှာပြင်လော့ခ် သုံးရန်</string>
+    <string name="dejavu_private_hidden">သီးသန့် တက်ဗ်များကို ဖျောက်ထားသည်</string>
+    <string name="dejavu_private_show">ပြသရန်</string>
 </resources>

@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">ఇక్కడ మీరు దాచే ముఖ్యమైనవి Zenలో మరియు మీ ఇతర పరికరాల్లో అలాగే ఉంటాయి, మీరు వాటిని మళ్లీ చూపించినప్పుడు తిరిగి వస్తాయి.</string>
     <string name="dejavu_essentials_show">ముఖ్యమైనవాటిని చూపించు</string>
     <string name="dejavu_essentials_none">ఇంకా ముఖ్యమైనవి ఏమీ లేవు. ట్యాబును ముఖ్యమైనవాటిలో చేర్చడానికి దాన్ని హోమ్ స్క్రీన్ పైభాగానికి లాగండి.</string>
+    <string name="dejavu_unlock_use_screen_lock">స్క్రీన్ లాక్ ఉపయోగించు</string>
+    <string name="dejavu_private_hidden">అంతరంగిక ట్యాబులు దాచబడ్డాయి</string>
+    <string name="dejavu_private_show">చూపించు</string>
 </resources>

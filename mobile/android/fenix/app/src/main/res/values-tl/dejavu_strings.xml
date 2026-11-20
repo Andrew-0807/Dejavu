@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Mananatili sa Zen at sa iba mo pang mga device ang Mahahalagang itatago mo rito, at babalik ang mga ito kapag ipinakita mo ulit.</string>
     <string name="dejavu_essentials_show">Ipakita ang Mahahalaga</string>
     <string name="dejavu_essentials_none">Wala pang Mahahalaga. I-drag ang isang tab sa pinakaitaas ng home screen para idagdag ito sa Mahahalaga.</string>
+    <string name="dejavu_unlock_use_screen_lock">Gamitin ang screen lock</string>
+    <string name="dejavu_private_hidden">Nakatago ang mga pribadong tab</string>
+    <string name="dejavu_private_show">Ipakita</string>
 </resources>

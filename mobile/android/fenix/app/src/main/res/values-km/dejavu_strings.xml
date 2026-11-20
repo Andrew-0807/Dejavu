@@ -598,4 +598,7 @@
     <string name="dejavu_essentials_hint">សំខាន់ៗដែលអ្នកលាក់នៅទីនេះ នៅតែមាននៅក្នុង Zen និងនៅលើឧបករណ៍ផ្សេងទៀតរបស់អ្នក ហើយនឹងត្រឡប់មកវិញ នៅពេលអ្នកបង្ហាញវាម្ដងទៀត។</string>
     <string name="dejavu_essentials_show">បង្ហាញសំខាន់ៗ</string>
     <string name="dejavu_essentials_none">មិនទាន់មានសំខាន់ៗនៅឡើយទេ។ អូសផ្ទាំងមួយទៅខាងលើនៃទំព័រដើម ដើម្បីធ្វើឱ្យវាជាសំខាន់។</string>
+    <string name="dejavu_unlock_use_screen_lock">ប្រើការចាក់សោអេក្រង់</string>
+    <string name="dejavu_private_hidden">ផ្ទាំងឯកជនត្រូវបានលាក់</string>
+    <string name="dejavu_private_show">បង្ហាញ</string>
 </resources>

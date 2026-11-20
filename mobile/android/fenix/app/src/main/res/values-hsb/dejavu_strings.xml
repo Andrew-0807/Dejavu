@@ -622,4 +622,7 @@
     <string name="dejavu_essentials_hint">Najwažniše, kotrež tu schowaš, wostanu w Zen a na twojich druhich gratach a wróća so, hdyž je zaso pokažeš.</string>
     <string name="dejavu_essentials_show">Najwažniše pokazać</string>
     <string name="dejavu_essentials_none">Hišće žane najwažniše. Ćehń rajtark horje na startowej stronje, zo by jón k najwažnišym přidał.</string>
+    <string name="dejavu_unlock_use_screen_lock">Zawěru wobrazowki wužiwać</string>
+    <string name="dejavu_private_hidden">Priwatne rajtarki su schowane</string>
+    <string name="dejavu_private_show">Pokazać</string>
 </resources>

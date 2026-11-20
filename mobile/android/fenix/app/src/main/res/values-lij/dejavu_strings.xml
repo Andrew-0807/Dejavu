@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">I essençiali che t\'ascondi chì restan in Zen e in sce i tò atri dispoxitivi, e tornan quande ti i mostri de neuvo.</string>
     <string name="dejavu_essentials_show">Mostra i essençiali</string>
     <string name="dejavu_essentials_none">No gh\'é ancon nisciun essençiale. Strascina un feuggio in çimma a-a pagina prinçipâ pe fâne un essençiale.</string>
+    <string name="dejavu_unlock_use_screen_lock">Adeuvia o blòcco do schermo</string>
+    <string name="dejavu_private_hidden">I feuggi privæ son ascoxi</string>
+    <string name="dejavu_private_show">Mostra</string>
 </resources>

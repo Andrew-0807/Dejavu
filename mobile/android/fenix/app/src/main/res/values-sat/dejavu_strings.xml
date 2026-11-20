@@ -614,4 +614,7 @@
     <string name="dejavu_essentials_hint">ᱱᱚᱰᱮ ᱟᱢ ᱩᱠᱩ ᱠᱟᱱ ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱠᱚ Zen ᱟᱨ ᱟᱢᱟᱜ ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱠᱚ ᱨᱮ ᱛᱟᱦᱮᱸ ᱟ, ᱟᱨ ᱟᱢ ᱫᱩᱦᱲᱟᱹ ᱩᱫᱩᱜ ᱠᱷᱟᱱ ᱨᱩᱣᱟᱹᱲ ᱦᱤᱡᱩᱜ ᱟ ᱾</string>
     <string name="dejavu_essentials_show">ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱠᱚ ᱩᱫᱩᱜ ᱢᱮ</string>
     <string name="dejavu_essentials_none">ᱱᱤᱛ ᱦᱟᱹᱵᱤᱡ ᱡᱟᱦᱟᱸ ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱵᱟᱹᱱᱩᱜ ᱾ ᱢᱤᱫ ᱴᱮᱵᱽ ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱵᱮᱱᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱚᱱᱟ ᱦᱚᱢ ᱥᱠᱨᱤᱱ ᱨᱮᱭᱟᱜ ᱪᱮᱛᱟᱱ ᱛᱮ ᱚᱨ ᱢᱮ ᱾</string>
+    <string name="dejavu_unlock_use_screen_lock">ᱥᱠᱨᱤᱱ ᱞᱚᱠ ᱵᱮᱵᱷᱟᱨ ᱢᱮ</string>
+    <string name="dejavu_private_hidden">ᱱᱤᱡᱮᱨᱟᱠ ᱴᱮᱵᱽ ᱠᱚ ᱩᱠᱩ ᱠᱟᱱᱟ</string>
+    <string name="dejavu_private_show">ᱩᱫᱩᱜ ᱢᱮ</string>
 </resources>

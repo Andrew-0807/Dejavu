@@ -614,4 +614,7 @@
     <string name="dejavu_essentials_hint">Favoriti koje ovdje sakrijete ostaju u Zenu i na vašim ostalim uređajima, a vraćaju se kada ih ponovo prikažete.</string>
     <string name="dejavu_essentials_show">Prikaži Favorite</string>
     <string name="dejavu_essentials_none">Još nema Favorita. Prevucite tab na vrh početnog ekrana da ga dodate u Favorite.</string>
+    <string name="dejavu_unlock_use_screen_lock">Koristi zaključavanje ekrana</string>
+    <string name="dejavu_private_hidden">Privatni tabovi su skriveni</string>
+    <string name="dejavu_private_show">Prikaži</string>
 </resources>

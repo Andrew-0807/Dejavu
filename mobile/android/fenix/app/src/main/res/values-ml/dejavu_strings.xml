@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">നിങ്ങൾ ഇവിടെ മറയ്ക്കുന്ന പ്രധാനപ്പെട്ടവ Zen-ലും നിങ്ങളുടെ മറ്റ് ഉപകരണങ്ങളിലും നിലനിൽക്കും, വീണ്ടും കാണിക്കുമ്പോൾ തിരികെ വരും.</string>
     <string name="dejavu_essentials_show">പ്രധാനപ്പെട്ടവ കാണിക്കുക</string>
     <string name="dejavu_essentials_none">ഇതുവരെ പ്രധാനപ്പെട്ടവ ഒന്നുമില്ല. ഒരു ടാബ് പ്രധാനപ്പെട്ടതാക്കാൻ, അത് ഹോം സ്ക്രീനിന്റെ മുകളിലേക്ക് വലിച്ചിടുക.</string>
+    <string name="dejavu_unlock_use_screen_lock">സ്ക്രീൻ ലോക്ക് ഉപയോഗിക്കുക</string>
+    <string name="dejavu_private_hidden">സ്വകാര്യ ടാബുകൾ മറച്ചിരിക്കുന്നു</string>
+    <string name="dejavu_private_show">കാണിക്കുക</string>
 </resources>

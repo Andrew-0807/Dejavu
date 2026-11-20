@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Favorieten die je hier verbergt, blijven in Zen en op je andere apparaten, en komen terug als je ze weer toont.</string>
     <string name="dejavu_essentials_show">Favorieten tonen</string>
     <string name="dejavu_essentials_none">Nog geen favorieten. Sleep een tabblad naar de bovenkant van het startscherm om er een favoriet van te maken.</string>
+    <string name="dejavu_unlock_use_screen_lock">Schermvergrendeling gebruiken</string>
+    <string name="dejavu_private_hidden">Privétabbladen zijn verborgen</string>
+    <string name="dejavu_private_show">Tonen</string>
 </resources>

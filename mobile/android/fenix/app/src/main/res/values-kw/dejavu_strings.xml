@@ -638,4 +638,7 @@
     <string name="dejavu_essentials_hint">An Pythow Poesek a gudhydh omma a drig yn Zen ha war dha jynnow erel, hag a dhehwel pan wrylli aga diskwedhes arta.</string>
     <string name="dejavu_essentials_show">Diskwedhes Pythow Poesek</string>
     <string name="dejavu_essentials_none">Nyns eus Pythow Poesek hwath. Tenna tab dhe dop an skrin tre rag y wul Pyth Poesek.</string>
+    <string name="dejavu_unlock_use_screen_lock">Usya alhwedh an skrin</string>
+    <string name="dejavu_private_hidden">Kudhys yw an tabow privedh</string>
+    <string name="dejavu_private_show">Diskwedhes</string>
 </resources>

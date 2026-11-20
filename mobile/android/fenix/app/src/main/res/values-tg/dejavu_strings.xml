@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Сомонаҳои муҳиме, ки дар ин ҷо пинҳон мекунед, дар Zen ва дар дастгоҳҳои дигари шумо боқӣ мемонанд ва вақте ки онҳоро аз нав нишон медиҳед, бармегарданд.</string>
     <string name="dejavu_essentials_show">Нишон додани сомонаҳои муҳим</string>
     <string name="dejavu_essentials_none">Ҳоло сомонаҳои муҳим нестанд. Барои илова кардан ба сомонаҳои муҳим, варақаро ба қисми болоии саҳифаи асосӣ кашед.</string>
+    <string name="dejavu_unlock_use_screen_lock">Истифодаи қулфи экран</string>
+    <string name="dejavu_private_hidden">Варақаҳои хусусӣ пинҳон шудаанд</string>
+    <string name="dejavu_private_show">Нишон додан</string>
 </resources>

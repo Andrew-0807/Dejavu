@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Favoriten, die du hier ausblendest, bleiben in Zen und auf deinen anderen Geräten erhalten und kommen zurück, wenn du sie wieder einblendest.</string>
     <string name="dejavu_essentials_show">Favoriten anzeigen</string>
     <string name="dejavu_essentials_none">Noch keine Favoriten. Ziehe einen Tab auf dem Startbildschirm ganz nach oben, um ihn zu einem Favoriten zu machen.</string>
+    <string name="dejavu_unlock_use_screen_lock">Displaysperre verwenden</string>
+    <string name="dejavu_private_hidden">Private Tabs sind ausgeblendet</string>
+    <string name="dejavu_private_show">Anzeigen</string>
 </resources>

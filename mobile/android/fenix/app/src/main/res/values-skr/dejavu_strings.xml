@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">جہڑیاں ضروری ٹیباں تساں اِتھاں لُکیندے ہو، اوہ Zen وچ تے تہاݙیاں ٻیاں ڈیوائساں تے رہندیاں ہن، تے جݙݨ تساں انہاں کوں ولا ݙکھیندے ہو تاں واپس آ ویندیاں ہن۔</string>
     <string name="dejavu_essentials_show">ضروری ٹیباں ݙکھاؤ</string>
     <string name="dejavu_essentials_none">اڄݨ کوئی ضروری ٹیب کائنی۔ کہیں ٹیب کوں ضروری ٹیب بݨاوݨ کیتے اونکوں ہوم سکرین دے بالکل اُتے چھکو۔</string>
+    <string name="dejavu_unlock_use_screen_lock">اسکرین لاک استعمال کرو</string>
+    <string name="dejavu_private_hidden">نجی ٹیباں لکیاں ہوئیاں ہن</string>
+    <string name="dejavu_private_show">ݙکھاؤ</string>
 </resources>

@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Любимите, които скриете тук, остават в Zen и на другите ви устройства и се връщат, когато ги покажете отново.</string>
     <string name="dejavu_essentials_show">Показване на Любими</string>
     <string name="dejavu_essentials_none">Все още няма Любими. Плъзнете раздел най-горе на началния екран, за да го добавите към Любими.</string>
+    <string name="dejavu_unlock_use_screen_lock">Използване на заключване на екрана</string>
+    <string name="dejavu_private_hidden">Поверителните раздели са скрити</string>
+    <string name="dejavu_private_show">Показване</string>
 </resources>

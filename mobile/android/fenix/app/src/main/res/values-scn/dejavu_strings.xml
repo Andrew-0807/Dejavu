@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">I essenziali ca ammucci ccà restanu nta Zen e nta l\'àutri dispusitivi tò, e tòrnanu quannu l\'ammustri arrè.</string>
     <string name="dejavu_essentials_show">Ammustra i essenziali</string>
     <string name="dejavu_essentials_none">Nun ci sunnu ancora essenziali. Strascina na scheda nnâ parti di supra dâ schermata principali pi fàrila essenziali.</string>
+    <string name="dejavu_unlock_use_screen_lock">Usa lu bloccu dû schermu</string>
+    <string name="dejavu_private_hidden">I schedi privati sunnu ammucciati</string>
+    <string name="dejavu_private_show">Ammustra</string>
 </resources>

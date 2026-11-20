@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">بۇ يەردە يوشۇرغان مۇھىملار Zen دا ۋە باشقا ئۈسكۈنىلىرىڭىزدە قالىدۇ، ئۇلارنى قايتا كۆرسەتكەندە قايتىپ كېلىدۇ.</string>
     <string name="dejavu_essentials_show">مۇھىملارنى كۆرسەت</string>
     <string name="dejavu_essentials_none">تېخى مۇھىملار يوق. بەتكۈچنى مۇھىملارغا قوشۇش ئۈچۈن ئۇنى باش بەتنىڭ ئەڭ ئۈستىگە سۆرەڭ.</string>
+    <string name="dejavu_unlock_use_screen_lock">ئېكران قۇلۇپىنى ئىشلەت</string>
+    <string name="dejavu_private_hidden">شەخسىي بەتكۈچلەر يوشۇرۇلدى</string>
+    <string name="dejavu_private_show">كۆرسەت</string>
 </resources>

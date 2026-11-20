@@ -8,6 +8,7 @@ import android.content.Context
 import android.os.Build
 import android.os.SystemClock
 import androidx.activity.ComponentActivity
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
@@ -65,6 +66,19 @@ object WorkspaceLock {
     /** Ids of the locked workspaces the user unlocked, which show until they lock again. */
     val unlocked: StateFlow<Set<String>> = _unlocked.asStateFlow()
 
+    private val _privateHidden = MutableStateFlow(false)
+
+    /**
+     * Whether the private tabs show blurred until the user shows them again, which asks for nothing: they hide when the
+     * unlocked workspaces lock, after Dejavu was left, while Firefox's lock of private tabs is off. With it on, they
+     * lock instead.
+     */
+    val privateHidden: StateFlow<Boolean> = _privateHidden.asStateFlow()
+
+    /** Whether leaving Dejavu hides the private tabs: some are open, and Firefox's lock of private tabs is off. */
+    @VisibleForTesting
+    internal var privateTabsHide: () -> Boolean = { false }
+
     /** Whether a prompt to unlock shows, which can leave Dejavu for the screen lock for a while. */
     @Volatile
     var prompting = false
@@ -103,6 +117,12 @@ object WorkspaceLock {
     fun lockAll() {
         _unlocked.value = emptySet()
         asked.clear()
+        if (privateTabsHide()) _privateHidden.value = true
+    }
+
+    /** Shows the private tabs again, see [privateHidden]. */
+    fun showPrivate() {
+        _privateHidden.value = false
     }
 
     /**
@@ -135,8 +155,17 @@ object WorkspaceLock {
             )
             process.lifecycleScope.launch { lockOnSwitch(context) }
         }
+        val components = activity.components
+        privateTabsHide = {
+            components.core.store.state.privateTabs.isNotEmpty() && !components.settings.privateBrowsingModeLocked
+        }
+        // Private tabs opened after the last ones closed show as they are.
+        activity.lifecycleScope.launch {
+            components.core.store.flow().map { it.privateTabs.isEmpty() }.distinctUntilChanged().collect { none ->
+                if (none) showPrivate()
+            }
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            val components = activity.components
             val privateTabsOpen = components.core.store.flow().map { it.privateTabs.isNotEmpty() }.distinctUntilChanged()
             activity.lifecycleScope.launch {
                 combine(unlocked, privateTabsOpen) { unlockedIds, hasPrivateTabs ->

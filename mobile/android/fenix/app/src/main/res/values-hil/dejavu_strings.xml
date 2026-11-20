@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Ang Importante nga ginatago mo diri nagapabilin sa Zen kag sa imo iban nga mga device, kag nagabalik kon ipakita mo sila liwat.</string>
     <string name="dejavu_essentials_show">Ipakita ang Importante</string>
     <string name="dejavu_essentials_none">Wala pa sang Importante. I-drag ang isa ka tab sa ibabaw sang home screen para himuon ini nga Importante.</string>
+    <string name="dejavu_unlock_use_screen_lock">Gamita ang screen lock</string>
+    <string name="dejavu_private_hidden">Natago ang mga pribado nga tab</string>
+    <string name="dejavu_private_show">Ipakita</string>
 </resources>

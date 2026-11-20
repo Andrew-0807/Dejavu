@@ -73,6 +73,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -121,6 +122,7 @@ import org.mozilla.fenix.dejavu.sync.workspaceIconText
 import org.mozilla.fenix.dejavu.ui.LocalPopupTheme
 import org.mozilla.fenix.dejavu.ui.LockCover
 import org.mozilla.fenix.dejavu.ui.TapIcon
+import org.mozilla.fenix.dejavu.ui.awaitWindowFocus
 import org.mozilla.fenix.dejavu.ui.glass
 import org.mozilla.fenix.dejavu.ui.iconPainter
 import org.mozilla.fenix.dejavu.ui.lockedContent
@@ -305,10 +307,15 @@ fun DejavuHome(
     val tabsById = remember(tabs) { tabs.associateBy { it.id } }
     val openTabIds = tabsById.keys
     val unlocked by WorkspaceLock.unlocked.collectAsState()
+    val privateHidden by WorkspaceLock.privateHidden.collectAsState()
 
-    // Whether the page shows blurred under the cover that unlocks it.
-    fun hiddenAt(page: Int): Boolean =
+    // Whether the page is locked: it asks for the fingerprint, face or screen lock before it shows.
+    fun lockedAt(page: Int): Boolean =
         if (page == privateIndex) privateLocked else WorkspaceLock.hides(state.workspaces.getOrNull(page), unlocked)
+
+    // Whether the page shows blurred under the cover that unlocks it, or shows the private tabs hidden since Dejavu was
+    // left.
+    fun hiddenAt(page: Int): Boolean = lockedAt(page) || (page == privateIndex && privateHidden)
 
     val currentHidden = hiddenAt(pagerState.currentPage)
     // The workspace of a device on the account shows what the device has, which has no essentials, and a locked one
@@ -373,16 +380,17 @@ fun DejavuHome(
     val context = LocalContext.current
     val unlockPrompt = rememberUnlockPrompt()
     val unlockPrivateTitle = stringResource(R.string.pbm_authentication_unlock_private_tabs)
-    fun askToUnlock(page: Int, then: () -> Unit = {}) {
+    fun askToUnlock(page: Int, automatic: Boolean = false, then: () -> Unit = {}) {
         if (page == privateIndex) {
-            unlockPrompt.ask(unlockPrivateTitle) {
+            unlockPrompt.ask(unlockPrivateTitle, automatic) {
                 interactor.onUnlockPrivateTabs()
+                WorkspaceLock.showPrivate()
                 then()
             }
             return
         }
         val workspace = state.workspaces.getOrNull(page) ?: return
-        unlockPrompt.ask(context.getString(R.string.dejavu_workspace_unlock_title, workspace.name)) {
+        unlockPrompt.ask(context.getString(R.string.dejavu_workspace_unlock_title, workspace.name), automatic) {
             WorkspaceLock.unlock(workspace.id)
             then()
         }
@@ -392,7 +400,7 @@ fun DejavuHome(
     // A locked page the pages stop on asks to unlock by itself, once until it locks again or the user turns away.
     val settledPage = pagerState.settledPage
     val settledKey = if (settledPage == privateIndex) PRIVATE_PAGE_KEY else state.workspaces.getOrNull(settledPage)?.id
-    val settledHidden = hiddenAt(settledPage)
+    val settledLocked = lockedAt(settledPage)
     var shownKey by remember { mutableStateOf<String?>(null) }
     LaunchedEffect(settledKey) {
         shownKey?.takeIf { it != settledKey }?.let(WorkspaceLock::left)
@@ -405,14 +413,16 @@ fun DejavuHome(
         wasPrivateLocked = privateLocked
     }
     val lifecycleOwner = LocalLifecycleOwner.current
+    val view = LocalView.current
     val mayAsk = tipsAllowed && dialog == null && !pagerState.isScrollInProgress
-    LaunchedEffect(settledKey, settledHidden, mayAsk) {
-        val key = settledKey?.takeIf { settledHidden && mayAsk } ?: return@LaunchedEffect
+    LaunchedEffect(settledKey, settledLocked, mayAsk) {
+        val key = settledKey?.takeIf { settledLocked && mayAsk } ?: return@LaunchedEffect
         // A page that locks as the pages turn away from it, as switching workspaces can do, is left without asking.
         delay(UNLOCK_ASK_DELAY_MS)
         // Asked again each time Dejavu shows, as coming back from other apps or the phone's lock screen.
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
-            if (context.mayAskToUnlock() && WorkspaceLock.askOnce(key)) askToUnlock(settledPage)
+            view.awaitWindowFocus()
+            if (context.mayAskToUnlock() && WorkspaceLock.askOnce(key)) askToUnlock(settledPage, automatic = true)
         }
     }
 
@@ -754,10 +764,20 @@ fun DejavuHome(
                         key = { state.workspaces.getOrNull(it)?.id ?: PRIVATE_PAGE_KEY },
                     ) { page ->
                         if (page == privateIndex) {
+                            // Hidden since Dejavu was left, the private tabs show again at a tap, without asking.
+                            val hiddenTitle = stringResource(R.string.dejavu_private_hidden)
+                            val unlockButton = stringResource(R.string.pbm_authentication_unlock)
+                            val showButton = stringResource(R.string.dejavu_private_show)
                             LockablePage(
-                                hidden = privateLocked,
-                                title = unlockPrivateTitle,
-                                onUnlock = { askToUnlock(page) },
+                                hidden = hiddenAt(page),
+                                title = if (privateLocked) unlockPrivateTitle else hiddenTitle,
+                                onUnlock = { if (privateLocked) askToUnlock(page) else WorkspaceLock.showPrivate() },
+                                icon = if (privateLocked) {
+                                    iconsR.drawable.mozac_ic_lock_24
+                                } else {
+                                    R.drawable.dejavu_ic_private_tab_24
+                                },
+                                button = if (privateLocked) unlockButton else showButton,
                             ) {
                                 PrivateWorkspacePage(
                                     tabs = privateTabs,
@@ -966,12 +986,30 @@ private fun TopBar(interactor: DejavuHomeInteractor, onSearchClick: () -> Unit) 
     }
 }
 
-/** A page of the workspaces, blurred under the [LockCover] that unlocks it while [hidden]. */
+/**
+ * A page of the workspaces, blurred under the [LockCover] that unlocks it while [hidden], with [icon] and [button] on
+ * it, a lock and Unlock unless given.
+ */
 @Composable
-private fun LockablePage(hidden: Boolean, title: String, onUnlock: () -> Unit, content: @Composable () -> Unit) {
+private fun LockablePage(
+    hidden: Boolean,
+    title: String,
+    onUnlock: () -> Unit,
+    @DrawableRes icon: Int = iconsR.drawable.mozac_ic_lock_24,
+    button: String = stringResource(R.string.pbm_authentication_unlock),
+    content: @Composable () -> Unit,
+) {
     Box(modifier = Modifier.fillMaxSize()) {
         Box(modifier = Modifier.fillMaxSize().lockedContent(hidden)) { content() }
-        if (hidden) LockCover(title = title, onUnlock = onUnlock, modifier = Modifier.matchParentSize())
+        if (hidden) {
+            LockCover(
+                title = title,
+                onUnlock = onUnlock,
+                icon = icon,
+                button = button,
+                modifier = Modifier.matchParentSize(),
+            )
+        }
     }
 }
 

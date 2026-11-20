@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Burada gizlətdiyiniz əsaslar Zen-də və digər cihazlarınızda qalır, yenidən göstərdikdə isə geri qayıdır.</string>
     <string name="dejavu_essentials_show">Əsasları göstər</string>
     <string name="dejavu_essentials_none">Hələ əsas yoxdur. Vərəqi əsaslara əlavə etmək üçün onu ana ekranın yuxarısına sürükləyin.</string>
+    <string name="dejavu_unlock_use_screen_lock">Ekran kilidindən istifadə et</string>
+    <string name="dejavu_private_hidden">Məxfi vərəqlər gizlədilib</string>
+    <string name="dejavu_private_show">Göstər</string>
 </resources>

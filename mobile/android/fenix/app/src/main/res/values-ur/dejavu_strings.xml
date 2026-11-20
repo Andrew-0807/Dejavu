@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">یہاں چھپائے گئے اہم Zen میں اور آپ کے دوسرے آلات پر موجود رہتے ہیں، اور جب آپ انہیں دوبارہ دکھاتے ہیں تو واپس آ جاتے ہیں۔</string>
     <string name="dejavu_essentials_show">اہم دکھائیں</string>
     <string name="dejavu_essentials_none">ابھی تک کوئی اہم نہیں۔ کسی ٹیب کو اہم بنانے کے لیے اسے ہوم اسکرین کے بالکل اوپر گھسیٹیں۔</string>
+    <string name="dejavu_unlock_use_screen_lock">اسکرین لاک استعمال کریں</string>
+    <string name="dejavu_private_hidden">نجی ٹیبز چھپے ہوئے ہیں</string>
+    <string name="dejavu_private_show">دکھائیں</string>
 </resources>

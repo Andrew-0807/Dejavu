@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Ils essenzials che ti zuppentas qua restan en Zen e sin tes auters apparats, e returnan cura che ti als mussas puspè.</string>
     <string name="dejavu_essentials_show">Mussar ils essenzials</string>
     <string name="dejavu_essentials_none">Anc nagins essenzials. Tira in tab sisum l’ecran da partenza per al far in essenzial.</string>
+    <string name="dejavu_unlock_use_screen_lock">Utilisar la bloccada dal visur</string>
+    <string name="dejavu_private_hidden">Ils tabs privats èn zuppentads</string>
+    <string name="dejavu_private_show">Mussar</string>
 </resources>

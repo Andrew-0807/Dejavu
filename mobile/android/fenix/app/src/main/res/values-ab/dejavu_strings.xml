@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Ара ишәыҵаҵыхуа иҵакыу сайтқәа Zen аҟынгьы егьырҭ шәаиқәыршәагақәа рҟынгьы иаанхоит, насгьы еиҭах ишәаарԥшыр иаахынҳәуеит.</string>
     <string name="dejavu_essentials_show">Иҵакыу сайтқәа аарԥшра</string>
     <string name="dejavu_essentials_none">Иахьазанӡа иҵакыу сайтқәа ыҟам. Абларҭа иҵакыу сайтқәа рахь адалаӡаразы, ахатә даҟьа хыхь ахь инаган.</string>
+    <string name="dejavu_unlock_use_screen_lock">Аекран аркыга ахархәара</string>
+    <string name="dejavu_private_hidden">Ахатә абларҭақәа ҵәахуп</string>
+    <string name="dejavu_private_show">Аарԥшра</string>
 </resources>

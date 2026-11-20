@@ -622,4 +622,7 @@
     <string name="dejavu_essentials_hint">Čia paslėpti Mėgstamiausi lieka Zen naršyklėje ir kituose jūsų įrenginiuose, o kai vėl juos parodysite, sugrįš.</string>
     <string name="dejavu_essentials_show">Rodyti Mėgstamiausius</string>
     <string name="dejavu_essentials_none">Mėgstamiausių dar nėra. Nuvilkite kortelę į pradžios ekrano viršų, kad pridėtumėte ją prie Mėgstamiausių.</string>
+    <string name="dejavu_unlock_use_screen_lock">Naudoti ekrano užraktą</string>
+    <string name="dejavu_private_hidden">Privačiosios kortelės paslėptos</string>
+    <string name="dejavu_private_show">Rodyti</string>
 </resources>

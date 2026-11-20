@@ -630,4 +630,7 @@
     <string name="dejavu_essentials_hint">An traoù pouezus a guzhit amañ a chom e Zen ha war ho trevnadoù all, hag a zeu en-dro pa ziskouezit anezho adarre.</string>
     <string name="dejavu_essentials_show">Diskouez an traoù pouezus</string>
     <string name="dejavu_essentials_none">N’eus tra bouezus ebet c’hoazh. Riklit un ivinell d’al laez er skramm degemer evit he ouzhpennañ d’an traoù pouezus.</string>
+    <string name="dejavu_unlock_use_screen_lock">Implijout prennañ ar skramm</string>
+    <string name="dejavu_private_hidden">Kuzhet eo an ivinelloù prevez</string>
+    <string name="dejavu_private_show">Diskouez</string>
 </resources>

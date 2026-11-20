@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">نی ادا لکاؤ کنا ضروری چیزاک Zen اٹ او نی نا ہور ڈیوائساک پار رہ ہن، او نی دوبارہ دکھاؤ تو پدا دکہ مرورہ۔</string>
     <string name="dejavu_essentials_show">ضروری چیزاک دکھاؤ</string>
     <string name="dejavu_essentials_none">ہلے تک ضروری چیز کائی نی۔ ٹیب اس اے ضروری چیزاک اٹ شامل کننگ کن ہوم سکرین نا بُرزا کشبو۔</string>
+    <string name="dejavu_unlock_use_screen_lock">سکرین لاک استعمال کرو</string>
+    <string name="dejavu_private_hidden">زاتی ٹیب چھپے ہوئے ہیں</string>
+    <string name="dejavu_private_show">دکھاؤ</string>
 </resources>

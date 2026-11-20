@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">بورادا گیزلتدیگینیز اساس‌لار Zen-ده و باشقا جیهازلارینیزدا قالیر، یئنیدن گؤستردیکده ایسه گئری قاییدیر.</string>
     <string name="dejavu_essentials_show">اساس‌لاری گؤستر</string>
     <string name="dejavu_essentials_none">هله اساس یوخدور. بیر تاغی اساس‌لارا اَلاوه ائتمک اوچون اونو آنا اکرانین یوخاریسینا سوروکله‌یین.</string>
+    <string name="dejavu_unlock_use_screen_lock">اکران کیلیدیندن ایستیفاده ائت</string>
+    <string name="dejavu_private_hidden">گیزلی تاغلار گیزلدیلیب</string>
+    <string name="dejavu_private_show">گؤستر</string>
 </resources>

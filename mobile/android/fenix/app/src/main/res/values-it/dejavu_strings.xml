@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">I preferiti che nascondi qui restano in Zen e sugli altri tuoi dispositivi, e tornano quando li mostri di nuovo.</string>
     <string name="dejavu_essentials_show">Mostra preferiti</string>
     <string name="dejavu_essentials_none">Ancora nessun preferito. Trascina una scheda in cima alla schermata iniziale per aggiungerla ai preferiti.</string>
+    <string name="dejavu_unlock_use_screen_lock">Utilizza il blocco schermo</string>
+    <string name="dejavu_private_hidden">Le schede anonime sono nascoste</string>
+    <string name="dejavu_private_show">Mostra</string>
 </resources>

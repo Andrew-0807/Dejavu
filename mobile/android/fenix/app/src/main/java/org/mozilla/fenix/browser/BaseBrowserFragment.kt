@@ -219,6 +219,7 @@ import org.mozilla.fenix.dejavu.browser.installAboutConfigWarning
 import org.mozilla.fenix.dejavu.browser.installDejavuSplitView
 import org.mozilla.fenix.dejavu.browser.installLockedTabCover
 import org.mozilla.fenix.dejavu.browser.installPasskeyWarning
+import org.mozilla.fenix.dejavu.browser.leaveHiddenPrivateTab
 import org.mozilla.fenix.dejavu.browser.padForNavigationBar
 import org.mozilla.fenix.dejavu.browser.restoreDejavuRotationAfterFullscreen
 import org.mozilla.fenix.dejavu.browser.showsLockedTab
@@ -492,12 +493,10 @@ abstract class BaseBrowserFragment :
         )
 
         observePrivateModeLock {
+            // Dejavu: other tabs go home, where the private tabs show blurred, see leaveHiddenPrivateTab.
+            if (customTabSessionId == null) return@observePrivateModeLock
             findNavController()
-                .navigate(
-                    NavGraphDirections.actionGlobalUnlockPrivateTabsFragment(
-                        if (customTabSessionId != null) NavigationOrigin.CUSTOM_TAB else NavigationOrigin.TAB
-                    )
-                )
+                .navigate(NavGraphDirections.actionGlobalUnlockPrivateTabsFragment(NavigationOrigin.CUSTOM_TAB))
         }
 
         requireContext().accessibilityManager.addAccessibilityStateChangeListener(this)
@@ -1246,8 +1245,10 @@ abstract class BaseBrowserFragment :
             getContextMenuCandidates(context, binding.dynamicSnackbarContainer)
         }
         installAboutConfigWarning(customTabSessionId)
-        // Dejavu: a tab of a locked workspace stays covered until the workspace is unlocked.
+        // Dejavu: a tab of a locked workspace stays covered until the workspace is unlocked, and a private tab that
+        // locks or hides leaves for the private workspace on the home screen.
         installLockedTabCover(customTabSessionId, binding.root)
+        leaveHiddenPrivateTab(customTabSessionId)
         installPasskeyWarning(binding.dynamicSnackbarContainer)
 
         // Dejavu: middle-click opens links in a background tab and hovering shows their address. Not in custom tabs.

@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">Eftirlæti sem þú felur hér haldast í Zen og á hinum tækjunum þínum og koma aftur þegar þú sýnir þau á ný.</string>
     <string name="dejavu_essentials_show">Sýna eftirlæti</string>
     <string name="dejavu_essentials_none">Engin eftirlæti enn. Dragðu flipa efst á upphafssíðuna til að gera hann að eftirlæti.</string>
+    <string name="dejavu_unlock_use_screen_lock">Nota skjálás</string>
+    <string name="dejavu_private_hidden">Huliðsflipar eru faldir</string>
+    <string name="dejavu_private_show">Sýna</string>
 </resources>

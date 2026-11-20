@@ -606,4 +606,7 @@
     <string name="dejavu_essentials_hint">აქ დამალული საჭირო საიტები Zen-ში და თქვენს სხვა მოწყობილობებზე რჩება და ბრუნდება, როცა მათ ხელახლა აჩვენებთ.</string>
     <string name="dejavu_essentials_show">საჭირო საიტების ჩვენება</string>
     <string name="dejavu_essentials_none">საჭირო საიტები ჯერ არ არის. გადაიტანეთ ჩანართი საწყისი ეკრანის ზედა ნაწილში, რომ საჭირო საიტად აქციოთ.</string>
+    <string name="dejavu_unlock_use_screen_lock">ეკრანის დაბლოკვის გამოყენება</string>
+    <string name="dejavu_private_hidden">პირადი ჩანართები დამალულია</string>
+    <string name="dejavu_private_show">ჩვენება</string>
 </resources>

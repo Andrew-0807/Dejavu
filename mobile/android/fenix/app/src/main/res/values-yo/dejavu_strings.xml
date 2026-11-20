@@ -598,4 +598,7 @@
     <string name="dejavu_essentials_hint">Àwọn Pàtàkì tí o bá fi pamọ́ níbí máa wà nínú Zen àti lórí àwọn ẹ̀rọ rẹ mìíràn, wọ́n á sì padà wá nígbà tí o bá tún fi wọ́n hàn.</string>
     <string name="dejavu_essentials_show">Fi àwọn Pàtàkì hàn</string>
     <string name="dejavu_essentials_none">Kò tí ì sí Pàtàkì kankan. Fa táàbù kan lọ sí òkè pátápátá ojú ìwé ìbẹ̀rẹ̀ láti fi kún àwọn Pàtàkì.</string>
+    <string name="dejavu_unlock_use_screen_lock">Lo títì ojú ìbòjú</string>
+    <string name="dejavu_private_hidden">Àwọn táàbù ìkọ̀kọ̀ ti farapamọ́</string>
+    <string name="dejavu_private_show">Fi hàn</string>
 </resources>
