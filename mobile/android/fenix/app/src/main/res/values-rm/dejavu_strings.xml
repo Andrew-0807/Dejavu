@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Dus tuns</string>
     <string name="dejavu_icons_firefox">Classicas</string>
     <string name="dejavu_icons_rounded">Radundas</string>
+    <string name="dejavu_settings_app_icon">Icona da l’app</string>
+    <string name="dejavu_app_icon_yellow">Mellna</string>
+    <string name="dejavu_app_icon_blue">Blaua</string>
+    <string name="dejavu_app_icon_classic">Classica</string>
+    <string name="dejavu_app_icon_change_title">Midar l’icona da l’app?</string>
+    <string name="dejavu_app_icon_change_message">%1$s sa serra eventualmain. Avra el danovamain cun sia nova icona.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Las websites e las scursanidas che ti has agiuntà sin tes visur da partenza vegnan allontanadas. %1$s sa serra eventualmain. Avra el danovamain cun sia nova icona.</string>
+    <string name="dejavu_app_icon_change">Midar l’icona</string>
+    <string name="dejavu_app_icon_change_failed">Impussibel da midar l’icona da l’app. Allontanescha las websites e las scursanidas che ti has agiuntà sin tes visur da partenza ed emprova anc ina giada.</string>
     <string name="dejavu_settings_essentials">Essenzials</string>
     <string name="dejavu_settings_essentials_summary">Zuppentar tuts u intgins sin quest telefon</string>
     <string name="dejavu_essentials_hint">Ils essenzials che ti zuppentas qua restan en Zen e sin tes auters apparats, e returnan cura che ti als mussas puspè.</string>

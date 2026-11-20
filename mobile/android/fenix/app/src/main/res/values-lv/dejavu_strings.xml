@@ -609,6 +609,15 @@
     <string name="dejavu_icons_dejavu">Divtoņu</string>
     <string name="dejavu_icons_firefox">Klasiskās</string>
     <string name="dejavu_icons_rounded">Noapaļotās</string>
+    <string name="dejavu_settings_app_icon">Lietotnes ikona</string>
+    <string name="dejavu_app_icon_yellow">Dzeltenā</string>
+    <string name="dejavu_app_icon_blue">Zilā</string>
+    <string name="dejavu_app_icon_classic">Klasiskā</string>
+    <string name="dejavu_app_icon_change_title">Mainīt lietotnes ikonu?</string>
+    <string name="dejavu_app_icon_change_message">%1$s var aizvērties. Atveriet to vēlreiz no jaunās ikonas.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Vietnes un saīsnes, ko pievienojāt sākuma ekrānam, tiks noņemtas. %1$s var aizvērties. Atveriet to vēlreiz no jaunās ikonas.</string>
+    <string name="dejavu_app_icon_change">Mainīt ikonu</string>
+    <string name="dejavu_app_icon_change_failed">Neizdevās mainīt lietotnes ikonu. Noņemiet sākuma ekrānam pievienotās vietnes un saīsnes un mēģiniet vēlreiz.</string>
     <string name="dejavu_settings_essentials">Izlase</string>
     <string name="dejavu_settings_essentials_summary">Paslēpiet šajā tālrunī visu Izlasi vai tās daļu</string>
     <string name="dejavu_essentials_hint">Šeit paslēptās Izlases cilnes paliek pārlūkā Zen un citās jūsu ierīcēs un atgriežas, kad tās atkal parādāt.</string>

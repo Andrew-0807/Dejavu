@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Twakleurich</string>
     <string name="dejavu_icons_firefox">Klassyk</string>
     <string name="dejavu_icons_rounded">Rûn</string>
+    <string name="dejavu_settings_app_icon">App-piktogram</string>
+    <string name="dejavu_app_icon_yellow">Giel</string>
+    <string name="dejavu_app_icon_blue">Blau</string>
+    <string name="dejavu_app_icon_classic">Klassyk</string>
+    <string name="dejavu_app_icon_change_title">App-piktogram wizigje?</string>
+    <string name="dejavu_app_icon_change_message">%1$s kin sletten wurde. Iepenje de app opnij fia it nije piktogram.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">De websites en fluchkeppelingen dy’t jo oan jo startskerm tafoege hawwe, wurde fuortsmiten. %1$s kin sletten wurde. Iepenje de app opnij fia it nije piktogram.</string>
+    <string name="dejavu_app_icon_change">Piktogram wizigje</string>
+    <string name="dejavu_app_icon_change_failed">Kin it app-piktogram net wizigje. Smyt de websites en fluchkeppelingen dy’t jo oan jo startskerm tafoege hawwe fuort en probearje it opnij.</string>
     <string name="dejavu_settings_essentials">Essinsjes</string>
     <string name="dejavu_settings_essentials_summary">Allegear of in part op dizze telefoan ferstopje</string>
     <string name="dejavu_essentials_hint">Essinsjes dy\'t jo hjir ferstopje, bliuwe yn Zen en op jo oare apparaten, en komme werom as jo se wer toane.</string>

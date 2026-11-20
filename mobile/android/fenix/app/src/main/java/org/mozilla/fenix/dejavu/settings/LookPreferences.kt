@@ -6,8 +6,10 @@ package org.mozilla.fenix.dejavu.settings
 
 import android.content.Context
 import android.util.AttributeSet
+import android.widget.Toast
 import androidx.activity.compose.LocalActivity
 import androidx.annotation.ColorRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -17,6 +19,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -29,12 +32,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -45,12 +53,16 @@ import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.graphics.drawable.toBitmap
 import mozilla.components.ui.icons.R as iconsR
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.discover.NewThing
 import org.mozilla.fenix.dejavu.discover.newDot
 import org.mozilla.fenix.dejavu.discover.rememberUnseenNewThings
 import org.mozilla.fenix.dejavu.ui.AccentColor
+import org.mozilla.fenix.dejavu.ui.DejavuButtonStyle
+import org.mozilla.fenix.dejavu.ui.DejavuDialog
+import org.mozilla.fenix.dejavu.ui.DejavuDialogButton
 import org.mozilla.fenix.dejavu.ui.IconStyle
 import org.mozilla.fenix.dejavu.ui.iconIn
 import org.mozilla.fenix.settings.ComposePreference
@@ -172,8 +184,110 @@ class IconStylePreference @JvmOverloads constructor(context: Context, attrs: Att
 
 @Composable
 private fun IconStyleChoice(style: IconStyle, selected: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    ChoiceCard(label = stringResource(style.label), selected = selected, onClick = onClick, modifier = modifier) {
+        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            PREVIEW_ICONS.forEach { icon ->
+                Icon(
+                    painter = painterResource(iconIn(style, icon)),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.size(20.dp),
+                )
+            }
+        }
+    }
+}
+
+/**
+ * The app icons of Customize, side by side as launchers show them. Picking one asks first, as Android may close
+ * Dejavu to change it.
+ */
+class AppIconPreference @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
+    ComposePreference(context, attrs) {
+    @Composable
+    override fun Content() {
+        val activity = LocalActivity.current
+        var shown by remember { mutableStateOf(DejavuAppIcon.current(context)) }
+        var asked by remember { mutableStateOf<DejavuAppIcon?>(null) }
+        // The new icons have the orange dot until Customize is left; Classic is the icon Dejavu had before.
+        val iconsNew = NewThing.APP_ICON in rememberUnseenNewThings()
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
+        ) {
+            DejavuAppIcon.entries.forEach { icon ->
+                ChoiceCard(
+                    label = stringResource(icon.label),
+                    selected = icon == shown,
+                    onClick = { if (icon != shown) asked = icon },
+                    modifier = Modifier.weight(1f),
+                ) {
+                    AppIconPicture(icon, isNew = iconsNew && icon != DejavuAppIcon.CLASSIC)
+                }
+            }
+        }
+        asked?.let { icon ->
+            ChangeAppIconDialog(
+                onDismiss = { asked = null },
+                onChange = {
+                    asked = null
+                    if (activity != null && DejavuAppIcon.change(activity, from = shown, to = icon)) {
+                        shown = icon
+                    } else {
+                        Toast.makeText(context, R.string.dejavu_app_icon_change_failed, Toast.LENGTH_LONG).show()
+                    }
+                },
+            )
+        }
+    }
+}
+
+/** The picture of [icon] as launchers show it, with the orange dot of what is new while [isNew]. */
+@Composable
+private fun AppIconPicture(icon: DejavuAppIcon, isNew: Boolean) {
+    val context = LocalContext.current
+    val size = with(LocalDensity.current) { APP_ICON_SIZE.roundToPx() }
+    val picture = remember(icon, size) { icon.drawable(context)?.toBitmap(size, size)?.asImageBitmap() }
+    Box(modifier = Modifier.size(APP_ICON_SIZE).newDot(isNew, inset = 0.dp)) {
+        picture?.let { Image(bitmap = it, contentDescription = null, modifier = Modifier.fillMaxSize()) }
+    }
+}
+
+@Composable
+private fun ChangeAppIconDialog(onDismiss: () -> Unit, onChange: () -> Unit) {
+    val context = LocalContext.current
+    val removesShortcuts = remember { DejavuAppIcon.removesShortcuts(context) }
+    DejavuDialog(
+        title = stringResource(R.string.dejavu_app_icon_change_title),
+        onDismissRequest = onDismiss,
+        buttons = {
+            DejavuDialogButton(text = stringResource(R.string.dejavu_cancel), onClick = onDismiss)
+            DejavuDialogButton(
+                text = stringResource(R.string.dejavu_app_icon_change),
+                onClick = onChange,
+                style = DejavuButtonStyle.Primary,
+            )
+        },
+    ) {
+        val message = if (removesShortcuts) {
+            R.string.dejavu_app_icon_change_message_shortcuts
+        } else {
+            R.string.dejavu_app_icon_change_message
+        }
+        Text(stringResource(message, stringResource(R.string.app_name)))
+    }
+}
+
+/** A choice of Customize: [picture] over its [label], on a card outlined in the accent color while [selected]. */
+@Composable
+private fun ChoiceCard(
+    label: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    picture: @Composable () -> Unit,
+) {
     val shape = RoundedCornerShape(16.dp)
-    val label = stringResource(style.label)
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
@@ -190,16 +304,7 @@ private fun IconStyleChoice(style: IconStyle, selected: Boolean, onClick: () -> 
             }
             .padding(vertical = 12.dp, horizontal = 4.dp),
     ) {
-        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            PREVIEW_ICONS.forEach { icon ->
-                Icon(
-                    painter = painterResource(iconIn(style, icon)),
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.size(20.dp),
-                )
-            }
-        }
+        picture()
         Spacer(Modifier.height(8.dp))
         Text(
             text = label,
@@ -216,6 +321,7 @@ private val PREVIEW_ICONS = listOf(
     R.drawable.dejavu_ic_settings_24,
 )
 private val SWATCH_SIZE = 44.dp
+private val APP_ICON_SIZE = 56.dp
 private val NEW_DOT_ROOM = 12.dp
 private val SWATCH_GAP = 8.dp
 private const val ON_SWATCH_LUMINANCE = 0.5f

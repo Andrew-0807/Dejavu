@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Sin yiniten</string>
     <string name="dejavu_icons_firefox">Aklasik</string>
     <string name="dejavu_icons_rounded">Imdewwer</string>
+    <string name="dejavu_settings_app_icon">Tignit n usnas</string>
+    <string name="dejavu_app_icon_yellow">Awraɣ</string>
+    <string name="dejavu_app_icon_blue">Amidadi</string>
+    <string name="dejavu_app_icon_classic">Aklasik</string>
+    <string name="dejavu_app_icon_change_title">Beddel tignit n usnas?</string>
+    <string name="dejavu_app_icon_change_message">%1$s yezmer ad yettwamdel. Ales alday-is seg tignit-is tamaynut.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Ismal d yinegzumen i terniḍ ɣer ugdil-ik agejdan ad ttwakksen. %1$s yezmer ad yettwamdel. Ales alday-is seg tignit-is tamaynut.</string>
+    <string name="dejavu_app_icon_change">Senfel tignit</string>
+    <string name="dejavu_app_icon_change_failed">Tegguma ad tettwabeddel tignit n usnas. Kkes ismal d yinegzumen i terniḍ ɣer ugdil-ik agejdan, syen ɛreḍ tikkelt-nniḍen.</string>
     <string name="dejavu_settings_essentials">Ayen ilaqen</string>
     <string name="dejavu_settings_essentials_summary">Ffer-ten akk neɣ kra seg-sen ɣef tiliɣri-agi</string>
     <string name="dejavu_essentials_hint">Ayen ilaqen i teffreḍ dagi ad qqimen deg Zen d yibenkan-ik nniḍen, ad d-uɣalen mi ara ten-id-tesskneḍ tikkelt nniḍen.</string>

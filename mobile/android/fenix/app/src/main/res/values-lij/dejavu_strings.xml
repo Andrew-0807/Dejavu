@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Doî toin</string>
     <string name="dejavu_icons_firefox">Classiche</string>
     <string name="dejavu_icons_rounded">Arrotondæ</string>
+    <string name="dejavu_settings_app_icon">Icona da app</string>
+    <string name="dejavu_app_icon_yellow">Giana</string>
+    <string name="dejavu_app_icon_blue">Bleu</string>
+    <string name="dejavu_app_icon_classic">Classica</string>
+    <string name="dejavu_app_icon_change_title">Cangiâ l’icona da app?</string>
+    <string name="dejavu_app_icon_change_message">%1$s o se peu særâ. Arvilo torna da-a sò neuva icona.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">I sciti e i scorsaieu che t’æ azonto a-a Pagina prinçipâ vegnan scancellæ. %1$s o se peu særâ. Arvilo torna da-a sò neuva icona.</string>
+    <string name="dejavu_app_icon_change">Cangia icona</string>
+    <string name="dejavu_app_icon_change_failed">No l’è stæto poscibile cangiâ l’icona da app. Scancella i sciti e i scorsaieu che t’æ azonto a-a Pagina prinçipâ e preuva torna.</string>
     <string name="dejavu_settings_essentials">Essençiali</string>
     <string name="dejavu_settings_essentials_summary">Ascondili tutti ò solo quarchedun in sce sto telefono</string>
     <string name="dejavu_essentials_hint">I essençiali che t\'ascondi chì restan in Zen e in sce i tò atri dispoxitivi, e tornan quande ti i mostri de neuvo.</string>

@@ -625,6 +625,15 @@
     <string name="dejavu_icons_dejavu">Daouliv</string>
     <string name="dejavu_icons_firefox">Klasel</string>
     <string name="dejavu_icons_rounded">Ront</string>
+    <string name="dejavu_settings_app_icon">Arlun an arload</string>
+    <string name="dejavu_app_icon_yellow">Melen</string>
+    <string name="dejavu_app_icon_blue">Glas</string>
+    <string name="dejavu_app_icon_classic">Klasel</string>
+    <string name="dejavu_app_icon_change_title">Kemmañ arlun an arload?</string>
+    <string name="dejavu_app_icon_change_message">%1$s a c’hall bezañ serret. Pouezit war an arlun nevez evit e zigeriñ en-dro.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Lamet e vo al lec’hiennoù hag ar berradennoù ho peus ouzhpennet d’ho skramm degemer. %1$s a c’hall bezañ serret. Pouezit war an arlun nevez evit e zigeriñ en-dro.</string>
+    <string name="dejavu_app_icon_change">Kemmañ an arlun</string>
+    <string name="dejavu_app_icon_change_failed">N’haller ket kemmañ arlun an arload. Lamit al lec’hiennoù hag ar berradennoù ho peus ouzhpennet d’ho skramm degemer ha klaskit en-dro.</string>
     <string name="dejavu_settings_essentials">Traoù pouezus</string>
     <string name="dejavu_settings_essentials_summary">Kuzhat anezho holl pe lod anezho war ar pellgomzer-mañ</string>
     <string name="dejavu_essentials_hint">An traoù pouezus a guzhit amañ a chom e Zen ha war ho trevnadoù all, hag a zeu en-dro pa ziskouezit anezho adarre.</string>

@@ -634,6 +634,15 @@
     <string name="dejavu_icons_dejavu">দুই রঙের</string>
     <string name="dejavu_icons_firefox">ক্লাসিক</string>
     <string name="dejavu_icons_rounded">গোলাকার</string>
+    <string name="dejavu_settings_app_icon">অ্যাপ আইকন</string>
+    <string name="dejavu_app_icon_yellow">হলুদ</string>
+    <string name="dejavu_app_icon_blue">নীল</string>
+    <string name="dejavu_app_icon_classic">ক্লাসিক</string>
+    <string name="dejavu_app_icon_change_title">অ্যাপ আইকন পরিবর্তন করবেন?</string>
+    <string name="dejavu_app_icon_change_message">%1$s বন্ধ হয়ে যেতে পারে। এর নতুন আইকন থেকে এটি আবার খুলুন।</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">আপনার হোম স্ক্রিনে যুক্ত করা সাইট ও শর্টকাটগুলো সরিয়ে ফেলা হবে। %1$s বন্ধ হয়ে যেতে পারে। এর নতুন আইকন থেকে এটি আবার খুলুন।</string>
+    <string name="dejavu_app_icon_change">আইকন পরিবর্তন করুন</string>
+    <string name="dejavu_app_icon_change_failed">অ্যাপ আইকন পরিবর্তন করা যায়নি। আপনার হোম স্ক্রিনে যুক্ত করা সাইট ও শর্টকাটগুলো সরিয়ে আবার চেষ্টা করুন।</string>
     <string name="dejavu_settings_essentials">এসেনশিয়াল</string>
     <string name="dejavu_settings_essentials_summary">এই ফোনে সবগুলো বা কয়েকটি লুকান</string>
     <string name="dejavu_essentials_hint">এখানে আপনি যে এসেনশিয়ালগুলো লুকান, সেগুলো Zen-এ এবং আপনার অন্যান্য ডিভাইসে থেকে যায়, আর আবার দেখালে ফিরে আসে।</string>

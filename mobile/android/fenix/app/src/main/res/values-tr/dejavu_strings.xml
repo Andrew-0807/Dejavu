@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Çift tonlu</string>
     <string name="dejavu_icons_firefox">Klasik</string>
     <string name="dejavu_icons_rounded">Yuvarlak</string>
+    <string name="dejavu_settings_app_icon">Uygulama simgesi</string>
+    <string name="dejavu_app_icon_yellow">Sarı</string>
+    <string name="dejavu_app_icon_blue">Mavi</string>
+    <string name="dejavu_app_icon_classic">Klasik</string>
+    <string name="dejavu_app_icon_change_title">Uygulama simgesi değiştirilsin mi?</string>
+    <string name="dejavu_app_icon_change_message">%1$s kapanabilir. Uygulamayı yeni simgesinden yeniden açın.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Ana ekranınıza eklediğiniz siteler ve kısayollar kaldırılacak. %1$s kapanabilir. Uygulamayı yeni simgesinden yeniden açın.</string>
+    <string name="dejavu_app_icon_change">Simgeyi değiştir</string>
+    <string name="dejavu_app_icon_change_failed">Uygulama simgesi değiştirilemedi. Ana ekranınıza eklediğiniz siteleri ve kısayolları kaldırıp yeniden deneyin.</string>
     <string name="dejavu_settings_essentials">Temel sekmeler</string>
     <string name="dejavu_settings_essentials_summary">Tümünü veya bazılarını bu telefonda gizle</string>
     <string name="dejavu_essentials_hint">Burada gizlediğiniz temel sekmeler Zen\'de ve diğer cihazlarınızda kalır, onları yeniden gösterdiğinizde geri gelir.</string>

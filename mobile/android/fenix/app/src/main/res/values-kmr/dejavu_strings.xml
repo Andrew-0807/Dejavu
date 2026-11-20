@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Du reng</string>
     <string name="dejavu_icons_firefox">Klasîk</string>
     <string name="dejavu_icons_rounded">Girover</string>
+    <string name="dejavu_settings_app_icon">Îkona sepanê</string>
+    <string name="dejavu_app_icon_yellow">Zer</string>
+    <string name="dejavu_app_icon_blue">Şîn</string>
+    <string name="dejavu_app_icon_classic">Klasîk</string>
+    <string name="dejavu_app_icon_change_title">Îkona sepanê biguherîne?</string>
+    <string name="dejavu_app_icon_change_message">Dibe ku %1$s bê girtin. Bi îkona wê ya nû dîsa veke.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Malper û kurtebirên ku te tevlî ekrana xwe ya sereke kirine dê bên rakirin. Dibe ku %1$s bê girtin. Bi îkona wê ya nû dîsa veke.</string>
+    <string name="dejavu_app_icon_change">Îkonê biguherîne</string>
+    <string name="dejavu_app_icon_change_failed">Îkona sepanê nehat guhertin. Malper û kurtebirên ku te tevlî ekrana xwe ya sereke kirine jê bibe û dîsa biceribîne.</string>
     <string name="dejavu_settings_essentials">Malperên girîng</string>
     <string name="dejavu_settings_essentials_summary">Hemûyan an hinekan li ser vê telefonê veşêre</string>
     <string name="dejavu_essentials_hint">Malperên girîng ên ku tu li vir vedişêrî, di Zen de û li ser cîhazên te yên din dimînin, û dema ku tu wan dîsa nîşan bidî, vedigerin.</string>

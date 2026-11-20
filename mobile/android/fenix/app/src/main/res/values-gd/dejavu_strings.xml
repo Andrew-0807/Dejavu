@@ -617,6 +617,15 @@
     <string name="dejavu_icons_dejavu">Dà thòna</string>
     <string name="dejavu_icons_firefox">Clasaigeach</string>
     <string name="dejavu_icons_rounded">Cruinn</string>
+    <string name="dejavu_settings_app_icon">Ìomhaigheag na h-aplacaid</string>
+    <string name="dejavu_app_icon_yellow">Buidhe</string>
+    <string name="dejavu_app_icon_blue">Gorm</string>
+    <string name="dejavu_app_icon_classic">Clasaigeach</string>
+    <string name="dejavu_app_icon_change_title">A bheil thu airson ìomhaigheag na h-aplacaid atharrachadh?</string>
+    <string name="dejavu_app_icon_change_message">Dh’fhaodte gun dùin %1$s e fhèin. Fosgail e a-rithist on ìomhaigheag ùr aige.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Thèid na làraichean is na h-ath-ghoiridean a chuir thu ris an sgrìn-dachaigh agad a thoirt air falbh. Dh’fhaodte gun dùin %1$s e fhèin. Fosgail e a-rithist on ìomhaigheag ùr aige.</string>
+    <string name="dejavu_app_icon_change">Atharraich an ìomhaigheag</string>
+    <string name="dejavu_app_icon_change_failed">Cha b’ urrainn dhuinn ìomhaigheag na h-aplacaid atharrachadh. Thoir air falbh na làraichean is na h-ath-ghoiridean a chuir thu ris an sgrìn-dachaigh agad ’s feuch ris a-rithist.</string>
     <string name="dejavu_settings_essentials">Feumalachdan</string>
     <string name="dejavu_settings_essentials_summary">Falaich iad uile no cuid dhiubh air an fhòn seo</string>
     <string name="dejavu_essentials_hint">Fanaidh na feumalachdan a dh\'fhalaicheas tu an-seo ann an Zen agus air na h-uidheaman eile agad, agus tillidh iad nuair a sheallas tu iad a-rithist.</string>

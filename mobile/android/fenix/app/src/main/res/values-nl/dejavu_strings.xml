@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Twee tinten</string>
     <string name="dejavu_icons_firefox">Klassiek</string>
     <string name="dejavu_icons_rounded">Afgerond</string>
+    <string name="dejavu_settings_app_icon">App-pictogram</string>
+    <string name="dejavu_app_icon_yellow">Geel</string>
+    <string name="dejavu_app_icon_blue">Blauw</string>
+    <string name="dejavu_app_icon_classic">Klassiek</string>
+    <string name="dejavu_app_icon_change_title">App-pictogram wijzigen?</string>
+    <string name="dejavu_app_icon_change_message">%1$s kan worden gesloten. Tik op het nieuwe pictogram om het opnieuw te openen.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">De websites en snelkoppelingen die u aan uw startscherm hebt toegevoegd, worden verwijderd. %1$s kan worden gesloten. Tik op het nieuwe pictogram om het opnieuw te openen.</string>
+    <string name="dejavu_app_icon_change">Pictogram wijzigen</string>
+    <string name="dejavu_app_icon_change_failed">Kan app-pictogram niet wijzigen. Verwijder de websites en snelkoppelingen die u aan uw startscherm hebt toegevoegd en probeer het opnieuw.</string>
     <string name="dejavu_settings_essentials">Favorieten</string>
     <string name="dejavu_settings_essentials_summary">Alle of enkele ervan verbergen op deze telefoon</string>
     <string name="dejavu_essentials_hint">Favorieten die je hier verbergt, blijven in Zen en op je andere apparaten, en komen terug als je ze weer toont.</string>

@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Dos tonos</string>
     <string name="dejavu_icons_firefox">Clásicos</string>
     <string name="dejavu_icons_rounded">Redondeados</string>
+    <string name="dejavu_settings_app_icon">Si ikonô app</string>
+    <string name="dejavu_app_icon_yellow">Sa māhiāj a</string>
+    <string name="dejavu_app_icon_blue">Sa kuāan</string>
+    <string name="dejavu_app_icon_classic">Klâsiko</string>
+    <string name="dejavu_app_icon_change_title">¿Cambiar el ícono de la aplicación?</string>
+    <string name="dejavu_app_icon_change_message">Gā’hue nārán riña App. Màn si gānùn ra’ât riña ikonô nākà rugui’ dan nī nayi’nïn ñûn %1$s.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Se quitarán los sitios y accesos directos que agregaste a tu pantalla de inicio. Gā’hue nārán riña App. Màn si gānùn ra’ât riña ikonô nākà rugui’ dan nī nayi’nïn ñûn %1$s.</string>
+    <string name="dejavu_app_icon_change">Ikonô guendâ nādunō’</string>
+    <string name="dejavu_app_icon_change_failed">No se pudo cambiar el ícono de la aplicación. Quita los sitios y accesos directos que agregaste a tu pantalla de inicio e inténtalo de nuevo.</string>
     <string name="dejavu_settings_essentials">Esenciales</string>
     <string name="dejavu_settings_essentials_summary">Oculta todos o algunos en este teléfono</string>
     <string name="dejavu_essentials_hint">Los esenciales que ocultas aquí se quedan en Zen y en tus otros dispositivos, y vuelven cuando los muestras de nuevo.</string>

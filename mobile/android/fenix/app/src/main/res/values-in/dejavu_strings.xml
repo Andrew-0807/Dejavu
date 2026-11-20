@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">Dwiwarna</string>
     <string name="dejavu_icons_firefox">Klasik</string>
     <string name="dejavu_icons_rounded">Bulat</string>
+    <string name="dejavu_settings_app_icon">Ikon aplikasi</string>
+    <string name="dejavu_app_icon_yellow">Kuning</string>
+    <string name="dejavu_app_icon_blue">Biru</string>
+    <string name="dejavu_app_icon_classic">Klasik</string>
+    <string name="dejavu_app_icon_change_title">Ubah ikon aplikasi?</string>
+    <string name="dejavu_app_icon_change_message">%1$s mungkin ditutup. Ketuk ikon baru untuk membukanya kembali.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Situs dan pintasan yang Anda tambahkan ke layar Beranda akan dihapus. %1$s mungkin ditutup. Ketuk ikon baru untuk membukanya kembali.</string>
+    <string name="dejavu_app_icon_change">Ubah ikon</string>
+    <string name="dejavu_app_icon_change_failed">Tidak dapat mengubah ikon aplikasi. Hapus situs dan pintasan yang Anda tambahkan ke layar Beranda, lalu coba lagi.</string>
     <string name="dejavu_settings_essentials">Situs penting</string>
     <string name="dejavu_settings_essentials_summary">Sembunyikan semua atau sebagian di ponsel ini</string>
     <string name="dejavu_essentials_hint">Situs penting yang Anda sembunyikan di sini tetap ada di Zen dan di perangkat Anda yang lain, dan muncul kembali saat Anda menampilkannya lagi.</string>

@@ -16,6 +16,16 @@
             android:key="@string/pref_key_app_icon" />
     </androidx.preference.PreferenceCategory>
 
+    <!-- Dejavu: the app's icon, see AppIconPreference. -->
+    <androidx.preference.PreferenceCategory
+        android:layout="@layout/preference_cat_style"
+        android:title="@string/dejavu_settings_app_icon"
+        app:iconSpaceReserved="false">
+        <org.mozilla.fenix.dejavu.settings.AppIconPreference
+            android:key="@string/pref_key_dejavu_app_icon"
+            android:persistent="false" />
+    </androidx.preference.PreferenceCategory>
+
     <androidx.preference.PreferenceCategory
         android:layout="@layout/preference_cat_style"
         android:title="@string/preferences_theme"

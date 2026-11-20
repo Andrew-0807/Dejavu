@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">Àwọ̀ méjì</string>
     <string name="dejavu_icons_firefox">Àtijọ́</string>
     <string name="dejavu_icons_rounded">Rìbìtì</string>
+    <string name="dejavu_settings_app_icon">Àmì áàpù</string>
+    <string name="dejavu_app_icon_yellow">Ìyeyè</string>
+    <string name="dejavu_app_icon_blue">Búlúù</string>
+    <string name="dejavu_app_icon_classic">Àtijọ́</string>
+    <string name="dejavu_app_icon_change_title">Ṣé kí o yí àmì áàpù padà?</string>
+    <string name="dejavu_app_icon_change_message">%1$s lè pa dé. Tún un ṣí láti ara àmì tuntun rẹ̀.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">A óò yọ àwọn sáìtì àti ọ̀nà-àbùjá tí o fi kún síkíríìnì àkọ́kọ́ rẹ kúrò. %1$s lè pa dé. Tún un ṣí láti ara àmì tuntun rẹ̀.</string>
+    <string name="dejavu_app_icon_change">Yí àmì padà</string>
+    <string name="dejavu_app_icon_change_failed">A kò lè yí àmì áàpù padà. Yọ àwọn sáìtì àti ọ̀nà-àbùjá tí o fi kún síkíríìnì àkọ́kọ́ rẹ kúrò, kí o sì tún gbìyànjú.</string>
     <string name="dejavu_settings_essentials">Pàtàkì</string>
     <string name="dejavu_settings_essentials_summary">Fi gbogbo wọn tàbí díẹ̀ nínú wọn pamọ́ lórí fóònù yìí</string>
     <string name="dejavu_essentials_hint">Àwọn Pàtàkì tí o bá fi pamọ́ níbí máa wà nínú Zen àti lórí àwọn ẹ̀rọ rẹ mìíràn, wọ́n á sì padà wá nígbà tí o bá tún fi wọ́n hàn.</string>

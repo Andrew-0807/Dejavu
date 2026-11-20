@@ -625,6 +625,15 @@
     <string name="dejavu_icons_dejavu">Dhá thon</string>
     <string name="dejavu_icons_firefox">Clasaiceach</string>
     <string name="dejavu_icons_rounded">Cruinn</string>
+    <string name="dejavu_settings_app_icon">Deilbhín na haipe</string>
+    <string name="dejavu_app_icon_yellow">Buí</string>
+    <string name="dejavu_app_icon_blue">Gorm</string>
+    <string name="dejavu_app_icon_classic">Clasaiceach</string>
+    <string name="dejavu_app_icon_change_title">Deilbhín na haipe a athrú?</string>
+    <string name="dejavu_app_icon_change_message">Seans go ndúnfaidh %1$s. Brúigh an deilbhín nua chun é a athoscailt.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Bainfear na suímh agus na haicearraí a chuir tú le do scáileán Baile. Seans go ndúnfaidh %1$s. Brúigh an deilbhín nua chun é a athoscailt.</string>
+    <string name="dejavu_app_icon_change">Athraigh an deilbhín</string>
+    <string name="dejavu_app_icon_change_failed">Níorbh fhéidir deilbhín na haipe a athrú. Bain na suímh agus na haicearraí a chuir tú le do scáileán Baile agus bain triail eile as.</string>
     <string name="dejavu_settings_essentials">Riachtanais</string>
     <string name="dejavu_settings_essentials_summary">Folaigh iad go léir nó cuid acu ar an bhfón seo</string>
     <string name="dejavu_essentials_hint">Fanann na riachtanais a fholaíonn tú anseo i Zen agus ar do ghléasanna eile, agus tagann siad ar ais nuair a thaispeánann tú iad arís.</string>

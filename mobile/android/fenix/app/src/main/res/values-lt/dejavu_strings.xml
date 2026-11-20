@@ -617,6 +617,15 @@
     <string name="dejavu_icons_dejavu">Dviejų atspalvių</string>
     <string name="dejavu_icons_firefox">Klasikinės</string>
     <string name="dejavu_icons_rounded">Suapvalintos</string>
+    <string name="dejavu_settings_app_icon">Programos piktograma</string>
+    <string name="dejavu_app_icon_yellow">Geltona</string>
+    <string name="dejavu_app_icon_blue">Mėlyna</string>
+    <string name="dejavu_app_icon_classic">Klasikinė</string>
+    <string name="dejavu_app_icon_change_title">Pakeisti programos piktogramą?</string>
+    <string name="dejavu_app_icon_change_message">%1$s gali užsiverti. Bakstelėkite naują piktogramą, kad atvertumėte ją iš naujo.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Svetainės ir leistukai, kuriuos įtraukėte į pradžios ekraną, bus pašalinti. %1$s gali užsiverti. Bakstelėkite naują piktogramą, kad atvertumėte ją iš naujo.</string>
+    <string name="dejavu_app_icon_change">Pakeisti piktogramą</string>
+    <string name="dejavu_app_icon_change_failed">Nepavyko pakeisti programos piktogramos. Pašalinkite svetaines ir leistukus, kuriuos įtraukėte į pradžios ekraną, ir bandykite dar kartą.</string>
     <string name="dejavu_settings_essentials">Mėgstamiausi</string>
     <string name="dejavu_settings_essentials_summary">Paslėpkite visus arba kai kuriuos šiame telefone</string>
     <string name="dejavu_essentials_hint">Čia paslėpti Mėgstamiausi lieka Zen naršyklėje ir kituose jūsų įrenginiuose, o kai vėl juos parodysite, sugrįš.</string>

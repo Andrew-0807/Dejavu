@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Екі реңкті</string>
     <string name="dejavu_icons_firefox">Классикалық</string>
     <string name="dejavu_icons_rounded">Дөңгеленген</string>
+    <string name="dejavu_settings_app_icon">Қолданба таңбашасы</string>
+    <string name="dejavu_app_icon_yellow">Сары</string>
+    <string name="dejavu_app_icon_blue">Көк</string>
+    <string name="dejavu_app_icon_classic">Классикалық</string>
+    <string name="dejavu_app_icon_change_title">Қолданба таңбашасын өзгерту керек пе?</string>
+    <string name="dejavu_app_icon_change_message">%1$s жабылуы мүмкін. Қайта ашу үшін жаңа таңбашаны шертіңіз.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Негізгі экранға қосқан сайттар мен жарлықтар өшіріледі. %1$s жабылуы мүмкін. Қайта ашу үшін жаңа таңбашаны шертіңіз.</string>
+    <string name="dejavu_app_icon_change">Таңбашаны өзгерту</string>
+    <string name="dejavu_app_icon_change_failed">Қолданба таңбашасын өзгерту мүмкін болмады. Негізгі экранға қосқан сайттар мен жарлықтарды өшіріп, қайталап көріңіз.</string>
     <string name="dejavu_settings_essentials">Негізгілер</string>
     <string name="dejavu_settings_essentials_summary">Осы телефонда олардың барлығын немесе кейбірін жасыру</string>
     <string name="dejavu_essentials_hint">Осында жасырған негізгілеріңіз Zen-де және басқа құрылғыларыңызда қалады, ал оларды қайта көрсеткенде, қайтып оралады.</string>

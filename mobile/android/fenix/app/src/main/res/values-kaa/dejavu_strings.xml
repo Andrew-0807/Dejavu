@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Eki reńli</string>
     <string name="dejavu_icons_firefox">Klassik</string>
     <string name="dejavu_icons_rounded">Dóńgelek</string>
+    <string name="dejavu_settings_app_icon">Baǵdarlama belgishesi</string>
+    <string name="dejavu_app_icon_yellow">Sarı</string>
+    <string name="dejavu_app_icon_blue">Kók</string>
+    <string name="dejavu_app_icon_classic">Klassik</string>
+    <string name="dejavu_app_icon_change_title">Baǵdarlama belgishesi ózgertilsin be?</string>
+    <string name="dejavu_app_icon_change_message">%1$s jabılıwı múmkin. Onı jańa belgishesinen qayta ashıń.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Bas ekranǵa qosqan saytlarıńız hám operativ buyrıqlarıńız alıp taslanadı. %1$s jabılıwı múmkin. Onı jańa belgishesinen qayta ashıń.</string>
+    <string name="dejavu_app_icon_change">Belgisheni ózgertiw</string>
+    <string name="dejavu_app_icon_change_failed">Baǵdarlama belgishesin ózgertiw múmkin bolmadı. Bas ekranǵa qosqan saytlarıńız hám operativ buyrıqlarıńızdı alıp taslap, qayta urınıp kóriń.</string>
     <string name="dejavu_settings_essentials">Tiykarǵılar</string>
     <string name="dejavu_settings_essentials_summary">Usı telefonda olardıń barlıǵın yamasa ayırımların jasırıw</string>
     <string name="dejavu_essentials_hint">Bul jerde jasırǵan tiykarǵılarıńız Zen-de hám basqa qurılmalarıńızda qaladı, al olardı qayta kórsetkenińizde qaytıp keledi.</string>

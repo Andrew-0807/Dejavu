@@ -633,6 +633,15 @@
     <string name="dejavu_icons_dejavu">ثنائية اللون</string>
     <string name="dejavu_icons_firefox">كلاسيكية</string>
     <string name="dejavu_icons_rounded">مستديرة</string>
+    <string name="dejavu_settings_app_icon">أيقونة التطبيق</string>
+    <string name="dejavu_app_icon_yellow">أصفر</string>
+    <string name="dejavu_app_icon_blue">أزرق</string>
+    <string name="dejavu_app_icon_classic">كلاسيكية</string>
+    <string name="dejavu_app_icon_change_title">تغيير أيقونة التطبيق؟</string>
+    <string name="dejavu_app_icon_change_message">قد يُغلَق %1$s. أعد فتحه من أيقونته الجديدة.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ستُحذف المواقع والاختصارات التي أضفتها إلى الشاشة الرئيسية. قد يُغلَق %1$s. أعد فتحه من أيقونته الجديدة.</string>
+    <string name="dejavu_app_icon_change">غيّر الأيقونة</string>
+    <string name="dejavu_app_icon_change_failed">تعذّر تغيير أيقونة التطبيق. احذف المواقع والاختصارات التي أضفتها إلى الشاشة الرئيسية وحاول مجددًا.</string>
     <string name="dejavu_settings_essentials">الأساسيات</string>
     <string name="dejavu_settings_essentials_summary">إخفاء كلها أو بعضها على هذا الهاتف</string>
     <string name="dejavu_essentials_hint">تبقى الأساسيات التي تخفيها هنا في Zen وعلى أجهزتك الأخرى، وتعود عندما تعرضها مجددًا.</string>

@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Ikki tusli</string>
     <string name="dejavu_icons_firefox">Klassik</string>
     <string name="dejavu_icons_rounded">Yumaloq</string>
+    <string name="dejavu_settings_app_icon">Ilova nishonchasi</string>
+    <string name="dejavu_app_icon_yellow">Sariq</string>
+    <string name="dejavu_app_icon_blue">Koʻk</string>
+    <string name="dejavu_app_icon_classic">Klassik</string>
+    <string name="dejavu_app_icon_change_title">Ilova nishonchasi oʻzgartirilsinmi?</string>
+    <string name="dejavu_app_icon_change_message">%1$s yopilishi mumkin. Uni yangi nishonchasidan qayta oching.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Bosh ekranga qoʻshgan saytlaringiz va tezkor buyruqlaringiz olib tashlanadi. %1$s yopilishi mumkin. Uni yangi nishonchasidan qayta oching.</string>
+    <string name="dejavu_app_icon_change">Nishonchani oʻzgartirish</string>
+    <string name="dejavu_app_icon_change_failed">Ilova nishonchasini oʻzgartirib boʻlmadi. Bosh ekranga qoʻshgan saytlaringiz va tezkor buyruqlaringizni olib tashlang va qayta urining.</string>
     <string name="dejavu_settings_essentials">Muhimlar</string>
     <string name="dejavu_settings_essentials_summary">Ularning hammasini yoki ba\'zilarini shu telefonda yashirish</string>
     <string name="dejavu_essentials_hint">Bu yerda yashirgan muhimlaringiz Zen-da va boshqa qurilmalaringizda qoladi hamda ularni qayta ko\'rsatganingizda qaytib keladi.</string>

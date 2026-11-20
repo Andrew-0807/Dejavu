@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Deux tons</string>
     <string name="dejavu_icons_firefox">Classique</string>
     <string name="dejavu_icons_rounded">Arrondi</string>
+    <string name="dejavu_settings_app_icon">Icône de l’application</string>
+    <string name="dejavu_app_icon_yellow">Jaune</string>
+    <string name="dejavu_app_icon_blue">Bleu</string>
+    <string name="dejavu_app_icon_classic">Classique</string>
+    <string name="dejavu_app_icon_change_title">Changer l’icône de l’application ?</string>
+    <string name="dejavu_app_icon_change_message">%1$s risque de se fermer. Rouvrez-le depuis sa nouvelle icône.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Les sites et raccourcis que vous avez ajoutés à votre écran d’accueil seront supprimés. %1$s risque de se fermer. Rouvrez-le depuis sa nouvelle icône.</string>
+    <string name="dejavu_app_icon_change">Changer l’icône</string>
+    <string name="dejavu_app_icon_change_failed">Impossible de changer l’icône de l’application. Supprimez les sites et raccourcis que vous avez ajoutés à votre écran d’accueil, puis réessayez.</string>
     <string name="dejavu_settings_essentials">Favoris</string>
     <string name="dejavu_settings_essentials_summary">Masquer tout ou partie des favoris sur ce téléphone</string>
     <string name="dejavu_essentials_hint">Les favoris que tu masques ici restent dans Zen et sur tes autres appareils, et reviennent quand tu les affiches à nouveau.</string>

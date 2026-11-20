@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Bicolores</string>
     <string name="dejavu_icons_firefox">Clásicos</string>
     <string name="dejavu_icons_rounded">Redondos</string>
+    <string name="dejavu_settings_app_icon">Iconu de l\'aplicación</string>
+    <string name="dejavu_app_icon_yellow">Mariellu</string>
+    <string name="dejavu_app_icon_blue">Azul</string>
+    <string name="dejavu_app_icon_classic">Clásicu</string>
+    <string name="dejavu_app_icon_change_title">¿Camudar l\'iconu de l\'aplicación?</string>
+    <string name="dejavu_app_icon_change_message">%1$s pue zarrase. Toca l\'iconu nuevu pa volver abrilu.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Van quitase los sitios y los atayos qu\'amestesti a la pantalla d\'aniciu. %1$s pue zarrase. Toca l\'iconu nuevu pa volver abrilu.</string>
+    <string name="dejavu_app_icon_change">Camudar l\'iconu</string>
+    <string name="dejavu_app_icon_change_failed">Nun se pudo camudar l\'iconu de l\'aplicación. Quita los sitios y los atayos qu\'amestesti a la pantalla d\'aniciu y volvi tentalo.</string>
     <string name="dejavu_settings_essentials">Esenciales</string>
     <string name="dejavu_settings_essentials_summary">Anubrir toos o dalgunos nesti teléfonu</string>
     <string name="dejavu_essentials_hint">Los esenciales qu\'anubres equí queden en Zen y nos tos otros preseos, y vuelven cuando los amueses otra vegada.</string>

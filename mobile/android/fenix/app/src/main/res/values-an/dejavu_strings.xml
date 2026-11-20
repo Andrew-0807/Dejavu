@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Bicolors</string>
     <string name="dejavu_icons_firefox">Clasicos</string>
     <string name="dejavu_icons_rounded">Redondos</string>
+    <string name="dejavu_settings_app_icon">Icono d’a aplicación</string>
+    <string name="dejavu_app_icon_yellow">Amariello</string>
+    <string name="dejavu_app_icon_blue">Azul</string>
+    <string name="dejavu_app_icon_classic">Clasico</string>
+    <string name="dejavu_app_icon_change_title">Cambiar l’icono d’a aplicación?</string>
+    <string name="dejavu_app_icon_change_message">%1$s puede zarrar-se. Torna a ubrir-lo dende o suyo nuevo icono.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Os puestos y accesos directos que has adhibiu a la pantalla d’inicio se borrarán. %1$s puede zarrar-se. Torna a ubrir-lo dende o suyo nuevo icono.</string>
+    <string name="dejavu_app_icon_change">Cambiar icono</string>
+    <string name="dejavu_app_icon_change_failed">No s’ha puesto cambiar l’icono d’a aplicación. Borra os puestos y accesos directos que has adhibiu a la pantalla d’inicio y torna a intentar-lo.</string>
     <string name="dejavu_settings_essentials">Esenciales</string>
     <string name="dejavu_settings_essentials_summary">Amagar totz u bels d\'ells en este telefono</string>
     <string name="dejavu_essentials_hint">Os esenciales que amagas aquí se quedan en Zen y en os tuyos atros dispositivos, y tornan quan los tornas a amostrar.</string>

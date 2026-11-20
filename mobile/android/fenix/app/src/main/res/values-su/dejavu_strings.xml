@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">Dua warna</string>
     <string name="dejavu_icons_firefox">Klasik</string>
     <string name="dejavu_icons_rounded">Buleud</string>
+    <string name="dejavu_settings_app_icon">Ikon aplikasi</string>
+    <string name="dejavu_app_icon_yellow">Konéng</string>
+    <string name="dejavu_app_icon_blue">Bulao</string>
+    <string name="dejavu_app_icon_classic">Klasik</string>
+    <string name="dejavu_app_icon_change_title">Ganti ikon aplikasi?</string>
+    <string name="dejavu_app_icon_change_message">%1$s bisa waé ditutup. Buka deui tina ikon anyarna.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Loka jeung tarabas anu ditambahkeun ka layar Tepas anjeun bakal dipiceun. %1$s bisa waé ditutup. Buka deui tina ikon anyarna.</string>
+    <string name="dejavu_app_icon_change">Ganti ikon</string>
+    <string name="dejavu_app_icon_change_failed">Teu bisa ngaganti ikon aplikasi. Piceun loka jeung tarabas anu ditambahkeun ka layar Tepas anjeun, terus pecakan deui.</string>
     <string name="dejavu_settings_essentials">Penting</string>
     <string name="dejavu_settings_essentials_summary">Sumputkeun sadayana atawa sawaréh dina telepon ieu</string>
     <string name="dejavu_essentials_hint">Penting nu disumputkeun di dieu tetep aya di Zen jeung di parangkat séjén anjeun, sarta bakal balik deui lamun dipintonkeun deui.</string>

@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">İkirəngli</string>
     <string name="dejavu_icons_firefox">Klassik</string>
     <string name="dejavu_icons_rounded">Yuvarlaq</string>
+    <string name="dejavu_settings_app_icon">Tətbiq ikonu</string>
+    <string name="dejavu_app_icon_yellow">Sarı</string>
+    <string name="dejavu_app_icon_blue">Mavi</string>
+    <string name="dejavu_app_icon_classic">Klassik</string>
+    <string name="dejavu_app_icon_change_title">Tətbiq ikonu dəyişdirilsin?</string>
+    <string name="dejavu_app_icon_change_message">%1$s bağlana bilər. Onu yeni ikonundan yenidən açın.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Ana ekrana əlavə etdiyiniz saytlar və qısayollar silinəcək. %1$s bağlana bilər. Onu yeni ikonundan yenidən açın.</string>
+    <string name="dejavu_app_icon_change">İkonu dəyişdir</string>
+    <string name="dejavu_app_icon_change_failed">Tətbiq ikonunu dəyişdirmək mümkün olmadı. Ana ekrana əlavə etdiyiniz saytları və qısayolları silin və yenidən cəhd edin.</string>
     <string name="dejavu_settings_essentials">Əsaslar</string>
     <string name="dejavu_settings_essentials_summary">Bu telefonda hamısını və ya bəzilərini gizlət</string>
     <string name="dejavu_essentials_hint">Burada gizlətdiyiniz əsaslar Zen-də və digər cihazlarınızda qalır, yenidən göstərdikdə isə geri qayıdır.</string>

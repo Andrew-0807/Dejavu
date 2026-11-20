@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Duos tonos</string>
     <string name="dejavu_icons_firefox">Clàssicas</string>
     <string name="dejavu_icons_rounded">Arrodundadas</string>
+    <string name="dejavu_settings_app_icon">Icona de s’aplicatzione</string>
+    <string name="dejavu_app_icon_yellow">Groga</string>
+    <string name="dejavu_app_icon_blue">Biaita</string>
+    <string name="dejavu_app_icon_classic">Clàssica</string>
+    <string name="dejavu_app_icon_change_title">Boles modificare s’icona de s’aplicatzione?</string>
+    <string name="dejavu_app_icon_change_message">%1$s si podet serrare. Torra a l’abèrrere dae s’icona noa.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Is sitos e is curtzadòrgios chi as agiuntu a s’ischermu printzipale ant a èssere bogados. %1$s si podet serrare. Torra a l’abèrrere dae s’icona noa.</string>
+    <string name="dejavu_app_icon_change">Modifica s’icona</string>
+    <string name="dejavu_app_icon_change_failed">No est istadu possìbile modificare s’icona de s’aplicatzione. Boga is sitos e is curtzadòrgios chi as agiuntu a s’ischermu printzipale e torra a proare.</string>
     <string name="dejavu_settings_essentials">Essentziales</string>
     <string name="dejavu_settings_essentials_summary">Cua·los totu o calicunu in custu telèfonu</string>
     <string name="dejavu_essentials_hint">Is essentziales chi cuas inoghe abarrant in Zen e in is àteros dispositivos tuos, e torrant cando los ammustras de nou.</string>

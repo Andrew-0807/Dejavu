@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Δίχρωμα</string>
     <string name="dejavu_icons_firefox">Κλασικά</string>
     <string name="dejavu_icons_rounded">Στρογγυλεμένα</string>
+    <string name="dejavu_settings_app_icon">Εικονίδιο εφαρμογής</string>
+    <string name="dejavu_app_icon_yellow">Κίτρινο</string>
+    <string name="dejavu_app_icon_blue">Μπλε</string>
+    <string name="dejavu_app_icon_classic">Κλασικό</string>
+    <string name="dejavu_app_icon_change_title">Αλλαγή εικονιδίου εφαρμογής;</string>
+    <string name="dejavu_app_icon_change_message">Το %1$s ενδέχεται να κλείσει. Ανοίξτε το ξανά από το νέο του εικονίδιο.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Οι ιστότοποι και οι συντομεύσεις που προσθέσατε στην αρχική σας οθόνη θα αφαιρεθούν. Το %1$s ενδέχεται να κλείσει. Ανοίξτε το ξανά από το νέο του εικονίδιο.</string>
+    <string name="dejavu_app_icon_change">Αλλαγή εικονιδίου</string>
+    <string name="dejavu_app_icon_change_failed">Δεν ήταν δυνατή η αλλαγή του εικονιδίου εφαρμογής. Αφαιρέστε τους ιστοτόπους και τις συντομεύσεις που προσθέσατε στην αρχική σας οθόνη και δοκιμάστε ξανά.</string>
     <string name="dejavu_settings_essentials">Αγαπημένα</string>
     <string name="dejavu_settings_essentials_summary">Απόκρυψη όλων ή μερικών σε αυτό το τηλέφωνο</string>
     <string name="dejavu_essentials_hint">Τα αγαπημένα που αποκρύπτετε εδώ παραμένουν στο Zen και στις άλλες συσκευές σας και επιστρέφουν όταν τα εμφανίσετε ξανά.</string>

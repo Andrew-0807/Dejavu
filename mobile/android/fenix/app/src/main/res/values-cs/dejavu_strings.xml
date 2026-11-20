@@ -617,6 +617,15 @@
     <string name="dejavu_icons_dejavu">Dvoubarevné</string>
     <string name="dejavu_icons_firefox">Klasické</string>
     <string name="dejavu_icons_rounded">Zaoblené</string>
+    <string name="dejavu_settings_app_icon">Ikona aplikace</string>
+    <string name="dejavu_app_icon_yellow">Žlutá</string>
+    <string name="dejavu_app_icon_blue">Modrá</string>
+    <string name="dejavu_app_icon_classic">Klasická</string>
+    <string name="dejavu_app_icon_change_title">Změnit ikonu aplikace?</string>
+    <string name="dejavu_app_icon_change_message">Aplikace %1$s může být zavřena. Klepněte na novou ikonu pro opětovné otevření.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Webové stránky a zkratky, které jste si přidali na domovskou obrazovku, budou odstraněny. Aplikace %1$s může být zavřena. Klepněte na novou ikonu pro opětovné otevření.</string>
+    <string name="dejavu_app_icon_change">Změnit ikonu</string>
+    <string name="dejavu_app_icon_change_failed">Ikonu aplikace se nepodařilo změnit. Odeberte webové stránky a zkratky, které jste si přidali na domovskou obrazovku, a zkuste to znovu.</string>
     <string name="dejavu_settings_essentials">Oblíbené</string>
     <string name="dejavu_settings_essentials_summary">Skrýt všechny nebo jen některé v tomto telefonu</string>
     <string name="dejavu_essentials_hint">Oblíbené, které zde skryjete, zůstanou v Zenu a na vašich dalších zařízeních a vrátí se, když je znovu zobrazíte.</string>

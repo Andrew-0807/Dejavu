@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Duha ka kolor</string>
     <string name="dejavu_icons_firefox">Klasiko</string>
     <string name="dejavu_icons_rounded">Lingin</string>
+    <string name="dejavu_settings_app_icon">Icon sa app</string>
+    <string name="dejavu_app_icon_yellow">Dalag</string>
+    <string name="dejavu_app_icon_blue">Asul</string>
+    <string name="dejavu_app_icon_classic">Klasiko</string>
+    <string name="dejavu_app_icon_change_title">Usbon ang icon sa app?</string>
+    <string name="dejavu_app_icon_change_message">Basin masira ang %1$s. Ablihi kini pag-usab gikan sa bag-ong icon niini.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Matangtang ang mga site ug shortcut nga imong gidugang sa imong home screen. Basin masira ang %1$s. Ablihi kini pag-usab gikan sa bag-ong icon niini.</string>
+    <string name="dejavu_app_icon_change">Usaba ang icon</string>
+    <string name="dejavu_app_icon_change_failed">Dili mausab ang icon sa app. Tangtanga ang mga site ug shortcut nga imong gidugang sa imong home screen ug sulayi pag-usab.</string>
     <string name="dejavu_settings_essentials">Mahinungdanon</string>
     <string name="dejavu_settings_essentials_summary">Tagoa silang tanan o pipila lang niini nga telepono</string>
     <string name="dejavu_essentials_hint">Ang Mahinungdanon nga imong itago dinhi magpabilin sa Zen ug sa imong ubang mga device, ug mobalik kini kung ipakita nimo pag-usab.</string>

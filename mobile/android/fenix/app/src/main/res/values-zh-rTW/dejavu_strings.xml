@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">雙色調</string>
     <string name="dejavu_icons_firefox">經典</string>
     <string name="dejavu_icons_rounded">圓角</string>
+    <string name="dejavu_settings_app_icon">應用程式圖示</string>
+    <string name="dejavu_app_icon_yellow">黃色</string>
+    <string name="dejavu_app_icon_blue">藍色</string>
+    <string name="dejavu_app_icon_classic">經典</string>
+    <string name="dejavu_app_icon_change_title">要更改應用程式圖示嗎？</string>
+    <string name="dejavu_app_icon_change_message">%1$s 可能會關閉，點擊新圖示即可重新開啟。</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">將移除您新增至裝置主畫面的網站與捷徑。%1$s 可能會關閉，點擊新圖示即可重新開啟。</string>
+    <string name="dejavu_app_icon_change">更改圖示</string>
+    <string name="dejavu_app_icon_change_failed">無法更改應用程式圖示，請移除您新增至裝置主畫面的網站與捷徑後再試一次。</string>
     <string name="dejavu_settings_essentials">常用網站</string>
     <string name="dejavu_settings_essentials_summary">在這支手機上隱藏全部或部分常用網站</string>
     <string name="dejavu_essentials_hint">在此隱藏的常用網站仍會保留在 Zen 和您的其他裝置上，再次顯示時就會回來。</string>

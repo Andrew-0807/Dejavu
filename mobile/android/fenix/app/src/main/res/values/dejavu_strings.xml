@@ -476,6 +476,27 @@
     <!-- Style of icons: rounded icons like the ones of Android. -->
     <string name="dejavu_icons_rounded">Rounded</string>
 
+    <!-- Settings: Customize, the app icon -->
+    <string name="pref_key_dejavu_app_icon" translatable="false">pref_key_dejavu_app_icon</string>
+    <!-- Heading over the app icons in Customize: the icon Dejavu has on the home screen and in the list of apps. -->
+    <string name="dejavu_settings_app_icon">App icon</string>
+    <!-- App icon: Dejavu's icon, a yellow letter D with a browser window in it. -->
+    <string name="dejavu_app_icon_yellow">Yellow</string>
+    <!-- App icon: the same icon in blue. -->
+    <string name="dejavu_app_icon_blue">Blue</string>
+    <!-- App icon: the icon Dejavu had before, a golden square with two overlapping circles on it. -->
+    <string name="dejavu_app_icon_classic">Classic</string>
+    <!-- Title of the dialog shown when another app icon is picked in Customize. -->
+    <string name="dejavu_app_icon_change_title">Change the app icon?</string>
+    <!-- Message of that dialog. %1$s is the app's name, Dejavu. -->
+    <string name="dejavu_app_icon_change_message">%1$s may close. Open it again from its new icon.</string>
+    <!-- Message of that dialog on Android 9 and older, which remove the shortcuts an app put on the home screen when its icon changes. %1$s is the app's name, Dejavu. -->
+    <string name="dejavu_app_icon_change_message_shortcuts">The sites and shortcuts you added to your home screen will be removed. %1$s may close. Open it again from its new icon.</string>
+    <!-- Button of that dialog that changes the icon. -->
+    <string name="dejavu_app_icon_change">Change icon</string>
+    <!-- Shown when Android could not move the sites and shortcuts on the home screen to the new icon, so the icon stayed as it was. -->
+    <string name="dejavu_app_icon_change_failed">Couldn’t change the app icon. Remove the sites and shortcuts you added to your home screen and try again.</string>
+
     <!-- Settings: the screens that group the settings under General -->
     <!-- Settings entry and screen title, under General, for the settings of tabs, workspaces and containers. -->
     <string name="dejavu_settings_tabs_workspaces">Tabs, workspaces and containers</string>

@@ -634,6 +634,15 @@
     <string name="dejavu_icons_dejavu">ટુ-ટોન</string>
     <string name="dejavu_icons_firefox">ક્લાસિક</string>
     <string name="dejavu_icons_rounded">ગોળાકાર</string>
+    <string name="dejavu_settings_app_icon">એપ્લિકેશન આઇકન</string>
+    <string name="dejavu_app_icon_yellow">પીળું</string>
+    <string name="dejavu_app_icon_blue">વાદળી</string>
+    <string name="dejavu_app_icon_classic">ક્લાસિક</string>
+    <string name="dejavu_app_icon_change_title">એપ્લિકેશન આઇકન બદલવું છે?</string>
+    <string name="dejavu_app_icon_change_message">%1$s બંધ થઈ શકે છે. તેને ફરીથી ખોલવા માટે નવા આઇકન પર ટૅપ કરો.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">તમે મુખ્ય સ્ક્રીન પર ઉમેરેલી સાઇટ્સ અને શોર્ટકટ્સ દૂર કરવામાં આવશે. %1$s બંધ થઈ શકે છે. તેને ફરીથી ખોલવા માટે નવા આઇકન પર ટૅપ કરો.</string>
+    <string name="dejavu_app_icon_change">આઇકન બદલો</string>
+    <string name="dejavu_app_icon_change_failed">એપ્લિકેશન આઇકન બદલી શકાયું નહીં. તમે મુખ્ય સ્ક્રીન પર ઉમેરેલી સાઇટ્સ અને શોર્ટકટ્સ દૂર કરો અને ફરી પ્રયાસ કરો.</string>
     <string name="dejavu_settings_essentials">એસેન્શિયલ્સ</string>
     <string name="dejavu_settings_essentials_summary">આ ફોન પર બધા અથવા તેમાંથી કેટલાક છુપાવો</string>
     <string name="dejavu_essentials_hint">તમે અહીં છુપાવો છો તે એસેન્શિયલ્સ Zen માં અને તમારાં અન્ય ઉપકરણો પર રહે છે, અને તમે તેમને ફરી બતાવો ત્યારે પાછા આવે છે.</string>

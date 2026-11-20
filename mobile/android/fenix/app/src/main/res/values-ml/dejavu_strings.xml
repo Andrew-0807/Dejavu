@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">ദ്വിവർണ്ണം</string>
     <string name="dejavu_icons_firefox">ക്ലാസിക്</string>
     <string name="dejavu_icons_rounded">ഉരുണ്ടവ</string>
+    <string name="dejavu_settings_app_icon">പ്രയോഗയടയാളം</string>
+    <string name="dejavu_app_icon_yellow">മഞ്ഞ</string>
+    <string name="dejavu_app_icon_blue">നീല</string>
+    <string name="dejavu_app_icon_classic">ക്ലാസിക്</string>
+    <string name="dejavu_app_icon_change_title">പ്രയോഗയടയാളം മാറ്റണോ?</string>
+    <string name="dejavu_app_icon_change_message">%1$s അടഞ്ഞേക്കാം. അതിന്റെ പുതിയ അടയാളത്തിൽ നിന്ന് അത് വീണ്ടും തുറക്കുക.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ആമുഖപ്രതലത്തിലേക്ക് നിങ്ങൾ ചേർത്ത സൈറ്റുകളും കുറുക്കുവഴികളും നീക്കം ചെയ്യപ്പെടും. %1$s അടഞ്ഞേക്കാം. അതിന്റെ പുതിയ അടയാളത്തിൽ നിന്ന് അത് വീണ്ടും തുറക്കുക.</string>
+    <string name="dejavu_app_icon_change">അടയാളം മാറ്റുക</string>
+    <string name="dejavu_app_icon_change_failed">പ്രയോഗയടയാളം മാറ്റാൻ കഴിഞ്ഞില്ല. ആമുഖപ്രതലത്തിലേക്ക് നിങ്ങൾ ചേർത്ത സൈറ്റുകളും കുറുക്കുവഴികളും നീക്കം ചെയ്തിട്ട് വീണ്ടും ശ്രമിക്കുക.</string>
     <string name="dejavu_settings_essentials">പ്രധാനപ്പെട്ടവ</string>
     <string name="dejavu_settings_essentials_summary">ഈ ഫോണിൽ എല്ലാം അല്ലെങ്കിൽ ചിലത് മറയ്ക്കുക</string>
     <string name="dejavu_essentials_hint">നിങ്ങൾ ഇവിടെ മറയ്ക്കുന്ന പ്രധാനപ്പെട്ടവ Zen-ലും നിങ്ങളുടെ മറ്റ് ഉപകരണങ്ങളിലും നിലനിൽക്കും, വീണ്ടും കാണിക്കുമ്പോൾ തിരികെ വരും.</string>

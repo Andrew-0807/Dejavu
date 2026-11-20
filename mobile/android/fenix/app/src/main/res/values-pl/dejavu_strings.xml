@@ -617,6 +617,15 @@
     <string name="dejavu_icons_dejavu">Dwutonowe</string>
     <string name="dejavu_icons_firefox">Klasyczne</string>
     <string name="dejavu_icons_rounded">Zaokrąglone</string>
+    <string name="dejavu_settings_app_icon">Ikona aplikacji</string>
+    <string name="dejavu_app_icon_yellow">Żółta</string>
+    <string name="dejavu_app_icon_blue">Niebieska</string>
+    <string name="dejavu_app_icon_classic">Klasyczna</string>
+    <string name="dejavu_app_icon_change_title">Czy zmienić ikonę aplikacji?</string>
+    <string name="dejavu_app_icon_change_message">Przeglądarka %1$s może zostać zamknięta. Otwórz ją ponownie za pomocą nowej ikony.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Witryny i skróty dodane do ekranu głównego zostaną usunięte. Przeglądarka %1$s może zostać zamknięta. Otwórz ją ponownie za pomocą nowej ikony.</string>
+    <string name="dejavu_app_icon_change">Zmień ikonę</string>
+    <string name="dejavu_app_icon_change_failed">Nie można zmienić ikony aplikacji. Usuń witryny i skróty dodane do ekranu głównego i spróbuj ponownie.</string>
     <string name="dejavu_settings_essentials">Ulubione</string>
     <string name="dejavu_settings_essentials_summary">Ukryj wszystkie lub tylko niektóre na tym telefonie</string>
     <string name="dejavu_essentials_hint">Ulubione, które tu ukryjesz, pozostają w Zen i na innych urządzeniach, a gdy znów je pokażesz, wrócą.</string>

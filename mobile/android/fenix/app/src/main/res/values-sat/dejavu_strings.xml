@@ -609,6 +609,15 @@
     <string name="dejavu_icons_dejavu">ᱵᱟᱨ ᱨᱚᱝ</string>
     <string name="dejavu_icons_firefox">ᱠᱞᱟᱥᱤᱠ</string>
     <string name="dejavu_icons_rounded">ᱜᱚᱞ</string>
+    <string name="dejavu_settings_app_icon">ᱮᱯ ᱪᱤᱱᱦᱟᱹ</string>
+    <string name="dejavu_app_icon_yellow">ᱥᱟᱥᱟᱝ</string>
+    <string name="dejavu_app_icon_blue">ᱞᱤᱞ</string>
+    <string name="dejavu_app_icon_classic">ᱠᱞᱟᱥᱤᱠ</string>
+    <string name="dejavu_app_icon_change_title">ᱮᱯ ᱪᱤᱱᱦᱟᱹ ᱵᱚᱫᱚᱞ ᱢᱮ?</string>
+    <string name="dejavu_app_icon_change_message">%1$s ᱵᱚᱸᱫᱽ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾ ᱚᱱᱟ ᱫᱚᱦᱲᱟ ᱡᱷᱤᱡᱽ ᱞᱟᱹᱜᱤᱫ ᱱᱟᱶᱟ ᱟᱭᱠᱚᱱ ᱨᱮ ᱞᱤᱱ ᱢᱮ ᱾</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ᱟᱢᱟᱜ ᱦᱳᱢ ᱥᱠᱨᱤᱱ ᱨᱮ ᱟᱢ ᱥᱮᱞᱮᱫᱽ ᱟᱠᱟᱱ ᱥᱟᱭᱤᱴ ᱟᱨ ᱥᱚᱨᱴᱼᱠᱳᱴ ᱠᱚ ᱚᱪᱚᱜᱚᱜᱼᱟ ᱾ %1$s ᱵᱚᱸᱫᱽ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾ ᱚᱱᱟ ᱫᱚᱦᱲᱟ ᱡᱷᱤᱡᱽ ᱞᱟᱹᱜᱤᱫ ᱱᱟᱶᱟ ᱟᱭᱠᱚᱱ ᱨᱮ ᱞᱤᱱ ᱢᱮ ᱾</string>
+    <string name="dejavu_app_icon_change">ᱟᱭᱠᱚᱱ ᱵᱚᱫᱚᱞ ᱢᱮ</string>
+    <string name="dejavu_app_icon_change_failed">ᱮᱯ ᱪᱤᱱᱦᱟᱹ ᱵᱟᱝ ᱵᱚᱫᱚᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ ᱾ ᱟᱢᱟᱜ ᱦᱳᱢ ᱥᱠᱨᱤᱱ ᱨᱮ ᱟᱢ ᱥᱮᱞᱮᱫᱽ ᱟᱠᱟᱱ ᱥᱟᱭᱤᱴ ᱟᱨ ᱥᱚᱨᱴᱼᱠᱳᱴ ᱠᱚ ᱚᱪᱚᱜᱽ ᱢᱮ ᱟᱨ ᱫᱚᱦᱲᱟ ᱠᱩᱨᱩᱢᱩᱴᱩᱭ ᱢᱮ ᱾</string>
     <string name="dejavu_settings_essentials">ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱠᱚ</string>
     <string name="dejavu_settings_essentials_summary">ᱱᱚᱶᱟ ᱯᱷᱚᱱ ᱨᱮ ᱡᱚᱛᱚ ᱥᱮ ᱛᱤᱱᱟᱹᱜ ᱜᱟᱱ ᱩᱠᱩ ᱢᱮ</string>
     <string name="dejavu_essentials_hint">ᱱᱚᱰᱮ ᱟᱢ ᱩᱠᱩ ᱠᱟᱱ ᱮᱥᱮᱱᱥᱤᱭᱟᱞ ᱠᱚ Zen ᱟᱨ ᱟᱢᱟᱜ ᱮᱴᱟᱜ ᱥᱟᱫᱷᱚᱱ ᱠᱚ ᱨᱮ ᱛᱟᱦᱮᱸ ᱟ, ᱟᱨ ᱟᱢ ᱫᱩᱦᱲᱟᱹ ᱩᱫᱩᱜ ᱠᱷᱟᱱ ᱨᱩᱣᱟᱹᱲ ᱦᱤᱡᱩᱜ ᱟ ᱾</string>

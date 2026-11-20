@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">ባለሁለት ቀለም</string>
     <string name="dejavu_icons_firefox">ክላሲክ</string>
     <string name="dejavu_icons_rounded">የተጠጋጋ</string>
+    <string name="dejavu_settings_app_icon">የመተግበሪያ አዶ</string>
+    <string name="dejavu_app_icon_yellow">ቢጫ</string>
+    <string name="dejavu_app_icon_blue">ሰማያዊ</string>
+    <string name="dejavu_app_icon_classic">ክላሲክ</string>
+    <string name="dejavu_app_icon_change_title">የመተግበሪያውን አዶ ልቀይር?</string>
+    <string name="dejavu_app_icon_change_message">%1$s ሊዘጋ ይችላል። ከአዲሱ አዶው እንደገና ይክፈቱት።</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ወደ መነሻ ማያ ገጽዎ ያከሏቸው ጣቢያዎች እና አቋራጮች ይወገዳሉ። %1$s ሊዘጋ ይችላል። ከአዲሱ አዶው እንደገና ይክፈቱት።</string>
+    <string name="dejavu_app_icon_change">አዶ ቀይር</string>
+    <string name="dejavu_app_icon_change_failed">የመተግበሪያውን አዶ መቀየር አልተቻለም። ወደ መነሻ ማያ ገጽዎ ያከሏቸውን ጣቢያዎች እና አቋራጮች ያስወግዱ እና እንደገና ይሞክሩ።</string>
     <string name="dejavu_settings_essentials">አስፈላጊዎች</string>
     <string name="dejavu_settings_essentials_summary">በዚህ ስልክ ላይ ሁሉንም ወይም የተወሰኑትን ደብቅ</string>
     <string name="dejavu_essentials_hint">እዚህ የሚደብቋቸው አስፈላጊዎች በZen እና በሌሎች መሣሪያዎችዎ ላይ ይቆያሉ፣ እንደገና ሲያሳዩዋቸውም ይመለሳሉ።</string>

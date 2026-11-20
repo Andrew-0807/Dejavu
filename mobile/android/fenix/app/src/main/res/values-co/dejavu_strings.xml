@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Bicolori</string>
     <string name="dejavu_icons_firefox">Classiche</string>
     <string name="dejavu_icons_rounded">Tonde</string>
+    <string name="dejavu_settings_app_icon">Icona di l’appiecazione</string>
+    <string name="dejavu_app_icon_yellow">Ghjallu</string>
+    <string name="dejavu_app_icon_blue">Turchinu</string>
+    <string name="dejavu_app_icon_classic">Classica</string>
+    <string name="dejavu_app_icon_change_title">Cambià l’icona di l’appiecazione?</string>
+    <string name="dejavu_app_icon_change_message">%1$s puderia chjodesi. Riapritelu da a so icona nova.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">I siti è l’accurtatoghji ch’è vo avete aghjuntu à u vostru screnu d’accolta saranu cacciati. %1$s puderia chjodesi. Riapritelu da a so icona nova.</string>
+    <string name="dejavu_app_icon_change">Cambià l’icona</string>
+    <string name="dejavu_app_icon_change_failed">Ùn si pò micca cambià l’icona di l’appiecazione. Cacciate i siti è l’accurtatoghji ch’è vo avete aghjuntu à u vostru screnu d’accolta è pruvate torna.</string>
     <string name="dejavu_settings_essentials">Essenziali</string>
     <string name="dejavu_settings_essentials_summary">Piattà li tutti o solu alcuni nant\'à stu telefonu</string>
     <string name="dejavu_essentials_hint">L\'essenziali ch\'è vo piattate quì fermanu in Zen è nant\'à i vostri altri apparechji, è tornanu quandu l\'affissate di novu.</string>

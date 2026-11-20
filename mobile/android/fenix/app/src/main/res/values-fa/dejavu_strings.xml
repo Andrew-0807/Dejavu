@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">دورنگ</string>
     <string name="dejavu_icons_firefox">کلاسیک</string>
     <string name="dejavu_icons_rounded">گرد</string>
+    <string name="dejavu_settings_app_icon">نقشک برنامه</string>
+    <string name="dejavu_app_icon_yellow">زرد</string>
+    <string name="dejavu_app_icon_blue">آبی</string>
+    <string name="dejavu_app_icon_classic">کلاسیک</string>
+    <string name="dejavu_app_icon_change_title">نقشک برنامه تغییر کند؟</string>
+    <string name="dejavu_app_icon_change_message">ممکن است %1$s بسته شود. آن را دوباره از نقشک جدیدش باز کنید.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">سایت‌ها و میان‌برهایی که به صفحهٔ اصلی خود افزوده‌اید حذف خواهند شد. ممکن است %1$s بسته شود. آن را دوباره از نقشک جدیدش باز کنید.</string>
+    <string name="dejavu_app_icon_change">تغییر نقشک</string>
+    <string name="dejavu_app_icon_change_failed">تغییر نقشک برنامه انجام نشد. سایت‌ها و میان‌برهایی را که به صفحهٔ اصلی خود افزوده‌اید حذف کنید و دوباره امتحان کنید.</string>
     <string name="dejavu_settings_essentials">ضروریات</string>
     <string name="dejavu_settings_essentials_summary">پنهان کردن همه یا برخی از آن‌ها در این گوشی</string>
     <string name="dejavu_essentials_hint">ضروریاتی که اینجا پنهان می‌کنید در Zen و دیگر دستگاه‌هایتان می‌مانند و وقتی دوباره نمایششان دهید، برمی‌گردند.</string>

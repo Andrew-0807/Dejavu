@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Ka\'i\' b\'onil</string>
     <string name="dejavu_icons_firefox">Ojer</string>
     <string name="dejavu_icons_rounded">Setesïk</string>
+    <string name="dejavu_settings_app_icon">Ruwachib\'al App</string>
+    <string name="dejavu_app_icon_yellow">Q\'än</string>
+    <string name="dejavu_app_icon_blue">Xar</string>
+    <string name="dejavu_app_icon_classic">Ojer</string>
+    <string name="dejavu_app_icon_change_title">¿La nijal ruwachib\'al chokoy?</string>
+    <string name="dejavu_app_icon_change_message">%1$s tikirel nitz\'apitäj. Tachapa\' ri k\'ak\'a\' ruwäch richin najäq chik.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Ri rujalik wachib\'äl xtuyäj xab\'achike ruxaq chuqa\' chojokem ri xyak pa ri rutikirib\'al ruwäch. %1$s tikirel nitz\'apitäj. Tachapa\' ri k\'ak\'a\' ruwäch richin najäq chik.</string>
+    <string name="dejavu_app_icon_change">Tijal ruwäch</string>
+    <string name="dejavu_app_icon_change_failed">Man xk\'ex ta ri ruwachib\'al chokoy. Ke\'ayuju\' ri ruxaq chuqa\' ri chojokem ri xyak pa ri rutikirib\'al ruwäch chuqa\' tatojtob\'ej chik.</string>
     <string name="dejavu_settings_essentials">Taq rajawaxel</string>
     <string name="dejavu_settings_essentials_summary">Ke\'ewäx ronojel o jujun pa re oyonib\'äl re\'</string>
     <string name="dejavu_essentials_hint">Ri taq rajawaxel ye\'awewaj wawe\' yekanäj pa Zen chuqa\' pa ri ch\'aqa\' chik taq awokisaxel, chuqa\' yetzolin toq ye\'ak\'üt chik.</string>

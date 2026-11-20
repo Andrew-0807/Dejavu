@@ -617,6 +617,15 @@
     <string name="dejavu_icons_dejavu">Dwufarbne</string>
     <string name="dejavu_icons_firefox">Klasyczne</string>
     <string name="dejavu_icons_rounded">Ôkrōngłe</string>
+    <string name="dejavu_settings_app_icon">Ikōna aplikacyje</string>
+    <string name="dejavu_app_icon_yellow">Żōłto</string>
+    <string name="dejavu_app_icon_blue">Modro</string>
+    <string name="dejavu_app_icon_classic">Klasyczno</string>
+    <string name="dejavu_app_icon_change_title">Zmiynić ikōna aplikacyje?</string>
+    <string name="dejavu_app_icon_change_message">%1$s może sie zawrzić. Ôdewrzij aplikacyjo zaś z jeji nowyj ikōny.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Strōny i skrōty przidane do dōmowego ekranu bydōm skasowane. %1$s może sie zawrzić. Ôdewrzij aplikacyjo zaś z jeji nowyj ikōny.</string>
+    <string name="dejavu_app_icon_change">Zmiyń ikōna</string>
+    <string name="dejavu_app_icon_change_failed">Niy szło zmiynić ikōny aplikacyje. Skasuj strōny i skrōty przidane do dōmowego ekranu i sprōbuj jeszcze roz.</string>
     <string name="dejavu_settings_essentials">Nojważniejsze</string>
     <string name="dejavu_settings_essentials_summary">Skryj wszyjske abo ino niykere na tym telefōnie</string>
     <string name="dejavu_essentials_hint">Nojważniejsze, kere sam skryjesz, ôstanōm w Zen i na twojich inkszych maszinach, a wrōcōm, jak je zaś pokożesz.</string>

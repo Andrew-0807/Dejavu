@@ -617,6 +617,15 @@
     <string name="dejavu_icons_dejavu">Dwójobarwne</string>
     <string name="dejavu_icons_firefox">Klasiske</string>
     <string name="dejavu_icons_rounded">Kulowate</string>
+    <string name="dejavu_settings_app_icon">Nałožeński symbol</string>
+    <string name="dejavu_app_icon_yellow">Žołty</string>
+    <string name="dejavu_app_icon_blue">Módry</string>
+    <string name="dejavu_app_icon_classic">Klasiski</string>
+    <string name="dejavu_app_icon_change_title">Symbol nałoženja změniś?</string>
+    <string name="dejavu_app_icon_change_message">%1$s se snaź zacynijo. Pótusni nowy symbol, aby jen zasej wócynił.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Sedła a zwězanja, kótarež sy swójej startowej wobrazowce pśidał, se wótwónoźuju. %1$s se snaź zacynijo. Pótusni nowy symbol, aby jen zasej wócynił.</string>
+    <string name="dejavu_app_icon_change">Symbol změniś</string>
+    <string name="dejavu_app_icon_change_failed">Symbol nałoženja njedajo se změniś. Wótwónoź sedła a zwězanja, kótarež sy swójej startowej wobrazowce pśidał, a wopytaj hyšći raz.</string>
     <string name="dejavu_settings_essentials">Nejwažnjejše</string>
     <string name="dejavu_settings_essentials_summary">Wšykne abo někotare z nich na toś tom telefonje schowaś</string>
     <string name="dejavu_essentials_hint">Nejwažnjejše, kótarež how schowajoš, wóstanu w Zen a na twójich drugich rědach a pśidu slědk, gaž je zasej pokažoš.</string>

@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">ایکی‌رنگلی</string>
     <string name="dejavu_icons_firefox">کلاسیک</string>
     <string name="dejavu_icons_rounded">یووارلاق</string>
+    <string name="dejavu_settings_app_icon">اپلیکیشن آیکونو</string>
+    <string name="dejavu_app_icon_yellow">ساری</string>
+    <string name="dejavu_app_icon_blue">گؤی</string>
+    <string name="dejavu_app_icon_classic">کلاسیک</string>
+    <string name="dejavu_app_icon_change_title">اپلیکیشن آیکونو دگیشدیریلسین؟</string>
+    <string name="dejavu_app_icon_change_message">اولا بیلر کی %1$s باغلانسین. اونو یئنی آیکونوندان یئنیدن آچین.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">آنا اکرانینیزا آرتیردیغینیز سایتلار و شورتکاتلار سیلینه‌جک. اولا بیلر کی %1$s باغلانسین. اونو یئنی آیکونوندان یئنیدن آچین.</string>
+    <string name="dejavu_app_icon_change">آیکونو دگیشدیر</string>
+    <string name="dejavu_app_icon_change_failed">اپلیکیشن آیکونو دگیشدیریله بیلمه‌دی. آنا اکرانینیزا آرتیردیغینیز سایتلار و شورتکاتلاری سیلین و یئنیدن جهد ادین.</string>
     <string name="dejavu_settings_essentials">اساس‌لار</string>
     <string name="dejavu_settings_essentials_summary">بو تلفنده هامیسینی یا بعضیلرینی گیزلت</string>
     <string name="dejavu_essentials_hint">بورادا گیزلتدیگینیز اساس‌لار Zen-ده و باشقا جیهازلارینیزدا قالیر، یئنیدن گؤستردیکده ایسه گئری قاییدیر.</string>

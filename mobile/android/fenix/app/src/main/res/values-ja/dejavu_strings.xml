@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">ツートン</string>
     <string name="dejavu_icons_firefox">クラシック</string>
     <string name="dejavu_icons_rounded">丸型</string>
+    <string name="dejavu_settings_app_icon">アプリのアイコン</string>
+    <string name="dejavu_app_icon_yellow">黄色</string>
+    <string name="dejavu_app_icon_blue">青</string>
+    <string name="dejavu_app_icon_classic">クラシック</string>
+    <string name="dejavu_app_icon_change_title">アプリアイコンを変更しますか？</string>
+    <string name="dejavu_app_icon_change_message">%1$s が閉じられる場合があります。新しいアイコンをタップして再度開いてください。</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ホーム画面に追加したサイトとショートカットは削除されます。%1$s が閉じられる場合があります。新しいアイコンをタップして再度開いてください。</string>
+    <string name="dejavu_app_icon_change">アイコンを変更</string>
+    <string name="dejavu_app_icon_change_failed">アプリアイコンを変更できませんでした。ホーム画面に追加したサイトとショートカットを削除してから、もう一度お試しください。</string>
     <string name="dejavu_settings_essentials">よく使うサイト</string>
     <string name="dejavu_settings_essentials_summary">このスマートフォンで、すべてまたは一部を非表示にします</string>
     <string name="dejavu_essentials_hint">ここで非表示にしたよく使うサイトは、Zenや他の端末には残り、再び表示すると戻ってきます。</string>

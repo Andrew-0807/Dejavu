@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">ສອງໂທນ</string>
     <string name="dejavu_icons_firefox">ຄລາດສິກ</string>
     <string name="dejavu_icons_rounded">ມົນ</string>
+    <string name="dejavu_settings_app_icon">ໄອຄອນແອັບ</string>
+    <string name="dejavu_app_icon_yellow">ສີເຫຼືອງ</string>
+    <string name="dejavu_app_icon_blue">ສີຟ້າ</string>
+    <string name="dejavu_app_icon_classic">ຄລາດສິກ</string>
+    <string name="dejavu_app_icon_change_title">ປ່ຽນໄອຄອນແອັບບໍ?</string>
+    <string name="dejavu_app_icon_change_message">%1$s ອາດຈະປິດ. ເປີດມັນຄືນໃໝ່ຈາກໄອຄອນໃໝ່ຂອງມັນ.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ເວັບໄຊ ແລະ ທາງລັດທີ່ທ່ານເພີ່ມໃສ່ໜ້າຈໍຫຼັກຈະຖືກລຶບອອກ. %1$s ອາດຈະປິດ. ເປີດມັນຄືນໃໝ່ຈາກໄອຄອນໃໝ່ຂອງມັນ.</string>
+    <string name="dejavu_app_icon_change">ປ່ຽນໄອຄອນ</string>
+    <string name="dejavu_app_icon_change_failed">ບໍ່ສາມາດປ່ຽນໄອຄອນແອັບໄດ້. ລຶບເວັບໄຊ ແລະ ທາງລັດທີ່ທ່ານເພີ່ມໃສ່ໜ້າຈໍຫຼັກອອກ ແລ້ວລອງໃຫມ່ອີກຄັ້ງ.</string>
     <string name="dejavu_settings_essentials">ສິ່ງສຳຄັນ</string>
     <string name="dejavu_settings_essentials_summary">ເຊື່ອງທັງໝົດ ຫຼື ບາງອັນໃນໂທລະສັບນີ້</string>
     <string name="dejavu_essentials_hint">ສິ່ງສຳຄັນທີ່ທ່ານເຊື່ອງຢູ່ບ່ອນນີ້ ຍັງຄົງຢູ່ໃນ Zen ແລະ ໃນອຸປະກອນອື່ນໆຂອງທ່ານ, ແລະ ຈະກັບຄືນມາເມື່ອທ່ານສະແດງມັນອີກຄັ້ງ.</string>

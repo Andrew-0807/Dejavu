@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Ҩԥштәык</string>
     <string name="dejavu_icons_firefox">Аклассика</string>
     <string name="dejavu_icons_rounded">Ихаргьежьу</string>
+    <string name="dejavu_settings_app_icon">Апликациа аиконка</string>
+    <string name="dejavu_app_icon_yellow">Аҩежь</string>
+    <string name="dejavu_app_icon_blue">Аиаҵәа</string>
+    <string name="dejavu_app_icon_classic">Аклассика</string>
+    <string name="dejavu_app_icon_change_title">Апликациа аиконка ԥсахтәума?</string>
+    <string name="dejavu_app_icon_change_message">%1$s аркра алшоит. Аиконка ҿыц ала даҽазнык иаашәырт.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Ахатә екран ахь ишәыцҵаз асаитқәеи аҿацәқәеи ианыхуеит. %1$s аркра алшоит. Аиконка ҿыц ала даҽазнык иаашәырт.</string>
+    <string name="dejavu_app_icon_change">Аиконка аԥсахра</string>
+    <string name="dejavu_app_icon_change_failed">Апликациа аиконка аԥсахра алымшеит. Ахатә екран ахь ишәыцҵаз асаитқәеи аҿацәқәеи ианыхтәуп, нас даҽазнык шәҽазышәшәа.</string>
     <string name="dejavu_settings_essentials">Иҵакыу сайтқәа</string>
     <string name="dejavu_settings_essentials_summary">Ари ателефон аҟны зегьы ма рхәҭак рыҵаҵыхра</string>
     <string name="dejavu_essentials_hint">Ара ишәыҵаҵыхуа иҵакыу сайтқәа Zen аҟынгьы егьырҭ шәаиқәыршәагақәа рҟынгьы иаанхоит, насгьы еиҭах ишәаарԥшыр иаахынҳәуеит.</string>

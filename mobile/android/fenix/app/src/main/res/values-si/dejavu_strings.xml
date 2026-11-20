@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">ද්විවර්ණ</string>
     <string name="dejavu_icons_firefox">සම්භාව්‍ය</string>
     <string name="dejavu_icons_rounded">වටකුරු</string>
+    <string name="dejavu_settings_app_icon">යෙදුම් අයිකනය</string>
+    <string name="dejavu_app_icon_yellow">කහ</string>
+    <string name="dejavu_app_icon_blue">නිල්</string>
+    <string name="dejavu_app_icon_classic">සම්භාව්‍ය</string>
+    <string name="dejavu_app_icon_change_title">යෙදුම් අයිකනය වෙනස් කරන්නද?</string>
+    <string name="dejavu_app_icon_change_message">%1$s වැසීමට ඉඩ ඇත. එය නැවත විවෘත කිරීමට නව අයිකනය මත තට්ටු කරන්න.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ඔබ මුල් තිරයට එක් කළ අඩවි සහ කෙටිමං ඉවත් කෙරේ. %1$s වැසීමට ඉඩ ඇත. එය නැවත විවෘත කිරීමට නව අයිකනය මත තට්ටු කරන්න.</string>
+    <string name="dejavu_app_icon_change">අයිකනය වෙනස් කරන්න</string>
+    <string name="dejavu_app_icon_change_failed">යෙදුම් අයිකනය වෙනස් කිරීමට නොහැකි විය. ඔබ මුල් තිරයට එක් කළ අඩවි සහ කෙටිමං ඉවත් කර නැවත උත්සාහ කරන්න.</string>
     <string name="dejavu_settings_essentials">අත්‍යවශ්‍ය</string>
     <string name="dejavu_settings_essentials_summary">මෙම දුරකථනයේ ඒවා සියල්ල හෝ සමහරක් සඟවන්න</string>
     <string name="dejavu_essentials_hint">ඔබ මෙහි සඟවන අත්‍යවශ්‍යයන් Zen හි සහ ඔබේ අනෙක් උපාංගවල පවතින අතර, ඔබ ඒවා නැවත පෙන්වන විට ආපසු පැමිණේ.</string>

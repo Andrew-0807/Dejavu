@@ -593,6 +593,15 @@
     <string name="dejavu_icons_dejavu">สองโทน</string>
     <string name="dejavu_icons_firefox">คลาสสิค</string>
     <string name="dejavu_icons_rounded">ขอบมน</string>
+    <string name="dejavu_settings_app_icon">ไอคอนแอป</string>
+    <string name="dejavu_app_icon_yellow">เหลือง</string>
+    <string name="dejavu_app_icon_blue">น้ำเงิน</string>
+    <string name="dejavu_app_icon_classic">คลาสสิค</string>
+    <string name="dejavu_app_icon_change_title">เปลี่ยนไอคอนแอปหรือไม่?</string>
+    <string name="dejavu_app_icon_change_message">%1$s อาจปิดลง ให้แตะไอคอนใหม่เพื่อเปิดอีกครั้ง</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">ไซต์และทางลัดที่คุณเพิ่มไว้ในหน้าจอเริ่มต้นจะถูกลบออก %1$s อาจปิดลง ให้แตะไอคอนใหม่เพื่อเปิดอีกครั้ง</string>
+    <string name="dejavu_app_icon_change">เปลี่ยนไอคอน</string>
+    <string name="dejavu_app_icon_change_failed">ไม่สามารถเปลี่ยนไอคอนแอปได้ โปรดลบไซต์และทางลัดที่คุณเพิ่มไว้ในหน้าจอเริ่มต้นออกแล้วลองอีกครั้ง</string>
     <string name="dejavu_settings_essentials">เว็บที่ใช้บ่อย</string>
     <string name="dejavu_settings_essentials_summary">ซ่อนทั้งหมดหรือบางส่วนบนโทรศัพท์เครื่องนี้</string>
     <string name="dejavu_essentials_hint">เว็บที่ใช้บ่อยที่คุณซ่อนไว้ที่นี่จะยังอยู่ใน Zen และบนอุปกรณ์อื่นของคุณ และจะกลับมาเมื่อคุณแสดงอีกครั้ง</string>

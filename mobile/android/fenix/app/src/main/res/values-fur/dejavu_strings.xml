@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Doi tons</string>
     <string name="dejavu_icons_firefox">Classic</string>
     <string name="dejavu_icons_rounded">Taront</string>
+    <string name="dejavu_settings_app_icon">Icone aplicazion</string>
+    <string name="dejavu_app_icon_yellow">Zale</string>
+    <string name="dejavu_app_icon_blue">Blu</string>
+    <string name="dejavu_app_icon_classic">Classiche</string>
+    <string name="dejavu_app_icon_change_title">Cambiâ la icone de aplicazion?</string>
+    <string name="dejavu_app_icon_change_message">Al è pussibil che %1$s si sieri. Torne a vierzilu de sô gnove icone.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">I sîts e lis scurtis che tu âs zontât ae tô schermade iniziâl a vignaran gjavâts. Al è pussibil che %1$s si sieri. Torne a vierzilu de sô gnove icone.</string>
+    <string name="dejavu_app_icon_change">Cambie icone</string>
+    <string name="dejavu_app_icon_change_failed">Impussibil cambiâ la icone de aplicazion. Gjave i sîts e lis scurtis che tu âs zontât ae tô schermade iniziâl e torne prove.</string>
     <string name="dejavu_settings_essentials">Essenziâi</string>
     <string name="dejavu_settings_essentials_summary">Plate ducj o dome cualchidun su chest telefon</string>
     <string name="dejavu_essentials_hint">I essenziâi che tu platis achì a restin in Zen e sui tiei altris dispositîfs, e a tornin cuant che tu ju mostris di gnûf.</string>

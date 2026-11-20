@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Երկերանգ</string>
     <string name="dejavu_icons_firefox">Դասական</string>
     <string name="dejavu_icons_rounded">Կլորացված</string>
+    <string name="dejavu_settings_app_icon">Հավելվածի պատկերակ</string>
+    <string name="dejavu_app_icon_yellow">Դեղին</string>
+    <string name="dejavu_app_icon_blue">Կապույտ</string>
+    <string name="dejavu_app_icon_classic">Դասական</string>
+    <string name="dejavu_app_icon_change_title">Փոխե՞լ հավելվածի պատկերակը։</string>
+    <string name="dejavu_app_icon_change_message">%1$s հավելվածը կարող է փակվել։ Վերաբացեք այն իր նոր պատկերակից։</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Ձեր գլխավոր էկրանին ավելացրած կայքերն ու դյուրանցումները կհեռացվեն։ %1$s հավելվածը կարող է փակվել։ Վերաբացեք այն իր նոր պատկերակից։</string>
+    <string name="dejavu_app_icon_change">Փոխել պատկերակը</string>
+    <string name="dejavu_app_icon_change_failed">Չհաջողվեց փոխել հավելվածի պատկերակը։ Հեռացրեք ձեր գլխավոր էկրանին ավելացրած կայքերն ու դյուրանցումները և փորձեք կրկին։</string>
     <string name="dejavu_settings_essentials">Կարևոր կայքեր</string>
     <string name="dejavu_settings_essentials_summary">Թաքցնել բոլորը կամ մի մասն այս հեռախոսում</string>
     <string name="dejavu_essentials_hint">Այստեղ թաքցված կարևոր կայքերը մնում են Zen֊ում և ձեր մյուս սարքերում, և վերադառնում են, երբ դրանք նորից ցուցադրեք։</string>

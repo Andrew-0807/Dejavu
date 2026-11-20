@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">Mokõi sa\'y</string>
     <string name="dejavu_icons_firefox">Jepokuaa</string>
     <string name="dejavu_icons_rounded">Apu\'a</string>
+    <string name="dejavu_settings_app_icon">Tembiporu’i ra’ãnga’i</string>
+    <string name="dejavu_app_icon_yellow">Sa’yju</string>
+    <string name="dejavu_app_icon_blue">Hovy</string>
+    <string name="dejavu_app_icon_classic">Jepokuaa</string>
+    <string name="dejavu_app_icon_change_title">¿Emoambue tembiporu’i ra’ãnga’i?</string>
+    <string name="dejavu_app_icon_change_message">Ikatu %1$s oñemboty. Embojurujajey ta’ãnga’i pyahu rupive.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">Oguéta umi tenda ha jeike pya’eha embojuajuva’ekue ne mba’erechaha ñepyrũhápe. Ikatu %1$s oñemboty. Embojurujajey ta’ãnga’i pyahu rupive.</string>
+    <string name="dejavu_app_icon_change">Emoambue ta’ãnga’i</string>
+    <string name="dejavu_app_icon_change_failed">Ndaikatúi oñemoambue tembiporu’i ra’ãnga’i. Embogue umi tenda ha jeike pya’eha embojuajuva’ekue ne mba’erechaha ñepyrũhápe ha eha’ã jey.</string>
     <string name="dejavu_settings_essentials">Iporãvéva</string>
     <string name="dejavu_settings_essentials_summary">Emokañy opavave térã ipehẽngue ko pumbyrýpe</string>
     <string name="dejavu_essentials_hint">Umi iporãvéva remokañýva ko\'ápe opyta Zen-pe ha ambue ne mba\'e\'okakuérape, ha ou jey rehechaukajeývo chupekuéra.</string>

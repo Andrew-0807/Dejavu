@@ -609,6 +609,15 @@
     <string name="dejavu_icons_dejavu">דו־גוני</string>
     <string name="dejavu_icons_firefox">קלאסי</string>
     <string name="dejavu_icons_rounded">מעוגל</string>
+    <string name="dejavu_settings_app_icon">סמל היישומון</string>
+    <string name="dejavu_app_icon_yellow">צהוב</string>
+    <string name="dejavu_app_icon_blue">כחול</string>
+    <string name="dejavu_app_icon_classic">קלאסי</string>
+    <string name="dejavu_app_icon_change_title">לשנות את סמל היישומון?</string>
+    <string name="dejavu_app_icon_change_message">%1$s עשוי להיסגר. יש לפתוח אותו מחדש דרך הסמל החדש.</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">האתרים וקיצורי הדרך שנוספו למסך הבית יוסרו. %1$s עשוי להיסגר. יש לפתוח אותו מחדש דרך הסמל החדש.</string>
+    <string name="dejavu_app_icon_change">שינוי סמל</string>
+    <string name="dejavu_app_icon_change_failed">לא ניתן היה לשנות את סמל היישומון. נא להסיר את האתרים וקיצורי הדרך שנוספו למסך הבית ולנסות שוב.</string>
     <string name="dejavu_settings_essentials">מועדפים</string>
     <string name="dejavu_settings_essentials_summary">הסתרת כולם או חלק מהם בטלפון הזה</string>
     <string name="dejavu_essentials_hint">מועדפים שתסתירו כאן נשארים ב-Zen ובמכשירים האחרים שלכם, וחוזרים כשתציגו אותם שוב.</string>

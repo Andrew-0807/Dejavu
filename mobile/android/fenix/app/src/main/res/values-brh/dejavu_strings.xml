@@ -601,6 +601,15 @@
     <string name="dejavu_icons_dejavu">دو رنگی</string>
     <string name="dejavu_icons_firefox">کلاسیک</string>
     <string name="dejavu_icons_rounded">گول</string>
+    <string name="dejavu_settings_app_icon">ایپ نا نشان</string>
+    <string name="dejavu_app_icon_yellow">زرد</string>
+    <string name="dejavu_app_icon_blue">خرن</string>
+    <string name="dejavu_app_icon_classic">کلاسیک</string>
+    <string name="dejavu_app_icon_change_title">ایپ نا نشان اے بدل کیوے؟</string>
+    <string name="dejavu_app_icon_change_message">ممکن اے کہ %1$s بند مریک۔ اونا پوسکنو نشان آن اے ولدا مل۔</string>
+    <string name="dejavu_app_icon_change_message_shortcuts">نا ہوم اسکرین آ نی شامل کنا سائٹاک او شارٹ کٹاک ہٹ مریرہ۔ ممکن اے کہ %1$s بند مریک۔ اونا پوسکنو نشان آن اے ولدا مل۔</string>
+    <string name="dejavu_app_icon_change">نشان اے بدل کبو</string>
+    <string name="dejavu_app_icon_change_failed">ایپ نا نشان بدل مننگ کتو۔ نا ہوم اسکرین آ نی شامل کنا سائٹاک او شارٹ کٹاک اے ہٹاؤ او دوبارہ کوشش کبو۔</string>
     <string name="dejavu_settings_essentials">ضروری چیزاک</string>
     <string name="dejavu_settings_essentials_summary">اے فون پار کل یا چند ضروری چیزاک لکاؤ</string>
     <string name="dejavu_essentials_hint">نی ادا لکاؤ کنا ضروری چیزاک Zen اٹ او نی نا ہور ڈیوائساک پار رہ ہن، او نی دوبارہ دکھاؤ تو پدا دکہ مرورہ۔</string>
