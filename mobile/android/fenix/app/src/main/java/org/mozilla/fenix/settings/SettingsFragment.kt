@@ -352,6 +352,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SystemInsetsPaddedFragment 
         NewThings.markAny(requirePreference<Preference>(R.string.pref_key_customize), NewThing.CUSTOMIZE)
         NewThings.mark(requirePreference<Preference>(R.string.pref_key_dejavu_tabs_workspaces), NewThing.ESSENTIALS)
         NewThings.mark(requirePreference<Preference>(R.string.pref_key_dejavu_workspace_lock), NewThing.WORKSPACE_LOCK)
+        NewThings.mark(requirePreference<Preference>(R.string.pref_key_private_browsing), NewThing.PRIVATE_BROWSING)
 
         setupPreferences(settings)
 

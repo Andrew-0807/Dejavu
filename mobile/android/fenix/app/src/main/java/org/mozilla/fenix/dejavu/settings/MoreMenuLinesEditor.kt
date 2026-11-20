@@ -346,7 +346,7 @@ internal fun MoreMenuLinesEditor(settings: DejavuSettings, modifier: Modifier = 
     val unseen = rememberUnseenNewThings()
     val context = LocalContext.current
     DisposableEffect(Unit) {
-        onDispose { NewThings.seen(context, NewThing.FULL_SCREEN) }
+        onDispose { NewThing.MENU_BUTTONS.forEach { NewThings.seen(context, it) } }
     }
 
     fun update(updated: List<List<String>>) {

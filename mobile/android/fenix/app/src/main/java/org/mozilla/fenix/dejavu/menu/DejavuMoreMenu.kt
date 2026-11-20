@@ -385,7 +385,7 @@ fun MoreMenu(
                         contentDescription = null,
                         modifier = Modifier
                             .size(18.dp)
-                            .newDot(NewThing.FULL_SCREEN in unseen, inset = EDIT_DOT_INSET),
+                            .newDot(NewThing.MENU_BUTTONS.any { it in unseen }, inset = EDIT_DOT_INSET),
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(stringResource(R.string.dejavu_menu_edit))

@@ -94,9 +94,12 @@ import org.mozilla.fenix.dejavu.containers.NoContainerIcon
 import org.mozilla.fenix.dejavu.containers.TemporaryContainerIcon
 import org.mozilla.fenix.dejavu.containers.color
 import org.mozilla.fenix.dejavu.containers.splitTemporary
+import org.mozilla.fenix.dejavu.discover.NewThing
 import org.mozilla.fenix.dejavu.discover.Tip
 import org.mozilla.fenix.dejavu.discover.TipGesture
 import org.mozilla.fenix.dejavu.discover.Tips
+import org.mozilla.fenix.dejavu.discover.newDot
+import org.mozilla.fenix.dejavu.discover.rememberUnseenNewThings
 import org.mozilla.fenix.dejavu.discover.tipTarget
 import org.mozilla.fenix.dejavu.sync.workspaceIconText
 import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
@@ -1154,7 +1157,13 @@ private fun WorkspaceHeader(
             )
         }
         Box {
-            SmallIconButton(iconsR.drawable.mozac_ic_ellipsis_vertical_24, R.string.dejavu_workspace_menu) {
+            // The lock and the history of each workspace, new in its dialog, have the orange dot on the way there.
+            val privacyNew = NewThing.WORKSPACE_PRIVACY in rememberUnseenNewThings()
+            SmallIconButton(
+                icon = iconsR.drawable.mozac_ic_ellipsis_vertical_24,
+                description = R.string.dejavu_workspace_menu,
+                modifier = Modifier.newDot(privacyNew),
+            ) {
                 menuOpen = true
             }
             DejavuDropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
@@ -1171,6 +1180,7 @@ private fun WorkspaceHeader(
                         menuOpen = false
                         onEdit()
                     },
+                    isNew = privacyNew,
                 )
                 DejavuMenuItem(
                     text = stringResource(R.string.dejavu_workspace_move_left),

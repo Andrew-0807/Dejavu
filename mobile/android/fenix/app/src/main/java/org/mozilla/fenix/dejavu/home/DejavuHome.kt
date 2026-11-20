@@ -116,6 +116,7 @@ import org.mozilla.fenix.dejavu.discover.TipGesture
 import org.mozilla.fenix.dejavu.discover.TipHost
 import org.mozilla.fenix.dejavu.discover.TipScreen
 import org.mozilla.fenix.dejavu.discover.Tips
+import org.mozilla.fenix.dejavu.discover.inSettings
 import org.mozilla.fenix.dejavu.discover.newDot
 import org.mozilla.fenix.dejavu.discover.rememberUnseenNewThings
 import org.mozilla.fenix.dejavu.discover.tipTarget
@@ -991,7 +992,7 @@ private fun TopBar(interactor: DejavuHomeInteractor, onSearchClick: () -> Unit) 
             onClick = interactor::onSettingsClick,
             modifier = Modifier
                 .genieButton(PageGenie.Button.SETTINGS)
-                .newDot(rememberUnseenNewThings().isNotEmpty(), inset = SETTINGS_DOT_INSET),
+                .newDot(rememberUnseenNewThings().inSettings(), inset = SETTINGS_DOT_INSET),
         )
     }
 }

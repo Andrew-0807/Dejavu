@@ -92,9 +92,9 @@ open class CustomizationFragment : PreferenceFragmentCompat(), SystemInsetsPadde
         super.onViewCreated(view, savedInstanceState)
 
         // Dejavu: orange dots on what is new here, until the user leaves, and on the menu's settings, which hold the
-        // new Full screen button.
+        // new Full screen and Screenshot buttons.
         findPreference<Preference>(getString(R.string.pref_key_dejavu_more_menu))?.let {
-            NewThings.follow(it, NewThing.FULL_SCREEN, viewLifecycleOwner)
+            NewThings.follow(it, NewThing.MENU_BUTTONS, viewLifecycleOwner)
         }
         findPreference<Preference>(getString(R.string.pref_key_dejavu_animations))?.parent?.let {
             NewThings.mark(it, NewThing.ANIMATIONS)

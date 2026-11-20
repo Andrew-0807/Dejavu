@@ -28,12 +28,30 @@ class NewThingsTest {
     }
 
     @Test
+    fun `the Screenshot button has the dot until the user looked at it`() {
+        val screenshot = MoreMenuEntry.BuiltIn(MoreMenuItem.SCREENSHOT)
+
+        assertTrue(screenshot.isNewAmong(setOf(NewThing.SCREENSHOT)))
+        assertFalse(screenshot.isNewAmong(setOf(NewThing.FULL_SCREEN)))
+        assertTrue(NewThing.SCREENSHOT in NewThing.CUSTOMIZE)
+    }
+
+    @Test
     fun `Settings has the dot while anything in the settings is new, except in the menu's editor`() {
         val settings = MoreMenuEntry.BuiltIn(MoreMenuItem.SETTINGS)
 
         assertTrue(settings.isNewAmong(setOf(NewThing.ESSENTIALS)))
+        assertTrue(settings.isNewAmong(setOf(NewThing.PRIVATE_BROWSING)))
         assertFalse(settings.isNewAmong(setOf(NewThing.ESSENTIALS), leadsToSettings = false))
         assertFalse(settings.isNewAmong(emptySet()))
+    }
+
+    @Test
+    fun `the lock and history of workspaces are found on the home screen, so they lead nobody to the settings`() {
+        val settings = MoreMenuEntry.BuiltIn(MoreMenuItem.SETTINGS)
+
+        assertFalse(settings.isNewAmong(setOf(NewThing.WORKSPACE_PRIVACY)))
+        assertFalse(setOf(NewThing.WORKSPACE_PRIVACY).inSettings())
     }
 
     @Test

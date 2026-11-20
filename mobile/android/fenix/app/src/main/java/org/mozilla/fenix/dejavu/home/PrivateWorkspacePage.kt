@@ -24,6 +24,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
@@ -47,6 +48,10 @@ import org.mozilla.fenix.dejavu.actions.RowAction
 import org.mozilla.fenix.dejavu.actions.TabAction
 import org.mozilla.fenix.dejavu.browser.closeOnMiddleClick
 import org.mozilla.fenix.dejavu.browser.tabZoomTarget
+import org.mozilla.fenix.dejavu.discover.NewThing
+import org.mozilla.fenix.dejavu.discover.NewThings
+import org.mozilla.fenix.dejavu.discover.newDot
+import org.mozilla.fenix.dejavu.discover.rememberUnseenNewThings
 import org.mozilla.fenix.dejavu.ui.DejavuDialog
 import org.mozilla.fenix.dejavu.ui.DejavuDialogButton
 import org.mozilla.fenix.dejavu.ui.DejavuDropdownMenu
@@ -176,7 +181,12 @@ internal fun PrivateWorkspacePage(
                         )
                     }
                     Box {
-                        SmallIconButton(iconsR.drawable.mozac_ic_ellipsis_vertical_24, R.string.dejavu_workspace_menu) {
+                        val privacyNew = NewThing.WORKSPACE_PRIVACY in rememberUnseenNewThings()
+                        SmallIconButton(
+                            icon = iconsR.drawable.mozac_ic_ellipsis_vertical_24,
+                            description = R.string.dejavu_workspace_menu,
+                            modifier = Modifier.newDot(privacyNew),
+                        ) {
                             menuOpen = true
                         }
                         DejavuDropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
@@ -193,6 +203,7 @@ internal fun PrivateWorkspacePage(
                                     menuOpen = false
                                     editing = true
                                 },
+                                isNew = privacyNew,
                             )
                         }
                     }
@@ -274,6 +285,10 @@ private fun PrivateWorkspaceDialog(onDismiss: () -> Unit) {
     val prompt = rememberUnlockPrompt()
     var locked by remember { mutableStateOf(settings.privateBrowsingModeLocked) }
     val canLock = remember { BiometricManager.from(context).isAuthenticatorAvailable() }
+    val privacyNew = NewThing.WORKSPACE_PRIVACY in rememberUnseenNewThings()
+    DisposableEffect(Unit) {
+        onDispose { NewThings.seen(context, NewThing.WORKSPACE_PRIVACY) }
+    }
     DejavuDialog(
         title = stringResource(R.string.dejavu_workspace_edit),
         onDismissRequest = onDismiss,
@@ -288,6 +303,7 @@ private fun PrivateWorkspaceDialog(onDismiss: () -> Unit) {
             description = stringResource(R.string.dejavu_workspace_lock_summary),
             checked = locked,
             enabled = canLock || locked,
+            isNew = privacyNew,
             onChange = { lock ->
                 val title = if (lock) R.string.pbm_authentication_enable_lock else R.string.pbm_authentication_disable_lock
                 prompt.ask(context.getString(title)) {

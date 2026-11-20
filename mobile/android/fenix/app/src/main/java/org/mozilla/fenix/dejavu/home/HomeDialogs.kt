@@ -42,6 +42,7 @@ import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -76,6 +77,10 @@ import org.mozilla.fenix.dejavu.containers.NoContainerIcon
 import org.mozilla.fenix.dejavu.containers.TemporaryContainerIcon
 import org.mozilla.fenix.dejavu.containers.color
 import org.mozilla.fenix.dejavu.containers.splitTemporary
+import org.mozilla.fenix.dejavu.discover.NewThing
+import org.mozilla.fenix.dejavu.discover.NewThings
+import org.mozilla.fenix.dejavu.discover.newDotAfterText
+import org.mozilla.fenix.dejavu.discover.rememberUnseenNewThings
 import org.mozilla.fenix.dejavu.settings.ContainerEditorDialog
 import org.mozilla.fenix.dejavu.sync.DejavuSync
 import org.mozilla.fenix.dejavu.sync.DejavuSyncSource
@@ -567,11 +572,17 @@ private fun WorkspacePrivacy(
 ) {
     val context = LocalContext.current
     val canLock = remember { BiometricManager.from(context).isAuthenticatorAvailable() }
+    // New in 4.0: the orange dot stays on both switches while the dialog shows, and goes once it closes.
+    val privacyNew = NewThing.WORKSPACE_PRIVACY in rememberUnseenNewThings()
+    DisposableEffect(Unit) {
+        onDispose { NewThings.seen(context, NewThing.WORKSPACE_PRIVACY) }
+    }
     SwitchRow(
         label = stringResource(R.string.dejavu_workspace_lock),
         description = stringResource(R.string.dejavu_workspace_lock_summary),
         checked = locked,
         enabled = canLock || locked,
+        isNew = privacyNew,
         onChange = onLockedChange,
     )
     if (!canLock) {
@@ -585,11 +596,15 @@ private fun WorkspacePrivacy(
         label = stringResource(R.string.dejavu_workspace_no_history),
         description = stringResource(R.string.dejavu_workspace_no_history_summary),
         checked = !savesHistory,
+        isNew = privacyNew,
         onChange = { onSavesHistoryChange(!it) },
     )
 }
 
-/** A row of a dialog with [label], [description] below it, and a switch at its end. */
+/**
+ * A row of a dialog with [label], [description] below it, and a switch at its end. [isNew] puts the orange dot of what
+ * is new after the label.
+ */
 @Composable
 internal fun SwitchRow(
     label: String,
@@ -597,6 +612,7 @@ internal fun SwitchRow(
     checked: Boolean,
     onChange: (Boolean) -> Unit,
     enabled: Boolean = true,
+    isNew: Boolean = false,
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -608,7 +624,12 @@ internal fun SwitchRow(
             .padding(start = 8.dp, top = 10.dp, bottom = 10.dp, end = 4.dp),
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text(text = label, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurface)
+            Text(
+                text = label,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier.newDotAfterText(isNew),
+            )
             Text(
                 text = description,
                 style = MaterialTheme.typography.bodySmall,
