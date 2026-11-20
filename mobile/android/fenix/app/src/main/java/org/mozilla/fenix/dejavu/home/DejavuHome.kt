@@ -398,6 +398,15 @@ fun DejavuHome(
             then()
         }
     }
+    // The private tabs, only hidden since Dejavu was left, show again at once; a locked page asks to unlock first.
+    fun unhide(page: Int, then: () -> Unit = {}) {
+        if (page == privateIndex && !privateLocked) {
+            WorkspaceLock.showPrivate()
+            then()
+        } else {
+            askToUnlock(page, then = then)
+        }
+    }
     val latestHiddenAt by rememberUpdatedState<(Int) -> Boolean> { page -> hiddenAt(page) }
 
     // A locked page the pages stop on asks to unlock by itself, once until it locks again or the user turns away.
@@ -664,7 +673,7 @@ fun DejavuHome(
                     TopBar(
                         interactor = interactor,
                         onSearchClick = if (currentHidden) {
-                            { askToUnlock(pagerState.currentPage, then = search) }
+                            { unhide(pagerState.currentPage, then = search) }
                         } else {
                             search
                         },
@@ -782,7 +791,7 @@ fun DejavuHome(
                             LockablePage(
                                 hidden = hiddenAt(page),
                                 title = if (privateLocked) unlockPrivateTitle else hiddenTitle,
-                                onUnlock = { if (privateLocked) askToUnlock(page) else WorkspaceLock.showPrivate() },
+                                onUnlock = { unhide(page) },
                                 icon = if (privateLocked) {
                                     iconsR.drawable.mozac_ic_lock_24
                                 } else {
