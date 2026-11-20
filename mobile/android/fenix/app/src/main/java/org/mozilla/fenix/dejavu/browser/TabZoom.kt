@@ -274,19 +274,24 @@ internal object TabZoom {
                     shown.animateTo(0f, tween(REVEAL_MS))
                 }
                 is Zoom.Out -> {
-                    current.leave()
-                    // The card covers the home screen while it sets itself up, then shrinks into the tab's row, placed
-                    // in the frames right after the home screen first drew.
-                    withTimeoutOrNull(HOME_TIMEOUT_MS) { current.homeShown.await() }
-                    repeat(ROW_FRAMES) { withFrameNanos { } }
-                    awaitSteadyFrames(maxNanos = SHRINK_SETTLE_NANOS)
-                    row = rows[current.tabId]?.bounds?.takeIf { it.isShown }
-                    if (row != null) {
-                        progress.animateTo(0f, tween(ZOOM_OUT_MS, easing = Emphasized))
-                    } else {
-                        shown.animateTo(0f, tween(REVEAL_MS))
+                    try {
+                        current.leave()
+                        // The card covers the home screen while it sets itself up, then shrinks into the tab's row,
+                        // placed in the frames right after the home screen first drew.
+                        withTimeoutOrNull(HOME_TIMEOUT_MS) { current.homeShown.await() }
+                        repeat(ROW_FRAMES) { withFrameNanos { } }
+                        awaitSteadyFrames(maxNanos = SHRINK_SETTLE_NANOS)
+                        row = rows[current.tabId]?.bounds?.takeIf { it.isShown }
+                        if (row != null) {
+                            progress.animateTo(0f, tween(ZOOM_OUT_MS, easing = Emphasized))
+                        } else {
+                            shown.animateTo(0f, tween(REVEAL_MS))
+                        }
+                    } finally {
+                        // Also when the zoom is cut short with its screen, as coming home from a private tab starts
+                        // the activity again for normal browsing: the private tab closed from its menu stayed open.
+                        current.afterLeaving()
                     }
-                    current.afterLeaving()
                     if (current.keepsPicture) current.picture?.let(::keepForReopening)
                 }
             }

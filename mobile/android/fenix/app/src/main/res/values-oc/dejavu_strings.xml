@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Los essencials qu’amagatz aicí demòran dins Zen e sus vòstres autres periferics, e tornan quand los afichatz tornamai.</string>
     <string name="dejavu_essentials_show">Afichar los essencials</string>
     <string name="dejavu_essentials_none">Cap d’essencial pel moment. Lisatz un onglet en naut de l’ecran d’acuèlh per ne far un essencial.</string>
+    <string name="dejavu_unlock_use_screen_lock">Utilizar lo verrolhatge d’ecran</string>
+    <string name="dejavu_private_hidden">Los onglets privats son amagats</string>
+    <string name="dejavu_private_show">Afichar</string>
 </resources>

@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">እዚህ የሚደብቋቸው አስፈላጊዎች በZen እና በሌሎች መሣሪያዎችዎ ላይ ይቆያሉ፣ እንደገና ሲያሳዩዋቸውም ይመለሳሉ።</string>
     <string name="dejavu_essentials_show">አስፈላጊዎችን አሳይ</string>
     <string name="dejavu_essentials_none">ገና ምንም አስፈላጊዎች የሉም። አንድን ትር ወደ አስፈላጊዎች ለማከል ወደ መነሻ ማያ ገጹ ላይኛው ክፍል ይጎትቱት።</string>
+    <string name="dejavu_unlock_use_screen_lock">የማያ ገጽ መቆለፊያ ይጠቀሙ</string>
+    <string name="dejavu_private_hidden">የግል ትሮች ተደብቀዋል</string>
+    <string name="dejavu_private_show">አሳይ</string>
 </resources>

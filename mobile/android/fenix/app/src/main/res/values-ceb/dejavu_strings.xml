@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Ang Mahinungdanon nga imong itago dinhi magpabilin sa Zen ug sa imong ubang mga device, ug mobalik kini kung ipakita nimo pag-usab.</string>
     <string name="dejavu_essentials_show">Ipakita ang Mahinungdanon</string>
     <string name="dejavu_essentials_none">Wala pay Mahinungdanon. I-drag ang usa ka tab sa pinakataas sa home screen aron idugang kini sa Mahinungdanon.</string>
+    <string name="dejavu_unlock_use_screen_lock">Gamita ang screen lock</string>
+    <string name="dejavu_private_hidden">Natago ang mga pribadong tab</string>
+    <string name="dejavu_private_show">Ipakita</string>
 </resources>

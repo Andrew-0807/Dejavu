@@ -607,4 +607,7 @@
     <string name="dejavu_essentials_hint">Các trang thiết yếu bạn ẩn ở đây vẫn còn trong Zen và trên các thiết bị khác của bạn, và sẽ quay lại khi bạn hiển thị chúng lần nữa.</string>
     <string name="dejavu_essentials_show">Hiển thị trang thiết yếu</string>
     <string name="dejavu_essentials_none">Chưa có trang thiết yếu nào. Kéo một thẻ lên trên cùng của trang chủ để thêm vào trang thiết yếu.</string>
+    <string name="dejavu_unlock_use_screen_lock">Dùng khóa màn hình</string>
+    <string name="dejavu_private_hidden">Các thẻ riêng tư đang bị ẩn</string>
+    <string name="dejavu_private_show">Hiển thị</string>
 </resources>

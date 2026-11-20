@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">L\'essenziali ch\'è vo piattate quì fermanu in Zen è nant\'à i vostri altri apparechji, è tornanu quandu l\'affissate di novu.</string>
     <string name="dejavu_essentials_show">Affissà l\'essenziali</string>
     <string name="dejavu_essentials_none">Ùn ci hè ancu nisunu essenziale. Trascinate un\'unghjetta in cima di u screnu d\'accolta per aghjunghje la à l\'essenziali.</string>
+    <string name="dejavu_unlock_use_screen_lock">Impiegà l’ammarchjunata di u screnu</string>
+    <string name="dejavu_private_hidden">L’unghjette private sò piattate</string>
+    <string name="dejavu_private_show">Affissà</string>
 </resources>

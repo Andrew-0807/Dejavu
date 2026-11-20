@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Bul jerde jasırǵan tiykarǵılarıńız Zen-de hám basqa qurılmalarıńızda qaladı, al olardı qayta kórsetkenińizde qaytıp keledi.</string>
     <string name="dejavu_essentials_show">Tiykarǵılardı kórsetiw</string>
     <string name="dejavu_essentials_none">Áli tiykarǵılar joq. Betti tiykarǵı etiw ushın onı bas bettiń joqarǵı bólimine súyreń.</string>
+    <string name="dejavu_unlock_use_screen_lock">Ekran qulıpın paydalanıw</string>
+    <string name="dejavu_private_hidden">Jeke betler jasırılǵan</string>
+    <string name="dejavu_private_show">Kórsetiw</string>
 </resources>

@@ -623,4 +623,7 @@
     <string name="dejavu_essentials_hint">I essensiałi che te scondi qua i resta in Zen e so i to altri dispoxitivi, e i torna co te i mostri de novo.</string>
     <string name="dejavu_essentials_show">Mostra i essensiałi</string>
     <string name="dejavu_essentials_none">Gnancora nisun essensiałe. Strasina na scheda fin in sima a ła schermada prinsipal par giontarla ai essensiałi.</string>
+    <string name="dejavu_unlock_use_screen_lock">Dòpara el bloco del schermo</string>
+    <string name="dejavu_private_hidden">Łe schede anonime łe xe sconte</string>
+    <string name="dejavu_private_show">Mostra</string>
 </resources>

@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Essinsjes dy\'t jo hjir ferstopje, bliuwe yn Zen en op jo oare apparaten, en komme werom as jo se wer toane.</string>
     <string name="dejavu_essentials_show">Essinsjes toane</string>
     <string name="dejavu_essentials_none">Noch gjin essinsjes. Sleep in ljepblêd nei boppe op de thússide om der in essinsje fan te meitsjen.</string>
+    <string name="dejavu_unlock_use_screen_lock">Skermbeskoatteling brûke</string>
+    <string name="dejavu_private_hidden">Priveeljepblêden binne ferstoppe</string>
+    <string name="dejavu_private_show">Toane</string>
 </resources>

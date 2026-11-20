@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Burada gizlediğiniz temel sekmeler Zen\'de ve diğer cihazlarınızda kalır, onları yeniden gösterdiğinizde geri gelir.</string>
     <string name="dejavu_essentials_show">Temel sekmeleri göster</string>
     <string name="dejavu_essentials_none">Henüz temel sekme yok. Bir sekmeyi temel sekme yapmak için ana ekranın en üstüne sürükleyin.</string>
+    <string name="dejavu_unlock_use_screen_lock">Ekran kilidini kullan</string>
+    <string name="dejavu_private_hidden">Gizli sekmeler saklandı</string>
+    <string name="dejavu_private_show">Göster</string>
 </resources>

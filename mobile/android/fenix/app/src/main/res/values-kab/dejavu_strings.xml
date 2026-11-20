@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Ayen ilaqen i teffreḍ dagi ad qqimen deg Zen d yibenkan-ik nniḍen, ad d-uɣalen mi ara ten-id-tesskneḍ tikkelt nniḍen.</string>
     <string name="dejavu_essentials_show">Sken ayen ilaqen</string>
     <string name="dejavu_essentials_none">Ulac ayen ilaqen akka tura. Zuɣer iccer ɣer ufella n ugdil agejdan akken ad yuɣal seg wayen ilaqen.</string>
+    <string name="dejavu_unlock_use_screen_lock">Seqdec asekkeṛ n ugdil</string>
+    <string name="dejavu_private_hidden">Accaren usligen ffren</string>
+    <string name="dejavu_private_show">Sken</string>
 </resources>

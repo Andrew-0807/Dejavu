@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Esencaĵoj, kiujn vi kaŝas ĉi tie, restas en Zen kaj sur viaj aliaj aparatoj, kaj revenas, kiam vi denove montros ilin.</string>
     <string name="dejavu_essentials_show">Montri esencaĵojn</string>
     <string name="dejavu_essentials_none">Ankoraŭ neniuj esencaĵoj. Trenu langeton al la supro de la hejmekrano por aldoni ĝin al esencaĵoj.</string>
+    <string name="dejavu_unlock_use_screen_lock">Uzi ekranŝloson</string>
+    <string name="dejavu_private_hidden">Privataj langetoj estas kaŝitaj</string>
+    <string name="dejavu_private_show">Montri</string>
 </resources>

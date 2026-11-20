@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Favoriter som du döljer här finns kvar i Zen och på dina andra enheter, och kommer tillbaka när du visar dem igen.</string>
     <string name="dejavu_essentials_show">Visa Favoriter</string>
     <string name="dejavu_essentials_none">Inga Favoriter än. Dra en flik högst upp på startskärmen för att lägga till den i Favoriter.</string>
+    <string name="dejavu_unlock_use_screen_lock">Använd skärmlås</string>
+    <string name="dejavu_private_hidden">Privata flikar är dolda</string>
+    <string name="dejavu_private_show">Visa</string>
 </resources>

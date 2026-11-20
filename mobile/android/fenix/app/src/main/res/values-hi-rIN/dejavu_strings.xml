@@ -648,4 +648,7 @@
     <string name="dejavu_essentials_hint">यहां छिपाए गए एसेंशियल्स Zen में और आपके दूसरे डिवाइस पर बने रहते हैं, और फिर से दिखाने पर वापस आ जाते हैं।</string>
     <string name="dejavu_essentials_show">एसेंशियल्स दिखाएं</string>
     <string name="dejavu_essentials_none">अभी तक कोई एसेंशियल नहीं है। किसी टैब को एसेंशियल बनाने के लिए उसे होमपेज पर सबसे ऊपर खींचें।</string>
+    <string name="dejavu_unlock_use_screen_lock">स्क्रीन लॉक का इस्तेमाल करें</string>
+    <string name="dejavu_private_hidden">प्राइवेट टैब छिपे हुए हैं</string>
+    <string name="dejavu_private_show">दिखाएं</string>
 </resources>

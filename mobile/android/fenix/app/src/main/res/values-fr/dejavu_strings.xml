@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Les favoris que tu masques ici restent dans Zen et sur tes autres appareils, et reviennent quand tu les affiches à nouveau.</string>
     <string name="dejavu_essentials_show">Afficher les favoris</string>
     <string name="dejavu_essentials_none">Aucun favori pour l’instant. Fais glisser un onglet tout en haut de la page d’accueil pour en faire un favori.</string>
+    <string name="dejavu_unlock_use_screen_lock">Utiliser le verrouillage de l’écran</string>
+    <string name="dejavu_private_hidden">Les onglets privés sont masqués</string>
+    <string name="dejavu_private_show">Afficher</string>
 </resources>

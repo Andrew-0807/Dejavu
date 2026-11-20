@@ -631,4 +631,7 @@
     <string name="dejavu_essentials_hint">Oblíbené, které zde skryjete, zůstanou v Zenu a na vašich dalších zařízeních a vrátí se, když je znovu zobrazíte.</string>
     <string name="dejavu_essentials_show">Zobrazovat Oblíbené</string>
     <string name="dejavu_essentials_none">Zatím tu nejsou žádné Oblíbené. Přetáhněte panel na domovské obrazovce úplně nahoru a přidáte ho do Oblíbených.</string>
+    <string name="dejavu_unlock_use_screen_lock">Použít zámek obrazovky</string>
+    <string name="dejavu_private_hidden">Anonymní panely jsou skryté</string>
+    <string name="dejavu_private_show">Zobrazit</string>
 </resources>

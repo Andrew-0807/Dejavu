@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">ضروریاتی که اینجا پنهان می‌کنید در Zen و دیگر دستگاه‌هایتان می‌مانند و وقتی دوباره نمایششان دهید، برمی‌گردند.</string>
     <string name="dejavu_essentials_show">نمایش ضروریات</string>
     <string name="dejavu_essentials_none">هنوز ضروریاتی ندارید. یک زبانه را به بالای صفحهٔ اصلی بکشید تا به ضروریات افزوده شود.</string>
+    <string name="dejavu_unlock_use_screen_lock">استفاده از قفل صفحه</string>
+    <string name="dejavu_private_hidden">زبانه‌های خصوصی پنهان هستند</string>
+    <string name="dejavu_private_show">نمایش</string>
 </resources>

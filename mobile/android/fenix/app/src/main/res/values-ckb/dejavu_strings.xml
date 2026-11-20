@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">ئەو ماڵپەڕە گرنگانەی لێرە دەیانشاریتەوە لە Zen و ئامێرەکانی ترتدا دەمێننەوە، و کاتێک دووبارە پیشانیان دەدەیتەوە دەگەڕێنەوە.</string>
     <string name="dejavu_essentials_show">پیشاندانی ماڵپەڕە گرنگەکان</string>
     <string name="dejavu_essentials_none">هێشتا هیچ ماڵپەڕێکی گرنگ نییە. بازدەرێک ڕابکێشە بۆ سەرەوەی شاشەی سەرەکی بۆ زیادکردنی بۆ ماڵپەڕە گرنگەکان.</string>
+    <string name="dejavu_unlock_use_screen_lock">قوفڵی شاشە بەکاربهێنە</string>
+    <string name="dejavu_private_hidden">بازدەرە تایبەتەکان شاردراونەتەوە</string>
+    <string name="dejavu_private_show">پیشاندان</string>
 </resources>

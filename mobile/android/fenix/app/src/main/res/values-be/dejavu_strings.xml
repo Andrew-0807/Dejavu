@@ -631,4 +631,7 @@
     <string name="dejavu_essentials_hint">Важнае, якое вы схаваеце тут, застаецца ў Zen і на іншых вашых прыладах і вернецца, калі вы зноў яго пакажаце.</string>
     <string name="dejavu_essentials_show">Паказваць важнае</string>
     <string name="dejavu_essentials_none">Пакуль няма важнага. Перацягніце картку ўверх галоўнага экрана, каб дадаць яе ў важнае.</string>
+    <string name="dejavu_unlock_use_screen_lock">Выкарыстоўваць блакіроўку экрана</string>
+    <string name="dejavu_private_hidden">Прыватныя карткі схаваны</string>
+    <string name="dejavu_private_show">Паказаць</string>
 </resources>

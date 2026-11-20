@@ -623,4 +623,7 @@
     <string name="dejavu_essentials_hint">Los esenciales que ocultes acá se quedan en Zen y en tus otros dispositivos, y vuelven cuando los muestres de nuevo.</string>
     <string name="dejavu_essentials_show">Mostrar esenciales</string>
     <string name="dejavu_essentials_none">Aún no hay esenciales. Arrastrá una pestaña a la parte superior de la pantalla de inicio para agregarla a esenciales.</string>
+    <string name="dejavu_unlock_use_screen_lock">Usar bloqueo de pantalla</string>
+    <string name="dejavu_private_hidden">Las pestañas privadas están ocultas</string>
+    <string name="dejavu_private_show">Mostrar</string>
 </resources>

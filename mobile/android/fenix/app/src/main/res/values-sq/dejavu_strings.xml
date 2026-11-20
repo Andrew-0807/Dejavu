@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Thelbësoret që fshihni këtu mbeten në Zen dhe në pajisjet tuaja të tjera, dhe rikthehen kur i shfaqni sërish.</string>
     <string name="dejavu_essentials_show">Shfaqi thelbësoret</string>
     <string name="dejavu_essentials_none">Ende s\'ka thelbësore. Tërhiqni një skedë në majë të faqes kreu, që ta shtoni te thelbësoret.</string>
+    <string name="dejavu_unlock_use_screen_lock">Përdor kyçje ekrani</string>
+    <string name="dejavu_private_hidden">Skedat private janë të fshehura</string>
+    <string name="dejavu_private_show">Shfaqi</string>
 </resources>

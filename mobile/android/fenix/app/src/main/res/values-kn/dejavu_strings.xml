@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">ನೀವು ಇಲ್ಲಿ ಮರೆಮಾಡುವ ಅಗತ್ಯವಾದವು Zen ನಲ್ಲಿ ಮತ್ತು ನಿಮ್ಮ ಇತರ ಸಾಧನಗಳಲ್ಲಿ ಉಳಿಯುತ್ತವೆ, ಮತ್ತು ನೀವು ಅವುಗಳನ್ನು ಮತ್ತೆ ತೋರಿಸಿದಾಗ ಹಿಂತಿರುಗುತ್ತವೆ.</string>
     <string name="dejavu_essentials_show">ಅಗತ್ಯವಾದವುಗಳನ್ನು ತೋರಿಸು</string>
     <string name="dejavu_essentials_none">ಇನ್ನೂ ಯಾವುದೇ ಅಗತ್ಯವಾದವು ಇಲ್ಲ. ಟ್ಯಾಬ್ ಅನ್ನು ಅಗತ್ಯವಾದುದನ್ನಾಗಿ ಮಾಡಲು, ಅದನ್ನು ಮುಖಪುಟ ಪರದೆಯ ಮೇಲ್ಭಾಗಕ್ಕೆ ಎಳೆಯಿರಿ.</string>
+    <string name="dejavu_unlock_use_screen_lock">ಪರದೆ ಲಾಕ್ ಬಳಸಿ</string>
+    <string name="dejavu_private_hidden">ಖಾಸಗಿ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಮರೆಮಾಡಲಾಗಿದೆ</string>
+    <string name="dejavu_private_show">ತೋರಿಸು</string>
 </resources>

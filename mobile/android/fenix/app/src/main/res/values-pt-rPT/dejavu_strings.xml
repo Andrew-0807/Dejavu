@@ -623,4 +623,7 @@
     <string name="dejavu_essentials_hint">Os essenciais que ocultares aqui continuam no Zen e nos teus outros dispositivos, e voltam quando os mostrares novamente.</string>
     <string name="dejavu_essentials_show">Mostrar essenciais</string>
     <string name="dejavu_essentials_none">Ainda não há essenciais. Arrasta um separador para o topo do ecrã inicial para o tornar um essencial.</string>
+    <string name="dejavu_unlock_use_screen_lock">Utilizar bloqueio de ecrã</string>
+    <string name="dejavu_private_hidden">Os separadores privados estão ocultos</string>
+    <string name="dejavu_private_show">Mostrar</string>
 </resources>

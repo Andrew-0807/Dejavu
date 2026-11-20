@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Favoritter, du skjuler her, bliver i Zen og på dine andre enheder og kommer tilbage, når du viser dem igen.</string>
     <string name="dejavu_essentials_show">Vis Favoritter</string>
     <string name="dejavu_essentials_none">Ingen favoritter endnu. Træk et faneblad op til toppen af startskærmen for at gøre det til en favorit.</string>
+    <string name="dejavu_unlock_use_screen_lock">Brug skærmlås</string>
+    <string name="dejavu_private_hidden">Private faneblade er skjult</string>
+    <string name="dejavu_private_show">Vis</string>
 </resources>

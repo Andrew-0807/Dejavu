@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Hemen ezkutatzen dituzun funtsezkoak Zenen eta zure beste gailuetan geratzen dira, eta berriro erakusten dituzunean itzultzen dira.</string>
     <string name="dejavu_essentials_show">Erakutsi funtsezkoak</string>
     <string name="dejavu_essentials_none">Oraindik ez dago funtsezkorik. Arrastatu fitxa bat hasierako pantailaren goialdera funtsezko bihurtzeko.</string>
+    <string name="dejavu_unlock_use_screen_lock">Erabili pantaila-blokeoa</string>
+    <string name="dejavu_private_hidden">Fitxa pribatuak ezkutatuta daude</string>
+    <string name="dejavu_private_show">Erakutsi</string>
 </resources>

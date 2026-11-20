@@ -19,7 +19,8 @@ import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.settings.DejavuSettings
 
 /**
- * The styles of icons Customize offers for Dejavu's buttons and menus (issue #233).
+ * The styles of icons Customize offers for Dejavu's buttons and menus, and the large pictures of empty pages and error
+ * pages (issue #233).
  *
  * @property key How the style is kept in the settings.
  * @property label Its name in Customize.
@@ -97,6 +98,13 @@ private val firefoxIcons = mapOf(
     R.drawable.dejavu_ic_share_24 to iconsR.drawable.mozac_ic_share_android_24,
     R.drawable.dejavu_ic_tabs_24 to iconsR.drawable.mozac_ic_tab_24,
     R.drawable.dejavu_ic_temporary_container_24 to R.drawable.dejavu_ic_classic_temporary_container_24,
+    // The large pictures of empty pages, made by scripts/make-media-illustrations.py. The others already show
+    // Firefox's icons.
+    R.drawable.dejavu_illustration_account to R.drawable.dejavu_illustration_classic_account,
+    R.drawable.dejavu_illustration_bookmarks to R.drawable.dejavu_illustration_classic_bookmarks,
+    R.drawable.dejavu_illustration_downloads to R.drawable.dejavu_illustration_classic_downloads,
+    R.drawable.dejavu_illustration_history to R.drawable.dejavu_illustration_classic_history,
+    R.drawable.dejavu_illustration_no_results to R.drawable.dejavu_illustration_classic_no_results,
 )
 
 // Made by scripts/make-media-rounded-icons.py, for Dejavu's icons and the Firefox ones its menus and actions show.
@@ -159,4 +167,18 @@ private val roundedIcons = mapOf(
     iconsR.drawable.mozac_ic_screenshot_24 to R.drawable.dejavu_ic_rounded_screenshot_24,
     iconsR.drawable.mozac_ic_tab_ungroup_24 to R.drawable.dejavu_ic_rounded_ungroup_24,
     iconsR.drawable.mozac_ic_translate_24 to R.drawable.dejavu_ic_rounded_translate_24,
+    // The large pictures of empty pages, made by scripts/make-media-illustrations.py.
+    R.drawable.dejavu_illustration_account to R.drawable.dejavu_illustration_rounded_account,
+    R.drawable.dejavu_illustration_bookmarks to R.drawable.dejavu_illustration_rounded_bookmarks,
+    R.drawable.dejavu_illustration_devices to R.drawable.dejavu_illustration_rounded_devices,
+    R.drawable.dejavu_illustration_downloads to R.drawable.dejavu_illustration_rounded_downloads,
+    R.drawable.dejavu_illustration_folder to R.drawable.dejavu_illustration_rounded_folder,
+    R.drawable.dejavu_illustration_history to R.drawable.dejavu_illustration_rounded_history,
+    R.drawable.dejavu_illustration_no_results to R.drawable.dejavu_illustration_rounded_no_results,
+    R.drawable.dejavu_illustration_notifications to R.drawable.dejavu_illustration_rounded_notifications,
+    R.drawable.dejavu_illustration_offline to R.drawable.dejavu_illustration_rounded_offline,
+    R.drawable.dejavu_illustration_problem to R.drawable.dejavu_illustration_rounded_problem,
+    R.drawable.dejavu_illustration_shield to R.drawable.dejavu_illustration_rounded_shield,
+    R.drawable.dejavu_illustration_shield_off to R.drawable.dejavu_illustration_rounded_shield_off,
+    R.drawable.dejavu_illustration_sparkle to R.drawable.dejavu_illustration_rounded_sparkle,
 )

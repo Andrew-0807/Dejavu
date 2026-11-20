@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">هغه مهمې ویب پاڼې چې تاسو یې دلته پټوئ، په Zen او ستاسو په نورو وسیلو کې پاتې کېږي، او کله چې یې بیا وښیئ بېرته راځي.</string>
     <string name="dejavu_essentials_show">مهمې ویب پاڼې ښودل</string>
     <string name="dejavu_essentials_none">تر اوسه کومه مهمه ویب پاڼه نشته. یو ټب د کور پردې سر ته کش کړئ ترڅو مهمه ویب پاڼه شي.</string>
+    <string name="dejavu_unlock_use_screen_lock">د پردې قلف وکاروئ</string>
+    <string name="dejavu_private_hidden">شخصي ټبونه پټ دي</string>
+    <string name="dejavu_private_show">ښودل</string>
 </resources>

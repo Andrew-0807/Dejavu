@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Az itt elrejtett kedvencek megmaradnak a Zenben és a többi eszközén, és visszatérnek, amikor újra megjeleníti őket.</string>
     <string name="dejavu_essentials_show">Kedvencek megjelenítése</string>
     <string name="dejavu_essentials_none">Még nincsenek kedvencek. Húzzon egy lapot a kezdőképernyő tetejére, hogy kedvenc legyen.</string>
+    <string name="dejavu_unlock_use_screen_lock">Képernyőzár használata</string>
+    <string name="dejavu_private_hidden">A privát lapok el vannak rejtve</string>
+    <string name="dejavu_private_show">Megjelenítés</string>
 </resources>

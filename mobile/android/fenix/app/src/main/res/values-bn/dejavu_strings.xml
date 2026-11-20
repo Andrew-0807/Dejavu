@@ -648,4 +648,7 @@
     <string name="dejavu_essentials_hint">এখানে আপনি যে এসেনশিয়ালগুলো লুকান, সেগুলো Zen-এ এবং আপনার অন্যান্য ডিভাইসে থেকে যায়, আর আবার দেখালে ফিরে আসে।</string>
     <string name="dejavu_essentials_show">এসেনশিয়াল দেখান</string>
     <string name="dejavu_essentials_none">এখনও কোনো এসেনশিয়াল নেই। কোনো ট্যাবকে এসেনশিয়ালে যোগ করতে সেটি হোম স্ক্রিনের একেবারে উপরে টেনে আনুন।</string>
+    <string name="dejavu_unlock_use_screen_lock">স্ক্রিন লক ব্যবহার করুন</string>
+    <string name="dejavu_private_hidden">ব্যক্তিগত ট্যাব লুকানো আছে</string>
+    <string name="dejavu_private_show">দেখান</string>
 </resources>

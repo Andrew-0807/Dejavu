@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">ଆପଣ ଏଠାରେ ଲୁଚାଉଥିବା ଆବଶ୍ୟକୀୟ Zen ରେ ଏବଂ ଆପଣଙ୍କ ଅନ୍ୟ ଡିଭାଇସରେ ରହେ, ଏବଂ ଆପଣ ସେଗୁଡ଼ିକୁ ପୁଣି ଦେଖାଇଲେ ଫେରି ଆସେ।</string>
     <string name="dejavu_essentials_show">ଆବଶ୍ୟକୀୟ ଦେଖାନ୍ତୁ</string>
     <string name="dejavu_essentials_none">ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଆବଶ୍ୟକୀୟ ନାହିଁ। ଏକ ଟ୍ୟାବ୍‌କୁ ଆବଶ୍ୟକୀୟ କରିବାକୁ, ଏହାକୁ ହୋମ୍ ସ୍କ୍ରିନ୍‌ର ଉପରକୁ ଟାଣନ୍ତୁ।</string>
+    <string name="dejavu_unlock_use_screen_lock">ସ୍କ୍ରିନ ଲକ୍ ବ୍ୟବହାର କରନ୍ତୁ</string>
+    <string name="dejavu_private_hidden">ବ୍ୟକ୍ତିଗତ ଟ୍ୟାବ୍ ଲୁଚାଯାଇଛି</string>
+    <string name="dejavu_private_show">ଦେଖାନ୍ତୁ</string>
 </resources>

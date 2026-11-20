@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Les essentiels que tu masques ici restent dans Zen et sur tes autres appareils, et reviennent quand tu les affiches à nouveau.</string>
     <string name="dejavu_essentials_show">Afficher les essentiels</string>
     <string name="dejavu_essentials_none">Alaa essentiels pour l\'instant. Fais glisser une tabbere tout en haut de l\'écran d\'accueil pour en faire un essentiel.</string>
+    <string name="dejavu_unlock_use_screen_lock">Utiliser le verrouillage de l’écran</string>
+    <string name="dejavu_private_hidden">Les onglets privés sont masqués</string>
+    <string name="dejavu_private_show">Afficher</string>
 </resources>

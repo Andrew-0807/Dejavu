@@ -623,4 +623,7 @@
     <string name="dejavu_essentials_hint">Šeit paslēptās Izlases cilnes paliek pārlūkā Zen un citās jūsu ierīcēs un atgriežas, kad tās atkal parādāt.</string>
     <string name="dejavu_essentials_show">Rādīt Izlasi</string>
     <string name="dejavu_essentials_none">Izlasē vēl nav nevienas cilnes. Velciet cilni uz sākuma ekrāna augšdaļu, lai pievienotu to Izlasei.</string>
+    <string name="dejavu_unlock_use_screen_lock">Izmantot ekrāna bloķēšanu</string>
+    <string name="dejavu_private_hidden">Privātās cilnes ir paslēptas</string>
+    <string name="dejavu_private_show">Rādīt</string>
 </resources>

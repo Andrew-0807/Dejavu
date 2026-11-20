@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">سایت یل مهمی که اینه قایم می‌کنی، من Zen و رو دستگاه یل دیه‌ت می‌مونن، و وختی دوواره نشونشون بدی، ورمی‌گردن.</string>
     <string name="dejavu_essentials_show">نشون دادن سایت یل مهم</string>
     <string name="dejavu_essentials_none">هنو هیچ سایت مهمی نئ. یه بلگه ن بکش بالای صفحه اصلی تا بره من سایت یل مهم.</string>
+    <string name="dejavu_unlock_use_screen_lock">و کار گرؽڌن قفل صفحه</string>
+    <string name="dejavu_private_hidden">بلگه یل سیخومی پنهون وابیڌن</string>
+    <string name="dejavu_private_show">نشون دادن</string>
 </resources>

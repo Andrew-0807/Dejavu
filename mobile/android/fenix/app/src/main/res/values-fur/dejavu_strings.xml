@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">I essenziâi che tu platis achì a restin in Zen e sui tiei altris dispositîfs, e a tornin cuant che tu ju mostris di gnûf.</string>
     <string name="dejavu_essentials_show">Mostre i essenziâi</string>
     <string name="dejavu_essentials_none">Ancjemò nissun essenziâl. Strissine une schede te part alte de videade iniziâl par fâle deventâ un essenziâl.</string>
+    <string name="dejavu_unlock_use_screen_lock">Dopre il bloc dal schermi</string>
+    <string name="dejavu_private_hidden">Lis schedis privadis a son platadis</string>
+    <string name="dejavu_private_show">Mostre</string>
 </resources>

@@ -623,4 +623,7 @@
     <string name="dejavu_essentials_hint">Os essenciais que você ocultar aqui continuam no Zen e nos seus outros dispositivos, e voltam quando você os mostrar de novo.</string>
     <string name="dejavu_essentials_show">Mostrar essenciais</string>
     <string name="dejavu_essentials_none">Nenhum essencial ainda. Arraste uma aba para o topo da tela inicial para torná-la um essencial.</string>
+    <string name="dejavu_unlock_use_screen_lock">Usar bloqueio de tela</string>
+    <string name="dejavu_private_hidden">As abas privativas estão ocultas</string>
+    <string name="dejavu_private_show">Mostrar</string>
 </resources>

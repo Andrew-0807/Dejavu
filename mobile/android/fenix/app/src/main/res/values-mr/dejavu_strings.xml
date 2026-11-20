@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">तुम्ही इथे लपवलेले आवश्यक Zen मध्ये आणि तुमच्या इतर डिव्हाइसवर राहतात, आणि ते पुन्हा दाखवल्यावर परत येतात.</string>
     <string name="dejavu_essentials_show">आवश्यक दाखवा</string>
     <string name="dejavu_essentials_none">अजून कोणतेही आवश्यक नाहीत. टॅब आवश्यक बनवण्यासाठी तो मुख्यपृष्ठाच्या वरच्या भागात ओढा.</string>
+    <string name="dejavu_unlock_use_screen_lock">स्क्रीन लॉक वापरा</string>
+    <string name="dejavu_private_hidden">खाजगी टॅब लपवले आहेत</string>
+    <string name="dejavu_private_show">दाखवा</string>
 </resources>

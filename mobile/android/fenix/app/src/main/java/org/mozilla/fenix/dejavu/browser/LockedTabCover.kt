@@ -19,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
 import androidx.core.net.toUri
@@ -33,6 +34,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -43,6 +45,7 @@ import mozilla.components.lib.state.ext.flow
 import org.mozilla.fenix.NavGraphDirections
 import org.mozilla.fenix.R
 import org.mozilla.fenix.dejavu.ui.LockCover
+import org.mozilla.fenix.dejavu.ui.awaitWindowFocus
 import org.mozilla.fenix.dejavu.ui.mayAskToUnlock
 import org.mozilla.fenix.dejavu.ui.rememberUnlockPrompt
 import org.mozilla.fenix.dejavu.workspaces.Workspace
@@ -106,11 +109,38 @@ fun Fragment.installLockedTabCover(customTabSessionId: String?, root: ViewGroup)
     }
 }
 
-/** Whether the browser shows a tab of a locked workspace, so [installLockedTabCover] covers it. */
+/**
+ * Whether the browser shows a tab of a locked workspace, so [installLockedTabCover] covers it, or a private tab hidden
+ * since Dejavu was left, which [leaveHiddenPrivateTab] leaves.
+ */
 internal fun Fragment.showsLockedTab(): Boolean {
-    val tab = requireComponents.core.store.state.selectedTab?.takeUnless { it.content.private } ?: return false
+    val tab = requireComponents.core.store.state.selectedTab ?: return false
+    if (tab.content.private) return WorkspaceLock.privateHidden.value
     val state = WorkspaceRepository.peek()?.state?.value ?: return false
     return WorkspaceLock.hiddenWorkspaceOf(state, tab.id) != null
+}
+
+/**
+ * Leaves a private tab for the home screen once the private tabs lock, or hide as Dejavu was left, see
+ * [WorkspaceLock.privateHidden]: they show there as the private workspace, blurred under its cover like a locked
+ * workspace, instead of Firefox's own screen to unlock them, which custom tabs keep. It leaves as the browser starts
+ * again, before the page shows.
+ */
+fun Fragment.leaveHiddenPrivateTab(customTabSessionId: String?) {
+    if (customTabSessionId != null) return
+    val components = requireComponents
+    val owner = viewLifecycleOwner
+    owner.lifecycleScope.launch {
+        owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            val shownPrivate = components.core.store.flow().map { it.selectedTab?.content?.private == true }
+            val locked = components.appStore.flow().map { it.isPrivateScreenLocked && it.mode.isPrivate }
+            combine(shownPrivate, locked, WorkspaceLock.privateHidden) { private, isLocked, hidden ->
+                private && (isLocked || hidden)
+            }.distinctUntilChanged().filter { it }.collect {
+                findNavController().navigate(NavGraphDirections.actionGlobalHome())
+            }
+        }
+    }
 }
 
 /**
@@ -131,22 +161,24 @@ private fun showsOnlyInLockedTabs(store: BrowserStore, url: String): Boolean {
 private fun LockedTab(workspace: Workspace, onLeave: () -> Unit) {
     val context = LocalContext.current
     val prompt = rememberUnlockPrompt()
-    val unlock = {
-        prompt.ask(context.getString(R.string.dejavu_workspace_unlock_title, workspace.name)) {
+    val unlock = { automatic: Boolean ->
+        prompt.ask(context.getString(R.string.dejavu_workspace_unlock_title, workspace.name), automatic) {
             WorkspaceLock.unlock(workspace.id)
         }
     }
     val lifecycleOwner = LocalLifecycleOwner.current
+    val view = LocalView.current
     // Asked again each time Dejavu shows, as coming back from other apps or the phone's lock screen.
     LaunchedEffect(workspace.id) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
-            if (context.mayAskToUnlock() && WorkspaceLock.askOnce(workspace.id)) unlock()
+            view.awaitWindowFocus()
+            if (context.mayAskToUnlock() && WorkspaceLock.askOnce(workspace.id)) unlock(true)
         }
     }
     Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)) {
         LockCover(
             title = stringResource(R.string.dejavu_workspace_locked, workspace.name),
-            onUnlock = unlock,
+            onUnlock = { unlock(false) },
             onLeave = onLeave,
             modifier = Modifier.fillMaxSize().systemBarsPadding(),
         )

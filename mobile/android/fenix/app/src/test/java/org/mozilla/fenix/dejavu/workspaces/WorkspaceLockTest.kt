@@ -42,7 +42,35 @@ class WorkspaceLockTest {
     @After
     fun lockAgain() {
         WorkspaceLock.prompting = false
+        WorkspaceLock.privateTabsHide = { false }
         WorkspaceLock.lockAll()
+        WorkspaceLock.showPrivate()
+    }
+
+    @Test
+    fun `private tabs open as Dejavu is left show hidden until the user shows them`() {
+        WorkspaceLock.privateTabsHide = { true }
+        WorkspaceLock.lockAll()
+        assertTrue(WorkspaceLock.privateHidden.value)
+
+        WorkspaceLock.showPrivate()
+        assertFalse(WorkspaceLock.privateHidden.value)
+    }
+
+    @Test
+    fun `turning to another workspace hides the private tabs too, without locking the workspaces`() {
+        WorkspaceLock.privateTabsHide = { true }
+        WorkspaceLock.unlock("bank")
+        WorkspaceLock.hidePrivate()
+        assertTrue(WorkspaceLock.privateHidden.value)
+        assertFalse(WorkspaceLock.hides(state.workspaces[1]))
+    }
+
+    @Test
+    fun `private tabs stay as they are when none are open or Firefox's lock of private tabs locks them`() {
+        WorkspaceLock.privateTabsHide = { false }
+        WorkspaceLock.lockAll()
+        assertFalse(WorkspaceLock.privateHidden.value)
     }
 
     @Test

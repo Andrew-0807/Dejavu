@@ -623,4 +623,7 @@
     <string name="dejavu_essentials_hint">Favoritele pe care le ascunzi aici rămân în Zen și pe celelalte dispozitive și revin când le afișezi din nou.</string>
     <string name="dejavu_essentials_show">Afișează favoritele</string>
     <string name="dejavu_essentials_none">Încă nu ai favorite. Trage o filă în partea de sus a ecranului principal pentru a o adăuga la favorite.</string>
+    <string name="dejavu_unlock_use_screen_lock">Folosește blocarea ecranului</string>
+    <string name="dejavu_private_hidden">Filele private sunt ascunse</string>
+    <string name="dejavu_private_show">Afișează</string>
 </resources>

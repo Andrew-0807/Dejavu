@@ -607,4 +607,7 @@
     <string name="dejavu_essentials_hint">เว็บที่ใช้บ่อยที่คุณซ่อนไว้ที่นี่จะยังอยู่ใน Zen และบนอุปกรณ์อื่นของคุณ และจะกลับมาเมื่อคุณแสดงอีกครั้ง</string>
     <string name="dejavu_essentials_show">แสดงเว็บที่ใช้บ่อย</string>
     <string name="dejavu_essentials_none">ยังไม่มีเว็บที่ใช้บ่อย ลากแท็บไปด้านบนสุดของหน้าแรกเพื่อเพิ่มลงในเว็บที่ใช้บ่อย</string>
+    <string name="dejavu_unlock_use_screen_lock">ใช้การล็อกหน้าจอ</string>
+    <string name="dejavu_private_hidden">แท็บส่วนตัวถูกซ่อนอยู่</string>
+    <string name="dejavu_private_show">แสดง</string>
 </resources>

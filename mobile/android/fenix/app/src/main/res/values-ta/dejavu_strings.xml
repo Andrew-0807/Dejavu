@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">இங்கே நீங்கள் மறைக்கும் முக்கியவை Zen-இலும் உங்கள் மற்ற சாதனங்களிலும் அப்படியே இருக்கும், மீண்டும் காட்டும்போது திரும்ப வரும்.</string>
     <string name="dejavu_essentials_show">முக்கியவையைக் காட்டு</string>
     <string name="dejavu_essentials_none">இன்னும் முக்கியவை எதுவும் இல்லை. ஒரு கீற்றை முக்கியவையில் சேர்க்க, அதை முகப்புப் பக்கத்தின் மேல்பகுதிக்கு இழுக்கவும்.</string>
+    <string name="dejavu_unlock_use_screen_lock">திரைப் பூட்டைப் பயன்படுத்து</string>
+    <string name="dejavu_private_hidden">கமுக்கக் கீற்றுகள் மறைக்கப்பட்டுள்ளன</string>
+    <string name="dejavu_private_show">காட்டு</string>
 </resources>

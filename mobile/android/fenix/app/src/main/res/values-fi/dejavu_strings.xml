@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Tässä piilottamasi suosikit säilyvät Zenissä ja muilla laitteillasi, ja ne palaavat, kun näytät ne taas.</string>
     <string name="dejavu_essentials_show">Näytä suosikit</string>
     <string name="dejavu_essentials_none">Ei vielä suosikkeja. Vedä välilehti aloitussivun yläreunaan tehdäksesi siitä suosikin.</string>
+    <string name="dejavu_unlock_use_screen_lock">Käytä näytön lukitusta</string>
+    <string name="dejavu_private_hidden">Yksityiset välilehdet on piilotettu</string>
+    <string name="dejavu_private_show">Näytä</string>
 </resources>

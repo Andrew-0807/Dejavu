@@ -648,4 +648,7 @@
     <string name="dejavu_essentials_hint">તમે અહીં છુપાવો છો તે એસેન્શિયલ્સ Zen માં અને તમારાં અન્ય ઉપકરણો પર રહે છે, અને તમે તેમને ફરી બતાવો ત્યારે પાછા આવે છે.</string>
     <string name="dejavu_essentials_show">એસેન્શિયલ્સ બતાવો</string>
     <string name="dejavu_essentials_none">હજી કોઈ એસેન્શિયલ્સ નથી. ટૅબને એસેન્શિયલ બનાવવા માટે તેને મુખ્ય પૃષ્ઠની ટોચ પર ખેંચો.</string>
+    <string name="dejavu_unlock_use_screen_lock">સ્ક્રીન લૉકનો ઉપયોગ કરો</string>
+    <string name="dejavu_private_hidden">ખાનગી ટૅબ છુપાયેલી છે</string>
+    <string name="dejavu_private_show">બતાવો</string>
 </resources>

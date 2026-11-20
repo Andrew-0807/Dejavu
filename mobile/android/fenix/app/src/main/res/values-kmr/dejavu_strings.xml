@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Malperên girîng ên ku tu li vir vedişêrî, di Zen de û li ser cîhazên te yên din dimînin, û dema ku tu wan dîsa nîşan bidî, vedigerin.</string>
     <string name="dejavu_essentials_show">Malperên girîng nîşan bide</string>
     <string name="dejavu_essentials_none">Hê ti malperên girîng tune ne. Hilpekînekê bikişîne serê ekrana malê da ku bibe malpereke girîng.</string>
+    <string name="dejavu_unlock_use_screen_lock">Kilîtkirina ekranê bikar bîne</string>
+    <string name="dejavu_private_hidden">Hilpekînên taybet veşartî ne</string>
+    <string name="dejavu_private_show">Nîşan bide</string>
 </resources>

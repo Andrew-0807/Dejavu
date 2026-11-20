@@ -647,4 +647,7 @@
     <string name="dejavu_essentials_hint">تبقى الأساسيات التي تخفيها هنا في Zen وعلى أجهزتك الأخرى، وتعود عندما تعرضها مجددًا.</string>
     <string name="dejavu_essentials_show">عرض الأساسيات</string>
     <string name="dejavu_essentials_none">لا أساسيات بعد. اسحب تبويبًا إلى أعلى الشاشة الرئيسية لإضافته إلى الأساسيات.</string>
+    <string name="dejavu_unlock_use_screen_lock">استخدم قفل الشاشة</string>
+    <string name="dejavu_private_hidden">التبويبات الخاصة مخفية</string>
+    <string name="dejavu_private_show">اعرض</string>
 </resources>

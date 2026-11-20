@@ -631,4 +631,7 @@
     <string name="dejavu_essentials_hint">Zavihki v Izbranem, ki jih tukaj skrijete, ostanejo v Zenu in na vaših drugih napravah ter se vrnejo, ko jih znova prikažete.</string>
     <string name="dejavu_essentials_show">Prikaži Izbrano</string>
     <string name="dejavu_essentials_none">V Izbranem še ni ničesar. Povlecite zavihek na vrh domače strani, da ga dodate v Izbrano.</string>
+    <string name="dejavu_unlock_use_screen_lock">Uporabi zaklep zaslona</string>
+    <string name="dejavu_private_hidden">Zasebni zavihki so skriti</string>
+    <string name="dejavu_private_show">Prikaži</string>
 </resources>

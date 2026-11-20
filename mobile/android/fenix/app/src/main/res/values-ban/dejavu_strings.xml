@@ -607,4 +607,7 @@
     <string name="dejavu_essentials_hint">Penting ane engkebang ragane dini tetep ada di Zen lan di piranti ragane ane lenan, tur lakar mawali yening ragane ngedengang malih.</string>
     <string name="dejavu_essentials_show">Edengang Penting</string>
     <string name="dejavu_essentials_none">Nu tusing ada Penting. Tarik tab ka duur pisan di layar utama anggon nambahang ka Penting.</string>
+    <string name="dejavu_unlock_use_screen_lock">Anggén kunci layar</string>
+    <string name="dejavu_private_hidden">Tab pribadi kaengkebang</string>
+    <string name="dejavu_private_show">Edengang</string>
 </resources>

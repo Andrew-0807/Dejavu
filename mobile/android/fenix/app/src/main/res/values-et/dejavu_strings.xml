@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Siin peidetud olulised jäävad Zenis ja sinu teistes seadmetes alles ning tulevad tagasi, kui need uuesti nähtavaks teed.</string>
     <string name="dejavu_essentials_show">Näita olulisi</string>
     <string name="dejavu_essentials_none">Olulisi veel pole. Lohista kaart avalehe ülaossa, et see olulistesse lisada.</string>
+    <string name="dejavu_unlock_use_screen_lock">Kasuta ekraanilukku</string>
+    <string name="dejavu_private_hidden">Privaatsed kaardid on peidetud</string>
+    <string name="dejavu_private_show">Näita</string>
 </resources>

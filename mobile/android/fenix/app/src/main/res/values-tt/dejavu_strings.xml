@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Монда сез яшергән төп сайтлар Zen-дә һәм башка җиһазларыгызда кала, аларны яңадан күрсәткәч, кире кайта.</string>
     <string name="dejavu_essentials_show">Төп сайтларны күрсәтү</string>
     <string name="dejavu_essentials_none">Әлегә төп сайтлар юк. Табны төп сайтларга өстәү өчен, аны баш битнең иң өстенә сөйрәгез.</string>
+    <string name="dejavu_unlock_use_screen_lock">Экран йозагын куллану</string>
+    <string name="dejavu_private_hidden">Хосусый таблар яшерелгән</string>
+    <string name="dejavu_private_show">Күрсәтү</string>
 </resources>

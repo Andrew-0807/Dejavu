@@ -631,4 +631,7 @@
     <string name="dejavu_essentials_hint">Nojważniejsze, kere sam skryjesz, ôstanōm w Zen i na twojich inkszych maszinach, a wrōcōm, jak je zaś pokożesz.</string>
     <string name="dejavu_essentials_show">Pokazuj nojważniejsze</string>
     <string name="dejavu_essentials_none">Niy ma jeszcze nojważniejszych. Przeciōng karta na sam wiyrch strōny dōm, coby jōm dodać do nojważniejszych.</string>
+    <string name="dejavu_unlock_use_screen_lock">Użyj blokady ekranu</string>
+    <string name="dejavu_private_hidden">Prywatne karty sōm schowane</string>
+    <string name="dejavu_private_show">Pokoż</string>
 </resources>

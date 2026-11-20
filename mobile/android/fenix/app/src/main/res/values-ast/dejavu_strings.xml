@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Los esenciales qu\'anubres equí queden en Zen y nos tos otros preseos, y vuelven cuando los amueses otra vegada.</string>
     <string name="dejavu_essentials_show">Amosar los esenciales</string>
     <string name="dejavu_essentials_none">Entá nun hai esenciales. Arrastra una llingüeta hasta arriba de la pantalla d\'aniciu pa amestala a los esenciales.</string>
+    <string name="dejavu_unlock_use_screen_lock">Usar el bloquéu de pantalla</string>
+    <string name="dejavu_private_hidden">Les llingüetes privaes tán anubríes</string>
+    <string name="dejavu_private_show">Amosar</string>
 </resources>

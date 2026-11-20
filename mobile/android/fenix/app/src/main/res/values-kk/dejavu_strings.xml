@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Осында жасырған негізгілеріңіз Zen-де және басқа құрылғыларыңызда қалады, ал оларды қайта көрсеткенде, қайтып оралады.</string>
     <string name="dejavu_essentials_show">Негізгілерді көрсету</string>
     <string name="dejavu_essentials_none">Әзірге негізгілер жоқ. Бетті негізгіге айналдыру үшін оны басты беттің жоғарғы жағына сүйреңіз.</string>
+    <string name="dejavu_unlock_use_screen_lock">Экран құлпын пайдалану</string>
+    <string name="dejavu_private_hidden">Жекелік беттер жасырылған</string>
+    <string name="dejavu_private_show">Көрсету</string>
 </resources>

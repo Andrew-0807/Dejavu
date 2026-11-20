@@ -607,4 +607,7 @@
     <string name="dejavu_essentials_hint">sina len e lipu suli lon ni la ona li awen lon Zen en lon ilo ante sina. sina pana lukin sin e ona la ona li kama sin.</string>
     <string name="dejavu_essentials_show">o pana lukin e lipu suli</string>
     <string name="dejavu_essentials_none">lipu suli li lon ala lon tenpo ni. o tawa e poki tawa sewi pi lipu tomo la ona li kama lipu suli.</string>
+    <string name="dejavu_unlock_use_screen_lock">o kepeken len pi lipu lukin</string>
+    <string name="dejavu_private_hidden">poki pi nasin len li len</string>
+    <string name="dejavu_private_show">o pana lukin</string>
 </resources>

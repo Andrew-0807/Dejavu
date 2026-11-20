@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Ri taq rajawaxel ye\'awewaj wawe\' yekanäj pa Zen chuqa\' pa ri ch\'aqa\' chik taq awokisaxel, chuqa\' yetzolin toq ye\'ak\'üt chik.</string>
     <string name="dejavu_essentials_show">Kek\'ut taq rajawaxel</string>
     <string name="dejavu_essentials_none">K\'a majun taq rajawaxel. Tajurula\' jun ruwi\' ajsik pa ri jay ruxaq richin natz\'aqatisaj pa taq rajawaxel.</string>
+    <string name="dejavu_unlock_use_screen_lock">Tawokisaj ri q\'atoj ruwäch</string>
+    <string name="dejavu_private_hidden">Ewan ri ichinan taq ruwi\'</string>
+    <string name="dejavu_private_show">Tik\'ut</string>
 </resources>

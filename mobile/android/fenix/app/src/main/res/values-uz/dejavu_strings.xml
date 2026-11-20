@@ -615,4 +615,7 @@
     <string name="dejavu_essentials_hint">Bu yerda yashirgan muhimlaringiz Zen-da va boshqa qurilmalaringizda qoladi hamda ularni qayta ko\'rsatganingizda qaytib keladi.</string>
     <string name="dejavu_essentials_show">Muhimlarni ko\'rsatish</string>
     <string name="dejavu_essentials_none">Hozircha muhimlar yo\'q. Varaqni muhimlarga qo\'shish uchun uni bosh sahifaning eng yuqorisiga torting.</string>
+    <string name="dejavu_unlock_use_screen_lock">Ekran qulfidan foydalanish</string>
+    <string name="dejavu_private_hidden">Maxfiy varaqlar yashirilgan</string>
+    <string name="dejavu_private_show">Ko‘rsatish</string>
 </resources>

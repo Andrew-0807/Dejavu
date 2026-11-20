@@ -41,9 +41,21 @@ class DejavuIconsTest {
     }
 
     @Test
+    fun `the large pictures of empty pages come in every style`() {
+        val history = R.drawable.dejavu_illustration_history
+        assertEquals(history, iconIn(IconStyle.DEJAVU, history))
+        assertEquals(R.drawable.dejavu_illustration_classic_history, iconIn(IconStyle.FIREFOX, history))
+        assertEquals(R.drawable.dejavu_illustration_rounded_history, iconIn(IconStyle.ROUNDED, history))
+        // A picture of one of Firefox's icons already is in the classic style.
+        val shield = R.drawable.dejavu_illustration_shield
+        assertEquals(shield, iconIn(IconStyle.FIREFOX, shield))
+        assertEquals(R.drawable.dejavu_illustration_rounded_shield, iconIn(IconStyle.ROUNDED, shield))
+    }
+
+    @Test
     fun `pictures that are no icons stay as they are in every style`() {
         IconStyle.entries.forEach { style ->
-            assertEquals(R.drawable.dejavu_illustration_history, iconIn(style, R.drawable.dejavu_illustration_history))
+            assertEquals(R.drawable.dejavu_logo, iconIn(style, R.drawable.dejavu_logo))
         }
     }
 

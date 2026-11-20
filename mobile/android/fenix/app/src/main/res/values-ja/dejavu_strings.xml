@@ -607,4 +607,7 @@
     <string name="dejavu_essentials_hint">ここで非表示にしたよく使うサイトは、Zenや他の端末には残り、再び表示すると戻ってきます。</string>
     <string name="dejavu_essentials_show">よく使うサイトを表示</string>
     <string name="dejavu_essentials_none">よく使うサイトはまだありません。タブをホーム画面の一番上にドラッグすると、よく使うサイトになります。</string>
+    <string name="dejavu_unlock_use_screen_lock">画面ロックを使用</string>
+    <string name="dejavu_private_hidden">プライベートタブは非表示です</string>
+    <string name="dejavu_private_show">表示</string>
 </resources>

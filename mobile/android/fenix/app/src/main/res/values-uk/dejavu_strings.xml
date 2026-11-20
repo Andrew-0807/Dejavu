@@ -631,4 +631,7 @@
     <string name="dejavu_essentials_hint">Вкладки з обраного, які ви тут приховуєте, залишаються в Zen і на інших ваших пристроях та повертаються, коли ви знову їх показуєте.</string>
     <string name="dejavu_essentials_show">Показувати обране</string>
     <string name="dejavu_essentials_none">В обраному ще нічого немає. Перетягніть вкладку на самий верх головної сторінки, щоб додати її до обраного.</string>
+    <string name="dejavu_unlock_use_screen_lock">Використовувати блокування екрана</string>
+    <string name="dejavu_private_hidden">Приватні вкладки приховано</string>
+    <string name="dejavu_private_show">Показати</string>
 </resources>
