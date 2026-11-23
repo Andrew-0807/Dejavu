@@ -547,7 +547,9 @@ public final class GeckoRuntime implements Parcelable {
     // TODO(m_kato): We have to check environment variables for Zygote process support.
     pm.setAppZygoteEnabled(settings.getAppZygoteProcessEnabled());
 
-    final int[] fds = startCrashHelper();
+    // Dejavu: without a crash handler the engine writes no crash dumps, so do not bind the
+    // :crashhelper service (which otherwise stays running idle in its own process).
+    final int[] fds = crashHandler != null ? startCrashHelper() : new int[] {-1, -1};
 
     final GeckoThread.InitInfo info =
         GeckoThread.InitInfo.builder()
